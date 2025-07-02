@@ -19,28 +19,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0069 import TeamSimple
+from .group_0157 import Milestone
+from .group_0314 import AutoMerge
+from .group_0394 import PullRequestPropLabelsItems
+from .group_0395 import PullRequestPropBase, PullRequestPropHead
+from .group_0396 import PullRequestPropLinks
 
 
-class PullRequestReview(GitHubModel):
-    """Pull Request Review
+class PullRequest(GitHubModel):
+    """Pull Request
 
-    Pull Request Reviews are reviews on pull requests.
+    Pull requests let you tell others about changes you've pushed to a repository on
+    GitHub. Once a pull request is sent, interested parties can review the set of
+    changes, discuss potential modifications, and even push follow-up commits if
+    necessary.
     """
 
-    id: int = Field(description="Unique identifier of the review")
+    url: str = Field()
+    id: int = Field()
     node_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The text of the review.")
-    state: str = Field()
     html_url: str = Field()
-    pull_request_url: str = Field()
-    links: PullRequestReviewPropLinks = Field(alias="_links")
-    submitted_at: Missing[datetime] = Field(default=UNSET)
-    commit_id: Union[str, None] = Field(
-        description="A commit SHA for the review. If the commit object was garbage collected or forcibly deleted, then it no longer exists in Git and this value will be `null`."
+    diff_url: str = Field()
+    patch_url: str = Field()
+    issue_url: str = Field()
+    commits_url: str = Field()
+    review_comments_url: str = Field()
+    review_comment_url: str = Field()
+    comments_url: str = Field()
+    statuses_url: str = Field()
+    number: int = Field(
+        description="Number uniquely identifying the pull request within its repository."
     )
-    body_html: Missing[str] = Field(default=UNSET)
-    body_text: Missing[str] = Field(default=UNSET)
+    state: Literal["open", "closed"] = Field(
+        description="State of this Pull Request. Either `open` or `closed`."
+    )
+    locked: bool = Field()
+    title: str = Field(description="The title of the pull request.")
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    body: Union[str, None] = Field()
+    labels: list[PullRequestPropLabelsItems] = Field()
+    milestone: Union[None, Milestone] = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    closed_at: Union[datetime, None] = Field()
+    merged_at: Union[datetime, None] = Field()
+    merge_commit_sha: Union[str, None] = Field()
+    assignee: Union[None, SimpleUser] = Field()
+    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    requested_reviewers: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    requested_teams: Missing[Union[list[TeamSimple], None]] = Field(default=UNSET)
+    head: PullRequestPropHead = Field()
+    base: PullRequestPropBase = Field()
+    links: PullRequestPropLinks = Field(alias="_links")
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -54,35 +86,29 @@ class PullRequestReview(GitHubModel):
         title="author_association",
         description="How the author is associated with the repository.",
     )
+    auto_merge: Union[AutoMerge, None] = Field(
+        title="Auto merge", description="The status of auto merging a pull request."
+    )
+    draft: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether or not the pull request is a draft.",
+    )
+    merged: bool = Field()
+    mergeable: Union[bool, None] = Field()
+    rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
+    mergeable_state: str = Field()
+    merged_by: Union[None, SimpleUser] = Field()
+    comments: int = Field()
+    review_comments: int = Field()
+    maintainer_can_modify: bool = Field(
+        description="Indicates whether maintainers can modify the pull request."
+    )
+    commits: int = Field()
+    additions: int = Field()
+    deletions: int = Field()
+    changed_files: int = Field()
 
 
-class PullRequestReviewPropLinks(GitHubModel):
-    """PullRequestReviewPropLinks"""
+model_rebuild(PullRequest)
 
-    html: PullRequestReviewPropLinksPropHtml = Field()
-    pull_request: PullRequestReviewPropLinksPropPullRequest = Field()
-
-
-class PullRequestReviewPropLinksPropHtml(GitHubModel):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str = Field()
-
-
-class PullRequestReviewPropLinksPropPullRequest(GitHubModel):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str = Field()
-
-
-model_rebuild(PullRequestReview)
-model_rebuild(PullRequestReviewPropLinks)
-model_rebuild(PullRequestReviewPropLinksPropHtml)
-model_rebuild(PullRequestReviewPropLinksPropPullRequest)
-
-__all__ = (
-    "PullRequestReview",
-    "PullRequestReviewPropLinks",
-    "PullRequestReviewPropLinksPropHtml",
-    "PullRequestReviewPropLinksPropPullRequest",
-)
+__all__ = ("PullRequest",)

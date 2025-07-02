@@ -15,36 +15,52 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0345 import CustomDeploymentRuleApp
 
-class GitTree(GitHubModel):
-    """Git Tree
 
-    The hierarchy between files in a Git repository.
+class DeploymentProtectionRule(GitHubModel):
+    """Deployment protection rule
+
+    Deployment protection rule
     """
 
-    sha: str = Field()
-    url: Missing[str] = Field(default=UNSET)
-    truncated: bool = Field()
-    tree: list[GitTreePropTreeItems] = Field(
-        description="Objects specifying a tree structure"
+    id: int = Field(
+        description="The unique identifier for the deployment protection rule."
+    )
+    node_id: str = Field(description="The node ID for the deployment protection rule.")
+    enabled: bool = Field(
+        description="Whether the deployment protection rule is enabled for the environment."
+    )
+    app: CustomDeploymentRuleApp = Field(
+        title="Custom deployment protection rule app",
+        description="A GitHub App that is providing a custom deployment protection rule.",
     )
 
 
-class GitTreePropTreeItems(GitHubModel):
-    """GitTreePropTreeItems"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    path: str = Field()
-    mode: str = Field()
-    type: str = Field()
-    sha: str = Field()
-    size: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of enabled custom deployment protection rules for this environment",
+    )
+    custom_deployment_protection_rules: Missing[list[DeploymentProtectionRule]] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(GitTree)
-model_rebuild(GitTreePropTreeItems)
+model_rebuild(DeploymentProtectionRule)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+)
 
 __all__ = (
-    "GitTree",
-    "GitTreePropTreeItems",
+    "DeploymentProtectionRule",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200",
 )

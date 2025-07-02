@@ -17,14 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0121 import RepositoryRuleMaxFilePathLengthPropParameters
+from .group_0112 import RepositoryRuleCommitMessagePatternPropParameters
 
 
-class RepositoryRuleDetailedOneof16(GitHubModel):
-    """RepositoryRuleDetailedOneof16"""
+class RepositoryRuleDetailedOneof10(GitHubModel):
+    """RepositoryRuleDetailedOneof10"""
 
-    type: Literal["max_file_path_length"] = Field()
-    parameters: Missing[RepositoryRuleMaxFilePathLengthPropParameters] = Field(
+    type: Literal["commit_message_pattern"] = Field()
+    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
         default=UNSET
     )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
@@ -40,6 +40,6 @@ class RepositoryRuleDetailedOneof16(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof16)
+model_rebuild(RepositoryRuleDetailedOneof10)
 
-__all__ = ("RepositoryRuleDetailedOneof16",)
+__all__ = ("RepositoryRuleDetailedOneof10",)

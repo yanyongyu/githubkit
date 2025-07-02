@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0479 import EnterpriseWebhooks
-from .group_0480 import SimpleInstallation
-from .group_0481 import OrganizationSimpleWebhooks
-from .group_0482 import RepositoryWebhooks
-from .group_0513 import WebhooksProject
+from .group_0485 import EnterpriseWebhooks
+from .group_0486 import SimpleInstallation
+from .group_0487 import OrganizationSimpleWebhooks
+from .group_0488 import RepositoryWebhooks
+from .group_0519 import WebhooksProject
 
 
-class WebhookProjectDeleted(GitHubModel):
-    """project deleted event"""
+class WebhookProjectClosed(GitHubModel):
+    """project closed event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["closed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,12 +45,14 @@ class WebhookProjectDeleted(GitHubModel):
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     project: WebhooksProject = Field(title="Project")
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectDeleted)
+model_rebuild(WebhookProjectClosed)
 
-__all__ = ("WebhookProjectDeleted",)
+__all__ = ("WebhookProjectClosed",)

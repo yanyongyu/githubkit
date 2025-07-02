@@ -17,14 +17,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0128 import RepositoryRuleWorkflowsPropParameters
+from .group_0118 import RepositoryRuleBranchNamePatternPropParameters
 
 
-class RepositoryRuleDetailedOneof19(GitHubModel):
-    """RepositoryRuleDetailedOneof19"""
+class RepositoryRuleDetailedOneof13(GitHubModel):
+    """RepositoryRuleDetailedOneof13"""
 
-    type: Literal["workflows"] = Field()
-    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
+    type: Literal["branch_name_pattern"] = Field()
+    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
+        default=UNSET
+    )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -38,6 +40,6 @@ class RepositoryRuleDetailedOneof19(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof19)
+model_rebuild(RepositoryRuleDetailedOneof13)
 
-__all__ = ("RepositoryRuleDetailedOneof19",)
+__all__ = ("RepositoryRuleDetailedOneof13",)

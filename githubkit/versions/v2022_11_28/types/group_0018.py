@@ -31,6 +31,7 @@ class InstallationType(TypedDict):
     repositories_url: str
     html_url: str
     app_id: int
+    client_id: NotRequired[str]
     target_id: int
     target_type: str
     permissions: AppPermissionsType

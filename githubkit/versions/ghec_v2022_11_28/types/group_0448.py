@@ -9,27 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserNameResponseType(TypedDict):
-    """UserNameResponse"""
+class GroupResponseType(TypedDict):
+    """GroupResponse"""
 
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[GroupResponsePropMembersItemsType]]
 
 
-class UserEmailsResponseItemsType(TypedDict):
-    """UserEmailsResponseItems"""
+class GroupResponsePropMembersItemsType(TypedDict):
+    """GroupResponsePropMembersItems"""
 
     value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
+    ref: str
+    display: NotRequired[str]
 
 
 __all__ = (
-    "UserEmailsResponseItemsType",
-    "UserNameResponseType",
+    "GroupResponsePropMembersItemsType",
+    "GroupResponseType",
 )

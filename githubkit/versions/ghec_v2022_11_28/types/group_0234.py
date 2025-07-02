@@ -10,121 +10,110 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0019 import LicenseSimpleType
+from .group_0069 import TeamSimpleType
 
 
-class TeamRepositoryType(TypedDict):
-    """Team Repository
+class TeamFullType(TypedDict):
+    """Full Team
 
-    A team's access to a repository.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
     id: int
     node_id: str
-    name: str
-    full_name: str
-    license_: Union[None, LicenseSimpleType]
-    forks: int
-    permissions: NotRequired[TeamRepositoryPropPermissionsType]
-    role_name: NotRequired[str]
-    owner: Union[None, SimpleUserType]
-    private: bool
-    html_url: str
-    description: Union[str, None]
-    fork: bool
     url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
+    html_url: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[Literal["closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: str
+    members_url: str
+    repositories_url: str
+    parent: NotRequired[Union[None, TeamSimpleType]]
+    members_count: int
+    repos_count: int
+    created_at: datetime
+    updated_at: datetime
+    organization: TeamOrganizationType
+    ldap_dn: NotRequired[str]
+
+
+class TeamOrganizationType(TypedDict):
+    """Team Organization
+
+    Team Organization
+    """
+
+    login: str
+    id: int
+    node_id: str
+    url: str
+    repos_url: str
     events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    ssh_url: str
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    clone_url: str
-    mirror_url: Union[str, None]
     hooks_url: str
-    svn_url: str
-    homepage: Union[str, None]
-    language: Union[str, None]
-    forks_count: int
-    stargazers_count: int
-    watchers_count: int
-    size: int
-    default_branch: str
-    open_issues_count: int
-    is_template: NotRequired[bool]
-    topics: NotRequired[list[str]]
-    has_issues: bool
-    has_projects: bool
-    has_wiki: bool
-    has_pages: bool
-    has_downloads: bool
-    archived: bool
-    disabled: bool
-    visibility: NotRequired[str]
-    pushed_at: Union[datetime, None]
-    created_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    allow_rebase_merge: NotRequired[bool]
-    temp_clone_token: NotRequired[Union[str, None]]
-    allow_squash_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_forking: NotRequired[bool]
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
+    name: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    blog: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    twitter_username: NotRequired[Union[str, None]]
+    is_verified: NotRequired[bool]
+    has_organization_projects: bool
+    has_repository_projects: bool
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    html_url: str
+    created_at: datetime
+    type: str
+    total_private_repos: NotRequired[int]
+    owned_private_repos: NotRequired[int]
+    private_gists: NotRequired[Union[int, None]]
+    disk_usage: NotRequired[Union[int, None]]
+    collaborators: NotRequired[Union[int, None]]
+    billing_email: NotRequired[Union[str, None]]
+    plan: NotRequired[TeamOrganizationPropPlanType]
+    default_repository_permission: NotRequired[Union[str, None]]
+    members_can_create_repositories: NotRequired[Union[bool, None]]
+    two_factor_requirement_enabled: NotRequired[Union[bool, None]]
+    members_allowed_repository_creation_type: NotRequired[str]
+    members_can_create_public_repositories: NotRequired[bool]
+    members_can_create_private_repositories: NotRequired[bool]
+    members_can_create_internal_repositories: NotRequired[bool]
+    members_can_create_pages: NotRequired[bool]
+    members_can_create_public_pages: NotRequired[bool]
+    members_can_create_private_pages: NotRequired[bool]
+    members_can_fork_private_repositories: NotRequired[Union[bool, None]]
     web_commit_signoff_required: NotRequired[bool]
-    subscribers_count: NotRequired[int]
-    network_count: NotRequired[int]
-    open_issues: int
-    watchers: int
-    master_branch: NotRequired[str]
+    updated_at: datetime
+    archived_at: Union[datetime, None]
 
 
-class TeamRepositoryPropPermissionsType(TypedDict):
-    """TeamRepositoryPropPermissions"""
+class TeamOrganizationPropPlanType(TypedDict):
+    """TeamOrganizationPropPlan"""
 
-    admin: bool
-    pull: bool
-    triage: NotRequired[bool]
-    push: bool
-    maintain: NotRequired[bool]
+    name: str
+    space: int
+    private_repos: int
+    filled_seats: NotRequired[int]
+    seats: NotRequired[int]
 
 
 __all__ = (
-    "TeamRepositoryPropPermissionsType",
-    "TeamRepositoryType",
+    "TeamFullType",
+    "TeamOrganizationPropPlanType",
+    "TeamOrganizationType",
 )

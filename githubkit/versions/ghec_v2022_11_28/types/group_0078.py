@@ -9,27 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyType(TypedDict):
-    """Organization Custom Property
+class GetLicenseSyncStatusType(TypedDict):
+    """License Sync Status
 
-    Custom property defined on an organization
+    Information about the status of a license sync job for an enterprise.
     """
 
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    server_instances: NotRequired[
+        list[GetLicenseSyncStatusPropServerInstancesItemsType]
     ]
 
 
-__all__ = ("CustomPropertyType",)
+class GetLicenseSyncStatusPropServerInstancesItemsType(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
+
+    server_id: NotRequired[str]
+    hostname: NotRequired[str]
+    last_sync: NotRequired[GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: NotRequired[str]
+    status: NotRequired[str]
+    error: NotRequired[str]
+
+
+__all__ = (
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType",
+    "GetLicenseSyncStatusPropServerInstancesItemsType",
+    "GetLicenseSyncStatusType",
+)

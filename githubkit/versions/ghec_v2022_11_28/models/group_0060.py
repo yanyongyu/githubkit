@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,216 +18,71 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeSecurityConfiguration(GitHubModel):
-    """CodeSecurityConfiguration
+class CodeScanningAlertInstance(GitHubModel):
+    """CodeScanningAlertInstance"""
 
-    A code security configuration
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the code security configuration"
-    )
-    name: Missing[str] = Field(
+    ref: Missing[str] = Field(
         default=UNSET,
-        description="The name of the code security configuration. Must be unique within the organization.",
+        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
     )
-    target_type: Missing[Literal["global", "organization", "enterprise"]] = Field(
-        default=UNSET, description="The type of the code security configuration."
-    )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the code security configuration"
-    )
-    advanced_security: Missing[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
-    ] = Field(
-        default=UNSET, description="The enablement status of GitHub Advanced Security"
-    )
-    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependency Graph"
-    )
-    dependency_graph_autosubmit_action: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    analysis_key: Missing[str] = Field(
         default=UNSET,
-        description="The enablement status of Automatic dependency submission",
+        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
     )
-    dependency_graph_autosubmit_action_options: Missing[
-        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
-    ] = Field(
-        default=UNSET, description="Feature options for Automatic dependency submission"
-    )
-    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependabot alerts"
-    )
-    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of Dependabot security updates",
-        )
-    )
-    code_scanning_options: Missing[
-        Union[CodeSecurityConfigurationPropCodeScanningOptions, None]
-    ] = Field(default=UNSET, description="Feature options for code scanning")
-    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of code scanning default setup",
-        )
-    )
-    code_scanning_default_setup_options: Missing[
-        Union[CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions, None]
-    ] = Field(
-        default=UNSET, description="Feature options for code scanning default setup"
-    )
-    code_scanning_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    environment: Missing[str] = Field(
         default=UNSET,
-        description="The enablement status of code scanning delegated alert dismissal",
+        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
     )
-    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of secret scanning"
-    )
-    secret_scanning_push_protection: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    category: Missing[str] = Field(
         default=UNSET,
-        description="The enablement status of secret scanning push protection",
+        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
     )
-    secret_scanning_delegated_bypass: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning delegated bypass",
+    state: Missing[Union[None, Literal["open", "dismissed", "fixed"]]] = Field(
+        default=UNSET, description="State of a code scanning alert."
     )
-    secret_scanning_delegated_bypass_options: Missing[
-        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
-    ] = Field(
-        default=UNSET,
-        description="Feature options for secret scanning delegated bypass",
+    commit_sha: Missing[str] = Field(default=UNSET)
+    message: Missing[CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
+    location: Missing[CodeScanningAlertLocation] = Field(
+        default=UNSET, description="Describe a region within a file for the alert."
     )
-    secret_scanning_validity_checks: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning validity checks",
-    )
-    secret_scanning_non_provider_patterns: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning non-provider patterns",
-    )
-    secret_scanning_generic_secrets: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET, description="The enablement status of Copilot secret scanning"
-    )
-    secret_scanning_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning delegated alert dismissal",
-    )
-    private_vulnerability_reporting: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of private vulnerability reporting",
-    )
-    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
-        default=UNSET, description="The enforcement status for a security configuration"
-    )
-    url: Missing[str] = Field(default=UNSET, description="The URL of the configuration")
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the configuration"
-    )
-    created_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
-
-
-class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions(GitHubModel):
-    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
-
-    Feature options for Automatic dependency submission
-    """
-
-    labeled_runners: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
-    )
-
-
-class CodeSecurityConfigurationPropCodeScanningOptions(GitHubModel):
-    """CodeSecurityConfigurationPropCodeScanningOptions
-
-    Feature options for code scanning
-    """
-
-
-class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions(GitHubModel):
-    """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
-
-    Feature options for code scanning default setup
-    """
-
-    runner_type: Missing[Union[None, Literal["standard", "labeled", "not_set"]]] = (
-        Field(
-            default=UNSET,
-            description="Whether to use labeled runners or standard GitHub runners.",
-        )
-    )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The label of the runner to use for code scanning when runner_type is 'labeled'.",
-    )
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions(GitHubModel):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
-
-    Feature options for secret scanning delegated bypass
-    """
-
-    reviewers: Missing[
+    html_url: Missing[str] = Field(default=UNSET)
+    classifications: Missing[
         list[
-            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
         ]
     ] = Field(
         default=UNSET,
-        description="The bypass reviewers for secret scanning delegated bypass",
+        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
     )
 
 
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
-    GitHubModel
-):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
-    ems
+class CodeScanningAlertLocation(GitHubModel):
+    """CodeScanningAlertLocation
+
+    Describe a region within a file for the alert.
     """
 
-    reviewer_id: int = Field(
-        description="The ID of the team or role selected as a bypass reviewer"
-    )
-    reviewer_type: Literal["TEAM", "ROLE"] = Field(
-        description="The type of the bypass reviewer"
-    )
+    path: Missing[str] = Field(default=UNSET)
+    start_line: Missing[int] = Field(default=UNSET)
+    end_line: Missing[int] = Field(default=UNSET)
+    start_column: Missing[int] = Field(default=UNSET)
+    end_column: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(CodeSecurityConfiguration)
-model_rebuild(CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions)
-model_rebuild(CodeSecurityConfigurationPropCodeScanningOptions)
-model_rebuild(CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions)
-model_rebuild(CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions)
-model_rebuild(
-    CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-)
+class CodeScanningAlertInstancePropMessage(GitHubModel):
+    """CodeScanningAlertInstancePropMessage"""
+
+    text: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(CodeScanningAlertInstance)
+model_rebuild(CodeScanningAlertLocation)
+model_rebuild(CodeScanningAlertInstancePropMessage)
 
 __all__ = (
-    "CodeSecurityConfiguration",
-    "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions",
-    "CodeSecurityConfigurationPropCodeScanningOptions",
-    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
+    "CodeScanningAlertInstance",
+    "CodeScanningAlertInstancePropMessage",
+    "CodeScanningAlertLocation",
 )

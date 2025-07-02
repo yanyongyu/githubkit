@@ -9,97 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0095 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
-from .group_0096 import RepositoryRuleUpdateType
-from .group_0098 import RepositoryRuleRequiredLinearHistoryType
-from .group_0099 import RepositoryRuleMergeQueueType
-from .group_0101 import RepositoryRuleRequiredDeploymentsType
-from .group_0104 import RepositoryRulePullRequestType
-from .group_0106 import RepositoryRuleRequiredStatusChecksType
-from .group_0108 import RepositoryRuleCommitMessagePatternType
-from .group_0110 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0112 import RepositoryRuleCommitterEmailPatternType
-from .group_0114 import RepositoryRuleBranchNamePatternType
-from .group_0116 import RepositoryRuleTagNamePatternType
-from .group_0118 import RepositoryRuleFilePathRestrictionType
-from .group_0120 import RepositoryRuleMaxFilePathLengthType
-from .group_0122 import RepositoryRuleFileExtensionRestrictionType
-from .group_0124 import RepositoryRuleMaxFileSizeType
-from .group_0127 import RepositoryRuleWorkflowsType
-from .group_0129 import RepositoryRuleCodeScanningType
-from .group_0832 import (
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType,
-)
+from .group_0003 import SimpleUserType
+from .group_0139 import RepositoryRulesetType
+from .group_0485 import EnterpriseWebhooksType
+from .group_0486 import SimpleInstallationType
+from .group_0487 import OrganizationSimpleWebhooksType
+from .group_0488 import RepositoryWebhooksType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
+class WebhookRepositoryRulesetCreatedType(TypedDict):
+    """repository ruleset created event"""
 
-    added: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-    deleted: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-    updated: NotRequired[
-        list[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType]
-    ]
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRulesType",)
+__all__ = ("WebhookRepositoryRulesetCreatedType",)

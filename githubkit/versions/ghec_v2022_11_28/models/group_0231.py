@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,22 +18,30 @@ from githubkit.compat import GitHubModel, model_rebuild
 from .group_0003 import SimpleUser
 
 
-class Reaction(GitHubModel):
-    """Reaction
+class RepositoryAdvisoryCredit(GitHubModel):
+    """RepositoryAdvisoryCredit
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    A credit given to a user for a repository security advisory.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(description="The reaction to use")
-    created_at: datetime = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
+    state: Literal["accepted", "declined", "pending"] = Field(
+        description="The state of the user's acceptance of the credit."
+    )
 
 
-model_rebuild(Reaction)
+model_rebuild(RepositoryAdvisoryCredit)
 
-__all__ = ("Reaction",)
+__all__ = ("RepositoryAdvisoryCredit",)

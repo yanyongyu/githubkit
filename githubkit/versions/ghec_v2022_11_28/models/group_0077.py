@@ -9,35 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0073 import DependabotAlertPackage
 
-class NetworkSettings(GitHubModel):
-    """Hosted compute network settings resource
 
-    A hosted compute network settings resource.
+class DependabotAlertWithRepositoryPropDependency(GitHubModel):
+    """DependabotAlertWithRepositoryPropDependency
+
+    Details for the vulnerable dependency.
     """
 
-    id: str = Field(
-        description="The unique identifier of the network settings resource."
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
     )
-    network_configuration_id: Missing[str] = Field(
+    manifest_path: Missing[str] = Field(
         default=UNSET,
-        description="The identifier of the network configuration that is using this settings resource.",
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
     )
-    name: str = Field(description="The name of the network settings resource.")
-    subnet_id: str = Field(
-        description="The subnet this network settings resource is configured for."
+    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
     )
-    region: str = Field(
-        description="The location of the subnet this network settings resource is configured for."
+    relationship: Missing[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    ] = Field(
+        default=UNSET,
+        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
     )
 
 
-model_rebuild(NetworkSettings)
+model_rebuild(DependabotAlertWithRepositoryPropDependency)
 
-__all__ = ("NetworkSettings",)
+__all__ = ("DependabotAlertWithRepositoryPropDependency",)

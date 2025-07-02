@@ -13,34 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0480 import SimpleInstallationType
-from .group_0481 import OrganizationSimpleWebhooksType
-from .group_0482 import RepositoryWebhooksType
-from .group_0487 import CheckRunWithSimpleCheckSuiteType
+from .group_0485 import EnterpriseWebhooksType
+from .group_0486 import SimpleInstallationType
+from .group_0487 import OrganizationSimpleWebhooksType
+from .group_0488 import RepositoryWebhooksType
+from .group_0490 import ExemptionResponseType
+from .group_0491 import ExemptionRequestType
 
 
-class WebhookCheckRunRequestedActionType(TypedDict):
-    """Check Run Requested Action Event"""
+class WebhookExemptionRequestResponseDismissedType(TypedDict):
+    """Exemption response dismissed event"""
 
-    action: Literal["requested_action"]
-    check_run: CheckRunWithSimpleCheckSuiteType
+    action: Literal["response_dismissed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    requested_action: NotRequired[WebhookCheckRunRequestedActionPropRequestedActionType]
+    repository: NotRequired[RepositoryWebhooksType]
+    exemption_request: ExemptionRequestType
+    exemption_response: ExemptionResponseType
     sender: SimpleUserType
 
 
-class WebhookCheckRunRequestedActionPropRequestedActionType(TypedDict):
-    """WebhookCheckRunRequestedActionPropRequestedAction
-
-    The action requested by the user.
-    """
-
-    identifier: NotRequired[str]
-
-
-__all__ = (
-    "WebhookCheckRunRequestedActionPropRequestedActionType",
-    "WebhookCheckRunRequestedActionType",
-)
+__all__ = ("WebhookExemptionRequestResponseDismissedType",)

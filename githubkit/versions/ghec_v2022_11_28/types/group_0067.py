@@ -12,42 +12,20 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0066 import TeamSimpleType
+
+class EnterpriseSecurityAnalysisSettingsType(TypedDict):
+    """Enterprise Security Analysis Settings"""
+
+    advanced_security_enabled_for_new_repositories: bool
+    advanced_security_enabled_for_new_user_namespace_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: bool
+    secret_scanning_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        bool
+    ]
+    secret_scanning_validity_checks_enabled: NotRequired[bool]
 
 
-class TeamType(TypedDict):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
-
-
-class TeamPropPermissionsType(TypedDict):
-    """TeamPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
-
-
-__all__ = (
-    "TeamPropPermissionsType",
-    "TeamType",
-)
+__all__ = ("EnterpriseSecurityAnalysisSettingsType",)

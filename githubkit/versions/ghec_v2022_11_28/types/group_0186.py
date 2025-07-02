@@ -10,28 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0070 import TeamType
 
-class CredentialAuthorizationType(TypedDict):
-    """Credential Authorization
 
-    Credential Authorization
+class CampaignSummaryType(TypedDict):
+    """Campaign summary
+
+    The campaign metadata and alert stats.
     """
 
-    login: str
-    credential_id: int
-    credential_type: str
-    token_last_eight: NotRequired[str]
-    credential_authorized_at: datetime
-    scopes: NotRequired[list[str]]
-    fingerprint: NotRequired[str]
-    credential_accessed_at: Union[datetime, None]
-    authorized_credential_id: Union[int, None]
-    authorized_credential_title: NotRequired[Union[str, None]]
-    authorized_credential_note: NotRequired[Union[str, None]]
-    authorized_credential_expires_at: NotRequired[Union[datetime, None]]
+    number: int
+    created_at: datetime
+    updated_at: datetime
+    name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserType]
+    team_managers: NotRequired[list[TeamType]]
+    published_at: NotRequired[datetime]
+    ends_at: datetime
+    closed_at: NotRequired[Union[datetime, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
 
 
-__all__ = ("CredentialAuthorizationType",)
+class CampaignSummaryPropAlertStatsType(TypedDict):
+    """CampaignSummaryPropAlertStats"""
+
+    open_count: int
+    closed_count: int
+    in_progress_count: int
+
+
+__all__ = (
+    "CampaignSummaryPropAlertStatsType",
+    "CampaignSummaryType",
+)

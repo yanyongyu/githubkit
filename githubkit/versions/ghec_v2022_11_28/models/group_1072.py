@@ -16,29 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsPostBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
 
-    groups: Missing[
-        list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems]
-    ] = Field(
+    title: str = Field(description="The discussion post's title.")
+    body: str = Field(description="The discussion post's body text.")
+    private: Missing[bool] = Field(
         default=UNSET,
-        description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove.",
+        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
     )
 
 
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsPostBody)
 
-    group_id: str = Field(description="ID of the IdP group.")
-    group_name: str = Field(description="Name of the IdP group.")
-    group_description: str = Field(description="Description of the IdP group.")
-
-
-model_rebuild(OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody)
-model_rebuild(OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems)
-
-__all__ = (
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems",
-)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBody",)

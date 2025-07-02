@@ -17,20 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0105 import RepositoryRulePullRequestPropParameters
+from .group_0105 import RepositoryRuleRequiredDeploymentsPropParameters
 
 
-class RepositoryRulePullRequest(GitHubModel):
-    """pull_request
+class RepositoryRuleRequiredDeployments(GitHubModel):
+    """required_deployments
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
+    type: Literal["required_deployments"] = Field()
+    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(RepositoryRulePullRequest)
+model_rebuild(RepositoryRuleRequiredDeployments)
 
-__all__ = ("RepositoryRulePullRequest",)
+__all__ = ("RepositoryRuleRequiredDeployments",)

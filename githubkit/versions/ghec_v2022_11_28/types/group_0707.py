@@ -13,21 +13,26 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0480 import SimpleInstallationType
-from .group_0481 import OrganizationSimpleWebhooksType
-from .group_0482 import RepositoryWebhooksType
-from .group_0508 import MergeGroupType
+from .group_0485 import EnterpriseWebhooksType
+from .group_0486 import SimpleInstallationType
+from .group_0487 import OrganizationSimpleWebhooksType
+from .group_0488 import RepositoryWebhooksType
+from .group_0511 import WebhooksMarketplacePurchaseType
+from .group_0512 import WebhooksPreviousMarketplacePurchaseType
 
 
-class WebhookMergeGroupChecksRequestedType(TypedDict):
-    """WebhookMergeGroupChecksRequested"""
+class WebhookMarketplacePurchasePurchasedType(TypedDict):
+    """marketplace_purchase purchased event"""
 
-    action: Literal["checks_requested"]
+    action: Literal["purchased"]
+    effective_date: str
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    merge_group: MergeGroupType
+    marketplace_purchase: WebhooksMarketplacePurchaseType
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookMergeGroupChecksRequestedType",)
+__all__ = ("WebhookMarketplacePurchasePurchasedType",)

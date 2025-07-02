@@ -10,38 +10,83 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0056 import BypassResponseType
 
-class OrgHookType(TypedDict):
-    """Org Hook
 
-    Org Hook
+class SecretScanningDismissalRequestType(TypedDict):
+    """Secret scanning alert dismissal request
+
+    A dismissal request made by a user asking to close a secret scanning alert in
+    this repository.
     """
 
-    id: int
-    url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    name: str
-    events: list[str]
-    active: bool
-    config: OrgHookPropConfigType
-    updated_at: datetime
-    created_at: datetime
-    type: str
-
-
-class OrgHookPropConfigType(TypedDict):
-    """OrgHookPropConfig"""
-
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[SecretScanningDismissalRequestPropRepositoryType]
+    organization: NotRequired[SecretScanningDismissalRequestPropOrganizationType]
+    requester: NotRequired[SecretScanningDismissalRequestPropRequesterType]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[SecretScanningDismissalRequestPropDataItemsType], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[
+        Literal["pending", "denied", "approved", "cancelled", "expired"]
+    ]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[datetime]
+    created_at: NotRequired[datetime]
+    responses: NotRequired[Union[list[BypassResponseType], None]]
     url: NotRequired[str]
-    insecure_ssl: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class SecretScanningDismissalRequestPropRepositoryType(TypedDict):
+    """SecretScanningDismissalRequestPropRepository
+
+    The repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class SecretScanningDismissalRequestPropOrganizationType(TypedDict):
+    """SecretScanningDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class SecretScanningDismissalRequestPropRequesterType(TypedDict):
+    """SecretScanningDismissalRequestPropRequester
+
+    The user who requested the dismissal.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class SecretScanningDismissalRequestPropDataItemsType(TypedDict):
+    """SecretScanningDismissalRequestPropDataItems"""
+
+    secret_type: NotRequired[str]
+    alert_number: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
 
 
 __all__ = (
-    "OrgHookPropConfigType",
-    "OrgHookType",
+    "SecretScanningDismissalRequestPropDataItemsType",
+    "SecretScanningDismissalRequestPropOrganizationType",
+    "SecretScanningDismissalRequestPropRepositoryType",
+    "SecretScanningDismissalRequestPropRequesterType",
+    "SecretScanningDismissalRequestType",
 )

@@ -6698,6 +6698,9 @@ class OrgsClient:
 
         Removing a user from this list will remove them from all teams and they will no longer have any access to the organization's repositories.
 
+        > [!NOTE]
+        > If a user has both direct membership in the organization as well as indirect membership via an enterprise team, only their direct membership will be removed. Their indirect membership via an enterprise team remains until the user is removed from the enterprise team.
+
         See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-an-organization-member
         """
 
@@ -6730,6 +6733,9 @@ class OrgsClient:
         DELETE /orgs/{org}/members/{username}
 
         Removing a user from this list will remove them from all teams and they will no longer have any access to the organization's repositories.
+
+        > [!NOTE]
+        > If a user has both direct membership in the organization as well as indirect membership via an enterprise team, only their direct membership will be removed. Their indirect membership via an enterprise team remains until the user is removed from the enterprise team.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-an-organization-member
         """
@@ -7002,6 +7008,9 @@ class OrgsClient:
 
         If the specified user is an active member of the organization, this will remove them from the organization. If the specified user has been invited to the organization, this will cancel their invitation. The specified user will receive an email notification in both cases.
 
+        > [!NOTE]
+        > If a user has both direct membership in the organization as well as indirect membership via an enterprise team, only their direct membership will be removed. Their indirect membership via an enterprise team remains until the user is removed from the enterprise team.
+
         See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-organization-membership-for-a-user
         """
 
@@ -7037,6 +7046,9 @@ class OrgsClient:
         In order to remove a user's membership with an organization, the authenticated user must be an organization owner.
 
         If the specified user is an active member of the organization, this will remove them from the organization. If the specified user has been invited to the organization, this will cancel their invitation. The specified user will receive an email notification in both cases.
+
+        > [!NOTE]
+        > If a user has both direct membership in the organization as well as indirect membership via an enterprise team, only their direct membership will be removed. Their indirect membership via an enterprise team remains until the user is removed from the enterprise team.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-organization-membership-for-a-user
         """

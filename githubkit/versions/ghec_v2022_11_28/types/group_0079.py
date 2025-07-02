@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertySetPayloadType(TypedDict):
-    """Custom Property Set Payload
+class NetworkConfigurationType(TypedDict):
+    """Hosted compute network configuration
 
-    Custom property set payload
+    A hosted compute network configuration.
     """
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ]
+    id: str
+    name: str
+    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
+    network_settings_ids: NotRequired[list[str]]
+    created_on: Union[datetime, None]
 
 
-__all__ = ("CustomPropertySetPayloadType",)
+__all__ = ("NetworkConfigurationType",)

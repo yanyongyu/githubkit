@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,14 +18,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ScimEnterpriseUserResponseAllof1PropGroupsItems(GitHubModel):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+class PatchSchema(GitHubModel):
+    """PatchSchema"""
 
-    value: Missing[str] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET, alias="$ref")
-    display: Missing[str] = Field(default=UNSET)
+    operations: list[PatchSchemaPropOperationsItems] = Field(
+        alias="Operations", description="patch operations list"
+    )
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
 
 
-model_rebuild(ScimEnterpriseUserResponseAllof1PropGroupsItems)
+class PatchSchemaPropOperationsItems(GitHubModel):
+    """PatchSchemaPropOperationsItems"""
 
-__all__ = ("ScimEnterpriseUserResponseAllof1PropGroupsItems",)
+    op: Literal["add", "replace", "remove"] = Field()
+    path: Missing[str] = Field(default=UNSET)
+    value: Missing[str] = Field(
+        default=UNSET,
+        description="Corresponding 'value' of that field specified by 'path'",
+    )
+
+
+model_rebuild(PatchSchema)
+model_rebuild(PatchSchemaPropOperationsItems)
+
+__all__ = (
+    "PatchSchema",
+    "PatchSchemaPropOperationsItems",
+)

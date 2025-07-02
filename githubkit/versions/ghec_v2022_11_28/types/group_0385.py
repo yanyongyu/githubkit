@@ -9,28 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0019 import LicenseSimpleType
 
 
-class PagesDeploymentStatusType(TypedDict):
-    """GitHub Pages deployment status"""
+class LicenseContentType(TypedDict):
+    """License Content
 
-    status: NotRequired[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-        ]
-    ]
+    License Content
+    """
+
+    name: str
+    path: str
+    sha: str
+    size: int
+    url: str
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksType
+    license_: Union[None, LicenseSimpleType]
 
 
-__all__ = ("PagesDeploymentStatusType",)
+class LicenseContentPropLinksType(TypedDict):
+    """LicenseContentPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+__all__ = (
+    "LicenseContentPropLinksType",
+    "LicenseContentType",
+)

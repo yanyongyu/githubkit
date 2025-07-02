@@ -9,34 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType
+from .group_0003 import SimpleUserType
+from .group_0275 import DiffEntryType
+from .group_0277 import CommitPropCommitType
 
 
-class DeploymentSimpleType(TypedDict):
-    """Deployment
+class CommitType(TypedDict):
+    """Commit
 
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    Commit
     """
 
     url: str
-    id: int
+    sha: str
     node_id: str
-    task: str
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    created_at: datetime
-    updated_at: datetime
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    html_url: str
+    comments_url: str
+    commit: CommitPropCommitType
+    author: Union[SimpleUserType, EmptyObjectType, None]
+    committer: Union[SimpleUserType, EmptyObjectType, None]
+    parents: list[CommitPropParentsItemsType]
+    stats: NotRequired[CommitPropStatsType]
+    files: NotRequired[list[DiffEntryType]]
 
 
-__all__ = ("DeploymentSimpleType",)
+class EmptyObjectType(TypedDict):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
+class CommitPropParentsItemsType(TypedDict):
+    """CommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: NotRequired[str]
+
+
+class CommitPropStatsType(TypedDict):
+    """CommitPropStats"""
+
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
+
+
+__all__ = (
+    "CommitPropParentsItemsType",
+    "CommitPropStatsType",
+    "CommitType",
+    "EmptyObjectType",
+)

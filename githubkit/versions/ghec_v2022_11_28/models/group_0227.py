@@ -14,39 +14,20 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class GroupMapping(GitHubModel):
-    """GroupMapping
+class CodeOfConductSimple(GitHubModel):
+    """Code Of Conduct Simple
 
-    External Groups to be mapped to a team for membership
+    Code of Conduct Simple
     """
 
-    groups: Missing[list[GroupMappingPropGroupsItems]] = Field(
-        default=UNSET, description="Array of groups to be mapped to this team"
-    )
+    url: str = Field()
+    key: str = Field()
+    name: str = Field()
+    html_url: Union[str, None] = Field()
 
 
-class GroupMappingPropGroupsItems(GitHubModel):
-    """GroupMappingPropGroupsItems"""
+model_rebuild(CodeOfConductSimple)
 
-    group_id: str = Field(description="The ID of the group")
-    group_name: str = Field(description="The name of the group")
-    group_description: str = Field(description="a description of the group")
-    status: Missing[str] = Field(
-        default=UNSET, description="synchronization status for this group mapping"
-    )
-    synced_at: Missing[Union[str, None]] = Field(
-        default=UNSET, description="the time of the last sync for this group-mapping"
-    )
-
-
-model_rebuild(GroupMapping)
-model_rebuild(GroupMappingPropGroupsItems)
-
-__all__ = (
-    "GroupMapping",
-    "GroupMappingPropGroupsItems",
-)
+__all__ = ("CodeOfConductSimple",)

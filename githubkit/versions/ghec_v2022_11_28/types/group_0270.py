@@ -12,56 +12,125 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0269 import DiffEntryType
-from .group_0271 import CommitPropCommitType
 
+class BranchRestrictionPolicyType(TypedDict):
+    """Branch Restriction Policy
 
-class CommitType(TypedDict):
-    """Commit
-
-    Commit
+    Branch Restriction Policy
     """
 
     url: str
-    sha: str
-    node_id: str
-    html_url: str
-    comments_url: str
-    commit: CommitPropCommitType
-    author: Union[SimpleUserType, EmptyObjectType, None]
-    committer: Union[SimpleUserType, EmptyObjectType, None]
-    parents: list[CommitPropParentsItemsType]
-    stats: NotRequired[CommitPropStatsType]
-    files: NotRequired[list[DiffEntryType]]
+    users_url: str
+    teams_url: str
+    apps_url: str
+    users: list[BranchRestrictionPolicyPropUsersItemsType]
+    teams: list[BranchRestrictionPolicyPropTeamsItemsType]
+    apps: list[BranchRestrictionPolicyPropAppsItemsType]
 
 
-class EmptyObjectType(TypedDict):
-    """Empty Object
+class BranchRestrictionPolicyPropUsersItemsType(TypedDict):
+    """BranchRestrictionPolicyPropUsersItems"""
 
-    An object without any properties.
-    """
-
-
-class CommitPropParentsItemsType(TypedDict):
-    """CommitPropParentsItems"""
-
-    sha: str
-    url: str
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    url: NotRequired[str]
     html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: NotRequired[str]
+    site_admin: NotRequired[bool]
+    user_view_type: NotRequired[str]
 
 
-class CommitPropStatsType(TypedDict):
-    """CommitPropStats"""
+class BranchRestrictionPolicyPropTeamsItemsType(TypedDict):
+    """BranchRestrictionPolicyPropTeamsItems"""
 
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-    total: NotRequired[int]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    name: NotRequired[str]
+    slug: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: NotRequired[str]
+    members_url: NotRequired[str]
+    repositories_url: NotRequired[str]
+    parent: NotRequired[Union[str, None]]
+
+
+class BranchRestrictionPolicyPropAppsItemsType(TypedDict):
+    """BranchRestrictionPolicyPropAppsItems"""
+
+    id: NotRequired[int]
+    slug: NotRequired[str]
+    node_id: NotRequired[str]
+    owner: NotRequired[BranchRestrictionPolicyPropAppsItemsPropOwnerType]
+    name: NotRequired[str]
+    client_id: NotRequired[str]
+    description: NotRequired[str]
+    external_url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    permissions: NotRequired[BranchRestrictionPolicyPropAppsItemsPropPermissionsType]
+    events: NotRequired[list[str]]
+
+
+class BranchRestrictionPolicyPropAppsItemsPropOwnerType(TypedDict):
+    """BranchRestrictionPolicyPropAppsItemsPropOwner"""
+
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    hooks_url: NotRequired[str]
+    issues_url: NotRequired[str]
+    members_url: NotRequired[str]
+    public_members_url: NotRequired[str]
+    avatar_url: NotRequired[str]
+    description: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: NotRequired[str]
+    site_admin: NotRequired[bool]
+    user_view_type: NotRequired[str]
+
+
+class BranchRestrictionPolicyPropAppsItemsPropPermissionsType(TypedDict):
+    """BranchRestrictionPolicyPropAppsItemsPropPermissions"""
+
+    metadata: NotRequired[str]
+    contents: NotRequired[str]
+    issues: NotRequired[str]
+    single_file: NotRequired[str]
 
 
 __all__ = (
-    "CommitPropParentsItemsType",
-    "CommitPropStatsType",
-    "CommitType",
-    "EmptyObjectType",
+    "BranchRestrictionPolicyPropAppsItemsPropOwnerType",
+    "BranchRestrictionPolicyPropAppsItemsPropPermissionsType",
+    "BranchRestrictionPolicyPropAppsItemsType",
+    "BranchRestrictionPolicyPropTeamsItemsType",
+    "BranchRestrictionPolicyPropUsersItemsType",
+    "BranchRestrictionPolicyType",
 )

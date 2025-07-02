@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,36 +17,37 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0328 import Metadata
+
+class Contributor(GitHubModel):
+    """Contributor
+
+    Contributor
+    """
+
+    login: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[Union[str, None]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    type: str = Field()
+    site_admin: Missing[bool] = Field(default=UNSET)
+    contributions: int = Field()
+    email: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class Dependency(GitHubModel):
-    """Dependency"""
+model_rebuild(Contributor)
 
-    package_url: Missing[str] = Field(
-        pattern="^pkg",
-        default=UNSET,
-        description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
-    )
-    metadata: Missing[Metadata] = Field(
-        default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
-    )
-    relationship: Missing[Literal["direct", "indirect"]] = Field(
-        default=UNSET,
-        description="A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
-    )
-    scope: Missing[Literal["runtime", "development"]] = Field(
-        default=UNSET,
-        description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
-    )
-    dependencies: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of package-url (PURLs) of direct child dependencies.",
-    )
-
-
-model_rebuild(Dependency)
-
-__all__ = ("Dependency",)
+__all__ = ("Contributor",)

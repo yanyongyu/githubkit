@@ -9,37 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class AmazonS3OidcConfigType(TypedDict):
-    """AmazonS3OIDCConfig
+class AuditLogStreamKeyType(TypedDict):
+    """stream-key
 
-    Amazon S3 OIDC Config for audit log streaming configuration.
+    Audit Log Streaming Public Key
     """
 
-    bucket: str
-    region: str
     key_id: str
-    authentication_type: Literal["oidc"]
-    arn_role: str
+    key: str
 
 
-class SplunkConfigType(TypedDict):
-    """SplunkConfig
-
-    Splunk Config for Audit Log Stream Configuration
-    """
-
-    domain: str
-    port: int
-    key_id: str
-    encrypted_token: str
-    ssl_verify: bool
-
-
-__all__ = (
-    "AmazonS3OidcConfigType",
-    "SplunkConfigType",
-)
+__all__ = ("AuditLogStreamKeyType",)

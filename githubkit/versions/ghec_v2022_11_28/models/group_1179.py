@@ -18,42 +18,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBody"""
 
-    total_count: int = Field(
-        description="The number of deployment branch policies for the environment."
+    state: Literal["dismissed", "open"] = Field(
+        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`."
     )
-    branch_policies: list[DeploymentBranchPolicy] = Field()
-
-
-class DeploymentBranchPolicy(GitHubModel):
-    """Deployment branch policy
-
-    Details of a deployment branch or tag policy.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the branch or tag policy."
-    )
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(
+    dismissed_reason: Missing[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ] = Field(
         default=UNSET,
-        description="The name pattern that branches or tags must match in order to deploy to the environment.",
+        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
     )
-    type: Missing[Literal["branch", "tag"]] = Field(
-        default=UNSET, description="Whether this rule targets a branch or tag."
+    dismissed_comment: Missing[str] = Field(
+        max_length=280,
+        default=UNSET,
+        description="An optional comment associated with dismissing the alert.",
     )
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
-)
-model_rebuild(DeploymentBranchPolicy)
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBody)
 
-__all__ = (
-    "DeploymentBranchPolicy",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
-)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBody",)

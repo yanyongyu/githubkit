@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,37 +18,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgPrivateRegistriesSecretNamePatchBody(GitHubModel):
-    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
+class OrgsOrgMigrationsPostBody(GitHubModel):
+    """OrgsOrgMigrationsPostBody"""
 
-    registry_type: Missing[
-        Literal["maven_repository", "nuget_feed", "goproxy_server"]
-    ] = Field(default=UNSET, description="The registry type.")
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL of the private registry."
+    repositories: list[str] = Field(
+        description="A list of arrays indicating which repositories should be migrated."
     )
-    username: Missing[Union[str, None]] = Field(
+    lock_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The username to use when authenticating with the private registry. This field should be omitted if the private registry does not require a username for authentication.",
+        description="Indicates whether repositories should be locked (to prevent manipulation) while migrating data.",
     )
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+    exclude_metadata: Missing[bool] = Field(
         default=UNSET,
-        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get private registries public key for an organization](https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization) endpoint.",
+        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
     )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="The ID of the key you used to encrypt the secret."
-    )
-    visibility: Missing[Literal["all", "private", "selected"]] = Field(
+    exclude_git_data: Missing[bool] = Field(
         default=UNSET,
-        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry.",
+        description="Indicates whether the repository git data should be excluded from the migration.",
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    exclude_attachments: Missing[bool] = Field(
         default=UNSET,
-        description="An array of repository IDs that can access the organization private registry. You can only provide a list of repository IDs when `visibility` is set to `selected`. This field should be omitted if `visibility` is set to `all` or `private`.",
+        description="Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).",
+    )
+    exclude_releases: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether releases should be excluded from the migration (to reduce migration archive file size).",
+    )
+    exclude_owner_projects: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether projects owned by the organization or users should be excluded. from the migration.",
+    )
+    org_metadata_only: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
+    )
+    exclude: Missing[list[Literal["repositories"]]] = Field(
+        default=UNSET,
+        description="Exclude related items from being returned in the response in order to improve performance of the request.",
     )
 
 
-model_rebuild(OrgsOrgPrivateRegistriesSecretNamePatchBody)
+model_rebuild(OrgsOrgMigrationsPostBody)
 
-__all__ = ("OrgsOrgPrivateRegistriesSecretNamePatchBody",)
+__all__ = ("OrgsOrgMigrationsPostBody",)

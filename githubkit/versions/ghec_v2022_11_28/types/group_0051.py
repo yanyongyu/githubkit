@@ -9,18 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class GoogleCloudConfigType(TypedDict):
-    """GoogleCloudConfig
+class GetAuditLogStreamConfigsItemsType(TypedDict):
+    """GetAuditLogStreamConfigsItems"""
 
-    Google Cloud Config for audit log streaming configuration.
-    """
+    id: NotRequired[int]
+    stream_type: NotRequired[str]
+    stream_details: NotRequired[str]
+    enabled: NotRequired[bool]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+    paused_at: NotRequired[Union[datetime, None]]
 
-    bucket: str
-    key_id: str
-    encrypted_json_credentials: str
 
-
-__all__ = ("GoogleCloudConfigType",)
+__all__ = ("GetAuditLogStreamConfigsItemsType",)

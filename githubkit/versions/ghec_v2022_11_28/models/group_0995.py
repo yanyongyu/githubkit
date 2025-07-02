@@ -12,24 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsBulkListPostBody(GitHubModel):
-    """OrgsOrgAttestationsBulkListPostBody"""
+class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests to fetch attestations for.",
-    )
-    predicate_type: Missing[str] = Field(
-        default=UNSET,
-        description="Optional filter for fetching attestations with a given predicate type.\nThis option accepts `provenance`, `sbom`, or freeform text for custom predicate types.",
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
     )
 
 
-model_rebuild(OrgsOrgAttestationsBulkListPostBody)
+model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPutBody)
 
-__all__ = ("OrgsOrgAttestationsBulkListPostBody",)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",)

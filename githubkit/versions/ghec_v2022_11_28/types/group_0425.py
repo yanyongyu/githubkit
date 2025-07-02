@@ -9,14 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
-
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+from .group_0131 import RepositoryRuleWorkflowsPropParametersType
 
 
-__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",)
+class RepositoryRuleDetailedOneof19Type(TypedDict):
+    """RepositoryRuleDetailedOneof19"""
+
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+__all__ = ("RepositoryRuleDetailedOneof19Type",)

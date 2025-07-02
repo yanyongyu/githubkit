@@ -24,7 +24,7 @@ from .group_0020 import Repository
 class InstallationToken(GitHubModel):
     """Installation Token
 
-    Authentication token for a GitHub App installed on a user or org.
+    Authentication token for a GitHub App installed on a user, org, or enterprise.
     """
 
     token: str = Field()

@@ -33,9 +33,11 @@ if TYPE_CHECKING:
         BillingUsageReport,
         BillingUsageReportUser,
         CombinedBillingUsage,
+        DeleteCostCenter,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
         GetAllCostCenters,
+        GetCostCenter,
         PackagesBillingUsage,
     )
     from ..types import (
@@ -44,11 +46,14 @@ if TYPE_CHECKING:
         BillingUsageReportType,
         BillingUsageReportUserType,
         CombinedBillingUsageType,
+        DeleteCostCenterType,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type,
         GetAllCostCentersType,
+        GetCostCenterType,
         PackagesBillingUsageType,
     )
 
@@ -313,6 +318,352 @@ class BillingClient:
             error_models={
                 "400": BasicError,
                 "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def get_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[GetCostCenter, GetCostCenterType]:
+        """billing/get-cost-center
+
+        GET /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
+
+        Gets a cost center by ID. The authenticated user must be an enterprise admin.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-a-cost-center-by-id
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            GetCostCenter,
+        )
+
+        url = (
+            f"/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=GetCostCenter,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[GetCostCenter, GetCostCenterType]:
+        """billing/get-cost-center
+
+        GET /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
+
+        Gets a cost center by ID. The authenticated user must be an enterprise admin.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-a-cost-center-by-id
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            GetCostCenter,
+        )
+
+        url = (
+            f"/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=GetCostCenter,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def delete_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[DeleteCostCenter, DeleteCostCenterType]:
+        """billing/delete-cost-center
+
+        DELETE /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
+
+        Archieves a cost center by ID. The authenticated user must be an enterprise admin.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#delete-a-cost-center
+        """
+
+        from ..models import (
+            BasicError,
+            DeleteCostCenter,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = (
+            f"/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DeleteCostCenter,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_delete_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[DeleteCostCenter, DeleteCostCenterType]:
+        """billing/delete-cost-center
+
+        DELETE /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
+
+        Archieves a cost center by ID. The authenticated user must be an enterprise admin.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#delete-a-cost-center
+        """
+
+        from ..models import (
+            BasicError,
+            DeleteCostCenter,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = (
+            f"/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DeleteCostCenter,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def update_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType,
+    ) -> Response[GetCostCenter, GetCostCenterType]: ...
+
+    @overload
+    def update_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+    ) -> Response[GetCostCenter, GetCostCenterType]: ...
+
+    def update_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[GetCostCenter, GetCostCenterType]:
+        """billing/update-cost-center
+
+        PATCH /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
+
+        Updates an existing cost center name.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#update-a-cost-center-name
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody,
+            GetCostCenter,
+        )
+
+        url = (
+            f"/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}"
+        )
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=GetCostCenter,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_update_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType,
+    ) -> Response[GetCostCenter, GetCostCenterType]: ...
+
+    @overload
+    async def async_update_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+    ) -> Response[GetCostCenter, GetCostCenterType]: ...
+
+    async def async_update_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[GetCostCenter, GetCostCenterType]:
+        """billing/update-cost-center
+
+        PATCH /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
+
+        Updates an existing cost center name.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#update-a-cost-center-name
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody,
+            GetCostCenter,
+        )
+
+        url = (
+            f"/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}"
+        )
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=GetCostCenter,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
                 "500": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },

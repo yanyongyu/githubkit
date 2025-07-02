@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,47 +17,23 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class GetConsumedLicenses(GitHubModel):
-    """Enterprise Consumed Licenses
-
-    A breakdown of the licenses consumed by an enterprise.
-    """
-
-    total_seats_consumed: Missing[int] = Field(default=UNSET)
-    total_seats_purchased: Missing[int] = Field(default=UNSET)
-    users: Missing[list[GetConsumedLicensesPropUsersItems]] = Field(default=UNSET)
+from .group_0063 import CodeSecurityConfiguration
 
 
-class GetConsumedLicensesPropUsersItems(GitHubModel):
-    """GetConsumedLicensesPropUsersItems"""
+class CodeSecurityDefaultConfigurationsItems(GitHubModel):
+    """CodeSecurityDefaultConfigurationsItems"""
 
-    github_com_login: Missing[str] = Field(default=UNSET)
-    github_com_name: Missing[Union[str, None]] = Field(default=UNSET)
-    enterprise_server_user_ids: Missing[list[str]] = Field(default=UNSET)
-    github_com_user: Missing[bool] = Field(default=UNSET)
-    enterprise_server_user: Missing[Union[bool, None]] = Field(default=UNSET)
-    visual_studio_subscription_user: Missing[bool] = Field(default=UNSET)
-    license_type: Missing[str] = Field(default=UNSET)
-    github_com_profile: Missing[Union[str, None]] = Field(default=UNSET)
-    github_com_member_roles: Missing[list[str]] = Field(default=UNSET)
-    github_com_enterprise_roles: Missing[list[str]] = Field(
-        default=UNSET, description="All enterprise roles for a user."
+    default_for_new_repos: Missing[Literal["public", "private_and_internal", "all"]] = (
+        Field(
+            default=UNSET,
+            description="The visibility of newly created repositories for which the code security configuration will be applied to by default",
+        )
     )
-    github_com_verified_domain_emails: Missing[list[str]] = Field(default=UNSET)
-    github_com_saml_name_id: Missing[Union[str, None]] = Field(default=UNSET)
-    github_com_orgs_with_pending_invites: Missing[list[str]] = Field(default=UNSET)
-    github_com_two_factor_auth: Missing[Union[bool, None]] = Field(default=UNSET)
-    enterprise_server_emails: Missing[list[str]] = Field(default=UNSET)
-    visual_studio_license_status: Missing[Union[str, None]] = Field(default=UNSET)
-    visual_studio_subscription_email: Missing[Union[str, None]] = Field(default=UNSET)
-    total_user_accounts: Missing[int] = Field(default=UNSET)
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
+    )
 
 
-model_rebuild(GetConsumedLicenses)
-model_rebuild(GetConsumedLicensesPropUsersItems)
+model_rebuild(CodeSecurityDefaultConfigurationsItems)
 
-__all__ = (
-    "GetConsumedLicenses",
-    "GetConsumedLicensesPropUsersItems",
-)
+__all__ = ("CodeSecurityDefaultConfigurationsItems",)

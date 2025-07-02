@@ -9,24 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class GetAuditLogStreamConfigType(TypedDict):
-    """Get an audit log streaming configuration
+class AzureBlobConfigType(TypedDict):
+    """AzureBlobConfig
 
-    Get an audit log streaming configuration for an enterprise.
+    Azure Blob Config for audit log streaming configuration.
     """
 
-    id: int
-    stream_type: str
-    stream_details: str
-    enabled: bool
-    created_at: datetime
-    updated_at: datetime
-    paused_at: NotRequired[Union[datetime, None]]
+    key_id: str
+    encrypted_sas_url: str
 
 
-__all__ = ("GetAuditLogStreamConfigType",)
+class AzureHubConfigType(TypedDict):
+    """AzureHubConfig
+
+    Azure Event Hubs Config for audit log streaming configuration.
+    """
+
+    name: str
+    encrypted_connstring: str
+    key_id: str
+
+
+class AmazonS3AccessKeysConfigType(TypedDict):
+    """AmazonS3AccessKeysConfig
+
+    Amazon S3 Access Keys Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["access_keys"]
+    encrypted_secret_key: str
+    encrypted_access_key_id: str
+
+
+class HecConfigType(TypedDict):
+    """HecConfig
+
+    Hec Config for Audit Log Stream Configuration
+    """
+
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    path: str
+    ssl_verify: bool
+
+
+class DatadogConfigType(TypedDict):
+    """DatadogConfig
+
+    Datadog Config for audit log streaming configuration.
+    """
+
+    encrypted_token: str
+    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"]
+    key_id: str
+
+
+__all__ = (
+    "AmazonS3AccessKeysConfigType",
+    "AzureBlobConfigType",
+    "AzureHubConfigType",
+    "DatadogConfigType",
+    "HecConfigType",
+)

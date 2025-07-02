@@ -10,30 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0171 import MinimalRepositoryType
 
+class CredentialAuthorizationType(TypedDict):
+    """Credential Authorization
 
-class PackageType(TypedDict):
-    """Package
-
-    A software package
+    Credential Authorization
     """
 
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserType]]
-    repository: NotRequired[Union[None, MinimalRepositoryType]]
-    created_at: datetime
-    updated_at: datetime
+    login: str
+    credential_id: int
+    credential_type: str
+    token_last_eight: NotRequired[str]
+    credential_authorized_at: datetime
+    scopes: NotRequired[list[str]]
+    fingerprint: NotRequired[str]
+    credential_accessed_at: Union[datetime, None]
+    authorized_credential_id: Union[int, None]
+    authorized_credential_title: NotRequired[Union[str, None]]
+    authorized_credential_note: NotRequired[Union[str, None]]
+    authorized_credential_expires_at: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("PackageType",)
+__all__ = ("CredentialAuthorizationType",)

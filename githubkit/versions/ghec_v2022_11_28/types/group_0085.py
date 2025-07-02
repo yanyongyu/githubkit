@@ -11,16 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0086 import RepositoryRulesetConditionsPropRefNameType
+
+class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
+
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
 
 
-class RepositoryRulesetConditionsType(TypedDict):
-    """Repository ruleset conditions for ref names
-
-    Parameters for a repository ruleset ref name condition
-    """
-
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-
-
-__all__ = ("RepositoryRulesetConditionsType",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",)

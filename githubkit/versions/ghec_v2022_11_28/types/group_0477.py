@@ -10,18 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class KeySimpleType(TypedDict):
-    """Key Simple
+class KeyType(TypedDict):
+    """Key
 
-    Key Simple
+    Key
     """
 
-    id: int
     key: str
-    created_at: NotRequired[datetime]
+    id: int
+    url: str
+    title: str
+    created_at: datetime
+    verified: bool
+    read_only: bool
 
 
-__all__ = ("KeySimpleType",)
+__all__ = ("KeyType",)

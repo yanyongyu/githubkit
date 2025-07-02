@@ -9,20 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0132 import (
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetType(TypedDict):
-    """Repository ruleset conditions for repository IDs
+class RepositoryRuleWorkflowsPropParametersType(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
 
-    Parameters for a repository ID condition
+    do_not_enforce_on_create: NotRequired[bool]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
+
+
+class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
     """
 
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
 
 
-__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetType",)
+__all__ = (
+    "RepositoryRuleParamsWorkflowFileReferenceType",
+    "RepositoryRuleWorkflowsPropParametersType",
+)

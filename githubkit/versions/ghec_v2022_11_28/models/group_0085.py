@@ -15,18 +15,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0086 import RepositoryRulesetConditionsPropRefName
+
+class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName(
+    GitHubModel
+):
+    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
+
+    include: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of organization names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all organizations and ~EMUS to target all enterprise managed user accounts.",
+    )
+    exclude: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of organization names or patterns to exclude. The condition will not pass if any of these patterns match.",
+    )
 
 
-class RepositoryRulesetConditions(GitHubModel):
-    """Repository ruleset conditions for ref names
+model_rebuild(EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName)
 
-    Parameters for a repository ruleset ref name condition
-    """
-
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-
-
-model_rebuild(RepositoryRulesetConditions)
-
-__all__ = ("RepositoryRulesetConditions",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName",)

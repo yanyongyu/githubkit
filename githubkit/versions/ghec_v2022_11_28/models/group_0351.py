@@ -12,20 +12,50 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0274 import Verification
 
 
-class PorterLargeFile(GitHubModel):
-    """Porter Large File
+class GitTag(GitHubModel):
+    """Git Tag
 
-    Porter Large File
+    Metadata for a Git tag
     """
 
-    ref_name: str = Field()
-    path: str = Field()
-    oid: str = Field()
-    size: int = Field()
+    node_id: str = Field()
+    tag: str = Field(description="Name of the tag")
+    sha: str = Field()
+    url: str = Field(description="URL for the tag")
+    message: str = Field(description="Message describing the purpose of the tag")
+    tagger: GitTagPropTagger = Field()
+    object_: GitTagPropObject = Field(alias="object")
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-model_rebuild(PorterLargeFile)
+class GitTagPropTagger(GitHubModel):
+    """GitTagPropTagger"""
 
-__all__ = ("PorterLargeFile",)
+    date: str = Field()
+    email: str = Field()
+    name: str = Field()
+
+
+class GitTagPropObject(GitHubModel):
+    """GitTagPropObject"""
+
+    sha: str = Field()
+    type: str = Field()
+    url: str = Field()
+
+
+model_rebuild(GitTag)
+model_rebuild(GitTagPropTagger)
+model_rebuild(GitTagPropObject)
+
+__all__ = (
+    "GitTag",
+    "GitTagPropObject",
+    "GitTagPropTagger",
+)

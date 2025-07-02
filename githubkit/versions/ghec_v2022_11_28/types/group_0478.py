@@ -9,31 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class BillingUsageReportUserType(TypedDict):
-    """BillingUsageReportUser"""
-
-    usage_items: NotRequired[list[BillingUsageReportUserPropUsageItemsItemsType]]
+from .group_0171 import MarketplaceListingPlanType
 
 
-class BillingUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportUserPropUsageItemsItems"""
+class UserMarketplacePurchaseType(TypedDict):
+    """User Marketplace Purchase
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    repository_name: NotRequired[str]
+    User Marketplace Purchase
+    """
+
+    billing_cycle: str
+    next_billing_date: Union[datetime, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    account: MarketplaceAccountType
+    plan: MarketplaceListingPlanType
+
+
+class MarketplaceAccountType(TypedDict):
+    """Marketplace Account"""
+
+    url: str
+    id: int
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "BillingUsageReportUserPropUsageItemsItemsType",
-    "BillingUsageReportUserType",
+    "MarketplaceAccountType",
+    "UserMarketplacePurchaseType",
 )

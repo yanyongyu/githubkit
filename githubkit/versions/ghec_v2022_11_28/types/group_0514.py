@@ -9,23 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0256 import SimpleCommitType
 
 
-class WebhooksProjectColumnType(TypedDict):
-    """Project Column"""
+class MergeGroupType(TypedDict):
+    """Merge Group
 
-    after_id: NotRequired[Union[int, None]]
-    cards_url: str
-    created_at: datetime
-    id: int
-    name: str
-    node_id: str
-    project_url: str
-    updated_at: datetime
-    url: str
+    A group of pull requests that the merge queue has grouped together to be merged.
+    """
+
+    head_sha: str
+    head_ref: str
+    base_sha: str
+    base_ref: str
+    head_commit: SimpleCommitType
 
 
-__all__ = ("WebhooksProjectColumnType",)
+__all__ = ("MergeGroupType",)

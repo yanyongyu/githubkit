@@ -9,36 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0328 import MetadataType
-
-
-class ManifestType(TypedDict):
-    """Manifest"""
-
-    name: str
-    file: NotRequired[ManifestPropFileType]
-    metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
+from .group_0003 import SimpleUserType
+from .group_0074 import DependabotAlertSecurityVulnerabilityType
+from .group_0075 import DependabotAlertSecurityAdvisoryType
+from .group_0331 import DependabotAlertPropDependencyType
 
 
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
+class DependabotAlertType(TypedDict):
+    """DependabotAlert
 
-    source_location: NotRequired[str]
+    A Dependabot alert.
+    """
+
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    dismissed_at: Union[datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[datetime, None]
+    auto_dismissed_at: NotRequired[Union[datetime, None]]
 
 
-ManifestPropResolvedType: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
-
-A collection of resolved package dependencies.
-"""
-
-
-__all__ = (
-    "ManifestPropFileType",
-    "ManifestPropResolvedType",
-    "ManifestType",
-)
+__all__ = ("DependabotAlertType",)

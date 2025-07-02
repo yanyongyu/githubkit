@@ -9,26 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class GitUser(GitHubModel):
-    """Git User
+class CheckAutomatedSecurityFixes(GitHubModel):
+    """Check Dependabot security updates
 
-    Metaproperties for Git author/committer information.
+    Check Dependabot security updates
     """
 
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-    date: Missing[datetime] = Field(default=UNSET)
+    enabled: bool = Field(
+        description="Whether Dependabot security updates are enabled for the repository."
+    )
+    paused: bool = Field(
+        description="Whether Dependabot security updates are paused for the repository."
+    )
 
 
-model_rebuild(GitUser)
+model_rebuild(CheckAutomatedSecurityFixes)
 
-__all__ = ("GitUser",)
+__all__ = ("CheckAutomatedSecurityFixes",)

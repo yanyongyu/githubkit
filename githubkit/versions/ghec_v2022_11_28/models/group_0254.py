@@ -14,24 +14,16 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReviewCustomGatesStateRequired(GitHubModel):
-    """ReviewCustomGatesStateRequired"""
+class ActionsWorkflowAccessToRepository(GitHubModel):
+    """ActionsWorkflowAccessToRepository"""
 
-    environment_name: str = Field(
-        description="The name of the environment to approve or reject."
-    )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
-    )
-    comment: Missing[str] = Field(
-        default=UNSET, description="Optional comment to include with the review."
+    access_level: Literal["none", "user", "organization", "enterprise"] = Field(
+        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization. `enterprise` level access allows sharing across the enterprise."
     )
 
 
-model_rebuild(ReviewCustomGatesStateRequired)
+model_rebuild(ActionsWorkflowAccessToRepository)
 
-__all__ = ("ReviewCustomGatesStateRequired",)
+__all__ = ("ActionsWorkflowAccessToRepository",)

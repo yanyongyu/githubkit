@@ -13,18 +13,40 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0061 import SimpleRepositoryType
+from .group_0074 import DependabotAlertSecurityVulnerabilityType
+from .group_0075 import DependabotAlertSecurityAdvisoryType
+from .group_0077 import DependabotAlertWithRepositoryPropDependencyType
 
-class NetworkConfigurationType(TypedDict):
-    """Hosted compute network configuration
 
-    A hosted compute network configuration.
+class DependabotAlertWithRepositoryType(TypedDict):
+    """DependabotAlertWithRepository
+
+    A Dependabot alert.
     """
 
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    created_on: Union[datetime, None]
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertWithRepositoryPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    dismissed_at: Union[datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[datetime, None]
+    auto_dismissed_at: NotRequired[Union[datetime, None]]
+    repository: SimpleRepositoryType
 
 
-__all__ = ("NetworkConfigurationType",)
+__all__ = ("DependabotAlertWithRepositoryType",)

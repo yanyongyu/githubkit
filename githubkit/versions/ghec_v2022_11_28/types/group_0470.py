@@ -10,69 +10,64 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0462 import SearchResultTextMatchesItemsType
 
-class GpgKeyType(TypedDict):
-    """GPG Key
 
-    A unique encryption key
+class UserSearchResultItemType(TypedDict):
+    """User Search Result Item
+
+    User Search Result Item
     """
 
+    login: str
     id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
+    type: str
+    score: float
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
     name: NotRequired[Union[str, None]]
-    primary_key_id: Union[int, None]
-    key_id: str
-    public_key: str
-    emails: list[GpgKeyPropEmailsItemsType]
-    subkeys: list[GpgKeyPropSubkeysItemsType]
-    can_sign: bool
-    can_encrypt_comms: bool
-    can_encrypt_storage: bool
-    can_certify: bool
-    created_at: datetime
-    expires_at: Union[datetime, None]
-    revoked: bool
-    raw_key: Union[str, None]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[datetime, None]]
+    user_view_type: NotRequired[str]
 
 
-class GpgKeyPropEmailsItemsType(TypedDict):
-    """GpgKeyPropEmailsItems"""
+class SearchUsersGetResponse200Type(TypedDict):
+    """SearchUsersGetResponse200"""
 
-    email: NotRequired[str]
-    verified: NotRequired[bool]
-
-
-class GpgKeyPropSubkeysItemsType(TypedDict):
-    """GpgKeyPropSubkeysItems"""
-
-    id: NotRequired[int]
-    primary_key_id: NotRequired[int]
-    key_id: NotRequired[str]
-    public_key: NotRequired[str]
-    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsType]]
-    subkeys: NotRequired[list[Any]]
-    can_sign: NotRequired[bool]
-    can_encrypt_comms: NotRequired[bool]
-    can_encrypt_storage: NotRequired[bool]
-    can_certify: NotRequired[bool]
-    created_at: NotRequired[str]
-    expires_at: NotRequired[Union[str, None]]
-    raw_key: NotRequired[Union[str, None]]
-    revoked: NotRequired[bool]
-
-
-class GpgKeyPropSubkeysItemsPropEmailsItemsType(TypedDict):
-    """GpgKeyPropSubkeysItemsPropEmailsItems"""
-
-    email: NotRequired[str]
-    verified: NotRequired[bool]
+    total_count: int
+    incomplete_results: bool
+    items: list[UserSearchResultItemType]
 
 
 __all__ = (
-    "GpgKeyPropEmailsItemsType",
-    "GpgKeyPropSubkeysItemsPropEmailsItemsType",
-    "GpgKeyPropSubkeysItemsType",
-    "GpgKeyType",
+    "SearchUsersGetResponse200Type",
+    "UserSearchResultItemType",
 )

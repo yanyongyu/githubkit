@@ -545,6 +545,14 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "documentation",
 ] }
 
+[[tool.codegen.overrides]]
+# override invalid schemas for ghec-2022-11-28
+target_descriptions = ["ghec-2022-11-28"]
+
+[tool.codegen.overrides.schema_overrides]
+# duplicate operation name for enterprise apps
+"/paths/~1enterprises~1{enterprise}~1apps~1organizations~1{org}~1installations~1{installation_id}/delete" = { operationId = "enterprise-apps/enterprise-delete-installation" }
+
 [build-system]
 requires = ["poetry_core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"

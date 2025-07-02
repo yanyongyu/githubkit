@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgAttestationsBulkListPostBodyType(TypedDict):
-    """OrgsOrgAttestationsBulkListPostBody"""
+class OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
 
-    subject_digests: list[str]
-    predicate_type: NotRequired[str]
+    labels: list[str]
 
 
-__all__ = ("OrgsOrgAttestationsBulkListPostBodyType",)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType",)

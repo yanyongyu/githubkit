@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsColumnsColumnIdCardsPostBodyOneof1Type(TypedDict):
-    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
+class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
-    content_id: int
-    content_type: str
+    permission: NotRequired[str]
 
 
-__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof1Type",)
+__all__ = ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",)

@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0152 import MilestoneType
-from .group_0479 import EnterpriseWebhooksType
-from .group_0481 import OrganizationSimpleWebhooksType
-from .group_0482 import RepositoryWebhooksType
-from .group_0521 import WebhooksPullRequest5Type
+from .group_0157 import MilestoneType
+from .group_0485 import EnterpriseWebhooksType
+from .group_0487 import OrganizationSimpleWebhooksType
+from .group_0488 import RepositoryWebhooksType
+from .group_0527 import WebhooksPullRequest5Type
 
 
-class WebhookPullRequestMilestonedType(TypedDict):
-    """pull_request milestoned event"""
+class WebhookPullRequestDemilestonedType(TypedDict):
+    """pull_request demilestoned event"""
 
-    action: Literal["milestoned"]
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     milestone: NotRequired[MilestoneType]
     number: int
@@ -33,4 +33,4 @@ class WebhookPullRequestMilestonedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookPullRequestMilestonedType",)
+__all__ = ("WebhookPullRequestDemilestonedType",)

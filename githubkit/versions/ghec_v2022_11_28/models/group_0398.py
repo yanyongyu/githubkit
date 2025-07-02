@@ -13,19 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
+from .group_0070 import Team
 
-class ReleaseNotesContent(GitHubModel):
-    """Generated Release Notes Content
 
-    Generated name and body describing a release
+class PullRequestReviewRequest(GitHubModel):
+    """Pull Request Review Request
+
+    Pull Request Review Request
     """
 
-    name: str = Field(description="The generated name of the release")
-    body: str = Field(
-        description="The generated body describing the contents of the release supporting markdown formatting"
-    )
+    users: list[SimpleUser] = Field()
+    teams: list[Team] = Field()
 
 
-model_rebuild(ReleaseNotesContent)
+model_rebuild(PullRequestReviewRequest)
 
-__all__ = ("ReleaseNotesContent",)
+__all__ = ("PullRequestReviewRequest",)

@@ -10,16 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrganizationCustomRepositoryRoleCreateSchemaType(TypedDict):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
+class CodespaceMachineType(TypedDict):
+    """Codespace machine
+
+    A description of the machine powering a codespace.
+    """
 
     name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
 
 
-__all__ = ("OrganizationCustomRepositoryRoleCreateSchemaType",)
+__all__ = ("CodespaceMachineType",)

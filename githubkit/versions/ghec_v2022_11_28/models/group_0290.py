@@ -12,21 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0289 import CodeScanningVariantAnalysisRepository
 
+class CodeScanningAutofixCommits(GitHubModel):
+    """CodeScanningAutofixCommits
 
-class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+    Commit an autofix for a code scanning alert
+    """
 
-    repository_count: int = Field(
-        description="The total number of repositories that were skipped for this reason."
+    target_ref: Missing[str] = Field(
+        default=UNSET,
+        description='The Git reference of target branch for the commit. Branch needs to already exist.  For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
     )
-    repositories: list[CodeScanningVariantAnalysisRepository] = Field(
-        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
+    message: Missing[str] = Field(
+        default=UNSET, description="Commit message to be used."
     )
 
 
-model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
+model_rebuild(CodeScanningAutofixCommits)
 
-__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)
+__all__ = ("CodeScanningAutofixCommits",)

@@ -17,14 +17,18 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0448 import UserEmailsResponseItems, UserNameResponse
-from .group_0449 import UserRoleItems
+from .group_0449 import Meta
 
 
-class UserResponse(GitHubModel):
-    """UserResponse"""
+class ScimEnterpriseGroupResponse(GitHubModel):
+    """ScimEnterpriseGroupResponse"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ] = Field(
         description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
     external_id: Missing[Union[str, None]] = Field(
@@ -32,24 +36,61 @@ class UserResponse(GitHubModel):
         alias="externalId",
         description="A unique identifier for the resource as defined by the provisioning client.",
     )
-    active: bool = Field(description="Whether the user active in the IdP.")
-    user_name: Missing[str] = Field(
-        default=UNSET, alias="userName", description="The username for the user."
-    )
-    name: Missing[UserNameResponse] = Field(default=UNSET)
     display_name: Missing[Union[str, None]] = Field(
         default=UNSET,
         alias="displayName",
-        description="A human-readable name for the user.",
+        description="A human-readable name for a security group.",
     )
-    emails: list[UserEmailsResponseItems] = Field(
-        description="The emails for the user."
+    members: Missing[list[ScimEnterpriseGroupResponseMergedMembers]] = Field(
+        default=UNSET, description="The group members."
     )
-    roles: Missing[list[UserRoleItems]] = Field(
-        default=UNSET, description="The roles assigned to the user."
+    id: Missing[str] = Field(
+        default=UNSET, description="The internally generated id for the group object."
+    )
+    meta: Missing[Meta] = Field(
+        default=UNSET,
+        description="The metadata associated with the creation/updates to the user.",
     )
 
 
-model_rebuild(UserResponse)
+class ScimEnterpriseGroupResponseMergedMembers(GitHubModel):
+    """ScimEnterpriseGroupResponseMergedMembers"""
 
-__all__ = ("UserResponse",)
+    value: str = Field(description="The local unique identifier for the member")
+    ref: str = Field(alias="$ref")
+    display: Missing[str] = Field(
+        default=UNSET, description="The display name associated with the member"
+    )
+
+
+class ScimEnterpriseGroupList(GitHubModel):
+    """ScimEnterpriseGroupList"""
+
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
+        Field(
+            description="The URIs that are used to indicate the namespaces of the list SCIM schemas."
+        )
+    )
+    total_results: int = Field(
+        alias="totalResults", description="Number of results found"
+    )
+    resources: list[ScimEnterpriseGroupResponse] = Field(
+        alias="Resources", description="Information about each provisioned group."
+    )
+    start_index: int = Field(
+        alias="startIndex", description="A starting index for the returned page"
+    )
+    items_per_page: int = Field(
+        alias="itemsPerPage", description="Number of objects per page"
+    )
+
+
+model_rebuild(ScimEnterpriseGroupResponse)
+model_rebuild(ScimEnterpriseGroupResponseMergedMembers)
+model_rebuild(ScimEnterpriseGroupList)
+
+__all__ = (
+    "ScimEnterpriseGroupList",
+    "ScimEnterpriseGroupResponse",
+    "ScimEnterpriseGroupResponseMergedMembers",
+)

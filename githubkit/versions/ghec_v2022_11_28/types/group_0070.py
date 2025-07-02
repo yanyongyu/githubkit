@@ -9,17 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0069 import TeamSimpleType
 
 
-class DependabotAlertPackageType(TypedDict):
-    """DependabotAlertPackage
+class TeamType(TypedDict):
+    """Team
 
-    Details for the vulnerable package.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    ecosystem: str
+    id: int
+    node_id: str
     name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[None, TeamSimpleType]
 
 
-__all__ = ("DependabotAlertPackageType",)
+class TeamPropPermissionsType(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+__all__ = (
+    "TeamPropPermissionsType",
+    "TeamType",
+)

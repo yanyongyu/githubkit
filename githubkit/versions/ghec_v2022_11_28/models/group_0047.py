@@ -14,16 +14,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class AuditLogStreamKey(GitHubModel):
-    """stream-key
+class AccessibleRepository(GitHubModel):
+    """Accessible Repository
 
-    Audit Log Streaming Public Key
+    A repository that may be made accessible to a GitHub App.
     """
 
-    key_id: str = Field()
-    key: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field()
 
 
-model_rebuild(AuditLogStreamKey)
+model_rebuild(AccessibleRepository)
 
-__all__ = ("AuditLogStreamKey",)
+__all__ = ("AccessibleRepository",)

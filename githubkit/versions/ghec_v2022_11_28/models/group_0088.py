@@ -9,50 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
-    GitHubModel
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
-
-    include: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
-        default=UNSET,
-        description="The repository properties and values to include. All of these properties must match for the condition to pass.",
-    )
-    exclude: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
-        default=UNSET,
-        description="The repository properties and values to exclude. The condition will not pass if any of these properties match.",
-    )
+from .group_0089 import RepositoryRulesetConditionsPropRefName
 
 
-class RepositoryRulesetConditionsRepositoryPropertySpec(GitHubModel):
-    """Repository ruleset property targeting definition
+class RepositoryRulesetConditions(GitHubModel):
+    """Repository ruleset conditions for ref names
 
-    Parameters for a targeting a repository property
+    Parameters for a repository ruleset ref name condition
     """
 
-    name: str = Field(description="The name of the repository property to target")
-    property_values: list[str] = Field(
-        description="The values to match for the repository property"
-    )
-    source: Missing[Literal["custom", "system"]] = Field(
-        default=UNSET,
-        description="The source of the repository property. Defaults to 'custom' if not specified.",
-    )
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty)
-model_rebuild(RepositoryRulesetConditionsRepositoryPropertySpec)
+model_rebuild(RepositoryRulesetConditions)
 
-__all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertySpec",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
-)
+__all__ = ("RepositoryRulesetConditions",)

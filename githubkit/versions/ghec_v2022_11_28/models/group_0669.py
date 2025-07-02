@@ -9,87 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0479 import EnterpriseWebhooks
-from .group_0480 import SimpleInstallation
-from .group_0481 import OrganizationSimpleWebhooks
-from .group_0482 import RepositoryWebhooks
-from .group_0496 import WebhooksLabel
-from .group_0670 import WebhookIssuesEditedPropIssue
+from .group_0663 import WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator
 
 
-class WebhookIssuesEdited(GitHubModel):
-    """issues edited event"""
+class WebhookIssuesClosedPropIssueMergedMilestone(GitHubModel):
+    """WebhookIssuesClosedPropIssueMergedMilestone"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookIssuesEditedPropChanges = Field(
-        description="The changes to the issue."
+    closed_at: Union[datetime, None] = Field()
+    closed_issues: int = Field()
+    created_at: datetime = Field()
+    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator, None] = (
+        Field(title="User")
     )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    issue: WebhookIssuesEditedPropIssue = Field(
-        title="Issue",
-        description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
-    )
-    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    description: Union[str, None] = Field()
+    due_on: Union[datetime, None] = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    open_issues: int = Field()
+    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
+    title: str = Field(description="The title of the milestone.")
+    updated_at: datetime = Field()
+    url: str = Field()
 
 
-class WebhookIssuesEditedPropChanges(GitHubModel):
-    """WebhookIssuesEditedPropChanges
+model_rebuild(WebhookIssuesClosedPropIssueMergedMilestone)
 
-    The changes to the issue.
-    """
-
-    body: Missing[WebhookIssuesEditedPropChangesPropBody] = Field(default=UNSET)
-    title: Missing[WebhookIssuesEditedPropChangesPropTitle] = Field(default=UNSET)
-
-
-class WebhookIssuesEditedPropChangesPropBody(GitHubModel):
-    """WebhookIssuesEditedPropChangesPropBody"""
-
-    from_: str = Field(alias="from", description="The previous version of the body.")
-
-
-class WebhookIssuesEditedPropChangesPropTitle(GitHubModel):
-    """WebhookIssuesEditedPropChangesPropTitle"""
-
-    from_: str = Field(alias="from", description="The previous version of the title.")
-
-
-model_rebuild(WebhookIssuesEdited)
-model_rebuild(WebhookIssuesEditedPropChanges)
-model_rebuild(WebhookIssuesEditedPropChangesPropBody)
-model_rebuild(WebhookIssuesEditedPropChangesPropTitle)
-
-__all__ = (
-    "WebhookIssuesEdited",
-    "WebhookIssuesEditedPropChanges",
-    "WebhookIssuesEditedPropChangesPropBody",
-    "WebhookIssuesEditedPropChangesPropTitle",
-)
+__all__ = ("WebhookIssuesClosedPropIssueMergedMilestone",)

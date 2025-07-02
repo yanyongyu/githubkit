@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal
 
 from pydantic import Field
@@ -19,31 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
-    """Organization private registry
+class OrganizationCustomOrganizationRoleUpdateSchema(GitHubModel):
+    """OrganizationCustomOrganizationRoleUpdateSchema"""
 
-    Private registry configuration for an organization
-    """
-
-    name: str = Field(description="The name of the private registry configuration.")
-    registry_type: Literal["maven_repository", "nuget_feed", "goproxy_server"] = Field(
-        description="The registry type."
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the custom role."
     )
-    username: Missing[str] = Field(
+    description: Missing[str] = Field(
         default=UNSET,
-        description="The username to use when authenticating with the private registry.",
+        description="A short description about the intended use of this role or the permissions it grants.",
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
+    permissions: Missing[list[str]] = Field(
         default=UNSET,
-        description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
+        description="A list of additional permissions included in this role.",
     )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    base_role: Missing[
+        Literal["none", "read", "triage", "write", "maintain", "admin"]
+    ] = Field(
+        default=UNSET,
+        description="The system role from which this role can inherit permissions.",
+    )
 
 
-model_rebuild(OrgPrivateRegistryConfigurationWithSelectedRepositories)
+model_rebuild(OrganizationCustomOrganizationRoleUpdateSchema)
 
-__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositories",)
+__all__ = ("OrganizationCustomOrganizationRoleUpdateSchema",)

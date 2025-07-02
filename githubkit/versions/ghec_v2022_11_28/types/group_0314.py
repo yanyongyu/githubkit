@@ -9,49 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0019 import LicenseSimpleType
-from .group_0221 import CodeOfConductSimpleType
+from .group_0003 import SimpleUserType
 
 
-class CommunityProfilePropFilesType(TypedDict):
-    """CommunityProfilePropFiles"""
+class AutoMergeType(TypedDict):
+    """Auto merge
 
-    code_of_conduct: Union[None, CodeOfConductSimpleType]
-    code_of_conduct_file: Union[None, CommunityHealthFileType]
-    license_: Union[None, LicenseSimpleType]
-    contributing: Union[None, CommunityHealthFileType]
-    readme: Union[None, CommunityHealthFileType]
-    issue_template: Union[None, CommunityHealthFileType]
-    pull_request_template: Union[None, CommunityHealthFileType]
-
-
-class CommunityHealthFileType(TypedDict):
-    """Community Health File"""
-
-    url: str
-    html_url: str
-
-
-class CommunityProfileType(TypedDict):
-    """Community Profile
-
-    Community Profile
+    The status of auto merging a pull request.
     """
 
-    health_percentage: int
-    description: Union[str, None]
-    documentation: Union[str, None]
-    files: CommunityProfilePropFilesType
-    updated_at: Union[datetime, None]
-    content_reports_enabled: NotRequired[bool]
+    enabled_by: SimpleUserType
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
-__all__ = (
-    "CommunityHealthFileType",
-    "CommunityProfilePropFilesType",
-    "CommunityProfileType",
-)
+__all__ = ("AutoMergeType",)

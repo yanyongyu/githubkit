@@ -9,26 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0271 import BranchProtectionType
+from .group_0276 import CommitType
 
 
-class CheckAnnotationType(TypedDict):
-    """Check Annotation
+class BranchWithProtectionType(TypedDict):
+    """Branch With Protection
 
-    Check Annotation
+    Branch With Protection
     """
 
-    path: str
-    start_line: int
-    end_line: int
-    start_column: Union[int, None]
-    end_column: Union[int, None]
-    annotation_level: Union[str, None]
-    title: Union[str, None]
-    message: Union[str, None]
-    raw_details: Union[str, None]
-    blob_href: str
+    name: str
+    commit: CommitType
+    links: BranchWithProtectionPropLinksType
+    protected: bool
+    protection: BranchProtectionType
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
 
 
-__all__ = ("CheckAnnotationType",)
+class BranchWithProtectionPropLinksType(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
+
+
+__all__ = (
+    "BranchWithProtectionPropLinksType",
+    "BranchWithProtectionType",
+)

@@ -12,13 +12,15 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class TopicType(TypedDict):
-    """Topic
+class CommitActivityType(TypedDict):
+    """Commit Activity
 
-    A topic aggregates entities that are related to a subject.
+    Commit Activity
     """
 
-    names: list[str]
+    days: list[int]
+    total: int
+    week: int
 
 
-__all__ = ("TopicType",)
+__all__ = ("CommitActivityType",)

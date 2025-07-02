@@ -9,19 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomOrganizationRoleUpdateSchemaType(TypedDict):
-    """OrganizationCustomOrganizationRoleUpdateSchema"""
+class OrganizationUpdateIssueTypeType(TypedDict):
+    """OrganizationUpdateIssueType"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    permissions: NotRequired[list[str]]
-    base_role: NotRequired[
-        Literal["none", "read", "triage", "write", "maintain", "admin"]
+    name: str
+    is_enabled: bool
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
     ]
 
 
-__all__ = ("OrganizationCustomOrganizationRoleUpdateSchemaType",)
+__all__ = ("OrganizationUpdateIssueTypeType",)

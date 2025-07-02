@@ -14,70 +14,35 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-class ContentTree(GitHubModel):
-    """Content Tree
+class PullRequestSimplePropHead(GitHubModel):
+    """PullRequestSimplePropHead"""
 
-    Content Tree
-    """
-
-    type: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[None, Repository] = Field()
     sha: str = Field()
-    content: Missing[str] = Field(default=UNSET)
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    entries: Missing[list[ContentTreePropEntriesItems]] = Field(default=UNSET)
-    encoding: Missing[str] = Field(default=UNSET)
-    links: ContentTreePropLinks = Field(alias="_links")
+    user: Union[None, SimpleUser] = Field()
 
 
-class ContentTreePropLinks(GitHubModel):
-    """ContentTreePropLinks"""
+class PullRequestSimplePropBase(GitHubModel):
+    """PullRequestSimplePropBase"""
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-class ContentTreePropEntriesItems(GitHubModel):
-    """ContentTreePropEntriesItems"""
-
-    type: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
     sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentTreePropEntriesItemsPropLinks = Field(alias="_links")
+    user: Union[None, SimpleUser] = Field()
 
 
-class ContentTreePropEntriesItemsPropLinks(GitHubModel):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentTree)
-model_rebuild(ContentTreePropLinks)
-model_rebuild(ContentTreePropEntriesItems)
-model_rebuild(ContentTreePropEntriesItemsPropLinks)
+model_rebuild(PullRequestSimplePropHead)
+model_rebuild(PullRequestSimplePropBase)
 
 __all__ = (
-    "ContentTree",
-    "ContentTreePropEntriesItems",
-    "ContentTreePropEntriesItemsPropLinks",
-    "ContentTreePropLinks",
+    "PullRequestSimplePropBase",
+    "PullRequestSimplePropHead",
 )

@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,72 +18,153 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class CodeScanningAlertInstance(GitHubModel):
-    """CodeScanningAlertInstance"""
-
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
-    )
-    analysis_key: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
-    )
-    category: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
-    )
-    state: Missing[Union[None, Literal["open", "dismissed", "fixed"]]] = Field(
-        default=UNSET, description="State of a code scanning alert."
-    )
-    commit_sha: Missing[str] = Field(default=UNSET)
-    message: Missing[CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
-    location: Missing[CodeScanningAlertLocation] = Field(
-        default=UNSET, description="Describe a region within a file for the alert."
-    )
-    html_url: Missing[str] = Field(default=UNSET)
-    classifications: Missing[
-        list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
-    )
+from .group_0056 import BypassResponse
 
 
-class CodeScanningAlertLocation(GitHubModel):
-    """CodeScanningAlertLocation
+class PushRuleBypassRequest(GitHubModel):
+    """Push rule bypass request
 
-    Describe a region within a file for the alert.
+    A bypass request made by a user asking to be exempted from a push rule in this
+    repository.
     """
 
-    path: Missing[str] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-    end_line: Missing[int] = Field(default=UNSET)
-    start_column: Missing[int] = Field(default=UNSET)
-    end_column: Missing[int] = Field(default=UNSET)
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the bypass request."
+    )
+    number: Missing[int] = Field(
+        default=UNSET,
+        description="The number uniquely identifying the bypass request within its repository.",
+    )
+    repository: Missing[PushRuleBypassRequestPropRepository] = Field(
+        default=UNSET, description="The repository the bypass request is for."
+    )
+    organization: Missing[PushRuleBypassRequestPropOrganization] = Field(
+        default=UNSET,
+        description="The organization associated with the repository the bypass request is for.",
+    )
+    requester: Missing[PushRuleBypassRequestPropRequester] = Field(
+        default=UNSET, description="The user who requested the bypass."
+    )
+    request_type: Missing[str] = Field(
+        default=UNSET, description="The type of request."
+    )
+    data: Missing[Union[list[PushRuleBypassRequestPropDataItems], None]] = Field(
+        default=UNSET,
+        description="Data describing the push rules that are being requested to be bypassed.",
+    )
+    resource_identifier: Missing[str] = Field(
+        default=UNSET,
+        description="The unique identifier for the request type of the bypass request. For example, a commit SHA.",
+    )
+    status: Missing[
+        Literal[
+            "pending",
+            "denied",
+            "approved",
+            "cancelled",
+            "completed",
+            "expired",
+            "deleted",
+            "open",
+        ]
+    ] = Field(default=UNSET, description="The status of the bypass request.")
+    requester_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment the requester provided when creating the bypass request.",
+    )
+    expires_at: Missing[datetime] = Field(
+        default=UNSET, description="The date and time the bypass request will expire."
+    )
+    created_at: Missing[datetime] = Field(
+        default=UNSET, description="The date and time the bypass request was created."
+    )
+    responses: Missing[Union[list[BypassResponse], None]] = Field(
+        default=UNSET, description="The responses to the bypass request."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the bypass request in a browser."
+    )
 
 
-class CodeScanningAlertInstancePropMessage(GitHubModel):
-    """CodeScanningAlertInstancePropMessage"""
+class PushRuleBypassRequestPropRepository(GitHubModel):
+    """PushRuleBypassRequestPropRepository
 
-    text: Missing[str] = Field(default=UNSET)
+    The repository the bypass request is for.
+    """
+
+    id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the repository the bypass request is for."
+    )
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The name of the repository the bypass request is for.",
+    )
+    full_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The full name of the repository the bypass request is for.",
+    )
 
 
-model_rebuild(CodeScanningAlertInstance)
-model_rebuild(CodeScanningAlertLocation)
-model_rebuild(CodeScanningAlertInstancePropMessage)
+class PushRuleBypassRequestPropOrganization(GitHubModel):
+    """PushRuleBypassRequestPropOrganization
+
+    The organization associated with the repository the bypass request is for.
+    """
+
+    id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the organization."
+    )
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the organization."
+    )
+
+
+class PushRuleBypassRequestPropRequester(GitHubModel):
+    """PushRuleBypassRequestPropRequester
+
+    The user who requested the bypass.
+    """
+
+    actor_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the GitHub user who requested the bypass."
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the GitHub user who requested the bypass.",
+    )
+
+
+class PushRuleBypassRequestPropDataItems(GitHubModel):
+    """PushRuleBypassRequestPropDataItems"""
+
+    ruleset_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the ruleset for the rules that were violated.",
+    )
+    ruleset_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the ruleset for the rules that were violated.",
+    )
+    total_violations: Missing[int] = Field(
+        default=UNSET,
+        description="The number of rule violations generated from the push associated with this request.",
+    )
+    rule_type: Missing[str] = Field(
+        default=UNSET, description="The type of rule that was violated."
+    )
+
+
+model_rebuild(PushRuleBypassRequest)
+model_rebuild(PushRuleBypassRequestPropRepository)
+model_rebuild(PushRuleBypassRequestPropOrganization)
+model_rebuild(PushRuleBypassRequestPropRequester)
+model_rebuild(PushRuleBypassRequestPropDataItems)
 
 __all__ = (
-    "CodeScanningAlertInstance",
-    "CodeScanningAlertInstancePropMessage",
-    "CodeScanningAlertLocation",
+    "PushRuleBypassRequest",
+    "PushRuleBypassRequestPropDataItems",
+    "PushRuleBypassRequestPropOrganization",
+    "PushRuleBypassRequestPropRepository",
+    "PushRuleBypassRequestPropRequester",
 )

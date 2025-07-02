@@ -9,55 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0036 import OrganizationSimpleType
-from .group_0067 import TeamType
 
+class GetConsumedLicensesType(TypedDict):
+    """Enterprise Consumed Licenses
 
-class CopilotSeatDetailsType(TypedDict):
-    """Copilot Business Seat Detail
-
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    A breakdown of the licenses consumed by an enterprise.
     """
 
-    assignee: NotRequired[Union[None, SimpleUserType]]
-    organization: NotRequired[Union[None, OrganizationSimpleType]]
-    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
-    pending_cancellation_date: NotRequired[Union[date, None]]
-    last_activity_at: NotRequired[Union[datetime, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    created_at: datetime
-    updated_at: NotRequired[datetime]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+    total_seats_consumed: NotRequired[int]
+    total_seats_purchased: NotRequired[int]
+    users: NotRequired[list[GetConsumedLicensesPropUsersItemsType]]
 
 
-class EnterpriseTeamType(TypedDict):
-    """Enterprise Team
+class GetConsumedLicensesPropUsersItemsType(TypedDict):
+    """GetConsumedLicensesPropUsersItems"""
 
-    Group of enterprise owners and/or members
-    """
-
-    id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
-    url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: NotRequired[Union[str, None]]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
-    created_at: datetime
-    updated_at: datetime
+    github_com_login: NotRequired[str]
+    github_com_name: NotRequired[Union[str, None]]
+    enterprise_server_user_ids: NotRequired[list[str]]
+    github_com_user: NotRequired[bool]
+    enterprise_server_user: NotRequired[Union[bool, None]]
+    visual_studio_subscription_user: NotRequired[bool]
+    license_type: NotRequired[str]
+    github_com_profile: NotRequired[Union[str, None]]
+    github_com_member_roles: NotRequired[list[str]]
+    github_com_enterprise_roles: NotRequired[list[str]]
+    github_com_verified_domain_emails: NotRequired[list[str]]
+    github_com_saml_name_id: NotRequired[Union[str, None]]
+    github_com_orgs_with_pending_invites: NotRequired[list[str]]
+    github_com_two_factor_auth: NotRequired[Union[bool, None]]
+    enterprise_server_emails: NotRequired[list[str]]
+    visual_studio_license_status: NotRequired[Union[str, None]]
+    visual_studio_subscription_email: NotRequired[Union[str, None]]
+    total_user_accounts: NotRequired[int]
 
 
 __all__ = (
-    "CopilotSeatDetailsType",
-    "EnterpriseTeamType",
+    "GetConsumedLicensesPropUsersItemsType",
+    "GetConsumedLicensesType",
 )

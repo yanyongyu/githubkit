@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,15 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoNotificationsPutBody(GitHubModel):
-    """ReposOwnerRepoNotificationsPutBody"""
+class ReposOwnerRepoIssuesIssueNumberLockPutBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
 
-    last_read_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
+    lock_reason: Missing[Literal["off-topic", "too heated", "resolved", "spam"]] = (
+        Field(
+            default=UNSET,
+            description="The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  \n * `off-topic`  \n * `too heated`  \n * `resolved`  \n * `spam`",
+        )
     )
 
 
-model_rebuild(ReposOwnerRepoNotificationsPutBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLockPutBody)
 
-__all__ = ("ReposOwnerRepoNotificationsPutBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLockPutBody",)

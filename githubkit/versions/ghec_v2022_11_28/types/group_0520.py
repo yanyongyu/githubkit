@@ -9,23 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestWebhookAllof1Type(TypedDict):
-    """PullRequestWebhookAllof1"""
+class WebhooksProjectColumnType(TypedDict):
+    """Project Column"""
 
-    allow_auto_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    use_squash_pr_title_as_default: NotRequired[bool]
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: datetime
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: datetime
+    url: str
 
 
-__all__ = ("PullRequestWebhookAllof1Type",)
+__all__ = ("WebhooksProjectColumnType",)

@@ -12,11 +12,10 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSubscriptionPutBodyType(TypedDict):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-    subscribed: NotRequired[bool]
-    ignored: NotRequired[bool]
+    expected_head_sha: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoSubscriptionPutBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",)

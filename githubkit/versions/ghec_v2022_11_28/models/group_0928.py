@@ -12,16 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0040 import RunnerLabel
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422(GitHubModel):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
 
-    errors: Missing[list[str]] = Field(default=UNSET)
+    total_count: int = Field()
+    labels: list[RunnerLabel] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422)
+model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200",)

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -17,23 +18,60 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0060 import CodeSecurityConfiguration
+from .group_0003 import SimpleUser
+from .group_0058 import CodeScanningAlertRuleSummary
+from .group_0059 import CodeScanningAnalysisTool
+from .group_0060 import CodeScanningAlertInstance
+from .group_0061 import SimpleRepository
 
 
-class CodeSecurityDefaultConfigurationsItems(GitHubModel):
-    """CodeSecurityDefaultConfigurationsItems"""
+class CodeScanningOrganizationAlertItems(GitHubModel):
+    """CodeScanningOrganizationAlertItems"""
 
-    default_for_new_repos: Missing[Literal["public", "private_and_internal", "all"]] = (
+    number: int = Field(description="The security alert number.")
+    created_at: datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    updated_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    instances_url: str = Field(
+        description="The REST API URL for fetching the list of instances for an alert."
+    )
+    state: Union[None, Literal["open", "dismissed", "fixed"]] = Field(
+        description="State of a code scanning alert."
+    )
+    fixed_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_at: Union[datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ] = Field(
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
+    )
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
         Field(
             default=UNSET,
-            description="The visibility of newly created repositories for which the code security configuration will be applied to by default",
+            description="The dismissal comment associated with the dismissal of the alert.",
         )
     )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+    rule: CodeScanningAlertRuleSummary = Field()
+    tool: CodeScanningAnalysisTool = Field()
+    most_recent_instance: CodeScanningAlertInstance = Field()
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
+    dismissal_approved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
 
 
-model_rebuild(CodeSecurityDefaultConfigurationsItems)
+model_rebuild(CodeScanningOrganizationAlertItems)
 
-__all__ = ("CodeSecurityDefaultConfigurationsItems",)
+__all__ = ("CodeScanningOrganizationAlertItems",)

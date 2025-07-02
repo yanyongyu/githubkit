@@ -12,14 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleCommitMessagePatternPropParametersType(TypedDict):
-    """RepositoryRuleCommitMessagePatternPropParameters"""
-
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+from .group_0110 import RepositoryRuleRequiredStatusChecksPropParametersType
 
 
-__all__ = ("RepositoryRuleCommitMessagePatternPropParametersType",)
+class RepositoryRuleRequiredStatusChecksType(TypedDict):
+    """required_status_checks
+
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
+    """
+
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
+
+
+__all__ = ("RepositoryRuleRequiredStatusChecksType",)

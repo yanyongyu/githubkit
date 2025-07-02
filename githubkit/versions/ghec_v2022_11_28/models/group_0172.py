@@ -14,42 +14,33 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0171 import MinimalRepository
+from .group_0173 import (
+    MarketplacePurchasePropMarketplacePendingChange,
+    MarketplacePurchasePropMarketplacePurchase,
+)
 
 
-class Thread(GitHubModel):
-    """Thread
+class MarketplacePurchase(GitHubModel):
+    """Marketplace Purchase
 
-    Thread
+    Marketplace Purchase
     """
 
-    id: str = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    subject: ThreadPropSubject = Field()
-    reason: str = Field()
-    unread: bool = Field()
-    updated_at: str = Field()
-    last_read_at: Union[str, None] = Field()
     url: str = Field()
-    subscription_url: str = Field()
-
-
-class ThreadPropSubject(GitHubModel):
-    """ThreadPropSubject"""
-
-    title: str = Field()
-    url: str = Field()
-    latest_comment_url: str = Field()
     type: str = Field()
+    id: int = Field()
+    login: str = Field()
+    organization_billing_email: Missing[str] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    marketplace_pending_change: Missing[
+        Union[MarketplacePurchasePropMarketplacePendingChange, None]
+    ] = Field(default=UNSET)
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
 
 
-model_rebuild(Thread)
-model_rebuild(ThreadPropSubject)
+model_rebuild(MarketplacePurchase)
 
-__all__ = (
-    "Thread",
-    "ThreadPropSubject",
-)
+__all__ = ("MarketplacePurchase",)

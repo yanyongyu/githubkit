@@ -9,155 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0053 import BypassResponse
 
+class CopilotOrganizationDetails(ExtraGitHubModel):
+    """Copilot Organization Details
 
-class SecretScanningDismissalRequest(GitHubModel):
-    """Secret scanning alert dismissal request
-
-    A dismissal request made by a user asking to close a secret scanning alert in
-    this repository.
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the dismissal request."
+    seat_breakdown: CopilotOrganizationSeatBreakdown = Field(
+        title="Copilot Seat Breakdown",
+        description="The breakdown of Copilot Business seats for the organization.",
     )
-    number: Missing[int] = Field(
+    public_code_suggestions: Literal["allow", "block", "unconfigured"] = Field(
+        description="The organization policy for allowing or blocking suggestions matching public code (duplication detection filter)."
+    )
+    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="The number uniquely identifying the dismissal request within its repository.",
+        description="The organization policy for allowing or disallowing Copilot Chat in the IDE.",
     )
-    repository: Missing[SecretScanningDismissalRequestPropRepository] = Field(
-        default=UNSET, description="The repository the dismissal request is for."
-    )
-    organization: Missing[SecretScanningDismissalRequestPropOrganization] = Field(
+    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="The organization associated with the repository the dismissal request is for.",
+        description="The organization policy for allowing or disallowing Copilot features on GitHub.com.",
     )
-    requester: Missing[SecretScanningDismissalRequestPropRequester] = Field(
-        default=UNSET, description="The user who requested the dismissal."
-    )
-    request_type: Missing[str] = Field(
-        default=UNSET, description="The type of request."
-    )
-    data: Missing[Union[list[SecretScanningDismissalRequestPropDataItems], None]] = (
-        Field(
-            default=UNSET,
-            description="Data describing the secret alert that is being requested to be dismissed.",
-        )
-    )
-    resource_identifier: Missing[str] = Field(
+    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="The number of the secret scanning alert that was detected.",
+        description="The organization policy for allowing or disallowing Copilot in the CLI.",
     )
-    status: Missing[
-        Literal["pending", "denied", "approved", "cancelled", "expired"]
-    ] = Field(default=UNSET, description="The status of the dismissal request.")
-    requester_comment: Missing[Union[str, None]] = Field(
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ] = Field(description="The mode of assigning new seats.")
+    plan_type: Missing[Literal["business", "enterprise"]] = Field(
         default=UNSET,
-        description="The comment the requester provided when creating the dismissal request.",
-    )
-    expires_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time the dismissal request will expire.",
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time the dismissal request was created.",
-    )
-    responses: Missing[Union[list[BypassResponse], None]] = Field(
-        default=UNSET, description="The responses to the dismissal request."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the dismissal request in a browser."
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
 
 
-class SecretScanningDismissalRequestPropRepository(GitHubModel):
-    """SecretScanningDismissalRequestPropRepository
+class CopilotOrganizationSeatBreakdown(GitHubModel):
+    """Copilot Seat Breakdown
 
-    The repository the dismissal request is for.
+    The breakdown of Copilot Business seats for the organization.
     """
 
-    id: Missing[int] = Field(
+    total: Missing[int] = Field(
         default=UNSET,
-        description="The ID of the repository the dismissal request is for.",
+        description="The total number of seats being billed for the organization as of the current billing cycle.",
     )
-    name: Missing[str] = Field(
+    added_this_cycle: Missing[int] = Field(
+        default=UNSET, description="Seats added during the current billing cycle."
+    )
+    pending_cancellation: Missing[int] = Field(
         default=UNSET,
-        description="The name of the repository the dismissal request is for.",
+        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
     )
-    full_name: Missing[str] = Field(
+    pending_invitation: Missing[int] = Field(
         default=UNSET,
-        description="The full name of the repository the dismissal request is for.",
+        description="The number of users who have been invited to receive a Copilot seat through this organization.",
     )
-
-
-class SecretScanningDismissalRequestPropOrganization(GitHubModel):
-    """SecretScanningDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the organization."
-    )
-
-
-class SecretScanningDismissalRequestPropRequester(GitHubModel):
-    """SecretScanningDismissalRequestPropRequester
-
-    The user who requested the dismissal.
-    """
-
-    actor_id: Missing[int] = Field(
+    active_this_cycle: Missing[int] = Field(
         default=UNSET,
-        description="The ID of the GitHub user who requested the dismissal.",
+        description="The number of seats that have used Copilot during the current billing cycle.",
     )
-    actor_name: Missing[str] = Field(
+    inactive_this_cycle: Missing[int] = Field(
         default=UNSET,
-        description="The name of the GitHub user who requested the dismissal.",
+        description="The number of seats that have not used Copilot during the current billing cycle.",
     )
 
 
-class SecretScanningDismissalRequestPropDataItems(GitHubModel):
-    """SecretScanningDismissalRequestPropDataItems"""
-
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    alert_number: Missing[str] = Field(
-        default=UNSET,
-        description="The number of the secret scanning alert that was detected.",
-    )
-    reason: Missing[Literal["fixed_later", "false_positive", "tests", "revoked"]] = (
-        Field(
-            default=UNSET,
-            description="The reason the user provided for requesting the dismissal.",
-        )
-    )
-
-
-model_rebuild(SecretScanningDismissalRequest)
-model_rebuild(SecretScanningDismissalRequestPropRepository)
-model_rebuild(SecretScanningDismissalRequestPropOrganization)
-model_rebuild(SecretScanningDismissalRequestPropRequester)
-model_rebuild(SecretScanningDismissalRequestPropDataItems)
+model_rebuild(CopilotOrganizationDetails)
+model_rebuild(CopilotOrganizationSeatBreakdown)
 
 __all__ = (
-    "SecretScanningDismissalRequest",
-    "SecretScanningDismissalRequestPropDataItems",
-    "SecretScanningDismissalRequestPropOrganization",
-    "SecretScanningDismissalRequestPropRepository",
-    "SecretScanningDismissalRequestPropRequester",
+    "CopilotOrganizationDetails",
+    "CopilotOrganizationSeatBreakdown",
 )

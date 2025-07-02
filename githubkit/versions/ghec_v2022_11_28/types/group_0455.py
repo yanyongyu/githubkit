@@ -9,112 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any, Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ScimUserListType(TypedDict):
-    """SCIM User List
+class UserRoleItemsType(TypedDict):
+    """UserRoleItems"""
 
-    SCIM User List
-    """
-
-    schemas: list[str]
-    total_results: int
-    items_per_page: int
-    start_index: int
-    resources: list[ScimUserType]
-
-
-class ScimUserType(TypedDict):
-    """SCIM /Users
-
-    SCIM /Users provisioning endpoints
-    """
-
-    schemas: list[str]
-    id: str
-    external_id: NotRequired[Union[str, None]]
-    user_name: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    name: NotRequired[ScimUserPropNameType]
-    emails: list[ScimUserPropEmailsItemsType]
-    active: bool
-    meta: ScimUserPropMetaType
-    organization_id: NotRequired[int]
-    operations: NotRequired[list[ScimUserPropOperationsItemsType]]
-    groups: NotRequired[list[ScimUserPropGroupsItemsType]]
-    roles: NotRequired[list[ScimUserPropRolesItemsType]]
-
-
-class ScimUserPropNameType(TypedDict):
-    """ScimUserPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: NotRequired[Union[str, None]]
-    family_name: NotRequired[Union[str, None]]
-    formatted: NotRequired[Union[str, None]]
-
-
-class ScimUserPropEmailsItemsType(TypedDict):
-    """ScimUserPropEmailsItems"""
-
-    value: str
-    primary: NotRequired[bool]
-    type: NotRequired[str]
-
-
-class ScimUserPropMetaType(TypedDict):
-    """ScimUserPropMeta"""
-
-    resource_type: NotRequired[str]
-    created: NotRequired[datetime]
-    last_modified: NotRequired[datetime]
-    location: NotRequired[str]
-
-
-class ScimUserPropGroupsItemsType(TypedDict):
-    """ScimUserPropGroupsItems"""
-
-    value: NotRequired[str]
     display: NotRequired[str]
-
-
-class ScimUserPropRolesItemsType(TypedDict):
-    """ScimUserPropRolesItems"""
-
-    value: NotRequired[str]
-    primary: NotRequired[bool]
     type: NotRequired[str]
-    display: NotRequired[str]
-
-
-class ScimUserPropOperationsItemsType(TypedDict):
-    """ScimUserPropOperationsItems"""
-
-    op: Literal["add", "remove", "replace"]
-    path: NotRequired[str]
-    value: NotRequired[
-        Union[str, ScimUserPropOperationsItemsPropValueOneof1Type, list[Any]]
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
     ]
+    primary: NotRequired[bool]
 
 
-class ScimUserPropOperationsItemsPropValueOneof1Type(TypedDict):
-    """ScimUserPropOperationsItemsPropValueOneof1"""
-
-
-__all__ = (
-    "ScimUserListType",
-    "ScimUserPropEmailsItemsType",
-    "ScimUserPropGroupsItemsType",
-    "ScimUserPropMetaType",
-    "ScimUserPropNameType",
-    "ScimUserPropOperationsItemsPropValueOneof1Type",
-    "ScimUserPropOperationsItemsType",
-    "ScimUserPropRolesItemsType",
-    "ScimUserType",
-)
+__all__ = ("UserRoleItemsType",)

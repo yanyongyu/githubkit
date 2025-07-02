@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0479 import EnterpriseWebhooks
-from .group_0480 import SimpleInstallation
-from .group_0481 import OrganizationSimpleWebhooks
-from .group_0482 import RepositoryWebhooks
-from .group_0503 import WebhooksIssue2
+from .group_0485 import EnterpriseWebhooks
+from .group_0486 import SimpleInstallation
+from .group_0487 import OrganizationSimpleWebhooks
+from .group_0488 import RepositoryWebhooks
+from .group_0508 import WebhooksMilestone
+from .group_0682 import WebhookIssuesMilestonedPropIssue
 
 
-class WebhookIssuesPinned(GitHubModel):
-    """issues pinned event"""
+class WebhookIssuesMilestoned(GitHubModel):
+    """issues milestoned event"""
 
-    action: Literal["pinned"] = Field()
+    action: Literal["milestoned"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,9 +40,13 @@ class WebhookIssuesPinned(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhooksIssue2 = Field(
+    issue: WebhookIssuesMilestonedPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
+    )
+    milestone: WebhooksMilestone = Field(
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -55,6 +60,6 @@ class WebhookIssuesPinned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesPinned)
+model_rebuild(WebhookIssuesMilestoned)
 
-__all__ = ("WebhookIssuesPinned",)
+__all__ = ("WebhookIssuesMilestoned",)

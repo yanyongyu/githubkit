@@ -15,17 +15,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0089 import RepositoryRulesetConditionsPropRefName
+from .group_0091 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
 
-class RulesetVersionPropActor(GitHubModel):
-    """RulesetVersionPropActor
 
-    The actor who updated the ruleset
+class OrgRulesetConditionsOneof2(GitHubModel):
+    """repository_property_and_ref_name
+
+    Conditions to target repositories by property and refs by name
     """
 
-    id: Missing[int] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
 
 
-model_rebuild(RulesetVersionPropActor)
+model_rebuild(OrgRulesetConditionsOneof2)
 
-__all__ = ("RulesetVersionPropActor",)
+__all__ = ("OrgRulesetConditionsOneof2",)

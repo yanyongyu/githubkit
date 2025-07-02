@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAlertRuleSummaryType(TypedDict):
-    """CodeScanningAlertRuleSummary"""
+class GetAuditLogStreamConfigType(TypedDict):
+    """Get an audit log streaming configuration
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
-    security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
-    ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+    Get an audit log streaming configuration for an enterprise.
+    """
+
+    id: int
+    stream_type: str
+    stream_details: str
+    enabled: bool
+    created_at: datetime
+    updated_at: datetime
+    paused_at: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("CodeScanningAlertRuleSummaryType",)
+__all__ = ("GetAuditLogStreamConfigType",)

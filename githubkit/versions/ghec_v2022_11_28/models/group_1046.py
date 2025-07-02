@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,38 +18,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgPrivateRegistriesGetResponse200(GitHubModel):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
+class OrgsOrgInvitationsPostBody(GitHubModel):
+    """OrgsOrgInvitationsPostBody"""
 
-    total_count: int = Field()
-    configurations: list[OrgPrivateRegistryConfiguration] = Field()
-
-
-class OrgPrivateRegistryConfiguration(GitHubModel):
-    """Organization private registry
-
-    Private registry configuration for an organization
-    """
-
-    name: str = Field(description="The name of the private registry configuration.")
-    registry_type: Literal["maven_repository", "nuget_feed", "goproxy_server"] = Field(
-        description="The registry type."
-    )
-    username: Missing[Union[str, None]] = Field(
+    invitee_id: Missing[int] = Field(
         default=UNSET,
-        description="The username to use when authenticating with the private registry.",
+        description="**Required unless you provide `email`**. GitHub user ID for the person you are inviting.",
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the private registry."
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="**Required unless you provide `invitee_id`**. Email address of the person you are inviting, which can be an existing GitHub user.",
     )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    role: Missing[Literal["admin", "direct_member", "billing_manager", "reinstate"]] = (
+        Field(
+            default=UNSET,
+            description="The role for the new member. \n * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. \n * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.",
+        )
+    )
+    team_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="Specify IDs for the teams you want to invite new members to.",
+    )
 
 
-model_rebuild(OrgsOrgPrivateRegistriesGetResponse200)
-model_rebuild(OrgPrivateRegistryConfiguration)
+model_rebuild(OrgsOrgInvitationsPostBody)
 
-__all__ = (
-    "OrgPrivateRegistryConfiguration",
-    "OrgsOrgPrivateRegistriesGetResponse200",
-)
+__all__ = ("OrgsOrgInvitationsPostBody",)

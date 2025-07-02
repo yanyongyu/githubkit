@@ -9,16 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAnalysisToolType(TypedDict):
-    """CodeScanningAnalysisTool"""
+class BypassResponseType(TypedDict):
+    """Bypass response
 
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+    A response made by a delegated bypasser to a bypass request.
+    """
+
+    id: NotRequired[int]
+    reviewer: NotRequired[BypassResponsePropReviewerType]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[datetime]
 
 
-__all__ = ("CodeScanningAnalysisToolType",)
+class BypassResponsePropReviewerType(TypedDict):
+    """BypassResponsePropReviewer
+
+    The user who reviewed the bypass request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+__all__ = (
+    "BypassResponsePropReviewerType",
+    "BypassResponseType",
+)

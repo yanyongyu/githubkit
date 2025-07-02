@@ -17,16 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0115 import RepositoryRuleBranchNamePatternPropParameters
+from .group_0108 import RepositoryRulePullRequestPropParameters
 
 
-class RepositoryRuleDetailedOneof13(GitHubModel):
-    """RepositoryRuleDetailedOneof13"""
+class RepositoryRuleDetailedOneof7(GitHubModel):
+    """RepositoryRuleDetailedOneof7"""
 
-    type: Literal["branch_name_pattern"] = Field()
-    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["pull_request"] = Field()
+    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -40,6 +38,6 @@ class RepositoryRuleDetailedOneof13(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof13)
+model_rebuild(RepositoryRuleDetailedOneof7)
 
-__all__ = ("RepositoryRuleDetailedOneof13",)
+__all__ = ("RepositoryRuleDetailedOneof7",)

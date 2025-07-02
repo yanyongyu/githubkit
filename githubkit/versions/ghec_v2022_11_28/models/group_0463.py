@@ -18,93 +18,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0456 import SearchResultTextMatchesItems
+from .group_0176 import MinimalRepository
+from .group_0462 import SearchResultTextMatchesItems
 
 
-class TopicSearchResultItem(GitHubModel):
-    """Topic Search Result Item
+class CodeSearchResultItem(GitHubModel):
+    """Code Search Result Item
 
-    Topic Search Result Item
+    Code Search Result Item
     """
 
     name: str = Field()
-    display_name: Union[str, None] = Field()
-    short_description: Union[str, None] = Field()
-    description: Union[str, None] = Field()
-    created_by: Union[str, None] = Field()
-    released: Union[str, None] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    featured: bool = Field()
-    curated: bool = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: str = Field()
+    html_url: str = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
     score: float = Field()
-    repository_count: Missing[Union[int, None]] = Field(default=UNSET)
-    logo_url: Missing[Union[str, None]] = Field(default=UNSET)
+    file_size: Missing[int] = Field(default=UNSET)
+    language: Missing[Union[str, None]] = Field(default=UNSET)
+    last_modified_at: Missing[datetime] = Field(default=UNSET)
+    line_numbers: Missing[list[str]] = Field(default=UNSET)
     text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"
     )
-    related: Missing[Union[list[TopicSearchResultItemPropRelatedItems], None]] = Field(
-        default=UNSET
-    )
-    aliases: Missing[Union[list[TopicSearchResultItemPropAliasesItems], None]] = Field(
-        default=UNSET
-    )
 
 
-class TopicSearchResultItemPropRelatedItems(GitHubModel):
-    """TopicSearchResultItemPropRelatedItems"""
-
-    topic_relation: Missing[TopicSearchResultItemPropRelatedItemsPropTopicRelation] = (
-        Field(default=UNSET)
-    )
-
-
-class TopicSearchResultItemPropRelatedItemsPropTopicRelation(GitHubModel):
-    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
-
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    topic_id: Missing[int] = Field(default=UNSET)
-    relation_type: Missing[str] = Field(default=UNSET)
-
-
-class TopicSearchResultItemPropAliasesItems(GitHubModel):
-    """TopicSearchResultItemPropAliasesItems"""
-
-    topic_relation: Missing[TopicSearchResultItemPropAliasesItemsPropTopicRelation] = (
-        Field(default=UNSET)
-    )
-
-
-class TopicSearchResultItemPropAliasesItemsPropTopicRelation(GitHubModel):
-    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
-
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    topic_id: Missing[int] = Field(default=UNSET)
-    relation_type: Missing[str] = Field(default=UNSET)
-
-
-class SearchTopicsGetResponse200(GitHubModel):
-    """SearchTopicsGetResponse200"""
+class SearchCodeGetResponse200(GitHubModel):
+    """SearchCodeGetResponse200"""
 
     total_count: int = Field()
     incomplete_results: bool = Field()
-    items: list[TopicSearchResultItem] = Field()
+    items: list[CodeSearchResultItem] = Field()
 
 
-model_rebuild(TopicSearchResultItem)
-model_rebuild(TopicSearchResultItemPropRelatedItems)
-model_rebuild(TopicSearchResultItemPropRelatedItemsPropTopicRelation)
-model_rebuild(TopicSearchResultItemPropAliasesItems)
-model_rebuild(TopicSearchResultItemPropAliasesItemsPropTopicRelation)
-model_rebuild(SearchTopicsGetResponse200)
+model_rebuild(CodeSearchResultItem)
+model_rebuild(SearchCodeGetResponse200)
 
 __all__ = (
-    "SearchTopicsGetResponse200",
-    "TopicSearchResultItem",
-    "TopicSearchResultItemPropAliasesItems",
-    "TopicSearchResultItemPropAliasesItemsPropTopicRelation",
-    "TopicSearchResultItemPropRelatedItems",
-    "TopicSearchResultItemPropRelatedItemsPropTopicRelation",
+    "CodeSearchResultItem",
+    "SearchCodeGetResponse200",
 )

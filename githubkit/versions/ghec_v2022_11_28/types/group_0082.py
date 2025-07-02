@@ -9,16 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
+class CustomPropertySetPayloadType(TypedDict):
+    """Custom Property Set Payload
 
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
+    Custom property set payload
+    """
+
+    value_type: Literal["string", "single_select", "multi_select", "true_false"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
 
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",)
+__all__ = ("CustomPropertySetPayloadType",)

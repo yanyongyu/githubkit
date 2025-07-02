@@ -18,19 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0480 import SimpleInstallation
-from .group_0481 import OrganizationSimpleWebhooks
-from .group_0482 import RepositoryWebhooks
-from .group_0487 import CheckRunWithSimpleCheckSuite
+from .group_0485 import EnterpriseWebhooks
+from .group_0486 import SimpleInstallation
+from .group_0487 import OrganizationSimpleWebhooks
+from .group_0488 import RepositoryWebhooks
+from .group_0490 import ExemptionResponse
+from .group_0491 import ExemptionRequest
 
 
-class WebhookCheckRunRequestedAction(GitHubModel):
-    """Check Run Requested Action Event"""
+class WebhookExemptionRequestResponseDismissed(GitHubModel):
+    """Exemption response dismissed event"""
 
-    action: Literal["requested_action"] = Field()
-    check_run: CheckRunWithSimpleCheckSuite = Field(
-        title="CheckRun",
-        description="A check performed on the code of a given code change",
+    action: Literal["response_dismissed"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -42,32 +45,22 @@ class WebhookCheckRunRequestedAction(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    requested_action: Missing[WebhookCheckRunRequestedActionPropRequestedAction] = (
-        Field(default=UNSET, description="The action requested by the user.")
+    exemption_request: ExemptionRequest = Field(
+        title="Exemption Request",
+        description="A request from a user to be exempted from a set of rules.",
+    )
+    exemption_response: ExemptionResponse = Field(
+        title="Exemption response",
+        description="A response to an exemption request by a delegated bypasser.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookCheckRunRequestedActionPropRequestedAction(GitHubModel):
-    """WebhookCheckRunRequestedActionPropRequestedAction
+model_rebuild(WebhookExemptionRequestResponseDismissed)
 
-    The action requested by the user.
-    """
-
-    identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The integrator reference of the action requested by the user.",
-    )
-
-
-model_rebuild(WebhookCheckRunRequestedAction)
-model_rebuild(WebhookCheckRunRequestedActionPropRequestedAction)
-
-__all__ = (
-    "WebhookCheckRunRequestedAction",
-    "WebhookCheckRunRequestedActionPropRequestedAction",
-)
+__all__ = ("WebhookExemptionRequestResponseDismissed",)

@@ -15,22 +15,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0071 import CopilotSeatDetails
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
 
-    users: Missing[list[str]] = Field(
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+
+    total_seats: Missing[int] = Field(
         default=UNSET,
-        description="The usernames of the users to remove from the cost center.",
+        description="The total number of Copilot seats the enterprise is being billed for. Users with access through multiple organizations or enterprise teams are only counted once.",
     )
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody
-)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSeatsGetResponse200)
 
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody",
-)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200",)

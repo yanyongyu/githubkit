@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,71 +18,66 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0462 import SearchResultTextMatchesItems
 
-class GpgKey(GitHubModel):
-    """GPG Key
 
-    A unique encryption key
+class UserSearchResultItem(GitHubModel):
+    """User Search Result Item
+
+    User Search Result Item
     """
 
+    login: str = Field()
     id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    score: float = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    events_url: str = Field()
+    public_repos: Missing[int] = Field(default=UNSET)
+    public_gists: Missing[int] = Field(default=UNSET)
+    followers: Missing[int] = Field(default=UNSET)
+    following: Missing[int] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(default=UNSET)
+    updated_at: Missing[datetime] = Field(default=UNSET)
     name: Missing[Union[str, None]] = Field(default=UNSET)
-    primary_key_id: Union[int, None] = Field()
-    key_id: str = Field()
-    public_key: str = Field()
-    emails: list[GpgKeyPropEmailsItems] = Field()
-    subkeys: list[GpgKeyPropSubkeysItems] = Field()
-    can_sign: bool = Field()
-    can_encrypt_comms: bool = Field()
-    can_encrypt_storage: bool = Field()
-    can_certify: bool = Field()
-    created_at: datetime = Field()
-    expires_at: Union[datetime, None] = Field()
-    revoked: bool = Field()
-    raw_key: Union[str, None] = Field()
+    bio: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    location: Missing[Union[str, None]] = Field(default=UNSET)
+    site_admin: bool = Field()
+    hireable: Missing[Union[bool, None]] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
+    blog: Missing[Union[str, None]] = Field(default=UNSET)
+    company: Missing[Union[str, None]] = Field(default=UNSET)
+    suspended_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class GpgKeyPropEmailsItems(GitHubModel):
-    """GpgKeyPropEmailsItems"""
+class SearchUsersGetResponse200(GitHubModel):
+    """SearchUsersGetResponse200"""
 
-    email: Missing[str] = Field(default=UNSET)
-    verified: Missing[bool] = Field(default=UNSET)
-
-
-class GpgKeyPropSubkeysItems(GitHubModel):
-    """GpgKeyPropSubkeysItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    primary_key_id: Missing[int] = Field(default=UNSET)
-    key_id: Missing[str] = Field(default=UNSET)
-    public_key: Missing[str] = Field(default=UNSET)
-    emails: Missing[list[GpgKeyPropSubkeysItemsPropEmailsItems]] = Field(default=UNSET)
-    subkeys: Missing[list[Any]] = Field(default=UNSET)
-    can_sign: Missing[bool] = Field(default=UNSET)
-    can_encrypt_comms: Missing[bool] = Field(default=UNSET)
-    can_encrypt_storage: Missing[bool] = Field(default=UNSET)
-    can_certify: Missing[bool] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    expires_at: Missing[Union[str, None]] = Field(default=UNSET)
-    raw_key: Missing[Union[str, None]] = Field(default=UNSET)
-    revoked: Missing[bool] = Field(default=UNSET)
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[UserSearchResultItem] = Field()
 
 
-class GpgKeyPropSubkeysItemsPropEmailsItems(GitHubModel):
-    """GpgKeyPropSubkeysItemsPropEmailsItems"""
-
-    email: Missing[str] = Field(default=UNSET)
-    verified: Missing[bool] = Field(default=UNSET)
-
-
-model_rebuild(GpgKey)
-model_rebuild(GpgKeyPropEmailsItems)
-model_rebuild(GpgKeyPropSubkeysItems)
-model_rebuild(GpgKeyPropSubkeysItemsPropEmailsItems)
+model_rebuild(UserSearchResultItem)
+model_rebuild(SearchUsersGetResponse200)
 
 __all__ = (
-    "GpgKey",
-    "GpgKeyPropEmailsItems",
-    "GpgKeyPropSubkeysItems",
-    "GpgKeyPropSubkeysItemsPropEmailsItems",
+    "SearchUsersGetResponse200",
+    "UserSearchResultItem",
 )

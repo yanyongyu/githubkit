@@ -9,20 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0188 import CodespaceType
 
 
-class OrgsOrgPrivateRegistriesPostBodyType(TypedDict):
-    """OrgsOrgPrivateRegistriesPostBody"""
+class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
 
-    registry_type: Literal["maven_repository", "nuget_feed", "goproxy_server"]
-    url: str
-    username: NotRequired[Union[str, None]]
-    encrypted_value: str
-    key_id: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    codespaces: list[CodespaceType]
 
 
-__all__ = ("OrgsOrgPrivateRegistriesPostBodyType",)
+__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200Type",)

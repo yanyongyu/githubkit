@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,38 +18,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserNameResponse(GitHubModel):
-    """UserNameResponse"""
+class GroupResponse(GitHubModel):
+    """GroupResponse"""
 
-    formatted: Missing[str] = Field(
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    )
+    external_id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
     )
-    family_name: Missing[str] = Field(
-        default=UNSET, alias="familyName", description="The family name of the user."
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="A human-readable name for a security group.",
     )
-    given_name: Missing[str] = Field(
-        default=UNSET, alias="givenName", description="The given name of the user."
-    )
-    middle_name: Missing[str] = Field(
-        default=UNSET, alias="middleName", description="The middle name(s) of the user."
-    )
-
-
-class UserEmailsResponseItems(GitHubModel):
-    """UserEmailsResponseItems"""
-
-    value: str = Field(description="The email address.")
-    type: Missing[str] = Field(default=UNSET, description="The type of email address.")
-    primary: Missing[bool] = Field(
-        default=UNSET, description="Whether this email address is the primary address."
+    members: Missing[list[GroupResponsePropMembersItems]] = Field(
+        default=UNSET, description="The group members."
     )
 
 
-model_rebuild(UserNameResponse)
-model_rebuild(UserEmailsResponseItems)
+class GroupResponsePropMembersItems(GitHubModel):
+    """GroupResponsePropMembersItems"""
+
+    value: str = Field(description="The local unique identifier for the member")
+    ref: str = Field(alias="$ref")
+    display: Missing[str] = Field(
+        default=UNSET, description="The display name associated with the member"
+    )
+
+
+model_rebuild(GroupResponse)
+model_rebuild(GroupResponsePropMembersItems)
 
 __all__ = (
-    "UserEmailsResponseItems",
-    "UserNameResponse",
+    "GroupResponse",
+    "GroupResponsePropMembersItems",
 )

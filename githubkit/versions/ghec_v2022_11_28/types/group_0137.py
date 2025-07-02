@@ -9,21 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0138 import RulesetVersionPropActorType
+from .group_0089 import RepositoryRulesetConditionsPropRefNameType
+from .group_0135 import (
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
+)
 
 
-class RulesetVersionType(TypedDict):
-    """Ruleset version
+class OrgRulesetConditionsOneof1Type(TypedDict):
+    """repository_id_and_ref_name
 
-    The historical version of a ruleset
+    Conditions to target repositories by id and refs by name
     """
 
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: datetime
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
 
 
-__all__ = ("RulesetVersionType",)
+__all__ = ("OrgRulesetConditionsOneof1Type",)

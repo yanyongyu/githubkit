@@ -9,58 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class BypassResponse(GitHubModel):
-    """Bypass response
+class AmazonS3OidcConfig(GitHubModel):
+    """AmazonS3OIDCConfig
 
-    A response made by a delegated bypasser to a bypass request.
+    Amazon S3 OIDC Config for audit log streaming configuration.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the response to the bypass request."
+    bucket: str = Field(description="Amazon S3 Bucket Name.")
+    region: str = Field(description="AWS S3 Bucket Region.")
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
     )
-    reviewer: Missing[BypassResponsePropReviewer] = Field(
-        default=UNSET, description="The user who reviewed the bypass request."
+    authentication_type: Literal["oidc"] = Field(
+        description="Authentication Type for Amazon S3."
     )
-    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
-        default=UNSET,
-        description="The response status to the bypass request until dismissed.",
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time the response to the bypass request was created.",
-    )
+    arn_role: str = Field()
 
 
-class BypassResponsePropReviewer(GitHubModel):
-    """BypassResponsePropReviewer
+class SplunkConfig(GitHubModel):
+    """SplunkConfig
 
-    The user who reviewed the bypass request.
+    Splunk Config for Audit Log Stream Configuration
     """
 
-    actor_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the GitHub user who reviewed the bypass request.",
+    domain: str = Field(description="Domain of Splunk instance.")
+    port: int = Field(description="The port number for connecting to Splunk.")
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
     )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who reviewed the bypass request.",
+    encrypted_token: str = Field(description="Encrypted Token.")
+    ssl_verify: bool = Field(
+        description="SSL verification helps ensure your events are sent to your Splunk endpoint securely."
     )
 
 
-model_rebuild(BypassResponse)
-model_rebuild(BypassResponsePropReviewer)
+model_rebuild(AmazonS3OidcConfig)
+model_rebuild(SplunkConfig)
 
 __all__ = (
-    "BypassResponse",
-    "BypassResponsePropReviewer",
+    "AmazonS3OidcConfig",
+    "SplunkConfig",
 )

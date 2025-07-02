@@ -9,35 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
 
+class FeedType(TypedDict):
+    """Feed
 
-class GistCommitType(TypedDict):
-    """Gist Commit
-
-    Gist Commit
+    Feed
     """
 
-    url: str
-    version: str
-    user: Union[None, SimpleUserType]
-    change_status: GistCommitPropChangeStatusType
-    committed_at: datetime
+    timeline_url: str
+    user_url: str
+    current_user_public_url: NotRequired[str]
+    current_user_url: NotRequired[str]
+    current_user_actor_url: NotRequired[str]
+    current_user_organization_url: NotRequired[str]
+    current_user_organization_urls: NotRequired[list[str]]
+    security_advisories_url: NotRequired[str]
+    repository_discussions_url: NotRequired[str]
+    repository_discussions_category_url: NotRequired[str]
+    links: FeedPropLinksType
 
 
-class GistCommitPropChangeStatusType(TypedDict):
-    """GistCommitPropChangeStatus"""
+class FeedPropLinksType(TypedDict):
+    """FeedPropLinks"""
 
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
+    timeline: LinkWithTypeType
+    user: LinkWithTypeType
+    security_advisories: NotRequired[LinkWithTypeType]
+    current_user: NotRequired[LinkWithTypeType]
+    current_user_public: NotRequired[LinkWithTypeType]
+    current_user_actor: NotRequired[LinkWithTypeType]
+    current_user_organization: NotRequired[LinkWithTypeType]
+    current_user_organizations: NotRequired[list[LinkWithTypeType]]
+    repository_discussions: NotRequired[LinkWithTypeType]
+    repository_discussions_category: NotRequired[LinkWithTypeType]
+
+
+class LinkWithTypeType(TypedDict):
+    """Link With Type
+
+    Hypermedia Link with Type
+    """
+
+    href: str
+    type: str
 
 
 __all__ = (
-    "GistCommitPropChangeStatusType",
-    "GistCommitType",
+    "FeedPropLinksType",
+    "FeedType",
+    "LinkWithTypeType",
 )

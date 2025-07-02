@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,18 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class ProjectsProjectIdPatchBody(GitHubModel):
+    """ProjectsProjectIdPatchBody"""
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
+    name: Missing[str] = Field(default=UNSET, description="Name of the project")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Body of the project"
     )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+    state: Missing[str] = Field(
+        default=UNSET, description="State of the project; either 'open' or 'closed'"
+    )
+    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
         default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+        description="The baseline permission that all organization members have on this project",
+    )
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether or not this project can be seen by everyone.",
     )
 
 
-model_rebuild(ReposOwnerRepoActionsPermissionsPutBody)
+model_rebuild(ProjectsProjectIdPatchBody)
 
-__all__ = ("ReposOwnerRepoActionsPermissionsPutBody",)
+__all__ = ("ProjectsProjectIdPatchBody",)

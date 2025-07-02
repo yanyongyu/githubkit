@@ -9,54 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0171 import MinimalRepositoryType
-from .group_0267 import GitUserType
-from .group_0456 import SearchResultTextMatchesItemsType
-from .group_0459 import CommitSearchResultItemPropCommitType
+from .group_0449 import MetaType
+from .group_0459 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
 
 
-class CommitSearchResultItemType(TypedDict):
-    """Commit Search Result Item
+class ScimEnterpriseUserResponseAllof1Type(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    Commit Search Result Item
-    """
-
-    url: str
-    sha: str
-    html_url: str
-    comments_url: str
-    commit: CommitSearchResultItemPropCommitType
-    author: Union[None, SimpleUserType]
-    committer: Union[None, GitUserType]
-    parents: list[CommitSearchResultItemPropParentsItemsType]
-    repository: MinimalRepositoryType
-    score: float
-    node_id: str
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
 
 
-class CommitSearchResultItemPropParentsItemsType(TypedDict):
-    """CommitSearchResultItemPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class SearchCommitsGetResponse200Type(TypedDict):
-    """SearchCommitsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CommitSearchResultItemType]
-
-
-__all__ = (
-    "CommitSearchResultItemPropParentsItemsType",
-    "CommitSearchResultItemType",
-    "SearchCommitsGetResponse200Type",
-)
+__all__ = ("ScimEnterpriseUserResponseAllof1Type",)

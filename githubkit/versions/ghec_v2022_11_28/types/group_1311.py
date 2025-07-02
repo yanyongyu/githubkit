@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UserMembershipsOrgsOrgPatchBodyType(TypedDict):
-    """UserMembershipsOrgsOrgPatchBody"""
+class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    state: Literal["active"]
+    selected_repository_ids: list[int]
 
 
-__all__ = ("UserMembershipsOrgsOrgPatchBodyType",)
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBodyType",)

@@ -9,16 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseNetworkConfigurationsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
+class EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type(TypedDict):
+    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
 
-    name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsPostBodyType",)
+__all__ = ("EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type",)

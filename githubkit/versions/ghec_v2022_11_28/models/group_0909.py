@@ -18,18 +18,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsPermissionsPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
+class EnterprisesEnterpriseActionsHostedRunnersPostBody(GitHubModel):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
 
-    enabled_organizations: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions."
+    name: str = Field(
+        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
     )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage = Field(
+        description="The image of runner. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`."
+    )
+    size: str = Field(
+        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`"
+    )
+    runner_group_id: int = Field(
+        description="The existing runner group to add this runner to."
+    )
+    maximum_runners: Missing[int] = Field(
         default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+    )
+    enable_static_ip: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this runner should be created with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsPermissionsPutBody)
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage(GitHubModel):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsPutBody",)
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: Missing[str] = Field(
+        default=UNSET, description="The unique identifier of the runner image."
+    )
+    source: Missing[Literal["github", "partner", "custom"]] = Field(
+        default=UNSET, description="The source of the runner image."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersPostBody)
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage)
+
+__all__ = (
+    "EnterprisesEnterpriseActionsHostedRunnersPostBody",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage",
+)

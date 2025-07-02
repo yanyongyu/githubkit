@@ -9,75 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class Import(GitHubModel):
-    """Import
+class GitCommit(GitHubModel):
+    """Git Commit
 
-    A repository import from an external source.
+    Low-level Git commit operations within a repository
     """
 
-    vcs: Union[str, None] = Field()
-    use_lfs: Missing[bool] = Field(default=UNSET)
-    vcs_url: str = Field(description="The URL of the originating repository.")
-    svc_root: Missing[str] = Field(default=UNSET)
-    tfvc_project: Missing[str] = Field(default=UNSET)
-    status: Literal[
-        "auth",
-        "error",
-        "none",
-        "detecting",
-        "choose",
-        "auth_failed",
-        "importing",
-        "mapping",
-        "waiting_to_push",
-        "pushing",
-        "complete",
-        "setup",
-        "unknown",
-        "detection_found_multiple",
-        "detection_found_nothing",
-        "detection_needs_auth",
-    ] = Field()
-    status_text: Missing[Union[str, None]] = Field(default=UNSET)
-    failed_step: Missing[Union[str, None]] = Field(default=UNSET)
-    error_message: Missing[Union[str, None]] = Field(default=UNSET)
-    import_percent: Missing[Union[int, None]] = Field(default=UNSET)
-    commit_count: Missing[Union[int, None]] = Field(default=UNSET)
-    push_percent: Missing[Union[int, None]] = Field(default=UNSET)
-    has_large_files: Missing[bool] = Field(default=UNSET)
-    large_files_size: Missing[int] = Field(default=UNSET)
-    large_files_count: Missing[int] = Field(default=UNSET)
-    project_choices: Missing[list[ImportPropProjectChoicesItems]] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    authors_count: Missing[Union[int, None]] = Field(default=UNSET)
+    sha: str = Field(description="SHA for the commit")
+    node_id: str = Field()
+    url: str = Field()
+    author: GitCommitPropAuthor = Field(
+        description="Identifying information for the git-user"
+    )
+    committer: GitCommitPropCommitter = Field(
+        description="Identifying information for the git-user"
+    )
+    message: str = Field(description="Message describing the purpose of the commit")
+    tree: GitCommitPropTree = Field()
+    parents: list[GitCommitPropParentsItems] = Field()
+    verification: GitCommitPropVerification = Field()
+    html_url: str = Field()
+
+
+class GitCommitPropAuthor(GitHubModel):
+    """GitCommitPropAuthor
+
+    Identifying information for the git-user
+    """
+
+    date: datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class GitCommitPropCommitter(GitHubModel):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class GitCommitPropTree(GitHubModel):
+    """GitCommitPropTree"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+
+
+class GitCommitPropParentsItems(GitHubModel):
+    """GitCommitPropParentsItems"""
+
+    sha: str = Field(description="SHA for the commit")
     url: str = Field()
     html_url: str = Field()
-    authors_url: str = Field()
-    repository_url: str = Field()
-    svn_root: Missing[str] = Field(default=UNSET)
 
 
-class ImportPropProjectChoicesItems(GitHubModel):
-    """ImportPropProjectChoicesItems"""
+class GitCommitPropVerification(GitHubModel):
+    """GitCommitPropVerification"""
 
-    vcs: Missing[str] = Field(default=UNSET)
-    tfvc_project: Missing[str] = Field(default=UNSET)
-    human_name: Missing[str] = Field(default=UNSET)
+    verified: bool = Field()
+    reason: str = Field()
+    signature: Union[str, None] = Field()
+    payload: Union[str, None] = Field()
+    verified_at: Union[str, None] = Field()
 
 
-model_rebuild(Import)
-model_rebuild(ImportPropProjectChoicesItems)
+model_rebuild(GitCommit)
+model_rebuild(GitCommitPropAuthor)
+model_rebuild(GitCommitPropCommitter)
+model_rebuild(GitCommitPropTree)
+model_rebuild(GitCommitPropParentsItems)
+model_rebuild(GitCommitPropVerification)
 
 __all__ = (
-    "Import",
-    "ImportPropProjectChoicesItems",
+    "GitCommit",
+    "GitCommitPropAuthor",
+    "GitCommitPropCommitter",
+    "GitCommitPropParentsItems",
+    "GitCommitPropTree",
+    "GitCommitPropVerification",
 )

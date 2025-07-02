@@ -9,19 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class AutolinkType(TypedDict):
-    """Autolink reference
+class ReviewCustomGatesStateRequiredType(TypedDict):
+    """ReviewCustomGatesStateRequired"""
 
-    An autolink reference.
-    """
-
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
+    environment_name: str
+    state: Literal["approved", "rejected"]
+    comment: NotRequired[str]
 
 
-__all__ = ("AutolinkType",)
+__all__ = ("ReviewCustomGatesStateRequiredType",)

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,19 +18,31 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class GetAuditLogStreamConfigsItems(GitHubModel):
-    """GetAuditLogStreamConfigsItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    stream_type: Missing[str] = Field(default=UNSET)
-    stream_details: Missing[str] = Field(default=UNSET)
-    enabled: Missing[bool] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
-    paused_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+from .group_0017 import AppPermissions
 
 
-model_rebuild(GetAuditLogStreamConfigsItems)
+class EnterpriseOrganizationInstallation(GitHubModel):
+    """Enterprise Organization Installation
 
-__all__ = ("GetAuditLogStreamConfigsItems",)
+    A GitHub App Installation on an enterprise-owned organization
+    """
+
+    id: int = Field(description="The ID of the installation.")
+    app_slug: Missing[str] = Field(default=UNSET)
+    client_id: str = Field()
+    repository_selection: Literal["all", "selected"] = Field(
+        description="Describe whether all repositories have been selected or there's a selection involved"
+    )
+    repositories_url: str = Field()
+    permissions: AppPermissions = Field(
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
+    )
+    events: Missing[list[str]] = Field(default=UNSET)
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+
+
+model_rebuild(EnterpriseOrganizationInstallation)
+
+__all__ = ("EnterpriseOrganizationInstallation",)

@@ -18,73 +18,81 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0479 import EnterpriseWebhooks
-from .group_0480 import SimpleInstallation
-from .group_0481 import OrganizationSimpleWebhooks
-from .group_0482 import RepositoryWebhooks
+from .group_0485 import EnterpriseWebhooks
+from .group_0486 import SimpleInstallation
+from .group_0487 import OrganizationSimpleWebhooks
+from .group_0488 import RepositoryWebhooks
+from .group_0498 import WebhooksUser
 
 
-class WebhookMetaDeleted(GitHubModel):
-    """meta deleted event"""
+class WebhookMemberEdited(GitHubModel):
+    """member edited event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookMemberEditedPropChanges = Field(
+        description="The changes to the collaborator permissions"
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    hook: WebhookMetaDeletedPropHook = Field(
-        description="The deleted webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace."
-    )
-    hook_id: int = Field(description="The id of the modified webhook.")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    member: Union[WebhooksUser, None] = Field(title="User")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+class WebhookMemberEditedPropChanges(GitHubModel):
+    """WebhookMemberEditedPropChanges
+
+    The changes to the collaborator permissions
+    """
+
+    old_permission: Missing[WebhookMemberEditedPropChangesPropOldPermission] = Field(
+        default=UNSET
+    )
+    permission: Missing[WebhookMemberEditedPropChangesPropPermission] = Field(
+        default=UNSET
     )
 
 
-class WebhookMetaDeletedPropHook(GitHubModel):
-    """WebhookMetaDeletedPropHook
+class WebhookMemberEditedPropChangesPropOldPermission(GitHubModel):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
 
-    The deleted webhook. This will contain different keys based on the type of
-    webhook it is: repository, organization, business, app, or GitHub Marketplace.
-    """
-
-    active: bool = Field()
-    config: WebhookMetaDeletedPropHookPropConfig = Field()
-    created_at: str = Field()
-    events: list[str] = Field(description="")
-    id: int = Field()
-    name: str = Field()
-    type: str = Field()
-    updated_at: str = Field()
+    from_: str = Field(
+        alias="from",
+        description="The previous permissions of the collaborator if the action was edited.",
+    )
 
 
-class WebhookMetaDeletedPropHookPropConfig(GitHubModel):
-    """WebhookMetaDeletedPropHookPropConfig"""
+class WebhookMemberEditedPropChangesPropPermission(GitHubModel):
+    """WebhookMemberEditedPropChangesPropPermission"""
 
-    content_type: Literal["json", "form"] = Field()
-    insecure_ssl: str = Field()
-    secret: Missing[str] = Field(default=UNSET)
-    url: str = Field()
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookMetaDeleted)
-model_rebuild(WebhookMetaDeletedPropHook)
-model_rebuild(WebhookMetaDeletedPropHookPropConfig)
+model_rebuild(WebhookMemberEdited)
+model_rebuild(WebhookMemberEditedPropChanges)
+model_rebuild(WebhookMemberEditedPropChangesPropOldPermission)
+model_rebuild(WebhookMemberEditedPropChangesPropPermission)
 
 __all__ = (
-    "WebhookMetaDeleted",
-    "WebhookMetaDeletedPropHook",
-    "WebhookMetaDeletedPropHookPropConfig",
+    "WebhookMemberEdited",
+    "WebhookMemberEditedPropChanges",
+    "WebhookMemberEditedPropChangesPropOldPermission",
+    "WebhookMemberEditedPropChangesPropPermission",
 )

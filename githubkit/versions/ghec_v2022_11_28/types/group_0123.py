@@ -9,13 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0124 import RepositoryRuleMaxFilePathLengthPropParametersType
 
 
-class RepositoryRuleFileExtensionRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+class RepositoryRuleMaxFilePathLengthType(TypedDict):
+    """max_file_path_length
 
-    restricted_file_extensions: list[str]
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
+    """
+
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
 
 
-__all__ = ("RepositoryRuleFileExtensionRestrictionPropParametersType",)
+__all__ = ("RepositoryRuleMaxFilePathLengthType",)

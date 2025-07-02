@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,71 +19,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksApprover(GitHubModel):
-    """WebhooksApprover"""
+class ExemptionResponse(GitHubModel):
+    """Exemption response
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    A response to an exemption request by a delegated bypasser.
+    """
 
-
-class WebhooksReviewersItems(GitHubModel):
-    """WebhooksReviewersItems"""
-
-    reviewer: Missing[Union[WebhooksReviewersItemsPropReviewer, None]] = Field(
-        default=UNSET, title="User"
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the exemption response."
     )
-    type: Missing[Literal["User"]] = Field(default=UNSET)
+    reviewer_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the user who reviewed the exemption request.",
+    )
+    reviewer_login: Missing[str] = Field(
+        default=UNSET,
+        description="The login of the user who reviewed the exemption request.",
+    )
+    status: Missing[Literal["approved", "rejected", "dismissed"]] = Field(
+        default=UNSET, description="The status of the exemption response."
+    )
+    reviewer_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment the reviewer provided when responding to the exemption request.",
+    )
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time the exemption request was created.",
+    )
 
 
-class WebhooksReviewersItemsPropReviewer(GitHubModel):
-    """User"""
+model_rebuild(ExemptionResponse)
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhooksApprover)
-model_rebuild(WebhooksReviewersItems)
-model_rebuild(WebhooksReviewersItemsPropReviewer)
-
-__all__ = (
-    "WebhooksApprover",
-    "WebhooksReviewersItems",
-    "WebhooksReviewersItemsPropReviewer",
-)
+__all__ = ("ExemptionResponse",)

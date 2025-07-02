@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,30 +17,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0454 import UserEmailsResponseItems, UserNameResponse
+from .group_0455 import UserRoleItems
 
-class SearchResultTextMatchesItems(GitHubModel):
-    """SearchResultTextMatchesItems"""
 
-    object_url: Missing[str] = Field(default=UNSET)
-    object_type: Missing[Union[str, None]] = Field(default=UNSET)
-    property_: Missing[str] = Field(default=UNSET, alias="property")
-    fragment: Missing[str] = Field(default=UNSET)
-    matches: Missing[list[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
-        default=UNSET
+class UserResponse(GitHubModel):
+    """UserResponse"""
+
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    )
+    external_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    active: bool = Field(description="Whether the user active in the IdP.")
+    user_name: Missing[str] = Field(
+        default=UNSET, alias="userName", description="The username for the user."
+    )
+    name: Missing[UserNameResponse] = Field(default=UNSET)
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="A human-readable name for the user.",
+    )
+    emails: list[UserEmailsResponseItems] = Field(
+        description="The emails for the user."
+    )
+    roles: Missing[list[UserRoleItems]] = Field(
+        default=UNSET, description="The roles assigned to the user."
     )
 
 
-class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
+model_rebuild(UserResponse)
 
-    text: Missing[str] = Field(default=UNSET)
-    indices: Missing[list[int]] = Field(default=UNSET)
-
-
-model_rebuild(SearchResultTextMatchesItems)
-model_rebuild(SearchResultTextMatchesItemsPropMatchesItems)
-
-__all__ = (
-    "SearchResultTextMatchesItems",
-    "SearchResultTextMatchesItemsPropMatchesItems",
-)
+__all__ = ("UserResponse",)

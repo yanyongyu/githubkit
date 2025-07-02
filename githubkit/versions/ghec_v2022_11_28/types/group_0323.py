@@ -9,38 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ContributorType(TypedDict):
-    """Contributor
+class ContentDirectoryItemsType(TypedDict):
+    """ContentDirectoryItems"""
 
-    Contributor
-    """
-
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    avatar_url: NotRequired[str]
-    gravatar_id: NotRequired[Union[str, None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: str
-    site_admin: NotRequired[bool]
-    contributions: int
-    email: NotRequired[str]
-    name: NotRequired[str]
-    user_view_type: NotRequired[str]
+    type: Literal["dir", "file", "submodule", "symlink"]
+    size: int
+    name: str
+    path: str
+    content: NotRequired[str]
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentDirectoryItemsPropLinksType
 
 
-__all__ = ("ContributorType",)
+class ContentDirectoryItemsPropLinksType(TypedDict):
+    """ContentDirectoryItemsPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+__all__ = (
+    "ContentDirectoryItemsPropLinksType",
+    "ContentDirectoryItemsType",
+)

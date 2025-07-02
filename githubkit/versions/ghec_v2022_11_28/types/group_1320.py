@@ -9,13 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0020 import RepositoryType
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
-    subject_digests: list[str]
+    total_count: int
+    repository_selection: NotRequired[str]
+    repositories: list[RepositoryType]
 
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type",)
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200Type",)

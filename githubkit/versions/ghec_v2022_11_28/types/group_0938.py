@@ -9,16 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0076 import NetworkConfigurationType
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
+    errors: NotRequired[list[str]]
 
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type",)
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",)

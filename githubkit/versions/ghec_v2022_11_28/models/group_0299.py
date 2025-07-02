@@ -9,32 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0296 import CodeScanningVariantAnalysisSkippedRepoGroup
 
 
-class CodeScanningSarifsStatus(GitHubModel):
-    """CodeScanningSarifsStatus"""
+class CodeScanningVariantAnalysisPropSkippedRepositories(GitHubModel):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
-        default=UNSET,
-        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
+    """
+
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos = Field()
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+
+
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos(GitHubModel):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
     )
-    analyses_url: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The REST API URL for getting the analyses associated with the upload.",
-    )
-    errors: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="Any errors that ocurred during processing of the delivery.",
+    repository_full_names: list[str] = Field(
+        description="A list of full repository names that were skipped. This list may not include all repositories that were skipped."
     )
 
 
-model_rebuild(CodeScanningSarifsStatus)
+model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositories)
+model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos)
 
-__all__ = ("CodeScanningSarifsStatus",)
+__all__ = (
+    "CodeScanningVariantAnalysisPropSkippedRepositories",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos",
+)

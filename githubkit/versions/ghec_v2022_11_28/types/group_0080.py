@@ -9,26 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulesetBypassActorType(TypedDict):
-    """Repository Ruleset Bypass Actor
+class NetworkSettingsType(TypedDict):
+    """Hosted compute network settings resource
 
-    An actor that can bypass rules in a ruleset
+    A hosted compute network settings resource.
     """
 
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "EnterpriseOwner",
-    ]
-    bypass_mode: NotRequired[Literal["always", "pull_request"]]
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
-__all__ = ("RepositoryRulesetBypassActorType",)
+__all__ = ("NetworkSettingsType",)

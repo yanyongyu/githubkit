@@ -9,16 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0183 import CodespaceType
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesGetResponse200Type(TypedDict):
-    """UserCodespacesGetResponse200"""
+class TeamsTeamIdDiscussionsPostBodyType(TypedDict):
+    """TeamsTeamIdDiscussionsPostBody"""
 
-    total_count: int
-    codespaces: list[CodespaceType]
+    title: str
+    body: str
+    private: NotRequired[bool]
 
 
-__all__ = ("UserCodespacesGetResponse200Type",)
+__all__ = ("TeamsTeamIdDiscussionsPostBodyType",)

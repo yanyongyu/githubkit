@@ -9,39 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0479 import EnterpriseWebhooksType
-from .group_0480 import SimpleInstallationType
-from .group_0481 import OrganizationSimpleWebhooksType
-from .group_0482 import RepositoryWebhooksType
+from .group_0485 import EnterpriseWebhooksType
+from .group_0486 import SimpleInstallationType
+from .group_0487 import OrganizationSimpleWebhooksType
+from .group_0488 import RepositoryWebhooksType
+from .group_0608 import WebhookForkPropForkeeType
 
 
-class WebhookGollumType(TypedDict):
-    """gollum event"""
+class WebhookForkType(TypedDict):
+    """fork event
+
+    A user forks a repository.
+    """
 
     enterprise: NotRequired[EnterpriseWebhooksType]
+    forkee: WebhookForkPropForkeeType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pages: list[WebhookGollumPropPagesItemsType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookGollumPropPagesItemsType(TypedDict):
-    """WebhookGollumPropPagesItems"""
-
-    action: Literal["created", "edited"]
-    html_url: str
-    page_name: str
-    sha: str
-    summary: Union[str, None]
-    title: str
-
-
-__all__ = (
-    "WebhookGollumPropPagesItemsType",
-    "WebhookGollumType",
-)
+__all__ = ("WebhookForkType",)

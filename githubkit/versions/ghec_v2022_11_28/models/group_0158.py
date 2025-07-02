@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,79 +19,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Feed(GitHubModel):
-    """Feed
+class IssueType(GitHubModel):
+    """Issue Type
 
-    Feed
+    The type of issue.
     """
 
-    timeline_url: str = Field()
-    user_url: str = Field()
-    current_user_public_url: Missing[str] = Field(default=UNSET)
-    current_user_url: Missing[str] = Field(default=UNSET)
-    current_user_actor_url: Missing[str] = Field(default=UNSET)
-    current_user_organization_url: Missing[str] = Field(default=UNSET)
-    current_user_organization_urls: Missing[list[str]] = Field(default=UNSET)
-    security_advisories_url: Missing[str] = Field(default=UNSET)
-    repository_discussions_url: Missing[str] = Field(
-        default=UNSET, description="A feed of discussions for a given repository."
+    id: int = Field(description="The unique identifier of the issue type.")
+    node_id: str = Field(description="The node identifier of the issue type.")
+    name: str = Field(description="The name of the issue type.")
+    description: Union[str, None] = Field(
+        description="The description of the issue type."
     )
-    repository_discussions_category_url: Missing[str] = Field(
-        default=UNSET,
-        description="A feed of discussions for a given repository and category.",
+    color: Missing[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ] = Field(default=UNSET, description="The color of the issue type.")
+    created_at: Missing[datetime] = Field(
+        default=UNSET, description="The time the issue type created."
     )
-    links: FeedPropLinks = Field(alias="_links")
-
-
-class FeedPropLinks(GitHubModel):
-    """FeedPropLinks"""
-
-    timeline: LinkWithType = Field(
-        title="Link With Type", description="Hypermedia Link with Type"
+    updated_at: Missing[datetime] = Field(
+        default=UNSET, description="The time the issue type last updated."
     )
-    user: LinkWithType = Field(
-        title="Link With Type", description="Hypermedia Link with Type"
-    )
-    security_advisories: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_public: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_actor: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_organization: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_organizations: Missing[list[LinkWithType]] = Field(default=UNSET)
-    repository_discussions: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    repository_discussions_category: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    is_enabled: Missing[bool] = Field(
+        default=UNSET, description="The enabled state of the issue type."
     )
 
 
-class LinkWithType(GitHubModel):
-    """Link With Type
+model_rebuild(IssueType)
 
-    Hypermedia Link with Type
-    """
-
-    href: str = Field()
-    type: str = Field()
-
-
-model_rebuild(Feed)
-model_rebuild(FeedPropLinks)
-model_rebuild(LinkWithType)
-
-__all__ = (
-    "Feed",
-    "FeedPropLinks",
-    "LinkWithType",
-)
+__all__ = ("IssueType",)

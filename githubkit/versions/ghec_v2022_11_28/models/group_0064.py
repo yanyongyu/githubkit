@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,43 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterpriseSecurityAnalysisSettings(GitHubModel):
-    """Enterprise Security Analysis Settings"""
+class CodeScanningDefaultSetupOptions(GitHubModel):
+    """CodeScanningDefaultSetupOptions
 
-    advanced_security_enabled_for_new_repositories: bool = Field(
-        description="Whether GitHub advanced security is automatically enabled for new repositories and repositories transferred to\nthis enterprise."
-    )
-    advanced_security_enabled_for_new_user_namespace_repositories: Missing[bool] = (
-        Field(
-            default=UNSET,
-            description="Whether GitHub Advanced Security is automatically enabled for new user namespace repositories.",
-        )
-    )
-    dependabot_alerts_enabled_for_new_repositories: bool = Field(
-        description="Whether Dependabot alerts are automatically enabled for new repositories and repositories transferred to this\nenterprise."
-    )
-    secret_scanning_enabled_for_new_repositories: bool = Field(
-        description="Whether secret scanning is automatically enabled for new repositories and repositories transferred to this\nenterprise."
-    )
-    secret_scanning_push_protection_enabled_for_new_repositories: bool = Field(
-        description="Whether secret scanning push protection is automatically enabled for new repositories and repositories\ntransferred to this enterprise."
-    )
-    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
+    Feature options for code scanning default setup
+    """
+
+    runner_type: Missing[Literal["standard", "labeled", "not_set"]] = Field(
         default=UNSET,
-        description="An optional URL string to display to contributors who are blocked from pushing a secret.",
+        description="Whether to use labeled runners or standard GitHub runners.",
     )
-    secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
-        bool
-    ] = Field(
+    runner_label: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Whether secret scanning of non-provider patterns is enabled for new repositories under this enterprise.",
-    )
-    secret_scanning_validity_checks_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether secret scanning automatic validity checks on supported partner tokens is enabled for all repositories under this enterprise.",
+        description="The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
     )
 
 
-model_rebuild(EnterpriseSecurityAnalysisSettings)
+model_rebuild(CodeScanningDefaultSetupOptions)
 
-__all__ = ("EnterpriseSecurityAnalysisSettings",)
+__all__ = ("CodeScanningDefaultSetupOptions",)

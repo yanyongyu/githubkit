@@ -30,6 +30,7 @@ if TYPE_CHECKING:
 
     from ..models import (
         CodeScanningAlert,
+        CodeScanningAlertDismissalRequest,
         CodeScanningAlertInstance,
         CodeScanningAlertItems,
         CodeScanningAnalysis,
@@ -46,6 +47,7 @@ if TYPE_CHECKING:
         EmptyObject,
     )
     from ..types import (
+        CodeScanningAlertDismissalRequestType,
         CodeScanningAlertInstanceType,
         CodeScanningAlertItemsType,
         CodeScanningAlertType,
@@ -68,6 +70,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
         ReposOwnerRepoCodeScanningSarifsPostBodyType,
+        ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType,
     )
 
 
@@ -359,6 +362,138 @@ class CodeScanningClient:
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def list_org_dismissal_requests(
+        self,
+        org: str,
+        *,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["open", "approved", "expired", "denied", "all"]
+        ] = UNSET,
+        repository_name: Missing[str] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[CodeScanningAlertDismissalRequest],
+        list[CodeScanningAlertDismissalRequestType],
+    ]:
+        """code-scanning/list-org-dismissal-requests
+
+        GET /orgs/{org}/dismissal-requests/code-scanning
+
+        Lists dismissal requests for code scanning alerts for all repositories in an organization.
+
+        The user must be authorized to review dismissal requests for the organization.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#list-dismissal-requests-for-code-scanning-alerts-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            CodeScanningAlertDismissalRequest,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/dismissal-requests/code-scanning"
+
+        params = {
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "repository_name": repository_name,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CodeScanningAlertDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_org_dismissal_requests(
+        self,
+        org: str,
+        *,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["open", "approved", "expired", "denied", "all"]
+        ] = UNSET,
+        repository_name: Missing[str] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[CodeScanningAlertDismissalRequest],
+        list[CodeScanningAlertDismissalRequestType],
+    ]:
+        """code-scanning/list-org-dismissal-requests
+
+        GET /orgs/{org}/dismissal-requests/code-scanning
+
+        Lists dismissal requests for code scanning alerts for all repositories in an organization.
+
+        The user must be authorized to review dismissal requests for the organization.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#list-dismissal-requests-for-code-scanning-alerts-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            CodeScanningAlertDismissalRequest,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/dismissal-requests/code-scanning"
+
+        params = {
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "repository_name": repository_name,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CodeScanningAlertDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
             },
         )
 
@@ -3123,5 +3258,381 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def list_dismissal_requests_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["open", "approved", "expired", "denied", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[CodeScanningAlertDismissalRequest],
+        list[CodeScanningAlertDismissalRequestType],
+    ]:
+        """code-scanning/list-dismissal-requests-for-repo
+
+        GET /repos/{owner}/{repo}/dismissal-requests/code-scanning
+
+        Lists dismissal requests for code scanning alerts for a repository.
+
+        Delegated alert dismissal must be enabled on the repository.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#list-dismissal-requests-for-code-scanning-alerts-for-a-repository
+        """
+
+        from ..models import BasicError, CodeScanningAlertDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/code-scanning"
+
+        params = {
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CodeScanningAlertDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_dismissal_requests_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["open", "approved", "expired", "denied", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[CodeScanningAlertDismissalRequest],
+        list[CodeScanningAlertDismissalRequestType],
+    ]:
+        """code-scanning/list-dismissal-requests-for-repo
+
+        GET /repos/{owner}/{repo}/dismissal-requests/code-scanning
+
+        Lists dismissal requests for code scanning alerts for a repository.
+
+        Delegated alert dismissal must be enabled on the repository.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#list-dismissal-requests-for-code-scanning-alerts-for-a-repository
+        """
+
+        from ..models import BasicError, CodeScanningAlertDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/code-scanning"
+
+        params = {
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CodeScanningAlertDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CodeScanningAlertDismissalRequest, CodeScanningAlertDismissalRequestType
+    ]:
+        """code-scanning/get-dismissal-request-for-repo
+
+        GET /repos/{owner}/{repo}/dismissal-requests/code-scanning/{alert_number}
+
+        Gets a dismissal request to dismiss a code scanning alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#get-a-dismissal-request-for-a-code-scanning-alert-for-a-repository
+        """
+
+        from ..models import BasicError, CodeScanningAlertDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/code-scanning/{alert_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CodeScanningAlertDismissalRequest,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CodeScanningAlertDismissalRequest, CodeScanningAlertDismissalRequestType
+    ]:
+        """code-scanning/get-dismissal-request-for-repo
+
+        GET /repos/{owner}/{repo}/dismissal-requests/code-scanning/{alert_number}
+
+        Gets a dismissal request to dismiss a code scanning alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#get-a-dismissal-request-for-a-code-scanning-alert-for-a-repository
+        """
+
+        from ..models import BasicError, CodeScanningAlertDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/code-scanning/{alert_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CodeScanningAlertDismissalRequest,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    def review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        status: Literal["approve", "deny"],
+        message: str,
+    ) -> Response: ...
+
+    def review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """code-scanning/review-dismissal-request-for-repo
+
+        PATCH /repos/{owner}/{repo}/dismissal-requests/code-scanning/{alert_number}
+
+        Approve or deny a dismissal request to dismiss a code scanning alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must be a dismissal reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#review-a-dismissal-request-for-a-code-scanning-alert-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/code-scanning/{alert_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        status: Literal["approve", "deny"],
+        message: str,
+    ) -> Response: ...
+
+    async def async_review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """code-scanning/review-dismissal-request-for-repo
+
+        PATCH /repos/{owner}/{repo}/dismissal-requests/code-scanning/{alert_number}
+
+        Approve or deny a dismissal request to dismiss a code scanning alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must be a dismissal reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/alert-dismissal-requests#review-a-dismissal-request-for-a-code-scanning-alert-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/code-scanning/{alert_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
             },
         )

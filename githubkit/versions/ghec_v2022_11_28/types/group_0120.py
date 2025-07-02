@@ -12,18 +12,14 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0121 import RepositoryRuleMaxFilePathLengthPropParametersType
+
+class RepositoryRuleTagNamePatternPropParametersType(TypedDict):
+    """RepositoryRuleTagNamePatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
-class RepositoryRuleMaxFilePathLengthType(TypedDict):
-    """max_file_path_length
-
-    Prevent commits that include file paths that exceed the specified character
-    limit from being pushed to the commit graph.
-    """
-
-    type: Literal["max_file_path_length"]
-    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
-
-
-__all__ = ("RepositoryRuleMaxFilePathLengthType",)
+__all__ = ("RepositoryRuleTagNamePatternPropParametersType",)

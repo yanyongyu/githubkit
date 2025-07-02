@@ -10,29 +10,25 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningVariantAnalysisRepository(GitHubModel):
-    """Repository Identifier
+class CodeScanningAutofix(GitHubModel):
+    """CodeScanningAutofix"""
 
-    Repository Identifier
-    """
-
-    id: int = Field(description="A unique identifier of the repository.")
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field(
-        description="The full, globally unique, name of the repository."
+    status: Literal["pending", "error", "success", "outdated"] = Field(
+        description="The status of an autofix."
     )
-    private: bool = Field(description="Whether the repository is private.")
-    stargazers_count: int = Field()
-    updated_at: Union[datetime, None] = Field()
+    description: Union[str, None] = Field(description="The description of an autofix.")
+    started_at: datetime = Field(
+        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
 
 
-model_rebuild(CodeScanningVariantAnalysisRepository)
+model_rebuild(CodeScanningAutofix)
 
-__all__ = ("CodeScanningVariantAnalysisRepository",)
+__all__ = ("CodeScanningAutofix",)

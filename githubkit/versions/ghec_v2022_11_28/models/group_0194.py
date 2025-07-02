@@ -9,37 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
 
 
-class OrganizationInvitation(GitHubModel):
-    """Organization Invitation
+class DependabotPublicKey(GitHubModel):
+    """DependabotPublicKey
 
-    Organization Invitation
+    The public key used for setting Dependabot Secrets.
     """
 
-    id: int = Field()
-    login: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    role: str = Field()
-    created_at: str = Field()
-    failed_at: Missing[Union[str, None]] = Field(default=UNSET)
-    failed_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    inviter: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    team_count: int = Field()
-    node_id: str = Field()
-    invitation_teams_url: str = Field()
-    invitation_source: Missing[str] = Field(default=UNSET)
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
 
 
-model_rebuild(OrganizationInvitation)
+model_rebuild(DependabotPublicKey)
 
-__all__ = ("OrganizationInvitation",)
+__all__ = ("DependabotPublicKey",)

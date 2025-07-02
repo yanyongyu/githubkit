@@ -9,34 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class BypassResponseType(TypedDict):
-    """Bypass response
+class AmazonS3OidcConfigType(TypedDict):
+    """AmazonS3OIDCConfig
 
-    A response made by a delegated bypasser to a bypass request.
+    Amazon S3 OIDC Config for audit log streaming configuration.
     """
 
-    id: NotRequired[int]
-    reviewer: NotRequired[BypassResponsePropReviewerType]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[datetime]
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["oidc"]
+    arn_role: str
 
 
-class BypassResponsePropReviewerType(TypedDict):
-    """BypassResponsePropReviewer
+class SplunkConfigType(TypedDict):
+    """SplunkConfig
 
-    The user who reviewed the bypass request.
+    Splunk Config for Audit Log Stream Configuration
     """
 
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    ssl_verify: bool
 
 
 __all__ = (
-    "BypassResponsePropReviewerType",
-    "BypassResponseType",
+    "AmazonS3OidcConfigType",
+    "SplunkConfigType",
 )

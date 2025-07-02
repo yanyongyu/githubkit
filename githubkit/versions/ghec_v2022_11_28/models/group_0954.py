@@ -12,20 +12,14 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0020 import Repository
 
 
-class InstallationRepositoriesGetResponse200(GitHubModel):
-    """InstallationRepositoriesGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody"""
 
-    total_count: int = Field()
-    repositories: list[Repository] = Field()
-    repository_selection: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="The new name for the cost center")
 
 
-model_rebuild(InstallationRepositoriesGetResponse200)
+model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody)
 
-__all__ = ("InstallationRepositoriesGetResponse200",)
+__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody",)

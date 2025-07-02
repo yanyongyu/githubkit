@@ -9,101 +9,135 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AzureBlobConfig(GitHubModel):
-    """AzureBlobConfig
+class AuditLogEvent(GitHubModel):
+    """AuditLogEvent"""
 
-    Azure Blob Config for audit log streaming configuration.
-    """
-
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    timestamp: Missing[int] = Field(
+        default=UNSET,
+        alias="@timestamp",
+        description="The time the audit log event occurred, given as a [Unix timestamp](http://en.wikipedia.org/wiki/Unix_time).",
     )
-    encrypted_sas_url: str = Field()
-
-
-class AzureHubConfig(GitHubModel):
-    """AzureHubConfig
-
-    Azure Event Hubs Config for audit log streaming configuration.
-    """
-
-    name: str = Field(description="Instance name of Azure Event Hubs")
-    encrypted_connstring: str = Field(
-        description="Encrypted Connection String for Azure Event Hubs"
+    action: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the action that was performed, for example `user.login` or `repo.create`.",
     )
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    active: Missing[bool] = Field(default=UNSET)
+    active_was: Missing[bool] = Field(default=UNSET)
+    actor: Missing[str] = Field(
+        default=UNSET, description="The actor who performed the action."
+    )
+    actor_id: Missing[int] = Field(
+        default=UNSET, description="The id of the actor who performed the action."
+    )
+    actor_location: Missing[AuditLogEventPropActorLocation] = Field(default=UNSET)
+    data: Missing[AuditLogEventPropData] = Field(default=UNSET)
+    org_id: Missing[int] = Field(default=UNSET)
+    user_id: Missing[int] = Field(default=UNSET)
+    business_id: Missing[int] = Field(default=UNSET)
+    blocked_user: Missing[str] = Field(
+        default=UNSET, description="The username of the account being blocked."
+    )
+    business: Missing[str] = Field(default=UNSET)
+    config: Missing[list[AuditLogEventPropConfigItems]] = Field(default=UNSET)
+    config_was: Missing[list[AuditLogEventPropConfigWasItems]] = Field(default=UNSET)
+    content_type: Missing[str] = Field(default=UNSET)
+    operation_type: Missing[str] = Field(default=UNSET)
+    created_at: Missing[int] = Field(
+        default=UNSET,
+        description="The time the audit log event was recorded, given as a [Unix timestamp](http://en.wikipedia.org/wiki/Unix_time).",
+    )
+    deploy_key_fingerprint: Missing[str] = Field(default=UNSET)
+    document_id: Missing[str] = Field(
+        default=UNSET,
+        alias="_document_id",
+        description="A unique identifier for an audit event.",
+    )
+    emoji: Missing[str] = Field(default=UNSET)
+    events: Missing[list[AuditLogEventPropEventsItems]] = Field(default=UNSET)
+    events_were: Missing[list[AuditLogEventPropEventsWereItems]] = Field(default=UNSET)
+    explanation: Missing[str] = Field(default=UNSET)
+    fingerprint: Missing[str] = Field(default=UNSET)
+    hook_id: Missing[int] = Field(default=UNSET)
+    limited_availability: Missing[bool] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    old_user: Missing[str] = Field(default=UNSET)
+    openssh_public_key: Missing[str] = Field(default=UNSET)
+    org: Missing[str] = Field(default=UNSET)
+    previous_visibility: Missing[str] = Field(default=UNSET)
+    read_only: Missing[bool] = Field(default=UNSET)
+    repo: Missing[str] = Field(default=UNSET, description="The name of the repository.")
+    repository: Missing[str] = Field(
+        default=UNSET, description="The name of the repository."
+    )
+    repository_public: Missing[bool] = Field(default=UNSET)
+    target_login: Missing[str] = Field(default=UNSET)
+    team: Missing[str] = Field(default=UNSET)
+    transport_protocol: Missing[int] = Field(
+        default=UNSET,
+        description="The type of protocol (for example, HTTP or SSH) used to transfer Git data.",
+    )
+    transport_protocol_name: Missing[str] = Field(
+        default=UNSET,
+        description="A human readable name for the protocol (for example, HTTP or SSH) used to transfer Git data.",
+    )
+    user: Missing[str] = Field(
+        default=UNSET,
+        description="The user that was affected by the action performed (if available).",
+    )
+    visibility: Missing[str] = Field(
+        default=UNSET,
+        description="The repository visibility, for example `public` or `private`.",
     )
 
 
-class AmazonS3AccessKeysConfig(GitHubModel):
-    """AmazonS3AccessKeysConfig
+class AuditLogEventPropActorLocation(GitHubModel):
+    """AuditLogEventPropActorLocation"""
 
-    Amazon S3 Access Keys Config for audit log streaming configuration.
-    """
-
-    bucket: str = Field(description="Amazon S3 Bucket Name.")
-    region: str = Field(description="Amazon S3 Bucket Name.")
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
-    )
-    authentication_type: Literal["access_keys"] = Field(
-        description="Authentication Type for Amazon S3."
-    )
-    encrypted_secret_key: str = Field(description="Encrypted AWS Secret Key.")
-    encrypted_access_key_id: str = Field(description="Encrypted AWS Access Key ID.")
+    country_name: Missing[str] = Field(default=UNSET)
 
 
-class HecConfig(GitHubModel):
-    """HecConfig
-
-    Hec Config for Audit Log Stream Configuration
-    """
-
-    domain: str = Field(description="Domain of Hec instance.")
-    port: int = Field(description="The port number for connecting to HEC.")
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
-    )
-    encrypted_token: str = Field(description="Encrypted Token.")
-    path: str = Field(description="Path to send events to.")
-    ssl_verify: bool = Field(
-        description="SSL verification helps ensure your events are sent to your HEC endpoint securely."
-    )
+class AuditLogEventPropData(ExtraGitHubModel):
+    """AuditLogEventPropData"""
 
 
-class DatadogConfig(GitHubModel):
-    """DatadogConfig
-
-    Datadog Config for audit log streaming configuration.
-    """
-
-    encrypted_token: str = Field(description="Encrypted Splunk token.")
-    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"] = Field(
-        description="Datadog Site to use."
-    )
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
-    )
+class AuditLogEventPropConfigItems(GitHubModel):
+    """AuditLogEventPropConfigItems"""
 
 
-model_rebuild(AzureBlobConfig)
-model_rebuild(AzureHubConfig)
-model_rebuild(AmazonS3AccessKeysConfig)
-model_rebuild(HecConfig)
-model_rebuild(DatadogConfig)
+class AuditLogEventPropConfigWasItems(GitHubModel):
+    """AuditLogEventPropConfigWasItems"""
+
+
+class AuditLogEventPropEventsItems(GitHubModel):
+    """AuditLogEventPropEventsItems"""
+
+
+class AuditLogEventPropEventsWereItems(GitHubModel):
+    """AuditLogEventPropEventsWereItems"""
+
+
+model_rebuild(AuditLogEvent)
+model_rebuild(AuditLogEventPropActorLocation)
+model_rebuild(AuditLogEventPropData)
+model_rebuild(AuditLogEventPropConfigItems)
+model_rebuild(AuditLogEventPropConfigWasItems)
+model_rebuild(AuditLogEventPropEventsItems)
+model_rebuild(AuditLogEventPropEventsWereItems)
 
 __all__ = (
-    "AmazonS3AccessKeysConfig",
-    "AzureBlobConfig",
-    "AzureHubConfig",
-    "DatadogConfig",
-    "HecConfig",
+    "AuditLogEvent",
+    "AuditLogEventPropActorLocation",
+    "AuditLogEventPropConfigItems",
+    "AuditLogEventPropConfigWasItems",
+    "AuditLogEventPropData",
+    "AuditLogEventPropEventsItems",
+    "AuditLogEventPropEventsWereItems",
 )

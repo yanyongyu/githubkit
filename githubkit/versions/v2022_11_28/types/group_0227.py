@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
 class VerificationType(TypedDict):
@@ -20,7 +20,7 @@ class VerificationType(TypedDict):
     reason: str
     payload: Union[str, None]
     signature: Union[str, None]
-    verified_at: Union[str, None]
+    verified_at: NotRequired[Union[str, None]]
 
 
 __all__ = ("VerificationType",)

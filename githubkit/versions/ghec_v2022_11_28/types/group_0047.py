@@ -12,14 +12,15 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class AuditLogStreamKeyType(TypedDict):
-    """stream-key
+class AccessibleRepositoryType(TypedDict):
+    """Accessible Repository
 
-    Audit Log Streaming Public Key
+    A repository that may be made accessible to a GitHub App.
     """
 
-    key_id: str
-    key: str
+    id: int
+    name: str
+    full_name: str
 
 
-__all__ = ("AuditLogStreamKeyType",)
+__all__ = ("AccessibleRepositoryType",)

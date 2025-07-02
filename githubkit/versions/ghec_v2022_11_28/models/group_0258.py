@@ -9,64 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class WorkflowUsage(GitHubModel):
-    """Workflow Usage
 
-    Workflow Usage
+class EnvironmentApprovals(GitHubModel):
+    """Environment Approval
+
+    An entry in the reviews log for environment deployments
     """
 
-    billable: WorkflowUsagePropBillable = Field()
-
-
-class WorkflowUsagePropBillable(GitHubModel):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: Missing[WorkflowUsagePropBillablePropUbuntu] = Field(
-        default=UNSET, alias="UBUNTU"
+    environments: list[EnvironmentApprovalsPropEnvironmentsItems] = Field(
+        description="The list of environments that were approved or rejected"
     )
-    macos: Missing[WorkflowUsagePropBillablePropMacos] = Field(
-        default=UNSET, alias="MACOS"
+    state: Literal["approved", "rejected", "pending"] = Field(
+        description="Whether deployment to the environment(s) was approved or rejected or pending (with comments)"
     )
-    windows: Missing[WorkflowUsagePropBillablePropWindows] = Field(
-        default=UNSET, alias="WINDOWS"
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    comment: str = Field(description="The comment submitted with the deployment review")
+
+
+class EnvironmentApprovalsPropEnvironmentsItems(GitHubModel):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
+
+    id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the environment."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The time that the environment was created, in ISO 8601 format.",
+    )
+    updated_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The time that the environment was last updated, in ISO 8601 format.",
     )
 
 
-class WorkflowUsagePropBillablePropUbuntu(GitHubModel):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowUsagePropBillablePropMacos(GitHubModel):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowUsagePropBillablePropWindows(GitHubModel):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(WorkflowUsage)
-model_rebuild(WorkflowUsagePropBillable)
-model_rebuild(WorkflowUsagePropBillablePropUbuntu)
-model_rebuild(WorkflowUsagePropBillablePropMacos)
-model_rebuild(WorkflowUsagePropBillablePropWindows)
+model_rebuild(EnvironmentApprovals)
+model_rebuild(EnvironmentApprovalsPropEnvironmentsItems)
 
 __all__ = (
-    "WorkflowUsage",
-    "WorkflowUsagePropBillable",
-    "WorkflowUsagePropBillablePropMacos",
-    "WorkflowUsagePropBillablePropUbuntu",
-    "WorkflowUsagePropBillablePropWindows",
+    "EnvironmentApprovals",
+    "EnvironmentApprovalsPropEnvironmentsItems",
 )

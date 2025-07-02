@@ -11,11 +11,13 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class GistsGistIdCommentsPostBodyType(TypedDict):
-    """GistsGistIdCommentsPostBody"""
-
-    body: str
+from .group_0081 import CustomPropertyType
 
 
-__all__ = ("GistsGistIdCommentsPostBodyType",)
+class EnterprisesEnterprisePropertiesSchemaPatchBodyType(TypedDict):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
+
+    properties: list[CustomPropertyType]
+
+
+__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBodyType",)

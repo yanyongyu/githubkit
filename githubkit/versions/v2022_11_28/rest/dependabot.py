@@ -247,11 +247,12 @@ class DependabotClient:
 
         GET /organizations/{org}/dependabot/repository-access
 
+        Lists repositories that organization admins have allowed Dependabot to access when updating dependencies.
         > [!NOTE]
         >    This operation supports both server-to-server and user-to-server access.
         Unauthorized users will not see the existence of this endpoint.
 
-        See also: https://docs.github.com/rest/dependabot/repository-access#lists-repositories-that-organization-admins-have-allowed-dependabot-to-access-when-updating-dependencies
+        See also: https://docs.github.com/rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-organization
         """
 
         from ..models import BasicError, DependabotRepositoryAccessDetails
@@ -293,11 +294,12 @@ class DependabotClient:
 
         GET /organizations/{org}/dependabot/repository-access
 
+        Lists repositories that organization admins have allowed Dependabot to access when updating dependencies.
         > [!NOTE]
         >    This operation supports both server-to-server and user-to-server access.
         Unauthorized users will not see the existence of this endpoint.
 
-        See also: https://docs.github.com/rest/dependabot/repository-access#lists-repositories-that-organization-admins-have-allowed-dependabot-to-access-when-updating-dependencies
+        See also: https://docs.github.com/rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-organization
         """
 
         from ..models import BasicError, DependabotRepositoryAccessDetails
@@ -359,6 +361,8 @@ class DependabotClient:
 
         PATCH /organizations/{org}/dependabot/repository-access
 
+        Updates repositories according to the list of repositories that organization admins have given Dependabot access to when they've updated dependencies.
+
         > [!NOTE]
         >    This operation supports both server-to-server and user-to-server access.
         Unauthorized users will not see the existence of this endpoint.
@@ -371,7 +375,7 @@ class DependabotClient:
         }
         ```
 
-        See also: https://docs.github.com/rest/dependabot/repository-access#updates-repositories-to-the-list-of-repositories-that-organization-admins-have-allowed-dependabot-to-access-when-updating-dependencies
+        See also: https://docs.github.com/rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-organization
         """
 
         from ..models import (
@@ -441,6 +445,8 @@ class DependabotClient:
 
         PATCH /organizations/{org}/dependabot/repository-access
 
+        Updates repositories according to the list of repositories that organization admins have given Dependabot access to when they've updated dependencies.
+
         > [!NOTE]
         >    This operation supports both server-to-server and user-to-server access.
         Unauthorized users will not see the existence of this endpoint.
@@ -453,7 +459,7 @@ class DependabotClient:
         }
         ```
 
-        See also: https://docs.github.com/rest/dependabot/repository-access#updates-repositories-to-the-list-of-repositories-that-organization-admins-have-allowed-dependabot-to-access-when-updating-dependencies
+        See also: https://docs.github.com/rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-organization
         """
 
         from ..models import (
@@ -524,13 +530,13 @@ class DependabotClient:
 
         PUT /organizations/{org}/dependabot/repository-access/default-level
 
-        > [!NOTE]
-        >    This operation supports both server-to-server and user-to-server access.
         Sets the default level of repository access Dependabot will have while performing an update.  Available values are:
         - 'public' - Dependabot will only have access to public repositories, unless access is explicitly granted to non-public repositories.
         - 'internal' - Dependabot will only have access to public and internal repositories, unless access is explicitly granted to private repositories.
 
         Unauthorized users will not see the existence of this endpoint.
+
+        This operation supports both server-to-server and user-to-server access.
 
         See also: https://docs.github.com/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot
         """
@@ -603,13 +609,13 @@ class DependabotClient:
 
         PUT /organizations/{org}/dependabot/repository-access/default-level
 
-        > [!NOTE]
-        >    This operation supports both server-to-server and user-to-server access.
         Sets the default level of repository access Dependabot will have while performing an update.  Available values are:
         - 'public' - Dependabot will only have access to public repositories, unless access is explicitly granted to non-public repositories.
         - 'internal' - Dependabot will only have access to public and internal repositories, unless access is explicitly granted to private repositories.
 
         Unauthorized users will not see the existence of this endpoint.
+
+        This operation supports both server-to-server and user-to-server access.
 
         See also: https://docs.github.com/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot
         """

@@ -10,29 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class GroupMappingType(TypedDict):
-    """GroupMapping
+class CodeOfConductSimpleType(TypedDict):
+    """Code Of Conduct Simple
 
-    External Groups to be mapped to a team for membership
+    Code of Conduct Simple
     """
 
-    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
-class GroupMappingPropGroupsItemsType(TypedDict):
-    """GroupMappingPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-    status: NotRequired[str]
-    synced_at: NotRequired[Union[str, None]]
-
-
-__all__ = (
-    "GroupMappingPropGroupsItemsType",
-    "GroupMappingType",
-)
+__all__ = ("CodeOfConductSimpleType",)

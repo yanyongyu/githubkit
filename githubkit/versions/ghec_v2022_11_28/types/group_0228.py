@@ -10,110 +10,150 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0066 import TeamSimpleType
+from .group_0003 import SimpleUserType
+from .group_0019 import LicenseSimpleType
+from .group_0020 import RepositoryType
+from .group_0175 import SecurityAndAnalysisType
+from .group_0227 import CodeOfConductSimpleType
 
 
-class TeamFullType(TypedDict):
-    """Full Team
+class FullRepositoryType(TypedDict):
+    """Full Repository
 
-    Groups of organization members that gives permissions on specified repositories.
+    Full Repository
     """
 
     id: int
     node_id: str
-    url: str
-    html_url: str
     name: str
-    slug: str
+    full_name: str
+    owner: SimpleUserType
+    private: bool
+    html_url: str
     description: Union[str, None]
-    privacy: NotRequired[Literal["closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: str
-    members_url: str
-    repositories_url: str
-    parent: NotRequired[Union[None, TeamSimpleType]]
-    members_count: int
-    repos_count: int
-    created_at: datetime
-    updated_at: datetime
-    organization: TeamOrganizationType
-    ldap_dn: NotRequired[str]
-
-
-class TeamOrganizationType(TypedDict):
-    """Team Organization
-
-    Team Organization
-    """
-
-    login: str
-    id: int
-    node_id: str
+    fork: bool
     url: str
-    repos_url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
     events_url: str
-    hooks_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    issue_comment_url: str
+    issue_events_url: str
     issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
-    name: NotRequired[Union[str, None]]
-    company: NotRequired[Union[str, None]]
-    blog: NotRequired[Union[str, None]]
-    location: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    twitter_username: NotRequired[Union[str, None]]
-    is_verified: NotRequired[bool]
-    has_organization_projects: bool
-    has_repository_projects: bool
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    html_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: str
+    mirror_url: Union[str, None]
+    hooks_url: str
+    svn_url: str
+    homepage: Union[str, None]
+    language: Union[str, None]
+    forks_count: int
+    stargazers_count: int
+    watchers_count: int
+    size: int
+    default_branch: str
+    open_issues_count: int
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    has_issues: bool
+    has_projects: bool
+    has_wiki: bool
+    has_pages: bool
+    has_downloads: NotRequired[bool]
+    has_discussions: bool
+    archived: bool
+    disabled: bool
+    visibility: NotRequired[str]
+    pushed_at: datetime
     created_at: datetime
-    type: str
-    total_private_repos: NotRequired[int]
-    owned_private_repos: NotRequired[int]
-    private_gists: NotRequired[Union[int, None]]
-    disk_usage: NotRequired[Union[int, None]]
-    collaborators: NotRequired[Union[int, None]]
-    billing_email: NotRequired[Union[str, None]]
-    plan: NotRequired[TeamOrganizationPropPlanType]
-    default_repository_permission: NotRequired[Union[str, None]]
-    members_can_create_repositories: NotRequired[Union[bool, None]]
-    two_factor_requirement_enabled: NotRequired[Union[bool, None]]
-    members_allowed_repository_creation_type: NotRequired[str]
-    members_can_create_public_repositories: NotRequired[bool]
-    members_can_create_private_repositories: NotRequired[bool]
-    members_can_create_internal_repositories: NotRequired[bool]
-    members_can_create_pages: NotRequired[bool]
-    members_can_create_public_pages: NotRequired[bool]
-    members_can_create_private_pages: NotRequired[bool]
-    members_can_fork_private_repositories: NotRequired[Union[bool, None]]
-    web_commit_signoff_required: NotRequired[bool]
     updated_at: datetime
-    archived_at: Union[datetime, None]
+    permissions: NotRequired[FullRepositoryPropPermissionsType]
+    allow_rebase_merge: NotRequired[bool]
+    template_repository: NotRequired[Union[None, RepositoryType]]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_squash_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    subscribers_count: int
+    network_count: int
+    license_: Union[None, LicenseSimpleType]
+    organization: NotRequired[Union[None, SimpleUserType]]
+    parent: NotRequired[RepositoryType]
+    source: NotRequired[RepositoryType]
+    forks: int
+    master_branch: NotRequired[str]
+    open_issues: int
+    watchers: int
+    anonymous_access_enabled: NotRequired[bool]
+    code_of_conduct: NotRequired[CodeOfConductSimpleType]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
+    custom_properties: NotRequired[FullRepositoryPropCustomPropertiesType]
 
 
-class TeamOrganizationPropPlanType(TypedDict):
-    """TeamOrganizationPropPlan"""
+class FullRepositoryPropPermissionsType(TypedDict):
+    """FullRepositoryPropPermissions"""
 
-    name: str
-    space: int
-    private_repos: int
-    filled_seats: NotRequired[int]
-    seats: NotRequired[int]
+    admin: bool
+    maintain: NotRequired[bool]
+    push: bool
+    triage: NotRequired[bool]
+    pull: bool
+
+
+FullRepositoryPropCustomPropertiesType: TypeAlias = dict[str, Any]
+"""FullRepositoryPropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
 
 
 __all__ = (
-    "TeamFullType",
-    "TeamOrganizationPropPlanType",
-    "TeamOrganizationType",
+    "FullRepositoryPropCustomPropertiesType",
+    "FullRepositoryPropPermissionsType",
+    "FullRepositoryType",
 )

@@ -12,18 +12,30 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0342 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
 
 
-class ShortBlob(GitHubModel):
-    """Short Blob
+class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    Short Blob
-    """
+    id: int = Field()
+    node_id: str = Field()
+    prevent_self_review: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether deployments to this environment can be approved by the user who created the deployment.",
+    )
+    type: str = Field()
+    reviewers: Missing[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
+    ] = Field(
+        default=UNSET,
+        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
+    )
 
-    url: str = Field()
-    sha: str = Field()
 
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
 
-model_rebuild(ShortBlob)
-
-__all__ = ("ShortBlob",)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)

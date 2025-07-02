@@ -16,10 +16,10 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodespacesPublicKey(GitHubModel):
-    """CodespacesPublicKey
+class ActionsPublicKey(GitHubModel):
+    """ActionsPublicKey
 
-    The public key used for setting Codespaces secrets.
+    The public key used for setting Actions Secrets.
     """
 
     key_id: str = Field(description="The identifier for the key.")
@@ -30,6 +30,6 @@ class CodespacesPublicKey(GitHubModel):
     created_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CodespacesPublicKey)
+model_rebuild(ActionsPublicKey)
 
-__all__ = ("CodespacesPublicKey",)
+__all__ = ("ActionsPublicKey",)

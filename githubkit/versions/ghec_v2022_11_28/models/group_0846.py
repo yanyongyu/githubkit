@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,67 +18,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0479 import EnterpriseWebhooks
-from .group_0480 import SimpleInstallation
-from .group_0481 import OrganizationSimpleWebhooks
-from .group_0482 import RepositoryWebhooks
+from .group_0428 import SecretScanningLocation
+from .group_0486 import SimpleInstallation
+from .group_0487 import OrganizationSimpleWebhooks
+from .group_0488 import RepositoryWebhooks
+from .group_0533 import SecretScanningAlertWebhook
 
 
-class WebhookSecretScanningScanCompleted(GitHubModel):
-    """secret_scanning_scan completed event"""
+class WebhookSecretScanningAlertLocationCreated(GitHubModel):
+    """Secret Scanning Alert Location Created Event"""
 
-    action: Literal["completed"] = Field()
-    type: Literal["backfill", "custom-pattern-backfill", "pattern-version-backfill"] = (
-        Field(description="What type of scan was completed")
-    )
-    source: Literal["git", "issues", "pull-requests", "discussions", "wiki"] = Field(
-        description="What type of content was scanned"
-    )
-    started_at: datetime = Field(
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    completed_at: datetime = Field(
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    secret_types: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="List of patterns that were updated. This will be empty for normal backfill scans or custom pattern updates",
-    )
-    custom_pattern_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="If the scan was triggered by a custom pattern update, this will be the name of the pattern that was updated",
-    )
-    custom_pattern_scope: Missing[
-        Union[None, Literal["repository", "organization", "enterprise"]]
-    ] = Field(
-        default=UNSET,
-        description="If the scan was triggered by a custom pattern update, this will be the scope of the pattern that was updated",
-    )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
-    )
+    action: Literal["created"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    location: SecretScanningLocation = Field()
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecretScanningScanCompleted)
+model_rebuild(WebhookSecretScanningAlertLocationCreated)
 
-__all__ = ("WebhookSecretScanningScanCompleted",)
+__all__ = ("WebhookSecretScanningAlertLocationCreated",)

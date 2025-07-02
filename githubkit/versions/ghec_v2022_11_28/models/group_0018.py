@@ -32,12 +32,13 @@ class Installation(GitHubModel):
     id: int = Field(description="The ID of the installation.")
     account: Union[SimpleUser, Enterprise, None] = Field()
     repository_selection: Literal["all", "selected"] = Field(
-        description="Describe whether all repositories have been selected or there's a selection involved"
+        description="Describe whether all repositories have been selected or there's a selection involved. For enterprise installations this is `selected`."
     )
     access_tokens_url: str = Field()
     repositories_url: str = Field()
     html_url: str = Field()
     app_id: int = Field()
+    client_id: Missing[str] = Field(default=UNSET)
     target_id: int = Field(
         description="The ID of the user or organization this token is being scoped to."
     )

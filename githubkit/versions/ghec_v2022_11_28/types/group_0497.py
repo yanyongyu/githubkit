@@ -12,14 +12,17 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class WebhooksRepositoriesItemsType(TypedDict):
-    """WebhooksRepositoriesItems"""
+class WebhooksWorkflowJobRunType(TypedDict):
+    """WebhooksWorkflowJobRun"""
 
-    full_name: str
+    conclusion: None
+    created_at: str
+    environment: str
+    html_url: str
     id: int
-    name: str
-    node_id: str
-    private: bool
+    name: None
+    status: str
+    updated_at: str
 
 
-__all__ = ("WebhooksRepositoriesItemsType",)
+__all__ = ("WebhooksWorkflowJobRunType",)

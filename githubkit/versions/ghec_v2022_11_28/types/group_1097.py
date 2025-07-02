@@ -9,16 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0246 import ActionsVariableType
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
+class ProjectsProjectIdDeleteResponse403Type(TypedDict):
+    """ProjectsProjectIdDeleteResponse403"""
 
-    total_count: int
-    variables: list[ActionsVariableType]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[list[str]]
 
 
-__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",)
+__all__ = ("ProjectsProjectIdDeleteResponse403Type",)

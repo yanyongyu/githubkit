@@ -17,19 +17,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0100 import RepositoryRuleMergeQueuePropParameters
+from .group_0100 import RepositoryRuleUpdatePropParameters
 
 
-class RepositoryRuleMergeQueue(GitHubModel):
-    """merge_queue
+class RepositoryRuleUpdate(GitHubModel):
+    """update
 
-    Merges must be performed via a merge queue.
+    Only allow users with bypass permission to update matching refs.
     """
 
-    type: Literal["merge_queue"] = Field()
-    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
+    type: Literal["update"] = Field()
+    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleMergeQueue)
+model_rebuild(RepositoryRuleUpdate)
 
-__all__ = ("RepositoryRuleMergeQueue",)
+__all__ = ("RepositoryRuleUpdate",)

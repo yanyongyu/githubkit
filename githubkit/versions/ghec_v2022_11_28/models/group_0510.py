@@ -18,21 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksMembership(GitHubModel):
-    """Membership
-
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
-    """
-
-    organization_url: str = Field()
-    role: str = Field()
-    state: str = Field()
-    url: str = Field()
-    user: Union[WebhooksMembershipPropUser, None] = Field(title="User")
-
-
-class WebhooksMembershipPropUser(GitHubModel):
+class WebhooksUserMannequin(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -54,15 +40,13 @@ class WebhooksMembershipPropUser(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
     url: Missing[str] = Field(default=UNSET)
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksMembership)
-model_rebuild(WebhooksMembershipPropUser)
+model_rebuild(WebhooksUserMannequin)
 
-__all__ = (
-    "WebhooksMembership",
-    "WebhooksMembershipPropUser",
-)
+__all__ = ("WebhooksUserMannequin",)

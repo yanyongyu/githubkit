@@ -29,11 +29,14 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import (
+        AccessibleRepository,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         AppManifestsCodeConversionsPostResponse201,
         Authorization,
+        EnterpriseOrganizationInstallation,
         HookDelivery,
         HookDeliveryItem,
+        InstallableOrganization,
         Installation,
         InstallationRepositoriesGetResponse200,
         InstallationToken,
@@ -47,6 +50,7 @@ if TYPE_CHECKING:
         WebhookConfig,
     )
     from ..types import (
+        AccessibleRepositoryType,
         AppHookConfigPatchBodyType,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
         AppInstallationsInstallationIdAccessTokensPostBodyType,
@@ -58,8 +62,14 @@ if TYPE_CHECKING:
         AppManifestsCodeConversionsPostResponse201Type,
         AppPermissionsType,
         AuthorizationType,
+        EnterpriseOrganizationInstallationType,
+        EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType,
+        EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType,
+        EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType,
+        EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType,
         HookDeliveryItemType,
         HookDeliveryType,
+        InstallableOrganizationType,
         InstallationRepositoriesGetResponse200Type,
         InstallationTokenType,
         InstallationType,
@@ -924,7 +934,7 @@ class AppsClient:
 
         DELETE /app/installations/{installation_id}
 
-        Uninstalls a GitHub App on a user, organization, or business account. If you prefer to temporarily suspend an app's access to your account's resources, then we recommend the "[Suspend an app installation](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#suspend-an-app-installation)" endpoint.
+        Uninstalls a GitHub App on a user, organization, or enterprise account. If you prefer to temporarily suspend an app's access to your account's resources, then we recommend the "[Suspend an app installation](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#suspend-an-app-installation)" endpoint.
 
         You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
@@ -958,7 +968,7 @@ class AppsClient:
 
         DELETE /app/installations/{installation_id}
 
-        Uninstalls a GitHub App on a user, organization, or business account. If you prefer to temporarily suspend an app's access to your account's resources, then we recommend the "[Suspend an app installation](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#suspend-an-app-installation)" endpoint.
+        Uninstalls a GitHub App on a user, organization, or enterprise account. If you prefer to temporarily suspend an app's access to your account's resources, then we recommend the "[Suspend an app installation](https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#suspend-an-app-installation)" endpoint.
 
         You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
@@ -1017,11 +1027,13 @@ class AppsClient:
 
         POST /app/installations/{installation_id}/access_tokens
 
-        Creates an installation access token that enables a GitHub App to make authenticated API requests for the app's installation on an organization or individual account. Installation tokens expire one hour from the time you create them. Using an expired token produces a status code of `401 - Unauthorized`, and requires creating a new installation token. By default the installation token has access to all repositories that the installation can access.
+        Creates an installation access token that enables a GitHub App to make authenticated API requests for the app's installation on an enterprise, organization, or individual account. Installation tokens expire one hour from the time you create them. Using an expired token produces a status code of `401 - Unauthorized`, and requires creating a new installation token. By default the installation token has access to all repositories that the installation can access.
 
         Optionally, you can use the `repositories` or `repository_ids` body parameters to specify individual repositories that the installation access token can access. If you don't use `repositories` or `repository_ids` to grant access to specific repositories, the installation access token will have access to all repositories that the installation was granted access to. The installation access token cannot be granted access to repositories that the installation was not granted access to. Up to 500 repositories can be listed in this manner.
 
         Optionally, use the `permissions` body parameter to specify the permissions that the installation access token should have. If `permissions` is not specified, the installation access token will have all of the permissions that were granted to the app. The installation access token cannot be granted permissions that the app was not granted.
+
+        Enterprise account installations do not have access to repositories and cannot be scoped down using the `permissions` parameter.
 
         You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
@@ -1101,11 +1113,13 @@ class AppsClient:
 
         POST /app/installations/{installation_id}/access_tokens
 
-        Creates an installation access token that enables a GitHub App to make authenticated API requests for the app's installation on an organization or individual account. Installation tokens expire one hour from the time you create them. Using an expired token produces a status code of `401 - Unauthorized`, and requires creating a new installation token. By default the installation token has access to all repositories that the installation can access.
+        Creates an installation access token that enables a GitHub App to make authenticated API requests for the app's installation on an enterprise, organization, or individual account. Installation tokens expire one hour from the time you create them. Using an expired token produces a status code of `401 - Unauthorized`, and requires creating a new installation token. By default the installation token has access to all repositories that the installation can access.
 
         Optionally, you can use the `repositories` or `repository_ids` body parameters to specify individual repositories that the installation access token can access. If you don't use `repositories` or `repository_ids` to grant access to specific repositories, the installation access token will have access to all repositories that the installation was granted access to. The installation access token cannot be granted access to repositories that the installation was not granted access to. Up to 500 repositories can be listed in this manner.
 
         Optionally, use the `permissions` body parameter to specify the permissions that the installation access token should have. If `permissions` is not specified, the installation access token will have all of the permissions that were granted to the app. The installation access token cannot be granted permissions that the app was not granted.
+
+        Enterprise account installations do not have access to repositories and cannot be scoped down using the `permissions` parameter.
 
         You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
@@ -1160,7 +1174,7 @@ class AppsClient:
 
         PUT /app/installations/{installation_id}/suspended
 
-        Suspends a GitHub App on a user, organization, or business account, which blocks the app from accessing the account's resources. When a GitHub App is suspended, the app's access to the GitHub Enterprise Cloud API or webhook events is blocked for that account.
+        Suspends a GitHub App on a user, organization, or enterprise account, which blocks the app from accessing the account's resources. When a GitHub App is suspended, the app's access to the GitHub Enterprise Cloud API or webhook events is blocked for that account.
 
         You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
@@ -1194,7 +1208,7 @@ class AppsClient:
 
         PUT /app/installations/{installation_id}/suspended
 
-        Suspends a GitHub App on a user, organization, or business account, which blocks the app from accessing the account's resources. When a GitHub App is suspended, the app's access to the GitHub Enterprise Cloud API or webhook events is blocked for that account.
+        Suspends a GitHub App on a user, organization, or enterprise account, which blocks the app from accessing the account's resources. When a GitHub App is suspended, the app's access to the GitHub Enterprise Cloud API or webhook events is blocked for that account.
 
         You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 
@@ -2068,6 +2082,1058 @@ class AppsClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    def installable_organizations(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[InstallableOrganization], list[InstallableOrganizationType]]:
+        """enterprise-apps/installable-organizations
+
+        GET /enterprises/{enterprise}/apps/installable_organizations
+
+        List the organizations owned by the enterprise, intended for use by GitHub Apps that are managing applications across the enterprise.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#get-enterprise-owned-organizations-that-can-have-github-apps-installed
+        """
+
+        from ..models import InstallableOrganization
+
+        url = f"/enterprises/{enterprise}/apps/installable_organizations"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[InstallableOrganization],
+        )
+
+    async def async_installable_organizations(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[InstallableOrganization], list[InstallableOrganizationType]]:
+        """enterprise-apps/installable-organizations
+
+        GET /enterprises/{enterprise}/apps/installable_organizations
+
+        List the organizations owned by the enterprise, intended for use by GitHub Apps that are managing applications across the enterprise.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#get-enterprise-owned-organizations-that-can-have-github-apps-installed
+        """
+
+        from ..models import InstallableOrganization
+
+        url = f"/enterprises/{enterprise}/apps/installable_organizations"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[InstallableOrganization],
+        )
+
+    def installable_organization_accessible_repositories(
+        self,
+        enterprise: str,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+        """enterprise-apps/installable-organization-accessible-repositories
+
+        GET /enterprises/{enterprise}/apps/installable_organizations/{org}/accessible_repositories
+
+        List the repositories belonging to an enterprise-owned organization that can be made accessible to a GitHub App installed on that organization. This API provides a shallow list of repositories in the organization, allowing the caller to then add or remove those repositories to an installation in that organization.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#get-repositories-belonging-to-an-enterprise-owned-organization
+        """
+
+        from ..models import AccessibleRepository
+
+        url = f"/enterprises/{enterprise}/apps/installable_organizations/{org}/accessible_repositories"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[AccessibleRepository],
+        )
+
+    async def async_installable_organization_accessible_repositories(
+        self,
+        enterprise: str,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+        """enterprise-apps/installable-organization-accessible-repositories
+
+        GET /enterprises/{enterprise}/apps/installable_organizations/{org}/accessible_repositories
+
+        List the repositories belonging to an enterprise-owned organization that can be made accessible to a GitHub App installed on that organization. This API provides a shallow list of repositories in the organization, allowing the caller to then add or remove those repositories to an installation in that organization.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#get-repositories-belonging-to-an-enterprise-owned-organization
+        """
+
+        from ..models import AccessibleRepository
+
+        url = f"/enterprises/{enterprise}/apps/installable_organizations/{org}/accessible_repositories"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[AccessibleRepository],
+        )
+
+    def organization_installations(
+        self,
+        enterprise: str,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[EnterpriseOrganizationInstallation],
+        list[EnterpriseOrganizationInstallationType],
+    ]:
+        """enterprise-apps/organization-installations
+
+        GET /enterprises/{enterprise}/apps/organizations/{org}/installations
+
+        Lists the GitHub App installations associated with the given enterprise-owned organization. This lists all GitHub Apps that have been installed on the organization, regardless of who owns the application.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#list-github-apps-installed-on-an-enterprise-owned-organization
+        """
+
+        from ..models import EnterpriseOrganizationInstallation
+
+        url = f"/enterprises/{enterprise}/apps/organizations/{org}/installations"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[EnterpriseOrganizationInstallation],
+        )
+
+    async def async_organization_installations(
+        self,
+        enterprise: str,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[EnterpriseOrganizationInstallation],
+        list[EnterpriseOrganizationInstallationType],
+    ]:
+        """enterprise-apps/organization-installations
+
+        GET /enterprises/{enterprise}/apps/organizations/{org}/installations
+
+        Lists the GitHub App installations associated with the given enterprise-owned organization. This lists all GitHub Apps that have been installed on the organization, regardless of who owns the application.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#list-github-apps-installed-on-an-enterprise-owned-organization
+        """
+
+        from ..models import EnterpriseOrganizationInstallation
+
+        url = f"/enterprises/{enterprise}/apps/organizations/{org}/installations"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[EnterpriseOrganizationInstallation],
+        )
+
+    @overload
+    def create_installation(
+        self,
+        enterprise: str,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType,
+    ) -> Response[Installation, InstallationType]: ...
+
+    @overload
+    def create_installation(
+        self,
+        enterprise: str,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        client_id: str,
+        repository_selection: Literal["all", "selected", "none"],
+        repositories: Missing[list[str]] = UNSET,
+    ) -> Response[Installation, InstallationType]: ...
+
+    def create_installation(
+        self,
+        enterprise: str,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[Installation, InstallationType]:
+        """enterprise-apps/create-installation
+
+        POST /enterprises/{enterprise}/apps/organizations/{org}/installations
+
+        Installs any valid GitHub App on the specified organization owned by the enterprise. If the app is already installed on the organization, and is suspended, it will be unsuspended.
+        If the app has a pending installation request, they will all be approved.
+
+        If the app is already installed and has a pending update request, it will be updated to the latest version. If the app is now requesting repository permissions, it will be given access to the repositories listed in the request or fail if no `repository_selection` is provided.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#install-a-github-app-on-an-enterprise-owned-organization
+        """
+
+        from ..models import (
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody,
+            Installation,
+        )
+
+        url = f"/enterprises/{enterprise}/apps/organizations/{org}/installations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Installation,
+        )
+
+    @overload
+    async def async_create_installation(
+        self,
+        enterprise: str,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType,
+    ) -> Response[Installation, InstallationType]: ...
+
+    @overload
+    async def async_create_installation(
+        self,
+        enterprise: str,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        client_id: str,
+        repository_selection: Literal["all", "selected", "none"],
+        repositories: Missing[list[str]] = UNSET,
+    ) -> Response[Installation, InstallationType]: ...
+
+    async def async_create_installation(
+        self,
+        enterprise: str,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[Installation, InstallationType]:
+        """enterprise-apps/create-installation
+
+        POST /enterprises/{enterprise}/apps/organizations/{org}/installations
+
+        Installs any valid GitHub App on the specified organization owned by the enterprise. If the app is already installed on the organization, and is suspended, it will be unsuspended.
+        If the app has a pending installation request, they will all be approved.
+
+        If the app is already installed and has a pending update request, it will be updated to the latest version. If the app is now requesting repository permissions, it will be given access to the repositories listed in the request or fail if no `repository_selection` is provided.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#install-a-github-app-on-an-enterprise-owned-organization
+        """
+
+        from ..models import (
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody,
+            Installation,
+        )
+
+        url = f"/enterprises/{enterprise}/apps/organizations/{org}/installations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Installation,
+        )
+
+    def enterprise_delete_installation(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-apps/enterprise-delete-installation
+
+        DELETE /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}
+
+        Uninstall a GitHub App from an organization. Any app installed on the organization can be removed.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#uninstall-a-github-app-from-an-enterprise-owned-organization
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_enterprise_delete_installation(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-apps/enterprise-delete-installation
+
+        DELETE /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}
+
+        Uninstall a GitHub App from an organization. Any app installed on the organization can be removed.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#uninstall-a-github-app-from-an-enterprise-owned-organization
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    def organization_installation_repositories(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+        """enterprise-apps/organization-installation-repositories
+
+        GET /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories
+
+        Lists the repositories accessible to a given GitHub App installation on an enterprise-owned organization.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#get-the-repositories-accessible-to-a-given-github-app-installation
+        """
+
+        from ..models import AccessibleRepository
+
+        url = f"/enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[AccessibleRepository],
+        )
+
+    async def async_organization_installation_repositories(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+        """enterprise-apps/organization-installation-repositories
+
+        GET /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories
+
+        Lists the repositories accessible to a given GitHub App installation on an enterprise-owned organization.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#get-the-repositories-accessible-to-a-given-github-app-installation
+        """
+
+        from ..models import AccessibleRepository
+
+        url = f"/enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[AccessibleRepository],
+        )
+
+    @overload
+    def change_installation_repository_access_selection(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType,
+    ) -> Response[Installation, InstallationType]: ...
+
+    @overload
+    def change_installation_repository_access_selection(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        repository_selection: Literal["all", "selected"],
+        repositories: Missing[list[str]] = UNSET,
+    ) -> Response[Installation, InstallationType]: ...
+
+    def change_installation_repository_access_selection(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[Installation, InstallationType]:
+        """enterprise-apps/change-installation-repository-access-selection
+
+        PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories
+
+        Toggle repository access for a GitHub App installation between all repositories and selected repositories. You must provide at least one repository when changing the access to 'selected'. If you change the access to 'all', the repositories list must not be provided.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#toggle-installation-repository-access-between-selected-and-all-repositories
+        """
+
+        from ..models import (
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody,
+            Installation,
+        )
+
+        url = f"/enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Installation,
+        )
+
+    @overload
+    async def async_change_installation_repository_access_selection(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType,
+    ) -> Response[Installation, InstallationType]: ...
+
+    @overload
+    async def async_change_installation_repository_access_selection(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        repository_selection: Literal["all", "selected"],
+        repositories: Missing[list[str]] = UNSET,
+    ) -> Response[Installation, InstallationType]: ...
+
+    async def async_change_installation_repository_access_selection(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[Installation, InstallationType]:
+        """enterprise-apps/change-installation-repository-access-selection
+
+        PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories
+
+        Toggle repository access for a GitHub App installation between all repositories and selected repositories. You must provide at least one repository when changing the access to 'selected'. If you change the access to 'all', the repositories list must not be provided.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#toggle-installation-repository-access-between-selected-and-all-repositories
+        """
+
+        from ..models import (
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody,
+            Installation,
+        )
+
+        url = f"/enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Installation,
+        )
+
+    @overload
+    def grant_repository_access_to_installation(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType,
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+
+    @overload
+    def grant_repository_access_to_installation(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        repositories: list[str],
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+
+    def grant_repository_access_to_installation(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+        """enterprise-apps/grant-repository-access-to-installation
+
+        PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/add
+
+        Grant repository access to an organization installation. You can add up to 50 repositories at a time. If the installation already has access to the repository, it will not be added again.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#grant-repository-access-to-an-organization-installation
+        """
+
+        from ..models import (
+            AccessibleRepository,
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody,
+        )
+
+        url = f"/enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/add"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[AccessibleRepository],
+        )
+
+    @overload
+    async def async_grant_repository_access_to_installation(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType,
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+
+    @overload
+    async def async_grant_repository_access_to_installation(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        repositories: list[str],
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+
+    async def async_grant_repository_access_to_installation(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+        """enterprise-apps/grant-repository-access-to-installation
+
+        PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/add
+
+        Grant repository access to an organization installation. You can add up to 50 repositories at a time. If the installation already has access to the repository, it will not be added again.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#grant-repository-access-to-an-organization-installation
+        """
+
+        from ..models import (
+            AccessibleRepository,
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody,
+        )
+
+        url = f"/enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/add"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[AccessibleRepository],
+        )
+
+    @overload
+    def remove_repository_access_to_installation(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType,
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+
+    @overload
+    def remove_repository_access_to_installation(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        repositories: list[str],
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+
+    def remove_repository_access_to_installation(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+        """enterprise-apps/remove-repository-access-to-installation
+
+        PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/remove
+
+        Remove repository access from a GitHub App installed on an organization. You can remove up to 50 repositories at a time. You cannot remove repositories from an app installed on `all` repositories, nor can you remove the last repository for an app. If you attempt to do so, the API will return a 422 Unprocessable Entity error.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#remove-repository-access-from-an-organization-installation
+        """
+
+        from ..models import (
+            AccessibleRepository,
+            BasicError,
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody,
+        )
+
+        url = f"/enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/remove"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[AccessibleRepository],
+            error_models={
+                "422": BasicError,
+            },
+        )
+
+    @overload
+    async def async_remove_repository_access_to_installation(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType,
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+
+    @overload
+    async def async_remove_repository_access_to_installation(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        repositories: list[str],
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+
+    async def async_remove_repository_access_to_installation(
+        self,
+        enterprise: str,
+        org: str,
+        installation_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+        """enterprise-apps/remove-repository-access-to-installation
+
+        PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/remove
+
+        Remove repository access from a GitHub App installed on an organization. You can remove up to 50 repositories at a time. You cannot remove repositories from an app installed on `all` repositories, nor can you remove the last repository for an app. If you attempt to do so, the API will return a 422 Unprocessable Entity error.
+
+        This API can only be called by a GitHub App installed on the enterprise that owns the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/organization-installations#remove-repository-access-from-an-organization-installation
+        """
+
+        from ..models import (
+            AccessibleRepository,
+            BasicError,
+            EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody,
+        )
+
+        url = f"/enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/remove"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[AccessibleRepository],
+            error_models={
+                "422": BasicError,
             },
         )
 

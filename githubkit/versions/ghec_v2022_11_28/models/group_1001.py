@@ -10,54 +10,46 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCampaignsCampaignNumberPatchBody(GitHubModel):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+class OrgsOrgActionsVariablesGetResponse200(GitHubModel):
+    """OrgsOrgActionsVariablesGetResponse200"""
 
-    name: Missing[str] = Field(
-        min_length=1,
-        max_length=50,
-        default=UNSET,
-        description="The name of the campaign",
-    )
-    description: Missing[str] = Field(
-        min_length=1,
-        max_length=255,
-        default=UNSET,
-        description="A description for the campaign",
-    )
-    managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
-    )
-    team_managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The slugs of the teams to set as the campaign managers.",
-    )
-    ends_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The end date and time of the campaign, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
-    )
-    contact_link: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contact link of the campaign. Must be a URI."
-    )
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET,
-        title="Campaign state",
-        description="Indicates whether a campaign is open or closed",
-    )
+    total_count: int = Field()
+    variables: list[OrganizationActionsVariable] = Field()
 
 
-model_rebuild(OrgsOrgCampaignsCampaignNumberPatchBody)
+class OrganizationActionsVariable(GitHubModel):
+    """Actions Variable for an Organization
 
-__all__ = ("OrgsOrgCampaignsCampaignNumberPatchBody",)
+    Organization variable for GitHub Actions.
+    """
+
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    created_at: datetime = Field(
+        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    updated_at: datetime = Field(
+        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a variable"
+    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgActionsVariablesGetResponse200)
+model_rebuild(OrganizationActionsVariable)
+
+__all__ = (
+    "OrganizationActionsVariable",
+    "OrgsOrgActionsVariablesGetResponse200",
+)

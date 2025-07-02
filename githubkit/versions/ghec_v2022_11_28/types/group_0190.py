@@ -9,84 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0053 import BypassResponseType
 
+class CopilotOrganizationDetailsType(TypedDict):
+    """Copilot Organization Details
 
-class SecretScanningDismissalRequestType(TypedDict):
-    """Secret scanning alert dismissal request
-
-    A dismissal request made by a user asking to close a secret scanning alert in
-    this repository.
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[SecretScanningDismissalRequestPropRepositoryType]
-    organization: NotRequired[SecretScanningDismissalRequestPropOrganizationType]
-    requester: NotRequired[SecretScanningDismissalRequestPropRequesterType]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[SecretScanningDismissalRequestPropDataItemsType], None]
+    seat_breakdown: CopilotOrganizationSeatBreakdownType
+    public_code_suggestions: Literal["allow", "block", "unconfigured"]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
     ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[
-        Literal["pending", "denied", "approved", "cancelled", "expired"]
-    ]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[datetime]
-    created_at: NotRequired[datetime]
-    responses: NotRequired[Union[list[BypassResponseType], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
+    plan_type: NotRequired[Literal["business", "enterprise"]]
 
 
-class SecretScanningDismissalRequestPropRepositoryType(TypedDict):
-    """SecretScanningDismissalRequestPropRepository
+class CopilotOrganizationSeatBreakdownType(TypedDict):
+    """Copilot Seat Breakdown
 
-    The repository the dismissal request is for.
+    The breakdown of Copilot Business seats for the organization.
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class SecretScanningDismissalRequestPropOrganizationType(TypedDict):
-    """SecretScanningDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class SecretScanningDismissalRequestPropRequesterType(TypedDict):
-    """SecretScanningDismissalRequestPropRequester
-
-    The user who requested the dismissal.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class SecretScanningDismissalRequestPropDataItemsType(TypedDict):
-    """SecretScanningDismissalRequestPropDataItems"""
-
-    secret_type: NotRequired[str]
-    alert_number: NotRequired[str]
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
 
 
 __all__ = (
-    "SecretScanningDismissalRequestPropDataItemsType",
-    "SecretScanningDismissalRequestPropOrganizationType",
-    "SecretScanningDismissalRequestPropRepositoryType",
-    "SecretScanningDismissalRequestPropRequesterType",
-    "SecretScanningDismissalRequestType",
+    "CopilotOrganizationDetailsType",
+    "CopilotOrganizationSeatBreakdownType",
 )

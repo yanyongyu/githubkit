@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,43 +18,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0154 import ReactionRollup
 
+class RuleSuitesItems(GitHubModel):
+    """RuleSuitesItems"""
 
-class TeamDiscussion(GitHubModel):
-    """Team Discussion
-
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
-    """
-
-    author: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The main text of the discussion.")
-    body_html: str = Field()
-    body_version: str = Field(
-        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the rule insight."
     )
-    comments_count: int = Field()
-    comments_url: str = Field()
-    created_at: datetime = Field()
-    last_edited_at: Union[datetime, None] = Field()
-    html_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The unique sequence number of a team discussion.")
-    pinned: bool = Field(
-        description="Whether or not this discussion should be pinned for easy retrieval."
+    actor_id: Missing[int] = Field(
+        default=UNSET, description="The number that identifies the user."
     )
-    private: bool = Field(
-        description="Whether or not this discussion should be restricted to team members and organization owners."
+    actor_name: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
     )
-    team_url: str = Field()
-    title: str = Field(description="The title of the discussion.")
-    updated_at: datetime = Field()
-    url: str = Field()
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    before_sha: Missing[str] = Field(
+        default=UNSET, description="The first commit sha before the push evaluation."
+    )
+    after_sha: Missing[str] = Field(
+        default=UNSET, description="The last commit sha in the push evaluation."
+    )
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref name that the evaluation ran on."
+    )
+    repository_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the repository associated with the rule evaluation.",
+    )
+    repository_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository without the `.git` extension.",
+    )
+    pushed_at: Missing[datetime] = Field(default=UNSET)
+    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` enforcement status.",
+    )
+    evaluation_result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
+    )
 
 
-model_rebuild(TeamDiscussion)
+model_rebuild(RuleSuitesItems)
 
-__all__ = ("TeamDiscussion",)
+__all__ = ("RuleSuitesItems",)

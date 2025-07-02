@@ -15,39 +15,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0265 import BranchProtection
-from .group_0270 import Commit
+from .group_0271 import BranchProtection
 
 
-class BranchWithProtection(GitHubModel):
-    """Branch With Protection
+class ShortBranch(GitHubModel):
+    """Short Branch
 
-    Branch With Protection
+    Short Branch
     """
 
     name: str = Field()
-    commit: Commit = Field(title="Commit", description="Commit")
-    links: BranchWithProtectionPropLinks = Field(alias="_links")
+    commit: ShortBranchPropCommit = Field()
     protected: bool = Field()
-    protection: BranchProtection = Field(
-        title="Branch Protection", description="Branch Protection"
+    protection: Missing[BranchProtection] = Field(
+        default=UNSET, title="Branch Protection", description="Branch Protection"
     )
-    protection_url: str = Field()
-    pattern: Missing[str] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
+    protection_url: Missing[str] = Field(default=UNSET)
 
 
-class BranchWithProtectionPropLinks(GitHubModel):
-    """BranchWithProtectionPropLinks"""
+class ShortBranchPropCommit(GitHubModel):
+    """ShortBranchPropCommit"""
 
-    html: str = Field()
-    self_: str = Field(alias="self")
+    sha: str = Field()
+    url: str = Field()
 
 
-model_rebuild(BranchWithProtection)
-model_rebuild(BranchWithProtectionPropLinks)
+model_rebuild(ShortBranch)
+model_rebuild(ShortBranchPropCommit)
 
 __all__ = (
-    "BranchWithProtection",
-    "BranchWithProtectionPropLinks",
+    "ShortBranch",
+    "ShortBranchPropCommit",
 )

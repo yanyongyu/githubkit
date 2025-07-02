@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,61 +17,100 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0347 import HookResponse
+from .group_0003 import SimpleUser
+from .group_0485 import EnterpriseWebhooks
+from .group_0486 import SimpleInstallation
+from .group_0487 import OrganizationSimpleWebhooks
+from .group_0488 import RepositoryWebhooks
 
 
-class WebhookPingPropHook(GitHubModel):
-    """Webhook
+class WebhookPageBuild(GitHubModel):
+    """page_build event"""
 
-    The webhook that is being pinged
+    build: WebhookPageBuildPropBuild = Field(
+        description="The [List GitHub Pages builds](https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#list-github-pages-builds) itself."
+    )
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    )
+    id: int = Field()
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+class WebhookPageBuildPropBuild(GitHubModel):
+    """WebhookPageBuildPropBuild
+
+    The [List GitHub Pages builds](https://docs.github.com/enterprise-
+    cloud@latest//rest/pages/pages#list-github-pages-builds) itself.
     """
 
-    active: bool = Field(
-        description="Determines whether the hook is actually triggered for the events it subscribes to."
-    )
-    app_id: Missing[int] = Field(
-        default=UNSET,
-        description="Only included for GitHub Apps. When you register a new GitHub App, GitHub sends a ping event to the webhook URL you specified during registration. The GitHub App ID sent in this field is required for authenticating an app.",
-    )
-    config: WebhookPingPropHookPropConfig = Field()
-    created_at: datetime = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    events: list[str] = Field(
-        description="Determines what events the hook is triggered for. Default: ['push']."
-    )
-    id: int = Field(description="Unique identifier of the webhook.")
-    last_response: Missing[HookResponse] = Field(default=UNSET, title="Hook Response")
-    name: Literal["web"] = Field(
-        description="The type of webhook. The only valid value is 'web'."
-    )
-    ping_url: Missing[str] = Field(default=UNSET)
-    test_url: Missing[str] = Field(default=UNSET)
-    type: str = Field()
-    updated_at: datetime = Field()
+    commit: Union[str, None] = Field()
+    created_at: str = Field()
+    duration: int = Field()
+    error: WebhookPageBuildPropBuildPropError = Field()
+    pusher: Union[WebhookPageBuildPropBuildPropPusher, None] = Field(title="User")
+    status: str = Field()
+    updated_at: str = Field()
+    url: str = Field()
+
+
+class WebhookPageBuildPropBuildPropError(GitHubModel):
+    """WebhookPageBuildPropBuildPropError"""
+
+    message: Union[str, None] = Field()
+
+
+class WebhookPageBuildPropBuildPropPusher(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPingPropHookPropConfig(GitHubModel):
-    """WebhookPingPropHookPropConfig"""
-
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
-    )
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
-    )
-
-
-model_rebuild(WebhookPingPropHook)
-model_rebuild(WebhookPingPropHookPropConfig)
+model_rebuild(WebhookPageBuild)
+model_rebuild(WebhookPageBuildPropBuild)
+model_rebuild(WebhookPageBuildPropBuildPropError)
+model_rebuild(WebhookPageBuildPropBuildPropPusher)
 
 __all__ = (
-    "WebhookPingPropHook",
-    "WebhookPingPropHookPropConfig",
+    "WebhookPageBuild",
+    "WebhookPageBuildPropBuild",
+    "WebhookPageBuildPropBuildPropError",
+    "WebhookPageBuildPropBuildPropPusher",
 )

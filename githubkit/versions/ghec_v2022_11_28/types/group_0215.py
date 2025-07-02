@@ -9,75 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
 
 
-class OrganizationProgrammaticAccessGrantRequestType(TypedDict):
-    """Simple Organization Programmatic Access Grant Request
+class OrganizationRoleType(TypedDict):
+    """Organization Role
 
-    Minimal representation of an organization programmatic access grant request for
-    enumerations
+    Organization roles
     """
 
     id: int
-    reason: Union[str, None]
-    owner: SimpleUserType
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissionsType
-    created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
-
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
     ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType
+    source: NotRequired[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
     ]
-    other: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType
-    ]
+    permissions: list[str]
+    organization: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
 
 
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
-"""
+class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
 
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
-"""
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType: TypeAlias = (
-    dict[str, Any]
-)
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
-"""
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleType]]
 
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantRequestType",
+    "OrganizationRoleType",
+    "OrgsOrgOrganizationRolesGetResponse200Type",
 )

@@ -9,32 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
 
+class CustomPropertyValueType(TypedDict):
+    """Custom Property Value
 
-class RepositoryAdvisoryCreditType(TypedDict):
-    """RepositoryAdvisoryCredit
-
-    A credit given to a user for a repository security advisory.
+    Custom property name and associated value
     """
 
-    user: SimpleUserType
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ]
-    state: Literal["accepted", "declined", "pending"]
+    property_name: str
+    value: Union[str, list[str], None]
 
 
-__all__ = ("RepositoryAdvisoryCreditType",)
+__all__ = ("CustomPropertyValueType",)

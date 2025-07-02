@@ -9,57 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoAttestationsPostBody(GitHubModel):
-    """ReposOwnerRepoAttestationsPostBody"""
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
-    bundle: ReposOwnerRepoAttestationsPostBodyPropBundle = Field(
-        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information."
+    environment_ids: list[int] = Field(
+        description="The list of environment ids to approve or reject"
     )
+    state: Literal["approved", "rejected"] = Field(
+        description="Whether to approve or reject deployment to the specified environments."
+    )
+    comment: str = Field(description="A comment to accompany the deployment review")
 
 
-class ReposOwnerRepoAttestationsPostBodyPropBundle(GitHubModel):
-    """ReposOwnerRepoAttestationsPostBodyPropBundle
+model_rebuild(ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody)
 
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
-    verification_material: Missing[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
-    ] = Field(default=UNSET, alias="verificationMaterial")
-    dsse_envelope: Missing[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
-    ] = Field(default=UNSET, alias="dsseEnvelope")
-
-
-class ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial"""
-
-
-class ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope(ExtraGitHubModel):
-    """ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope"""
-
-
-model_rebuild(ReposOwnerRepoAttestationsPostBody)
-model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundle)
-model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial)
-model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope)
-
-__all__ = (
-    "ReposOwnerRepoAttestationsPostBody",
-    "ReposOwnerRepoAttestationsPostBodyPropBundle",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial",
-)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",)

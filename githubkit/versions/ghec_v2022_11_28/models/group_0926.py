@@ -9,50 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0049 import (
-    AmazonS3AccessKeysConfig,
-    AzureBlobConfig,
-    AzureHubConfig,
-    DatadogConfig,
-    HecConfig,
-)
-from .group_0050 import AmazonS3OidcConfig, SplunkConfig
-from .group_0051 import GoogleCloudConfig
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBody(GitHubModel):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody"""
 
-    enabled: bool = Field(description="This setting pauses or resumes a stream.")
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ] = Field(
-        description="The audit log streaming provider. The name is case sensitive."
+    name: str = Field(description="The name of the new runner.")
+    runner_group_id: int = Field(
+        description="The ID of the runner group to register the runner to."
     )
-    vendor_specific: Union[
-        AzureBlobConfig,
-        AzureHubConfig,
-        AmazonS3OidcConfig,
-        AmazonS3AccessKeysConfig,
-        SplunkConfig,
-        HecConfig,
-        GoogleCloudConfig,
-        DatadogConfig,
-    ] = Field()
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
+    )
+    work_folder: Missing[str] = Field(
+        default=UNSET,
+        description="The working directory to be used for job execution, relative to the runner install directory.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseAuditLogStreamsPostBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody)
 
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsPostBody",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody",)

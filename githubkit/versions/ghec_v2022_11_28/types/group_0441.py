@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0437 import TrafficType
+from typing_extensions import NotRequired, TypedDict
 
 
-class ViewTrafficType(TypedDict):
-    """View Traffic
+class TagProtectionType(TypedDict):
+    """Tag protection
 
-    View Traffic
+    Tag protection
     """
 
-    count: int
-    uniques: int
-    views: list[TrafficType]
+    id: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    enabled: NotRequired[bool]
+    pattern: str
 
 
-__all__ = ("ViewTrafficType",)
+__all__ = ("TagProtectionType",)

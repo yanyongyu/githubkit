@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
+class ReposOwnerRepoProjectsPostBodyType(TypedDict):
+    """ReposOwnerRepoProjectsPostBody"""
 
-    reviewers: list[str]
-    team_reviewers: NotRequired[list[str]]
+    name: str
+    body: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type",)
+__all__ = ("ReposOwnerRepoProjectsPostBodyType",)

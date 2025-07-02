@@ -14,6 +14,8 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
 class Verification(GitHubModel):
@@ -23,7 +25,7 @@ class Verification(GitHubModel):
     reason: str = Field()
     payload: Union[str, None] = Field()
     signature: Union[str, None] = Field()
-    verified_at: Union[str, None] = Field()
+    verified_at: Missing[Union[str, None]] = Field(default=UNSET)
 
 
 model_rebuild(Verification)

@@ -9,43 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0056 import BypassResponseType
 
-class CopilotOrganizationDetailsType(TypedDict):
-    """Copilot Organization Details
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
+class SecretScanningBypassRequestType(TypedDict):
+    """Secret scanning bypass request
+
+    A bypass request made by a user asking to be exempted from push protection in
+    this repository.
     """
 
-    seat_breakdown: CopilotOrganizationSeatBreakdownType
-    public_code_suggestions: Literal["allow", "block", "unconfigured"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[SecretScanningBypassRequestPropRepositoryType]
+    organization: NotRequired[SecretScanningBypassRequestPropOrganizationType]
+    requester: NotRequired[SecretScanningBypassRequestPropRequesterType]
+    request_type: NotRequired[str]
+    data: NotRequired[Union[list[SecretScanningBypassRequestPropDataItemsType], None]]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[
+        Literal[
+            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+        ]
     ]
-    plan_type: NotRequired[Literal["business", "enterprise"]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[datetime]
+    created_at: NotRequired[datetime]
+    responses: NotRequired[Union[list[BypassResponseType], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-class CopilotOrganizationSeatBreakdownType(TypedDict):
-    """Copilot Seat Breakdown
+class SecretScanningBypassRequestPropRepositoryType(TypedDict):
+    """SecretScanningBypassRequestPropRepository
 
-    The breakdown of Copilot Business seats for the organization.
+    The repository the bypass request is for.
     """
 
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class SecretScanningBypassRequestPropOrganizationType(TypedDict):
+    """SecretScanningBypassRequestPropOrganization
+
+    The organization associated with the repository the bypass request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class SecretScanningBypassRequestPropRequesterType(TypedDict):
+    """SecretScanningBypassRequestPropRequester
+
+    The user who requested the bypass.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class SecretScanningBypassRequestPropDataItemsType(TypedDict):
+    """SecretScanningBypassRequestPropDataItems"""
+
+    secret_type: NotRequired[str]
+    bypass_reason: NotRequired[Literal["used_in_tests", "false_positive", "fix_later"]]
+    path: NotRequired[str]
+    branch: NotRequired[str]
 
 
 __all__ = (
-    "CopilotOrganizationDetailsType",
-    "CopilotOrganizationSeatBreakdownType",
+    "SecretScanningBypassRequestPropDataItemsType",
+    "SecretScanningBypassRequestPropOrganizationType",
+    "SecretScanningBypassRequestPropRepositoryType",
+    "SecretScanningBypassRequestPropRequesterType",
+    "SecretScanningBypassRequestType",
 )

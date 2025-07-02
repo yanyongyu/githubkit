@@ -38,6 +38,7 @@ class Installation(GitHubModel):
     repositories_url: str = Field()
     html_url: str = Field()
     app_id: int = Field()
+    client_id: Missing[str] = Field(default=UNSET)
     target_id: int = Field(
         description="The ID of the user or organization this token is being scoped to."
     )

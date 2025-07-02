@@ -9,31 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0168 import (
-    MarketplacePurchasePropMarketplacePendingChangeType,
-    MarketplacePurchasePropMarketplacePurchaseType,
-)
+from .group_0003 import SimpleUserType
 
 
-class MarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase
+class GistCommentType(TypedDict):
+    """Gist Comment
 
-    Marketplace Purchase
+    A comment made to a gist.
     """
 
-    url: str
-    type: str
     id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
+    node_id: str
+    url: str
+    body: str
+    user: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
 
 
-__all__ = ("MarketplacePurchaseType",)
+__all__ = ("GistCommentType",)
