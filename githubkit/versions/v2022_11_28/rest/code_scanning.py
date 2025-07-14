@@ -2578,6 +2578,7 @@ class CodeScanningClient:
                 "403": BasicError,
                 "404": BasicError,
                 "409": BasicError,
+                "422": BasicError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )
@@ -2676,6 +2677,7 @@ class CodeScanningClient:
                 "403": BasicError,
                 "404": BasicError,
                 "409": BasicError,
+                "422": BasicError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
         )

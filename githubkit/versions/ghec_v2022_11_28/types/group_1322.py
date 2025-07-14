@@ -11,12 +11,15 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class UserKeysPostBodyType(TypedDict):
-    """UserKeysPostBody"""
-
-    title: NotRequired[str]
-    key: str
+from .group_0020 import RepositoryType
 
 
-__all__ = ("UserKeysPostBodyType",)
+class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+
+    total_count: int
+    repository_selection: NotRequired[str]
+    repositories: list[RepositoryType]
+
+
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200Type",)

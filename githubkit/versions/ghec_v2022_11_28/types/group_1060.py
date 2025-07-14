@@ -13,18 +13,16 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPrivateRegistriesSecretNamePatchBodyType(TypedDict):
-    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
+class OrgsOrgPrivateRegistriesPostBodyType(TypedDict):
+    """OrgsOrgPrivateRegistriesPostBody"""
 
-    registry_type: NotRequired[
-        Literal["maven_repository", "nuget_feed", "goproxy_server"]
-    ]
-    url: NotRequired[str]
+    registry_type: Literal["maven_repository", "nuget_feed", "goproxy_server"]
+    url: str
     username: NotRequired[Union[str, None]]
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
+    encrypted_value: str
+    key_id: str
+    visibility: Literal["all", "private", "selected"]
     selected_repository_ids: NotRequired[list[int]]
 
 
-__all__ = ("OrgsOrgPrivateRegistriesSecretNamePatchBodyType",)
+__all__ = ("OrgsOrgPrivateRegistriesPostBodyType",)

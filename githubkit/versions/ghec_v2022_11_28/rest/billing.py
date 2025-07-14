@@ -36,6 +36,7 @@ if TYPE_CHECKING:
         DeleteCostCenter,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
         GetAllCostCenters,
         GetCostCenter,
         PackagesBillingUsage,
@@ -52,6 +53,8 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type,
         GetAllCostCentersType,
         GetCostCenterType,
         PackagesBillingUsageType,
@@ -321,6 +324,166 @@ class BillingClient:
                 "500": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
+        )
+
+    @overload
+    def create_cost_center(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type,
+    ]: ...
+
+    @overload
+    def create_cost_center(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type,
+    ]: ...
+
+    def create_cost_center(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type,
+    ]:
+        """billing/create-cost-center
+
+        POST /enterprises/{enterprise}/settings/billing/cost-centers
+
+        Creates a new cost center for an enterprise. The authenticated user must be an enterprise admin.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#create-a-new-cost-center
+        """
+
+        from ..models import (
+            EnterprisesEnterpriseSettingsBillingCostCentersPostBody,
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/cost-centers"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseSettingsBillingCostCentersPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
+            error_models={},
+        )
+
+    @overload
+    async def async_create_cost_center(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type,
+    ]: ...
+
+    @overload
+    async def async_create_cost_center(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type,
+    ]: ...
+
+    async def async_create_cost_center(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type,
+    ]:
+        """billing/create-cost-center
+
+        POST /enterprises/{enterprise}/settings/billing/cost-centers
+
+        Creates a new cost center for an enterprise. The authenticated user must be an enterprise admin.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#create-a-new-cost-center
+        """
+
+        from ..models import (
+            EnterprisesEnterpriseSettingsBillingCostCentersPostBody,
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/cost-centers"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseSettingsBillingCostCentersPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
+            error_models={},
         )
 
     def get_cost_center(
@@ -693,6 +856,8 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         users: Missing[list[str]] = UNSET,
+        organizations: Missing[list[str]] = UNSET,
+        repositories: Missing[list[str]] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type,
@@ -717,11 +882,11 @@ class BillingClient:
 
         POST /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}/resource
 
-        Adds users to a cost center.
+        Adds resources to a cost center.
 
-        The usage for the users will be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
+        The usage for the resources will be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#add-users-to-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#add-resources-to-a-cost-center
         """
 
         from ..models import (
@@ -787,6 +952,8 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         users: Missing[list[str]] = UNSET,
+        organizations: Missing[list[str]] = UNSET,
+        repositories: Missing[list[str]] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type,
@@ -811,11 +978,11 @@ class BillingClient:
 
         POST /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}/resource
 
-        Adds users to a cost center.
+        Adds resources to a cost center.
 
-        The usage for the users will be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
+        The usage for the resources will be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#add-users-to-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#add-resources-to-a-cost-center
         """
 
         from ..models import (
@@ -881,6 +1048,8 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         users: Missing[list[str]] = UNSET,
+        organizations: Missing[list[str]] = UNSET,
+        repositories: Missing[list[str]] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type,
@@ -905,11 +1074,11 @@ class BillingClient:
 
         DELETE /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}/resource
 
-        Remove users from a cost center.
+        Remove resources from a cost center.
 
-        The usage for the users will no longer be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
+        The usage for the resources will no longer be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#remove-users-from-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#remove-resources-from-a-cost-center
         """
 
         from ..models import (
@@ -974,6 +1143,8 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         users: Missing[list[str]] = UNSET,
+        organizations: Missing[list[str]] = UNSET,
+        repositories: Missing[list[str]] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type,
@@ -998,11 +1169,11 @@ class BillingClient:
 
         DELETE /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}/resource
 
-        Remove users from a cost center.
+        Remove resources from a cost center.
 
-        The usage for the users will no longer be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
+        The usage for the resources will no longer be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#remove-users-from-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#remove-resources-from-a-cost-center
         """
 
         from ..models import (

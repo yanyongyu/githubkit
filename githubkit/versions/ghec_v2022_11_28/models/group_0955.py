@@ -16,21 +16,39 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    users: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The usernames of the users to add to the cost center.",
+    id: Missing[str] = Field(
+        default=UNSET, description="Unique identifier for the cost center"
+    )
+    name: Missing[str] = Field(default=UNSET, description="Name of the cost center")
+    resources: Missing[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
+        ]
+    ] = Field(
+        default=UNSET, description="List of resources assigned to this cost center"
     )
 
 
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+
+    type: Missing[str] = Field(
+        default=UNSET, description="Type of resource (User, Org, or Repo)"
+    )
+    name: Missing[str] = Field(default=UNSET, description="Name/login of the resource")
+
+
+model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200)
 model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody
+    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems",
 )

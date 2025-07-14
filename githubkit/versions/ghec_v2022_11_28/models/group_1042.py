@@ -9,55 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgHooksHookIdPatchBody(GitHubModel):
-    """OrgsOrgHooksHookIdPatchBody"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
 
-    config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfig] = Field(
-        default=UNSET,
-        description="Key/value pairs to provide settings for this webhook.",
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
     )
-    events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for.",
-    )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
-    )
-    name: Missing[str] = Field(default=UNSET)
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfig(GitHubModel):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody)
 
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str = Field(description="The URL to which the payloads will be delivered.")
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
-    )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
-
-
-model_rebuild(OrgsOrgHooksHookIdPatchBody)
-model_rebuild(OrgsOrgHooksHookIdPatchBodyPropConfig)
-
-__all__ = (
-    "OrgsOrgHooksHookIdPatchBody",
-    "OrgsOrgHooksHookIdPatchBodyPropConfig",
-)
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody",)

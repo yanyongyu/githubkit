@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdProjectsProjectIdPutResponse403Type(TypedDict):
-    """TeamsTeamIdProjectsProjectIdPutResponse403"""
+class TeamsTeamIdMembershipsUsernamePutBodyType(TypedDict):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
-__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403Type",)
+__all__ = ("TeamsTeamIdMembershipsUsernamePutBodyType",)

@@ -9,18 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberPatchBody"""
+class ReposOwnerRepoPullsCommentsCommentIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
 
-    title: NotRequired[str]
-    body: NotRequired[str]
-    state: NotRequired[Literal["open", "closed"]]
-    base: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
+    body: str
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberPatchBodyType",)
+__all__ = ("ReposOwnerRepoPullsCommentsCommentIdPatchBodyType",)

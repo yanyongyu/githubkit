@@ -17,25 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0063 import CodeSecurityConfiguration
 
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200(
-    GitHubModel
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
-
-    default_for_new_repos: Missing[
-        Literal["all", "none", "private_and_internal", "public"]
+    scope: Literal[
+        "all", "all_without_configurations", "public", "private_or_internal", "selected"
     ] = Field(
+        description="The type of repositories to attach the configuration to. `selected` means the configuration will be attached to only the repositories specified by `selected_repository_ids`"
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="Specifies which types of repository this security configuration is applied to by default.",
-    )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+        description="An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`.",
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",)
