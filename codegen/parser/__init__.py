@@ -4,6 +4,8 @@ from typing import TYPE_CHECKING, Optional
 import httpx
 from openapi_pydantic import OpenAPI
 
+from ..log import logger
+
 if TYPE_CHECKING:
     from ..config import Override
     from ..source import Source
@@ -53,6 +55,7 @@ def parse_openapi_spec(source: "Source", override: "Override") -> OpenAPIData:
     # apply schema overrides first to make sure json pointer is correct
     for path, new_schema in override.schema_overrides.items():
         ref = str(httpx.URL(fragment=path))
+        logger.info(f"Applying schema override for {ref!r}")
         merge_inplace(source.resolve_ref(ref).data, new_schema)
 
     _ot = _override_config.set(override)

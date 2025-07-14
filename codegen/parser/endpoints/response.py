@@ -1,5 +1,6 @@
 from typing import TYPE_CHECKING
 
+from jsonpointer import JsonPointerException
 import openapi_pydantic as oas
 
 from ..data import ResponseData
@@ -22,8 +23,12 @@ def build_response(source: "Source", prefix: str) -> ResponseData:
         media_type = next(
             (type for type in data.content.keys() if "json" in type), None
         ) or next(iter(data.content.keys()))
-        response_schema = parse_schema(
-            source / "content" / media_type / "schema", prefix
-        )
+        # schema may not exist for some media types
+        try:
+            response_schema = parse_schema(
+                source / "content" / media_type / "schema", prefix
+            )
+        except JsonPointerException:
+            response_schema = None
 
     return ResponseData(description=data.description, response_schema=response_schema)
