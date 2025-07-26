@@ -1,11 +1,19 @@
 from dataclasses import dataclass
 from functools import cache
-import json
-from pathlib import Path
+import os
 from typing import Any
 
 import httpx
 from jsonpointer import JsonPointer
+
+REPO_COMMIT = os.getenv(
+    "REPO_COMMIT",
+    "https://api.github.com/repos/github/rest-api-description/commits/main",
+)
+RAW_SOURCE_PREFIX = os.getenv(
+    "RAW_SOURCE_PREFIX",
+    "https://raw.githubusercontent.com/github/rest-api-description/",
+)
 
 
 @dataclass(frozen=True)
@@ -37,19 +45,32 @@ class Source:
 
 
 @cache
-def get_content(source: httpx.URL | Path) -> dict:
-    return (
-        json.loads(source.read_text(encoding="utf-8"))
-        if isinstance(source, Path)
-        else httpx.get(
-            source, headers={"User-Agent": "GitHubKit Codegen"}, follow_redirects=True
-        ).json()
-    )
-
-
-def get_source(source: httpx.URL | Path, path: str | None = None) -> Source:
-    if isinstance(source, Path):
-        uri = httpx.URL(source.resolve().as_uri(), fragment=path)
+def get_content(source: str | httpx.URL) -> tuple[httpx.URL, dict]:
+    if isinstance(source, str):
+        sha_response = httpx.get(
+            REPO_COMMIT,
+            headers={
+                "User-Agent": "GitHubKit Codegen",
+                "Accept": "application/vnd.github.sha",
+            },
+        )
+        sha_response.raise_for_status()
+        sha = sha_response.text.strip()
+        source_link = httpx.URL(RAW_SOURCE_PREFIX).join(f"{sha}/{source.lstrip('/')}")
     else:
-        uri = source if path is None else source.copy_with(fragment=path)
-    return Source(uri=uri, root=get_content(source))
+        source_link = source
+
+    response = httpx.get(
+        source_link, headers={"User-Agent": "GitHubKit Codegen"}, follow_redirects=True
+    )
+    response.raise_for_status()
+    uri = response.url
+    content = response.json()
+    return uri, content
+
+
+def get_source(source: str | httpx.URL, path: str | None = None) -> Source:
+    uri, root = get_content(source)
+    if path is not None:
+        uri = uri.copy_with(fragment=path)
+    return Source(uri=uri, root=root)

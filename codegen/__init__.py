@@ -1,10 +1,9 @@
 from pathlib import Path
 import shutil
-import sys
 from typing import Any
 
-import httpx
 from jinja2 import Environment, PackageLoader
+import tomlkit
 
 from .config import Config
 from .log import logger as logger
@@ -21,10 +20,7 @@ from .parser import (
 from .parser.schemas import UnionSchema
 from .source import get_source
 
-if sys.version_info >= (3, 11):
-    import tomllib
-else:
-    import tomli as tomllib
+LOCK_FILE_NAME = "versions.lock"
 
 env = Environment(
     loader=PackageLoader("codegen"),
@@ -46,7 +42,9 @@ env.filters.update(_funcs)
 
 
 def load_config() -> Config:
-    pyproject = tomllib.loads(Path("./pyproject.toml").read_text(encoding="utf-8"))
+    pyproject = tomlkit.parse(
+        Path("./pyproject.toml").read_text(encoding="utf-8")
+    ).unwrap()
     config_dict: dict[str, Any] = pyproject.get("tool", {}).get("codegen", {})
 
     return Config.model_validate(config_dict)
@@ -252,6 +250,10 @@ def build_versions(dir: Path, versions: dict[str, str], latest_version: str):
     logger.info("Successfully generated versions!")
 
 
+def build_lock_file(file: Path, lock_data: tomlkit.TOMLDocument):
+    file.write_text(lock_data.as_string())
+
+
 def build():
     config = load_config()
     logger.info(f"Loaded config: {config!r}")
@@ -277,7 +279,8 @@ def build():
 
     for description in config.descriptions:
         logger.info(f"Start getting OpenAPI source for {description.identifier}...")
-        source = get_source(httpx.URL(description.source))
+        source = get_source(description.source)
+        description._actual_source = str(source.uri.copy_with(fragment=None))
         logger.info(f"Getting schema from {source.uri} succeeded!")
 
         logger.info(f"Start parsing OpenAPI spec for {description.identifier}...")
@@ -353,3 +356,4 @@ def build():
         versions[latest_version],
         latest_model_names,
     )
+    build_lock_file(config.output_dir / LOCK_FILE_NAME, config.to_lock())
