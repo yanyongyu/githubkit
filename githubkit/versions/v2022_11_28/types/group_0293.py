@@ -10,67 +10,36 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0292 import DeploymentBranchPolicySettingsType
-from .group_0294 import EnvironmentPropProtectionRulesItemsAnyof1Type
+from .group_0003 import SimpleUserType
+from .group_0010 import IntegrationType
 
 
-class EnvironmentType(TypedDict):
-    """Environment
+class DeploymentStatusType(TypedDict):
+    """Deployment Status
 
-    Details of a deployment environment
+    The status of a deployment.
     """
 
+    url: str
     id: int
     node_id: str
-    name: str
-    url: str
-    html_url: str
+    state: Literal[
+        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    ]
+    creator: Union[None, SimpleUserType]
+    description: str
+    environment: NotRequired[str]
+    target_url: str
     created_at: datetime
     updated_at: datetime
-    protection_rules: NotRequired[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0Type,
-                EnvironmentPropProtectionRulesItemsAnyof1Type,
-                EnvironmentPropProtectionRulesItemsAnyof2Type,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
+    deployment_url: str
+    repository_url: str
+    environment_url: NotRequired[str]
+    log_url: NotRequired[str]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
-
-    id: int
-    node_id: str
-    type: str
-    wait_timer: NotRequired[int]
-
-
-class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
-
-    id: int
-    node_id: str
-    type: str
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: NotRequired[int]
-    environments: NotRequired[list[EnvironmentType]]
-
-
-__all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof0Type",
-    "EnvironmentPropProtectionRulesItemsAnyof2Type",
-    "EnvironmentType",
-    "ReposOwnerRepoEnvironmentsGetResponse200Type",
-)
+__all__ = ("DeploymentStatusType",)

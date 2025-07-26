@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0641 import (
+from .group_0642 import (
     WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
     WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
 )

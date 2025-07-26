@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0040 import RunnerLabel
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
 
-    total_count: int = Field()
-    labels: list[RunnerLabel] = Field()
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200)
+model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody",)

@@ -12,18 +12,18 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsPublicKeyType(TypedDict):
-    """ActionsPublicKey
+class RunnerApplicationType(TypedDict):
+    """Runner Application
 
-    The public key used for setting Actions Secrets.
+    Runner Application
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
-__all__ = ("ActionsPublicKeyType",)
+__all__ = ("RunnerApplicationType",)

@@ -9,59 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
-from .group_0498 import WebhooksUserType
-from .group_0513 import WebhooksTeamType
+from .group_0003 import SimpleUserType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0516 import MergeGroupType
 
 
-class WebhookMembershipRemovedType(TypedDict):
-    """membership removed event"""
+class WebhookMergeGroupChecksRequestedType(TypedDict):
+    """WebhookMergeGroupChecksRequested"""
 
-    action: Literal["removed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["checks_requested"]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
-    organization: OrganizationSimpleWebhooksType
+    merge_group: MergeGroupType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    scope: Literal["team", "organization"]
-    sender: Union[WebhookMembershipRemovedPropSenderType, None]
-    team: WebhooksTeamType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookMembershipRemovedPropSenderType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-__all__ = (
-    "WebhookMembershipRemovedPropSenderType",
-    "WebhookMembershipRemovedType",
-)
+__all__ = ("WebhookMergeGroupChecksRequestedType",)

@@ -13,45 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
+from .group_0140 import RepositoryRulesetType
+from .group_0487 import EnterpriseWebhooksType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
 
 
-class WebhookRepositoryRenamedType(TypedDict):
-    """repository renamed event"""
+class WebhookRepositoryRulesetCreatedType(TypedDict):
+    """repository ruleset created event"""
 
-    action: Literal["renamed"]
-    changes: WebhookRepositoryRenamedPropChangesType
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
     sender: SimpleUserType
 
 
-class WebhookRepositoryRenamedPropChangesType(TypedDict):
-    """WebhookRepositoryRenamedPropChanges"""
-
-    repository: WebhookRepositoryRenamedPropChangesPropRepositoryType
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryType(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepository"""
-
-    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryType",
-    "WebhookRepositoryRenamedPropChangesType",
-    "WebhookRepositoryRenamedType",
-)
+__all__ = ("WebhookRepositoryRulesetCreatedType",)

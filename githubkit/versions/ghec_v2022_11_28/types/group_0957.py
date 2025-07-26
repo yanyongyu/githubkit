@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType(
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00
+    """
 
-    users: NotRequired[list[str]]
-    organizations: NotRequired[list[str]]
-    repositories: NotRequired[list[str]]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type",
 )

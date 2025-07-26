@@ -13,7 +13,8 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0158 import IssueTypeType
+from .group_0159 import IssueTypeType
+from .group_0161 import SubIssuesSummaryType
 from .group_0650 import (
     WebhookIssueCommentEditedPropIssueAllof0PropAssigneeType,
     WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsType,
@@ -23,7 +24,6 @@ from .group_0652 import WebhookIssueCommentEditedPropIssueAllof0PropMilestoneTyp
 from .group_0654 import (
     WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppType,
 )
-from .group_0655 import WebhookIssueCommentEditedPropIssueAllof0PropSubIssuesSummaryType
 
 
 class WebhookIssueCommentEditedPropIssueAllof0Type(TypedDict):
@@ -79,9 +79,7 @@ class WebhookIssueCommentEditedPropIssueAllof0Type(TypedDict):
     ]
     reactions: WebhookIssueCommentEditedPropIssueAllof0PropReactionsType
     repository_url: str
-    sub_issues_summary: NotRequired[
-        WebhookIssueCommentEditedPropIssueAllof0PropSubIssuesSummaryType
-    ]
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
     state: NotRequired[Literal["open", "closed"]]
     state_reason: NotRequired[Union[str, None]]
     timeline_url: NotRequired[str]

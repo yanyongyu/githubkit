@@ -14,20 +14,18 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectChangesType(TypedDict):
-    """WebhooksProjectChanges"""
+class WebhooksProjectColumnType(TypedDict):
+    """Project Column"""
 
-    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtType]
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: datetime
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: datetime
+    url: str
 
 
-class WebhooksProjectChangesPropArchivedAtType(TypedDict):
-    """WebhooksProjectChangesPropArchivedAt"""
-
-    from_: NotRequired[Union[datetime, None]]
-    to: NotRequired[Union[datetime, None]]
-
-
-__all__ = (
-    "WebhooksProjectChangesPropArchivedAtType",
-    "WebhooksProjectChangesType",
-)
+__all__ = ("WebhooksProjectColumnType",)

@@ -13,51 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0424 import EnterpriseWebhooksType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0427 import RepositoryWebhooksType
-from .group_0456 import WebhooksProjectType
+from .group_0426 import EnterpriseWebhooksType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0429 import RepositoryWebhooksType
+from .group_0458 import WebhooksProjectType
 
 
-class WebhookProjectEditedType(TypedDict):
-    """project edited event"""
+class WebhookProjectReopenedType(TypedDict):
+    """project reopened event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookProjectEditedPropChangesType]
+    action: Literal["reopened"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     project: WebhooksProjectType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookProjectEditedPropChangesType(TypedDict):
-    """WebhookProjectEditedPropChanges
-
-    The changes to the project if the action was `edited`.
-    """
-
-    body: NotRequired[WebhookProjectEditedPropChangesPropBodyType]
-    name: NotRequired[WebhookProjectEditedPropChangesPropNameType]
-
-
-class WebhookProjectEditedPropChangesPropBodyType(TypedDict):
-    """WebhookProjectEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookProjectEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectEditedPropChangesPropName"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookProjectEditedPropChangesPropBodyType",
-    "WebhookProjectEditedPropChangesPropNameType",
-    "WebhookProjectEditedPropChangesType",
-    "WebhookProjectEditedType",
-)
+__all__ = ("WebhookProjectReopenedType",)

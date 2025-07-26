@@ -9,27 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0010 import IntegrationType
+from .group_0178 import MinimalRepositoryType
+from .group_0257 import PullRequestMinimalType
 
-class WebhooksDeployKeyType(TypedDict):
-    """WebhooksDeployKey
 
-    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-
-    keys/deploy-keys#get-a-deploy-key) resource.
+class SimpleCheckSuiteType(TypedDict):
+    """SimpleCheckSuite
+
+    A suite of checks performed on the code of a given code change
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
-    id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
-    url: str
-    verified: bool
-    enabled: NotRequired[bool]
+    after: NotRequired[Union[str, None]]
+    app: NotRequired[Union[IntegrationType, None]]
+    before: NotRequired[Union[str, None]]
+    conclusion: NotRequired[
+        Union[
+            None,
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+        ]
+    ]
+    created_at: NotRequired[datetime]
+    head_branch: NotRequired[Union[str, None]]
+    head_sha: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    pull_requests: NotRequired[list[PullRequestMinimalType]]
+    repository: NotRequired[MinimalRepositoryType]
+    status: NotRequired[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ]
+    updated_at: NotRequired[datetime]
+    url: NotRequired[str]
 
 
-__all__ = ("WebhooksDeployKeyType",)
+__all__ = ("SimpleCheckSuiteType",)

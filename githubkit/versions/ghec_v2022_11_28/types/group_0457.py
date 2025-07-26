@@ -9,42 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0449 import MetaType
-from .group_0454 import UserEmailsResponseItemsType, UserNameResponseType
-from .group_0455 import UserRoleItemsType
-from .group_0459 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
+
+class UserRoleItemsType(TypedDict):
+    """UserRoleItems"""
+
+    display: NotRequired[str]
+    type: NotRequired[str]
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+    ]
+    primary: NotRequired[bool]
 
 
-class ScimEnterpriseUserResponseType(TypedDict):
-    """ScimEnterpriseUserResponse"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseType]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
-    id: str
-    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
-    meta: MetaType
-
-
-class ScimEnterpriseUserListType(TypedDict):
-    """ScimEnterpriseUserList"""
-
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: list[ScimEnterpriseUserResponseType]
-    start_index: int
-    items_per_page: int
-
-
-__all__ = (
-    "ScimEnterpriseUserListType",
-    "ScimEnterpriseUserResponseType",
-)
+__all__ = ("UserRoleItemsType",)

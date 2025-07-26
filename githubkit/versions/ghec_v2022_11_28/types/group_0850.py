@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
-from .group_0533 import SecretScanningAlertWebhookType
+from .group_0487 import EnterpriseWebhooksType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0535 import SecretScanningAlertWebhookType
 
 
-class WebhookSecretScanningAlertResolvedType(TypedDict):
-    """secret_scanning_alert resolved event"""
+class WebhookSecretScanningAlertValidatedType(TypedDict):
+    """secret_scanning_alert validated event"""
 
-    action: Literal["resolved"]
+    action: Literal["validated"]
     alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -32,4 +32,4 @@ class WebhookSecretScanningAlertResolvedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookSecretScanningAlertResolvedType",)
+__all__ = ("WebhookSecretScanningAlertValidatedType",)

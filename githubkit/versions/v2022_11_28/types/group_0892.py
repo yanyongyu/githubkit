@@ -9,17 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0063 import MinimalRepositoryType
 
 
-class OrgsOrgActionsVariablesNamePatchBodyType(TypedDict):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-__all__ = ("OrgsOrgActionsVariablesNamePatchBodyType",)
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",)

@@ -9,70 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgCampaignsPostBodyType(TypedDict):
+    """OrgsOrgCampaignsPostBody"""
 
-    attestations: NotRequired[
-        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType]
-    ]
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
-    TypedDict
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    bundle: NotRequired[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType
-    ]
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
+    name: str
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: datetime
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType]
+    generate_issues: NotRequired[bool]
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType(
-    TypedDict
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType(TypedDict):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
 
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: NotRequired[str]
-    verification_material: NotRequired[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType
-    ]
-    dsse_envelope: NotRequired[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType
-    ]
-
-
-OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-pVerificationMaterial
-"""
-
-
-OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-pDsseEnvelope
-"""
+    repository_id: int
+    alert_numbers: list[int]
 
 
 __all__ = (
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200Type",
+    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType",
+    "OrgsOrgCampaignsPostBodyType",
 )

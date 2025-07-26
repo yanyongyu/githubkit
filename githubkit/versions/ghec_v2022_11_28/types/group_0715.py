@@ -9,57 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
+from .group_0487 import EnterpriseWebhooksType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0510 import WebhooksMilestoneType
 
 
-class WebhookMetaDeletedType(TypedDict):
-    """meta deleted event"""
+class WebhookMilestoneClosedType(TypedDict):
+    """milestone closed event"""
 
-    action: Literal["deleted"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    hook: WebhookMetaDeletedPropHookType
-    hook_id: int
     installation: NotRequired[SimpleInstallationType]
+    milestone: WebhooksMilestoneType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
-    sender: NotRequired[SimpleUserType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookMetaDeletedPropHookType(TypedDict):
-    """WebhookMetaDeletedPropHook
-
-    The deleted webhook. This will contain different keys based on the type of
-    webhook it is: repository, organization, business, app, or GitHub Marketplace.
-    """
-
-    active: bool
-    config: WebhookMetaDeletedPropHookPropConfigType
-    created_at: str
-    events: list[str]
-    id: int
-    name: str
-    type: str
-    updated_at: str
-
-
-class WebhookMetaDeletedPropHookPropConfigType(TypedDict):
-    """WebhookMetaDeletedPropHookPropConfig"""
-
-    content_type: Literal["json", "form"]
-    insecure_ssl: str
-    secret: NotRequired[str]
-    url: str
-
-
-__all__ = (
-    "WebhookMetaDeletedPropHookPropConfigType",
-    "WebhookMetaDeletedPropHookType",
-    "WebhookMetaDeletedType",
-)
+__all__ = ("WebhookMilestoneClosedType",)

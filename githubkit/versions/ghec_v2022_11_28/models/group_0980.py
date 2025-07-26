@@ -13,16 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0032 import ActionsHostedRunnerImage
+from .group_0030 import ActionsHostedRunnerMachineSpec
 
 
-class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200(GitHubModel):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
 
     total_count: int = Field()
-    images: list[ActionsHostedRunnerImage] = Field()
+    machine_specs: list[ActionsHostedRunnerMachineSpec] = Field()
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200)
+model_rebuild(OrgsOrgActionsHostedRunnersMachineSizesGetResponse200)
 
-__all__ = ("OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200",)
+__all__ = ("OrgsOrgActionsHostedRunnersMachineSizesGetResponse200",)

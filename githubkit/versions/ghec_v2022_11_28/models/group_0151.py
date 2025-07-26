@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,38 +16,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetAllCostCenters(GitHubModel):
-    """GetAllCostCenters"""
+class AdvancedSecurityActiveCommitters(GitHubModel):
+    """AdvancedSecurityActiveCommitters"""
 
-    cost_centers: Missing[list[GetAllCostCentersPropCostCentersItems]] = Field(
-        default=UNSET, alias="costCenters"
+    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
+    total_count: Missing[int] = Field(default=UNSET)
+    maximum_advanced_security_committers: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
     )
-
-
-class GetAllCostCentersPropCostCentersItems(GitHubModel):
-    """GetAllCostCentersPropCostCentersItems"""
-
-    id: str = Field(description="ID of the cost center.")
-    name: str = Field(description="Name of the cost center.")
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
+    purchased_advanced_security_committers: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of GitHub Advanced Security licences purchased",
     )
-    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
+    repositories: list[AdvancedSecurityActiveCommittersRepository] = Field()
 
 
-class GetAllCostCentersPropCostCentersItemsPropResourcesItems(GitHubModel):
-    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+class AdvancedSecurityActiveCommittersRepository(GitHubModel):
+    """AdvancedSecurityActiveCommittersRepository"""
 
-    type: str = Field(description="Type of the resource.")
-    name: str = Field(description="Name of the resource.")
+    name: str = Field()
+    advanced_security_committers: int = Field()
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUser
+    ] = Field()
 
 
-model_rebuild(GetAllCostCenters)
-model_rebuild(GetAllCostCentersPropCostCentersItems)
-model_rebuild(GetAllCostCentersPropCostCentersItemsPropResourcesItems)
+class AdvancedSecurityActiveCommittersUser(GitHubModel):
+    """AdvancedSecurityActiveCommittersUser"""
+
+    user_login: str = Field()
+    last_pushed_date: str = Field()
+    last_pushed_email: str = Field()
+
+
+model_rebuild(AdvancedSecurityActiveCommitters)
+model_rebuild(AdvancedSecurityActiveCommittersRepository)
+model_rebuild(AdvancedSecurityActiveCommittersUser)
 
 __all__ = (
-    "GetAllCostCenters",
-    "GetAllCostCentersPropCostCentersItems",
-    "GetAllCostCentersPropCostCentersItemsPropResourcesItems",
+    "AdvancedSecurityActiveCommitters",
+    "AdvancedSecurityActiveCommittersRepository",
+    "AdvancedSecurityActiveCommittersUser",
 )

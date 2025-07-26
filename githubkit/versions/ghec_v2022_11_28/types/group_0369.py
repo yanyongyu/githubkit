@@ -10,28 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
 from .group_0010 import IntegrationType
+from .group_0071 import TeamType
 
 
-class LockedIssueEventType(TypedDict):
-    """Locked Issue Event
+class ReviewRequestRemovedIssueEventType(TypedDict):
+    """Review Request Removed Issue Event
 
-    Locked Issue Event
+    Review Request Removed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["locked"]
+    event: Literal["review_request_removed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    lock_reason: Union[str, None]
+    review_requester: SimpleUserType
+    requested_team: NotRequired[TeamType]
+    requested_reviewer: NotRequired[SimpleUserType]
 
 
-__all__ = ("LockedIssueEventType",)
+__all__ = ("ReviewRequestRemovedIssueEventType",)

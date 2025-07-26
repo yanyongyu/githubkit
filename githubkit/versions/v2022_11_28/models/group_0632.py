@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0424 import EnterpriseWebhooks
-from .group_0425 import SimpleInstallation
-from .group_0426 import OrganizationSimpleWebhooks
-from .group_0427 import RepositoryWebhooks
-from .group_0439 import WebhooksLabel
+from .group_0426 import EnterpriseWebhooks
+from .group_0427 import SimpleInstallation
+from .group_0428 import OrganizationSimpleWebhooks
+from .group_0429 import RepositoryWebhooks
+from .group_0441 import WebhooksLabel
 
 
-class WebhookLabelCreated(GitHubModel):
-    """label created event"""
+class WebhookLabelDeleted(GitHubModel):
+    """label deleted event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,11 +49,9 @@ class WebhookLabelCreated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookLabelCreated)
+model_rebuild(WebhookLabelDeleted)
 
-__all__ = ("WebhookLabelCreated",)
+__all__ = ("WebhookLabelDeleted",)

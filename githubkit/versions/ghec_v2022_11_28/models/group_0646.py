@@ -18,7 +18,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0641 import (
+from .group_0642 import (
     WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
     WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
 )

@@ -12,17 +12,22 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0028 import CodeSecurityConfigurationType
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(
+
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
+    e200
+    """
 
     default_for_new_repos: NotRequired[
         Literal["all", "none", "private_and_internal", "public"]
     ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
 )

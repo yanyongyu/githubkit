@@ -11,15 +11,35 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType
+from .group_0058 import CodeScanningAlertRuleSummaryType
+from .group_0059 import CodeScanningAnalysisToolType
+from .group_0060 import CodeScanningAlertInstanceType
 
 
-class CodeScanningAutofixType(TypedDict):
-    """CodeScanningAutofix"""
+class CodeScanningAlertItemsType(TypedDict):
+    """CodeScanningAlertItems"""
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: datetime
+    number: int
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
 
 
-__all__ = ("CodeScanningAutofixType",)
+__all__ = ("CodeScanningAlertItemsType",)

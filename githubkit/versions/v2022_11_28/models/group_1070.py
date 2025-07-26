@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,53 +17,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0292 import DeploymentBranchPolicySettings
 
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
-
-    wait_timer: Missing[int] = Field(
-        default=UNSET,
-        description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
+    total_count: int = Field(
+        description="The number of deployment branch policies for the environment."
     )
-    prevent_self_review: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether or not a user who created the job is prevented from approving their own job.",
-    )
-    reviewers: Missing[
-        Union[
-            list[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems],
-            None,
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
-    )
-    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
-        Field(
-            default=UNSET,
-            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
-        )
-    )
+    branch_policies: list[DeploymentBranchPolicy] = Field()
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+class DeploymentBranchPolicy(GitHubModel):
+    """Deployment branch policy
 
-    type: Missing[Literal["User", "Team"]] = Field(
-        default=UNSET, description="The type of reviewer."
-    )
+    Details of a deployment branch or tag policy.
+    """
+
     id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the branch or tag policy."
+    )
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
         default=UNSET,
-        description="The id of the user or team who can review the deployment",
+        description="The name pattern that branches or tags must match in order to deploy to the environment.",
+    )
+    type: Missing[Literal["branch", "tag"]] = Field(
+        default=UNSET, description="Whether this rule targets a branch or tag."
     )
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBody)
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
+)
+model_rebuild(DeploymentBranchPolicy)
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems",
+    "DeploymentBranchPolicy",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
 )

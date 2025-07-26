@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
@@ -17,25 +18,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0061 import SimpleRepository
 
+class ThreadSubscription(GitHubModel):
+    """Thread Subscription
 
-class DependabotRepositoryAccessDetails(GitHubModel):
-    """Dependabot Repository Access Details
-
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Thread Subscription
     """
 
-    default_level: Missing[Union[None, Literal["public", "internal"]]] = Field(
-        default=UNSET,
-        description="The default repository access level for Dependabot updates.",
-    )
-    accessible_repositories: Missing[list[Union[None, SimpleRepository]]] = Field(
-        default=UNSET
-    )
+    subscribed: bool = Field()
+    ignored: bool = Field()
+    reason: Union[str, None] = Field()
+    created_at: Union[datetime, None] = Field()
+    url: str = Field()
+    thread_url: Missing[str] = Field(default=UNSET)
+    repository_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(DependabotRepositoryAccessDetails)
+model_rebuild(ThreadSubscription)
 
-__all__ = ("DependabotRepositoryAccessDetails",)
+__all__ = ("ThreadSubscription",)

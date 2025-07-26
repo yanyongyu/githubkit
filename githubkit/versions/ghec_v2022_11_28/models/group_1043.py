@@ -18,25 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgHooksPostBody(GitHubModel):
-    """OrgsOrgHooksPostBody"""
+class OrgsOrgHooksHookIdPatchBody(GitHubModel):
+    """OrgsOrgHooksHookIdPatchBody"""
 
-    name: str = Field(description='Must be passed as "web".')
-    config: OrgsOrgHooksPostBodyPropConfig = Field(
-        description="Key/value pairs to provide settings for this webhook."
+    config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfig] = Field(
+        default=UNSET,
+        description="Key/value pairs to provide settings for this webhook.",
     )
     events: Missing[list[str]] = Field(
         default=UNSET,
-        description='Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for. Set to `["*"]` to receive all possible events.',
+        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for.",
     )
     active: Missing[bool] = Field(
         default=UNSET,
         description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
     )
+    name: Missing[str] = Field(default=UNSET)
 
 
-class OrgsOrgHooksPostBodyPropConfig(GitHubModel):
-    """OrgsOrgHooksPostBodyPropConfig
+class OrgsOrgHooksHookIdPatchBodyPropConfig(GitHubModel):
+    """OrgsOrgHooksHookIdPatchBodyPropConfig
 
     Key/value pairs to provide settings for this webhook.
     """
@@ -51,14 +52,12 @@ class OrgsOrgHooksPostBodyPropConfig(GitHubModel):
         description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
     )
     insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
-    username: Missing[str] = Field(default=UNSET)
-    password: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgHooksPostBody)
-model_rebuild(OrgsOrgHooksPostBodyPropConfig)
+model_rebuild(OrgsOrgHooksHookIdPatchBody)
+model_rebuild(OrgsOrgHooksHookIdPatchBodyPropConfig)
 
 __all__ = (
-    "OrgsOrgHooksPostBody",
-    "OrgsOrgHooksPostBodyPropConfig",
+    "OrgsOrgHooksHookIdPatchBody",
+    "OrgsOrgHooksHookIdPatchBodyPropConfig",
 )

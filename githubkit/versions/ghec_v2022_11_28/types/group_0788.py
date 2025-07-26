@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
-from .group_0525 import PullRequestWebhookType
+from .group_0487 import EnterpriseWebhooksType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0527 import PullRequestWebhookType
 
 
-class WebhookPullRequestReadyForReviewType(TypedDict):
-    """pull_request ready_for_review event"""
+class WebhookPullRequestReopenedType(TypedDict):
+    """pull_request reopened event"""
 
-    action: Literal["ready_for_review"]
+    action: Literal["reopened"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
@@ -33,4 +33,4 @@ class WebhookPullRequestReadyForReviewType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookPullRequestReadyForReviewType",)
+__all__ = ("WebhookPullRequestReopenedType",)

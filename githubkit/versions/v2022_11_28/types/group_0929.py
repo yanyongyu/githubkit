@@ -13,28 +13,13 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
+class OrgsOrgHooksHookIdConfigPatchBodyType(TypedDict):
+    """OrgsOrgHooksHookIdConfigPatchBody"""
 
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-    name: NotRequired[str]
-
-
-class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str
+    url: NotRequired[str]
     content_type: NotRequired[str]
     secret: NotRequired[str]
     insecure_ssl: NotRequired[Union[str, float]]
 
 
-__all__ = (
-    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
-    "OrgsOrgHooksHookIdPatchBodyType",
-)
+__all__ = ("OrgsOrgHooksHookIdConfigPatchBodyType",)

@@ -9,18 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsProjectIdPatchBodyType(TypedDict):
-    """ProjectsProjectIdPatchBody"""
+class ProjectsProjectIdPatchResponse403Type(TypedDict):
+    """ProjectsProjectIdPatchResponse403"""
 
-    name: NotRequired[str]
-    body: NotRequired[Union[str, None]]
-    state: NotRequired[str]
-    organization_permission: NotRequired[Literal["read", "write", "admin", "none"]]
-    private: NotRequired[bool]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[list[str]]
 
 
-__all__ = ("ProjectsProjectIdPatchBodyType",)
+__all__ = ("ProjectsProjectIdPatchResponse403Type",)

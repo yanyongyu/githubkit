@@ -9,44 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0084 import TeamType
 
+class TeamSimpleType(TypedDict):
+    """Team Simple
 
-class CampaignSummaryType(TypedDict):
-    """Campaign summary
-
-    The campaign metadata and alert stats.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    number: int
-    created_at: datetime
-    updated_at: datetime
-    name: NotRequired[str]
-    description: str
-    managers: list[SimpleUserType]
-    team_managers: NotRequired[list[TeamType]]
-    published_at: NotRequired[datetime]
-    ends_at: datetime
-    closed_at: NotRequired[Union[datetime, None]]
-    state: Literal["open", "closed"]
-    contact_link: Union[str, None]
-    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
+    id: int
+    node_id: str
+    url: str
+    members_url: str
+    name: str
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
 
 
-class CampaignSummaryPropAlertStatsType(TypedDict):
-    """CampaignSummaryPropAlertStats"""
-
-    open_count: int
-    closed_count: int
-    in_progress_count: int
-
-
-__all__ = (
-    "CampaignSummaryPropAlertStatsType",
-    "CampaignSummaryType",
-)
+__all__ = ("TeamSimpleType",)

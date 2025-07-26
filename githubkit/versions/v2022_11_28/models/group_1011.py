@@ -9,48 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
-    total_count: int = Field()
-    workflows: list[Workflow] = Field()
+    ref: str = Field(
+        description="The git reference for the workflow. The reference can be a branch or tag name."
+    )
+    inputs: Missing[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+    ] = Field(
+        default=UNSET,
+        description="Input keys and values configured in the workflow file. The maximum number of properties is 10. Any default properties configured in the workflow file will be used when `inputs` are omitted.",
+    )
 
 
-class Workflow(GitHubModel):
-    """Workflow
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
 
-    A GitHub Actions workflow
+    Input keys and values configured in the workflow file. The maximum number of
+    properties is 10. Any default properties configured in the workflow file will be
+    used when `inputs` are omitted.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    path: str = Field()
-    state: Literal[
-        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
-    ] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
-    html_url: str = Field()
-    badge_url: str = Field()
-    deleted_at: Missing[datetime] = Field(default=UNSET)
 
-
-model_rebuild(ReposOwnerRepoActionsWorkflowsGetResponse200)
-model_rebuild(Workflow)
+model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody)
+model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs)
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsGetResponse200",
-    "Workflow",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
 )

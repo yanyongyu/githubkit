@@ -9,33 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType
 
 
-class ContributorActivityType(TypedDict):
-    """Contributor Activity
+class StargazerType(TypedDict):
+    """Stargazer
 
-    Contributor Activity
+    Stargazer
     """
 
-    author: Union[None, SimpleUserType]
-    total: int
-    weeks: list[ContributorActivityPropWeeksItemsType]
+    starred_at: datetime
+    user: Union[None, SimpleUserType]
 
 
-class ContributorActivityPropWeeksItemsType(TypedDict):
-    """ContributorActivityPropWeeksItems"""
-
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
-
-
-__all__ = (
-    "ContributorActivityPropWeeksItemsType",
-    "ContributorActivityType",
-)
+__all__ = ("StargazerType",)

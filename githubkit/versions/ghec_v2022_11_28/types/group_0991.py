@@ -11,14 +11,11 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0176 import MinimalRepositoryType
+
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody"""
+
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
-
-    total_count: float
-    repositories: list[MinimalRepositoryType]
-
-
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type",)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType",)

@@ -9,17 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesCommentsCommentIdPatchBody(GitHubModel):
-    """ReposOwnerRepoIssuesCommentsCommentIdPatchBody"""
+class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
 
-    body: str = Field(description="The contents of the comment.")
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue comment."
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesCommentsCommentIdPatchBody)
+model_rebuild(ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody)
 
-__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdPatchBody",)
+__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody",)

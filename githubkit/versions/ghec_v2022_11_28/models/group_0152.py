@@ -9,30 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class GetCostCenter(GitHubModel):
-    """GetCostCenter"""
+class GetAllCostCenters(GitHubModel):
+    """GetAllCostCenters"""
+
+    cost_centers: Missing[list[GetAllCostCentersPropCostCentersItems]] = Field(
+        default=UNSET, alias="costCenters"
+    )
+
+
+class GetAllCostCentersPropCostCentersItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItems"""
 
     id: str = Field(description="ID of the cost center.")
     name: str = Field(description="Name of the cost center.")
-    resources: list[GetCostCenterPropResourcesItems] = Field()
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
+    )
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
 
 
-class GetCostCenterPropResourcesItems(GitHubModel):
-    """GetCostCenterPropResourcesItems"""
+class GetAllCostCentersPropCostCentersItemsPropResourcesItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
 
     type: str = Field(description="Type of the resource.")
     name: str = Field(description="Name of the resource.")
 
 
-model_rebuild(GetCostCenter)
-model_rebuild(GetCostCenterPropResourcesItems)
+model_rebuild(GetAllCostCenters)
+model_rebuild(GetAllCostCentersPropCostCentersItems)
+model_rebuild(GetAllCostCentersPropCostCentersItemsPropResourcesItems)
 
 __all__ = (
-    "GetCostCenter",
-    "GetCostCenterPropResourcesItems",
+    "GetAllCostCenters",
+    "GetAllCostCentersPropCostCentersItems",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItems",
 )

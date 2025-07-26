@@ -9,38 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0071 import ActionsHostedRunnerMachineSpec
 
 
-class ActionsHostedRunnerLimits(GitHubModel):
-    """ActionsHostedRunnerLimits"""
+class ActionsHostedRunner(GitHubModel):
+    """GitHub-hosted hosted runner
 
-    public_ips: ActionsHostedRunnerLimitsPropPublicIps = Field(
-        title="Static public IP Limits for GitHub-hosted Hosted Runners.",
-        description="Provides details of static public IP limits for GitHub-hosted Hosted Runners",
-    )
-
-
-class ActionsHostedRunnerLimitsPropPublicIps(GitHubModel):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
-
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    A Github-hosted hosted runner.
     """
 
-    maximum: int = Field(
-        description="The maximum number of static public IP addresses that can be used for Hosted Runners."
+    id: int = Field(description="The unique identifier of the hosted runner.")
+    name: str = Field(description="The name of the hosted runner.")
+    runner_group_id: Missing[int] = Field(
+        default=UNSET,
+        description="The unique identifier of the group that the hosted runner belongs to.",
     )
-    current_usage: int = Field(
-        description="The current number of static public IP addresses in use by Hosted Runners."
+    image_details: Union[None, ActionsHostedRunnerPoolImage] = Field()
+    machine_size_details: ActionsHostedRunnerMachineSpec = Field(
+        title="Github-owned VM details.",
+        description="Provides details of a particular machine spec.",
+    )
+    status: Literal["Ready", "Provisioning", "Shutdown", "Deleting", "Stuck"] = Field(
+        description="The status of the runner."
+    )
+    platform: str = Field(description="The operating system of the image.")
+    maximum_runners: Missing[int] = Field(
+        default=UNSET,
+        description="The maximum amount of hosted runners. Runners will not scale automatically above this number. Use this setting to limit your cost.",
+    )
+    public_ip_enabled: bool = Field(
+        description="Whether public IP is enabled for the hosted runners."
+    )
+    public_ips: Missing[list[PublicIp]] = Field(
+        default=UNSET,
+        description="The public IP ranges when public IP is enabled for the hosted runners.",
+    )
+    last_active_on: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time at which the runner was last used, in ISO 8601 format.",
     )
 
 
-model_rebuild(ActionsHostedRunnerLimits)
-model_rebuild(ActionsHostedRunnerLimitsPropPublicIps)
+class ActionsHostedRunnerPoolImage(GitHubModel):
+    """GitHub-hosted runner image details.
+
+    Provides details of a hosted runner image
+    """
+
+    id: str = Field(
+        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
+    )
+    size_gb: int = Field(description="Image size in GB.")
+    display_name: str = Field(description="Display name for this image.")
+    source: Literal["github", "partner", "custom"] = Field(
+        description="The image provider."
+    )
+
+
+class PublicIp(GitHubModel):
+    """Public IP for a GitHub-hosted larger runners.
+
+    Provides details of Public IP for a GitHub-hosted larger runners
+    """
+
+    enabled: Missing[bool] = Field(
+        default=UNSET, description="Whether public IP is enabled."
+    )
+    prefix: Missing[str] = Field(
+        default=UNSET, description="The prefix for the public IP."
+    )
+    length: Missing[int] = Field(
+        default=UNSET, description="The length of the IP prefix."
+    )
+
+
+model_rebuild(ActionsHostedRunner)
+model_rebuild(ActionsHostedRunnerPoolImage)
+model_rebuild(PublicIp)
 
 __all__ = (
-    "ActionsHostedRunnerLimits",
-    "ActionsHostedRunnerLimitsPropPublicIps",
+    "ActionsHostedRunner",
+    "ActionsHostedRunnerPoolImage",
+    "PublicIp",
 )

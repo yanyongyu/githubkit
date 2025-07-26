@@ -9,58 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
+from datetime import datetime
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CustomProperty(GitHubModel):
-    """Organization Custom Property
+class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
+    """Organization private registry
 
-    Custom property defined on an organization
+    Private registry configuration for an organization
     """
 
-    property_name: str = Field(description="The name of the property")
-    url: Missing[str] = Field(
+    name: str = Field(description="The name of the private registry configuration.")
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ] = Field(description="The registry type.")
+    username: Missing[str] = Field(
         default=UNSET,
-        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
+        description="The username to use when authenticating with the private registry.",
     )
-    source_type: Missing[Literal["organization", "enterprise"]] = Field(
-        default=UNSET, description="The source type of the property"
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
     )
-    value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
-        Field(description="The type of the value for the property")
-    )
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
-    )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
-    )
-    allowed_values: Missing[
-        Union[
-            Annotated[
-                list[Annotated[str, Field(max_length=75)]],
-                Field(max_length=200 if PYDANTIC_V2 else None),
-            ],
-            None,
-        ]
-    ] = Field(
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+        description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
     )
-    values_editable_by: Missing[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ] = Field(default=UNSET, description="Who can edit the values of the property")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(CustomProperty)
+model_rebuild(OrgPrivateRegistryConfigurationWithSelectedRepositories)
 
-__all__ = ("CustomProperty",)
+__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositories",)

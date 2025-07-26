@@ -13,16 +13,12 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType(
-    TypedDict
-):
-    """TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody"""
+class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType(TypedDict):
+    """TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody"""
 
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ]
 
 
-__all__ = (
-    "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType",
-)
+__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType",)

@@ -13,48 +13,20 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAlertInstanceType(TypedDict):
-    """CodeScanningAlertInstance"""
+class CodeScanningAlertRuleSummaryType(TypedDict):
+    """CodeScanningAlertRuleSummary"""
 
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[None, Literal["open", "dismissed", "fixed"]]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstancePropMessageType]
-    location: NotRequired[CodeScanningAlertLocationType]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
-        ]
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    security_severity_level: NotRequired[
+        Union[None, Literal["low", "medium", "high", "critical"]]
     ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
-class CodeScanningAlertLocationType(TypedDict):
-    """CodeScanningAlertLocation
-
-    Describe a region within a file for the alert.
-    """
-
-    path: NotRequired[str]
-    start_line: NotRequired[int]
-    end_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
-
-
-class CodeScanningAlertInstancePropMessageType(TypedDict):
-    """CodeScanningAlertInstancePropMessage"""
-
-    text: NotRequired[str]
-
-
-__all__ = (
-    "CodeScanningAlertInstancePropMessageType",
-    "CodeScanningAlertInstanceType",
-    "CodeScanningAlertLocationType",
-)
+__all__ = ("CodeScanningAlertRuleSummaryType",)

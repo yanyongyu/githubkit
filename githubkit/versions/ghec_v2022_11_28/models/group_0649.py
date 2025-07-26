@@ -18,7 +18,8 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0158 import IssueType
+from .group_0159 import IssueType
+from .group_0161 import SubIssuesSummary
 from .group_0650 import (
     WebhookIssueCommentEditedPropIssueAllof0PropAssignee,
     WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems,
@@ -28,7 +29,6 @@ from .group_0652 import WebhookIssueCommentEditedPropIssueAllof0PropMilestone
 from .group_0654 import (
     WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp,
 )
-from .group_0655 import WebhookIssueCommentEditedPropIssueAllof0PropSubIssuesSummary
 
 
 class WebhookIssueCommentEditedPropIssueAllof0(GitHubModel):
@@ -96,9 +96,9 @@ class WebhookIssueCommentEditedPropIssueAllof0(GitHubModel):
         title="Reactions"
     )
     repository_url: str = Field()
-    sub_issues_summary: Missing[
-        WebhookIssueCommentEditedPropIssueAllof0PropSubIssuesSummary
-    ] = Field(default=UNSET, title="Sub-issues Summary")
+    sub_issues_summary: Missing[SubIssuesSummary] = Field(
+        default=UNSET, title="Sub-issues Summary"
+    )
     state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET, description="State of the issue; either 'open' or 'closed'"
     )

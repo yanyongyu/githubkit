@@ -9,18 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class VerificationType(TypedDict):
-    """Verification"""
-
-    verified: bool
-    reason: str
-    payload: Union[str, None]
-    signature: Union[str, None]
-    verified_at: NotRequired[Union[str, None]]
+from .group_0226 import BranchProtectionType
 
 
-__all__ = ("VerificationType",)
+class ShortBranchType(TypedDict):
+    """Short Branch
+
+    Short Branch
+    """
+
+    name: str
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
+
+
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
+
+    sha: str
+    url: str
+
+
+__all__ = (
+    "ShortBranchPropCommitType",
+    "ShortBranchType",
+)

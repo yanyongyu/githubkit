@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0424 import EnterpriseWebhooks
-from .group_0425 import SimpleInstallation
-from .group_0426 import OrganizationSimpleWebhooks
-from .group_0427 import RepositoryWebhooks
-from .group_0446 import WebhooksIssue2
+from .group_0426 import EnterpriseWebhooks
+from .group_0427 import SimpleInstallation
+from .group_0428 import OrganizationSimpleWebhooks
+from .group_0429 import RepositoryWebhooks
+from .group_0620 import WebhookIssuesReopenedPropIssue
 
 
-class WebhookIssuesPinned(GitHubModel):
-    """issues pinned event"""
+class WebhookIssuesReopened(GitHubModel):
+    """issues reopened event"""
 
-    action: Literal["pinned"] = Field()
+    action: Literal["reopened"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +39,7 @@ class WebhookIssuesPinned(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhooksIssue2 = Field(
+    issue: WebhookIssuesReopenedPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
     )
@@ -55,6 +55,6 @@ class WebhookIssuesPinned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesPinned)
+model_rebuild(WebhookIssuesReopened)
 
-__all__ = ("WebhookIssuesPinned",)
+__all__ = ("WebhookIssuesReopened",)

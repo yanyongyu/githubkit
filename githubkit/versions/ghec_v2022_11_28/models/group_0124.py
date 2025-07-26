@@ -9,21 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0125 import RepositoryRuleFileExtensionRestrictionPropParameters
 
 
-class RepositoryRuleMaxFilePathLengthPropParameters(GitHubModel):
-    """RepositoryRuleMaxFilePathLengthPropParameters"""
+class RepositoryRuleFileExtensionRestriction(GitHubModel):
+    """file_extension_restriction
 
-    max_file_path_length: int = Field(
-        le=32767.0,
-        ge=1.0,
-        description="The maximum amount of characters allowed in file paths.",
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
+    """
+
+    type: Literal["file_extension_restriction"] = Field()
+    parameters: Missing[RepositoryRuleFileExtensionRestrictionPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleMaxFilePathLengthPropParameters)
+model_rebuild(RepositoryRuleFileExtensionRestriction)
 
-__all__ = ("RepositoryRuleMaxFilePathLengthPropParameters",)
+__all__ = ("RepositoryRuleFileExtensionRestriction",)

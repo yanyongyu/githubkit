@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
-from .group_0533 import SecretScanningAlertWebhookType
+from .group_0430 import SecretScanningLocationType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0535 import SecretScanningAlertWebhookType
 
 
-class WebhookSecretScanningAlertCreatedType(TypedDict):
-    """secret_scanning_alert created event"""
+class WebhookSecretScanningAlertLocationCreatedType(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
     action: Literal["created"]
     alert: SecretScanningAlertWebhookType
-    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    location: SecretScanningLocationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookSecretScanningAlertCreatedType",)
+__all__ = ("WebhookSecretScanningAlertLocationCreatedType",)

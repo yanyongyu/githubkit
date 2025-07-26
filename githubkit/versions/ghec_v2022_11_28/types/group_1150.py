@@ -9,13 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchRenamePostBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchRenamePostBody"""
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType(
+    TypedDict
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody"""
 
-    new_name: str
+    status: Literal["approve", "reject"]
+    message: str
 
 
-__all__ = ("ReposOwnerRepoBranchesBranchRenamePostBodyType",)
+__all__ = (
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType",
+)

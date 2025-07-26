@@ -16,66 +16,59 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoContentsPathPutBody(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBody"""
+class ReposOwnerRepoContentsPathDeleteBody(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBody"""
 
     message: str = Field(description="The commit message.")
-    content: str = Field(description="The new file content, using Base64 encoding.")
-    sha: Missing[str] = Field(
-        default=UNSET,
-        description="**Required if you are updating a file**. The blob SHA of the file being replaced.",
-    )
+    sha: str = Field(description="The blob SHA of the file being deleted.")
     branch: Missing[str] = Field(
         default=UNSET,
-        description="The branch name. Default: the repository’s default branch.",
+        description="The branch name. Default: the repository’s default branch",
     )
-    committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitter] = Field(
-        default=UNSET,
-        description="The person that committed the file. Default: the authenticated user.",
+    committer: Missing[ReposOwnerRepoContentsPathDeleteBodyPropCommitter] = Field(
+        default=UNSET, description="object containing information about the committer."
     )
-    author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthor] = Field(
-        default=UNSET,
-        description="The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.",
+    author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthor] = Field(
+        default=UNSET, description="object containing information about the author."
     )
 
 
-class ReposOwnerRepoContentsPathPutBodyPropCommitter(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitter(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
 
-    The person that committed the file. Default: the authenticated user.
+    object containing information about the committer.
     """
 
-    name: str = Field(
-        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the author (or committer) of the commit"
     )
-    email: str = Field(
-        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="The email of the author (or committer) of the commit",
     )
-    date: Missing[str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoContentsPathPutBodyPropAuthor(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthor(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
 
-    The author of the file. Default: The `committer` or the authenticated user if
-    you omit `committer`.
+    object containing information about the author.
     """
 
-    name: str = Field(
-        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the author (or committer) of the commit"
     )
-    email: str = Field(
-        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="The email of the author (or committer) of the commit",
     )
-    date: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoContentsPathPutBody)
-model_rebuild(ReposOwnerRepoContentsPathPutBodyPropCommitter)
-model_rebuild(ReposOwnerRepoContentsPathPutBodyPropAuthor)
+model_rebuild(ReposOwnerRepoContentsPathDeleteBody)
+model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropCommitter)
+model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropAuthor)
 
 __all__ = (
-    "ReposOwnerRepoContentsPathPutBody",
-    "ReposOwnerRepoContentsPathPutBodyPropAuthor",
-    "ReposOwnerRepoContentsPathPutBodyPropCommitter",
+    "ReposOwnerRepoContentsPathDeleteBody",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
 )

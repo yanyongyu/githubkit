@@ -9,29 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0424 import EnterpriseWebhooksType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0427 import RepositoryWebhooksType
-from .group_0435 import WebhooksUserType
-from .group_0444 import WebhooksIssueType
+from .group_0426 import EnterpriseWebhooksType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0429 import RepositoryWebhooksType
+from .group_0592 import WebhookIssuesClosedPropIssueType
 
 
-class WebhookIssuesAssignedType(TypedDict):
-    """issues assigned event"""
+class WebhookIssuesClosedType(TypedDict):
+    """issues closed event"""
 
-    action: Literal["assigned"]
-    assignee: NotRequired[Union[WebhooksUserType, None]]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
+    issue: WebhookIssuesClosedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesAssignedType",)
+__all__ = ("WebhookIssuesClosedType",)

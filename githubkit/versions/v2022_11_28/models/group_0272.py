@@ -9,34 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
+from .group_0268 import Link
 
 
-class Status(GitHubModel):
-    """Status
+class PullRequestSimplePropLinks(GitHubModel):
+    """PullRequestSimplePropLinks"""
 
-    The status of a commit.
-    """
-
-    url: str = Field()
-    avatar_url: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: str = Field()
-    description: Union[str, None] = Field()
-    target_url: Union[str, None] = Field()
-    context: str = Field()
-    created_at: str = Field()
-    updated_at: str = Field()
-    creator: Union[None, SimpleUser] = Field()
+    comments: Link = Field(title="Link", description="Hypermedia Link")
+    commits: Link = Field(title="Link", description="Hypermedia Link")
+    statuses: Link = Field(title="Link", description="Hypermedia Link")
+    html: Link = Field(title="Link", description="Hypermedia Link")
+    issue: Link = Field(title="Link", description="Hypermedia Link")
+    review_comments: Link = Field(title="Link", description="Hypermedia Link")
+    review_comment: Link = Field(title="Link", description="Hypermedia Link")
+    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
 
 
-model_rebuild(Status)
+model_rebuild(PullRequestSimplePropLinks)
 
-__all__ = ("Status",)
+__all__ = ("PullRequestSimplePropLinks",)

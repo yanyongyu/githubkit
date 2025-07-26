@@ -9,16 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class RateLimitType(TypedDict):
-    """Rate Limit"""
+class ProjectColumnType(TypedDict):
+    """Project Column
 
-    limit: int
-    remaining: int
-    reset: int
-    used: int
+    Project columns contain cards of work.
+    """
+
+    url: str
+    project_url: str
+    cards_url: str
+    id: int
+    node_id: str
+    name: str
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("RateLimitType",)
+__all__ = ("ProjectColumnType",)

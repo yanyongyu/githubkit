@@ -12,10 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
+    f0
 
     Examples:
         {'contexts': ['contexts']}
@@ -25,5 +26,5 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBody
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type",
 )

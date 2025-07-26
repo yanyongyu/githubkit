@@ -9,16 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OidcCustomSubType(TypedDict):
-    """Actions OIDC Subject customization
+class ActionsHostedRunnerImageType(TypedDict):
+    """GitHub-hosted runner image details.
 
-    Actions OIDC Subject customization
+    Provides details of a hosted runner image
     """
 
-    include_claim_keys: list[str]
+    id: str
+    platform: str
+    size_gb: int
+    display_name: str
+    source: Literal["github", "partner", "custom"]
 
 
-__all__ = ("OidcCustomSubType",)
+__all__ = ("ActionsHostedRunnerImageType",)

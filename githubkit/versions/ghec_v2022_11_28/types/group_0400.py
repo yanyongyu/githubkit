@@ -9,59 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0159 import ReactionRollupType
-from .group_0401 import ReviewCommentPropLinksType
+from .group_0071 import TeamType
 
 
-class ReviewCommentType(TypedDict):
-    """Legacy Review Comment
+class PullRequestReviewRequestType(TypedDict):
+    """Pull Request Review Request
 
-    Legacy Review Comment
+    Pull Request Review Request
     """
 
-    url: str
-    pull_request_review_id: Union[int, None]
-    id: int
-    node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[None, SimpleUserType]
-    body: str
-    created_at: datetime
-    updated_at: datetime
-    html_url: str
-    pull_request_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    links: ReviewCommentPropLinksType
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
+    users: list[SimpleUserType]
+    teams: list[TeamType]
 
 
-__all__ = ("ReviewCommentType",)
+__all__ = ("PullRequestReviewRequestType",)

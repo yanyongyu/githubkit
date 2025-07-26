@@ -13,21 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0427 import RepositoryWebhooksType
-from .group_0436 import WebhooksAnswerType
-from .group_0437 import DiscussionType
+from .group_0426 import EnterpriseWebhooksType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0429 import RepositoryWebhooksType
+from .group_0439 import DiscussionType
+from .group_0536 import WebhookDiscussionTransferredPropChangesType
 
 
-class WebhookDiscussionUnansweredType(TypedDict):
-    """discussion unanswered event"""
+class WebhookDiscussionTransferredType(TypedDict):
+    """discussion transferred event"""
 
-    action: Literal["unanswered"]
+    action: Literal["transferred"]
+    changes: WebhookDiscussionTransferredPropChangesType
     discussion: DiscussionType
-    old_answer: WebhooksAnswerType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookDiscussionUnansweredType",)
+__all__ = ("WebhookDiscussionTransferredType",)

@@ -39,6 +39,7 @@ if TYPE_CHECKING:
     from ..types import (
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
         CodeScanningDefaultSetupOptionsType,
+        CodeScanningOptionsType,
         CodeSecurityConfigurationForRepositoryType,
         CodeSecurityConfigurationRepositoriesType,
         CodeSecurityConfigurationType,
@@ -197,6 +198,7 @@ class CodeSecurityClient:
         advanced_security: Missing[
             Literal["enabled", "disabled", "code_security", "secret_protection"]
         ] = UNSET,
+        code_security: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -208,6 +210,7 @@ class CodeSecurityClient:
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        code_scanning_options: Missing[Union[CodeScanningOptionsType, None]] = UNSET,
         code_scanning_default_setup: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -217,6 +220,7 @@ class CodeSecurityClient:
         code_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -321,6 +325,7 @@ class CodeSecurityClient:
         advanced_security: Missing[
             Literal["enabled", "disabled", "code_security", "secret_protection"]
         ] = UNSET,
+        code_security: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -332,6 +337,7 @@ class CodeSecurityClient:
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        code_scanning_options: Missing[Union[CodeScanningOptionsType, None]] = UNSET,
         code_scanning_default_setup: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -341,6 +347,7 @@ class CodeSecurityClient:
         code_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -691,6 +698,7 @@ class CodeSecurityClient:
         advanced_security: Missing[
             Literal["enabled", "disabled", "code_security", "secret_protection"]
         ] = UNSET,
+        code_security: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -711,6 +719,7 @@ class CodeSecurityClient:
         code_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -821,6 +830,7 @@ class CodeSecurityClient:
         advanced_security: Missing[
             Literal["enabled", "disabled", "code_security", "secret_protection"]
         ] = UNSET,
+        code_security: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -841,6 +851,7 @@ class CodeSecurityClient:
         code_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1435,7 +1446,7 @@ class CodeSecurityClient:
 
         The authenticated user must be an administrator or security manager for the organization to use this endpoint.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-code-security-configurations-for-an-organization
         """
@@ -1485,7 +1496,7 @@ class CodeSecurityClient:
 
         The authenticated user must be an administrator or security manager for the organization to use this endpoint.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-code-security-configurations-for-an-organization
         """
@@ -1539,6 +1550,7 @@ class CodeSecurityClient:
         advanced_security: Missing[
             Literal["enabled", "disabled", "code_security", "secret_protection"]
         ] = UNSET,
+        code_security: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1550,6 +1562,7 @@ class CodeSecurityClient:
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        code_scanning_options: Missing[Union[CodeScanningOptionsType, None]] = UNSET,
         code_scanning_default_setup: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -1559,6 +1572,7 @@ class CodeSecurityClient:
         code_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1659,6 +1673,7 @@ class CodeSecurityClient:
         advanced_security: Missing[
             Literal["enabled", "disabled", "code_security", "secret_protection"]
         ] = UNSET,
+        code_security: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1670,6 +1685,7 @@ class CodeSecurityClient:
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        code_scanning_options: Missing[Union[CodeScanningOptionsType, None]] = UNSET,
         code_scanning_default_setup: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -1679,6 +1695,7 @@ class CodeSecurityClient:
         code_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1774,7 +1791,7 @@ class CodeSecurityClient:
 
         The authenticated user must be an administrator or security manager for the organization to use this endpoint.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-default-code-security-configurations
         """
@@ -1815,7 +1832,7 @@ class CodeSecurityClient:
 
         The authenticated user must be an administrator or security manager for the organization to use this endpoint.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-default-code-security-configurations
         """
@@ -2181,6 +2198,7 @@ class CodeSecurityClient:
         advanced_security: Missing[
             Literal["enabled", "disabled", "code_security", "secret_protection"]
         ] = UNSET,
+        code_security: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -2201,6 +2219,7 @@ class CodeSecurityClient:
         code_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -2308,6 +2327,7 @@ class CodeSecurityClient:
         advanced_security: Missing[
             Literal["enabled", "disabled", "code_security", "secret_protection"]
         ] = UNSET,
+        code_security: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependency_graph_autosubmit_action: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -2328,6 +2348,7 @@ class CodeSecurityClient:
         code_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -2813,7 +2834,7 @@ class CodeSecurityClient:
 
         The authenticated user must be an administrator or security manager for the organization to use this endpoint.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-repositories-associated-with-a-code-security-configuration
         """
@@ -2869,7 +2890,7 @@ class CodeSecurityClient:
 
         The authenticated user must be an administrator or security manager for the organization to use this endpoint.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations#get-repositories-associated-with-a-code-security-configuration
         """

@@ -11,23 +11,25 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserSshSigningKeysPostBody(GitHubModel):
-    """UserSshSigningKeysPostBody"""
+class UsersUsernameAttestationsBulkListPostBody(GitHubModel):
+    """UsersUsernameAttestationsBulkListPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
+    subject_digests: list[str] = Field(
+        max_length=1024 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of subject digests to fetch attestations for.",
     )
-    key: str = Field(
-        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ",
-        description='The public SSH key to add to your GitHub account. For more information, see "[Checking for existing SSH keys](https://docs.github.com/enterprise-cloud@latest//authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)."',
+    predicate_type: Missing[str] = Field(
+        default=UNSET,
+        description="Optional filter for fetching attestations with a given predicate type.\nThis option accepts `provenance`, `sbom`, or freeform text for custom predicate types.",
     )
 
 
-model_rebuild(UserSshSigningKeysPostBody)
+model_rebuild(UsersUsernameAttestationsBulkListPostBody)
 
-__all__ = ("UserSshSigningKeysPostBody",)
+__all__ = ("UsersUsernameAttestationsBulkListPostBody",)

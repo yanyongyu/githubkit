@@ -12,25 +12,36 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0063 import MinimalRepositoryType
 
-class OrganizationSimpleType(TypedDict):
-    """Organization Simple
 
-    A GitHub organization.
+class ThreadType(TypedDict):
+    """Thread
+
+    Thread
     """
 
-    login: str
-    id: int
-    node_id: str
+    id: str
+    repository: MinimalRepositoryType
+    subject: ThreadPropSubjectType
+    reason: str
+    unread: bool
+    updated_at: str
+    last_read_at: Union[str, None]
     url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
+    subscription_url: str
 
 
-__all__ = ("OrganizationSimpleType",)
+class ThreadPropSubjectType(TypedDict):
+    """ThreadPropSubject"""
+
+    title: str
+    url: str
+    latest_comment_url: str
+    type: str
+
+
+__all__ = (
+    "ThreadPropSubjectType",
+    "ThreadType",
+)

@@ -13,24 +13,24 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0424 import EnterpriseWebhooksType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0427 import RepositoryWebhooksType
-from .group_0462 import PullRequestWebhookType
+from .group_0043 import MilestoneType
+from .group_0426 import EnterpriseWebhooksType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0429 import RepositoryWebhooksType
+from .group_0466 import WebhooksPullRequest5Type
 
 
-class WebhookPullRequestConvertedToDraftType(TypedDict):
-    """pull_request converted_to_draft event"""
+class WebhookPullRequestDemilestonedType(TypedDict):
+    """pull_request demilestoned event"""
 
-    action: Literal["converted_to_draft"]
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    milestone: NotRequired[MilestoneType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: PullRequestWebhookType
+    pull_request: WebhooksPullRequest5Type
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookPullRequestConvertedToDraftType",)
+__all__ = ("WebhookPullRequestDemilestonedType",)

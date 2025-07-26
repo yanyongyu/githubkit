@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0061 import MinimalRepository
+
+class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints."
+    )
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+model_rebuild(UserCodespacesSecretsSecretNameRepositoriesPutBody)
 
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
-
-
-model_rebuild(UserCodespacesSecretsSecretNameRepositoriesGetResponse200)
-
-__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",)
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBody",)

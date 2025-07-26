@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCodespacesAccessSelectedUsersPostBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+class OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType(TypedDict):
+    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
 
     selected_usernames: list[str]
 
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBodyType",)
+__all__ = ("OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType",)

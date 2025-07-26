@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0151 import RepositoryRuleCommitMessagePatternPropParametersType
+from .group_0151 import RepositoryRuleRequiredStatusChecksPropParametersType
 
 
-class RepositoryRuleDetailedOneof10Type(TypedDict):
-    """RepositoryRuleDetailedOneof10"""
+class RepositoryRuleDetailedOneof8Type(TypedDict):
+    """RepositoryRuleDetailedOneof8"""
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleDetailedOneof10Type",)
+__all__ = ("RepositoryRuleDetailedOneof8Type",)

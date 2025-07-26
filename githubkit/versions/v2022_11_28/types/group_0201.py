@@ -9,33 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
-
-class ActionsCacheListType(TypedDict):
-    """Repository actions caches
-
-    Repository actions caches
-    """
-
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
+from .group_0199 import RateLimitType
 
 
-class ActionsCacheListPropActionsCachesItemsType(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
+class RateLimitOverviewPropResourcesType(TypedDict):
+    """RateLimitOverviewPropResources"""
 
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[datetime]
-    created_at: NotRequired[datetime]
-    size_in_bytes: NotRequired[int]
+    core: RateLimitType
+    graphql: NotRequired[RateLimitType]
+    search: RateLimitType
+    code_search: NotRequired[RateLimitType]
+    source_import: NotRequired[RateLimitType]
+    integration_manifest: NotRequired[RateLimitType]
+    code_scanning_upload: NotRequired[RateLimitType]
+    actions_runner_registration: NotRequired[RateLimitType]
+    scim: NotRequired[RateLimitType]
+    dependency_snapshots: NotRequired[RateLimitType]
+    dependency_sbom: NotRequired[RateLimitType]
+    code_scanning_autofix: NotRequired[RateLimitType]
 
 
-__all__ = (
-    "ActionsCacheListPropActionsCachesItemsType",
-    "ActionsCacheListType",
-)
+__all__ = ("RateLimitOverviewPropResourcesType",)

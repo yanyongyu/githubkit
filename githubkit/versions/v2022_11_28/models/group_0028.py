@@ -165,6 +165,10 @@ class CodeSecurityConfigurationPropCodeScanningOptions(GitHubModel):
     Feature options for code scanning
     """
 
+    allow_advanced: Missing[Union[bool, None]] = Field(
+        default=UNSET, description="Whether to allow repos which use advanced setup"
+    )
+
 
 class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions(GitHubModel):
     """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions

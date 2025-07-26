@@ -11,14 +11,9 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0018 import InstallationType
+
+class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
-class OrgsOrgInstallationsGetResponse200Type(TypedDict):
-    """OrgsOrgInstallationsGetResponse200"""
-
-    total_count: int
-    installations: list[InstallationType]
-
-
-__all__ = ("OrgsOrgInstallationsGetResponse200Type",)
+__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1Type",)

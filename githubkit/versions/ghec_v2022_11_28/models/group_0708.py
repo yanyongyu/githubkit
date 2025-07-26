@@ -18,18 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0485 import EnterpriseWebhooks
-from .group_0486 import SimpleInstallation
-from .group_0487 import OrganizationSimpleWebhooks
-from .group_0488 import RepositoryWebhooks
-from .group_0498 import WebhooksUser
+from .group_0487 import EnterpriseWebhooks
+from .group_0488 import SimpleInstallation
+from .group_0489 import OrganizationSimpleWebhooks
+from .group_0490 import RepositoryWebhooks
+from .group_0500 import WebhooksUser
 
 
-class WebhookMemberAdded(GitHubModel):
-    """member added event"""
+class WebhookMemberEdited(GitHubModel):
+    """member edited event"""
 
-    action: Literal["added"] = Field()
-    changes: Missing[WebhookMemberAddedPropChanges] = Field(default=UNSET)
+    action: Literal["edited"] = Field()
+    changes: WebhookMemberEditedPropChanges = Field(
+        description="The changes to the collaborator permissions"
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,50 +55,44 @@ class WebhookMemberAdded(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookMemberAddedPropChanges(GitHubModel):
-    """WebhookMemberAddedPropChanges"""
+class WebhookMemberEditedPropChanges(GitHubModel):
+    """WebhookMemberEditedPropChanges
 
-    permission: Missing[WebhookMemberAddedPropChangesPropPermission] = Field(
-        default=UNSET,
-        description="This field is included for legacy purposes; use the `role_name` field instead. The `maintain`\nrole is mapped to `write` and the `triage` role is mapped to `read`. To determine the role\nassigned to the collaborator, use the `role_name` field instead, which will provide the full\nrole name, including custom roles.",
-    )
-    role_name: Missing[WebhookMemberAddedPropChangesPropRoleName] = Field(
-        default=UNSET, description="The role assigned to the collaborator."
-    )
-
-
-class WebhookMemberAddedPropChangesPropPermission(GitHubModel):
-    """WebhookMemberAddedPropChangesPropPermission
-
-    This field is included for legacy purposes; use the `role_name` field instead.
-    The `maintain`
-    role is mapped to `write` and the `triage` role is mapped to `read`. To
-    determine the role
-    assigned to the collaborator, use the `role_name` field instead, which will
-    provide the full
-    role name, including custom roles.
+    The changes to the collaborator permissions
     """
 
-    to: Literal["write", "admin", "read"] = Field()
+    old_permission: Missing[WebhookMemberEditedPropChangesPropOldPermission] = Field(
+        default=UNSET
+    )
+    permission: Missing[WebhookMemberEditedPropChangesPropPermission] = Field(
+        default=UNSET
+    )
 
 
-class WebhookMemberAddedPropChangesPropRoleName(GitHubModel):
-    """WebhookMemberAddedPropChangesPropRoleName
+class WebhookMemberEditedPropChangesPropOldPermission(GitHubModel):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
 
-    The role assigned to the collaborator.
-    """
+    from_: str = Field(
+        alias="from",
+        description="The previous permissions of the collaborator if the action was edited.",
+    )
 
-    to: str = Field()
+
+class WebhookMemberEditedPropChangesPropPermission(GitHubModel):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookMemberAdded)
-model_rebuild(WebhookMemberAddedPropChanges)
-model_rebuild(WebhookMemberAddedPropChangesPropPermission)
-model_rebuild(WebhookMemberAddedPropChangesPropRoleName)
+model_rebuild(WebhookMemberEdited)
+model_rebuild(WebhookMemberEditedPropChanges)
+model_rebuild(WebhookMemberEditedPropChangesPropOldPermission)
+model_rebuild(WebhookMemberEditedPropChangesPropPermission)
 
 __all__ = (
-    "WebhookMemberAdded",
-    "WebhookMemberAddedPropChanges",
-    "WebhookMemberAddedPropChangesPropPermission",
-    "WebhookMemberAddedPropChangesPropRoleName",
+    "WebhookMemberEdited",
+    "WebhookMemberEditedPropChanges",
+    "WebhookMemberEditedPropChangesPropOldPermission",
+    "WebhookMemberEditedPropChangesPropPermission",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,22 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningDefaultSetupOptions(GitHubModel):
-    """CodeScanningDefaultSetupOptions
+class CodeScanningOptions(GitHubModel):
+    """CodeScanningOptions
 
-    Feature options for code scanning default setup
+    Security Configuration feature options for code scanning
     """
 
-    runner_type: Missing[Literal["standard", "labeled", "not_set"]] = Field(
-        default=UNSET,
-        description="Whether to use labeled runners or standard GitHub runners.",
-    )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
+    allow_advanced: Missing[Union[bool, None]] = Field(
+        default=UNSET, description="Whether to allow repos which use advanced setup"
     )
 
 
-model_rebuild(CodeScanningDefaultSetupOptions)
+model_rebuild(CodeScanningOptions)
 
-__all__ = ("CodeScanningDefaultSetupOptions",)
+__all__ = ("CodeScanningOptions",)

@@ -13,23 +13,24 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0283 import DependabotAlertType
-from .group_0424 import EnterpriseWebhooksType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0427 import RepositoryWebhooksType
+from .group_0123 import CustomPropertyValueType
+from .group_0426 import EnterpriseWebhooksType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0429 import RepositoryWebhooksType
 
 
-class WebhookDependabotAlertAutoDismissedType(TypedDict):
-    """Dependabot alert auto-dismissed event"""
+class WebhookCustomPropertyValuesUpdatedType(TypedDict):
+    """Custom property values updated event"""
 
-    action: Literal["auto_dismissed"]
-    alert: DependabotAlertType
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    organization: OrganizationSimpleWebhooksType
+    sender: NotRequired[SimpleUserType]
+    new_property_values: list[CustomPropertyValueType]
+    old_property_values: list[CustomPropertyValueType]
 
 
-__all__ = ("WebhookDependabotAlertAutoDismissedType",)
+__all__ = ("WebhookCustomPropertyValuesUpdatedType",)

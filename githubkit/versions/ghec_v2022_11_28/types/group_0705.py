@@ -13,48 +13,48 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
-from .group_0511 import WebhooksMarketplacePurchaseType
+from .group_0487 import EnterpriseWebhooksType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0514 import WebhooksPreviousMarketplacePurchaseType
 
 
-class WebhookMarketplacePurchasePendingChangeType(TypedDict):
-    """marketplace_purchase pending_change event"""
+class WebhookMarketplacePurchasePendingChangeCancelledType(TypedDict):
+    """marketplace_purchase pending_change_cancelled event"""
 
-    action: Literal["pending_change"]
+    action: Literal["pending_change_cancelled"]
     effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhooksMarketplacePurchaseType
+    marketplace_purchase: (
+        WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType
+    )
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[
-        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType
-    ]
+    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType(
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType(
     TypedDict
 ):
     """Marketplace Purchase"""
 
-    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType
+    account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType
     billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: NotRequired[Union[str, None]]
+    free_trial_ends_on: None
+    next_billing_date: Union[str, None]
     on_free_trial: bool
-    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType
+    plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType
     unit_count: int
 
 
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType(
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType(
     TypedDict
 ):
-    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccoun
-    t
+    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccou
+    nt
     """
 
     id: int
@@ -64,10 +64,10 @@ class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseProp
     type: str
 
 
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType(
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType(
     TypedDict
 ):
-    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan"""
+    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan"""
 
     bullets: list[str]
     description: str
@@ -81,8 +81,8 @@ class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseProp
 
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType",
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType",
-    "WebhookMarketplacePurchasePendingChangeType",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType",
+    "WebhookMarketplacePurchasePendingChangeCancelledType",
 )

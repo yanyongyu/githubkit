@@ -13,22 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0521 import ProjectsV2Type
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0523 import ProjectsV2Type
 
 
-class WebhookProjectsV2ProjectCreatedType(TypedDict):
-    """WebhookProjectsV2ProjectCreated
+class WebhookProjectsV2ProjectDeletedType(TypedDict):
+    """Projects v2 Project Deleted Event"""
 
-    A project was created
-    """
-
-    action: Literal["created"]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2: ProjectsV2Type
     sender: SimpleUserType
 
 
-__all__ = ("WebhookProjectsV2ProjectCreatedType",)
+__all__ = ("WebhookProjectsV2ProjectDeletedType",)

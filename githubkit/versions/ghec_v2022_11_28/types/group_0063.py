@@ -95,6 +95,8 @@ class CodeSecurityConfigurationPropCodeScanningOptionsType(TypedDict):
     Feature options for code scanning
     """
 
+    allow_advanced: NotRequired[Union[bool, None]]
+
 
 class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType(TypedDict):
     """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions

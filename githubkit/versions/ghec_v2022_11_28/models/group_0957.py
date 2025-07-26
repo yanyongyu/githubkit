@@ -16,27 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody(
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00
+    """
 
-    users: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The usernames of the users to add to the cost center.",
-    )
-    organizations: Missing[list[str]] = Field(
-        default=UNSET, description="The organizations to add to the cost center."
-    )
-    repositories: Missing[list[str]] = Field(
-        default=UNSET, description="The repositories to add to the cost center."
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
 model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200",
 )

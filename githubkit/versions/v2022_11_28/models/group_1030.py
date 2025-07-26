@@ -14,8 +14,8 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
 
     Examples:
         {'users': ['mona']}
@@ -24,6 +24,6 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody(GitHubModel
     users: list[str] = Field(description="The username for users")
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody",)

@@ -9,35 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsOrganizationPermissions(GitHubModel):
-    """ActionsOrganizationPermissions"""
+class ActionsHostedRunnerLimits(GitHubModel):
+    """ActionsHostedRunnerLimits"""
 
-    enabled_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
-    )
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions, when `enabled_repositories` is set to `selected`.",
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    selected_actions_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
+    public_ips: ActionsHostedRunnerLimitsPropPublicIps = Field(
+        title="Static public IP Limits for GitHub-hosted Hosted Runners.",
+        description="Provides details of static public IP limits for GitHub-hosted Hosted Runners",
     )
 
 
-model_rebuild(ActionsOrganizationPermissions)
+class ActionsHostedRunnerLimitsPropPublicIps(GitHubModel):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
 
-__all__ = ("ActionsOrganizationPermissions",)
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    """
+
+    maximum: int = Field(
+        description="The maximum number of static public IP addresses that can be used for Hosted Runners."
+    )
+    current_usage: int = Field(
+        description="The current number of static public IP addresses in use by Hosted Runners."
+    )
+
+
+model_rebuild(ActionsHostedRunnerLimits)
+model_rebuild(ActionsHostedRunnerLimitsPropPublicIps)
+
+__all__ = (
+    "ActionsHostedRunnerLimits",
+    "ActionsHostedRunnerLimitsPropPublicIps",
+)

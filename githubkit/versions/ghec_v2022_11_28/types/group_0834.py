@@ -11,35 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0835 import WebhookRepositoryRulesetEditedPropChangesPropConditionsType
-from .group_0837 import WebhookRepositoryRulesetEditedPropChangesPropRulesType
-
-
-class WebhookRepositoryRulesetEditedPropChangesType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChanges"""
-
-    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameType]
-    enforcement: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropEnforcementType
-    ]
-    conditions: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropConditionsType]
-    rules: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropRulesType]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropNameType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropName"""
-
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropEnforcementType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
-
-    from_: NotRequired[str]
-
-
-__all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementType",
-    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
-    "WebhookRepositoryRulesetEditedPropChangesType",
+from .group_0089 import RepositoryRulesetConditionsType
+from .group_0835 import (
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType,
 )
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
+
+    added: NotRequired[list[RepositoryRulesetConditionsType]]
+    deleted: NotRequired[list[RepositoryRulesetConditionsType]]
+    updated: NotRequired[
+        list[
+            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
+        ]
+    ]
+
+
+__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropConditionsType",)

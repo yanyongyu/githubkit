@@ -13,12 +13,16 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseNetworkConfigurationsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
+class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    name: str
+    name: NotRequired[str]
     compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
+    network_settings_ids: NotRequired[list[str]]
 
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsPostBodyType",)
+__all__ = (
+    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
+)

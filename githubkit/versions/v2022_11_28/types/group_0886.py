@@ -9,32 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class OrgsOrgActionsSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgActionsSecretsSecretNamePutBody"""
 
-    total_count: int
-    secrets: list[OrganizationActionsSecretType]
-
-
-class OrganizationActionsSecretType(TypedDict):
-    """Actions Secret for an Organization
-
-    Secrets for GitHub Actions for an organization.
-    """
-
-    name: str
-    created_at: datetime
-    updated_at: datetime
+    encrypted_value: str
+    key_id: str
     visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-__all__ = (
-    "OrganizationActionsSecretType",
-    "OrgsOrgActionsSecretsGetResponse200Type",
-)
+__all__ = ("OrgsOrgActionsSecretsSecretNamePutBodyType",)

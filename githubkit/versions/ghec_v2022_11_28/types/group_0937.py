@@ -9,43 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0052 import (
-    AmazonS3AccessKeysConfigType,
-    AzureBlobConfigType,
-    AzureHubConfigType,
-    DatadogConfigType,
-    HecConfigType,
-)
-from .group_0053 import AmazonS3OidcConfigType, SplunkConfigType
-from .group_0054 import GoogleCloudConfigType
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
 
-    enabled: bool
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ]
-    vendor_specific: Union[
-        AzureBlobConfigType,
-        AzureHubConfigType,
-        AmazonS3OidcConfigType,
-        AmazonS3AccessKeysConfigType,
-        SplunkConfigType,
-        HecConfigType,
-        GoogleCloudConfigType,
-        DatadogConfigType,
-    ]
+    errors: NotRequired[list[str]]
 
 
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType",)
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",)

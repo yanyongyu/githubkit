@@ -16,19 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodespacesSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
+    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+    permission: Missing[str] = Field(
         default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/repository-secrets#get-a-repository-public-key) endpoint.",
-    )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="ID of the key you used to encrypt the secret."
+        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
     )
 
 
-model_rebuild(ReposOwnerRepoCodespacesSecretsSecretNamePutBody)
+model_rebuild(ReposOwnerRepoCollaboratorsUsernamePutBody)
 
-__all__ = ("ReposOwnerRepoCodespacesSecretsSecretNamePutBody",)
+__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBody",)

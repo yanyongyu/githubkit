@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
-from .group_0508 import WebhooksMilestoneType
+from .group_0487 import EnterpriseWebhooksType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0517 import WebhooksMilestone3Type
 
 
-class WebhookMilestoneClosedType(TypedDict):
-    """milestone closed event"""
+class WebhookMilestoneCreatedType(TypedDict):
+    """milestone created event"""
 
-    action: Literal["closed"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestoneType
+    milestone: WebhooksMilestone3Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookMilestoneClosedType",)
+__all__ = ("WebhookMilestoneCreatedType",)

@@ -11,12 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoActionsSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
-
-    encrypted_value: str
-    key_id: str
+from .group_0254 import ActionsVariableType
 
 
-__all__ = ("ReposOwnerRepoActionsSecretsSecretNamePutBodyType",)
+class ReposOwnerRepoActionsVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[ActionsVariableType]
+
+
+__all__ = ("ReposOwnerRepoActionsVariablesGetResponse200Type",)

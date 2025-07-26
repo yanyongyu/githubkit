@@ -17,44 +17,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0125 import RepositoryRulesetBypassActor
-from .group_0134 import OrgRulesetConditionsOneof0
-from .group_0135 import OrgRulesetConditionsOneof1
-from .group_0136 import OrgRulesetConditionsOneof2
-from .group_0137 import (
+from .group_0127 import RepositoryRulesetBypassActor
+from .group_0136 import OrgRulesetConditionsOneof0
+from .group_0137 import OrgRulesetConditionsOneof1
+from .group_0138 import OrgRulesetConditionsOneof2
+from .group_0139 import (
     RepositoryRuleCreation,
     RepositoryRuleDeletion,
     RepositoryRuleNonFastForward,
     RepositoryRuleRequiredSignatures,
 )
-from .group_0138 import RepositoryRuleUpdate
-from .group_0140 import RepositoryRuleRequiredLinearHistory
-from .group_0141 import RepositoryRuleMergeQueue
-from .group_0143 import RepositoryRuleRequiredDeployments
-from .group_0146 import RepositoryRulePullRequest
-from .group_0148 import RepositoryRuleRequiredStatusChecks
-from .group_0150 import RepositoryRuleCommitMessagePattern
-from .group_0152 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0154 import RepositoryRuleCommitterEmailPattern
-from .group_0156 import RepositoryRuleBranchNamePattern
-from .group_0158 import RepositoryRuleTagNamePattern
-from .group_0160 import RepositoryRuleFilePathRestriction
-from .group_0162 import RepositoryRuleMaxFilePathLength
-from .group_0164 import RepositoryRuleFileExtensionRestriction
-from .group_0166 import RepositoryRuleMaxFileSize
-from .group_0169 import RepositoryRuleWorkflows
-from .group_0171 import RepositoryRuleCodeScanning
+from .group_0140 import RepositoryRuleUpdate
+from .group_0142 import RepositoryRuleRequiredLinearHistory
+from .group_0145 import RepositoryRuleRequiredDeployments
+from .group_0148 import RepositoryRulePullRequest
+from .group_0150 import RepositoryRuleRequiredStatusChecks
+from .group_0152 import RepositoryRuleCommitMessagePattern
+from .group_0154 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0156 import RepositoryRuleCommitterEmailPattern
+from .group_0158 import RepositoryRuleBranchNamePattern
+from .group_0160 import RepositoryRuleTagNamePattern
+from .group_0162 import RepositoryRuleFilePathRestriction
+from .group_0164 import RepositoryRuleMaxFilePathLength
+from .group_0166 import RepositoryRuleFileExtensionRestriction
+from .group_0168 import RepositoryRuleMaxFileSize
+from .group_0171 import RepositoryRuleWorkflows
+from .group_0173 import RepositoryRuleCodeScanning
 
 
-class OrgsOrgRulesetsPostBody(GitHubModel):
-    """OrgsOrgRulesetsPostBody"""
+class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
+    """OrgsOrgRulesetsRulesetIdPutBody"""
 
-    name: str = Field(description="The name of the ruleset.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
     target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
         default=UNSET, description="The target of the ruleset"
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+        default=UNSET,
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
     )
     bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
@@ -78,7 +78,6 @@ class OrgsOrgRulesetsPostBody(GitHubModel):
                 RepositoryRuleUpdate,
                 RepositoryRuleDeletion,
                 RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
                 RepositoryRuleRequiredDeployments,
                 RepositoryRuleRequiredSignatures,
                 RepositoryRulePullRequest,
@@ -100,6 +99,6 @@ class OrgsOrgRulesetsPostBody(GitHubModel):
     ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(OrgsOrgRulesetsPostBody)
+model_rebuild(OrgsOrgRulesetsRulesetIdPutBody)
 
-__all__ = ("OrgsOrgRulesetsPostBody",)
+__all__ = ("OrgsOrgRulesetsRulesetIdPutBody",)

@@ -17,96 +17,128 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0137 import (
+from .group_0139 import (
     RepositoryRuleCreation,
     RepositoryRuleDeletion,
     RepositoryRuleNonFastForward,
     RepositoryRuleRequiredSignatures,
 )
-from .group_0138 import RepositoryRuleUpdate
-from .group_0140 import RepositoryRuleRequiredLinearHistory
-from .group_0141 import RepositoryRuleMergeQueue
-from .group_0143 import RepositoryRuleRequiredDeployments
-from .group_0146 import RepositoryRulePullRequest
-from .group_0148 import RepositoryRuleRequiredStatusChecks
-from .group_0150 import RepositoryRuleCommitMessagePattern
-from .group_0152 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0154 import RepositoryRuleCommitterEmailPattern
-from .group_0156 import RepositoryRuleBranchNamePattern
-from .group_0158 import RepositoryRuleTagNamePattern
-from .group_0160 import RepositoryRuleFilePathRestriction
-from .group_0162 import RepositoryRuleMaxFilePathLength
-from .group_0164 import RepositoryRuleFileExtensionRestriction
-from .group_0166 import RepositoryRuleMaxFileSize
-from .group_0169 import RepositoryRuleWorkflows
-from .group_0171 import RepositoryRuleCodeScanning
-from .group_0770 import (
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems,
+from .group_0140 import RepositoryRuleUpdate
+from .group_0142 import RepositoryRuleRequiredLinearHistory
+from .group_0143 import RepositoryRuleMergeQueue
+from .group_0145 import RepositoryRuleRequiredDeployments
+from .group_0148 import RepositoryRulePullRequest
+from .group_0150 import RepositoryRuleRequiredStatusChecks
+from .group_0152 import RepositoryRuleCommitMessagePattern
+from .group_0154 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0156 import RepositoryRuleCommitterEmailPattern
+from .group_0158 import RepositoryRuleBranchNamePattern
+from .group_0160 import RepositoryRuleTagNamePattern
+from .group_0162 import RepositoryRuleFilePathRestriction
+from .group_0164 import RepositoryRuleMaxFilePathLength
+from .group_0166 import RepositoryRuleFileExtensionRestriction
+from .group_0168 import RepositoryRuleMaxFileSize
+from .group_0171 import RepositoryRuleWorkflows
+from .group_0173 import RepositoryRuleCodeScanning
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems"""
+
+    rule: Missing[
+        Union[
+            RepositoryRuleCreation,
+            RepositoryRuleUpdate,
+            RepositoryRuleDeletion,
+            RepositoryRuleRequiredLinearHistory,
+            RepositoryRuleMergeQueue,
+            RepositoryRuleRequiredDeployments,
+            RepositoryRuleRequiredSignatures,
+            RepositoryRulePullRequest,
+            RepositoryRuleRequiredStatusChecks,
+            RepositoryRuleNonFastForward,
+            RepositoryRuleCommitMessagePattern,
+            RepositoryRuleCommitAuthorEmailPattern,
+            RepositoryRuleCommitterEmailPattern,
+            RepositoryRuleBranchNamePattern,
+            RepositoryRuleTagNamePattern,
+            RepositoryRuleFilePathRestriction,
+            RepositoryRuleMaxFilePathLength,
+            RepositoryRuleFileExtensionRestriction,
+            RepositoryRuleMaxFileSize,
+            RepositoryRuleWorkflows,
+            RepositoryRuleCodeScanning,
+        ]
+    ] = Field(default=UNSET, title="Repository Rule", description="A repository rule.")
+    changes: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges
+    ] = Field(default=UNSET)
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges"""
+
+    configuration: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration
+    ] = Field(default=UNSET)
+    rule_type: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType
+    ] = Field(default=UNSET)
+    pattern: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern
+    ] = Field(default=UNSET)
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pConfiguration
+    """
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pRuleType
+    """
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pPattern
+    """
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern
 )
 
-
-class WebhookRepositoryRulesetEditedPropChangesPropRules(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
-
-    added: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET)
-    deleted: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET)
-    updated: Missing[
-        list[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems]
-    ] = Field(default=UNSET)
-
-
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropRules)
-
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRules",)
+__all__ = (
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType",
+)

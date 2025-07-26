@@ -9,16 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0071 import CopilotSeatDetailsType
-
-
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
+from .group_0080 import NetworkConfigurationType
 
 
-__all__ = ("EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type",)
+class EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
+
+    total_count: int
+    network_configurations: list[NetworkConfigurationType]
+
+
+__all__ = ("EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type",)

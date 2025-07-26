@@ -13,18 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
-from .group_0518 import WebhooksProjectCardType
+from .group_0487 import EnterpriseWebhooksType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0520 import WebhooksProjectCardType
 
 
-class WebhookProjectCardConvertedType(TypedDict):
-    """project_card converted event"""
+class WebhookProjectCardCreatedType(TypedDict):
+    """project_card created event"""
 
-    action: Literal["converted"]
-    changes: WebhookProjectCardConvertedPropChangesType
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -33,20 +32,4 @@ class WebhookProjectCardConvertedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookProjectCardConvertedPropChangesType(TypedDict):
-    """WebhookProjectCardConvertedPropChanges"""
-
-    note: WebhookProjectCardConvertedPropChangesPropNoteType
-
-
-class WebhookProjectCardConvertedPropChangesPropNoteType(TypedDict):
-    """WebhookProjectCardConvertedPropChangesPropNote"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookProjectCardConvertedPropChangesPropNoteType",
-    "WebhookProjectCardConvertedPropChangesType",
-    "WebhookProjectCardConvertedType",
-)
+__all__ = ("WebhookProjectCardCreatedType",)

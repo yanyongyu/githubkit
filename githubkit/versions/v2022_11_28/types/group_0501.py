@@ -13,16 +13,16 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0119 import CustomPropertyType
-from .group_0424 import EnterpriseWebhooksType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
+from .group_0121 import CustomPropertyType
+from .group_0426 import EnterpriseWebhooksType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
 
 
-class WebhookCustomPropertyPromotedToEnterpriseType(TypedDict):
-    """custom property promoted to business event"""
+class WebhookCustomPropertyCreatedType(TypedDict):
+    """custom property created event"""
 
-    action: Literal["promote_to_enterprise"]
+    action: Literal["created"]
     definition: CustomPropertyType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -30,4 +30,4 @@ class WebhookCustomPropertyPromotedToEnterpriseType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookCustomPropertyPromotedToEnterpriseType",)
+__all__ = ("WebhookCustomPropertyCreatedType",)

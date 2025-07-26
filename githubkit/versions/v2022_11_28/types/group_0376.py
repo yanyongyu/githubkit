@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0165 import RepositoryRuleFileExtensionRestrictionPropParametersType
+from .group_0163 import RepositoryRuleFilePathRestrictionPropParametersType
 
 
-class RepositoryRuleDetailedOneof17Type(TypedDict):
-    """RepositoryRuleDetailedOneof17"""
+class RepositoryRuleDetailedOneof15Type(TypedDict):
+    """RepositoryRuleDetailedOneof15"""
 
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleDetailedOneof17Type",)
+__all__ = ("RepositoryRuleDetailedOneof15Type",)

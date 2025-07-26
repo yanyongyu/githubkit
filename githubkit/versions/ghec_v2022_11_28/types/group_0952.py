@@ -12,42 +12,41 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0083 import RepositoryRulesetBypassActorType
-from .group_0094 import EnterpriseRulesetConditionsOneof0Type
-from .group_0095 import EnterpriseRulesetConditionsOneof1Type
-from .group_0096 import EnterpriseRulesetConditionsOneof2Type
-from .group_0097 import EnterpriseRulesetConditionsOneof3Type
-from .group_0098 import (
+from .group_0084 import RepositoryRulesetBypassActorType
+from .group_0095 import EnterpriseRulesetConditionsOneof0Type
+from .group_0096 import EnterpriseRulesetConditionsOneof1Type
+from .group_0097 import EnterpriseRulesetConditionsOneof2Type
+from .group_0098 import EnterpriseRulesetConditionsOneof3Type
+from .group_0099 import (
     RepositoryRuleCreationType,
     RepositoryRuleDeletionType,
     RepositoryRuleNonFastForwardType,
     RepositoryRuleRequiredSignaturesType,
 )
-from .group_0099 import RepositoryRuleUpdateType
-from .group_0101 import RepositoryRuleRequiredLinearHistoryType
-from .group_0102 import RepositoryRuleMergeQueueType
-from .group_0104 import RepositoryRuleRequiredDeploymentsType
-from .group_0107 import RepositoryRulePullRequestType
-from .group_0109 import RepositoryRuleRequiredStatusChecksType
-from .group_0111 import RepositoryRuleCommitMessagePatternType
-from .group_0113 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0115 import RepositoryRuleCommitterEmailPatternType
-from .group_0117 import RepositoryRuleBranchNamePatternType
-from .group_0119 import RepositoryRuleTagNamePatternType
-from .group_0121 import RepositoryRuleFilePathRestrictionType
-from .group_0123 import RepositoryRuleMaxFilePathLengthType
-from .group_0125 import RepositoryRuleFileExtensionRestrictionType
-from .group_0127 import RepositoryRuleMaxFileSizeType
-from .group_0130 import RepositoryRuleWorkflowsType
-from .group_0132 import RepositoryRuleCodeScanningType
+from .group_0100 import RepositoryRuleUpdateType
+from .group_0102 import RepositoryRuleRequiredLinearHistoryType
+from .group_0103 import RepositoryRuleRequiredDeploymentsType
+from .group_0106 import RepositoryRulePullRequestType
+from .group_0108 import RepositoryRuleRequiredStatusChecksType
+from .group_0110 import RepositoryRuleCommitMessagePatternType
+from .group_0112 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0114 import RepositoryRuleCommitterEmailPatternType
+from .group_0116 import RepositoryRuleBranchNamePatternType
+from .group_0118 import RepositoryRuleTagNamePatternType
+from .group_0120 import RepositoryRuleFilePathRestrictionType
+from .group_0122 import RepositoryRuleMaxFilePathLengthType
+from .group_0124 import RepositoryRuleFileExtensionRestrictionType
+from .group_0126 import RepositoryRuleMaxFileSizeType
+from .group_0129 import RepositoryRuleWorkflowsType
+from .group_0131 import RepositoryRuleCodeScanningType
 
 
-class EnterprisesEnterpriseRulesetsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseRulesetsPostBody"""
+class EnterprisesEnterpriseRulesetsRulesetIdPutBodyType(TypedDict):
+    """EnterprisesEnterpriseRulesetsRulesetIdPutBody"""
 
-    name: str
+    name: NotRequired[str]
     target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[
         Union[
@@ -64,7 +63,6 @@ class EnterprisesEnterpriseRulesetsPostBodyType(TypedDict):
                 RepositoryRuleUpdateType,
                 RepositoryRuleDeletionType,
                 RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
                 RepositoryRuleRequiredDeploymentsType,
                 RepositoryRuleRequiredSignaturesType,
                 RepositoryRulePullRequestType,
@@ -86,4 +84,4 @@ class EnterprisesEnterpriseRulesetsPostBodyType(TypedDict):
     ]
 
 
-__all__ = ("EnterprisesEnterpriseRulesetsPostBodyType",)
+__all__ = ("EnterprisesEnterpriseRulesetsRulesetIdPutBodyType",)

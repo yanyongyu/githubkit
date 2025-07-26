@@ -14,31 +14,75 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodespaceMachine(GitHubModel):
-    """Codespace machine
+class CodeScanningAlertInstance(GitHubModel):
+    """CodeScanningAlertInstance"""
 
-    A description of the machine powering a codespace.
+    ref: Missing[str] = Field(
+        default=UNSET,
+        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
+    )
+    analysis_key: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
+    )
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
+    )
+    category: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
+    )
+    state: Missing[Union[None, Literal["open", "dismissed", "fixed"]]] = Field(
+        default=UNSET, description="State of a code scanning alert."
+    )
+    commit_sha: Missing[str] = Field(default=UNSET)
+    message: Missing[CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
+    location: Missing[CodeScanningAlertLocation] = Field(
+        default=UNSET, description="Describe a region within a file for the alert."
+    )
+    html_url: Missing[str] = Field(default=UNSET)
+    classifications: Missing[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
+    ] = Field(
+        default=UNSET,
+        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
+    )
+
+
+class CodeScanningAlertLocation(GitHubModel):
+    """CodeScanningAlertLocation
+
+    Describe a region within a file for the alert.
     """
 
-    name: str = Field(description="The name of the machine.")
-    display_name: str = Field(
-        description="The display name of the machine includes cores, memory, and storage."
-    )
-    operating_system: str = Field(description="The operating system of the machine.")
-    storage_in_bytes: int = Field(
-        description="How much storage is available to the codespace."
-    )
-    memory_in_bytes: int = Field(
-        description="How much memory is available to the codespace."
-    )
-    cpus: int = Field(description="How many cores are available to the codespace.")
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]] = Field(
-        description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
-    )
+    path: Missing[str] = Field(default=UNSET)
+    start_line: Missing[int] = Field(default=UNSET)
+    end_line: Missing[int] = Field(default=UNSET)
+    start_column: Missing[int] = Field(default=UNSET)
+    end_column: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(CodespaceMachine)
+class CodeScanningAlertInstancePropMessage(GitHubModel):
+    """CodeScanningAlertInstancePropMessage"""
 
-__all__ = ("CodespaceMachine",)
+    text: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(CodeScanningAlertInstance)
+model_rebuild(CodeScanningAlertLocation)
+model_rebuild(CodeScanningAlertInstancePropMessage)
+
+__all__ = (
+    "CodeScanningAlertInstance",
+    "CodeScanningAlertInstancePropMessage",
+    "CodeScanningAlertLocation",
+)

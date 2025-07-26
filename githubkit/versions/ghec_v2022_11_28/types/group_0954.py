@@ -9,13 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    name: str
+    id: NotRequired[str]
+    name: NotRequired[str]
+    resources: NotRequired[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType
+        ]
+    ]
 
 
-__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType",)
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+
+    type: NotRequired[str]
+    name: NotRequired[str]
+
+
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type",
+)

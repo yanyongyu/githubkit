@@ -9,25 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CustomPropertyValue(GitHubModel):
-    """Custom Property Value
+class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
+    """Organization private registry
 
-    Custom property name and associated value
+    Private registry configuration for an organization
     """
 
-    property_name: str = Field(description="The name of the property")
-    value: Union[str, list[str], None] = Field(
-        description="The value assigned to the property"
+    name: str = Field(description="The name of the private registry configuration.")
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ] = Field(description="The registry type.")
+    username: Missing[str] = Field(
+        default=UNSET,
+        description="The username to use when authenticating with the private registry.",
     )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
+    )
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(CustomPropertyValue)
+model_rebuild(OrgPrivateRegistryConfigurationWithSelectedRepositories)
 
-__all__ = ("CustomPropertyValue",)
+__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositories",)

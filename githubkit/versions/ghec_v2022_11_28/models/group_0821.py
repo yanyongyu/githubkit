@@ -18,17 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0232 import RepositoryAdvisory
-from .group_0485 import EnterpriseWebhooks
-from .group_0486 import SimpleInstallation
-from .group_0487 import OrganizationSimpleWebhooks
-from .group_0488 import RepositoryWebhooks
+from .group_0487 import EnterpriseWebhooks
+from .group_0488 import SimpleInstallation
+from .group_0489 import OrganizationSimpleWebhooks
+from .group_0490 import RepositoryWebhooks
 
 
-class WebhookRepositoryAdvisoryReported(GitHubModel):
-    """Repository advisory reported event"""
+class WebhookRepositoryArchived(GitHubModel):
+    """repository archived event"""
 
-    action: Literal["reported"] = Field()
+    action: Literal["archived"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -48,14 +47,9 @@ class WebhookRepositoryAdvisoryReported(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    repository_advisory: RepositoryAdvisory = Field(
-        description="A repository security advisory."
-    )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryAdvisoryReported)
+model_rebuild(WebhookRepositoryArchived)
 
-__all__ = ("WebhookRepositoryAdvisoryReported",)
+__all__ = ("WebhookRepositoryArchived",)

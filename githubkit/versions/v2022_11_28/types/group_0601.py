@@ -10,31 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0595 import WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType
+from .group_0596 import (
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+)
 
 
-class WebhookIssuesClosedPropIssueMergedMilestoneType(TypedDict):
-    """WebhookIssuesClosedPropIssueMergedMilestone"""
+class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
 
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType, None]
+    created_at: Union[datetime, None]
     description: Union[str, None]
-    due_on: Union[datetime, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
     html_url: str
-    id: int
-    labels_url: str
+    id: Union[int, None]
+    name: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
-    url: str
+    owner: Union[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType, None
+    ]
+    permissions: NotRequired[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[datetime, None]
 
 
-__all__ = ("WebhookIssuesClosedPropIssueMergedMilestoneType",)
+__all__ = ("WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType",)

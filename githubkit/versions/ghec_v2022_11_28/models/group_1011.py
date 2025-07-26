@@ -11,19 +11,84 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1(GitHubModel):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+class OrgsOrgAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
 
-    attestation_ids: list[int] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of unique IDs associated with the artifact attestations to delete.",
+    attestations: Missing[
+        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems(GitHubModel):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    bundle: Missing[
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
+    ] = Field(
+        default=UNSET,
+        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information.",
     )
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgAttestationsDeleteRequestPostBodyOneof1)
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle(
+    GitHubModel
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
 
-__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof1",)
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    """
+
+    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
+    verification_material: Missing[
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
+    ] = Field(default=UNSET, alias="verificationMaterial")
+    dsse_envelope: Missing[
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
+    ] = Field(default=UNSET, alias="dsseEnvelope")
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial(
+    ExtraGitHubModel
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
+    pVerificationMaterial
+    """
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope(
+    ExtraGitHubModel
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
+    pDsseEnvelope
+    """
+
+
+model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200)
+model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+model_rebuild(
+    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
+)
+model_rebuild(
+    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
+)
+model_rebuild(
+    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
+)
+
+__all__ = (
+    "OrgsOrgAttestationsSubjectDigestGetResponse200",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
+)

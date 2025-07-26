@@ -9,28 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoGitTreesPostBodyType(TypedDict):
-    """ReposOwnerRepoGitTreesPostBody"""
+class ReposOwnerRepoHooksPostBodyType(TypedDict):
+    """ReposOwnerRepoHooksPostBody"""
 
-    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType]
-    base_tree: NotRequired[str]
+    name: NotRequired[str]
+    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigType]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
-class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
-    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
+    """ReposOwnerRepoHooksPostBodyPropConfig
 
-    path: NotRequired[str]
-    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
-    type: NotRequired[Literal["blob", "tree", "commit"]]
-    sha: NotRequired[Union[str, None]]
-    content: NotRequired[str]
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
-    "ReposOwnerRepoGitTreesPostBodyType",
+    "ReposOwnerRepoHooksPostBodyPropConfigType",
+    "ReposOwnerRepoHooksPostBodyType",
 )

@@ -11,18 +11,15 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0036 import OrganizationSimpleType
 
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
 
-    total_count: float
-    organizations: list[OrganizationSimpleType]
+    selected_organization_ids: list[int]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType",
 )

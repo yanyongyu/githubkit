@@ -11,89 +11,26 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
+class ReposOwnerRepoAutolinksPostBody(GitHubModel):
+    """ReposOwnerRepoAutolinksPostBody"""
 
-    attestations: Missing[
-        list[ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems]
-    ] = Field(default=UNSET)
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems(
-    GitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    bundle: Missing[
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
-    ] = Field(
-        default=UNSET,
-        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information.",
+    key_prefix: str = Field(
+        description="This prefix appended by certain characters will generate a link any time it is found in an issue, pull request, or commit."
     )
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
+    url_template: str = Field(
+        description="The URL must contain `<num>` for the reference number. `<num>` matches different characters depending on the value of `is_alphanumeric`."
+    )
+    is_alphanumeric: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters.",
+    )
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle(
-    GitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
-    ndle
+model_rebuild(ReposOwnerRepoAutolinksPostBody)
 
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
-    verification_material: Missing[
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
-    ] = Field(default=UNSET, alias="verificationMaterial")
-    dsse_envelope: Missing[
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
-    ] = Field(default=UNSET, alias="dsseEnvelope")
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
-    ndlePropVerificationMaterial
-    """
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
-    ndlePropDsseEnvelope
-    """
-
-
-model_rebuild(ReposOwnerRepoAttestationsSubjectDigestGetResponse200)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems
-)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
-)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
-)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
-)
-
-__all__ = (
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
-)
+__all__ = ("ReposOwnerRepoAutolinksPostBody",)

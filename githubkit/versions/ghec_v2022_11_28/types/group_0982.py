@@ -9,14 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
 
-    total_count: int
-    platforms: list[str]
+    name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
 
 
-__all__ = ("OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type",)
+__all__ = ("OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",)

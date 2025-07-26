@@ -14,18 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
 
     Examples:
-        {'apps': ['my-app']}
+        {'teams': ['justice-league']}
     """
 
-    apps: list[str] = Field(
-        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
-    )
+    teams: list[str] = Field(description="The slug values for teams")
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0",)

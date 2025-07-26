@@ -12,18 +12,14 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
 
     Examples:
-        {'teams': ['my-team']}
+        {'users': ['mona']}
     """
 
-    teams: list[str]
+    users: list[str]
 
 
-__all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type",
-)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType",)

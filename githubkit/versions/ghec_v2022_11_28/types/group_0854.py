@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
-from .group_0534 import WebhooksSecurityAdvisoryType
+from .group_0487 import EnterpriseWebhooksType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0855 import WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
 
 
-class WebhookSecurityAdvisoryUpdatedType(TypedDict):
-    """security_advisory updated event"""
+class WebhookSecurityAdvisoryWithdrawnType(TypedDict):
+    """security_advisory withdrawn event"""
 
-    action: Literal["updated"]
+    action: Literal["withdrawn"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    security_advisory: WebhooksSecurityAdvisoryType
+    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookSecurityAdvisoryUpdatedType",)
+__all__ = ("WebhookSecurityAdvisoryWithdrawnType",)

@@ -9,16 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0040 import RunnerLabelType
-
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
-
-    total_count: int
-    labels: list[RunnerLabelType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type",)
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
+
+    client_id: str
+    repository_selection: Literal["all", "selected", "none"]
+    repositories: NotRequired[list[str]]
+
+
+__all__ = ("EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType",)

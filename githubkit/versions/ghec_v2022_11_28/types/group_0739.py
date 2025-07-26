@@ -9,25 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0517 import PersonalAccessTokenRequestType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0740 import WebhookPingPropHookType
 
 
-class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
-    """personal_access_token_request denied event"""
+class WebhookPingType(TypedDict):
+    """WebhookPing"""
 
-    action: Literal["denied"]
-    personal_access_token_request: PersonalAccessTokenRequestType
-    organization: OrganizationSimpleWebhooksType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    sender: SimpleUserType
-    installation: SimpleInstallationType
+    hook: NotRequired[WebhookPingPropHookType]
+    hook_id: NotRequired[int]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
+    zen: NotRequired[str]
 
 
-__all__ = ("WebhookPersonalAccessTokenRequestDeniedType",)
+__all__ = ("WebhookPingType",)

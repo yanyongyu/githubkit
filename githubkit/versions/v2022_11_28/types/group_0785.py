@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0424 import EnterpriseWebhooksType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0427 import RepositoryWebhooksType
-from .group_0471 import WebhooksSecurityAdvisoryType
+from .group_0426 import EnterpriseWebhooksType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0429 import RepositoryWebhooksType
+from .group_0473 import WebhooksSecurityAdvisoryType
 
 
-class WebhookSecurityAdvisoryPublishedType(TypedDict):
-    """security_advisory published event"""
+class WebhookSecurityAdvisoryUpdatedType(TypedDict):
+    """security_advisory updated event"""
 
-    action: Literal["published"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -32,4 +32,4 @@ class WebhookSecurityAdvisoryPublishedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookSecurityAdvisoryPublishedType",)
+__all__ = ("WebhookSecurityAdvisoryUpdatedType",)

@@ -9,17 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0063 import MinimalRepositoryType
 
 
-class OrgsOrgDependabotSecretsSecretNamePutBodyType(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNamePutBody"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[str]]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNamePutBodyType",)
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",)

@@ -9,15 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class PackagesBillingUsageType(TypedDict):
-    """PackagesBillingUsage"""
+class DeleteCostCenterType(TypedDict):
+    """DeleteCostCenter"""
 
-    total_gigabytes_bandwidth_used: int
-    total_paid_gigabytes_bandwidth_used: int
-    included_gigabytes_bandwidth: int
+    message: str
+    id: str
+    name: str
+    cost_center_state: Literal["CostCenterArchived"]
 
 
-__all__ = ("PackagesBillingUsageType",)
+__all__ = ("DeleteCostCenterType",)

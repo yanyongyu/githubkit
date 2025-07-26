@@ -14,25 +14,25 @@ from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0424 import EnterpriseWebhooksType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0474 import WebhooksTeam1Type
+from .group_0426 import EnterpriseWebhooksType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0476 import WebhooksTeam1Type
 
 
-class WebhookTeamAddedToRepositoryType(TypedDict):
-    """team added_to_repository event"""
+class WebhookTeamCreatedType(TypedDict):
+    """team created event"""
 
-    action: Literal["added_to_repository"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[WebhookTeamAddedToRepositoryPropRepositoryType]
-    sender: NotRequired[SimpleUserType]
+    repository: NotRequired[WebhookTeamCreatedPropRepositoryType]
+    sender: SimpleUserType
     team: WebhooksTeam1Type
 
 
-class WebhookTeamAddedToRepositoryPropRepositoryType(TypedDict):
+class WebhookTeamCreatedPropRepositoryType(TypedDict):
     """Repository
 
     A git repository
@@ -58,7 +58,7 @@ class WebhookTeamAddedToRepositoryPropRepositoryType(TypedDict):
     contributors_url: str
     created_at: Union[int, datetime]
     custom_properties: NotRequired[
-        WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesType
+        WebhookTeamCreatedPropRepositoryPropCustomPropertiesType
     ]
     default_branch: str
     delete_branch_on_merge: NotRequired[bool]
@@ -93,7 +93,7 @@ class WebhookTeamAddedToRepositoryPropRepositoryType(TypedDict):
     labels_url: str
     language: Union[str, None]
     languages_url: str
-    license_: Union[WebhookTeamAddedToRepositoryPropRepositoryPropLicenseType, None]
+    license_: Union[WebhookTeamCreatedPropRepositoryPropLicenseType, None]
     master_branch: NotRequired[str]
     merges_url: str
     milestones_url: str
@@ -104,10 +104,8 @@ class WebhookTeamAddedToRepositoryPropRepositoryType(TypedDict):
     open_issues: int
     open_issues_count: int
     organization: NotRequired[str]
-    owner: Union[WebhookTeamAddedToRepositoryPropRepositoryPropOwnerType, None]
-    permissions: NotRequired[
-        WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsType
-    ]
+    owner: Union[WebhookTeamCreatedPropRepositoryPropOwnerType, None]
+    permissions: NotRequired[WebhookTeamCreatedPropRepositoryPropPermissionsType]
     private: bool
     public: NotRequired[bool]
     pulls_url: str
@@ -134,10 +132,8 @@ class WebhookTeamAddedToRepositoryPropRepositoryType(TypedDict):
     watchers_count: int
 
 
-WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesType: TypeAlias = dict[
-    str, Any
-]
-"""WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties
+WebhookTeamCreatedPropRepositoryPropCustomPropertiesType: TypeAlias = dict[str, Any]
+"""WebhookTeamCreatedPropRepositoryPropCustomProperties
 
 The custom properties that were defined for the repository. The keys are the
 custom property names, and the values are the corresponding custom property
@@ -145,7 +141,7 @@ values.
 """
 
 
-class WebhookTeamAddedToRepositoryPropRepositoryPropLicenseType(TypedDict):
+class WebhookTeamCreatedPropRepositoryPropLicenseType(TypedDict):
     """License"""
 
     key: str
@@ -155,7 +151,7 @@ class WebhookTeamAddedToRepositoryPropRepositoryPropLicenseType(TypedDict):
     url: Union[str, None]
 
 
-class WebhookTeamAddedToRepositoryPropRepositoryPropOwnerType(TypedDict):
+class WebhookTeamCreatedPropRepositoryPropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -182,8 +178,8 @@ class WebhookTeamAddedToRepositoryPropRepositoryPropOwnerType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsType(TypedDict):
-    """WebhookTeamAddedToRepositoryPropRepositoryPropPermissions"""
+class WebhookTeamCreatedPropRepositoryPropPermissionsType(TypedDict):
+    """WebhookTeamCreatedPropRepositoryPropPermissions"""
 
     admin: bool
     maintain: NotRequired[bool]
@@ -193,10 +189,10 @@ class WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsType(TypedDict):
 
 
 __all__ = (
-    "WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesType",
-    "WebhookTeamAddedToRepositoryPropRepositoryPropLicenseType",
-    "WebhookTeamAddedToRepositoryPropRepositoryPropOwnerType",
-    "WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsType",
-    "WebhookTeamAddedToRepositoryPropRepositoryType",
-    "WebhookTeamAddedToRepositoryType",
+    "WebhookTeamCreatedPropRepositoryPropCustomPropertiesType",
+    "WebhookTeamCreatedPropRepositoryPropLicenseType",
+    "WebhookTeamCreatedPropRepositoryPropOwnerType",
+    "WebhookTeamCreatedPropRepositoryPropPermissionsType",
+    "WebhookTeamCreatedPropRepositoryType",
+    "WebhookTeamCreatedType",
 )

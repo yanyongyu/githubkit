@@ -9,20 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsSubjectStatsItemsType(TypedDict):
-    """ApiInsightsSubjectStatsItems"""
+class OrgHookType(TypedDict):
+    """Org Hook
 
-    subject_type: NotRequired[str]
-    subject_name: NotRequired[str]
-    subject_id: NotRequired[int]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    Org Hook
+    """
+
+    id: int
+    url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    name: str
+    events: list[str]
+    active: bool
+    config: OrgHookPropConfigType
+    updated_at: datetime
+    created_at: datetime
+    type: str
 
 
-__all__ = ("ApiInsightsSubjectStatsItemsType",)
+class OrgHookPropConfigType(TypedDict):
+    """OrgHookPropConfig"""
+
+    url: NotRequired[str]
+    insecure_ssl: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+
+
+__all__ = (
+    "OrgHookPropConfigType",
+    "OrgHookType",
+)

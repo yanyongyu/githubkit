@@ -10,22 +10,51 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodespaceMachineType(TypedDict):
-    """Codespace machine
+class CodeScanningAlertInstanceType(TypedDict):
+    """CodeScanningAlertInstance"""
 
-    A description of the machine powering a codespace.
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[None, Literal["open", "dismissed", "fixed"]]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
+    ]
+
+
+class CodeScanningAlertLocationType(TypedDict):
+    """CodeScanningAlertLocation
+
+    Describe a region within a file for the alert.
     """
 
-    name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
 
 
-__all__ = ("CodespaceMachineType",)
+class CodeScanningAlertInstancePropMessageType(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
+
+    text: NotRequired[str]
+
+
+__all__ = (
+    "CodeScanningAlertInstancePropMessageType",
+    "CodeScanningAlertInstanceType",
+    "CodeScanningAlertLocationType",
+)

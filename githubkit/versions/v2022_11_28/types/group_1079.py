@@ -12,12 +12,11 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoForksPostBodyType(TypedDict):
-    """ReposOwnerRepoForksPostBody"""
+class ReposOwnerRepoGitBlobsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitBlobsPostBody"""
 
-    organization: NotRequired[str]
-    name: NotRequired[str]
-    default_branch_only: NotRequired[bool]
+    content: str
+    encoding: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoForksPostBodyType",)
+__all__ = ("ReposOwnerRepoGitBlobsPostBodyType",)

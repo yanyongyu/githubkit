@@ -12,32 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class NetworkSettings(GitHubModel):
-    """Hosted compute network settings resource
+class PackagesBillingUsage(GitHubModel):
+    """PackagesBillingUsage"""
 
-    A hosted compute network settings resource.
-    """
-
-    id: str = Field(
-        description="The unique identifier of the network settings resource."
+    total_gigabytes_bandwidth_used: int = Field(
+        description="Sum of the free and paid storage space (GB) for GitHuub Packages."
     )
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of the network configuration that is using this settings resource.",
+    total_paid_gigabytes_bandwidth_used: int = Field(
+        description="Total paid storage space (GB) for GitHuub Packages."
     )
-    name: str = Field(description="The name of the network settings resource.")
-    subnet_id: str = Field(
-        description="The subnet this network settings resource is configured for."
-    )
-    region: str = Field(
-        description="The location of the subnet this network settings resource is configured for."
+    included_gigabytes_bandwidth: int = Field(
+        description="Free storage space (GB) for GitHub Packages."
     )
 
 
-model_rebuild(NetworkSettings)
+model_rebuild(PackagesBillingUsage)
 
-__all__ = ("NetworkSettings",)
+__all__ = ("PackagesBillingUsage",)

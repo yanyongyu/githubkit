@@ -11,11 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
-    """NotificationsThreadsThreadIdSubscriptionPutBody"""
-
-    ignored: NotRequired[bool]
+from .group_0181 import OrganizationCustomRepositoryRoleType
 
 
-__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBodyType",)
+class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
+    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
+
+
+__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200Type",)

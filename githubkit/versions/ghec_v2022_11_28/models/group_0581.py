@@ -18,34 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0485 import EnterpriseWebhooks
-from .group_0486 import SimpleInstallation
-from .group_0487 import OrganizationSimpleWebhooks
-from .group_0488 import RepositoryWebhooks
-from .group_0494 import WebhooksDeployKey
+from .group_0332 import DependabotAlert
+from .group_0487 import EnterpriseWebhooks
+from .group_0488 import SimpleInstallation
+from .group_0489 import OrganizationSimpleWebhooks
+from .group_0490 import RepositoryWebhooks
 
 
-class WebhookDeployKeyDeleted(GitHubModel):
-    """deploy_key deleted event"""
+class WebhookDependabotAlertReopened(GitHubModel):
+    """Dependabot alert reopened event"""
 
-    action: Literal["deleted"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
-    )
+    action: Literal["reopened"] = Field()
+    alert: DependabotAlert = Field(description="A Dependabot alert.")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    key: WebhooksDeployKey = Field(
-        description="The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#get-a-deploy-key) resource."
-    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
@@ -54,6 +52,6 @@ class WebhookDeployKeyDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDeployKeyDeleted)
+model_rebuild(WebhookDependabotAlertReopened)
 
-__all__ = ("WebhookDeployKeyDeleted",)
+__all__ = ("WebhookDependabotAlertReopened",)

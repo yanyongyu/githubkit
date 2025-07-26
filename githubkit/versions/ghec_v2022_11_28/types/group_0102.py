@@ -10,19 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0103 import RepositoryRuleMergeQueuePropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleMergeQueueType(TypedDict):
-    """merge_queue
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
 
-    Merges must be performed via a merge queue.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+    type: Literal["required_linear_history"]
 
 
-__all__ = ("RepositoryRuleMergeQueueType",)
+__all__ = ("RepositoryRuleRequiredLinearHistoryType",)

@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1250 import ReposOwnerRepoPagesPostBodyPropSourceType
+from .group_1249 import ReposOwnerRepoPagesPostBodyPropSourceType
 
 
-class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
+class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
 
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: ReposOwnerRepoPagesPostBodyPropSourceType
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
 
 
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0Type",)
+__all__ = ("ReposOwnerRepoPagesPostBodyAnyof1Type",)

@@ -12,23 +12,26 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0029 import CodeScanningDefaultSetupOptionsType
+from .group_0030 import CodeScanningDefaultSetupOptionsType
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBody"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
 
-    name: str
-    description: str
+    name: NotRequired[str]
+    description: NotRequired[str]
     advanced_security: NotRequired[
         Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]
+    code_security: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependency_graph_autosubmit_action: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
     dependency_graph_autosubmit_action_options: NotRequired[
-        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
     ]
     dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
@@ -39,6 +42,7 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType(TypedDict):
     code_scanning_delegated_alert_dismissal: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
+    secret_protection: NotRequired[Literal["enabled", "disabled", "not_set"]]
     secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
     secret_scanning_push_protection: NotRequired[
         Literal["enabled", "disabled", "not_set"]
@@ -61,11 +65,11 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType(TypedDict):
     enforcement: NotRequired[Literal["enforced", "unenforced"]]
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosu
-    bmitActionOptions
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
+    dencyGraphAutosubmitActionOptions
 
     Feature options for Automatic dependency submission
     """
@@ -74,6 +78,6 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraph
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType",
 )

@@ -12,26 +12,14 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleWorkflowsPropParametersType(TypedDict):
-    """RepositoryRuleWorkflowsPropParameters"""
+class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
+    """RestrictedCommits
 
-    do_not_enforce_on_create: NotRequired[bool]
-    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
-
-
-class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
-    """WorkflowFileReference
-
-    A workflow that must run for this rule to pass
+    Restricted commit
     """
 
-    path: str
-    ref: NotRequired[str]
-    repository_id: int
-    sha: NotRequired[str]
+    oid: str
+    reason: NotRequired[str]
 
 
-__all__ = (
-    "RepositoryRuleParamsWorkflowFileReferenceType",
-    "RepositoryRuleWorkflowsPropParametersType",
-)
+__all__ = ("RepositoryRuleParamsRestrictedCommitsType",)

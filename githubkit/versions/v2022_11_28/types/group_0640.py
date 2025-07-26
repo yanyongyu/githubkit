@@ -13,18 +13,18 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0424 import EnterpriseWebhooksType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0427 import RepositoryWebhooksType
-from .group_0435 import WebhooksUserType
+from .group_0426 import EnterpriseWebhooksType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0429 import RepositoryWebhooksType
+from .group_0437 import WebhooksUserType
 
 
-class WebhookMemberAddedType(TypedDict):
-    """member added event"""
+class WebhookMemberEditedType(TypedDict):
+    """member edited event"""
 
-    action: Literal["added"]
-    changes: NotRequired[WebhookMemberAddedPropChangesType]
+    action: Literal["edited"]
+    changes: WebhookMemberEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     member: Union[WebhooksUserType, None]
@@ -33,40 +33,32 @@ class WebhookMemberAddedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookMemberAddedPropChangesType(TypedDict):
-    """WebhookMemberAddedPropChanges"""
+class WebhookMemberEditedPropChangesType(TypedDict):
+    """WebhookMemberEditedPropChanges
 
-    permission: NotRequired[WebhookMemberAddedPropChangesPropPermissionType]
-    role_name: NotRequired[WebhookMemberAddedPropChangesPropRoleNameType]
-
-
-class WebhookMemberAddedPropChangesPropPermissionType(TypedDict):
-    """WebhookMemberAddedPropChangesPropPermission
-
-    This field is included for legacy purposes; use the `role_name` field instead.
-    The `maintain`
-    role is mapped to `write` and the `triage` role is mapped to `read`. To
-    determine the role
-    assigned to the collaborator, use the `role_name` field instead, which will
-    provide the full
-    role name, including custom roles.
+    The changes to the collaborator permissions
     """
 
-    to: Literal["write", "admin", "read"]
+    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
+    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
 
 
-class WebhookMemberAddedPropChangesPropRoleNameType(TypedDict):
-    """WebhookMemberAddedPropChangesPropRoleName
+class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
 
-    The role assigned to the collaborator.
-    """
+    from_: str
 
-    to: str
+
+class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhookMemberAddedPropChangesPropPermissionType",
-    "WebhookMemberAddedPropChangesPropRoleNameType",
-    "WebhookMemberAddedPropChangesType",
-    "WebhookMemberAddedType",
+    "WebhookMemberEditedPropChangesPropOldPermissionType",
+    "WebhookMemberEditedPropChangesPropPermissionType",
+    "WebhookMemberEditedPropChangesType",
+    "WebhookMemberEditedType",
 )

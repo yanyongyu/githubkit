@@ -9,18 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrganizationsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBody
+class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
+    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    default_level: Literal["public", "internal"]
 
 
-__all__ = ("OrganizationsOrgDependabotRepositoryAccessPatchBodyType",)
+__all__ = ("OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",)

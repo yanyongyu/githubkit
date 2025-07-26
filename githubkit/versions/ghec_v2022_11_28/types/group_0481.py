@@ -9,20 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import TypedDict
 
-from .group_0020 import RepositoryType
 
+class SocialAccountType(TypedDict):
+    """Social account
 
-class StarredRepositoryType(TypedDict):
-    """Starred Repository
-
-    Starred Repository
+    Social media account
     """
 
-    starred_at: datetime
-    repo: RepositoryType
+    provider: str
+    url: str
 
 
-__all__ = ("StarredRepositoryType",)
+__all__ = ("SocialAccountType",)

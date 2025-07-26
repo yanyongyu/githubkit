@@ -9,16 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0210 import WorkflowRunType
-
-
-class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
-
-    total_count: int
-    workflow_runs: list[WorkflowRunType]
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-__all__ = ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type",)
+class ReposOwnerRepoAttestationsPostBodyType(TypedDict):
+    """ReposOwnerRepoAttestationsPostBody"""
+
+    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType
+
+
+class ReposOwnerRepoAttestationsPostBodyPropBundleType(TypedDict):
+    """ReposOwnerRepoAttestationsPostBodyPropBundle
+
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    """
+
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType
+    ]
+    dsse_envelope: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType
+    ]
+
+
+ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType: TypeAlias = (
+    dict[str, Any]
+)
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
+"""
+
+
+ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
+"""
+
+
+__all__ = (
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundleType",
+    "ReposOwnerRepoAttestationsPostBodyType",
+)

@@ -9,37 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0298 import CustomDeploymentRuleAppType
+from typing_extensions import TypedDict
 
 
-class DeploymentProtectionRuleType(TypedDict):
-    """Deployment protection rule
+class DeploymentBranchPolicyNamePatternType(TypedDict):
+    """Deployment branch policy name pattern"""
 
-    Deployment protection rule
-    """
-
-    id: int
-    node_id: str
-    enabled: bool
-    app: CustomDeploymentRuleAppType
+    name: str
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
-
-    Examples:
-        {'$ref': '#/components/examples/deployment-protection-rules'}
-    """
-
-    total_count: NotRequired[int]
-    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
-
-
-__all__ = (
-    "DeploymentProtectionRuleType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
-)
+__all__ = ("DeploymentBranchPolicyNamePatternType",)

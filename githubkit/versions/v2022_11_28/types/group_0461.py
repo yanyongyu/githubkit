@@ -9,31 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
-from typing import Literal, Union
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+
+class WebhooksProjectChangesType(TypedDict):
+    """WebhooksProjectChanges"""
+
+    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtType]
 
 
-class ProjectsV2StatusUpdateType(TypedDict):
-    """Projects v2 Status Update
+class WebhooksProjectChangesPropArchivedAtType(TypedDict):
+    """WebhooksProjectChangesPropArchivedAt"""
 
-    An status update belonging to a project
-    """
-
-    id: float
-    node_id: str
-    project_node_id: NotRequired[str]
-    creator: NotRequired[SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    status: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ]
-    start_date: NotRequired[date]
-    target_date: NotRequired[date]
-    body: NotRequired[Union[str, None]]
+    from_: NotRequired[Union[datetime, None]]
+    to: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("ProjectsV2StatusUpdateType",)
+__all__ = (
+    "WebhooksProjectChangesPropArchivedAtType",
+    "WebhooksProjectChangesType",
+)

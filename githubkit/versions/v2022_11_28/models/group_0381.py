@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,69 +17,27 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0038 import (
-    SecretScanningLocationCommit,
-    SecretScanningLocationDiscussionComment,
-    SecretScanningLocationDiscussionTitle,
-    SecretScanningLocationIssueBody,
-    SecretScanningLocationPullRequestBody,
-    SecretScanningLocationPullRequestReview,
-    SecretScanningLocationWikiCommit,
-)
-from .group_0039 import (
-    SecretScanningLocationIssueComment,
-    SecretScanningLocationIssueTitle,
-    SecretScanningLocationPullRequestReviewComment,
-    SecretScanningLocationPullRequestTitle,
-)
-from .group_0040 import (
-    SecretScanningLocationDiscussionBody,
-    SecretScanningLocationPullRequestComment,
-)
+from .group_0174 import RepositoryRuleCodeScanningPropParameters
 
 
-class SecretScanningLocation(GitHubModel):
-    """SecretScanningLocation"""
+class RepositoryRuleDetailedOneof20(GitHubModel):
+    """RepositoryRuleDetailedOneof20"""
 
-    type: Missing[
-        Literal[
-            "commit",
-            "wiki_commit",
-            "issue_title",
-            "issue_body",
-            "issue_comment",
-            "discussion_title",
-            "discussion_body",
-            "discussion_comment",
-            "pull_request_title",
-            "pull_request_body",
-            "pull_request_comment",
-            "pull_request_review",
-            "pull_request_review_comment",
-        ]
-    ] = Field(
+    type: Literal["code_scanning"] = Field()
+    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
-        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.",
+        description="The type of source for the ruleset that includes this rule.",
     )
-    details: Missing[
-        Union[
-            SecretScanningLocationCommit,
-            SecretScanningLocationWikiCommit,
-            SecretScanningLocationIssueTitle,
-            SecretScanningLocationIssueBody,
-            SecretScanningLocationIssueComment,
-            SecretScanningLocationDiscussionTitle,
-            SecretScanningLocationDiscussionBody,
-            SecretScanningLocationDiscussionComment,
-            SecretScanningLocationPullRequestTitle,
-            SecretScanningLocationPullRequestBody,
-            SecretScanningLocationPullRequestComment,
-            SecretScanningLocationPullRequestReview,
-            SecretScanningLocationPullRequestReviewComment,
-        ]
-    ] = Field(default=UNSET)
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
+    )
 
 
-model_rebuild(SecretScanningLocation)
+model_rebuild(RepositoryRuleDetailedOneof20)
 
-__all__ = ("SecretScanningLocation",)
+__all__ = ("RepositoryRuleDetailedOneof20",)

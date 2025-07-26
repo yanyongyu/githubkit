@@ -15,15 +15,18 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0181 import OrganizationCustomRepositoryRole
 
-class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
-    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-    ignored: Missing[bool] = Field(
-        default=UNSET, description="Whether to block all notifications from a thread."
+class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
+    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
+
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of custom roles in this organization"
     )
+    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
 
 
-model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
+model_rebuild(OrganizationsOrganizationIdCustomRolesGetResponse200)
 
-__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)
+__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200",)

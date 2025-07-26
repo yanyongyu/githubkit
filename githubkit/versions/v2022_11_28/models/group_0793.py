@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0424 import EnterpriseWebhooks
-from .group_0425 import SimpleInstallation
-from .group_0426 import OrganizationSimpleWebhooks
-from .group_0427 import RepositoryWebhooks
-from .group_0472 import WebhooksSponsorship
+from .group_0426 import EnterpriseWebhooks
+from .group_0427 import SimpleInstallation
+from .group_0428 import OrganizationSimpleWebhooks
+from .group_0429 import RepositoryWebhooks
+from .group_0474 import WebhooksSponsorship
 
 
-class WebhookSponsorshipCreated(GitHubModel):
-    """sponsorship created event"""
+class WebhookSponsorshipEdited(GitHubModel):
+    """sponsorship edited event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookSponsorshipEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,6 +54,29 @@ class WebhookSponsorshipCreated(GitHubModel):
     sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookSponsorshipCreated)
+class WebhookSponsorshipEditedPropChanges(GitHubModel):
+    """WebhookSponsorshipEditedPropChanges"""
 
-__all__ = ("WebhookSponsorshipCreated",)
+    privacy_level: Missing[WebhookSponsorshipEditedPropChangesPropPrivacyLevel] = Field(
+        default=UNSET
+    )
+
+
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevel(GitHubModel):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+
+    from_: str = Field(
+        alias="from",
+        description="The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy.",
+    )
+
+
+model_rebuild(WebhookSponsorshipEdited)
+model_rebuild(WebhookSponsorshipEditedPropChanges)
+model_rebuild(WebhookSponsorshipEditedPropChangesPropPrivacyLevel)
+
+__all__ = (
+    "WebhookSponsorshipEdited",
+    "WebhookSponsorshipEditedPropChanges",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevel",
+)

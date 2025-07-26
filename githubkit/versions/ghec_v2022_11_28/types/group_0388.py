@@ -9,36 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class PageBuildType(TypedDict):
-    """Page Build
+class MergedUpstreamType(TypedDict):
+    """Merged upstream
 
-    Page Build
+    Results of a successful merge upstream request
     """
 
-    url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: datetime
-    updated_at: datetime
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
-
-    message: Union[str, None]
-
-
-__all__ = (
-    "PageBuildPropErrorType",
-    "PageBuildType",
-)
+__all__ = ("MergedUpstreamType",)

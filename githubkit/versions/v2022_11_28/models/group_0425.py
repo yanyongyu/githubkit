@@ -12,22 +12,49 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class SimpleInstallation(GitHubModel):
-    """Simple Installation
+class BillingUsageReportUser(GitHubModel):
+    """BillingUsageReportUser"""
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
-    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
-    """
-
-    id: int = Field(description="The ID of the installation.")
-    node_id: str = Field(description="The global node ID of the installation.")
+    usage_items: Missing[list[BillingUsageReportUserPropUsageItemsItems]] = Field(
+        default=UNSET, alias="usageItems"
+    )
 
 
-model_rebuild(SimpleInstallation)
+class BillingUsageReportUserPropUsageItemsItems(GitHubModel):
+    """BillingUsageReportUserPropUsageItemsItems"""
 
-__all__ = ("SimpleInstallation",)
+    date: str = Field(description="Date of the usage line item.")
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    quantity: int = Field(description="Quantity of the usage line item.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+    repository_name: Missing[str] = Field(
+        default=UNSET, alias="repositoryName", description="Name of the repository."
+    )
+
+
+model_rebuild(BillingUsageReportUser)
+model_rebuild(BillingUsageReportUserPropUsageItemsItems)
+
+__all__ = (
+    "BillingUsageReportUser",
+    "BillingUsageReportUserPropUsageItemsItems",
+)

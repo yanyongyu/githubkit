@@ -9,22 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReactionRollupType(TypedDict):
-    """Reaction Rollup"""
+class IssueTypeType(TypedDict):
+    """Issue Type
 
-    url: str
-    total_count: int
-    plus_one: int
-    minus_one: int
-    laugh: int
-    confused: int
-    heart: int
-    hooray: int
-    eyes: int
-    rocket: int
+    The type of issue.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    description: Union[str, None]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+    is_enabled: NotRequired[bool]
 
 
-__all__ = ("ReactionRollupType",)
+__all__ = ("IssueTypeType",)

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
@@ -17,49 +18,41 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0083 import TeamSimple
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-class TeamRoleAssignment(GitHubModel):
-    """A Role Assignment for a Team
+class Migration(GitHubModel):
+    """Migration
 
-    The Relationship a Team has with a role.
+    A migration.
     """
 
-    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
-        default=UNSET,
-        description="Determines if the team has a direct, indirect, or mixed relationship to a role",
-    )
     id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamRoleAssignmentPropPermissions] = Field(default=UNSET)
+    owner: Union[None, SimpleUser] = Field()
+    guid: str = Field()
+    state: str = Field()
+    lock_repositories: bool = Field()
+    exclude_metadata: bool = Field()
+    exclude_git_data: bool = Field()
+    exclude_attachments: bool = Field()
+    exclude_releases: bool = Field()
+    exclude_owner_projects: bool = Field()
+    org_metadata_only: bool = Field()
+    repositories: list[Repository] = Field(
+        description="The repositories included in the migration. Only returned for export migrations."
+    )
     url: str = Field()
-    html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    parent: Union[None, TeamSimple] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    node_id: str = Field()
+    archive_url: Missing[str] = Field(default=UNSET)
+    exclude: Missing[list[str]] = Field(
+        default=UNSET,
+        description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
+    )
 
 
-class TeamRoleAssignmentPropPermissions(GitHubModel):
-    """TeamRoleAssignmentPropPermissions"""
+model_rebuild(Migration)
 
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(TeamRoleAssignment)
-model_rebuild(TeamRoleAssignmentPropPermissions)
-
-__all__ = (
-    "TeamRoleAssignment",
-    "TeamRoleAssignmentPropPermissions",
-)
+__all__ = ("Migration",)

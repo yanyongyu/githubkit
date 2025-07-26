@@ -11,18 +11,29 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0041 import Runner
-
-
-class OrgsOrgActionsRunnersGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnersGetResponse200"""
-
-    total_count: int = Field()
-    runners: list[Runner] = Field()
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgActionsRunnersGetResponse200)
+class OrgsOrgActionsRunnersGenerateJitconfigPostBody(GitHubModel):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-__all__ = ("OrgsOrgActionsRunnersGetResponse200",)
+    name: str = Field(description="The name of the new runner.")
+    runner_group_id: int = Field(
+        description="The ID of the runner group to register the runner to."
+    )
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
+    )
+    work_folder: Missing[str] = Field(
+        default=UNSET,
+        description="The working directory to be used for job execution, relative to the runner install directory.",
+    )
+
+
+model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostBody)
+
+__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBody",)

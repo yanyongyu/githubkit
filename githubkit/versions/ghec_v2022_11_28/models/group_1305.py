@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,30 +18,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBody(GitHubModel):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
+class UserPatchBody(GitHubModel):
+    """UserPatchBody"""
 
-    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems] = Field(
-        description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove."
+    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
+    email: Missing[str] = Field(
+        default=UNSET, description="The publicly visible email address of the user."
     )
-    synced_at: Missing[str] = Field(default=UNSET)
+    blog: Missing[str] = Field(
+        default=UNSET, description="The new blog URL of the user."
+    )
+    twitter_username: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The new Twitter username of the user."
+    )
+    company: Missing[str] = Field(
+        default=UNSET, description="The new company of the user."
+    )
+    location: Missing[str] = Field(
+        default=UNSET, description="The new location of the user."
+    )
+    hireable: Missing[bool] = Field(
+        default=UNSET, description="The new hiring availability of the user."
+    )
+    bio: Missing[str] = Field(
+        default=UNSET, description="The new short biography of the user."
+    )
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+model_rebuild(UserPatchBody)
 
-    group_id: str = Field(description="ID of the IdP group.")
-    group_name: str = Field(description="Name of the IdP group.")
-    group_description: str = Field(description="Description of the IdP group.")
-    id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBody)
-model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems)
-
-__all__ = (
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBody",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems",
-)
+__all__ = ("UserPatchBody",)

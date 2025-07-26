@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
 
-    subject_digests: list[str]
+    attestation_ids: list[int]
 
 
-__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type",)
+__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",)

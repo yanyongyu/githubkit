@@ -9,18 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0336 import MetadataType
 
 
-class DeploymentBranchPolicySettingsType(TypedDict):
-    """DeploymentBranchPolicySettings
+class SnapshotType(TypedDict):
+    """snapshot
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
+    Create a new snapshot of a repository's dependencies.
     """
 
-    protected_branches: bool
-    custom_branch_policies: bool
+    version: int
+    job: SnapshotPropJobType
+    sha: str
+    ref: str
+    detector: SnapshotPropDetectorType
+    metadata: NotRequired[MetadataType]
+    manifests: NotRequired[SnapshotPropManifestsType]
+    scanned: datetime
 
 
-__all__ = ("DeploymentBranchPolicySettingsType",)
+class SnapshotPropJobType(TypedDict):
+    """SnapshotPropJob"""
+
+    id: str
+    correlator: str
+    html_url: NotRequired[str]
+
+
+class SnapshotPropDetectorType(TypedDict):
+    """SnapshotPropDetector
+
+    A description of the detector used.
+    """
+
+    name: str
+    version: str
+    url: str
+
+
+SnapshotPropManifestsType: TypeAlias = dict[str, Any]
+"""SnapshotPropManifests
+
+A collection of package manifests, which are a collection of related
+dependencies declared in a file or representing a logical group of dependencies.
+"""
+
+
+__all__ = (
+    "SnapshotPropDetectorType",
+    "SnapshotPropJobType",
+    "SnapshotPropManifestsType",
+    "SnapshotType",
+)

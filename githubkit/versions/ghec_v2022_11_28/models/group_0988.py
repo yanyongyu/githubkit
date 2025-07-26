@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,20 +18,13 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsPostBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
     name: str = Field(description="Name of the runner group.")
     visibility: Missing[Literal["selected", "all", "private"]] = Field(
         default=UNSET,
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or limit access to private repositories.",
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="List of repository IDs that can access the runner group.",
-    )
-    runners: Missing[list[int]] = Field(
-        default=UNSET, description="List of runner IDs to add to the runner group."
+        description="Visibility of a runner group. You can select all repositories, select individual repositories, or all private repositories.",
     )
     allows_public_repositories: Missing[bool] = Field(
         default=UNSET,
@@ -45,12 +38,12 @@ class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
         default=UNSET,
         description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
     )
-    network_configuration_id: Missing[str] = Field(
+    network_configuration_id: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="The identifier of a hosted compute network configuration.",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsPostBody)
+model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsPostBody",)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody",)

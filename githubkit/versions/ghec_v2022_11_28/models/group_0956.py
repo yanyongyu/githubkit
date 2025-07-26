@@ -12,14 +12,31 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
 
-    name: str = Field(description="The new name for the cost center")
+    users: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The usernames of the users to add to the cost center.",
+    )
+    organizations: Missing[list[str]] = Field(
+        default=UNSET, description="The organizations to add to the cost center."
+    )
+    repositories: Missing[list[str]] = Field(
+        default=UNSET, description="The repositories to add to the cost center."
+    )
 
 
-model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody
+)
 
-__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody",)
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody",
+)

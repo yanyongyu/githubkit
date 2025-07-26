@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0041 import RunnerType
+
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody"""
+
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
-class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
-
-    total_count: NotRequired[float]
-    runners: NotRequired[list[RunnerType]]
-
-
-__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200Type",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType",)

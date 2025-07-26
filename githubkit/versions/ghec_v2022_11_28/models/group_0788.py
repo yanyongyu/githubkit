@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0485 import EnterpriseWebhooks
-from .group_0486 import SimpleInstallation
-from .group_0487 import OrganizationSimpleWebhooks
-from .group_0488 import RepositoryWebhooks
-from .group_0525 import PullRequestWebhook
+from .group_0487 import EnterpriseWebhooks
+from .group_0488 import SimpleInstallation
+from .group_0489 import OrganizationSimpleWebhooks
+from .group_0490 import RepositoryWebhooks
+from .group_0527 import PullRequestWebhook
 
 
-class WebhookPullRequestReadyForReview(GitHubModel):
-    """pull_request ready_for_review event"""
+class WebhookPullRequestReopened(GitHubModel):
+    """pull_request reopened event"""
 
-    action: Literal["ready_for_review"] = Field()
+    action: Literal["reopened"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,6 +53,6 @@ class WebhookPullRequestReadyForReview(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestReadyForReview)
+model_rebuild(WebhookPullRequestReopened)
 
-__all__ = ("WebhookPullRequestReadyForReview",)
+__all__ = ("WebhookPullRequestReopened",)

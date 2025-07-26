@@ -9,20 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0205 import ActionsVariable
-
-
-class ReposOwnerRepoActionsOrganizationVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
-
-    total_count: int = Field()
-    variables: list[ActionsVariable] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoActionsOrganizationVariablesGetResponse200)
+class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
 
-__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200",)
+    enabled: bool = Field(
+        description="Whether GitHub Actions is enabled on the repository."
+    )
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+        default=UNSET,
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+    )
+
+
+model_rebuild(ReposOwnerRepoActionsPermissionsPutBody)
+
+__all__ = ("ReposOwnerRepoActionsPermissionsPutBody",)

@@ -13,12 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    PatchBody
+    """
 
-    client_id: str
-    repository_selection: Literal["all", "selected", "none"]
+    repository_selection: Literal["all", "selected"]
     repositories: NotRequired[list[str]]
 
 
-__all__ = ("EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType",)
+__all__ = (
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType",
+)

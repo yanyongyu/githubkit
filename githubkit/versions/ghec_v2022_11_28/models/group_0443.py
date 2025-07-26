@@ -9,21 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Traffic(GitHubModel):
-    """Traffic"""
+class TagProtection(GitHubModel):
+    """Tag protection
 
-    timestamp: datetime = Field()
-    uniques: int = Field()
-    count: int = Field()
+    Tag protection
+    """
+
+    id: Missing[int] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
+    pattern: str = Field()
 
 
-model_rebuild(Traffic)
+model_rebuild(TagProtection)
 
-__all__ = ("Traffic",)
+__all__ = ("TagProtection",)

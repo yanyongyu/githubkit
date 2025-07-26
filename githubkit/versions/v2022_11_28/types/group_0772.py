@@ -13,16 +13,18 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0424 import EnterpriseWebhooksType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0427 import RepositoryWebhooksType
+from .group_0426 import EnterpriseWebhooksType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0429 import RepositoryWebhooksType
+from .group_0471 import WebhooksAlertType
 
 
-class WebhookRepositoryUnarchivedType(TypedDict):
-    """repository unarchived event"""
+class WebhookRepositoryVulnerabilityAlertCreateType(TypedDict):
+    """repository_vulnerability_alert create event"""
 
-    action: Literal["unarchived"]
+    action: Literal["create"]
+    alert: WebhooksAlertType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -30,4 +32,4 @@ class WebhookRepositoryUnarchivedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookRepositoryUnarchivedType",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertCreateType",)

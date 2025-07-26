@@ -13,12 +13,12 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0424 import EnterpriseWebhooksType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0427 import RepositoryWebhooksType
-from .group_0442 import WebhooksIssueCommentType
-from .group_0443 import WebhooksChangesType
+from .group_0426 import EnterpriseWebhooksType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0429 import RepositoryWebhooksType
+from .group_0444 import WebhooksIssueCommentType
+from .group_0445 import WebhooksChangesType
 from .group_0580 import WebhookIssueCommentEditedPropIssueType
 
 

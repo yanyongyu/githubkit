@@ -17,19 +17,18 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1122 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+from .group_1121 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
 
-class ReposOwnerRepoPagesPutBodyAnyof3(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof3"""
+class ReposOwnerRepoPagesPutBodyAnyof4(GitHubModel):
+    """ReposOwnerRepoPagesPutBodyAnyof4"""
 
     cname: Missing[Union[str, None]] = Field(
         default=UNSET,
         description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
     )
-    https_enforced: Missing[bool] = Field(
-        default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
+    https_enforced: bool = Field(
+        description="Specify whether HTTPS should be enforced for the repository."
     )
     build_type: Missing[Literal["legacy", "workflow"]] = Field(
         default=UNSET,
@@ -43,6 +42,6 @@ class ReposOwnerRepoPagesPutBodyAnyof3(GitHubModel):
     ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof3)
+model_rebuild(ReposOwnerRepoPagesPutBodyAnyof4)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof3",)
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof4",)

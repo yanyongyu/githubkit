@@ -13,11 +13,10 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgPersonalAccessTokensPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokensPostBody"""
+class OrgsOrgPersonalAccessTokensPatIdPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
 
     action: Literal["revoke"]
-    pat_ids: list[int]
 
 
-__all__ = ("OrgsOrgPersonalAccessTokensPostBodyType",)
+__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBodyType",)

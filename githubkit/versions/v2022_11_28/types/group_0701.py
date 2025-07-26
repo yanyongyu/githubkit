@@ -13,21 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0459 import WebhooksProjectChangesType
-from .group_0460 import ProjectsV2ItemType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0460 import ProjectsV2Type
 
 
-class WebhookProjectsV2ItemRestoredType(TypedDict):
-    """Projects v2 Item Restored Event"""
+class WebhookProjectsV2ProjectReopenedType(TypedDict):
+    """Projects v2 Project Reopened Event"""
 
-    action: Literal["restored"]
-    changes: WebhooksProjectChangesType
+    action: Literal["reopened"]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserType
 
 
-__all__ = ("WebhookProjectsV2ItemRestoredType",)
+__all__ = ("WebhookProjectsV2ProjectReopenedType",)

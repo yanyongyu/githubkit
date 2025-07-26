@@ -9,17 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0032 import SimpleRepositoryType
 
 
-class DependabotAlertPackageType(TypedDict):
-    """DependabotAlertPackage
+class CodeSecurityConfigurationRepositoriesType(TypedDict):
+    """CodeSecurityConfigurationRepositories
 
-    Details for the vulnerable package.
+    Repositories associated with a code security configuration and attachment status
     """
 
-    ecosystem: str
-    name: str
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    repository: NotRequired[SimpleRepositoryType]
 
 
-__all__ = ("DependabotAlertPackageType",)
+__all__ = ("CodeSecurityConfigurationRepositoriesType",)

@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class UserKeysPostBodyType(TypedDict):
-    """UserKeysPostBody"""
+class UserMembershipsOrgsOrgPatchBodyType(TypedDict):
+    """UserMembershipsOrgsOrgPatchBody"""
 
-    title: NotRequired[str]
-    key: str
+    state: Literal["active"]
 
 
-__all__ = ("UserKeysPostBodyType",)
+__all__ = ("UserMembershipsOrgsOrgPatchBodyType",)

@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
-from .group_0509 import WebhooksIssue2Type
+from .group_0487 import EnterpriseWebhooksType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0688 import WebhookIssuesReopenedPropIssueType
 
 
-class WebhookIssuesPinnedType(TypedDict):
-    """issues pinned event"""
+class WebhookIssuesReopenedType(TypedDict):
+    """issues reopened event"""
 
-    action: Literal["pinned"]
+    action: Literal["reopened"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssue2Type
+    issue: WebhookIssuesReopenedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesPinnedType",)
+__all__ = ("WebhookIssuesReopenedType",)

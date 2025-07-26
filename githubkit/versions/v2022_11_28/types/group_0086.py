@@ -9,24 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningAlertRuleSummaryType(TypedDict):
-    """CodeScanningAlertRuleSummary"""
-
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
-    security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
-    ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+from .group_0085 import TeamSimpleType
 
 
-__all__ = ("CodeScanningAlertRuleSummaryType",)
+class TeamType(TypedDict):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[None, TeamSimpleType]
+
+
+class TeamPropPermissionsType(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+__all__ = (
+    "TeamPropPermissionsType",
+    "TeamType",
+)

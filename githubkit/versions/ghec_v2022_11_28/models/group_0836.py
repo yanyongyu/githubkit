@@ -9,113 +9,104 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0088 import RepositoryRulesetConditions
+from .group_0099 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0100 import RepositoryRuleUpdate
+from .group_0102 import RepositoryRuleRequiredLinearHistory
+from .group_0103 import RepositoryRuleRequiredDeployments
+from .group_0106 import RepositoryRulePullRequest
+from .group_0108 import RepositoryRuleRequiredStatusChecks
+from .group_0110 import RepositoryRuleCommitMessagePattern
+from .group_0112 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0114 import RepositoryRuleCommitterEmailPattern
+from .group_0116 import RepositoryRuleBranchNamePattern
+from .group_0118 import RepositoryRuleTagNamePattern
+from .group_0120 import RepositoryRuleFilePathRestriction
+from .group_0122 import RepositoryRuleMaxFilePathLength
+from .group_0124 import RepositoryRuleFileExtensionRestriction
+from .group_0126 import RepositoryRuleMaxFileSize
+from .group_0129 import RepositoryRuleWorkflows
+from .group_0131 import RepositoryRuleCodeScanning
+from .group_0138 import RepositoryRuleMergeQueue
+from .group_0837 import (
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems,
+)
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems"""
+class WebhookRepositoryRulesetEditedPropChangesPropRules(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
 
-    condition: Missing[RepositoryRulesetConditions] = Field(
-        default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
-    )
-    changes: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges
+    added: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    deleted: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    updated: Missing[
+        list[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems]
     ] = Field(default=UNSET)
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    es
-    """
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropRules)
 
-    condition_type: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType
-    ] = Field(default=UNSET)
-    target: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget
-    ] = Field(default=UNSET)
-    include: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude
-    ] = Field(default=UNSET)
-    exclude: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude
-    ] = Field(default=UNSET)
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropConditionType
-    """
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropTarget
-    """
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropInclude
-    """
-
-    from_: Missing[list[str]] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropExclude
-    """
-
-    from_: Missing[list[str]] = Field(default=UNSET, alias="from")
-
-
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude
-)
-
-__all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget",
-)
+__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRules",)

@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0070 import ActionsHostedRunnerType
+from .group_0063 import MinimalRepositoryType
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
 
     total_count: float
-    runners: list[ActionsHostedRunnerType]
+    repositories: list[MinimalRepositoryType]
 
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type",)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type",)

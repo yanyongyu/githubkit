@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
 
     Examples:
         {'apps': ['my-app']}
@@ -22,4 +22,4 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType(TypedDic
     apps: list[str]
 
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType",)

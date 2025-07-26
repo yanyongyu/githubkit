@@ -9,21 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0031 import SimpleRepositoryType
 
+class ThreadSubscriptionType(TypedDict):
+    """Thread Subscription
 
-class DependabotRepositoryAccessDetailsType(TypedDict):
-    """Dependabot Repository Access Details
-
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Thread Subscription
     """
 
-    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
-    accessible_repositories: NotRequired[list[Union[None, SimpleRepositoryType]]]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[datetime, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
-__all__ = ("DependabotRepositoryAccessDetailsType",)
+__all__ = ("ThreadSubscriptionType",)

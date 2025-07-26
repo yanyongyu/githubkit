@@ -11,33 +11,81 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
+from .group_0032 import SimpleRepositoryType
+from .group_0039 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationWikiCommitType,
+)
+from .group_0040 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestTitleType,
+)
+from .group_0041 import (
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationPullRequestCommentType,
+)
 
 
-class MilestoneType(TypedDict):
-    """Milestone
+class OrganizationSecretScanningAlertType(TypedDict):
+    """OrganizationSecretScanningAlert"""
 
-    A collection of related issues and pull requests.
-    """
+    number: NotRequired[int]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[Union[None, datetime]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    locations_url: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolved_at: NotRequired[Union[datetime, None]]
+    resolved_by: NotRequired[Union[None, SimpleUserType]]
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    secret: NotRequired[str]
+    repository: NotRequired[SimpleRepositoryType]
+    push_protection_bypassed: NotRequired[Union[bool, None]]
+    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypassed_at: NotRequired[Union[datetime, None]]
+    push_protection_bypass_request_reviewer: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    publicly_leaked: NotRequired[Union[bool, None]]
+    multi_repo: NotRequired[Union[bool, None]]
+    is_base64_encoded: NotRequired[Union[bool, None]]
+    first_location_detected: NotRequired[
+        Union[
+            None,
+            SecretScanningLocationCommitType,
+            SecretScanningLocationWikiCommitType,
+            SecretScanningLocationIssueTitleType,
+            SecretScanningLocationIssueBodyType,
+            SecretScanningLocationIssueCommentType,
+            SecretScanningLocationDiscussionTitleType,
+            SecretScanningLocationDiscussionBodyType,
+            SecretScanningLocationDiscussionCommentType,
+            SecretScanningLocationPullRequestTitleType,
+            SecretScanningLocationPullRequestBodyType,
+            SecretScanningLocationPullRequestCommentType,
+            SecretScanningLocationPullRequestReviewType,
+            SecretScanningLocationPullRequestReviewCommentType,
+        ]
+    ]
+    has_more_locations: NotRequired[bool]
 
-    url: str
-    html_url: str
-    labels_url: str
-    id: int
-    node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    open_issues: int
-    closed_issues: int
-    created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
-    due_on: Union[datetime, None]
 
-
-__all__ = ("MilestoneType",)
+__all__ = ("OrganizationSecretScanningAlertType",)

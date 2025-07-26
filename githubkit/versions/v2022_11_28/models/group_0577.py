@@ -16,7 +16,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0571 import (
+from .group_0572 import (
     WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator,
 )
 

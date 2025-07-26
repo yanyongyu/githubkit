@@ -13,11 +13,11 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody"""
+class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody"""
 
     status: Literal["approve", "deny"]
     message: str
 
 
-__all__ = ("ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType",)
+__all__ = ("ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType",)

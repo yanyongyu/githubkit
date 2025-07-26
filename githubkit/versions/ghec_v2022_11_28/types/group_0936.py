@@ -23,8 +23,8 @@ from .group_0053 import AmazonS3OidcConfigType, SplunkConfigType
 from .group_0054 import GoogleCloudConfigType
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
 
     enabled: bool
     stream_type: Literal[
@@ -48,4 +48,4 @@ class EnterprisesEnterpriseAuditLogStreamsPostBodyType(TypedDict):
     ]
 
 
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsPostBodyType",)
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType",)

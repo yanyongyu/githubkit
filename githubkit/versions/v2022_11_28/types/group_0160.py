@@ -12,19 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0161 import RepositoryRuleFilePathRestrictionPropParametersType
+from .group_0161 import RepositoryRuleTagNamePatternPropParametersType
 
 
-class RepositoryRuleFilePathRestrictionType(TypedDict):
-    """file_path_restriction
+class RepositoryRuleTagNamePatternType(TypedDict):
+    """tag_name_pattern
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleFilePathRestrictionType",)
+__all__ = ("RepositoryRuleTagNamePatternType",)

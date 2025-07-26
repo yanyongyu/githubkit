@@ -9,16 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType
+from .group_0487 import EnterpriseWebhooksType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0520 import WebhooksProjectCardType
 
 
-class WebhookPingFormEncodedType(TypedDict):
-    """WebhookPingFormEncoded
+class WebhookProjectCardConvertedType(TypedDict):
+    """project_card converted event"""
 
-    The webhooks ping payload encoded with URL encoding.
-    """
+    action: Literal["converted"]
+    changes: WebhookProjectCardConvertedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_card: WebhooksProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
-    payload: str
+
+class WebhookProjectCardConvertedPropChangesType(TypedDict):
+    """WebhookProjectCardConvertedPropChanges"""
+
+    note: WebhookProjectCardConvertedPropChangesPropNoteType
 
 
-__all__ = ("WebhookPingFormEncodedType",)
+class WebhookProjectCardConvertedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookProjectCardConvertedPropChangesPropNoteType",
+    "WebhookProjectCardConvertedPropChangesType",
+    "WebhookProjectCardConvertedType",
+)

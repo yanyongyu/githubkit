@@ -9,16 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0202 import JobType
+
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+
+    environment_ids: list[int]
+    state: Literal["approved", "rejected"]
+    comment: str
 
 
-class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
-
-    total_count: int
-    jobs: list[JobType]
-
-
-__all__ = ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType",)

@@ -9,43 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0487 import OrganizationSimpleWebhooks
-from .group_0488 import RepositoryWebhooks
-from .group_0741 import WebhookPingPropHook
+from .group_0355 import HookResponse
 
 
-class WebhookPing(GitHubModel):
-    """WebhookPing"""
+class WebhookPingPropHook(GitHubModel):
+    """Webhook
 
-    hook: Missing[WebhookPingPropHook] = Field(
-        default=UNSET, title="Webhook", description="The webhook that is being pinged"
+    The webhook that is being pinged
+    """
+
+    active: bool = Field(
+        description="Determines whether the hook is actually triggered for the events it subscribes to."
     )
-    hook_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the webhook that triggered the ping."
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
+    app_id: Missing[int] = Field(
         default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+        description="Only included for GitHub Apps. When you register a new GitHub App, GitHub sends a ping event to the webhook URL you specified during registration. The GitHub App ID sent in this field is required for authenticating an app.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
+    config: WebhookPingPropHookPropConfig = Field()
+    created_at: datetime = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    events: list[str] = Field(
+        description="Determines what events the hook is triggered for. Default: ['push']."
+    )
+    id: int = Field(description="Unique identifier of the webhook.")
+    last_response: Missing[HookResponse] = Field(default=UNSET, title="Hook Response")
+    name: Literal["web"] = Field(
+        description="The type of webhook. The only valid value is 'web'."
+    )
+    ping_url: Missing[str] = Field(default=UNSET)
+    test_url: Missing[str] = Field(default=UNSET)
+    type: str = Field()
+    updated_at: datetime = Field()
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookPingPropHookPropConfig(GitHubModel):
+    """WebhookPingPropHookPropConfig"""
+
+    content_type: Missing[str] = Field(
         default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
     )
-    zen: Missing[str] = Field(default=UNSET, description="Random string of GitHub zen.")
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
+    )
 
 
-model_rebuild(WebhookPing)
+model_rebuild(WebhookPingPropHook)
+model_rebuild(WebhookPingPropHookPropConfig)
 
-__all__ = ("WebhookPing",)
+__all__ = (
+    "WebhookPingPropHook",
+    "WebhookPingPropHookPropConfig",
+)

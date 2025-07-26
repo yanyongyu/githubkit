@@ -9,30 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsHostedRunnerImage(GitHubModel):
-    """GitHub-hosted runner image details.
+class ActionsHostedRunnerMachineSpec(GitHubModel):
+    """Github-owned VM details.
 
-    Provides details of a hosted runner image
+    Provides details of a particular machine spec.
     """
 
     id: str = Field(
-        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
+        description="The ID used for the `size` parameter when creating a new runner."
     )
-    platform: str = Field(description="The operating system of the image.")
-    size_gb: int = Field(description="Image size in GB.")
-    display_name: str = Field(description="Display name for this image.")
-    source: Literal["github", "partner", "custom"] = Field(
-        description="The image provider."
+    cpu_cores: int = Field(description="The number of cores.")
+    memory_gb: int = Field(description="The available RAM for the machine spec.")
+    storage_gb: int = Field(
+        description="The available SSD storage for the machine spec."
     )
 
 
-model_rebuild(ActionsHostedRunnerImage)
+model_rebuild(ActionsHostedRunnerMachineSpec)
 
-__all__ = ("ActionsHostedRunnerImage",)
+__all__ = ("ActionsHostedRunnerMachineSpec",)

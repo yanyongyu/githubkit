@@ -9,25 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class GetCostCenterType(TypedDict):
-    """GetCostCenter"""
+class GetAllCostCentersType(TypedDict):
+    """GetAllCostCenters"""
+
+    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
+
+
+class GetAllCostCentersPropCostCentersItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
 
     id: str
     name: str
-    resources: list[GetCostCenterPropResourcesItemsType]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
 
 
-class GetCostCenterPropResourcesItemsType(TypedDict):
-    """GetCostCenterPropResourcesItems"""
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
 
     type: str
     name: str
 
 
 __all__ = (
-    "GetCostCenterPropResourcesItemsType",
-    "GetCostCenterType",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
+    "GetAllCostCentersPropCostCentersItemsType",
+    "GetAllCostCentersType",
 )

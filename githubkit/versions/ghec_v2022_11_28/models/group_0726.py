@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0485 import EnterpriseWebhooks
-from .group_0486 import SimpleInstallation
-from .group_0487 import OrganizationSimpleWebhooks
-from .group_0488 import RepositoryWebhooks
-from .group_0516 import WebhooksMembership
+from .group_0487 import EnterpriseWebhooks
+from .group_0488 import SimpleInstallation
+from .group_0489 import OrganizationSimpleWebhooks
+from .group_0490 import RepositoryWebhooks
+from .group_0518 import WebhooksMembership
 
 
-class WebhookOrganizationMemberRemoved(GitHubModel):
-    """organization member_removed event"""
+class WebhookOrganizationRenamed(GitHubModel):
+    """organization renamed event"""
 
-    action: Literal["member_removed"] = Field()
+    action: Literal["renamed"] = Field()
+    changes: Missing[WebhookOrganizationRenamedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +40,8 @@ class WebhookOrganizationMemberRemoved(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    membership: WebhooksMembership = Field(
+    membership: Missing[WebhooksMembership] = Field(
+        default=UNSET,
         title="Membership",
         description="The membership between the user and the organization. Not present when the action is `member_invited`.",
     )
@@ -55,6 +57,26 @@ class WebhookOrganizationMemberRemoved(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookOrganizationMemberRemoved)
+class WebhookOrganizationRenamedPropChanges(GitHubModel):
+    """WebhookOrganizationRenamedPropChanges"""
 
-__all__ = ("WebhookOrganizationMemberRemoved",)
+    login: Missing[WebhookOrganizationRenamedPropChangesPropLogin] = Field(
+        default=UNSET
+    )
+
+
+class WebhookOrganizationRenamedPropChangesPropLogin(GitHubModel):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+model_rebuild(WebhookOrganizationRenamed)
+model_rebuild(WebhookOrganizationRenamedPropChanges)
+model_rebuild(WebhookOrganizationRenamedPropChangesPropLogin)
+
+__all__ = (
+    "WebhookOrganizationRenamed",
+    "WebhookOrganizationRenamedPropChanges",
+    "WebhookOrganizationRenamedPropChangesPropLogin",
+)

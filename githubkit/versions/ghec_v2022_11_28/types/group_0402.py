@@ -11,31 +11,57 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
+from .group_0160 import ReactionRollupType
+from .group_0403 import ReviewCommentPropLinksType
 
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
+class ReviewCommentType(TypedDict):
+    """Legacy Review Comment
 
-    Data related to a release.
+    Legacy Review Comment
     """
 
     url: str
-    browser_download_url: str
+    pull_request_review_id: Union[int, None]
     id: int
     node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
+    diff_hunk: str
+    path: str
+    position: Union[int, None]
+    original_position: int
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: Union[None, SimpleUserType]
+    body: str
     created_at: datetime
     updated_at: datetime
-    uploader: Union[None, SimpleUserType]
+    html_url: str
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    links: ReviewCommentPropLinksType
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    reactions: NotRequired[ReactionRollupType]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
-__all__ = ("ReleaseAssetType",)
+__all__ = ("ReviewCommentType",)

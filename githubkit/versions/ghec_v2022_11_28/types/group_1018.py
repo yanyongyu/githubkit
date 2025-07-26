@@ -13,13 +13,12 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    scope: Literal[
-        "all", "all_without_configurations", "public", "private_or_internal", "selected"
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
     ]
-    selected_repository_ids: NotRequired[list[int]]
 
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",)

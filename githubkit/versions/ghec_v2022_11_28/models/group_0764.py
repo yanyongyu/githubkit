@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,16 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0486 import SimpleInstallation
-from .group_0487 import OrganizationSimpleWebhooks
-from .group_0523 import ProjectsV2Item
+from .group_0488 import SimpleInstallation
+from .group_0489 import OrganizationSimpleWebhooks
+from .group_0525 import ProjectsV2Item
 
 
-class WebhookProjectsV2ItemConverted(GitHubModel):
-    """Projects v2 Item Converted Event"""
+class WebhookProjectsV2ItemCreated(GitHubModel):
+    """Projects v2 Item Created Event"""
 
-    action: Literal["converted"] = Field()
-    changes: WebhookProjectsV2ItemConvertedPropChanges = Field()
+    action: Literal["created"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -43,27 +42,6 @@ class WebhookProjectsV2ItemConverted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectsV2ItemConvertedPropChanges(GitHubModel):
-    """WebhookProjectsV2ItemConvertedPropChanges"""
+model_rebuild(WebhookProjectsV2ItemCreated)
 
-    content_type: Missing[WebhookProjectsV2ItemConvertedPropChangesPropContentType] = (
-        Field(default=UNSET)
-    )
-
-
-class WebhookProjectsV2ItemConvertedPropChangesPropContentType(GitHubModel):
-    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectsV2ItemConverted)
-model_rebuild(WebhookProjectsV2ItemConvertedPropChanges)
-model_rebuild(WebhookProjectsV2ItemConvertedPropChangesPropContentType)
-
-__all__ = (
-    "WebhookProjectsV2ItemConverted",
-    "WebhookProjectsV2ItemConvertedPropChanges",
-    "WebhookProjectsV2ItemConvertedPropChangesPropContentType",
-)
+__all__ = ("WebhookProjectsV2ItemCreated",)

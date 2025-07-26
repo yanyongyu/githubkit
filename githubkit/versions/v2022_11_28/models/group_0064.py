@@ -15,27 +15,41 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0063 import MinimalRepository
 
-class OrganizationSimple(GitHubModel):
-    """Organization Simple
 
-    A GitHub organization.
+class Thread(GitHubModel):
+    """Thread
+
+    Thread
     """
 
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
+    id: str = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    subject: ThreadPropSubject = Field()
+    reason: str = Field()
+    unread: bool = Field()
+    updated_at: str = Field()
+    last_read_at: Union[str, None] = Field()
     url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
+    subscription_url: str = Field()
 
 
-model_rebuild(OrganizationSimple)
+class ThreadPropSubject(GitHubModel):
+    """ThreadPropSubject"""
 
-__all__ = ("OrganizationSimple",)
+    title: str = Field()
+    url: str = Field()
+    latest_comment_url: str = Field()
+    type: str = Field()
+
+
+model_rebuild(Thread)
+model_rebuild(ThreadPropSubject)
+
+__all__ = (
+    "Thread",
+    "ThreadPropSubject",
+)

@@ -17,21 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0118 import RepositoryRuleBranchNamePatternPropParameters
 
+class RepositoryRuleBranchNamePatternPropParameters(GitHubModel):
+    """RepositoryRuleBranchNamePatternPropParameters"""
 
-class RepositoryRuleBranchNamePattern(GitHubModel):
-    """branch_name_pattern
-
-    Parameters to be used for the branch_name_pattern rule
-    """
-
-    type: Literal["branch_name_pattern"] = Field()
-    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
-        default=UNSET
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleBranchNamePattern)
+model_rebuild(RepositoryRuleBranchNamePatternPropParameters)
 
-__all__ = ("RepositoryRuleBranchNamePattern",)
+__all__ = ("RepositoryRuleBranchNamePatternPropParameters",)

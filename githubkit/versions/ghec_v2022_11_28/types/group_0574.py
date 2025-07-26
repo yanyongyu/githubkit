@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0330 import DependabotAlertType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
+from .group_0487 import EnterpriseWebhooksType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
 
 
-class WebhookDependabotAlertAutoReopenedType(TypedDict):
-    """Dependabot alert auto-reopened event"""
+class WebhookDeleteType(TypedDict):
+    """delete event"""
 
-    action: Literal["auto_reopened"]
-    alert: DependabotAlertType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    pusher_type: str
+    ref: str
+    ref_type: Literal["tag", "branch"]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDependabotAlertAutoReopenedType",)
+__all__ = ("WebhookDeleteType",)

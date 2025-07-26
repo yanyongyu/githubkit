@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0485 import EnterpriseWebhooks
-from .group_0486 import SimpleInstallation
-from .group_0487 import OrganizationSimpleWebhooks
-from .group_0488 import RepositoryWebhooks
-from .group_0520 import WebhooksProjectColumn
+from .group_0487 import EnterpriseWebhooks
+from .group_0488 import SimpleInstallation
+from .group_0489 import OrganizationSimpleWebhooks
+from .group_0490 import RepositoryWebhooks
+from .group_0522 import WebhooksProjectColumn
 
 
-class WebhookProjectColumnEdited(GitHubModel):
-    """project_column edited event"""
+class WebhookProjectColumnMoved(GitHubModel):
+    """project_column moved event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookProjectColumnEditedPropChanges = Field()
+    action: Literal["moved"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -51,29 +50,9 @@ class WebhookProjectColumnEdited(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectColumnEditedPropChanges(GitHubModel):
-    """WebhookProjectColumnEditedPropChanges"""
+model_rebuild(WebhookProjectColumnMoved)
 
-    name: Missing[WebhookProjectColumnEditedPropChangesPropName] = Field(default=UNSET)
-
-
-class WebhookProjectColumnEditedPropChangesPropName(GitHubModel):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookProjectColumnEdited)
-model_rebuild(WebhookProjectColumnEditedPropChanges)
-model_rebuild(WebhookProjectColumnEditedPropChangesPropName)
-
-__all__ = (
-    "WebhookProjectColumnEdited",
-    "WebhookProjectColumnEditedPropChanges",
-    "WebhookProjectColumnEditedPropChangesPropName",
-)
+__all__ = ("WebhookProjectColumnMoved",)

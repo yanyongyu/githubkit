@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0485 import EnterpriseWebhooks
-from .group_0486 import SimpleInstallation
-from .group_0487 import OrganizationSimpleWebhooks
-from .group_0488 import RepositoryWebhooks
-from .group_0518 import WebhooksProjectCard
+from .group_0487 import EnterpriseWebhooks
+from .group_0488 import SimpleInstallation
+from .group_0489 import OrganizationSimpleWebhooks
+from .group_0490 import RepositoryWebhooks
+from .group_0520 import WebhooksProjectCard
 
 
-class WebhookProjectCardConverted(GitHubModel):
-    """project_card converted event"""
+class WebhookProjectCardCreated(GitHubModel):
+    """project_card created event"""
 
-    action: Literal["converted"] = Field()
-    changes: WebhookProjectCardConvertedPropChanges = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -54,24 +53,6 @@ class WebhookProjectCardConverted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectCardConvertedPropChanges(GitHubModel):
-    """WebhookProjectCardConvertedPropChanges"""
+model_rebuild(WebhookProjectCardCreated)
 
-    note: WebhookProjectCardConvertedPropChangesPropNote = Field()
-
-
-class WebhookProjectCardConvertedPropChangesPropNote(GitHubModel):
-    """WebhookProjectCardConvertedPropChangesPropNote"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookProjectCardConverted)
-model_rebuild(WebhookProjectCardConvertedPropChanges)
-model_rebuild(WebhookProjectCardConvertedPropChangesPropNote)
-
-__all__ = (
-    "WebhookProjectCardConverted",
-    "WebhookProjectCardConvertedPropChanges",
-    "WebhookProjectCardConvertedPropChangesPropNote",
-)
+__all__ = ("WebhookProjectCardCreated",)

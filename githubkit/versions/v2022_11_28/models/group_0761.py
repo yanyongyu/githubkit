@@ -18,16 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0424 import EnterpriseWebhooks
-from .group_0425 import SimpleInstallation
-from .group_0426 import OrganizationSimpleWebhooks
-from .group_0427 import RepositoryWebhooks
+from .group_0426 import EnterpriseWebhooks
+from .group_0427 import SimpleInstallation
+from .group_0428 import OrganizationSimpleWebhooks
+from .group_0429 import RepositoryWebhooks
 
 
-class WebhookRepositoryPublicized(GitHubModel):
-    """repository publicized event"""
+class WebhookRepositoryRenamed(GitHubModel):
+    """repository renamed event"""
 
-    action: Literal["publicized"] = Field()
+    action: Literal["renamed"] = Field()
+    changes: WebhookRepositoryRenamedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,6 +51,32 @@ class WebhookRepositoryPublicized(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryPublicized)
+class WebhookRepositoryRenamedPropChanges(GitHubModel):
+    """WebhookRepositoryRenamedPropChanges"""
 
-__all__ = ("WebhookRepositoryPublicized",)
+    repository: WebhookRepositoryRenamedPropChangesPropRepository = Field()
+
+
+class WebhookRepositoryRenamedPropChangesPropRepository(GitHubModel):
+    """WebhookRepositoryRenamedPropChangesPropRepository"""
+
+    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropName = Field()
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryPropName(GitHubModel):
+    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookRepositoryRenamed)
+model_rebuild(WebhookRepositoryRenamedPropChanges)
+model_rebuild(WebhookRepositoryRenamedPropChangesPropRepository)
+model_rebuild(WebhookRepositoryRenamedPropChangesPropRepositoryPropName)
+
+__all__ = (
+    "WebhookRepositoryRenamed",
+    "WebhookRepositoryRenamedPropChanges",
+    "WebhookRepositoryRenamedPropChangesPropRepository",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryPropName",
+)

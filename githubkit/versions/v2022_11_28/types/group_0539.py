@@ -9,28 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0424 import EnterpriseWebhooksType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0427 import RepositoryWebhooksType
-from .group_0540 import WebhookForkPropForkeeType
+from .group_0426 import EnterpriseWebhooksType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0429 import RepositoryWebhooksType
+from .group_0439 import DiscussionType
 
 
-class WebhookForkType(TypedDict):
-    """fork event
+class WebhookDiscussionUnlockedType(TypedDict):
+    """discussion unlocked event"""
 
-    A user forks a repository.
-    """
-
+    action: Literal["unlocked"]
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    forkee: WebhookForkPropForkeeType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookForkType",)
+__all__ = ("WebhookDiscussionUnlockedType",)

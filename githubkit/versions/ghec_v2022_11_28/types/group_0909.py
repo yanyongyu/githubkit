@@ -9,33 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0032 import ActionsHostedRunnerImageType
 
 
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
+class EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
-    name: str
-    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType
-    size: str
-    runner_group_id: int
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-
-
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
-
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
-    """
-
-    id: NotRequired[str]
-    source: NotRequired[Literal["github", "partner", "custom"]]
+    total_count: int
+    images: list[ActionsHostedRunnerImageType]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType",
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyType",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
 )

@@ -9,27 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
-from .group_0520 import WebhooksProjectColumnType
+from .group_0487 import EnterpriseWebhooksType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0522 import WebhooksProjectColumnType
 
 
-class WebhookProjectColumnDeletedType(TypedDict):
-    """project_column deleted event"""
+class WebhookProjectColumnEditedType(TypedDict):
+    """project_column edited event"""
 
-    action: Literal["deleted"]
+    action: Literal["edited"]
+    changes: WebhookProjectColumnEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     project_column: WebhooksProjectColumnType
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    repository: NotRequired[RepositoryWebhooksType]
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookProjectColumnDeletedType",)
+class WebhookProjectColumnEditedPropChangesType(TypedDict):
+    """WebhookProjectColumnEditedPropChanges"""
+
+    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
+
+
+class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
+    """WebhookProjectColumnEditedPropChangesPropName"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookProjectColumnEditedPropChangesPropNameType",
+    "WebhookProjectColumnEditedPropChangesType",
+    "WebhookProjectColumnEditedType",
+)

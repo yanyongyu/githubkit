@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,16 +19,17 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0018 import Installation
-from .group_0485 import EnterpriseWebhooks
-from .group_0487 import OrganizationSimpleWebhooks
-from .group_0488 import RepositoryWebhooks
-from .group_0503 import WebhooksRepositoriesItems
+from .group_0487 import EnterpriseWebhooks
+from .group_0489 import OrganizationSimpleWebhooks
+from .group_0490 import RepositoryWebhooks
+from .group_0500 import WebhooksUser
+from .group_0505 import WebhooksRepositoriesItems
 
 
-class WebhookInstallationNewPermissionsAccepted(GitHubModel):
-    """installation new_permissions_accepted event"""
+class WebhookInstallationCreated(GitHubModel):
+    """installation created event"""
 
-    action: Literal["new_permissions_accepted"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,10 +50,10 @@ class WebhookInstallationNewPermissionsAccepted(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    requester: Missing[None] = Field(default=UNSET)
+    requester: Missing[Union[WebhooksUser, None]] = Field(default=UNSET, title="User")
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookInstallationNewPermissionsAccepted)
+model_rebuild(WebhookInstallationCreated)
 
-__all__ = ("WebhookInstallationNewPermissionsAccepted",)
+__all__ = ("WebhookInstallationCreated",)

@@ -13,16 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
-from .group_0514 import MergeGroupType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0516 import MergeGroupType
 
 
-class WebhookMergeGroupChecksRequestedType(TypedDict):
-    """WebhookMergeGroupChecksRequested"""
+class WebhookMergeGroupDestroyedType(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["checks_requested"]
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
     installation: NotRequired[SimpleInstallationType]
     merge_group: MergeGroupType
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -30,4 +31,4 @@ class WebhookMergeGroupChecksRequestedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookMergeGroupChecksRequestedType",)
+__all__ = ("WebhookMergeGroupDestroyedType",)

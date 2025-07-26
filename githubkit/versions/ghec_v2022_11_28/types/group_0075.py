@@ -9,81 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0001 import CvssSeveritiesType
-from .group_0002 import SecurityAdvisoryEpssType
-from .group_0074 import DependabotAlertSecurityVulnerabilityType
+from .group_0074 import DependabotAlertPackageType
 
 
-class DependabotAlertSecurityAdvisoryType(TypedDict):
-    """DependabotAlertSecurityAdvisory
+class DependabotAlertSecurityVulnerabilityType(TypedDict):
+    """DependabotAlertSecurityVulnerability
 
-    Details for the GitHub Security Advisory.
+    Details pertaining to one vulnerable version range for the advisory.
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
-    summary: str
-    description: str
-    vulnerabilities: list[DependabotAlertSecurityVulnerabilityType]
+    package: DependabotAlertPackageType
     severity: Literal["low", "medium", "high", "critical"]
-    cvss: DependabotAlertSecurityAdvisoryPropCvssType
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    epss: NotRequired[Union[SecurityAdvisoryEpssType, None]]
-    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItemsType]
-    identifiers: list[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
-    references: list[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
-    published_at: datetime
-    updated_at: datetime
-    withdrawn_at: Union[datetime, None]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
+    ]
 
 
-class DependabotAlertSecurityAdvisoryPropCvssType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCvss
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
 
-    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    Details pertaining to the package version that patches this vulnerability.
     """
 
-    score: float
-    vector_string: Union[str, None]
-
-
-class DependabotAlertSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCwesItems
-
-    A CWE weakness assigned to the advisory.
-    """
-
-    cwe_id: str
-    name: str
-
-
-class DependabotAlertSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
-
-    An advisory identifier.
-    """
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropReferencesItems
-
-    A link to additional advisory information.
-    """
-
-    url: str
+    identifier: str
 
 
 __all__ = (
-    "DependabotAlertSecurityAdvisoryPropCvssType",
-    "DependabotAlertSecurityAdvisoryPropCwesItemsType",
-    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
-    "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
-    "DependabotAlertSecurityAdvisoryType",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
+    "DependabotAlertSecurityVulnerabilityType",
 )

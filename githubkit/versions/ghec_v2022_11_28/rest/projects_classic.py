@@ -59,7 +59,7 @@ if TYPE_CHECKING:
     )
 
 
-class ProjectsClient:
+class ProjectsClassicClient:
     _REST_API_VERSION = "2022-11-28"
 
     def __init__(self, github: GitHubCore):
@@ -84,7 +84,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[Project], list[ProjectType]]:
-        """DEPRECATED projects/list-for-org
+        """DEPRECATED projects-classic/list-for-org
 
         GET /orgs/{org}/projects
 
@@ -92,7 +92,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-organization-projects
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#list-organization-projects
         """
 
         from ..models import Project, ValidationErrorSimple
@@ -129,7 +129,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[Project], list[ProjectType]]:
-        """DEPRECATED projects/list-for-org
+        """DEPRECATED projects-classic/list-for-org
 
         GET /orgs/{org}/projects
 
@@ -137,7 +137,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-organization-projects
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#list-organization-projects
         """
 
         from ..models import Project, ValidationErrorSimple
@@ -195,7 +195,7 @@ class ProjectsClient:
         data: Missing[OrgsOrgProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
-        """DEPRECATED projects/create-for-org
+        """DEPRECATED projects-classic/create-for-org
 
         POST /orgs/{org}/projects
 
@@ -203,7 +203,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#create-an-organization-project
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#create-an-organization-project
         """
 
         from ..models import (
@@ -273,7 +273,7 @@ class ProjectsClient:
         data: Missing[OrgsOrgProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
-        """DEPRECATED projects/create-for-org
+        """DEPRECATED projects-classic/create-for-org
 
         POST /orgs/{org}/projects
 
@@ -281,7 +281,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#create-an-organization-project
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#create-an-organization-project
         """
 
         from ..models import (
@@ -327,7 +327,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[ProjectCard, ProjectCardType]:
-        """DEPRECATED projects/get-card
+        """DEPRECATED projects-classic/get-card
 
         GET /projects/columns/cards/{card_id}
 
@@ -335,7 +335,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#get-a-project-card
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/cards#get-a-project-card
         """
 
         from ..models import BasicError, ProjectCard
@@ -364,7 +364,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[ProjectCard, ProjectCardType]:
-        """DEPRECATED projects/get-card
+        """DEPRECATED projects-classic/get-card
 
         GET /projects/columns/cards/{card_id}
 
@@ -372,7 +372,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#get-a-project-card
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/cards#get-a-project-card
         """
 
         from ..models import BasicError, ProjectCard
@@ -401,7 +401,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """DEPRECATED projects/delete-card
+        """DEPRECATED projects-classic/delete-card
 
         DELETE /projects/columns/cards/{card_id}
 
@@ -409,7 +409,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#delete-a-project-card
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/cards#delete-a-project-card
         """
 
         from ..models import BasicError, ProjectsColumnsCardsCardIdDeleteResponse403
@@ -437,7 +437,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """DEPRECATED projects/delete-card
+        """DEPRECATED projects-classic/delete-card
 
         DELETE /projects/columns/cards/{card_id}
 
@@ -445,7 +445,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#delete-a-project-card
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/cards#delete-a-project-card
         """
 
         from ..models import BasicError, ProjectsColumnsCardsCardIdDeleteResponse403
@@ -497,7 +497,7 @@ class ProjectsClient:
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectCard, ProjectCardType]:
-        """DEPRECATED projects/update-card
+        """DEPRECATED projects-classic/update-card
 
         PATCH /projects/columns/cards/{card_id}
 
@@ -505,7 +505,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#update-an-existing-project-card
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/cards#update-an-existing-project-card
         """
 
         from ..models import (
@@ -574,7 +574,7 @@ class ProjectsClient:
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectCard, ProjectCardType]:
-        """DEPRECATED projects/update-card
+        """DEPRECATED projects-classic/update-card
 
         PATCH /projects/columns/cards/{card_id}
 
@@ -582,7 +582,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#update-an-existing-project-card
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/cards#update-an-existing-project-card
         """
 
         from ..models import (
@@ -660,7 +660,7 @@ class ProjectsClient:
         ProjectsColumnsCardsCardIdMovesPostResponse201,
         ProjectsColumnsCardsCardIdMovesPostResponse201Type,
     ]:
-        """DEPRECATED projects/move-card
+        """DEPRECATED projects-classic/move-card
 
         POST /projects/columns/cards/{card_id}/moves
 
@@ -668,7 +668,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#move-a-project-card
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/cards#move-a-project-card
         """
 
         from ..models import (
@@ -748,7 +748,7 @@ class ProjectsClient:
         ProjectsColumnsCardsCardIdMovesPostResponse201,
         ProjectsColumnsCardsCardIdMovesPostResponse201Type,
     ]:
-        """DEPRECATED projects/move-card
+        """DEPRECATED projects-classic/move-card
 
         POST /projects/columns/cards/{card_id}/moves
 
@@ -756,7 +756,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#move-a-project-card
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/cards#move-a-project-card
         """
 
         from ..models import (
@@ -803,7 +803,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[ProjectColumn, ProjectColumnType]:
-        """DEPRECATED projects/get-column
+        """DEPRECATED projects-classic/get-column
 
         GET /projects/columns/{column_id}
 
@@ -811,7 +811,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#get-a-project-column
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/columns#get-a-project-column
         """
 
         from ..models import BasicError, ProjectColumn
@@ -840,7 +840,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[ProjectColumn, ProjectColumnType]:
-        """DEPRECATED projects/get-column
+        """DEPRECATED projects-classic/get-column
 
         GET /projects/columns/{column_id}
 
@@ -848,7 +848,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#get-a-project-column
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/columns#get-a-project-column
         """
 
         from ..models import BasicError, ProjectColumn
@@ -877,7 +877,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """DEPRECATED projects/delete-column
+        """DEPRECATED projects-classic/delete-column
 
         DELETE /projects/columns/{column_id}
 
@@ -885,7 +885,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#delete-a-project-column
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/columns#delete-a-project-column
         """
 
         from ..models import BasicError
@@ -912,7 +912,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """DEPRECATED projects/delete-column
+        """DEPRECATED projects-classic/delete-column
 
         DELETE /projects/columns/{column_id}
 
@@ -920,7 +920,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#delete-a-project-column
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/columns#delete-a-project-column
         """
 
         from ..models import BasicError
@@ -970,7 +970,7 @@ class ProjectsClient:
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn, ProjectColumnType]:
-        """DEPRECATED projects/update-column
+        """DEPRECATED projects-classic/update-column
 
         PATCH /projects/columns/{column_id}
 
@@ -978,7 +978,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#update-an-existing-project-column
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/columns#update-an-existing-project-column
         """
 
         from ..models import BasicError, ProjectColumn, ProjectsColumnsColumnIdPatchBody
@@ -1039,7 +1039,7 @@ class ProjectsClient:
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn, ProjectColumnType]:
-        """DEPRECATED projects/update-column
+        """DEPRECATED projects-classic/update-column
 
         PATCH /projects/columns/{column_id}
 
@@ -1047,7 +1047,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#update-an-existing-project-column
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/columns#update-an-existing-project-column
         """
 
         from ..models import BasicError, ProjectColumn, ProjectsColumnsColumnIdPatchBody
@@ -1088,7 +1088,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[ProjectCard], list[ProjectCardType]]:
-        """DEPRECATED projects/list-cards
+        """DEPRECATED projects-classic/list-cards
 
         GET /projects/columns/{column_id}/cards
 
@@ -1096,7 +1096,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#list-project-cards
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/cards#list-project-cards
         """
 
         from ..models import BasicError, ProjectCard
@@ -1134,7 +1134,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[ProjectCard], list[ProjectCardType]]:
-        """DEPRECATED projects/list-cards
+        """DEPRECATED projects-classic/list-cards
 
         GET /projects/columns/{column_id}/cards
 
@@ -1142,7 +1142,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#list-project-cards
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/cards#list-project-cards
         """
 
         from ..models import BasicError, ProjectCard
@@ -1220,7 +1220,7 @@ class ProjectsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[ProjectCard, ProjectCardType]:
-        """DEPRECATED projects/create-card
+        """DEPRECATED projects-classic/create-card
 
         POST /projects/columns/{column_id}/cards
 
@@ -1228,7 +1228,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#create-a-project-card
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/cards#create-a-project-card
         """
 
         from typing import Union
@@ -1327,7 +1327,7 @@ class ProjectsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[ProjectCard, ProjectCardType]:
-        """DEPRECATED projects/create-card
+        """DEPRECATED projects-classic/create-card
 
         POST /projects/columns/{column_id}/cards
 
@@ -1335,7 +1335,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#create-a-project-card
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/cards#create-a-project-card
         """
 
         from typing import Union
@@ -1423,7 +1423,7 @@ class ProjectsClient:
         ProjectsColumnsColumnIdMovesPostResponse201,
         ProjectsColumnsColumnIdMovesPostResponse201Type,
     ]:
-        """DEPRECATED projects/move-column
+        """DEPRECATED projects-classic/move-column
 
         POST /projects/columns/{column_id}/moves
 
@@ -1431,7 +1431,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#move-a-project-column
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/columns#move-a-project-column
         """
 
         from ..models import (
@@ -1507,7 +1507,7 @@ class ProjectsClient:
         ProjectsColumnsColumnIdMovesPostResponse201,
         ProjectsColumnsColumnIdMovesPostResponse201Type,
     ]:
-        """DEPRECATED projects/move-column
+        """DEPRECATED projects-classic/move-column
 
         POST /projects/columns/{column_id}/moves
 
@@ -1515,7 +1515,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#move-a-project-column
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/columns#move-a-project-column
         """
 
         from ..models import (
@@ -1559,7 +1559,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[Project, ProjectType]:
-        """DEPRECATED projects/get
+        """DEPRECATED projects-classic/get
 
         GET /projects/{project_id}
 
@@ -1567,7 +1567,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#get-a-project
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#get-a-project
         """
 
         from ..models import BasicError, Project
@@ -1595,7 +1595,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[Project, ProjectType]:
-        """DEPRECATED projects/get
+        """DEPRECATED projects-classic/get
 
         GET /projects/{project_id}
 
@@ -1603,7 +1603,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#get-a-project
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#get-a-project
         """
 
         from ..models import BasicError, Project
@@ -1631,7 +1631,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """DEPRECATED projects/delete
+        """DEPRECATED projects-classic/delete
 
         DELETE /projects/{project_id}
 
@@ -1639,7 +1639,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#delete-a-project
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#delete-a-project
         """
 
         from ..models import BasicError, ProjectsProjectIdDeleteResponse403
@@ -1668,7 +1668,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """DEPRECATED projects/delete
+        """DEPRECATED projects-classic/delete
 
         DELETE /projects/{project_id}
 
@@ -1676,7 +1676,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#delete-a-project
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#delete-a-project
         """
 
         from ..models import BasicError, ProjectsProjectIdDeleteResponse403
@@ -1734,7 +1734,7 @@ class ProjectsClient:
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
-        """DEPRECATED projects/update
+        """DEPRECATED projects-classic/update
 
         PATCH /projects/{project_id}
 
@@ -1742,7 +1742,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#update-a-project
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#update-a-project
         """
 
         from ..models import (
@@ -1817,7 +1817,7 @@ class ProjectsClient:
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
-        """DEPRECATED projects/update
+        """DEPRECATED projects-classic/update
 
         PATCH /projects/{project_id}
 
@@ -1825,7 +1825,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#update-a-project
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#update-a-project
         """
 
         from ..models import (
@@ -1874,7 +1874,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
-        """DEPRECATED projects/list-collaborators
+        """DEPRECATED projects-classic/list-collaborators
 
         GET /projects/{project_id}/collaborators
 
@@ -1882,7 +1882,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#list-project-collaborators
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/collaborators#list-project-collaborators
         """
 
         from ..models import BasicError, SimpleUser, ValidationError
@@ -1922,7 +1922,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[SimpleUser], list[SimpleUserType]]:
-        """DEPRECATED projects/list-collaborators
+        """DEPRECATED projects-classic/list-collaborators
 
         GET /projects/{project_id}/collaborators
 
@@ -1930,7 +1930,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#list-project-collaborators
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/collaborators#list-project-collaborators
         """
 
         from ..models import BasicError, SimpleUser, ValidationError
@@ -1997,7 +1997,7 @@ class ProjectsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """DEPRECATED projects/add-collaborator
+        """DEPRECATED projects-classic/add-collaborator
 
         PUT /projects/{project_id}/collaborators/{username}
 
@@ -2005,7 +2005,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#add-project-collaborator
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/collaborators#add-project-collaborator
         """
 
         from typing import Union
@@ -2082,7 +2082,7 @@ class ProjectsClient:
         ] = UNSET,
         **kwargs,
     ) -> Response:
-        """DEPRECATED projects/add-collaborator
+        """DEPRECATED projects-classic/add-collaborator
 
         PUT /projects/{project_id}/collaborators/{username}
 
@@ -2090,7 +2090,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#add-project-collaborator
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/collaborators#add-project-collaborator
         """
 
         from typing import Union
@@ -2138,7 +2138,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """DEPRECATED projects/remove-collaborator
+        """DEPRECATED projects-classic/remove-collaborator
 
         DELETE /projects/{project_id}/collaborators/{username}
 
@@ -2146,7 +2146,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#remove-user-as-a-collaborator
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/collaborators#remove-user-as-a-collaborator
         """
 
         from ..models import BasicError, ValidationError
@@ -2176,7 +2176,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """DEPRECATED projects/remove-collaborator
+        """DEPRECATED projects-classic/remove-collaborator
 
         DELETE /projects/{project_id}/collaborators/{username}
 
@@ -2184,7 +2184,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#remove-user-as-a-collaborator
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/collaborators#remove-user-as-a-collaborator
         """
 
         from ..models import BasicError, ValidationError
@@ -2214,7 +2214,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[ProjectCollaboratorPermission, ProjectCollaboratorPermissionType]:
-        """DEPRECATED projects/get-permission-for-user
+        """DEPRECATED projects-classic/get-permission-for-user
 
         GET /projects/{project_id}/collaborators/{username}/permission
 
@@ -2222,7 +2222,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#get-project-permission-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/collaborators#get-project-permission-for-a-user
         """
 
         from ..models import BasicError, ProjectCollaboratorPermission, ValidationError
@@ -2253,7 +2253,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[ProjectCollaboratorPermission, ProjectCollaboratorPermissionType]:
-        """DEPRECATED projects/get-permission-for-user
+        """DEPRECATED projects-classic/get-permission-for-user
 
         GET /projects/{project_id}/collaborators/{username}/permission
 
@@ -2261,7 +2261,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#get-project-permission-for-a-user
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/collaborators#get-project-permission-for-a-user
         """
 
         from ..models import BasicError, ProjectCollaboratorPermission, ValidationError
@@ -2293,7 +2293,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[ProjectColumn], list[ProjectColumnType]]:
-        """DEPRECATED projects/list-columns
+        """DEPRECATED projects-classic/list-columns
 
         GET /projects/{project_id}/columns
 
@@ -2301,7 +2301,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#list-project-columns
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/columns#list-project-columns
         """
 
         from ..models import BasicError, ProjectColumn
@@ -2337,7 +2337,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[ProjectColumn], list[ProjectColumnType]]:
-        """DEPRECATED projects/list-columns
+        """DEPRECATED projects-classic/list-columns
 
         GET /projects/{project_id}/columns
 
@@ -2345,7 +2345,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#list-project-columns
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/columns#list-project-columns
         """
 
         from ..models import BasicError, ProjectColumn
@@ -2402,7 +2402,7 @@ class ProjectsClient:
         data: Missing[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn, ProjectColumnType]:
-        """DEPRECATED projects/create-column
+        """DEPRECATED projects-classic/create-column
 
         POST /projects/{project_id}/columns
 
@@ -2410,7 +2410,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#create-a-project-column
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/columns#create-a-project-column
         """
 
         from ..models import (
@@ -2477,7 +2477,7 @@ class ProjectsClient:
         data: Missing[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn, ProjectColumnType]:
-        """DEPRECATED projects/create-column
+        """DEPRECATED projects-classic/create-column
 
         POST /projects/{project_id}/columns
 
@@ -2485,7 +2485,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#create-a-project-column
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/columns#create-a-project-column
         """
 
         from ..models import (
@@ -2533,7 +2533,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[Project], list[ProjectType]]:
-        """DEPRECATED projects/list-for-repo
+        """DEPRECATED projects-classic/list-for-repo
 
         GET /repos/{owner}/{repo}/projects
 
@@ -2541,7 +2541,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-repository-projects
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#list-repository-projects
         """
 
         from ..models import BasicError, Project, ValidationErrorSimple
@@ -2583,7 +2583,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[Project], list[ProjectType]]:
-        """DEPRECATED projects/list-for-repo
+        """DEPRECATED projects-classic/list-for-repo
 
         GET /repos/{owner}/{repo}/projects
 
@@ -2591,7 +2591,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-repository-projects
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#list-repository-projects
         """
 
         from ..models import BasicError, Project, ValidationErrorSimple
@@ -2656,7 +2656,7 @@ class ProjectsClient:
         data: Missing[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
-        """DEPRECATED projects/create-for-repo
+        """DEPRECATED projects-classic/create-for-repo
 
         POST /repos/{owner}/{repo}/projects
 
@@ -2664,7 +2664,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#create-a-repository-project
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#create-a-repository-project
         """
 
         from ..models import (
@@ -2737,7 +2737,7 @@ class ProjectsClient:
         data: Missing[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
-        """DEPRECATED projects/create-for-repo
+        """DEPRECATED projects-classic/create-for-repo
 
         POST /repos/{owner}/{repo}/projects
 
@@ -2745,7 +2745,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#create-a-repository-project
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#create-a-repository-project
         """
 
         from ..models import (
@@ -2812,7 +2812,7 @@ class ProjectsClient:
         data: Missing[UserProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
-        """DEPRECATED projects/create-for-authenticated-user
+        """DEPRECATED projects-classic/create-for-authenticated-user
 
         POST /user/projects
 
@@ -2820,7 +2820,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#create-a-user-project
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#create-a-user-project
         """
 
         from ..models import (
@@ -2885,7 +2885,7 @@ class ProjectsClient:
         data: Missing[UserProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project, ProjectType]:
-        """DEPRECATED projects/create-for-authenticated-user
+        """DEPRECATED projects-classic/create-for-authenticated-user
 
         POST /user/projects
 
@@ -2893,7 +2893,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#create-a-user-project
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#create-a-user-project
         """
 
         from ..models import (
@@ -2940,7 +2940,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[Project], list[ProjectType]]:
-        """DEPRECATED projects/list-for-user
+        """DEPRECATED projects-classic/list-for-user
 
         GET /users/{username}/projects
 
@@ -2948,7 +2948,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-user-projects
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#list-user-projects
         """
 
         from ..models import Project, ValidationError
@@ -2985,7 +2985,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[Project], list[ProjectType]]:
-        """DEPRECATED projects/list-for-user
+        """DEPRECATED projects-classic/list-for-user
 
         GET /users/{username}/projects
 
@@ -2993,7 +2993,7 @@ class ProjectsClient:
         > **Closing down notice:** Projects (classic) is being deprecated in favor of the new Projects experience.
         > See the [changelog](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/) for more information.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-user-projects
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects-classic/projects#list-user-projects
         """
 
         from ..models import Project, ValidationError

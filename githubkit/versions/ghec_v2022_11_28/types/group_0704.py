@@ -13,47 +13,49 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
-from .group_0511 import WebhooksMarketplacePurchaseType
+from .group_0487 import EnterpriseWebhooksType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
+from .group_0513 import WebhooksMarketplacePurchaseType
 
 
-class WebhookMarketplacePurchaseChangedType(TypedDict):
-    """marketplace_purchase changed event"""
+class WebhookMarketplacePurchasePendingChangeType(TypedDict):
+    """marketplace_purchase pending_change event"""
 
-    action: Literal["changed"]
+    action: Literal["pending_change"]
     effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     marketplace_purchase: WebhooksMarketplacePurchaseType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     previous_marketplace_purchase: NotRequired[
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType
+        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType
     ]
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType(TypedDict):
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType(
+    TypedDict
+):
     """Marketplace Purchase"""
 
-    account: (
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType
-    )
+    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType
     billing_cycle: str
     free_trial_ends_on: Union[str, None]
     next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: Union[bool, None]
-    plan: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType
     unit_count: int
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType(
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType(
     TypedDict
 ):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount"""
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccoun
+    t
+    """
 
     id: int
     login: str
@@ -62,10 +64,10 @@ class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccoun
     type: str
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType(
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType(
     TypedDict
 ):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan"""
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan"""
 
     bullets: list[str]
     description: str
@@ -79,8 +81,8 @@ class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanTy
 
 
 __all__ = (
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType",
-    "WebhookMarketplacePurchaseChangedType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType",
+    "WebhookMarketplacePurchasePendingChangeType",
 )

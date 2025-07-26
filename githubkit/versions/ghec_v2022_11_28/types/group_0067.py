@@ -9,23 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0061 import SimpleRepositoryType
 
-class EnterpriseSecurityAnalysisSettingsType(TypedDict):
-    """Enterprise Security Analysis Settings"""
 
-    advanced_security_enabled_for_new_repositories: bool
-    advanced_security_enabled_for_new_user_namespace_repositories: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: bool
-    secret_scanning_enabled_for_new_repositories: bool
-    secret_scanning_push_protection_enabled_for_new_repositories: bool
-    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
-    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
-        bool
+class CodeSecurityConfigurationRepositoriesType(TypedDict):
+    """CodeSecurityConfigurationRepositories
+
+    Repositories associated with a code security configuration and attachment status
+    """
+
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
     ]
-    secret_scanning_validity_checks_enabled: NotRequired[bool]
+    repository: NotRequired[SimpleRepositoryType]
 
 
-__all__ = ("EnterpriseSecurityAnalysisSettingsType",)
+__all__ = ("CodeSecurityConfigurationRepositoriesType",)

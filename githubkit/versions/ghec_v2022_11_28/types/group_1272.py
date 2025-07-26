@@ -13,11 +13,11 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    message: str
-    event: NotRequired[Literal["DISMISS"]]
+    body: NotRequired[str]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType",)

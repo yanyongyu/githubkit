@@ -12,29 +12,29 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0424 import EnterpriseWebhooksType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0427 import RepositoryWebhooksType
-from .group_0435 import WebhooksUserType
-from .group_0450 import WebhooksTeamType
+from .group_0426 import EnterpriseWebhooksType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0429 import RepositoryWebhooksType
+from .group_0437 import WebhooksUserType
+from .group_0452 import WebhooksTeamType
 
 
-class WebhookMembershipAddedType(TypedDict):
-    """membership added event"""
+class WebhookMembershipRemovedType(TypedDict):
+    """membership removed event"""
 
-    action: Literal["added"]
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     member: Union[WebhooksUserType, None]
     organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
-    scope: Literal["team"]
-    sender: Union[WebhookMembershipAddedPropSenderType, None]
+    scope: Literal["team", "organization"]
+    sender: Union[WebhookMembershipRemovedPropSenderType, None]
     team: WebhooksTeamType
 
 
-class WebhookMembershipAddedPropSenderType(TypedDict):
+class WebhookMembershipRemovedPropSenderType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -62,6 +62,6 @@ class WebhookMembershipAddedPropSenderType(TypedDict):
 
 
 __all__ = (
-    "WebhookMembershipAddedPropSenderType",
-    "WebhookMembershipAddedType",
+    "WebhookMembershipRemovedPropSenderType",
+    "WebhookMembershipRemovedType",
 )

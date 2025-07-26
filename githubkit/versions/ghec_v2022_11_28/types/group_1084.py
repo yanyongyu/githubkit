@@ -12,10 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
 
-    permission: NotRequired[str]
+    groups: NotRequired[
+        list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
+    ]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",)
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
+)

@@ -13,24 +13,24 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0042 import MilestoneType
-from .group_0424 import EnterpriseWebhooksType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0427 import RepositoryWebhooksType
-from .group_0464 import WebhooksPullRequest5Type
+from .group_0426 import EnterpriseWebhooksType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0429 import RepositoryWebhooksType
+from .group_0464 import PullRequestWebhookType
 
 
-class WebhookPullRequestMilestonedType(TypedDict):
-    """pull_request milestoned event"""
+class WebhookPullRequestOpenedType(TypedDict):
+    """pull_request opened event"""
 
-    action: Literal["milestoned"]
+    action: Literal["opened"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    milestone: NotRequired[MilestoneType]
+    installation: NotRequired[SimpleInstallationType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhooksPullRequest5Type
+    pull_request: PullRequestWebhookType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookPullRequestMilestonedType",)
+__all__ = ("WebhookPullRequestOpenedType",)

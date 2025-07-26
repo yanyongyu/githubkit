@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0424 import EnterpriseWebhooksType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0427 import RepositoryWebhooksType
-from .group_0462 import PullRequestWebhookType
+from .group_0426 import EnterpriseWebhooksType
+from .group_0427 import SimpleInstallationType
+from .group_0428 import OrganizationSimpleWebhooksType
+from .group_0429 import RepositoryWebhooksType
+from .group_0464 import PullRequestWebhookType
 
 
-class WebhookPullRequestClosedType(TypedDict):
-    """pull_request closed event"""
+class WebhookPullRequestConvertedToDraftType(TypedDict):
+    """pull_request converted_to_draft event"""
 
-    action: Literal["closed"]
+    action: Literal["converted_to_draft"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
@@ -33,4 +33,4 @@ class WebhookPullRequestClosedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookPullRequestClosedType",)
+__all__ = ("WebhookPullRequestConvertedToDraftType",)

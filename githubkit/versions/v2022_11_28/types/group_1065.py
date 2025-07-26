@@ -9,16 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type(TypedDict):
-    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
+class ReposOwnerRepoDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoDeploymentsPostBody"""
 
-    id: int
-    created_at: str
-    result: str
-    message: str
+    ref: str
+    task: NotRequired[str]
+    auto_merge: NotRequired[bool]
+    required_contexts: NotRequired[list[str]]
+    payload: NotRequired[
+        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
+    ]
+    environment: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type",)
+ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type: TypeAlias = dict[str, Any]
+"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
+"""
+
+
+__all__ = (
+    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type",
+    "ReposOwnerRepoDeploymentsPostBodyType",
+)

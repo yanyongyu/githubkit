@@ -9,16 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0236 import CheckRunType
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+class ReposOwnerRepoContentsPathPutBodyType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBody"""
 
-    total_count: int
-    check_runs: list[CheckRunType]
+    message: str
+    content: str
+    sha: NotRequired[str]
+    branch: NotRequired[str]
+    committer: NotRequired[ReposOwnerRepoContentsPathPutBodyPropCommitterType]
+    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorType]
 
 
-__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",)
+class ReposOwnerRepoContentsPathPutBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+
+    The person that committed the file. Default: the authenticated user.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathPutBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+
+    The author of the file. Default: The `committer` or the authenticated user if
+    you omit `committer`.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoContentsPathPutBodyPropAuthorType",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitterType",
+    "ReposOwnerRepoContentsPathPutBodyType",
+)

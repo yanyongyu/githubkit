@@ -12,17 +12,14 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0142 import RepositoryRuleMergeQueuePropParametersType
 
+class RepositoryRuleDetailedOneof2Type(TypedDict):
+    """RepositoryRuleDetailedOneof2"""
 
-class RepositoryRuleDetailedOneof4Type(TypedDict):
-    """RepositoryRuleDetailedOneof4"""
-
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+    type: Literal["deletion"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleDetailedOneof4Type",)
+__all__ = ("RepositoryRuleDetailedOneof2Type",)

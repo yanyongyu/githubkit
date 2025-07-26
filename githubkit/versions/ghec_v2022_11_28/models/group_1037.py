@@ -12,17 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0181 import OrganizationCustomRepositoryRole
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+class OrgsOrgCustomRepositoryRolesGetResponse200(GitHubModel):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
 
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of custom roles in this organization"
+    )
+    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
 
-    seats_cancelled: int = Field()
 
+model_rebuild(OrgsOrgCustomRepositoryRolesGetResponse200)
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteResponse200)
-
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",)
+__all__ = ("OrgsOrgCustomRepositoryRolesGetResponse200",)

@@ -18,15 +18,15 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0043 import IssueType
+from .group_0044 import IssueType
+from .group_0046 import SubIssuesSummary
 from .group_0582 import (
     WebhookIssueCommentEditedPropIssueAllof0PropAssignee,
     WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems,
     WebhookIssueCommentEditedPropIssueAllof0PropPullRequest,
 )
-from .group_0587 import WebhookIssueCommentEditedPropIssueAllof0PropSubIssuesSummary
-from .group_0589 import WebhookIssueCommentEditedPropIssueMergedMilestone
-from .group_0590 import WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp
+from .group_0588 import WebhookIssueCommentEditedPropIssueMergedMilestone
+from .group_0589 import WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp
 
 
 class WebhookIssueCommentEditedPropIssue(GitHubModel):
@@ -79,9 +79,9 @@ class WebhookIssueCommentEditedPropIssue(GitHubModel):
     )
     reactions: WebhookIssueCommentEditedPropIssueMergedReactions = Field()
     repository_url: str = Field()
-    sub_issues_summary: Missing[
-        WebhookIssueCommentEditedPropIssueAllof0PropSubIssuesSummary
-    ] = Field(default=UNSET, title="Sub-issues Summary")
+    sub_issues_summary: Missing[SubIssuesSummary] = Field(
+        default=UNSET, title="Sub-issues Summary"
+    )
     state: Literal["open", "closed"] = Field(
         description="State of the issue; either 'open' or 'closed'"
     )

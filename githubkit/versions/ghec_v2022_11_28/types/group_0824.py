@@ -9,25 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0485 import EnterpriseWebhooksType
-from .group_0486 import SimpleInstallationType
-from .group_0487 import OrganizationSimpleWebhooksType
-from .group_0488 import RepositoryWebhooksType
+from .group_0487 import EnterpriseWebhooksType
+from .group_0488 import SimpleInstallationType
+from .group_0489 import OrganizationSimpleWebhooksType
+from .group_0490 import RepositoryWebhooksType
 
 
-class WebhookRepositoryDeletedType(TypedDict):
-    """repository deleted event"""
+class WebhookRepositoryDispatchSampleType(TypedDict):
+    """repository_dispatch event"""
 
-    action: Literal["deleted"]
+    action: str
+    branch: str
+    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayloadType, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    installation: SimpleInstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookRepositoryDeletedType",)
+WebhookRepositoryDispatchSamplePropClientPayloadType: TypeAlias = dict[str, Any]
+"""WebhookRepositoryDispatchSamplePropClientPayload
+
+The `client_payload` that was specified in the `POST
+/repos/{owner}/{repo}/dispatches` request body.
+"""
+
+
+__all__ = (
+    "WebhookRepositoryDispatchSamplePropClientPayloadType",
+    "WebhookRepositoryDispatchSampleType",
+)

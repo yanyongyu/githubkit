@@ -9,17 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0063 import CodeSecurityConfigurationType
+
+class CodeScanningDefaultSetupOptionsType(TypedDict):
+    """CodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
+    runner_label: NotRequired[Union[str, None]]
 
 
-class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
-    """CodeSecurityDefaultConfigurationsItems"""
-
-    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
-    configuration: NotRequired[CodeSecurityConfigurationType]
-
-
-__all__ = ("CodeSecurityDefaultConfigurationsItemsType",)
+__all__ = ("CodeScanningDefaultSetupOptionsType",)

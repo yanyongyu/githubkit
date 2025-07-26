@@ -13,39 +13,40 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0273 import GitUserType
-from .group_0274 import VerificationType
+from .group_0178 import MinimalRepositoryType
+from .group_0464 import SearchResultTextMatchesItemsType
 
 
-class CommitSearchResultItemPropCommitType(TypedDict):
-    """CommitSearchResultItemPropCommit"""
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
 
-    author: CommitSearchResultItemPropCommitPropAuthorType
-    committer: Union[None, GitUserType]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeType
-    url: str
-    verification: NotRequired[VerificationType]
-
-
-class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+    Code Search Result Item
+    """
 
     name: str
-    email: str
-    date: datetime
-
-
-class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
-
+    path: str
     sha: str
     url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryType
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[datetime]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+
+
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemType]
 
 
 __all__ = (
-    "CommitSearchResultItemPropCommitPropAuthorType",
-    "CommitSearchResultItemPropCommitPropTreeType",
-    "CommitSearchResultItemPropCommitType",
+    "CodeSearchResultItemType",
+    "SearchCodeGetResponse200Type",
 )

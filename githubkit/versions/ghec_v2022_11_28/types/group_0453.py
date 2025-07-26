@@ -9,26 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class PatchSchemaType(TypedDict):
-    """PatchSchema"""
-
-    operations: list[PatchSchemaPropOperationsItemsType]
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
+from .group_0451 import MetaType
 
 
-class PatchSchemaPropOperationsItemsType(TypedDict):
-    """PatchSchemaPropOperationsItems"""
+class ScimEnterpriseGroupResponseAllof1Type(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1"""
 
-    op: Literal["add", "replace", "remove"]
-    path: NotRequired[str]
+    id: NotRequired[str]
+    members: NotRequired[list[ScimEnterpriseGroupResponseAllof1PropMembersItemsType]]
+    meta: NotRequired[MetaType]
+
+
+class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+
     value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
 
 
 __all__ = (
-    "PatchSchemaPropOperationsItemsType",
-    "PatchSchemaType",
+    "ScimEnterpriseGroupResponseAllof1PropMembersItemsType",
+    "ScimEnterpriseGroupResponseAllof1Type",
 )

@@ -14,13 +14,13 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoMilestonesPostBodyType(TypedDict):
-    """ReposOwnerRepoMilestonesPostBody"""
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-    title: str
+    title: NotRequired[str]
     state: NotRequired[Literal["open", "closed"]]
     description: NotRequired[str]
     due_on: NotRequired[datetime]
 
 
-__all__ = ("ReposOwnerRepoMilestonesPostBodyType",)
+__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType",)

@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0032 import ActionsHostedRunnerImageType
+from .group_0030 import ActionsHostedRunnerMachineSpecType
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type(
+class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200"""
+    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
 
     total_count: int
-    images: list[ActionsHostedRunnerImageType]
+    machine_specs: list[ActionsHostedRunnerMachineSpecType]
 
 
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type",)
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type",)

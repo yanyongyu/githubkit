@@ -9,31 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0259 import WorkflowRunType
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
+class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
 
-    ref: str
-    inputs: NotRequired[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
-    ]
+    total_count: int
+    workflow_runs: list[WorkflowRunType]
 
 
-ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType: TypeAlias = (
-    dict[str, Any]
-)
-"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
-
-Input keys and values configured in the workflow file. The maximum number of
-properties is 10. Any default properties configured in the workflow file will be
-used when `inputs` are omitted.
-"""
-
-
-__all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
-)
+__all__ = ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type",)

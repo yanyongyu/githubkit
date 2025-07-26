@@ -10,16 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0141 import RepositoryRuleUpdatePropParametersType
 
 
-class RepositoryRuleRequiredLinearHistoryType(TypedDict):
-    """required_linear_history
+class RepositoryRuleUpdateType(TypedDict):
+    """update
 
-    Prevent merge commits from being pushed to matching refs.
+    Only allow users with bypass permission to update matching refs.
     """
 
-    type: Literal["required_linear_history"]
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
 
 
-__all__ = ("RepositoryRuleRequiredLinearHistoryType",)
+__all__ = ("RepositoryRuleUpdateType",)

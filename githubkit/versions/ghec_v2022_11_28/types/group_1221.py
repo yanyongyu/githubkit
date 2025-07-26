@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
 
     assignees: NotRequired[list[str]]
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType",)

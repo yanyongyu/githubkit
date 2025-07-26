@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,340 +18,76 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CopilotUsageMetricsDay(ExtraGitHubModel):
-    """Copilot Usage Metrics
+class CopilotOrganizationDetails(ExtraGitHubModel):
+    """Copilot Organization Details
 
-    Copilot usage metrics for a given day.
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    date: date = Field(
-        description="The date for which the usage metrics are aggregated, in `YYYY-MM-DD` format."
+    seat_breakdown: CopilotOrganizationSeatBreakdown = Field(
+        title="Copilot Seat Breakdown",
+        description="The breakdown of Copilot Business seats for the organization.",
     )
-    total_active_users: Missing[int] = Field(
+    public_code_suggestions: Literal["allow", "block", "unconfigured"] = Field(
+        description="The organization policy for allowing or blocking suggestions matching public code (duplication detection filter)."
+    )
+    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="The total number of Copilot users with activity belonging to any Copilot feature, globally, for the given day. Includes passive activity such as receiving a code suggestion, as well as engagement activity such as accepting a code suggestion or prompting chat. Does not include authentication events. Is not limited to the individual features detailed on the endpoint.",
+        description="The organization policy for allowing or disallowing Copilot Chat in the IDE.",
     )
-    total_engaged_users: Missing[int] = Field(
+    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="The total number of Copilot users who engaged with any Copilot feature, for the given day. Examples include but are not limited to accepting a code suggestion, prompting Copilot chat, or triggering a PR Summary. Does not include authentication events. Is not limited to the individual features detailed on the endpoint.",
+        description="The organization policy for allowing or disallowing Copilot features on GitHub.com.",
     )
-    copilot_ide_code_completions: Missing[Union[CopilotIdeCodeCompletions, None]] = (
-        Field(
-            default=UNSET,
-            description="Usage metrics for Copilot editor code completions in the IDE.",
-        )
+    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing Copilot in the CLI.",
     )
-    copilot_ide_chat: Missing[Union[CopilotIdeChat, None]] = Field(
-        default=UNSET, description="Usage metrics for Copilot Chat in the IDE."
-    )
-    copilot_dotcom_chat: Missing[Union[CopilotDotcomChat, None]] = Field(
-        default=UNSET, description="Usage metrics for Copilot Chat in GitHub.com"
-    )
-    copilot_dotcom_pull_requests: Missing[Union[CopilotDotcomPullRequests, None]] = (
-        Field(default=UNSET, description="Usage metrics for Copilot for pull requests.")
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ] = Field(description="The mode of assigning new seats.")
+    plan_type: Missing[Literal["business", "enterprise"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
 
 
-class CopilotDotcomChat(ExtraGitHubModel):
-    """CopilotDotcomChat
+class CopilotOrganizationSeatBreakdown(GitHubModel):
+    """Copilot Seat Breakdown
 
-    Usage metrics for Copilot Chat in GitHub.com
+    The breakdown of Copilot Business seats for the organization.
     """
 
-    total_engaged_users: Missing[int] = Field(
+    total: Missing[int] = Field(
         default=UNSET,
-        description="Total number of users who prompted Copilot Chat on github.com at least once.",
+        description="The total number of seats being billed for the organization as of the current billing cycle.",
     )
-    models: Missing[list[CopilotDotcomChatPropModelsItems]] = Field(
+    added_this_cycle: Missing[int] = Field(
+        default=UNSET, description="Seats added during the current billing cycle."
+    )
+    pending_cancellation: Missing[int] = Field(
         default=UNSET,
-        description="List of model metrics for a custom models and the default model.",
+        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
     )
-
-
-class CopilotDotcomChatPropModelsItems(GitHubModel):
-    """CopilotDotcomChatPropModelsItems"""
-
-    name: Missing[str] = Field(
+    pending_invitation: Missing[int] = Field(
         default=UNSET,
-        description="Name of the model used for Copilot Chat. If the default model is used will appear as 'default'.",
+        description="The number of users who have been invited to receive a Copilot seat through this organization.",
     )
-    is_custom_model: Missing[bool] = Field(
-        default=UNSET, description="Indicates whether a model is custom or default."
-    )
-    custom_model_training_date: Missing[Union[str, None]] = Field(
+    active_this_cycle: Missing[int] = Field(
         default=UNSET,
-        description="The training date for the custom model (if applicable).",
+        description="The number of seats that have used Copilot during the current billing cycle.",
     )
-    total_engaged_users: Missing[int] = Field(
+    inactive_this_cycle: Missing[int] = Field(
         default=UNSET,
-        description="Total number of users who prompted Copilot Chat on github.com at least once for each model.",
-    )
-    total_chats: Missing[int] = Field(
-        default=UNSET,
-        description="Total number of chats initiated by users on github.com.",
+        description="The number of seats that have not used Copilot during the current billing cycle.",
     )
 
 
-class CopilotIdeChat(ExtraGitHubModel):
-    """CopilotIdeChat
-
-    Usage metrics for Copilot Chat in the IDE.
-    """
-
-    total_engaged_users: Missing[int] = Field(
-        default=UNSET,
-        description="Total number of users who prompted Copilot Chat in the IDE.",
-    )
-    editors: Missing[list[CopilotIdeChatPropEditorsItems]] = Field(default=UNSET)
-
-
-class CopilotIdeChatPropEditorsItems(GitHubModel):
-    """CopilotIdeChatPropEditorsItems
-
-    Copilot Chat metrics, for active editors.
-    """
-
-    name: Missing[str] = Field(default=UNSET, description="Name of the given editor.")
-    total_engaged_users: Missing[int] = Field(
-        default=UNSET,
-        description="The number of users who prompted Copilot Chat in the specified editor.",
-    )
-    models: Missing[list[CopilotIdeChatPropEditorsItemsPropModelsItems]] = Field(
-        default=UNSET,
-        description="List of model metrics for custom models and the default model.",
-    )
-
-
-class CopilotIdeChatPropEditorsItemsPropModelsItems(GitHubModel):
-    """CopilotIdeChatPropEditorsItemsPropModelsItems"""
-
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Name of the model used for Copilot Chat. If the default model is used will appear as 'default'.",
-    )
-    is_custom_model: Missing[bool] = Field(
-        default=UNSET, description="Indicates whether a model is custom or default."
-    )
-    custom_model_training_date: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The training date for the custom model."
-    )
-    total_engaged_users: Missing[int] = Field(
-        default=UNSET,
-        description="The number of users who prompted Copilot Chat in the given editor and model.",
-    )
-    total_chats: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of chats initiated by users in the given editor and model.",
-    )
-    total_chat_insertion_events: Missing[int] = Field(
-        default=UNSET,
-        description="The number of times users accepted a code suggestion from Copilot Chat using the 'Insert Code' UI element, for the given editor.",
-    )
-    total_chat_copy_events: Missing[int] = Field(
-        default=UNSET,
-        description="The number of times users copied a code suggestion from Copilot Chat using the keyboard, or the 'Copy' UI element, for the given editor.",
-    )
-
-
-class CopilotDotcomPullRequests(ExtraGitHubModel):
-    """CopilotDotcomPullRequests
-
-    Usage metrics for Copilot for pull requests.
-    """
-
-    total_engaged_users: Missing[int] = Field(
-        default=UNSET,
-        description="The number of users who used Copilot for Pull Requests on github.com to generate a pull request summary at least once.",
-    )
-    repositories: Missing[list[CopilotDotcomPullRequestsPropRepositoriesItems]] = Field(
-        default=UNSET,
-        description="Repositories in which users used Copilot for Pull Requests to generate pull request summaries",
-    )
-
-
-class CopilotDotcomPullRequestsPropRepositoriesItems(GitHubModel):
-    """CopilotDotcomPullRequestsPropRepositoriesItems"""
-
-    name: Missing[str] = Field(default=UNSET, description="Repository name")
-    total_engaged_users: Missing[int] = Field(
-        default=UNSET,
-        description="The number of users who generated pull request summaries using Copilot for Pull Requests in the given repository.",
-    )
-    models: Missing[
-        list[CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems]
-    ] = Field(
-        default=UNSET,
-        description="List of model metrics for custom models and the default model.",
-    )
-
-
-class CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems(GitHubModel):
-    """CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems"""
-
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Name of the model used for Copilot pull request summaries. If the default model is used will appear as 'default'.",
-    )
-    is_custom_model: Missing[bool] = Field(
-        default=UNSET, description="Indicates whether a model is custom or default."
-    )
-    custom_model_training_date: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The training date for the custom model."
-    )
-    total_pr_summaries_created: Missing[int] = Field(
-        default=UNSET,
-        description="The number of pull request summaries generated using Copilot for Pull Requests in the given repository.",
-    )
-    total_engaged_users: Missing[int] = Field(
-        default=UNSET,
-        description="The number of users who generated pull request summaries using Copilot for Pull Requests in the given repository and model.",
-    )
-
-
-class CopilotIdeCodeCompletions(ExtraGitHubModel):
-    """CopilotIdeCodeCompletions
-
-    Usage metrics for Copilot editor code completions in the IDE.
-    """
-
-    total_engaged_users: Missing[int] = Field(
-        default=UNSET,
-        description="Number of users who accepted at least one Copilot code suggestion, across all active editors. Includes both full and partial acceptances.",
-    )
-    languages: Missing[list[CopilotIdeCodeCompletionsPropLanguagesItems]] = Field(
-        default=UNSET, description="Code completion metrics for active languages."
-    )
-    editors: Missing[list[CopilotIdeCodeCompletionsPropEditorsItems]] = Field(
-        default=UNSET
-    )
-
-
-class CopilotIdeCodeCompletionsPropLanguagesItems(GitHubModel):
-    """CopilotIdeCodeCompletionsPropLanguagesItems
-
-    Usage metrics for a given language for the given editor for Copilot code
-    completions.
-    """
-
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Name of the language used for Copilot code completion suggestions.",
-    )
-    total_engaged_users: Missing[int] = Field(
-        default=UNSET,
-        description="Number of users who accepted at least one Copilot code completion suggestion for the given language. Includes both full and partial acceptances.",
-    )
-
-
-class CopilotIdeCodeCompletionsPropEditorsItems(ExtraGitHubModel):
-    """CopilotIdeCodeCompletionsPropEditorsItems
-
-    Copilot code completion metrics for active editors.
-    """
-
-    name: Missing[str] = Field(default=UNSET, description="Name of the given editor.")
-    total_engaged_users: Missing[int] = Field(
-        default=UNSET,
-        description="Number of users who accepted at least one Copilot code completion suggestion for the given editor. Includes both full and partial acceptances.",
-    )
-    models: Missing[list[CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems]] = (
-        Field(
-            default=UNSET,
-            description="List of model metrics for custom models and the default model.",
-        )
-    )
-
-
-class CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems(GitHubModel):
-    """CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems"""
-
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Name of the model used for Copilot code completion suggestions. If the default model is used will appear as 'default'.",
-    )
-    is_custom_model: Missing[bool] = Field(
-        default=UNSET, description="Indicates whether a model is custom or default."
-    )
-    custom_model_training_date: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The training date for the custom model."
-    )
-    total_engaged_users: Missing[int] = Field(
-        default=UNSET,
-        description="Number of users who accepted at least one Copilot code completion suggestion for the given editor, for the given language and model. Includes both full and partial acceptances.",
-    )
-    languages: Missing[
-        list[CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems]
-    ] = Field(
-        default=UNSET,
-        description="Code completion metrics for active languages, for the given editor.",
-    )
-
-
-class CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems(
-    GitHubModel
-):
-    """CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems
-
-    Usage metrics for a given language for the given editor for Copilot code
-    completions.
-    """
-
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Name of the language used for Copilot code completion suggestions, for the given editor.",
-    )
-    total_engaged_users: Missing[int] = Field(
-        default=UNSET,
-        description="Number of users who accepted at least one Copilot code completion suggestion for the given editor, for the given language. Includes both full and partial acceptances.",
-    )
-    total_code_suggestions: Missing[int] = Field(
-        default=UNSET,
-        description="The number of Copilot code suggestions generated for the given editor, for the given language.",
-    )
-    total_code_acceptances: Missing[int] = Field(
-        default=UNSET,
-        description="The number of Copilot code suggestions accepted for the given editor, for the given language. Includes both full and partial acceptances.",
-    )
-    total_code_lines_suggested: Missing[int] = Field(
-        default=UNSET,
-        description="The number of lines of code suggested by Copilot code completions for the given editor, for the given language.",
-    )
-    total_code_lines_accepted: Missing[int] = Field(
-        default=UNSET,
-        description="The number of lines of code accepted from Copilot code suggestions for the given editor, for the given language.",
-    )
-
-
-model_rebuild(CopilotUsageMetricsDay)
-model_rebuild(CopilotDotcomChat)
-model_rebuild(CopilotDotcomChatPropModelsItems)
-model_rebuild(CopilotIdeChat)
-model_rebuild(CopilotIdeChatPropEditorsItems)
-model_rebuild(CopilotIdeChatPropEditorsItemsPropModelsItems)
-model_rebuild(CopilotDotcomPullRequests)
-model_rebuild(CopilotDotcomPullRequestsPropRepositoriesItems)
-model_rebuild(CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems)
-model_rebuild(CopilotIdeCodeCompletions)
-model_rebuild(CopilotIdeCodeCompletionsPropLanguagesItems)
-model_rebuild(CopilotIdeCodeCompletionsPropEditorsItems)
-model_rebuild(CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems)
-model_rebuild(
-    CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems
-)
+model_rebuild(CopilotOrganizationDetails)
+model_rebuild(CopilotOrganizationSeatBreakdown)
 
 __all__ = (
-    "CopilotDotcomChat",
-    "CopilotDotcomChatPropModelsItems",
-    "CopilotDotcomPullRequests",
-    "CopilotDotcomPullRequestsPropRepositoriesItems",
-    "CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems",
-    "CopilotIdeChat",
-    "CopilotIdeChatPropEditorsItems",
-    "CopilotIdeChatPropEditorsItemsPropModelsItems",
-    "CopilotIdeCodeCompletions",
-    "CopilotIdeCodeCompletionsPropEditorsItems",
-    "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems",
-    "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems",
-    "CopilotIdeCodeCompletionsPropLanguagesItems",
-    "CopilotUsageMetricsDay",
+    "CopilotOrganizationDetails",
+    "CopilotOrganizationSeatBreakdown",
 )

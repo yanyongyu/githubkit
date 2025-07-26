@@ -12,52 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class BillingUsageReport(GitHubModel):
-    """BillingUsageReport"""
+class CombinedBillingUsage(GitHubModel):
+    """CombinedBillingUsage"""
 
-    usage_items: Missing[list[BillingUsageReportPropUsageItemsItems]] = Field(
-        default=UNSET, alias="usageItems"
+    days_left_in_billing_cycle: int = Field(
+        description="Numbers of days left in billing cycle."
+    )
+    estimated_paid_storage_for_month: int = Field(
+        description="Estimated storage space (GB) used in billing cycle."
+    )
+    estimated_storage_for_month: int = Field(
+        description="Estimated sum of free and paid storage space (GB) used in billing cycle."
     )
 
 
-class BillingUsageReportPropUsageItemsItems(GitHubModel):
-    """BillingUsageReportPropUsageItemsItems"""
+model_rebuild(CombinedBillingUsage)
 
-    date: str = Field(description="Date of the usage line item.")
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    quantity: int = Field(description="Quantity of the usage line item.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
-    )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
-    organization_name: str = Field(
-        alias="organizationName", description="Name of the organization."
-    )
-    repository_name: Missing[str] = Field(
-        default=UNSET, alias="repositoryName", description="Name of the repository."
-    )
-
-
-model_rebuild(BillingUsageReport)
-model_rebuild(BillingUsageReportPropUsageItemsItems)
-
-__all__ = (
-    "BillingUsageReport",
-    "BillingUsageReportPropUsageItemsItems",
-)
+__all__ = ("CombinedBillingUsage",)

@@ -14,20 +14,67 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodespaceExportDetailsType(TypedDict):
-    """Fetches information about an export of a codespace.
+class PrivateUserType(TypedDict):
+    """Private User
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+    Private User
     """
 
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[datetime, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    user_view_type: NotRequired[str]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    name: Union[str, None]
+    company: Union[str, None]
+    blog: Union[str, None]
+    location: Union[str, None]
+    email: Union[str, None]
+    notification_email: NotRequired[Union[str, None]]
+    hireable: Union[bool, None]
+    bio: Union[str, None]
+    twitter_username: NotRequired[Union[str, None]]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    created_at: datetime
+    updated_at: datetime
+    private_gists: int
+    total_private_repos: int
+    owned_private_repos: int
+    disk_usage: int
+    collaborators: int
+    two_factor_authentication: bool
+    plan: NotRequired[PrivateUserPropPlanType]
+    business_plus: NotRequired[bool]
+    ldap_dn: NotRequired[str]
 
 
-__all__ = ("CodespaceExportDetailsType",)
+class PrivateUserPropPlanType(TypedDict):
+    """PrivateUserPropPlan"""
+
+    collaborators: int
+    name: str
+    space: int
+    private_repos: int
+
+
+__all__ = (
+    "PrivateUserPropPlanType",
+    "PrivateUserType",
+)

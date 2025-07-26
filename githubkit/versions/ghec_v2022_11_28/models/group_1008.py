@@ -11,25 +11,57 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsBulkListPostBody(GitHubModel):
-    """OrgsOrgAttestationsBulkListPostBody"""
+class OrgsOrgAttestationsBulkListPostResponse200(GitHubModel):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests to fetch attestations for.",
-    )
-    predicate_type: Missing[str] = Field(
-        default=UNSET,
-        description="Optional filter for fetching attestations with a given predicate type.\nThis option accepts `provenance`, `sbom`, or freeform text for custom predicate types.",
+    attestations_subject_digests: Missing[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+    ] = Field(default=UNSET, description="Mapping of subject digest to bundles.")
+    page_info: Missing[OrgsOrgAttestationsBulkListPostResponse200PropPageInfo] = Field(
+        default=UNSET, description="Information about the current page."
     )
 
 
-model_rebuild(OrgsOrgAttestationsBulkListPostBody)
+class OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests(
+    ExtraGitHubModel
+):
+    """OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
 
-__all__ = ("OrgsOrgAttestationsBulkListPostBody",)
+    Mapping of subject digest to bundles.
+    """
+
+
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfo(GitHubModel):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a next page."
+    )
+    has_previous: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a previous page."
+    )
+    next_: Missing[str] = Field(
+        default=UNSET, alias="next", description="The cursor to the next page."
+    )
+    previous: Missing[str] = Field(
+        default=UNSET, description="The cursor to the previous page."
+    )
+
+
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200)
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests)
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropPageInfo)
+
+__all__ = (
+    "OrgsOrgAttestationsBulkListPostResponse200",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfo",
+)

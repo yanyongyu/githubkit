@@ -9,53 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0083 import TeamSimple
 
+class ActionsPublicKey(GitHubModel):
+    """ActionsPublicKey
 
-class Team(GitHubModel):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
+    The public key used for setting Actions Secrets.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
-    url: str = Field()
-    html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    parent: Union[None, TeamSimple] = Field()
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-class TeamPropPermissions(GitHubModel):
-    """TeamPropPermissions"""
+model_rebuild(ActionsPublicKey)
 
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(Team)
-model_rebuild(TeamPropPermissions)
-
-__all__ = (
-    "Team",
-    "TeamPropPermissions",
-)
+__all__ = ("ActionsPublicKey",)

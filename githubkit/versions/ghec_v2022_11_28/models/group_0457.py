@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,75 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0449 import Meta
-from .group_0454 import UserEmailsResponseItems, UserNameResponse
-from .group_0455 import UserRoleItems
-from .group_0459 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
+class UserRoleItems(GitHubModel):
+    """UserRoleItems"""
 
-class ScimEnterpriseUserResponse(GitHubModel):
-    """ScimEnterpriseUserResponse"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
-    )
-    external_id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
-    )
-    active: bool = Field(description="Whether the user active in the IdP.")
-    user_name: Missing[str] = Field(
-        default=UNSET, alias="userName", description="The username for the user."
-    )
-    name: Missing[UserNameResponse] = Field(default=UNSET)
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="displayName",
-        description="A human-readable name for the user.",
-    )
-    emails: list[UserEmailsResponseItems] = Field(
-        description="The emails for the user."
-    )
-    roles: Missing[list[UserRoleItems]] = Field(
-        default=UNSET, description="The roles assigned to the user."
-    )
-    id: str = Field(description="The internally generated id for the user object.")
-    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
-        default=UNSET,
-        description="Provisioned SCIM groups that the user is a member of.",
-    )
-    meta: Meta = Field(
-        description="The metadata associated with the creation/updates to the user."
+    display: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+    ] = Field(description="The role value representing a user role in GitHub.")
+    primary: Missing[bool] = Field(
+        default=UNSET, description="Is the role a primary role for the user."
     )
 
 
-class ScimEnterpriseUserList(GitHubModel):
-    """ScimEnterpriseUserList"""
+model_rebuild(UserRoleItems)
 
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
-        Field(
-            description="The URIs that are used to indicate the namespaces of the list SCIM schemas."
-        )
-    )
-    total_results: int = Field(
-        alias="totalResults", description="Number of results found"
-    )
-    resources: list[ScimEnterpriseUserResponse] = Field(
-        alias="Resources", description="Information about each provisioned account."
-    )
-    start_index: int = Field(
-        alias="startIndex", description="A starting index for the returned page"
-    )
-    items_per_page: int = Field(
-        alias="itemsPerPage", description="Number of objects per page"
-    )
-
-
-model_rebuild(ScimEnterpriseUserResponse)
-model_rebuild(ScimEnterpriseUserList)
-
-__all__ = (
-    "ScimEnterpriseUserList",
-    "ScimEnterpriseUserResponse",
-)
+__all__ = ("UserRoleItems",)

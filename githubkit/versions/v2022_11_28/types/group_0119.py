@@ -9,27 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyType(TypedDict):
-    """Organization Custom Property
+class OrgPrivateRegistryConfigurationWithSelectedRepositoriesType(TypedDict):
+    """Organization private registry
 
-    Custom property defined on an organization
+    Private registry configuration for an organization
     """
 
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    name: str
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
     ]
+    username: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("CustomPropertyType",)
+__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",)

@@ -18,14 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
 
-    role: Missing[Literal["member", "maintainer"]] = Field(
-        default=UNSET, description="The role that this user should have in the team."
+    permission: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET,
+        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method).\"",
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody)
+model_rebuild(OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody",)

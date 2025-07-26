@@ -9,55 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0036 import OrganizationSimpleType
-from .group_0070 import TeamType
+from .group_0070 import TeamSimpleType
 
 
-class CopilotSeatDetailsType(TypedDict):
-    """Copilot Business Seat Detail
+class TeamType(TypedDict):
+    """Team
 
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
-    """
-
-    assignee: NotRequired[Union[None, SimpleUserType]]
-    organization: NotRequired[Union[None, OrganizationSimpleType]]
-    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
-    pending_cancellation_date: NotRequired[Union[date, None]]
-    last_activity_at: NotRequired[Union[datetime, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    created_at: datetime
-    updated_at: NotRequired[datetime]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
-
-
-class EnterpriseTeamType(TypedDict):
-    """Enterprise Team
-
-    Group of enterprise owners and/or members
+    Groups of organization members that gives permissions on specified repositories.
     """
 
     id: int
+    node_id: str
     name: str
-    description: NotRequired[str]
     slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsType]
     url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: NotRequired[Union[str, None]]
-    group_name: NotRequired[Union[str, None]]
     html_url: str
     members_url: str
-    created_at: datetime
-    updated_at: datetime
+    repositories_url: str
+    parent: Union[None, TeamSimpleType]
+
+
+class TeamPropPermissionsType(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
 __all__ = (
-    "CopilotSeatDetailsType",
-    "EnterpriseTeamType",
+    "TeamPropPermissionsType",
+    "TeamType",
 )

@@ -11,23 +11,13 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0124 import FullRepositoryType
-from .group_0424 import EnterpriseWebhooksType
-from .group_0425 import SimpleInstallationType
-from .group_0426 import OrganizationSimpleWebhooksType
-from .group_0790 import WebhookSecurityAndAnalysisPropChangesType
+from .group_0790 import WebhookSecurityAndAnalysisPropChangesPropFromType
 
 
-class WebhookSecurityAndAnalysisType(TypedDict):
-    """security_and_analysis event"""
+class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
+    """WebhookSecurityAndAnalysisPropChanges"""
 
-    changes: WebhookSecurityAndAnalysisPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: FullRepositoryType
-    sender: NotRequired[SimpleUserType]
+    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
 
 
-__all__ = ("WebhookSecurityAndAnalysisType",)
+__all__ = ("WebhookSecurityAndAnalysisPropChangesType",)
