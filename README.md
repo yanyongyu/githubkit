@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD041 -->
 <div align="center">
 
-[![githubkit](https://socialify.git.ci/yanyongyu/githubkit/image?description=1&descriptionEditable=%E2%9C%A8%20GitHub%20SDK%20for%20Python%20%E2%9C%A8&font=Bitter&language=1&pattern=Circuit%20Board&theme=Light)](https://github.com/yanyongyu/githubkit)
+[![githubkit](https://socialify.git.ci/yanyongyu/githubkit/image?custom_description=%E2%9C%A8+The+modern%2C+all-batteries-included+GitHub+SDK+for+Python+%E2%9C%A8&description=1&descriptionEditable=%E2%9C%A8+GitHub+SDK+for+Python+%E2%9C%A8&font=Bitter&language=1&pattern=Circuit+Board&theme=Light)](https://github.com/yanyongyu/githubkit)
 
 </div>
 
@@ -12,7 +12,7 @@
   <a href="https://pypi.python.org/pypi/githubkit">
     <img src="https://img.shields.io/pypi/v/githubkit?logo=python&logoColor=edb641" alt="pypi">
   </a>
-  <img src="https://img.shields.io/badge/python-3.8+-blue?logo=python&logoColor=edb641" alt="python">
+  <img src="https://img.shields.io/badge/python-3.9+-blue?logo=python&logoColor=edb641" alt="python">
   <a href="https://github.com/psf/black">
     <img src="https://img.shields.io/badge/code%20style-black-000000.svg?logo=python&logoColor=edb641" alt="black">
   </a>
@@ -102,6 +102,11 @@ print(repo.full_name)
 ```
 
 ## Development
+
+> [!TIP]
+> Open in Codespaces (Dev Container):
+>
+> [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=master&repo=512138996)
 
 See the [development](https://yanyongyu.github.io/githubkit/contributing/) in the contributing guide.
 
