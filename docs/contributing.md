@@ -45,7 +45,7 @@ Please add a comment to explain the reason for the patch if you want to submit a
 Run tests with pytest:
 
 ```bash
-env GITHUB_TOKEN='<your token here>' uv run pytest -n auto tests
+env GITHUB_TOKEN='<your token here>' uv run --no-sync pytest -n auto tests
 ```
 
 If you want to switch between pydantic v1 and v2, you can use the following command:

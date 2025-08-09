@@ -158,8 +158,6 @@ executionEnvironments = [
   { root = "codegen", pythonVersion = "3.10" },
 ]
 
-exclude = ["codegen/**"]
-
 [tool.codegen]
 output_dir = "githubkit/versions/"
 legacy_rest_models = "githubkit/rest/__init__.py"
