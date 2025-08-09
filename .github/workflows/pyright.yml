@@ -6,14 +6,13 @@ on:
       - master
   pull_request:
     paths:
-      - "envs/**"
       - "githubkit/**"
       - "tests/**"
       - "codegen/**"
       - ".github/actions/setup-python/**"
       - ".github/workflows/pyright.yml"
-      - "**/pyproject.toml"
-      - "**/poetry.lock"
+      - "pyproject.toml"
+      - "uv.lock"
 
 jobs:
   lint-githubkit:
@@ -33,11 +32,10 @@ jobs:
       - name: Setup Python environment
         uses: ./.github/actions/setup-python
         with:
-          env-dir: ./envs/${{ matrix.env }}
-          no-root: true
+          env-group: ${{ matrix.env }}
 
       - run: |
-          (cd ./envs/${{ matrix.env }} && echo "$(poetry env info --path)/bin" >> $GITHUB_PATH)
+          echo "$(dirname $(uv python find))" >> $GITHUB_PATH
           if [ "${{ matrix.env }}" = "pydantic-v1" ]; then
             sed -i 's/PYDANTIC_V2 = true/PYDANTIC_V2 = false/g' ./pyproject.toml
           fi
@@ -57,11 +55,9 @@ jobs:
 
       - name: Setup Python environment
         uses: ./.github/actions/setup-python
-        with:
-          env-dir: .
 
       - run: |
-          echo "$(poetry env info --path)/bin" >> $GITHUB_PATH
+          echo "$(dirname $(uv python find))" >> $GITHUB_PATH
         shell: bash
 
       - name: Run Pyright

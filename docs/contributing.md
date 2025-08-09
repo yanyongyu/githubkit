@@ -10,19 +10,10 @@ Open in Codespaces (Dev Container):
 
 Local development environment setup:
 
-Make sure you have installed [Poetry](https://python-poetry.org/).
+Make sure you have installed [uv](https://docs.astral.sh/uv/).
 
 ```bash
-poetry install --all-extras --with docs && poetry run pre-commit install
-```
-
-Test environment setup (optional):
-
-```bash
-for env in $(find ./envs/ -maxdepth 1 -mindepth 1 -type d -not -name test); do
-  echo "Setting up $env environment"
-  (cd $env && poetry install --no-root)
-done
+uv sync --all-extras && uv run pre-commit install
 ```
 
 ## GitHub Schema Update
@@ -36,7 +27,7 @@ Generate latest models and apis from GitHub's OpenAPI schema:
 Please make sure you have activated the virtual environment.
 
 ```bash
-./scripts/run-codegen.sh
+uv run bash ./scripts/run-codegen.sh
 ```
 
 ### Patch Schema
@@ -51,15 +42,17 @@ Please add a comment to explain the reason for the patch if you want to submit a
 
 ## Testing
 
-Run tests in dev env:
+Run tests with pytest:
 
 ```bash
-./scripts/run-tests.sh
+env GITHUB_TOKEN='<your token here>' uv run pytest -n auto tests
 ```
 
-Run tests in specific test env, for example:
+If you want to switch between pydantic v1 and v2, you can use the following command:
 
 ```bash
-cd ./envs/pydantic-v2/
-poetry run bash ../../scripts/run-tests.sh
+# Pydantic v1
+uv sync --all-extras --group pydantic-v1
+# Pydantic v2
+uv sync --all-extras --group pydantic-v2
 ```

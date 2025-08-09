@@ -15,14 +15,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Poetry
-        uses: ./.github/actions/setup-poetry
-
       - name: Setup Python environment
         uses: ./.github/actions/setup-python
-        with:
-          env-dir: .
-          args: "--with docs"
 
       - uses: actions/cache@v4
         with:
@@ -33,8 +27,8 @@ jobs:
 
       - name: Build Docs
         run: |
-          poetry run mkdocs --version
-          poetry run mkdocs build --clean
+          uv run mkdocs --version
+          uv run mkdocs build --clean
           chmod -c -R +rX "site/" | while read line; do
             echo "::warning title=Invalid file permissions automatically fixed::$line"
           done
