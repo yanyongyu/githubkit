@@ -148,14 +148,14 @@ reportPrivateImportUsage = false
 reportShadowedImports = false
 disableBytesTypePromotions = true
 
-pythonVersion = "3.9"
 pythonPlatform = "All"
 defineConstant = { PYDANTIC_V2 = true }
 
 executionEnvironments = [
   # disable overload check for generated version codes
-  { root = "githubkit/versions/", reportOverlappingOverload = false },
+  { root = "githubkit/versions/", pythonVersion = "3.9", reportOverlappingOverload = false },
   { root = "codegen", pythonVersion = "3.10" },
+  { root = ".", pythonVersion = "3.9" },
 ]
 
 [tool.codegen]
