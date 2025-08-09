@@ -10,15 +10,6 @@ updates:
           - "*"
 
   - package-ecosystem: github-actions
-    directory: "/.github/actions/setup-poetry"
-    schedule:
-      interval: daily
-    groups:
-      actions:
-        patterns:
-          - "*"
-
-  - package-ecosystem: github-actions
     directory: "/.github/actions/setup-python"
     schedule:
       interval: daily

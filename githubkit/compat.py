@@ -1,5 +1,5 @@
 from collections.abc import Generator
-from typing import TYPE_CHECKING, Any, Callable, Protocol, TypeVar
+from typing import TYPE_CHECKING, Any, Callable, Protocol, TypeVar, overload
 
 from pydantic import VERSION
 
@@ -36,8 +36,22 @@ if PYDANTIC_V2:  # pragma: pydantic-v2
     class ExtraGitHubModel(GitHubModel):
         model_config = ConfigDict(extra="allow")
 
+    # Remove the overload once [PEP747](https://peps.python.org/pep-0747/) is accepted
+    # We should use TypeForm here
+    @overload
+    def type_validate_python(type_: type[T], data: Any) -> T: ...
+
+    @overload
+    def type_validate_python(type_: Any, data: Any) -> Any: ...
+
     def type_validate_python(type_: type[T], data: Any) -> T:
         return TypeAdapter(type_).validate_python(data)
+
+    @overload
+    def type_validate_json(type_: type[T], data: Any) -> T: ...
+
+    @overload
+    def type_validate_json(type_: Any, data: Any) -> Any: ...
 
     def type_validate_json(type_: type[T], data: Any) -> T:
         return TypeAdapter(type_).validate_json(data)

@@ -6,14 +6,12 @@ on:
       - master
   pull_request:
     paths:
-      - "envs/**"
       - "githubkit/**"
       - "tests/**"
-      - ".github/actions/setup-poetry/**"
       - ".github/actions/setup-python/**"
       - ".github/workflows/codecov.yml"
       - "pyproject.toml"
-      - "poetry.lock"
+      - "uv.lock"
 
 jobs:
   test:
@@ -40,15 +38,22 @@ jobs:
         uses: ./.github/actions/setup-python
         with:
           python-version: ${{ matrix.python-version }}
-          env-dir: ./envs/${{ matrix.env }}
-          no-root: true
+          env-group: ${{ matrix.env }}
 
       - name: Run Pytest
         run: |
-          cd ./envs/${{ matrix.env }}
-          poetry run bash "../../scripts/run-tests.sh"
+          uv run --no-sync bash ./scripts/run-tests.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload test results
+        uses: codecov/test-results-action@v1
+        with:
+          env_vars: OS,PYTHON_VERSION,PYDANTIC_VERSION
+          files: ./junit.xml
+          flags: unittests
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload coverage report
         uses: codecov/codecov-action@v5
@@ -56,5 +61,6 @@ jobs:
           env_vars: OS,PYTHON_VERSION,PYDANTIC_VERSION
           files: ./coverage.xml
           flags: unittests
+          fail_ci_if_error: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

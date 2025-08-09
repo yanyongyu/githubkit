@@ -6,4 +6,4 @@ set -e
 cd "$(dirname "$0")/.."
 
 # Run the tests
-pytest -n auto --cov-report xml tests
+pytest -n auto --cov-report xml --junitxml=./junit.xml tests

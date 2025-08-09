@@ -1,7 +1,7 @@
 from enum import Enum
 from functools import partial
 import inspect
-from typing import Any, Generic, Literal, Optional, TypeVar, final
+from typing import Any, Generic, Literal, Optional, TypeVar, final, overload
 
 from hishel._utils import generate_key
 import httpcore
@@ -84,6 +84,12 @@ def is_async(obj: Any) -> bool:
 
 class TaggedUnion(Generic[T]):
     __slots__ = ("discriminator", "tag", "type_")
+
+    @overload
+    def __init__(self, type_: type[T], discriminator: str, tag: str) -> None: ...
+
+    @overload
+    def __init__(self, type_: Any, discriminator: str, tag: str) -> None: ...
 
     def __init__(self, type_: type[T], discriminator: str, tag: str) -> None:
         self.type_ = type_
