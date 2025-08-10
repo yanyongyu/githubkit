@@ -13,25 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0487 import EnterpriseWebhooksType
-from .group_0488 import SimpleInstallationType
-from .group_0489 import OrganizationSimpleWebhooksType
-from .group_0490 import RepositoryWebhooksType
-from .group_0492 import ExemptionResponseType
-from .group_0493 import ExemptionRequestType
+from .group_0494 import EnterpriseWebhooksType
+from .group_0495 import SimpleInstallationType
+from .group_0496 import OrganizationSimpleWebhooksType
+from .group_0497 import RepositoryWebhooksType
 
 
-class WebhookExemptionRequestResponseDismissedType(TypedDict):
-    """Exemption response dismissed event"""
+class WebhookBranchProtectionConfigurationEnabledType(TypedDict):
+    """branch protection configuration enabled event"""
 
-    action: Literal["response_dismissed"]
+    action: Literal["enabled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    exemption_request: ExemptionRequestType
-    exemption_response: ExemptionResponseType
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookExemptionRequestResponseDismissedType",)
+__all__ = ("WebhookBranchProtectionConfigurationEnabledType",)

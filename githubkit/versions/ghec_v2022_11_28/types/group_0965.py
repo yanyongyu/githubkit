@@ -9,11 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0089 import RepositoryRulesetBypassActorType
+from .group_0100 import EnterpriseRulesetConditionsOneof0Type
+from .group_0101 import EnterpriseRulesetConditionsOneof1Type
+from .group_0102 import EnterpriseRulesetConditionsOneof2Type
+from .group_0103 import EnterpriseRulesetConditionsOneof3Type
+from .group_0104 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
+from .group_0105 import RepositoryRuleUpdateType
+from .group_0107 import RepositoryRuleRequiredLinearHistoryType
+from .group_0108 import RepositoryRuleRequiredDeploymentsType
+from .group_0111 import RepositoryRulePullRequestType
+from .group_0113 import RepositoryRuleRequiredStatusChecksType
+from .group_0115 import RepositoryRuleCommitMessagePatternType
+from .group_0117 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0119 import RepositoryRuleCommitterEmailPatternType
+from .group_0121 import RepositoryRuleBranchNamePatternType
+from .group_0123 import RepositoryRuleTagNamePatternType
+from .group_0125 import RepositoryRuleFilePathRestrictionType
+from .group_0127 import RepositoryRuleMaxFilePathLengthType
+from .group_0129 import RepositoryRuleFileExtensionRestrictionType
+from .group_0131 import RepositoryRuleMaxFileSizeType
+from .group_0134 import RepositoryRuleWorkflowsType
+from .group_0136 import RepositoryRuleCodeScanningType
 
 
-class GistsGistIdStarGetResponse404Type(TypedDict):
-    """GistsGistIdStarGetResponse404"""
+class EnterprisesEnterpriseRulesetsRulesetIdPutBodyType(TypedDict):
+    """EnterprisesEnterpriseRulesetsRulesetIdPutBody"""
+
+    name: NotRequired[str]
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[
+        Union[
+            EnterpriseRulesetConditionsOneof0Type,
+            EnterpriseRulesetConditionsOneof1Type,
+            EnterpriseRulesetConditionsOneof2Type,
+            EnterpriseRulesetConditionsOneof3Type,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+            ]
+        ]
+    ]
 
 
-__all__ = ("GistsGistIdStarGetResponse404Type",)
+__all__ = ("EnterprisesEnterpriseRulesetsRulesetIdPutBodyType",)

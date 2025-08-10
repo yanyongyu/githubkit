@@ -12,18 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0167 import RepositoryRuleFileExtensionRestrictionPropParametersType
+from .group_0167 import RepositoryRuleTagNamePatternPropParametersType
 
 
-class RepositoryRuleFileExtensionRestrictionType(TypedDict):
-    """file_extension_restriction
+class RepositoryRuleTagNamePatternType(TypedDict):
+    """tag_name_pattern
 
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleFileExtensionRestrictionType",)
+__all__ = ("RepositoryRuleTagNamePatternType",)

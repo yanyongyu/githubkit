@@ -28,18 +28,29 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import (
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
         OrganizationSecretScanningAlert,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
         SecretScanningAlert,
         SecretScanningBypassRequest,
         SecretScanningDismissalRequest,
         SecretScanningLocation,
+        SecretScanningPatternConfiguration,
         SecretScanningPushProtectionBypass,
         SecretScanningScanHistory,
     )
     from ..types import (
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type,
         OrganizationSecretScanningAlertType,
+        OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType,
+        OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType,
+        OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType,
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type,
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType,
@@ -50,6 +61,7 @@ if TYPE_CHECKING:
         SecretScanningBypassRequestType,
         SecretScanningDismissalRequestType,
         SecretScanningLocationType,
+        SecretScanningPatternConfigurationType,
         SecretScanningPushProtectionBypassType,
         SecretScanningScanHistoryType,
     )
@@ -205,6 +217,282 @@ class SecretScanningClient:
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def list_enterprise_pattern_configs(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        SecretScanningPatternConfiguration, SecretScanningPatternConfigurationType
+    ]:
+        """secret-scanning/list-enterprise-pattern-configs
+
+        GET /enterprises/{enterprise}/secret-scanning/pattern-configurations
+
+        Lists the secret scanning pattern configurations for an enterprise.
+
+        Personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#list-enterprise-pattern-configurations
+        """
+
+        from ..models import BasicError, SecretScanningPatternConfiguration
+
+        url = f"/enterprises/{enterprise}/secret-scanning/pattern-configurations"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=SecretScanningPatternConfiguration,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_enterprise_pattern_configs(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        SecretScanningPatternConfiguration, SecretScanningPatternConfigurationType
+    ]:
+        """secret-scanning/list-enterprise-pattern-configs
+
+        GET /enterprises/{enterprise}/secret-scanning/pattern-configurations
+
+        Lists the secret scanning pattern configurations for an enterprise.
+
+        Personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#list-enterprise-pattern-configurations
+        """
+
+        from ..models import BasicError, SecretScanningPatternConfiguration
+
+        url = f"/enterprises/{enterprise}/secret-scanning/pattern-configurations"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=SecretScanningPatternConfiguration,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def update_enterprise_pattern_configs(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type,
+    ]: ...
+
+    @overload
+    def update_enterprise_pattern_configs(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        pattern_config_version: Missing[Union[str, None]] = UNSET,
+        provider_pattern_settings: Missing[
+            list[
+                EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
+            ]
+        ] = UNSET,
+        custom_pattern_settings: Missing[
+            list[
+                EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type,
+    ]: ...
+
+    def update_enterprise_pattern_configs(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type,
+    ]:
+        """secret-scanning/update-enterprise-pattern-configs
+
+        PATCH /enterprises/{enterprise}/secret-scanning/pattern-configurations
+
+        Updates the secret scanning pattern configurations for an enterprise.
+
+        Personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#update-enterprise-pattern-configurations
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody,
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/secret-scanning/pattern-configurations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_update_enterprise_pattern_configs(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type,
+    ]: ...
+
+    @overload
+    async def async_update_enterprise_pattern_configs(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        pattern_config_version: Missing[Union[str, None]] = UNSET,
+        provider_pattern_settings: Missing[
+            list[
+                EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
+            ]
+        ] = UNSET,
+        custom_pattern_settings: Missing[
+            list[
+                EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type,
+    ]: ...
+
+    async def async_update_enterprise_pattern_configs(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
+        EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type,
+    ]:
+        """secret-scanning/update-enterprise-pattern-configs
+
+        PATCH /enterprises/{enterprise}/secret-scanning/pattern-configurations
+
+        Updates the secret scanning pattern configurations for an enterprise.
+
+        Personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#update-enterprise-pattern-configurations
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody,
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/secret-scanning/pattern-configurations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
             },
         )
 
@@ -613,6 +901,278 @@ class SecretScanningClient:
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def list_org_pattern_configs(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        SecretScanningPatternConfiguration, SecretScanningPatternConfigurationType
+    ]:
+        """secret-scanning/list-org-pattern-configs
+
+        GET /orgs/{org}/secret-scanning/pattern-configurations
+
+        Lists the secret scanning pattern configurations for an organization.
+
+        Personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#list-organization-pattern-configurations
+        """
+
+        from ..models import BasicError, SecretScanningPatternConfiguration
+
+        url = f"/orgs/{org}/secret-scanning/pattern-configurations"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=SecretScanningPatternConfiguration,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_org_pattern_configs(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        SecretScanningPatternConfiguration, SecretScanningPatternConfigurationType
+    ]:
+        """secret-scanning/list-org-pattern-configs
+
+        GET /orgs/{org}/secret-scanning/pattern-configurations
+
+        Lists the secret scanning pattern configurations for an organization.
+
+        Personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#list-organization-pattern-configurations
+        """
+
+        from ..models import BasicError, SecretScanningPatternConfiguration
+
+        url = f"/orgs/{org}/secret-scanning/pattern-configurations"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=SecretScanningPatternConfiguration,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def update_org_pattern_configs(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
+    ) -> Response[
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+    ]: ...
+
+    @overload
+    def update_org_pattern_configs(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        pattern_config_version: Missing[Union[str, None]] = UNSET,
+        provider_pattern_settings: Missing[
+            list[
+                OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
+            ]
+        ] = UNSET,
+        custom_pattern_settings: Missing[
+            list[
+                OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+    ]: ...
+
+    def update_org_pattern_configs(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgSecretScanningPatternConfigurationsPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+    ]:
+        """secret-scanning/update-org-pattern-configs
+
+        PATCH /orgs/{org}/secret-scanning/pattern-configurations
+
+        Updates the secret scanning pattern configurations for an organization.
+
+        Personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#update-organization-pattern-configurations
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgSecretScanningPatternConfigurationsPatchBody,
+            OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/secret-scanning/pattern-configurations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgSecretScanningPatternConfigurationsPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_update_org_pattern_configs(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
+    ) -> Response[
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+    ]: ...
+
+    @overload
+    async def async_update_org_pattern_configs(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        pattern_config_version: Missing[Union[str, None]] = UNSET,
+        provider_pattern_settings: Missing[
+            list[
+                OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
+            ]
+        ] = UNSET,
+        custom_pattern_settings: Missing[
+            list[
+                OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+    ]: ...
+
+    async def async_update_org_pattern_configs(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgSecretScanningPatternConfigurationsPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+    ]:
+        """secret-scanning/update-org-pattern-configs
+
+        PATCH /orgs/{org}/secret-scanning/pattern-configurations
+
+        Updates the secret scanning pattern configurations for an organization.
+
+        Personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#update-organization-pattern-configurations
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgSecretScanningPatternConfigurationsPatchBody,
+            OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/secret-scanning/pattern-configurations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgSecretScanningPatternConfigurationsPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
             },
         )
 

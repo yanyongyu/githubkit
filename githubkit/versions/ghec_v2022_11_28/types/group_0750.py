@@ -9,27 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0487 import EnterpriseWebhooksType
-from .group_0488 import SimpleInstallationType
-from .group_0489 import OrganizationSimpleWebhooksType
-from .group_0490 import RepositoryWebhooksType
-from .group_0522 import WebhooksProjectColumnType
+from .group_0496 import OrganizationSimpleWebhooksType
+from .group_0497 import RepositoryWebhooksType
+from .group_0751 import WebhookPingPropHookType
 
 
-class WebhookProjectColumnCreatedType(TypedDict):
-    """project_column created event"""
+class WebhookPingType(TypedDict):
+    """WebhookPing"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    hook: NotRequired[WebhookPingPropHookType]
+    hook_id: NotRequired[int]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
     repository: NotRequired[RepositoryWebhooksType]
     sender: NotRequired[SimpleUserType]
+    zen: NotRequired[str]
 
 
-__all__ = ("WebhookProjectColumnCreatedType",)
+__all__ = ("WebhookPingType",)

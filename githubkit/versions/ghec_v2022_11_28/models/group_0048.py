@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,31 +18,40 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0017 import AppPermissions
+from .group_0020 import Repository
 
 
-class EnterpriseOrganizationInstallation(GitHubModel):
-    """Enterprise Organization Installation
+class AuthenticationToken(GitHubModel):
+    """Authentication Token
 
-    A GitHub App Installation on an enterprise-owned organization
+    Authentication Token
     """
 
-    id: int = Field(description="The ID of the installation.")
-    app_slug: Missing[str] = Field(default=UNSET)
-    client_id: str = Field()
-    repository_selection: Literal["all", "selected"] = Field(
-        description="Describe whether all repositories have been selected or there's a selection involved"
+    token: str = Field(description="The token used for authentication")
+    expires_at: datetime = Field(description="The time this token expires")
+    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
+    repositories: Missing[list[Repository]] = Field(
+        default=UNSET, description="The repositories this token has access to"
     )
-    repositories_url: str = Field()
-    permissions: AppPermissions = Field(
-        title="App Permissions",
-        description="The permissions granted to the user access token.",
+    single_file: Missing[Union[str, None]] = Field(default=UNSET)
+    repository_selection: Missing[Literal["all", "selected"]] = Field(
+        default=UNSET,
+        description="Describe whether all repositories have been selected or there's a selection involved",
     )
-    events: Missing[list[str]] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
 
 
-model_rebuild(EnterpriseOrganizationInstallation)
+class AuthenticationTokenPropPermissions(GitHubModel):
+    """AuthenticationTokenPropPermissions
 
-__all__ = ("EnterpriseOrganizationInstallation",)
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+model_rebuild(AuthenticationToken)
+model_rebuild(AuthenticationTokenPropPermissions)
+
+__all__ = (
+    "AuthenticationToken",
+    "AuthenticationTokenPropPermissions",
+)

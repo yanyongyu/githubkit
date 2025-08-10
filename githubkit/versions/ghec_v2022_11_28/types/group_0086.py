@@ -12,13 +12,17 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
+class NetworkSettingsType(TypedDict):
+    """Hosted compute network settings resource
 
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
+    A hosted compute network settings resource.
+    """
+
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",)
+__all__ = ("NetworkSettingsType",)

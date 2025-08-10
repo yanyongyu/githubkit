@@ -13,23 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0332 import DependabotAlertType
-from .group_0487 import EnterpriseWebhooksType
-from .group_0488 import SimpleInstallationType
-from .group_0489 import OrganizationSimpleWebhooksType
-from .group_0490 import RepositoryWebhooksType
+from .group_0087 import CustomPropertyType
+from .group_0494 import EnterpriseWebhooksType
+from .group_0495 import SimpleInstallationType
+from .group_0496 import OrganizationSimpleWebhooksType
 
 
-class WebhookDependabotAlertDismissedType(TypedDict):
-    """Dependabot alert dismissed event"""
+class WebhookCustomPropertyPromotedToEnterpriseType(TypedDict):
+    """custom property promoted to business event"""
 
-    action: Literal["dismissed"]
-    alert: DependabotAlertType
+    action: Literal["promote_to_enterprise"]
+    definition: CustomPropertyType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookDependabotAlertDismissedType",)
+__all__ = ("WebhookCustomPropertyPromotedToEnterpriseType",)

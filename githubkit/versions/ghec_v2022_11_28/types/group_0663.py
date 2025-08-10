@@ -13,19 +13,20 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0662 import WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType
+from .group_0658 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType,
+)
 
 
-class WebhookIssuesClosedPropIssueAllof0PropMilestoneType(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
+class WebhookIssueCommentEditedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssueCommentEditedPropIssueMergedMilestone"""
 
     closed_at: Union[datetime, None]
     closed_issues: int
     created_at: datetime
-    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType, None]
+    creator: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType, None
+    ]
     description: Union[str, None]
     due_on: Union[datetime, None]
     html_url: str
@@ -40,4 +41,4 @@ class WebhookIssuesClosedPropIssueAllof0PropMilestoneType(TypedDict):
     url: str
 
 
-__all__ = ("WebhookIssuesClosedPropIssueAllof0PropMilestoneType",)
+__all__ = ("WebhookIssueCommentEditedPropIssueMergedMilestoneType",)

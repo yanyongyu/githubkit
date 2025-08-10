@@ -28,9 +28,12 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import (
+        ActionsArtifactAndLogRetentionResponse,
         ActionsCacheList,
         ActionsCacheUsageByRepository,
         ActionsCacheUsageOrgEnterprise,
+        ActionsForkPrContributorApproval,
+        ActionsForkPrWorkflowsPrivateRepos,
         ActionsGetDefaultWorkflowPermissions,
         ActionsHostedRunner,
         ActionsHostedRunnerLimits,
@@ -64,6 +67,7 @@ if TYPE_CHECKING:
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
         OrgsOrgActionsPermissionsRepositoriesGetResponse200,
+        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200,
         OrgsOrgActionsRunnerGroupsGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
@@ -92,15 +96,21 @@ if TYPE_CHECKING:
         RunnerApplication,
         RunnerGroupsOrg,
         SelectedActions,
+        SelfHostedRunnersSettings,
         Workflow,
         WorkflowRun,
         WorkflowRunUsage,
         WorkflowUsage,
     )
     from ..types import (
+        ActionsArtifactAndLogRetentionResponseType,
+        ActionsArtifactAndLogRetentionType,
         ActionsCacheListType,
         ActionsCacheUsageByRepositoryType,
         ActionsCacheUsageOrgEnterpriseType,
+        ActionsForkPrContributorApprovalType,
+        ActionsForkPrWorkflowsPrivateReposRequestType,
+        ActionsForkPrWorkflowsPrivateReposType,
         ActionsGetDefaultWorkflowPermissionsType,
         ActionsHostedRunnerLimitsType,
         ActionsHostedRunnerType,
@@ -145,6 +155,9 @@ if TYPE_CHECKING:
         OrgsOrgActionsPermissionsPutBodyType,
         OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
         OrgsOrgActionsPermissionsRepositoriesPutBodyType,
+        OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType,
+        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type,
+        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType,
         OrgsOrgActionsRunnerGroupsGetResponse200Type,
         OrgsOrgActionsRunnerGroupsPostBodyType,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type,
@@ -204,6 +217,7 @@ if TYPE_CHECKING:
         RunnerGroupsOrgType,
         RunnerType,
         SelectedActionsType,
+        SelfHostedRunnersSettingsType,
         WorkflowRunType,
         WorkflowRunUsageType,
         WorkflowType,
@@ -2846,6 +2860,670 @@ class ActionsClient:
             stream=stream,
         )
 
+    def get_artifact_and_log_retention_settings_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsArtifactAndLogRetentionResponse,
+        ActionsArtifactAndLogRetentionResponseType,
+    ]:
+        """actions/get-artifact-and-log-retention-settings-organization
+
+        GET /orgs/{org}/actions/permissions/artifact-and-log-retention
+
+        Gets artifact and log retention settings for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-artifact-and-log-retention-settings-for-an-organization
+        """
+
+        from ..models import ActionsArtifactAndLogRetentionResponse, BasicError
+
+        url = f"/orgs/{org}/actions/permissions/artifact-and-log-retention"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsArtifactAndLogRetentionResponse,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_artifact_and_log_retention_settings_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsArtifactAndLogRetentionResponse,
+        ActionsArtifactAndLogRetentionResponseType,
+    ]:
+        """actions/get-artifact-and-log-retention-settings-organization
+
+        GET /orgs/{org}/actions/permissions/artifact-and-log-retention
+
+        Gets artifact and log retention settings for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-artifact-and-log-retention-settings-for-an-organization
+        """
+
+        from ..models import ActionsArtifactAndLogRetentionResponse, BasicError
+
+        url = f"/orgs/{org}/actions/permissions/artifact-and-log-retention"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsArtifactAndLogRetentionResponse,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_artifact_and_log_retention_settings_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsArtifactAndLogRetentionType,
+    ) -> Response: ...
+
+    @overload
+    def set_artifact_and_log_retention_settings_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        days: int,
+    ) -> Response: ...
+
+    def set_artifact_and_log_retention_settings_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsArtifactAndLogRetentionType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-artifact-and-log-retention-settings-organization
+
+        PUT /orgs/{org}/actions/permissions/artifact-and-log-retention
+
+        Sets artifact and log retention settings for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-artifact-and-log-retention-settings-for-an-organization
+        """
+
+        from ..models import ActionsArtifactAndLogRetention, BasicError, ValidationError
+
+        url = f"/orgs/{org}/actions/permissions/artifact-and-log-retention"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsArtifactAndLogRetention, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_artifact_and_log_retention_settings_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsArtifactAndLogRetentionType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_artifact_and_log_retention_settings_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        days: int,
+    ) -> Response: ...
+
+    async def async_set_artifact_and_log_retention_settings_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsArtifactAndLogRetentionType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-artifact-and-log-retention-settings-organization
+
+        PUT /orgs/{org}/actions/permissions/artifact-and-log-retention
+
+        Sets artifact and log retention settings for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-artifact-and-log-retention-settings-for-an-organization
+        """
+
+        from ..models import ActionsArtifactAndLogRetention, BasicError, ValidationError
+
+        url = f"/orgs/{org}/actions/permissions/artifact-and-log-retention"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsArtifactAndLogRetention, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def get_fork_pr_contributor_approval_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsForkPrContributorApproval, ActionsForkPrContributorApprovalType
+    ]:
+        """actions/get-fork-pr-contributor-approval-permissions-organization
+
+        GET /orgs/{org}/actions/permissions/fork-pr-contributor-approval
+
+        Gets the fork PR contributor approval policy for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-an-organization
+        """
+
+        from ..models import ActionsForkPrContributorApproval, BasicError
+
+        url = f"/orgs/{org}/actions/permissions/fork-pr-contributor-approval"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsForkPrContributorApproval,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_fork_pr_contributor_approval_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsForkPrContributorApproval, ActionsForkPrContributorApprovalType
+    ]:
+        """actions/get-fork-pr-contributor-approval-permissions-organization
+
+        GET /orgs/{org}/actions/permissions/fork-pr-contributor-approval
+
+        Gets the fork PR contributor approval policy for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-an-organization
+        """
+
+        from ..models import ActionsForkPrContributorApproval, BasicError
+
+        url = f"/orgs/{org}/actions/permissions/fork-pr-contributor-approval"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsForkPrContributorApproval,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_fork_pr_contributor_approval_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsForkPrContributorApprovalType,
+    ) -> Response: ...
+
+    @overload
+    def set_fork_pr_contributor_approval_permissions_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        approval_policy: Literal[
+            "first_time_contributors_new_to_github",
+            "first_time_contributors",
+            "all_external_contributors",
+        ],
+    ) -> Response: ...
+
+    def set_fork_pr_contributor_approval_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsForkPrContributorApprovalType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-fork-pr-contributor-approval-permissions-organization
+
+        PUT /orgs/{org}/actions/permissions/fork-pr-contributor-approval
+
+        Sets the fork PR contributor approval policy for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-an-organization
+        """
+
+        from ..models import (
+            ActionsForkPrContributorApproval,
+            BasicError,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/actions/permissions/fork-pr-contributor-approval"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsForkPrContributorApproval, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_fork_pr_contributor_approval_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsForkPrContributorApprovalType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_fork_pr_contributor_approval_permissions_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        approval_policy: Literal[
+            "first_time_contributors_new_to_github",
+            "first_time_contributors",
+            "all_external_contributors",
+        ],
+    ) -> Response: ...
+
+    async def async_set_fork_pr_contributor_approval_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsForkPrContributorApprovalType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-fork-pr-contributor-approval-permissions-organization
+
+        PUT /orgs/{org}/actions/permissions/fork-pr-contributor-approval
+
+        Sets the fork PR contributor approval policy for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-an-organization
+        """
+
+        from ..models import (
+            ActionsForkPrContributorApproval,
+            BasicError,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/actions/permissions/fork-pr-contributor-approval"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsForkPrContributorApproval, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def get_private_repo_fork_pr_workflows_settings_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsForkPrWorkflowsPrivateRepos, ActionsForkPrWorkflowsPrivateReposType
+    ]:
+        """actions/get-private-repo-fork-pr-workflows-settings-organization
+
+        GET /orgs/{org}/actions/permissions/fork-pr-workflows-private-repos
+
+        Gets the settings for whether workflows from fork pull requests can run on private repositories in an organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-an-organization
+        """
+
+        from ..models import ActionsForkPrWorkflowsPrivateRepos, BasicError
+
+        url = f"/orgs/{org}/actions/permissions/fork-pr-workflows-private-repos"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsForkPrWorkflowsPrivateRepos,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_private_repo_fork_pr_workflows_settings_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsForkPrWorkflowsPrivateRepos, ActionsForkPrWorkflowsPrivateReposType
+    ]:
+        """actions/get-private-repo-fork-pr-workflows-settings-organization
+
+        GET /orgs/{org}/actions/permissions/fork-pr-workflows-private-repos
+
+        Gets the settings for whether workflows from fork pull requests can run on private repositories in an organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-an-organization
+        """
+
+        from ..models import ActionsForkPrWorkflowsPrivateRepos, BasicError
+
+        url = f"/orgs/{org}/actions/permissions/fork-pr-workflows-private-repos"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsForkPrWorkflowsPrivateRepos,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_private_repo_fork_pr_workflows_settings_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsForkPrWorkflowsPrivateReposRequestType,
+    ) -> Response: ...
+
+    @overload
+    def set_private_repo_fork_pr_workflows_settings_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        run_workflows_from_fork_pull_requests: bool,
+        send_write_tokens_to_workflows: Missing[bool] = UNSET,
+        send_secrets_and_variables: Missing[bool] = UNSET,
+        require_approval_for_fork_pr_workflows: Missing[bool] = UNSET,
+    ) -> Response: ...
+
+    def set_private_repo_fork_pr_workflows_settings_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsForkPrWorkflowsPrivateReposRequestType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-private-repo-fork-pr-workflows-settings-organization
+
+        PUT /orgs/{org}/actions/permissions/fork-pr-workflows-private-repos
+
+        Sets the settings for whether workflows from fork pull requests can run on private repositories in an organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-an-organization
+        """
+
+        from ..models import (
+            ActionsForkPrWorkflowsPrivateReposRequest,
+            BasicError,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/actions/permissions/fork-pr-workflows-private-repos"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsForkPrWorkflowsPrivateReposRequest, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_private_repo_fork_pr_workflows_settings_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsForkPrWorkflowsPrivateReposRequestType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_private_repo_fork_pr_workflows_settings_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        run_workflows_from_fork_pull_requests: bool,
+        send_write_tokens_to_workflows: Missing[bool] = UNSET,
+        send_secrets_and_variables: Missing[bool] = UNSET,
+        require_approval_for_fork_pr_workflows: Missing[bool] = UNSET,
+    ) -> Response: ...
+
+    async def async_set_private_repo_fork_pr_workflows_settings_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsForkPrWorkflowsPrivateReposRequestType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-private-repo-fork-pr-workflows-settings-organization
+
+        PUT /orgs/{org}/actions/permissions/fork-pr-workflows-private-repos
+
+        Sets the settings for whether workflows from fork pull requests can run on private repositories in an organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-an-organization
+        """
+
+        from ..models import (
+            ActionsForkPrWorkflowsPrivateReposRequest,
+            BasicError,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/actions/permissions/fork-pr-workflows-private-repos"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsForkPrWorkflowsPrivateReposRequest, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
     def list_selected_repositories_enabled_github_actions_organization(
         self,
         org: str,
@@ -3388,6 +4066,636 @@ class ActionsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
+        )
+
+    def get_self_hosted_runners_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[SelfHostedRunnersSettings, SelfHostedRunnersSettingsType]:
+        """actions/get-self-hosted-runners-permissions-organization
+
+        GET /orgs/{org}/actions/permissions/self-hosted-runners
+
+        Gets the settings for self-hosted runners for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-self-hosted-runners-settings-for-an-organization
+        """
+
+        from ..models import BasicError, SelfHostedRunnersSettings
+
+        url = f"/orgs/{org}/actions/permissions/self-hosted-runners"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=SelfHostedRunnersSettings,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_self_hosted_runners_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[SelfHostedRunnersSettings, SelfHostedRunnersSettingsType]:
+        """actions/get-self-hosted-runners-permissions-organization
+
+        GET /orgs/{org}/actions/permissions/self-hosted-runners
+
+        Gets the settings for self-hosted runners for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-self-hosted-runners-settings-for-an-organization
+        """
+
+        from ..models import BasicError, SelfHostedRunnersSettings
+
+        url = f"/orgs/{org}/actions/permissions/self-hosted-runners"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=SelfHostedRunnersSettings,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_self_hosted_runners_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_self_hosted_runners_permissions_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        enabled_repositories: Literal["all", "selected", "none"],
+    ) -> Response: ...
+
+    def set_self_hosted_runners_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-self-hosted-runners-permissions-organization
+
+        PUT /orgs/{org}/actions/permissions/self-hosted-runners
+
+        Sets the settings for self-hosted runners for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-self-hosted-runners-settings-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgActionsPermissionsSelfHostedRunnersPutBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/actions/permissions/self-hosted-runners"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgActionsPermissionsSelfHostedRunnersPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_self_hosted_runners_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_self_hosted_runners_permissions_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        enabled_repositories: Literal["all", "selected", "none"],
+    ) -> Response: ...
+
+    async def async_set_self_hosted_runners_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-self-hosted-runners-permissions-organization
+
+        PUT /orgs/{org}/actions/permissions/self-hosted-runners
+
+        Sets the settings for self-hosted runners for an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-self-hosted-runners-settings-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgActionsPermissionsSelfHostedRunnersPutBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/actions/permissions/self-hosted-runners"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgActionsPermissionsSelfHostedRunnersPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def list_selected_repositories_self_hosted_runners_organization(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200,
+        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type,
+    ]:
+        """actions/list-selected-repositories-self-hosted-runners-organization
+
+        GET /orgs/{org}/actions/permissions/self-hosted-runners/repositories
+
+        Lists repositories that are allowed to use self-hosted runners in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200,
+        )
+
+        url = f"/orgs/{org}/actions/permissions/self-hosted-runners/repositories"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_selected_repositories_self_hosted_runners_organization(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200,
+        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type,
+    ]:
+        """actions/list-selected-repositories-self-hosted-runners-organization
+
+        GET /orgs/{org}/actions/permissions/self-hosted-runners/repositories
+
+        Lists repositories that are allowed to use self-hosted runners in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200,
+        )
+
+        url = f"/orgs/{org}/actions/permissions/self-hosted-runners/repositories"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_selected_repositories_self_hosted_runners_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_selected_repositories_self_hosted_runners_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_repository_ids: list[int],
+    ) -> Response: ...
+
+    def set_selected_repositories_self_hosted_runners_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-selected-repositories-self-hosted-runners-organization
+
+        PUT /orgs/{org}/actions/permissions/self-hosted-runners/repositories
+
+        Sets repositories that are allowed to use self-hosted runners in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/actions/permissions/self-hosted-runners/repositories"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_selected_repositories_self_hosted_runners_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_selected_repositories_self_hosted_runners_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_repository_ids: list[int],
+    ) -> Response: ...
+
+    async def async_set_selected_repositories_self_hosted_runners_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-selected-repositories-self-hosted-runners-organization
+
+        PUT /orgs/{org}/actions/permissions/self-hosted-runners/repositories
+
+        Sets repositories that are allowed to use self-hosted runners in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/actions/permissions/self-hosted-runners/repositories"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def enable_selected_repository_self_hosted_runners_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/enable-selected-repository-self-hosted-runners-organization
+
+        PUT /orgs/{org}/actions/permissions/self-hosted-runners/repositories/{repository_id}
+
+        Adds a repository to the list of repositories that are allowed to use self-hosted runners in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#add-a-repository-to-the-list-of-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/orgs/{org}/actions/permissions/self-hosted-runners/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_enable_selected_repository_self_hosted_runners_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/enable-selected-repository-self-hosted-runners-organization
+
+        PUT /orgs/{org}/actions/permissions/self-hosted-runners/repositories/{repository_id}
+
+        Adds a repository to the list of repositories that are allowed to use self-hosted runners in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#add-a-repository-to-the-list-of-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/orgs/{org}/actions/permissions/self-hosted-runners/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def disable_selected_repository_self_hosted_runners_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/disable-selected-repository-self-hosted-runners-organization
+
+        DELETE /orgs/{org}/actions/permissions/self-hosted-runners/repositories/{repository_id}
+
+        Removes a repository from the list of repositories that are allowed to use self-hosted runners in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#remove-a-repository-from-the-list-of-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/orgs/{org}/actions/permissions/self-hosted-runners/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_disable_selected_repository_self_hosted_runners_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/disable-selected-repository-self-hosted-runners-organization
+
+        DELETE /orgs/{org}/actions/permissions/self-hosted-runners/repositories/{repository_id}
+
+        Removes a repository from the list of repositories that are allowed to use self-hosted runners in an organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#remove-a-repository-from-the-list-of-repositories-allowed-to-use-self-hosted-runners-in-an-organization
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/orgs/{org}/actions/permissions/self-hosted-runners/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
         )
 
     def get_github_actions_default_workflow_permissions_organization(
@@ -9702,6 +11010,702 @@ class ActionsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
+        )
+
+    def get_artifact_and_log_retention_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsArtifactAndLogRetentionResponse,
+        ActionsArtifactAndLogRetentionResponseType,
+    ]:
+        """actions/get-artifact-and-log-retention-settings-repository
+
+        GET /repos/{owner}/{repo}/actions/permissions/artifact-and-log-retention
+
+        Gets artifact and log retention settings for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-artifact-and-log-retention-settings-for-a-repository
+        """
+
+        from ..models import ActionsArtifactAndLogRetentionResponse, BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/permissions/artifact-and-log-retention"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsArtifactAndLogRetentionResponse,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_artifact_and_log_retention_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsArtifactAndLogRetentionResponse,
+        ActionsArtifactAndLogRetentionResponseType,
+    ]:
+        """actions/get-artifact-and-log-retention-settings-repository
+
+        GET /repos/{owner}/{repo}/actions/permissions/artifact-and-log-retention
+
+        Gets artifact and log retention settings for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-artifact-and-log-retention-settings-for-a-repository
+        """
+
+        from ..models import ActionsArtifactAndLogRetentionResponse, BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/permissions/artifact-and-log-retention"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsArtifactAndLogRetentionResponse,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_artifact_and_log_retention_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsArtifactAndLogRetentionType,
+    ) -> Response: ...
+
+    @overload
+    def set_artifact_and_log_retention_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        days: int,
+    ) -> Response: ...
+
+    def set_artifact_and_log_retention_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsArtifactAndLogRetentionType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-artifact-and-log-retention-settings-repository
+
+        PUT /repos/{owner}/{repo}/actions/permissions/artifact-and-log-retention
+
+        Sets artifact and log retention settings for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-artifact-and-log-retention-settings-for-a-repository
+        """
+
+        from ..models import ActionsArtifactAndLogRetention, BasicError, ValidationError
+
+        url = f"/repos/{owner}/{repo}/actions/permissions/artifact-and-log-retention"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsArtifactAndLogRetention, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_artifact_and_log_retention_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsArtifactAndLogRetentionType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_artifact_and_log_retention_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        days: int,
+    ) -> Response: ...
+
+    async def async_set_artifact_and_log_retention_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsArtifactAndLogRetentionType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-artifact-and-log-retention-settings-repository
+
+        PUT /repos/{owner}/{repo}/actions/permissions/artifact-and-log-retention
+
+        Sets artifact and log retention settings for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-artifact-and-log-retention-settings-for-a-repository
+        """
+
+        from ..models import ActionsArtifactAndLogRetention, BasicError, ValidationError
+
+        url = f"/repos/{owner}/{repo}/actions/permissions/artifact-and-log-retention"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsArtifactAndLogRetention, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def get_fork_pr_contributor_approval_permissions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsForkPrContributorApproval, ActionsForkPrContributorApprovalType
+    ]:
+        """actions/get-fork-pr-contributor-approval-permissions-repository
+
+        GET /repos/{owner}/{repo}/actions/permissions/fork-pr-contributor-approval
+
+        Gets the fork PR contributor approval policy for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-a-repository
+        """
+
+        from ..models import ActionsForkPrContributorApproval, BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/permissions/fork-pr-contributor-approval"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsForkPrContributorApproval,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_fork_pr_contributor_approval_permissions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsForkPrContributorApproval, ActionsForkPrContributorApprovalType
+    ]:
+        """actions/get-fork-pr-contributor-approval-permissions-repository
+
+        GET /repos/{owner}/{repo}/actions/permissions/fork-pr-contributor-approval
+
+        Gets the fork PR contributor approval policy for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-a-repository
+        """
+
+        from ..models import ActionsForkPrContributorApproval, BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/permissions/fork-pr-contributor-approval"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsForkPrContributorApproval,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_fork_pr_contributor_approval_permissions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsForkPrContributorApprovalType,
+    ) -> Response: ...
+
+    @overload
+    def set_fork_pr_contributor_approval_permissions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        approval_policy: Literal[
+            "first_time_contributors_new_to_github",
+            "first_time_contributors",
+            "all_external_contributors",
+        ],
+    ) -> Response: ...
+
+    def set_fork_pr_contributor_approval_permissions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsForkPrContributorApprovalType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-fork-pr-contributor-approval-permissions-repository
+
+        PUT /repos/{owner}/{repo}/actions/permissions/fork-pr-contributor-approval
+
+        Sets the fork PR contributor approval policy for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-a-repository
+        """
+
+        from ..models import (
+            ActionsForkPrContributorApproval,
+            BasicError,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/actions/permissions/fork-pr-contributor-approval"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsForkPrContributorApproval, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_fork_pr_contributor_approval_permissions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsForkPrContributorApprovalType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_fork_pr_contributor_approval_permissions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        approval_policy: Literal[
+            "first_time_contributors_new_to_github",
+            "first_time_contributors",
+            "all_external_contributors",
+        ],
+    ) -> Response: ...
+
+    async def async_set_fork_pr_contributor_approval_permissions_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsForkPrContributorApprovalType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-fork-pr-contributor-approval-permissions-repository
+
+        PUT /repos/{owner}/{repo}/actions/permissions/fork-pr-contributor-approval
+
+        Sets the fork PR contributor approval policy for a repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-a-repository
+        """
+
+        from ..models import (
+            ActionsForkPrContributorApproval,
+            BasicError,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/actions/permissions/fork-pr-contributor-approval"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsForkPrContributorApproval, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def get_private_repo_fork_pr_workflows_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsForkPrWorkflowsPrivateRepos, ActionsForkPrWorkflowsPrivateReposType
+    ]:
+        """actions/get-private-repo-fork-pr-workflows-settings-repository
+
+        GET /repos/{owner}/{repo}/actions/permissions/fork-pr-workflows-private-repos
+
+        Gets the settings for whether workflows from fork pull requests can run on a private repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-a-repository
+        """
+
+        from ..models import ActionsForkPrWorkflowsPrivateRepos, BasicError
+
+        url = (
+            f"/repos/{owner}/{repo}/actions/permissions/fork-pr-workflows-private-repos"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsForkPrWorkflowsPrivateRepos,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_private_repo_fork_pr_workflows_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsForkPrWorkflowsPrivateRepos, ActionsForkPrWorkflowsPrivateReposType
+    ]:
+        """actions/get-private-repo-fork-pr-workflows-settings-repository
+
+        GET /repos/{owner}/{repo}/actions/permissions/fork-pr-workflows-private-repos
+
+        Gets the settings for whether workflows from fork pull requests can run on a private repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-a-repository
+        """
+
+        from ..models import ActionsForkPrWorkflowsPrivateRepos, BasicError
+
+        url = (
+            f"/repos/{owner}/{repo}/actions/permissions/fork-pr-workflows-private-repos"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsForkPrWorkflowsPrivateRepos,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_private_repo_fork_pr_workflows_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsForkPrWorkflowsPrivateReposRequestType,
+    ) -> Response: ...
+
+    @overload
+    def set_private_repo_fork_pr_workflows_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        run_workflows_from_fork_pull_requests: bool,
+        send_write_tokens_to_workflows: Missing[bool] = UNSET,
+        send_secrets_and_variables: Missing[bool] = UNSET,
+        require_approval_for_fork_pr_workflows: Missing[bool] = UNSET,
+    ) -> Response: ...
+
+    def set_private_repo_fork_pr_workflows_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsForkPrWorkflowsPrivateReposRequestType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-private-repo-fork-pr-workflows-settings-repository
+
+        PUT /repos/{owner}/{repo}/actions/permissions/fork-pr-workflows-private-repos
+
+        Sets the settings for whether workflows from fork pull requests can run on a private repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-a-repository
+        """
+
+        from ..models import (
+            ActionsForkPrWorkflowsPrivateReposRequest,
+            BasicError,
+            ValidationError,
+        )
+
+        url = (
+            f"/repos/{owner}/{repo}/actions/permissions/fork-pr-workflows-private-repos"
+        )
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsForkPrWorkflowsPrivateReposRequest, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_private_repo_fork_pr_workflows_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsForkPrWorkflowsPrivateReposRequestType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_private_repo_fork_pr_workflows_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        run_workflows_from_fork_pull_requests: bool,
+        send_write_tokens_to_workflows: Missing[bool] = UNSET,
+        send_secrets_and_variables: Missing[bool] = UNSET,
+        require_approval_for_fork_pr_workflows: Missing[bool] = UNSET,
+    ) -> Response: ...
+
+    async def async_set_private_repo_fork_pr_workflows_settings_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsForkPrWorkflowsPrivateReposRequestType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-private-repo-fork-pr-workflows-settings-repository
+
+        PUT /repos/{owner}/{repo}/actions/permissions/fork-pr-workflows-private-repos
+
+        Sets the settings for whether workflows from fork pull requests can run on a private repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-a-repository
+        """
+
+        from ..models import (
+            ActionsForkPrWorkflowsPrivateReposRequest,
+            BasicError,
+            ValidationError,
+        )
+
+        url = (
+            f"/repos/{owner}/{repo}/actions/permissions/fork-pr-workflows-private-repos"
+        )
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsForkPrWorkflowsPrivateReposRequest, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
         )
 
     def get_allowed_actions_repository(

@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class RepositoryFineGrainedPermissionType(TypedDict):
-    """Repository Fine-Grained Permission
+class DependabotPublicKeyType(TypedDict):
+    """DependabotPublicKey
 
-    A fine-grained permission that protects repository resources.
+    The public key used for setting Dependabot Secrets.
     """
 
-    name: str
-    description: str
+    key_id: str
+    key: str
 
 
-__all__ = ("RepositoryFineGrainedPermissionType",)
+__all__ = ("DependabotPublicKeyType",)

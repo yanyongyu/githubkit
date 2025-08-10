@@ -9,21 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0268 import Link
+
+class PullRequestPropLabelsItems(GitHubModel):
+    """PullRequestPropLabelsItems"""
+
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    name: str = Field()
+    description: Union[str, None] = Field()
+    color: str = Field()
+    default: bool = Field()
 
 
-class ReviewCommentPropLinks(GitHubModel):
-    """ReviewCommentPropLinks"""
+model_rebuild(PullRequestPropLabelsItems)
 
-    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
-    html: Link = Field(title="Link", description="Hypermedia Link")
-    pull_request: Link = Field(title="Link", description="Hypermedia Link")
-
-
-model_rebuild(ReviewCommentPropLinks)
-
-__all__ = ("ReviewCommentPropLinks",)
+__all__ = ("PullRequestPropLabelsItems",)

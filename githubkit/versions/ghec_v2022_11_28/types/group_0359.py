@@ -12,16 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class PorterLargeFileType(TypedDict):
-    """Porter Large File
+class GitRefType(TypedDict):
+    """Git Reference
 
-    Porter Large File
+    Git references within a repository
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    ref: str
+    node_id: str
+    url: str
+    object_: GitRefPropObjectType
 
 
-__all__ = ("PorterLargeFileType",)
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
+
+    type: str
+    sha: str
+    url: str
+
+
+__all__ = (
+    "GitRefPropObjectType",
+    "GitRefType",
+)

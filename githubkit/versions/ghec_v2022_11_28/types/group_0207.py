@@ -12,14 +12,37 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsSummaryStatsType(TypedDict):
-    """Summary Stats
+class ExternalGroupType(TypedDict):
+    """ExternalGroup
 
-    API Insights usage summary stats for an organization
+    Information about an external group's usage and its members
     """
 
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    group_id: int
+    group_name: str
+    updated_at: NotRequired[str]
+    teams: list[ExternalGroupPropTeamsItemsType]
+    members: list[ExternalGroupPropMembersItemsType]
 
 
-__all__ = ("ApiInsightsSummaryStatsType",)
+class ExternalGroupPropTeamsItemsType(TypedDict):
+    """ExternalGroupPropTeamsItems"""
+
+    team_id: int
+    team_name: str
+
+
+class ExternalGroupPropMembersItemsType(TypedDict):
+    """ExternalGroupPropMembersItems"""
+
+    member_id: int
+    member_login: str
+    member_name: str
+    member_email: str
+
+
+__all__ = (
+    "ExternalGroupPropMembersItemsType",
+    "ExternalGroupPropTeamsItemsType",
+    "ExternalGroupType",
+)

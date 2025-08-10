@@ -11,22 +11,15 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserEmailsPostBodyOneof0(GitHubModel):
-    """UserEmailsPostBodyOneof0
+class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody(GitHubModel):
+    """TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key.",
-    )
+    body: str = Field(description="The discussion comment's body text.")
 
 
-model_rebuild(UserEmailsPostBodyOneof0)
+model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody)
 
-__all__ = ("UserEmailsPostBodyOneof0",)
+__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody",)

@@ -9,51 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0017 import AppPermissions
 
 
-class AmazonS3OidcConfig(GitHubModel):
-    """AmazonS3OIDCConfig
+class EnterpriseOrganizationInstallation(GitHubModel):
+    """Enterprise Organization Installation
 
-    Amazon S3 OIDC Config for audit log streaming configuration.
+    A GitHub App Installation on an enterprise-owned organization
     """
 
-    bucket: str = Field(description="Amazon S3 Bucket Name.")
-    region: str = Field(description="AWS S3 Bucket Region.")
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    id: int = Field(description="The ID of the installation.")
+    app_slug: Missing[str] = Field(default=UNSET)
+    client_id: str = Field()
+    repository_selection: Literal["all", "selected"] = Field(
+        description="Describe whether all repositories have been selected or there's a selection involved"
     )
-    authentication_type: Literal["oidc"] = Field(
-        description="Authentication Type for Amazon S3."
+    repositories_url: str = Field()
+    permissions: AppPermissions = Field(
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
     )
-    arn_role: str = Field()
+    events: Missing[list[str]] = Field(default=UNSET)
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-class SplunkConfig(GitHubModel):
-    """SplunkConfig
+model_rebuild(EnterpriseOrganizationInstallation)
 
-    Splunk Config for Audit Log Stream Configuration
-    """
-
-    domain: str = Field(description="Domain of Splunk instance.")
-    port: int = Field(description="The port number for connecting to Splunk.")
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
-    )
-    encrypted_token: str = Field(description="Encrypted Token.")
-    ssl_verify: bool = Field(
-        description="SSL verification helps ensure your events are sent to your Splunk endpoint securely."
-    )
-
-
-model_rebuild(AmazonS3OidcConfig)
-model_rebuild(SplunkConfig)
-
-__all__ = (
-    "AmazonS3OidcConfig",
-    "SplunkConfig",
-)
+__all__ = ("EnterpriseOrganizationInstallation",)

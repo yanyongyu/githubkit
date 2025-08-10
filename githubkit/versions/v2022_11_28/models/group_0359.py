@@ -14,18 +14,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReleaseNotesContent(GitHubModel):
-    """Generated Release Notes Content
+class PullRequestMergeResult(GitHubModel):
+    """Pull Request Merge Result
 
-    Generated name and body describing a release
+    Pull Request Merge Result
     """
 
-    name: str = Field(description="The generated name of the release")
-    body: str = Field(
-        description="The generated body describing the contents of the release supporting markdown formatting"
-    )
+    sha: str = Field()
+    merged: bool = Field()
+    message: str = Field()
 
 
-model_rebuild(ReleaseNotesContent)
+model_rebuild(PullRequestMergeResult)
 
-__all__ = ("ReleaseNotesContent",)
+__all__ = ("PullRequestMergeResult",)

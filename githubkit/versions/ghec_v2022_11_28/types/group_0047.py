@@ -9,18 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class AccessibleRepositoryType(TypedDict):
-    """Accessible Repository
+class RunnerApplicationType(TypedDict):
+    """Runner Application
 
-    A repository that may be made accessible to a GitHub App.
+    Runner Application
     """
 
-    id: int
-    name: str
-    full_name: str
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
-__all__ = ("AccessibleRepositoryType",)
+__all__ = ("RunnerApplicationType",)

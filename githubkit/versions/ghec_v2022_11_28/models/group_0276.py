@@ -9,25 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class Verification(GitHubModel):
-    """Verification"""
+class CheckAutomatedSecurityFixes(GitHubModel):
+    """Check Dependabot security updates
 
-    verified: bool = Field()
-    reason: str = Field()
-    payload: Union[str, None] = Field()
-    signature: Union[str, None] = Field()
-    verified_at: Missing[Union[str, None]] = Field(default=UNSET)
+    Check Dependabot security updates
+    """
+
+    enabled: bool = Field(
+        description="Whether Dependabot security updates are enabled for the repository."
+    )
+    paused: bool = Field(
+        description="Whether Dependabot security updates are paused for the repository."
+    )
 
 
-model_rebuild(Verification)
+model_rebuild(CheckAutomatedSecurityFixes)
 
-__all__ = ("Verification",)
+__all__ = ("CheckAutomatedSecurityFixes",)

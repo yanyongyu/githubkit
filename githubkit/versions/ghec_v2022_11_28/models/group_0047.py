@@ -12,19 +12,27 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AccessibleRepository(GitHubModel):
-    """Accessible Repository
+class RunnerApplication(GitHubModel):
+    """Runner Application
 
-    A repository that may be made accessible to a GitHub App.
+    Runner Application
     """
 
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field()
+    os: str = Field()
+    architecture: str = Field()
+    download_url: str = Field()
+    filename: str = Field()
+    temp_download_token: Missing[str] = Field(
+        default=UNSET,
+        description="A short lived bearer token used to download the runner, if needed.",
+    )
+    sha256_checksum: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(AccessibleRepository)
+model_rebuild(RunnerApplication)
 
-__all__ = ("AccessibleRepository",)
+__all__ = ("RunnerApplication",)

@@ -9,35 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class NetworkSettings(GitHubModel):
-    """Hosted compute network settings resource
+class RulesetVersionWithStateAllof1PropState(GitHubModel):
+    """RulesetVersionWithStateAllof1PropState
 
-    A hosted compute network settings resource.
+    The state of the ruleset version
     """
 
-    id: str = Field(
-        description="The unique identifier of the network settings resource."
-    )
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of the network configuration that is using this settings resource.",
-    )
-    name: str = Field(description="The name of the network settings resource.")
-    subnet_id: str = Field(
-        description="The subnet this network settings resource is configured for."
-    )
-    region: str = Field(
-        description="The location of the subnet this network settings resource is configured for."
-    )
 
+model_rebuild(RulesetVersionWithStateAllof1PropState)
 
-model_rebuild(NetworkSettings)
-
-__all__ = ("NetworkSettings",)
+__all__ = ("RulesetVersionWithStateAllof1PropState",)

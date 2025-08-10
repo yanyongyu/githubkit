@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReactionRollup(GitHubModel):
-    """Reaction Rollup"""
+class DeleteCostCenter(GitHubModel):
+    """DeleteCostCenter"""
 
-    url: str = Field()
-    total_count: int = Field()
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    laugh: int = Field()
-    confused: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    eyes: int = Field()
-    rocket: int = Field()
+    message: str = Field(
+        description="A message indicating the result of the deletion operation"
+    )
+    id: str = Field(description="The unique identifier of the deleted cost center")
+    name: str = Field(description="The name of the deleted cost center")
+    cost_center_state: Literal["CostCenterArchived"] = Field(
+        alias="costCenterState",
+        description="The state of the cost center after deletion",
+    )
 
 
-model_rebuild(ReactionRollup)
+model_rebuild(DeleteCostCenter)
 
-__all__ = ("ReactionRollup",)
+__all__ = ("DeleteCostCenter",)

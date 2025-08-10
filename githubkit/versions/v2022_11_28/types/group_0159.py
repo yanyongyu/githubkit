@@ -13,8 +13,8 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleBranchNamePatternPropParametersType(TypedDict):
-    """RepositoryRuleBranchNamePatternPropParameters"""
+class RepositoryRuleCommitMessagePatternPropParametersType(TypedDict):
+    """RepositoryRuleCommitMessagePatternPropParameters"""
 
     name: NotRequired[str]
     negate: NotRequired[bool]
@@ -22,4 +22,4 @@ class RepositoryRuleBranchNamePatternPropParametersType(TypedDict):
     pattern: str
 
 
-__all__ = ("RepositoryRuleBranchNamePatternPropParametersType",)
+__all__ = ("RepositoryRuleCommitMessagePatternPropParametersType",)

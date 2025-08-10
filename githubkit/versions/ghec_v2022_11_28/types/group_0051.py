@@ -9,21 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetAuditLogStreamConfigsItemsType(TypedDict):
-    """GetAuditLogStreamConfigsItems"""
+class InstallableOrganizationType(TypedDict):
+    """Installable Organization
 
-    id: NotRequired[int]
-    stream_type: NotRequired[str]
-    stream_details: NotRequired[str]
-    enabled: NotRequired[bool]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-    paused_at: NotRequired[Union[datetime, None]]
+    A GitHub organization on which a GitHub App can be installed.
+    """
+
+    id: int
+    login: str
+    accessible_repositories_url: NotRequired[str]
 
 
-__all__ = ("GetAuditLogStreamConfigsItemsType",)
+__all__ = ("InstallableOrganizationType",)

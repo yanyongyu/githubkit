@@ -9,103 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0160 import ReactionRollupType
+from .group_0010 import IntegrationType
 
 
-class PullRequestReviewCommentType(TypedDict):
-    """Pull Request Review Comment
+class RemovedFromProjectIssueEventType(TypedDict):
+    """Removed from Project Issue Event
 
-    Pull Request Review Comments are comments on a portion of the Pull Request's
-    diff.
+    Removed from Project Issue Event
     """
 
-    url: str
-    pull_request_review_id: Union[int, None]
     id: int
     node_id: str
-    diff_hunk: str
-    path: str
-    position: NotRequired[int]
-    original_position: NotRequired[int]
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: SimpleUserType
-    body: str
-    created_at: datetime
-    updated_at: datetime
-    html_url: str
-    pull_request_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    links: PullRequestReviewCommentPropLinksType
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    subject_type: NotRequired[Literal["line", "file"]]
-    reactions: NotRequired[ReactionRollupType]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
+    url: str
+    actor: SimpleUserType
+    event: Literal["removed_from_project"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
 
 
-class PullRequestReviewCommentPropLinksType(TypedDict):
-    """PullRequestReviewCommentPropLinks"""
+class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
+    """RemovedFromProjectIssueEventPropProjectCard"""
 
-    self_: PullRequestReviewCommentPropLinksPropSelfType
-    html: PullRequestReviewCommentPropLinksPropHtmlType
-    pull_request: PullRequestReviewCommentPropLinksPropPullRequestType
-
-
-class PullRequestReviewCommentPropLinksPropSelfType(TypedDict):
-    """PullRequestReviewCommentPropLinksPropSelf"""
-
-    href: str
-
-
-class PullRequestReviewCommentPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewCommentPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewCommentPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewCommentPropLinksPropPullRequest"""
-
-    href: str
-
-
-class TimelineLineCommentedEventType(TypedDict):
-    """Timeline Line Commented Event
-
-    Timeline Line Commented Event
-    """
-
-    event: NotRequired[Literal["line_commented"]]
-    node_id: NotRequired[str]
-    comments: NotRequired[list[PullRequestReviewCommentType]]
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestReviewCommentPropLinksPropHtmlType",
-    "PullRequestReviewCommentPropLinksPropPullRequestType",
-    "PullRequestReviewCommentPropLinksPropSelfType",
-    "PullRequestReviewCommentPropLinksType",
-    "PullRequestReviewCommentType",
-    "TimelineLineCommentedEventType",
+    "RemovedFromProjectIssueEventPropProjectCardType",
+    "RemovedFromProjectIssueEventType",
 )

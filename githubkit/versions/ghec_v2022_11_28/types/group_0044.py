@@ -9,20 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class AnnouncementBannerType(TypedDict):
-    """Announcement Banner
+class ActionsSetDefaultWorkflowPermissionsType(TypedDict):
+    """ActionsSetDefaultWorkflowPermissions"""
 
-    Announcement at either the repository, organization, or enterprise level
-    """
-
-    announcement: Union[str, None]
-    expires_at: Union[datetime, None]
-    user_dismissible: Union[bool, None]
+    default_workflow_permissions: NotRequired[Literal["read", "write"]]
+    can_approve_pull_request_reviews: NotRequired[bool]
 
 
-__all__ = ("AnnouncementBannerType",)
+__all__ = ("ActionsSetDefaultWorkflowPermissionsType",)

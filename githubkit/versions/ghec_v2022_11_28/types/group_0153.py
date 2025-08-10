@@ -12,22 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class GetCostCenterType(TypedDict):
-    """GetCostCenter"""
+class SecretScanningLocationDiscussionBodyType(TypedDict):
+    """SecretScanningLocationDiscussionBody
 
-    id: str
-    name: str
-    resources: list[GetCostCenterPropResourcesItemsType]
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
+    """
+
+    discussion_body_url: str
 
 
-class GetCostCenterPropResourcesItemsType(TypedDict):
-    """GetCostCenterPropResourcesItems"""
+class SecretScanningLocationPullRequestCommentType(TypedDict):
+    """SecretScanningLocationPullRequestComment
 
-    type: str
-    name: str
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str
 
 
 __all__ = (
-    "GetCostCenterPropResourcesItemsType",
-    "GetCostCenterType",
+    "SecretScanningLocationDiscussionBodyType",
+    "SecretScanningLocationPullRequestCommentType",
 )

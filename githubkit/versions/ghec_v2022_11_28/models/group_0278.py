@@ -18,60 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0277 import DiffEntry
-from .group_0279 import CommitPropCommit
+from .group_0010 import Integration
+from .group_0076 import Team
 
 
-class Commit(GitHubModel):
-    """Commit
+class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    Commit
+    users: Missing[list[SimpleUser]] = Field(
+        default=UNSET, description="The list of users with review dismissal access."
+    )
+    teams: Missing[list[Team]] = Field(
+        default=UNSET, description="The list of teams with review dismissal access."
+    )
+    apps: Missing[list[Union[Integration, None]]] = Field(
+        default=UNSET, description="The list of apps with review dismissal access."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    users_url: Missing[str] = Field(default=UNSET)
+    teams_url: Missing[str] = Field(default=UNSET)
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    url: str = Field()
-    sha: str = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    comments_url: str = Field()
-    commit: CommitPropCommit = Field()
-    author: Union[SimpleUser, EmptyObject, None] = Field()
-    committer: Union[SimpleUser, EmptyObject, None] = Field()
-    parents: list[CommitPropParentsItems] = Field()
-    stats: Missing[CommitPropStats] = Field(default=UNSET)
-    files: Missing[list[DiffEntry]] = Field(default=UNSET)
+    users: Missing[list[SimpleUser]] = Field(
+        default=UNSET,
+        description="The list of users allowed to bypass pull request requirements.",
+    )
+    teams: Missing[list[Team]] = Field(
+        default=UNSET,
+        description="The list of teams allowed to bypass pull request requirements.",
+    )
+    apps: Missing[list[Union[Integration, None]]] = Field(
+        default=UNSET,
+        description="The list of apps allowed to bypass pull request requirements.",
+    )
 
 
-class EmptyObject(GitHubModel):
-    """Empty Object
-
-    An object without any properties.
-    """
-
-
-class CommitPropParentsItems(GitHubModel):
-    """CommitPropParentsItems"""
-
-    sha: str = Field()
-    url: str = Field()
-    html_url: Missing[str] = Field(default=UNSET)
-
-
-class CommitPropStats(GitHubModel):
-    """CommitPropStats"""
-
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
-    total: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(Commit)
-model_rebuild(EmptyObject)
-model_rebuild(CommitPropParentsItems)
-model_rebuild(CommitPropStats)
+model_rebuild(ProtectedBranchPullRequestReviewPropDismissalRestrictions)
+model_rebuild(ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances)
 
 __all__ = (
-    "Commit",
-    "CommitPropParentsItems",
-    "CommitPropStats",
-    "EmptyObject",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
 )

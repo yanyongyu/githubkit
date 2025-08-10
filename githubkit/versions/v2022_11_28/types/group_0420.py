@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class SocialAccountType(TypedDict):
-    """Social account
+class CodespacesUserPublicKeyType(TypedDict):
+    """CodespacesUserPublicKey
 
-    Social media account
+    The public key used for setting user Codespaces' Secrets.
     """
 
-    provider: str
-    url: str
+    key_id: str
+    key: str
 
 
-__all__ = ("SocialAccountType",)
+__all__ = ("CodespacesUserPublicKeyType",)

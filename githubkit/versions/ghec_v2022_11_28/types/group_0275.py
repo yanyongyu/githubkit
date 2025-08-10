@@ -9,19 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class GitUserType(TypedDict):
-    """Git User
+class AutolinkType(TypedDict):
+    """Autolink reference
 
-    Metaproperties for Git author/committer information.
+    An autolink reference.
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[datetime]
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
 
 
-__all__ = ("GitUserType",)
+__all__ = ("AutolinkType",)

@@ -9,20 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0071 import TeamType
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestReviewRequestType(TypedDict):
-    """Pull Request Review Request
+class PagesDeploymentStatusType(TypedDict):
+    """GitHub Pages deployment status"""
 
-    Pull Request Review Request
-    """
+    status: NotRequired[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+        ]
+    ]
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
 
-
-__all__ = ("PullRequestReviewRequestType",)
+__all__ = ("PagesDeploymentStatusType",)

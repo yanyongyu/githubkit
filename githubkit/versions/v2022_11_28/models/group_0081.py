@@ -15,27 +15,27 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0080 import RunnerLabel
 
+class ActionsForkPrWorkflowsPrivateReposRequest(GitHubModel):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
 
-class Runner(GitHubModel):
-    """Self hosted runners
-
-    A self hosted runner
-    """
-
-    id: int = Field(description="The ID of the runner.")
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the runner group."
+    run_workflows_from_fork_pull_requests: bool = Field(
+        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
     )
-    name: str = Field(description="The name of the runner.")
-    os: str = Field(description="The Operating System of the runner.")
-    status: str = Field(description="The status of the runner.")
-    busy: bool = Field()
-    labels: list[RunnerLabel] = Field()
-    ephemeral: Missing[bool] = Field(default=UNSET)
+    send_write_tokens_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request.",
+    )
+    send_secrets_and_variables: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks.",
+    )
+    require_approval_for_fork_pr_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run.",
+    )
 
 
-model_rebuild(Runner)
+model_rebuild(ActionsForkPrWorkflowsPrivateReposRequest)
 
-__all__ = ("Runner",)
+__all__ = ("ActionsForkPrWorkflowsPrivateReposRequest",)

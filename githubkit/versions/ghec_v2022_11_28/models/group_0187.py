@@ -18,143 +18,32 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0056 import BypassResponse
+from .group_0003 import SimpleUser
 
 
-class SecretScanningBypassRequest(GitHubModel):
-    """Secret scanning bypass request
+class OrganizationCustomRepositoryRole(GitHubModel):
+    """Organization Custom Repository Role
 
-    A bypass request made by a user asking to be exempted from push protection in
-    this repository.
+    Custom repository roles created by organization owners
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the bypass request."
-    )
-    number: Missing[int] = Field(
+    id: int = Field(description="The unique identifier of the custom role.")
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The number uniquely identifying the bypass request within its repository.",
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    repository: Missing[SecretScanningBypassRequestPropRepository] = Field(
-        default=UNSET, description="The repository the bypass request is for."
+    base_role: Literal["read", "triage", "write", "maintain"] = Field(
+        description="The system role from which this role inherits permissions."
     )
-    organization: Missing[SecretScanningBypassRequestPropOrganization] = Field(
-        default=UNSET,
-        description="The organization associated with the repository the bypass request is for.",
+    permissions: list[str] = Field(
+        description="A list of additional permissions included in this role."
     )
-    requester: Missing[SecretScanningBypassRequestPropRequester] = Field(
-        default=UNSET, description="The user who requested the bypass."
-    )
-    request_type: Missing[str] = Field(
-        default=UNSET, description="The type of request."
-    )
-    data: Missing[Union[list[SecretScanningBypassRequestPropDataItems], None]] = Field(
-        default=UNSET,
-        description="Data describing the push rules that are being requested to be bypassed.",
-    )
-    resource_identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The unique identifier for the request type of the bypass request. For example, a commit SHA.",
-    )
-    status: Missing[
-        Literal[
-            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
-        ]
-    ] = Field(default=UNSET, description="The status of the bypass request.")
-    requester_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment the requester provided when creating the bypass request.",
-    )
-    expires_at: Missing[datetime] = Field(
-        default=UNSET, description="The date and time the bypass request will expire."
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET, description="The date and time the bypass request was created."
-    )
-    responses: Missing[Union[list[BypassResponse], None]] = Field(
-        default=UNSET, description="The responses to the bypass request."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the bypass request in a browser."
-    )
+    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-class SecretScanningBypassRequestPropRepository(GitHubModel):
-    """SecretScanningBypassRequestPropRepository
+model_rebuild(OrganizationCustomRepositoryRole)
 
-    The repository the bypass request is for.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the repository the bypass request is for."
-    )
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the repository the bypass request is for.",
-    )
-    full_name: Missing[str] = Field(
-        default=UNSET,
-        description="The full name of the repository the bypass request is for.",
-    )
-
-
-class SecretScanningBypassRequestPropOrganization(GitHubModel):
-    """SecretScanningBypassRequestPropOrganization
-
-    The organization associated with the repository the bypass request is for.
-    """
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the organization."
-    )
-
-
-class SecretScanningBypassRequestPropRequester(GitHubModel):
-    """SecretScanningBypassRequestPropRequester
-
-    The user who requested the bypass.
-    """
-
-    actor_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the GitHub user who requested the bypass."
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who requested the bypass.",
-    )
-
-
-class SecretScanningBypassRequestPropDataItems(GitHubModel):
-    """SecretScanningBypassRequestPropDataItems"""
-
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    bypass_reason: Missing[Literal["used_in_tests", "false_positive", "fix_later"]] = (
-        Field(default=UNSET, description="The reason the bypass was requested.")
-    )
-    path: Missing[str] = Field(
-        default=UNSET,
-        description="The path in the repo where the secret was located during the request.",
-    )
-    branch: Missing[str] = Field(
-        default=UNSET,
-        description="The branch in the repo where the secret was located during the request.",
-    )
-
-
-model_rebuild(SecretScanningBypassRequest)
-model_rebuild(SecretScanningBypassRequestPropRepository)
-model_rebuild(SecretScanningBypassRequestPropOrganization)
-model_rebuild(SecretScanningBypassRequestPropRequester)
-model_rebuild(SecretScanningBypassRequestPropDataItems)
-
-__all__ = (
-    "SecretScanningBypassRequest",
-    "SecretScanningBypassRequestPropDataItems",
-    "SecretScanningBypassRequestPropOrganization",
-    "SecretScanningBypassRequestPropRepository",
-    "SecretScanningBypassRequestPropRequester",
-)
+__all__ = ("OrganizationCustomRepositoryRole",)

@@ -12,12 +12,24 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsTimeStatsItemsType(TypedDict):
-    """ApiInsightsTimeStatsItems"""
+class ExternalGroupsType(TypedDict):
+    """ExternalGroups
 
-    timestamp: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    A list of external groups available to be connected to a team
+    """
+
+    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
 
 
-__all__ = ("ApiInsightsTimeStatsItemsType",)
+class ExternalGroupsPropGroupsItemsType(TypedDict):
+    """ExternalGroupsPropGroupsItems"""
+
+    group_id: int
+    group_name: str
+    updated_at: str
+
+
+__all__ = (
+    "ExternalGroupsPropGroupsItemsType",
+    "ExternalGroupsType",
+)

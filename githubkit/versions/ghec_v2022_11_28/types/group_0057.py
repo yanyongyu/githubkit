@@ -9,92 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0056 import BypassResponseType
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class PushRuleBypassRequestType(TypedDict):
-    """Push rule bypass request
+class AzureBlobConfigType(TypedDict):
+    """AzureBlobConfig
 
-    A bypass request made by a user asking to be exempted from a push rule in this
-    repository.
+    Azure Blob Config for audit log streaming configuration.
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[PushRuleBypassRequestPropRepositoryType]
-    organization: NotRequired[PushRuleBypassRequestPropOrganizationType]
-    requester: NotRequired[PushRuleBypassRequestPropRequesterType]
-    request_type: NotRequired[str]
-    data: NotRequired[Union[list[PushRuleBypassRequestPropDataItemsType], None]]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[
-        Literal[
-            "pending",
-            "denied",
-            "approved",
-            "cancelled",
-            "completed",
-            "expired",
-            "deleted",
-            "open",
-        ]
-    ]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[datetime]
-    created_at: NotRequired[datetime]
-    responses: NotRequired[Union[list[BypassResponseType], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
+    key_id: str
+    encrypted_sas_url: str
 
 
-class PushRuleBypassRequestPropRepositoryType(TypedDict):
-    """PushRuleBypassRequestPropRepository
+class AzureHubConfigType(TypedDict):
+    """AzureHubConfig
 
-    The repository the bypass request is for.
+    Azure Event Hubs Config for audit log streaming configuration.
     """
 
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
-    full_name: NotRequired[Union[str, None]]
+    name: str
+    encrypted_connstring: str
+    key_id: str
 
 
-class PushRuleBypassRequestPropOrganizationType(TypedDict):
-    """PushRuleBypassRequestPropOrganization
+class AmazonS3AccessKeysConfigType(TypedDict):
+    """AmazonS3AccessKeysConfig
 
-    The organization associated with the repository the bypass request is for.
+    Amazon S3 Access Keys Config for audit log streaming configuration.
     """
 
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["access_keys"]
+    encrypted_secret_key: str
+    encrypted_access_key_id: str
 
 
-class PushRuleBypassRequestPropRequesterType(TypedDict):
-    """PushRuleBypassRequestPropRequester
+class HecConfigType(TypedDict):
+    """HecConfig
 
-    The user who requested the bypass.
+    Hec Config for Audit Log Stream Configuration
     """
 
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    path: str
+    ssl_verify: bool
 
 
-class PushRuleBypassRequestPropDataItemsType(TypedDict):
-    """PushRuleBypassRequestPropDataItems"""
+class DatadogConfigType(TypedDict):
+    """DatadogConfig
 
-    ruleset_id: NotRequired[int]
-    ruleset_name: NotRequired[str]
-    total_violations: NotRequired[int]
-    rule_type: NotRequired[str]
+    Datadog Config for audit log streaming configuration.
+    """
+
+    encrypted_token: str
+    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"]
+    key_id: str
 
 
 __all__ = (
-    "PushRuleBypassRequestPropDataItemsType",
-    "PushRuleBypassRequestPropOrganizationType",
-    "PushRuleBypassRequestPropRepositoryType",
-    "PushRuleBypassRequestPropRequesterType",
-    "PushRuleBypassRequestType",
+    "AmazonS3AccessKeysConfigType",
+    "AzureBlobConfigType",
+    "AzureHubConfigType",
+    "DatadogConfigType",
+    "HecConfigType",
 )

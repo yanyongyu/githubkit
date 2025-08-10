@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,46 +17,72 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0426 import EnterpriseWebhooks
-from .group_0427 import SimpleInstallation
-from .group_0428 import OrganizationSimpleWebhooks
-from .group_0429 import RepositoryWebhooks
-from .group_0470 import WebhooksRelease1
+from .group_0751 import (
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion,
+)
 
 
-class WebhookReleaseUnpublished(GitHubModel):
-    """release unpublished event"""
+class WebhookRegistryPackagePublishedPropRegistryPackage(GitHubModel):
+    """WebhookRegistryPackagePublishedPropRegistryPackage"""
 
-    action: Literal["unpublished"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    release: WebhooksRelease1 = Field(
-        title="Release",
-        description="The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    created_at: Union[str, None] = Field()
+    description: Union[str, None] = Field()
+    ecosystem: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    name: str = Field()
+    namespace: str = Field()
+    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwner = Field()
+    package_type: str = Field()
+    package_version: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion, None
+    ] = Field()
+    registry: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry, None
+    ] = Field()
+    updated_at: Union[str, None] = Field()
 
 
-model_rebuild(WebhookReleaseUnpublished)
+class WebhookRegistryPackagePublishedPropRegistryPackagePropOwner(GitHubModel):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
 
-__all__ = ("WebhookReleaseUnpublished",)
+    avatar_url: str = Field()
+    events_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    gravatar_id: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    login: str = Field()
+    node_id: str = Field()
+    organizations_url: str = Field()
+    received_events_url: str = Field()
+    repos_url: str = Field()
+    site_admin: bool = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    type: str = Field()
+    url: str = Field()
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry(GitHubModel):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
+
+    about_url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    vendor: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookRegistryPackagePublishedPropRegistryPackage)
+model_rebuild(WebhookRegistryPackagePublishedPropRegistryPackagePropOwner)
+model_rebuild(WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry)
+
+__all__ = (
+    "WebhookRegistryPackagePublishedPropRegistryPackage",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwner",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry",
+)

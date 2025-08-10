@@ -14,14 +14,20 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SubIssuesSummary(GitHubModel):
-    """Sub-issues Summary"""
+class PackagesBillingUsage(GitHubModel):
+    """PackagesBillingUsage"""
 
-    total: int = Field()
-    completed: int = Field()
-    percent_completed: int = Field()
+    total_gigabytes_bandwidth_used: int = Field(
+        description="Sum of the free and paid storage space (GB) for GitHuub Packages."
+    )
+    total_paid_gigabytes_bandwidth_used: int = Field(
+        description="Total paid storage space (GB) for GitHuub Packages."
+    )
+    included_gigabytes_bandwidth: int = Field(
+        description="Free storage space (GB) for GitHub Packages."
+    )
 
 
-model_rebuild(SubIssuesSummary)
+model_rebuild(PackagesBillingUsage)
 
-__all__ = ("SubIssuesSummary",)
+__all__ = ("PackagesBillingUsage",)

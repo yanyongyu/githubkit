@@ -9,15 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing_extensions import TypedDict
 
-
-class PackagesBillingUsageType(TypedDict):
-    """PackagesBillingUsage"""
-
-    total_gigabytes_bandwidth_used: int
-    total_paid_gigabytes_bandwidth_used: int
-    included_gigabytes_bandwidth: int
+from .group_0185 import RulesetVersionPropActorType
+from .group_0188 import RulesetVersionWithStateAllof1PropStateType
 
 
-__all__ = ("PackagesBillingUsageType",)
+class RulesetVersionWithStateType(TypedDict):
+    """RulesetVersionWithState"""
+
+    version_id: int
+    actor: RulesetVersionPropActorType
+    updated_at: datetime
+    state: RulesetVersionWithStateAllof1PropStateType
+
+
+__all__ = ("RulesetVersionWithStateType",)

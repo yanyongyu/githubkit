@@ -13,61 +13,40 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0403 import SearchResultTextMatchesItemsType
+from .group_0063 import MinimalRepositoryType
+from .group_0410 import SearchResultTextMatchesItemsType
 
 
-class UserSearchResultItemType(TypedDict):
-    """User Search Result Item
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
 
-    User Search Result Item
+    Code Search Result Item
     """
 
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
+    name: str
+    path: str
+    sha: str
     url: str
+    git_url: str
     html_url: str
-    followers_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    received_events_url: str
-    type: str
+    repository: MinimalRepositoryType
     score: float
-    following_url: str
-    gists_url: str
-    starred_url: str
-    events_url: str
-    public_repos: NotRequired[int]
-    public_gists: NotRequired[int]
-    followers: NotRequired[int]
-    following: NotRequired[int]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-    name: NotRequired[Union[str, None]]
-    bio: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    location: NotRequired[Union[str, None]]
-    site_admin: bool
-    hireable: NotRequired[Union[bool, None]]
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[datetime]
+    line_numbers: NotRequired[list[str]]
     text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-    blog: NotRequired[Union[str, None]]
-    company: NotRequired[Union[str, None]]
-    suspended_at: NotRequired[Union[datetime, None]]
-    user_view_type: NotRequired[str]
 
 
-class SearchUsersGetResponse200Type(TypedDict):
-    """SearchUsersGetResponse200"""
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: list[UserSearchResultItemType]
+    items: list[CodeSearchResultItemType]
 
 
 __all__ = (
-    "SearchUsersGetResponse200Type",
-    "UserSearchResultItemType",
+    "CodeSearchResultItemType",
+    "SearchCodeGetResponse200Type",
 )

@@ -9,28 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TeamMembership(GitHubModel):
-    """Team Membership
+class PackagesBillingUsage(GitHubModel):
+    """PackagesBillingUsage"""
 
-    Team Membership
-    """
-
-    url: str = Field()
-    role: Literal["member", "maintainer"] = Field(
-        default="member", description="The role of the user in the team."
+    total_gigabytes_bandwidth_used: int = Field(
+        description="Sum of the free and paid storage space (GB) for GitHuub Packages."
     )
-    state: Literal["active", "pending"] = Field(
-        description="The state of the user's membership in the team."
+    total_paid_gigabytes_bandwidth_used: int = Field(
+        description="Total paid storage space (GB) for GitHuub Packages."
+    )
+    included_gigabytes_bandwidth: int = Field(
+        description="Free storage space (GB) for GitHub Packages."
     )
 
 
-model_rebuild(TeamMembership)
+model_rebuild(PackagesBillingUsage)
 
-__all__ = ("TeamMembership",)
+__all__ = ("PackagesBillingUsage",)

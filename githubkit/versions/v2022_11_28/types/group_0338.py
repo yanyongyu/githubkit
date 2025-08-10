@@ -9,27 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class DeployKeyType(TypedDict):
-    """Deploy Key
-
-    An SSH key granting access to a single repository.
-    """
-
-    id: int
-    key: str
-    url: str
-    title: str
-    verified: bool
-    created_at: str
-    read_only: bool
-    added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[datetime, None]]
-    enabled: NotRequired[bool]
+from .group_0047 import IssueType
 
 
-__all__ = ("DeployKeyType",)
+class TimelineCrossReferencedEventPropSourceType(TypedDict):
+    """TimelineCrossReferencedEventPropSource"""
+
+    type: NotRequired[str]
+    issue: NotRequired[IssueType]
+
+
+__all__ = ("TimelineCrossReferencedEventPropSourceType",)

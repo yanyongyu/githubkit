@@ -18,181 +18,157 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0184 import MinimalRepository
+from .group_0196 import CodespaceMachine
 
-class CodeScanningAlertDismissalRequest(GitHubModel):
-    """Code scanning alert dismissal request
 
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
+class Codespace(GitHubModel):
+    """Codespace
+
+    A codespace.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the dismissal request."
+    id: int = Field()
+    name: str = Field(description="Automatically generated name of this codespace.")
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Display name for this codespace."
     )
-    number: Missing[int] = Field(
+    environment_id: Union[str, None] = Field(
+        description="UUID identifying this codespace's environment."
+    )
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    billable_owner: SimpleUser = Field(
+        title="Simple User", description="A GitHub user."
+    )
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    machine: Union[None, CodespaceMachine] = Field()
+    devcontainer_path: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The number uniquely identifying the dismissal request within its repository.",
+        description="Path to devcontainer.json from repo root used to create Codespace.",
     )
-    repository: Missing[CodeScanningAlertDismissalRequestPropRepository] = Field(
-        default=UNSET, description="The repository the dismissal request is for."
+    prebuild: Union[bool, None] = Field(
+        description="Whether the codespace was created from a prebuild."
     )
-    organization: Missing[CodeScanningAlertDismissalRequestPropOrganization] = Field(
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    last_used_at: datetime = Field(
+        description="Last known time this codespace was started."
+    )
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
+    ] = Field(description="State of this codespace.")
+    url: str = Field(description="API URL for this codespace.")
+    git_status: CodespacePropGitStatus = Field(
+        description="Details about the codespace's git repository."
+    )
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"] = Field(
+        description="The initally assigned location of a new codespace."
+    )
+    idle_timeout_minutes: Union[int, None] = Field(
+        description="The number of minutes of inactivity after which this codespace will be automatically stopped."
+    )
+    web_url: str = Field(description="URL to access this codespace on the web.")
+    machines_url: str = Field(
+        description="API URL to access available alternate machine types for this codespace."
+    )
+    start_url: str = Field(description="API URL to start this codespace.")
+    stop_url: str = Field(description="API URL to stop this codespace.")
+    publish_url: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The organization associated with the repository the dismissal request is for.",
+        description="API URL to publish this codespace to a new repository.",
     )
-    requester: Missing[CodeScanningAlertDismissalRequestPropRequester] = Field(
-        default=UNSET, description="The user who requested the dismissal request."
+    pulls_url: Union[str, None] = Field(
+        description="API URL for the Pull Request associated with this codespace, if any."
     )
-    request_type: Missing[str] = Field(
-        default=UNSET, description="The type of request."
-    )
-    data: Missing[Union[list[CodeScanningAlertDismissalRequestPropDataItems], None]] = (
-        Field(
-            default=UNSET, description="Data describing the dismissal request metadata."
-        )
-    )
-    resource_identifier: Missing[str] = Field(
+    recent_folders: list[str] = Field()
+    runtime_constraints: Missing[CodespacePropRuntimeConstraints] = Field(default=UNSET)
+    pending_operation: Missing[Union[bool, None]] = Field(
         default=UNSET,
-        description="The unique identifier for the request type of the dismissal request.",
+        description="Whether or not a codespace has a pending async operation. This would mean that the codespace is temporarily unavailable. The only thing that you can do with a codespace in this state is delete it.",
     )
-    status: Missing[Literal["pending", "denied", "approved", "expired"]] = Field(
-        default=UNSET, description="The status of the dismissal request."
-    )
-    requester_comment: Missing[Union[str, None]] = Field(
+    pending_operation_disabled_reason: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The comment the requester provided when creating the dismissal request.",
+        description="Text to show user when codespace is disabled by a pending operation",
     )
-    expires_at: Missing[datetime] = Field(
+    idle_timeout_notice: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The date and time the dismissal request will expire.",
+        description="Text to show user when codespace idle timeout minutes has been overriden by an organization policy",
     )
-    created_at: Missing[datetime] = Field(
+    retention_period_minutes: Missing[Union[int, None]] = Field(
         default=UNSET,
-        description="The date and time the dismissal request was created.",
+        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
     )
-    responses: Missing[Union[list[DismissalRequestResponse], None]] = Field(
-        default=UNSET, description="The responses to the dismissal request."
+    retention_expires_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description='When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"',
     )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the dismissal request in a browser."
+    last_known_stop_notice: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The text to display to a user when a codespace has been stopped for a potentially actionable reason.",
     )
 
 
-class CodeScanningAlertDismissalRequestPropRepository(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropRepository
+class CodespacePropGitStatus(GitHubModel):
+    """CodespacePropGitStatus
 
-    The repository the dismissal request is for.
+    Details about the codespace's git repository.
     """
 
-    id: Missing[int] = Field(
+    ahead: Missing[int] = Field(
         default=UNSET,
-        description="The ID of the repository the dismissal request is for.",
+        description="The number of commits the local repository is ahead of the remote.",
     )
-    name: Missing[str] = Field(
+    behind: Missing[int] = Field(
         default=UNSET,
-        description="The name of the repository the dismissal request is for.",
+        description="The number of commits the local repository is behind the remote.",
     )
-    full_name: Missing[str] = Field(
+    has_unpushed_changes: Missing[bool] = Field(
+        default=UNSET, description="Whether the local repository has unpushed changes."
+    )
+    has_uncommitted_changes: Missing[bool] = Field(
         default=UNSET,
-        description="The full name of the repository the dismissal request is for.",
+        description="Whether the local repository has uncommitted changes.",
     )
-
-
-class CodeScanningAlertDismissalRequestPropOrganization(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the organization."
-    )
-
-
-class CodeScanningAlertDismissalRequestPropRequester(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: Missing[int] = Field(
+    ref: Missing[str] = Field(
         default=UNSET,
-        description="The ID of the GitHub user who requested the dismissal request.",
+        description="The current branch (or SHA if in detached HEAD state) of the local repository.",
     )
-    actor_name: Missing[str] = Field(
+
+
+class CodespacePropRuntimeConstraints(GitHubModel):
+    """CodespacePropRuntimeConstraints"""
+
+    allowed_port_privacy_settings: Missing[Union[list[str], None]] = Field(
         default=UNSET,
-        description="The name of the GitHub user who requested the dismissal request.",
+        description="The privacy settings a user can select from when forwarding a port.",
     )
 
 
-class CodeScanningAlertDismissalRequestPropDataItems(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
-
-    reason: Missing[str] = Field(
-        default=UNSET, description="The reason for the dismissal request."
-    )
-    alert_number: Missing[str] = Field(default=UNSET, description="alert number.")
-    pr_review_thread_id: Missing[str] = Field(
-        default=UNSET, description="The ID of the pull request review thread."
-    )
-
-
-class DismissalRequestResponse(GitHubModel):
-    """Dismissal request response
-
-    A response made by a requester to dismiss the request.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the response to the dismissal request."
-    )
-    reviewer: Missing[DismissalRequestResponsePropReviewer] = Field(
-        default=UNSET, description="The user who reviewed the dismissal request."
-    )
-    message: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The response comment of the reviewer."
-    )
-    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
-        default=UNSET,
-        description="The response status to the dismissal request until dismissed.",
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time the response to the dismissal request was created.",
-    )
-
-
-class DismissalRequestResponsePropReviewer(GitHubModel):
-    """DismissalRequestResponsePropReviewer
-
-    The user who reviewed the dismissal request.
-    """
-
-    actor_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the GitHub user who reviewed the dismissal request.",
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who reviewed the dismissal request.",
-    )
-
-
-model_rebuild(CodeScanningAlertDismissalRequest)
-model_rebuild(CodeScanningAlertDismissalRequestPropRepository)
-model_rebuild(CodeScanningAlertDismissalRequestPropOrganization)
-model_rebuild(CodeScanningAlertDismissalRequestPropRequester)
-model_rebuild(CodeScanningAlertDismissalRequestPropDataItems)
-model_rebuild(DismissalRequestResponse)
-model_rebuild(DismissalRequestResponsePropReviewer)
+model_rebuild(Codespace)
+model_rebuild(CodespacePropGitStatus)
+model_rebuild(CodespacePropRuntimeConstraints)
 
 __all__ = (
-    "CodeScanningAlertDismissalRequest",
-    "CodeScanningAlertDismissalRequestPropDataItems",
-    "CodeScanningAlertDismissalRequestPropOrganization",
-    "CodeScanningAlertDismissalRequestPropRepository",
-    "CodeScanningAlertDismissalRequestPropRequester",
-    "DismissalRequestResponse",
-    "DismissalRequestResponsePropReviewer",
+    "Codespace",
+    "CodespacePropGitStatus",
+    "CodespacePropRuntimeConstraints",
 )

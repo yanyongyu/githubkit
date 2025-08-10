@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRulePullRequestPropParametersType(TypedDict):
-    """RepositoryRulePullRequestPropParameters"""
-
-    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
-    automatic_copilot_code_review_enabled: NotRequired[bool]
-    dismiss_stale_reviews_on_push: bool
-    require_code_owner_review: bool
-    require_last_push_approval: bool
-    required_approving_review_count: int
-    required_review_thread_resolution: bool
+from .group_0150 import RepositoryRuleMergeQueuePropParametersType
 
 
-__all__ = ("RepositoryRulePullRequestPropParametersType",)
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
+
+    Merges must be performed via a merge queue.
+    """
+
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+
+
+__all__ = ("RepositoryRuleMergeQueueType",)

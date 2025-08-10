@@ -29,7 +29,10 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import (
+        ActionsArtifactAndLogRetentionResponse,
         ActionsEnterprisePermissions,
+        ActionsForkPrContributorApproval,
+        ActionsForkPrWorkflowsPrivateRepos,
         AnnouncementBanner,
         AuditLogEvent,
         AuditLogStreamKey,
@@ -37,6 +40,7 @@ if TYPE_CHECKING:
         CustomProperty,
         EnterpriseSecurityAnalysisSettings,
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
+        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -63,7 +67,12 @@ if TYPE_CHECKING:
         SelectedActions,
     )
     from ..types import (
+        ActionsArtifactAndLogRetentionResponseType,
+        ActionsArtifactAndLogRetentionType,
         ActionsEnterprisePermissionsType,
+        ActionsForkPrContributorApprovalType,
+        ActionsForkPrWorkflowsPrivateReposRequestType,
+        ActionsForkPrWorkflowsPrivateReposType,
         AmazonS3AccessKeysConfigType,
         AmazonS3OidcConfigType,
         AnnouncementBannerType,
@@ -80,6 +89,8 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type,
         EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
         EnterprisesEnterpriseActionsPermissionsPutBodyType,
+        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType,
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type,
         EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type,
@@ -341,6 +352,652 @@ class EnterpriseAdminClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
+        )
+
+    def get_artifact_and_log_retention_settings(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsArtifactAndLogRetentionResponse,
+        ActionsArtifactAndLogRetentionResponseType,
+    ]:
+        """enterprise-admin/get-artifact-and-log-retention-settings
+
+        GET /enterprises/{enterprise}/actions/permissions/artifact-and-log-retention
+
+        Gets artifact and log retention settings for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-artifact-and-log-retention-settings-for-an-enterprise
+        """
+
+        from ..models import ActionsArtifactAndLogRetentionResponse, BasicError
+
+        url = (
+            f"/enterprises/{enterprise}/actions/permissions/artifact-and-log-retention"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsArtifactAndLogRetentionResponse,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_artifact_and_log_retention_settings(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsArtifactAndLogRetentionResponse,
+        ActionsArtifactAndLogRetentionResponseType,
+    ]:
+        """enterprise-admin/get-artifact-and-log-retention-settings
+
+        GET /enterprises/{enterprise}/actions/permissions/artifact-and-log-retention
+
+        Gets artifact and log retention settings for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-artifact-and-log-retention-settings-for-an-enterprise
+        """
+
+        from ..models import ActionsArtifactAndLogRetentionResponse, BasicError
+
+        url = (
+            f"/enterprises/{enterprise}/actions/permissions/artifact-and-log-retention"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsArtifactAndLogRetentionResponse,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_artifact_and_log_retention_settings(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsArtifactAndLogRetentionType,
+    ) -> Response: ...
+
+    @overload
+    def set_artifact_and_log_retention_settings(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        days: int,
+    ) -> Response: ...
+
+    def set_artifact_and_log_retention_settings(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsArtifactAndLogRetentionType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """enterprise-admin/set-artifact-and-log-retention-settings
+
+        PUT /enterprises/{enterprise}/actions/permissions/artifact-and-log-retention
+
+        Sets artifact and log retention settings for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-artifact-and-log-retention-settings-for-an-enterprise
+        """
+
+        from ..models import ActionsArtifactAndLogRetention, BasicError, ValidationError
+
+        url = (
+            f"/enterprises/{enterprise}/actions/permissions/artifact-and-log-retention"
+        )
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsArtifactAndLogRetention, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_artifact_and_log_retention_settings(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsArtifactAndLogRetentionType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_artifact_and_log_retention_settings(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        days: int,
+    ) -> Response: ...
+
+    async def async_set_artifact_and_log_retention_settings(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsArtifactAndLogRetentionType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """enterprise-admin/set-artifact-and-log-retention-settings
+
+        PUT /enterprises/{enterprise}/actions/permissions/artifact-and-log-retention
+
+        Sets artifact and log retention settings for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-artifact-and-log-retention-settings-for-an-enterprise
+        """
+
+        from ..models import ActionsArtifactAndLogRetention, BasicError, ValidationError
+
+        url = (
+            f"/enterprises/{enterprise}/actions/permissions/artifact-and-log-retention"
+        )
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsArtifactAndLogRetention, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def get_fork_pr_contributor_approval_permissions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsForkPrContributorApproval, ActionsForkPrContributorApprovalType
+    ]:
+        """enterprise-admin/get-fork-pr-contributor-approval-permissions
+
+        GET /enterprises/{enterprise}/actions/permissions/fork-pr-contributor-approval
+
+        Gets the fork PR contributor approval policy for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-an-enterprise
+        """
+
+        from ..models import ActionsForkPrContributorApproval, BasicError
+
+        url = f"/enterprises/{enterprise}/actions/permissions/fork-pr-contributor-approval"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsForkPrContributorApproval,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_fork_pr_contributor_approval_permissions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsForkPrContributorApproval, ActionsForkPrContributorApprovalType
+    ]:
+        """enterprise-admin/get-fork-pr-contributor-approval-permissions
+
+        GET /enterprises/{enterprise}/actions/permissions/fork-pr-contributor-approval
+
+        Gets the fork PR contributor approval policy for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-fork-pr-contributor-approval-permissions-for-an-enterprise
+        """
+
+        from ..models import ActionsForkPrContributorApproval, BasicError
+
+        url = f"/enterprises/{enterprise}/actions/permissions/fork-pr-contributor-approval"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsForkPrContributorApproval,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_fork_pr_contributor_approval_permissions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsForkPrContributorApprovalType,
+    ) -> Response: ...
+
+    @overload
+    def set_fork_pr_contributor_approval_permissions(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        approval_policy: Literal[
+            "first_time_contributors_new_to_github",
+            "first_time_contributors",
+            "all_external_contributors",
+        ],
+    ) -> Response: ...
+
+    def set_fork_pr_contributor_approval_permissions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsForkPrContributorApprovalType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """enterprise-admin/set-fork-pr-contributor-approval-permissions
+
+        PUT /enterprises/{enterprise}/actions/permissions/fork-pr-contributor-approval
+
+        Sets the fork PR contributor approval policy for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-an-enterprise
+        """
+
+        from ..models import (
+            ActionsForkPrContributorApproval,
+            BasicError,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/permissions/fork-pr-contributor-approval"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsForkPrContributorApproval, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_fork_pr_contributor_approval_permissions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsForkPrContributorApprovalType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_fork_pr_contributor_approval_permissions(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        approval_policy: Literal[
+            "first_time_contributors_new_to_github",
+            "first_time_contributors",
+            "all_external_contributors",
+        ],
+    ) -> Response: ...
+
+    async def async_set_fork_pr_contributor_approval_permissions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsForkPrContributorApprovalType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """enterprise-admin/set-fork-pr-contributor-approval-permissions
+
+        PUT /enterprises/{enterprise}/actions/permissions/fork-pr-contributor-approval
+
+        Sets the fork PR contributor approval policy for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-fork-pr-contributor-approval-permissions-for-an-enterprise
+        """
+
+        from ..models import (
+            ActionsForkPrContributorApproval,
+            BasicError,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/permissions/fork-pr-contributor-approval"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsForkPrContributorApproval, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def get_private_repo_fork_pr_workflows_settings(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsForkPrWorkflowsPrivateRepos, ActionsForkPrWorkflowsPrivateReposType
+    ]:
+        """enterprise-admin/get-private-repo-fork-pr-workflows-settings
+
+        GET /enterprises/{enterprise}/actions/permissions/fork-pr-workflows-private-repos
+
+        Gets the settings for whether workflows from fork pull requests can run on private repositories in an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-an-enterprise
+        """
+
+        from ..models import ActionsForkPrWorkflowsPrivateRepos, BasicError
+
+        url = f"/enterprises/{enterprise}/actions/permissions/fork-pr-workflows-private-repos"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsForkPrWorkflowsPrivateRepos,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_private_repo_fork_pr_workflows_settings(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsForkPrWorkflowsPrivateRepos, ActionsForkPrWorkflowsPrivateReposType
+    ]:
+        """enterprise-admin/get-private-repo-fork-pr-workflows-settings
+
+        GET /enterprises/{enterprise}/actions/permissions/fork-pr-workflows-private-repos
+
+        Gets the settings for whether workflows from fork pull requests can run on private repositories in an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-private-repo-fork-pr-workflow-settings-for-an-enterprise
+        """
+
+        from ..models import ActionsForkPrWorkflowsPrivateRepos, BasicError
+
+        url = f"/enterprises/{enterprise}/actions/permissions/fork-pr-workflows-private-repos"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsForkPrWorkflowsPrivateRepos,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_private_repo_fork_pr_workflows_settings(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsForkPrWorkflowsPrivateReposRequestType,
+    ) -> Response: ...
+
+    @overload
+    def set_private_repo_fork_pr_workflows_settings(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        run_workflows_from_fork_pull_requests: bool,
+        send_write_tokens_to_workflows: Missing[bool] = UNSET,
+        send_secrets_and_variables: Missing[bool] = UNSET,
+        require_approval_for_fork_pr_workflows: Missing[bool] = UNSET,
+    ) -> Response: ...
+
+    def set_private_repo_fork_pr_workflows_settings(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsForkPrWorkflowsPrivateReposRequestType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """enterprise-admin/set-private-repo-fork-pr-workflows-settings
+
+        PUT /enterprises/{enterprise}/actions/permissions/fork-pr-workflows-private-repos
+
+        Sets the settings for whether workflows from fork pull requests can run on private repositories in an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-an-enterprise
+        """
+
+        from ..models import (
+            ActionsForkPrWorkflowsPrivateReposRequest,
+            BasicError,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/permissions/fork-pr-workflows-private-repos"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsForkPrWorkflowsPrivateReposRequest, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_private_repo_fork_pr_workflows_settings(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsForkPrWorkflowsPrivateReposRequestType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_private_repo_fork_pr_workflows_settings(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        run_workflows_from_fork_pull_requests: bool,
+        send_write_tokens_to_workflows: Missing[bool] = UNSET,
+        send_secrets_and_variables: Missing[bool] = UNSET,
+        require_approval_for_fork_pr_workflows: Missing[bool] = UNSET,
+    ) -> Response: ...
+
+    async def async_set_private_repo_fork_pr_workflows_settings(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsForkPrWorkflowsPrivateReposRequestType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """enterprise-admin/set-private-repo-fork-pr-workflows-settings
+
+        PUT /enterprises/{enterprise}/actions/permissions/fork-pr-workflows-private-repos
+
+        Sets the settings for whether workflows from fork pull requests can run on private repositories in an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-private-repo-fork-pr-workflow-settings-for-an-enterprise
+        """
+
+        from ..models import (
+            ActionsForkPrWorkflowsPrivateReposRequest,
+            BasicError,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/permissions/fork-pr-workflows-private-repos"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsForkPrWorkflowsPrivateReposRequest, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
         )
 
     def list_selected_organizations_enabled_github_actions_enterprise(
@@ -883,6 +1540,232 @@ class EnterpriseAdminClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
+        )
+
+    def get_self_hosted_runners_permissions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
+        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type,
+    ]:
+        """enterprise-admin/get-self-hosted-runners-permissions
+
+        GET /enterprises/{enterprise}/actions/permissions/self-hosted-runners
+
+        Gets the settings for whether organizations in the enterprise are allowed to manage self-hosted runners at the repository level.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-self-hosted-runners-permissions-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/permissions/self-hosted-runners"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_self_hosted_runners_permissions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
+        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type,
+    ]:
+        """enterprise-admin/get-self-hosted-runners-permissions
+
+        GET /enterprises/{enterprise}/actions/permissions/self-hosted-runners
+
+        Gets the settings for whether organizations in the enterprise are allowed to manage self-hosted runners at the repository level.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-self-hosted-runners-permissions-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/permissions/self-hosted-runners"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_self_hosted_runners_permissions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_self_hosted_runners_permissions(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        disable_self_hosted_runners_for_all_orgs: bool,
+    ) -> Response: ...
+
+    def set_self_hosted_runners_permissions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """enterprise-admin/set-self-hosted-runners-permissions
+
+        PUT /enterprises/{enterprise}/actions/permissions/self-hosted-runners
+
+        Sets the settings for whether organizations in the enterprise are allowed to manage self-hosted runners at the repository level.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-self-hosted-runners-permissions-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/permissions/self-hosted-runners"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_self_hosted_runners_permissions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_self_hosted_runners_permissions(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        disable_self_hosted_runners_for_all_orgs: bool,
+    ) -> Response: ...
+
+    async def async_set_self_hosted_runners_permissions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """enterprise-admin/set-self-hosted-runners-permissions
+
+        PUT /enterprises/{enterprise}/actions/permissions/self-hosted-runners
+
+        Sets the settings for whether organizations in the enterprise are allowed to manage self-hosted runners at the repository level.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#set-self-hosted-runners-permissions-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/permissions/self-hosted-runners"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+            },
         )
 
     def list_self_hosted_runner_groups_for_enterprise(

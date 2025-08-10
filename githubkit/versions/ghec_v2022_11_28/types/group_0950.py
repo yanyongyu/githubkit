@@ -9,15 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0082 import CustomPropertyType
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterprisePropertiesSchemaPatchBodyType(TypedDict):
-    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
 
-    properties: list[CustomPropertyType]
+    errors: NotRequired[list[str]]
 
 
-__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBodyType",)
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",)

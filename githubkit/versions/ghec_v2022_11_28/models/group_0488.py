@@ -14,21 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SimpleInstallation(GitHubModel):
-    """Simple Installation
+class SocialAccount(GitHubModel):
+    """Social account
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
-    cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-
-    with-github-apps)."
+    Social media account
     """
 
-    id: int = Field(description="The ID of the installation.")
-    node_id: str = Field(description="The global node ID of the installation.")
+    provider: str = Field()
+    url: str = Field()
 
 
-model_rebuild(SimpleInstallation)
+model_rebuild(SocialAccount)
 
-__all__ = ("SimpleInstallation",)
+__all__ = ("SocialAccount",)

@@ -9,25 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CheckAutomatedSecurityFixes(GitHubModel):
-    """Check Dependabot security updates
+class ReviewCustomGatesStateRequired(GitHubModel):
+    """ReviewCustomGatesStateRequired"""
 
-    Check Dependabot security updates
-    """
-
-    enabled: bool = Field(
-        description="Whether Dependabot security updates are enabled for the repository."
+    environment_name: str = Field(
+        description="The name of the environment to approve or reject."
     )
-    paused: bool = Field(
-        description="Whether Dependabot security updates are paused for the repository."
+    state: Literal["approved", "rejected"] = Field(
+        description="Whether to approve or reject deployment to the specified environments."
+    )
+    comment: Missing[str] = Field(
+        default=UNSET, description="Optional comment to include with the review."
     )
 
 
-model_rebuild(CheckAutomatedSecurityFixes)
+model_rebuild(ReviewCustomGatesStateRequired)
 
-__all__ = ("CheckAutomatedSecurityFixes",)
+__all__ = ("ReviewCustomGatesStateRequired",)

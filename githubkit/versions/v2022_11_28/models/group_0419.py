@@ -18,43 +18,71 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0058 import MarketplaceListingPlan
 
+class PrivateUser(GitHubModel):
+    """Private User
 
-class UserMarketplacePurchase(GitHubModel):
-    """User Marketplace Purchase
-
-    User Marketplace Purchase
+    Private User
     """
 
-    billing_cycle: str = Field()
-    next_billing_date: Union[datetime, None] = Field()
-    unit_count: Union[int, None] = Field()
-    on_free_trial: bool = Field()
-    free_trial_ends_on: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    account: MarketplaceAccount = Field(title="Marketplace Account")
-    plan: MarketplaceListingPlan = Field(
-        title="Marketplace Listing Plan", description="Marketplace Listing Plan"
-    )
-
-
-class MarketplaceAccount(GitHubModel):
-    """Marketplace Account"""
-
-    url: str = Field()
-    id: int = Field()
-    type: str = Field()
-    node_id: Missing[str] = Field(default=UNSET)
     login: str = Field()
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
+    id: int = Field()
+    user_view_type: Missing[str] = Field(default=UNSET)
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    name: Union[str, None] = Field()
+    company: Union[str, None] = Field()
+    blog: Union[str, None] = Field()
+    location: Union[str, None] = Field()
+    email: Union[str, None] = Field()
+    notification_email: Missing[Union[str, None]] = Field(default=UNSET)
+    hireable: Union[bool, None] = Field()
+    bio: Union[str, None] = Field()
+    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
+    public_repos: int = Field()
+    public_gists: int = Field()
+    followers: int = Field()
+    following: int = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    private_gists: int = Field()
+    total_private_repos: int = Field()
+    owned_private_repos: int = Field()
+    disk_usage: int = Field()
+    collaborators: int = Field()
+    two_factor_authentication: bool = Field()
+    plan: Missing[PrivateUserPropPlan] = Field(default=UNSET)
+    business_plus: Missing[bool] = Field(default=UNSET)
+    ldap_dn: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(UserMarketplacePurchase)
-model_rebuild(MarketplaceAccount)
+class PrivateUserPropPlan(GitHubModel):
+    """PrivateUserPropPlan"""
+
+    collaborators: int = Field()
+    name: str = Field()
+    space: int = Field()
+    private_repos: int = Field()
+
+
+model_rebuild(PrivateUser)
+model_rebuild(PrivateUserPropPlan)
 
 __all__ = (
-    "MarketplaceAccount",
-    "UserMarketplacePurchase",
+    "PrivateUser",
+    "PrivateUserPropPlan",
 )

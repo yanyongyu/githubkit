@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal
 
 from pydantic import Field
@@ -19,45 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
-    """Organization private registry
+class OrganizationCustomOrganizationRoleCreateSchema(GitHubModel):
+    """OrganizationCustomOrganizationRoleCreateSchema"""
 
-    Private registry configuration for an organization
-    """
-
-    name: str = Field(description="The name of the private registry configuration.")
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ] = Field(description="The registry type.")
-    username: Missing[str] = Field(
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[str] = Field(
         default=UNSET,
-        description="The username to use when authenticating with the private registry.",
+        description="A short description about the intended usage of this role or what permissions it grants.",
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
+    permissions: list[str] = Field(
+        description="A list of additional permissions included in this role."
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    base_role: Missing[Literal["read", "triage", "write", "maintain", "admin"]] = Field(
         default=UNSET,
-        description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
+        description="The system role from which this role can inherit permissions.",
     )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
 
 
-model_rebuild(OrgPrivateRegistryConfigurationWithSelectedRepositories)
+model_rebuild(OrganizationCustomOrganizationRoleCreateSchema)
 
-__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositories",)
+__all__ = ("OrganizationCustomOrganizationRoleCreateSchema",)

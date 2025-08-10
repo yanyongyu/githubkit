@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 
 from pydantic import Field
@@ -16,33 +17,34 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
-from .group_0020 import Repository
 
 
-class PullRequestPropHead(GitHubModel):
-    """PullRequestPropHead"""
+class PageBuild(GitHubModel):
+    """Page Build
 
-    label: Union[str, None] = Field()
-    ref: str = Field()
-    repo: Union[None, Repository] = Field()
-    sha: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    Page Build
+    """
 
-
-class PullRequestPropBase(GitHubModel):
-    """PullRequestPropBase"""
-
-    label: str = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
-    sha: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    url: str = Field()
+    status: str = Field()
+    error: PageBuildPropError = Field()
+    pusher: Union[None, SimpleUser] = Field()
+    commit: str = Field()
+    duration: int = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(PullRequestPropHead)
-model_rebuild(PullRequestPropBase)
+class PageBuildPropError(GitHubModel):
+    """PageBuildPropError"""
+
+    message: Union[str, None] = Field()
+
+
+model_rebuild(PageBuild)
+model_rebuild(PageBuildPropError)
 
 __all__ = (
-    "PullRequestPropBase",
-    "PullRequestPropHead",
+    "PageBuild",
+    "PageBuildPropError",
 )

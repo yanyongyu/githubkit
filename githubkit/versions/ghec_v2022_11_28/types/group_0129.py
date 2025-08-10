@@ -12,18 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0130 import RepositoryRuleWorkflowsPropParametersType
+from .group_0130 import RepositoryRuleFileExtensionRestrictionPropParametersType
 
 
-class RepositoryRuleWorkflowsType(TypedDict):
-    """workflows
+class RepositoryRuleFileExtensionRestrictionType(TypedDict):
+    """file_extension_restriction
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
 
 
-__all__ = ("RepositoryRuleWorkflowsType",)
+__all__ = ("RepositoryRuleFileExtensionRestrictionType",)

@@ -73,6 +73,9 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.webhooks import (
         IssueCommentEvent as IssueCommentEvent,
     )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        IssueDependenciesEvent as IssueDependenciesEvent,
+    )
     from githubkit.versions.v2022_11_28.webhooks import IssuesEvent as IssuesEvent
     from githubkit.versions.v2022_11_28.webhooks import LabelEvent as LabelEvent
     from githubkit.versions.v2022_11_28.webhooks import (
@@ -256,6 +259,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         issue_comment_action_types as issue_comment_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        issue_dependencies_action_types as issue_dependencies_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         issues_action_types as issues_action_types,
@@ -523,6 +529,10 @@ else:
         "githubkit.versions.v2022_11_28.webhooks.issue_comment": (
             "IssueCommentEvent",
             "issue_comment_action_types",
+        ),
+        "githubkit.versions.v2022_11_28.webhooks.issue_dependencies": (
+            "IssueDependenciesEvent",
+            "issue_dependencies_action_types",
         ),
         "githubkit.versions.v2022_11_28.webhooks.issues": (
             "IssuesEvent",

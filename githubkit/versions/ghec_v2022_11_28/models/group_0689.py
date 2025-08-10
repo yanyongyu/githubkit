@@ -18,19 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0487 import EnterpriseWebhooks
-from .group_0488 import SimpleInstallation
-from .group_0489 import OrganizationSimpleWebhooks
-from .group_0490 import RepositoryWebhooks
-from .group_0511 import WebhooksIssue2
-from .group_0690 import WebhookIssuesTransferredPropChanges
+from .group_0494 import EnterpriseWebhooks
+from .group_0495 import SimpleInstallation
+from .group_0496 import OrganizationSimpleWebhooks
+from .group_0497 import RepositoryWebhooks
+from .group_0690 import WebhookIssuesLockedPropIssue
 
 
-class WebhookIssuesTransferred(GitHubModel):
-    """issues transferred event"""
+class WebhookIssuesLocked(GitHubModel):
+    """issues locked event"""
 
-    action: Literal["transferred"] = Field()
-    changes: WebhookIssuesTransferredPropChanges = Field()
+    action: Literal["locked"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -41,7 +39,7 @@ class WebhookIssuesTransferred(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhooksIssue2 = Field(
+    issue: WebhookIssuesLockedPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
     )
@@ -57,6 +55,6 @@ class WebhookIssuesTransferred(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesTransferred)
+model_rebuild(WebhookIssuesLocked)
 
-__all__ = ("WebhookIssuesTransferred",)
+__all__ = ("WebhookIssuesLocked",)

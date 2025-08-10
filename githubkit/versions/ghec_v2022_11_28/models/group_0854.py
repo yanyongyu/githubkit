@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +19,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0487 import EnterpriseWebhooks
-from .group_0488 import SimpleInstallation
-from .group_0489 import OrganizationSimpleWebhooks
-from .group_0490 import RepositoryWebhooks
-from .group_0855 import WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
+from .group_0494 import EnterpriseWebhooks
+from .group_0495 import SimpleInstallation
+from .group_0496 import OrganizationSimpleWebhooks
+from .group_0497 import RepositoryWebhooks
 
 
-class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
-    """security_advisory withdrawn event"""
+class WebhookRepositoryVulnerabilityAlertResolve(GitHubModel):
+    """repository_vulnerability_alert resolve event"""
 
-    action: Literal["withdrawn"] = Field()
+    action: Literal["resolve"] = Field()
+    alert: WebhookRepositoryVulnerabilityAlertResolvePropAlert = Field(
+        title="Repository Vulnerability Alert Alert",
+        description="The security alert of the vulnerable dependency.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,19 +48,72 @@ class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory = Field(
-        description="The details of the security advisory, including summary, description, and severity."
-    )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecurityAdvisoryWithdrawn)
+class WebhookRepositoryVulnerabilityAlertResolvePropAlert(GitHubModel):
+    """Repository Vulnerability Alert Alert
 
-__all__ = ("WebhookSecurityAdvisoryWithdrawn",)
+    The security alert of the vulnerable dependency.
+    """
+
+    affected_package_name: str = Field()
+    affected_range: str = Field()
+    created_at: str = Field()
+    dismiss_reason: Missing[str] = Field(default=UNSET)
+    dismissed_at: Missing[str] = Field(default=UNSET)
+    dismisser: Missing[
+        Union[WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser, None]
+    ] = Field(default=UNSET, title="User")
+    external_identifier: str = Field()
+    external_reference: Union[str, None] = Field()
+    fix_reason: Missing[str] = Field(default=UNSET)
+    fixed_at: Missing[datetime] = Field(default=UNSET)
+    fixed_in: Missing[str] = Field(default=UNSET)
+    ghsa_id: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    number: int = Field()
+    severity: str = Field()
+    state: Literal["fixed", "open"] = Field()
+
+
+class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookRepositoryVulnerabilityAlertResolve)
+model_rebuild(WebhookRepositoryVulnerabilityAlertResolvePropAlert)
+model_rebuild(WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser)
+
+__all__ = (
+    "WebhookRepositoryVulnerabilityAlertResolve",
+    "WebhookRepositoryVulnerabilityAlertResolvePropAlert",
+    "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser",
+)

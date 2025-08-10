@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,56 +18,36 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class CodeScanningDefaultSetup(GitHubModel):
-    """CodeScanningDefaultSetup
 
-    Configuration for code scanning default setup.
+class CodeScanningCodeqlDatabase(GitHubModel):
+    """CodeQL Database
+
+    A CodeQL database.
     """
 
-    state: Missing[Literal["configured", "not-configured"]] = Field(
+    id: int = Field(description="The ID of the CodeQL database.")
+    name: str = Field(description="The name of the CodeQL database.")
+    language: str = Field(description="The language of the CodeQL database.")
+    uploader: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    content_type: str = Field(description="The MIME type of the CodeQL database file.")
+    size: int = Field(description="The size of the CodeQL database file in bytes.")
+    created_at: datetime = Field(
+        description="The date and time at which the CodeQL database was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    updated_at: datetime = Field(
+        description="The date and time at which the CodeQL database was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    url: str = Field(
+        description="The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property."
+    )
+    commit_oid: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Code scanning default setup has been configured or not.",
-    )
-    languages: Missing[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    runner_type: Missing[Union[None, Literal["standard", "labeled"]]] = Field(
-        default=UNSET, description="Runner type to be used."
-    )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Runner label to be used if the runner type is labeled.",
-    )
-    query_suite: Missing[Literal["default", "extended"]] = Field(
-        default=UNSET, description="CodeQL query suite to be used."
-    )
-    threat_model: Missing[Literal["remote", "remote_and_local"]] = Field(
-        default=UNSET,
-        description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
-    )
-    updated_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET, description="Timestamp of latest configuration update."
-    )
-    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
-        default=UNSET, description="The frequency of the periodic analysis."
+        description="The commit SHA of the repository at the time the CodeQL database was created.",
     )
 
 
-model_rebuild(CodeScanningDefaultSetup)
+model_rebuild(CodeScanningCodeqlDatabase)
 
-__all__ = ("CodeScanningDefaultSetup",)
+__all__ = ("CodeScanningCodeqlDatabase",)

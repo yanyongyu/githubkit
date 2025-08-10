@@ -12,76 +12,72 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0084 import RepositoryRulesetBypassActorType
-from .group_0095 import EnterpriseRulesetConditionsOneof0Type
-from .group_0096 import EnterpriseRulesetConditionsOneof1Type
-from .group_0097 import EnterpriseRulesetConditionsOneof2Type
-from .group_0098 import EnterpriseRulesetConditionsOneof3Type
-from .group_0099 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
+from .group_0069 import CodeScanningOptionsType
+from .group_0070 import CodeScanningDefaultSetupOptionsType
+
+
+class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBody"""
+
+    name: str
+    description: str
+    advanced_security: NotRequired[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
+    ]
+    code_security: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph_autosubmit_action: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    dependency_graph_autosubmit_action_options: NotRequired[
+        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType
+    ]
+    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_options: NotRequired[Union[CodeScanningOptionsType, None]]
+    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup_options: NotRequired[
+        Union[CodeScanningDefaultSetupOptionsType, None]
+    ]
+    code_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_protection: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning_push_protection: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_generic_secrets: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    private_vulnerability_reporting: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    enforcement: NotRequired[Literal["enforced", "unenforced"]]
+
+
+class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosu
+    bmitActionOptions
+
+    Feature options for Automatic dependency submission
+    """
+
+    labeled_runners: NotRequired[bool]
+
+
+__all__ = (
+    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType",
 )
-from .group_0100 import RepositoryRuleUpdateType
-from .group_0102 import RepositoryRuleRequiredLinearHistoryType
-from .group_0103 import RepositoryRuleRequiredDeploymentsType
-from .group_0106 import RepositoryRulePullRequestType
-from .group_0108 import RepositoryRuleRequiredStatusChecksType
-from .group_0110 import RepositoryRuleCommitMessagePatternType
-from .group_0112 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0114 import RepositoryRuleCommitterEmailPatternType
-from .group_0116 import RepositoryRuleBranchNamePatternType
-from .group_0118 import RepositoryRuleTagNamePatternType
-from .group_0120 import RepositoryRuleFilePathRestrictionType
-from .group_0122 import RepositoryRuleMaxFilePathLengthType
-from .group_0124 import RepositoryRuleFileExtensionRestrictionType
-from .group_0126 import RepositoryRuleMaxFileSizeType
-from .group_0129 import RepositoryRuleWorkflowsType
-from .group_0131 import RepositoryRuleCodeScanningType
-
-
-class EnterprisesEnterpriseRulesetsRulesetIdPutBodyType(TypedDict):
-    """EnterprisesEnterpriseRulesetsRulesetIdPutBody"""
-
-    name: NotRequired[str]
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[
-        Union[
-            EnterpriseRulesetConditionsOneof0Type,
-            EnterpriseRulesetConditionsOneof1Type,
-            EnterpriseRulesetConditionsOneof2Type,
-            EnterpriseRulesetConditionsOneof3Type,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-
-
-__all__ = ("EnterprisesEnterpriseRulesetsRulesetIdPutBodyType",)

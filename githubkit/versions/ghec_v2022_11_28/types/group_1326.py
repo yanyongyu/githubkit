@@ -13,11 +13,17 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserProjectsPostBodyType(TypedDict):
-    """UserProjectsPostBody"""
+class UserPatchBodyType(TypedDict):
+    """UserPatchBody"""
 
-    name: str
-    body: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    blog: NotRequired[str]
+    twitter_username: NotRequired[Union[str, None]]
+    company: NotRequired[str]
+    location: NotRequired[str]
+    hireable: NotRequired[bool]
+    bio: NotRequired[str]
 
 
-__all__ = ("UserProjectsPostBodyType",)
+__all__ = ("UserPatchBodyType",)

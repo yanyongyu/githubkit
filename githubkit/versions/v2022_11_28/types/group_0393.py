@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ParticipationStatsType(TypedDict):
-    """Participation Stats"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    all_: list[int]
-    owner: list[int]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
-__all__ = ("ParticipationStatsType",)
+__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",)

@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0142 import RulesetVersionPropActorType
-from .group_0145 import RulesetVersionWithStateAllof1PropStateType
-
-
-class RulesetVersionWithStateType(TypedDict):
-    """RulesetVersionWithState"""
-
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: datetime
-    state: RulesetVersionWithStateAllof1PropStateType
+from .group_0144 import RepositoryRuleMergeQueuePropParametersType
 
 
-__all__ = ("RulesetVersionWithStateType",)
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
+
+    Merges must be performed via a merge queue.
+    """
+
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+
+
+__all__ = ("RepositoryRuleMergeQueueType",)

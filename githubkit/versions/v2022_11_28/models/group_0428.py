@@ -9,36 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrganizationSimpleWebhooks(GitHubModel):
-    """Organization Simple
+class SshSigningKey(GitHubModel):
+    """SSH Signing Key
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    A public SSH key used to sign Git commits
     """
 
-    login: str = Field()
+    key: str = Field()
     id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
+    title: str = Field()
+    created_at: datetime = Field()
 
 
-model_rebuild(OrganizationSimpleWebhooks)
+model_rebuild(SshSigningKey)
 
-__all__ = ("OrganizationSimpleWebhooks",)
+__all__ = ("SshSigningKey",)

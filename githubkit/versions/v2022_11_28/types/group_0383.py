@@ -9,67 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0039 import (
-    SecretScanningLocationCommitType,
-    SecretScanningLocationDiscussionCommentType,
-    SecretScanningLocationDiscussionTitleType,
-    SecretScanningLocationIssueBodyType,
-    SecretScanningLocationPullRequestBodyType,
-    SecretScanningLocationPullRequestReviewType,
-    SecretScanningLocationWikiCommitType,
-)
-from .group_0040 import (
-    SecretScanningLocationIssueCommentType,
-    SecretScanningLocationIssueTitleType,
-    SecretScanningLocationPullRequestReviewCommentType,
-    SecretScanningLocationPullRequestTitleType,
-)
-from .group_0041 import (
-    SecretScanningLocationDiscussionBodyType,
-    SecretScanningLocationPullRequestCommentType,
-)
+from .group_0169 import RepositoryRuleFilePathRestrictionPropParametersType
 
 
-class SecretScanningLocationType(TypedDict):
-    """SecretScanningLocation"""
+class RepositoryRuleDetailedOneof15Type(TypedDict):
+    """RepositoryRuleDetailedOneof15"""
 
-    type: NotRequired[
-        Literal[
-            "commit",
-            "wiki_commit",
-            "issue_title",
-            "issue_body",
-            "issue_comment",
-            "discussion_title",
-            "discussion_body",
-            "discussion_comment",
-            "pull_request_title",
-            "pull_request_body",
-            "pull_request_comment",
-            "pull_request_review",
-            "pull_request_review_comment",
-        ]
-    ]
-    details: NotRequired[
-        Union[
-            SecretScanningLocationCommitType,
-            SecretScanningLocationWikiCommitType,
-            SecretScanningLocationIssueTitleType,
-            SecretScanningLocationIssueBodyType,
-            SecretScanningLocationIssueCommentType,
-            SecretScanningLocationDiscussionTitleType,
-            SecretScanningLocationDiscussionBodyType,
-            SecretScanningLocationDiscussionCommentType,
-            SecretScanningLocationPullRequestTitleType,
-            SecretScanningLocationPullRequestBodyType,
-            SecretScanningLocationPullRequestCommentType,
-            SecretScanningLocationPullRequestReviewType,
-            SecretScanningLocationPullRequestReviewCommentType,
-        ]
-    ]
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-__all__ = ("SecretScanningLocationType",)
+__all__ = ("RepositoryRuleDetailedOneof15Type",)

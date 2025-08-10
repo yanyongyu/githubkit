@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0487 import EnterpriseWebhooks
-from .group_0488 import SimpleInstallation
-from .group_0489 import OrganizationSimpleWebhooks
-from .group_0490 import RepositoryWebhooks
-from .group_0502 import Discussion
-from .group_0504 import WebhooksLabel
+from .group_0494 import EnterpriseWebhooks
+from .group_0495 import SimpleInstallation
+from .group_0496 import OrganizationSimpleWebhooks
+from .group_0497 import RepositoryWebhooks
+from .group_0509 import Discussion
+from .group_0511 import WebhooksLabel
 
 
-class WebhookDiscussionUnlabeled(GitHubModel):
-    """discussion unlabeled event"""
+class WebhookDiscussionLabeled(GitHubModel):
+    """discussion labeled event"""
 
-    action: Literal["unlabeled"] = Field()
+    action: Literal["labeled"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -56,6 +56,6 @@ class WebhookDiscussionUnlabeled(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionUnlabeled)
+model_rebuild(WebhookDiscussionLabeled)
 
-__all__ = ("WebhookDiscussionUnlabeled",)
+__all__ = ("WebhookDiscussionLabeled",)

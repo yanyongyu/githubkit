@@ -18,20 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReviewCustomGatesStateRequired(GitHubModel):
-    """ReviewCustomGatesStateRequired"""
+class ActionsRepositoryPermissions(GitHubModel):
+    """ActionsRepositoryPermissions"""
 
-    environment_name: str = Field(
-        description="The name of the environment to approve or reject."
+    enabled: bool = Field(
+        description="Whether GitHub Actions is enabled on the repository."
     )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+        default=UNSET,
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
     )
-    comment: Missing[str] = Field(
-        default=UNSET, description="Optional comment to include with the review."
+    selected_actions_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
     )
 
 
-model_rebuild(ReviewCustomGatesStateRequired)
+model_rebuild(ActionsRepositoryPermissions)
 
-__all__ = ("ReviewCustomGatesStateRequired",)
+__all__ = ("ActionsRepositoryPermissions",)

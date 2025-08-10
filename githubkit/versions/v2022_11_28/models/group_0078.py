@@ -9,24 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsGetDefaultWorkflowPermissions(GitHubModel):
-    """ActionsGetDefaultWorkflowPermissions"""
+class ActionsArtifactAndLogRetention(GitHubModel):
+    """ActionsArtifactAndLogRetention"""
 
-    default_workflow_permissions: Literal["read", "write"] = Field(
-        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows."
-    )
-    can_approve_pull_request_reviews: bool = Field(
-        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk."
-    )
+    days: int = Field(description="The number of days to retain artifacts and logs")
 
 
-model_rebuild(ActionsGetDefaultWorkflowPermissions)
+model_rebuild(ActionsArtifactAndLogRetention)
 
-__all__ = ("ActionsGetDefaultWorkflowPermissions",)
+__all__ = ("ActionsArtifactAndLogRetention",)

@@ -9,22 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReactionRollupType(TypedDict):
-    """Reaction Rollup"""
+class DeleteCostCenterType(TypedDict):
+    """DeleteCostCenter"""
 
-    url: str
-    total_count: int
-    plus_one: int
-    minus_one: int
-    laugh: int
-    confused: int
-    heart: int
-    hooray: int
-    eyes: int
-    rocket: int
+    message: str
+    id: str
+    name: str
+    cost_center_state: Literal["CostCenterArchived"]
 
 
-__all__ = ("ReactionRollupType",)
+__all__ = ("DeleteCostCenterType",)

@@ -9,20 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AnnouncementType(TypedDict):
-    """Enterprise Announcement
+class RunnerLabelType(TypedDict):
+    """Self hosted runner label
 
-    Enterprise global announcement
+    A label for a self hosted runner
     """
 
-    announcement: Union[str, None]
-    expires_at: NotRequired[Union[datetime, None]]
-    user_dismissible: NotRequired[Union[bool, None]]
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
 
 
-__all__ = ("AnnouncementType",)
+__all__ = ("RunnerLabelType",)

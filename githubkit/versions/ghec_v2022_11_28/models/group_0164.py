@@ -10,94 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0162 import Issue
-from .group_0163 import IssueComment
+from .group_0003 import SimpleUser
 
 
-class EventPropPayload(GitHubModel):
-    """EventPropPayload"""
+class Milestone(GitHubModel):
+    """Milestone
 
-    action: Missing[str] = Field(default=UNSET)
-    issue: Missing[Issue] = Field(
-        default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    comment: Missing[IssueComment] = Field(
-        default=UNSET,
-        title="Issue Comment",
-        description="Comments provide a way for people to collaborate on an issue.",
-    )
-    pages: Missing[list[EventPropPayloadPropPagesItems]] = Field(default=UNSET)
-
-
-class EventPropPayloadPropPagesItems(GitHubModel):
-    """EventPropPayloadPropPagesItems"""
-
-    page_name: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    summary: Missing[Union[str, None]] = Field(default=UNSET)
-    action: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-
-
-class Event(GitHubModel):
-    """Event
-
-    Event
+    A collection of related issues and pull requests.
     """
 
-    id: str = Field()
-    type: Union[str, None] = Field()
-    actor: Actor = Field(title="Actor", description="Actor")
-    repo: EventPropRepo = Field()
-    org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
-    payload: EventPropPayload = Field()
-    public: bool = Field()
-    created_at: Union[datetime, None] = Field()
-
-
-class Actor(GitHubModel):
-    """Actor
-
-    Actor
-    """
-
-    id: int = Field()
-    login: str = Field()
-    display_login: Missing[str] = Field(default=UNSET)
-    gravatar_id: Union[str, None] = Field()
     url: str = Field()
-    avatar_url: str = Field()
-
-
-class EventPropRepo(GitHubModel):
-    """EventPropRepo"""
-
+    html_url: str = Field()
+    labels_url: str = Field()
     id: int = Field()
-    name: str = Field()
-    url: str = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    state: Literal["open", "closed"] = Field(
+        default="open", description="The state of the milestone."
+    )
+    title: str = Field(description="The title of the milestone.")
+    description: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
+    open_issues: int = Field()
+    closed_issues: int = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    closed_at: Union[datetime, None] = Field()
+    due_on: Union[datetime, None] = Field()
 
 
-model_rebuild(EventPropPayload)
-model_rebuild(EventPropPayloadPropPagesItems)
-model_rebuild(Event)
-model_rebuild(Actor)
-model_rebuild(EventPropRepo)
+model_rebuild(Milestone)
 
-__all__ = (
-    "Actor",
-    "Event",
-    "EventPropPayload",
-    "EventPropPayloadPropPagesItems",
-    "EventPropRepo",
-)
+__all__ = ("Milestone",)

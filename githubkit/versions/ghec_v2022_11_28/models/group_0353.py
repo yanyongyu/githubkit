@@ -12,50 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0276 import Verification
 
 
-class GitTag(GitHubModel):
-    """Git Tag
+class DeploymentBranchPolicyNamePattern(GitHubModel):
+    """Deployment branch policy name pattern"""
 
-    Metadata for a Git tag
-    """
-
-    node_id: str = Field()
-    tag: str = Field(description="Name of the tag")
-    sha: str = Field()
-    url: str = Field(description="URL for the tag")
-    message: str = Field(description="Message describing the purpose of the tag")
-    tagger: GitTagPropTagger = Field()
-    object_: GitTagPropObject = Field(alias="object")
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+    name: str = Field(
+        description="The name pattern that branches must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
+    )
 
 
-class GitTagPropTagger(GitHubModel):
-    """GitTagPropTagger"""
+model_rebuild(DeploymentBranchPolicyNamePattern)
 
-    date: str = Field()
-    email: str = Field()
-    name: str = Field()
-
-
-class GitTagPropObject(GitHubModel):
-    """GitTagPropObject"""
-
-    sha: str = Field()
-    type: str = Field()
-    url: str = Field()
-
-
-model_rebuild(GitTag)
-model_rebuild(GitTagPropTagger)
-model_rebuild(GitTagPropObject)
-
-__all__ = (
-    "GitTag",
-    "GitTagPropObject",
-    "GitTagPropTagger",
-)
+__all__ = ("DeploymentBranchPolicyNamePattern",)

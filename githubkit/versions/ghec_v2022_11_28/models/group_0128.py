@@ -12,20 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRuleParamsRestrictedCommits(GitHubModel):
-    """RestrictedCommits
+class RepositoryRuleMaxFilePathLengthPropParameters(GitHubModel):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
 
-    Restricted commit
-    """
+    max_file_path_length: int = Field(
+        le=32767.0,
+        ge=1.0,
+        description="The maximum amount of characters allowed in file paths.",
+    )
 
-    oid: str = Field(description="Full or abbreviated commit hash to reject")
-    reason: Missing[str] = Field(default=UNSET, description="Reason for restriction")
 
+model_rebuild(RepositoryRuleMaxFilePathLengthPropParameters)
 
-model_rebuild(RepositoryRuleParamsRestrictedCommits)
-
-__all__ = ("RepositoryRuleParamsRestrictedCommits",)
+__all__ = ("RepositoryRuleMaxFilePathLengthPropParameters",)

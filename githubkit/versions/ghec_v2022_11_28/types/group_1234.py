@@ -9,15 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoKeysPostBodyType(TypedDict):
-    """ReposOwnerRepoKeysPostBody"""
-
-    title: NotRequired[str]
-    key: str
-    read_only: NotRequired[bool]
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
-__all__ = ("ReposOwnerRepoKeysPostBodyType",)
+__all__ = ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type",)

@@ -9,19 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class ActionsSecretType(TypedDict):
-    """Actions Secret
+class RateLimitType(TypedDict):
+    """Rate Limit"""
 
-    Set secrets for GitHub Actions.
-    """
-
-    name: str
-    created_at: datetime
-    updated_at: datetime
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
-__all__ = ("ActionsSecretType",)
+__all__ = ("RateLimitType",)

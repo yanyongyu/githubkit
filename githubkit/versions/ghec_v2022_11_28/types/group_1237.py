@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoMergeUpstreamPostBodyType(TypedDict):
-    """ReposOwnerRepoMergeUpstreamPostBody"""
+class ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoIssuesCommentsCommentIdPatchBody"""
 
-    branch: str
+    body: str
 
 
-__all__ = ("ReposOwnerRepoMergeUpstreamPostBodyType",)
+__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType",)

@@ -9,120 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0084 import RepositoryRulesetBypassActorType
-from .group_0089 import RepositoryRulesetConditionsType
-from .group_0099 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
+from .group_0093 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
 )
-from .group_0100 import RepositoryRuleUpdateType
-from .group_0102 import RepositoryRuleRequiredLinearHistoryType
-from .group_0103 import RepositoryRuleRequiredDeploymentsType
-from .group_0106 import RepositoryRulePullRequestType
-from .group_0108 import RepositoryRuleRequiredStatusChecksType
-from .group_0110 import RepositoryRuleCommitMessagePatternType
-from .group_0112 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0114 import RepositoryRuleCommitterEmailPatternType
-from .group_0116 import RepositoryRuleBranchNamePatternType
-from .group_0118 import RepositoryRuleTagNamePatternType
-from .group_0120 import RepositoryRuleFilePathRestrictionType
-from .group_0122 import RepositoryRuleMaxFilePathLengthType
-from .group_0124 import RepositoryRuleFileExtensionRestrictionType
-from .group_0126 import RepositoryRuleMaxFileSizeType
-from .group_0129 import RepositoryRuleWorkflowsType
-from .group_0131 import RepositoryRuleCodeScanningType
-from .group_0135 import OrgRulesetConditionsOneof0Type
-from .group_0136 import OrgRulesetConditionsOneof1Type
-from .group_0137 import OrgRulesetConditionsOneof2Type
-from .group_0138 import RepositoryRuleMergeQueueType
+from .group_0095 import RepositoryRulesetConditionsPropRefNameType
 
 
-class RepositoryRulesetType(TypedDict):
-    """Repository ruleset
+class OrgRulesetConditionsOneof0Type(TypedDict):
+    """repository_name_and_ref_name
 
-    A set of rules to apply when specified conditions are met.
+    Conditions to target repositories by name and refs by name
     """
 
-    id: int
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    source_type: NotRequired[Literal["Repository", "Organization", "Enterprise"]]
-    source: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    current_user_can_bypass: NotRequired[
-        Literal["always", "pull_requests_only", "never"]
-    ]
-    node_id: NotRequired[str]
-    links: NotRequired[RepositoryRulesetPropLinksType]
-    conditions: NotRequired[
-        Union[
-            RepositoryRulesetConditionsType,
-            OrgRulesetConditionsOneof0Type,
-            OrgRulesetConditionsOneof1Type,
-            OrgRulesetConditionsOneof2Type,
-            None,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
 
 
-class RepositoryRulesetPropLinksType(TypedDict):
-    """RepositoryRulesetPropLinks"""
-
-    self_: NotRequired[RepositoryRulesetPropLinksPropSelfType]
-    html: NotRequired[Union[RepositoryRulesetPropLinksPropHtmlType, None]]
-
-
-class RepositoryRulesetPropLinksPropSelfType(TypedDict):
-    """RepositoryRulesetPropLinksPropSelf"""
-
-    href: NotRequired[str]
-
-
-class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
-    """RepositoryRulesetPropLinksPropHtml"""
-
-    href: NotRequired[str]
-
-
-__all__ = (
-    "RepositoryRulesetPropLinksPropHtmlType",
-    "RepositoryRulesetPropLinksPropSelfType",
-    "RepositoryRulesetPropLinksType",
-    "RepositoryRulesetType",
-)
+__all__ = ("OrgRulesetConditionsOneof0Type",)

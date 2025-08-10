@@ -9,91 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class AuditLogEventType(TypedDict):
-    """AuditLogEvent"""
+class AnnouncementBannerType(TypedDict):
+    """Announcement Banner
 
-    timestamp: NotRequired[int]
-    action: NotRequired[str]
-    active: NotRequired[bool]
-    active_was: NotRequired[bool]
-    actor: NotRequired[str]
-    actor_id: NotRequired[int]
-    actor_location: NotRequired[AuditLogEventPropActorLocationType]
-    data: NotRequired[AuditLogEventPropDataType]
-    org_id: NotRequired[int]
-    user_id: NotRequired[int]
-    business_id: NotRequired[int]
-    blocked_user: NotRequired[str]
-    business: NotRequired[str]
-    config: NotRequired[list[AuditLogEventPropConfigItemsType]]
-    config_was: NotRequired[list[AuditLogEventPropConfigWasItemsType]]
-    content_type: NotRequired[str]
-    operation_type: NotRequired[str]
-    created_at: NotRequired[int]
-    deploy_key_fingerprint: NotRequired[str]
-    document_id: NotRequired[str]
-    emoji: NotRequired[str]
-    events: NotRequired[list[AuditLogEventPropEventsItemsType]]
-    events_were: NotRequired[list[AuditLogEventPropEventsWereItemsType]]
-    explanation: NotRequired[str]
-    fingerprint: NotRequired[str]
-    hook_id: NotRequired[int]
-    limited_availability: NotRequired[bool]
-    message: NotRequired[str]
-    name: NotRequired[str]
-    old_user: NotRequired[str]
-    openssh_public_key: NotRequired[str]
-    org: NotRequired[str]
-    previous_visibility: NotRequired[str]
-    read_only: NotRequired[bool]
-    repo: NotRequired[str]
-    repository: NotRequired[str]
-    repository_public: NotRequired[bool]
-    target_login: NotRequired[str]
-    team: NotRequired[str]
-    transport_protocol: NotRequired[int]
-    transport_protocol_name: NotRequired[str]
-    user: NotRequired[str]
-    visibility: NotRequired[str]
+    Announcement at either the repository, organization, or enterprise level
+    """
+
+    announcement: Union[str, None]
+    expires_at: Union[datetime, None]
+    user_dismissible: Union[bool, None]
 
 
-class AuditLogEventPropActorLocationType(TypedDict):
-    """AuditLogEventPropActorLocation"""
-
-    country_name: NotRequired[str]
-
-
-AuditLogEventPropDataType: TypeAlias = dict[str, Any]
-"""AuditLogEventPropData
-"""
-
-
-class AuditLogEventPropConfigItemsType(TypedDict):
-    """AuditLogEventPropConfigItems"""
-
-
-class AuditLogEventPropConfigWasItemsType(TypedDict):
-    """AuditLogEventPropConfigWasItems"""
-
-
-class AuditLogEventPropEventsItemsType(TypedDict):
-    """AuditLogEventPropEventsItems"""
-
-
-class AuditLogEventPropEventsWereItemsType(TypedDict):
-    """AuditLogEventPropEventsWereItems"""
-
-
-__all__ = (
-    "AuditLogEventPropActorLocationType",
-    "AuditLogEventPropConfigItemsType",
-    "AuditLogEventPropConfigWasItemsType",
-    "AuditLogEventPropDataType",
-    "AuditLogEventPropEventsItemsType",
-    "AuditLogEventPropEventsWereItemsType",
-    "AuditLogEventType",
-)
+__all__ = ("AnnouncementBannerType",)

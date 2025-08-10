@@ -9,38 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0184 import MinimalRepositoryType
 
 
-class ContentSymlinkType(TypedDict):
-    """Symlink Content
+class CombinedCommitStatusType(TypedDict):
+    """Combined Commit Status
 
-    An object describing a symlink
+    Combined Commit Status
     """
 
-    type: Literal["symlink"]
-    target: str
-    size: int
-    name: str
-    path: str
+    state: str
+    statuses: list[SimpleCommitStatusType]
     sha: str
+    total_count: int
+    repository: MinimalRepositoryType
+    commit_url: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSymlinkPropLinksType
 
 
-class ContentSymlinkPropLinksType(TypedDict):
-    """ContentSymlinkPropLinks"""
+class SimpleCommitStatusType(TypedDict):
+    """Simple Commit Status"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    description: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: datetime
+    updated_at: datetime
 
 
 __all__ = (
-    "ContentSymlinkPropLinksType",
-    "ContentSymlinkType",
+    "CombinedCommitStatusType",
+    "SimpleCommitStatusType",
 )

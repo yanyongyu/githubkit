@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleMaxFileSizePropParametersType(TypedDict):
-    """RepositoryRuleMaxFileSizePropParameters"""
+class RepositoryRuleFilePathRestrictionPropParametersType(TypedDict):
+    """RepositoryRuleFilePathRestrictionPropParameters"""
 
-    max_file_size: int
+    restricted_file_paths: list[str]
 
 
-__all__ = ("RepositoryRuleMaxFileSizePropParametersType",)
+__all__ = ("RepositoryRuleFilePathRestrictionPropParametersType",)

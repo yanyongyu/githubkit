@@ -11,23 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0080 import RunnerLabelType
+
+class ActionsForkPrWorkflowsPrivateReposRequestType(TypedDict):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
+
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: NotRequired[bool]
+    send_secrets_and_variables: NotRequired[bool]
+    require_approval_for_fork_pr_workflows: NotRequired[bool]
 
 
-class RunnerType(TypedDict):
-    """Self hosted runners
-
-    A self hosted runner
-    """
-
-    id: int
-    runner_group_id: NotRequired[int]
-    name: str
-    os: str
-    status: str
-    busy: bool
-    labels: list[RunnerLabelType]
-    ephemeral: NotRequired[bool]
-
-
-__all__ = ("RunnerType",)
+__all__ = ("ActionsForkPrWorkflowsPrivateReposRequestType",)

@@ -9,19 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import date, datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ApiInsightsRouteStatsItemsType(TypedDict):
-    """ApiInsightsRouteStatsItems"""
-
-    http_method: NotRequired[str]
-    api_route: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+from .group_0003 import SimpleUserType
+from .group_0066 import OrganizationSimpleType
+from .group_0092 import TeamType
 
 
-__all__ = ("ApiInsightsRouteStatsItemsType",)
+class CopilotSeatDetailsType(TypedDict):
+    """Copilot Business Seat Detail
+
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
+    """
+
+    assignee: NotRequired[Union[None, SimpleUserType]]
+    organization: NotRequired[Union[None, OrganizationSimpleType]]
+    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
+    pending_cancellation_date: NotRequired[Union[date, None]]
+    last_activity_at: NotRequired[Union[datetime, None]]
+    last_activity_editor: NotRequired[Union[str, None]]
+    last_authenticated_at: NotRequired[Union[datetime, None]]
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+
+
+class EnterpriseTeamType(TypedDict):
+    """Enterprise Team
+
+    Group of enterprise owners and/or members
+    """
+
+    id: int
+    name: str
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: NotRequired[Union[str, None]]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    created_at: datetime
+    updated_at: datetime
+
+
+class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
+
+
+__all__ = (
+    "CopilotSeatDetailsType",
+    "EnterpriseTeamType",
+    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
+)

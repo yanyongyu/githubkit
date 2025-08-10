@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,93 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserReposPostBody(GitHubModel):
-    """UserReposPostBody"""
+class UserCodespacesSecretsSecretNamePutBody(GitHubModel):
+    """UserCodespacesSecretsSecretNamePutBody"""
 
-    name: str = Field(description="The name of the repository.")
-    description: Missing[str] = Field(
-        default=UNSET, description="A short description of the repository."
-    )
-    homepage: Missing[str] = Field(
-        default=UNSET, description="A URL with more information about the repository."
-    )
-    private: Missing[bool] = Field(
-        default=UNSET, description="Whether the repository is private."
-    )
-    has_issues: Missing[bool] = Field(
-        default=UNSET, description="Whether issues are enabled."
-    )
-    has_projects: Missing[bool] = Field(
-        default=UNSET, description="Whether projects are enabled."
-    )
-    has_wiki: Missing[bool] = Field(
-        default=UNSET, description="Whether the wiki is enabled."
-    )
-    has_discussions: Missing[bool] = Field(
-        default=UNSET, description="Whether discussions are enabled."
-    )
-    team_id: Missing[int] = Field(
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        description="The id of the team that will be granted access to this repository. This is only valid when creating a repository in an organization.",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user) endpoint.",
     )
-    auto_init: Missing[bool] = Field(
+    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    selected_repository_ids: Missing[list[Union[int, str]]] = Field(
         default=UNSET,
-        description="Whether the repository is initialized with a minimal README.",
-    )
-    gitignore_template: Missing[str] = Field(
-        default=UNSET,
-        description="The desired language or platform to apply to the .gitignore.",
-    )
-    license_template: Missing[str] = Field(
-        default=UNSET,
-        description="The license keyword of the open source license for this repository.",
-    )
-    allow_squash_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow squash merges for pull requests."
-    )
-    allow_merge_commit: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow merge commits for pull requests."
-    )
-    allow_rebase_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow rebase merges for pull requests."
-    )
-    allow_auto_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to allow Auto-merge to be used on pull requests.",
-    )
-    delete_branch_on_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to delete head branches when pull requests are merged",
-    )
-    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
-        Field(
-            default=UNSET,
-            description="Required when using `squash_merge_commit_message`.\n\nThe default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
-        )
-    )
-    squash_merge_commit_message: Missing[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
-    )
-    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
-        default=UNSET,
-        description="Required when using `merge_commit_message`.\n\nThe default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
-    )
-    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
-        default=UNSET,
-        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
-    )
-    has_downloads: Missing[bool] = Field(
-        default=UNSET, description="Whether downloads are enabled."
-    )
-    is_template: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this repository acts as a template that can be used to generate new repositories.",
+        description="An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints.",
     )
 
 
-model_rebuild(UserReposPostBody)
+model_rebuild(UserCodespacesSecretsSecretNamePutBody)
 
-__all__ = ("UserReposPostBody",)
+__all__ = ("UserCodespacesSecretsSecretNamePutBody",)

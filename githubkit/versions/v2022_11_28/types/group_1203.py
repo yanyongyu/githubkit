@@ -12,15 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UserSocialAccountsDeleteBodyType(TypedDict):
-    """UserSocialAccountsDeleteBody
+class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str]
+    selected_repository_ids: list[int]
 
 
-__all__ = ("UserSocialAccountsDeleteBodyType",)
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBodyType",)

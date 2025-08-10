@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0297 import CodeScanningVariantAnalysisRepository
 
+class CodeScanningAutofix(GitHubModel):
+    """CodeScanningAutofix"""
 
-class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
-
-    repository_count: int = Field(
-        description="The total number of repositories that were skipped for this reason."
+    status: Literal["pending", "error", "success", "outdated"] = Field(
+        description="The status of an autofix."
     )
-    repositories: list[CodeScanningVariantAnalysisRepository] = Field(
-        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
+    description: Union[str, None] = Field(description="The description of an autofix.")
+    started_at: datetime = Field(
+        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
 
 
-model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
+model_rebuild(CodeScanningAutofix)
 
-__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)
+__all__ = ("CodeScanningAutofix",)

@@ -11,15 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0095 import RepositoryRulesetConditionsPropRefNameType
+from .group_0097 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+)
 
-class RulesetVersionPropActorType(TypedDict):
-    """RulesetVersionPropActor
 
-    The actor who updated the ruleset
+class OrgRulesetConditionsOneof2Type(TypedDict):
+    """repository_property_and_ref_name
+
+    Conditions to target repositories by property and refs by name
     """
 
-    id: NotRequired[int]
-    type: NotRequired[str]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
 
 
-__all__ = ("RulesetVersionPropActorType",)
+__all__ = ("OrgRulesetConditionsOneof2Type",)

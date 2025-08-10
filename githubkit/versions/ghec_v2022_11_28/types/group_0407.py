@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType
+from .group_0076 import TeamType
 
 
-class RepositoryRuleRulesetInfoType(TypedDict):
-    """repository ruleset data for rule
+class PullRequestReviewRequestType(TypedDict):
+    """Pull Request Review Request
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    Pull Request Review Request
     """
 
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    users: list[SimpleUserType]
+    teams: list[TeamType]
 
 
-__all__ = ("RepositoryRuleRulesetInfoType",)
+__all__ = ("PullRequestReviewRequestType",)

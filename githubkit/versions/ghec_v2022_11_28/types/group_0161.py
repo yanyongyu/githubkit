@@ -12,12 +12,12 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class SubIssuesSummaryType(TypedDict):
-    """Sub-issues Summary"""
+class PackagesBillingUsageType(TypedDict):
+    """PackagesBillingUsage"""
 
-    total: int
-    completed: int
-    percent_completed: int
+    total_gigabytes_bandwidth_used: int
+    total_paid_gigabytes_bandwidth_used: int
+    included_gigabytes_bandwidth: int
 
 
-__all__ = ("SubIssuesSummaryType",)
+__all__ = ("PackagesBillingUsageType",)

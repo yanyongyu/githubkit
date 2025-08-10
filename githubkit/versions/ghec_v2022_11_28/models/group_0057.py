@@ -9,162 +9,101 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0056 import BypassResponse
 
 
-class PushRuleBypassRequest(GitHubModel):
-    """Push rule bypass request
+class AzureBlobConfig(GitHubModel):
+    """AzureBlobConfig
 
-    A bypass request made by a user asking to be exempted from a push rule in this
-    repository.
+    Azure Blob Config for audit log streaming configuration.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the bypass request."
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
     )
-    number: Missing[int] = Field(
-        default=UNSET,
-        description="The number uniquely identifying the bypass request within its repository.",
-    )
-    repository: Missing[PushRuleBypassRequestPropRepository] = Field(
-        default=UNSET, description="The repository the bypass request is for."
-    )
-    organization: Missing[PushRuleBypassRequestPropOrganization] = Field(
-        default=UNSET,
-        description="The organization associated with the repository the bypass request is for.",
-    )
-    requester: Missing[PushRuleBypassRequestPropRequester] = Field(
-        default=UNSET, description="The user who requested the bypass."
-    )
-    request_type: Missing[str] = Field(
-        default=UNSET, description="The type of request."
-    )
-    data: Missing[Union[list[PushRuleBypassRequestPropDataItems], None]] = Field(
-        default=UNSET,
-        description="Data describing the push rules that are being requested to be bypassed.",
-    )
-    resource_identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The unique identifier for the request type of the bypass request. For example, a commit SHA.",
-    )
-    status: Missing[
-        Literal[
-            "pending",
-            "denied",
-            "approved",
-            "cancelled",
-            "completed",
-            "expired",
-            "deleted",
-            "open",
-        ]
-    ] = Field(default=UNSET, description="The status of the bypass request.")
-    requester_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment the requester provided when creating the bypass request.",
-    )
-    expires_at: Missing[datetime] = Field(
-        default=UNSET, description="The date and time the bypass request will expire."
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET, description="The date and time the bypass request was created."
-    )
-    responses: Missing[Union[list[BypassResponse], None]] = Field(
-        default=UNSET, description="The responses to the bypass request."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the bypass request in a browser."
-    )
+    encrypted_sas_url: str = Field()
 
 
-class PushRuleBypassRequestPropRepository(GitHubModel):
-    """PushRuleBypassRequestPropRepository
+class AzureHubConfig(GitHubModel):
+    """AzureHubConfig
 
-    The repository the bypass request is for.
+    Azure Event Hubs Config for audit log streaming configuration.
     """
 
-    id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of the repository the bypass request is for."
+    name: str = Field(description="Instance name of Azure Event Hubs")
+    encrypted_connstring: str = Field(
+        description="Encrypted Connection String for Azure Event Hubs"
     )
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The name of the repository the bypass request is for.",
-    )
-    full_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The full name of the repository the bypass request is for.",
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
     )
 
 
-class PushRuleBypassRequestPropOrganization(GitHubModel):
-    """PushRuleBypassRequestPropOrganization
+class AmazonS3AccessKeysConfig(GitHubModel):
+    """AmazonS3AccessKeysConfig
 
-    The organization associated with the repository the bypass request is for.
+    Amazon S3 Access Keys Config for audit log streaming configuration.
     """
 
-    id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of the organization."
+    bucket: str = Field(description="Amazon S3 Bucket Name.")
+    region: str = Field(description="Amazon S3 Bucket Name.")
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
     )
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The name of the organization."
+    authentication_type: Literal["access_keys"] = Field(
+        description="Authentication Type for Amazon S3."
     )
+    encrypted_secret_key: str = Field(description="Encrypted AWS Secret Key.")
+    encrypted_access_key_id: str = Field(description="Encrypted AWS Access Key ID.")
 
 
-class PushRuleBypassRequestPropRequester(GitHubModel):
-    """PushRuleBypassRequestPropRequester
+class HecConfig(GitHubModel):
+    """HecConfig
 
-    The user who requested the bypass.
+    Hec Config for Audit Log Stream Configuration
     """
 
-    actor_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the GitHub user who requested the bypass."
+    domain: str = Field(description="Domain of Hec instance.")
+    port: int = Field(description="The port number for connecting to HEC.")
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
     )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who requested the bypass.",
-    )
-
-
-class PushRuleBypassRequestPropDataItems(GitHubModel):
-    """PushRuleBypassRequestPropDataItems"""
-
-    ruleset_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the ruleset for the rules that were violated.",
-    )
-    ruleset_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the ruleset for the rules that were violated.",
-    )
-    total_violations: Missing[int] = Field(
-        default=UNSET,
-        description="The number of rule violations generated from the push associated with this request.",
-    )
-    rule_type: Missing[str] = Field(
-        default=UNSET, description="The type of rule that was violated."
+    encrypted_token: str = Field(description="Encrypted Token.")
+    path: str = Field(description="Path to send events to.")
+    ssl_verify: bool = Field(
+        description="SSL verification helps ensure your events are sent to your HEC endpoint securely."
     )
 
 
-model_rebuild(PushRuleBypassRequest)
-model_rebuild(PushRuleBypassRequestPropRepository)
-model_rebuild(PushRuleBypassRequestPropOrganization)
-model_rebuild(PushRuleBypassRequestPropRequester)
-model_rebuild(PushRuleBypassRequestPropDataItems)
+class DatadogConfig(GitHubModel):
+    """DatadogConfig
+
+    Datadog Config for audit log streaming configuration.
+    """
+
+    encrypted_token: str = Field(description="Encrypted Splunk token.")
+    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"] = Field(
+        description="Datadog Site to use."
+    )
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    )
+
+
+model_rebuild(AzureBlobConfig)
+model_rebuild(AzureHubConfig)
+model_rebuild(AmazonS3AccessKeysConfig)
+model_rebuild(HecConfig)
+model_rebuild(DatadogConfig)
 
 __all__ = (
-    "PushRuleBypassRequest",
-    "PushRuleBypassRequestPropDataItems",
-    "PushRuleBypassRequestPropOrganization",
-    "PushRuleBypassRequestPropRepository",
-    "PushRuleBypassRequestPropRequester",
+    "AmazonS3AccessKeysConfig",
+    "AzureBlobConfig",
+    "AzureHubConfig",
+    "DatadogConfig",
+    "HecConfig",
 )

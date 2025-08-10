@@ -9,37 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0017 import AppPermissionsType
 
 
-class AmazonS3OidcConfigType(TypedDict):
-    """AmazonS3OIDCConfig
+class EnterpriseOrganizationInstallationType(TypedDict):
+    """Enterprise Organization Installation
 
-    Amazon S3 OIDC Config for audit log streaming configuration.
+    A GitHub App Installation on an enterprise-owned organization
     """
 
-    bucket: str
-    region: str
-    key_id: str
-    authentication_type: Literal["oidc"]
-    arn_role: str
+    id: int
+    app_slug: NotRequired[str]
+    client_id: str
+    repository_selection: Literal["all", "selected"]
+    repositories_url: str
+    permissions: AppPermissionsType
+    events: NotRequired[list[str]]
+    created_at: datetime
+    updated_at: datetime
 
 
-class SplunkConfigType(TypedDict):
-    """SplunkConfig
-
-    Splunk Config for Audit Log Stream Configuration
-    """
-
-    domain: str
-    port: int
-    key_id: str
-    encrypted_token: str
-    ssl_verify: bool
-
-
-__all__ = (
-    "AmazonS3OidcConfigType",
-    "SplunkConfigType",
-)
+__all__ = ("EnterpriseOrganizationInstallationType",)

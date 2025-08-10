@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,40 +17,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0020 import Repository
 
+class SelfHostedRunnersSettings(GitHubModel):
+    """SelfHostedRunnersSettings"""
 
-class AuthenticationToken(GitHubModel):
-    """Authentication Token
-
-    Authentication Token
-    """
-
-    token: str = Field(description="The token used for authentication")
-    expires_at: datetime = Field(description="The time this token expires")
-    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
-    repositories: Missing[list[Repository]] = Field(
-        default=UNSET, description="The repositories this token has access to"
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
     )
-    single_file: Missing[Union[str, None]] = Field(default=UNSET)
-    repository_selection: Missing[Literal["all", "selected"]] = Field(
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="Describe whether all repositories have been selected or there's a selection involved",
+        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
     )
 
 
-class AuthenticationTokenPropPermissions(GitHubModel):
-    """AuthenticationTokenPropPermissions
+model_rebuild(SelfHostedRunnersSettings)
 
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
-
-
-model_rebuild(AuthenticationToken)
-model_rebuild(AuthenticationTokenPropPermissions)
-
-__all__ = (
-    "AuthenticationToken",
-    "AuthenticationTokenPropPermissions",
-)
+__all__ = ("SelfHostedRunnersSettings",)

@@ -9,24 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0181 import (
+    MarketplacePurchasePropMarketplacePendingChangeType,
+    MarketplacePurchasePropMarketplacePurchaseType,
+)
 
-class ThreadSubscriptionType(TypedDict):
-    """Thread Subscription
 
-    Thread Subscription
+class MarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase
+
+    Marketplace Purchase
     """
 
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: Union[datetime, None]
     url: str
-    thread_url: NotRequired[str]
-    repository_url: NotRequired[str]
+    type: str
+    id: int
+    login: str
+    organization_billing_email: NotRequired[str]
+    email: NotRequired[Union[str, None]]
+    marketplace_pending_change: NotRequired[
+        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
+    ]
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
 
 
-__all__ = ("ThreadSubscriptionType",)
+__all__ = ("MarketplacePurchaseType",)

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,18 +16,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class ProjectsColumnsCardsCardIdMovesPostResponse403(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[
+        list[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoActionsPermissionsPutBody)
+class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
 
-__all__ = ("ReposOwnerRepoActionsPermissionsPutBody",)
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems)
+
+__all__ = (
+    "ProjectsColumnsCardsCardIdMovesPostResponse403",
+    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems",
+)

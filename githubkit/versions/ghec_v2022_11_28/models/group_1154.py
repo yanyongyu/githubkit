@@ -9,72 +9,227 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1152 import (
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItems,
-    ReposOwnerRepoCheckRunsPostBodyPropOutput,
-)
 
+class ReposOwnerRepoBranchesBranchProtectionPutBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionPutBody"""
 
-class ReposOwnerRepoCheckRunsPostBodyOneof1(ExtraGitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
-
-    name: str = Field(
-        description='The name of the check. For example, "code-coverage".'
+    required_status_checks: Union[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks, None
+    ] = Field(
+        description="Require status checks to pass before merging. Set to `null` to disable."
     )
-    head_sha: str = Field(description="The SHA of the commit.")
-    details_url: Missing[str] = Field(
+    enforce_admins: Union[bool, None] = Field(
+        description="Enforce all configured restrictions for administrators. Set to `true` to enforce required status checks for repository administrators. Set to `null` to disable."
+    )
+    required_pull_request_reviews: Union[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews,
+        None,
+    ] = Field(
+        description="Require at least one approving review on a pull request, before merging. Set to `null` to disable."
+    )
+    restrictions: Union[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions, None
+    ] = Field(
+        description="Restrict who can push to the protected branch. User, app, and team `restrictions` are only available for organization-owned repositories. Set to `null` to disable."
+    )
+    required_linear_history: Missing[bool] = Field(
         default=UNSET,
-        description="The URL of the integrator's site that has the full details of the check. If the integrator does not provide this, then the homepage of the GitHub app is used.",
+        description='Enforces a linear commit Git history, which prevents anyone from pushing merge commits to a branch. Set to `true` to enforce a linear commit history. Set to `false` to disable a linear commit Git history. Your repository must allow squash merging or rebase merging before you can enable a linear commit history. Default: `false`. For more information, see "[Requiring a linear commit history](https://docs.github.com/enterprise-cloud@latest//github/administering-a-repository/requiring-a-linear-commit-history)" in the GitHub Help documentation.',
     )
-    external_id: Missing[str] = Field(
-        default=UNSET, description="A reference for the run on the integrator's system."
-    )
-    status: Missing[
-        Literal["queued", "in_progress", "waiting", "requested", "pending"]
-    ] = Field(default=UNSET)
-    started_at: Missing[datetime] = Field(
+    allow_force_pushes: Missing[Union[bool, None]] = Field(
         default=UNSET,
-        description="The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description='Permits force pushes to the protected branch by anyone with write access to the repository. Set to `true` to allow force pushes. Set to `false` or `null` to block force pushes. Default: `false`. For more information, see "[Enabling force pushes to a protected branch](https://docs.github.com/enterprise-cloud@latest//github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the GitHub Help documentation."',
     )
-    conclusion: Missing[
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "success",
-            "skipped",
-            "stale",
-            "timed_out",
+    allow_deletions: Missing[bool] = Field(
+        default=UNSET,
+        description='Allows deletion of the protected branch by anyone with write access to the repository. Set to `false` to prevent deletion of the protected branch. Default: `false`. For more information, see "[Enabling force pushes to a protected branch](https://docs.github.com/enterprise-cloud@latest//github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the GitHub Help documentation.',
+    )
+    block_creations: Missing[bool] = Field(
+        default=UNSET,
+        description="If set to `true`, the `restrictions` branch protection settings which limits who can push will also block pushes which create new branches, unless the push is initiated by a user, team, or app which has the ability to push. Set to `true` to restrict new branch creation. Default: `false`.",
+    )
+    required_conversation_resolution: Missing[bool] = Field(
+        default=UNSET,
+        description="Requires all conversations on code to be resolved before a pull request can be merged into a branch that matches this rule. Set to `false` to disable. Default: `false`.",
+    )
+    lock_branch: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to set the branch as read-only. If this is true, users will not be able to push to the branch. Default: `false`.",
+    )
+    allow_fork_syncing: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. Default: `false`.",
+    )
+
+
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks
+
+    Require status checks to pass before merging. Set to `null` to disable.
+    """
+
+    strict: bool = Field(
+        description="Require branches to be up to date before merging."
+    )
+    contexts: list[str] = Field(
+        description="**Closing down notice**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control."
+    )
+    checks: Missing[
+        list[
+            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems
         ]
     ] = Field(
         default=UNSET,
-        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.",
-    )
-    completed_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    output: Missing[ReposOwnerRepoCheckRunsPostBodyPropOutput] = Field(
-        default=UNSET,
-        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
-    )
-    actions: Missing[list[ReposOwnerRepoCheckRunsPostBodyPropActionsItems]] = Field(
-        max_length=3 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description='Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
+        description="The list of status checks to require in order to merge into this branch.",
     )
 
 
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyOneof1)
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksI
+    tems
+    """
 
-__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof1",)
+    context: str = Field(description="The name of the required check")
+    app_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status.",
+    )
+
+
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews
+
+    Require at least one approving review on a pull request, before merging. Set to
+    `null` to disable.
+    """
+
+    dismissal_restrictions: Missing[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions
+    ] = Field(
+        default=UNSET,
+        description="Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.",
+    )
+    dismiss_stale_reviews: Missing[bool] = Field(
+        default=UNSET,
+        description="Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.",
+    )
+    require_code_owner_reviews: Missing[bool] = Field(
+        default=UNSET,
+        description="Blocks merging pull requests until [code owners](https://docs.github.com/enterprise-cloud@latest//articles/about-code-owners/) review them.",
+    )
+    required_approving_review_count: Missing[int] = Field(
+        default=UNSET,
+        description="Specify the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.",
+    )
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`.",
+    )
+    bypass_pull_request_allowances: Missing[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
+    ] = Field(
+        default=UNSET,
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+    )
+
+
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropD
+    ismissalRestrictions
+
+    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
+    empty `dismissal_restrictions` object to disable. User and team
+    `dismissal_restrictions` are only available for organization-owned repositories.
+    Omit this parameter for personal repositories.
+    """
+
+    users: Missing[list[str]] = Field(
+        default=UNSET, description="The list of user `login`s with dismissal access"
+    )
+    teams: Missing[list[str]] = Field(
+        default=UNSET, description="The list of team `slug`s with dismissal access"
+    )
+    apps: Missing[list[str]] = Field(
+        default=UNSET, description="The list of app `slug`s with dismissal access"
+    )
+
+
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropB
+    ypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of user `login`s allowed to bypass pull request requirements.",
+    )
+    teams: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of team `slug`s allowed to bypass pull request requirements.",
+    )
+    apps: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of app `slug`s allowed to bypass pull request requirements.",
+    )
+
+
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions
+
+    Restrict who can push to the protected branch. User, app, and team
+    `restrictions` are only available for organization-owned repositories. Set to
+    `null` to disable.
+    """
+
+    users: list[str] = Field(description="The list of user `login`s with push access")
+    teams: list[str] = Field(description="The list of team `slug`s with push access")
+    apps: Missing[list[str]] = Field(
+        default=UNSET, description="The list of app `slug`s with push access"
+    )
+
+
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionPutBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems
+)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews
+)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions
+)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
+)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions)
+
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionPutBody",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions",
+)

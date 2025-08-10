@@ -80,6 +80,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType,
         ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType,
         ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
+        ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType,
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
@@ -2476,6 +2477,500 @@ class IssuesClient:
                 "410": BasicError,
                 "422": ValidationError,
                 "404": BasicError,
+            },
+        )
+
+    def list_dependencies_blocked_by(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[Issue], list[IssueType]]:
+        """issues/list-dependencies-blocked-by
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by
+
+        You can use the REST API to list the dependencies an issue is blocked by.
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/rest/issues/issue-dependencies#list-dependencies-an-issue-is-blocked-by
+        """
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Issue],
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    async def async_list_dependencies_blocked_by(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[Issue], list[IssueType]]:
+        """issues/list-dependencies-blocked-by
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by
+
+        You can use the REST API to list the dependencies an issue is blocked by.
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/rest/issues/issue-dependencies#list-dependencies-an-issue-is-blocked-by
+        """
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Issue],
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    @overload
+    def add_blocked_by_dependency(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
+    ) -> Response[Issue, IssueType]: ...
+
+    @overload
+    def add_blocked_by_dependency(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_id: int,
+    ) -> Response[Issue, IssueType]: ...
+
+    def add_blocked_by_dependency(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[Issue, IssueType]:
+        """issues/add-blocked-by-dependency
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by
+
+        You can use the REST API to add a 'blocked by' relationship to an issue.
+
+        Creating content too quickly using this endpoint may result in secondary rate limiting.
+        For more information, see [Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
+        and [Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api).
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/rest/issues/issue-dependencies#add-a-dependency-an-issue-is-blocked-by
+        """
+
+        from ..models import (
+            BasicError,
+            Issue,
+            ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Issue,
+            error_models={
+                "403": BasicError,
+                "410": BasicError,
+                "422": ValidationError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_add_blocked_by_dependency(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
+    ) -> Response[Issue, IssueType]: ...
+
+    @overload
+    async def async_add_blocked_by_dependency(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_id: int,
+    ) -> Response[Issue, IssueType]: ...
+
+    async def async_add_blocked_by_dependency(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[Issue, IssueType]:
+        """issues/add-blocked-by-dependency
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by
+
+        You can use the REST API to add a 'blocked by' relationship to an issue.
+
+        Creating content too quickly using this endpoint may result in secondary rate limiting.
+        For more information, see [Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
+        and [Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api).
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/rest/issues/issue-dependencies#add-a-dependency-an-issue-is-blocked-by
+        """
+
+        from ..models import (
+            BasicError,
+            Issue,
+            ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Issue,
+            error_models={
+                "403": BasicError,
+                "410": BasicError,
+                "422": ValidationError,
+                "404": BasicError,
+            },
+        )
+
+    def remove_dependency_blocked_by(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        issue_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[Issue, IssueType]:
+        """issues/remove-dependency-blocked-by
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by/{issue_id}
+
+        You can use the REST API to remove a dependency that an issue is blocked by.
+
+        Removing content too quickly using this endpoint may result in secondary rate limiting.
+        For more information, see [Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
+        and [Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api).
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+        - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass a specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/rest/issues/issue-dependencies#remove-dependency-an-issue-is-blocked-by
+        """
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by/{issue_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Issue,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    async def async_remove_dependency_blocked_by(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        issue_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[Issue, IssueType]:
+        """issues/remove-dependency-blocked-by
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by/{issue_id}
+
+        You can use the REST API to remove a dependency that an issue is blocked by.
+
+        Removing content too quickly using this endpoint may result in secondary rate limiting.
+        For more information, see [Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
+        and [Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api).
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+        - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass a specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/rest/issues/issue-dependencies#remove-dependency-an-issue-is-blocked-by
+        """
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by/{issue_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Issue,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    def list_dependencies_blocking(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[Issue], list[IssueType]]:
+        """issues/list-dependencies-blocking
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocking
+
+        You can use the REST API to list the dependencies an issue is blocking.
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/rest/issues/issue-dependencies#list-dependencies-an-issue-is-blocking
+        """
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocking"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Issue],
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    async def async_list_dependencies_blocking(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[Issue], list[IssueType]]:
+        """issues/list-dependencies-blocking
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocking
+
+        You can use the REST API to list the dependencies an issue is blocking.
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/rest/issues/issue-dependencies#list-dependencies-an-issue-is-blocking
+        """
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocking"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Issue],
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
             },
         )
 

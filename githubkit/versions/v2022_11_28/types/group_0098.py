@@ -9,17 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class DependabotPublicKeyType(TypedDict):
-    """DependabotPublicKey
+class CodespaceMachineType(TypedDict):
+    """Codespace machine
 
-    The public key used for setting Dependabot Secrets.
+    A description of the machine powering a codespace.
     """
 
-    key_id: str
-    key: str
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
 
 
-__all__ = ("DependabotPublicKeyType",)
+__all__ = ("CodespaceMachineType",)

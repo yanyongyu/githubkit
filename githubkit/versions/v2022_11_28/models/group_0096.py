@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,86 +17,72 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0066 import OrganizationSimple
-from .group_0086 import Team
+
+class CodeScanningAlertInstance(GitHubModel):
+    """CodeScanningAlertInstance"""
+
+    ref: Missing[str] = Field(
+        default=UNSET,
+        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
+    )
+    analysis_key: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
+    )
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
+    )
+    category: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
+    )
+    state: Missing[Union[None, Literal["open", "dismissed", "fixed"]]] = Field(
+        default=UNSET, description="State of a code scanning alert."
+    )
+    commit_sha: Missing[str] = Field(default=UNSET)
+    message: Missing[CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
+    location: Missing[CodeScanningAlertLocation] = Field(
+        default=UNSET, description="Describe a region within a file for the alert."
+    )
+    html_url: Missing[str] = Field(default=UNSET)
+    classifications: Missing[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
+    ] = Field(
+        default=UNSET,
+        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
+    )
 
 
-class CopilotSeatDetails(GitHubModel):
-    """Copilot Business Seat Detail
+class CodeScanningAlertLocation(GitHubModel):
+    """CodeScanningAlertLocation
 
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    Describe a region within a file for the alert.
     """
 
-    assignee: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    organization: Missing[Union[None, OrganizationSimple]] = Field(default=UNSET)
-    assigning_team: Missing[Union[Team, EnterpriseTeam, None]] = Field(
-        default=UNSET,
-        description="The team through which the assignee is granted access to GitHub Copilot, if applicable.",
-    )
-    pending_cancellation_date: Missing[Union[date, None]] = Field(
-        default=UNSET,
-        description="The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
-    )
-    last_activity_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
-    )
-    last_activity_editor: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Last editor that was used by the user for a GitHub Copilot completion.",
-    )
-    created_at: datetime = Field(
-        description="Timestamp of when the assignee was last granted access to GitHub Copilot, in ISO 8601 format."
-    )
-    updated_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="**Closing down notice:** This field is no longer relevant and is closing down. Use the `created_at` field to determine when the assignee was last granted access to GitHub Copilot. Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
-    )
-    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
-        default=UNSET,
-        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
-    )
+    path: Missing[str] = Field(default=UNSET)
+    start_line: Missing[int] = Field(default=UNSET)
+    end_line: Missing[int] = Field(default=UNSET)
+    start_column: Missing[int] = Field(default=UNSET)
+    end_column: Missing[int] = Field(default=UNSET)
 
 
-class EnterpriseTeam(GitHubModel):
-    """Enterprise Team
+class CodeScanningAlertInstancePropMessage(GitHubModel):
+    """CodeScanningAlertInstancePropMessage"""
 
-    Group of enterprise owners and/or members
-    """
-
-    id: int = Field()
-    name: str = Field()
-    description: Missing[str] = Field(default=UNSET)
-    slug: str = Field()
-    url: str = Field()
-    sync_to_organizations: Missing[str] = Field(default=UNSET)
-    organization_selection_type: Missing[str] = Field(default=UNSET)
-    group_id: Missing[Union[str, None]] = Field(default=UNSET)
-    group_name: Missing[Union[str, None]] = Field(default=UNSET)
-    html_url: str = Field()
-    members_url: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    text: Missing[str] = Field(default=UNSET)
 
 
-class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
-
-    total_seats: Missing[int] = Field(
-        default=UNSET,
-        description="Total number of Copilot seats for the organization currently being billed.",
-    )
-    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
-
-
-model_rebuild(CopilotSeatDetails)
-model_rebuild(EnterpriseTeam)
-model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
+model_rebuild(CodeScanningAlertInstance)
+model_rebuild(CodeScanningAlertLocation)
+model_rebuild(CodeScanningAlertInstancePropMessage)
 
 __all__ = (
-    "CopilotSeatDetails",
-    "EnterpriseTeam",
-    "OrgsOrgCopilotBillingSeatsGetResponse200",
+    "CodeScanningAlertInstance",
+    "CodeScanningAlertInstancePropMessage",
+    "CodeScanningAlertLocation",
 )

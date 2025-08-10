@@ -18,17 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningOptions(GitHubModel):
-    """CodeScanningOptions
+class CodeScanningAnalysisTool(GitHubModel):
+    """CodeScanningAnalysisTool"""
 
-    Security Configuration feature options for code scanning
-    """
-
-    allow_advanced: Missing[Union[bool, None]] = Field(
-        default=UNSET, description="Whether to allow repos which use advanced setup"
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the tool used to generate the code scanning analysis.",
+    )
+    version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the tool used to generate the code scanning analysis.",
+    )
+    guid: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
     )
 
 
-model_rebuild(CodeScanningOptions)
+model_rebuild(CodeScanningAnalysisTool)
 
-__all__ = ("CodeScanningOptions",)
+__all__ = ("CodeScanningAnalysisTool",)

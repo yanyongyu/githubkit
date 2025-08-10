@@ -12,20 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0858 import WebhookSecurityAndAnalysisPropChangesPropFrom
 
 
-class WebhookSecurityAndAnalysisPropChanges(GitHubModel):
-    """WebhookSecurityAndAnalysisPropChanges"""
+class WebhookSecretScanningAlertLocationCreatedFormEncoded(GitHubModel):
+    """Secret Scanning Alert Location Created Event"""
 
-    from_: Missing[WebhookSecurityAndAnalysisPropChangesPropFrom] = Field(
-        default=UNSET, alias="from"
+    payload: str = Field(
+        description="A URL-encoded string of the secret_scanning_alert_location.created JSON payload. The decoded payload is a JSON object."
     )
 
 
-model_rebuild(WebhookSecurityAndAnalysisPropChanges)
+model_rebuild(WebhookSecretScanningAlertLocationCreatedFormEncoded)
 
-__all__ = ("WebhookSecurityAndAnalysisPropChanges",)
+__all__ = ("WebhookSecretScanningAlertLocationCreatedFormEncoded",)

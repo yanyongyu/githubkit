@@ -53,6 +53,7 @@ def get_content(source: str | httpx.URL) -> tuple[httpx.URL, dict]:
                 "User-Agent": "GitHubKit Codegen",
                 "Accept": "application/vnd.github.sha",
             },
+            timeout=httpx.Timeout(10.0),
         )
         sha_response.raise_for_status()
         sha = sha_response.text.strip()

@@ -11,15 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class GistsGistIdCommentsPostBody(GitHubModel):
-    """GistsGistIdCommentsPostBody"""
+class CredentialsRevokePostBody(GitHubModel):
+    """CredentialsRevokePostBody"""
 
-    body: str = Field(max_length=65535, description="The comment text.")
+    credentials: list[str] = Field(
+        max_length=1000 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="A list of credentials to be revoked, up to 1000 per request.",
+    )
 
 
-model_rebuild(GistsGistIdCommentsPostBody)
+model_rebuild(CredentialsRevokePostBody)
 
-__all__ = ("GistsGistIdCommentsPostBody",)
+__all__ = ("CredentialsRevokePostBody",)

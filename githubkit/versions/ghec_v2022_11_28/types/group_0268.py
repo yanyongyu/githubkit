@@ -12,16 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class AutolinkType(TypedDict):
-    """Autolink reference
+class ReviewCustomGatesCommentRequiredType(TypedDict):
+    """ReviewCustomGatesCommentRequired"""
 
-    An autolink reference.
-    """
-
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
+    environment_name: str
+    comment: str
 
 
-__all__ = ("AutolinkType",)
+__all__ = ("ReviewCustomGatesCommentRequiredType",)

@@ -9,16 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class TrafficType(TypedDict):
-    """Traffic"""
+class CommitActivityType(TypedDict):
+    """Commit Activity
 
-    timestamp: datetime
-    uniques: int
-    count: int
+    Commit Activity
+    """
+
+    days: list[int]
+    total: int
+    week: int
 
 
-__all__ = ("TrafficType",)
+__all__ = ("CommitActivityType",)

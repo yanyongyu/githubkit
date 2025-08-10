@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ApiInsightsSummaryStatsType(TypedDict):
-    """Summary Stats
+class DependabotPublicKeyType(TypedDict):
+    """DependabotPublicKey
 
-    API Insights usage summary stats for an organization
+    The public key used for setting Dependabot Secrets.
     """
 
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    key_id: str
+    key: str
 
 
-__all__ = ("ApiInsightsSummaryStatsType",)
+__all__ = ("DependabotPublicKeyType",)

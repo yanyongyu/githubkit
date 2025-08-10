@@ -9,30 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing_extensions import TypedDict
 
-
-class SecretScanningLocationDiscussionBodyType(TypedDict):
-    """SecretScanningLocationDiscussionBody
-
-    Represents a 'discussion_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of a discussion.
-    """
-
-    discussion_body_url: str
+from .group_0147 import RulesetVersionPropActorType
+from .group_0150 import RulesetVersionWithStateAllof1PropStateType
 
 
-class SecretScanningLocationPullRequestCommentType(TypedDict):
-    """SecretScanningLocationPullRequestComment
+class RulesetVersionWithStateType(TypedDict):
+    """RulesetVersionWithState"""
 
-    Represents a 'pull_request_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a pull request.
-    """
+    version_id: int
+    actor: RulesetVersionPropActorType
+    updated_at: datetime
+    state: RulesetVersionWithStateAllof1PropStateType
 
-    pull_request_comment_url: str
 
-
-__all__ = (
-    "SecretScanningLocationDiscussionBodyType",
-    "SecretScanningLocationPullRequestCommentType",
-)
+__all__ = ("RulesetVersionWithStateType",)

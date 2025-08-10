@@ -9,117 +9,227 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropOutput(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutput
+class ReposOwnerRepoBranchesBranchProtectionPutBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionPutBody"""
 
-    Check runs can accept a variety of data in the `output` object, including a
-    `title` and `summary` and can optionally provide descriptive details about the
-    run.
+    required_status_checks: Union[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks, None
+    ] = Field(
+        description="Require status checks to pass before merging. Set to `null` to disable."
+    )
+    enforce_admins: Union[bool, None] = Field(
+        description="Enforce all configured restrictions for administrators. Set to `true` to enforce required status checks for repository administrators. Set to `null` to disable."
+    )
+    required_pull_request_reviews: Union[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews,
+        None,
+    ] = Field(
+        description="Require at least one approving review on a pull request, before merging. Set to `null` to disable."
+    )
+    restrictions: Union[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions, None
+    ] = Field(
+        description="Restrict who can push to the protected branch. User, app, and team `restrictions` are only available for organization-owned repositories. Set to `null` to disable."
+    )
+    required_linear_history: Missing[bool] = Field(
+        default=UNSET,
+        description='Enforces a linear commit Git history, which prevents anyone from pushing merge commits to a branch. Set to `true` to enforce a linear commit history. Set to `false` to disable a linear commit Git history. Your repository must allow squash merging or rebase merging before you can enable a linear commit history. Default: `false`. For more information, see "[Requiring a linear commit history](https://docs.github.com/github/administering-a-repository/requiring-a-linear-commit-history)" in the GitHub Help documentation.',
+    )
+    allow_force_pushes: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description='Permits force pushes to the protected branch by anyone with write access to the repository. Set to `true` to allow force pushes. Set to `false` or `null` to block force pushes. Default: `false`. For more information, see "[Enabling force pushes to a protected branch](https://docs.github.com/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the GitHub Help documentation."',
+    )
+    allow_deletions: Missing[bool] = Field(
+        default=UNSET,
+        description='Allows deletion of the protected branch by anyone with write access to the repository. Set to `false` to prevent deletion of the protected branch. Default: `false`. For more information, see "[Enabling force pushes to a protected branch](https://docs.github.com/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the GitHub Help documentation.',
+    )
+    block_creations: Missing[bool] = Field(
+        default=UNSET,
+        description="If set to `true`, the `restrictions` branch protection settings which limits who can push will also block pushes which create new branches, unless the push is initiated by a user, team, or app which has the ability to push. Set to `true` to restrict new branch creation. Default: `false`.",
+    )
+    required_conversation_resolution: Missing[bool] = Field(
+        default=UNSET,
+        description="Requires all conversations on code to be resolved before a pull request can be merged into a branch that matches this rule. Set to `false` to disable. Default: `false`.",
+    )
+    lock_branch: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to set the branch as read-only. If this is true, users will not be able to push to the branch. Default: `false`.",
+    )
+    allow_fork_syncing: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. Default: `false`.",
+    )
+
+
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks
+
+    Require status checks to pass before merging. Set to `null` to disable.
     """
 
-    title: str = Field(description="The title of the check run.")
-    summary: str = Field(
-        max_length=65535,
-        description="The summary of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
+    strict: bool = Field(
+        description="Require branches to be up to date before merging."
     )
-    text: Missing[str] = Field(
-        max_length=65535,
-        default=UNSET,
-        description="The details of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
+    contexts: list[str] = Field(
+        description="**Closing down notice**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control."
     )
-    annotations: Missing[
-        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems]
+    checks: Missing[
+        list[
+            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems
+        ]
     ] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
         default=UNSET,
-        description='Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the **Checks** and **Files changed** tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about how you can view annotations on GitHub, see "[About status checks](https://docs.github.com/articles/about-status-checks#checks)".',
-    )
-    images: Missing[list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems]] = (
-        Field(
-            default=UNSET,
-            description="Adds images to the output displayed in the GitHub pull request UI.",
-        )
+        description="The list of status checks to require in order to merge into this branch.",
     )
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksI
+    tems
+    """
 
-    path: str = Field(
-        description="The path of the file to add an annotation to. For example, `assets/css/main.css`."
-    )
-    start_line: int = Field(
-        description="The start line of the annotation. Line numbers start at 1."
-    )
-    end_line: int = Field(description="The end line of the annotation.")
-    start_column: Missing[int] = Field(
+    context: str = Field(description="The name of the required check")
+    app_id: Missing[int] = Field(
         default=UNSET,
-        description="The start column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values. Column numbers start at 1.",
+        description="The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status.",
     )
-    end_column: Missing[int] = Field(
+
+
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews
+
+    Require at least one approving review on a pull request, before merging. Set to
+    `null` to disable.
+    """
+
+    dismissal_restrictions: Missing[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions
+    ] = Field(
         default=UNSET,
-        description="The end column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values.",
+        description="Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.",
     )
-    annotation_level: Literal["notice", "warning", "failure"] = Field(
-        description="The level of the annotation."
-    )
-    message: str = Field(
-        description="A short description of the feedback for these lines of code. The maximum size is 64 KB."
-    )
-    title: Missing[str] = Field(
+    dismiss_stale_reviews: Missing[bool] = Field(
         default=UNSET,
-        description="The title that represents the annotation. The maximum size is 255 characters.",
+        description="Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.",
     )
-    raw_details: Missing[str] = Field(
+    require_code_owner_reviews: Missing[bool] = Field(
         default=UNSET,
-        description="Details about this annotation. The maximum size is 64 KB.",
+        description="Blocks merging pull requests until [code owners](https://docs.github.com/articles/about-code-owners/) review them.",
+    )
+    required_approving_review_count: Missing[int] = Field(
+        default=UNSET,
+        description="Specify the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.",
+    )
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`.",
+    )
+    bypass_pull_request_allowances: Missing[
+        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
+    ] = Field(
+        default=UNSET,
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
     )
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropD
+    ismissalRestrictions
 
-    alt: str = Field(description="The alternative text for the image.")
-    image_url: str = Field(description="The full URL of the image.")
-    caption: Missing[str] = Field(
-        default=UNSET, description="A short image description."
+    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
+    empty `dismissal_restrictions` object to disable. User and team
+    `dismissal_restrictions` are only available for organization-owned repositories.
+    Omit this parameter for personal repositories.
+    """
+
+    users: Missing[list[str]] = Field(
+        default=UNSET, description="The list of user `login`s with dismissal access"
+    )
+    teams: Missing[list[str]] = Field(
+        default=UNSET, description="The list of team `slug`s with dismissal access"
+    )
+    apps: Missing[list[str]] = Field(
+        default=UNSET, description="The list of app `slug`s with dismissal access"
     )
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropActionsItems(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropB
+    ypassPullRequestAllowances
 
-    label: str = Field(
-        max_length=20,
-        description="The text to be displayed on a button in the web UI. The maximum size is 20 characters.",
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of user `login`s allowed to bypass pull request requirements.",
     )
-    description: str = Field(
-        max_length=40,
-        description="A short explanation of what this action would do. The maximum size is 40 characters.",
+    teams: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of team `slug`s allowed to bypass pull request requirements.",
     )
-    identifier: str = Field(
-        max_length=20,
-        description="A reference for the action on the integrator's system. The maximum size is 20 characters.",
+    apps: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of app `slug`s allowed to bypass pull request requirements.",
     )
 
 
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutput)
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems)
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems)
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropActionsItems)
+class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions
+
+    Restrict who can push to the protected branch. User, app, and team
+    `restrictions` are only available for organization-owned repositories. Set to
+    `null` to disable.
+    """
+
+    users: list[str] = Field(description="The list of user `login`s with push access")
+    teams: list[str] = Field(description="The list of team `slug`s with push access")
+    apps: Missing[list[str]] = Field(
+        default=UNSET, description="The list of app `slug`s with push access"
+    )
+
+
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionPutBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems
+)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews
+)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions
+)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
+)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions)
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsPostBodyPropActionsItems",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutput",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems",
+    "ReposOwnerRepoBranchesBranchProtectionPutBody",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems",
+    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions",
 )

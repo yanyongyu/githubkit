@@ -9,23 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0180 import RepositoryRuleCodeScanningPropParameters
 
-class RulesetVersionPropActor(GitHubModel):
-    """RulesetVersionPropActor
 
-    The actor who updated the ruleset
+class RepositoryRuleCodeScanning(GitHubModel):
+    """code_scanning
+
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    id: Missing[int] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
+    type: Literal["code_scanning"] = Field()
+    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RulesetVersionPropActor)
+model_rebuild(RepositoryRuleCodeScanning)
 
-__all__ = ("RulesetVersionPropActor",)
+__all__ = ("RepositoryRuleCodeScanning",)

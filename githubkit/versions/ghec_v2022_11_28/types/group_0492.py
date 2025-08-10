@@ -10,22 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ExemptionResponseType(TypedDict):
-    """Exemption response
+class KeySimpleType(TypedDict):
+    """Key Simple
 
-    A response to an exemption request by a delegated bypasser.
+    Key Simple
     """
 
-    id: NotRequired[int]
-    reviewer_id: NotRequired[int]
-    reviewer_login: NotRequired[str]
-    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
-    reviewer_comment: NotRequired[Union[str, None]]
+    id: int
+    key: str
     created_at: NotRequired[datetime]
+    last_used: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("ExemptionResponseType",)
+__all__ = ("KeySimpleType",)

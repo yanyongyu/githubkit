@@ -14,25 +14,42 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRuleCommitMessagePatternPropParameters(GitHubModel):
-    """RepositoryRuleCommitMessagePatternPropParameters"""
+class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
+    """RequiredReviewerConfiguration
 
-    name: Missing[str] = Field(
-        default=UNSET, description="How this rule will appear to users."
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
+    """
+
+    file_patterns: list[str] = Field(
+        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use the same syntax as `.gitignore` files."
     )
-    negate: Missing[bool] = Field(
-        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    minimum_approvals: int = Field(
+        description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
     )
-    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
-        description="The operator to use for matching."
+    reviewer: RepositoryRuleParamsReviewer = Field(
+        title="Reviewer", description="A required reviewing team"
     )
-    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleCommitMessagePatternPropParameters)
+class RepositoryRuleParamsReviewer(GitHubModel):
+    """Reviewer
 
-__all__ = ("RepositoryRuleCommitMessagePatternPropParameters",)
+    A required reviewing team
+    """
+
+    id: int = Field(
+        description="ID of the reviewer which must review changes to matching files."
+    )
+    type: Literal["Team"] = Field(description="The type of the reviewer")
+
+
+model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
+model_rebuild(RepositoryRuleParamsReviewer)
+
+__all__ = (
+    "RepositoryRuleParamsRequiredReviewerConfiguration",
+    "RepositoryRuleParamsReviewer",
+)

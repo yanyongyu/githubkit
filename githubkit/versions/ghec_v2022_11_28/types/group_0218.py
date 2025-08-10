@@ -13,13 +13,16 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomOrganizationRoleCreateSchemaType(TypedDict):
-    """OrganizationCustomOrganizationRoleCreateSchema"""
+class InteractionLimitType(TypedDict):
+    """Interaction Restrictions
 
-    name: str
-    description: NotRequired[str]
-    permissions: list[str]
-    base_role: NotRequired[Literal["read", "triage", "write", "maintain", "admin"]]
+    Limit interactions to a specific type of user for a specified duration
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ]
 
 
-__all__ = ("OrganizationCustomOrganizationRoleCreateSchemaType",)
+__all__ = ("InteractionLimitType",)

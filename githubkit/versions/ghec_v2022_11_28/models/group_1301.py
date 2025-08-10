@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,16 +17,81 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0089 import RepositoryRulesetBypassActor
+from .group_0094 import RepositoryRulesetConditions
+from .group_0104 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0105 import RepositoryRuleUpdate
+from .group_0107 import RepositoryRuleRequiredLinearHistory
+from .group_0108 import RepositoryRuleRequiredDeployments
+from .group_0111 import RepositoryRulePullRequest
+from .group_0113 import RepositoryRuleRequiredStatusChecks
+from .group_0115 import RepositoryRuleCommitMessagePattern
+from .group_0117 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0119 import RepositoryRuleCommitterEmailPattern
+from .group_0121 import RepositoryRuleBranchNamePattern
+from .group_0123 import RepositoryRuleTagNamePattern
+from .group_0125 import RepositoryRuleFilePathRestriction
+from .group_0127 import RepositoryRuleMaxFilePathLength
+from .group_0129 import RepositoryRuleFileExtensionRestriction
+from .group_0131 import RepositoryRuleMaxFileSize
+from .group_0134 import RepositoryRuleWorkflows
+from .group_0136 import RepositoryRuleCodeScanning
+from .group_0143 import RepositoryRuleMergeQueue
 
-class TeamsTeamIdProjectsProjectIdPutBody(GitHubModel):
-    """TeamsTeamIdProjectsProjectIdPutBody"""
 
-    permission: Missing[Literal["read", "write", "admin"]] = Field(
-        default=UNSET,
-        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method).\"",
+class ReposOwnerRepoRulesetsPostBody(GitHubModel):
+    """ReposOwnerRepoRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[RepositoryRulesetConditions] = Field(
+        default=UNSET,
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(TeamsTeamIdProjectsProjectIdPutBody)
+model_rebuild(ReposOwnerRepoRulesetsPostBody)
 
-__all__ = ("TeamsTeamIdProjectsProjectIdPutBody",)
+__all__ = ("ReposOwnerRepoRulesetsPostBody",)

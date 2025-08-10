@@ -9,13 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
+class RepositoryRuleCreationType(TypedDict):
+    """creation
 
-    required_deployment_environments: list[str]
+    Only allow users with bypass permission to create matching refs.
+    """
+
+    type: Literal["creation"]
 
 
-__all__ = ("RepositoryRuleRequiredDeploymentsPropParametersType",)
+class RepositoryRuleDeletionType(TypedDict):
+    """deletion
+
+    Only allow users with bypass permissions to delete matching refs.
+    """
+
+    type: Literal["deletion"]
+
+
+class RepositoryRuleRequiredSignaturesType(TypedDict):
+    """required_signatures
+
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"]
+
+
+class RepositoryRuleNonFastForwardType(TypedDict):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"]
+
+
+__all__ = (
+    "RepositoryRuleCreationType",
+    "RepositoryRuleDeletionType",
+    "RepositoryRuleNonFastForwardType",
+    "RepositoryRuleRequiredSignaturesType",
+)

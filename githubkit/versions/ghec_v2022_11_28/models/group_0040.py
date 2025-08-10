@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,22 +16,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RunnerLabel(GitHubModel):
-    """Self hosted runner label
+class ActionsForkPrWorkflowsPrivateReposRequest(GitHubModel):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
 
-    A label for a self hosted runner
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="Unique identifier of the label."
+    run_workflows_from_fork_pull_requests: bool = Field(
+        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
     )
-    name: str = Field(description="Name of the label.")
-    type: Missing[Literal["read-only", "custom"]] = Field(
+    send_write_tokens_to_workflows: Missing[bool] = Field(
         default=UNSET,
-        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
+        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request.",
+    )
+    send_secrets_and_variables: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks.",
+    )
+    require_approval_for_fork_pr_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run.",
     )
 
 
-model_rebuild(RunnerLabel)
+model_rebuild(ActionsForkPrWorkflowsPrivateReposRequest)
 
-__all__ = ("RunnerLabel",)
+__all__ = ("ActionsForkPrWorkflowsPrivateReposRequest",)

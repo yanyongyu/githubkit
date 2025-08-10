@@ -24,7 +24,7 @@ from .group_0020 import Repository
 from .group_0043 import Milestone
 from .group_0044 import IssueType
 from .group_0045 import ReactionRollup
-from .group_0046 import SubIssuesSummary
+from .group_0046 import IssueDependenciesSummary, SubIssuesSummary
 
 
 class Issue(GitHubModel):
@@ -97,6 +97,9 @@ class Issue(GitHubModel):
     reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
     sub_issues_summary: Missing[SubIssuesSummary] = Field(
         default=UNSET, title="Sub-issues Summary"
+    )
+    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
+        default=UNSET, title="Issue Dependencies Summary"
     )
 
 

@@ -14,22 +14,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Autolink(GitHubModel):
-    """Autolink reference
+class ReviewCustomGatesCommentRequired(GitHubModel):
+    """ReviewCustomGatesCommentRequired"""
 
-    An autolink reference.
-    """
-
-    id: int = Field()
-    key_prefix: str = Field(description="The prefix of a key that is linkified.")
-    url_template: str = Field(
-        description="A template for the target URL that is generated if a key was found."
+    environment_name: str = Field(
+        description="The name of the environment to approve or reject."
     )
-    is_alphanumeric: bool = Field(
-        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
+    comment: str = Field(
+        description="Comment associated with the pending deployment protection rule. **Required when state is not provided.**"
     )
 
 
-model_rebuild(Autolink)
+model_rebuild(ReviewCustomGatesCommentRequired)
 
-__all__ = ("Autolink",)
+__all__ = ("ReviewCustomGatesCommentRequired",)

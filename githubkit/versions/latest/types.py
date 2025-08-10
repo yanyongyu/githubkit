@@ -11,6 +11,12 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.types import (
+        ActionsArtifactAndLogRetentionResponseType as ActionsArtifactAndLogRetentionResponseType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsArtifactAndLogRetentionType as ActionsArtifactAndLogRetentionType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ActionsBillingUsagePropMinutesUsedBreakdownType as ActionsBillingUsagePropMinutesUsedBreakdownType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -27,6 +33,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ActionsCacheUsageOrgEnterpriseType as ActionsCacheUsageOrgEnterpriseType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsForkPrContributorApprovalType as ActionsForkPrContributorApprovalType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsForkPrWorkflowsPrivateReposRequestType as ActionsForkPrWorkflowsPrivateReposRequestType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsForkPrWorkflowsPrivateReposType as ActionsForkPrWorkflowsPrivateReposType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ActionsGetDefaultWorkflowPermissionsType as ActionsGetDefaultWorkflowPermissionsType,
@@ -1015,6 +1030,9 @@ if TYPE_CHECKING:
         IssueCommentType as IssueCommentType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        IssueDependenciesSummaryType as IssueDependenciesSummaryType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         IssueEventDismissedReviewType as IssueEventDismissedReviewType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1293,6 +1311,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgActionsPermissionsRepositoriesPutBodyType as OrgsOrgActionsPermissionsRepositoriesPutBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType as OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type as OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType as OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgActionsRunnerGroupsGetResponse200Type as OrgsOrgActionsRunnerGroupsGetResponse200Type,
@@ -1599,6 +1626,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgRulesetsRulesetIdPutBodyType as OrgsOrgRulesetsRulesetIdPutBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType as OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType as OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgSecretScanningPatternConfigurationsPatchBodyType as OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type as OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgSecurityProductEnablementPostBodyType as OrgsOrgSecurityProductEnablementPostBodyType,
@@ -2830,6 +2869,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType as ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType as ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3213,6 +3255,12 @@ if TYPE_CHECKING:
         SecretScanningLocationWikiCommitType as SecretScanningLocationWikiCommitType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        SecretScanningPatternConfigurationType as SecretScanningPatternConfigurationType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        SecretScanningPatternOverrideType as SecretScanningPatternOverrideType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         SecretScanningPushProtectionBypassType as SecretScanningPushProtectionBypassType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3256,6 +3304,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         SelectedActionsType as SelectedActionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        SelfHostedRunnersSettingsType as SelfHostedRunnersSettingsType,
     )
     from githubkit.versions.v2022_11_28.types import ShortBlobType as ShortBlobType
     from githubkit.versions.v2022_11_28.types import (
@@ -4742,6 +4793,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookIssueCommentEditedType as WebhookIssueCommentEditedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueDependenciesBlockedByAddedType as WebhookIssueDependenciesBlockedByAddedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueDependenciesBlockedByRemovedType as WebhookIssueDependenciesBlockedByRemovedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueDependenciesBlockingAddedType as WebhookIssueDependenciesBlockingAddedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueDependenciesBlockingRemovedType as WebhookIssueDependenciesBlockingRemovedType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookIssuesAssignedType as WebhookIssuesAssignedType,
@@ -10007,6 +10070,7 @@ else:
             "IssueTypeType",
             "ReactionRollupType",
             "SubIssuesSummaryType",
+            "IssueDependenciesSummaryType",
             "IssueType",
             "IssuePropLabelsItemsOneof1Type",
             "IssuePropPullRequestType",
@@ -10076,7 +10140,13 @@ else:
             "ActionsHostedRunnerLimitsPropPublicIpsType",
             "OidcCustomSubType",
             "ActionsOrganizationPermissionsType",
+            "ActionsArtifactAndLogRetentionResponseType",
+            "ActionsArtifactAndLogRetentionType",
+            "ActionsForkPrContributorApprovalType",
+            "ActionsForkPrWorkflowsPrivateReposType",
+            "ActionsForkPrWorkflowsPrivateReposRequestType",
             "SelectedActionsType",
+            "SelfHostedRunnersSettingsType",
             "ActionsGetDefaultWorkflowPermissionsType",
             "ActionsSetDefaultWorkflowPermissionsType",
             "RunnerLabelType",
@@ -10235,6 +10305,8 @@ else:
             "RulesetVersionWithStateType",
             "RulesetVersionWithStateAllof1Type",
             "RulesetVersionWithStateAllof1PropStateType",
+            "SecretScanningPatternConfigurationType",
+            "SecretScanningPatternOverrideType",
             "RepositoryAdvisoryCreditType",
             "RepositoryAdvisoryType",
             "RepositoryAdvisoryPropIdentifiersItemsType",
@@ -10786,11 +10858,11 @@ else:
             "WebhooksProjectType",
             "WebhooksProjectPropCreatorType",
             "WebhooksProjectColumnType",
+            "ProjectsV2StatusUpdateType",
             "ProjectsV2Type",
             "WebhooksProjectChangesType",
             "WebhooksProjectChangesPropArchivedAtType",
             "ProjectsV2ItemType",
-            "ProjectsV2StatusUpdateType",
             "PullRequestWebhookType",
             "PullRequestWebhookAllof1Type",
             "WebhooksPullRequest5Type",
@@ -11241,6 +11313,10 @@ else:
             "WebhookIssueCommentEditedPropIssueAllof1PropUserType",
             "WebhookIssueCommentEditedPropIssueMergedMilestoneType",
             "WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppType",
+            "WebhookIssueDependenciesBlockedByAddedType",
+            "WebhookIssueDependenciesBlockedByRemovedType",
+            "WebhookIssueDependenciesBlockingAddedType",
+            "WebhookIssueDependenciesBlockingRemovedType",
             "WebhookIssuesAssignedType",
             "WebhookIssuesClosedType",
             "WebhookIssuesClosedPropIssueType",
@@ -12859,6 +12935,9 @@ else:
             "OrgsOrgActionsPermissionsPutBodyType",
             "OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",
             "OrgsOrgActionsPermissionsRepositoriesPutBodyType",
+            "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",
+            "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",
+            "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType",
             "OrgsOrgActionsRunnerGroupsGetResponse200Type",
             "RunnerGroupsOrgType",
             "OrgsOrgActionsRunnerGroupsPostBodyType",
@@ -12964,6 +13043,10 @@ else:
             "OrgsOrgReposPostBodyPropCustomPropertiesType",
             "OrgsOrgRulesetsPostBodyType",
             "OrgsOrgRulesetsRulesetIdPutBodyType",
+            "OrgsOrgSecretScanningPatternConfigurationsPatchBodyType",
+            "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
+            "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
+            "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",
             "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
             "NetworkConfigurationType",
             "OrgsOrgSettingsNetworkConfigurationsPostBodyType",
@@ -13167,6 +13250,7 @@ else:
             "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",
             "ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType",
             "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType",
+            "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType",

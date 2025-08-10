@@ -14,23 +14,17 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0149 import RepositoryRulePullRequestPropParameters
 
 
-class RepositoryRulePullRequest(GitHubModel):
-    """pull_request
+class RepositoryRuleRequiredLinearHistory(GitHubModel):
+    """required_linear_history
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
+    type: Literal["required_linear_history"] = Field()
 
 
-model_rebuild(RepositoryRulePullRequest)
+model_rebuild(RepositoryRuleRequiredLinearHistory)
 
-__all__ = ("RepositoryRulePullRequest",)
+__all__ = ("RepositoryRuleRequiredLinearHistory",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,51 +17,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1264 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
 
-    commit_id: Missing[str] = Field(
+class ReposOwnerRepoPagesPutBodyAnyof4(GitHubModel):
+    """ReposOwnerRepoPagesPutBodyAnyof4"""
+
+    cname: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The SHA of the commit that needs a review. Not using the latest commit SHA may render your review comment outdated if a subsequent commit modifies the line you specify as the `position`. Defaults to the most recent commit in the pull request when you do not specify a value.",
+        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/enterprise-cloud@latest//pages/configuring-a-custom-domain-for-your-github-pages-site)."',
     )
-    body: Missing[str] = Field(
+    https_enforced: bool = Field(
+        description="Specify whether HTTPS should be enforced for the repository."
+    )
+    build_type: Missing[Literal["legacy", "workflow"]] = Field(
         default=UNSET,
-        description="**Required** when using `REQUEST_CHANGES` or `COMMENT` for the `event` parameter. The body text of the pull request review.",
+        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
     )
-    event: Missing[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = Field(
+    source: Missing[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
+        ]
+    ] = Field(default=UNSET)
+    public: Missing[bool] = Field(
         default=UNSET,
-        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready.",
-    )
-    comments: Missing[
-        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems]
-    ] = Field(
-        default=UNSET,
-        description="Use the following table to specify the location, destination, and contents of the draft review comment.",
+        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility.",
     )
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
+model_rebuild(ReposOwnerRepoPagesPutBodyAnyof4)
 
-    path: str = Field(
-        description="The relative path to the file that necessitates a review comment."
-    )
-    position: Missing[int] = Field(
-        default=UNSET,
-        description='The position in the diff where you want to add a review comment. Note this value is not the same as the line number in the file. The `position` value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.',
-    )
-    body: str = Field(description="Text of the review comment.")
-    line: Missing[int] = Field(default=UNSET)
-    side: Missing[str] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-    start_side: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsPostBody)
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems)
-
-__all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsPostBody",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems",
-)
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof4",)

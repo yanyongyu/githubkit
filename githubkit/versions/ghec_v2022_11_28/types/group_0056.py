@@ -10,33 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class BypassResponseType(TypedDict):
-    """Bypass response
-
-    A response made by a delegated bypasser to a bypass request.
-    """
+class GetAuditLogStreamConfigsItemsType(TypedDict):
+    """GetAuditLogStreamConfigsItems"""
 
     id: NotRequired[int]
-    reviewer: NotRequired[BypassResponsePropReviewerType]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    stream_type: NotRequired[str]
+    stream_details: NotRequired[str]
+    enabled: NotRequired[bool]
     created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+    paused_at: NotRequired[Union[datetime, None]]
 
 
-class BypassResponsePropReviewerType(TypedDict):
-    """BypassResponsePropReviewer
-
-    The user who reviewed the bypass request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-__all__ = (
-    "BypassResponsePropReviewerType",
-    "BypassResponseType",
-)
+__all__ = ("GetAuditLogStreamConfigsItemsType",)

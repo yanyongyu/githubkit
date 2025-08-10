@@ -18,46 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetConsumedLicenses(GitHubModel):
-    """Enterprise Consumed Licenses
+class CodeScanningOptions(GitHubModel):
+    """CodeScanningOptions
 
-    A breakdown of the licenses consumed by an enterprise.
+    Security Configuration feature options for code scanning
     """
 
-    total_seats_consumed: Missing[int] = Field(default=UNSET)
-    total_seats_purchased: Missing[int] = Field(default=UNSET)
-    users: Missing[list[GetConsumedLicensesPropUsersItems]] = Field(default=UNSET)
-
-
-class GetConsumedLicensesPropUsersItems(GitHubModel):
-    """GetConsumedLicensesPropUsersItems"""
-
-    github_com_login: Missing[str] = Field(default=UNSET)
-    github_com_name: Missing[Union[str, None]] = Field(default=UNSET)
-    enterprise_server_user_ids: Missing[list[str]] = Field(default=UNSET)
-    github_com_user: Missing[bool] = Field(default=UNSET)
-    enterprise_server_user: Missing[Union[bool, None]] = Field(default=UNSET)
-    visual_studio_subscription_user: Missing[bool] = Field(default=UNSET)
-    license_type: Missing[str] = Field(default=UNSET)
-    github_com_profile: Missing[Union[str, None]] = Field(default=UNSET)
-    github_com_member_roles: Missing[list[str]] = Field(default=UNSET)
-    github_com_enterprise_roles: Missing[list[str]] = Field(
-        default=UNSET, description="All enterprise roles for a user."
+    allow_advanced: Missing[Union[bool, None]] = Field(
+        default=UNSET, description="Whether to allow repos which use advanced setup"
     )
-    github_com_verified_domain_emails: Missing[list[str]] = Field(default=UNSET)
-    github_com_saml_name_id: Missing[Union[str, None]] = Field(default=UNSET)
-    github_com_orgs_with_pending_invites: Missing[list[str]] = Field(default=UNSET)
-    github_com_two_factor_auth: Missing[Union[bool, None]] = Field(default=UNSET)
-    enterprise_server_emails: Missing[list[str]] = Field(default=UNSET)
-    visual_studio_license_status: Missing[Union[str, None]] = Field(default=UNSET)
-    visual_studio_subscription_email: Missing[Union[str, None]] = Field(default=UNSET)
-    total_user_accounts: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(GetConsumedLicenses)
-model_rebuild(GetConsumedLicensesPropUsersItems)
+model_rebuild(CodeScanningOptions)
 
-__all__ = (
-    "GetConsumedLicenses",
-    "GetConsumedLicensesPropUsersItems",
-)
+__all__ = ("CodeScanningOptions",)

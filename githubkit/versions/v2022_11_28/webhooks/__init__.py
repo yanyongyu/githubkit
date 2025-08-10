@@ -106,6 +106,10 @@ if TYPE_CHECKING:
     )
     from .issue_comment import IssueCommentEvent as IssueCommentEvent
     from .issue_comment import issue_comment_action_types as issue_comment_action_types
+    from .issue_dependencies import IssueDependenciesEvent as IssueDependenciesEvent
+    from .issue_dependencies import (
+        issue_dependencies_action_types as issue_dependencies_action_types,
+    )
     from .issues import IssuesEvent as IssuesEvent
     from .issues import issues_action_types as issues_action_types
     from .label import LabelEvent as LabelEvent
@@ -322,6 +326,10 @@ else:
             "installation_target_action_types",
         ),
         ".issue_comment": ("IssueCommentEvent", "issue_comment_action_types"),
+        ".issue_dependencies": (
+            "IssueDependenciesEvent",
+            "issue_dependencies_action_types",
+        ),
         ".issues": ("IssuesEvent", "issues_action_types"),
         ".label": ("LabelEvent", "label_action_types"),
         ".marketplace_purchase": (

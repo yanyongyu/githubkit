@@ -9,23 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class WebhooksWorkflowType(TypedDict):
-    """Workflow"""
+class SimpleInstallationType(TypedDict):
+    """Simple Installation
 
-    badge_url: str
-    created_at: datetime
-    html_url: str
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
+    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
+    """
+
     id: int
-    name: str
     node_id: str
-    path: str
-    state: str
-    updated_at: datetime
-    url: str
 
 
-__all__ = ("WebhooksWorkflowType",)
+__all__ = ("SimpleInstallationType",)

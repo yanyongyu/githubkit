@@ -14,18 +14,30 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PorterLargeFile(GitHubModel):
-    """Porter Large File
+class GitRef(GitHubModel):
+    """Git Reference
 
-    Porter Large File
+    Git references within a repository
     """
 
-    ref_name: str = Field()
-    path: str = Field()
-    oid: str = Field()
-    size: int = Field()
+    ref: str = Field()
+    node_id: str = Field()
+    url: str = Field()
+    object_: GitRefPropObject = Field(alias="object")
 
 
-model_rebuild(PorterLargeFile)
+class GitRefPropObject(GitHubModel):
+    """GitRefPropObject"""
 
-__all__ = ("PorterLargeFile",)
+    type: str = Field()
+    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
+    url: str = Field()
+
+
+model_rebuild(GitRef)
+model_rebuild(GitRefPropObject)
+
+__all__ = (
+    "GitRef",
+    "GitRefPropObject",
+)

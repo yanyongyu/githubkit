@@ -13,35 +13,88 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0058 import CodeScanningAlertRuleSummaryType
-from .group_0059 import CodeScanningAnalysisToolType
-from .group_0060 import CodeScanningAlertInstanceType
-from .group_0061 import SimpleRepositoryType
+from .group_0061 import BypassResponseType
 
 
-class CodeScanningOrganizationAlertItemsType(TypedDict):
-    """CodeScanningOrganizationAlertItems"""
+class PushRuleBypassRequestType(TypedDict):
+    """Push rule bypass request
 
-    number: int
-    created_at: datetime
-    updated_at: NotRequired[datetime]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[datetime, None]]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_at: Union[datetime, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+    A bypass request made by a user asking to be exempted from a push rule in this
+    repository.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[PushRuleBypassRequestPropRepositoryType]
+    organization: NotRequired[PushRuleBypassRequestPropOrganizationType]
+    requester: NotRequired[PushRuleBypassRequestPropRequesterType]
+    request_type: NotRequired[str]
+    data: NotRequired[Union[list[PushRuleBypassRequestPropDataItemsType], None]]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[
+        Literal[
+            "pending",
+            "denied",
+            "approved",
+            "cancelled",
+            "completed",
+            "expired",
+            "deleted",
+            "open",
+        ]
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
-    repository: SimpleRepositoryType
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[datetime]
+    created_at: NotRequired[datetime]
+    responses: NotRequired[Union[list[BypassResponseType], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-__all__ = ("CodeScanningOrganizationAlertItemsType",)
+class PushRuleBypassRequestPropRepositoryType(TypedDict):
+    """PushRuleBypassRequestPropRepository
+
+    The repository the bypass request is for.
+    """
+
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
+    full_name: NotRequired[Union[str, None]]
+
+
+class PushRuleBypassRequestPropOrganizationType(TypedDict):
+    """PushRuleBypassRequestPropOrganization
+
+    The organization associated with the repository the bypass request is for.
+    """
+
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
+
+
+class PushRuleBypassRequestPropRequesterType(TypedDict):
+    """PushRuleBypassRequestPropRequester
+
+    The user who requested the bypass.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class PushRuleBypassRequestPropDataItemsType(TypedDict):
+    """PushRuleBypassRequestPropDataItems"""
+
+    ruleset_id: NotRequired[int]
+    ruleset_name: NotRequired[str]
+    total_violations: NotRequired[int]
+    rule_type: NotRequired[str]
+
+
+__all__ = (
+    "PushRuleBypassRequestPropDataItemsType",
+    "PushRuleBypassRequestPropOrganizationType",
+    "PushRuleBypassRequestPropRepositoryType",
+    "PushRuleBypassRequestPropRequesterType",
+    "PushRuleBypassRequestType",
+)

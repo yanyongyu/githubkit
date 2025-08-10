@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,27 +18,62 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0076 import Team
 
-class OrganizationCustomRepositoryRoleUpdateSchema(GitHubModel):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
+class CampaignSummary(GitHubModel):
+    """Campaign summary
+
+    The campaign metadata and alert stats.
+    """
+
+    number: int = Field(description="The number of the newly created campaign")
+    created_at: datetime = Field(
+        description="The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    description: Missing[Union[str, None]] = Field(
+    updated_at: datetime = Field(
+        description="The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    name: Missing[str] = Field(default=UNSET, description="The campaign name")
+    description: str = Field(description="The campaign description")
+    managers: list[SimpleUser] = Field(description="The campaign managers")
+    team_managers: Missing[list[Team]] = Field(
+        default=UNSET, description="The campaign team managers"
+    )
+    published_at: Missing[datetime] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+        description="The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
     )
-    base_role: Missing[Literal["read", "triage", "write", "maintain"]] = Field(
+    ends_at: datetime = Field(
+        description="The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    closed_at: Missing[Union[datetime, None]] = Field(
         default=UNSET,
-        description="The system role from which this role inherits permissions.",
+        description="The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.",
     )
-    permissions: Missing[list[str]] = Field(
-        default=UNSET,
-        description="A list of additional permissions included in this role.",
+    state: Literal["open", "closed"] = Field(
+        title="Campaign state",
+        description="Indicates whether a campaign is open or closed",
     )
+    contact_link: Union[str, None] = Field(
+        description="The contact link of the campaign."
+    )
+    alert_stats: Missing[CampaignSummaryPropAlertStats] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationCustomRepositoryRoleUpdateSchema)
+class CampaignSummaryPropAlertStats(GitHubModel):
+    """CampaignSummaryPropAlertStats"""
 
-__all__ = ("OrganizationCustomRepositoryRoleUpdateSchema",)
+    open_count: int = Field(description="The number of open alerts")
+    closed_count: int = Field(description="The number of closed alerts")
+    in_progress_count: int = Field(description="The number of in-progress alerts")
+
+
+model_rebuild(CampaignSummary)
+model_rebuild(CampaignSummaryPropAlertStats)
+
+__all__ = (
+    "CampaignSummary",
+    "CampaignSummaryPropAlertStats",
+)

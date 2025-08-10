@@ -9,38 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
 
+class PorterLargeFileType(TypedDict):
+    """Porter Large File
 
-class DemilestonedIssueEventType(TypedDict):
-    """Demilestoned Issue Event
-
-    Demilestoned Issue Event
+    Porter Large File
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["demilestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: DemilestonedIssueEventPropMilestoneType
+    ref_name: str
+    path: str
+    oid: str
+    size: int
 
 
-class DemilestonedIssueEventPropMilestoneType(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
-
-    title: str
-
-
-__all__ = (
-    "DemilestonedIssueEventPropMilestoneType",
-    "DemilestonedIssueEventType",
-)
+__all__ = ("PorterLargeFileType",)

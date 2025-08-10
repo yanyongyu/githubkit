@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0090 import RepositoryRulesetConditionsPropRefName
-from .group_0134 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
+from .group_0137 import RepositoryRuleCodeScanningPropParameters
 
 
-class OrgRulesetConditionsOneof1(GitHubModel):
-    """repository_id_and_ref_name
+class RepositoryRuleCodeScanning(GitHubModel):
+    """code_scanning
 
-    Conditions to target repositories by id and refs by name
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
-        Field()
-    )
+    type: Literal["code_scanning"] = Field()
+    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
 
 
-model_rebuild(OrgRulesetConditionsOneof1)
+model_rebuild(RepositoryRuleCodeScanning)
 
-__all__ = ("OrgRulesetConditionsOneof1",)
+__all__ = ("RepositoryRuleCodeScanning",)

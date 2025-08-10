@@ -10,253 +10,152 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0426 import EnterpriseWebhooksType
-from .group_0427 import SimpleInstallationType
-from .group_0428 import OrganizationSimpleWebhooksType
-from .group_0429 import RepositoryWebhooksType
-from .group_0434 import WebhooksWorkflowType
+from .group_0433 import EnterpriseWebhooksType
+from .group_0434 import SimpleInstallationType
+from .group_0435 import OrganizationSimpleWebhooksType
+from .group_0483 import WebhooksTeam1Type
 
 
-class WebhookWorkflowRunCompletedType(TypedDict):
-    """workflow_run completed event"""
+class WebhookTeamRemovedFromRepositoryType(TypedDict):
+    """team removed_from_repository event"""
 
-    action: Literal["completed"]
+    action: Literal["removed_from_repository"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[WebhookTeamRemovedFromRepositoryPropRepositoryType]
     sender: SimpleUserType
-    workflow: Union[WebhooksWorkflowType, None]
-    workflow_run: WebhookWorkflowRunCompletedPropWorkflowRunType
+    team: WebhooksTeam1Type
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunType(TypedDict):
-    """Workflow Run"""
+class WebhookTeamRemovedFromRepositoryPropRepositoryType(TypedDict):
+    """Repository
 
-    actor: Union[WebhookWorkflowRunCompletedPropWorkflowRunPropActorType, None]
-    artifacts_url: str
-    cancel_url: str
-    check_suite_id: int
-    check_suite_node_id: str
-    check_suite_url: str
-    conclusion: Union[
-        None,
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "skipped",
-            "stale",
-            "success",
-            "timed_out",
-            "startup_failure",
-        ],
+    A git repository
+    """
+
+    allow_auto_merge: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_squash_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    archive_url: str
+    archived: bool
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    clone_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    created_at: Union[int, datetime]
+    custom_properties: NotRequired[
+        WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomPropertiesType
     ]
-    created_at: datetime
-    event: str
-    head_branch: Union[str, None]
-    head_commit: WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitType
-    head_repository: WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryType
-    head_sha: str
+    default_branch: str
+    delete_branch_on_merge: NotRequired[bool]
+    deployments_url: str
+    description: Union[str, None]
+    disabled: NotRequired[bool]
+    downloads_url: str
+    events_url: str
+    fork: bool
+    forks: int
+    forks_count: int
+    forks_url: str
+    full_name: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    has_downloads: bool
+    has_issues: bool
+    has_pages: bool
+    has_projects: bool
+    has_wiki: bool
+    homepage: Union[str, None]
+    hooks_url: str
     html_url: str
     id: int
-    jobs_url: str
-    logs_url: str
-    name: Union[str, None]
+    is_template: NotRequired[bool]
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    language: Union[str, None]
+    languages_url: str
+    license_: Union[WebhookTeamRemovedFromRepositoryPropRepositoryPropLicenseType, None]
+    master_branch: NotRequired[str]
+    merges_url: str
+    milestones_url: str
+    mirror_url: Union[str, None]
+    name: str
     node_id: str
-    path: str
-    previous_attempt_url: Union[str, None]
-    pull_requests: list[
-        Union[WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsType, None]
+    notifications_url: str
+    open_issues: int
+    open_issues_count: int
+    organization: NotRequired[str]
+    owner: Union[WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerType, None]
+    permissions: NotRequired[
+        WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissionsType
     ]
-    referenced_workflows: NotRequired[
-        Union[
-            list[
-                WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItemsType
-            ],
-            None,
-        ]
-    ]
-    repository: WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryType
-    rerun_url: str
-    run_attempt: int
-    run_number: int
-    run_started_at: datetime
-    status: Literal[
-        "requested", "in_progress", "completed", "queued", "pending", "waiting"
-    ]
-    triggering_actor: Union[
-        WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActorType, None
-    ]
+    private: bool
+    public: NotRequired[bool]
+    pulls_url: str
+    pushed_at: Union[int, datetime, None]
+    releases_url: str
+    role_name: NotRequired[Union[str, None]]
+    size: int
+    ssh_url: str
+    stargazers: NotRequired[int]
+    stargazers_count: int
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    svn_url: str
+    tags_url: str
+    teams_url: str
+    topics: list[str]
+    trees_url: str
     updated_at: datetime
     url: str
-    workflow_id: int
-    workflow_url: str
-    display_title: NotRequired[str]
+    visibility: Literal["public", "private", "internal"]
+    watchers: int
+    watchers_count: int
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunPropActorType(TypedDict):
-    """User"""
+WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomPropertiesType: TypeAlias = (
+    dict[str, Any]
+)
+"""WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItemsType(
-    TypedDict
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems"""
+class WebhookTeamRemovedFromRepositoryPropRepositoryPropLicenseType(TypedDict):
+    """License"""
 
-    path: str
-    ref: NotRequired[str]
-    sha: str
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitType(TypedDict):
-    """SimpleCommit"""
-
-    author: WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthorType
-    committer: WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitterType
-    id: str
-    message: str
-    timestamp: str
-    tree_id: str
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthorType(TypedDict):
-    """Committer
-
-    Metaproperties for Git author/committer information.
-    """
-
-    date: NotRequired[datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitterType(
-    TypedDict
-):
-    """Committer
-
-    Metaproperties for Git author/committer information.
-    """
-
-    date: NotRequired[datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryType(TypedDict):
-    """Repository Lite"""
-
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    description: Union[str, None]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    hooks_url: str
-    html_url: str
-    id: int
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
+    key: str
     name: str
     node_id: str
-    notifications_url: str
-    owner: Union[
-        WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwnerType, None
-    ]
-    private: bool
-    pulls_url: str
-    releases_url: str
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    url: str
+    spdx_id: str
+    url: Union[str, None]
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwnerType(
-    TypedDict
-):
+class WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -283,152 +182,21 @@ class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwnerType(
     user_view_type: NotRequired[str]
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryType(TypedDict):
-    """Repository Lite"""
+class WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissionsType(TypedDict):
+    """WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions"""
 
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    description: Union[str, None]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    hooks_url: str
-    html_url: str
-    id: int
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    name: str
-    node_id: str
-    notifications_url: str
-    owner: Union[
-        WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwnerType, None
-    ]
-    private: bool
-    pulls_url: str
-    releases_url: str
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    url: str
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwnerType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsType(TypedDict):
-    """WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems"""
-
-    base: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBaseType
-    head: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadType
-    id: int
-    number: int
-    url: str
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBaseType(
-    TypedDict
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase"""
-
-    ref: str
-    repo: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType
-    sha: str
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadType(
-    TypedDict
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead"""
-
-    ref: str
-    repo: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType
-    sha: str
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
+    admin: bool
+    maintain: NotRequired[bool]
+    pull: bool
+    push: bool
+    triage: NotRequired[bool]
 
 
 __all__ = (
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropActorType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthorType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitterType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwnerType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBaseType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItemsType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwnerType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActorType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunType",
-    "WebhookWorkflowRunCompletedType",
+    "WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomPropertiesType",
+    "WebhookTeamRemovedFromRepositoryPropRepositoryPropLicenseType",
+    "WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerType",
+    "WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissionsType",
+    "WebhookTeamRemovedFromRepositoryPropRepositoryType",
+    "WebhookTeamRemovedFromRepositoryType",
 )

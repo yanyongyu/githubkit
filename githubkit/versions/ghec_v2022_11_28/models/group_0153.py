@@ -14,25 +14,34 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GetCostCenter(GitHubModel):
-    """GetCostCenter"""
+class SecretScanningLocationDiscussionBody(GitHubModel):
+    """SecretScanningLocationDiscussionBody
 
-    id: str = Field(description="ID of the cost center.")
-    name: str = Field(description="Name of the cost center.")
-    resources: list[GetCostCenterPropResourcesItems] = Field()
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
+    """
 
-
-class GetCostCenterPropResourcesItems(GitHubModel):
-    """GetCostCenterPropResourcesItems"""
-
-    type: str = Field(description="Type of the resource.")
-    name: str = Field(description="Name of the resource.")
+    discussion_body_url: str = Field(
+        description="The URL to the discussion where the secret was detected."
+    )
 
 
-model_rebuild(GetCostCenter)
-model_rebuild(GetCostCenterPropResourcesItems)
+class SecretScanningLocationPullRequestComment(GitHubModel):
+    """SecretScanningLocationPullRequestComment
+
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str = Field(
+        description="The API URL to get the pull request comment where the secret was detected."
+    )
+
+
+model_rebuild(SecretScanningLocationDiscussionBody)
+model_rebuild(SecretScanningLocationPullRequestComment)
 
 __all__ = (
-    "GetCostCenter",
-    "GetCostCenterPropResourcesItems",
+    "SecretScanningLocationDiscussionBody",
+    "SecretScanningLocationPullRequestComment",
 )

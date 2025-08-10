@@ -9,19 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class TeamMembershipType(TypedDict):
-    """Team Membership
+class PackagesBillingUsageType(TypedDict):
+    """PackagesBillingUsage"""
 
-    Team Membership
-    """
-
-    url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+    total_gigabytes_bandwidth_used: int
+    total_paid_gigabytes_bandwidth_used: int
+    included_gigabytes_bandwidth: int
 
 
-__all__ = ("TeamMembershipType",)
+__all__ = ("PackagesBillingUsageType",)

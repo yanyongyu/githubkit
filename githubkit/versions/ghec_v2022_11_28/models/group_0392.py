@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 
 from pydantic import Field
@@ -18,24 +19,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PageDeployment(GitHubModel):
-    """GitHub Pages
+class DeployKey(GitHubModel):
+    """Deploy Key
 
-    The GitHub Pages deployment status.
+    An SSH key granting access to a single repository.
     """
 
-    id: Union[int, str] = Field(
-        description="The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit."
-    )
-    status_url: str = Field(
-        description="The URI to monitor GitHub Pages deployment status."
-    )
-    page_url: str = Field(description="The URI to the deployed GitHub Pages.")
-    preview_url: Missing[str] = Field(
-        default=UNSET, description="The URI to the deployed GitHub Pages preview."
-    )
+    id: int = Field()
+    key: str = Field()
+    url: str = Field()
+    title: str = Field()
+    verified: bool = Field()
+    created_at: str = Field()
+    read_only: bool = Field()
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    last_used: Missing[Union[datetime, None]] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(PageDeployment)
+model_rebuild(DeployKey)
 
-__all__ = ("PageDeployment",)
+__all__ = ("DeployKey",)

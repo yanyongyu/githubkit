@@ -22,6 +22,19 @@ class SubIssuesSummary(GitHubModel):
     percent_completed: int = Field()
 
 
-model_rebuild(SubIssuesSummary)
+class IssueDependenciesSummary(GitHubModel):
+    """Issue Dependencies Summary"""
 
-__all__ = ("SubIssuesSummary",)
+    blocked_by: int = Field()
+    blocking: int = Field()
+    total_blocked_by: int = Field()
+    total_blocking: int = Field()
+
+
+model_rebuild(SubIssuesSummary)
+model_rebuild(IssueDependenciesSummary)
+
+__all__ = (
+    "IssueDependenciesSummary",
+    "SubIssuesSummary",
+)

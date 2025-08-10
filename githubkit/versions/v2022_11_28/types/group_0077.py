@@ -9,15 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class SelectedActionsType(TypedDict):
-    """SelectedActions"""
+class ActionsArtifactAndLogRetentionResponseType(TypedDict):
+    """ActionsArtifactAndLogRetentionResponse"""
 
-    github_owned_allowed: NotRequired[bool]
-    verified_allowed: NotRequired[bool]
-    patterns_allowed: NotRequired[list[str]]
+    days: int
+    maximum_allowed_days: int
 
 
-__all__ = ("SelectedActionsType",)
+__all__ = ("ActionsArtifactAndLogRetentionResponseType",)

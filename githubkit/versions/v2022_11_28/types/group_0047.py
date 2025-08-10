@@ -19,7 +19,7 @@ from .group_0020 import RepositoryType
 from .group_0043 import MilestoneType
 from .group_0044 import IssueTypeType
 from .group_0045 import ReactionRollupType
-from .group_0046 import SubIssuesSummaryType
+from .group_0046 import IssueDependenciesSummaryType, SubIssuesSummaryType
 
 
 class IssueType(TypedDict):
@@ -76,6 +76,7 @@ class IssueType(TypedDict):
     ]
     reactions: NotRequired[ReactionRollupType]
     sub_issues_summary: NotRequired[SubIssuesSummaryType]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
 
 
 class IssuePropLabelsItemsOneof1Type(TypedDict):

@@ -9,33 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrganizationSimple(GitHubModel):
-    """Organization Simple
+class ActionsArtifactAndLogRetentionResponse(GitHubModel):
+    """ActionsArtifactAndLogRetentionResponse"""
 
-    A GitHub organization.
-    """
-
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
+    days: int = Field(description="The number of days artifacts and logs are retained")
+    maximum_allowed_days: int = Field(
+        description="The maximum number of days that can be configured"
+    )
 
 
-model_rebuild(OrganizationSimple)
+model_rebuild(ActionsArtifactAndLogRetentionResponse)
 
-__all__ = ("OrganizationSimple",)
+__all__ = ("ActionsArtifactAndLogRetentionResponse",)

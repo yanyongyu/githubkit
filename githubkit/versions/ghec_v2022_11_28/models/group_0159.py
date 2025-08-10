@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,37 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class IssueType(GitHubModel):
-    """Issue Type
+class GetCostCenter(GitHubModel):
+    """GetCostCenter"""
 
-    The type of issue.
-    """
-
-    id: int = Field(description="The unique identifier of the issue type.")
-    node_id: str = Field(description="The node identifier of the issue type.")
-    name: str = Field(description="The name of the issue type.")
-    description: Union[str, None] = Field(
-        description="The description of the issue type."
+    id: str = Field(description="ID of the cost center.")
+    name: str = Field(description="Name of the cost center.")
+    azure_subscription: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
     )
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="The color of the issue type.")
-    created_at: Missing[datetime] = Field(
-        default=UNSET, description="The time the issue type created."
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
     )
-    updated_at: Missing[datetime] = Field(
-        default=UNSET, description="The time the issue type last updated."
-    )
-    is_enabled: Missing[bool] = Field(
-        default=UNSET, description="The enabled state of the issue type."
-    )
+    resources: list[GetCostCenterPropResourcesItems] = Field()
 
 
-model_rebuild(IssueType)
+class GetCostCenterPropResourcesItems(GitHubModel):
+    """GetCostCenterPropResourcesItems"""
 
-__all__ = ("IssueType",)
+    type: str = Field(description="Type of the resource.")
+    name: str = Field(description="Name of the resource.")
+
+
+model_rebuild(GetCostCenter)
+model_rebuild(GetCostCenterPropResourcesItems)
+
+__all__ = (
+    "GetCostCenter",
+    "GetCostCenterPropResourcesItems",
+)

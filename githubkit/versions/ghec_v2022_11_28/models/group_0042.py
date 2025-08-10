@@ -16,23 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RunnerApplication(GitHubModel):
-    """Runner Application
+class SelectedActions(GitHubModel):
+    """SelectedActions"""
 
-    Runner Application
-    """
-
-    os: str = Field()
-    architecture: str = Field()
-    download_url: str = Field()
-    filename: str = Field()
-    temp_download_token: Missing[str] = Field(
+    github_owned_allowed: Missing[bool] = Field(
         default=UNSET,
-        description="A short lived bearer token used to download the runner, if needed.",
+        description="Whether GitHub-owned actions are allowed. For example, this includes the actions in the `actions` organization.",
     )
-    sha256_checksum: Missing[str] = Field(default=UNSET)
+    verified_allowed: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether actions from GitHub Marketplace verified creators are allowed. Set to `true` to allow all actions by GitHub Marketplace verified creators.",
+    )
+    patterns_allowed: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`.",
+    )
 
 
-model_rebuild(RunnerApplication)
+model_rebuild(SelectedActions)
 
-__all__ = ("RunnerApplication",)
+__all__ = ("SelectedActions",)

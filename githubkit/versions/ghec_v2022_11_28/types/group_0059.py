@@ -9,16 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class CodeScanningAnalysisToolType(TypedDict):
-    """CodeScanningAnalysisTool"""
+class GoogleCloudConfigType(TypedDict):
+    """GoogleCloudConfig
 
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+    Google Cloud Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    key_id: str
+    encrypted_json_credentials: str
 
 
-__all__ = ("CodeScanningAnalysisToolType",)
+__all__ = ("GoogleCloudConfigType",)
