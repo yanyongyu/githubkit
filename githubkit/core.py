@@ -378,7 +378,7 @@ class GitHubCore(Generic[A]):
         self,
         response: httpx.Response,
         response_model: Union[type[T], UnsetType] = UNSET,
-        error_models: Optional[Mapping[str, type]] = None,
+        error_models: Optional[Mapping[str, Any]] = None,
     ) -> Union[Response[T], Response[Any]]:
         if self._check_is_error(response):
             error_models = error_models or {}
@@ -469,7 +469,7 @@ class GitHubCore(Generic[A]):
         cookies: Optional[CookieTypes] = None,
         stream: bool = False,
         response_model: type[T],
-        error_models: Optional[Mapping[str, type]] = None,
+        error_models: Optional[Mapping[str, Any]] = None,
     ) -> Response[T]: ...
 
     @overload
@@ -487,7 +487,7 @@ class GitHubCore(Generic[A]):
         cookies: Optional[CookieTypes] = None,
         stream: bool = False,
         response_model: UnsetType = UNSET,
-        error_models: Optional[Mapping[str, type]] = None,
+        error_models: Optional[Mapping[str, Any]] = None,
     ) -> Response[Any]: ...
 
     def request(
@@ -504,7 +504,7 @@ class GitHubCore(Generic[A]):
         cookies: Optional[CookieTypes] = None,
         stream: bool = False,
         response_model: Union[type[T], UnsetType] = UNSET,
-        error_models: Optional[Mapping[str, type]] = None,
+        error_models: Optional[Mapping[str, Any]] = None,
     ) -> Union[Response[T], Response[Any]]:
         """Send a request.
 
@@ -559,7 +559,7 @@ class GitHubCore(Generic[A]):
         cookies: Optional[CookieTypes] = None,
         stream: bool = False,
         response_model: type[T],
-        error_models: Optional[Mapping[str, type]] = None,
+        error_models: Optional[Mapping[str, Any]] = None,
     ) -> Response[T]: ...
 
     @overload
@@ -577,7 +577,7 @@ class GitHubCore(Generic[A]):
         cookies: Optional[CookieTypes] = None,
         stream: bool = False,
         response_model: UnsetType = UNSET,
-        error_models: Optional[Mapping[str, type]] = None,
+        error_models: Optional[Mapping[str, Any]] = None,
     ) -> Response[Any]: ...
 
     async def arequest(
@@ -594,7 +594,7 @@ class GitHubCore(Generic[A]):
         cookies: Optional[CookieTypes] = None,
         stream: bool = False,
         response_model: Union[type[T], UnsetType] = UNSET,
-        error_models: Optional[Mapping[str, type]] = None,
+        error_models: Optional[Mapping[str, Any]] = None,
     ) -> Union[Response[T], Response[Any]]:
         """Asynchronously send a request.
 

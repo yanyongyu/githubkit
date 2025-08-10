@@ -1,9 +1,0 @@
-name: Setup Poetry
-description: Setup Poetry
-
-runs:
-  using: "composite"
-  steps:
-    - name: Install poetry
-      run: pipx install poetry
-      shell: bash
