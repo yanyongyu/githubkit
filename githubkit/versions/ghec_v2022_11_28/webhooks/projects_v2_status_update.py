@@ -35,7 +35,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "created": WebhookProjectsV2StatusUpdateCreated,
     "deleted": WebhookProjectsV2StatusUpdateDeleted,
     "edited": WebhookProjectsV2StatusUpdateEdited,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 projects_v2_status_update_action_types = action_types
 

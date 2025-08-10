@@ -53,7 +53,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "renamed": WebhookRepositoryRenamed,
     "transferred": WebhookRepositoryTransferred,
     "unarchived": WebhookRepositoryUnarchived,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 repository_action_types = action_types
 

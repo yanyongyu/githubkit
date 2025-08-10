@@ -44,7 +44,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "fixed": WebhookCodeScanningAlertFixed,
     "reopened": WebhookCodeScanningAlertReopened,
     "reopened_by_user": WebhookCodeScanningAlertReopenedByUser,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 code_scanning_alert_action_types = action_types
 

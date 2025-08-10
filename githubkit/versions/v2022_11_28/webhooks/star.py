@@ -29,7 +29,7 @@ StarEvent: TypeAlias = Event
 action_types: dict[str, type[GitHubModel]] = {
     "created": WebhookStarCreated,
     "deleted": WebhookStarDeleted,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 star_action_types = action_types
 

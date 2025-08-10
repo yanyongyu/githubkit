@@ -35,7 +35,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "created": WebhookRepositoryRulesetCreated,
     "deleted": WebhookRepositoryRulesetDeleted,
     "edited": WebhookRepositoryRulesetEdited,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 repository_ruleset_action_types = action_types
 

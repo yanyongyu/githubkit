@@ -38,7 +38,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "cancelled": WebhookPersonalAccessTokenRequestCancelled,
     "created": WebhookPersonalAccessTokenRequestCreated,
     "denied": WebhookPersonalAccessTokenRequestDenied,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 personal_access_token_request_action_types = action_types
 

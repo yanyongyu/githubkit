@@ -35,7 +35,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "created": WebhookBranchProtectionRuleCreated,
     "deleted": WebhookBranchProtectionRuleDeleted,
     "edited": WebhookBranchProtectionRuleEdited,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 branch_protection_rule_action_types = action_types
 

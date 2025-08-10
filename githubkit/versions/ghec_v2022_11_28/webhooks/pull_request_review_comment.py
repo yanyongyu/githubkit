@@ -35,7 +35,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "created": WebhookPullRequestReviewCommentCreated,
     "deleted": WebhookPullRequestReviewCommentDeleted,
     "edited": WebhookPullRequestReviewCommentEdited,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 pull_request_review_comment_action_types = action_types
 

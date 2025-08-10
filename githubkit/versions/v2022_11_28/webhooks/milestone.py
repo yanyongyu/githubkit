@@ -41,7 +41,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "deleted": WebhookMilestoneDeleted,
     "edited": WebhookMilestoneEdited,
     "opened": WebhookMilestoneOpened,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 milestone_action_types = action_types
 

@@ -32,7 +32,7 @@ InstallationRepositoriesEvent: TypeAlias = Event
 action_types: dict[str, type[GitHubModel]] = {
     "added": WebhookInstallationRepositoriesAdded,
     "removed": WebhookInstallationRepositoriesRemoved,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 installation_repositories_action_types = action_types
 

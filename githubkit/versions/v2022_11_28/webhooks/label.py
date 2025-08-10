@@ -31,7 +31,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "created": WebhookLabelCreated,
     "deleted": WebhookLabelDeleted,
     "edited": WebhookLabelEdited,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 label_action_types = action_types
 

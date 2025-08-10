@@ -35,7 +35,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "completed": WebhookCheckSuiteCompleted,
     "requested": WebhookCheckSuiteRequested,
     "rerequested": WebhookCheckSuiteRerequested,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 check_suite_action_types = action_types
 

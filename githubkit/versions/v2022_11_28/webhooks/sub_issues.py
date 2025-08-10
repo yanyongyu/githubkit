@@ -38,7 +38,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "parent_issue_removed": WebhookSubIssuesParentIssueRemoved,
     "sub_issue_added": WebhookSubIssuesSubIssueAdded,
     "sub_issue_removed": WebhookSubIssuesSubIssueRemoved,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 sub_issues_action_types = action_types
 

@@ -29,7 +29,7 @@ DeployKeyEvent: TypeAlias = Event
 action_types: dict[str, type[GitHubModel]] = {
     "created": WebhookDeployKeyCreated,
     "deleted": WebhookDeployKeyDeleted,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 deploy_key_action_types = action_types
 

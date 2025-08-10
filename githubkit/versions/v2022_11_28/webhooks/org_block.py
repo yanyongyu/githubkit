@@ -29,7 +29,7 @@ OrgBlockEvent: TypeAlias = Event
 action_types: dict[str, type[GitHubModel]] = {
     "blocked": WebhookOrgBlockBlocked,
     "unblocked": WebhookOrgBlockUnblocked,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 org_block_action_types = action_types
 

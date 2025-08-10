@@ -35,7 +35,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "created": WebhookDiscussionCommentCreated,
     "deleted": WebhookDiscussionCommentDeleted,
     "edited": WebhookDiscussionCommentEdited,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 discussion_comment_action_types = action_types
 

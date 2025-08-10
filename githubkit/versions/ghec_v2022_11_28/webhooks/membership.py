@@ -29,7 +29,7 @@ MembershipEvent: TypeAlias = Event
 action_types: dict[str, type[GitHubModel]] = {
     "added": WebhookMembershipAdded,
     "removed": WebhookMembershipRemoved,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 membership_action_types = action_types
 

@@ -41,7 +41,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "pending_change": WebhookMarketplacePurchasePendingChange,
     "pending_change_cancelled": WebhookMarketplacePurchasePendingChangeCancelled,
     "purchased": WebhookMarketplacePurchasePurchased,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 marketplace_purchase_action_types = action_types
 

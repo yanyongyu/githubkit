@@ -45,3 +45,24 @@ jobs:
         uses: jakebailey/pyright-action@v2
         with:
           pylance-version: latest-release
+          extra-args: githubkit
+
+  lint-codegen:
+    name: Codegen Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python environment
+        uses: ./.github/actions/setup-python
+
+      - run: |
+          echo "$(dirname $(uv python find))" >> $GITHUB_PATH
+        shell: bash
+
+      - name: Run Pyright
+        uses: jakebailey/pyright-action@v2
+        with:
+          working-directory: ./codegen
+          pylance-version: latest-release

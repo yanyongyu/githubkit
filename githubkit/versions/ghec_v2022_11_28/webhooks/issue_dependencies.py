@@ -38,7 +38,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "blocked_by_removed": WebhookIssueDependenciesBlockedByRemoved,
     "blocking_added": WebhookIssueDependenciesBlockingAdded,
     "blocking_removed": WebhookIssueDependenciesBlockingRemoved,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 issue_dependencies_action_types = action_types
 

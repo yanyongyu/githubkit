@@ -47,7 +47,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "published": WebhookReleasePublished,
     "released": WebhookReleaseReleased,
     "unpublished": WebhookReleaseUnpublished,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 release_action_types = action_types
 

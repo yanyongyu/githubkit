@@ -47,7 +47,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "fixed": WebhookDependabotAlertFixed,
     "reintroduced": WebhookDependabotAlertReintroduced,
     "reopened": WebhookDependabotAlertReopened,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 dependabot_alert_action_types = action_types
 

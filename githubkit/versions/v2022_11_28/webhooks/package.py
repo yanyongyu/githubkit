@@ -29,7 +29,7 @@ PackageEvent: TypeAlias = Event
 action_types: dict[str, type[GitHubModel]] = {
     "published": WebhookPackagePublished,
     "updated": WebhookPackageUpdated,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 package_action_types = action_types
 

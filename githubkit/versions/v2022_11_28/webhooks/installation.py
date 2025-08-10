@@ -41,7 +41,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "new_permissions_accepted": WebhookInstallationNewPermissionsAccepted,
     "suspend": WebhookInstallationSuspend,
     "unsuspend": WebhookInstallationUnsuspend,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 installation_action_types = action_types
 

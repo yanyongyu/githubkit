@@ -41,7 +41,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "reopened": WebhookSecretScanningAlertReopened,
     "resolved": WebhookSecretScanningAlertResolved,
     "validated": WebhookSecretScanningAlertValidated,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 secret_scanning_alert_action_types = action_types
 

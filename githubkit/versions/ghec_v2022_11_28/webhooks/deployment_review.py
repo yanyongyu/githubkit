@@ -35,7 +35,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "approved": WebhookDeploymentReviewApproved,
     "rejected": WebhookDeploymentReviewRejected,
     "requested": WebhookDeploymentReviewRequested,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 deployment_review_action_types = action_types
 

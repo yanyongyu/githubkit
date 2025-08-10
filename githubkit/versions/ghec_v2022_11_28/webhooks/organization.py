@@ -41,7 +41,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "member_invited": WebhookOrganizationMemberInvited,
     "member_removed": WebhookOrganizationMemberRemoved,
     "renamed": WebhookOrganizationRenamed,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 organization_action_types = action_types
 

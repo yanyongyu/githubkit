@@ -32,7 +32,7 @@ DismissalRequestCodeScanningEvent: TypeAlias = Event
 action_types: dict[str, type[GitHubModel]] = {
     "created": WebhookExemptionRequestCreated,
     "response_submitted": WebhookExemptionRequestResponseSubmitted,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 dismissal_request_code_scanning_action_types = action_types
 

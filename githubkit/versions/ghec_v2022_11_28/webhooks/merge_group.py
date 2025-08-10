@@ -29,7 +29,7 @@ MergeGroupEvent: TypeAlias = Event
 action_types: dict[str, type[GitHubModel]] = {
     "checks_requested": WebhookMergeGroupChecksRequested,
     "destroyed": WebhookMergeGroupDestroyed,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 merge_group_action_types = action_types
 

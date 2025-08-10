@@ -32,7 +32,7 @@ PullRequestReviewThreadEvent: TypeAlias = Event
 action_types: dict[str, type[GitHubModel]] = {
     "resolved": WebhookPullRequestReviewThreadResolved,
     "unresolved": WebhookPullRequestReviewThreadUnresolved,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 pull_request_review_thread_action_types = action_types
 

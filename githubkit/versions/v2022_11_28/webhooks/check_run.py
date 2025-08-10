@@ -38,7 +38,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "created": WebhookCheckRunCreated,
     "requested_action": WebhookCheckRunRequestedAction,
     "rerequested": WebhookCheckRunRerequested,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 check_run_action_types = action_types
 

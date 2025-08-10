@@ -32,7 +32,7 @@ RepositoryAdvisoryEvent: TypeAlias = Event
 action_types: dict[str, type[GitHubModel]] = {
     "published": WebhookRepositoryAdvisoryPublished,
     "reported": WebhookRepositoryAdvisoryReported,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 repository_advisory_action_types = action_types
 

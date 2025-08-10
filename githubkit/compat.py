@@ -97,8 +97,20 @@ else:  # pragma: pydantic-v1
         class Config:
             extra = Extra.allow
 
+    @overload
+    def type_validate_python(type_: type[T], data: Any) -> T: ...
+
+    @overload
+    def type_validate_python(type_: Any, data: Any) -> Any: ...
+
     def type_validate_python(type_: type[T], data: Any) -> T:
         return parse_obj_as(type_, data)
+
+    @overload
+    def type_validate_json(type_: type[T], data: Any) -> T: ...
+
+    @overload
+    def type_validate_json(type_: Any, data: Any) -> Any: ...
 
     def type_validate_json(type_: type[T], data: Any) -> T:
         return parse_raw_as(type_, data)

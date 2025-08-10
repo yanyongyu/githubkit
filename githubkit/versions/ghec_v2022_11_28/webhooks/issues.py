@@ -80,7 +80,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "unlocked": WebhookIssuesUnlocked,
     "unpinned": WebhookIssuesUnpinned,
     "untyped": WebhookIssuesUntyped,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 issues_action_types = action_types
 

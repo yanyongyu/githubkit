@@ -41,7 +41,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "deleted": WebhookTeamDeleted,
     "edited": WebhookTeamEdited,
     "removed_from_repository": WebhookTeamRemovedFromRepository,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 team_action_types = action_types
 

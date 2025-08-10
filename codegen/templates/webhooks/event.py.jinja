@@ -44,7 +44,7 @@ action_types: dict[str, type[GitHubModel]] = {
     {% for webhook in webhooks %}
     "{{ webhook.action }}": {{ webhook.event_schema.get_type_string() }},
     {% endfor %}
-}
+}  # pyright: ignore[reportAssignmentType]
 {% else %}
 action_types = {{ (webhooks | first).event_schema.get_type_string() }}
 {% endif %}

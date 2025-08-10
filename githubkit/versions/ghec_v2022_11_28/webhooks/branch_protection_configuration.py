@@ -32,7 +32,7 @@ BranchProtectionConfigurationEvent: TypeAlias = Event
 action_types: dict[str, type[GitHubModel]] = {
     "disabled": WebhookBranchProtectionConfigurationDisabled,
     "enabled": WebhookBranchProtectionConfigurationEnabled,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 branch_protection_configuration_action_types = action_types
 

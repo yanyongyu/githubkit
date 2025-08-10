@@ -35,7 +35,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "completed": WebhookWorkflowRunCompleted,
     "in_progress": WebhookWorkflowRunInProgress,
     "requested": WebhookWorkflowRunRequested,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 workflow_run_action_types = action_types
 

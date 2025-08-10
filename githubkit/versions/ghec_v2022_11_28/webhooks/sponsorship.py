@@ -44,7 +44,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "pending_cancellation": WebhookSponsorshipPendingCancellation,
     "pending_tier_change": WebhookSponsorshipPendingTierChange,
     "tier_changed": WebhookSponsorshipTierChanged,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 sponsorship_action_types = action_types
 

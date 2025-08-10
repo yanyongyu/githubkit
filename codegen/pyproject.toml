@@ -4,3 +4,9 @@ target-version = "py310"
 
 [tool.ruff.lint]
 ignore = ["TID"]
+
+# pyright config for ci check
+[tool.pyright]
+extends = "../pyproject.toml"
+
+executionEnvironments = [{ root = ".", pythonVersion = "3.10" }]

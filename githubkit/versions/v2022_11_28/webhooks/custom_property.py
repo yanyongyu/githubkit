@@ -38,7 +38,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "deleted": WebhookCustomPropertyDeleted,
     "promote_to_enterprise": WebhookCustomPropertyPromotedToEnterprise,
     "updated": WebhookCustomPropertyUpdated,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 custom_property_action_types = action_types
 

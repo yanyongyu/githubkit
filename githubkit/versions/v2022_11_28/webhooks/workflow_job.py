@@ -38,7 +38,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "in_progress": WebhookWorkflowJobInProgress,
     "queued": WebhookWorkflowJobQueued,
     "waiting": WebhookWorkflowJobWaiting,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 workflow_job_action_types = action_types
 

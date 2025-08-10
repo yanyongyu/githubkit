@@ -41,7 +41,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "created": WebhookExemptionRequestCreated,
     "response_dismissed": WebhookExemptionRequestResponseDismissed,
     "response_submitted": WebhookExemptionRequestResponseSubmitted,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 exemption_request_push_ruleset_action_types = action_types
 

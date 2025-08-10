@@ -47,7 +47,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "edited": WebhookProjectsV2ItemEdited,
     "reordered": WebhookProjectsV2ItemReordered,
     "restored": WebhookProjectsV2ItemRestored,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 projects_v2_item_action_types = action_types
 

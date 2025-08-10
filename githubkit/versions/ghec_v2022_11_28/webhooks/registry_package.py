@@ -29,7 +29,7 @@ RegistryPackageEvent: TypeAlias = Event
 action_types: dict[str, type[GitHubModel]] = {
     "published": WebhookRegistryPackagePublished,
     "updated": WebhookRegistryPackageUpdated,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 registry_package_action_types = action_types
 

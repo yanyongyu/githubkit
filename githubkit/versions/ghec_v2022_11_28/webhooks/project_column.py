@@ -38,7 +38,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "deleted": WebhookProjectColumnDeleted,
     "edited": WebhookProjectColumnEdited,
     "moved": WebhookProjectColumnMoved,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 project_column_action_types = action_types
 

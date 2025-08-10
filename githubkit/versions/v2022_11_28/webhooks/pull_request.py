@@ -123,7 +123,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "unassigned": WebhookPullRequestUnassigned,
     "unlabeled": WebhookPullRequestUnlabeled,
     "unlocked": WebhookPullRequestUnlocked,
-}
+}  # pyright: ignore[reportAssignmentType]
 
 pull_request_action_types = action_types
 
