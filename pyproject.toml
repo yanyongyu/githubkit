@@ -11,7 +11,7 @@ dependencies = [
   "anyio >=3.6.1, <5.0.0",
   "httpx >=0.23.0, <1.0.0",
   "hishel >=0.0.21, <=0.2.0",
-  "typing-extensions >=4.11.0, <5.0.0",
+  "typing-extensions >=4.13.0, <5.0.0",
   "pydantic >=1.9.1, <3.0.0, !=2.5.0, !=2.5.1",
 ]
 
@@ -147,6 +147,8 @@ typeCheckingMode = "standard"
 reportPrivateImportUsage = false
 reportShadowedImports = false
 disableBytesTypePromotions = true
+# enable PEP 747 `TypeForm` check
+enableExperimentalFeatures = true
 
 pythonPlatform = "All"
 defineConstant = { PYDANTIC_V2 = true }
