@@ -354,12 +354,16 @@ class GitHubCore(Generic[A]):
                     raise RequestError(e) from e
 
     # check and parse response
+    def _check_is_error(self, response: httpx.Response) -> bool:
+        """Check if the response is an error."""
+        return response.is_error
+
     @overload
     def _check(
         self,
         response: httpx.Response,
         response_model: type[T],
-        error_models: Optional[Mapping[str, type]] = None,
+        error_models: Optional[Mapping[str, Any]] = None,
     ) -> Response[T]: ...
 
     @overload
@@ -367,12 +371,8 @@ class GitHubCore(Generic[A]):
         self,
         response: httpx.Response,
         response_model: UnsetType = UNSET,
-        error_models: Optional[Mapping[str, type]] = None,
+        error_models: Optional[Mapping[str, Any]] = None,
     ) -> Response[Any]: ...
-
-    def _check_is_error(self, response: httpx.Response) -> bool:
-        """Check if the response is an error."""
-        return response.is_error
 
     def _check(
         self,
