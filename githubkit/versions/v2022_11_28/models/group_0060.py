@@ -17,44 +17,30 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0058 import MarketplaceListingPlan
-
-
-class MarketplacePurchasePropMarketplacePendingChange(GitHubModel):
-    """MarketplacePurchasePropMarketplacePendingChange"""
-
-    is_installed: Missing[bool] = Field(default=UNSET)
-    effective_date: Missing[str] = Field(default=UNSET)
-    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    plan: Missing[MarketplaceListingPlan] = Field(
-        default=UNSET,
-        title="Marketplace Listing Plan",
-        description="Marketplace Listing Plan",
-    )
-
-
-class MarketplacePurchasePropMarketplacePurchase(GitHubModel):
-    """MarketplacePurchasePropMarketplacePurchase"""
-
-    billing_cycle: Missing[str] = Field(default=UNSET)
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
-    is_installed: Missing[bool] = Field(default=UNSET)
-    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
-    on_free_trial: Missing[bool] = Field(default=UNSET)
-    free_trial_ends_on: Missing[Union[str, None]] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    plan: Missing[MarketplaceListingPlan] = Field(
-        default=UNSET,
-        title="Marketplace Listing Plan",
-        description="Marketplace Listing Plan",
-    )
-
-
-model_rebuild(MarketplacePurchasePropMarketplacePendingChange)
-model_rebuild(MarketplacePurchasePropMarketplacePurchase)
-
-__all__ = (
-    "MarketplacePurchasePropMarketplacePendingChange",
-    "MarketplacePurchasePropMarketplacePurchase",
+from .group_0061 import (
+    MarketplacePurchasePropMarketplacePendingChange,
+    MarketplacePurchasePropMarketplacePurchase,
 )
+
+
+class MarketplacePurchase(GitHubModel):
+    """Marketplace Purchase
+
+    Marketplace Purchase
+    """
+
+    url: str = Field()
+    type: str = Field()
+    id: int = Field()
+    login: str = Field()
+    organization_billing_email: Missing[str] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    marketplace_pending_change: Missing[
+        Union[MarketplacePurchasePropMarketplacePendingChange, None]
+    ] = Field(default=UNSET)
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
+
+
+model_rebuild(MarketplacePurchase)
+
+__all__ = ("MarketplacePurchase",)

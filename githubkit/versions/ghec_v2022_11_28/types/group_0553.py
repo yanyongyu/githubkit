@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0494 import EnterpriseWebhooksType
-from .group_0495 import SimpleInstallationType
-from .group_0496 import OrganizationSimpleWebhooksType
-from .group_0497 import RepositoryWebhooksType
-from .group_0500 import ExemptionRequestType
+from .group_0495 import EnterpriseWebhooksType
+from .group_0496 import SimpleInstallationType
+from .group_0497 import OrganizationSimpleWebhooksType
+from .group_0498 import RepositoryWebhooksType
+from .group_0501 import ExemptionRequestType
 
 
-class WebhookExemptionRequestCompletedType(TypedDict):
-    """Exemption request completed event"""
+class WebhookExemptionRequestCancelledType(TypedDict):
+    """Exemption request cancellation event"""
 
-    action: Literal["completed"]
+    action: Literal["cancelled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -32,4 +32,4 @@ class WebhookExemptionRequestCompletedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookExemptionRequestCompletedType",)
+__all__ = ("WebhookExemptionRequestCancelledType",)

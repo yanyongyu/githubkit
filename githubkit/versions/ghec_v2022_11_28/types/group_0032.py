@@ -13,7 +13,7 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsHostedRunnerImageType(TypedDict):
+class ActionsHostedRunnerCuratedImageType(TypedDict):
     """GitHub-hosted runner image details.
 
     Provides details of a hosted runner image
@@ -26,4 +26,4 @@ class ActionsHostedRunnerImageType(TypedDict):
     source: Literal["github", "partner", "custom"]
 
 
-__all__ = ("ActionsHostedRunnerImageType",)
+__all__ = ("ActionsHostedRunnerCuratedImageType",)

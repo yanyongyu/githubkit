@@ -9,13 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPrivateRegistriesPostBodyType(TypedDict):
-    """OrgsOrgPrivateRegistriesPostBody"""
+class OrgsOrgPrivateRegistriesGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
 
+    total_count: int
+    configurations: list[OrgPrivateRegistryConfigurationType]
+
+
+class OrgPrivateRegistryConfigurationType(TypedDict):
+    """Organization private registry
+
+    Private registry configuration for an organization
+    """
+
+    name: str
     registry_type: Literal[
         "maven_repository",
         "nuget_feed",
@@ -33,12 +45,13 @@ class OrgsOrgPrivateRegistriesPostBodyType(TypedDict):
         "python_index",
         "terraform_registry",
     ]
-    url: str
     username: NotRequired[Union[str, None]]
-    encrypted_value: str
-    key_id: str
     visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("OrgsOrgPrivateRegistriesPostBodyType",)
+__all__ = (
+    "OrgPrivateRegistryConfigurationType",
+    "OrgsOrgPrivateRegistriesGetResponse200Type",
+)

@@ -17,44 +17,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0133 import RepositoryRulesetBypassActor
-from .group_0142 import OrgRulesetConditionsOneof0
-from .group_0143 import OrgRulesetConditionsOneof1
-from .group_0144 import OrgRulesetConditionsOneof2
-from .group_0145 import (
+from .group_0134 import RepositoryRulesetBypassActor
+from .group_0143 import OrgRulesetConditionsOneof0
+from .group_0144 import OrgRulesetConditionsOneof1
+from .group_0145 import OrgRulesetConditionsOneof2
+from .group_0146 import (
     RepositoryRuleCreation,
     RepositoryRuleDeletion,
     RepositoryRuleNonFastForward,
     RepositoryRuleRequiredSignatures,
 )
-from .group_0146 import RepositoryRuleUpdate
-from .group_0148 import RepositoryRuleRequiredLinearHistory
-from .group_0151 import RepositoryRuleRequiredDeployments
-from .group_0154 import RepositoryRulePullRequest
-from .group_0156 import RepositoryRuleRequiredStatusChecks
-from .group_0158 import RepositoryRuleCommitMessagePattern
-from .group_0160 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0162 import RepositoryRuleCommitterEmailPattern
-from .group_0164 import RepositoryRuleBranchNamePattern
-from .group_0166 import RepositoryRuleTagNamePattern
-from .group_0168 import RepositoryRuleFilePathRestriction
-from .group_0170 import RepositoryRuleMaxFilePathLength
-from .group_0172 import RepositoryRuleFileExtensionRestriction
-from .group_0174 import RepositoryRuleMaxFileSize
-from .group_0177 import RepositoryRuleWorkflows
-from .group_0179 import RepositoryRuleCodeScanning
+from .group_0147 import RepositoryRuleUpdate
+from .group_0149 import RepositoryRuleRequiredLinearHistory
+from .group_0152 import RepositoryRuleRequiredDeployments
+from .group_0155 import RepositoryRulePullRequest
+from .group_0157 import RepositoryRuleRequiredStatusChecks
+from .group_0159 import RepositoryRuleCommitMessagePattern
+from .group_0161 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0163 import RepositoryRuleCommitterEmailPattern
+from .group_0165 import RepositoryRuleBranchNamePattern
+from .group_0167 import RepositoryRuleTagNamePattern
+from .group_0169 import RepositoryRuleFilePathRestriction
+from .group_0171 import RepositoryRuleMaxFilePathLength
+from .group_0173 import RepositoryRuleFileExtensionRestriction
+from .group_0175 import RepositoryRuleMaxFileSize
+from .group_0178 import RepositoryRuleWorkflows
+from .group_0180 import RepositoryRuleCodeScanning
 
 
-class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
+class OrgsOrgRulesetsPostBody(GitHubModel):
+    """OrgsOrgRulesetsPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    name: str = Field(description="The name of the ruleset.")
     target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
         default=UNSET, description="The target of the ruleset"
     )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
-        default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
     )
     bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
@@ -99,6 +98,6 @@ class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
     ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(OrgsOrgRulesetsRulesetIdPutBody)
+model_rebuild(OrgsOrgRulesetsPostBody)
 
-__all__ = ("OrgsOrgRulesetsRulesetIdPutBody",)
+__all__ = ("OrgsOrgRulesetsPostBody",)

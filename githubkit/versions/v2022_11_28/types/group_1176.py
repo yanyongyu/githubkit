@@ -12,39 +12,39 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0133 import RepositoryRulesetBypassActorType
-from .group_0134 import RepositoryRulesetConditionsType
-from .group_0145 import (
+from .group_0134 import RepositoryRulesetBypassActorType
+from .group_0135 import RepositoryRulesetConditionsType
+from .group_0146 import (
     RepositoryRuleCreationType,
     RepositoryRuleDeletionType,
     RepositoryRuleNonFastForwardType,
     RepositoryRuleRequiredSignaturesType,
 )
-from .group_0146 import RepositoryRuleUpdateType
-from .group_0148 import RepositoryRuleRequiredLinearHistoryType
-from .group_0149 import RepositoryRuleMergeQueueType
-from .group_0151 import RepositoryRuleRequiredDeploymentsType
-from .group_0154 import RepositoryRulePullRequestType
-from .group_0156 import RepositoryRuleRequiredStatusChecksType
-from .group_0158 import RepositoryRuleCommitMessagePatternType
-from .group_0160 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0162 import RepositoryRuleCommitterEmailPatternType
-from .group_0164 import RepositoryRuleBranchNamePatternType
-from .group_0166 import RepositoryRuleTagNamePatternType
-from .group_0168 import RepositoryRuleFilePathRestrictionType
-from .group_0170 import RepositoryRuleMaxFilePathLengthType
-from .group_0172 import RepositoryRuleFileExtensionRestrictionType
-from .group_0174 import RepositoryRuleMaxFileSizeType
-from .group_0177 import RepositoryRuleWorkflowsType
-from .group_0179 import RepositoryRuleCodeScanningType
+from .group_0147 import RepositoryRuleUpdateType
+from .group_0149 import RepositoryRuleRequiredLinearHistoryType
+from .group_0150 import RepositoryRuleMergeQueueType
+from .group_0152 import RepositoryRuleRequiredDeploymentsType
+from .group_0155 import RepositoryRulePullRequestType
+from .group_0157 import RepositoryRuleRequiredStatusChecksType
+from .group_0159 import RepositoryRuleCommitMessagePatternType
+from .group_0161 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0163 import RepositoryRuleCommitterEmailPatternType
+from .group_0165 import RepositoryRuleBranchNamePatternType
+from .group_0167 import RepositoryRuleTagNamePatternType
+from .group_0169 import RepositoryRuleFilePathRestrictionType
+from .group_0171 import RepositoryRuleMaxFilePathLengthType
+from .group_0173 import RepositoryRuleFileExtensionRestrictionType
+from .group_0175 import RepositoryRuleMaxFileSizeType
+from .group_0178 import RepositoryRuleWorkflowsType
+from .group_0180 import RepositoryRuleCodeScanningType
 
 
-class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[RepositoryRulesetConditionsType]
     rules: NotRequired[
@@ -76,4 +76,4 @@ class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
     ]
 
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBodyType",)
+__all__ = ("ReposOwnerRepoRulesetsPostBodyType",)

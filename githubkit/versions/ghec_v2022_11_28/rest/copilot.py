@@ -215,7 +215,7 @@ class CopilotClient:
 
         Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -272,7 +272,7 @@ class CopilotClient:
 
         Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -437,7 +437,7 @@ class CopilotClient:
 
         Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -501,7 +501,7 @@ class CopilotClient:
 
         Use this endpoint to see a breakdown of aggregated metrics for various GitHub Copilot features. See the response schema tab for detailed metrics definitions.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -1530,7 +1530,7 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint will only return results for a given day if the organization contained **five or more members with active Copilot licenses** on that day, as evaluated at the end of that day.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -1590,7 +1590,7 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint will only return results for a given day if the organization contained **five or more members with active Copilot licenses** on that day, as evaluated at the end of that day.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -1745,7 +1745,7 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint will only return results for a given day if the team had **five or more members with active Copilot licenses** on that day, as evaluated at the end of that day.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 
@@ -1806,7 +1806,7 @@ class CopilotClient:
         > [!NOTE]
         > This endpoint will only return results for a given day if the team had **five or more members with active Copilot licenses** on that day, as evaluated at the end of that day.
 
-        The response contains metrics for up to 28 days prior. Metrics are processed once per day for the previous day,
+        The response contains metrics for up to 100 days prior. Metrics are processed once per day for the previous day,
         and the response will only include data up until yesterday. In order for an end user to be counted towards these metrics,
         they must have telemetry enabled in their IDE.
 

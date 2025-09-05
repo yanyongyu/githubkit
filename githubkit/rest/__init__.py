@@ -50,7 +50,7 @@ if TYPE_CHECKING:
         ActionsHostedRunner as ActionsHostedRunner,
     )
     from githubkit.versions.v2022_11_28.models import (
-        ActionsHostedRunnerImage as ActionsHostedRunnerImage,
+        ActionsHostedRunnerCuratedImage as ActionsHostedRunnerCuratedImage,
     )
     from githubkit.versions.v2022_11_28.models import (
         ActionsHostedRunnerLimits as ActionsHostedRunnerLimits,
@@ -990,6 +990,10 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         IssueEventRename as IssueEventRename,
+    )
+    from githubkit.versions.v2022_11_28.models import IssueFieldValue as IssueFieldValue
+    from githubkit.versions.v2022_11_28.models import (
+        IssueFieldValuePropSingleSelectOption as IssueFieldValuePropSingleSelectOption,
     )
     from githubkit.versions.v2022_11_28.models import (
         IssuePropLabelsItemsOneof1 as IssuePropLabelsItemsOneof1,
@@ -9893,6 +9897,8 @@ else:
             "ReactionRollup",
             "SubIssuesSummary",
             "IssueDependenciesSummary",
+            "IssueFieldValue",
+            "IssueFieldValuePropSingleSelectOption",
             "Issue",
             "IssuePropLabelsItemsOneof1",
             "IssuePropPullRequest",
@@ -9957,7 +9963,7 @@ else:
             "ActionsHostedRunner",
             "ActionsHostedRunnerPoolImage",
             "PublicIp",
-            "ActionsHostedRunnerImage",
+            "ActionsHostedRunnerCuratedImage",
             "ActionsHostedRunnerLimits",
             "ActionsHostedRunnerLimitsPropPublicIps",
             "OidcCustomSub",

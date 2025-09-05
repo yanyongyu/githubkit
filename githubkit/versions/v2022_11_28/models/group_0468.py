@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,38 +19,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0467 import ProjectsV2StatusUpdate
 
 
-class ProjectsV2(GitHubModel):
-    """Projects v2 Project
+class ProjectsV2StatusUpdate(GitHubModel):
+    """Projects v2 Status Update
 
-    A projects v2 project
+    An status update belonging to a project
     """
 
     id: float = Field()
     node_id: str = Field()
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    title: str = Field()
-    description: Union[str, None] = Field()
-    public: bool = Field()
-    closed_at: Union[datetime, None] = Field()
+    project_node_id: Missing[str] = Field(default=UNSET)
+    creator: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
     created_at: datetime = Field()
     updated_at: datetime = Field()
-    number: int = Field()
-    short_description: Union[str, None] = Field()
-    deleted_at: Union[datetime, None] = Field()
-    deleted_by: Union[None, SimpleUser] = Field()
-    state: Missing[Literal["open", "closed"]] = Field(default=UNSET)
-    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
-        default=UNSET
-    )
-    is_template: Missing[bool] = Field(
-        default=UNSET, description="Whether this project is a template"
+    status: Missing[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ] = Field(default=UNSET)
+    start_date: Missing[date] = Field(default=UNSET)
+    target_date: Missing[date] = Field(default=UNSET)
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Body of the status update"
     )
 
 
-model_rebuild(ProjectsV2)
+model_rebuild(ProjectsV2StatusUpdate)
 
-__all__ = ("ProjectsV2",)
+__all__ = ("ProjectsV2StatusUpdate",)

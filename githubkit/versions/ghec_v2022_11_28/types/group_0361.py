@@ -11,31 +11,43 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0284 import VerificationType
 
-class GitTreeType(TypedDict):
-    """Git Tree
 
-    The hierarchy between files in a Git repository.
+class GitTagType(TypedDict):
+    """Git Tag
+
+    Metadata for a Git tag
     """
 
+    node_id: str
+    tag: str
     sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsType]
+    url: str
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
 
-    path: str
-    mode: str
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
     type: str
-    sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
+    url: str
 
 
 __all__ = (
-    "GitTreePropTreeItemsType",
-    "GitTreeType",
+    "GitTagPropObjectType",
+    "GitTagPropTaggerType",
+    "GitTagType",
 )

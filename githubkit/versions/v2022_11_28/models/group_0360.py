@@ -13,20 +13,18 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
-from .group_0092 import Team
 
+class PullRequestMergeResult(GitHubModel):
+    """Pull Request Merge Result
 
-class PullRequestReviewRequest(GitHubModel):
-    """Pull Request Review Request
-
-    Pull Request Review Request
+    Pull Request Merge Result
     """
 
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
+    sha: str = Field()
+    merged: bool = Field()
+    message: str = Field()
 
 
-model_rebuild(PullRequestReviewRequest)
+model_rebuild(PullRequestMergeResult)
 
-__all__ = ("PullRequestReviewRequest",)
+__all__ = ("PullRequestMergeResult",)

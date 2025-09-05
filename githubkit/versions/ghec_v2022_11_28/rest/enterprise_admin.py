@@ -240,6 +240,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         enabled_organizations: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
+        sha_pinning_required: Missing[bool] = UNSET,
     ) -> Response: ...
 
     def set_github_actions_permissions_enterprise(
@@ -307,6 +308,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         enabled_organizations: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
+        sha_pinning_required: Missing[bool] = UNSET,
     ) -> Response: ...
 
     async def async_set_github_actions_permissions_enterprise(
@@ -7183,7 +7185,7 @@ class EnterpriseAdminClient:
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]],
         external_id: str,
         display_name: str,
-        members: list[GroupPropMembersItemsType],
+        members: Missing[list[GroupPropMembersItemsType]] = UNSET,
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
 
     def provision_enterprise_group(
@@ -7256,7 +7258,7 @@ class EnterpriseAdminClient:
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]],
         external_id: str,
         display_name: str,
-        members: list[GroupPropMembersItemsType],
+        members: Missing[list[GroupPropMembersItemsType]] = UNSET,
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
 
     async def async_provision_enterprise_group(
@@ -7417,7 +7419,7 @@ class EnterpriseAdminClient:
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]],
         external_id: str,
         display_name: str,
-        members: list[GroupPropMembersItemsType],
+        members: Missing[list[GroupPropMembersItemsType]] = UNSET,
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
 
     def set_information_for_provisioned_enterprise_group(
@@ -7494,7 +7496,7 @@ class EnterpriseAdminClient:
         schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]],
         external_id: str,
         display_name: str,
-        members: list[GroupPropMembersItemsType],
+        members: Missing[list[GroupPropMembersItemsType]] = UNSET,
     ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
 
     async def async_set_information_for_provisioned_enterprise_group(

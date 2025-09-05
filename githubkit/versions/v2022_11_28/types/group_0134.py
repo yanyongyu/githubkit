@@ -9,18 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0135 import RepositoryRulesetConditionsPropRefNameType
 
+class RepositoryRulesetBypassActorType(TypedDict):
+    """Repository Ruleset Bypass Actor
 
-class RepositoryRulesetConditionsType(TypedDict):
-    """Repository ruleset conditions for ref names
-
-    Parameters for a repository ruleset ref name condition
+    An actor that can bypass rules in a ruleset
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    actor_id: NotRequired[Union[int, None]]
+    actor_type: Literal[
+        "Integration", "OrganizationAdmin", "RepositoryRole", "Team", "DeployKey"
+    ]
+    bypass_mode: NotRequired[Literal["always", "pull_request"]]
 
 
-__all__ = ("RepositoryRulesetConditionsType",)
+__all__ = ("RepositoryRulesetBypassActorType",)

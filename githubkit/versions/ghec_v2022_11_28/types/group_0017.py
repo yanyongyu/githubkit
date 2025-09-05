@@ -71,6 +71,10 @@ class AppPermissionsType(TypedDict):
     interaction_limits: NotRequired[Literal["read", "write"]]
     profile: NotRequired[Literal["write"]]
     starring: NotRequired[Literal["read", "write"]]
+    enterprise_organization_installations: NotRequired[Literal["read", "write"]]
+    enterprise_organization_installation_repositories: NotRequired[
+        Literal["read", "write"]
+    ]
 
 
 __all__ = ("AppPermissionsType",)

@@ -19,28 +19,28 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0020 import Repository
-from .group_0047 import Issue
-from .group_0434 import SimpleInstallation
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
+from .group_0048 import Issue
+from .group_0435 import SimpleInstallation
+from .group_0436 import OrganizationSimpleWebhooks
+from .group_0437 import RepositoryWebhooks
 
 
-class WebhookIssueDependenciesBlockingAdded(GitHubModel):
-    """blocking issue added event"""
+class WebhookIssueDependenciesBlockedByRemoved(GitHubModel):
+    """blocked by issue removed event"""
 
-    action: Literal["blocking_added"] = Field()
+    action: Literal["blocked_by_removed"] = Field()
     blocked_issue_id: float = Field(description="The ID of the blocked issue.")
     blocked_issue: Issue = Field(
         title="Issue",
         description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
-    blocked_issue_repo: Repository = Field(
-        title="Repository", description="A repository on GitHub."
-    )
     blocking_issue_id: float = Field(description="The ID of the blocking issue.")
     blocking_issue: Issue = Field(
         title="Issue",
         description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    blocking_issue_repo: Repository = Field(
+        title="Repository", description="A repository on GitHub."
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -58,6 +58,6 @@ class WebhookIssueDependenciesBlockingAdded(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueDependenciesBlockingAdded)
+model_rebuild(WebhookIssueDependenciesBlockedByRemoved)
 
-__all__ = ("WebhookIssueDependenciesBlockingAdded",)
+__all__ = ("WebhookIssueDependenciesBlockedByRemoved",)

@@ -19,16 +19,16 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0020 import Repository
-from .group_0168 import Issue
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0497 import RepositoryWebhooks
+from .group_0169 import Issue
+from .group_0496 import SimpleInstallation
+from .group_0497 import OrganizationSimpleWebhooks
+from .group_0498 import RepositoryWebhooks
 
 
-class WebhookIssueDependenciesBlockingRemoved(GitHubModel):
-    """blocking issue removed event"""
+class WebhookIssueDependenciesBlockingAdded(GitHubModel):
+    """blocking issue added event"""
 
-    action: Literal["blocking_removed"] = Field()
+    action: Literal["blocking_added"] = Field()
     blocked_issue_id: float = Field(description="The ID of the blocked issue.")
     blocked_issue: Issue = Field(
         title="Issue",
@@ -58,6 +58,6 @@ class WebhookIssueDependenciesBlockingRemoved(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueDependenciesBlockingRemoved)
+model_rebuild(WebhookIssueDependenciesBlockingAdded)
 
-__all__ = ("WebhookIssueDependenciesBlockingRemoved",)
+__all__ = ("WebhookIssueDependenciesBlockingAdded",)

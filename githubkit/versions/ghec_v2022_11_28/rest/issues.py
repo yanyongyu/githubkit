@@ -4206,6 +4206,92 @@ class IssuesClient:
             },
         )
 
+    def get_parent(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[Issue, IssueType]:
+        """issues/get-parent
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/parent
+
+        You can use the REST API to get the parent issue of a sub-issue.
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#get-parent-issue
+        """
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/parent"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Issue,
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    async def async_get_parent(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[Issue, IssueType]:
+        """issues/get-parent
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/parent
+
+        You can use the REST API to get the parent issue of a sub-issue.
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/sub-issues#get-parent-issue
+        """
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/parent"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Issue,
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
     @overload
     def remove_sub_issue(
         self,

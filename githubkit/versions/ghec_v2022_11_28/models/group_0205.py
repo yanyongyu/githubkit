@@ -18,14 +18,11 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0061 import BypassResponse
 
+class CodeScanningAlertDismissalRequest(GitHubModel):
+    """Code scanning alert dismissal request
 
-class SecretScanningDismissalRequest(GitHubModel):
-    """Secret scanning alert dismissal request
-
-    A dismissal request made by a user asking to close a secret scanning alert in
-    this repository.
+    Alert dismisal request made by a user asking to dismiss a code scanning alert.
     """
 
     id: Missing[int] = Field(
@@ -35,32 +32,31 @@ class SecretScanningDismissalRequest(GitHubModel):
         default=UNSET,
         description="The number uniquely identifying the dismissal request within its repository.",
     )
-    repository: Missing[SecretScanningDismissalRequestPropRepository] = Field(
+    repository: Missing[CodeScanningAlertDismissalRequestPropRepository] = Field(
         default=UNSET, description="The repository the dismissal request is for."
     )
-    organization: Missing[SecretScanningDismissalRequestPropOrganization] = Field(
+    organization: Missing[CodeScanningAlertDismissalRequestPropOrganization] = Field(
         default=UNSET,
         description="The organization associated with the repository the dismissal request is for.",
     )
-    requester: Missing[SecretScanningDismissalRequestPropRequester] = Field(
-        default=UNSET, description="The user who requested the dismissal."
+    requester: Missing[CodeScanningAlertDismissalRequestPropRequester] = Field(
+        default=UNSET, description="The user who requested the dismissal request."
     )
     request_type: Missing[str] = Field(
         default=UNSET, description="The type of request."
     )
-    data: Missing[Union[list[SecretScanningDismissalRequestPropDataItems], None]] = (
+    data: Missing[Union[list[CodeScanningAlertDismissalRequestPropDataItems], None]] = (
         Field(
-            default=UNSET,
-            description="Data describing the secret alert that is being requested to be dismissed.",
+            default=UNSET, description="Data describing the dismissal request metadata."
         )
     )
     resource_identifier: Missing[str] = Field(
         default=UNSET,
-        description="The number of the secret scanning alert that was detected.",
+        description="The unique identifier for the request type of the dismissal request.",
     )
-    status: Missing[
-        Literal["pending", "denied", "approved", "cancelled", "expired"]
-    ] = Field(default=UNSET, description="The status of the dismissal request.")
+    status: Missing[Literal["pending", "denied", "approved", "expired"]] = Field(
+        default=UNSET, description="The status of the dismissal request."
+    )
     requester_comment: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="The comment the requester provided when creating the dismissal request.",
@@ -73,7 +69,7 @@ class SecretScanningDismissalRequest(GitHubModel):
         default=UNSET,
         description="The date and time the dismissal request was created.",
     )
-    responses: Missing[Union[list[BypassResponse], None]] = Field(
+    responses: Missing[Union[list[DismissalRequestResponse], None]] = Field(
         default=UNSET, description="The responses to the dismissal request."
     )
     url: Missing[str] = Field(default=UNSET)
@@ -82,8 +78,8 @@ class SecretScanningDismissalRequest(GitHubModel):
     )
 
 
-class SecretScanningDismissalRequestPropRepository(GitHubModel):
-    """SecretScanningDismissalRequestPropRepository
+class CodeScanningAlertDismissalRequestPropRepository(GitHubModel):
+    """CodeScanningAlertDismissalRequestPropRepository
 
     The repository the dismissal request is for.
     """
@@ -102,8 +98,8 @@ class SecretScanningDismissalRequestPropRepository(GitHubModel):
     )
 
 
-class SecretScanningDismissalRequestPropOrganization(GitHubModel):
-    """SecretScanningDismissalRequestPropOrganization
+class CodeScanningAlertDismissalRequestPropOrganization(GitHubModel):
+    """CodeScanningAlertDismissalRequestPropOrganization
 
     The organization associated with the repository the dismissal request is for.
     """
@@ -114,50 +110,89 @@ class SecretScanningDismissalRequestPropOrganization(GitHubModel):
     )
 
 
-class SecretScanningDismissalRequestPropRequester(GitHubModel):
-    """SecretScanningDismissalRequestPropRequester
+class CodeScanningAlertDismissalRequestPropRequester(GitHubModel):
+    """CodeScanningAlertDismissalRequestPropRequester
 
-    The user who requested the dismissal.
+    The user who requested the dismissal request.
     """
 
     actor_id: Missing[int] = Field(
         default=UNSET,
-        description="The ID of the GitHub user who requested the dismissal.",
+        description="The ID of the GitHub user who requested the dismissal request.",
     )
     actor_name: Missing[str] = Field(
         default=UNSET,
-        description="The name of the GitHub user who requested the dismissal.",
+        description="The name of the GitHub user who requested the dismissal request.",
     )
 
 
-class SecretScanningDismissalRequestPropDataItems(GitHubModel):
-    """SecretScanningDismissalRequestPropDataItems"""
+class CodeScanningAlertDismissalRequestPropDataItems(GitHubModel):
+    """CodeScanningAlertDismissalRequestPropDataItems"""
 
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
+    reason: Missing[str] = Field(
+        default=UNSET, description="The reason for the dismissal request."
     )
-    alert_number: Missing[str] = Field(
+    alert_number: Missing[str] = Field(default=UNSET, description="alert number.")
+    pr_review_thread_id: Missing[str] = Field(
+        default=UNSET, description="The ID of the pull request review thread."
+    )
+
+
+class DismissalRequestResponse(GitHubModel):
+    """Dismissal request response
+
+    A response made by a requester to dismiss the request.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the response to the dismissal request."
+    )
+    reviewer: Missing[DismissalRequestResponsePropReviewer] = Field(
+        default=UNSET, description="The user who reviewed the dismissal request."
+    )
+    message: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The response comment of the reviewer."
+    )
+    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
         default=UNSET,
-        description="The number of the secret scanning alert that was detected.",
+        description="The response status to the dismissal request until dismissed.",
     )
-    reason: Missing[Literal["fixed_later", "false_positive", "tests", "revoked"]] = (
-        Field(
-            default=UNSET,
-            description="The reason the user provided for requesting the dismissal.",
-        )
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time the response to the dismissal request was created.",
     )
 
 
-model_rebuild(SecretScanningDismissalRequest)
-model_rebuild(SecretScanningDismissalRequestPropRepository)
-model_rebuild(SecretScanningDismissalRequestPropOrganization)
-model_rebuild(SecretScanningDismissalRequestPropRequester)
-model_rebuild(SecretScanningDismissalRequestPropDataItems)
+class DismissalRequestResponsePropReviewer(GitHubModel):
+    """DismissalRequestResponsePropReviewer
+
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the GitHub user who reviewed the dismissal request.",
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the GitHub user who reviewed the dismissal request.",
+    )
+
+
+model_rebuild(CodeScanningAlertDismissalRequest)
+model_rebuild(CodeScanningAlertDismissalRequestPropRepository)
+model_rebuild(CodeScanningAlertDismissalRequestPropOrganization)
+model_rebuild(CodeScanningAlertDismissalRequestPropRequester)
+model_rebuild(CodeScanningAlertDismissalRequestPropDataItems)
+model_rebuild(DismissalRequestResponse)
+model_rebuild(DismissalRequestResponsePropReviewer)
 
 __all__ = (
-    "SecretScanningDismissalRequest",
-    "SecretScanningDismissalRequestPropDataItems",
-    "SecretScanningDismissalRequestPropOrganization",
-    "SecretScanningDismissalRequestPropRepository",
-    "SecretScanningDismissalRequestPropRequester",
+    "CodeScanningAlertDismissalRequest",
+    "CodeScanningAlertDismissalRequestPropDataItems",
+    "CodeScanningAlertDismissalRequestPropOrganization",
+    "CodeScanningAlertDismissalRequestPropRepository",
+    "CodeScanningAlertDismissalRequestPropRequester",
+    "DismissalRequestResponse",
+    "DismissalRequestResponsePropReviewer",
 )

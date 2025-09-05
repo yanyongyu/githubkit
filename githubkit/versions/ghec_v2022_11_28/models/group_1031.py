@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -19,20 +19,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCampaignsCampaignNumberPatchBody(GitHubModel):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+class OrgsOrgCampaignsPostBody(GitHubModel):
+    """OrgsOrgCampaignsPostBody"""
 
-    name: Missing[str] = Field(
-        min_length=1,
-        max_length=50,
-        default=UNSET,
-        description="The name of the campaign",
+    name: str = Field(
+        min_length=1, max_length=50, description="The name of the campaign"
     )
-    description: Missing[str] = Field(
-        min_length=1,
-        max_length=255,
-        default=UNSET,
-        description="A description for the campaign",
+    description: str = Field(
+        min_length=1, max_length=255, description="A description for the campaign"
     )
     managers: Missing[list[str]] = Field(
         max_length=10 if PYDANTIC_V2 else None,
@@ -44,20 +38,37 @@ class OrgsOrgCampaignsCampaignNumberPatchBody(GitHubModel):
         default=UNSET,
         description="The slugs of the teams to set as the campaign managers.",
     )
-    ends_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The end date and time of the campaign, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+    ends_at: datetime = Field(
+        description="The end date and time of the campaign. The date must be in the future."
     )
     contact_link: Missing[Union[str, None]] = Field(
         default=UNSET, description="The contact link of the campaign. Must be a URI."
     )
-    state: Missing[Literal["open", "closed"]] = Field(
+    code_scanning_alerts: list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems] = (
+        Field(
+            min_length=1 if PYDANTIC_V2 else None,
+            description="The code scanning alerts to include in this campaign",
+        )
+    )
+    generate_issues: Missing[bool] = Field(
         default=UNSET,
-        title="Campaign state",
-        description="Indicates whether a campaign is open or closed",
+        description="If true, will automatically generate issues for the campaign. The default is false.",
     )
 
 
-model_rebuild(OrgsOrgCampaignsCampaignNumberPatchBody)
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems(GitHubModel):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
 
-__all__ = ("OrgsOrgCampaignsCampaignNumberPatchBody",)
+    repository_id: int = Field(description="The repository id")
+    alert_numbers: list[int] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="The alert numbers"
+    )
+
+
+model_rebuild(OrgsOrgCampaignsPostBody)
+model_rebuild(OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems)
+
+__all__ = (
+    "OrgsOrgCampaignsPostBody",
+    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems",
+)

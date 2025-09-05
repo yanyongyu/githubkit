@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameAttestationsBulkListPostBodyType(TypedDict):
-    """UsersUsernameAttestationsBulkListPostBody"""
+class UserSshSigningKeysPostBodyType(TypedDict):
+    """UserSshSigningKeysPostBody"""
 
-    subject_digests: list[str]
-    predicate_type: NotRequired[str]
+    title: NotRequired[str]
+    key: str
 
 
-__all__ = ("UsersUsernameAttestationsBulkListPostBodyType",)
+__all__ = ("UserSshSigningKeysPostBodyType",)

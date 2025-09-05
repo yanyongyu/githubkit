@@ -18,62 +18,143 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0076 import Team
+from .group_0061 import BypassResponse
 
 
-class CampaignSummary(GitHubModel):
-    """Campaign summary
+class SecretScanningBypassRequest(GitHubModel):
+    """Secret scanning bypass request
 
-    The campaign metadata and alert stats.
+    A bypass request made by a user asking to be exempted from push protection in
+    this repository.
     """
 
-    number: int = Field(description="The number of the newly created campaign")
-    created_at: datetime = Field(
-        description="The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the bypass request."
     )
-    updated_at: datetime = Field(
-        description="The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    name: Missing[str] = Field(default=UNSET, description="The campaign name")
-    description: str = Field(description="The campaign description")
-    managers: list[SimpleUser] = Field(description="The campaign managers")
-    team_managers: Missing[list[Team]] = Field(
-        default=UNSET, description="The campaign team managers"
-    )
-    published_at: Missing[datetime] = Field(
+    number: Missing[int] = Field(
         default=UNSET,
-        description="The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        description="The number uniquely identifying the bypass request within its repository.",
     )
-    ends_at: datetime = Field(
-        description="The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    repository: Missing[SecretScanningBypassRequestPropRepository] = Field(
+        default=UNSET, description="The repository the bypass request is for."
     )
-    closed_at: Missing[Union[datetime, None]] = Field(
+    organization: Missing[SecretScanningBypassRequestPropOrganization] = Field(
         default=UNSET,
-        description="The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.",
+        description="The organization associated with the repository the bypass request is for.",
     )
-    state: Literal["open", "closed"] = Field(
-        title="Campaign state",
-        description="Indicates whether a campaign is open or closed",
+    requester: Missing[SecretScanningBypassRequestPropRequester] = Field(
+        default=UNSET, description="The user who requested the bypass."
     )
-    contact_link: Union[str, None] = Field(
-        description="The contact link of the campaign."
+    request_type: Missing[str] = Field(
+        default=UNSET, description="The type of request."
     )
-    alert_stats: Missing[CampaignSummaryPropAlertStats] = Field(default=UNSET)
+    data: Missing[Union[list[SecretScanningBypassRequestPropDataItems], None]] = Field(
+        default=UNSET,
+        description="Data describing the push rules that are being requested to be bypassed.",
+    )
+    resource_identifier: Missing[str] = Field(
+        default=UNSET,
+        description="The unique identifier for the request type of the bypass request. For example, a commit SHA.",
+    )
+    status: Missing[
+        Literal[
+            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+        ]
+    ] = Field(default=UNSET, description="The status of the bypass request.")
+    requester_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment the requester provided when creating the bypass request.",
+    )
+    expires_at: Missing[datetime] = Field(
+        default=UNSET, description="The date and time the bypass request will expire."
+    )
+    created_at: Missing[datetime] = Field(
+        default=UNSET, description="The date and time the bypass request was created."
+    )
+    responses: Missing[Union[list[BypassResponse], None]] = Field(
+        default=UNSET, description="The responses to the bypass request."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the bypass request in a browser."
+    )
 
 
-class CampaignSummaryPropAlertStats(GitHubModel):
-    """CampaignSummaryPropAlertStats"""
+class SecretScanningBypassRequestPropRepository(GitHubModel):
+    """SecretScanningBypassRequestPropRepository
 
-    open_count: int = Field(description="The number of open alerts")
-    closed_count: int = Field(description="The number of closed alerts")
-    in_progress_count: int = Field(description="The number of in-progress alerts")
+    The repository the bypass request is for.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the repository the bypass request is for."
+    )
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository the bypass request is for.",
+    )
+    full_name: Missing[str] = Field(
+        default=UNSET,
+        description="The full name of the repository the bypass request is for.",
+    )
 
 
-model_rebuild(CampaignSummary)
-model_rebuild(CampaignSummaryPropAlertStats)
+class SecretScanningBypassRequestPropOrganization(GitHubModel):
+    """SecretScanningBypassRequestPropOrganization
+
+    The organization associated with the repository the bypass request is for.
+    """
+
+    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the organization."
+    )
+
+
+class SecretScanningBypassRequestPropRequester(GitHubModel):
+    """SecretScanningBypassRequestPropRequester
+
+    The user who requested the bypass.
+    """
+
+    actor_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the GitHub user who requested the bypass."
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the GitHub user who requested the bypass.",
+    )
+
+
+class SecretScanningBypassRequestPropDataItems(GitHubModel):
+    """SecretScanningBypassRequestPropDataItems"""
+
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that secret scanning detected."
+    )
+    bypass_reason: Missing[Literal["used_in_tests", "false_positive", "fix_later"]] = (
+        Field(default=UNSET, description="The reason the bypass was requested.")
+    )
+    path: Missing[str] = Field(
+        default=UNSET,
+        description="The path in the repo where the secret was located during the request.",
+    )
+    branch: Missing[str] = Field(
+        default=UNSET,
+        description="The branch in the repo where the secret was located during the request.",
+    )
+
+
+model_rebuild(SecretScanningBypassRequest)
+model_rebuild(SecretScanningBypassRequestPropRepository)
+model_rebuild(SecretScanningBypassRequestPropOrganization)
+model_rebuild(SecretScanningBypassRequestPropRequester)
+model_rebuild(SecretScanningBypassRequestPropDataItems)
 
 __all__ = (
-    "CampaignSummary",
-    "CampaignSummaryPropAlertStats",
+    "SecretScanningBypassRequest",
+    "SecretScanningBypassRequestPropDataItems",
+    "SecretScanningBypassRequestPropOrganization",
+    "SecretScanningBypassRequestPropRepository",
+    "SecretScanningBypassRequestPropRequester",
 )

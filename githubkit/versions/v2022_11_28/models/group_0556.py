@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,16 +19,17 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0018 import Installation
-from .group_0433 import EnterpriseWebhooks
-from .group_0435 import OrganizationSimpleWebhooks
-from .group_0436 import RepositoryWebhooks
-from .group_0449 import WebhooksRepositoriesItems
+from .group_0434 import EnterpriseWebhooks
+from .group_0436 import OrganizationSimpleWebhooks
+from .group_0437 import RepositoryWebhooks
+from .group_0445 import WebhooksUser
+from .group_0450 import WebhooksRepositoriesItems
 
 
-class WebhookInstallationDeleted(GitHubModel):
-    """installation deleted event"""
+class WebhookInstallationCreated(GitHubModel):
+    """installation created event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,10 +50,10 @@ class WebhookInstallationDeleted(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    requester: Missing[None] = Field(default=UNSET)
+    requester: Missing[Union[WebhooksUser, None]] = Field(default=UNSET, title="User")
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookInstallationDeleted)
+model_rebuild(WebhookInstallationCreated)
 
-__all__ = ("WebhookInstallationDeleted",)
+__all__ = ("WebhookInstallationCreated",)

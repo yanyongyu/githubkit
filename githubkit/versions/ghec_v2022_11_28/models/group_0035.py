@@ -36,6 +36,10 @@ class ActionsEnterprisePermissions(GitHubModel):
         default=UNSET,
         description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
     )
+    sha_pinning_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether actions must be pinned to a full-length commit SHA.",
+    )
 
 
 model_rebuild(ActionsEnterprisePermissions)

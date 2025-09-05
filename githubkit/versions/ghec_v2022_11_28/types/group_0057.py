@@ -21,6 +21,7 @@ class AzureBlobConfigType(TypedDict):
 
     key_id: str
     encrypted_sas_url: str
+    container: str
 
 
 class AzureHubConfigType(TypedDict):

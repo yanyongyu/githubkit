@@ -9,17 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ProjectsProjectIdColumnsPostBody(GitHubModel):
-    """ProjectsProjectIdColumnsPostBody"""
+class ProjectsProjectIdCollaboratorsUsernamePutBody(GitHubModel):
+    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
 
-    name: str = Field(description="Name of the project column")
+    permission: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET, description="The permission to grant the collaborator."
+    )
 
 
-model_rebuild(ProjectsProjectIdColumnsPostBody)
+model_rebuild(ProjectsProjectIdCollaboratorsUsernamePutBody)
 
-__all__ = ("ProjectsProjectIdColumnsPostBody",)
+__all__ = ("ProjectsProjectIdCollaboratorsUsernamePutBody",)

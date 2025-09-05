@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,24 +18,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class WebhooksProjectChanges(GitHubModel):
-    """WebhooksProjectChanges"""
-
-    archived_at: Missing[WebhooksProjectChangesPropArchivedAt] = Field(default=UNSET)
+from .group_0003 import SimpleUser
+from .group_0531 import ProjectsV2StatusUpdate
 
 
-class WebhooksProjectChangesPropArchivedAt(GitHubModel):
-    """WebhooksProjectChangesPropArchivedAt"""
+class ProjectsV2(GitHubModel):
+    """Projects v2 Project
 
-    from_: Missing[Union[datetime, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[datetime, None]] = Field(default=UNSET)
+    A projects v2 project
+    """
+
+    id: float = Field()
+    node_id: str = Field()
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    title: str = Field()
+    description: Union[str, None] = Field()
+    public: bool = Field()
+    closed_at: Union[datetime, None] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    number: int = Field()
+    short_description: Union[str, None] = Field()
+    deleted_at: Union[datetime, None] = Field()
+    deleted_by: Union[None, SimpleUser] = Field()
+    state: Missing[Literal["open", "closed"]] = Field(default=UNSET)
+    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
+        default=UNSET
+    )
+    is_template: Missing[bool] = Field(
+        default=UNSET, description="Whether this project is a template"
+    )
 
 
-model_rebuild(WebhooksProjectChanges)
-model_rebuild(WebhooksProjectChangesPropArchivedAt)
+model_rebuild(ProjectsV2)
 
-__all__ = (
-    "WebhooksProjectChanges",
-    "WebhooksProjectChangesPropArchivedAt",
-)
+__all__ = ("ProjectsV2",)

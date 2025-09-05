@@ -16,7 +16,7 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsHostedRunnerImage(GitHubModel):
+class ActionsHostedRunnerCuratedImage(GitHubModel):
     """GitHub-hosted runner image details.
 
     Provides details of a hosted runner image
@@ -33,6 +33,6 @@ class ActionsHostedRunnerImage(GitHubModel):
     )
 
 
-model_rebuild(ActionsHostedRunnerImage)
+model_rebuild(ActionsHostedRunnerCuratedImage)
 
-__all__ = ("ActionsHostedRunnerImage",)
+__all__ = ("ActionsHostedRunnerCuratedImage",)

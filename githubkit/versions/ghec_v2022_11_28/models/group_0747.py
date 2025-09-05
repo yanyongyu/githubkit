@@ -18,16 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0494 import EnterpriseWebhooks
-from .group_0495 import SimpleInstallation
-from .group_0496 import OrganizationSimpleWebhooks
-from .group_0526 import PersonalAccessTokenRequest
+from .group_0495 import EnterpriseWebhooks
+from .group_0496 import SimpleInstallation
+from .group_0497 import OrganizationSimpleWebhooks
+from .group_0527 import PersonalAccessTokenRequest
 
 
-class WebhookPersonalAccessTokenRequestCancelled(GitHubModel):
-    """personal_access_token_request cancelled event"""
+class WebhookPersonalAccessTokenRequestApproved(GitHubModel):
+    """personal_access_token_request approved event"""
 
-    action: Literal["cancelled"] = Field()
+    action: Literal["approved"] = Field()
     personal_access_token_request: PersonalAccessTokenRequest = Field(
         title="Personal Access Token Request",
         description="Details of a Personal Access Token Request.",
@@ -48,6 +48,6 @@ class WebhookPersonalAccessTokenRequestCancelled(GitHubModel):
     )
 
 
-model_rebuild(WebhookPersonalAccessTokenRequestCancelled)
+model_rebuild(WebhookPersonalAccessTokenRequestApproved)
 
-__all__ = ("WebhookPersonalAccessTokenRequestCancelled",)
+__all__ = ("WebhookPersonalAccessTokenRequestApproved",)

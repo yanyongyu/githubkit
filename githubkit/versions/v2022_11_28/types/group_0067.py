@@ -9,21 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0032 import SimpleRepositoryType
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class DependabotRepositoryAccessDetailsType(TypedDict):
-    """Dependabot Repository Access Details
+class OrganizationSimpleType(TypedDict):
+    """Organization Simple
 
-    Information about repositories that Dependabot is able to access in an
-    organization
+    A GitHub organization.
     """
 
-    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
-    accessible_repositories: NotRequired[list[Union[None, SimpleRepositoryType]]]
+    login: str
+    id: int
+    node_id: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
-__all__ = ("DependabotRepositoryAccessDetailsType",)
+__all__ = ("OrganizationSimpleType",)

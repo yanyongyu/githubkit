@@ -26,8 +26,8 @@ from .group_0058 import AmazonS3OidcConfig, SplunkConfig
 from .group_0059 import GoogleCloudConfig
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody(GitHubModel):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+class EnterprisesEnterpriseAuditLogStreamsPostBody(GitHubModel):
+    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
 
     enabled: bool = Field(description="This setting pauses or resumes a stream.")
     stream_type: Literal[
@@ -53,6 +53,6 @@ class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody(GitHubModel):
     ] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody)
+model_rebuild(EnterprisesEnterpriseAuditLogStreamsPostBody)
 
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody",)
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsPostBody",)

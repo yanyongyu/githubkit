@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,18 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SelfHostedRunnersSettings(GitHubModel):
-    """SelfHostedRunnersSettings"""
+class SelectedActions(GitHubModel):
+    """SelectedActions"""
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
-    )
-    selected_repositories_url: Missing[str] = Field(
+    github_owned_allowed: Missing[bool] = Field(
         default=UNSET,
-        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
+        description="Whether GitHub-owned actions are allowed. For example, this includes the actions in the `actions` organization.",
+    )
+    verified_allowed: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether actions from GitHub Marketplace verified creators are allowed. Set to `true` to allow all actions by GitHub Marketplace verified creators.",
+    )
+    patterns_allowed: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`.\n\n> [!NOTE]\n> The `patterns_allowed` setting only applies to public repositories.",
     )
 
 
-model_rebuild(SelfHostedRunnersSettings)
+model_rebuild(SelectedActions)
 
-__all__ = ("SelfHostedRunnersSettings",)
+__all__ = ("SelectedActions",)

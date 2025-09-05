@@ -9,28 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationSimpleType(TypedDict):
-    """Organization Simple
+class ThreadSubscriptionType(TypedDict):
+    """Thread Subscription
 
-    A GitHub organization.
+    Thread Subscription
     """
 
-    login: str
-    id: int
-    node_id: str
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[datetime, None]
     url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
-__all__ = ("OrganizationSimpleType",)
+__all__ = ("ThreadSubscriptionType",)

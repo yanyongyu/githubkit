@@ -47,7 +47,7 @@ if TYPE_CHECKING:
         ActionsGetDefaultWorkflowPermissionsType as ActionsGetDefaultWorkflowPermissionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        ActionsHostedRunnerImageType as ActionsHostedRunnerImageType,
+        ActionsHostedRunnerCuratedImageType as ActionsHostedRunnerCuratedImageType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ActionsHostedRunnerLimitsPropPublicIpsType as ActionsHostedRunnerLimitsPropPublicIpsType,
@@ -1048,6 +1048,12 @@ if TYPE_CHECKING:
         IssueEventRenameType as IssueEventRenameType,
     )
     from githubkit.versions.v2022_11_28.types import IssueEventType as IssueEventType
+    from githubkit.versions.v2022_11_28.types import (
+        IssueFieldValuePropSingleSelectOptionType as IssueFieldValuePropSingleSelectOptionType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        IssueFieldValueType as IssueFieldValueType,
+    )
     from githubkit.versions.v2022_11_28.types import (
         IssuePropLabelsItemsOneof1Type as IssuePropLabelsItemsOneof1Type,
     )
@@ -10071,6 +10077,8 @@ else:
             "ReactionRollupType",
             "SubIssuesSummaryType",
             "IssueDependenciesSummaryType",
+            "IssueFieldValueType",
+            "IssueFieldValuePropSingleSelectOptionType",
             "IssueType",
             "IssuePropLabelsItemsOneof1Type",
             "IssuePropPullRequestType",
@@ -10135,7 +10143,7 @@ else:
             "ActionsHostedRunnerType",
             "ActionsHostedRunnerPoolImageType",
             "PublicIpType",
-            "ActionsHostedRunnerImageType",
+            "ActionsHostedRunnerCuratedImageType",
             "ActionsHostedRunnerLimitsType",
             "ActionsHostedRunnerLimitsPropPublicIpsType",
             "OidcCustomSubType",

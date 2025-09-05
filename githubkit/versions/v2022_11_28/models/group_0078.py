@@ -14,12 +14,15 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsArtifactAndLogRetention(GitHubModel):
-    """ActionsArtifactAndLogRetention"""
+class ActionsArtifactAndLogRetentionResponse(GitHubModel):
+    """ActionsArtifactAndLogRetentionResponse"""
 
-    days: int = Field(description="The number of days to retain artifacts and logs")
+    days: int = Field(description="The number of days artifacts and logs are retained")
+    maximum_allowed_days: int = Field(
+        description="The maximum number of days that can be configured"
+    )
 
 
-model_rebuild(ActionsArtifactAndLogRetention)
+model_rebuild(ActionsArtifactAndLogRetentionResponse)
 
-__all__ = ("ActionsArtifactAndLogRetention",)
+__all__ = ("ActionsArtifactAndLogRetentionResponse",)

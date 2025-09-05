@@ -222,6 +222,16 @@ class AppPermissions(GitHubModel):
         default=UNSET,
         description="The level of permission to grant the access token to list and manage repositories a user is starring.",
     )
+    enterprise_organization_installations: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage installation of GitHub Apps on Enterprise-owned organizations.",
+    )
+    enterprise_organization_installation_repositories: Missing[
+        Literal["read", "write"]
+    ] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage repository access of GitHub Apps on Enterprise-owned organizations.",
+    )
 
 
 model_rebuild(AppPermissions)

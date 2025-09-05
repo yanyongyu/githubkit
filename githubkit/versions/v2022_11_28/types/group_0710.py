@@ -13,41 +13,105 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0434 import SimpleInstallationType
-from .group_0435 import OrganizationSimpleWebhooksType
-from .group_0470 import ProjectsV2ItemType
+from .group_0435 import SimpleInstallationType
+from .group_0436 import OrganizationSimpleWebhooksType
+from .group_0471 import ProjectsV2ItemType
 
 
-class WebhookProjectsV2ItemReorderedType(TypedDict):
-    """Projects v2 Item Reordered Event"""
+class WebhookProjectsV2ItemEditedType(TypedDict):
+    """Projects v2 Item Edited Event"""
 
-    action: Literal["reordered"]
-    changes: WebhookProjectsV2ItemReorderedPropChangesType
+    action: Literal["edited"]
+    changes: NotRequired[
+        Union[
+            WebhookProjectsV2ItemEditedPropChangesOneof0Type,
+            WebhookProjectsV2ItemEditedPropChangesOneof1Type,
+        ]
+    ]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ItemReorderedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
+class WebhookProjectsV2ItemEditedPropChangesOneof0Type(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof0"""
 
-    previous_projects_v2_item_node_id: NotRequired[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType
+    field_value: WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType
+
+
+class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue"""
+
+    field_node_id: NotRequired[str]
+    field_type: NotRequired[str]
+    field_name: NotRequired[str]
+    project_number: NotRequired[int]
+    from_: NotRequired[
+        Union[
+            str,
+            int,
+            ProjectsV2SingleSelectOptionType,
+            ProjectsV2IterationSettingType,
+            None,
+        ]
+    ]
+    to: NotRequired[
+        Union[
+            str,
+            int,
+            ProjectsV2SingleSelectOptionType,
+            ProjectsV2IterationSettingType,
+            None,
+        ]
     ]
 
 
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType(
-    TypedDict
-):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
+class ProjectsV2SingleSelectOptionType(TypedDict):
+    """Projects v2 Single Select Option
+
+    An option for a single select field
+    """
+
+    id: str
+    name: str
+    color: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+
+
+class ProjectsV2IterationSettingType(TypedDict):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str
+    title: str
+    title_html: NotRequired[str]
+    duration: NotRequired[Union[float, None]]
+    start_date: NotRequired[Union[str, None]]
+    completed: NotRequired[bool]
+
+
+class WebhookProjectsV2ItemEditedPropChangesOneof1Type(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof1"""
+
+    body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType
+
+
+class WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof1PropBody"""
 
     from_: NotRequired[Union[str, None]]
     to: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType",
-    "WebhookProjectsV2ItemReorderedPropChangesType",
-    "WebhookProjectsV2ItemReorderedType",
+    "ProjectsV2IterationSettingType",
+    "ProjectsV2SingleSelectOptionType",
+    "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType",
+    "WebhookProjectsV2ItemEditedPropChangesOneof0Type",
+    "WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType",
+    "WebhookProjectsV2ItemEditedPropChangesOneof1Type",
+    "WebhookProjectsV2ItemEditedType",
 )

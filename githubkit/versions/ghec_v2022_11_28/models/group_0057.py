@@ -26,6 +26,9 @@ class AzureBlobConfig(GitHubModel):
         description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
     )
     encrypted_sas_url: str = Field()
+    container: str = Field(
+        description="The name of the Azure Blob Storage container to which the audit logs will be sent."
+    )
 
 
 class AzureHubConfig(GitHubModel):

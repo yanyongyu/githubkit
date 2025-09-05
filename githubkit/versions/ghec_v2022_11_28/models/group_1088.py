@@ -12,17 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0085 import NetworkConfiguration
-
-
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
-
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200",)
+    pattern_config_version: Missing[str] = Field(
+        default=UNSET, description="The updated pattern configuration version."
+    )
+
+
+model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
+
+__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)

@@ -17,22 +17,18 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0069 import CodeScanningOptions
 from .group_0070 import CodeScanningDefaultSetupOptions
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the code security configuration. Must be unique across the enterprise.",
+    name: str = Field(
+        description="The name of the code security configuration. Must be unique within the enterprise."
     )
-    description: Missing[str] = Field(
-        max_length=255,
-        default=UNSET,
-        description="A description of the code security configuration",
+    description: str = Field(
+        max_length=255, description="A description of the code security configuration"
     )
     advanced_security: Missing[
         Literal["enabled", "disabled", "code_security", "secret_protection"]
@@ -54,7 +50,7 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
         description="The enablement status of Automatic dependency submission",
     )
     dependency_graph_autosubmit_action_options: Missing[
-        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
     ] = Field(
         default=UNSET, description="Feature options for Automatic dependency submission"
     )
@@ -66,6 +62,10 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
             default=UNSET,
             description="The enablement status of Dependabot security updates",
         )
+    )
+    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
+        default=UNSET,
+        description="Security Configuration feature options for code scanning",
     )
     code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
         Field(
@@ -107,7 +107,7 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
         Literal["enabled", "disabled", "not_set"]
     ] = Field(
         default=UNSET,
-        description="The enablement status of secret scanning non-provider patterns",
+        description="The enablement status of secret scanning non provider patterns",
     )
     secret_scanning_generic_secrets: Missing[
         Literal["enabled", "disabled", "not_set"]
@@ -131,11 +131,11 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
     )
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions(
+class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
-    dencyGraphAutosubmitActionOptions
+    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosu
+    bmitActionOptions
 
     Feature options for Automatic dependency submission
     """
@@ -146,12 +146,12 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPro
     )
 
 
-model_rebuild(EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody)
+model_rebuild(EnterprisesEnterpriseCodeSecurityConfigurationsPostBody)
 model_rebuild(
-    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+    EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBody",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
 )

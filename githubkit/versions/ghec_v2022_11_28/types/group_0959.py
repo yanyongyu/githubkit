@@ -14,11 +14,11 @@ from typing_extensions import NotRequired, TypedDict
 from .group_0077 import CopilotSeatDetailsType
 
 
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
 
     total_seats: NotRequired[int]
     seats: NotRequired[list[CopilotSeatDetailsType]]
 
 
-__all__ = ("EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",)

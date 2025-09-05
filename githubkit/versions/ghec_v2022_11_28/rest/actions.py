@@ -2746,6 +2746,7 @@ class ActionsClient:
         stream: bool = False,
         enabled_repositories: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
+        sha_pinning_required: Missing[bool] = UNSET,
     ) -> Response: ...
 
     def set_github_actions_permissions_organization(
@@ -2813,6 +2814,7 @@ class ActionsClient:
         stream: bool = False,
         enabled_repositories: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
+        sha_pinning_required: Missing[bool] = UNSET,
     ) -> Response: ...
 
     async def async_set_github_actions_permissions_organization(
@@ -10678,6 +10680,7 @@ class ActionsClient:
         stream: bool = False,
         enabled: bool,
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
+        sha_pinning_required: Missing[bool] = UNSET,
     ) -> Response: ...
 
     def set_github_actions_permissions_repository(
@@ -10748,6 +10751,7 @@ class ActionsClient:
         stream: bool = False,
         enabled: bool,
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
+        sha_pinning_required: Missing[bool] = UNSET,
     ) -> Response: ...
 
     async def async_set_github_actions_permissions_repository(

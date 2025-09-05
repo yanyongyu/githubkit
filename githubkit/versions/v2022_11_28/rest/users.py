@@ -2008,7 +2008,7 @@ class UsersClient:
 
         Adds a public SSH key to the authenticated user's GitHub account.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:gpg_key` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `write:public_key` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user
         """
@@ -2077,7 +2077,7 @@ class UsersClient:
 
         Adds a public SSH key to the authenticated user's GitHub account.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:gpg_key` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `write:public_key` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user
         """

@@ -9,152 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0061 import BypassResponse
 
+class ActionsPublicKey(GitHubModel):
+    """ActionsPublicKey
 
-class SecretScanningBypassRequest(GitHubModel):
-    """Secret scanning bypass request
-
-    A bypass request made by a user asking to be exempted from push protection in
-    this repository.
+    The public key used for setting Actions Secrets.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the bypass request."
-    )
-    number: Missing[int] = Field(
-        default=UNSET,
-        description="The number uniquely identifying the bypass request within its repository.",
-    )
-    repository: Missing[SecretScanningBypassRequestPropRepository] = Field(
-        default=UNSET, description="The repository the bypass request is for."
-    )
-    organization: Missing[SecretScanningBypassRequestPropOrganization] = Field(
-        default=UNSET,
-        description="The organization associated with the repository the bypass request is for.",
-    )
-    requester: Missing[SecretScanningBypassRequestPropRequester] = Field(
-        default=UNSET, description="The user who requested the bypass."
-    )
-    request_type: Missing[str] = Field(
-        default=UNSET, description="The type of request."
-    )
-    data: Missing[Union[list[SecretScanningBypassRequestPropDataItems], None]] = Field(
-        default=UNSET,
-        description="Data describing the push rules that are being requested to be bypassed.",
-    )
-    resource_identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The unique identifier for the request type of the bypass request. For example, a commit SHA.",
-    )
-    status: Missing[
-        Literal[
-            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
-        ]
-    ] = Field(default=UNSET, description="The status of the bypass request.")
-    requester_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment the requester provided when creating the bypass request.",
-    )
-    expires_at: Missing[datetime] = Field(
-        default=UNSET, description="The date and time the bypass request will expire."
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET, description="The date and time the bypass request was created."
-    )
-    responses: Missing[Union[list[BypassResponse], None]] = Field(
-        default=UNSET, description="The responses to the bypass request."
-    )
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the bypass request in a browser."
-    )
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-class SecretScanningBypassRequestPropRepository(GitHubModel):
-    """SecretScanningBypassRequestPropRepository
+model_rebuild(ActionsPublicKey)
 
-    The repository the bypass request is for.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the repository the bypass request is for."
-    )
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the repository the bypass request is for.",
-    )
-    full_name: Missing[str] = Field(
-        default=UNSET,
-        description="The full name of the repository the bypass request is for.",
-    )
-
-
-class SecretScanningBypassRequestPropOrganization(GitHubModel):
-    """SecretScanningBypassRequestPropOrganization
-
-    The organization associated with the repository the bypass request is for.
-    """
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the organization."
-    )
-
-
-class SecretScanningBypassRequestPropRequester(GitHubModel):
-    """SecretScanningBypassRequestPropRequester
-
-    The user who requested the bypass.
-    """
-
-    actor_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the GitHub user who requested the bypass."
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who requested the bypass.",
-    )
-
-
-class SecretScanningBypassRequestPropDataItems(GitHubModel):
-    """SecretScanningBypassRequestPropDataItems"""
-
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    bypass_reason: Missing[Literal["used_in_tests", "false_positive", "fix_later"]] = (
-        Field(default=UNSET, description="The reason the bypass was requested.")
-    )
-    path: Missing[str] = Field(
-        default=UNSET,
-        description="The path in the repo where the secret was located during the request.",
-    )
-    branch: Missing[str] = Field(
-        default=UNSET,
-        description="The branch in the repo where the secret was located during the request.",
-    )
-
-
-model_rebuild(SecretScanningBypassRequest)
-model_rebuild(SecretScanningBypassRequestPropRepository)
-model_rebuild(SecretScanningBypassRequestPropOrganization)
-model_rebuild(SecretScanningBypassRequestPropRequester)
-model_rebuild(SecretScanningBypassRequestPropDataItems)
-
-__all__ = (
-    "SecretScanningBypassRequest",
-    "SecretScanningBypassRequestPropDataItems",
-    "SecretScanningBypassRequestPropOrganization",
-    "SecretScanningBypassRequestPropRepository",
-    "SecretScanningBypassRequestPropRequester",
-)
+__all__ = ("ActionsPublicKey",)

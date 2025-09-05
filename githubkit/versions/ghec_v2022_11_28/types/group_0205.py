@@ -13,39 +13,34 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0061 import BypassResponseType
 
+class CodeScanningAlertDismissalRequestType(TypedDict):
+    """Code scanning alert dismissal request
 
-class SecretScanningDismissalRequestType(TypedDict):
-    """Secret scanning alert dismissal request
-
-    A dismissal request made by a user asking to close a secret scanning alert in
-    this repository.
+    Alert dismisal request made by a user asking to dismiss a code scanning alert.
     """
 
     id: NotRequired[int]
     number: NotRequired[int]
-    repository: NotRequired[SecretScanningDismissalRequestPropRepositoryType]
-    organization: NotRequired[SecretScanningDismissalRequestPropOrganizationType]
-    requester: NotRequired[SecretScanningDismissalRequestPropRequesterType]
+    repository: NotRequired[CodeScanningAlertDismissalRequestPropRepositoryType]
+    organization: NotRequired[CodeScanningAlertDismissalRequestPropOrganizationType]
+    requester: NotRequired[CodeScanningAlertDismissalRequestPropRequesterType]
     request_type: NotRequired[str]
     data: NotRequired[
-        Union[list[SecretScanningDismissalRequestPropDataItemsType], None]
+        Union[list[CodeScanningAlertDismissalRequestPropDataItemsType], None]
     ]
     resource_identifier: NotRequired[str]
-    status: NotRequired[
-        Literal["pending", "denied", "approved", "cancelled", "expired"]
-    ]
+    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
     requester_comment: NotRequired[Union[str, None]]
     expires_at: NotRequired[datetime]
     created_at: NotRequired[datetime]
-    responses: NotRequired[Union[list[BypassResponseType], None]]
+    responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
     url: NotRequired[str]
     html_url: NotRequired[str]
 
 
-class SecretScanningDismissalRequestPropRepositoryType(TypedDict):
-    """SecretScanningDismissalRequestPropRepository
+class CodeScanningAlertDismissalRequestPropRepositoryType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRepository
 
     The repository the dismissal request is for.
     """
@@ -55,8 +50,8 @@ class SecretScanningDismissalRequestPropRepositoryType(TypedDict):
     full_name: NotRequired[str]
 
 
-class SecretScanningDismissalRequestPropOrganizationType(TypedDict):
-    """SecretScanningDismissalRequestPropOrganization
+class CodeScanningAlertDismissalRequestPropOrganizationType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropOrganization
 
     The organization associated with the repository the dismissal request is for.
     """
@@ -65,28 +60,53 @@ class SecretScanningDismissalRequestPropOrganizationType(TypedDict):
     name: NotRequired[str]
 
 
-class SecretScanningDismissalRequestPropRequesterType(TypedDict):
-    """SecretScanningDismissalRequestPropRequester
+class CodeScanningAlertDismissalRequestPropRequesterType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRequester
 
-    The user who requested the dismissal.
+    The user who requested the dismissal request.
     """
 
     actor_id: NotRequired[int]
     actor_name: NotRequired[str]
 
 
-class SecretScanningDismissalRequestPropDataItemsType(TypedDict):
-    """SecretScanningDismissalRequestPropDataItems"""
+class CodeScanningAlertDismissalRequestPropDataItemsType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropDataItems"""
 
-    secret_type: NotRequired[str]
+    reason: NotRequired[str]
     alert_number: NotRequired[str]
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+    pr_review_thread_id: NotRequired[str]
+
+
+class DismissalRequestResponseType(TypedDict):
+    """Dismissal request response
+
+    A response made by a requester to dismiss the request.
+    """
+
+    id: NotRequired[int]
+    reviewer: NotRequired[DismissalRequestResponsePropReviewerType]
+    message: NotRequired[Union[str, None]]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[datetime]
+
+
+class DismissalRequestResponsePropReviewerType(TypedDict):
+    """DismissalRequestResponsePropReviewer
+
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
 
 
 __all__ = (
-    "SecretScanningDismissalRequestPropDataItemsType",
-    "SecretScanningDismissalRequestPropOrganizationType",
-    "SecretScanningDismissalRequestPropRepositoryType",
-    "SecretScanningDismissalRequestPropRequesterType",
-    "SecretScanningDismissalRequestType",
+    "CodeScanningAlertDismissalRequestPropDataItemsType",
+    "CodeScanningAlertDismissalRequestPropOrganizationType",
+    "CodeScanningAlertDismissalRequestPropRepositoryType",
+    "CodeScanningAlertDismissalRequestPropRequesterType",
+    "CodeScanningAlertDismissalRequestType",
+    "DismissalRequestResponsePropReviewerType",
+    "DismissalRequestResponseType",
 )

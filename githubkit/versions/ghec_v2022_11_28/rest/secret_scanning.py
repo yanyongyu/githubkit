@@ -919,7 +919,7 @@ class SecretScanningClient:
 
         Lists the secret scanning pattern configurations for an organization.
 
-        Personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        Personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#list-organization-pattern-configurations
         """
@@ -957,7 +957,7 @@ class SecretScanningClient:
 
         Lists the secret scanning pattern configurations for an organization.
 
-        Personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        Personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/push-protection#list-organization-pattern-configurations
         """
