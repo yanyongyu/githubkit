@@ -9,21 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import TypedDict
 
-from .group_0186 import RulesetVersionPropActorType
+
+class RepositoryRuleFileExtensionRestrictionPropParametersType(TypedDict):
+    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+
+    restricted_file_extensions: list[str]
 
 
-class RulesetVersionType(TypedDict):
-    """Ruleset version
-
-    The historical version of a ruleset
-    """
-
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: datetime
-
-
-__all__ = ("RulesetVersionType",)
+__all__ = ("RepositoryRuleFileExtensionRestrictionPropParametersType",)

@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0181 import RepositoryRuleCodeScanningPropParametersType
+from .group_0181 import RepositoryRuleFilePathRestrictionPropParametersType
 
 
-class RepositoryRuleCodeScanningType(TypedDict):
-    """code_scanning
+class RepositoryRuleFilePathRestrictionType(TypedDict):
+    """file_path_restriction
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    Prevent commits that include changes in specified file and folder paths from
+    being pushed to the commit graph. This includes absolute paths that contain file
+    names.
     """
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
 
 
-__all__ = ("RepositoryRuleCodeScanningType",)
+__all__ = ("RepositoryRuleFilePathRestrictionType",)

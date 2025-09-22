@@ -9,34 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestSimplePropHeadType(TypedDict):
-    """PullRequestSimplePropHead"""
+class CodeScanningSarifsReceiptType(TypedDict):
+    """CodeScanningSarifsReceipt"""
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
-    sha: str
-    user: Union[None, SimpleUserType]
+    id: NotRequired[str]
+    url: NotRequired[str]
 
 
-class PullRequestSimplePropBaseType(TypedDict):
-    """PullRequestSimplePropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: Union[None, SimpleUserType]
-
-
-__all__ = (
-    "PullRequestSimplePropBaseType",
-    "PullRequestSimplePropHeadType",
-)
+__all__ = ("CodeScanningSarifsReceiptType",)

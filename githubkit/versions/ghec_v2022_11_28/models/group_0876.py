@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,19 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0495 import EnterpriseWebhooks
-from .group_0496 import SimpleInstallation
-from .group_0497 import OrganizationSimpleWebhooks
-from .group_0498 import RepositoryWebhooks
-from .group_0545 import WebhooksSponsorship
-from .group_0546 import WebhooksChanges8
+from .group_0252 import FullRepository
+from .group_0505 import EnterpriseWebhooks
+from .group_0506 import SimpleInstallation
+from .group_0507 import OrganizationSimpleWebhooks
+from .group_0877 import WebhookSecurityAndAnalysisPropChanges
 
 
-class WebhookSponsorshipTierChanged(GitHubModel):
-    """sponsorship tier_changed event"""
+class WebhookSecurityAndAnalysis(GitHubModel):
+    """security_and_analysis event"""
 
-    action: Literal["tier_changed"] = Field()
-    changes: WebhooksChanges8 = Field()
+    changes: WebhookSecurityAndAnalysisPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -46,15 +42,14 @@ class WebhookSponsorshipTierChanged(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    repository: FullRepository = Field(
+        title="Full Repository", description="Full Repository"
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    sponsorship: WebhooksSponsorship = Field()
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookSponsorshipTierChanged)
+model_rebuild(WebhookSecurityAndAnalysis)
 
-__all__ = ("WebhookSponsorshipTierChanged",)
+__all__ = ("WebhookSecurityAndAnalysis",)

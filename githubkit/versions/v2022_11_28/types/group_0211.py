@@ -10,32 +10,38 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0045 import ReactionRollupType
 
-class ActionsCacheListType(TypedDict):
-    """Repository actions caches
 
-    Repository actions caches
+class TeamDiscussionType(TypedDict):
+    """Team Discussion
+
+    A team discussion is a persistent record of a free-form conversation within a
+    team.
     """
 
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
+    author: Union[None, SimpleUserType]
+    body: str
+    body_html: str
+    body_version: str
+    comments_count: int
+    comments_url: str
+    created_at: datetime
+    last_edited_at: Union[datetime, None]
+    html_url: str
+    node_id: str
+    number: int
+    pinned: bool
+    private: bool
+    team_url: str
+    title: str
+    updated_at: datetime
+    url: str
+    reactions: NotRequired[ReactionRollupType]
 
 
-class ActionsCacheListPropActionsCachesItemsType(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[datetime]
-    created_at: NotRequired[datetime]
-    size_in_bytes: NotRequired[int]
-
-
-__all__ = (
-    "ActionsCacheListPropActionsCachesItemsType",
-    "ActionsCacheListType",
-)
+__all__ = ("TeamDiscussionType",)

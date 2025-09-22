@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,23 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0495 import EnterpriseWebhooks
-from .group_0496 import SimpleInstallation
-from .group_0497 import OrganizationSimpleWebhooks
-from .group_0498 import RepositoryWebhooks
-from .group_0528 import WebhooksProjectCard
+from .group_0505 import EnterpriseWebhooks
+from .group_0506 import SimpleInstallation
+from .group_0507 import OrganizationSimpleWebhooks
+from .group_0508 import RepositoryWebhooks
 
 
-class WebhookProjectCardConverted(GitHubModel):
-    """project_card converted event"""
+class WebhookPageBuild(GitHubModel):
+    """page_build event"""
 
-    action: Literal["converted"] = Field()
-    changes: WebhookProjectCardConvertedPropChanges = Field()
+    build: WebhookPageBuildPropBuild = Field(
+        description="The [List GitHub Pages builds](https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#list-github-pages-builds) itself."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
+    id: int = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -45,33 +46,71 @@ class WebhookProjectCardConverted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_card: WebhooksProjectCard = Field(title="Project Card")
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectCardConvertedPropChanges(GitHubModel):
-    """WebhookProjectCardConvertedPropChanges"""
+class WebhookPageBuildPropBuild(GitHubModel):
+    """WebhookPageBuildPropBuild
 
-    note: WebhookProjectCardConvertedPropChangesPropNote = Field()
+    The [List GitHub Pages builds](https://docs.github.com/enterprise-
+    cloud@latest//rest/pages/pages#list-github-pages-builds) itself.
+    """
+
+    commit: Union[str, None] = Field()
+    created_at: str = Field()
+    duration: int = Field()
+    error: WebhookPageBuildPropBuildPropError = Field()
+    pusher: Union[WebhookPageBuildPropBuildPropPusher, None] = Field(title="User")
+    status: str = Field()
+    updated_at: str = Field()
+    url: str = Field()
 
 
-class WebhookProjectCardConvertedPropChangesPropNote(GitHubModel):
-    """WebhookProjectCardConvertedPropChangesPropNote"""
+class WebhookPageBuildPropBuildPropError(GitHubModel):
+    """WebhookPageBuildPropBuildPropError"""
 
-    from_: str = Field(alias="from")
+    message: Union[str, None] = Field()
 
 
-model_rebuild(WebhookProjectCardConverted)
-model_rebuild(WebhookProjectCardConvertedPropChanges)
-model_rebuild(WebhookProjectCardConvertedPropChangesPropNote)
+class WebhookPageBuildPropBuildPropPusher(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookPageBuild)
+model_rebuild(WebhookPageBuildPropBuild)
+model_rebuild(WebhookPageBuildPropBuildPropError)
+model_rebuild(WebhookPageBuildPropBuildPropPusher)
 
 __all__ = (
-    "WebhookProjectCardConverted",
-    "WebhookProjectCardConvertedPropChanges",
-    "WebhookProjectCardConvertedPropChangesPropNote",
+    "WebhookPageBuild",
+    "WebhookPageBuildPropBuild",
+    "WebhookPageBuildPropBuildPropError",
+    "WebhookPageBuildPropBuildPropPusher",
 )

@@ -9,20 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0030 import ActionsHostedRunnerMachineSpec
-
-
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
-
-    total_count: int = Field()
-    machine_specs: list[ActionsHostedRunnerMachineSpec] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersMachineSizesGetResponse200)
+class EnterprisesEnterpriseTeamsTeamSlugPatchBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
 
-__all__ = ("OrgsOrgActionsHostedRunnersMachineSizesGetResponse200",)
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A new name for the team."
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A new description for the team."
+    )
+    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
+        default=UNSET,
+        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be changed.\n",
+    )
+    group_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The ID of the IdP group to assign team membership with. The new IdP group will replace the existing one, or replace existing direct members if the team isn't currently linked to an IdP group.",
+    )
+
+
+model_rebuild(EnterprisesEnterpriseTeamsTeamSlugPatchBody)
+
+__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBody",)

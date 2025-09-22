@@ -18,20 +18,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0661 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
+from .group_0658 import (
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
 )
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
-    """App
-
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
+class WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp(GitHubModel):
+    """WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp"""
 
     created_at: Union[datetime, None] = Field()
     description: Union[str, None] = Field()
@@ -44,10 +38,11 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp(GitHubMo
     name: str = Field(description="The name of the GitHub app")
     node_id: str = Field()
     owner: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
+        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+        None,
     ] = Field(title="User")
     permissions: Missing[
-        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
     ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
     slug: Missing[str] = Field(
         default=UNSET, description="The slug name of the GitHub app"
@@ -55,6 +50,6 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp(GitHubMo
     updated_at: Union[datetime, None] = Field()
 
 
-model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp)
+model_rebuild(WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp)
 
-__all__ = ("WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp",)
+__all__ = ("WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp",)

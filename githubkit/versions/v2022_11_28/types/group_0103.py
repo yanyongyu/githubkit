@@ -50,7 +50,7 @@ class EnterpriseTeamType(TypedDict):
     url: str
     sync_to_organizations: NotRequired[str]
     organization_selection_type: NotRequired[str]
-    group_id: NotRequired[Union[str, None]]
+    group_id: Union[str, None]
     group_name: NotRequired[Union[str, None]]
     html_url: str
     members_url: str

@@ -13,18 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReviewCustomGatesCommentRequired(GitHubModel):
-    """ReviewCustomGatesCommentRequired"""
-
-    environment_name: str = Field(
-        description="The name of the environment to approve or reject."
-    )
-    comment: str = Field(
-        description="Comment associated with the pending deployment protection rule. **Required when state is not provided.**"
-    )
+from .group_0268 import RateLimit
+from .group_0270 import RateLimitOverviewPropResources
 
 
-model_rebuild(ReviewCustomGatesCommentRequired)
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
 
-__all__ = ("ReviewCustomGatesCommentRequired",)
+    Rate Limit Overview
+    """
+
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
+
+
+model_rebuild(RateLimitOverview)
+
+__all__ = ("RateLimitOverview",)

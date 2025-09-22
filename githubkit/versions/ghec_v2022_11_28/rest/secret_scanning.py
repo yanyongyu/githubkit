@@ -82,6 +82,142 @@ class SecretScanningClient:
             "Do not use this client after the client has been collected."
         )
 
+    def list_enterprise_bypass_requests(
+        self,
+        enterprise: str,
+        *,
+        organization_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed",
+                "cancelled",
+                "approved",
+                "expired",
+                "deleted",
+                "denied",
+                "open",
+                "all",
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
+    ]:
+        """secret-scanning/list-enterprise-bypass-requests
+
+        GET /enterprises/{enterprise}/bypass-requests/secret-scanning
+
+        List requests to bypass secret scanning push protection in an enterprise.
+
+        Delegated bypass must be enabled on repositories in the enterprise and the user must be a bypass reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-enterprise
+        """
+
+        from ..models import BasicError, SecretScanningBypassRequest
+
+        url = f"/enterprises/{enterprise}/bypass-requests/secret-scanning"
+
+        params = {
+            "organization_name": organization_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[SecretScanningBypassRequest],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_enterprise_bypass_requests(
+        self,
+        enterprise: str,
+        *,
+        organization_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed",
+                "cancelled",
+                "approved",
+                "expired",
+                "deleted",
+                "denied",
+                "open",
+                "all",
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[SecretScanningBypassRequest], list[SecretScanningBypassRequestType]
+    ]:
+        """secret-scanning/list-enterprise-bypass-requests
+
+        GET /enterprises/{enterprise}/bypass-requests/secret-scanning
+
+        List requests to bypass secret scanning push protection in an enterprise.
+
+        Delegated bypass must be enabled on repositories in the enterprise and the user must be a bypass reviewer to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/delegated-bypass#list-bypass-requests-for-secret-scanning-for-an-enterprise
+        """
+
+        from ..models import BasicError, SecretScanningBypassRequest
+
+        url = f"/enterprises/{enterprise}/bypass-requests/secret-scanning"
+
+        params = {
+            "organization_name": organization_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[SecretScanningBypassRequest],
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
     def list_alerts_for_enterprise(
         self,
         enterprise: str,

@@ -9,24 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0258 import CodeScanningVariantAnalysisRepository
+
+class CheckAnnotation(GitHubModel):
+    """Check Annotation
+
+    Check Annotation
+    """
+
+    path: str = Field()
+    start_line: int = Field()
+    end_line: int = Field()
+    start_column: Union[int, None] = Field()
+    end_column: Union[int, None] = Field()
+    annotation_level: Union[str, None] = Field()
+    title: Union[str, None] = Field()
+    message: Union[str, None] = Field()
+    raw_details: Union[str, None] = Field()
+    blob_href: str = Field()
 
 
-class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+model_rebuild(CheckAnnotation)
 
-    repository_count: int = Field(
-        description="The total number of repositories that were skipped for this reason."
-    )
-    repositories: list[CodeScanningVariantAnalysisRepository] = Field(
-        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
-    )
-
-
-model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
-
-__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)
+__all__ = ("CheckAnnotation",)

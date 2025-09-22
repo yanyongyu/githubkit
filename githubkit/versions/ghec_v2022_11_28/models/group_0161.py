@@ -12,22 +12,50 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PackagesBillingUsage(GitHubModel):
-    """PackagesBillingUsage"""
+class AdvancedSecurityActiveCommitters(GitHubModel):
+    """AdvancedSecurityActiveCommitters"""
 
-    total_gigabytes_bandwidth_used: int = Field(
-        description="Sum of the free and paid storage space (GB) for GitHuub Packages."
+    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
+    total_count: Missing[int] = Field(default=UNSET)
+    maximum_advanced_security_committers: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
     )
-    total_paid_gigabytes_bandwidth_used: int = Field(
-        description="Total paid storage space (GB) for GitHuub Packages."
+    purchased_advanced_security_committers: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of GitHub Advanced Security licences purchased",
     )
-    included_gigabytes_bandwidth: int = Field(
-        description="Free storage space (GB) for GitHub Packages."
-    )
+    repositories: list[AdvancedSecurityActiveCommittersRepository] = Field()
 
 
-model_rebuild(PackagesBillingUsage)
+class AdvancedSecurityActiveCommittersRepository(GitHubModel):
+    """AdvancedSecurityActiveCommittersRepository"""
 
-__all__ = ("PackagesBillingUsage",)
+    name: str = Field()
+    advanced_security_committers: int = Field()
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUser
+    ] = Field()
+
+
+class AdvancedSecurityActiveCommittersUser(GitHubModel):
+    """AdvancedSecurityActiveCommittersUser"""
+
+    user_login: str = Field()
+    last_pushed_date: str = Field()
+    last_pushed_email: str = Field()
+
+
+model_rebuild(AdvancedSecurityActiveCommitters)
+model_rebuild(AdvancedSecurityActiveCommittersRepository)
+model_rebuild(AdvancedSecurityActiveCommittersUser)
+
+__all__ = (
+    "AdvancedSecurityActiveCommitters",
+    "AdvancedSecurityActiveCommittersRepository",
+    "AdvancedSecurityActiveCommittersUser",
+)

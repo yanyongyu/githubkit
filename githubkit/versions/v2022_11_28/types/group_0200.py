@@ -10,26 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0199 import RulesetVersionPropActorType
+from .group_0202 import RulesetVersionWithStateAllof1PropStateType
 
 
-class ReactionType(TypedDict):
-    """Reaction
+class RulesetVersionWithStateType(TypedDict):
+    """RulesetVersionWithState"""
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
-    """
-
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserType]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
-    created_at: datetime
+    version_id: int
+    actor: RulesetVersionPropActorType
+    updated_at: datetime
+    state: RulesetVersionWithStateAllof1PropStateType
 
 
-__all__ = ("ReactionType",)
+__all__ = ("RulesetVersionWithStateType",)

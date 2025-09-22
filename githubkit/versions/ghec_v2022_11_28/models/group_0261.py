@@ -10,23 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
 
-class ActionsSecret(GitHubModel):
-    """Actions Secret
 
-    Set secrets for GitHub Actions.
+class Reaction(GitHubModel):
+    """Reaction
+
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    name: str = Field(description="The name of the secret.")
+    id: int = Field()
+    node_id: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(description="The reaction to use")
     created_at: datetime = Field()
-    updated_at: datetime = Field()
 
 
-model_rebuild(ActionsSecret)
+model_rebuild(Reaction)
 
-__all__ = ("ActionsSecret",)
+__all__ = ("Reaction",)

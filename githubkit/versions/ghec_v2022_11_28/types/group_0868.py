@@ -9,25 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0238 import FullRepositoryType
-from .group_0495 import EnterpriseWebhooksType
-from .group_0496 import SimpleInstallationType
-from .group_0497 import OrganizationSimpleWebhooksType
-from .group_0869 import WebhookSecurityAndAnalysisPropChangesType
+from .group_0505 import EnterpriseWebhooksType
+from .group_0506 import SimpleInstallationType
+from .group_0507 import OrganizationSimpleWebhooksType
+from .group_0508 import RepositoryWebhooksType
+from .group_0551 import SecretScanningAlertWebhookType
 
 
-class WebhookSecurityAndAnalysisType(TypedDict):
-    """security_and_analysis event"""
+class WebhookSecretScanningAlertReopenedType(TypedDict):
+    """secret_scanning_alert reopened event"""
 
-    changes: WebhookSecurityAndAnalysisPropChangesType
+    action: Literal["reopened"]
+    alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: FullRepositoryType
+    repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookSecurityAndAnalysisType",)
+__all__ = ("WebhookSecretScanningAlertReopenedType",)

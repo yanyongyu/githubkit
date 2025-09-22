@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,18 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0434 import EnterpriseWebhooks
-from .group_0435 import SimpleInstallation
-from .group_0436 import OrganizationSimpleWebhooks
-from .group_0437 import RepositoryWebhooks
-from .group_0445 import WebhooksUser
+from .group_0442 import EnterpriseWebhooks
+from .group_0443 import SimpleInstallation
+from .group_0444 import OrganizationSimpleWebhooks
+from .group_0445 import RepositoryWebhooks
+from .group_0457 import WebhooksLabel
 
 
-class WebhookMemberAdded(GitHubModel):
-    """member added event"""
+class WebhookLabelEdited(GitHubModel):
+    """label edited event"""
 
-    action: Literal["added"] = Field()
-    changes: Missing[WebhookMemberAddedPropChanges] = Field(default=UNSET)
+    action: Literal["edited"] = Field()
+    changes: Missing[WebhookLabelEditedPropChanges] = Field(
+        default=UNSET,
+        description="The changes to the label if the action was `edited`.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,7 +43,7 @@ class WebhookMemberAdded(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    member: Union[WebhooksUser, None] = Field(title="User")
+    label: WebhooksLabel = Field(title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -53,50 +56,56 @@ class WebhookMemberAdded(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookMemberAddedPropChanges(GitHubModel):
-    """WebhookMemberAddedPropChanges"""
+class WebhookLabelEditedPropChanges(GitHubModel):
+    """WebhookLabelEditedPropChanges
 
-    permission: Missing[WebhookMemberAddedPropChangesPropPermission] = Field(
-        default=UNSET,
-        description="This field is included for legacy purposes; use the `role_name` field instead. The `maintain`\nrole is mapped to `write` and the `triage` role is mapped to `read`. To determine the role\nassigned to the collaborator, use the `role_name` field instead, which will provide the full\nrole name, including custom roles.",
-    )
-    role_name: Missing[WebhookMemberAddedPropChangesPropRoleName] = Field(
-        default=UNSET, description="The role assigned to the collaborator."
-    )
-
-
-class WebhookMemberAddedPropChangesPropPermission(GitHubModel):
-    """WebhookMemberAddedPropChangesPropPermission
-
-    This field is included for legacy purposes; use the `role_name` field instead.
-    The `maintain`
-    role is mapped to `write` and the `triage` role is mapped to `read`. To
-    determine the role
-    assigned to the collaborator, use the `role_name` field instead, which will
-    provide the full
-    role name, including custom roles.
+    The changes to the label if the action was `edited`.
     """
 
-    to: Literal["write", "admin", "read"] = Field()
+    color: Missing[WebhookLabelEditedPropChangesPropColor] = Field(default=UNSET)
+    description: Missing[WebhookLabelEditedPropChangesPropDescription] = Field(
+        default=UNSET
+    )
+    name: Missing[WebhookLabelEditedPropChangesPropName] = Field(default=UNSET)
 
 
-class WebhookMemberAddedPropChangesPropRoleName(GitHubModel):
-    """WebhookMemberAddedPropChangesPropRoleName
+class WebhookLabelEditedPropChangesPropColor(GitHubModel):
+    """WebhookLabelEditedPropChangesPropColor"""
 
-    The role assigned to the collaborator.
-    """
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the color if the action was `edited`.",
+    )
 
-    to: str = Field()
+
+class WebhookLabelEditedPropChangesPropDescription(GitHubModel):
+    """WebhookLabelEditedPropChangesPropDescription"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the description if the action was `edited`.",
+    )
 
 
-model_rebuild(WebhookMemberAdded)
-model_rebuild(WebhookMemberAddedPropChanges)
-model_rebuild(WebhookMemberAddedPropChangesPropPermission)
-model_rebuild(WebhookMemberAddedPropChangesPropRoleName)
+class WebhookLabelEditedPropChangesPropName(GitHubModel):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the name if the action was `edited`.",
+    )
+
+
+model_rebuild(WebhookLabelEdited)
+model_rebuild(WebhookLabelEditedPropChanges)
+model_rebuild(WebhookLabelEditedPropChangesPropColor)
+model_rebuild(WebhookLabelEditedPropChangesPropDescription)
+model_rebuild(WebhookLabelEditedPropChangesPropName)
 
 __all__ = (
-    "WebhookMemberAdded",
-    "WebhookMemberAddedPropChanges",
-    "WebhookMemberAddedPropChangesPropPermission",
-    "WebhookMemberAddedPropChangesPropRoleName",
+    "WebhookLabelEdited",
+    "WebhookLabelEditedPropChanges",
+    "WebhookLabelEditedPropChangesPropColor",
+    "WebhookLabelEditedPropChangesPropDescription",
+    "WebhookLabelEditedPropChangesPropName",
 )

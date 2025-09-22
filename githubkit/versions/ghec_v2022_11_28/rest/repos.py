@@ -109,6 +109,7 @@ if TYPE_CHECKING:
         RepositoryRuleDetailedOneof18,
         RepositoryRuleDetailedOneof19,
         RepositoryRuleDetailedOneof20,
+        RepositoryRuleDetailedOneof21,
         RepositoryRuleset,
         ReposOwnerRepoAttestationsPostResponse201,
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
@@ -212,6 +213,7 @@ if TYPE_CHECKING:
         RepositoryRuleCommitAuthorEmailPatternType,
         RepositoryRuleCommitMessagePatternType,
         RepositoryRuleCommitterEmailPatternType,
+        RepositoryRuleCopilotCodeReviewType,
         RepositoryRuleCreationType,
         RepositoryRuleDeletionType,
         RepositoryRuleDetailedOneof0Type,
@@ -235,6 +237,7 @@ if TYPE_CHECKING:
         RepositoryRuleDetailedOneof18Type,
         RepositoryRuleDetailedOneof19Type,
         RepositoryRuleDetailedOneof20Type,
+        RepositoryRuleDetailedOneof21Type,
         RepositoryRuleFileExtensionRestrictionType,
         RepositoryRuleFilePathRestrictionType,
         RepositoryRuleMaxFilePathLengthType,
@@ -2111,7 +2114,8 @@ class ReposClient:
         The `parent` and `source` objects are present when the repository is a fork. `parent` is the repository this repository was forked from, `source` is the ultimate source for the network.
 
         > [!NOTE]
-        > In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        > - In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        > - To view merge-related settings, you must have the `contents:read` and `contents:write` permissions.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-a-repository
         """
@@ -2149,7 +2153,8 @@ class ReposClient:
         The `parent` and `source` objects are present when the repository is a fork. `parent` is the repository this repository was forked from, `source` is the ultimate source for the network.
 
         > [!NOTE]
-        > In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        > - In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+        > - To view merge-related settings, you must have the `contents:read` and `contents:write` permissions.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-a-repository
         """
@@ -18016,7 +18021,7 @@ class ReposClient:
 
         from ..models import BasicError, ContentFile, ValidationError
 
-        url = f"/repos/{owner}/{repo}/readme/{dir}"
+        url = f"/repos/{owner}/{repo}/readme/{dir_}"
 
         params = {
             "ref": ref,
@@ -18063,7 +18068,7 @@ class ReposClient:
 
         from ..models import BasicError, ContentFile, ValidationError
 
-        url = f"/repos/{owner}/{repo}/readme/{dir}"
+        url = f"/repos/{owner}/{repo}/readme/{dir_}"
 
         params = {
             "ref": ref,
@@ -19456,6 +19461,7 @@ class ReposClient:
                 RepositoryRuleDetailedOneof18,
                 RepositoryRuleDetailedOneof19,
                 RepositoryRuleDetailedOneof20,
+                RepositoryRuleDetailedOneof21,
             ]
         ],
         list[
@@ -19481,6 +19487,7 @@ class ReposClient:
                 RepositoryRuleDetailedOneof18Type,
                 RepositoryRuleDetailedOneof19Type,
                 RepositoryRuleDetailedOneof20Type,
+                RepositoryRuleDetailedOneof21Type,
             ]
         ],
     ]:
@@ -19520,6 +19527,7 @@ class ReposClient:
             RepositoryRuleDetailedOneof18,
             RepositoryRuleDetailedOneof19,
             RepositoryRuleDetailedOneof20,
+            RepositoryRuleDetailedOneof21,
         )
 
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
@@ -19560,6 +19568,7 @@ class ReposClient:
                     RepositoryRuleDetailedOneof18,
                     RepositoryRuleDetailedOneof19,
                     RepositoryRuleDetailedOneof20,
+                    RepositoryRuleDetailedOneof21,
                 ]
             ],
         )
@@ -19598,6 +19607,7 @@ class ReposClient:
                 RepositoryRuleDetailedOneof18,
                 RepositoryRuleDetailedOneof19,
                 RepositoryRuleDetailedOneof20,
+                RepositoryRuleDetailedOneof21,
             ]
         ],
         list[
@@ -19623,6 +19633,7 @@ class ReposClient:
                 RepositoryRuleDetailedOneof18Type,
                 RepositoryRuleDetailedOneof19Type,
                 RepositoryRuleDetailedOneof20Type,
+                RepositoryRuleDetailedOneof21Type,
             ]
         ],
     ]:
@@ -19662,6 +19673,7 @@ class ReposClient:
             RepositoryRuleDetailedOneof18,
             RepositoryRuleDetailedOneof19,
             RepositoryRuleDetailedOneof20,
+            RepositoryRuleDetailedOneof21,
         )
 
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
@@ -19702,6 +19714,7 @@ class ReposClient:
                     RepositoryRuleDetailedOneof18,
                     RepositoryRuleDetailedOneof19,
                     RepositoryRuleDetailedOneof20,
+                    RepositoryRuleDetailedOneof21,
                 ]
             ],
         )
@@ -19849,6 +19862,7 @@ class ReposClient:
                     RepositoryRuleMaxFileSizeType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,
@@ -19954,6 +19968,7 @@ class ReposClient:
                     RepositoryRuleMaxFileSizeType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,
@@ -20329,6 +20344,7 @@ class ReposClient:
                     RepositoryRuleMaxFileSizeType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,
@@ -20437,6 +20453,7 @@ class ReposClient:
                     RepositoryRuleMaxFileSizeType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,

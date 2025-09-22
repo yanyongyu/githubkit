@@ -11,15 +11,12 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType
+
+class TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType(TypedDict):
+    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
+
+    title: NotRequired[str]
+    body: NotRequired[str]
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
-
-    total_count: int
-    repository_selection: NotRequired[str]
-    repositories: list[RepositoryType]
-
-
-__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200Type",)
+__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType",)

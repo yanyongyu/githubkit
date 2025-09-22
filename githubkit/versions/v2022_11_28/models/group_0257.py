@@ -18,36 +18,40 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
 
-class CodeScanningCodeqlDatabase(GitHubModel):
-    """CodeQL Database
+class DeploymentSimple(GitHubModel):
+    """Deployment
 
-    A CodeQL database.
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
     """
 
-    id: int = Field(description="The ID of the CodeQL database.")
-    name: str = Field(description="The name of the CodeQL database.")
-    language: str = Field(description="The language of the CodeQL database.")
-    uploader: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    content_type: str = Field(description="The MIME type of the CodeQL database file.")
-    size: int = Field(description="The size of the CodeQL database file in bytes.")
-    created_at: datetime = Field(
-        description="The date and time at which the CodeQL database was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    updated_at: datetime = Field(
-        description="The date and time at which the CodeQL database was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    url: str = Field(
-        description="The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property."
-    )
-    commit_oid: Missing[Union[str, None]] = Field(
+    url: str = Field()
+    id: int = Field(description="Unique identifier of the deployment")
+    node_id: str = Field()
+    task: str = Field(description="Parameter to specify a task to execute")
+    original_environment: Missing[str] = Field(default=UNSET)
+    environment: str = Field(description="Name for the target deployment environment.")
+    description: Union[str, None] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    statuses_url: str = Field()
+    repository_url: str = Field()
+    transient_environment: Missing[bool] = Field(
         default=UNSET,
-        description="The commit SHA of the repository at the time the CodeQL database was created.",
+        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
+    )
+    production_environment: Missing[bool] = Field(
+        default=UNSET,
+        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(CodeScanningCodeqlDatabase)
+model_rebuild(DeploymentSimple)
 
-__all__ = ("CodeScanningCodeqlDatabase",)
+__all__ = ("DeploymentSimple",)

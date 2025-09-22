@@ -9,16 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0258 import CodeScanningVariantAnalysisRepositoryType
+
+class CheckAnnotationType(TypedDict):
+    """Check Annotation
+
+    Check Annotation
+    """
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: Union[int, None]
+    end_column: Union[int, None]
+    annotation_level: Union[str, None]
+    title: Union[str, None]
+    message: Union[str, None]
+    raw_details: Union[str, None]
+    blob_href: str
 
 
-class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
-
-    repository_count: int
-    repositories: list[CodeScanningVariantAnalysisRepositoryType]
-
-
-__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroupType",)
+__all__ = ("CheckAnnotationType",)

@@ -9,21 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class KeySimpleType(TypedDict):
-    """Key Simple
+class EmailType(TypedDict):
+    """Email
 
-    Key Simple
+    Email
     """
 
-    id: int
-    key: str
-    created_at: NotRequired[datetime]
-    last_used: NotRequired[Union[datetime, None]]
+    email: str
+    primary: bool
+    verified: bool
+    visibility: Union[str, None]
 
 
-__all__ = ("KeySimpleType",)
+__all__ = ("EmailType",)

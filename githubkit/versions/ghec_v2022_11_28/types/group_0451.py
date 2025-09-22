@@ -12,17 +12,11 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class TagProtectionType(TypedDict):
-    """Tag protection
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    Tag protection
-    """
-
-    id: NotRequired[int]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    enabled: NotRequired[bool]
-    pattern: str
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
-__all__ = ("TagProtectionType",)
+__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",)

@@ -17,22 +17,20 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0114 import RepositoryRuleRequiredStatusChecksPropParameters
+from .group_0114 import RepositoryRulePullRequestPropParameters
 
 
-class RepositoryRuleRequiredStatusChecks(GitHubModel):
-    """required_status_checks
+class RepositoryRulePullRequest(GitHubModel):
+    """pull_request
 
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
-    type: Literal["required_status_checks"] = Field()
-    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["pull_request"] = Field()
+    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecks)
+model_rebuild(RepositoryRulePullRequest)
 
-__all__ = ("RepositoryRuleRequiredStatusChecks",)
+__all__ = ("RepositoryRulePullRequest",)

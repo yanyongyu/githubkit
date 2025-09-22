@@ -9,50 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0128 import ProjectsV2StatusUpdate
 
-class CustomPropertySetPayload(GitHubModel):
-    """Custom Property Set Payload
 
-    Custom property set payload
+class ProjectsV2(GitHubModel):
+    """Projects v2 Project
+
+    A projects v2 project
     """
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
-        Field(description="The type of the value for the property")
+    id: float = Field(description="The unique identifier of the project.")
+    node_id: str = Field(description="The node ID of the project.")
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    title: str = Field(description="The project title.")
+    description: Union[str, None] = Field(
+        description="A short description of the project."
     )
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
+    public: bool = Field(
+        description="Whether the project is visible to anyone with access to the owner."
     )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
+    closed_at: Union[datetime, None] = Field(
+        description="The time when the project was closed."
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
+    created_at: datetime = Field(description="The time when the project was created.")
+    updated_at: datetime = Field(
+        description="The time when the project was last updated."
     )
-    allowed_values: Missing[
-        Union[
-            Annotated[
-                list[Annotated[str, Field(max_length=75)]],
-                Field(max_length=200 if PYDANTIC_V2 else None),
-            ],
-            None,
-        ]
-    ] = Field(
-        default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+    number: int = Field(description="The project number.")
+    short_description: Union[str, None] = Field(
+        description="A concise summary of the project."
     )
-    values_editable_by: Missing[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ] = Field(default=UNSET, description="Who can edit the values of the property")
+    deleted_at: Union[datetime, None] = Field(
+        description="The time when the project was deleted."
+    )
+    deleted_by: Union[None, SimpleUser] = Field()
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET, description="The current state of the project."
+    )
+    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
+        default=UNSET
+    )
+    is_template: Missing[bool] = Field(
+        default=UNSET, description="Whether this project is a template"
+    )
 
 
-model_rebuild(CustomPropertySetPayload)
+model_rebuild(ProjectsV2)
 
-__all__ = ("CustomPropertySetPayload",)
+__all__ = ("ProjectsV2",)

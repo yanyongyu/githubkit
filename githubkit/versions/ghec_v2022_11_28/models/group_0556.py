@@ -18,18 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0495 import EnterpriseWebhooks
-from .group_0496 import SimpleInstallation
-from .group_0497 import OrganizationSimpleWebhooks
-from .group_0498 import RepositoryWebhooks
-from .group_0500 import ExemptionResponse
-from .group_0501 import ExemptionRequest
+from .group_0505 import EnterpriseWebhooks
+from .group_0506 import SimpleInstallation
+from .group_0507 import OrganizationSimpleWebhooks
+from .group_0508 import RepositoryWebhooks
 
 
-class WebhookExemptionRequestResponseDismissed(GitHubModel):
-    """Exemption response dismissed event"""
+class WebhookBranchProtectionConfigurationDisabled(GitHubModel):
+    """branch protection configuration disabled event"""
 
-    action: Literal["response_dismissed"] = Field()
+    action: Literal["disabled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,22 +43,13 @@ class WebhookExemptionRequestResponseDismissed(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    exemption_request: ExemptionRequest = Field(
-        title="Exemption Request",
-        description="A request from a user to be exempted from a set of rules.",
-    )
-    exemption_response: ExemptionResponse = Field(
-        title="Exemption response",
-        description="A response to an exemption request by a delegated bypasser.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookExemptionRequestResponseDismissed)
+model_rebuild(WebhookBranchProtectionConfigurationDisabled)
 
-__all__ = ("WebhookExemptionRequestResponseDismissed",)
+__all__ = ("WebhookBranchProtectionConfigurationDisabled",)

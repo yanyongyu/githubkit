@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,15 +18,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserProjectsPostBody(GitHubModel):
-    """UserProjectsPostBody"""
+class TeamsTeamIdMembershipsUsernamePutBody(GitHubModel):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    name: str = Field(description="Name of the project")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the project"
+    role: Missing[Literal["member", "maintainer"]] = Field(
+        default=UNSET, description="The role that this user should have in the team."
     )
 
 
-model_rebuild(UserProjectsPostBody)
+model_rebuild(TeamsTeamIdMembershipsUsernamePutBody)
 
-__all__ = ("UserProjectsPostBody",)
+__all__ = ("TeamsTeamIdMembershipsUsernamePutBody",)

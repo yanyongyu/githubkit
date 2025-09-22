@@ -9,31 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0170 import RepositoryRuleFilePathRestrictionPropParameters
 
+class RepositoryRuleRequiredStatusChecksPropParameters(GitHubModel):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
 
-class RepositoryRuleFilePathRestriction(GitHubModel):
-    """file_path_restriction
-
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
-    """
-
-    type: Literal["file_path_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFilePathRestrictionPropParameters] = Field(
-        default=UNSET
+    do_not_enforce_on_create: Missing[bool] = Field(
+        default=UNSET,
+        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
+    )
+    required_status_checks: list[RepositoryRuleParamsStatusCheckConfiguration] = Field(
+        description="Status checks that are required."
+    )
+    strict_required_status_checks_policy: bool = Field(
+        description="Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled."
     )
 
 
-model_rebuild(RepositoryRuleFilePathRestriction)
+class RepositoryRuleParamsStatusCheckConfiguration(GitHubModel):
+    """StatusCheckConfiguration
 
-__all__ = ("RepositoryRuleFilePathRestriction",)
+    Required status check
+    """
+
+    context: str = Field(
+        description="The status check context name that must be present on the commit."
+    )
+    integration_id: Missing[int] = Field(
+        default=UNSET,
+        description="The optional integration ID that this status check must originate from.",
+    )
+
+
+model_rebuild(RepositoryRuleRequiredStatusChecksPropParameters)
+model_rebuild(RepositoryRuleParamsStatusCheckConfiguration)
+
+__all__ = (
+    "RepositoryRuleParamsStatusCheckConfiguration",
+    "RepositoryRuleRequiredStatusChecksPropParameters",
+)

@@ -16,17 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsPostBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
+class OrgsOrgProjectsPostBody(GitHubModel):
+    """OrgsOrgProjectsPostBody"""
 
-    title: str = Field(description="The discussion post's title.")
-    body: str = Field(description="The discussion post's body text.")
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
+    name: str = Field(description="The name of the project.")
+    body: Missing[str] = Field(
+        default=UNSET, description="The description of the project."
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsPostBody)
+model_rebuild(OrgsOrgProjectsPostBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBody",)
+__all__ = ("OrgsOrgProjectsPostBody",)

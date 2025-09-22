@@ -9,28 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class OidcCustomSubRepo(GitHubModel):
-    """Actions OIDC subject customization for a repository
+class Reaction(GitHubModel):
+    """Reaction
 
-    Actions OIDC subject customization for a repository
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
-    )
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
-    )
+    id: int = Field()
+    node_id: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(description="The reaction to use")
+    created_at: datetime = Field()
 
 
-model_rebuild(OidcCustomSubRepo)
+model_rebuild(Reaction)
 
-__all__ = ("OidcCustomSubRepo",)
+__all__ = ("Reaction",)

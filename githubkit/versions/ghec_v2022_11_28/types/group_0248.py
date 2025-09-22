@@ -9,19 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType
+from .group_0173 import IssueType
+from .group_0244 import PullRequestSimpleType
+from .group_0247 import ProjectsV2DraftIssueType
 
 
-class TeamMembershipType(TypedDict):
-    """Team Membership
+class ProjectsV2ItemSimpleType(TypedDict):
+    """Projects v2 Item
 
-    Team Membership
+    An item belonging to a project
     """
 
-    url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+    id: float
+    node_id: NotRequired[str]
+    content: NotRequired[
+        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
+    ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    archived_at: Union[datetime, None]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
 
 
-__all__ = ("TeamMembershipType",)
+__all__ = ("ProjectsV2ItemSimpleType",)

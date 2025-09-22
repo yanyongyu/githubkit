@@ -9,42 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
 
 
-class ProjectsV2StatusUpdate(GitHubModel):
-    """Projects v2 Status Update
+class WebhooksMarketplacePurchase(GitHubModel):
+    """Marketplace Purchase"""
 
-    An status update belonging to a project
-    """
+    account: WebhooksMarketplacePurchasePropAccount = Field()
+    billing_cycle: str = Field()
+    free_trial_ends_on: Union[str, None] = Field()
+    next_billing_date: Union[str, None] = Field()
+    on_free_trial: bool = Field()
+    plan: WebhooksMarketplacePurchasePropPlan = Field()
+    unit_count: int = Field()
 
-    id: float = Field()
+
+class WebhooksMarketplacePurchasePropAccount(GitHubModel):
+    """WebhooksMarketplacePurchasePropAccount"""
+
+    id: int = Field()
+    login: str = Field()
     node_id: str = Field()
-    project_node_id: Missing[str] = Field(default=UNSET)
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    status: Missing[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ] = Field(default=UNSET)
-    start_date: Missing[date] = Field(default=UNSET)
-    target_date: Missing[date] = Field(default=UNSET)
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the status update"
-    )
+    organization_billing_email: Union[str, None] = Field()
+    type: str = Field()
 
 
-model_rebuild(ProjectsV2StatusUpdate)
+class WebhooksMarketplacePurchasePropPlan(GitHubModel):
+    """WebhooksMarketplacePurchasePropPlan"""
 
-__all__ = ("ProjectsV2StatusUpdate",)
+    bullets: list[Union[str, None]] = Field()
+    description: str = Field()
+    has_free_trial: bool = Field()
+    id: int = Field()
+    monthly_price_in_cents: int = Field()
+    name: str = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    unit_name: Union[str, None] = Field()
+    yearly_price_in_cents: int = Field()
+
+
+model_rebuild(WebhooksMarketplacePurchase)
+model_rebuild(WebhooksMarketplacePurchasePropAccount)
+model_rebuild(WebhooksMarketplacePurchasePropPlan)
+
+__all__ = (
+    "WebhooksMarketplacePurchase",
+    "WebhooksMarketplacePurchasePropAccount",
+    "WebhooksMarketplacePurchasePropPlan",
+)

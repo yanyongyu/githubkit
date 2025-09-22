@@ -12,12 +12,11 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoMergesPostBodyType(TypedDict):
-    """ReposOwnerRepoMergesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
 
-    base: str
-    head: str
-    commit_message: NotRequired[str]
+    sub_issue_id: int
+    replace_parent: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoMergesPostBodyType",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType",)

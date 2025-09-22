@@ -9,20 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
+class LinkType(TypedDict):
+    """Link
 
-    Code of Conduct Simple
+    Hypermedia Link
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    href: str
 
 
-__all__ = ("CodeOfConductSimpleType",)
+__all__ = ("LinkType",)

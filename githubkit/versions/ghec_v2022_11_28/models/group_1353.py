@@ -9,27 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameAttestationsBulkListPostBody(GitHubModel):
-    """UsersUsernameAttestationsBulkListPostBody"""
+class UserPatchBody(GitHubModel):
+    """UserPatchBody"""
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests to fetch attestations for.",
+    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
+    email: Missing[str] = Field(
+        default=UNSET, description="The publicly visible email address of the user."
     )
-    predicate_type: Missing[str] = Field(
-        default=UNSET,
-        description="Optional filter for fetching attestations with a given predicate type.\nThis option accepts `provenance`, `sbom`, or freeform text for custom predicate types.",
+    blog: Missing[str] = Field(
+        default=UNSET, description="The new blog URL of the user."
+    )
+    twitter_username: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The new Twitter username of the user."
+    )
+    company: Missing[str] = Field(
+        default=UNSET, description="The new company of the user."
+    )
+    location: Missing[str] = Field(
+        default=UNSET, description="The new location of the user."
+    )
+    hireable: Missing[bool] = Field(
+        default=UNSET, description="The new hiring availability of the user."
+    )
+    bio: Missing[str] = Field(
+        default=UNSET, description="The new short biography of the user."
     )
 
 
-model_rebuild(UsersUsernameAttestationsBulkListPostBody)
+model_rebuild(UserPatchBody)
 
-__all__ = ("UsersUsernameAttestationsBulkListPostBody",)
+__all__ = ("UserPatchBody",)

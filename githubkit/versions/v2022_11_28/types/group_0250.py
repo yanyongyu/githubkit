@@ -9,37 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0095 import CodeScanningAlertRuleSummaryType
-from .group_0096 import CodeScanningAnalysisToolType
-from .group_0097 import CodeScanningAlertInstanceType
 
+class DiffEntryType(TypedDict):
+    """Diff Entry
 
-class CodeScanningAlertItemsType(TypedDict):
-    """CodeScanningAlertItems"""
+    Diff Entry
+    """
 
-    number: int
-    created_at: datetime
-    updated_at: NotRequired[datetime]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[datetime, None]]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_at: Union[datetime, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+    sha: Union[str, None]
+    filename: str
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
+    additions: int
+    deletions: int
+    changes: int
+    blob_url: Union[str, None]
+    raw_url: Union[str, None]
+    contents_url: str
+    patch: NotRequired[str]
+    previous_filename: NotRequired[str]
 
 
-__all__ = ("CodeScanningAlertItemsType",)
+__all__ = ("DiffEntryType",)

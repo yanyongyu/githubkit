@@ -9,26 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0248 import GitUser
+from .group_0249 import Verification
 
 
-class CodeScanningAutofix(GitHubModel):
-    """CodeScanningAutofix"""
+class CommitPropCommit(GitHubModel):
+    """CommitPropCommit"""
 
-    status: Literal["pending", "error", "success", "outdated"] = Field(
-        description="The status of an autofix."
-    )
-    description: Union[str, None] = Field(description="The description of an autofix.")
-    started_at: datetime = Field(
-        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
+    url: str = Field()
+    author: Union[None, GitUser] = Field()
+    committer: Union[None, GitUser] = Field()
+    message: str = Field()
+    comment_count: int = Field()
+    tree: CommitPropCommitPropTree = Field()
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-model_rebuild(CodeScanningAutofix)
+class CommitPropCommitPropTree(GitHubModel):
+    """CommitPropCommitPropTree"""
 
-__all__ = ("CodeScanningAutofix",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(CommitPropCommit)
+model_rebuild(CommitPropCommitPropTree)
+
+__all__ = (
+    "CommitPropCommit",
+    "CommitPropCommitPropTree",
+)

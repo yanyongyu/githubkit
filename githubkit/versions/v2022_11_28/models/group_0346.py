@@ -9,34 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class DeployKey(GitHubModel):
-    """Deploy Key
-
-    An SSH key granting access to a single repository.
-    """
-
-    id: int = Field()
-    key: str = Field()
-    url: str = Field()
-    title: str = Field()
-    verified: bool = Field()
-    created_at: str = Field()
-    read_only: bool = Field()
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    last_used: Missing[Union[datetime, None]] = Field(default=UNSET)
-    enabled: Missing[bool] = Field(default=UNSET)
+from .group_0048 import Issue
 
 
-model_rebuild(DeployKey)
+class TimelineCrossReferencedEventPropSource(GitHubModel):
+    """TimelineCrossReferencedEventPropSource"""
 
-__all__ = ("DeployKey",)
+    type: Missing[str] = Field(default=UNSET)
+    issue: Missing[Issue] = Field(
+        default=UNSET,
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+
+
+model_rebuild(TimelineCrossReferencedEventPropSource)
+
+__all__ = ("TimelineCrossReferencedEventPropSource",)

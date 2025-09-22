@@ -10,31 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCampaignsPostBodyType(TypedDict):
-    """OrgsOrgCampaignsPostBody"""
+class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[OrganizationActionsVariableType]
+
+
+class OrganizationActionsVariableType(TypedDict):
+    """Actions Variable for an Organization
+
+    Organization variable for GitHub Actions.
+    """
 
     name: str
-    description: str
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: datetime
-    contact_link: NotRequired[Union[str, None]]
-    code_scanning_alerts: list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType]
-    generate_issues: NotRequired[bool]
-
-
-class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType(TypedDict):
-    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
-
-    repository_id: int
-    alert_numbers: list[int]
+    value: str
+    created_at: datetime
+    updated_at: datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType",
-    "OrgsOrgCampaignsPostBodyType",
+    "OrganizationActionsVariableType",
+    "OrgsOrgActionsVariablesGetResponse200Type",
 )

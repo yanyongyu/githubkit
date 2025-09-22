@@ -10,15 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Union
 from typing_extensions import TypedDict
 
-
-class TrafficType(TypedDict):
-    """Traffic"""
-
-    timestamp: datetime
-    uniques: int
-    count: int
+from .group_0003 import SimpleUserType
 
 
-__all__ = ("TrafficType",)
+class StargazerType(TypedDict):
+    """Stargazer
+
+    Stargazer
+    """
+
+    starred_at: datetime
+    user: Union[None, SimpleUserType]
+
+
+__all__ = ("StargazerType",)

@@ -9,14 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningSarifsReceiptType(TypedDict):
-    """CodeScanningSarifsReceipt"""
-
-    id: NotRequired[str]
-    url: NotRequired[str]
+from .group_0096 import CodeScanningAnalysisToolType
 
 
-__all__ = ("CodeScanningSarifsReceiptType",)
+class CodeScanningAnalysisType(TypedDict):
+    """CodeScanningAnalysis"""
+
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: datetime
+    results_count: int
+    rules_count: int
+    id: int
+    url: str
+    sarif_id: str
+    tool: CodeScanningAnalysisToolType
+    deletable: bool
+    warning: str
+
+
+__all__ = ("CodeScanningAnalysisType",)

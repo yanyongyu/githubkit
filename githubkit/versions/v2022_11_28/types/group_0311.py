@@ -9,23 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0312 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType
 
-class BlobType(TypedDict):
-    """Blob
 
-    Blob
-    """
+class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    content: str
-    encoding: str
-    url: str
-    sha: str
-    size: Union[int, None]
+    id: int
     node_id: str
-    highlighted_content: NotRequired[str]
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
+    ]
 
 
-__all__ = ("BlobType",)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1Type",)

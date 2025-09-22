@@ -9,81 +9,179 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0510 import ExemptionResponseType
 
-class WebhooksCommentType(TypedDict):
-    """WebhooksComment"""
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+class ExemptionRequestType(TypedDict):
+    """Exemption Request
+
+    A request from a user to be exempted from a set of rules.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[Union[int, None]]
+    repository_id: NotRequired[int]
+    requester_id: NotRequired[int]
+    requester_login: NotRequired[str]
+    request_type: NotRequired[
+        Literal[
+            "push_ruleset_bypass",
+            "secret_scanning",
+            "secret_scanning_closure",
+            "code_scanning_alert_dismissal",
+        ]
     ]
-    body: str
-    child_comment_count: int
-    created_at: str
-    discussion_id: int
-    html_url: str
-    id: int
-    node_id: str
-    parent_id: Union[int, None]
-    reactions: WebhooksCommentPropReactionsType
-    repository_url: str
-    updated_at: str
-    user: Union[WebhooksCommentPropUserType, None]
-
-
-class WebhooksCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksCommentPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
+    exemption_request_data: NotRequired[
+        Union[
+            ExemptionRequestPushRulesetBypassType,
+            ExemptionRequestSecretScanningType,
+            DismissalRequestSecretScanningType,
+            DismissalRequestCodeScanningType,
+        ]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "rejected", "cancelled", "completed"]]
+    requester_comment: NotRequired[Union[str, None]]
+    metadata: NotRequired[
+        Union[
+            ExemptionRequestSecretScanningMetadataType,
+            DismissalRequestSecretScanningMetadataType,
+            DismissalRequestCodeScanningMetadataType,
+            None,
+        ]
+    ]
+    expires_at: NotRequired[datetime]
+    created_at: NotRequired[datetime]
+    responses: NotRequired[Union[list[ExemptionResponseType], None]]
     html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+
+
+class ExemptionRequestSecretScanningMetadataType(TypedDict):
+    """Secret Scanning Push Protection Exemption Request Metadata
+
+    Metadata for a secret scanning push protection exemption request.
+    """
+
+    label: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests"]]
+
+
+class DismissalRequestSecretScanningMetadataType(TypedDict):
+    """Secret scanning alert dismissal request metadata
+
+    Metadata for a secret scanning alert dismissal request.
+    """
+
+    alert_title: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+
+
+class DismissalRequestCodeScanningMetadataType(TypedDict):
+    """Code scanning alert dismissal request metadata
+
+    Metadata for a code scanning alert dismissal request.
+    """
+
+    alert_title: NotRequired[str]
+    reason: NotRequired[Literal["false positive", "won't fix", "used in tests"]]
+
+
+class ExemptionRequestPushRulesetBypassType(TypedDict):
+    """Push ruleset bypass exemption request data
+
+    Push rules that are being requested to be bypassed.
+    """
+
+    type: NotRequired[Literal["push_ruleset_bypass"]]
+    data: NotRequired[list[ExemptionRequestPushRulesetBypassPropDataItemsType]]
+
+
+class ExemptionRequestPushRulesetBypassPropDataItemsType(TypedDict):
+    """ExemptionRequestPushRulesetBypassPropDataItems"""
+
+    ruleset_id: NotRequired[int]
+    ruleset_name: NotRequired[str]
+    total_violations: NotRequired[int]
+    rule_type: NotRequired[str]
+
+
+class DismissalRequestSecretScanningType(TypedDict):
+    """Secret scanning alert dismissal request data
+
+    Secret scanning alerts that have dismissal requests.
+    """
+
+    type: NotRequired[Literal["secret_scanning_closure"]]
+    data: NotRequired[list[DismissalRequestSecretScanningPropDataItemsType]]
+
+
+class DismissalRequestSecretScanningPropDataItemsType(TypedDict):
+    """DismissalRequestSecretScanningPropDataItems"""
+
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+    secret_type: NotRequired[str]
+    alert_number: NotRequired[str]
+
+
+class DismissalRequestCodeScanningType(TypedDict):
+    """Code scanning alert dismissal request data
+
+    Code scanning alerts that have dismissal requests.
+    """
+
+    type: NotRequired[Literal["code_scanning_alert_dismissal"]]
+    data: NotRequired[list[DismissalRequestCodeScanningPropDataItemsType]]
+
+
+class DismissalRequestCodeScanningPropDataItemsType(TypedDict):
+    """DismissalRequestCodeScanningPropDataItems"""
+
+    alert_number: NotRequired[str]
+
+
+class ExemptionRequestSecretScanningType(TypedDict):
+    """Secret scanning push protection exemption request data
+
+    Secret scanning push protections that are being requested to be bypassed.
+    """
+
+    type: NotRequired[Literal["secret_scanning"]]
+    data: NotRequired[list[ExemptionRequestSecretScanningPropDataItemsType]]
+
+
+class ExemptionRequestSecretScanningPropDataItemsType(TypedDict):
+    """ExemptionRequestSecretScanningPropDataItems"""
+
+    secret_type: NotRequired[str]
+    locations: NotRequired[
+        list[ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType]
+    ]
+
+
+class ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType(TypedDict):
+    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
+
+    commit: NotRequired[str]
+    branch: NotRequired[str]
+    path: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksCommentPropReactionsType",
-    "WebhooksCommentPropUserType",
-    "WebhooksCommentType",
+    "DismissalRequestCodeScanningMetadataType",
+    "DismissalRequestCodeScanningPropDataItemsType",
+    "DismissalRequestCodeScanningType",
+    "DismissalRequestSecretScanningMetadataType",
+    "DismissalRequestSecretScanningPropDataItemsType",
+    "DismissalRequestSecretScanningType",
+    "ExemptionRequestPushRulesetBypassPropDataItemsType",
+    "ExemptionRequestPushRulesetBypassType",
+    "ExemptionRequestSecretScanningMetadataType",
+    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType",
+    "ExemptionRequestSecretScanningPropDataItemsType",
+    "ExemptionRequestSecretScanningType",
+    "ExemptionRequestType",
 )

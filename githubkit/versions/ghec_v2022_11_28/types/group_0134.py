@@ -9,21 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0135 import RepositoryRuleWorkflowsPropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleWorkflowsType(TypedDict):
-    """workflows
+class RepositoryRuleMaxFileSizePropParametersType(TypedDict):
+    """RepositoryRuleMaxFileSizePropParameters"""
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
-    """
-
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    max_file_size: int
 
 
-__all__ = ("RepositoryRuleWorkflowsType",)
+__all__ = ("RepositoryRuleMaxFileSizePropParametersType",)

@@ -9,24 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsSecret(GitHubModel):
-    """Actions Secret
+class TeamMembership(GitHubModel):
+    """Team Membership
 
-    Set secrets for GitHub Actions.
+    Team Membership
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    url: str = Field()
+    role: Literal["member", "maintainer"] = Field(
+        default="member", description="The role of the user in the team."
+    )
+    state: Literal["active", "pending"] = Field(
+        description="The state of the user's membership in the team."
+    )
 
 
-model_rebuild(ActionsSecret)
+model_rebuild(TeamMembership)
 
-__all__ = ("ActionsSecret",)
+__all__ = ("TeamMembership",)

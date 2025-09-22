@@ -17,21 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0164 import RepositoryRuleCommitterEmailPatternPropParameters
+from .group_0164 import RepositoryRuleRequiredDeploymentsPropParameters
 
 
-class RepositoryRuleCommitterEmailPattern(GitHubModel):
-    """committer_email_pattern
+class RepositoryRuleRequiredDeployments(GitHubModel):
+    """required_deployments
 
-    Parameters to be used for the committer_email_pattern rule
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["committer_email_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitterEmailPatternPropParameters] = Field(
+    type: Literal["required_deployments"] = Field()
+    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
         default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleCommitterEmailPattern)
+model_rebuild(RepositoryRuleRequiredDeployments)
 
-__all__ = ("RepositoryRuleCommitterEmailPattern",)
+__all__ = ("RepositoryRuleRequiredDeployments",)

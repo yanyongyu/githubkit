@@ -14,22 +14,29 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class WebhooksLabel(GitHubModel):
-    """Label"""
+class WebhooksDeployKey(GitHubModel):
+    """WebhooksDeployKey
 
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field()
-    description: Union[str, None] = Field()
+    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
+    deploy-key) resource.
+    """
+
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: str = Field()
     id: int = Field()
-    name: str = Field(description="The name of the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
+    key: str = Field()
+    last_used: Missing[Union[str, None]] = Field(default=UNSET)
+    read_only: bool = Field()
+    title: str = Field()
+    url: str = Field()
+    verified: bool = Field()
+    enabled: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksLabel)
+model_rebuild(WebhooksDeployKey)
 
-__all__ = ("WebhooksLabel",)
+__all__ = ("WebhooksDeployKey",)

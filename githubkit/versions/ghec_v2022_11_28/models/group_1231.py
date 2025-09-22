@@ -9,37 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoImportPutBody(GitHubModel):
-    """ReposOwnerRepoImportPutBody"""
+class ReposOwnerRepoDeploymentsPostBody(GitHubModel):
+    """ReposOwnerRepoDeploymentsPostBody"""
 
-    vcs_url: str = Field(description="The URL of the originating repository.")
-    vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = Field(
-        default=UNSET,
-        description="The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.",
+    ref: str = Field(
+        description="The ref to deploy. This can be a branch, tag, or SHA."
     )
-    vcs_username: Missing[str] = Field(
+    task: Missing[str] = Field(
         default=UNSET,
-        description="If authentication is required, the username to provide to `vcs_url`.",
+        description="Specifies a task to execute (e.g., `deploy` or `deploy:migrations`).",
     )
-    vcs_password: Missing[str] = Field(
+    auto_merge: Missing[bool] = Field(
         default=UNSET,
-        description="If authentication is required, the password to provide to `vcs_url`.",
+        description="Attempts to automatically merge the default branch into the requested ref, if it's behind the default branch.",
     )
-    tfvc_project: Missing[str] = Field(
+    required_contexts: Missing[list[str]] = Field(
         default=UNSET,
-        description="For a tfvc import, the name of the project that is being imported.",
+        description="The [status](https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.",
+    )
+    payload: Missing[Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0, str]] = (
+        Field(default=UNSET)
+    )
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="Name for the target deployment environment (e.g., `production`, `staging`, `qa`).",
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the deployment."
+    )
+    transient_environment: Missing[bool] = Field(
+        default=UNSET,
+        description="Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`",
+    )
+    production_environment: Missing[bool] = Field(
+        default=UNSET,
+        description="Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.",
     )
 
 
-model_rebuild(ReposOwnerRepoImportPutBody)
+class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0(ExtraGitHubModel):
+    """ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0"""
 
-__all__ = ("ReposOwnerRepoImportPutBody",)
+
+model_rebuild(ReposOwnerRepoDeploymentsPostBody)
+model_rebuild(ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0)
+
+__all__ = (
+    "ReposOwnerRepoDeploymentsPostBody",
+    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0",
+)

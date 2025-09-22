@@ -15,28 +15,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0207 import RateLimit
 
+class NetworkSettings(GitHubModel):
+    """Hosted compute network settings resource
 
-class RateLimitOverviewPropResources(GitHubModel):
-    """RateLimitOverviewPropResources"""
+    A hosted compute network settings resource.
+    """
 
-    core: RateLimit = Field(title="Rate Limit")
-    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    search: RateLimit = Field(title="Rate Limit")
-    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_upload: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    actions_runner_registration: Missing[RateLimit] = Field(
-        default=UNSET, title="Rate Limit"
+    id: str = Field(
+        description="The unique identifier of the network settings resource."
     )
-    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    network_configuration_id: Missing[str] = Field(
+        default=UNSET,
+        description="The identifier of the network configuration that is using this settings resource.",
+    )
+    name: str = Field(description="The name of the network settings resource.")
+    subnet_id: str = Field(
+        description="The subnet this network settings resource is configured for."
+    )
+    region: str = Field(
+        description="The location of the subnet this network settings resource is configured for."
+    )
 
 
-model_rebuild(RateLimitOverviewPropResources)
+model_rebuild(NetworkSettings)
 
-__all__ = ("RateLimitOverviewPropResources",)
+__all__ = ("NetworkSettings",)

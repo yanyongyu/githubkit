@@ -14,15 +14,20 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RateLimit(GitHubModel):
-    """Rate Limit"""
+class PackagesBillingUsage(GitHubModel):
+    """PackagesBillingUsage"""
 
-    limit: int = Field()
-    remaining: int = Field()
-    reset: int = Field()
-    used: int = Field()
+    total_gigabytes_bandwidth_used: int = Field(
+        description="Sum of the free and paid storage space (GB) for GitHuub Packages."
+    )
+    total_paid_gigabytes_bandwidth_used: int = Field(
+        description="Total paid storage space (GB) for GitHuub Packages."
+    )
+    included_gigabytes_bandwidth: int = Field(
+        description="Free storage space (GB) for GitHub Packages."
+    )
 
 
-model_rebuild(RateLimit)
+model_rebuild(PackagesBillingUsage)
 
-__all__ = ("RateLimit",)
+__all__ = ("PackagesBillingUsage",)

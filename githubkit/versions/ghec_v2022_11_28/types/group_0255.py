@@ -9,20 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0254 import RateLimitType
-from .group_0256 import RateLimitOverviewPropResourcesType
+from .group_0003 import SimpleUserType
 
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
+class RepositoryAdvisoryCreditType(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    Rate Limit Overview
+    A credit given to a user for a repository security advisory.
     """
 
-    resources: RateLimitOverviewPropResourcesType
-    rate: RateLimitType
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+    state: Literal["accepted", "declined", "pending"]
 
 
-__all__ = ("RateLimitOverviewType",)
+__all__ = ("RepositoryAdvisoryCreditType",)

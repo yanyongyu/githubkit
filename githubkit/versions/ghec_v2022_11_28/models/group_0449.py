@@ -10,31 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositorySubscription(GitHubModel):
-    """Repository Invitation
+class SecretScanningPushProtectionBypass(GitHubModel):
+    """SecretScanningPushProtectionBypass"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    subscribed: bool = Field(
-        description="Determines if notifications should be received from this repository."
+    reason: Missing[Literal["false_positive", "used_in_tests", "will_fix_later"]] = (
+        Field(default=UNSET, description="The reason for bypassing push protection.")
     )
-    ignored: bool = Field(
-        description="Determines if all notifications should be blocked from this repository."
+    expire_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    reason: Union[str, None] = Field()
-    created_at: datetime = Field()
-    url: str = Field()
-    repository_url: str = Field()
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The token type this bypass is for."
+    )
 
 
-model_rebuild(RepositorySubscription)
+model_rebuild(SecretScanningPushProtectionBypass)
 
-__all__ = ("RepositorySubscription",)
+__all__ = ("SecretScanningPushProtectionBypass",)

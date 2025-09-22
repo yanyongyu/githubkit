@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0495 import EnterpriseWebhooks
-from .group_0496 import SimpleInstallation
-from .group_0497 import OrganizationSimpleWebhooks
-from .group_0498 import RepositoryWebhooks
-from .group_0512 import WebhooksLabel
+from .group_0169 import IssueType
+from .group_0505 import EnterpriseWebhooks
+from .group_0506 import SimpleInstallation
+from .group_0507 import OrganizationSimpleWebhooks
+from .group_0508 import RepositoryWebhooks
+from .group_0527 import WebhooksIssue
 
 
-class WebhookLabelDeleted(GitHubModel):
-    """label deleted event"""
+class WebhookIssuesTyped(GitHubModel):
+    """issues typed event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["typed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +40,13 @@ class WebhookLabelDeleted(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: WebhooksLabel = Field(title="Label")
+    issue: WebhooksIssue = Field(
+        title="Issue",
+        description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
+    )
+    type: Union[IssueType, None] = Field(
+        title="Issue Type", description="The type of issue."
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -52,6 +59,6 @@ class WebhookLabelDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookLabelDeleted)
+model_rebuild(WebhookIssuesTyped)
 
-__all__ = ("WebhookLabelDeleted",)
+__all__ = ("WebhookIssuesTyped",)

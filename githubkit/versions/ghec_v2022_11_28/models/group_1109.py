@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0249 import CustomPropertyValue
 
 
-class ProjectsColumnsCardsCardIdMovesPostBody(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostBody"""
+class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    position: str = Field(
-        pattern="^(?:top|bottom|after:\\d+)$",
-        description="The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place after the specified card.",
+    repository_names: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of repositories that the custom property values will be applied to.",
     )
-    column_id: Missing[int] = Field(
-        default=UNSET,
-        description="The unique identifier of the column the card should be moved to",
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the repositories."
     )
 
 
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostBody)
+model_rebuild(OrgsOrgPropertiesValuesPatchBody)
 
-__all__ = ("ProjectsColumnsCardsCardIdMovesPostBody",)
+__all__ = ("OrgsOrgPropertiesValuesPatchBody",)

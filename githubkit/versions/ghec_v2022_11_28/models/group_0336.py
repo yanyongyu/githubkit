@@ -9,44 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ContentSubmodule(GitHubModel):
-    """Submodule Content
+class BranchShort(GitHubModel):
+    """Branch Short
 
-    An object describing a submodule
+    Branch Short
     """
 
-    type: Literal["submodule"] = Field()
-    submodule_git_url: str = Field()
-    size: int = Field()
     name: str = Field()
-    path: str = Field()
+    commit: BranchShortPropCommit = Field()
+    protected: bool = Field()
+
+
+class BranchShortPropCommit(GitHubModel):
+    """BranchShortPropCommit"""
+
     sha: str = Field()
     url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentSubmodulePropLinks = Field(alias="_links")
 
 
-class ContentSubmodulePropLinks(GitHubModel):
-    """ContentSubmodulePropLinks"""
-
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentSubmodule)
-model_rebuild(ContentSubmodulePropLinks)
+model_rebuild(BranchShort)
+model_rebuild(BranchShortPropCommit)
 
 __all__ = (
-    "ContentSubmodule",
-    "ContentSubmodulePropLinks",
+    "BranchShort",
+    "BranchShortPropCommit",
 )

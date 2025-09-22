@@ -9,15 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0235 import CustomPropertyValueType
-
-
-class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
-
-    properties: list[CustomPropertyValueType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-__all__ = ("ReposOwnerRepoPropertiesValuesPatchBodyType",)
+class ReposOwnerRepoIssuesIssueNumberLockPutBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+
+    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
+
+
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLockPutBodyType",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,19 +17,25 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0068 import SimpleRepository
 
-class SelfHostedRunnersSettings(GitHubModel):
-    """SelfHostedRunnersSettings"""
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
-    )
-    selected_repositories_url: Missing[str] = Field(
+class DependabotRepositoryAccessDetails(GitHubModel):
+    """Dependabot Repository Access Details
+
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
+
+    default_level: Missing[Union[None, Literal["public", "internal"]]] = Field(
         default=UNSET,
-        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
+        description="The default repository access level for Dependabot updates.",
+    )
+    accessible_repositories: Missing[list[Union[None, SimpleRepository]]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(SelfHostedRunnersSettings)
+model_rebuild(DependabotRepositoryAccessDetails)
 
-__all__ = ("SelfHostedRunnersSettings",)
+__all__ = ("DependabotRepositoryAccessDetails",)

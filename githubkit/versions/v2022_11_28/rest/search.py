@@ -326,6 +326,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         advanced_search: Missing[str] = UNSET,
+        search_type: Missing[Literal["semantic"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
@@ -334,7 +335,7 @@ class SearchClient:
         GET /search/issues
 
         > [!WARNING]
-        > **Notice:** Search for issues and pull requests will be overridden by advanced search on September 4, 2025.
+        > **Notice:** Search for issues and pull requests will be overridden by advanced search on November 4, 2025.
         > You can read more about this change on [the GitHub blog](https://github.blog/changelog/2025-03-06-github-issues-projects-api-support-for-issues-advanced-search-and-more/).
 
         See also: https://docs.github.com/rest/search/search#search-issues-and-pull-requests
@@ -356,6 +357,7 @@ class SearchClient:
             "per_page": per_page,
             "page": page,
             "advanced_search": advanced_search,
+            "search_type": search_type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -397,6 +399,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         advanced_search: Missing[str] = UNSET,
+        search_type: Missing[Literal["semantic"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
@@ -405,7 +408,7 @@ class SearchClient:
         GET /search/issues
 
         > [!WARNING]
-        > **Notice:** Search for issues and pull requests will be overridden by advanced search on September 4, 2025.
+        > **Notice:** Search for issues and pull requests will be overridden by advanced search on November 4, 2025.
         > You can read more about this change on [the GitHub blog](https://github.blog/changelog/2025-03-06-github-issues-projects-api-support-for-issues-advanced-search-and-more/).
 
         See also: https://docs.github.com/rest/search/search#search-issues-and-pull-requests
@@ -427,6 +430,7 @@ class SearchClient:
             "per_page": per_page,
             "page": page,
             "advanced_search": advanced_search,
+            "search_type": search_type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

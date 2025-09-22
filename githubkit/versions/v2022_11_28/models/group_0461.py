@@ -12,25 +12,29 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0219 import SimpleCommit
 
+class WebhooksChanges(GitHubModel):
+    """WebhooksChanges
 
-class MergeGroup(GitHubModel):
-    """Merge Group
-
-    A group of pull requests that the merge queue has grouped together to be merged.
+    The changes to the comment.
     """
 
-    head_sha: str = Field(description="The SHA of the merge group.")
-    head_ref: str = Field(description="The full ref of the merge group.")
-    base_sha: str = Field(description="The SHA of the merge group's parent commit.")
-    base_ref: str = Field(
-        description="The full ref of the branch the merge group will be merged into."
-    )
-    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
+    body: Missing[WebhooksChangesPropBody] = Field(default=UNSET)
 
 
-model_rebuild(MergeGroup)
+class WebhooksChangesPropBody(GitHubModel):
+    """WebhooksChangesPropBody"""
 
-__all__ = ("MergeGroup",)
+    from_: str = Field(alias="from", description="The previous version of the body.")
+
+
+model_rebuild(WebhooksChanges)
+model_rebuild(WebhooksChangesPropBody)
+
+__all__ = (
+    "WebhooksChanges",
+    "WebhooksChangesPropBody",
+)

@@ -13,42 +13,63 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0093 import TeamType
 
+class JobType(TypedDict):
+    """Job
 
-class PendingDeploymentPropReviewersItemsType(TypedDict):
-    """PendingDeploymentPropReviewersItems"""
-
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
-
-
-class PendingDeploymentType(TypedDict):
-    """Pending Deployment
-
-    Details of a deployment that is waiting for protection rules to pass
+    Information of a job execution in a workflow run
     """
 
-    environment: PendingDeploymentPropEnvironmentType
-    wait_timer: int
-    wait_timer_started_at: Union[datetime, None]
-    current_user_can_approve: bool
-    reviewers: list[PendingDeploymentPropReviewersItemsType]
+    id: int
+    run_id: int
+    run_url: str
+    run_attempt: NotRequired[int]
+    node_id: str
+    head_sha: str
+    url: str
+    html_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    created_at: datetime
+    started_at: datetime
+    completed_at: Union[datetime, None]
+    name: str
+    steps: NotRequired[list[JobPropStepsItemsType]]
+    check_run_url: str
+    labels: list[str]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    workflow_name: Union[str, None]
+    head_branch: Union[str, None]
 
 
-class PendingDeploymentPropEnvironmentType(TypedDict):
-    """PendingDeploymentPropEnvironment"""
+class JobPropStepsItemsType(TypedDict):
+    """JobPropStepsItems"""
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
+    status: Literal["queued", "in_progress", "completed"]
+    conclusion: Union[str, None]
+    name: str
+    number: int
+    started_at: NotRequired[Union[datetime, None]]
+    completed_at: NotRequired[Union[datetime, None]]
 
 
 __all__ = (
-    "PendingDeploymentPropEnvironmentType",
-    "PendingDeploymentPropReviewersItemsType",
-    "PendingDeploymentType",
+    "JobPropStepsItemsType",
+    "JobType",
 )

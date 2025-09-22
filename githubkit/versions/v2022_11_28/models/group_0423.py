@@ -19,154 +19,125 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0099 import CodespaceMachine
-from .group_0133 import FullRepository
+from .group_0010 import Integration
+from .group_0020 import Repository
+from .group_0043 import Milestone
+from .group_0044 import IssueType
+from .group_0045 import ReactionRollup
+from .group_0046 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0047 import IssueFieldValue
+from .group_0419 import SearchResultTextMatchesItems
 
 
-class CodespaceWithFullRepository(GitHubModel):
-    """Codespace
+class IssueSearchResultItem(GitHubModel):
+    """Issue Search Result Item
 
-    A codespace.
+    Issue Search Result Item
     """
 
+    url: str = Field()
+    repository_url: str = Field()
+    labels_url: str = Field()
+    comments_url: str = Field()
+    events_url: str = Field()
+    html_url: str = Field()
     id: int = Field()
-    name: str = Field(description="Automatically generated name of this codespace.")
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Display name for this codespace."
+    node_id: str = Field()
+    number: int = Field()
+    title: str = Field()
+    locked: bool = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    labels: list[IssueSearchResultItemPropLabelsItems] = Field()
+    sub_issues_summary: Missing[SubIssuesSummary] = Field(
+        default=UNSET, title="Sub-issues Summary"
     )
-    environment_id: Union[str, None] = Field(
-        description="UUID identifying this codespace's environment."
+    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
+        default=UNSET, title="Issue Dependencies Summary"
     )
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    billable_owner: SimpleUser = Field(
-        title="Simple User", description="A GitHub user."
-    )
-    repository: FullRepository = Field(
-        title="Full Repository", description="Full Repository"
-    )
-    machine: Union[None, CodespaceMachine] = Field()
-    devcontainer_path: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Path to devcontainer.json from repo root used to create Codespace.",
-    )
-    prebuild: Union[bool, None] = Field(
-        description="Whether the codespace was created from a prebuild."
-    )
+    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
+    state: str = Field()
+    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignee: Union[None, SimpleUser] = Field()
+    milestone: Union[None, Milestone] = Field()
+    comments: int = Field()
     created_at: datetime = Field()
     updated_at: datetime = Field()
-    last_used_at: datetime = Field(
-        description="Last known time this codespace was started."
+    closed_at: Union[datetime, None] = Field()
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
     )
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ] = Field(description="State of this codespace.")
-    url: str = Field(description="API URL for this codespace.")
-    git_status: CodespaceWithFullRepositoryPropGitStatus = Field(
-        description="Details about the codespace's git repository."
+    pull_request: Missing[IssueSearchResultItemPropPullRequest] = Field(default=UNSET)
+    body: Missing[str] = Field(default=UNSET)
+    score: float = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
     )
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"] = Field(
-        description="The initally assigned location of a new codespace."
+    draft: Missing[bool] = Field(default=UNSET)
+    repository: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
     )
-    idle_timeout_minutes: Union[int, None] = Field(
-        description="The number of minutes of inactivity after which this codespace will be automatically stopped."
+    body_html: Missing[str] = Field(default=UNSET)
+    body_text: Missing[str] = Field(default=UNSET)
+    timeline_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Union[IssueType, None]] = Field(
+        default=UNSET, title="Issue Type", description="The type of issue."
     )
-    web_url: str = Field(description="URL to access this codespace on the web.")
-    machines_url: str = Field(
-        description="API URL to access available alternate machine types for this codespace."
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
     )
-    start_url: str = Field(description="API URL to start this codespace.")
-    stop_url: str = Field(description="API URL to stop this codespace.")
-    publish_url: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="API URL to publish this codespace to a new repository.",
-    )
-    pulls_url: Union[str, None] = Field(
-        description="API URL for the Pull Request associated with this codespace, if any."
-    )
-    recent_folders: list[str] = Field()
-    runtime_constraints: Missing[CodespaceWithFullRepositoryPropRuntimeConstraints] = (
-        Field(default=UNSET)
-    )
-    pending_operation: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether or not a codespace has a pending async operation. This would mean that the codespace is temporarily unavailable. The only thing that you can do with a codespace in this state is delete it.",
-    )
-    pending_operation_disabled_reason: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Text to show user when codespace is disabled by a pending operation",
-    )
-    idle_timeout_notice: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Text to show user when codespace idle timeout minutes has been overriden by an organization policy",
-    )
-    retention_period_minutes: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
-    )
-    retention_expires_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description='When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"',
-    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class CodespaceWithFullRepositoryPropGitStatus(GitHubModel):
-    """CodespaceWithFullRepositoryPropGitStatus
+class IssueSearchResultItemPropLabelsItems(GitHubModel):
+    """IssueSearchResultItemPropLabelsItems"""
 
-    Details about the codespace's git repository.
-    """
-
-    ahead: Missing[int] = Field(
-        default=UNSET,
-        description="The number of commits the local repository is ahead of the remote.",
-    )
-    behind: Missing[int] = Field(
-        default=UNSET,
-        description="The number of commits the local repository is behind the remote.",
-    )
-    has_unpushed_changes: Missing[bool] = Field(
-        default=UNSET, description="Whether the local repository has unpushed changes."
-    )
-    has_uncommitted_changes: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the local repository has uncommitted changes.",
-    )
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="The current branch (or SHA if in detached HEAD state) of the local repository.",
-    )
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    default: Missing[bool] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class CodespaceWithFullRepositoryPropRuntimeConstraints(GitHubModel):
-    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
+class IssueSearchResultItemPropPullRequest(GitHubModel):
+    """IssueSearchResultItemPropPullRequest"""
 
-    allowed_port_privacy_settings: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="The privacy settings a user can select from when forwarding a port.",
-    )
+    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    diff_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    patch_url: Union[str, None] = Field()
+    url: Union[str, None] = Field()
 
 
-model_rebuild(CodespaceWithFullRepository)
-model_rebuild(CodespaceWithFullRepositoryPropGitStatus)
-model_rebuild(CodespaceWithFullRepositoryPropRuntimeConstraints)
+class SearchIssuesGetResponse200(GitHubModel):
+    """SearchIssuesGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[IssueSearchResultItem] = Field()
+
+
+model_rebuild(IssueSearchResultItem)
+model_rebuild(IssueSearchResultItemPropLabelsItems)
+model_rebuild(IssueSearchResultItemPropPullRequest)
+model_rebuild(SearchIssuesGetResponse200)
 
 __all__ = (
-    "CodespaceWithFullRepository",
-    "CodespaceWithFullRepositoryPropGitStatus",
-    "CodespaceWithFullRepositoryPropRuntimeConstraints",
+    "IssueSearchResultItem",
+    "IssueSearchResultItemPropLabelsItems",
+    "IssueSearchResultItemPropPullRequest",
+    "SearchIssuesGetResponse200",
 )

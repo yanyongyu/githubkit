@@ -13,24 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0266 import SimpleCommit
+
+class WebhooksRepositoriesAddedItems(GitHubModel):
+    """WebhooksRepositoriesAddedItems"""
+
+    full_name: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    name: str = Field(description="The name of the repository.")
+    node_id: str = Field()
+    private: bool = Field(description="Whether the repository is private or public.")
 
 
-class MergeGroup(GitHubModel):
-    """Merge Group
+model_rebuild(WebhooksRepositoriesAddedItems)
 
-    A group of pull requests that the merge queue has grouped together to be merged.
-    """
-
-    head_sha: str = Field(description="The SHA of the merge group.")
-    head_ref: str = Field(description="The full ref of the merge group.")
-    base_sha: str = Field(description="The SHA of the merge group's parent commit.")
-    base_ref: str = Field(
-        description="The full ref of the branch the merge group will be merged into."
-    )
-    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
-
-
-model_rebuild(MergeGroup)
-
-__all__ = ("MergeGroup",)
+__all__ = ("WebhooksRepositoriesAddedItems",)

@@ -19,39 +19,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksReview(GitHubModel):
-    """WebhooksReview
+class WebhooksProject(GitHubModel):
+    """Project"""
 
-    The review that was affected.
-    """
-
-    links: WebhooksReviewPropLinks = Field(alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
-    )
-    body: Union[str, None] = Field(description="The text of the review.")
-    commit_id: str = Field(description="A commit SHA for the review.")
+    body: Union[str, None] = Field(description="Body of the project")
+    columns_url: str = Field()
+    created_at: datetime = Field()
+    creator: Union[WebhooksProjectPropCreator, None] = Field(title="User")
     html_url: str = Field()
-    id: int = Field(description="Unique identifier of the review")
+    id: int = Field()
+    name: str = Field(description="Name of the project")
     node_id: str = Field()
-    pull_request_url: str = Field()
-    state: str = Field()
-    submitted_at: Union[datetime, None] = Field()
-    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    user: Union[WebhooksReviewPropUser, None] = Field(title="User")
+    number: int = Field()
+    owner_url: str = Field()
+    state: Literal["open", "closed"] = Field(
+        description="State of the project; either 'open' or 'closed'"
+    )
+    updated_at: datetime = Field()
+    url: str = Field()
 
 
-class WebhooksReviewPropUser(GitHubModel):
+class WebhooksProjectPropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -78,35 +66,10 @@ class WebhooksReviewPropUser(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhooksReviewPropLinks(GitHubModel):
-    """WebhooksReviewPropLinks"""
-
-    html: WebhooksReviewPropLinksPropHtml = Field(title="Link")
-    pull_request: WebhooksReviewPropLinksPropPullRequest = Field(title="Link")
-
-
-class WebhooksReviewPropLinksPropHtml(GitHubModel):
-    """Link"""
-
-    href: str = Field()
-
-
-class WebhooksReviewPropLinksPropPullRequest(GitHubModel):
-    """Link"""
-
-    href: str = Field()
-
-
-model_rebuild(WebhooksReview)
-model_rebuild(WebhooksReviewPropUser)
-model_rebuild(WebhooksReviewPropLinks)
-model_rebuild(WebhooksReviewPropLinksPropHtml)
-model_rebuild(WebhooksReviewPropLinksPropPullRequest)
+model_rebuild(WebhooksProject)
+model_rebuild(WebhooksProjectPropCreator)
 
 __all__ = (
-    "WebhooksReview",
-    "WebhooksReviewPropLinks",
-    "WebhooksReviewPropLinksPropHtml",
-    "WebhooksReviewPropLinksPropPullRequest",
-    "WebhooksReviewPropUser",
+    "WebhooksProject",
+    "WebhooksProjectPropCreator",
 )

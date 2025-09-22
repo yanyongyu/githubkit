@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0434 import EnterpriseWebhooks
-from .group_0435 import SimpleInstallation
-from .group_0436 import OrganizationSimpleWebhooks
-from .group_0437 import RepositoryWebhooks
-from .group_0463 import WebhooksMembership
+from .group_0442 import EnterpriseWebhooks
+from .group_0443 import SimpleInstallation
+from .group_0444 import OrganizationSimpleWebhooks
+from .group_0445 import RepositoryWebhooks
+from .group_0453 import WebhooksUser
 
 
-class WebhookOrganizationRenamed(GitHubModel):
-    """organization renamed event"""
+class WebhookOrgBlockBlocked(GitHubModel):
+    """org_block blocked event"""
 
-    action: Literal["renamed"] = Field()
-    changes: Missing[WebhookOrganizationRenamedPropChanges] = Field(default=UNSET)
+    action: Literal["blocked"] = Field()
+    blocked_user: Union[WebhooksUser, None] = Field(title="User")
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,11 +39,6 @@ class WebhookOrganizationRenamed(GitHubModel):
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    membership: Missing[WebhooksMembership] = Field(
-        default=UNSET,
-        title="Membership",
-        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
     )
     organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
@@ -57,26 +52,6 @@ class WebhookOrganizationRenamed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookOrganizationRenamedPropChanges(GitHubModel):
-    """WebhookOrganizationRenamedPropChanges"""
+model_rebuild(WebhookOrgBlockBlocked)
 
-    login: Missing[WebhookOrganizationRenamedPropChangesPropLogin] = Field(
-        default=UNSET
-    )
-
-
-class WebhookOrganizationRenamedPropChangesPropLogin(GitHubModel):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-model_rebuild(WebhookOrganizationRenamed)
-model_rebuild(WebhookOrganizationRenamedPropChanges)
-model_rebuild(WebhookOrganizationRenamedPropChangesPropLogin)
-
-__all__ = (
-    "WebhookOrganizationRenamed",
-    "WebhookOrganizationRenamedPropChanges",
-    "WebhookOrganizationRenamedPropChangesPropLogin",
-)
+__all__ = ("WebhookOrgBlockBlocked",)

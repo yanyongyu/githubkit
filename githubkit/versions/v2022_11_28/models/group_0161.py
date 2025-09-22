@@ -17,21 +17,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0162 import RepositoryRuleCommitAuthorEmailPatternPropParameters
+from .group_0162 import RepositoryRuleMergeQueuePropParameters
 
 
-class RepositoryRuleCommitAuthorEmailPattern(GitHubModel):
-    """commit_author_email_pattern
+class RepositoryRuleMergeQueue(GitHubModel):
+    """merge_queue
 
-    Parameters to be used for the commit_author_email_pattern rule
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["commit_author_email_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitAuthorEmailPatternPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["merge_queue"] = Field()
+    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleCommitAuthorEmailPattern)
+model_rebuild(RepositoryRuleMergeQueue)
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPattern",)
+__all__ = ("RepositoryRuleMergeQueue",)

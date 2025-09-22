@@ -9,17 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ActionsRepositoryPermissionsType(TypedDict):
-    """ActionsRepositoryPermissions"""
-
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+from .group_0003 import SimpleUserType
 
 
-__all__ = ("ActionsRepositoryPermissionsType",)
+class TeamProjectType(TypedDict):
+    """Team Project
+
+    A team's access to a project.
+    """
+
+    owner_url: str
+    url: str
+    html_url: str
+    columns_url: str
+    id: int
+    node_id: str
+    name: str
+    body: Union[str, None]
+    number: int
+    state: str
+    creator: SimpleUserType
+    created_at: str
+    updated_at: str
+    organization_permission: NotRequired[str]
+    private: NotRequired[bool]
+    permissions: TeamProjectPropPermissionsType
+
+
+class TeamProjectPropPermissionsType(TypedDict):
+    """TeamProjectPropPermissions"""
+
+    read: bool
+    write: bool
+    admin: bool
+
+
+__all__ = (
+    "TeamProjectPropPermissionsType",
+    "TeamProjectType",
+)

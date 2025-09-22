@@ -15,89 +15,87 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0358 import DeploymentBranchPolicySettings
+from .group_0360 import EnvironmentPropProtectionRulesItemsAnyof1
 
 
-class GitCommit(GitHubModel):
-    """Git Commit
+class Environment(GitHubModel):
+    """Environment
 
-    Low-level Git commit operations within a repository
+    Details of a deployment environment
     """
 
-    sha: str = Field(description="SHA for the commit")
+    id: int = Field(description="The id of the environment.")
     node_id: str = Field()
-    url: str = Field()
-    author: GitCommitPropAuthor = Field(
-        description="Identifying information for the git-user"
-    )
-    committer: GitCommitPropCommitter = Field(
-        description="Identifying information for the git-user"
-    )
-    message: str = Field(description="Message describing the purpose of the commit")
-    tree: GitCommitPropTree = Field()
-    parents: list[GitCommitPropParentsItems] = Field()
-    verification: GitCommitPropVerification = Field()
-    html_url: str = Field()
-
-
-class GitCommitPropAuthor(GitHubModel):
-    """GitCommitPropAuthor
-
-    Identifying information for the git-user
-    """
-
-    date: datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class GitCommitPropCommitter(GitHubModel):
-    """GitCommitPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class GitCommitPropTree(GitHubModel):
-    """GitCommitPropTree"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-
-
-class GitCommitPropParentsItems(GitHubModel):
-    """GitCommitPropParentsItems"""
-
-    sha: str = Field(description="SHA for the commit")
+    name: str = Field(description="The name of the environment.")
     url: str = Field()
     html_url: str = Field()
+    created_at: datetime = Field(
+        description="The time that the environment was created, in ISO 8601 format."
+    )
+    updated_at: datetime = Field(
+        description="The time that the environment was last updated, in ISO 8601 format."
+    )
+    protection_rules: Missing[
+        list[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0,
+                EnvironmentPropProtectionRulesItemsAnyof1,
+                EnvironmentPropProtectionRulesItemsAnyof2,
+            ]
+        ]
+    ] = Field(
+        default=UNSET,
+        description="Built-in deployment protection rules for the environment.",
+    )
+    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
+        Field(
+            default=UNSET,
+            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
+        )
+    )
 
 
-class GitCommitPropVerification(GitHubModel):
-    """GitCommitPropVerification"""
+class EnvironmentPropProtectionRulesItemsAnyof0(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
 
-    verified: bool = Field()
-    reason: str = Field()
-    signature: Union[str, None] = Field()
-    payload: Union[str, None] = Field()
-    verified_at: Union[str, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    type: str = Field()
+    wait_timer: Missing[int] = Field(
+        default=UNSET,
+        description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
+    )
 
 
-model_rebuild(GitCommit)
-model_rebuild(GitCommitPropAuthor)
-model_rebuild(GitCommitPropCommitter)
-model_rebuild(GitCommitPropTree)
-model_rebuild(GitCommitPropParentsItems)
-model_rebuild(GitCommitPropVerification)
+class EnvironmentPropProtectionRulesItemsAnyof2(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
+
+    id: int = Field()
+    node_id: str = Field()
+    type: str = Field()
+
+
+class ReposOwnerRepoEnvironmentsGetResponse200(GitHubModel):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
+
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of environments in this repository"
+    )
+    environments: Missing[list[Environment]] = Field(default=UNSET)
+
+
+model_rebuild(Environment)
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof0)
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof2)
+model_rebuild(ReposOwnerRepoEnvironmentsGetResponse200)
 
 __all__ = (
-    "GitCommit",
-    "GitCommitPropAuthor",
-    "GitCommitPropCommitter",
-    "GitCommitPropParentsItems",
-    "GitCommitPropTree",
-    "GitCommitPropVerification",
+    "Environment",
+    "EnvironmentPropProtectionRulesItemsAnyof0",
+    "EnvironmentPropProtectionRulesItemsAnyof2",
+    "ReposOwnerRepoEnvironmentsGetResponse200",
 )

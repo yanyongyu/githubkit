@@ -18,19 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0435 import SimpleInstallation
-from .group_0436 import OrganizationSimpleWebhooks
-from .group_0437 import RepositoryWebhooks
-from .group_0440 import CheckRunWithSimpleCheckSuite
+from .group_0442 import EnterpriseWebhooks
+from .group_0443 import SimpleInstallation
+from .group_0444 import OrganizationSimpleWebhooks
+from .group_0445 import RepositoryWebhooks
 
 
-class WebhookCheckRunCreated(GitHubModel):
-    """Check Run Created Event"""
+class WebhookBranchProtectionConfigurationEnabled(GitHubModel):
+    """branch protection configuration enabled event"""
 
-    action: Literal["created"] = Field()
-    check_run: CheckRunWithSimpleCheckSuite = Field(
-        title="CheckRun",
-        description="A check performed on the code of a given code change",
+    action: Literal["enabled"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -49,6 +50,6 @@ class WebhookCheckRunCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCheckRunCreated)
+model_rebuild(WebhookBranchProtectionConfigurationEnabled)
 
-__all__ = ("WebhookCheckRunCreated",)
+__all__ = ("WebhookBranchProtectionConfigurationEnabled",)

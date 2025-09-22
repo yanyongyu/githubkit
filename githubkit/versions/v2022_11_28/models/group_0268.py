@@ -9,32 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeScanningSarifsStatus(GitHubModel):
-    """CodeScanningSarifsStatus"""
+class CodeScanningAnalysisDeletion(GitHubModel):
+    """Analysis deletion
 
-    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
-        default=UNSET,
-        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
+    Successful deletion of a code scanning analysis
+    """
+
+    next_analysis_url: Union[str, None] = Field(
+        description="Next deletable analysis in chain, without last analysis deletion confirmation"
     )
-    analyses_url: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The REST API URL for getting the analyses associated with the upload.",
-    )
-    errors: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="Any errors that ocurred during processing of the delivery.",
+    confirm_delete_url: Union[str, None] = Field(
+        description="Next deletable analysis in chain, with last analysis deletion confirmation"
     )
 
 
-model_rebuild(CodeScanningSarifsStatus)
+model_rebuild(CodeScanningAnalysisDeletion)
 
-__all__ = ("CodeScanningSarifsStatus",)
+__all__ = ("CodeScanningAnalysisDeletion",)

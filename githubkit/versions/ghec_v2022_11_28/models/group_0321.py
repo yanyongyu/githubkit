@@ -19,59 +19,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0166 import ReactionRollup
+from .group_0068 import SimpleRepository
+from .group_0322 import CodeScanningVariantAnalysisPropScannedRepositoriesItems
+from .group_0323 import CodeScanningVariantAnalysisPropSkippedRepositories
 
 
-class CommitComment(GitHubModel):
-    """Commit Comment
+class CodeScanningVariantAnalysis(GitHubModel):
+    """Variant Analysis
 
-    Commit Comment
+    A run of a CodeQL query against one or more repositories.
     """
 
-    html_url: str = Field()
-    url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    body: str = Field()
-    path: Union[str, None] = Field()
-    position: Union[int, None] = Field()
-    line: Union[int, None] = Field()
-    commit_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    id: int = Field(description="The ID of the variant analysis.")
+    controller_repo: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    query_language: Literal[
+        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "rust", "swift"
+    ] = Field(description="The language targeted by the CodeQL query")
+    query_pack_url: str = Field(description="The download url for the query pack.")
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+    )
+    updated_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+    )
+    completed_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was completed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the variant analysis has not yet completed or this information is not available.",
+    )
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"] = Field()
+    actions_workflow_run_id: Missing[int] = Field(
+        default=UNSET,
+        description="The GitHub Actions workflow run used to execute this variant analysis. This is only available if the workflow run has started.",
+    )
+    failure_reason: Missing[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ] = Field(
+        default=UNSET,
+        description="The reason for a failure of the variant analysis. This is only available if the variant analysis has failed.",
+    )
+    scanned_repositories: Missing[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItems]
+    ] = Field(default=UNSET)
+    skipped_repositories: Missing[
+        CodeScanningVariantAnalysisPropSkippedRepositories
+    ] = Field(
+        default=UNSET,
+        description="Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis.",
+    )
 
 
-class TimelineCommitCommentedEvent(GitHubModel):
-    """Timeline Commit Commented Event
+model_rebuild(CodeScanningVariantAnalysis)
 
-    Timeline Commit Commented Event
-    """
-
-    event: Missing[Literal["commit_commented"]] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    commit_id: Missing[str] = Field(default=UNSET)
-    comments: Missing[list[CommitComment]] = Field(default=UNSET)
-
-
-model_rebuild(CommitComment)
-model_rebuild(TimelineCommitCommentedEvent)
-
-__all__ = (
-    "CommitComment",
-    "TimelineCommitCommentedEvent",
-)
+__all__ = ("CodeScanningVariantAnalysis",)

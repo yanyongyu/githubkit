@@ -9,81 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class DependencyGraphSpdxSbomType(TypedDict):
-    """Dependency Graph SPDX SBOM
+class ContentFileType(TypedDict):
+    """Content File
 
-    A schema for the SPDX JSON format returned by the Dependency Graph.
+    Content File
     """
 
-    sbom: DependencyGraphSpdxSbomPropSbomType
-
-
-class DependencyGraphSpdxSbomPropSbomType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbom"""
-
-    spdxid: str
-    spdx_version: str
-    comment: NotRequired[str]
-    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoType
+    type: Literal["file"]
+    encoding: str
+    size: int
     name: str
-    data_license: str
-    document_namespace: str
-    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsType]
-    relationships: NotRequired[
-        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType]
-    ]
+    path: str
+    content: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksType
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
 
 
-class DependencyGraphSpdxSbomPropSbomPropCreationInfoType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
+class ContentFilePropLinksType(TypedDict):
+    """ContentFilePropLinks"""
 
-    created: str
-    creators: list[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
-
-    relationship_type: NotRequired[str]
-    spdx_element_id: NotRequired[str]
-    related_spdx_element: NotRequired[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
-
-    spdxid: NotRequired[str]
-    name: NotRequired[str]
-    version_info: NotRequired[str]
-    download_location: NotRequired[str]
-    files_analyzed: NotRequired[bool]
-    license_concluded: NotRequired[str]
-    license_declared: NotRequired[str]
-    supplier: NotRequired[str]
-    copyright_text: NotRequired[str]
-    external_refs: NotRequired[
-        list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType]
-    ]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType(
-    TypedDict
-):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
-
-    reference_category: str
-    reference_locator: str
-    reference_type: str
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "DependencyGraphSpdxSbomPropSbomPropCreationInfoType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType",
-    "DependencyGraphSpdxSbomPropSbomType",
-    "DependencyGraphSpdxSbomType",
+    "ContentFilePropLinksType",
+    "ContentFileType",
 )

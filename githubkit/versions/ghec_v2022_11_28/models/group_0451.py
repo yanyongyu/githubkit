@@ -16,19 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TagProtection(GitHubModel):
-    """Tag protection
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    Tag protection
-    """
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
+    )
+    pattern_scope: Missing[str] = Field(
+        default=UNSET,
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
+    )
 
-    id: Missing[int] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    enabled: Missing[bool] = Field(default=UNSET)
-    pattern: str = Field()
 
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1)
 
-model_rebuild(TagProtection)
-
-__all__ = ("TagProtection",)
+__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1",)

@@ -10,91 +10,33 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0061 import BypassResponseType
 
+class BypassResponseType(TypedDict):
+    """Bypass response
 
-class PushRuleBypassRequestType(TypedDict):
-    """Push rule bypass request
-
-    A bypass request made by a user asking to be exempted from a push rule in this
-    repository.
+    A response made by a delegated bypasser to a bypass request.
     """
 
     id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[PushRuleBypassRequestPropRepositoryType]
-    organization: NotRequired[PushRuleBypassRequestPropOrganizationType]
-    requester: NotRequired[PushRuleBypassRequestPropRequesterType]
-    request_type: NotRequired[str]
-    data: NotRequired[Union[list[PushRuleBypassRequestPropDataItemsType], None]]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[
-        Literal[
-            "pending",
-            "denied",
-            "approved",
-            "cancelled",
-            "completed",
-            "expired",
-            "deleted",
-            "open",
-        ]
-    ]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[datetime]
+    reviewer: NotRequired[BypassResponsePropReviewerType]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
     created_at: NotRequired[datetime]
-    responses: NotRequired[Union[list[BypassResponseType], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
 
 
-class PushRuleBypassRequestPropRepositoryType(TypedDict):
-    """PushRuleBypassRequestPropRepository
+class BypassResponsePropReviewerType(TypedDict):
+    """BypassResponsePropReviewer
 
-    The repository the bypass request is for.
-    """
-
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
-    full_name: NotRequired[Union[str, None]]
-
-
-class PushRuleBypassRequestPropOrganizationType(TypedDict):
-    """PushRuleBypassRequestPropOrganization
-
-    The organization associated with the repository the bypass request is for.
-    """
-
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
-
-
-class PushRuleBypassRequestPropRequesterType(TypedDict):
-    """PushRuleBypassRequestPropRequester
-
-    The user who requested the bypass.
+    The user who reviewed the bypass request.
     """
 
     actor_id: NotRequired[int]
     actor_name: NotRequired[str]
 
 
-class PushRuleBypassRequestPropDataItemsType(TypedDict):
-    """PushRuleBypassRequestPropDataItems"""
-
-    ruleset_id: NotRequired[int]
-    ruleset_name: NotRequired[str]
-    total_violations: NotRequired[int]
-    rule_type: NotRequired[str]
-
-
 __all__ = (
-    "PushRuleBypassRequestPropDataItemsType",
-    "PushRuleBypassRequestPropOrganizationType",
-    "PushRuleBypassRequestPropRepositoryType",
-    "PushRuleBypassRequestPropRequesterType",
-    "PushRuleBypassRequestType",
+    "BypassResponsePropReviewerType",
+    "BypassResponseType",
 )

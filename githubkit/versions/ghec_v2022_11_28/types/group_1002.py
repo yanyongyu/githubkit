@@ -9,14 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
-
-    enabled_repositories: Literal["all", "selected", "none"]
+class GistsGistIdStarGetResponse404Type(TypedDict):
+    """GistsGistIdStarGetResponse404"""
 
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",)
+__all__ = ("GistsGistIdStarGetResponse404Type",)

@@ -9,42 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
 
+class DeleteCostCenter(GitHubModel):
+    """DeleteCostCenter"""
 
-class Milestone(GitHubModel):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
-
-    url: str = Field()
-    html_url: str = Field()
-    labels_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    state: Literal["open", "closed"] = Field(
-        default="open", description="The state of the milestone."
+    message: str = Field(
+        description="A message indicating the result of the deletion operation"
     )
-    title: str = Field(description="The title of the milestone.")
-    description: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    open_issues: int = Field()
-    closed_issues: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
-    due_on: Union[datetime, None] = Field()
+    id: str = Field(description="The unique identifier of the deleted cost center")
+    name: str = Field(description="The name of the deleted cost center")
+    cost_center_state: Literal["CostCenterArchived"] = Field(
+        alias="costCenterState",
+        description="The state of the cost center after deletion",
+    )
 
 
-model_rebuild(Milestone)
+model_rebuild(DeleteCostCenter)
 
-__all__ = ("Milestone",)
+__all__ = ("DeleteCostCenter",)

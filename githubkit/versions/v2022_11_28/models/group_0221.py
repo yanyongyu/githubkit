@@ -9,58 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0219 import RateLimit
 
 
-class EnvironmentApprovals(GitHubModel):
-    """Environment Approval
+class RateLimitOverviewPropResources(GitHubModel):
+    """RateLimitOverviewPropResources"""
 
-    An entry in the reviews log for environment deployments
-    """
-
-    environments: list[EnvironmentApprovalsPropEnvironmentsItems] = Field(
-        description="The list of environments that were approved or rejected"
+    core: RateLimit = Field(title="Rate Limit")
+    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    search: RateLimit = Field(title="Rate Limit")
+    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    code_scanning_upload: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    actions_runner_registration: Missing[RateLimit] = Field(
+        default=UNSET, title="Rate Limit"
     )
-    state: Literal["approved", "rejected", "pending"] = Field(
-        description="Whether deployment to the environment(s) was approved or rejected or pending (with comments)"
-    )
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    comment: str = Field(description="The comment submitted with the deployment review")
+    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
 
 
-class EnvironmentApprovalsPropEnvironmentsItems(GitHubModel):
-    """EnvironmentApprovalsPropEnvironmentsItems"""
+model_rebuild(RateLimitOverviewPropResources)
 
-    id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the environment."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time that the environment was created, in ISO 8601 format.",
-    )
-    updated_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time that the environment was last updated, in ISO 8601 format.",
-    )
-
-
-model_rebuild(EnvironmentApprovals)
-model_rebuild(EnvironmentApprovalsPropEnvironmentsItems)
-
-__all__ = (
-    "EnvironmentApprovals",
-    "EnvironmentApprovalsPropEnvironmentsItems",
-)
+__all__ = ("RateLimitOverviewPropResources",)

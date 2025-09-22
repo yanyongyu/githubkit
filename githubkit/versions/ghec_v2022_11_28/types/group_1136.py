@@ -11,14 +11,9 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0267 import WorkflowRunType
+
+class ProjectsColumnsCardsCardIdMovesPostResponse201Type(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse201"""
 
 
-class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsGetResponse200"""
-
-    total_count: int
-    workflow_runs: list[WorkflowRunType]
-
-
-__all__ = ("ReposOwnerRepoActionsRunsGetResponse200Type",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostResponse201Type",)

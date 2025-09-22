@@ -9,22 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0276 import LinkType
-
-
-class PullRequestSimplePropLinksType(TypedDict):
-    """PullRequestSimplePropLinks"""
-
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-__all__ = ("PullRequestSimplePropLinksType",)
+class CodeScanningSarifsStatusType(TypedDict):
+    """CodeScanningSarifsStatus"""
+
+    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
+    analyses_url: NotRequired[Union[str, None]]
+    errors: NotRequired[Union[list[str], None]]
+
+
+__all__ = ("CodeScanningSarifsStatusType",)

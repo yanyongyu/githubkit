@@ -9,34 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
 
-class MarketplaceListingPlan(GitHubModel):
-    """Marketplace Listing Plan
 
-    Marketplace Listing Plan
+class GistComment(GitHubModel):
+    """Gist Comment
+
+    A comment made to a gist.
     """
 
-    url: str = Field()
-    accounts_url: str = Field()
     id: int = Field()
-    number: int = Field()
-    name: str = Field()
-    description: str = Field()
-    monthly_price_in_cents: int = Field()
-    yearly_price_in_cents: int = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    has_free_trial: bool = Field()
-    unit_name: Union[str, None] = Field()
-    state: str = Field()
-    bullets: list[str] = Field()
+    node_id: str = Field()
+    url: str = Field()
+    body: str = Field(max_length=65535, description="The comment text.")
+    user: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
 
 
-model_rebuild(MarketplaceListingPlan)
+model_rebuild(GistComment)
 
-__all__ = ("MarketplaceListingPlan",)
+__all__ = ("GistComment",)

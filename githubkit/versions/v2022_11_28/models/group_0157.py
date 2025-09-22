@@ -14,25 +14,52 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0158 import RepositoryRuleRequiredStatusChecksPropParameters
 
 
-class RepositoryRuleRequiredStatusChecks(GitHubModel):
-    """required_status_checks
+class RepositoryRuleCreation(GitHubModel):
+    """creation
 
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    Only allow users with bypass permission to create matching refs.
     """
 
-    type: Literal["required_status_checks"] = Field()
-    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["creation"] = Field()
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecks)
+class RepositoryRuleDeletion(GitHubModel):
+    """deletion
 
-__all__ = ("RepositoryRuleRequiredStatusChecks",)
+    Only allow users with bypass permissions to delete matching refs.
+    """
+
+    type: Literal["deletion"] = Field()
+
+
+class RepositoryRuleRequiredSignatures(GitHubModel):
+    """required_signatures
+
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"] = Field()
+
+
+class RepositoryRuleNonFastForward(GitHubModel):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"] = Field()
+
+
+model_rebuild(RepositoryRuleCreation)
+model_rebuild(RepositoryRuleDeletion)
+model_rebuild(RepositoryRuleRequiredSignatures)
+model_rebuild(RepositoryRuleNonFastForward)
+
+__all__ = (
+    "RepositoryRuleCreation",
+    "RepositoryRuleDeletion",
+    "RepositoryRuleNonFastForward",
+    "RepositoryRuleRequiredSignatures",
+)

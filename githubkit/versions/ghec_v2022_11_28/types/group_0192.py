@@ -9,18 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ActionsOrganizationPermissionsType(TypedDict):
-    """ActionsOrganizationPermissions"""
-
-    enabled_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+from .group_0003 import SimpleUserType
 
 
-__all__ = ("ActionsOrganizationPermissionsType",)
+class OrganizationCustomRepositoryRoleType(TypedDict):
+    """Organization Custom Repository Role
+
+    Custom repository roles created by organization owners
+    """
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
+    organization: SimpleUserType
+    created_at: datetime
+    updated_at: datetime
+
+
+__all__ = ("OrganizationCustomRepositoryRoleType",)

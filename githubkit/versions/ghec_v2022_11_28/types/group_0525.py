@@ -13,32 +13,55 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0010 import IntegrationType
 
-class WebhooksMilestone3Type(TypedDict):
-    """Milestone
 
-    A collection of related issues and pull requests.
+class WebhooksIssueCommentType(TypedDict):
+    """issue comment
+
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
     """
 
-    closed_at: Union[datetime, None]
-    closed_issues: int
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
     created_at: datetime
-    creator: Union[WebhooksMilestone3PropCreatorType, None]
-    description: Union[str, None]
-    due_on: Union[datetime, None]
     html_url: str
     id: int
-    labels_url: str
+    issue_url: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
+    performed_via_github_app: Union[IntegrationType, None]
+    reactions: WebhooksIssueCommentPropReactionsType
     updated_at: datetime
+    url: str
+    user: Union[WebhooksIssueCommentPropUserType, None]
+
+
+class WebhooksIssueCommentPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
     url: str
 
 
-class WebhooksMilestone3PropCreatorType(TypedDict):
+class WebhooksIssueCommentPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -60,12 +83,13 @@ class WebhooksMilestone3PropCreatorType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksMilestone3PropCreatorType",
-    "WebhooksMilestone3Type",
+    "WebhooksIssueCommentPropReactionsType",
+    "WebhooksIssueCommentPropUserType",
+    "WebhooksIssueCommentType",
 )

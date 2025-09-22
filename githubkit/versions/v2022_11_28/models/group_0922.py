@@ -11,18 +11,25 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0100 import Codespace
-
-
-class OrgsOrgCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesGetResponse200"""
-
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgCodespacesGetResponse200)
+class OrgsOrgAttestationsBulkListPostBody(GitHubModel):
+    """OrgsOrgAttestationsBulkListPostBody"""
 
-__all__ = ("OrgsOrgCodespacesGetResponse200",)
+    subject_digests: list[str] = Field(
+        max_length=1024 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of subject digests to fetch attestations for.",
+    )
+    predicate_type: Missing[str] = Field(
+        default=UNSET,
+        description="Optional filter for fetching attestations with a given predicate type.\nThis option accepts `provenance`, `sbom`, or freeform text for custom predicate types.",
+    )
+
+
+model_rebuild(OrgsOrgAttestationsBulkListPostBody)
+
+__all__ = ("OrgsOrgAttestationsBulkListPostBody",)

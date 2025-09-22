@@ -230,9 +230,6 @@ if TYPE_CHECKING:
         BranchRestrictionPolicyPropAppsItemsType as BranchRestrictionPolicyPropAppsItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        BranchRestrictionPolicyPropTeamsItemsType as BranchRestrictionPolicyPropTeamsItemsType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         BranchRestrictionPolicyPropUsersItemsType as BranchRestrictionPolicyPropUsersItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -787,6 +784,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type as EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        EnterprisesEnterpriseTeamsPostBodyType as EnterprisesEnterpriseTeamsPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        EnterprisesEnterpriseTeamsTeamSlugPatchBodyType as EnterprisesEnterpriseTeamsTeamSlugPatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         EnterpriseTeamType as EnterpriseTeamType,
@@ -1400,6 +1409,21 @@ if TYPE_CHECKING:
         OrgsOrgActionsVariablesPostBodyType as OrgsOrgActionsVariablesPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgArtifactsMetadataStorageRecordPostBodyType as OrgsOrgArtifactsMetadataStorageRecordPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType as OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type as OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType as OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type as OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrgsOrgAttestationsBulkListPostBodyType as OrgsOrgAttestationsBulkListPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1616,6 +1640,15 @@ if TYPE_CHECKING:
         OrgsOrgProjectsPostBodyType as OrgsOrgProjectsPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType as OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType as OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgProjectsV2ProjectNumberItemsPostBodyType as OrgsOrgProjectsV2ProjectNumberItemsPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrgsOrgPropertiesSchemaPatchBodyType as OrgsOrgPropertiesSchemaPatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1811,48 +1844,11 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.types import (
         PrivateVulnerabilityReportCreateType as PrivateVulnerabilityReportCreateType,
     )
-    from githubkit.versions.v2022_11_28.types import ProjectCardType as ProjectCardType
     from githubkit.versions.v2022_11_28.types import (
         ProjectCollaboratorPermissionType as ProjectCollaboratorPermissionType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ProjectColumnType as ProjectColumnType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsCardsCardIdDeleteResponse403Type as ProjectsColumnsCardsCardIdDeleteResponse403Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsCardsCardIdMovesPostBodyType as ProjectsColumnsCardsCardIdMovesPostBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsCardsCardIdMovesPostResponse201Type as ProjectsColumnsCardsCardIdMovesPostResponse201Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType as ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsCardsCardIdMovesPostResponse403Type as ProjectsColumnsCardsCardIdMovesPostResponse403Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType as ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsCardsCardIdMovesPostResponse503Type as ProjectsColumnsCardsCardIdMovesPostResponse503Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsCardsCardIdPatchBodyType as ProjectsColumnsCardsCardIdPatchBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsColumnIdCardsPostBodyOneof0Type as ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsColumnIdCardsPostBodyOneof1Type as ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType as ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsColumnIdCardsPostResponse503Type as ProjectsColumnsColumnIdCardsPostResponse503Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         ProjectsColumnsColumnIdMovesPostBodyType as ProjectsColumnsColumnIdMovesPostBodyType,
@@ -1879,10 +1875,46 @@ if TYPE_CHECKING:
         ProjectsProjectIdPatchResponse403Type as ProjectsProjectIdPatchResponse403Type,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2DraftIssueType as ProjectsV2DraftIssueType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2FieldPropConfigurationType as ProjectsV2FieldPropConfigurationType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2FieldType as ProjectsV2FieldType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2ItemSimpleType as ProjectsV2ItemSimpleType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ProjectsV2ItemType as ProjectsV2ItemType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2ItemWithContentPropContentType as ProjectsV2ItemWithContentPropContentType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2ItemWithContentPropFieldsItemsType as ProjectsV2ItemWithContentPropFieldsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2ItemWithContentType as ProjectsV2ItemWithContentType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2IterationSettingsPropTitleType as ProjectsV2IterationSettingsPropTitleType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2IterationSettingsType as ProjectsV2IterationSettingsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ProjectsV2IterationSettingType as ProjectsV2IterationSettingType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2SingleSelectOptionsPropDescriptionType as ProjectsV2SingleSelectOptionsPropDescriptionType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2SingleSelectOptionsPropNameType as ProjectsV2SingleSelectOptionsPropNameType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2SingleSelectOptionsType as ProjectsV2SingleSelectOptionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ProjectsV2SingleSelectOptionType as ProjectsV2SingleSelectOptionType,
@@ -2175,6 +2207,12 @@ if TYPE_CHECKING:
         RepositoryRuleCommitterEmailPatternType as RepositoryRuleCommitterEmailPatternType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleCopilotCodeReviewPropParametersType as RepositoryRuleCopilotCodeReviewPropParametersType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleCopilotCodeReviewType as RepositoryRuleCopilotCodeReviewType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleCreationType as RepositoryRuleCreationType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -2242,6 +2280,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleDetailedOneof20Type as RepositoryRuleDetailedOneof20Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleDetailedOneof21Type as RepositoryRuleDetailedOneof21Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleFileExtensionRestrictionPropParametersType as RepositoryRuleFileExtensionRestrictionPropParametersType,
@@ -3672,6 +3713,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         UsersUsernameAttestationsSubjectDigestGetResponse200Type as UsersUsernameAttestationsSubjectDigestGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType as UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType as UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        UsersUsernameProjectsV2ProjectNumberItemsPostBodyType as UsersUsernameProjectsV2ProjectNumberItemsPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ValidationErrorPropErrorsItemsType as ValidationErrorPropErrorsItemsType,
@@ -10236,6 +10286,27 @@ else:
             "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
             "OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",
             "ProjectType",
+            "ProjectsV2StatusUpdateType",
+            "ProjectsV2Type",
+            "ProjectsV2FieldType",
+            "ProjectsV2SingleSelectOptionsType",
+            "ProjectsV2SingleSelectOptionsPropNameType",
+            "ProjectsV2SingleSelectOptionsPropDescriptionType",
+            "ProjectsV2FieldPropConfigurationType",
+            "ProjectsV2IterationSettingsType",
+            "ProjectsV2IterationSettingsPropTitleType",
+            "ProjectsV2ItemWithContentType",
+            "ProjectsV2ItemWithContentPropContentType",
+            "ProjectsV2ItemWithContentPropFieldsItemsType",
+            "LinkType",
+            "AutoMergeType",
+            "PullRequestSimpleType",
+            "PullRequestSimplePropLabelsItemsType",
+            "PullRequestSimplePropHeadType",
+            "PullRequestSimplePropBaseType",
+            "PullRequestSimplePropLinksType",
+            "ProjectsV2DraftIssueType",
+            "ProjectsV2ItemSimpleType",
             "CustomPropertyType",
             "CustomPropertySetPayloadType",
             "CustomPropertyValueType",
@@ -10300,6 +10371,8 @@ else:
             "RepositoryRuleCodeScanningType",
             "RepositoryRuleCodeScanningPropParametersType",
             "RepositoryRuleParamsCodeScanningToolType",
+            "RepositoryRuleCopilotCodeReviewType",
+            "RepositoryRuleCopilotCodeReviewPropParametersType",
             "RepositoryRulesetType",
             "RepositoryRulesetPropLinksType",
             "RepositoryRulesetPropLinksPropSelfType",
@@ -10340,7 +10413,6 @@ else:
             "TeamProjectPropPermissionsType",
             "TeamRepositoryType",
             "TeamRepositoryPropPermissionsType",
-            "ProjectCardType",
             "ProjectColumnType",
             "ProjectCollaboratorPermissionType",
             "RateLimitType",
@@ -10397,7 +10469,6 @@ else:
             "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
             "BranchRestrictionPolicyType",
             "BranchRestrictionPolicyPropUsersItemsType",
-            "BranchRestrictionPolicyPropTeamsItemsType",
             "BranchRestrictionPolicyPropAppsItemsType",
             "BranchRestrictionPolicyPropAppsItemsPropOwnerType",
             "BranchRestrictionPolicyPropAppsItemsPropPermissionsType",
@@ -10484,13 +10555,6 @@ else:
             "TimelineCommitCommentedEventType",
             "BranchShortType",
             "BranchShortPropCommitType",
-            "LinkType",
-            "AutoMergeType",
-            "PullRequestSimpleType",
-            "PullRequestSimplePropLabelsItemsType",
-            "PullRequestSimplePropHeadType",
-            "PullRequestSimplePropBaseType",
-            "PullRequestSimplePropLinksType",
             "CombinedCommitStatusType",
             "SimpleCommitStatusType",
             "StatusType",
@@ -10684,6 +10748,7 @@ else:
             "RepositoryRuleDetailedOneof18Type",
             "RepositoryRuleDetailedOneof19Type",
             "RepositoryRuleDetailedOneof20Type",
+            "RepositoryRuleDetailedOneof21Type",
             "SecretScanningAlertType",
             "SecretScanningLocationType",
             "SecretScanningPushProtectionBypassType",
@@ -10866,8 +10931,6 @@ else:
             "WebhooksProjectType",
             "WebhooksProjectPropCreatorType",
             "WebhooksProjectColumnType",
-            "ProjectsV2StatusUpdateType",
-            "ProjectsV2Type",
             "WebhooksProjectChangesType",
             "WebhooksProjectChangesPropArchivedAtType",
             "ProjectsV2ItemType",
@@ -12913,6 +12976,10 @@ else:
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
             "EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type",
+            "EnterprisesEnterpriseTeamsPostBodyType",
+            "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType",
+            "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType",
+            "EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",
             "GistsPostBodyType",
             "GistsPostBodyPropFilesType",
             "GistsGistIdGetResponse403Type",
@@ -12973,6 +13040,11 @@ else:
             "OrgsOrgActionsVariablesNamePatchBodyType",
             "OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",
             "OrgsOrgActionsVariablesNameRepositoriesPutBodyType",
+            "OrgsOrgArtifactsMetadataStorageRecordPostBodyType",
+            "OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type",
+            "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType",
+            "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type",
+            "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType",
             "OrgsOrgAttestationsBulkListPostBodyType",
             "OrgsOrgAttestationsBulkListPostResponse200Type",
             "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
@@ -13045,6 +13117,9 @@ else:
             "OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",
             "OrgsOrgPrivateRegistriesSecretNamePatchBodyType",
             "OrgsOrgProjectsPostBodyType",
+            "OrgsOrgProjectsV2ProjectNumberItemsPostBodyType",
+            "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType",
+            "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
             "OrgsOrgPropertiesSchemaPatchBodyType",
             "OrgsOrgPropertiesValuesPatchBodyType",
             "OrgsOrgReposPostBodyType",
@@ -13072,19 +13147,7 @@ else:
             "OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type",
             "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",
             "OrgsOrgSecurityProductEnablementPostBodyType",
-            "ProjectsColumnsCardsCardIdDeleteResponse403Type",
-            "ProjectsColumnsCardsCardIdPatchBodyType",
-            "ProjectsColumnsCardsCardIdMovesPostBodyType",
-            "ProjectsColumnsCardsCardIdMovesPostResponse201Type",
-            "ProjectsColumnsCardsCardIdMovesPostResponse403Type",
-            "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType",
-            "ProjectsColumnsCardsCardIdMovesPostResponse503Type",
-            "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType",
             "ProjectsColumnsColumnIdPatchBodyType",
-            "ProjectsColumnsColumnIdCardsPostBodyOneof0Type",
-            "ProjectsColumnsColumnIdCardsPostBodyOneof1Type",
-            "ProjectsColumnsColumnIdCardsPostResponse503Type",
-            "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType",
             "ProjectsColumnsColumnIdMovesPostBodyType",
             "ProjectsColumnsColumnIdMovesPostResponse201Type",
             "ProjectsProjectIdDeleteResponse403Type",
@@ -13379,5 +13442,8 @@ else:
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
+            "UsersUsernameProjectsV2ProjectNumberItemsPostBodyType",
+            "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType",
+            "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
         )
     }

@@ -9,32 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType
 
 
-class ProjectCardType(TypedDict):
-    """Project Card
+class RepositoryAdvisoryCreditType(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    Project cards represent a scope of work.
+    A credit given to a user for a repository security advisory.
     """
 
-    url: str
-    id: int
-    node_id: str
-    note: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    archived: NotRequired[bool]
-    column_name: NotRequired[str]
-    project_id: NotRequired[str]
-    column_url: str
-    content_url: NotRequired[str]
-    project_url: str
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+    state: Literal["accepted", "declined", "pending"]
 
 
-__all__ = ("ProjectCardType",)
+__all__ = ("RepositoryAdvisoryCreditType",)

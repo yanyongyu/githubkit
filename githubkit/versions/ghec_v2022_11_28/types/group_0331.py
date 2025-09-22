@@ -9,32 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0285 import DiffEntryType
-from .group_0286 import CommitType
 
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-class CommitComparisonType(TypedDict):
-    """Commit Comparison
-
-    Commit Comparison
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitType
-    merge_base_commit: CommitType
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitType]
-    files: NotRequired[list[DiffEntryType]]
+    errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
-__all__ = ("CommitComparisonType",)
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
+
+
+__all__ = (
+    "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsType",
+)

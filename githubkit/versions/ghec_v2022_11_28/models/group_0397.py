@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,83 +18,71 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class Page(GitHubModel):
-    """GitHub Pages
 
-    The configuration for GitHub Pages for a repository.
+class TimelineReviewedEvent(GitHubModel):
+    """Timeline Reviewed Event
+
+    Timeline Reviewed Event
     """
 
-    url: str = Field(description="The API address for accessing this Page resource.")
-    status: Union[None, Literal["built", "building", "errored"]] = Field(
-        description="The status of the most recent build of the Page."
-    )
-    cname: Union[str, None] = Field(description="The Pages site's custom domain")
-    protected_domain_state: Missing[
-        Union[None, Literal["pending", "verified", "unverified"]]
-    ] = Field(default=UNSET, description="The state if the domain is verified")
-    pending_domain_unverified_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The timestamp when a pending domain becomes unverified.",
-    )
-    custom_404: bool = Field(
-        default=False, description="Whether the Page has a custom 404 page."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The web address the Page can be accessed from."
-    )
-    build_type: Missing[Union[None, Literal["legacy", "workflow"]]] = Field(
-        default=UNSET, description="The process in which the Page will be built."
-    )
-    source: Missing[PagesSourceHash] = Field(default=UNSET, title="Pages Source Hash")
-    public: bool = Field(
-        description="Whether the GitHub Pages site is publicly visible. If set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site."
-    )
-    https_certificate: Missing[PagesHttpsCertificate] = Field(
-        default=UNSET, title="Pages Https Certificate"
-    )
-    https_enforced: Missing[bool] = Field(
-        default=UNSET, description="Whether https is enabled on the domain"
+    event: Literal["reviewed"] = Field()
+    id: int = Field(description="Unique identifier of the review")
+    node_id: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    body: Union[str, None] = Field(description="The text of the review.")
+    state: str = Field()
+    html_url: str = Field()
+    pull_request_url: str = Field()
+    links: TimelineReviewedEventPropLinks = Field(alias="_links")
+    submitted_at: Missing[datetime] = Field(default=UNSET)
+    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    commit_id: str = Field(description="A commit SHA for the review.")
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
     )
 
 
-class PagesSourceHash(GitHubModel):
-    """Pages Source Hash"""
+class TimelineReviewedEventPropLinks(GitHubModel):
+    """TimelineReviewedEventPropLinks"""
 
-    branch: str = Field()
-    path: str = Field()
-
-
-class PagesHttpsCertificate(GitHubModel):
-    """Pages Https Certificate"""
-
-    state: Literal[
-        "new",
-        "authorization_created",
-        "authorization_pending",
-        "authorized",
-        "authorization_revoked",
-        "issued",
-        "uploaded",
-        "approved",
-        "errored",
-        "bad_authz",
-        "destroy_pending",
-        "dns_changed",
-    ] = Field()
-    description: str = Field()
-    domains: list[str] = Field(
-        description="Array of the domain set and its alternate name (if it is configured)"
-    )
-    expires_at: Missing[date] = Field(default=UNSET)
+    html: TimelineReviewedEventPropLinksPropHtml = Field()
+    pull_request: TimelineReviewedEventPropLinksPropPullRequest = Field()
 
 
-model_rebuild(Page)
-model_rebuild(PagesSourceHash)
-model_rebuild(PagesHttpsCertificate)
+class TimelineReviewedEventPropLinksPropHtml(GitHubModel):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class TimelineReviewedEventPropLinksPropPullRequest(GitHubModel):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+model_rebuild(TimelineReviewedEvent)
+model_rebuild(TimelineReviewedEventPropLinks)
+model_rebuild(TimelineReviewedEventPropLinksPropHtml)
+model_rebuild(TimelineReviewedEventPropLinksPropPullRequest)
 
 __all__ = (
-    "Page",
-    "PagesHttpsCertificate",
-    "PagesSourceHash",
+    "TimelineReviewedEvent",
+    "TimelineReviewedEventPropLinks",
+    "TimelineReviewedEventPropLinksPropHtml",
+    "TimelineReviewedEventPropLinksPropPullRequest",
 )

@@ -55,6 +55,8 @@ if TYPE_CHECKING:
         OrgHook,
         OrgMembership,
         OrgRepoCustomPropertyValues,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
         OrgsOrgAttestationsBulkListPostResponse200,
         OrgsOrgAttestationsSubjectDigestGetResponse200,
         OrgsOrgCustomRepositoryRolesGetResponse200,
@@ -108,6 +110,9 @@ if TYPE_CHECKING:
         OrgHookType,
         OrgMembershipType,
         OrgRepoCustomPropertyValuesType,
+        OrgsOrgArtifactsMetadataStorageRecordPostBodyType,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type,
         OrgsOrgAttestationsBulkListPostBodyType,
         OrgsOrgAttestationsBulkListPostResponse200Type,
         OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type,
@@ -984,6 +989,252 @@ class OrgsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=AnnouncementBanner,
+        )
+
+    @overload
+    def create_artifact_storage_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgArtifactsMetadataStorageRecordPostBodyType,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+    ]: ...
+
+    @overload
+    def create_artifact_storage_record(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        digest: str,
+        artifact_url: Missing[str] = UNSET,
+        path: Missing[str] = UNSET,
+        registry_url: str,
+        repository: Missing[str] = UNSET,
+        status: Missing[Literal["active", "eol", "deleted"]] = UNSET,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+    ]: ...
+
+    def create_artifact_storage_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgArtifactsMetadataStorageRecordPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+    ]:
+        """orgs/create-artifact-storage-record
+
+        POST /orgs/{org}/artifacts/metadata/storage-record
+
+        Create metadata storage records for artifacts associated with an organization.
+        This endpoint will create a new artifact storage record on behalf of any artifact matching the provided digest and
+        associated with a repository owned by the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#create-artifact-metadata-storage-record
+        """
+
+        from ..models import (
+            OrgsOrgArtifactsMetadataStorageRecordPostBody,
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/storage-record"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgArtifactsMetadataStorageRecordPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        )
+
+    @overload
+    async def async_create_artifact_storage_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgArtifactsMetadataStorageRecordPostBodyType,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+    ]: ...
+
+    @overload
+    async def async_create_artifact_storage_record(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        digest: str,
+        artifact_url: Missing[str] = UNSET,
+        path: Missing[str] = UNSET,
+        registry_url: str,
+        repository: Missing[str] = UNSET,
+        status: Missing[Literal["active", "eol", "deleted"]] = UNSET,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+    ]: ...
+
+    async def async_create_artifact_storage_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgArtifactsMetadataStorageRecordPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+    ]:
+        """orgs/create-artifact-storage-record
+
+        POST /orgs/{org}/artifacts/metadata/storage-record
+
+        Create metadata storage records for artifacts associated with an organization.
+        This endpoint will create a new artifact storage record on behalf of any artifact matching the provided digest and
+        associated with a repository owned by the organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#create-artifact-metadata-storage-record
+        """
+
+        from ..models import (
+            OrgsOrgArtifactsMetadataStorageRecordPostBody,
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/storage-record"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgArtifactsMetadataStorageRecordPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        )
+
+    def list_artifact_storage_records(
+        self,
+        org: str,
+        subject_digest: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type,
+    ]:
+        """orgs/list-artifact-storage-records
+
+        GET /orgs/{org}/artifacts/{subject_digest}/metadata/storage-records
+
+        List a collection of artifact storage records with a given subject digest that are associated with repositories owned by an organization.
+
+        The collection of storage records returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `content:read` permission is required.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#list-artifact-storage-records
+        """
+
+        from ..models import (
+            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/{subject_digest}/metadata/storage-records"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
+        )
+
+    async def async_list_artifact_storage_records(
+        self,
+        org: str,
+        subject_digest: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type,
+    ]:
+        """orgs/list-artifact-storage-records
+
+        GET /orgs/{org}/artifacts/{subject_digest}/metadata/storage-records
+
+        List a collection of artifact storage records with a given subject digest that are associated with repositories owned by an organization.
+
+        The collection of storage records returned by this endpoint is filtered according to the authenticated user's permissions; if the authenticated user cannot read a repository, the attestations associated with that repository will not be included in the response. In addition, when using a fine-grained access token the `content:read` permission is required.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#list-artifact-storage-records
+        """
+
+        from ..models import (
+            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/{subject_digest}/metadata/storage-records"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
         )
 
     @overload
@@ -9824,14 +10075,14 @@ class OrgsClient:
             },
         )
 
-    def get_all_custom_properties(
+    def custom_properties_for_repos_get_organization_definitions(
         self,
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """orgs/get-all-custom-properties
+        """orgs/custom-properties-for-repos-get-organization-definitions
 
         GET /orgs/{org}/properties/schema
 
@@ -9859,14 +10110,14 @@ class OrgsClient:
             },
         )
 
-    async def async_get_all_custom_properties(
+    async def async_custom_properties_for_repos_get_organization_definitions(
         self,
         org: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """orgs/get-all-custom-properties
+        """orgs/custom-properties-for-repos-get-organization-definitions
 
         GET /orgs/{org}/properties/schema
 
@@ -9895,7 +10146,7 @@ class OrgsClient:
         )
 
     @overload
-    def create_or_update_custom_properties(
+    def custom_properties_for_repos_create_or_update_organization_definitions(
         self,
         org: str,
         *,
@@ -9905,7 +10156,7 @@ class OrgsClient:
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
     @overload
-    def create_or_update_custom_properties(
+    def custom_properties_for_repos_create_or_update_organization_definitions(
         self,
         org: str,
         *,
@@ -9915,7 +10166,7 @@ class OrgsClient:
         properties: list[CustomPropertyType],
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
-    def create_or_update_custom_properties(
+    def custom_properties_for_repos_create_or_update_organization_definitions(
         self,
         org: str,
         *,
@@ -9924,7 +10175,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """orgs/create-or-update-custom-properties
+        """orgs/custom-properties-for-repos-create-or-update-organization-definitions
 
         PATCH /orgs/{org}/properties/schema
 
@@ -9974,7 +10225,7 @@ class OrgsClient:
         )
 
     @overload
-    async def async_create_or_update_custom_properties(
+    async def async_custom_properties_for_repos_create_or_update_organization_definitions(
         self,
         org: str,
         *,
@@ -9984,7 +10235,7 @@ class OrgsClient:
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
     @overload
-    async def async_create_or_update_custom_properties(
+    async def async_custom_properties_for_repos_create_or_update_organization_definitions(
         self,
         org: str,
         *,
@@ -9994,7 +10245,7 @@ class OrgsClient:
         properties: list[CustomPropertyType],
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
-    async def async_create_or_update_custom_properties(
+    async def async_custom_properties_for_repos_create_or_update_organization_definitions(
         self,
         org: str,
         *,
@@ -10003,7 +10254,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """orgs/create-or-update-custom-properties
+        """orgs/custom-properties-for-repos-create-or-update-organization-definitions
 
         PATCH /orgs/{org}/properties/schema
 
@@ -10052,7 +10303,7 @@ class OrgsClient:
             },
         )
 
-    def get_custom_property(
+    def custom_properties_for_repos_get_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10060,7 +10311,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """orgs/get-custom-property
+        """orgs/custom-properties-for-repos-get-organization-definition
 
         GET /orgs/{org}/properties/schema/{custom_property_name}
 
@@ -10088,7 +10339,7 @@ class OrgsClient:
             },
         )
 
-    async def async_get_custom_property(
+    async def async_custom_properties_for_repos_get_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10096,7 +10347,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """orgs/get-custom-property
+        """orgs/custom-properties-for-repos-get-organization-definition
 
         GET /orgs/{org}/properties/schema/{custom_property_name}
 
@@ -10125,7 +10376,7 @@ class OrgsClient:
         )
 
     @overload
-    def create_or_update_custom_property(
+    def custom_properties_for_repos_create_or_update_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10136,7 +10387,7 @@ class OrgsClient:
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
     @overload
-    def create_or_update_custom_property(
+    def custom_properties_for_repos_create_or_update_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10154,7 +10405,7 @@ class OrgsClient:
         ] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
-    def create_or_update_custom_property(
+    def custom_properties_for_repos_create_or_update_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10164,7 +10415,7 @@ class OrgsClient:
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """orgs/create-or-update-custom-property
+        """orgs/custom-properties-for-repos-create-or-update-organization-definition
 
         PUT /orgs/{org}/properties/schema/{custom_property_name}
 
@@ -10206,7 +10457,7 @@ class OrgsClient:
         )
 
     @overload
-    async def async_create_or_update_custom_property(
+    async def async_custom_properties_for_repos_create_or_update_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10217,7 +10468,7 @@ class OrgsClient:
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
     @overload
-    async def async_create_or_update_custom_property(
+    async def async_custom_properties_for_repos_create_or_update_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10235,7 +10486,7 @@ class OrgsClient:
         ] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
-    async def async_create_or_update_custom_property(
+    async def async_custom_properties_for_repos_create_or_update_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10245,7 +10496,7 @@ class OrgsClient:
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """orgs/create-or-update-custom-property
+        """orgs/custom-properties-for-repos-create-or-update-organization-definition
 
         PUT /orgs/{org}/properties/schema/{custom_property_name}
 
@@ -10286,7 +10537,7 @@ class OrgsClient:
             },
         )
 
-    def remove_custom_property(
+    def custom_properties_for_repos_delete_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10294,7 +10545,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """orgs/remove-custom-property
+        """orgs/custom-properties-for-repos-delete-organization-definition
 
         DELETE /orgs/{org}/properties/schema/{custom_property_name}
 
@@ -10324,7 +10575,7 @@ class OrgsClient:
             },
         )
 
-    async def async_remove_custom_property(
+    async def async_custom_properties_for_repos_delete_organization_definition(
         self,
         org: str,
         custom_property_name: str,
@@ -10332,7 +10583,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """orgs/remove-custom-property
+        """orgs/custom-properties-for-repos-delete-organization-definition
 
         DELETE /orgs/{org}/properties/schema/{custom_property_name}
 
@@ -10362,7 +10613,7 @@ class OrgsClient:
             },
         )
 
-    def list_custom_properties_values_for_repos(
+    def custom_properties_for_repos_get_organization_values(
         self,
         org: str,
         *,
@@ -10374,7 +10625,7 @@ class OrgsClient:
     ) -> Response[
         list[OrgRepoCustomPropertyValues], list[OrgRepoCustomPropertyValuesType]
     ]:
-        """orgs/list-custom-properties-values-for-repos
+        """orgs/custom-properties-for-repos-get-organization-values
 
         GET /orgs/{org}/properties/values
 
@@ -10409,7 +10660,7 @@ class OrgsClient:
             },
         )
 
-    async def async_list_custom_properties_values_for_repos(
+    async def async_custom_properties_for_repos_get_organization_values(
         self,
         org: str,
         *,
@@ -10421,7 +10672,7 @@ class OrgsClient:
     ) -> Response[
         list[OrgRepoCustomPropertyValues], list[OrgRepoCustomPropertyValuesType]
     ]:
-        """orgs/list-custom-properties-values-for-repos
+        """orgs/custom-properties-for-repos-get-organization-values
 
         GET /orgs/{org}/properties/values
 
@@ -10457,7 +10708,7 @@ class OrgsClient:
         )
 
     @overload
-    def create_or_update_custom_properties_values_for_repos(
+    def custom_properties_for_repos_create_or_update_organization_values(
         self,
         org: str,
         *,
@@ -10467,7 +10718,7 @@ class OrgsClient:
     ) -> Response: ...
 
     @overload
-    def create_or_update_custom_properties_values_for_repos(
+    def custom_properties_for_repos_create_or_update_organization_values(
         self,
         org: str,
         *,
@@ -10478,7 +10729,7 @@ class OrgsClient:
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
 
-    def create_or_update_custom_properties_values_for_repos(
+    def custom_properties_for_repos_create_or_update_organization_values(
         self,
         org: str,
         *,
@@ -10487,7 +10738,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """orgs/create-or-update-custom-properties-values-for-repos
+        """orgs/custom-properties-for-repos-create-or-update-organization-values
 
         PATCH /orgs/{org}/properties/values
 
@@ -10538,7 +10789,7 @@ class OrgsClient:
         )
 
     @overload
-    async def async_create_or_update_custom_properties_values_for_repos(
+    async def async_custom_properties_for_repos_create_or_update_organization_values(
         self,
         org: str,
         *,
@@ -10548,7 +10799,7 @@ class OrgsClient:
     ) -> Response: ...
 
     @overload
-    async def async_create_or_update_custom_properties_values_for_repos(
+    async def async_custom_properties_for_repos_create_or_update_organization_values(
         self,
         org: str,
         *,
@@ -10559,7 +10810,7 @@ class OrgsClient:
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
 
-    async def async_create_or_update_custom_properties_values_for_repos(
+    async def async_custom_properties_for_repos_create_or_update_organization_values(
         self,
         org: str,
         *,
@@ -10568,7 +10819,7 @@ class OrgsClient:
         data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """orgs/create-or-update-custom-properties-values-for-repos
+        """orgs/custom-properties-for-repos-create-or-update-organization-values
 
         PATCH /orgs/{org}/properties/values
 

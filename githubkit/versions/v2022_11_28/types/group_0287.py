@@ -9,41 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ContentFileType(TypedDict):
-    """Content File
+class BranchShortType(TypedDict):
+    """Branch Short
 
-    Content File
+    Branch Short
     """
 
-    type: Literal["file"]
-    encoding: str
-    size: int
     name: str
-    path: str
-    content: str
+    commit: BranchShortPropCommitType
+    protected: bool
+
+
+class BranchShortPropCommitType(TypedDict):
+    """BranchShortPropCommit"""
+
     sha: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentFilePropLinksType
-    target: NotRequired[str]
-    submodule_git_url: NotRequired[str]
-
-
-class ContentFilePropLinksType(TypedDict):
-    """ContentFilePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
 
 
 __all__ = (
-    "ContentFilePropLinksType",
-    "ContentFileType",
+    "BranchShortPropCommitType",
+    "BranchShortType",
 )

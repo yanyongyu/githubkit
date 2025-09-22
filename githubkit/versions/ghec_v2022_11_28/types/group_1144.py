@@ -12,11 +12,8 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoActionsSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
-
-    encrypted_value: str
-    key_id: str
+class ProjectsColumnsColumnIdMovesPostResponse201Type(TypedDict):
+    """ProjectsColumnsColumnIdMovesPostResponse201"""
 
 
-__all__ = ("ReposOwnerRepoActionsSecretsSecretNamePutBodyType",)
+__all__ = ("ProjectsColumnsColumnIdMovesPostResponse201Type",)

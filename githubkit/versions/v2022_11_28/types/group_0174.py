@@ -9,13 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0175 import RepositoryRuleCommitterEmailPatternPropParametersType
 
 
-class RepositoryRuleFileExtensionRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+class RepositoryRuleCommitterEmailPatternType(TypedDict):
+    """committer_email_pattern
 
-    restricted_file_extensions: list[str]
+    Parameters to be used for the committer_email_pattern rule
+    """
+
+    type: Literal["committer_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleFileExtensionRestrictionPropParametersType",)
+__all__ = ("RepositoryRuleCommitterEmailPatternType",)

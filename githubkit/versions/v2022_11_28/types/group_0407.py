@@ -11,18 +11,16 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0406 import TrafficType
 
+class CommitActivityType(TypedDict):
+    """Commit Activity
 
-class CloneTrafficType(TypedDict):
-    """Clone Traffic
-
-    Clone Traffic
+    Commit Activity
     """
 
-    count: int
-    uniques: int
-    clones: list[TrafficType]
+    days: list[int]
+    total: int
+    week: int
 
 
-__all__ = ("CloneTrafficType",)
+__all__ = ("CommitActivityType",)

@@ -10,34 +10,47 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0003 import SimpleUserType
 
 
-class GistCommitType(TypedDict):
-    """Gist Commit
+class BaseGistType(TypedDict):
+    """Base Gist
 
-    Gist Commit
+    Base Gist
     """
 
     url: str
-    version: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesType
+    public: bool
+    created_at: datetime
+    updated_at: datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
     user: Union[None, SimpleUserType]
-    change_status: GistCommitPropChangeStatusType
-    committed_at: datetime
+    comments_url: str
+    owner: NotRequired[SimpleUserType]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-class GistCommitPropChangeStatusType(TypedDict):
-    """GistCommitPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
+BaseGistPropFilesType: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
 
 
 __all__ = (
-    "GistCommitPropChangeStatusType",
-    "GistCommitType",
+    "BaseGistPropFilesType",
+    "BaseGistType",
 )

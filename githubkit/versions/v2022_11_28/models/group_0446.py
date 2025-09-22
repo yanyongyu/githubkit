@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,86 +19,71 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksAnswer(GitHubModel):
-    """WebhooksAnswer"""
+class WebhooksRule(GitHubModel):
+    """branch protection rule
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/github/administering-a-repository/defining-
+    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
+    protection-settings) applied to branches that match the name. Binary settings
+    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
+    `everyone`. Actor and build lists are arrays of strings.
+    """
+
+    admin_enforced: bool = Field()
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
     )
-    body: str = Field()
-    child_comment_count: int = Field()
+    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
+    authorized_actor_names: list[str] = Field()
+    authorized_actors_only: bool = Field()
+    authorized_dismissal_actors_only: bool = Field()
+    create_protected: Missing[bool] = Field(default=UNSET)
     created_at: datetime = Field()
-    discussion_id: int = Field()
-    html_url: str = Field()
+    dismiss_stale_reviews_on_push: bool = Field()
     id: int = Field()
-    node_id: str = Field()
-    parent_id: None = Field()
-    reactions: Missing[WebhooksAnswerPropReactions] = Field(
-        default=UNSET, title="Reactions"
+    ignore_approvals_from_contributors: bool = Field()
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
+        description="The enforcement level of the branch lock setting. `off` means the branch is not locked, `non_admins` means the branch is read-only for non_admins, and `everyone` means the branch is read-only for everyone."
     )
-    repository_url: str = Field()
+    lock_allows_fork_sync: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow users to pull changes from upstream when the branch is locked. This setting is only applicable for forks.",
+    )
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"] = Field()
+    name: str = Field()
+    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
+    repository_id: int = Field()
+    require_code_owner_review: bool = Field()
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it",
+    )
+    required_approving_review_count: int = Field()
+    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
+    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
+    required_status_checks: list[str] = Field()
+    required_status_checks_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    signature_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    strict_required_status_checks_policy: bool = Field()
     updated_at: datetime = Field()
-    user: Union[WebhooksAnswerPropUser, None] = Field(title="User")
 
 
-class WebhooksAnswerPropReactions(GitHubModel):
-    """Reactions"""
+model_rebuild(WebhooksRule)
 
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
-
-
-class WebhooksAnswerPropUser(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhooksAnswer)
-model_rebuild(WebhooksAnswerPropReactions)
-model_rebuild(WebhooksAnswerPropUser)
-
-__all__ = (
-    "WebhooksAnswer",
-    "WebhooksAnswerPropReactions",
-    "WebhooksAnswerPropUser",
-)
+__all__ = ("WebhooksRule",)

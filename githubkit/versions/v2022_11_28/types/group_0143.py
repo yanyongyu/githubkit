@@ -9,24 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0136 import RepositoryRulesetConditionsPropRefNameType
-from .group_0138 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-)
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class OrgRulesetConditionsOneof0Type(TypedDict):
-    """repository_name_and_ref_name
+class CodeOfConductSimpleType(TypedDict):
+    """Code Of Conduct Simple
 
-    Conditions to target repositories by name and refs by name
+    Code of Conduct Simple
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
-__all__ = ("OrgRulesetConditionsOneof0Type",)
+__all__ = ("CodeOfConductSimpleType",)

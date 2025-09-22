@@ -17,21 +17,36 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0168 import RepositoryRuleTagNamePatternPropParameters
 
+class RepositoryRulePullRequestPropParameters(GitHubModel):
+    """RepositoryRulePullRequestPropParameters"""
 
-class RepositoryRuleTagNamePattern(GitHubModel):
-    """tag_name_pattern
-
-    Parameters to be used for the tag_name_pattern rule
-    """
-
-    type: Literal["tag_name_pattern"] = Field()
-    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
-        default=UNSET
+    allowed_merge_methods: Missing[list[Literal["merge", "squash", "rebase"]]] = Field(
+        default=UNSET,
+        description="Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled.",
+    )
+    automatic_copilot_code_review_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Request Copilot code review for new pull requests automatically if the author has access to Copilot code review.",
+    )
+    dismiss_stale_reviews_on_push: bool = Field(
+        description="New, reviewable commits pushed will dismiss previous pull request review approvals."
+    )
+    require_code_owner_review: bool = Field(
+        description="Require an approving review in pull requests that modify files that have a designated code owner."
+    )
+    require_last_push_approval: bool = Field(
+        description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
+    )
+    required_approving_review_count: int = Field(
+        le=10.0,
+        description="The number of approving reviews that are required before a pull request can be merged.",
+    )
+    required_review_thread_resolution: bool = Field(
+        description="All conversations on code must be resolved before a pull request can be merged."
     )
 
 
-model_rebuild(RepositoryRuleTagNamePattern)
+model_rebuild(RepositoryRulePullRequestPropParameters)
 
-__all__ = ("RepositoryRuleTagNamePattern",)
+__all__ = ("RepositoryRulePullRequestPropParameters",)

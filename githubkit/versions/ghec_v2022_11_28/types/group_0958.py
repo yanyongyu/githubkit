@@ -9,22 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0058 import (
+    AmazonS3AccessKeysConfigType,
+    AzureBlobConfigType,
+    AzureHubConfigType,
+    DatadogConfigType,
+    HecConfigType,
+)
+from .group_0059 import AmazonS3OidcConfigType, SplunkConfigType
+from .group_0060 import GoogleCloudConfigType
 
 
-class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
 
-    advanced_security_enabled_for_new_repositories: NotRequired[bool]
-    advanced_security_enabled_new_user_namespace_repos: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
-    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
-        Union[bool, None]
+    enabled: bool
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ]
+    vendor_specific: Union[
+        AzureBlobConfigType,
+        AzureHubConfigType,
+        AmazonS3OidcConfigType,
+        AmazonS3AccessKeysConfigType,
+        SplunkConfigType,
+        HecConfigType,
+        GoogleCloudConfigType,
+        DatadogConfigType,
     ]
 
 
-__all__ = ("EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType",)
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType",)

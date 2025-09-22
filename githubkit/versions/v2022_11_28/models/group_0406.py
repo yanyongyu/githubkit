@@ -10,20 +10,25 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class Traffic(GitHubModel):
-    """Traffic"""
-
-    timestamp: datetime = Field()
-    uniques: int = Field()
-    count: int = Field()
+from .group_0003 import SimpleUser
 
 
-model_rebuild(Traffic)
+class Stargazer(GitHubModel):
+    """Stargazer
 
-__all__ = ("Traffic",)
+    Stargazer
+    """
+
+    starred_at: datetime = Field()
+    user: Union[None, SimpleUser] = Field()
+
+
+model_rebuild(Stargazer)
+
+__all__ = ("Stargazer",)

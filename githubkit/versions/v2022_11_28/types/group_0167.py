@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0168 import RepositoryRuleTagNamePatternPropParametersType
+
+class RepositoryRulePullRequestPropParametersType(TypedDict):
+    """RepositoryRulePullRequestPropParameters"""
+
+    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
+    automatic_copilot_code_review_enabled: NotRequired[bool]
+    dismiss_stale_reviews_on_push: bool
+    require_code_owner_review: bool
+    require_last_push_approval: bool
+    required_approving_review_count: int
+    required_review_thread_resolution: bool
 
 
-class RepositoryRuleTagNamePatternType(TypedDict):
-    """tag_name_pattern
-
-    Parameters to be used for the tag_name_pattern rule
-    """
-
-    type: Literal["tag_name_pattern"]
-    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
-
-
-__all__ = ("RepositoryRuleTagNamePatternType",)
+__all__ = ("RepositoryRulePullRequestPropParametersType",)

@@ -14,12 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items"""
+class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
 
-    name: str = Field()
+    issue_id: int = Field(
+        description="The id of the issue that blocks the current issue"
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody",)

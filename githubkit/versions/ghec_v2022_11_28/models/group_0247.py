@@ -10,31 +10,36 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 
 
-class Reaction(GitHubModel):
-    """Reaction
+class ProjectsV2DraftIssue(GitHubModel):
+    """Draft Issue
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    A draft issue in a project
     """
 
-    id: int = Field()
-    node_id: str = Field()
+    id: float = Field(description="The ID of the draft issue")
+    node_id: str = Field(description="The node ID of the draft issue")
+    title: str = Field(description="The title of the draft issue")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The body content of the draft issue"
+    )
     user: Union[None, SimpleUser] = Field()
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(description="The reaction to use")
-    created_at: datetime = Field()
+    created_at: datetime = Field(description="The time the draft issue was created")
+    updated_at: datetime = Field(
+        description="The time the draft issue was last updated"
+    )
 
 
-model_rebuild(Reaction)
+model_rebuild(ProjectsV2DraftIssue)
 
-__all__ = ("Reaction",)
+__all__ = ("ProjectsV2DraftIssue",)

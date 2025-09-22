@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,20 +18,48 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksProjectColumn(GitHubModel):
-    """Project Column"""
+class WebhooksPreviousMarketplacePurchase(GitHubModel):
+    """Marketplace Purchase"""
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    cards_url: str = Field()
-    created_at: datetime = Field()
-    id: int = Field(description="The unique identifier of the project column")
-    name: str = Field(description="Name of the project column")
+    account: WebhooksPreviousMarketplacePurchasePropAccount = Field()
+    billing_cycle: str = Field()
+    free_trial_ends_on: None = Field()
+    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    on_free_trial: bool = Field()
+    plan: WebhooksPreviousMarketplacePurchasePropPlan = Field()
+    unit_count: int = Field()
+
+
+class WebhooksPreviousMarketplacePurchasePropAccount(GitHubModel):
+    """WebhooksPreviousMarketplacePurchasePropAccount"""
+
+    id: int = Field()
+    login: str = Field()
     node_id: str = Field()
-    project_url: str = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
+    organization_billing_email: Union[str, None] = Field()
+    type: str = Field()
 
 
-model_rebuild(WebhooksProjectColumn)
+class WebhooksPreviousMarketplacePurchasePropPlan(GitHubModel):
+    """WebhooksPreviousMarketplacePurchasePropPlan"""
 
-__all__ = ("WebhooksProjectColumn",)
+    bullets: list[str] = Field()
+    description: str = Field()
+    has_free_trial: bool = Field()
+    id: int = Field()
+    monthly_price_in_cents: int = Field()
+    name: str = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    unit_name: Union[str, None] = Field()
+    yearly_price_in_cents: int = Field()
+
+
+model_rebuild(WebhooksPreviousMarketplacePurchase)
+model_rebuild(WebhooksPreviousMarketplacePurchasePropAccount)
+model_rebuild(WebhooksPreviousMarketplacePurchasePropPlan)
+
+__all__ = (
+    "WebhooksPreviousMarketplacePurchase",
+    "WebhooksPreviousMarketplacePurchasePropAccount",
+    "WebhooksPreviousMarketplacePurchasePropPlan",
+)

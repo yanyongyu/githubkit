@@ -12,16 +12,11 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
-    """CodeScanningDefaultSetupUpdateResponse
+class CodeScanningAutofixCommitsResponseType(TypedDict):
+    """CodeScanningAutofixCommitsResponse"""
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
-    """
-
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    target_ref: NotRequired[str]
+    sha: NotRequired[str]
 
 
-__all__ = ("CodeScanningDefaultSetupUpdateResponseType",)
+__all__ = ("CodeScanningAutofixCommitsResponseType",)

@@ -9,30 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0078 import Team
 
 
-class CodeScanningVariantAnalysisRepository(GitHubModel):
-    """Repository Identifier
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
+    GitHubModel
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-    Repository Identifier
-    """
-
-    id: int = Field(description="A unique identifier of the repository.")
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field(
-        description="The full, globally unique, name of the repository."
-    )
-    private: bool = Field(description="Whether the repository is private.")
-    stargazers_count: int = Field()
-    updated_at: Union[datetime, None] = Field()
+    url: str = Field()
+    users_url: str = Field()
+    teams_url: str = Field()
+    users: list[SimpleUser] = Field()
+    teams: list[Team] = Field()
+    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningVariantAnalysisRepository)
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
+    GitHubModel
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
 
-__all__ = ("CodeScanningVariantAnalysisRepository",)
+    users: list[SimpleUser] = Field()
+    teams: list[Team] = Field()
+    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
+
+
+model_rebuild(ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions)
+model_rebuild(
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
+)
+
+__all__ = (
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
+)

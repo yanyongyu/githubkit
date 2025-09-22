@@ -12,13 +12,12 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class RateLimitType(TypedDict):
-    """Rate Limit"""
+class PackagesBillingUsageType(TypedDict):
+    """PackagesBillingUsage"""
 
-    limit: int
-    remaining: int
-    reset: int
-    used: int
+    total_gigabytes_bandwidth_used: int
+    total_paid_gigabytes_bandwidth_used: int
+    included_gigabytes_bandwidth: int
 
 
-__all__ = ("RateLimitType",)
+__all__ = ("PackagesBillingUsageType",)

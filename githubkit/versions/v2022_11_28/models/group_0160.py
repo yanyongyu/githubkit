@@ -14,25 +14,17 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRuleCommitMessagePatternPropParameters(GitHubModel):
-    """RepositoryRuleCommitMessagePatternPropParameters"""
+class RepositoryRuleRequiredLinearHistory(GitHubModel):
+    """required_linear_history
 
-    name: Missing[str] = Field(
-        default=UNSET, description="How this rule will appear to users."
-    )
-    negate: Missing[bool] = Field(
-        default=UNSET, description="If true, the rule will fail if the pattern matches."
-    )
-    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
-        description="The operator to use for matching."
-    )
-    pattern: str = Field(description="The pattern to match with.")
+    Prevent merge commits from being pushed to matching refs.
+    """
+
+    type: Literal["required_linear_history"] = Field()
 
 
-model_rebuild(RepositoryRuleCommitMessagePatternPropParameters)
+model_rebuild(RepositoryRuleRequiredLinearHistory)
 
-__all__ = ("RepositoryRuleCommitMessagePatternPropParameters",)
+__all__ = ("RepositoryRuleRequiredLinearHistory",)

@@ -13,21 +13,40 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0189 import MinimalRepositoryType
+from .group_0482 import SearchResultTextMatchesItemsType
 
-class CodespaceExportDetailsType(TypedDict):
-    """Fetches information about an export of a codespace.
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
+
+    Code Search Result Item
     """
 
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[datetime, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryType
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[datetime]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-__all__ = ("CodespaceExportDetailsType",)
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemType]
+
+
+__all__ = (
+    "CodeSearchResultItemType",
+    "SearchCodeGetResponse200Type",
+)

@@ -9,19 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsSecretType(TypedDict):
-    """Actions Secret
+class TeamMembershipType(TypedDict):
+    """Team Membership
 
-    Set secrets for GitHub Actions.
+    Team Membership
     """
 
-    name: str
-    created_at: datetime
-    updated_at: datetime
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
-__all__ = ("ActionsSecretType",)
+__all__ = ("TeamMembershipType",)

@@ -9,49 +9,122 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
+from .group_0093 import Team
 
 
-class DeploymentSimple(GitHubModel):
-    """Deployment
+class BranchRestrictionPolicy(GitHubModel):
+    """Branch Restriction Policy
 
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    Branch Restriction Policy
     """
 
     url: str = Field()
-    id: int = Field(description="Unique identifier of the deployment")
-    node_id: str = Field()
-    task: str = Field(description="Parameter to specify a task to execute")
-    original_environment: Missing[str] = Field(default=UNSET)
-    environment: str = Field(description="Name for the target deployment environment.")
-    description: Union[str, None] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    statuses_url: str = Field()
-    repository_url: str = Field()
-    transient_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
-    )
-    production_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+    users_url: str = Field()
+    teams_url: str = Field()
+    apps_url: str = Field()
+    users: list[BranchRestrictionPolicyPropUsersItems] = Field()
+    teams: list[Team] = Field()
+    apps: list[BranchRestrictionPolicyPropAppsItems] = Field()
+
+
+class BranchRestrictionPolicyPropUsersItems(GitHubModel):
+    """BranchRestrictionPolicyPropUsersItems"""
+
+    login: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class BranchRestrictionPolicyPropAppsItems(GitHubModel):
+    """BranchRestrictionPolicyPropAppsItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    slug: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    owner: Missing[BranchRestrictionPolicyPropAppsItemsPropOwner] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    client_id: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    external_url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    permissions: Missing[BranchRestrictionPolicyPropAppsItemsPropPermissions] = Field(
         default=UNSET
     )
+    events: Missing[list[str]] = Field(default=UNSET)
 
 
-model_rebuild(DeploymentSimple)
+class BranchRestrictionPolicyPropAppsItemsPropOwner(GitHubModel):
+    """BranchRestrictionPolicyPropAppsItemsPropOwner"""
 
-__all__ = ("DeploymentSimple",)
+    login: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    hooks_url: Missing[str] = Field(default=UNSET)
+    issues_url: Missing[str] = Field(default=UNSET)
+    members_url: Missing[str] = Field(default=UNSET)
+    public_members_url: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class BranchRestrictionPolicyPropAppsItemsPropPermissions(GitHubModel):
+    """BranchRestrictionPolicyPropAppsItemsPropPermissions"""
+
+    metadata: Missing[str] = Field(default=UNSET)
+    contents: Missing[str] = Field(default=UNSET)
+    issues: Missing[str] = Field(default=UNSET)
+    single_file: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(BranchRestrictionPolicy)
+model_rebuild(BranchRestrictionPolicyPropUsersItems)
+model_rebuild(BranchRestrictionPolicyPropAppsItems)
+model_rebuild(BranchRestrictionPolicyPropAppsItemsPropOwner)
+model_rebuild(BranchRestrictionPolicyPropAppsItemsPropPermissions)
+
+__all__ = (
+    "BranchRestrictionPolicy",
+    "BranchRestrictionPolicyPropAppsItems",
+    "BranchRestrictionPolicyPropAppsItemsPropOwner",
+    "BranchRestrictionPolicyPropAppsItemsPropPermissions",
+    "BranchRestrictionPolicyPropUsersItems",
+)

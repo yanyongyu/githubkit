@@ -16,30 +16,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0244 import (
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
-    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
 )
 
 
-class ProtectedBranchPropRequiredPullRequestReviews(GitHubModel):
-    """ProtectedBranchPropRequiredPullRequestReviews"""
+class ProtectedBranchPullRequestReview(GitHubModel):
+    """Protected Branch Pull Request Review
 
-    url: str = Field()
-    dismiss_stale_reviews: Missing[bool] = Field(default=UNSET)
-    require_code_owner_reviews: Missing[bool] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
+    Protected Branch Pull Request Review
+    """
+
+    url: Missing[str] = Field(default=UNSET)
+    dismissal_restrictions: Missing[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+    ] = Field(
+        default=UNSET,
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+    )
+    dismiss_stale_reviews: bool = Field()
+    require_code_owner_reviews: bool = Field()
+    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
     require_last_push_approval: Missing[bool] = Field(
         default=UNSET,
         description="Whether the most recent push must be approved by someone other than the person who pushed it.",
     )
-    dismissal_restrictions: Missing[
-        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-    ] = Field(default=UNSET)
 
 
-model_rebuild(ProtectedBranchPropRequiredPullRequestReviews)
+model_rebuild(ProtectedBranchPullRequestReview)
 
-__all__ = ("ProtectedBranchPropRequiredPullRequestReviews",)
+__all__ = ("ProtectedBranchPullRequestReview",)

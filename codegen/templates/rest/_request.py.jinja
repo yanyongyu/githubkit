@@ -4,7 +4,7 @@
 
 {% macro build_path(endpoint) %}
 {% if endpoint.path_params %}
-url = f"{{ endpoint.path }}"
+url = f"{{ endpoint.eval_path }}"
 {% else %}
 url = "{{ endpoint.path }}"
 {% endif %}

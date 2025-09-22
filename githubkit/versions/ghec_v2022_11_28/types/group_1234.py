@@ -13,10 +13,11 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoImportLfsPatchBodyType(TypedDict):
-    """ReposOwnerRepoImportLfsPatchBody"""
+class ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody"""
 
-    use_lfs: Literal["opt_in", "opt_out"]
+    status: Literal["approve", "deny"]
+    message: str
 
 
-__all__ = ("ReposOwnerRepoImportLfsPatchBodyType",)
+__all__ = ("ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType",)

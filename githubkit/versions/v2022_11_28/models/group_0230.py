@@ -14,20 +14,58 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CheckAutomatedSecurityFixes(GitHubModel):
-    """Check Dependabot security updates
+class PullRequestMinimal(GitHubModel):
+    """Pull Request Minimal"""
 
-    Check Dependabot security updates
-    """
-
-    enabled: bool = Field(
-        description="Whether Dependabot security updates are enabled for the repository."
-    )
-    paused: bool = Field(
-        description="Whether Dependabot security updates are paused for the repository."
-    )
+    id: int = Field()
+    number: int = Field()
+    url: str = Field()
+    head: PullRequestMinimalPropHead = Field()
+    base: PullRequestMinimalPropBase = Field()
 
 
-model_rebuild(CheckAutomatedSecurityFixes)
+class PullRequestMinimalPropHead(GitHubModel):
+    """PullRequestMinimalPropHead"""
 
-__all__ = ("CheckAutomatedSecurityFixes",)
+    ref: str = Field()
+    sha: str = Field()
+    repo: PullRequestMinimalPropHeadPropRepo = Field()
+
+
+class PullRequestMinimalPropHeadPropRepo(GitHubModel):
+    """PullRequestMinimalPropHeadPropRepo"""
+
+    id: int = Field()
+    url: str = Field()
+    name: str = Field()
+
+
+class PullRequestMinimalPropBase(GitHubModel):
+    """PullRequestMinimalPropBase"""
+
+    ref: str = Field()
+    sha: str = Field()
+    repo: PullRequestMinimalPropBasePropRepo = Field()
+
+
+class PullRequestMinimalPropBasePropRepo(GitHubModel):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int = Field()
+    url: str = Field()
+    name: str = Field()
+
+
+model_rebuild(PullRequestMinimal)
+model_rebuild(PullRequestMinimalPropHead)
+model_rebuild(PullRequestMinimalPropHeadPropRepo)
+model_rebuild(PullRequestMinimalPropBase)
+model_rebuild(PullRequestMinimalPropBasePropRepo)
+
+__all__ = (
+    "PullRequestMinimal",
+    "PullRequestMinimalPropBase",
+    "PullRequestMinimalPropBasePropRepo",
+    "PullRequestMinimalPropHead",
+    "PullRequestMinimalPropHeadPropRepo",
+)

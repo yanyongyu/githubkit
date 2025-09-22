@@ -9,20 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0406 import TrafficType
 
+class RepositorySubscriptionType(TypedDict):
+    """Repository Invitation
 
-class ViewTrafficType(TypedDict):
-    """View Traffic
-
-    View Traffic
+    Repository invitations let you manage who you collaborate with.
     """
 
-    count: int
-    uniques: int
-    views: list[TrafficType]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: datetime
+    url: str
+    repository_url: str
 
 
-__all__ = ("ViewTrafficType",)
+__all__ = ("RepositorySubscriptionType",)

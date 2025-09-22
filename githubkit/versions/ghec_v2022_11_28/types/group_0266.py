@@ -10,46 +10,23 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class SimpleCommitType(TypedDict):
-    """Simple Commit
+class ProjectColumnType(TypedDict):
+    """Project Column
 
-    A commit.
+    Project columns contain cards of work.
     """
 
-    id: str
-    tree_id: str
-    message: str
-    timestamp: datetime
-    author: Union[SimpleCommitPropAuthorType, None]
-    committer: Union[SimpleCommitPropCommitterType, None]
-
-
-class SimpleCommitPropAuthorType(TypedDict):
-    """SimpleCommitPropAuthor
-
-    Information about the Git author
-    """
-
+    url: str
+    project_url: str
+    cards_url: str
+    id: int
+    node_id: str
     name: str
-    email: str
+    created_at: datetime
+    updated_at: datetime
 
 
-class SimpleCommitPropCommitterType(TypedDict):
-    """SimpleCommitPropCommitter
-
-    Information about the Git committer
-    """
-
-    name: str
-    email: str
-
-
-__all__ = (
-    "SimpleCommitPropAuthorType",
-    "SimpleCommitPropCommitterType",
-    "SimpleCommitType",
-)
+__all__ = ("ProjectColumnType",)

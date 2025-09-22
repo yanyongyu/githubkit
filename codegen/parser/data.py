@@ -1,5 +1,7 @@
 from collections import defaultdict
 from dataclasses import dataclass, field
+from functools import cached_property
+import re
 from typing import Literal
 
 from .schemas import ModelSchema, Property, SchemaData, UnionSchema
@@ -138,6 +140,17 @@ class EndpointData:
         return concat_snake_name(
             self.method, self.path.replace("{", "").replace("}", "").replace("/", "_")
         )
+
+    @cached_property
+    def eval_path(self) -> str:
+        """Actual string used to construct the path with param names"""
+        params_in_path = re.findall(r"\{([^\}]+)\}", self.path)
+        param_name_map = {param.name: param.prop_name for param in self.path_params}
+        path = self.path
+        for param in params_in_path:
+            if param in param_name_map:
+                path = path.replace(f"{{{param}}}", f"{{{param_name_map[param]}}}")
+        return path
 
     @property
     def path_params(self) -> list[Parameter]:

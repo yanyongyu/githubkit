@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
+class ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoIssuesCommentsCommentIdPatchBody"""
 
-    issue_id: int
+    body: str
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType",)
+__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType",)

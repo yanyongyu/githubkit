@@ -9,46 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType
 from .group_0010 import IntegrationType
-from .group_0166 import ReactionRollupType
 
 
-class TimelineCommentEventType(TypedDict):
-    """Timeline Comment Event
+class RenamedIssueEventType(TypedDict):
+    """Renamed Issue Event
 
-    Timeline Comment Event
+    Renamed Issue Event
     """
 
-    event: Literal["commented"]
-    actor: SimpleUserType
     id: int
     node_id: str
     url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: SimpleUserType
-    created_at: datetime
-    updated_at: datetime
-    issue_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
+    actor: SimpleUserType
+    event: Literal["renamed"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    rename: RenamedIssueEventPropRenameType
 
 
-__all__ = ("TimelineCommentEventType",)
+class RenamedIssueEventPropRenameType(TypedDict):
+    """RenamedIssueEventPropRename"""
+
+    from_: str
+    to: str
+
+
+__all__ = (
+    "RenamedIssueEventPropRenameType",
+    "RenamedIssueEventType",
+)

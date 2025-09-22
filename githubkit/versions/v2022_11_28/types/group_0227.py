@@ -9,48 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing_extensions import TypedDict
 
 
-class WorkflowUsageType(TypedDict):
-    """Workflow Usage
+class ActionsVariableType(TypedDict):
+    """Actions Variable"""
 
-    Workflow Usage
-    """
-
-    billable: WorkflowUsagePropBillableType
-
-
-class WorkflowUsagePropBillableType(TypedDict):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
+    name: str
+    value: str
+    created_at: datetime
+    updated_at: datetime
 
 
-class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosType(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsType(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
-
-
-__all__ = (
-    "WorkflowUsagePropBillablePropMacosType",
-    "WorkflowUsagePropBillablePropUbuntuType",
-    "WorkflowUsagePropBillablePropWindowsType",
-    "WorkflowUsagePropBillableType",
-    "WorkflowUsageType",
-)
+__all__ = ("ActionsVariableType",)

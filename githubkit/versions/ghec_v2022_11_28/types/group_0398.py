@@ -10,35 +10,102 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
+from .group_0170 import ReactionRollupType
 
 
-class PageBuildType(TypedDict):
-    """Page Build
+class PullRequestReviewCommentType(TypedDict):
+    """Pull Request Review Comment
 
-    Page Build
+    Pull Request Review Comments are comments on a portion of the Pull Request's
+    diff.
     """
 
     url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
+    pull_request_review_id: Union[int, None]
+    id: int
+    node_id: str
+    diff_hunk: str
+    path: str
+    position: NotRequired[int]
+    original_position: NotRequired[int]
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: SimpleUserType
+    body: str
     created_at: datetime
     updated_at: datetime
+    html_url: str
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    links: PullRequestReviewCommentPropLinksType
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
+    reactions: NotRequired[ReactionRollupType]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
 
 
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
+class PullRequestReviewCommentPropLinksType(TypedDict):
+    """PullRequestReviewCommentPropLinks"""
 
-    message: Union[str, None]
+    self_: PullRequestReviewCommentPropLinksPropSelfType
+    html: PullRequestReviewCommentPropLinksPropHtmlType
+    pull_request: PullRequestReviewCommentPropLinksPropPullRequestType
+
+
+class PullRequestReviewCommentPropLinksPropSelfType(TypedDict):
+    """PullRequestReviewCommentPropLinksPropSelf"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropHtmlType(TypedDict):
+    """PullRequestReviewCommentPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropPullRequestType(TypedDict):
+    """PullRequestReviewCommentPropLinksPropPullRequest"""
+
+    href: str
+
+
+class TimelineLineCommentedEventType(TypedDict):
+    """Timeline Line Commented Event
+
+    Timeline Line Commented Event
+    """
+
+    event: NotRequired[Literal["line_commented"]]
+    node_id: NotRequired[str]
+    comments: NotRequired[list[PullRequestReviewCommentType]]
 
 
 __all__ = (
-    "PageBuildPropErrorType",
-    "PageBuildType",
+    "PullRequestReviewCommentPropLinksPropHtmlType",
+    "PullRequestReviewCommentPropLinksPropPullRequestType",
+    "PullRequestReviewCommentPropLinksPropSelfType",
+    "PullRequestReviewCommentPropLinksType",
+    "PullRequestReviewCommentType",
+    "TimelineLineCommentedEventType",
 )

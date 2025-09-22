@@ -9,17 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from typing import Literal, Union
+
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Metadata(ExtraGitHubModel):
-    """metadata
+class ContentSymlink(GitHubModel):
+    """Symlink Content
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    An object describing a symlink
     """
 
+    type: Literal["symlink"] = Field()
+    target: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentSymlinkPropLinks = Field(alias="_links")
 
-model_rebuild(Metadata)
 
-__all__ = ("Metadata",)
+class ContentSymlinkPropLinks(GitHubModel):
+    """ContentSymlinkPropLinks"""
+
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(ContentSymlink)
+model_rebuild(ContentSymlinkPropLinks)
+
+__all__ = (
+    "ContentSymlink",
+    "ContentSymlinkPropLinks",
+)

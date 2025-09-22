@@ -9,25 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeOfConductSimple(GitHubModel):
-    """Code Of Conduct Simple
+class Link(GitHubModel):
+    """Link
 
-    Code of Conduct Simple
+    Hypermedia Link
     """
 
-    url: str = Field()
-    key: str = Field()
-    name: str = Field()
-    html_url: Union[str, None] = Field()
+    href: str = Field()
 
 
-model_rebuild(CodeOfConductSimple)
+model_rebuild(Link)
 
-__all__ = ("CodeOfConductSimple",)
+__all__ = ("Link",)

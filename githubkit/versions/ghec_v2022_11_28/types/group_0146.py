@@ -9,21 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0147 import RulesetVersionPropActorType
+
+class RepositoryRuleMergeQueuePropParametersType(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
+
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
 
 
-class RulesetVersionType(TypedDict):
-    """Ruleset version
-
-    The historical version of a ruleset
-    """
-
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: datetime
-
-
-__all__ = ("RulesetVersionType",)
+__all__ = ("RepositoryRuleMergeQueuePropParametersType",)

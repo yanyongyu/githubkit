@@ -38,6 +38,7 @@ if TYPE_CHECKING:
         AuditLogStreamKey,
         AuthenticationToken,
         CustomProperty,
+        EnterpriseAccessRestrictions,
         EnterpriseSecurityAnalysisSettings,
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
         EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
@@ -85,6 +86,7 @@ if TYPE_CHECKING:
         CustomPropertySetPayloadType,
         CustomPropertyType,
         DatadogConfigType,
+        EnterpriseAccessRestrictionsType,
         EnterpriseSecurityAnalysisSettingsType,
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type,
         EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
@@ -154,6 +156,146 @@ class EnterpriseAdminClient:
         raise RuntimeError(
             "GitHub client has already been collected. "
             "Do not use this client after the client has been collected."
+        )
+
+    def disable_access_restrictions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsType]:
+        """enterprise-admin/disable-access-restrictions
+
+        POST /enterprises/{enterprise}/access-restrictions/disable
+
+        Disable access restriction by proxy header using the network proxy owned by the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprises#disable-access-restrictions-for-an-enterprise
+        """
+
+        from ..models import BasicError, EnterpriseAccessRestrictions
+
+        url = f"/enterprises/{enterprise}/access-restrictions/disable"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseAccessRestrictions,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_disable_access_restrictions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsType]:
+        """enterprise-admin/disable-access-restrictions
+
+        POST /enterprises/{enterprise}/access-restrictions/disable
+
+        Disable access restriction by proxy header using the network proxy owned by the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprises#disable-access-restrictions-for-an-enterprise
+        """
+
+        from ..models import BasicError, EnterpriseAccessRestrictions
+
+        url = f"/enterprises/{enterprise}/access-restrictions/disable"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseAccessRestrictions,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def enable_access_restrictions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsType]:
+        """enterprise-admin/enable-access-restrictions
+
+        POST /enterprises/{enterprise}/access-restrictions/enable
+
+        Enable access restriction by proxy header using the network proxy owned by the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprises#enable-access-restrictions-for-an-enterprise
+        """
+
+        from ..models import BasicError, EnterpriseAccessRestrictions
+
+        url = f"/enterprises/{enterprise}/access-restrictions/enable"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseAccessRestrictions,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_enable_access_restrictions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsType]:
+        """enterprise-admin/enable-access-restrictions
+
+        POST /enterprises/{enterprise}/access-restrictions/enable
+
+        Enable access restriction by proxy header using the network proxy owned by the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprises#enable-access-restrictions-for-an-enterprise
+        """
+
+        from ..models import BasicError, EnterpriseAccessRestrictions
+
+        url = f"/enterprises/{enterprise}/access-restrictions/enable"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseAccessRestrictions,
+            error_models={
+                "400": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+            },
         )
 
     def get_github_actions_permissions_enterprise(
@@ -6206,14 +6348,14 @@ class EnterpriseAdminClient:
             response_model=NetworkSettings,
         )
 
-    def get_enterprise_custom_properties(
+    def custom_properties_for_repos_get_enterprise_definitions(
         self,
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """enterprise-admin/get-enterprise-custom-properties
+        """enterprise-admin/custom-properties-for-repos-get-enterprise-definitions
 
         GET /enterprises/{enterprise}/properties/schema
 
@@ -6241,14 +6383,14 @@ class EnterpriseAdminClient:
             },
         )
 
-    async def async_get_enterprise_custom_properties(
+    async def async_custom_properties_for_repos_get_enterprise_definitions(
         self,
         enterprise: str,
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """enterprise-admin/get-enterprise-custom-properties
+        """enterprise-admin/custom-properties-for-repos-get-enterprise-definitions
 
         GET /enterprises/{enterprise}/properties/schema
 
@@ -6277,7 +6419,7 @@ class EnterpriseAdminClient:
         )
 
     @overload
-    def create_or_update_enterprise_custom_properties(
+    def custom_properties_for_repos_create_or_update_enterprise_definitions(
         self,
         enterprise: str,
         *,
@@ -6287,7 +6429,7 @@ class EnterpriseAdminClient:
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
     @overload
-    def create_or_update_enterprise_custom_properties(
+    def custom_properties_for_repos_create_or_update_enterprise_definitions(
         self,
         enterprise: str,
         *,
@@ -6297,7 +6439,7 @@ class EnterpriseAdminClient:
         properties: list[CustomPropertyType],
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
-    def create_or_update_enterprise_custom_properties(
+    def custom_properties_for_repos_create_or_update_enterprise_definitions(
         self,
         enterprise: str,
         *,
@@ -6306,7 +6448,7 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterprisePropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """enterprise-admin/create-or-update-enterprise-custom-properties
+        """enterprise-admin/custom-properties-for-repos-create-or-update-enterprise-definitions
 
         PATCH /enterprises/{enterprise}/properties/schema
 
@@ -6356,7 +6498,7 @@ class EnterpriseAdminClient:
         )
 
     @overload
-    async def async_create_or_update_enterprise_custom_properties(
+    async def async_custom_properties_for_repos_create_or_update_enterprise_definitions(
         self,
         enterprise: str,
         *,
@@ -6366,7 +6508,7 @@ class EnterpriseAdminClient:
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
     @overload
-    async def async_create_or_update_enterprise_custom_properties(
+    async def async_custom_properties_for_repos_create_or_update_enterprise_definitions(
         self,
         enterprise: str,
         *,
@@ -6376,7 +6518,7 @@ class EnterpriseAdminClient:
         properties: list[CustomPropertyType],
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
 
-    async def async_create_or_update_enterprise_custom_properties(
+    async def async_custom_properties_for_repos_create_or_update_enterprise_definitions(
         self,
         enterprise: str,
         *,
@@ -6385,7 +6527,7 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterprisePropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
-        """enterprise-admin/create-or-update-enterprise-custom-properties
+        """enterprise-admin/custom-properties-for-repos-create-or-update-enterprise-definitions
 
         PATCH /enterprises/{enterprise}/properties/schema
 
@@ -6434,7 +6576,7 @@ class EnterpriseAdminClient:
             },
         )
 
-    def promote_custom_property_to_enterprise(
+    def custom_properties_for_repos_promote_definition_to_enterprise(
         self,
         enterprise: str,
         org: str,
@@ -6443,7 +6585,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """enterprise-admin/promote-custom-property-to-enterprise
+        """enterprise-admin/custom-properties-for-repos-promote-definition-to-enterprise
 
         PUT /enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote
 
@@ -6472,7 +6614,7 @@ class EnterpriseAdminClient:
             },
         )
 
-    async def async_promote_custom_property_to_enterprise(
+    async def async_custom_properties_for_repos_promote_definition_to_enterprise(
         self,
         enterprise: str,
         org: str,
@@ -6481,7 +6623,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """enterprise-admin/promote-custom-property-to-enterprise
+        """enterprise-admin/custom-properties-for-repos-promote-definition-to-enterprise
 
         PUT /enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote
 
@@ -6510,7 +6652,7 @@ class EnterpriseAdminClient:
             },
         )
 
-    def get_enterprise_custom_property(
+    def custom_properties_for_repos_get_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
@@ -6518,7 +6660,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """enterprise-admin/get-enterprise-custom-property
+        """enterprise-admin/custom-properties-for-repos-get-enterprise-definition
 
         GET /enterprises/{enterprise}/properties/schema/{custom_property_name}
 
@@ -6546,7 +6688,7 @@ class EnterpriseAdminClient:
             },
         )
 
-    async def async_get_enterprise_custom_property(
+    async def async_custom_properties_for_repos_get_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
@@ -6554,7 +6696,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """enterprise-admin/get-enterprise-custom-property
+        """enterprise-admin/custom-properties-for-repos-get-enterprise-definition
 
         GET /enterprises/{enterprise}/properties/schema/{custom_property_name}
 
@@ -6583,7 +6725,7 @@ class EnterpriseAdminClient:
         )
 
     @overload
-    def create_or_update_enterprise_custom_property(
+    def custom_properties_for_repos_create_or_update_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
@@ -6594,7 +6736,7 @@ class EnterpriseAdminClient:
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
     @overload
-    def create_or_update_enterprise_custom_property(
+    def custom_properties_for_repos_create_or_update_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
@@ -6612,7 +6754,7 @@ class EnterpriseAdminClient:
         ] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
-    def create_or_update_enterprise_custom_property(
+    def custom_properties_for_repos_create_or_update_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
@@ -6622,7 +6764,7 @@ class EnterpriseAdminClient:
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """enterprise-admin/create-or-update-enterprise-custom-property
+        """enterprise-admin/custom-properties-for-repos-create-or-update-enterprise-definition
 
         PUT /enterprises/{enterprise}/properties/schema/{custom_property_name}
 
@@ -6662,7 +6804,7 @@ class EnterpriseAdminClient:
         )
 
     @overload
-    async def async_create_or_update_enterprise_custom_property(
+    async def async_custom_properties_for_repos_create_or_update_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
@@ -6673,7 +6815,7 @@ class EnterpriseAdminClient:
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
     @overload
-    async def async_create_or_update_enterprise_custom_property(
+    async def async_custom_properties_for_repos_create_or_update_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
@@ -6691,7 +6833,7 @@ class EnterpriseAdminClient:
         ] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyType]: ...
 
-    async def async_create_or_update_enterprise_custom_property(
+    async def async_custom_properties_for_repos_create_or_update_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
@@ -6701,7 +6843,7 @@ class EnterpriseAdminClient:
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
     ) -> Response[CustomProperty, CustomPropertyType]:
-        """enterprise-admin/create-or-update-enterprise-custom-property
+        """enterprise-admin/custom-properties-for-repos-create-or-update-enterprise-definition
 
         PUT /enterprises/{enterprise}/properties/schema/{custom_property_name}
 
@@ -6740,7 +6882,7 @@ class EnterpriseAdminClient:
             },
         )
 
-    def remove_enterprise_custom_property(
+    def custom_properties_for_repos_delete_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
@@ -6748,7 +6890,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """enterprise-admin/remove-enterprise-custom-property
+        """enterprise-admin/custom-properties-for-repos-delete-enterprise-definition
 
         DELETE /enterprises/{enterprise}/properties/schema/{custom_property_name}
 
@@ -6776,7 +6918,7 @@ class EnterpriseAdminClient:
             },
         )
 
-    async def async_remove_enterprise_custom_property(
+    async def async_custom_properties_for_repos_delete_enterprise_definition(
         self,
         enterprise: str,
         custom_property_name: str,
@@ -6784,7 +6926,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response:
-        """enterprise-admin/remove-enterprise-custom-property
+        """enterprise-admin/custom-properties-for-repos-delete-enterprise-definition
 
         DELETE /enterprises/{enterprise}/properties/schema/{custom_property_name}
 

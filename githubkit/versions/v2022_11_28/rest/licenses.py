@@ -137,7 +137,7 @@ class LicensesClient:
 
         from ..models import BasicError, License
 
-        url = f"/licenses/{license}"
+        url = f"/licenses/{license_}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -171,7 +171,7 @@ class LicensesClient:
 
         from ..models import BasicError, License
 
-        url = f"/licenses/{license}"
+        url = f"/licenses/{license_}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 

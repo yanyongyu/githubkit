@@ -18,56 +18,93 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0093 import Team
 
+class Job(GitHubModel):
+    """Job
 
-class PendingDeploymentPropReviewersItems(GitHubModel):
-    """PendingDeploymentPropReviewersItems"""
-
-    type: Missing[Literal["User", "Team"]] = Field(
-        default=UNSET, description="The type of reviewer."
-    )
-    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
-
-
-class PendingDeployment(GitHubModel):
-    """Pending Deployment
-
-    Details of a deployment that is waiting for protection rules to pass
+    Information of a job execution in a workflow run
     """
 
-    environment: PendingDeploymentPropEnvironment = Field()
-    wait_timer: int = Field(description="The set duration of the wait timer")
-    wait_timer_started_at: Union[datetime, None] = Field(
-        description="The time that the wait timer began."
+    id: int = Field(description="The id of the job.")
+    run_id: int = Field(description="The id of the associated workflow run.")
+    run_url: str = Field()
+    run_attempt: Missing[int] = Field(
+        default=UNSET,
+        description="Attempt number of the associated workflow run, 1 for first attempt and higher if the workflow was re-run.",
     )
-    current_user_can_approve: bool = Field(
-        description="Whether the currently authenticated user can approve the deployment"
+    node_id: str = Field()
+    head_sha: str = Field(description="The SHA of the commit that is being run.")
+    url: str = Field()
+    html_url: Union[str, None] = Field()
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ] = Field(description="The phase of the lifecycle that the job is currently in.")
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ] = Field(description="The outcome of the job.")
+    created_at: datetime = Field(
+        description="The time that the job created, in ISO 8601 format."
     )
-    reviewers: list[PendingDeploymentPropReviewersItems] = Field(
-        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed."
+    started_at: datetime = Field(
+        description="The time that the job started, in ISO 8601 format."
+    )
+    completed_at: Union[datetime, None] = Field(
+        description="The time that the job finished, in ISO 8601 format."
+    )
+    name: str = Field(description="The name of the job.")
+    steps: Missing[list[JobPropStepsItems]] = Field(
+        default=UNSET, description="Steps in this job."
+    )
+    check_run_url: str = Field()
+    labels: list[str] = Field(
+        description='Labels for the workflow job. Specified by the "runs_on" attribute in the action\'s workflow file.'
+    )
+    runner_id: Union[int, None] = Field(
+        description="The ID of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
+    )
+    runner_name: Union[str, None] = Field(
+        description="The name of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
+    )
+    runner_group_id: Union[int, None] = Field(
+        description="The ID of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
+    )
+    runner_group_name: Union[str, None] = Field(
+        description="The name of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
+    )
+    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
+    head_branch: Union[str, None] = Field(description="The name of the current branch.")
+
+
+class JobPropStepsItems(GitHubModel):
+    """JobPropStepsItems"""
+
+    status: Literal["queued", "in_progress", "completed"] = Field(
+        description="The phase of the lifecycle that the job is currently in."
+    )
+    conclusion: Union[str, None] = Field(description="The outcome of the job.")
+    name: str = Field(description="The name of the job.")
+    number: int = Field()
+    started_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET, description="The time that the step started, in ISO 8601 format."
+    )
+    completed_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET, description="The time that the job finished, in ISO 8601 format."
     )
 
 
-class PendingDeploymentPropEnvironment(GitHubModel):
-    """PendingDeploymentPropEnvironment"""
-
-    id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the environment."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(PendingDeploymentPropReviewersItems)
-model_rebuild(PendingDeployment)
-model_rebuild(PendingDeploymentPropEnvironment)
+model_rebuild(Job)
+model_rebuild(JobPropStepsItems)
 
 __all__ = (
-    "PendingDeployment",
-    "PendingDeploymentPropEnvironment",
-    "PendingDeploymentPropReviewersItems",
+    "Job",
+    "JobPropStepsItems",
 )

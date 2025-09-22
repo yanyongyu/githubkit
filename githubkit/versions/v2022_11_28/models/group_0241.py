@@ -9,45 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0234 import BranchProtection
-from .group_0239 import Commit
 
+class Autolink(GitHubModel):
+    """Autolink reference
 
-class BranchWithProtection(GitHubModel):
-    """Branch With Protection
-
-    Branch With Protection
+    An autolink reference.
     """
 
-    name: str = Field()
-    commit: Commit = Field(title="Commit", description="Commit")
-    links: BranchWithProtectionPropLinks = Field(alias="_links")
-    protected: bool = Field()
-    protection: BranchProtection = Field(
-        title="Branch Protection", description="Branch Protection"
+    id: int = Field()
+    key_prefix: str = Field(description="The prefix of a key that is linkified.")
+    url_template: str = Field(
+        description="A template for the target URL that is generated if a key was found."
     )
-    protection_url: str = Field()
-    pattern: Missing[str] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
+    is_alphanumeric: bool = Field(
+        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
+    )
+    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
 
 
-class BranchWithProtectionPropLinks(GitHubModel):
-    """BranchWithProtectionPropLinks"""
+model_rebuild(Autolink)
 
-    html: str = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(BranchWithProtection)
-model_rebuild(BranchWithProtectionPropLinks)
-
-__all__ = (
-    "BranchWithProtection",
-    "BranchWithProtectionPropLinks",
-)
+__all__ = ("Autolink",)

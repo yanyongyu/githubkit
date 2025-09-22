@@ -9,59 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0238 import DiffEntryType
-from .group_0240 import CommitPropCommitType
 
+class WorkflowUsageType(TypedDict):
+    """Workflow Usage
 
-class CommitType(TypedDict):
-    """Commit
-
-    Commit
+    Workflow Usage
     """
 
-    url: str
-    sha: str
-    node_id: str
-    html_url: str
-    comments_url: str
-    commit: CommitPropCommitType
-    author: Union[SimpleUserType, EmptyObjectType, None]
-    committer: Union[SimpleUserType, EmptyObjectType, None]
-    parents: list[CommitPropParentsItemsType]
-    stats: NotRequired[CommitPropStatsType]
-    files: NotRequired[list[DiffEntryType]]
+    billable: WorkflowUsagePropBillableType
 
 
-class EmptyObjectType(TypedDict):
-    """Empty Object
+class WorkflowUsagePropBillableType(TypedDict):
+    """WorkflowUsagePropBillable"""
 
-    An object without any properties.
-    """
-
-
-class CommitPropParentsItemsType(TypedDict):
-    """CommitPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: NotRequired[str]
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
 
 
-class CommitPropStatsType(TypedDict):
-    """CommitPropStats"""
+class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
 
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-    total: NotRequired[int]
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropMacosType(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropWindowsType(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: NotRequired[int]
 
 
 __all__ = (
-    "CommitPropParentsItemsType",
-    "CommitPropStatsType",
-    "CommitType",
-    "EmptyObjectType",
+    "WorkflowUsagePropBillablePropMacosType",
+    "WorkflowUsagePropBillablePropUbuntuType",
+    "WorkflowUsagePropBillablePropWindowsType",
+    "WorkflowUsagePropBillableType",
+    "WorkflowUsageType",
 )

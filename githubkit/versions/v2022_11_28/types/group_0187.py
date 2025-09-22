@@ -9,20 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import TypedDict
 
-from .group_0186 import RulesetVersionPropActorType
-from .group_0189 import RulesetVersionWithStateAllof1PropStateType
+
+class RepositoryRuleMaxFileSizePropParametersType(TypedDict):
+    """RepositoryRuleMaxFileSizePropParameters"""
+
+    max_file_size: int
 
 
-class RulesetVersionWithStateType(TypedDict):
-    """RulesetVersionWithState"""
-
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: datetime
-    state: RulesetVersionWithStateAllof1PropStateType
-
-
-__all__ = ("RulesetVersionWithStateType",)
+__all__ = ("RepositoryRuleMaxFileSizePropParametersType",)

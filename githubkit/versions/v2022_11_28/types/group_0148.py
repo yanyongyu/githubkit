@@ -11,11 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class RepositoryRuleUpdatePropParametersType(TypedDict):
-    """RepositoryRuleUpdatePropParameters"""
-
-    update_allows_fetch_and_merge: bool
+from .group_0149 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+)
 
 
-__all__ = ("RepositoryRuleUpdatePropParametersType",)
+class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
+    """Repository ruleset conditions for repository names
+
+    Parameters for a repository name condition
+    """
+
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
+
+
+__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetType",)

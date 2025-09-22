@@ -9,49 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0147 import RepositoryRulesetConditionsPropRefNameType
 
 
-class RepositoryRuleCreationType(TypedDict):
-    """creation
+class RepositoryRulesetConditionsType(TypedDict):
+    """Repository ruleset conditions for ref names
 
-    Only allow users with bypass permission to create matching refs.
+    Parameters for a repository ruleset ref name condition
     """
 
-    type: Literal["creation"]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-class RepositoryRuleDeletionType(TypedDict):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"]
-
-
-class RepositoryRuleRequiredSignaturesType(TypedDict):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"]
-
-
-class RepositoryRuleNonFastForwardType(TypedDict):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"]
-
-
-__all__ = (
-    "RepositoryRuleCreationType",
-    "RepositoryRuleDeletionType",
-    "RepositoryRuleNonFastForwardType",
-    "RepositoryRuleRequiredSignaturesType",
-)
+__all__ = ("RepositoryRulesetConditionsType",)

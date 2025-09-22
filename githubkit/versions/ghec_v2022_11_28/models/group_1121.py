@@ -16,14 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsProjectIdPatchResponse403(GitHubModel):
-    """ProjectsProjectIdPatchResponse403"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[list[str]] = Field(default=UNSET)
+    title: Missing[str] = Field(
+        default=UNSET, description="The discussion post's title."
+    )
+    body: Missing[str] = Field(
+        default=UNSET, description="The discussion post's body text."
+    )
 
 
-model_rebuild(ProjectsProjectIdPatchResponse403)
+model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody)
 
-__all__ = ("ProjectsProjectIdPatchResponse403",)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody",)

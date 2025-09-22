@@ -13,18 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ProjectsColumnsColumnIdCardsPostBodyOneof1(GitHubModel):
-    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
-
-    content_id: int = Field(
-        description="The unique identifier of the content associated with the card"
-    )
-    content_type: str = Field(
-        description="The piece of content associated with the card"
-    )
+from .group_0087 import NetworkConfiguration
 
 
-model_rebuild(ProjectsColumnsColumnIdCardsPostBodyOneof1)
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof1",)
+    total_count: int = Field()
+    network_configurations: list[NetworkConfiguration] = Field()
+
+
+model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
+
+__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200",)

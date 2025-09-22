@@ -11,18 +11,13 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0207 import RateLimitType
-from .group_0209 import RateLimitOverviewPropResourcesType
+
+class CombinedBillingUsageType(TypedDict):
+    """CombinedBillingUsage"""
+
+    days_left_in_billing_cycle: int
+    estimated_paid_storage_for_month: int
+    estimated_storage_for_month: int
 
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
-
-    Rate Limit Overview
-    """
-
-    resources: RateLimitOverviewPropResourcesType
-    rate: RateLimitType
-
-
-__all__ = ("RateLimitOverviewType",)
+__all__ = ("CombinedBillingUsageType",)

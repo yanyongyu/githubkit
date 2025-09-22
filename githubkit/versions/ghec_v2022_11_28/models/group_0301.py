@@ -9,23 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class CodeScanningAutofixCommitsResponse(GitHubModel):
-    """CodeScanningAutofixCommitsResponse"""
-
-    target_ref: Missing[str] = Field(
-        default=UNSET,
-        description='The Git reference of target branch for the commit. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
-    )
-    sha: Missing[str] = Field(default=UNSET, description="SHA of commit with autofix.")
+from .group_0297 import GitUser
+from .group_0298 import Verification
 
 
-model_rebuild(CodeScanningAutofixCommitsResponse)
+class CommitPropCommit(GitHubModel):
+    """CommitPropCommit"""
 
-__all__ = ("CodeScanningAutofixCommitsResponse",)
+    url: str = Field()
+    author: Union[None, GitUser] = Field()
+    committer: Union[None, GitUser] = Field()
+    message: str = Field()
+    comment_count: int = Field()
+    tree: CommitPropCommitPropTree = Field()
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+
+
+class CommitPropCommitPropTree(GitHubModel):
+    """CommitPropCommitPropTree"""
+
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(CommitPropCommit)
+model_rebuild(CommitPropCommitPropTree)
+
+__all__ = (
+    "CommitPropCommit",
+    "CommitPropCommitPropTree",
+)

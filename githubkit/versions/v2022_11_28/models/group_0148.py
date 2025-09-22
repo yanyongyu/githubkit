@@ -13,15 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class RepositoryRuleUpdatePropParameters(GitHubModel):
-    """RepositoryRuleUpdatePropParameters"""
-
-    update_allows_fetch_and_merge: bool = Field(
-        description="Branch can pull changes from its upstream repository"
-    )
+from .group_0149 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
 
 
-model_rebuild(RepositoryRuleUpdatePropParameters)
+class RepositoryRulesetConditionsRepositoryNameTarget(GitHubModel):
+    """Repository ruleset conditions for repository names
 
-__all__ = ("RepositoryRuleUpdatePropParameters",)
+    Parameters for a repository name condition
+    """
+
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+
+
+model_rebuild(RepositoryRulesetConditionsRepositoryNameTarget)
+
+__all__ = ("RepositoryRulesetConditionsRepositoryNameTarget",)

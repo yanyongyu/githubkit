@@ -9,24 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Annotated, Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0091 import (
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
-)
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterpriseRulesetConditionsOrganizationNameTarget(GitHubModel):
-    """Repository ruleset conditions for organization names
+class CustomPropertySetPayload(GitHubModel):
+    """Custom Property Set Payload
 
-    Parameters for an organization name condition
+    Custom property set payload
     """
 
-    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
+    value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
+        Field(description="The type of the value for the property")
+    )
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
+    )
+    default_value: Missing[Union[str, list[str], None]] = Field(
+        default=UNSET, description="Default value of the property"
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
+    )
+    allowed_values: Missing[
+        Union[
+            Annotated[
+                list[Annotated[str, Field(max_length=75)]],
+                Field(max_length=200 if PYDANTIC_V2 else None),
+            ],
+            None,
+        ]
+    ] = Field(
+        default=UNSET,
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+    )
+    values_editable_by: Missing[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
-model_rebuild(EnterpriseRulesetConditionsOrganizationNameTarget)
+model_rebuild(CustomPropertySetPayload)
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationNameTarget",)
+__all__ = ("CustomPropertySetPayload",)

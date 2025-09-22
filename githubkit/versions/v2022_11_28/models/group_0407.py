@@ -13,20 +13,18 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0406 import Traffic
 
+class CommitActivity(GitHubModel):
+    """Commit Activity
 
-class CloneTraffic(GitHubModel):
-    """Clone Traffic
-
-    Clone Traffic
+    Commit Activity
     """
 
-    count: int = Field()
-    uniques: int = Field()
-    clones: list[Traffic] = Field()
+    days: list[int] = Field()
+    total: int = Field()
+    week: int = Field()
 
 
-model_rebuild(CloneTraffic)
+model_rebuild(CommitActivity)
 
-__all__ = ("CloneTraffic",)
+__all__ = ("CommitActivity",)

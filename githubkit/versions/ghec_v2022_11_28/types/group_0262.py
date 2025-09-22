@@ -9,17 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsVariableType(TypedDict):
-    """Actions Variable"""
+class TeamMembershipType(TypedDict):
+    """Team Membership
 
-    name: str
-    value: str
-    created_at: datetime
-    updated_at: datetime
+    Team Membership
+    """
+
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
-__all__ = ("ActionsVariableType",)
+__all__ = ("TeamMembershipType",)

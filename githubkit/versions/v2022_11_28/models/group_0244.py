@@ -22,35 +22,47 @@ from .group_0010 import Integration
 from .group_0093 import Team
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
-    GitHubModel
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    url: str = Field()
-    users_url: str = Field()
-    teams_url: str = Field()
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
-    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
-
-
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
-    GitHubModel
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
-
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
-    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
+    users: Missing[list[SimpleUser]] = Field(
+        default=UNSET, description="The list of users with review dismissal access."
+    )
+    teams: Missing[list[Team]] = Field(
+        default=UNSET, description="The list of teams with review dismissal access."
+    )
+    apps: Missing[list[Union[Integration, None]]] = Field(
+        default=UNSET, description="The list of apps with review dismissal access."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    users_url: Missing[str] = Field(default=UNSET)
+    teams_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions)
-model_rebuild(
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-)
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: Missing[list[SimpleUser]] = Field(
+        default=UNSET,
+        description="The list of users allowed to bypass pull request requirements.",
+    )
+    teams: Missing[list[Team]] = Field(
+        default=UNSET,
+        description="The list of teams allowed to bypass pull request requirements.",
+    )
+    apps: Missing[list[Union[Integration, None]]] = Field(
+        default=UNSET,
+        description="The list of apps allowed to bypass pull request requirements.",
+    )
+
+
+model_rebuild(ProtectedBranchPullRequestReviewPropDismissalRestrictions)
+model_rebuild(ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances)
 
 __all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
 )

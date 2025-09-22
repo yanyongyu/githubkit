@@ -10,26 +10,25 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
 
 
-class ReactionType(TypedDict):
-    """Reaction
+class ProjectsV2DraftIssueType(TypedDict):
+    """Draft Issue
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    A draft issue in a project
     """
 
-    id: int
+    id: float
     node_id: str
+    title: str
+    body: NotRequired[Union[str, None]]
     user: Union[None, SimpleUserType]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
     created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("ReactionType",)
+__all__ = ("ProjectsV2DraftIssueType",)

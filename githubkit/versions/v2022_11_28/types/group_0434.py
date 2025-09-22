@@ -14,27 +14,20 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseWebhooksType(TypedDict):
-    """Enterprise
+class KeyType(TypedDict):
+    """Key
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
-    enterprise-accounts)."
+    Key
     """
 
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
+    key: str
     id: int
-    node_id: str
-    name: str
-    slug: str
-    created_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    avatar_url: str
+    url: str
+    title: str
+    created_at: datetime
+    verified: bool
+    read_only: bool
+    last_used: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("EnterpriseWebhooksType",)
+__all__ = ("KeyType",)

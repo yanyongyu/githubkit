@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0093 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
+)
+from .group_0095 import (
     RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
 )
-from .group_0095 import RepositoryRulesetConditionsPropRefNameType
-from .group_0099 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
-)
+from .group_0097 import RepositoryRulesetConditionsPropRefNameType
 
 
-class EnterpriseRulesetConditionsOneof2Type(TypedDict):
-    """organization_id_and_repository_name
+class EnterpriseRulesetConditionsOneof0Type(TypedDict):
+    """organization_name_and_repository_name
 
-    Conditions to target organizations by id and all repositories
+    Conditions to target organizations by name and all repositories
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
+    organization_name: (
+        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
     )
     repository_name: (
         RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
@@ -35,4 +35,4 @@ class EnterpriseRulesetConditionsOneof2Type(TypedDict):
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-__all__ = ("EnterpriseRulesetConditionsOneof2Type",)
+__all__ = ("EnterpriseRulesetConditionsOneof0Type",)

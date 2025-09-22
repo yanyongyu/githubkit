@@ -12,23 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0132 import Link
 
 
-class RepositoryRulesetConditionsPropRefName(GitHubModel):
-    """RepositoryRulesetConditionsPropRefName"""
+class PullRequestSimplePropLinks(GitHubModel):
+    """PullRequestSimplePropLinks"""
 
-    include: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches.",
-    )
-    exclude: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.",
-    )
+    comments: Link = Field(title="Link", description="Hypermedia Link")
+    commits: Link = Field(title="Link", description="Hypermedia Link")
+    statuses: Link = Field(title="Link", description="Hypermedia Link")
+    html: Link = Field(title="Link", description="Hypermedia Link")
+    issue: Link = Field(title="Link", description="Hypermedia Link")
+    review_comments: Link = Field(title="Link", description="Hypermedia Link")
+    review_comment: Link = Field(title="Link", description="Hypermedia Link")
+    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
 
 
-model_rebuild(RepositoryRulesetConditionsPropRefName)
+model_rebuild(PullRequestSimplePropLinks)
 
-__all__ = ("RepositoryRulesetConditionsPropRefName",)
+__all__ = ("PullRequestSimplePropLinks",)

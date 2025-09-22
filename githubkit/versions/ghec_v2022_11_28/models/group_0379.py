@@ -19,24 +19,35 @@ from .group_0003 import SimpleUser
 from .group_0010 import Integration
 
 
-class LockedIssueEvent(GitHubModel):
-    """Locked Issue Event
+class UnlabeledIssueEvent(GitHubModel):
+    """Unlabeled Issue Event
 
-    Locked Issue Event
+    Unlabeled Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["locked"] = Field()
+    event: Literal["unlabeled"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    lock_reason: Union[str, None] = Field()
+    label: UnlabeledIssueEventPropLabel = Field()
 
 
-model_rebuild(LockedIssueEvent)
+class UnlabeledIssueEventPropLabel(GitHubModel):
+    """UnlabeledIssueEventPropLabel"""
 
-__all__ = ("LockedIssueEvent",)
+    name: str = Field()
+    color: str = Field()
+
+
+model_rebuild(UnlabeledIssueEvent)
+model_rebuild(UnlabeledIssueEventPropLabel)
+
+__all__ = (
+    "UnlabeledIssueEvent",
+    "UnlabeledIssueEventPropLabel",
+)

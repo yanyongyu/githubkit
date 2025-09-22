@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
 
 from pydantic import Field
 
@@ -18,20 +18,34 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReviewCustomGatesStateRequired(GitHubModel):
-    """ReviewCustomGatesStateRequired"""
+class ActionsCacheList(GitHubModel):
+    """Repository actions caches
 
-    environment_name: str = Field(
-        description="The name of the environment to approve or reject."
-    )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
-    )
-    comment: Missing[str] = Field(
-        default=UNSET, description="Optional comment to include with the review."
+    Repository actions caches
+    """
+
+    total_count: int = Field(description="Total number of caches")
+    actions_caches: list[ActionsCacheListPropActionsCachesItems] = Field(
+        description="Array of caches"
     )
 
 
-model_rebuild(ReviewCustomGatesStateRequired)
+class ActionsCacheListPropActionsCachesItems(GitHubModel):
+    """ActionsCacheListPropActionsCachesItems"""
 
-__all__ = ("ReviewCustomGatesStateRequired",)
+    id: Missing[int] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET)
+    key: Missing[str] = Field(default=UNSET)
+    version: Missing[str] = Field(default=UNSET)
+    last_accessed_at: Missing[datetime] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(default=UNSET)
+    size_in_bytes: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(ActionsCacheList)
+model_rebuild(ActionsCacheListPropActionsCachesItems)
+
+__all__ = (
+    "ActionsCacheList",
+    "ActionsCacheListPropActionsCachesItems",
+)

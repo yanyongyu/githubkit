@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0495 import EnterpriseWebhooks
-from .group_0496 import SimpleInstallation
-from .group_0497 import OrganizationSimpleWebhooks
-from .group_0498 import RepositoryWebhooks
-from .group_0530 import WebhooksProjectColumn
+from .group_0505 import EnterpriseWebhooks
+from .group_0506 import SimpleInstallation
+from .group_0507 import OrganizationSimpleWebhooks
+from .group_0508 import RepositoryWebhooks
+from .group_0538 import WebhooksProjectCard
 
 
-class WebhookProjectColumnMoved(GitHubModel):
-    """project_column moved event"""
+class WebhookProjectCardEdited(GitHubModel):
+    """project_card edited event"""
 
-    action: Literal["moved"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookProjectCardEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,7 +45,7 @@ class WebhookProjectColumnMoved(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_column: WebhooksProjectColumn = Field(title="Project Column")
+    project_card: WebhooksProjectCard = Field(title="Project Card")
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -53,6 +54,24 @@ class WebhookProjectColumnMoved(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectColumnMoved)
+class WebhookProjectCardEditedPropChanges(GitHubModel):
+    """WebhookProjectCardEditedPropChanges"""
 
-__all__ = ("WebhookProjectColumnMoved",)
+    note: WebhookProjectCardEditedPropChangesPropNote = Field()
+
+
+class WebhookProjectCardEditedPropChangesPropNote(GitHubModel):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None] = Field(alias="from")
+
+
+model_rebuild(WebhookProjectCardEdited)
+model_rebuild(WebhookProjectCardEditedPropChanges)
+model_rebuild(WebhookProjectCardEditedPropChangesPropNote)
+
+__all__ = (
+    "WebhookProjectCardEdited",
+    "WebhookProjectCardEditedPropChanges",
+    "WebhookProjectCardEditedPropChangesPropNote",
+)

@@ -9,32 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSettingsNetworkConfigurationsPostBody(GitHubModel):
-    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+class OrgsOrgPrivateRegistriesGetResponse200(GitHubModel):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
 
-    name: str = Field(
-        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
-    )
-    compute_service: Missing[Literal["none", "actions"]] = Field(
+    total_count: int = Field()
+    configurations: list[OrgPrivateRegistryConfiguration] = Field()
+
+
+class OrgPrivateRegistryConfiguration(GitHubModel):
+    """Organization private registry
+
+    Private registry configuration for an organization
+    """
+
+    name: str = Field(description="The name of the private registry configuration.")
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ] = Field(description="The registry type.")
+    username: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The hosted compute service to use for the network configuration.",
+        description="The username to use when authenticating with the private registry.",
     )
-    network_settings_ids: list[str] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The identifier of the network settings to use for the network configuration. Exactly one network settings must be specified.",
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry."
     )
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(OrgsOrgSettingsNetworkConfigurationsPostBody)
+model_rebuild(OrgsOrgPrivateRegistriesGetResponse200)
+model_rebuild(OrgPrivateRegistryConfiguration)
 
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsPostBody",)
+__all__ = (
+    "OrgPrivateRegistryConfiguration",
+    "OrgsOrgPrivateRegistriesGetResponse200",
+)

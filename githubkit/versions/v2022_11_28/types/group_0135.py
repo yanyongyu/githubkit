@@ -9,18 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0136 import RepositoryRulesetConditionsPropRefNameType
-
-
-class RepositoryRulesetConditionsType(TypedDict):
-    """Repository ruleset conditions for ref names
-
-    Parameters for a repository ruleset ref name condition
-    """
-
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+from .group_0003 import SimpleUserType
+from .group_0020 import RepositoryType
 
 
-__all__ = ("RepositoryRulesetConditionsType",)
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
+
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
+    user: Union[None, SimpleUserType]
+
+
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[None, SimpleUserType]
+
+
+__all__ = (
+    "PullRequestSimplePropBaseType",
+    "PullRequestSimplePropHeadType",
+)

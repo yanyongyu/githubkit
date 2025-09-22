@@ -9,50 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CustomPropertySetPayload(GitHubModel):
-    """Custom Property Set Payload
+class NetworkSettings(GitHubModel):
+    """Hosted compute network settings resource
 
-    Custom property set payload
+    A hosted compute network settings resource.
     """
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
-        Field(description="The type of the value for the property")
+    id: str = Field(
+        description="The unique identifier of the network settings resource."
     )
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
-    )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
-    )
-    allowed_values: Missing[
-        Union[
-            Annotated[
-                list[Annotated[str, Field(max_length=75)]],
-                Field(max_length=200 if PYDANTIC_V2 else None),
-            ],
-            None,
-        ]
-    ] = Field(
+    network_configuration_id: Missing[str] = Field(
         default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+        description="The identifier of the network configuration that is using this settings resource.",
     )
-    values_editable_by: Missing[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ] = Field(default=UNSET, description="Who can edit the values of the property")
+    name: str = Field(description="The name of the network settings resource.")
+    subnet_id: str = Field(
+        description="The subnet this network settings resource is configured for."
+    )
+    region: str = Field(
+        description="The location of the subnet this network settings resource is configured for."
+    )
 
 
-model_rebuild(CustomPropertySetPayload)
+model_rebuild(NetworkSettings)
 
-__all__ = ("CustomPropertySetPayload",)
+__all__ = ("NetworkSettings",)

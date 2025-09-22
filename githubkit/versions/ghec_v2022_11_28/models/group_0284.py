@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,16 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Verification(GitHubModel):
-    """Verification"""
+class ReviewCustomGatesStateRequired(GitHubModel):
+    """ReviewCustomGatesStateRequired"""
 
-    verified: bool = Field()
-    reason: str = Field()
-    payload: Union[str, None] = Field()
-    signature: Union[str, None] = Field()
-    verified_at: Missing[Union[str, None]] = Field(default=UNSET)
+    environment_name: str = Field(
+        description="The name of the environment to approve or reject."
+    )
+    state: Literal["approved", "rejected"] = Field(
+        description="Whether to approve or reject deployment to the specified environments."
+    )
+    comment: Missing[str] = Field(
+        default=UNSET, description="Optional comment to include with the review."
+    )
 
 
-model_rebuild(Verification)
+model_rebuild(ReviewCustomGatesStateRequired)
 
-__all__ = ("Verification",)
+__all__ = ("ReviewCustomGatesStateRequired",)

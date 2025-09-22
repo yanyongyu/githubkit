@@ -11,14 +11,9 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0085 import NetworkConfigurationType
+
+class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
-
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
-
-
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",)
+__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1Type",)

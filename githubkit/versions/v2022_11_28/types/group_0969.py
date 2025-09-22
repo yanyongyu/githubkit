@@ -9,13 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+class OrgsOrgPersonalAccessTokensPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokensPostBody"""
 
-    pattern_config_version: NotRequired[str]
+    action: Literal["revoke"]
+    pat_ids: list[int]
 
 
-__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",)
+__all__ = ("OrgsOrgPersonalAccessTokensPostBodyType",)

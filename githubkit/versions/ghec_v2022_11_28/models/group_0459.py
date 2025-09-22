@@ -9,37 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class Meta(GitHubModel):
-    """Meta
+class RepositorySubscription(GitHubModel):
+    """Repository Invitation
 
-    The metadata associated with the creation/updates to the user.
+    Repository invitations let you manage who you collaborate with.
     """
 
-    resource_type: Literal["User", "Group"] = Field(
-        alias="resourceType", description="A type of a resource"
+    subscribed: bool = Field(
+        description="Determines if notifications should be received from this repository."
     )
-    created: Missing[str] = Field(
-        default=UNSET, description="A date and time when the user was created."
+    ignored: bool = Field(
+        description="Determines if all notifications should be blocked from this repository."
     )
-    last_modified: Missing[str] = Field(
-        default=UNSET,
-        alias="lastModified",
-        description="A data and time when the user was last modified.",
-    )
-    location: Missing[str] = Field(
-        default=UNSET, description="A URL location of an object"
-    )
+    reason: Union[str, None] = Field()
+    created_at: datetime = Field()
+    url: str = Field()
+    repository_url: str = Field()
 
 
-model_rebuild(Meta)
+model_rebuild(RepositorySubscription)
 
-__all__ = ("Meta",)
+__all__ = ("RepositorySubscription",)

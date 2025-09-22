@@ -9,15 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+MetadataType: TypeAlias = dict[str, Any]
+"""metadata
+
+User-defined metadata to store domain-specific information limited to 8 keys
+with scalar values.
+"""
 
 
-class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
-    """Deployment branch and tag policy name pattern"""
-
-    name: str
-    type: NotRequired[Literal["branch", "tag"]]
-
-
-__all__ = ("DeploymentBranchPolicyNamePatternWithTypeType",)
+__all__ = ("MetadataType",)

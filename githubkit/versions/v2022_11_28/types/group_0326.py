@@ -9,38 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
 
+class PorterAuthorType(TypedDict):
+    """Porter Author
 
-class MilestonedIssueEventType(TypedDict):
-    """Milestoned Issue Event
-
-    Milestoned Issue Event
+    Porter Author
     """
 
     id: int
-    node_id: str
+    remote_id: str
+    remote_name: str
+    email: str
+    name: str
     url: str
-    actor: SimpleUserType
-    event: Literal["milestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: MilestonedIssueEventPropMilestoneType
+    import_url: str
 
 
-class MilestonedIssueEventPropMilestoneType(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
-
-    title: str
-
-
-__all__ = (
-    "MilestonedIssueEventPropMilestoneType",
-    "MilestonedIssueEventType",
-)
+__all__ = ("PorterAuthorType",)

@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,26 +18,91 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0043 import Milestone
+from .group_0093 import Team
+from .group_0133 import AutoMerge
+from .group_0135 import PullRequestSimplePropBase, PullRequestSimplePropHead
+from .group_0136 import PullRequestSimplePropLinks
 
-class RepositoryRulesetBypassActor(GitHubModel):
-    """Repository Ruleset Bypass Actor
 
-    An actor that can bypass rules in a ruleset
+class PullRequestSimple(GitHubModel):
+    """Pull Request Simple
+
+    Pull Request Simple
     """
 
-    actor_id: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories.",
+    url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    issue_url: str = Field()
+    commits_url: str = Field()
+    review_comments_url: str = Field()
+    review_comment_url: str = Field()
+    comments_url: str = Field()
+    statuses_url: str = Field()
+    number: int = Field()
+    state: str = Field()
+    locked: bool = Field()
+    title: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    body: Union[str, None] = Field()
+    labels: list[PullRequestSimplePropLabelsItems] = Field()
+    milestone: Union[None, Milestone] = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    closed_at: Union[datetime, None] = Field()
+    merged_at: Union[datetime, None] = Field()
+    merge_commit_sha: Union[str, None] = Field()
+    assignee: Union[None, SimpleUser] = Field()
+    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    requested_reviewers: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    requested_teams: Missing[Union[list[Team], None]] = Field(default=UNSET)
+    head: PullRequestSimplePropHead = Field()
+    base: PullRequestSimplePropBase = Field()
+    links: PullRequestSimplePropLinks = Field(alias="_links")
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
     )
-    actor_type: Literal[
-        "Integration", "OrganizationAdmin", "RepositoryRole", "Team", "DeployKey"
-    ] = Field(description="The type of actor that can bypass a ruleset.")
-    bypass_mode: Missing[Literal["always", "pull_request"]] = Field(
+    auto_merge: Union[AutoMerge, None] = Field(
+        title="Auto merge", description="The status of auto merging a pull request."
+    )
+    draft: Missing[bool] = Field(
         default=UNSET,
-        description="When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets.",
+        description="Indicates whether or not the pull request is a draft.",
     )
 
 
-model_rebuild(RepositoryRulesetBypassActor)
+class PullRequestSimplePropLabelsItems(GitHubModel):
+    """PullRequestSimplePropLabelsItems"""
 
-__all__ = ("RepositoryRulesetBypassActor",)
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    name: str = Field()
+    description: Union[str, None] = Field()
+    color: str = Field()
+    default: bool = Field()
+
+
+model_rebuild(PullRequestSimple)
+model_rebuild(PullRequestSimplePropLabelsItems)
+
+__all__ = (
+    "PullRequestSimple",
+    "PullRequestSimplePropLabelsItems",
+)

@@ -11,15 +11,34 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0246 import BranchProtectionType
+from .group_0251 import CommitType
 
-class CodeScanningAutofixCommitsType(TypedDict):
-    """CodeScanningAutofixCommits
 
-    Commit an autofix for a code scanning alert
+class BranchWithProtectionType(TypedDict):
+    """Branch With Protection
+
+    Branch With Protection
     """
 
-    target_ref: NotRequired[str]
-    message: NotRequired[str]
+    name: str
+    commit: CommitType
+    links: BranchWithProtectionPropLinksType
+    protected: bool
+    protection: BranchProtectionType
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
 
 
-__all__ = ("CodeScanningAutofixCommitsType",)
+class BranchWithProtectionPropLinksType(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
+
+
+__all__ = (
+    "BranchWithProtectionPropLinksType",
+    "BranchWithProtectionType",
+)

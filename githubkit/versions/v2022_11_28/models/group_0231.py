@@ -9,43 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0232 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
-)
 
 
-class ProtectedBranchPullRequestReview(GitHubModel):
-    """Protected Branch Pull Request Review
+class SimpleCommit(GitHubModel):
+    """Simple Commit
 
-    Protected Branch Pull Request Review
+    A commit.
     """
 
-    url: Missing[str] = Field(default=UNSET)
-    dismissal_restrictions: Missing[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-    ] = Field(
-        default=UNSET,
-        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+    id: str = Field(description="SHA for the commit")
+    tree_id: str = Field(description="SHA for the commit's tree")
+    message: str = Field(description="Message describing the purpose of the commit")
+    timestamp: datetime = Field(description="Timestamp of the commit")
+    author: Union[SimpleCommitPropAuthor, None] = Field(
+        description="Information about the Git author"
     )
-    dismiss_stale_reviews: bool = Field()
-    require_code_owner_reviews: bool = Field()
-    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+    committer: Union[SimpleCommitPropCommitter, None] = Field(
+        description="Information about the Git committer"
     )
 
 
-model_rebuild(ProtectedBranchPullRequestReview)
+class SimpleCommitPropAuthor(GitHubModel):
+    """SimpleCommitPropAuthor
 
-__all__ = ("ProtectedBranchPullRequestReview",)
+    Information about the Git author
+    """
+
+    name: str = Field(description="Name of the commit's author")
+    email: str = Field(description="Git email address of the commit's author")
+
+
+class SimpleCommitPropCommitter(GitHubModel):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str = Field(description="Name of the commit's committer")
+    email: str = Field(description="Git email address of the commit's committer")
+
+
+model_rebuild(SimpleCommit)
+model_rebuild(SimpleCommitPropAuthor)
+model_rebuild(SimpleCommitPropCommitter)
+
+__all__ = (
+    "SimpleCommit",
+    "SimpleCommitPropAuthor",
+    "SimpleCommitPropCommitter",
+)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,29 +18,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SearchResultTextMatchesItems(GitHubModel):
-    """SearchResultTextMatchesItems"""
+class Group(GitHubModel):
+    """Group"""
 
-    object_url: Missing[str] = Field(default=UNSET)
-    object_type: Missing[Union[str, None]] = Field(default=UNSET)
-    property_: Missing[str] = Field(default=UNSET, alias="property")
-    fragment: Missing[str] = Field(default=UNSET)
-    matches: Missing[list[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
-        default=UNSET
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    )
+    external_id: str = Field(
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    display_name: str = Field(
+        alias="displayName", description="A human-readable name for a security group."
+    )
+    members: Missing[list[GroupPropMembersItems]] = Field(
+        default=UNSET, description="The group members."
     )
 
 
-class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
+class GroupPropMembersItems(GitHubModel):
+    """GroupPropMembersItems"""
 
-    text: Missing[str] = Field(default=UNSET)
-    indices: Missing[list[int]] = Field(default=UNSET)
+    value: str = Field(description="The local unique identifier for the member")
+    display_name: str = Field(
+        alias="displayName", description="The display name associated with the member"
+    )
 
 
-model_rebuild(SearchResultTextMatchesItems)
-model_rebuild(SearchResultTextMatchesItemsPropMatchesItems)
+model_rebuild(Group)
+model_rebuild(GroupPropMembersItems)
 
 __all__ = (
-    "SearchResultTextMatchesItems",
-    "SearchResultTextMatchesItemsPropMatchesItems",
+    "Group",
+    "GroupPropMembersItems",
 )

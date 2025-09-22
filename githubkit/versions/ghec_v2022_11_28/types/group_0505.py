@@ -10,22 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksWorkflowType(TypedDict):
-    """Workflow"""
+class EnterpriseWebhooksType(TypedDict):
+    """Enterprise
 
-    badge_url: str
-    created_at: datetime
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/enterprise-
+    cloud@latest//admin/overview/about-enterprise-accounts)."
+    """
+
+    description: NotRequired[Union[str, None]]
     html_url: str
+    website_url: NotRequired[Union[str, None]]
     id: int
-    name: str
     node_id: str
-    path: str
-    state: str
-    updated_at: datetime
-    url: str
+    name: str
+    slug: str
+    created_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    avatar_url: str
 
 
-__all__ = ("WebhooksWorkflowType",)
+__all__ = ("EnterpriseWebhooksType",)

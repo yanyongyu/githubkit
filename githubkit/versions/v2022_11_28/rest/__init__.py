@@ -30,6 +30,8 @@ if TYPE_CHECKING:
     from .dependabot import DependabotClient
     from .dependency_graph import DependencyGraphClient
     from .emojis import EmojisClient
+    from .enterprise_team_memberships import EnterpriseTeamMembershipsClient
+    from .enterprise_teams import EnterpriseTeamsClient
     from .gists import GistsClient
     from .git import GitClient
     from .gitignore import GitignoreClient
@@ -44,6 +46,7 @@ if TYPE_CHECKING:
     from .orgs import OrgsClient
     from .packages import PackagesClient
     from .private_registries import PrivateRegistriesClient
+    from .projects import ProjectsClient
     from .projects_classic import ProjectsClassicClient
     from .pulls import PullsClient
     from .rate_limit import RateLimitClient
@@ -128,6 +131,18 @@ class RestNamespace:
         from .secret_scanning import SecretScanningClient
 
         return SecretScanningClient(self._github)
+
+    @cached_property
+    def enterprise_teams(self) -> "EnterpriseTeamsClient":
+        from .enterprise_teams import EnterpriseTeamsClient
+
+        return EnterpriseTeamsClient(self._github)
+
+    @cached_property
+    def enterprise_team_memberships(self) -> "EnterpriseTeamMembershipsClient":
+        from .enterprise_team_memberships import EnterpriseTeamMembershipsClient
+
+        return EnterpriseTeamMembershipsClient(self._github)
 
     @cached_property
     def activity(self) -> "ActivityClient":
@@ -242,6 +257,12 @@ class RestNamespace:
         from .projects_classic import ProjectsClassicClient
 
         return ProjectsClassicClient(self._github)
+
+    @cached_property
+    def projects(self) -> "ProjectsClient":
+        from .projects import ProjectsClient
+
+        return ProjectsClient(self._github)
 
     @cached_property
     def repos(self) -> "ReposClient":

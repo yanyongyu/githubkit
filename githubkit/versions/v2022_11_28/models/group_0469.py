@@ -9,48 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0468 import ProjectsV2StatusUpdate
+from .group_0231 import SimpleCommit
 
 
-class ProjectsV2(GitHubModel):
-    """Projects v2 Project
+class MergeGroup(GitHubModel):
+    """Merge Group
 
-    A projects v2 project
+    A group of pull requests that the merge queue has grouped together to be merged.
     """
 
-    id: float = Field()
-    node_id: str = Field()
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    title: str = Field()
-    description: Union[str, None] = Field()
-    public: bool = Field()
-    closed_at: Union[datetime, None] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    number: int = Field()
-    short_description: Union[str, None] = Field()
-    deleted_at: Union[datetime, None] = Field()
-    deleted_by: Union[None, SimpleUser] = Field()
-    state: Missing[Literal["open", "closed"]] = Field(default=UNSET)
-    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
-        default=UNSET
+    head_sha: str = Field(description="The SHA of the merge group.")
+    head_ref: str = Field(description="The full ref of the merge group.")
+    base_sha: str = Field(description="The SHA of the merge group's parent commit.")
+    base_ref: str = Field(
+        description="The full ref of the branch the merge group will be merged into."
     )
-    is_template: Missing[bool] = Field(
-        default=UNSET, description="Whether this project is a template"
-    )
+    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
 
 
-model_rebuild(ProjectsV2)
+model_rebuild(MergeGroup)
 
-__all__ = ("ProjectsV2",)
+__all__ = ("MergeGroup",)

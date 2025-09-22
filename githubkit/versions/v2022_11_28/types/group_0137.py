@@ -9,22 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0138 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-)
+from .group_0003 import SimpleUserType
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
-    """Repository ruleset conditions for repository names
+class ProjectsV2DraftIssueType(TypedDict):
+    """Draft Issue
 
-    Parameters for a repository name condition
+    A draft issue in a project
     """
 
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
+    id: float
+    node_id: str
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetType",)
+__all__ = ("ProjectsV2DraftIssueType",)

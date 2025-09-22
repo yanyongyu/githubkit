@@ -11,12 +11,18 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReviewCustomGatesCommentRequiredType(TypedDict):
-    """ReviewCustomGatesCommentRequired"""
-
-    environment_name: str
-    comment: str
+from .group_0268 import RateLimitType
+from .group_0270 import RateLimitOverviewPropResourcesType
 
 
-__all__ = ("ReviewCustomGatesCommentRequiredType",)
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
+
+    Rate Limit Overview
+    """
+
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
+
+
+__all__ = ("RateLimitOverviewType",)

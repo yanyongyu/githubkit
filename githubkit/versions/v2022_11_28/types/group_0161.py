@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0162 import RepositoryRuleCommitAuthorEmailPatternPropParametersType
+from .group_0162 import RepositoryRuleMergeQueuePropParametersType
 
 
-class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
-    """commit_author_email_pattern
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    Parameters to be used for the commit_author_email_pattern rule
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPatternType",)
+__all__ = ("RepositoryRuleMergeQueueType",)

@@ -9,59 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsBulkListPostResponse200(GitHubModel):
-    """OrgsOrgAttestationsBulkListPostResponse200"""
+class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
+    """OrgsOrgActionsSecretsGetResponse200"""
 
-    attestations_subject_digests: Missing[
-        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
-    ] = Field(default=UNSET, description="Mapping of subject digest to bundles.")
-    page_info: Missing[OrgsOrgAttestationsBulkListPostResponse200PropPageInfo] = Field(
-        default=UNSET, description="Information about the current page."
-    )
+    total_count: int = Field()
+    secrets: list[OrganizationActionsSecret] = Field()
 
 
-class OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests(
-    ExtraGitHubModel
-):
-    """OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+class OrganizationActionsSecret(GitHubModel):
+    """Actions Secret for an Organization
 
-    Mapping of subject digest to bundles.
+    Secrets for GitHub Actions for an organization.
     """
 
-
-class OrgsOrgAttestationsBulkListPostResponse200PropPageInfo(GitHubModel):
-    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
-
-    Information about the current page.
-    """
-
-    has_next: Missing[bool] = Field(
-        default=UNSET, description="Indicates whether there is a next page."
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a secret"
     )
-    has_previous: Missing[bool] = Field(
-        default=UNSET, description="Indicates whether there is a previous page."
-    )
-    next_: Missing[str] = Field(
-        default=UNSET, alias="next", description="The cursor to the next page."
-    )
-    previous: Missing[str] = Field(
-        default=UNSET, description="The cursor to the previous page."
-    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgAttestationsBulkListPostResponse200)
-model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests)
-model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropPageInfo)
+model_rebuild(OrgsOrgActionsSecretsGetResponse200)
+model_rebuild(OrganizationActionsSecret)
 
 __all__ = (
-    "OrgsOrgAttestationsBulkListPostResponse200",
-    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
-    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfo",
+    "OrganizationActionsSecret",
+    "OrgsOrgActionsSecretsGetResponse200",
 )

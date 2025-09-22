@@ -18,35 +18,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0189 import MinimalRepository
+from .group_0482 import SearchResultTextMatchesItems
 
-class CodespaceExportDetails(GitHubModel):
-    """Fetches information about an export of a codespace.
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+class CodeSearchResultItem(GitHubModel):
+    """Code Search Result Item
+
+    Code Search Result Item
     """
 
-    state: Missing[Union[str, None]] = Field(
-        default=UNSET, description="State of the latest export"
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: str = Field()
+    html_url: str = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    completed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET, description="Completion time of the last export operation"
-    )
-    branch: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Name of the exported branch"
-    )
-    sha: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Git commit SHA of the exported branch"
-    )
-    id: Missing[str] = Field(default=UNSET, description="Id for the export details")
-    export_url: Missing[str] = Field(
-        default=UNSET, description="Url for fetching export details"
-    )
-    html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web url for the exported branch"
+    score: float = Field()
+    file_size: Missing[int] = Field(default=UNSET)
+    language: Missing[Union[str, None]] = Field(default=UNSET)
+    last_modified_at: Missing[datetime] = Field(default=UNSET)
+    line_numbers: Missing[list[str]] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
     )
 
 
-model_rebuild(CodespaceExportDetails)
+class SearchCodeGetResponse200(GitHubModel):
+    """SearchCodeGetResponse200"""
 
-__all__ = ("CodespaceExportDetails",)
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[CodeSearchResultItem] = Field()
+
+
+model_rebuild(CodeSearchResultItem)
+model_rebuild(SearchCodeGetResponse200)
+
+__all__ = (
+    "CodeSearchResultItem",
+    "SearchCodeGetResponse200",
+)

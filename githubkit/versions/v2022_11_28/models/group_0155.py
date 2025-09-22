@@ -9,28 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0156 import RepositoryRulePullRequestPropParameters
+from .group_0147 import RepositoryRulesetConditionsPropRefName
+from .group_0151 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
 
-class RepositoryRulePullRequest(GitHubModel):
-    """pull_request
+class OrgRulesetConditionsOneof1(GitHubModel):
+    """repository_id_and_ref_name
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Conditions to target repositories by id and refs by name
     """
 
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field()
+    )
 
 
-model_rebuild(RepositoryRulePullRequest)
+model_rebuild(OrgRulesetConditionsOneof1)
 
-__all__ = ("RepositoryRulePullRequest",)
+__all__ = ("OrgRulesetConditionsOneof1",)

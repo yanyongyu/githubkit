@@ -16,21 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoMergesPostBody(GitHubModel):
-    """ReposOwnerRepoMergesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
 
-    base: str = Field(
-        description="The name of the base branch that the head will be merged into."
+    sub_issue_id: int = Field(
+        description="The id of the sub-issue to add. The sub-issue must belong to the same repository owner as the parent issue"
     )
-    head: str = Field(
-        description="The head to merge. This can be a branch name or a commit SHA1."
-    )
-    commit_message: Missing[str] = Field(
+    replace_parent: Missing[bool] = Field(
         default=UNSET,
-        description="Commit message to use for the merge commit. If omitted, a default message will be used.",
+        description="Option that, when true, instructs the operation to replace the sub-issues current parent issue",
     )
 
 
-model_rebuild(ReposOwnerRepoMergesPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody)
 
-__all__ = ("ReposOwnerRepoMergesPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",)

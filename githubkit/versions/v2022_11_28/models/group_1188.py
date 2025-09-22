@@ -12,21 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberPatchBody(GitHubModel):
-    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
+class ReposOwnerRepoTagsProtectionPostBody(GitHubModel):
+    """ReposOwnerRepoTagsProtectionPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The discussion post's title."
-    )
-    body: Missing[str] = Field(
-        default=UNSET, description="The discussion post's body text."
+    pattern: str = Field(
+        description="An optional glob pattern to match against when enforcing tag protection."
     )
 
 
-model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberPatchBody)
+model_rebuild(ReposOwnerRepoTagsProtectionPostBody)
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberPatchBody",)
+__all__ = ("ReposOwnerRepoTagsProtectionPostBody",)

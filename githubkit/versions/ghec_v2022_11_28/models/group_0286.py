@@ -9,69 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0285 import DiffEntry
-from .group_0287 import CommitPropCommit
+from .group_0010 import Integration
 
 
-class Commit(GitHubModel):
-    """Commit
+class Deployment(GitHubModel):
+    """Deployment
 
-    Commit
+    A request for a specific ref(branch,sha,tag) to be deployed
     """
 
     url: str = Field()
-    sha: str = Field()
+    id: int = Field(description="Unique identifier of the deployment")
     node_id: str = Field()
-    html_url: str = Field()
-    comments_url: str = Field()
-    commit: CommitPropCommit = Field()
-    author: Union[SimpleUser, EmptyObject, None] = Field()
-    committer: Union[SimpleUser, EmptyObject, None] = Field()
-    parents: list[CommitPropParentsItems] = Field()
-    stats: Missing[CommitPropStats] = Field(default=UNSET)
-    files: Missing[list[DiffEntry]] = Field(default=UNSET)
-
-
-class EmptyObject(GitHubModel):
-    """Empty Object
-
-    An object without any properties.
-    """
-
-
-class CommitPropParentsItems(GitHubModel):
-    """CommitPropParentsItems"""
-
     sha: str = Field()
-    url: str = Field()
-    html_url: Missing[str] = Field(default=UNSET)
+    ref: str = Field(
+        description="The ref to deploy. This can be a branch, tag, or sha."
+    )
+    task: str = Field(description="Parameter to specify a task to execute")
+    payload: Union[DeploymentPropPayloadOneof0, str] = Field()
+    original_environment: Missing[str] = Field(default=UNSET)
+    environment: str = Field(description="Name for the target deployment environment.")
+    description: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    statuses_url: str = Field()
+    repository_url: str = Field()
+    transient_environment: Missing[bool] = Field(
+        default=UNSET,
+        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
+    )
+    production_environment: Missing[bool] = Field(
+        default=UNSET,
+        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
 
 
-class CommitPropStats(GitHubModel):
-    """CommitPropStats"""
-
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
-    total: Missing[int] = Field(default=UNSET)
+class DeploymentPropPayloadOneof0(ExtraGitHubModel):
+    """DeploymentPropPayloadOneof0"""
 
 
-model_rebuild(Commit)
-model_rebuild(EmptyObject)
-model_rebuild(CommitPropParentsItems)
-model_rebuild(CommitPropStats)
+model_rebuild(Deployment)
+model_rebuild(DeploymentPropPayloadOneof0)
 
 __all__ = (
-    "Commit",
-    "CommitPropParentsItems",
-    "CommitPropStats",
-    "EmptyObject",
+    "Deployment",
+    "DeploymentPropPayloadOneof0",
 )

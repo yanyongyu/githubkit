@@ -9,25 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0077 import CopilotSeatDetails
 
+class OrgsOrgArtifactsMetadataStorageRecordPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
 
-class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
-
-    total_seats: Missing[int] = Field(
-        default=UNSET,
-        description="Total number of Copilot seats for the organization currently being billed.",
+    name: str = Field(min_length=1, description="The name of the artifact.")
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The digest of the artifact (algorithm:hex-encoded-digest).",
     )
-    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
+    artifact_url: Missing[str] = Field(
+        pattern="^https://",
+        default=UNSET,
+        description="The URL where the artifact is stored.",
+    )
+    path: Missing[str] = Field(default=UNSET, description="The path of the artifact.")
+    registry_url: str = Field(
+        min_length=1,
+        pattern="^https://",
+        description="The base URL of the artifact registry.",
+    )
+    repository: Missing[str] = Field(
+        default=UNSET, description="The repository name within the registry."
+    )
+    status: Missing[Literal["active", "eol", "deleted"]] = Field(
+        default=UNSET,
+        description="The status of the artifact (e.g., active, inactive).",
+    )
 
 
-model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
+model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostBody)
 
-__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200",)
+__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBody",)

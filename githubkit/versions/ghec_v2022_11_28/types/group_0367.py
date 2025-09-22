@@ -9,19 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class PorterLargeFileType(TypedDict):
-    """Porter Large File
+class BlobType(TypedDict):
+    """Blob
 
-    Porter Large File
+    Blob
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    content: str
+    encoding: str
+    url: str
+    sha: str
+    size: Union[int, None]
+    node_id: str
+    highlighted_content: NotRequired[str]
 
 
-__all__ = ("PorterLargeFileType",)
+__all__ = ("BlobType",)

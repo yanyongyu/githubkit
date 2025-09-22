@@ -12,17 +12,39 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0019 import LicenseSimpleType
 
-class PullRequestPropLabelsItemsType(TypedDict):
-    """PullRequestPropLabelsItems"""
 
-    id: int
-    node_id: str
-    url: str
+class LicenseContentType(TypedDict):
+    """License Content
+
+    License Content
+    """
+
     name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    path: str
+    sha: str
+    size: int
+    url: str
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksType
+    license_: Union[None, LicenseSimpleType]
 
 
-__all__ = ("PullRequestPropLabelsItemsType",)
+class LicenseContentPropLinksType(TypedDict):
+    """LicenseContentPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+__all__ = (
+    "LicenseContentPropLinksType",
+    "LicenseContentType",
+)

@@ -9,31 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0068 import CodeSecurityConfigurationType
+from .group_0066 import CodeScanningAnalysisToolType
 
 
-class CodeSecurityConfigurationForRepositoryType(TypedDict):
-    """CodeSecurityConfigurationForRepository
+class CodeScanningAnalysisType(TypedDict):
+    """CodeScanningAnalysis"""
 
-    Code security configuration associated with a repository and attachment status
-    """
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: datetime
+    results_count: int
+    rules_count: int
+    id: int
+    url: str
+    sarif_id: str
+    tool: CodeScanningAnalysisToolType
+    deletable: bool
+    warning: str
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
 
-
-__all__ = ("CodeSecurityConfigurationForRepositoryType",)
+__all__ = ("CodeScanningAnalysisType",)

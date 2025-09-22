@@ -13,16 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoGitRefsPostBody(GitHubModel):
-    """ReposOwnerRepoGitRefsPostBody"""
-
-    ref: str = Field(
-        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
-    )
-    sha: str = Field(description="The SHA1 value for this reference.")
+from .group_0307 import CheckRun
 
 
-model_rebuild(ReposOwnerRepoGitRefsPostBody)
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200(GitHubModel):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoGitRefsPostBody",)
+    total_count: int = Field()
+    check_runs: list[CheckRun] = Field()
+
+
+model_rebuild(ReposOwnerRepoCommitsRefCheckRunsGetResponse200)
+
+__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200",)

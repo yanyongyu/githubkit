@@ -9,83 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0066 import SimpleRepositoryType
-from .group_0151 import (
-    SecretScanningLocationCommitType,
-    SecretScanningLocationDiscussionCommentType,
-    SecretScanningLocationDiscussionTitleType,
-    SecretScanningLocationIssueBodyType,
-    SecretScanningLocationPullRequestBodyType,
-    SecretScanningLocationPullRequestReviewType,
-    SecretScanningLocationWikiCommitType,
-)
-from .group_0152 import (
-    SecretScanningLocationIssueCommentType,
-    SecretScanningLocationIssueTitleType,
-    SecretScanningLocationPullRequestReviewCommentType,
-    SecretScanningLocationPullRequestTitleType,
-)
-from .group_0153 import (
-    SecretScanningLocationDiscussionBodyType,
-    SecretScanningLocationPullRequestCommentType,
-)
+from typing_extensions import TypedDict
 
 
-class OrganizationSecretScanningAlertType(TypedDict):
-    """OrganizationSecretScanningAlert"""
+class RulesetVersionWithStateAllof1PropStateType(TypedDict):
+    """RulesetVersionWithStateAllof1PropState
 
-    number: NotRequired[int]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[Union[None, datetime]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    locations_url: NotRequired[str]
-    state: NotRequired[Literal["open", "resolved"]]
-    resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ]
-    resolved_at: NotRequired[Union[datetime, None]]
-    resolved_by: NotRequired[Union[None, SimpleUserType]]
-    secret_type: NotRequired[str]
-    secret_type_display_name: NotRequired[str]
-    secret: NotRequired[str]
-    repository: NotRequired[SimpleRepositoryType]
-    push_protection_bypassed: NotRequired[Union[bool, None]]
-    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
-    push_protection_bypassed_at: NotRequired[Union[datetime, None]]
-    push_protection_bypass_request_reviewer: NotRequired[Union[None, SimpleUserType]]
-    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
-    resolution_comment: NotRequired[Union[str, None]]
-    validity: NotRequired[Literal["active", "inactive", "unknown"]]
-    publicly_leaked: NotRequired[Union[bool, None]]
-    multi_repo: NotRequired[Union[bool, None]]
-    is_base64_encoded: NotRequired[Union[bool, None]]
-    first_location_detected: NotRequired[
-        Union[
-            None,
-            SecretScanningLocationCommitType,
-            SecretScanningLocationWikiCommitType,
-            SecretScanningLocationIssueTitleType,
-            SecretScanningLocationIssueBodyType,
-            SecretScanningLocationIssueCommentType,
-            SecretScanningLocationDiscussionTitleType,
-            SecretScanningLocationDiscussionBodyType,
-            SecretScanningLocationDiscussionCommentType,
-            SecretScanningLocationPullRequestTitleType,
-            SecretScanningLocationPullRequestBodyType,
-            SecretScanningLocationPullRequestCommentType,
-            SecretScanningLocationPullRequestReviewType,
-            SecretScanningLocationPullRequestReviewCommentType,
-        ]
-    ]
-    has_more_locations: NotRequired[bool]
+    The state of the ruleset version
+    """
 
 
-__all__ = ("OrganizationSecretScanningAlertType",)
+__all__ = ("RulesetVersionWithStateAllof1PropStateType",)

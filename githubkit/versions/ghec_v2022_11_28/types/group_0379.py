@@ -16,22 +16,32 @@ from .group_0003 import SimpleUserType
 from .group_0010 import IntegrationType
 
 
-class LockedIssueEventType(TypedDict):
-    """Locked Issue Event
+class UnlabeledIssueEventType(TypedDict):
+    """Unlabeled Issue Event
 
-    Locked Issue Event
+    Unlabeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["locked"]
+    event: Literal["unlabeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    lock_reason: Union[str, None]
+    label: UnlabeledIssueEventPropLabelType
 
 
-__all__ = ("LockedIssueEventType",)
+class UnlabeledIssueEventPropLabelType(TypedDict):
+    """UnlabeledIssueEventPropLabel"""
+
+    name: str
+    color: str
+
+
+__all__ = (
+    "UnlabeledIssueEventPropLabelType",
+    "UnlabeledIssueEventType",
+)

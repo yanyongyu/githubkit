@@ -12,19 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AccessibleRepository(GitHubModel):
-    """Accessible Repository
+class InstallableOrganization(GitHubModel):
+    """Installable Organization
 
-    A repository that may be made accessible to a GitHub App.
+    A GitHub organization on which a GitHub App can be installed.
     """
 
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field()
+    id: int = Field()
+    login: str = Field()
+    accessible_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(AccessibleRepository)
+model_rebuild(InstallableOrganization)
 
-__all__ = ("AccessibleRepository",)
+__all__ = ("InstallableOrganization",)

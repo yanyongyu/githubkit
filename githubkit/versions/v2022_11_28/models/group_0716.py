@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,17 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0435 import SimpleInstallation
-from .group_0436 import OrganizationSimpleWebhooks
-from .group_0468 import ProjectsV2StatusUpdate
+from .group_0443 import SimpleInstallation
+from .group_0444 import OrganizationSimpleWebhooks
+from .group_0477 import ProjectsV2Item
 
 
-class WebhookProjectsV2StatusUpdateEdited(GitHubModel):
-    """Projects v2 Status Update Edited Event"""
+class WebhookProjectsV2ItemEdited(GitHubModel):
+    """Projects v2 Item Edited Event"""
 
     action: Literal["edited"] = Field()
-    changes: Missing[WebhookProjectsV2StatusUpdateEditedPropChanges] = Field(
-        default=UNSET
+    changes: Missing[
+        Union[
+            WebhookProjectsV2ItemEditedPropChangesOneof0,
+            WebhookProjectsV2ItemEditedPropChangesOneof1,
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The changes made to the item may involve modifications in the item's fields and draft issue body.\nIt includes altered values for text, number, date, single select, and iteration fields, along with the GraphQL node ID of the changed field.",
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -40,74 +45,98 @@ class WebhookProjectsV2StatusUpdateEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2_status_update: ProjectsV2StatusUpdate = Field(
-        title="Projects v2 Status Update",
-        description="An status update belonging to a project",
+    projects_v2_item: ProjectsV2Item = Field(
+        title="Projects v2 Item", description="An item belonging to a project"
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectsV2StatusUpdateEditedPropChanges(GitHubModel):
-    """WebhookProjectsV2StatusUpdateEditedPropChanges"""
+class WebhookProjectsV2ItemEditedPropChangesOneof0(GitHubModel):
+    """WebhookProjectsV2ItemEditedPropChangesOneof0"""
 
-    body: Missing[WebhookProjectsV2StatusUpdateEditedPropChangesPropBody] = Field(
-        default=UNSET
-    )
-    status: Missing[WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus] = Field(
-        default=UNSET
-    )
-    start_date: Missing[WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate] = (
-        Field(default=UNSET)
-    )
-    target_date: Missing[
-        WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate
+    field_value: WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue = Field()
+
+
+class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue(GitHubModel):
+    """WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue"""
+
+    field_node_id: Missing[str] = Field(default=UNSET)
+    field_type: Missing[str] = Field(default=UNSET)
+    field_name: Missing[str] = Field(default=UNSET)
+    project_number: Missing[int] = Field(default=UNSET)
+    from_: Missing[
+        Union[str, int, ProjectsV2SingleSelectOption, ProjectsV2IterationSetting, None]
+    ] = Field(default=UNSET, alias="from")
+    to: Missing[
+        Union[str, int, ProjectsV2SingleSelectOption, ProjectsV2IterationSetting, None]
     ] = Field(default=UNSET)
 
 
-class WebhookProjectsV2StatusUpdateEditedPropChangesPropBody(GitHubModel):
-    """WebhookProjectsV2StatusUpdateEditedPropChangesPropBody"""
+class ProjectsV2SingleSelectOption(GitHubModel):
+    """Projects v2 Single Select Option
+
+    An option for a single select field
+    """
+
+    id: str = Field(description="The unique identifier of the option.")
+    name: str = Field(description="The display name of the option.")
+    color: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The color associated with the option."
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A short description of the option."
+    )
+
+
+class ProjectsV2IterationSetting(GitHubModel):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str = Field(description="The unique identifier of the iteration setting.")
+    title: str = Field(description="The iteration title.")
+    title_html: Missing[str] = Field(
+        default=UNSET, description="The iteration title, rendered as HTML."
+    )
+    duration: Missing[Union[float, None]] = Field(
+        default=UNSET, description="The duration of the iteration in days."
+    )
+    start_date: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The start date of the iteration."
+    )
+    completed: Missing[bool] = Field(
+        default=UNSET, description="Whether the iteration has been completed."
+    )
+
+
+class WebhookProjectsV2ItemEditedPropChangesOneof1(GitHubModel):
+    """WebhookProjectsV2ItemEditedPropChangesOneof1"""
+
+    body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBody = Field()
+
+
+class WebhookProjectsV2ItemEditedPropChangesOneof1PropBody(GitHubModel):
+    """WebhookProjectsV2ItemEditedPropChangesOneof1PropBody"""
 
     from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
     to: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus(GitHubModel):
-    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus"""
-
-    from_: Missing[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ] = Field(default=UNSET, alias="from")
-    to: Missing[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ] = Field(default=UNSET)
-
-
-class WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate(GitHubModel):
-    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate"""
-
-    from_: Missing[Union[date, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[date, None]] = Field(default=UNSET)
-
-
-class WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate(GitHubModel):
-    """WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate"""
-
-    from_: Missing[Union[date, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[date, None]] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectsV2StatusUpdateEdited)
-model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChanges)
-model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChangesPropBody)
-model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus)
-model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate)
-model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate)
+model_rebuild(WebhookProjectsV2ItemEdited)
+model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof0)
+model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue)
+model_rebuild(ProjectsV2SingleSelectOption)
+model_rebuild(ProjectsV2IterationSetting)
+model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof1)
+model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof1PropBody)
 
 __all__ = (
-    "WebhookProjectsV2StatusUpdateEdited",
-    "WebhookProjectsV2StatusUpdateEditedPropChanges",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesPropBody",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate",
+    "ProjectsV2IterationSetting",
+    "ProjectsV2SingleSelectOption",
+    "WebhookProjectsV2ItemEdited",
+    "WebhookProjectsV2ItemEditedPropChangesOneof0",
+    "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue",
+    "WebhookProjectsV2ItemEditedPropChangesOneof1",
+    "WebhookProjectsV2ItemEditedPropChangesOneof1PropBody",
 )

@@ -17,22 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0174 import RepositoryRuleFileExtensionRestrictionPropParameters
 
+class RepositoryRuleCommitAuthorEmailPatternPropParameters(GitHubModel):
+    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
 
-class RepositoryRuleFileExtensionRestriction(GitHubModel):
-    """file_extension_restriction
-
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["file_extension_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFileExtensionRestrictionPropParameters] = Field(
-        default=UNSET
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleFileExtensionRestriction)
+model_rebuild(RepositoryRuleCommitAuthorEmailPatternPropParameters)
 
-__all__ = ("RepositoryRuleFileExtensionRestriction",)
+__all__ = ("RepositoryRuleCommitAuthorEmailPatternPropParameters",)

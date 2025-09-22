@@ -11,15 +11,18 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0033 import ActionsHostedRunnerCuratedImageType
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type(
+
+class EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
+    """EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
-    disable_self_hosted_runners_for_all_orgs: bool
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageType]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
 )

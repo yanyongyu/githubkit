@@ -9,19 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0171 import RepositoryRuleCommitMessagePatternPropParameters
 
 
-class RepositoryRuleFilePathRestrictionPropParameters(GitHubModel):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
+class RepositoryRuleCommitMessagePattern(GitHubModel):
+    """commit_message_pattern
 
-    restricted_file_paths: list[str] = Field(
-        description="The file paths that are restricted from being pushed to the commit graph."
+    Parameters to be used for the commit_message_pattern rule
+    """
+
+    type: Literal["commit_message_pattern"] = Field()
+    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleFilePathRestrictionPropParameters)
+model_rebuild(RepositoryRuleCommitMessagePattern)
 
-__all__ = ("RepositoryRuleFilePathRestrictionPropParameters",)
+__all__ = ("RepositoryRuleCommitMessagePattern",)

@@ -11,12 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoGitRefsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitRefsPostBody"""
-
-    ref: str
-    sha: str
+from .group_0307 import CheckRunType
 
 
-__all__ = ("ReposOwnerRepoGitRefsPostBodyType",)
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+
+    total_count: int
+    check_runs: list[CheckRunType]
+
+
+__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",)

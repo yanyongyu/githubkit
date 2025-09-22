@@ -9,16 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0031 import ActionsHostedRunnerType
-
-
-class EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersGetResponse200"""
-
-    total_count: int
-    runners: list[ActionsHostedRunnerType]
+from .group_0017 import AppPermissionsType
 
 
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type",)
+class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
+
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsType]
+
+
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBodyType",)

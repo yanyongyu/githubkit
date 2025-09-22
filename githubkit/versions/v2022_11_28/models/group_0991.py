@@ -16,28 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
 
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[
-        list[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems]
-    ] = Field(default=UNSET)
-
-
-class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
-
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(
+        default=UNSET, description="The discussion post's title."
+    )
+    body: Missing[str] = Field(
+        default=UNSET, description="The discussion post's body text."
+    )
 
 
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse503)
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems)
+model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody)
 
-__all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse503",
-    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems",
-)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody",)

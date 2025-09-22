@@ -30,6 +30,10 @@ if TYPE_CHECKING:
         CopilotSeatDetails,
         CopilotUsageMetricsDay,
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
         EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
         OrgsOrgCopilotBillingSeatsGetResponse200,
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
@@ -42,6 +46,14 @@ if TYPE_CHECKING:
         CopilotSeatDetailsType,
         CopilotUsageMetricsDayType,
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type,
         EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type,
         OrgsOrgCopilotBillingSeatsGetResponse200Type,
         OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
@@ -190,6 +202,774 @@ class CopilotClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def add_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type,
+    ]: ...
+
+    @overload
+    def add_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_enterprise_teams: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type,
+    ]: ...
+
+    def add_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type,
+    ]:
+        """copilot/add-copilot-seats-for-enterprise-teams
+
+        POST /enterprises/{enterprise}/copilot/billing/selected_enterprise_teams
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Purchases a GitHub Copilot seat for all users within each specified enterprise team. The enterprise will be billed accordingly.
+
+        Only enterprise owners can purchase Copilot seats for their enterprise members.
+
+        The response contains the total number of new seats that were created and existing seats that were refreshed.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-enterprise-teams-to-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_enterprise_teams"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_add_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type,
+    ]: ...
+
+    @overload
+    async def async_add_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_enterprise_teams: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type,
+    ]: ...
+
+    async def async_add_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type,
+    ]:
+        """copilot/add-copilot-seats-for-enterprise-teams
+
+        POST /enterprises/{enterprise}/copilot/billing/selected_enterprise_teams
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Purchases a GitHub Copilot seat for all users within each specified enterprise team. The enterprise will be billed accordingly.
+
+        Only enterprise owners can purchase Copilot seats for their enterprise members.
+
+        The response contains the total number of new seats that were created and existing seats that were refreshed.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-enterprise-teams-to-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_enterprise_teams"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def cancel_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type,
+    ]: ...
+
+    @overload
+    def cancel_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_enterprise_teams: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type,
+    ]: ...
+
+    def cancel_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type,
+    ]:
+        """copilot/cancel-copilot-seats-for-enterprise-teams
+
+        DELETE /enterprises/{enterprise}/copilot/billing/selected_enterprise_teams
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets seats for all members of each enterprise team specified to "pending cancellation".
+        This will cause the members of the specified enterprise team(s) to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through another enterprise team.
+
+        Only enterprise owners can cancel Copilot seats for their enterprise members.
+
+        The response contains the total number of seats set to "pending cancellation".
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-enterprise-teams-from-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_enterprise_teams"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_cancel_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type,
+    ]: ...
+
+    @overload
+    async def async_cancel_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_enterprise_teams: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type,
+    ]: ...
+
+    async def async_cancel_copilot_seats_for_enterprise_teams(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type,
+    ]:
+        """copilot/cancel-copilot-seats-for-enterprise-teams
+
+        DELETE /enterprises/{enterprise}/copilot/billing/selected_enterprise_teams
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets seats for all members of each enterprise team specified to "pending cancellation".
+        This will cause the members of the specified enterprise team(s) to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through another enterprise team.
+
+        Only enterprise owners can cancel Copilot seats for their enterprise members.
+
+        The response contains the total number of seats set to "pending cancellation".
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-enterprise-teams-from-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody,
+            EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_enterprise_teams"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def add_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type,
+    ]: ...
+
+    @overload
+    def add_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_usernames: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type,
+    ]: ...
+
+    def add_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type,
+    ]:
+        """copilot/add-copilot-seats-for-enterprise-users
+
+        POST /enterprises/{enterprise}/copilot/billing/selected_users
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Purchases a GitHub Copilot seat for each user specified.
+        The enterprise will be billed accordingly.
+
+        Only enterprise owners can purchase Copilot seats for their enterprise members.
+
+        The response contains the total number of new seats that were created and existing seats that were refreshed.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_users"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_add_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type,
+    ]: ...
+
+    @overload
+    async def async_add_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_usernames: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type,
+    ]: ...
+
+    async def async_add_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type,
+    ]:
+        """copilot/add-copilot-seats-for-enterprise-users
+
+        POST /enterprises/{enterprise}/copilot/billing/selected_users
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Purchases a GitHub Copilot seat for each user specified.
+        The enterprise will be billed accordingly.
+
+        Only enterprise owners can purchase Copilot seats for their enterprise members.
+
+        The response contains the total number of new seats that were created and existing seats that were refreshed.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#add-users-to-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_users"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def cancel_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type,
+    ]: ...
+
+    @overload
+    def cancel_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_usernames: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type,
+    ]: ...
+
+    def cancel_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type,
+    ]:
+        """copilot/cancel-copilot-seats-for-enterprise-users
+
+        DELETE /enterprises/{enterprise}/copilot/billing/selected_users
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets seats for all users specified to "pending cancellation".
+        This will cause the specified users to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through team or organization membership.
+
+        Only enterprise owners can cancel Copilot seats for their enterprise members.
+
+        The response contains the total number of seats set to "pending cancellation".
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_users"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_cancel_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type,
+    ]: ...
+
+    @overload
+    async def async_cancel_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_usernames: list[str],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type,
+    ]: ...
+
+    async def async_cancel_copilot_seats_for_enterprise_users(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type,
+    ]:
+        """copilot/cancel-copilot-seats-for-enterprise-users
+
+        DELETE /enterprises/{enterprise}/copilot/billing/selected_users
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets seats for all users specified to "pending cancellation".
+        This will cause the specified users to lose access to GitHub Copilot at the end of the current billing cycle unless they retain access through team or organization membership.
+
+        Only enterprise owners can cancel Copilot seats for their enterprise members.
+
+        The response contains the total number of seats set to "pending cancellation".
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#remove-users-from-the-copilot-subscription-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody,
+            EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/selected_users"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
             error_models={
                 "500": BasicError,
                 "401": BasicError,

@@ -9,31 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationSimpleWebhooksType(TypedDict):
-    """Organization Simple
+class KeyType(TypedDict):
+    """Key
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    Key
     """
 
-    login: str
+    key: str
     id: int
-    node_id: str
     url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
+    title: str
+    created_at: datetime
+    verified: bool
+    read_only: bool
+    last_used: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("OrganizationSimpleWebhooksType",)
+__all__ = ("KeyType",)

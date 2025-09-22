@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,23 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningSarifsStatus(GitHubModel):
-    """CodeScanningSarifsStatus"""
+class CodeScanningAutofixCommitsResponse(GitHubModel):
+    """CodeScanningAutofixCommitsResponse"""
 
-    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
+    target_ref: Missing[str] = Field(
         default=UNSET,
-        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
+        description='The Git reference of target branch for the commit. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
     )
-    analyses_url: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The REST API URL for getting the analyses associated with the upload.",
-    )
-    errors: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="Any errors that ocurred during processing of the delivery.",
-    )
+    sha: Missing[str] = Field(default=UNSET, description="SHA of commit with autofix.")
 
 
-model_rebuild(CodeScanningSarifsStatus)
+model_rebuild(CodeScanningAutofixCommitsResponse)
 
-__all__ = ("CodeScanningSarifsStatus",)
+__all__ = ("CodeScanningAutofixCommitsResponse",)

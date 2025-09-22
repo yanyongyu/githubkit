@@ -9,41 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GistsPostBody(GitHubModel):
-    """GistsPostBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
 
-    description: Missing[str] = Field(
-        default=UNSET, description="Description of the gist"
-    )
-    files: GistsPostBodyPropFiles = Field(
-        description="Names and content for the files that make up the gist"
-    )
-    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
-
-
-class GistsPostBodyPropFiles(ExtraGitHubModel):
-    """GistsPostBodyPropFiles
-
-    Names and content for the files that make up the gist
-
-    Examples:
-        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+    The total number of seats set to "pending cancellation" for the specified users.
     """
 
+    seats_cancelled: int = Field()
 
-model_rebuild(GistsPostBody)
-model_rebuild(GistsPostBodyPropFiles)
 
-__all__ = (
-    "GistsPostBody",
-    "GistsPostBodyPropFiles",
-)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200)
+
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200",)

@@ -9,63 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class PullRequestMinimal(GitHubModel):
-    """Pull Request Minimal"""
-
-    id: int = Field()
-    number: int = Field()
-    url: str = Field()
-    head: PullRequestMinimalPropHead = Field()
-    base: PullRequestMinimalPropBase = Field()
+from .group_0003 import SimpleUser
 
 
-class PullRequestMinimalPropHead(GitHubModel):
-    """PullRequestMinimalPropHead"""
+class ProjectCollaboratorPermission(GitHubModel):
+    """Project Collaborator Permission
 
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropHeadPropRepo = Field()
+    Project Collaborator Permission
+    """
 
-
-class PullRequestMinimalPropHeadPropRepo(GitHubModel):
-    """PullRequestMinimalPropHeadPropRepo"""
-
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
+    permission: str = Field()
+    user: Union[None, SimpleUser] = Field()
 
 
-class PullRequestMinimalPropBase(GitHubModel):
-    """PullRequestMinimalPropBase"""
+model_rebuild(ProjectCollaboratorPermission)
 
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropBasePropRepo = Field()
-
-
-class PullRequestMinimalPropBasePropRepo(GitHubModel):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
-
-
-model_rebuild(PullRequestMinimal)
-model_rebuild(PullRequestMinimalPropHead)
-model_rebuild(PullRequestMinimalPropHeadPropRepo)
-model_rebuild(PullRequestMinimalPropBase)
-model_rebuild(PullRequestMinimalPropBasePropRepo)
-
-__all__ = (
-    "PullRequestMinimal",
-    "PullRequestMinimalPropBase",
-    "PullRequestMinimalPropBasePropRepo",
-    "PullRequestMinimalPropHead",
-    "PullRequestMinimalPropHeadPropRepo",
-)
+__all__ = ("ProjectCollaboratorPermission",)

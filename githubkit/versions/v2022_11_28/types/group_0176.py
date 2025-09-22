@@ -9,13 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0177 import RepositoryRuleBranchNamePatternPropParametersType
 
 
-class RepositoryRuleMaxFileSizePropParametersType(TypedDict):
-    """RepositoryRuleMaxFileSizePropParameters"""
+class RepositoryRuleBranchNamePatternType(TypedDict):
+    """branch_name_pattern
 
-    max_file_size: int
+    Parameters to be used for the branch_name_pattern rule
+    """
+
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleMaxFileSizePropParametersType",)
+__all__ = ("RepositoryRuleBranchNamePatternType",)

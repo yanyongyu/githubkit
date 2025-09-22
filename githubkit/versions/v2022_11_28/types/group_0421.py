@@ -9,17 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType
+from .group_0064 import MinimalRepositoryType
+from .group_0248 import GitUserType
+from .group_0419 import SearchResultTextMatchesItemsType
+from .group_0422 import CommitSearchResultItemPropCommitType
 
 
-class CodespacesUserPublicKeyType(TypedDict):
-    """CodespacesUserPublicKey
+class CommitSearchResultItemType(TypedDict):
+    """Commit Search Result Item
 
-    The public key used for setting user Codespaces' Secrets.
+    Commit Search Result Item
     """
 
-    key_id: str
-    key: str
+    url: str
+    sha: str
+    html_url: str
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitType
+    author: Union[None, SimpleUserType]
+    committer: Union[None, GitUserType]
+    parents: list[CommitSearchResultItemPropParentsItemsType]
+    repository: MinimalRepositoryType
+    score: float
+    node_id: str
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-__all__ = ("CodespacesUserPublicKeyType",)
+class CommitSearchResultItemPropParentsItemsType(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class SearchCommitsGetResponse200Type(TypedDict):
+    """SearchCommitsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CommitSearchResultItemType]
+
+
+__all__ = (
+    "CommitSearchResultItemPropParentsItemsType",
+    "CommitSearchResultItemType",
+    "SearchCommitsGetResponse200Type",
+)

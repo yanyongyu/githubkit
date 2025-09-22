@@ -9,55 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCampaignsCampaignNumberPatchBody(GitHubModel):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+class OrgsOrgActionsVariablesPostBody(GitHubModel):
+    """OrgsOrgActionsVariablesPostBody"""
 
-    name: Missing[str] = Field(
-        min_length=1,
-        max_length=50,
-        default=UNSET,
-        description="The name of the campaign",
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
     )
-    description: Missing[str] = Field(
-        min_length=1,
-        max_length=255,
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="A description for the campaign",
-    )
-    managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
-    )
-    team_managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The slugs of the teams to set as the campaign managers.",
-    )
-    ends_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The end date and time of the campaign, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
-    )
-    contact_link: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contact link of the campaign. Must be a URI."
-    )
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET,
-        title="Campaign state",
-        description="Indicates whether a campaign is open or closed",
+        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
     )
 
 
-model_rebuild(OrgsOrgCampaignsCampaignNumberPatchBody)
+model_rebuild(OrgsOrgActionsVariablesPostBody)
 
-__all__ = ("OrgsOrgCampaignsCampaignNumberPatchBody",)
+__all__ = ("OrgsOrgActionsVariablesPostBody",)

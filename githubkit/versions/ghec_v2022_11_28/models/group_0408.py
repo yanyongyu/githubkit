@@ -13,20 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
-from .group_0076 import Team
 
+class PageBuildStatus(GitHubModel):
+    """Page Build Status
 
-class PullRequestReviewRequest(GitHubModel):
-    """Pull Request Review Request
-
-    Pull Request Review Request
+    Page Build Status
     """
 
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
+    url: str = Field()
+    status: str = Field()
 
 
-model_rebuild(PullRequestReviewRequest)
+model_rebuild(PageBuildStatus)
 
-__all__ = ("PullRequestReviewRequest",)
+__all__ = ("PageBuildStatus",)

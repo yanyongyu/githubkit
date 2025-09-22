@@ -10,19 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType
 
+class CodespaceExportDetailsType(TypedDict):
+    """Fetches information about an export of a codespace.
 
-class StarredRepositoryType(TypedDict):
-    """Starred Repository
-
-    Starred Repository
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
     """
 
-    starred_at: datetime
-    repo: RepositoryType
+    state: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[datetime, None]]
+    branch: NotRequired[Union[str, None]]
+    sha: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    export_url: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
-__all__ = ("StarredRepositoryType",)
+__all__ = ("CodespaceExportDetailsType",)

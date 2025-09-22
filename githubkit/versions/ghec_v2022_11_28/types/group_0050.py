@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class AnnouncementType(TypedDict):
-    """Enterprise Announcement
+class AnnouncementBannerType(TypedDict):
+    """Announcement Banner
 
-    Enterprise global announcement
+    Announcement at either the repository, organization, or enterprise level
     """
 
     announcement: Union[str, None]
-    expires_at: NotRequired[Union[datetime, None]]
-    user_dismissible: NotRequired[Union[bool, None]]
+    expires_at: Union[datetime, None]
+    user_dismissible: Union[bool, None]
 
 
-__all__ = ("AnnouncementType",)
+__all__ = ("AnnouncementBannerType",)

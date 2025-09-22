@@ -11,16 +11,11 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0030 import ActionsHostedRunnerMachineSpecType
+
+class ApplicationsClientIdTokenPatchBodyType(TypedDict):
+    """ApplicationsClientIdTokenPatchBody"""
+
+    access_token: str
 
 
-class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
-
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecType]
-
-
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type",)
+__all__ = ("ApplicationsClientIdTokenPatchBodyType",)

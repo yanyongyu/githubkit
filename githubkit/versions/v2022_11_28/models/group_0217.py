@@ -9,21 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsWorkflowAccessToRepository(GitHubModel):
-    """ActionsWorkflowAccessToRepository"""
+class ProjectColumn(GitHubModel):
+    """Project Column
 
-    access_level: Literal["none", "user", "organization"] = Field(
-        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization."
-    )
+    Project columns contain cards of work.
+    """
+
+    url: str = Field()
+    project_url: str = Field()
+    cards_url: str = Field()
+    id: int = Field(description="The unique identifier of the project column")
+    node_id: str = Field()
+    name: str = Field(description="Name of the project column")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(ActionsWorkflowAccessToRepository)
+model_rebuild(ProjectColumn)
 
-__all__ = ("ActionsWorkflowAccessToRepository",)
+__all__ = ("ProjectColumn",)

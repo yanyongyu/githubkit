@@ -9,63 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class PullRequestMinimal(GitHubModel):
-    """Pull Request Minimal"""
+class ProjectCard(GitHubModel):
+    """Project Card
 
-    id: int = Field()
-    number: int = Field()
+    Project cards represent a scope of work.
+    """
+
     url: str = Field()
-    head: PullRequestMinimalPropHead = Field()
-    base: PullRequestMinimalPropBase = Field()
+    id: int = Field(description="The project card's ID")
+    node_id: str = Field()
+    note: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    archived: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the card is archived"
+    )
+    column_name: Missing[str] = Field(default=UNSET)
+    project_id: Missing[str] = Field(default=UNSET)
+    column_url: str = Field()
+    content_url: Missing[str] = Field(default=UNSET)
+    project_url: str = Field()
 
 
-class PullRequestMinimalPropHead(GitHubModel):
-    """PullRequestMinimalPropHead"""
+model_rebuild(ProjectCard)
 
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropHeadPropRepo = Field()
-
-
-class PullRequestMinimalPropHeadPropRepo(GitHubModel):
-    """PullRequestMinimalPropHeadPropRepo"""
-
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
-
-
-class PullRequestMinimalPropBase(GitHubModel):
-    """PullRequestMinimalPropBase"""
-
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropBasePropRepo = Field()
-
-
-class PullRequestMinimalPropBasePropRepo(GitHubModel):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
-
-
-model_rebuild(PullRequestMinimal)
-model_rebuild(PullRequestMinimalPropHead)
-model_rebuild(PullRequestMinimalPropHeadPropRepo)
-model_rebuild(PullRequestMinimalPropBase)
-model_rebuild(PullRequestMinimalPropBasePropRepo)
-
-__all__ = (
-    "PullRequestMinimal",
-    "PullRequestMinimalPropBase",
-    "PullRequestMinimalPropBasePropRepo",
-    "PullRequestMinimalPropHead",
-    "PullRequestMinimalPropHeadPropRepo",
-)
+__all__ = ("ProjectCard",)

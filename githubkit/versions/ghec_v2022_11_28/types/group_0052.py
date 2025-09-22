@@ -9,18 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class AccessibleRepositoryType(TypedDict):
-    """Accessible Repository
+class InstallableOrganizationType(TypedDict):
+    """Installable Organization
 
-    A repository that may be made accessible to a GitHub App.
+    A GitHub organization on which a GitHub App can be installed.
     """
 
     id: int
-    name: str
-    full_name: str
+    login: str
+    accessible_repositories_url: NotRequired[str]
 
 
-__all__ = ("AccessibleRepositoryType",)
+__all__ = ("InstallableOrganizationType",)

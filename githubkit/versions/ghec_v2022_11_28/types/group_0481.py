@@ -10,71 +10,111 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class PrivateUserType(TypedDict):
-    """Private User
+class ScimUserListType(TypedDict):
+    """SCIM User List
 
-    Private User
+    SCIM User List
     """
 
-    login: str
-    id: int
-    user_view_type: NotRequired[str]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    name: Union[str, None]
-    company: Union[str, None]
-    blog: Union[str, None]
-    location: Union[str, None]
-    email: Union[str, None]
-    notification_email: NotRequired[Union[str, None]]
-    hireable: Union[bool, None]
-    bio: Union[str, None]
-    twitter_username: NotRequired[Union[str, None]]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    created_at: datetime
-    updated_at: datetime
-    private_gists: int
-    total_private_repos: int
-    owned_private_repos: int
-    disk_usage: int
-    collaborators: int
-    two_factor_authentication: bool
-    plan: NotRequired[PrivateUserPropPlanType]
-    business_plus: NotRequired[bool]
-    ldap_dn: NotRequired[str]
+    schemas: list[str]
+    total_results: int
+    items_per_page: int
+    start_index: int
+    resources: list[ScimUserType]
 
 
-class PrivateUserPropPlanType(TypedDict):
-    """PrivateUserPropPlan"""
+class ScimUserType(TypedDict):
+    """SCIM /Users
 
-    collaborators: int
-    name: str
-    space: int
-    private_repos: int
+    SCIM /Users provisioning endpoints
+    """
+
+    schemas: list[str]
+    id: str
+    external_id: NotRequired[Union[str, None]]
+    user_name: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    name: NotRequired[ScimUserPropNameType]
+    emails: list[ScimUserPropEmailsItemsType]
+    active: bool
+    meta: ScimUserPropMetaType
+    organization_id: NotRequired[int]
+    operations: NotRequired[list[ScimUserPropOperationsItemsType]]
+    groups: NotRequired[list[ScimUserPropGroupsItemsType]]
+    roles: NotRequired[list[ScimUserPropRolesItemsType]]
+
+
+class ScimUserPropNameType(TypedDict):
+    """ScimUserPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+    formatted: NotRequired[Union[str, None]]
+
+
+class ScimUserPropEmailsItemsType(TypedDict):
+    """ScimUserPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
+class ScimUserPropMetaType(TypedDict):
+    """ScimUserPropMeta"""
+
+    resource_type: NotRequired[str]
+    created: NotRequired[datetime]
+    last_modified: NotRequired[datetime]
+    location: NotRequired[str]
+
+
+class ScimUserPropGroupsItemsType(TypedDict):
+    """ScimUserPropGroupsItems"""
+
+    value: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropRolesItemsType(TypedDict):
+    """ScimUserPropRolesItems"""
+
+    value: NotRequired[str]
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropOperationsItemsType(TypedDict):
+    """ScimUserPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[str, ScimUserPropOperationsItemsPropValueOneof1Type, list[Any]]
+    ]
+
+
+class ScimUserPropOperationsItemsPropValueOneof1Type(TypedDict):
+    """ScimUserPropOperationsItemsPropValueOneof1"""
 
 
 __all__ = (
-    "PrivateUserPropPlanType",
-    "PrivateUserType",
+    "ScimUserListType",
+    "ScimUserPropEmailsItemsType",
+    "ScimUserPropGroupsItemsType",
+    "ScimUserPropMetaType",
+    "ScimUserPropNameType",
+    "ScimUserPropOperationsItemsPropValueOneof1Type",
+    "ScimUserPropOperationsItemsType",
+    "ScimUserPropRolesItemsType",
+    "ScimUserType",
 )

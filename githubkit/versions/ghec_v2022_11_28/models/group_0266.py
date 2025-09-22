@@ -10,57 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SimpleCommit(GitHubModel):
-    """Simple Commit
+class ProjectColumn(GitHubModel):
+    """Project Column
 
-    A commit.
+    Project columns contain cards of work.
     """
 
-    id: str = Field(description="SHA for the commit")
-    tree_id: str = Field(description="SHA for the commit's tree")
-    message: str = Field(description="Message describing the purpose of the commit")
-    timestamp: datetime = Field(description="Timestamp of the commit")
-    author: Union[SimpleCommitPropAuthor, None] = Field(
-        description="Information about the Git author"
-    )
-    committer: Union[SimpleCommitPropCommitter, None] = Field(
-        description="Information about the Git committer"
-    )
+    url: str = Field()
+    project_url: str = Field()
+    cards_url: str = Field()
+    id: int = Field(description="The unique identifier of the project column")
+    node_id: str = Field()
+    name: str = Field(description="Name of the project column")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-class SimpleCommitPropAuthor(GitHubModel):
-    """SimpleCommitPropAuthor
+model_rebuild(ProjectColumn)
 
-    Information about the Git author
-    """
-
-    name: str = Field(description="Name of the commit's author")
-    email: str = Field(description="Git email address of the commit's author")
-
-
-class SimpleCommitPropCommitter(GitHubModel):
-    """SimpleCommitPropCommitter
-
-    Information about the Git committer
-    """
-
-    name: str = Field(description="Name of the commit's committer")
-    email: str = Field(description="Git email address of the commit's committer")
-
-
-model_rebuild(SimpleCommit)
-model_rebuild(SimpleCommitPropAuthor)
-model_rebuild(SimpleCommitPropCommitter)
-
-__all__ = (
-    "SimpleCommit",
-    "SimpleCommitPropAuthor",
-    "SimpleCommitPropCommitter",
-)
+__all__ = ("ProjectColumn",)

@@ -11,36 +11,30 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0185 import MinimalRepositoryType
+from .group_0295 import BranchProtectionType
 
 
-class CheckSuitePreferenceType(TypedDict):
-    """Check Suite Preference
+class ShortBranchType(TypedDict):
+    """Short Branch
 
-    Check suite configuration preferences for a repository.
+    Short Branch
     """
 
-    preferences: CheckSuitePreferencePropPreferencesType
-    repository: MinimalRepositoryType
+    name: str
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
 
 
-class CheckSuitePreferencePropPreferencesType(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
 
-    auto_trigger_checks: NotRequired[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
-    ]
-
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
-
-    app_id: int
-    setting: bool
+    sha: str
+    url: str
 
 
 __all__ = (
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
-    "CheckSuitePreferencePropPreferencesType",
-    "CheckSuitePreferenceType",
+    "ShortBranchPropCommitType",
+    "ShortBranchType",
 )

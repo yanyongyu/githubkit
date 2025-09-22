@@ -9,47 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-
-class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
-    """RequiredReviewerConfiguration
-
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
-    """
-
-    file_patterns: list[str] = Field(
-        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use the same syntax as `.gitignore` files."
-    )
-    minimum_approvals: int = Field(
-        description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
-    )
-    reviewer: RepositoryRuleParamsReviewer = Field(
-        title="Reviewer", description="A required reviewing team"
-    )
-
-
-class RepositoryRuleParamsReviewer(GitHubModel):
-    """Reviewer
-
-    A required reviewing team
-    """
-
-    id: int = Field(
-        description="ID of the reviewer which must review changes to matching files."
-    )
-    type: Literal["Team"] = Field(description="The type of the reviewer")
-
-
-model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
-model_rebuild(RepositoryRuleParamsReviewer)
-
-__all__ = (
-    "RepositoryRuleParamsRequiredReviewerConfiguration",
-    "RepositoryRuleParamsReviewer",
+from .group_0147 import RepositoryRulesetConditionsPropRefName
+from .group_0149 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
 )
+
+
+class OrgRulesetConditionsOneof0(GitHubModel):
+    """repository_name_and_ref_name
+
+    Conditions to target repositories by name and refs by name
+    """
+
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+
+
+model_rebuild(OrgRulesetConditionsOneof0)
+
+__all__ = ("OrgRulesetConditionsOneof0",)

@@ -9,41 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0234 import BranchProtection
 
+class ReviewCustomGatesStateRequired(GitHubModel):
+    """ReviewCustomGatesStateRequired"""
 
-class ShortBranch(GitHubModel):
-    """Short Branch
-
-    Short Branch
-    """
-
-    name: str = Field()
-    commit: ShortBranchPropCommit = Field()
-    protected: bool = Field()
-    protection: Missing[BranchProtection] = Field(
-        default=UNSET, title="Branch Protection", description="Branch Protection"
+    environment_name: str = Field(
+        description="The name of the environment to approve or reject."
     )
-    protection_url: Missing[str] = Field(default=UNSET)
+    state: Literal["approved", "rejected"] = Field(
+        description="Whether to approve or reject deployment to the specified environments."
+    )
+    comment: Missing[str] = Field(
+        default=UNSET, description="Optional comment to include with the review."
+    )
 
 
-class ShortBranchPropCommit(GitHubModel):
-    """ShortBranchPropCommit"""
+model_rebuild(ReviewCustomGatesStateRequired)
 
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(ShortBranch)
-model_rebuild(ShortBranchPropCommit)
-
-__all__ = (
-    "ShortBranch",
-    "ShortBranchPropCommit",
-)
+__all__ = ("ReviewCustomGatesStateRequired",)

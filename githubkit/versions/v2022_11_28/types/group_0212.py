@@ -10,66 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0045 import ReactionRollupType
 
-class JobType(TypedDict):
-    """Job
 
-    Information of a job execution in a workflow run
+class TeamDiscussionCommentType(TypedDict):
+    """Team Discussion Comment
+
+    A reply to a discussion within a team.
     """
 
-    id: int
-    run_id: int
-    run_url: str
-    run_attempt: NotRequired[int]
-    node_id: str
-    head_sha: str
-    url: str
-    html_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
+    author: Union[None, SimpleUserType]
+    body: str
+    body_html: str
+    body_version: str
     created_at: datetime
-    started_at: datetime
-    completed_at: Union[datetime, None]
-    name: str
-    steps: NotRequired[list[JobPropStepsItemsType]]
-    check_run_url: str
-    labels: list[str]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    workflow_name: Union[str, None]
-    head_branch: Union[str, None]
-
-
-class JobPropStepsItemsType(TypedDict):
-    """JobPropStepsItems"""
-
-    status: Literal["queued", "in_progress", "completed"]
-    conclusion: Union[str, None]
-    name: str
+    last_edited_at: Union[datetime, None]
+    discussion_url: str
+    html_url: str
+    node_id: str
     number: int
-    started_at: NotRequired[Union[datetime, None]]
-    completed_at: NotRequired[Union[datetime, None]]
+    updated_at: datetime
+    url: str
+    reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = (
-    "JobPropStepsItemsType",
-    "JobType",
-)
+__all__ = ("TeamDiscussionCommentType",)

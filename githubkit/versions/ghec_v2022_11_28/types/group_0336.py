@@ -9,38 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class ContentSubmoduleType(TypedDict):
-    """Submodule Content
+class BranchShortType(TypedDict):
+    """Branch Short
 
-    An object describing a submodule
+    Branch Short
     """
 
-    type: Literal["submodule"]
-    submodule_git_url: str
-    size: int
     name: str
-    path: str
+    commit: BranchShortPropCommitType
+    protected: bool
+
+
+class BranchShortPropCommitType(TypedDict):
+    """BranchShortPropCommit"""
+
     sha: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSubmodulePropLinksType
-
-
-class ContentSubmodulePropLinksType(TypedDict):
-    """ContentSubmodulePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
 
 
 __all__ = (
-    "ContentSubmodulePropLinksType",
-    "ContentSubmoduleType",
+    "BranchShortPropCommitType",
+    "BranchShortType",
 )

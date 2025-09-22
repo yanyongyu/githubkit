@@ -12,25 +12,28 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0244 import (
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType,
-    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
 )
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsType(TypedDict):
-    """ProtectedBranchPropRequiredPullRequestReviews"""
+class ProtectedBranchPullRequestReviewType(TypedDict):
+    """Protected Branch Pull Request Review
 
-    url: str
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    Protected Branch Pull Request Review
+    """
+
+    url: NotRequired[str]
     dismissal_restrictions: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType
+        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
     ]
     bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
     ]
+    dismiss_stale_reviews: bool
+    require_code_owner_reviews: bool
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
 
 
-__all__ = ("ProtectedBranchPropRequiredPullRequestReviewsType",)
+__all__ = ("ProtectedBranchPullRequestReviewType",)

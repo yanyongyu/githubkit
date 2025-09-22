@@ -9,31 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0246 import BranchProtection
 
 
-class CheckAnnotation(GitHubModel):
-    """Check Annotation
+class ShortBranch(GitHubModel):
+    """Short Branch
 
-    Check Annotation
+    Short Branch
     """
 
-    path: str = Field()
-    start_line: int = Field()
-    end_line: int = Field()
-    start_column: Union[int, None] = Field()
-    end_column: Union[int, None] = Field()
-    annotation_level: Union[str, None] = Field()
-    title: Union[str, None] = Field()
-    message: Union[str, None] = Field()
-    raw_details: Union[str, None] = Field()
-    blob_href: str = Field()
+    name: str = Field()
+    commit: ShortBranchPropCommit = Field()
+    protected: bool = Field()
+    protection: Missing[BranchProtection] = Field(
+        default=UNSET, title="Branch Protection", description="Branch Protection"
+    )
+    protection_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CheckAnnotation)
+class ShortBranchPropCommit(GitHubModel):
+    """ShortBranchPropCommit"""
 
-__all__ = ("CheckAnnotation",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(ShortBranch)
+model_rebuild(ShortBranchPropCommit)
+
+__all__ = (
+    "ShortBranch",
+    "ShortBranchPropCommit",
+)

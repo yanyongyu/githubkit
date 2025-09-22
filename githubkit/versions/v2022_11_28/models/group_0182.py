@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,137 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0134 import RepositoryRulesetBypassActor
-from .group_0135 import RepositoryRulesetConditions
-from .group_0143 import OrgRulesetConditionsOneof0
-from .group_0144 import OrgRulesetConditionsOneof1
-from .group_0145 import OrgRulesetConditionsOneof2
-from .group_0146 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0147 import RepositoryRuleUpdate
-from .group_0149 import RepositoryRuleRequiredLinearHistory
-from .group_0150 import RepositoryRuleMergeQueue
-from .group_0152 import RepositoryRuleRequiredDeployments
-from .group_0155 import RepositoryRulePullRequest
-from .group_0157 import RepositoryRuleRequiredStatusChecks
-from .group_0159 import RepositoryRuleCommitMessagePattern
-from .group_0161 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0163 import RepositoryRuleCommitterEmailPattern
-from .group_0165 import RepositoryRuleBranchNamePattern
-from .group_0167 import RepositoryRuleTagNamePattern
-from .group_0169 import RepositoryRuleFilePathRestriction
-from .group_0171 import RepositoryRuleMaxFilePathLength
-from .group_0173 import RepositoryRuleFileExtensionRestriction
-from .group_0175 import RepositoryRuleMaxFileSize
-from .group_0178 import RepositoryRuleWorkflows
-from .group_0180 import RepositoryRuleCodeScanning
+from .group_0183 import RepositoryRuleMaxFilePathLengthPropParameters
 
 
-class RepositoryRuleset(GitHubModel):
-    """Repository ruleset
+class RepositoryRuleMaxFilePathLength(GitHubModel):
+    """max_file_path_length
 
-    A set of rules to apply when specified conditions are met.
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
     """
 
-    id: int = Field(description="The ID of the ruleset")
-    name: str = Field(description="The name of the ruleset")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    source_type: Missing[Literal["Repository", "Organization", "Enterprise"]] = Field(
-        default=UNSET, description="The type of the source of the ruleset"
-    )
-    source: str = Field(description="The name of the source")
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    current_user_can_bypass: Missing[
-        Literal["always", "pull_requests_only", "never"]
-    ] = Field(
-        default=UNSET,
-        description="The bypass type of the user making the API request for this ruleset. This field is only returned when\nquerying the repository-level endpoint.",
-    )
-    node_id: Missing[str] = Field(default=UNSET)
-    links: Missing[RepositoryRulesetPropLinks] = Field(default=UNSET, alias="_links")
-    conditions: Missing[
-        Union[
-            RepositoryRulesetConditions,
-            OrgRulesetConditionsOneof0,
-            OrgRulesetConditionsOneof1,
-            OrgRulesetConditionsOneof2,
-            None,
-        ]
-    ] = Field(default=UNSET)
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
-
-
-class RepositoryRulesetPropLinks(GitHubModel):
-    """RepositoryRulesetPropLinks"""
-
-    self_: Missing[RepositoryRulesetPropLinksPropSelf] = Field(
-        default=UNSET, alias="self"
-    )
-    html: Missing[Union[RepositoryRulesetPropLinksPropHtml, None]] = Field(
+    type: Literal["max_file_path_length"] = Field()
+    parameters: Missing[RepositoryRuleMaxFilePathLengthPropParameters] = Field(
         default=UNSET
     )
 
 
-class RepositoryRulesetPropLinksPropSelf(GitHubModel):
-    """RepositoryRulesetPropLinksPropSelf"""
+model_rebuild(RepositoryRuleMaxFilePathLength)
 
-    href: Missing[str] = Field(default=UNSET, description="The URL of the ruleset")
-
-
-class RepositoryRulesetPropLinksPropHtml(GitHubModel):
-    """RepositoryRulesetPropLinksPropHtml"""
-
-    href: Missing[str] = Field(default=UNSET, description="The html URL of the ruleset")
-
-
-model_rebuild(RepositoryRuleset)
-model_rebuild(RepositoryRulesetPropLinks)
-model_rebuild(RepositoryRulesetPropLinksPropSelf)
-model_rebuild(RepositoryRulesetPropLinksPropHtml)
-
-__all__ = (
-    "RepositoryRuleset",
-    "RepositoryRulesetPropLinks",
-    "RepositoryRulesetPropLinksPropHtml",
-    "RepositoryRulesetPropLinksPropSelf",
-)
+__all__ = ("RepositoryRuleMaxFilePathLength",)

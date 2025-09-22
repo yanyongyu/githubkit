@@ -15,42 +15,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0185 import MinimalRepository
+from .group_0295 import BranchProtection
 
 
-class CheckSuitePreference(GitHubModel):
-    """Check Suite Preference
+class ShortBranch(GitHubModel):
+    """Short Branch
 
-    Check suite configuration preferences for a repository.
+    Short Branch
     """
 
-    preferences: CheckSuitePreferencePropPreferences = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    name: str = Field()
+    commit: ShortBranchPropCommit = Field()
+    protected: bool = Field()
+    protection: Missing[BranchProtection] = Field(
+        default=UNSET, title="Branch Protection", description="Branch Protection"
     )
+    protection_url: Missing[str] = Field(default=UNSET)
 
 
-class CheckSuitePreferencePropPreferences(GitHubModel):
-    """CheckSuitePreferencePropPreferences"""
+class ShortBranchPropCommit(GitHubModel):
+    """ShortBranchPropCommit"""
 
-    auto_trigger_checks: Missing[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems]
-    ] = Field(default=UNSET)
-
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems(GitHubModel):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
-
-    app_id: int = Field()
-    setting: bool = Field()
+    sha: str = Field()
+    url: str = Field()
 
 
-model_rebuild(CheckSuitePreference)
-model_rebuild(CheckSuitePreferencePropPreferences)
-model_rebuild(CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems)
+model_rebuild(ShortBranch)
+model_rebuild(ShortBranchPropCommit)
 
 __all__ = (
-    "CheckSuitePreference",
-    "CheckSuitePreferencePropPreferences",
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
+    "ShortBranch",
+    "ShortBranchPropCommit",
 )

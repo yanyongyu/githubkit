@@ -13,10 +13,18 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdProjectsProjectIdPutBodyType(TypedDict):
-    """TeamsTeamIdProjectsProjectIdPutBody"""
+class ReposOwnerRepoReleasesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
-__all__ = ("TeamsTeamIdProjectsProjectIdPutBodyType",)
+__all__ = ("ReposOwnerRepoReleasesPostBodyType",)

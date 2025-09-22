@@ -9,16 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReviewCustomGatesStateRequiredType(TypedDict):
-    """ReviewCustomGatesStateRequired"""
-
-    environment_name: str
-    state: Literal["approved", "rejected"]
-    comment: NotRequired[str]
+from .group_0268 import RateLimitType
 
 
-__all__ = ("ReviewCustomGatesStateRequiredType",)
+class RateLimitOverviewPropResourcesType(TypedDict):
+    """RateLimitOverviewPropResources"""
+
+    core: RateLimitType
+    graphql: NotRequired[RateLimitType]
+    search: RateLimitType
+    code_search: NotRequired[RateLimitType]
+    source_import: NotRequired[RateLimitType]
+    integration_manifest: NotRequired[RateLimitType]
+    code_scanning_upload: NotRequired[RateLimitType]
+    actions_runner_registration: NotRequired[RateLimitType]
+    scim: NotRequired[RateLimitType]
+    dependency_snapshots: NotRequired[RateLimitType]
+    dependency_sbom: NotRequired[RateLimitType]
+    code_scanning_autofix: NotRequired[RateLimitType]
+
+
+__all__ = ("RateLimitOverviewPropResourcesType",)

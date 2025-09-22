@@ -12,17 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0164 import RepositoryRuleCommitterEmailPatternPropParametersType
+from .group_0164 import RepositoryRuleRequiredDeploymentsPropParametersType
 
 
-class RepositoryRuleCommitterEmailPatternType(TypedDict):
-    """committer_email_pattern
+class RepositoryRuleRequiredDeploymentsType(TypedDict):
+    """required_deployments
 
-    Parameters to be used for the committer_email_pattern rule
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["committer_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
 
 
-__all__ = ("RepositoryRuleCommitterEmailPatternType",)
+__all__ = ("RepositoryRuleRequiredDeploymentsType",)

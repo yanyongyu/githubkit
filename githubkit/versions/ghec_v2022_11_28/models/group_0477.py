@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,40 +17,75 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0472 import SearchResultTextMatchesItems
+from .group_0469 import Meta
+from .group_0474 import UserEmailsResponseItems, UserNameResponse
+from .group_0475 import UserRoleItems
+from .group_0479 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
 
-class LabelSearchResultItem(GitHubModel):
-    """Label Search Result Item
+class ScimEnterpriseUserResponse(GitHubModel):
+    """ScimEnterpriseUserResponse"""
 
-    Label Search Result Item
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    color: str = Field()
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    score: float = Field()
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    )
+    external_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    active: bool = Field(description="Whether the user active in the IdP.")
+    user_name: Missing[str] = Field(
+        default=UNSET, alias="userName", description="The username for the user."
+    )
+    name: Missing[UserNameResponse] = Field(default=UNSET)
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="A human-readable name for the user.",
+    )
+    emails: list[UserEmailsResponseItems] = Field(
+        description="The emails for the user."
+    )
+    roles: Missing[list[UserRoleItems]] = Field(
+        default=UNSET, description="The roles assigned to the user."
+    )
+    id: str = Field(description="The internally generated id for the user object.")
+    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
+        default=UNSET,
+        description="Provisioned SCIM groups that the user is a member of.",
+    )
+    meta: Meta = Field(
+        description="The metadata associated with the creation/updates to the user."
     )
 
 
-class SearchLabelsGetResponse200(GitHubModel):
-    """SearchLabelsGetResponse200"""
+class ScimEnterpriseUserList(GitHubModel):
+    """ScimEnterpriseUserList"""
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[LabelSearchResultItem] = Field()
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
+        Field(
+            description="The URIs that are used to indicate the namespaces of the list SCIM schemas."
+        )
+    )
+    total_results: int = Field(
+        alias="totalResults", description="Number of results found"
+    )
+    resources: list[ScimEnterpriseUserResponse] = Field(
+        alias="Resources", description="Information about each provisioned account."
+    )
+    start_index: int = Field(
+        alias="startIndex", description="A starting index for the returned page"
+    )
+    items_per_page: int = Field(
+        alias="itemsPerPage", description="Number of objects per page"
+    )
 
 
-model_rebuild(LabelSearchResultItem)
-model_rebuild(SearchLabelsGetResponse200)
+model_rebuild(ScimEnterpriseUserResponse)
+model_rebuild(ScimEnterpriseUserList)
 
 __all__ = (
-    "LabelSearchResultItem",
-    "SearchLabelsGetResponse200",
+    "ScimEnterpriseUserList",
+    "ScimEnterpriseUserResponse",
 )

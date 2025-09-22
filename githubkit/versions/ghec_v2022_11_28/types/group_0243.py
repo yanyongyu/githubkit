@@ -9,30 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class GroupMappingType(TypedDict):
-    """GroupMapping
+class AutoMergeType(TypedDict):
+    """Auto merge
 
-    External Groups to be mapped to a team for membership
+    The status of auto merging a pull request.
     """
 
-    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
+    enabled_by: SimpleUserType
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
-class GroupMappingPropGroupsItemsType(TypedDict):
-    """GroupMappingPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-    status: NotRequired[str]
-    synced_at: NotRequired[Union[str, None]]
-
-
-__all__ = (
-    "GroupMappingPropGroupsItemsType",
-    "GroupMappingType",
-)
+__all__ = ("AutoMergeType",)

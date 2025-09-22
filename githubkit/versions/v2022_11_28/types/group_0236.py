@@ -10,18 +10,45 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0093 import TeamType
 
-class GitUserType(TypedDict):
-    """Git User
 
-    Metaproperties for Git author/committer information.
+class PendingDeploymentPropReviewersItemsType(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+
+
+class PendingDeploymentType(TypedDict):
+    """Pending Deployment
+
+    Details of a deployment that is waiting for protection rules to pass
     """
 
+    environment: PendingDeploymentPropEnvironmentType
+    wait_timer: int
+    wait_timer_started_at: Union[datetime, None]
+    current_user_can_approve: bool
+    reviewers: list[PendingDeploymentPropReviewersItemsType]
+
+
+class PendingDeploymentPropEnvironmentType(TypedDict):
+    """PendingDeploymentPropEnvironment"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
     name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[datetime]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-__all__ = ("GitUserType",)
+__all__ = (
+    "PendingDeploymentPropEnvironmentType",
+    "PendingDeploymentPropReviewersItemsType",
+    "PendingDeploymentType",
+)

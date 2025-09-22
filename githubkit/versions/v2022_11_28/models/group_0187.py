@@ -9,29 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0186 import RulesetVersionPropActor
-from .group_0189 import RulesetVersionWithStateAllof1PropState
 
+class RepositoryRuleMaxFileSizePropParameters(GitHubModel):
+    """RepositoryRuleMaxFileSizePropParameters"""
 
-class RulesetVersionWithState(GitHubModel):
-    """RulesetVersionWithState"""
-
-    version_id: int = Field(description="The ID of the previous version of the ruleset")
-    actor: RulesetVersionPropActor = Field(
-        description="The actor who updated the ruleset"
-    )
-    updated_at: datetime = Field()
-    state: RulesetVersionWithStateAllof1PropState = Field(
-        description="The state of the ruleset version"
+    max_file_size: int = Field(
+        le=100.0,
+        ge=1.0,
+        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
     )
 
 
-model_rebuild(RulesetVersionWithState)
+model_rebuild(RepositoryRuleMaxFileSizePropParameters)
 
-__all__ = ("RulesetVersionWithState",)
+__all__ = ("RepositoryRuleMaxFileSizePropParameters",)

@@ -9,76 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0169 import IssueType
-from .group_0170 import IssueCommentType
+from typing_extensions import TypedDict
 
 
-class EventPropPayloadType(TypedDict):
-    """EventPropPayload"""
+class SubIssuesSummaryType(TypedDict):
+    """Sub-issues Summary"""
 
-    action: NotRequired[str]
-    issue: NotRequired[IssueType]
-    comment: NotRequired[IssueCommentType]
-    pages: NotRequired[list[EventPropPayloadPropPagesItemsType]]
-
-
-class EventPropPayloadPropPagesItemsType(TypedDict):
-    """EventPropPayloadPropPagesItems"""
-
-    page_name: NotRequired[str]
-    title: NotRequired[str]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
+    total: int
+    completed: int
+    percent_completed: int
 
 
-class EventType(TypedDict):
-    """Event
+class IssueDependenciesSummaryType(TypedDict):
+    """Issue Dependencies Summary"""
 
-    Event
-    """
-
-    id: str
-    type: Union[str, None]
-    actor: ActorType
-    repo: EventPropRepoType
-    org: NotRequired[ActorType]
-    payload: EventPropPayloadType
-    public: bool
-    created_at: Union[datetime, None]
-
-
-class ActorType(TypedDict):
-    """Actor
-
-    Actor
-    """
-
-    id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
-    url: str
-    avatar_url: str
-
-
-class EventPropRepoType(TypedDict):
-    """EventPropRepo"""
-
-    id: int
-    name: str
-    url: str
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
 
 
 __all__ = (
-    "ActorType",
-    "EventPropPayloadPropPagesItemsType",
-    "EventPropPayloadType",
-    "EventPropRepoType",
-    "EventType",
+    "IssueDependenciesSummaryType",
+    "SubIssuesSummaryType",
 )

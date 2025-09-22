@@ -168,7 +168,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/advanced-security
 
-        Gets the GitHub Advanced Security active committers for an enterprise per repository.
+        Gets the GitHub Advanced Security active committers for an enterprise per repository. The authenticated user must be an enterprise admin or billing manager.
 
         Each distinct user login across all repositories is counted as a single Advanced Security seat, so the `total_advanced_security_committers` is not the sum of active_users for each repository.
 
@@ -216,7 +216,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/advanced-security
 
-        Gets the GitHub Advanced Security active committers for an enterprise per repository.
+        Gets the GitHub Advanced Security active committers for an enterprise per repository. The authenticated user must be an enterprise admin or billing manager.
 
         Each distinct user login across all repositories is counted as a single Advanced Security seat, so the `total_advanced_security_committers` is not the sum of active_users for each repository.
 

@@ -10,21 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class AutolinkType(TypedDict):
-    """Autolink reference
+class ActionsVariableType(TypedDict):
+    """Actions Variable"""
 
-    An autolink reference.
-    """
-
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
-    updated_at: NotRequired[Union[datetime, None]]
+    name: str
+    value: str
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("AutolinkType",)
+__all__ = ("ActionsVariableType",)

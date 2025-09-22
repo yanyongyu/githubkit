@@ -9,42 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0080 import DependabotAlertSecurityVulnerabilityType
-from .group_0081 import DependabotAlertSecurityAdvisoryType
-from .group_0341 import DependabotAlertPropDependencyType
+from .group_0299 import DiffEntryType
+from .group_0300 import CommitType
 
 
-class DependabotAlertType(TypedDict):
-    """DependabotAlert
+class CommitComparisonType(TypedDict):
+    """Commit Comparison
 
-    A Dependabot alert.
+    Commit Comparison
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
     url: str
     html_url: str
-    created_at: datetime
-    updated_at: datetime
-    dismissed_at: Union[datetime, None]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[datetime, None]
-    auto_dismissed_at: NotRequired[Union[datetime, None]]
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitType
+    merge_base_commit: CommitType
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: list[CommitType]
+    files: NotRequired[list[DiffEntryType]]
 
 
-__all__ = ("DependabotAlertType",)
+__all__ = ("CommitComparisonType",)

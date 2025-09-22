@@ -9,34 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestPropHeadType(TypedDict):
-    """PullRequestPropHead"""
+class MergedUpstreamType(TypedDict):
+    """Merged upstream
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
-    sha: str
-    user: Union[None, SimpleUserType]
+    Results of a successful merge upstream request
+    """
 
-
-class PullRequestPropBaseType(TypedDict):
-    """PullRequestPropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
-__all__ = (
-    "PullRequestPropBaseType",
-    "PullRequestPropHeadType",
-)
+__all__ = ("MergedUpstreamType",)

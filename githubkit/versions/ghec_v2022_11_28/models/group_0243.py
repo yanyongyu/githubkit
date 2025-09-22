@@ -9,44 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class GroupMapping(GitHubModel):
-    """GroupMapping
+class AutoMerge(GitHubModel):
+    """Auto merge
 
-    External Groups to be mapped to a team for membership
+    The status of auto merging a pull request.
     """
 
-    groups: Missing[list[GroupMappingPropGroupsItems]] = Field(
-        default=UNSET, description="Array of groups to be mapped to this team"
+    enabled_by: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    merge_method: Literal["merge", "squash", "rebase"] = Field(
+        description="The merge method to use."
+    )
+    commit_title: Union[str, None] = Field(
+        description="Title for the merge commit message."
+    )
+    commit_message: Union[str, None] = Field(
+        description="Commit message for the merge commit."
     )
 
 
-class GroupMappingPropGroupsItems(GitHubModel):
-    """GroupMappingPropGroupsItems"""
+model_rebuild(AutoMerge)
 
-    group_id: str = Field(description="The ID of the group")
-    group_name: str = Field(description="The name of the group")
-    group_description: str = Field(description="a description of the group")
-    status: Missing[str] = Field(
-        default=UNSET, description="synchronization status for this group mapping"
-    )
-    synced_at: Missing[Union[str, None]] = Field(
-        default=UNSET, description="the time of the last sync for this group-mapping"
-    )
-
-
-model_rebuild(GroupMapping)
-model_rebuild(GroupMappingPropGroupsItems)
-
-__all__ = (
-    "GroupMapping",
-    "GroupMappingPropGroupsItems",
-)
+__all__ = ("AutoMerge",)

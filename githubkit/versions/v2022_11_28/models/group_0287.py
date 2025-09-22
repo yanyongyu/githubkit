@@ -9,49 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ContentFile(GitHubModel):
-    """Content File
+class BranchShort(GitHubModel):
+    """Branch Short
 
-    Content File
+    Branch Short
     """
 
-    type: Literal["file"] = Field()
-    encoding: str = Field()
-    size: int = Field()
     name: str = Field()
-    path: str = Field()
-    content: str = Field()
+    commit: BranchShortPropCommit = Field()
+    protected: bool = Field()
+
+
+class BranchShortPropCommit(GitHubModel):
+    """BranchShortPropCommit"""
+
     sha: str = Field()
     url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentFilePropLinks = Field(alias="_links")
-    target: Missing[str] = Field(default=UNSET)
-    submodule_git_url: Missing[str] = Field(default=UNSET)
 
 
-class ContentFilePropLinks(GitHubModel):
-    """ContentFilePropLinks"""
-
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentFile)
-model_rebuild(ContentFilePropLinks)
+model_rebuild(BranchShort)
+model_rebuild(BranchShortPropCommit)
 
 __all__ = (
-    "ContentFile",
-    "ContentFilePropLinks",
+    "BranchShort",
+    "BranchShortPropCommit",
 )

@@ -13,39 +13,67 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0066 import SimpleRepositoryType
-from .group_0308 import CodeScanningVariantAnalysisPropScannedRepositoriesItemsType
-from .group_0309 import CodeScanningVariantAnalysisPropSkippedRepositoriesType
+from .group_0010 import IntegrationType
+from .group_0279 import PullRequestMinimalType
+from .group_0306 import DeploymentSimpleType
 
 
-class CodeScanningVariantAnalysisType(TypedDict):
-    """Variant Analysis
+class CheckRunType(TypedDict):
+    """CheckRun
 
-    A run of a CodeQL query against one or more repositories.
+    A check performed on the code of a given code change
     """
 
     id: int
-    controller_repo: SimpleRepositoryType
-    actor: SimpleUserType
-    query_language: Literal[
-        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "rust", "swift"
+    head_sha: str
+    node_id: str
+    external_id: Union[str, None]
+    url: str
+    html_url: Union[str, None]
+    details_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
     ]
-    query_pack_url: str
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-    completed_at: NotRequired[Union[datetime, None]]
-    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
-    actions_workflow_run_id: NotRequired[int]
-    failure_reason: NotRequired[
-        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
     ]
-    scanned_repositories: NotRequired[
-        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsType]
-    ]
-    skipped_repositories: NotRequired[
-        CodeScanningVariantAnalysisPropSkippedRepositoriesType
-    ]
+    started_at: Union[datetime, None]
+    completed_at: Union[datetime, None]
+    output: CheckRunPropOutputType
+    name: str
+    check_suite: Union[CheckRunPropCheckSuiteType, None]
+    app: Union[None, IntegrationType, None]
+    pull_requests: list[PullRequestMinimalType]
+    deployment: NotRequired[DeploymentSimpleType]
 
 
-__all__ = ("CodeScanningVariantAnalysisType",)
+class CheckRunPropOutputType(TypedDict):
+    """CheckRunPropOutput"""
+
+    title: Union[str, None]
+    summary: Union[str, None]
+    text: Union[str, None]
+    annotations_count: int
+    annotations_url: str
+
+
+class CheckRunPropCheckSuiteType(TypedDict):
+    """CheckRunPropCheckSuite"""
+
+    id: int
+
+
+__all__ = (
+    "CheckRunPropCheckSuiteType",
+    "CheckRunPropOutputType",
+    "CheckRunType",
+)

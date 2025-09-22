@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,33 +18,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+
+class SecretScanningPushProtectionBypass(GitHubModel):
+    """SecretScanningPushProtectionBypass"""
+
+    reason: Missing[Literal["false_positive", "used_in_tests", "will_fix_later"]] = (
+        Field(default=UNSET, description="The reason for bypassing push protection.")
+    )
+    expire_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The token type this bypass is for."
+    )
 
 
-class ContributorActivity(GitHubModel):
-    """Contributor Activity
+model_rebuild(SecretScanningPushProtectionBypass)
 
-    Contributor Activity
-    """
-
-    author: Union[None, SimpleUser] = Field()
-    total: int = Field()
-    weeks: list[ContributorActivityPropWeeksItems] = Field()
-
-
-class ContributorActivityPropWeeksItems(GitHubModel):
-    """ContributorActivityPropWeeksItems"""
-
-    w: Missing[int] = Field(default=UNSET)
-    a: Missing[int] = Field(default=UNSET)
-    d: Missing[int] = Field(default=UNSET)
-    c: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(ContributorActivity)
-model_rebuild(ContributorActivityPropWeeksItems)
-
-__all__ = (
-    "ContributorActivity",
-    "ContributorActivityPropWeeksItems",
-)
+__all__ = ("SecretScanningPushProtectionBypass",)

@@ -12,19 +12,14 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class PorterAuthorType(TypedDict):
-    """Porter Author
+class ShortBlobType(TypedDict):
+    """Short Blob
 
-    Porter Author
+    Short Blob
     """
 
-    id: int
-    remote_id: str
-    remote_name: str
-    email: str
-    name: str
     url: str
-    import_url: str
+    sha: str
 
 
-__all__ = ("PorterAuthorType",)
+__all__ = ("ShortBlobType",)

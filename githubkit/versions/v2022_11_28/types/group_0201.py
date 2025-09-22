@@ -9,19 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class TeamMembershipType(TypedDict):
-    """Team Membership
-
-    Team Membership
-    """
-
-    url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+from .group_0202 import RulesetVersionWithStateAllof1PropStateType
 
 
-__all__ = ("TeamMembershipType",)
+class RulesetVersionWithStateAllof1Type(TypedDict):
+    """RulesetVersionWithStateAllof1"""
+
+    state: RulesetVersionWithStateAllof1PropStateType
+
+
+__all__ = ("RulesetVersionWithStateAllof1Type",)

@@ -14,12 +14,12 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPullsCommentsCommentIdPatchBody(GitHubModel):
-    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
 
-    body: str = Field(description="The text of the reply to the review comment.")
+    sub_issue_id: int = Field(description="The id of the sub-issue to remove")
 
 
-model_rebuild(ReposOwnerRepoPullsCommentsCommentIdPatchBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody)
 
-__all__ = ("ReposOwnerRepoPullsCommentsCommentIdPatchBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",)

@@ -11,20 +11,15 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0266 import SimpleCommitType
+
+class WebhooksRepositoriesAddedItemsType(TypedDict):
+    """WebhooksRepositoriesAddedItems"""
+
+    full_name: str
+    id: int
+    name: str
+    node_id: str
+    private: bool
 
 
-class MergeGroupType(TypedDict):
-    """Merge Group
-
-    A group of pull requests that the merge queue has grouped together to be merged.
-    """
-
-    head_sha: str
-    head_ref: str
-    base_sha: str
-    base_ref: str
-    head_commit: SimpleCommitType
-
-
-__all__ = ("MergeGroupType",)
+__all__ = ("WebhooksRepositoriesAddedItemsType",)

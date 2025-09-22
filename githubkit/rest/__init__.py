@@ -225,9 +225,6 @@ if TYPE_CHECKING:
         BranchRestrictionPolicyPropAppsItemsPropPermissions as BranchRestrictionPolicyPropAppsItemsPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        BranchRestrictionPolicyPropTeamsItems as BranchRestrictionPolicyPropTeamsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         BranchRestrictionPolicyPropUsersItems as BranchRestrictionPolicyPropUsersItems,
     )
     from githubkit.versions.v2022_11_28.models import BranchShort as BranchShort
@@ -752,6 +749,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         EnterprisesEnterpriseSecretScanningAlertsGetResponse503 as EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        EnterprisesEnterpriseTeamsPostBody as EnterprisesEnterpriseTeamsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        EnterprisesEnterpriseTeamsTeamSlugPatchBody as EnterprisesEnterpriseTeamsTeamSlugPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import EnterpriseTeam as EnterpriseTeam
     from githubkit.versions.v2022_11_28.models import (
@@ -1326,6 +1335,21 @@ if TYPE_CHECKING:
         OrgsOrgActionsVariablesPostBody as OrgsOrgActionsVariablesPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgArtifactsMetadataStorageRecordPostBody as OrgsOrgArtifactsMetadataStorageRecordPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200 as OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems as OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200 as OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems as OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgAttestationsBulkListPostBody as OrgsOrgAttestationsBulkListPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1542,6 +1566,15 @@ if TYPE_CHECKING:
         OrgsOrgProjectsPostBody as OrgsOrgProjectsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody as OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems as OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgProjectsV2ProjectNumberItemsPostBody as OrgsOrgProjectsV2ProjectNumberItemsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgPropertiesSchemaPatchBody as OrgsOrgPropertiesSchemaPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1726,47 +1759,10 @@ if TYPE_CHECKING:
         PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage as PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage,
     )
     from githubkit.versions.v2022_11_28.models import Project as Project
-    from githubkit.versions.v2022_11_28.models import ProjectCard as ProjectCard
     from githubkit.versions.v2022_11_28.models import (
         ProjectCollaboratorPermission as ProjectCollaboratorPermission,
     )
     from githubkit.versions.v2022_11_28.models import ProjectColumn as ProjectColumn
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsCardsCardIdDeleteResponse403 as ProjectsColumnsCardsCardIdDeleteResponse403,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsCardsCardIdMovesPostBody as ProjectsColumnsCardsCardIdMovesPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsCardsCardIdMovesPostResponse201 as ProjectsColumnsCardsCardIdMovesPostResponse201,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsCardsCardIdMovesPostResponse403 as ProjectsColumnsCardsCardIdMovesPostResponse403,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems as ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsCardsCardIdMovesPostResponse503 as ProjectsColumnsCardsCardIdMovesPostResponse503,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems as ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsCardsCardIdPatchBody as ProjectsColumnsCardsCardIdPatchBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsColumnIdCardsPostBodyOneof0 as ProjectsColumnsColumnIdCardsPostBodyOneof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsColumnIdCardsPostBodyOneof1 as ProjectsColumnsColumnIdCardsPostBodyOneof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsColumnIdCardsPostResponse503 as ProjectsColumnsColumnIdCardsPostResponse503,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems as ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems,
-    )
     from githubkit.versions.v2022_11_28.models import (
         ProjectsColumnsColumnIdMovesPostBody as ProjectsColumnsColumnIdMovesPostBody,
     )
@@ -1792,12 +1788,46 @@ if TYPE_CHECKING:
         ProjectsProjectIdPatchResponse403 as ProjectsProjectIdPatchResponse403,
     )
     from githubkit.versions.v2022_11_28.models import ProjectsV2 as ProjectsV2
+    from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2DraftIssue as ProjectsV2DraftIssue,
+    )
+    from githubkit.versions.v2022_11_28.models import ProjectsV2Field as ProjectsV2Field
+    from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2FieldPropConfiguration as ProjectsV2FieldPropConfiguration,
+    )
     from githubkit.versions.v2022_11_28.models import ProjectsV2Item as ProjectsV2Item
+    from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2ItemSimple as ProjectsV2ItemSimple,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2ItemWithContent as ProjectsV2ItemWithContent,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2ItemWithContentPropContent as ProjectsV2ItemWithContentPropContent,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2ItemWithContentPropFieldsItems as ProjectsV2ItemWithContentPropFieldsItems,
+    )
     from githubkit.versions.v2022_11_28.models import (
         ProjectsV2IterationSetting as ProjectsV2IterationSetting,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2IterationSettings as ProjectsV2IterationSettings,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2IterationSettingsPropTitle as ProjectsV2IterationSettingsPropTitle,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ProjectsV2SingleSelectOption as ProjectsV2SingleSelectOption,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2SingleSelectOptions as ProjectsV2SingleSelectOptions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2SingleSelectOptionsPropDescription as ProjectsV2SingleSelectOptionsPropDescription,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2SingleSelectOptionsPropName as ProjectsV2SingleSelectOptionsPropName,
     )
     from githubkit.versions.v2022_11_28.models import (
         ProjectsV2StatusUpdate as ProjectsV2StatusUpdate,
@@ -2078,6 +2108,12 @@ if TYPE_CHECKING:
         RepositoryRuleCommitterEmailPatternPropParameters as RepositoryRuleCommitterEmailPatternPropParameters,
     )
     from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleCopilotCodeReview as RepositoryRuleCopilotCodeReview,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleCopilotCodeReviewPropParameters as RepositoryRuleCopilotCodeReviewPropParameters,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleCreation as RepositoryRuleCreation,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2145,6 +2181,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleDetailedOneof20 as RepositoryRuleDetailedOneof20,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleDetailedOneof21 as RepositoryRuleDetailedOneof21,
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleFileExtensionRestriction as RepositoryRuleFileExtensionRestriction,
@@ -3542,6 +3581,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody as UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems as UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameProjectsV2ProjectNumberItemsPostBody as UsersUsernameProjectsV2ProjectNumberItemsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import ValidationError as ValidationError
     from githubkit.versions.v2022_11_28.models import (
@@ -10056,6 +10104,27 @@ else:
             "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
             "OrgPrivateRegistryConfigurationWithSelectedRepositories",
             "Project",
+            "ProjectsV2StatusUpdate",
+            "ProjectsV2",
+            "ProjectsV2Field",
+            "ProjectsV2SingleSelectOptions",
+            "ProjectsV2SingleSelectOptionsPropName",
+            "ProjectsV2SingleSelectOptionsPropDescription",
+            "ProjectsV2FieldPropConfiguration",
+            "ProjectsV2IterationSettings",
+            "ProjectsV2IterationSettingsPropTitle",
+            "ProjectsV2ItemWithContent",
+            "ProjectsV2ItemWithContentPropContent",
+            "ProjectsV2ItemWithContentPropFieldsItems",
+            "Link",
+            "AutoMerge",
+            "PullRequestSimple",
+            "PullRequestSimplePropLabelsItems",
+            "PullRequestSimplePropHead",
+            "PullRequestSimplePropBase",
+            "PullRequestSimplePropLinks",
+            "ProjectsV2DraftIssue",
+            "ProjectsV2ItemSimple",
             "CustomProperty",
             "CustomPropertySetPayload",
             "CustomPropertyValue",
@@ -10120,6 +10189,8 @@ else:
             "RepositoryRuleCodeScanning",
             "RepositoryRuleCodeScanningPropParameters",
             "RepositoryRuleParamsCodeScanningTool",
+            "RepositoryRuleCopilotCodeReview",
+            "RepositoryRuleCopilotCodeReviewPropParameters",
             "RepositoryRuleset",
             "RepositoryRulesetPropLinks",
             "RepositoryRulesetPropLinksPropSelf",
@@ -10160,7 +10231,6 @@ else:
             "TeamProjectPropPermissions",
             "TeamRepository",
             "TeamRepositoryPropPermissions",
-            "ProjectCard",
             "ProjectColumn",
             "ProjectCollaboratorPermission",
             "RateLimit",
@@ -10217,7 +10287,6 @@ else:
             "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
             "BranchRestrictionPolicy",
             "BranchRestrictionPolicyPropUsersItems",
-            "BranchRestrictionPolicyPropTeamsItems",
             "BranchRestrictionPolicyPropAppsItems",
             "BranchRestrictionPolicyPropAppsItemsPropOwner",
             "BranchRestrictionPolicyPropAppsItemsPropPermissions",
@@ -10304,13 +10373,6 @@ else:
             "TimelineCommitCommentedEvent",
             "BranchShort",
             "BranchShortPropCommit",
-            "Link",
-            "AutoMerge",
-            "PullRequestSimple",
-            "PullRequestSimplePropLabelsItems",
-            "PullRequestSimplePropHead",
-            "PullRequestSimplePropBase",
-            "PullRequestSimplePropLinks",
             "CombinedCommitStatus",
             "SimpleCommitStatus",
             "Status",
@@ -10504,6 +10566,7 @@ else:
             "RepositoryRuleDetailedOneof18",
             "RepositoryRuleDetailedOneof19",
             "RepositoryRuleDetailedOneof20",
+            "RepositoryRuleDetailedOneof21",
             "SecretScanningAlert",
             "SecretScanningLocation",
             "SecretScanningPushProtectionBypass",
@@ -10686,8 +10749,6 @@ else:
             "WebhooksProject",
             "WebhooksProjectPropCreator",
             "WebhooksProjectColumn",
-            "ProjectsV2StatusUpdate",
-            "ProjectsV2",
             "WebhooksProjectChanges",
             "WebhooksProjectChangesPropArchivedAt",
             "ProjectsV2Item",
@@ -12733,6 +12794,10 @@ else:
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",
             "EnterprisesEnterpriseSecretScanningAlertsGetResponse503",
+            "EnterprisesEnterpriseTeamsPostBody",
+            "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody",
+            "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody",
+            "EnterprisesEnterpriseTeamsTeamSlugPatchBody",
             "GistsPostBody",
             "GistsPostBodyPropFiles",
             "GistsGistIdGetResponse403",
@@ -12793,6 +12858,11 @@ else:
             "OrgsOrgActionsVariablesNamePatchBody",
             "OrgsOrgActionsVariablesNameRepositoriesGetResponse200",
             "OrgsOrgActionsVariablesNameRepositoriesPutBody",
+            "OrgsOrgArtifactsMetadataStorageRecordPostBody",
+            "OrgsOrgArtifactsMetadataStorageRecordPostResponse200",
+            "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems",
+            "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200",
+            "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems",
             "OrgsOrgAttestationsBulkListPostBody",
             "OrgsOrgAttestationsBulkListPostResponse200",
             "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
@@ -12865,6 +12935,9 @@ else:
             "OrgsOrgPrivateRegistriesPublicKeyGetResponse200",
             "OrgsOrgPrivateRegistriesSecretNamePatchBody",
             "OrgsOrgProjectsPostBody",
+            "OrgsOrgProjectsV2ProjectNumberItemsPostBody",
+            "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody",
+            "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
             "OrgsOrgPropertiesSchemaPatchBody",
             "OrgsOrgPropertiesValuesPatchBody",
             "OrgsOrgReposPostBody",
@@ -12892,19 +12965,7 @@ else:
             "OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403",
             "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",
             "OrgsOrgSecurityProductEnablementPostBody",
-            "ProjectsColumnsCardsCardIdDeleteResponse403",
-            "ProjectsColumnsCardsCardIdPatchBody",
-            "ProjectsColumnsCardsCardIdMovesPostBody",
-            "ProjectsColumnsCardsCardIdMovesPostResponse201",
-            "ProjectsColumnsCardsCardIdMovesPostResponse403",
-            "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems",
-            "ProjectsColumnsCardsCardIdMovesPostResponse503",
-            "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems",
             "ProjectsColumnsColumnIdPatchBody",
-            "ProjectsColumnsColumnIdCardsPostBodyOneof0",
-            "ProjectsColumnsColumnIdCardsPostBodyOneof1",
-            "ProjectsColumnsColumnIdCardsPostResponse503",
-            "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems",
             "ProjectsColumnsColumnIdMovesPostBody",
             "ProjectsColumnsColumnIdMovesPostResponse201",
             "ProjectsProjectIdDeleteResponse403",
@@ -13199,5 +13260,8 @@ else:
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
+            "UsersUsernameProjectsV2ProjectNumberItemsPostBody",
+            "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody",
+            "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
         )
     }

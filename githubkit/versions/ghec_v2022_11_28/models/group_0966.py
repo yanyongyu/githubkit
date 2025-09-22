@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -17,90 +17,42 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0089 import RepositoryRulesetBypassActor
-from .group_0100 import EnterpriseRulesetConditionsOneof0
-from .group_0101 import EnterpriseRulesetConditionsOneof1
-from .group_0102 import EnterpriseRulesetConditionsOneof2
-from .group_0103 import EnterpriseRulesetConditionsOneof3
-from .group_0104 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0105 import RepositoryRuleUpdate
-from .group_0107 import RepositoryRuleRequiredLinearHistory
-from .group_0108 import RepositoryRuleRequiredDeployments
-from .group_0111 import RepositoryRulePullRequest
-from .group_0113 import RepositoryRuleRequiredStatusChecks
-from .group_0115 import RepositoryRuleCommitMessagePattern
-from .group_0117 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0119 import RepositoryRuleCommitterEmailPattern
-from .group_0121 import RepositoryRuleBranchNamePattern
-from .group_0123 import RepositoryRuleTagNamePattern
-from .group_0125 import RepositoryRuleFilePathRestriction
-from .group_0127 import RepositoryRuleMaxFilePathLength
-from .group_0129 import RepositoryRuleFileExtensionRestriction
-from .group_0131 import RepositoryRuleMaxFileSize
-from .group_0134 import RepositoryRuleWorkflows
-from .group_0136 import RepositoryRuleCodeScanning
 
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody(GitHubModel):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
 
-class EnterprisesEnterpriseRulesetsRulesetIdPutBody(GitHubModel):
-    """EnterprisesEnterpriseRulesetsRulesetIdPutBody"""
-
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
+        description='Whether GitHub Advanced Security is automatically enabled for new repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security)."',
     )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    advanced_security_enabled_new_user_namespace_repos: Missing[bool] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description='Whether GitHub Advanced Security is automatically enabled for new user namespace repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security)."',
     )
-    conditions: Missing[
-        Union[
-            EnterpriseRulesetConditionsOneof0,
-            EnterpriseRulesetConditionsOneof1,
-            EnterpriseRulesetConditionsOneof2,
-            EnterpriseRulesetConditionsOneof3,
-        ]
+    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether Dependabot alerts are automatically enabled for new repositories. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."',
+    )
+    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether secret scanning is automatically enabled for new repositories. For more information, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/about-secret-scanning)."',
+    )
+    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether secret scanning push protection is automatically enabled for new repositories. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
+    )
+    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description='The URL that will be displayed to contributors who are blocked from pushing a secret. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/protecting-pushes-with-secret-scanning)."\nTo disable this functionality, set this field to `null`.',
+    )
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
+        Union[bool, None]
     ] = Field(
         default=UNSET,
-        title="Enterprise ruleset conditions",
-        description="Conditions for an enterprise ruleset. The conditions object should contain either the `organization_id` or `organization_name` property and the `repository_name` or `repository_property` property. For branch and tag rulesets, the conditions object should also contain the `ref_name` property.",
+        description="Whether secret scanning of non-provider patterns is enabled for new repositories under this enterprise.",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(EnterprisesEnterpriseRulesetsRulesetIdPutBody)
+model_rebuild(EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody)
 
-__all__ = ("EnterprisesEnterpriseRulesetsRulesetIdPutBody",)
+__all__ = ("EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody",)

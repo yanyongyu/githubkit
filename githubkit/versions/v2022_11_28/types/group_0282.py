@@ -10,28 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType
+from typing_extensions import NotRequired, TypedDict
 
 
-class StatusType(TypedDict):
-    """Status
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-    The status of a commit.
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    url: str
-    avatar_url: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserType]
+    errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
-__all__ = ("StatusType",)
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
+
+
+__all__ = (
+    "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsType",
+)

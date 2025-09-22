@@ -9,55 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-
-class PullRequestMinimalType(TypedDict):
-    """Pull Request Minimal"""
-
-    id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
+from .group_0003 import SimpleUserType
 
 
-class PullRequestMinimalPropHeadType(TypedDict):
-    """PullRequestMinimalPropHead"""
+class ProjectCollaboratorPermissionType(TypedDict):
+    """Project Collaborator Permission
 
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoType
+    Project Collaborator Permission
+    """
 
-
-class PullRequestMinimalPropHeadPropRepoType(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
-
-    id: int
-    url: str
-    name: str
+    permission: str
+    user: Union[None, SimpleUserType]
 
 
-class PullRequestMinimalPropBaseType(TypedDict):
-    """PullRequestMinimalPropBase"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoType
-
-
-class PullRequestMinimalPropBasePropRepoType(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int
-    url: str
-    name: str
-
-
-__all__ = (
-    "PullRequestMinimalPropBasePropRepoType",
-    "PullRequestMinimalPropBaseType",
-    "PullRequestMinimalPropHeadPropRepoType",
-    "PullRequestMinimalPropHeadType",
-    "PullRequestMinimalType",
-)
+__all__ = ("ProjectCollaboratorPermissionType",)

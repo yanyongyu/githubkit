@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,154 +17,81 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0019 import LicenseSimple
 
+class SecretScanningPatternConfiguration(GitHubModel):
+    """Secret scanning pattern configuration
 
-class TeamRepository(GitHubModel):
-    """Team Repository
-
-    A team's access to a repository.
+    A collection of secret scanning patterns and their settings related to push
+    protection.
     """
 
-    id: int = Field(description="Unique identifier of the repository")
-    node_id: str = Field()
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field()
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    forks: int = Field()
-    permissions: Missing[TeamRepositoryPropPermissions] = Field(default=UNSET)
-    role_name: Missing[str] = Field(default=UNSET)
-    owner: Union[None, SimpleUser] = Field()
-    private: bool = Field(
-        default=False, description="Whether the repository is private or public."
-    )
-    html_url: str = Field()
-    description: Union[str, None] = Field()
-    fork: bool = Field()
-    url: str = Field()
-    archive_url: str = Field()
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    deployments_url: str = Field()
-    downloads_url: str = Field()
-    events_url: str = Field()
-    forks_url: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    git_url: str = Field()
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    languages_url: str = Field()
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    notifications_url: str = Field()
-    pulls_url: str = Field()
-    releases_url: str = Field()
-    ssh_url: str = Field()
-    stargazers_url: str = Field()
-    statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    trees_url: str = Field()
-    clone_url: str = Field()
-    mirror_url: Union[str, None] = Field()
-    hooks_url: str = Field()
-    svn_url: str = Field()
-    homepage: Union[str, None] = Field()
-    language: Union[str, None] = Field()
-    forks_count: int = Field()
-    stargazers_count: int = Field()
-    watchers_count: int = Field()
-    size: int = Field()
-    default_branch: str = Field(description="The default branch of the repository.")
-    open_issues_count: int = Field()
-    is_template: Missing[bool] = Field(
+    pattern_config_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Whether this repository acts as a template that can be used to generate new repositories.",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
-    topics: Missing[list[str]] = Field(default=UNSET)
-    has_issues: bool = Field(default=True, description="Whether issues are enabled.")
-    has_projects: bool = Field(
-        default=True, description="Whether projects are enabled."
+    provider_pattern_overrides: Missing[list[SecretScanningPatternOverride]] = Field(
+        default=UNSET, description="Overrides for partner patterns."
     )
-    has_wiki: bool = Field(default=True, description="Whether the wiki is enabled.")
-    has_pages: bool = Field()
-    has_downloads: bool = Field(
-        default=True, description="Whether downloads are enabled."
-    )
-    archived: bool = Field(
-        default=False, description="Whether the repository is archived."
-    )
-    disabled: bool = Field(
-        description="Returns whether or not this repository disabled."
-    )
-    visibility: Missing[str] = Field(
+    custom_pattern_overrides: Missing[list[SecretScanningPatternOverride]] = Field(
         default=UNSET,
-        description="The repository visibility: public, private, or internal.",
+        description="Overrides for custom patterns defined by the organization.",
     )
-    pushed_at: Union[datetime, None] = Field()
-    created_at: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    allow_rebase_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow rebase merges for pull requests."
-    )
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
-    allow_squash_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow squash merges for pull requests."
-    )
-    allow_auto_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to allow Auto-merge to be used on pull requests.",
-    )
-    delete_branch_on_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to delete head branches when pull requests are merged",
-    )
-    allow_merge_commit: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow merge commits for pull requests."
-    )
-    allow_forking: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow forking this repo"
-    )
-    web_commit_signoff_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to require contributors to sign off on web-based commits",
-    )
-    subscribers_count: Missing[int] = Field(default=UNSET)
-    network_count: Missing[int] = Field(default=UNSET)
-    open_issues: int = Field()
-    watchers: int = Field()
-    master_branch: Missing[str] = Field(default=UNSET)
 
 
-class TeamRepositoryPropPermissions(GitHubModel):
-    """TeamRepositoryPropPermissions"""
+class SecretScanningPatternOverride(GitHubModel):
+    """SecretScanningPatternOverride"""
 
-    admin: bool = Field()
-    pull: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of this pattern if it's a custom pattern.",
+    )
+    slug: Missing[str] = Field(default=UNSET, description="The slug of the pattern.")
+    display_name: Missing[str] = Field(
+        default=UNSET, description="The user-friendly name for the pattern."
+    )
+    alert_total: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of alerts generated by this pattern.",
+    )
+    alert_total_percentage: Missing[int] = Field(
+        default=UNSET,
+        description="The percentage of all alerts that this pattern represents, rounded to the nearest integer.",
+    )
+    false_positives: Missing[int] = Field(
+        default=UNSET,
+        description="The number of false positive alerts generated by this pattern.",
+    )
+    false_positive_rate: Missing[int] = Field(
+        default=UNSET,
+        description="The percentage of alerts from this pattern that are false positives, rounded to the nearest integer.",
+    )
+    bypass_rate: Missing[int] = Field(
+        default=UNSET,
+        description="The percentage of blocks for this pattern that were bypassed, rounded to the nearest integer.",
+    )
+    default_setting: Missing[Literal["disabled", "enabled"]] = Field(
+        default=UNSET,
+        description="The default push protection setting for this pattern.",
+    )
+    enterprise_setting: Missing[
+        Union[None, Literal["not-set", "disabled", "enabled"]]
+    ] = Field(
+        default=UNSET,
+        description="The push protection setting for this pattern set at the enterprise level. Only present for partner patterns when the organization has a parent enterprise.",
+    )
+    setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
+        default=UNSET,
+        description="The current push protection setting for this pattern. If this is `not-set`, then it inherits either the enterprise setting if it exists or the default setting.",
+    )
 
 
-model_rebuild(TeamRepository)
-model_rebuild(TeamRepositoryPropPermissions)
+model_rebuild(SecretScanningPatternConfiguration)
+model_rebuild(SecretScanningPatternOverride)
 
 __all__ = (
-    "TeamRepository",
-    "TeamRepositoryPropPermissions",
+    "SecretScanningPatternConfiguration",
+    "SecretScanningPatternOverride",
 )

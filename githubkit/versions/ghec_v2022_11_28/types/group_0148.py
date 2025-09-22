@@ -9,20 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict
-
-from .group_0147 import RulesetVersionPropActorType
-from .group_0150 import RulesetVersionWithStateAllof1PropStateType
+from typing_extensions import NotRequired, TypedDict
 
 
-class RulesetVersionWithStateType(TypedDict):
-    """RulesetVersionWithState"""
+class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: datetime
-    state: RulesetVersionWithStateAllof1PropStateType
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
-__all__ = ("RulesetVersionWithStateType",)
+__all__ = ("RepositoryRuleCopilotCodeReviewPropParametersType",)

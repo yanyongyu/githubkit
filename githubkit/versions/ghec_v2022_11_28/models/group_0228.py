@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,49 +18,60 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0075 import TeamSimple
+from .group_0003 import SimpleUser
 
 
-class TeamRoleAssignment(GitHubModel):
-    """A Role Assignment for a Team
+class OrganizationRole(GitHubModel):
+    """Organization Role
 
-    The Relationship a Team has with a role.
+    Organization roles
     """
 
-    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+    id: int = Field(description="The unique identifier of the role.")
+    name: str = Field(description="The name of the role.")
+    description: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Determines if the team has a direct, indirect, or mixed relationship to a role",
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamRoleAssignmentPropPermissions] = Field(default=UNSET)
-    url: str = Field()
-    html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    parent: Union[None, TeamSimple] = Field()
+    base_role: Missing[
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    ] = Field(
+        default=UNSET,
+        description="The system role from which this role inherits permissions.",
+    )
+    source: Missing[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+    ] = Field(
+        default=UNSET,
+        description='Source answers the question, "where did this role come from?"',
+    )
+    permissions: list[str] = Field(
+        description="A list of permissions included in this role."
+    )
+    organization: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field(description="The date and time the role was created.")
+    updated_at: datetime = Field(
+        description="The date and time the role was last updated."
+    )
 
 
-class TeamRoleAssignmentPropPermissions(GitHubModel):
-    """TeamRoleAssignmentPropPermissions"""
+class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
+    """OrgsOrgOrganizationRolesGetResponse200"""
 
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of organization roles available to the organization.",
+    )
+    roles: Missing[list[OrganizationRole]] = Field(
+        default=UNSET,
+        description="The list of organization roles available to the organization.",
+    )
 
 
-model_rebuild(TeamRoleAssignment)
-model_rebuild(TeamRoleAssignmentPropPermissions)
+model_rebuild(OrganizationRole)
+model_rebuild(OrgsOrgOrganizationRolesGetResponse200)
 
 __all__ = (
-    "TeamRoleAssignment",
-    "TeamRoleAssignmentPropPermissions",
+    "OrganizationRole",
+    "OrgsOrgOrganizationRolesGetResponse200",
 )

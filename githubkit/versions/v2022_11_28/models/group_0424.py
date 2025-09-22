@@ -14,20 +14,43 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0419 import SearchResultTextMatchesItems
 
 
-class Email(GitHubModel):
-    """Email
+class LabelSearchResultItem(GitHubModel):
+    """Label Search Result Item
 
-    Email
+    Label Search Result Item
     """
 
-    email: str = Field()
-    primary: bool = Field()
-    verified: bool = Field()
-    visibility: Union[str, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    name: str = Field()
+    color: str = Field()
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    score: float = Field()
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
 
 
-model_rebuild(Email)
+class SearchLabelsGetResponse200(GitHubModel):
+    """SearchLabelsGetResponse200"""
 
-__all__ = ("Email",)
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[LabelSearchResultItem] = Field()
+
+
+model_rebuild(LabelSearchResultItem)
+model_rebuild(SearchLabelsGetResponse200)
+
+__all__ = (
+    "LabelSearchResultItem",
+    "SearchLabelsGetResponse200",
+)

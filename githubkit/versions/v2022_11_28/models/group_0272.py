@@ -19,33 +19,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0064 import MinimalRepository
+from .group_0032 import SimpleRepository
+from .group_0273 import CodeScanningVariantAnalysisPropScannedRepositoriesItems
+from .group_0274 import CodeScanningVariantAnalysisPropSkippedRepositories
 
 
-class RepositoryInvitation(GitHubModel):
-    """Repository Invitation
+class CodeScanningVariantAnalysis(GitHubModel):
+    """Variant Analysis
 
-    Repository invitations let you manage who you collaborate with.
+    A run of a CodeQL query against one or more repositories.
     """
 
-    id: int = Field(description="Unique identifier of the repository invitation.")
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    id: int = Field(description="The ID of the variant analysis.")
+    controller_repo: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
-    invitee: Union[None, SimpleUser] = Field()
-    inviter: Union[None, SimpleUser] = Field()
-    permissions: Literal["read", "write", "admin", "triage", "maintain"] = Field(
-        description="The permission associated with the invitation."
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    query_language: Literal[
+        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "rust", "swift"
+    ] = Field(description="The language targeted by the CodeQL query")
+    query_pack_url: str = Field(description="The download url for the query pack.")
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
     )
-    created_at: datetime = Field()
-    expired: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the invitation has expired"
+    updated_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
     )
-    url: str = Field(description="URL for the repository invitation")
-    html_url: str = Field()
-    node_id: str = Field()
+    completed_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was completed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the variant analysis has not yet completed or this information is not available.",
+    )
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"] = Field()
+    actions_workflow_run_id: Missing[int] = Field(
+        default=UNSET,
+        description="The GitHub Actions workflow run used to execute this variant analysis. This is only available if the workflow run has started.",
+    )
+    failure_reason: Missing[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ] = Field(
+        default=UNSET,
+        description="The reason for a failure of the variant analysis. This is only available if the variant analysis has failed.",
+    )
+    scanned_repositories: Missing[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItems]
+    ] = Field(default=UNSET)
+    skipped_repositories: Missing[
+        CodeScanningVariantAnalysisPropSkippedRepositories
+    ] = Field(
+        default=UNSET,
+        description="Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis.",
+    )
 
 
-model_rebuild(RepositoryInvitation)
+model_rebuild(CodeScanningVariantAnalysis)
 
-__all__ = ("RepositoryInvitation",)
+__all__ = ("CodeScanningVariantAnalysis",)

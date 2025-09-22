@@ -17,20 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0179 import RepositoryRuleWorkflowsPropParameters
+from .group_0179 import RepositoryRuleTagNamePatternPropParameters
 
 
-class RepositoryRuleWorkflows(GitHubModel):
-    """workflows
+class RepositoryRuleTagNamePattern(GitHubModel):
+    """tag_name_pattern
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    type: Literal["workflows"] = Field()
-    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
+    type: Literal["tag_name_pattern"] = Field()
+    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(RepositoryRuleWorkflows)
+model_rebuild(RepositoryRuleTagNamePattern)
 
-__all__ = ("RepositoryRuleWorkflows",)
+__all__ = ("RepositoryRuleTagNamePattern",)

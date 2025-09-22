@@ -82,16 +82,19 @@ class Issue(GitHubModel):
     performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
         default=UNSET
     )
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    author_association: Missing[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
     ] = Field(
+        default=UNSET,
         title="author_association",
         description="How the author is associated with the repository.",
     )

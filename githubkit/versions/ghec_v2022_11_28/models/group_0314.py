@@ -16,16 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningSarifsReceipt(GitHubModel):
-    """CodeScanningSarifsReceipt"""
+class CodeScanningAutofixCommits(GitHubModel):
+    """CodeScanningAutofixCommits
 
-    id: Missing[str] = Field(default=UNSET, description="An identifier for the upload.")
-    url: Missing[str] = Field(
+    Commit an autofix for a code scanning alert
+    """
+
+    target_ref: Missing[str] = Field(
         default=UNSET,
-        description="The REST API URL for checking the status of the upload.",
+        description='The Git reference of target branch for the commit. Branch needs to already exist.  For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
+    )
+    message: Missing[str] = Field(
+        default=UNSET, description="Commit message to be used."
     )
 
 
-model_rebuild(CodeScanningSarifsReceipt)
+model_rebuild(CodeScanningAutofixCommits)
 
-__all__ = ("CodeScanningSarifsReceipt",)
+__all__ = ("CodeScanningAutofixCommits",)

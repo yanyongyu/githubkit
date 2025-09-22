@@ -12,18 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0189 import RulesetVersionWithStateAllof1PropState
-
-
-class RulesetVersionWithStateAllof1(GitHubModel):
-    """RulesetVersionWithStateAllof1"""
-
-    state: RulesetVersionWithStateAllof1PropState = Field(
-        description="The state of the ruleset version"
-    )
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(RulesetVersionWithStateAllof1)
+class RepositoryRuleParamsRestrictedCommits(GitHubModel):
+    """RestrictedCommits
 
-__all__ = ("RulesetVersionWithStateAllof1",)
+    Restricted commit
+    """
+
+    oid: str = Field(description="Full or abbreviated commit hash to reject")
+    reason: Missing[str] = Field(default=UNSET, description="Reason for restriction")
+
+
+model_rebuild(RepositoryRuleParamsRestrictedCommits)
+
+__all__ = ("RepositoryRuleParamsRestrictedCommits",)

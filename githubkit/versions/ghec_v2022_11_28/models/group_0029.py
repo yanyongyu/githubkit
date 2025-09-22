@@ -14,17 +14,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsCacheUsageOrgEnterprise(GitHubModel):
-    """ActionsCacheUsageOrgEnterprise"""
+class EnterpriseAccessRestrictions(GitHubModel):
+    """Enterprise Access Restrictions
 
-    total_active_caches_count: int = Field(
-        description="The count of active caches across all repositories of an enterprise or an organization."
-    )
-    total_active_caches_size_in_bytes: int = Field(
-        description="The total size in bytes of all active cache items across all repositories of an enterprise or an organization."
-    )
+    Information about the enterprise access restrictions proxy header.
+    """
+
+    message: str = Field(description="The message returned for the request.")
+    header_name: str = Field(description="The name of the proxy header.")
+    header_value: str = Field(description="The value of the proxy header.")
 
 
-model_rebuild(ActionsCacheUsageOrgEnterprise)
+model_rebuild(EnterpriseAccessRestrictions)
 
-__all__ = ("ActionsCacheUsageOrgEnterprise",)
+__all__ = ("EnterpriseAccessRestrictions",)

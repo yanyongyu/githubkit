@@ -9,14 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningAutofixCommitsResponseType(TypedDict):
-    """CodeScanningAutofixCommitsResponse"""
-
-    target_ref: NotRequired[str]
-    sha: NotRequired[str]
+from .group_0297 import GitUserType
+from .group_0298 import VerificationType
 
 
-__all__ = ("CodeScanningAutofixCommitsResponseType",)
+class CommitPropCommitType(TypedDict):
+    """CommitPropCommit"""
+
+    url: str
+    author: Union[None, GitUserType]
+    committer: Union[None, GitUserType]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeType
+    verification: NotRequired[VerificationType]
+
+
+class CommitPropCommitPropTreeType(TypedDict):
+    """CommitPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+__all__ = (
+    "CommitPropCommitPropTreeType",
+    "CommitPropCommitType",
+)

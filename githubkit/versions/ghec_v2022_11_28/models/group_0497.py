@@ -9,36 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrganizationSimpleWebhooks(GitHubModel):
-    """Organization Simple
+class Key(GitHubModel):
+    """Key
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    Key
     """
 
-    login: str = Field()
+    key: str = Field()
     id: int = Field()
-    node_id: str = Field()
     url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
+    title: str = Field()
+    created_at: datetime = Field()
+    verified: bool = Field()
+    read_only: bool = Field()
+    last_used: Missing[Union[datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationSimpleWebhooks)
+model_rebuild(Key)
 
-__all__ = ("OrganizationSimpleWebhooks",)
+__all__ = ("Key",)

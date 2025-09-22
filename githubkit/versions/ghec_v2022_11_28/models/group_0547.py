@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,65 +19,94 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksTeam1(GitHubModel):
-    """Team
+class WebhooksReview(GitHubModel):
+    """WebhooksReview
 
-    Groups of organization members that gives permissions on specified repositories.
+    The review that was affected.
     """
 
-    deleted: Missing[bool] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the team"
-    )
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field(description="Unique identifier of the team")
-    members_url: Missing[str] = Field(default=UNSET)
-    name: str = Field(description="Name of the team")
-    node_id: Missing[str] = Field(default=UNSET)
-    parent: Missing[Union[WebhooksTeam1PropParent, None]] = Field(default=UNSET)
-    permission: Missing[str] = Field(
-        default=UNSET,
-        description="Permission that the team will have for its repositories",
-    )
-    privacy: Missing[Literal["open", "closed", "secret"]] = Field(default=UNSET)
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
+    links: WebhooksReviewPropLinks = Field(alias="_links")
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ] = Field(
-        default=UNSET,
-        description="Whether team members will receive notifications when their team is @mentioned",
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
     )
-    repositories_url: Missing[str] = Field(default=UNSET)
-    slug: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET, description="URL for the team")
-
-
-class WebhooksTeam1PropParent(GitHubModel):
-    """WebhooksTeam1PropParent"""
-
-    description: Union[str, None] = Field(description="Description of the team")
+    body: Union[str, None] = Field(description="The text of the review.")
+    commit_id: str = Field(description="A commit SHA for the review.")
     html_url: str = Field()
-    id: int = Field(description="Unique identifier of the team")
-    members_url: str = Field()
-    name: str = Field(description="Name of the team")
+    id: int = Field(description="Unique identifier of the review")
     node_id: str = Field()
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
-    )
-    privacy: Literal["open", "closed", "secret"] = Field()
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"] = (
-        Field(
-            description="Whether team members will receive notifications when their team is @mentioned"
-        )
-    )
-    repositories_url: str = Field()
-    slug: str = Field()
-    url: str = Field(description="URL for the team")
+    pull_request_url: str = Field()
+    state: str = Field()
+    submitted_at: Union[datetime, None] = Field()
+    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    user: Union[WebhooksReviewPropUser, None] = Field(title="User")
 
 
-model_rebuild(WebhooksTeam1)
-model_rebuild(WebhooksTeam1PropParent)
+class WebhooksReviewPropUser(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhooksReviewPropLinks(GitHubModel):
+    """WebhooksReviewPropLinks"""
+
+    html: WebhooksReviewPropLinksPropHtml = Field(title="Link")
+    pull_request: WebhooksReviewPropLinksPropPullRequest = Field(title="Link")
+
+
+class WebhooksReviewPropLinksPropHtml(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+class WebhooksReviewPropLinksPropPullRequest(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+model_rebuild(WebhooksReview)
+model_rebuild(WebhooksReviewPropUser)
+model_rebuild(WebhooksReviewPropLinks)
+model_rebuild(WebhooksReviewPropLinksPropHtml)
+model_rebuild(WebhooksReviewPropLinksPropPullRequest)
 
 __all__ = (
-    "WebhooksTeam1",
-    "WebhooksTeam1PropParent",
+    "WebhooksReview",
+    "WebhooksReviewPropLinks",
+    "WebhooksReviewPropLinksPropHtml",
+    "WebhooksReviewPropLinksPropPullRequest",
+    "WebhooksReviewPropUser",
 )

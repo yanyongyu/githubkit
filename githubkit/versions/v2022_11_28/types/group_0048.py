@@ -65,15 +65,17 @@ class IssueType(TypedDict):
     type: NotRequired[Union[IssueTypeType, None]]
     repository: NotRequired[RepositoryType]
     performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
     ]
     reactions: NotRequired[ReactionRollupType]
     sub_issues_summary: NotRequired[SubIssuesSummaryType]

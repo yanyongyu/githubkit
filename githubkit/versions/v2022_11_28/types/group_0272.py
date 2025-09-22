@@ -14,25 +14,38 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0064 import MinimalRepositoryType
+from .group_0032 import SimpleRepositoryType
+from .group_0273 import CodeScanningVariantAnalysisPropScannedRepositoriesItemsType
+from .group_0274 import CodeScanningVariantAnalysisPropSkippedRepositoriesType
 
 
-class RepositoryInvitationType(TypedDict):
-    """Repository Invitation
+class CodeScanningVariantAnalysisType(TypedDict):
+    """Variant Analysis
 
-    Repository invitations let you manage who you collaborate with.
+    A run of a CodeQL query against one or more repositories.
     """
 
     id: int
-    repository: MinimalRepositoryType
-    invitee: Union[None, SimpleUserType]
-    inviter: Union[None, SimpleUserType]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: datetime
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+    controller_repo: SimpleRepositoryType
+    actor: SimpleUserType
+    query_language: Literal[
+        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "rust", "swift"
+    ]
+    query_pack_url: str
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+    completed_at: NotRequired[Union[datetime, None]]
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
+    actions_workflow_run_id: NotRequired[int]
+    failure_reason: NotRequired[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ]
+    scanned_repositories: NotRequired[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsType]
+    ]
+    skipped_repositories: NotRequired[
+        CodeScanningVariantAnalysisPropSkippedRepositoriesType
+    ]
 
 
-__all__ = ("RepositoryInvitationType",)
+__all__ = ("CodeScanningVariantAnalysisType",)

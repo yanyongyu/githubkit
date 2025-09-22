@@ -9,20 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class MetaType(TypedDict):
-    """Meta
+class RepositorySubscriptionType(TypedDict):
+    """Repository Invitation
 
-    The metadata associated with the creation/updates to the user.
+    Repository invitations let you manage who you collaborate with.
     """
 
-    resource_type: Literal["User", "Group"]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: datetime
+    url: str
+    repository_url: str
 
 
-__all__ = ("MetaType",)
+__all__ = ("RepositorySubscriptionType",)

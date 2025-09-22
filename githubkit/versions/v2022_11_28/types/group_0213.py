@@ -9,17 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class OidcCustomSubRepoType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class ReactionType(TypedDict):
+    """Reaction
 
-    Actions OIDC subject customization for a repository
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
+    id: int
+    node_id: str
+    user: Union[None, SimpleUserType]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: datetime
 
 
-__all__ = ("OidcCustomSubRepoType",)
+__all__ = ("ReactionType",)

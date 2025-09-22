@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,27 +17,51 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class ActionsRepositoryPermissions(GitHubModel):
-    """ActionsRepositoryPermissions"""
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+class TeamProject(GitHubModel):
+    """Team Project
+
+    A team's access to a project.
+    """
+
+    owner_url: str = Field()
+    url: str = Field()
+    html_url: str = Field()
+    columns_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    body: Union[str, None] = Field()
+    number: int = Field()
+    state: str = Field()
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: str = Field()
+    updated_at: str = Field()
+    organization_permission: Missing[str] = Field(
         default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+        description="The organization permission for this project. Only present when owner is an organization.",
     )
-    selected_actions_url: Missing[str] = Field(
+    private: Missing[bool] = Field(
         default=UNSET,
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
+        description="Whether the project is private or not. Only present when owner is an organization.",
     )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
-    )
+    permissions: TeamProjectPropPermissions = Field()
 
 
-model_rebuild(ActionsRepositoryPermissions)
+class TeamProjectPropPermissions(GitHubModel):
+    """TeamProjectPropPermissions"""
 
-__all__ = ("ActionsRepositoryPermissions",)
+    read: bool = Field()
+    write: bool = Field()
+    admin: bool = Field()
+
+
+model_rebuild(TeamProject)
+model_rebuild(TeamProjectPropPermissions)
+
+__all__ = (
+    "TeamProject",
+    "TeamProjectPropPermissions",
+)

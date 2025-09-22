@@ -11,79 +11,66 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0358 import DeploymentBranchPolicySettingsType
+from .group_0360 import EnvironmentPropProtectionRulesItemsAnyof1Type
 
 
-class GitCommitType(TypedDict):
-    """Git Commit
+class EnvironmentType(TypedDict):
+    """Environment
 
-    Low-level Git commit operations within a repository
+    Details of a deployment environment
     """
 
-    sha: str
+    id: int
     node_id: str
-    url: str
-    author: GitCommitPropAuthorType
-    committer: GitCommitPropCommitterType
-    message: str
-    tree: GitCommitPropTreeType
-    parents: list[GitCommitPropParentsItemsType]
-    verification: GitCommitPropVerificationType
-    html_url: str
-
-
-class GitCommitPropAuthorType(TypedDict):
-    """GitCommitPropAuthor
-
-    Identifying information for the git-user
-    """
-
-    date: datetime
-    email: str
     name: str
-
-
-class GitCommitPropCommitterType(TypedDict):
-    """GitCommitPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: datetime
-    email: str
-    name: str
-
-
-class GitCommitPropTreeType(TypedDict):
-    """GitCommitPropTree"""
-
-    sha: str
-    url: str
-
-
-class GitCommitPropParentsItemsType(TypedDict):
-    """GitCommitPropParentsItems"""
-
-    sha: str
     url: str
     html_url: str
+    created_at: datetime
+    updated_at: datetime
+    protection_rules: NotRequired[
+        list[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0Type,
+                EnvironmentPropProtectionRulesItemsAnyof1Type,
+                EnvironmentPropProtectionRulesItemsAnyof2Type,
+            ]
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsType, None]
+    ]
 
 
-class GitCommitPropVerificationType(TypedDict):
-    """GitCommitPropVerification"""
+class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
 
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
+    id: int
+    node_id: str
+    type: str
+    wait_timer: NotRequired[int]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
+
+    id: int
+    node_id: str
+    type: str
+
+
+class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
+
+    total_count: NotRequired[int]
+    environments: NotRequired[list[EnvironmentType]]
 
 
 __all__ = (
-    "GitCommitPropAuthorType",
-    "GitCommitPropCommitterType",
-    "GitCommitPropParentsItemsType",
-    "GitCommitPropTreeType",
-    "GitCommitPropVerificationType",
-    "GitCommitType",
+    "EnvironmentPropProtectionRulesItemsAnyof0Type",
+    "EnvironmentPropProtectionRulesItemsAnyof2Type",
+    "EnvironmentType",
+    "ReposOwnerRepoEnvironmentsGetResponse200Type",
 )

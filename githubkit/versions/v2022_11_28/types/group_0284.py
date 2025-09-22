@@ -9,32 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0238 import DiffEntryType
-from .group_0239 import CommitType
+from .group_0003 import SimpleUserType
+from .group_0064 import MinimalRepositoryType
 
 
-class CommitComparisonType(TypedDict):
-    """Commit Comparison
+class RepositoryInvitationType(TypedDict):
+    """Repository Invitation
 
-    Commit Comparison
+    Repository invitations let you manage who you collaborate with.
     """
 
+    id: int
+    repository: MinimalRepositoryType
+    invitee: Union[None, SimpleUserType]
+    inviter: Union[None, SimpleUserType]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
+    created_at: datetime
+    expired: NotRequired[bool]
     url: str
     html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitType
-    merge_base_commit: CommitType
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitType]
-    files: NotRequired[list[DiffEntryType]]
+    node_id: str
 
 
-__all__ = ("CommitComparisonType",)
+__all__ = ("RepositoryInvitationType",)

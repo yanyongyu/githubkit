@@ -12,15 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
+class ParticipationStatsType(TypedDict):
+    """Participation Stats"""
 
-    Referrer Traffic
-    """
-
-    referrer: str
-    count: int
-    uniques: int
+    all_: list[int]
+    owner: list[int]
 
 
-__all__ = ("ReferrerTrafficType",)
+__all__ = ("ParticipationStatsType",)

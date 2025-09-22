@@ -10,47 +10,104 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
+from .group_0010 import IntegrationType
+from .group_0020 import RepositoryType
+from .group_0168 import MilestoneType
+from .group_0169 import IssueTypeType
+from .group_0170 import ReactionRollupType
+from .group_0171 import IssueDependenciesSummaryType, SubIssuesSummaryType
+from .group_0172 import IssueFieldValueType
 
 
-class BaseGistType(TypedDict):
-    """Base Gist
+class IssueType(TypedDict):
+    """Issue
 
-    Base Gist
+    Issues are a great way to keep track of tasks, enhancements, and bugs for your
+    projects.
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
+    id: int
     node_id: str
-    git_pull_url: str
-    git_push_url: str
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
     html_url: str
-    files: BaseGistPropFilesType
-    public: bool
+    number: int
+    state: str
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
+    ]
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[None, SimpleUserType]
+    labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    milestone: Union[None, MilestoneType]
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    comments: int
+    pull_request: NotRequired[IssuePropPullRequestType]
+    closed_at: Union[datetime, None]
     created_at: datetime
     updated_at: datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserType]
-    comments_url: str
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    draft: NotRequired[bool]
+    closed_by: NotRequired[Union[None, SimpleUserType]]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeType, None]]
+    repository: NotRequired[RepositoryType]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    reactions: NotRequired[ReactionRollupType]
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
+    parent_issue_url: NotRequired[Union[str, None]]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
+    issue_field_values: NotRequired[list[IssueFieldValueType]]
 
 
-BaseGistPropFilesType: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
-"""
+class IssuePropLabelsItemsOneof1Type(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+
+
+class IssuePropPullRequestType(TypedDict):
+    """IssuePropPullRequest"""
+
+    merged_at: NotRequired[Union[datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
 
 
 __all__ = (
-    "BaseGistPropFilesType",
-    "BaseGistType",
+    "IssuePropLabelsItemsOneof1Type",
+    "IssuePropPullRequestType",
+    "IssueType",
 )

@@ -13,18 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0270 import CodeScanningVariantAnalysisRepository
 
-class CodespacesPermissionsCheckForDevcontainer(GitHubModel):
-    """Codespaces Permissions Check
 
-    Permission check result for a given devcontainer config.
-    """
+class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    accepted: bool = Field(
-        description="Whether the user has accepted the permissions defined by the devcontainer config"
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
+    )
+    repositories: list[CodeScanningVariantAnalysisRepository] = Field(
+        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
     )
 
 
-model_rebuild(CodespacesPermissionsCheckForDevcontainer)
+model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
 
-__all__ = ("CodespacesPermissionsCheckForDevcontainer",)
+__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)

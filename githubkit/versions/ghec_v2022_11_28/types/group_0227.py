@@ -9,19 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrganizationCustomOrganizationRoleUpdateSchemaType(TypedDict):
-    """OrganizationCustomOrganizationRoleUpdateSchema"""
+class OrganizationFineGrainedPermissionType(TypedDict):
+    """Organization Fine-Grained Permission
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    permissions: NotRequired[list[str]]
-    base_role: NotRequired[
-        Literal["none", "read", "triage", "write", "maintain", "admin"]
-    ]
+    A fine-grained permission that protects organization resources.
+    """
+
+    name: str
+    description: str
 
 
-__all__ = ("OrganizationCustomOrganizationRoleUpdateSchemaType",)
+__all__ = ("OrganizationFineGrainedPermissionType",)

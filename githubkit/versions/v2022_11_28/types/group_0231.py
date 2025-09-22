@@ -9,31 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0232 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
-)
+from datetime import datetime
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ProtectedBranchPullRequestReviewType(TypedDict):
-    """Protected Branch Pull Request Review
+class SimpleCommitType(TypedDict):
+    """Simple Commit
 
-    Protected Branch Pull Request Review
+    A commit.
     """
 
-    url: NotRequired[str]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
-    ]
-    dismiss_stale_reviews: bool
-    require_code_owner_reviews: bool
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    id: str
+    tree_id: str
+    message: str
+    timestamp: datetime
+    author: Union[SimpleCommitPropAuthorType, None]
+    committer: Union[SimpleCommitPropCommitterType, None]
 
 
-__all__ = ("ProtectedBranchPullRequestReviewType",)
+class SimpleCommitPropAuthorType(TypedDict):
+    """SimpleCommitPropAuthor
+
+    Information about the Git author
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterType(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
+
+
+__all__ = (
+    "SimpleCommitPropAuthorType",
+    "SimpleCommitPropCommitterType",
+    "SimpleCommitType",
+)

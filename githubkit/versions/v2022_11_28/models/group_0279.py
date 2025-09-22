@@ -9,40 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0003 import SimpleUser
-from .group_0020 import Repository
-
-
-class PullRequestSimplePropHead(GitHubModel):
-    """PullRequestSimplePropHead"""
-
-    label: Union[str, None] = Field()
-    ref: str = Field()
-    repo: Union[None, Repository] = Field()
-    sha: str = Field()
-    user: Union[None, SimpleUser] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PullRequestSimplePropBase(GitHubModel):
-    """PullRequestSimplePropBase"""
+class CodeScanningSarifsReceipt(GitHubModel):
+    """CodeScanningSarifsReceipt"""
 
-    label: str = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
-    sha: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    id: Missing[str] = Field(default=UNSET, description="An identifier for the upload.")
+    url: Missing[str] = Field(
+        default=UNSET,
+        description="The REST API URL for checking the status of the upload.",
+    )
 
 
-model_rebuild(PullRequestSimplePropHead)
-model_rebuild(PullRequestSimplePropBase)
+model_rebuild(CodeScanningSarifsReceipt)
 
-__all__ = (
-    "PullRequestSimplePropBase",
-    "PullRequestSimplePropHead",
-)
+__all__ = ("CodeScanningSarifsReceipt",)

@@ -9,39 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0637 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType,
-)
+from .group_0003 import SimpleUserType
+from .group_0505 import EnterpriseWebhooksType
+from .group_0506 import SimpleInstallationType
+from .group_0507 import OrganizationSimpleWebhooksType
+from .group_0508 import RepositoryWebhooksType
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneType(TypedDict):
-    """Milestone
+class WebhookInstallationTargetRenamedType(TypedDict):
+    """WebhookInstallationTargetRenamed"""
 
-    A collection of related issues and pull requests.
-    """
+    account: WebhookInstallationTargetRenamedPropAccountType
+    action: Literal["renamed"]
+    changes: WebhookInstallationTargetRenamedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: SimpleInstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
+    target_type: str
 
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType, None
-    ]
-    description: Union[str, None]
-    due_on: Union[datetime, None]
+
+class WebhookInstallationTargetRenamedPropAccountType(TypedDict):
+    """WebhookInstallationTargetRenamedPropAccount"""
+
+    archived_at: NotRequired[Union[str, None]]
+    avatar_url: str
+    created_at: NotRequired[str]
+    description: NotRequired[None]
+    events_url: NotRequired[str]
+    followers: NotRequired[int]
+    followers_url: NotRequired[str]
+    following: NotRequired[int]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    has_organization_projects: NotRequired[bool]
+    has_repository_projects: NotRequired[bool]
+    hooks_url: NotRequired[str]
     html_url: str
     id: int
-    labels_url: str
+    is_verified: NotRequired[bool]
+    issues_url: NotRequired[str]
+    login: NotRequired[str]
+    members_url: NotRequired[str]
+    name: NotRequired[str]
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
-    url: str
+    organizations_url: NotRequired[str]
+    public_gists: NotRequired[int]
+    public_members_url: NotRequired[str]
+    public_repos: NotRequired[int]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    slug: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    website_url: NotRequired[None]
+    user_view_type: NotRequired[str]
 
 
-__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneType",)
+class WebhookInstallationTargetRenamedPropChangesType(TypedDict):
+    """WebhookInstallationTargetRenamedPropChanges"""
+
+    login: NotRequired[WebhookInstallationTargetRenamedPropChangesPropLoginType]
+    slug: NotRequired[WebhookInstallationTargetRenamedPropChangesPropSlugType]
+
+
+class WebhookInstallationTargetRenamedPropChangesPropLoginType(TypedDict):
+    """WebhookInstallationTargetRenamedPropChangesPropLogin"""
+
+    from_: str
+
+
+class WebhookInstallationTargetRenamedPropChangesPropSlugType(TypedDict):
+    """WebhookInstallationTargetRenamedPropChangesPropSlug"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookInstallationTargetRenamedPropAccountType",
+    "WebhookInstallationTargetRenamedPropChangesPropLoginType",
+    "WebhookInstallationTargetRenamedPropChangesPropSlugType",
+    "WebhookInstallationTargetRenamedPropChangesType",
+    "WebhookInstallationTargetRenamedType",
+)

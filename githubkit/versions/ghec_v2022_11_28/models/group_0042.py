@@ -9,30 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class SelectedActions(GitHubModel):
-    """SelectedActions"""
+class OrganizationSimple(GitHubModel):
+    """Organization Simple
 
-    github_owned_allowed: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether GitHub-owned actions are allowed. For example, this includes the actions in the `actions` organization.",
-    )
-    verified_allowed: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions from GitHub Marketplace verified creators are allowed. Set to `true` to allow all actions by GitHub Marketplace verified creators.",
-    )
-    patterns_allowed: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`.",
-    )
+    A GitHub organization.
+    """
+
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    issues_url: str = Field()
+    members_url: str = Field()
+    public_members_url: str = Field()
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
 
 
-model_rebuild(SelectedActions)
+model_rebuild(OrganizationSimple)
 
-__all__ = ("SelectedActions",)
+__all__ = ("OrganizationSimple",)

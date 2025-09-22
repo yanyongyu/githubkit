@@ -9,28 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0202 import RulesetVersionWithStateAllof1PropState
 
-class TeamMembership(GitHubModel):
-    """Team Membership
 
-    Team Membership
-    """
+class RulesetVersionWithStateAllof1(GitHubModel):
+    """RulesetVersionWithStateAllof1"""
 
-    url: str = Field()
-    role: Literal["member", "maintainer"] = Field(
-        default="member", description="The role of the user in the team."
-    )
-    state: Literal["active", "pending"] = Field(
-        description="The state of the user's membership in the team."
+    state: RulesetVersionWithStateAllof1PropState = Field(
+        description="The state of the ruleset version"
     )
 
 
-model_rebuild(TeamMembership)
+model_rebuild(RulesetVersionWithStateAllof1)
 
-__all__ = ("TeamMembership",)
+__all__ = ("RulesetVersionWithStateAllof1",)

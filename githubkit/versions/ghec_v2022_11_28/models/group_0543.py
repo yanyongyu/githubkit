@@ -19,92 +19,125 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0077 import TeamSimple
+from .group_0168 import Milestone
+from .group_0243 import AutoMerge
+from .group_0413 import PullRequestPropLabelsItems
+from .group_0414 import PullRequestPropBase, PullRequestPropHead
+from .group_0415 import PullRequestPropLinks
 
 
-class SecretScanningAlertWebhook(GitHubModel):
-    """SecretScanningAlertWebhook"""
+class PullRequestWebhook(GitHubModel):
+    """PullRequestWebhook"""
 
-    number: Missing[int] = Field(
-        default=UNSET, description="The security alert number."
+    url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    issue_url: str = Field()
+    commits_url: str = Field()
+    review_comments_url: str = Field()
+    review_comment_url: str = Field()
+    comments_url: str = Field()
+    statuses_url: str = Field()
+    number: int = Field(
+        description="Number uniquely identifying the pull request within its repository."
     )
-    created_at: Missing[datetime] = Field(
+    state: Literal["open", "closed"] = Field(
+        description="State of this Pull Request. Either `open` or `closed`."
+    )
+    locked: bool = Field()
+    title: str = Field(description="The title of the pull request.")
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    body: Union[str, None] = Field()
+    labels: list[PullRequestPropLabelsItems] = Field()
+    milestone: Union[None, Milestone] = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    closed_at: Union[datetime, None] = Field()
+    merged_at: Union[datetime, None] = Field()
+    merge_commit_sha: Union[str, None] = Field()
+    assignee: Union[None, SimpleUser] = Field()
+    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    requested_reviewers: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    requested_teams: Missing[Union[list[TeamSimple], None]] = Field(default=UNSET)
+    head: PullRequestPropHead = Field()
+    base: PullRequestPropBase = Field()
+    links: PullRequestPropLinks = Field(alias="_links")
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    auto_merge: Union[AutoMerge, None] = Field(
+        title="Auto merge", description="The status of auto merging a pull request."
+    )
+    draft: Missing[bool] = Field(
         default=UNSET,
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="Indicates whether or not the pull request is a draft.",
     )
-    updated_at: Missing[Union[None, datetime]] = Field(default=UNSET)
-    url: Missing[str] = Field(
-        default=UNSET, description="The REST API URL of the alert resource."
+    merged: bool = Field()
+    mergeable: Union[bool, None] = Field()
+    rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
+    mergeable_state: str = Field()
+    merged_by: Union[None, SimpleUser] = Field()
+    comments: int = Field()
+    review_comments: int = Field()
+    maintainer_can_modify: bool = Field(
+        description="Indicates whether maintainers can modify the pull request."
     )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The GitHub URL of the alert resource."
+    commits: int = Field()
+    additions: int = Field()
+    deletions: int = Field()
+    changed_files: int = Field()
+    allow_auto_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow auto-merge for pull requests."
     )
-    locations_url: Missing[str] = Field(
+    allow_update_branch: Missing[bool] = Field(
         default=UNSET,
-        description="The REST API URL of the code locations for this alert.",
+        description="Whether to allow updating the pull request's branch.",
     )
-    resolution: Missing[
-        Union[
-            None,
-            Literal[
-                "false_positive",
-                "wont_fix",
-                "revoked",
-                "used_in_tests",
-                "pattern_deleted",
-                "pattern_edited",
-            ],
-        ]
-    ] = Field(default=UNSET, description="The reason for resolving the alert.")
-    resolved_at: Missing[Union[datetime, None]] = Field(
+    delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="Whether to delete head branches when pull requests are merged.",
     )
-    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET, description="An optional comment to resolve an alert."
-    )
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    secret_type_display_name: Missing[str] = Field(
+    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
         default=UNSET,
-        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
+        description="The default value for a merge commit message.\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
     )
-    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
-        default=UNSET, description="The token status as of the latest validity check."
-    )
-    push_protection_bypassed: Missing[Union[bool, None]] = Field(
+    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
         default=UNSET,
-        description="Whether push protection was bypassed for the detected secret.",
+        description='The default value for a merge commit title.\n- `PR_TITLE` - default to the pull request\'s title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").',
     )
-    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
+    squash_merge_commit_message: Missing[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
         default=UNSET,
-        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="The default value for a squash merge commit message:\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
     )
-    push_protection_bypass_request_reviewer: Missing[Union[None, SimpleUser]] = Field(
-        default=UNSET
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
-    push_protection_bypass_request_reviewer_comment: Missing[Union[str, None]] = Field(
+    use_squash_pr_title_as_default: Missing[bool] = Field(
         default=UNSET,
-        description="An optional comment when reviewing a push protection bypass.",
-    )
-    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when requesting a push protection bypass.",
-    )
-    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The URL to a push protection bypass request."
-    )
-    publicly_leaked: Missing[Union[bool, None]] = Field(
-        default=UNSET, description="Whether the detected secret was publicly leaked."
-    )
-    multi_repo: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether the detected secret was found in multiple repositories in the same organization or business.",
+        description="Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.**",
     )
 
 
-model_rebuild(SecretScanningAlertWebhook)
+model_rebuild(PullRequestWebhook)
 
-__all__ = ("SecretScanningAlertWebhook",)
+__all__ = ("PullRequestWebhook",)

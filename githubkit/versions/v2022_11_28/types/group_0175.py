@@ -12,18 +12,14 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0176 import RepositoryRuleMaxFileSizePropParametersType
+
+class RepositoryRuleCommitterEmailPatternPropParametersType(TypedDict):
+    """RepositoryRuleCommitterEmailPatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
-class RepositoryRuleMaxFileSizeType(TypedDict):
-    """max_file_size
-
-    Prevent commits with individual files that exceed the specified limit from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
-
-
-__all__ = ("RepositoryRuleMaxFileSizeType",)
+__all__ = ("RepositoryRuleCommitterEmailPatternPropParametersType",)

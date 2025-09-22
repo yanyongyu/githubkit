@@ -10,22 +10,70 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0010 import IntegrationType
+from .group_0230 import PullRequestMinimalType
+from .group_0257 import DeploymentSimpleType
 
 
-class CodeScanningVariantAnalysisRepositoryType(TypedDict):
-    """Repository Identifier
+class CheckRunType(TypedDict):
+    """CheckRun
 
-    Repository Identifier
+    A check performed on the code of a given code change
     """
 
     id: int
+    head_sha: str
+    node_id: str
+    external_id: Union[str, None]
+    url: str
+    html_url: Union[str, None]
+    details_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    started_at: Union[datetime, None]
+    completed_at: Union[datetime, None]
+    output: CheckRunPropOutputType
     name: str
-    full_name: str
-    private: bool
-    stargazers_count: int
-    updated_at: Union[datetime, None]
+    check_suite: Union[CheckRunPropCheckSuiteType, None]
+    app: Union[None, IntegrationType, None]
+    pull_requests: list[PullRequestMinimalType]
+    deployment: NotRequired[DeploymentSimpleType]
 
 
-__all__ = ("CodeScanningVariantAnalysisRepositoryType",)
+class CheckRunPropOutputType(TypedDict):
+    """CheckRunPropOutput"""
+
+    title: Union[str, None]
+    summary: Union[str, None]
+    text: Union[str, None]
+    annotations_count: int
+    annotations_url: str
+
+
+class CheckRunPropCheckSuiteType(TypedDict):
+    """CheckRunPropCheckSuite"""
+
+    id: int
+
+
+__all__ = (
+    "CheckRunPropCheckSuiteType",
+    "CheckRunPropOutputType",
+    "CheckRunType",
+)

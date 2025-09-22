@@ -9,48 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0019 import LicenseSimple
+from .group_0003 import SimpleUser
 
 
-class LicenseContent(GitHubModel):
-    """License Content
+class TimelineReviewedEvent(GitHubModel):
+    """Timeline Reviewed Event
 
-    License Content
+    Timeline Reviewed Event
     """
 
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    size: int = Field()
-    url: str = Field()
-    html_url: Union[str, None] = Field()
-    git_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    type: str = Field()
-    content: str = Field()
-    encoding: str = Field()
-    links: LicenseContentPropLinks = Field(alias="_links")
-    license_: Union[None, LicenseSimple] = Field(alias="license")
+    event: Literal["reviewed"] = Field()
+    id: int = Field(description="Unique identifier of the review")
+    node_id: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    body: Union[str, None] = Field(description="The text of the review.")
+    state: str = Field()
+    html_url: str = Field()
+    pull_request_url: str = Field()
+    links: TimelineReviewedEventPropLinks = Field(alias="_links")
+    submitted_at: Missing[datetime] = Field(default=UNSET)
+    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    commit_id: str = Field(description="A commit SHA for the review.")
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
 
 
-class LicenseContentPropLinks(GitHubModel):
-    """LicenseContentPropLinks"""
+class TimelineReviewedEventPropLinks(GitHubModel):
+    """TimelineReviewedEventPropLinks"""
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
+    html: TimelineReviewedEventPropLinksPropHtml = Field()
+    pull_request: TimelineReviewedEventPropLinksPropPullRequest = Field()
 
 
-model_rebuild(LicenseContent)
-model_rebuild(LicenseContentPropLinks)
+class TimelineReviewedEventPropLinksPropHtml(GitHubModel):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class TimelineReviewedEventPropLinksPropPullRequest(GitHubModel):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+model_rebuild(TimelineReviewedEvent)
+model_rebuild(TimelineReviewedEventPropLinks)
+model_rebuild(TimelineReviewedEventPropLinksPropHtml)
+model_rebuild(TimelineReviewedEventPropLinksPropPullRequest)
 
 __all__ = (
-    "LicenseContent",
-    "LicenseContentPropLinks",
+    "TimelineReviewedEvent",
+    "TimelineReviewedEventPropLinks",
+    "TimelineReviewedEventPropLinksPropHtml",
+    "TimelineReviewedEventPropLinksPropPullRequest",
 )

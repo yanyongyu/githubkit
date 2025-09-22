@@ -9,49 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
+from .group_0293 import (
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
+)
 
 
-class DeploymentSimple(GitHubModel):
-    """Deployment
+class ProtectedBranchPullRequestReview(GitHubModel):
+    """Protected Branch Pull Request Review
 
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    Protected Branch Pull Request Review
     """
 
-    url: str = Field()
-    id: int = Field(description="Unique identifier of the deployment")
-    node_id: str = Field()
-    task: str = Field(description="Parameter to specify a task to execute")
-    original_environment: Missing[str] = Field(default=UNSET)
-    environment: str = Field(description="Name for the target deployment environment.")
-    description: Union[str, None] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    statuses_url: str = Field()
-    repository_url: str = Field()
-    transient_environment: Missing[bool] = Field(
+    url: Missing[str] = Field(default=UNSET)
+    dismissal_restrictions: Missing[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+    ] = Field(
         default=UNSET,
-        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
     )
-    production_environment: Missing[bool] = Field(
+    dismiss_stale_reviews: bool = Field()
+    require_code_owner_reviews: bool = Field()
+    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
         default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
     )
 
 
-model_rebuild(DeploymentSimple)
+model_rebuild(ProtectedBranchPullRequestReview)
 
-__all__ = ("DeploymentSimple",)
+__all__ = ("ProtectedBranchPullRequestReview",)

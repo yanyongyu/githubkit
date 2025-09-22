@@ -9,15 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType(TypedDict):
-    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
-
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
-    protected: NotRequired[bool]
+from .group_0003 import SimpleUserType
+from .group_0048 import IssueType
+from .group_0134 import PullRequestSimpleType
+from .group_0137 import ProjectsV2DraftIssueType
 
 
-__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",)
+class ProjectsV2ItemSimpleType(TypedDict):
+    """Projects v2 Item
+
+    An item belonging to a project
+    """
+
+    id: float
+    node_id: NotRequired[str]
+    content: NotRequired[
+        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
+    ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    archived_at: Union[datetime, None]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
+
+
+__all__ = ("ProjectsV2ItemSimpleType",)

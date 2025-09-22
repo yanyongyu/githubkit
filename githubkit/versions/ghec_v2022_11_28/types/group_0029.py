@@ -12,11 +12,15 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ActionsCacheUsageOrgEnterpriseType(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class EnterpriseAccessRestrictionsType(TypedDict):
+    """Enterprise Access Restrictions
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    Information about the enterprise access restrictions proxy header.
+    """
+
+    message: str
+    header_name: str
+    header_value: str
 
 
-__all__ = ("ActionsCacheUsageOrgEnterpriseType",)
+__all__ = ("EnterpriseAccessRestrictionsType",)

@@ -9,47 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeownersErrors(GitHubModel):
-    """CODEOWNERS errors
+class CodeScanningVariantAnalysisRepository(GitHubModel):
+    """Repository Identifier
 
-    A list of errors found in a repo's CODEOWNERS file
+    Repository Identifier
     """
 
-    errors: list[CodeownersErrorsPropErrorsItems] = Field()
-
-
-class CodeownersErrorsPropErrorsItems(GitHubModel):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int = Field(description="The line number where this errors occurs.")
-    column: int = Field(description="The column number where this errors occurs.")
-    source: Missing[str] = Field(
-        default=UNSET, description="The contents of the line where the error occurs."
+    id: int = Field(description="A unique identifier of the repository.")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field(
+        description="The full, globally unique, name of the repository."
     )
-    kind: str = Field(description="The type of error.")
-    suggestion: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
-    )
-    message: str = Field(
-        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
-    )
-    path: str = Field(description="The path of the file where the error occured.")
+    private: bool = Field(description="Whether the repository is private.")
+    stargazers_count: int = Field()
+    updated_at: Union[datetime, None] = Field()
 
 
-model_rebuild(CodeownersErrors)
-model_rebuild(CodeownersErrorsPropErrorsItems)
+model_rebuild(CodeScanningVariantAnalysisRepository)
 
-__all__ = (
-    "CodeownersErrors",
-    "CodeownersErrorsPropErrorsItems",
-)
+__all__ = ("CodeScanningVariantAnalysisRepository",)

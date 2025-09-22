@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,31 +18,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0238 import DiffEntry
-from .group_0239 import Commit
+from .group_0003 import SimpleUser
+from .group_0064 import MinimalRepository
 
 
-class CommitComparison(GitHubModel):
-    """Commit Comparison
+class RepositoryInvitation(GitHubModel):
+    """Repository Invitation
 
-    Commit Comparison
+    Repository invitations let you manage who you collaborate with.
     """
 
-    url: str = Field()
+    id: int = Field(description="Unique identifier of the repository invitation.")
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    invitee: Union[None, SimpleUser] = Field()
+    inviter: Union[None, SimpleUser] = Field()
+    permissions: Literal["read", "write", "admin", "triage", "maintain"] = Field(
+        description="The permission associated with the invitation."
+    )
+    created_at: datetime = Field()
+    expired: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the invitation has expired"
+    )
+    url: str = Field(description="URL for the repository invitation")
     html_url: str = Field()
-    permalink_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    base_commit: Commit = Field(title="Commit", description="Commit")
-    merge_base_commit: Commit = Field(title="Commit", description="Commit")
-    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
-    ahead_by: int = Field()
-    behind_by: int = Field()
-    total_commits: int = Field()
-    commits: list[Commit] = Field()
-    files: Missing[list[DiffEntry]] = Field(default=UNSET)
+    node_id: str = Field()
 
 
-model_rebuild(CommitComparison)
+model_rebuild(RepositoryInvitation)
 
-__all__ = ("CommitComparison",)
+__all__ = ("RepositoryInvitation",)

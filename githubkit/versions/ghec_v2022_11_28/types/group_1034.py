@@ -9,13 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0047 import RunnerType
 
 
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+class OrgsOrgActionsRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersGetResponse200"""
 
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    runners: list[RunnerType]
 
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",)
+__all__ = ("OrgsOrgActionsRunnersGetResponse200Type",)

@@ -9,23 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0187 import RepositoryRuleMaxFileSizePropParameters
 
-class RulesetVersionPropActor(GitHubModel):
-    """RulesetVersionPropActor
 
-    The actor who updated the ruleset
+class RepositoryRuleMaxFileSize(GitHubModel):
+    """max_file_size
+
+    Prevent commits with individual files that exceed the specified limit from being
+    pushed to the commit graph.
     """
 
-    id: Missing[int] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
+    type: Literal["max_file_size"] = Field()
+    parameters: Missing[RepositoryRuleMaxFileSizePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RulesetVersionPropActor)
+model_rebuild(RepositoryRuleMaxFileSize)
 
-__all__ = ("RulesetVersionPropActor",)
+__all__ = ("RepositoryRuleMaxFileSize",)

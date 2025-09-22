@@ -12,13 +12,31 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
 
+    total_count: float
+    runner_groups: list[RunnerGroupsEnterpriseType]
+
+
+class RunnerGroupsEnterpriseType(TypedDict):
+    """RunnerGroupsEnterprise"""
+
+    id: float
     name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    visibility: str
+    default: bool
+    selected_organizations_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType",)
+__all__ = (
+    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type",
+    "RunnerGroupsEnterpriseType",
+)

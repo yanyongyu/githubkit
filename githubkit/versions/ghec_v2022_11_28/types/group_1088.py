@@ -9,13 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0018 import InstallationType
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+class OrgsOrgInstallationsGetResponse200Type(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
 
-    pattern_config_version: NotRequired[str]
+    total_count: int
+    installations: list[InstallationType]
 
 
-__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",)
+__all__ = ("OrgsOrgInstallationsGetResponse200Type",)

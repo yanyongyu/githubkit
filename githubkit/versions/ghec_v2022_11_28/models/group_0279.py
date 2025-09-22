@@ -9,60 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0076 import Team
 
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+class PullRequestMinimal(GitHubModel):
+    """Pull Request Minimal"""
 
-    users: Missing[list[SimpleUser]] = Field(
-        default=UNSET, description="The list of users with review dismissal access."
-    )
-    teams: Missing[list[Team]] = Field(
-        default=UNSET, description="The list of teams with review dismissal access."
-    )
-    apps: Missing[list[Union[Integration, None]]] = Field(
-        default=UNSET, description="The list of apps with review dismissal access."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    users_url: Missing[str] = Field(default=UNSET)
-    teams_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    number: int = Field()
+    url: str = Field()
+    head: PullRequestMinimalPropHead = Field()
+    base: PullRequestMinimalPropBase = Field()
 
 
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+class PullRequestMinimalPropHead(GitHubModel):
+    """PullRequestMinimalPropHead"""
 
-    Allow specific users, teams, or apps to bypass pull request requirements.
-    """
-
-    users: Missing[list[SimpleUser]] = Field(
-        default=UNSET,
-        description="The list of users allowed to bypass pull request requirements.",
-    )
-    teams: Missing[list[Team]] = Field(
-        default=UNSET,
-        description="The list of teams allowed to bypass pull request requirements.",
-    )
-    apps: Missing[list[Union[Integration, None]]] = Field(
-        default=UNSET,
-        description="The list of apps allowed to bypass pull request requirements.",
-    )
+    ref: str = Field()
+    sha: str = Field()
+    repo: PullRequestMinimalPropHeadPropRepo = Field()
 
 
-model_rebuild(ProtectedBranchPullRequestReviewPropDismissalRestrictions)
-model_rebuild(ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances)
+class PullRequestMinimalPropHeadPropRepo(GitHubModel):
+    """PullRequestMinimalPropHeadPropRepo"""
+
+    id: int = Field()
+    url: str = Field()
+    name: str = Field()
+
+
+class PullRequestMinimalPropBase(GitHubModel):
+    """PullRequestMinimalPropBase"""
+
+    ref: str = Field()
+    sha: str = Field()
+    repo: PullRequestMinimalPropBasePropRepo = Field()
+
+
+class PullRequestMinimalPropBasePropRepo(GitHubModel):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int = Field()
+    url: str = Field()
+    name: str = Field()
+
+
+model_rebuild(PullRequestMinimal)
+model_rebuild(PullRequestMinimalPropHead)
+model_rebuild(PullRequestMinimalPropHeadPropRepo)
+model_rebuild(PullRequestMinimalPropBase)
+model_rebuild(PullRequestMinimalPropBasePropRepo)
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
+    "PullRequestMinimal",
+    "PullRequestMinimalPropBase",
+    "PullRequestMinimalPropBasePropRepo",
+    "PullRequestMinimalPropHead",
+    "PullRequestMinimalPropHeadPropRepo",
 )

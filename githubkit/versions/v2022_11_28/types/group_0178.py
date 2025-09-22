@@ -12,18 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0179 import RepositoryRuleWorkflowsPropParametersType
+from .group_0179 import RepositoryRuleTagNamePatternPropParametersType
 
 
-class RepositoryRuleWorkflowsType(TypedDict):
-    """workflows
+class RepositoryRuleTagNamePatternType(TypedDict):
+    """tag_name_pattern
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleWorkflowsType",)
+__all__ = ("RepositoryRuleTagNamePatternType",)

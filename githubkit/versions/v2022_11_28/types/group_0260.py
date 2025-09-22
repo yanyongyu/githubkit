@@ -13,39 +13,65 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0032 import SimpleRepositoryType
-from .group_0261 import CodeScanningVariantAnalysisPropScannedRepositoriesItemsType
-from .group_0262 import CodeScanningVariantAnalysisPropSkippedRepositoriesType
+from .group_0010 import IntegrationType
+from .group_0064 import MinimalRepositoryType
+from .group_0230 import PullRequestMinimalType
+from .group_0231 import SimpleCommitType
 
 
-class CodeScanningVariantAnalysisType(TypedDict):
-    """Variant Analysis
+class CheckSuiteType(TypedDict):
+    """CheckSuite
 
-    A run of a CodeQL query against one or more repositories.
+    A suite of checks performed on the code of a given code change
     """
 
     id: int
-    controller_repo: SimpleRepositoryType
-    actor: SimpleUserType
-    query_language: Literal[
-        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "rust", "swift"
+    node_id: str
+    head_branch: Union[str, None]
+    head_sha: str
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
     ]
-    query_pack_url: str
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-    completed_at: NotRequired[Union[datetime, None]]
-    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
-    actions_workflow_run_id: NotRequired[int]
-    failure_reason: NotRequired[
-        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
     ]
-    scanned_repositories: NotRequired[
-        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsType]
-    ]
-    skipped_repositories: NotRequired[
-        CodeScanningVariantAnalysisPropSkippedRepositoriesType
-    ]
+    url: Union[str, None]
+    before: Union[str, None]
+    after: Union[str, None]
+    pull_requests: Union[list[PullRequestMinimalType], None]
+    app: Union[None, IntegrationType, None]
+    repository: MinimalRepositoryType
+    created_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    head_commit: SimpleCommitType
+    latest_check_runs_count: int
+    check_runs_url: str
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
 
 
-__all__ = ("CodeScanningVariantAnalysisType",)
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+
+    total_count: int
+    check_suites: list[CheckSuiteType]
+
+
+__all__ = (
+    "CheckSuiteType",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
+)

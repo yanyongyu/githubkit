@@ -9,33 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0068 import SimpleRepository
 
 
-class AutoMerge(GitHubModel):
-    """Auto merge
+class CodeScanningVariantAnalysisRepoTask(GitHubModel):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    The status of auto merging a pull request.
-    """
-
-    enabled_by: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    merge_method: Literal["merge", "squash", "rebase"] = Field(
-        description="The merge method to use."
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
-    commit_title: Union[str, None] = Field(
-        description="Title for the merge commit message."
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ] = Field(
+        description="The new status of the CodeQL variant analysis repository task."
     )
-    commit_message: Union[str, None] = Field(
-        description="Commit message for the merge commit."
+    artifact_size_in_bytes: Missing[int] = Field(
+        default=UNSET,
+        description="The size of the artifact. This is only available for successful analyses.",
+    )
+    result_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+    )
+    failure_message: Missing[str] = Field(
+        default=UNSET,
+        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    )
+    database_commit_sha: Missing[str] = Field(
+        default=UNSET,
+        description="The SHA of the commit the CodeQL database was built against. This is only available for successful analyses.",
+    )
+    source_location_prefix: Missing[str] = Field(
+        default=UNSET,
+        description="The source location prefix to use. This is only available for successful analyses.",
+    )
+    artifact_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL of the artifact. This is only available for successful analyses.",
     )
 
 
-model_rebuild(AutoMerge)
+model_rebuild(CodeScanningVariantAnalysisRepoTask)
 
-__all__ = ("AutoMerge",)
+__all__ = ("CodeScanningVariantAnalysisRepoTask",)

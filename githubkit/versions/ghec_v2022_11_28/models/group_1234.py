@@ -16,14 +16,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoImportLfsPatchBody(GitHubModel):
-    """ReposOwnerRepoImportLfsPatchBody"""
+class ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody"""
 
-    use_lfs: Literal["opt_in", "opt_out"] = Field(
-        description="Whether to store large files during the import. `opt_in` means large files will be stored using Git LFS. `opt_out` means large files will be removed during the import."
+    status: Literal["approve", "deny"] = Field(
+        description="The review action to perform on the bypass request."
+    )
+    message: str = Field(
+        description="A message to include with the review. Has a maximum character length of 2048."
     )
 
 
-model_rebuild(ReposOwnerRepoImportLfsPatchBody)
+model_rebuild(ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoImportLfsPatchBody",)
+__all__ = ("ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody",)

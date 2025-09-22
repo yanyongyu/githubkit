@@ -14,13 +14,12 @@ from typing_extensions import NotRequired, TypedDict
 from .group_0020 import RepositoryType
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type(
-    TypedDict
-):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+class InstallationRepositoriesGetResponse200Type(TypedDict):
+    """InstallationRepositoriesGetResponse200"""
 
-    total_count: NotRequired[int]
-    repositories: NotRequired[list[RepositoryType]]
+    total_count: int
+    repositories: list[RepositoryType]
+    repository_selection: NotRequired[str]
 
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",)
+__all__ = ("InstallationRepositoriesGetResponse200Type",)

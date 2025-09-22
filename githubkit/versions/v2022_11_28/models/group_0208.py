@@ -13,20 +13,21 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0207 import RateLimit
-from .group_0209 import RateLimitOverviewPropResources
+
+class CombinedBillingUsage(GitHubModel):
+    """CombinedBillingUsage"""
+
+    days_left_in_billing_cycle: int = Field(
+        description="Numbers of days left in billing cycle."
+    )
+    estimated_paid_storage_for_month: int = Field(
+        description="Estimated storage space (GB) used in billing cycle."
+    )
+    estimated_storage_for_month: int = Field(
+        description="Estimated sum of free and paid storage space (GB) used in billing cycle."
+    )
 
 
-class RateLimitOverview(GitHubModel):
-    """Rate Limit Overview
+model_rebuild(CombinedBillingUsage)
 
-    Rate Limit Overview
-    """
-
-    resources: RateLimitOverviewPropResources = Field()
-    rate: RateLimit = Field(title="Rate Limit")
-
-
-model_rebuild(RateLimitOverview)
-
-__all__ = ("RateLimitOverview",)
+__all__ = ("CombinedBillingUsage",)

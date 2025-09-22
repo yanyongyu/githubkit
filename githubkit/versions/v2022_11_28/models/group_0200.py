@@ -10,31 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
+from .group_0199 import RulesetVersionPropActor
+from .group_0202 import RulesetVersionWithStateAllof1PropState
 
 
-class Reaction(GitHubModel):
-    """Reaction
+class RulesetVersionWithState(GitHubModel):
+    """RulesetVersionWithState"""
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(description="The reaction to use")
-    created_at: datetime = Field()
+    version_id: int = Field(description="The ID of the previous version of the ruleset")
+    actor: RulesetVersionPropActor = Field(
+        description="The actor who updated the ruleset"
+    )
+    updated_at: datetime = Field()
+    state: RulesetVersionWithStateAllof1PropState = Field(
+        description="The state of the ruleset version"
+    )
 
 
-model_rebuild(Reaction)
+model_rebuild(RulesetVersionWithState)
 
-__all__ = ("Reaction",)
+__all__ = ("RulesetVersionWithState",)

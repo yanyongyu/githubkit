@@ -9,51 +9,116 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from datetime import date, datetime
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RuleSuiteType(TypedDict):
-    """Rule Suite
+class ProjectsV2FieldType(TypedDict):
+    """Projects v2 Field
 
-    Response
+    A field inside a projects v2 project
     """
 
-    id: NotRequired[int]
-    actor_id: NotRequired[Union[int, None]]
-    actor_name: NotRequired[Union[str, None]]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
-    ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[datetime]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
-    rule_evaluations: NotRequired[list[RuleSuitePropRuleEvaluationsItemsType]]
+    id: int
+    node_id: NotRequired[str]
+    project_url: str
+    name: str
+    data_type: Literal[
+        "assignees",
+        "linked_pull_requests",
+        "reviewers",
+        "labels",
+        "milestone",
+        "repository",
+        "title",
+        "text",
+        "single_select",
+        "number",
+        "date",
+        "iteration",
+        "issue_type",
+        "parent_issue",
+        "sub_issues_progress",
+    ]
+    options: NotRequired[list[ProjectsV2SingleSelectOptionsType]]
+    configuration: NotRequired[ProjectsV2FieldPropConfigurationType]
+    created_at: datetime
+    updated_at: datetime
 
 
-class RuleSuitePropRuleEvaluationsItemsType(TypedDict):
-    """RuleSuitePropRuleEvaluationsItems"""
+class ProjectsV2SingleSelectOptionsType(TypedDict):
+    """Projects v2 Single Select Option
 
-    rule_source: NotRequired[RuleSuitePropRuleEvaluationsItemsPropRuleSourceType]
-    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
-    result: NotRequired[Literal["pass", "fail"]]
-    rule_type: NotRequired[str]
-    details: NotRequired[Union[str, None]]
+    An option for a single select field
+    """
+
+    id: str
+    name: ProjectsV2SingleSelectOptionsPropNameType
+    description: ProjectsV2SingleSelectOptionsPropDescriptionType
+    color: str
 
 
-class RuleSuitePropRuleEvaluationsItemsPropRuleSourceType(TypedDict):
-    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+class ProjectsV2SingleSelectOptionsPropNameType(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropName
 
-    type: NotRequired[str]
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
+    The display name of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2SingleSelectOptionsPropDescriptionType(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropDescription
+
+    The description of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2FieldPropConfigurationType(TypedDict):
+    """ProjectsV2FieldPropConfiguration
+
+    Configuration for iteration fields.
+    """
+
+    start_day: NotRequired[int]
+    duration: NotRequired[int]
+    iterations: NotRequired[list[ProjectsV2IterationSettingsType]]
+
+
+class ProjectsV2IterationSettingsType(TypedDict):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str
+    start_date: date
+    duration: int
+    title: ProjectsV2IterationSettingsPropTitleType
+    completed: bool
+
+
+class ProjectsV2IterationSettingsPropTitleType(TypedDict):
+    """ProjectsV2IterationSettingsPropTitle
+
+    The iteration title, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
 
 
 __all__ = (
-    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
-    "RuleSuitePropRuleEvaluationsItemsType",
-    "RuleSuiteType",
+    "ProjectsV2FieldPropConfigurationType",
+    "ProjectsV2FieldType",
+    "ProjectsV2IterationSettingsPropTitleType",
+    "ProjectsV2IterationSettingsType",
+    "ProjectsV2SingleSelectOptionsPropDescriptionType",
+    "ProjectsV2SingleSelectOptionsPropNameType",
+    "ProjectsV2SingleSelectOptionsType",
 )

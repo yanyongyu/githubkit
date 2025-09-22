@@ -9,28 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0170 import ReactionRollup
 
-class OidcCustomSubRepo(GitHubModel):
-    """Actions OIDC subject customization for a repository
 
-    Actions OIDC subject customization for a repository
+class TeamDiscussionComment(GitHubModel):
+    """Team Discussion Comment
+
+    A reply to a discussion within a team.
     """
 
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
+    author: Union[None, SimpleUser] = Field()
+    body: str = Field(description="The main text of the comment.")
+    body_html: str = Field()
+    body_version: str = Field(
+        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
     )
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+    created_at: datetime = Field()
+    last_edited_at: Union[datetime, None] = Field()
+    discussion_url: str = Field()
+    html_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(
+        description="The unique sequence number of a team discussion comment."
     )
+    updated_at: datetime = Field()
+    url: str = Field()
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(OidcCustomSubRepo)
+model_rebuild(TeamDiscussionComment)
 
-__all__ = ("OidcCustomSubRepo",)
+__all__ = ("TeamDiscussionComment",)

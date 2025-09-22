@@ -76,10 +76,16 @@ class EnterpriseTeam(GitHubModel):
     description: Missing[str] = Field(default=UNSET)
     slug: str = Field()
     url: str = Field()
-    sync_to_organizations: Missing[str] = Field(default=UNSET)
+    sync_to_organizations: Missing[str] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    )
     organization_selection_type: Missing[str] = Field(default=UNSET)
-    group_id: Missing[Union[str, None]] = Field(default=UNSET)
-    group_name: Missing[Union[str, None]] = Field(default=UNSET)
+    group_id: Union[str, None] = Field()
+    group_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    )
     html_url: str = Field()
     members_url: str = Field()
     created_at: datetime = Field()

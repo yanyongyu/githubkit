@@ -12,11 +12,14 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningSarifsReceiptType(TypedDict):
-    """CodeScanningSarifsReceipt"""
+class CodeScanningAutofixCommitsType(TypedDict):
+    """CodeScanningAutofixCommits
 
-    id: NotRequired[str]
-    url: NotRequired[str]
+    Commit an autofix for a code scanning alert
+    """
+
+    target_ref: NotRequired[str]
+    message: NotRequired[str]
 
 
-__all__ = ("CodeScanningSarifsReceiptType",)
+__all__ = ("CodeScanningAutofixCommitsType",)

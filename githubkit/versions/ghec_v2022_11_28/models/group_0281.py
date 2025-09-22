@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 
 from pydantic import Field
@@ -17,176 +18,107 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0278 import ProtectedBranchPullRequestReview
-from .group_0280 import BranchRestrictionPolicy
+from .group_0003 import SimpleUser
+from .group_0189 import MinimalRepository
+from .group_0279 import PullRequestMinimal
+from .group_0280 import SimpleCommit
 
 
-class BranchProtection(GitHubModel):
-    """Branch Protection
+class WorkflowRun(GitHubModel):
+    """Workflow Run
 
-    Branch Protection
+    An invocation of a workflow
     """
 
-    url: Missing[str] = Field(default=UNSET)
-    enabled: Missing[bool] = Field(default=UNSET)
-    required_status_checks: Missing[ProtectedBranchRequiredStatusCheck] = Field(
-        default=UNSET,
-        title="Protected Branch Required Status Check",
-        description="Protected Branch Required Status Check",
+    id: int = Field(description="The ID of the workflow run.")
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the workflow run."
     )
-    enforce_admins: Missing[ProtectedBranchAdminEnforced] = Field(
-        default=UNSET,
-        title="Protected Branch Admin Enforced",
-        description="Protected Branch Admin Enforced",
+    node_id: str = Field()
+    check_suite_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the associated check suite."
     )
-    required_pull_request_reviews: Missing[ProtectedBranchPullRequestReview] = Field(
-        default=UNSET,
-        title="Protected Branch Pull Request Review",
-        description="Protected Branch Pull Request Review",
+    check_suite_node_id: Missing[str] = Field(
+        default=UNSET, description="The node ID of the associated check suite."
     )
-    restrictions: Missing[BranchRestrictionPolicy] = Field(
-        default=UNSET,
-        title="Branch Restriction Policy",
-        description="Branch Restriction Policy",
+    head_branch: Union[str, None] = Field()
+    head_sha: str = Field(
+        description="The SHA of the head commit that points to the version of the workflow being run."
     )
-    required_linear_history: Missing[BranchProtectionPropRequiredLinearHistory] = Field(
+    path: str = Field(description="The full path of the workflow")
+    run_number: int = Field(
+        description="The auto incrementing run number for the workflow run."
+    )
+    run_attempt: Missing[int] = Field(
+        default=UNSET,
+        description="Attempt number of the run, 1 for first attempt and higher if the workflow was re-run.",
+    )
+    referenced_workflows: Missing[Union[list[ReferencedWorkflow], None]] = Field(
         default=UNSET
     )
-    allow_force_pushes: Missing[BranchProtectionPropAllowForcePushes] = Field(
-        default=UNSET
+    event: str = Field()
+    status: Union[str, None] = Field()
+    conclusion: Union[str, None] = Field()
+    workflow_id: int = Field(description="The ID of the parent workflow.")
+    url: str = Field(description="The URL to the workflow run.")
+    html_url: str = Field()
+    pull_requests: Union[list[PullRequestMinimal], None] = Field(
+        description="Pull requests that are open with a `head_sha` or `head_branch` that matches the workflow run. The returned pull requests do not necessarily indicate pull requests that triggered the run."
     )
-    allow_deletions: Missing[BranchProtectionPropAllowDeletions] = Field(default=UNSET)
-    block_creations: Missing[BranchProtectionPropBlockCreations] = Field(default=UNSET)
-    required_conversation_resolution: Missing[
-        BranchProtectionPropRequiredConversationResolution
-    ] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    protection_url: Missing[str] = Field(default=UNSET)
-    required_signatures: Missing[BranchProtectionPropRequiredSignatures] = Field(
-        default=UNSET
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    actor: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    lock_branch: Missing[BranchProtectionPropLockBranch] = Field(
+    triggering_actor: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    run_started_at: Missing[datetime] = Field(
+        default=UNSET, description="The start time of the latest run. Resets on re-run."
+    )
+    jobs_url: str = Field(description="The URL to the jobs for the workflow run.")
+    logs_url: str = Field(
+        description="The URL to download the logs for the workflow run."
+    )
+    check_suite_url: str = Field(description="The URL to the associated check suite.")
+    artifacts_url: str = Field(
+        description="The URL to the artifacts for the workflow run."
+    )
+    cancel_url: str = Field(description="The URL to cancel the workflow run.")
+    rerun_url: str = Field(description="The URL to rerun the workflow run.")
+    previous_attempt_url: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.",
+        description="The URL to the previous attempted run of this workflow, if one exists.",
     )
-    allow_fork_syncing: Missing[BranchProtectionPropAllowForkSyncing] = Field(
-        default=UNSET,
-        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.",
+    workflow_url: str = Field(description="The URL to the workflow.")
+    head_commit: Union[None, SimpleCommit] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    head_repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    head_repository_id: Missing[int] = Field(default=UNSET)
+    display_title: str = Field(
+        description="The event-specific title associated with the run or the run-name if set, or the value of `run-name` if it is set in the workflow."
     )
 
 
-class ProtectedBranchAdminEnforced(GitHubModel):
-    """Protected Branch Admin Enforced
+class ReferencedWorkflow(GitHubModel):
+    """Referenced workflow
 
-    Protected Branch Admin Enforced
+    A workflow referenced/reused by the initial caller workflow
     """
 
-    url: str = Field()
-    enabled: bool = Field()
+    path: str = Field()
+    sha: str = Field()
+    ref: Missing[str] = Field(default=UNSET)
 
 
-class BranchProtectionPropRequiredLinearHistory(GitHubModel):
-    """BranchProtectionPropRequiredLinearHistory"""
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class BranchProtectionPropAllowForcePushes(GitHubModel):
-    """BranchProtectionPropAllowForcePushes"""
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class BranchProtectionPropAllowDeletions(GitHubModel):
-    """BranchProtectionPropAllowDeletions"""
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class BranchProtectionPropBlockCreations(GitHubModel):
-    """BranchProtectionPropBlockCreations"""
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class BranchProtectionPropRequiredConversationResolution(GitHubModel):
-    """BranchProtectionPropRequiredConversationResolution"""
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class BranchProtectionPropRequiredSignatures(GitHubModel):
-    """BranchProtectionPropRequiredSignatures"""
-
-    url: str = Field()
-    enabled: bool = Field()
-
-
-class BranchProtectionPropLockBranch(GitHubModel):
-    """BranchProtectionPropLockBranch
-
-    Whether to set the branch as read-only. If this is true, users will not be able
-    to push to the branch.
-    """
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class BranchProtectionPropAllowForkSyncing(GitHubModel):
-    """BranchProtectionPropAllowForkSyncing
-
-    Whether users can pull changes from upstream when the branch is locked. Set to
-    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-    """
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class ProtectedBranchRequiredStatusCheck(GitHubModel):
-    """Protected Branch Required Status Check
-
-    Protected Branch Required Status Check
-    """
-
-    url: Missing[str] = Field(default=UNSET)
-    enforcement_level: Missing[str] = Field(default=UNSET)
-    contexts: list[str] = Field()
-    checks: list[ProtectedBranchRequiredStatusCheckPropChecksItems] = Field()
-    contexts_url: Missing[str] = Field(default=UNSET)
-    strict: Missing[bool] = Field(default=UNSET)
-
-
-class ProtectedBranchRequiredStatusCheckPropChecksItems(GitHubModel):
-    """ProtectedBranchRequiredStatusCheckPropChecksItems"""
-
-    context: str = Field()
-    app_id: Union[int, None] = Field()
-
-
-model_rebuild(BranchProtection)
-model_rebuild(ProtectedBranchAdminEnforced)
-model_rebuild(BranchProtectionPropRequiredLinearHistory)
-model_rebuild(BranchProtectionPropAllowForcePushes)
-model_rebuild(BranchProtectionPropAllowDeletions)
-model_rebuild(BranchProtectionPropBlockCreations)
-model_rebuild(BranchProtectionPropRequiredConversationResolution)
-model_rebuild(BranchProtectionPropRequiredSignatures)
-model_rebuild(BranchProtectionPropLockBranch)
-model_rebuild(BranchProtectionPropAllowForkSyncing)
-model_rebuild(ProtectedBranchRequiredStatusCheck)
-model_rebuild(ProtectedBranchRequiredStatusCheckPropChecksItems)
+model_rebuild(WorkflowRun)
+model_rebuild(ReferencedWorkflow)
 
 __all__ = (
-    "BranchProtection",
-    "BranchProtectionPropAllowDeletions",
-    "BranchProtectionPropAllowForcePushes",
-    "BranchProtectionPropAllowForkSyncing",
-    "BranchProtectionPropBlockCreations",
-    "BranchProtectionPropLockBranch",
-    "BranchProtectionPropRequiredConversationResolution",
-    "BranchProtectionPropRequiredLinearHistory",
-    "BranchProtectionPropRequiredSignatures",
-    "ProtectedBranchAdminEnforced",
-    "ProtectedBranchRequiredStatusCheck",
-    "ProtectedBranchRequiredStatusCheckPropChecksItems",
+    "ReferencedWorkflow",
+    "WorkflowRun",
 )

@@ -9,38 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0068 import SimpleRepositoryType
+from .group_0082 import DependabotAlertSecurityVulnerabilityType
+from .group_0083 import DependabotAlertSecurityAdvisoryType
+from .group_0085 import DependabotAlertWithRepositoryPropDependencyType
 
-class GetLicenseSyncStatusType(TypedDict):
-    """License Sync Status
 
-    Information about the status of a license sync job for an enterprise.
+class DependabotAlertWithRepositoryType(TypedDict):
+    """DependabotAlertWithRepository
+
+    A Dependabot alert.
     """
 
-    server_instances: NotRequired[
-        list[GetLicenseSyncStatusPropServerInstancesItemsType]
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertWithRepositoryPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    dismissed_at: Union[datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
     ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[datetime, None]
+    auto_dismissed_at: NotRequired[Union[datetime, None]]
+    repository: SimpleRepositoryType
 
 
-class GetLicenseSyncStatusPropServerInstancesItemsType(TypedDict):
-    """GetLicenseSyncStatusPropServerInstancesItems"""
-
-    server_id: NotRequired[str]
-    hostname: NotRequired[str]
-    last_sync: NotRequired[GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType]
-
-
-class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType(TypedDict):
-    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
-
-    date: NotRequired[str]
-    status: NotRequired[str]
-    error: NotRequired[str]
-
-
-__all__ = (
-    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType",
-    "GetLicenseSyncStatusPropServerInstancesItemsType",
-    "GetLicenseSyncStatusType",
-)
+__all__ = ("DependabotAlertWithRepositoryType",)

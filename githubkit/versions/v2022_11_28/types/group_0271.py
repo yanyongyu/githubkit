@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
-    """Codespaces Permissions Check
-
-    Permission check result for a given devcontainer config.
-    """
-
-    accepted: bool
+from .group_0270 import CodeScanningVariantAnalysisRepositoryType
 
 
-__all__ = ("CodespacesPermissionsCheckForDevcontainerType",)
+class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+
+    repository_count: int
+    repositories: list[CodeScanningVariantAnalysisRepositoryType]
+
+
+__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroupType",)

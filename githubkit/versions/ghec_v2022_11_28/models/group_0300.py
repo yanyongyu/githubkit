@@ -9,28 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0299 import DiffEntry
+from .group_0301 import CommitPropCommit
 
-class CodeScanningAutofixCommits(GitHubModel):
-    """CodeScanningAutofixCommits
 
-    Commit an autofix for a code scanning alert
+class Commit(GitHubModel):
+    """Commit
+
+    Commit
     """
 
-    target_ref: Missing[str] = Field(
-        default=UNSET,
-        description='The Git reference of target branch for the commit. Branch needs to already exist.  For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
-    )
-    message: Missing[str] = Field(
-        default=UNSET, description="Commit message to be used."
-    )
+    url: str = Field()
+    sha: str = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    comments_url: str = Field()
+    commit: CommitPropCommit = Field()
+    author: Union[SimpleUser, EmptyObject, None] = Field()
+    committer: Union[SimpleUser, EmptyObject, None] = Field()
+    parents: list[CommitPropParentsItems] = Field()
+    stats: Missing[CommitPropStats] = Field(default=UNSET)
+    files: Missing[list[DiffEntry]] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAutofixCommits)
+class EmptyObject(GitHubModel):
+    """Empty Object
 
-__all__ = ("CodeScanningAutofixCommits",)
+    An object without any properties.
+    """
+
+
+class CommitPropParentsItems(GitHubModel):
+    """CommitPropParentsItems"""
+
+    sha: str = Field()
+    url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
+
+
+class CommitPropStats(GitHubModel):
+    """CommitPropStats"""
+
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+    total: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(Commit)
+model_rebuild(EmptyObject)
+model_rebuild(CommitPropParentsItems)
+model_rebuild(CommitPropStats)
+
+__all__ = (
+    "Commit",
+    "CommitPropParentsItems",
+    "CommitPropStats",
+    "EmptyObject",
+)

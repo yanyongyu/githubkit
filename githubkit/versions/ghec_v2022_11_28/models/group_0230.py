@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal
 
 from pydantic import Field
@@ -19,61 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PackageVersion(GitHubModel):
-    """Package Version
+class OrganizationCustomOrganizationRoleUpdateSchema(GitHubModel):
+    """OrganizationCustomOrganizationRoleUpdateSchema"""
 
-    A version of a software package
-    """
-
-    id: int = Field(description="Unique identifier of the package version.")
-    name: str = Field(description="The name of the package version.")
-    url: str = Field()
-    package_html_url: str = Field()
-    html_url: Missing[str] = Field(default=UNSET)
-    license_: Missing[str] = Field(default=UNSET, alias="license")
-    description: Missing[str] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    deleted_at: Missing[datetime] = Field(default=UNSET)
-    metadata: Missing[PackageVersionPropMetadata] = Field(
-        default=UNSET, title="Package Version Metadata"
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the custom role."
+    )
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description about the intended use of this role or the permissions it grants.",
+    )
+    permissions: Missing[list[str]] = Field(
+        default=UNSET,
+        description="A list of additional permissions included in this role.",
+    )
+    base_role: Missing[
+        Literal["none", "read", "triage", "write", "maintain", "admin"]
+    ] = Field(
+        default=UNSET,
+        description="The system role from which this role can inherit permissions.",
     )
 
 
-class PackageVersionPropMetadata(GitHubModel):
-    """Package Version Metadata"""
+model_rebuild(OrganizationCustomOrganizationRoleUpdateSchema)
 
-    package_type: Literal[
-        "npm", "maven", "rubygems", "docker", "nuget", "container"
-    ] = Field()
-    container: Missing[PackageVersionPropMetadataPropContainer] = Field(
-        default=UNSET, title="Container Metadata"
-    )
-    docker: Missing[PackageVersionPropMetadataPropDocker] = Field(
-        default=UNSET, title="Docker Metadata"
-    )
-
-
-class PackageVersionPropMetadataPropContainer(GitHubModel):
-    """Container Metadata"""
-
-    tags: list[str] = Field()
-
-
-class PackageVersionPropMetadataPropDocker(GitHubModel):
-    """Docker Metadata"""
-
-    tag: Missing[list[str]] = Field(default=UNSET)
-
-
-model_rebuild(PackageVersion)
-model_rebuild(PackageVersionPropMetadata)
-model_rebuild(PackageVersionPropMetadataPropContainer)
-model_rebuild(PackageVersionPropMetadataPropDocker)
-
-__all__ = (
-    "PackageVersion",
-    "PackageVersionPropMetadata",
-    "PackageVersionPropMetadataPropContainer",
-    "PackageVersionPropMetadataPropDocker",
-)
+__all__ = ("OrganizationCustomOrganizationRoleUpdateSchema",)

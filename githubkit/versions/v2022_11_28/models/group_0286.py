@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,35 +18,60 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0045 import ReactionRollup
 
-class ContentDirectoryItems(GitHubModel):
-    """ContentDirectoryItems"""
 
-    type: Literal["dir", "file", "submodule", "symlink"] = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    content: Missing[str] = Field(default=UNSET)
-    sha: str = Field()
+class CommitComment(GitHubModel):
+    """Commit Comment
+
+    Commit Comment
+    """
+
+    html_url: str = Field()
     url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentDirectoryItemsPropLinks = Field(alias="_links")
+    id: int = Field()
+    node_id: str = Field()
+    body: str = Field()
+    path: Union[str, None] = Field()
+    position: Union[int, None] = Field()
+    line: Union[int, None] = Field()
+    commit_id: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class ContentDirectoryItemsPropLinks(GitHubModel):
-    """ContentDirectoryItemsPropLinks"""
+class TimelineCommitCommentedEvent(GitHubModel):
+    """Timeline Commit Commented Event
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
+    Timeline Commit Commented Event
+    """
+
+    event: Missing[Literal["commit_commented"]] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    commit_id: Missing[str] = Field(default=UNSET)
+    comments: Missing[list[CommitComment]] = Field(default=UNSET)
 
 
-model_rebuild(ContentDirectoryItems)
-model_rebuild(ContentDirectoryItemsPropLinks)
+model_rebuild(CommitComment)
+model_rebuild(TimelineCommitCommentedEvent)
 
 __all__ = (
-    "ContentDirectoryItems",
-    "ContentDirectoryItemsPropLinks",
+    "CommitComment",
+    "TimelineCommitCommentedEvent",
 )

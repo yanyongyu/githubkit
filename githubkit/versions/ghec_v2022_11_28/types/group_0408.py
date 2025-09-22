@@ -11,18 +11,15 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0076 import TeamType
 
+class PageBuildStatusType(TypedDict):
+    """Page Build Status
 
-class PullRequestReviewRequestType(TypedDict):
-    """Pull Request Review Request
-
-    Pull Request Review Request
+    Page Build Status
     """
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
+    url: str
+    status: str
 
 
-__all__ = ("PullRequestReviewRequestType",)
+__all__ = ("PageBuildStatusType",)

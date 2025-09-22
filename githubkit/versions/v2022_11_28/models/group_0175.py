@@ -17,20 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0176 import RepositoryRuleMaxFileSizePropParameters
+
+class RepositoryRuleCommitterEmailPatternPropParameters(GitHubModel):
+    """RepositoryRuleCommitterEmailPatternPropParameters"""
+
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
+    )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-class RepositoryRuleMaxFileSize(GitHubModel):
-    """max_file_size
+model_rebuild(RepositoryRuleCommitterEmailPatternPropParameters)
 
-    Prevent commits with individual files that exceed the specified limit from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["max_file_size"] = Field()
-    parameters: Missing[RepositoryRuleMaxFileSizePropParameters] = Field(default=UNSET)
-
-
-model_rebuild(RepositoryRuleMaxFileSize)
-
-__all__ = ("RepositoryRuleMaxFileSize",)
+__all__ = ("RepositoryRuleCommitterEmailPatternPropParameters",)

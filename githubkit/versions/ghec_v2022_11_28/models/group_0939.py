@@ -11,29 +11,51 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
 
-    name: str = Field(description="The name of the new runner.")
-    runner_group_id: int = Field(
-        description="The ID of the runner group to register the runner to."
-    )
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
-    )
-    work_folder: Missing[str] = Field(
+    total_count: float = Field()
+    runner_groups: list[RunnerGroupsEnterprise] = Field()
+
+
+class RunnerGroupsEnterprise(GitHubModel):
+    """RunnerGroupsEnterprise"""
+
+    id: float = Field()
+    name: str = Field()
+    visibility: str = Field()
+    default: bool = Field()
+    selected_organizations_url: Missing[str] = Field(default=UNSET)
+    runners_url: str = Field()
+    hosted_runners_url: Missing[str] = Field(default=UNSET)
+    network_configuration_id: Missing[str] = Field(
         default=UNSET,
-        description="The working directory to be used for job execution, relative to the runner install directory.",
+        description="The identifier of a hosted compute network configuration.",
+    )
+    allows_public_repositories: bool = Field()
+    workflow_restrictions_read_only: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
+    )
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsGetResponse200)
+model_rebuild(RunnerGroupsEnterprise)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody",)
+__all__ = (
+    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200",
+    "RunnerGroupsEnterprise",
+)

@@ -14,21 +14,20 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReactionRollup(GitHubModel):
-    """Reaction Rollup"""
+class CombinedBillingUsage(GitHubModel):
+    """CombinedBillingUsage"""
 
-    url: str = Field()
-    total_count: int = Field()
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    laugh: int = Field()
-    confused: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    eyes: int = Field()
-    rocket: int = Field()
+    days_left_in_billing_cycle: int = Field(
+        description="Numbers of days left in billing cycle."
+    )
+    estimated_paid_storage_for_month: int = Field(
+        description="Estimated storage space (GB) used in billing cycle."
+    )
+    estimated_storage_for_month: int = Field(
+        description="Estimated sum of free and paid storage space (GB) used in billing cycle."
+    )
 
 
-model_rebuild(ReactionRollup)
+model_rebuild(CombinedBillingUsage)
 
-__all__ = ("ReactionRollup",)
+__all__ = ("CombinedBillingUsage",)

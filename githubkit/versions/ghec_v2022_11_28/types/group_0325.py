@@ -13,80 +13,37 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0076 import TeamType
-from .group_0164 import MilestoneType
-from .group_0324 import AutoMergeType
-from .group_0326 import PullRequestSimplePropBaseType, PullRequestSimplePropHeadType
-from .group_0327 import PullRequestSimplePropLinksType
 
+class CodeScanningDefaultSetupType(TypedDict):
+    """CodeScanningDefaultSetup
 
-class PullRequestSimpleType(TypedDict):
-    """Pull Request Simple
-
-    Pull Request Simple
+    Configuration for code scanning default setup.
     """
 
-    url: str
-    id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: str
-    locked: bool
-    title: str
-    user: Union[None, SimpleUserType]
-    body: Union[str, None]
-    labels: list[PullRequestSimplePropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
-    active_lock_reason: NotRequired[Union[str, None]]
-    created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
-    merged_at: Union[datetime, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserType], None]]
-    requested_teams: NotRequired[Union[list[TeamType], None]]
-    head: PullRequestSimplePropHeadType
-    base: PullRequestSimplePropBaseType
-    links: PullRequestSimplePropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "javascript",
+                "python",
+                "ruby",
+                "typescript",
+                "swift",
+            ]
+        ]
     ]
-    auto_merge: Union[AutoMergeType, None]
-    draft: NotRequired[bool]
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    updated_at: NotRequired[Union[datetime, None]]
+    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
-class PullRequestSimplePropLabelsItemsType(TypedDict):
-    """PullRequestSimplePropLabelsItems"""
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-
-
-__all__ = (
-    "PullRequestSimplePropLabelsItemsType",
-    "PullRequestSimpleType",
-)
+__all__ = ("CodeScanningDefaultSetupType",)

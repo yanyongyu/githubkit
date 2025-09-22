@@ -9,42 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0019 import LicenseSimpleType
+from .group_0003 import SimpleUserType
 
 
-class LicenseContentType(TypedDict):
-    """License Content
+class TimelineReviewedEventType(TypedDict):
+    """Timeline Reviewed Event
 
-    License Content
+    Timeline Reviewed Event
     """
 
-    name: str
-    path: str
-    sha: str
-    size: int
-    url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksType
-    license_: Union[None, LicenseSimpleType]
+    event: Literal["reviewed"]
+    id: int
+    node_id: str
+    user: SimpleUserType
+    body: Union[str, None]
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: TimelineReviewedEventPropLinksType
+    submitted_at: NotRequired[datetime]
+    updated_at: NotRequired[Union[datetime, None]]
+    commit_id: str
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class LicenseContentPropLinksType(TypedDict):
-    """LicenseContentPropLinks"""
+class TimelineReviewedEventPropLinksType(TypedDict):
+    """TimelineReviewedEventPropLinks"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    html: TimelineReviewedEventPropLinksPropHtmlType
+    pull_request: TimelineReviewedEventPropLinksPropPullRequestType
+
+
+class TimelineReviewedEventPropLinksPropHtmlType(TypedDict):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str
+
+
+class TimelineReviewedEventPropLinksPropPullRequestType(TypedDict):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str
 
 
 __all__ = (
-    "LicenseContentPropLinksType",
-    "LicenseContentType",
+    "TimelineReviewedEventPropLinksPropHtmlType",
+    "TimelineReviewedEventPropLinksPropPullRequestType",
+    "TimelineReviewedEventPropLinksType",
+    "TimelineReviewedEventType",
 )

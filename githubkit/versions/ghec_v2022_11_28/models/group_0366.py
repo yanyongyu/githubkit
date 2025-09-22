@@ -14,21 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PorterAuthor(GitHubModel):
-    """Porter Author
+class ShortBlob(GitHubModel):
+    """Short Blob
 
-    Porter Author
+    Short Blob
     """
 
-    id: int = Field()
-    remote_id: str = Field()
-    remote_name: str = Field()
-    email: str = Field()
-    name: str = Field()
     url: str = Field()
-    import_url: str = Field()
+    sha: str = Field()
 
 
-model_rebuild(PorterAuthor)
+model_rebuild(ShortBlob)
 
-__all__ = ("PorterAuthor",)
+__all__ = ("ShortBlob",)

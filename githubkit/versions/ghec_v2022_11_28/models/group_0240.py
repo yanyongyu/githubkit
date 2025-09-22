@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from datetime import date, datetime
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,90 +19,139 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RuleSuite(GitHubModel):
-    """Rule Suite
+class ProjectsV2Field(GitHubModel):
+    """Projects v2 Field
 
-    Response
+    A field inside a projects v2 project
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the rule insight."
+    id: int = Field(description="The unique identifier of the field.")
+    node_id: Missing[str] = Field(
+        default=UNSET, description="The node ID of the field."
     )
-    actor_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The number that identifies the user."
+    project_url: str = Field(
+        description="The API URL of the project that contains the field."
     )
-    actor_name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The handle for the GitHub user account."
+    name: str = Field(description="The name of the field.")
+    data_type: Literal[
+        "assignees",
+        "linked_pull_requests",
+        "reviewers",
+        "labels",
+        "milestone",
+        "repository",
+        "title",
+        "text",
+        "single_select",
+        "number",
+        "date",
+        "iteration",
+        "issue_type",
+        "parent_issue",
+        "sub_issues_progress",
+    ] = Field(description="The field's data type.")
+    options: Missing[list[ProjectsV2SingleSelectOptions]] = Field(
+        default=UNSET, description="The options available for single select fields."
     )
-    before_sha: Missing[str] = Field(
-        default=UNSET, description="The first commit sha before the push evaluation."
+    configuration: Missing[ProjectsV2FieldPropConfiguration] = Field(
+        default=UNSET, description="Configuration for iteration fields."
     )
-    after_sha: Missing[str] = Field(
-        default=UNSET, description="The last commit sha in the push evaluation."
-    )
-    ref: Missing[str] = Field(
-        default=UNSET, description="The ref name that the evaluation ran on."
-    )
-    repository_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the repository associated with the rule evaluation.",
-    )
-    repository_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the repository without the `.git` extension.",
-    )
-    pushed_at: Missing[datetime] = Field(default=UNSET)
-    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` enforcement status.",
-    )
-    evaluation_result: Missing[Union[None, Literal["pass", "fail", "bypass"]]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run.",
-    )
-    rule_evaluations: Missing[list[RuleSuitePropRuleEvaluationsItems]] = Field(
-        default=UNSET, description="Details on the evaluated rules."
+    created_at: datetime = Field(description="The time when the field was created.")
+    updated_at: datetime = Field(
+        description="The time when the field was last updated."
     )
 
 
-class RuleSuitePropRuleEvaluationsItems(GitHubModel):
-    """RuleSuitePropRuleEvaluationsItems"""
+class ProjectsV2SingleSelectOptions(GitHubModel):
+    """Projects v2 Single Select Option
 
-    rule_source: Missing[RuleSuitePropRuleEvaluationsItemsPropRuleSource] = Field(
-        default=UNSET
+    An option for a single select field
+    """
+
+    id: str = Field(description="The unique identifier of the option.")
+    name: ProjectsV2SingleSelectOptionsPropName = Field(
+        description="The display name of the option, in raw text and HTML formats."
     )
-    enforcement: Missing[Literal["active", "evaluate", "deleted ruleset"]] = Field(
-        default=UNSET, description="The enforcement level of this rule source."
+    description: ProjectsV2SingleSelectOptionsPropDescription = Field(
+        description="The description of the option, in raw text and HTML formats."
     )
-    result: Missing[Literal["pass", "fail"]] = Field(
-        default=UNSET,
-        description="The result of the evaluation of the individual rule.",
-    )
-    rule_type: Missing[str] = Field(default=UNSET, description="The type of rule.")
-    details: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The detailed failure message for the rule. Null if the rule passed.",
-    )
+    color: str = Field(description="The color associated with the option.")
 
 
-class RuleSuitePropRuleEvaluationsItemsPropRuleSource(GitHubModel):
-    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+class ProjectsV2SingleSelectOptionsPropName(GitHubModel):
+    """ProjectsV2SingleSelectOptionsPropName
 
-    type: Missing[str] = Field(default=UNSET, description="The type of rule source.")
-    id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of the rule source."
+    The display name of the option, in raw text and HTML formats.
+    """
+
+    raw: str = Field()
+    html: str = Field()
+
+
+class ProjectsV2SingleSelectOptionsPropDescription(GitHubModel):
+    """ProjectsV2SingleSelectOptionsPropDescription
+
+    The description of the option, in raw text and HTML formats.
+    """
+
+    raw: str = Field()
+    html: str = Field()
+
+
+class ProjectsV2FieldPropConfiguration(GitHubModel):
+    """ProjectsV2FieldPropConfiguration
+
+    Configuration for iteration fields.
+    """
+
+    start_day: Missing[int] = Field(
+        default=UNSET, description="The day of the week when the iteration starts."
     )
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The name of the rule source."
+    duration: Missing[int] = Field(
+        default=UNSET, description="The duration of the iteration in days."
     )
+    iterations: Missing[list[ProjectsV2IterationSettings]] = Field(default=UNSET)
 
 
-model_rebuild(RuleSuite)
-model_rebuild(RuleSuitePropRuleEvaluationsItems)
-model_rebuild(RuleSuitePropRuleEvaluationsItemsPropRuleSource)
+class ProjectsV2IterationSettings(GitHubModel):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str = Field(description="The unique identifier of the iteration setting.")
+    start_date: date = Field(description="The start date of the iteration.")
+    duration: int = Field(description="The duration of the iteration in days.")
+    title: ProjectsV2IterationSettingsPropTitle = Field(
+        description="The iteration title, in raw text and HTML formats."
+    )
+    completed: bool = Field(description="Whether the iteration has been completed.")
+
+
+class ProjectsV2IterationSettingsPropTitle(GitHubModel):
+    """ProjectsV2IterationSettingsPropTitle
+
+    The iteration title, in raw text and HTML formats.
+    """
+
+    raw: str = Field()
+    html: str = Field()
+
+
+model_rebuild(ProjectsV2Field)
+model_rebuild(ProjectsV2SingleSelectOptions)
+model_rebuild(ProjectsV2SingleSelectOptionsPropName)
+model_rebuild(ProjectsV2SingleSelectOptionsPropDescription)
+model_rebuild(ProjectsV2FieldPropConfiguration)
+model_rebuild(ProjectsV2IterationSettings)
+model_rebuild(ProjectsV2IterationSettingsPropTitle)
 
 __all__ = (
-    "RuleSuite",
-    "RuleSuitePropRuleEvaluationsItems",
-    "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
+    "ProjectsV2Field",
+    "ProjectsV2FieldPropConfiguration",
+    "ProjectsV2IterationSettings",
+    "ProjectsV2IterationSettingsPropTitle",
+    "ProjectsV2SingleSelectOptions",
+    "ProjectsV2SingleSelectOptionsPropDescription",
+    "ProjectsV2SingleSelectOptionsPropName",
 )

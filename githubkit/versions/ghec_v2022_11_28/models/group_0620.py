@@ -12,20 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0508 import RepositoryWebhooks
+from .group_0520 import Discussion
 
 
-class WebhookForkPropForkeeAllof0PropPermissions(GitHubModel):
-    """WebhookForkPropForkeeAllof0PropPermissions"""
+class WebhookDiscussionTransferredPropChanges(GitHubModel):
+    """WebhookDiscussionTransferredPropChanges"""
 
-    admin: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    pull: bool = Field()
-    push: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
+    new_discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
+    )
+    new_repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
 
 
-model_rebuild(WebhookForkPropForkeeAllof0PropPermissions)
+model_rebuild(WebhookDiscussionTransferredPropChanges)
 
-__all__ = ("WebhookForkPropForkeeAllof0PropPermissions",)
+__all__ = ("WebhookDiscussionTransferredPropChanges",)

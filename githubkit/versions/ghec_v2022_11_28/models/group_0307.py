@@ -18,61 +18,79 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0066 import SimpleRepository
-from .group_0308 import CodeScanningVariantAnalysisPropScannedRepositoriesItems
-from .group_0309 import CodeScanningVariantAnalysisPropSkippedRepositories
+from .group_0010 import Integration
+from .group_0279 import PullRequestMinimal
+from .group_0306 import DeploymentSimple
 
 
-class CodeScanningVariantAnalysis(GitHubModel):
-    """Variant Analysis
+class CheckRun(GitHubModel):
+    """CheckRun
 
-    A run of a CodeQL query against one or more repositories.
+    A check performed on the code of a given code change
     """
 
-    id: int = Field(description="The ID of the variant analysis.")
-    controller_repo: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
-    )
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    query_language: Literal[
-        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "rust", "swift"
-    ] = Field(description="The language targeted by the CodeQL query")
-    query_pack_url: str = Field(description="The download url for the query pack.")
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time at which the variant analysis was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
-    )
-    updated_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time at which the variant analysis was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
-    )
-    completed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The date and time at which the variant analysis was completed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the variant analysis has not yet completed or this information is not available.",
-    )
-    status: Literal["in_progress", "succeeded", "failed", "cancelled"] = Field()
-    actions_workflow_run_id: Missing[int] = Field(
-        default=UNSET,
-        description="The GitHub Actions workflow run used to execute this variant analysis. This is only available if the workflow run has started.",
-    )
-    failure_reason: Missing[
-        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    id: int = Field(description="The id of the check.")
+    head_sha: str = Field(description="The SHA of the commit that is being checked.")
+    node_id: str = Field()
+    external_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: Union[str, None] = Field()
+    details_url: Union[str, None] = Field()
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
     ] = Field(
-        default=UNSET,
-        description="The reason for a failure of the variant analysis. This is only available if the variant analysis has failed.",
+        description="The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs."
     )
-    scanned_repositories: Missing[
-        list[CodeScanningVariantAnalysisPropScannedRepositoriesItems]
-    ] = Field(default=UNSET)
-    skipped_repositories: Missing[
-        CodeScanningVariantAnalysisPropSkippedRepositories
-    ] = Field(
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ] = Field()
+    started_at: Union[datetime, None] = Field()
+    completed_at: Union[datetime, None] = Field()
+    output: CheckRunPropOutput = Field()
+    name: str = Field(description="The name of the check.")
+    check_suite: Union[CheckRunPropCheckSuite, None] = Field()
+    app: Union[None, Integration, None] = Field()
+    pull_requests: list[PullRequestMinimal] = Field(
+        description="Pull requests that are open with a `head_sha` or `head_branch` that matches the check. The returned pull requests do not necessarily indicate pull requests that triggered the check."
+    )
+    deployment: Missing[DeploymentSimple] = Field(
         default=UNSET,
-        description="Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis.",
+        title="Deployment",
+        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
     )
 
 
-model_rebuild(CodeScanningVariantAnalysis)
+class CheckRunPropOutput(GitHubModel):
+    """CheckRunPropOutput"""
 
-__all__ = ("CodeScanningVariantAnalysis",)
+    title: Union[str, None] = Field()
+    summary: Union[str, None] = Field()
+    text: Union[str, None] = Field()
+    annotations_count: int = Field()
+    annotations_url: str = Field()
+
+
+class CheckRunPropCheckSuite(GitHubModel):
+    """CheckRunPropCheckSuite"""
+
+    id: int = Field()
+
+
+model_rebuild(CheckRun)
+model_rebuild(CheckRunPropOutput)
+model_rebuild(CheckRunPropCheckSuite)
+
+__all__ = (
+    "CheckRun",
+    "CheckRunPropCheckSuite",
+    "CheckRunPropOutput",
+)

@@ -16,44 +16,97 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class AmazonS3OidcConfig(GitHubModel):
-    """AmazonS3OIDCConfig
+class AzureBlobConfig(GitHubModel):
+    """AzureBlobConfig
 
-    Amazon S3 OIDC Config for audit log streaming configuration.
+    Azure Blob Config for audit log streaming configuration.
     """
 
-    bucket: str = Field(description="Amazon S3 Bucket Name.")
-    region: str = Field(description="AWS S3 Bucket Region.")
     key_id: str = Field(
         description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
     )
-    authentication_type: Literal["oidc"] = Field(
-        description="Authentication Type for Amazon S3."
+    encrypted_sas_url: str = Field()
+    container: str = Field(
+        description="The name of the Azure Blob Storage container to which the audit logs will be sent."
     )
-    arn_role: str = Field()
 
 
-class SplunkConfig(GitHubModel):
-    """SplunkConfig
+class AzureHubConfig(GitHubModel):
+    """AzureHubConfig
 
-    Splunk Config for Audit Log Stream Configuration
+    Azure Event Hubs Config for audit log streaming configuration.
     """
 
-    domain: str = Field(description="Domain of Splunk instance.")
-    port: int = Field(description="The port number for connecting to Splunk.")
+    name: str = Field(description="Instance name of Azure Event Hubs")
+    encrypted_connstring: str = Field(
+        description="Encrypted Connection String for Azure Event Hubs"
+    )
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    )
+
+
+class AmazonS3AccessKeysConfig(GitHubModel):
+    """AmazonS3AccessKeysConfig
+
+    Amazon S3 Access Keys Config for audit log streaming configuration.
+    """
+
+    bucket: str = Field(description="Amazon S3 Bucket Name.")
+    region: str = Field(description="Amazon S3 Bucket Name.")
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    )
+    authentication_type: Literal["access_keys"] = Field(
+        description="Authentication Type for Amazon S3."
+    )
+    encrypted_secret_key: str = Field(description="Encrypted AWS Secret Key.")
+    encrypted_access_key_id: str = Field(description="Encrypted AWS Access Key ID.")
+
+
+class HecConfig(GitHubModel):
+    """HecConfig
+
+    Hec Config for Audit Log Stream Configuration
+    """
+
+    domain: str = Field(description="Domain of Hec instance.")
+    port: int = Field(description="The port number for connecting to HEC.")
     key_id: str = Field(
         description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
     )
     encrypted_token: str = Field(description="Encrypted Token.")
+    path: str = Field(description="Path to send events to.")
     ssl_verify: bool = Field(
-        description="SSL verification helps ensure your events are sent to your Splunk endpoint securely."
+        description="SSL verification helps ensure your events are sent to your HEC endpoint securely."
     )
 
 
-model_rebuild(AmazonS3OidcConfig)
-model_rebuild(SplunkConfig)
+class DatadogConfig(GitHubModel):
+    """DatadogConfig
+
+    Datadog Config for audit log streaming configuration.
+    """
+
+    encrypted_token: str = Field(description="Encrypted Splunk token.")
+    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"] = Field(
+        description="Datadog Site to use."
+    )
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    )
+
+
+model_rebuild(AzureBlobConfig)
+model_rebuild(AzureHubConfig)
+model_rebuild(AmazonS3AccessKeysConfig)
+model_rebuild(HecConfig)
+model_rebuild(DatadogConfig)
 
 __all__ = (
-    "AmazonS3OidcConfig",
-    "SplunkConfig",
+    "AmazonS3AccessKeysConfig",
+    "AzureBlobConfig",
+    "AzureHubConfig",
+    "DatadogConfig",
+    "HecConfig",
 )

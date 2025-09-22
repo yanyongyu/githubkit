@@ -9,28 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0186 import RulesetVersionPropActor
 
+class RepositoryRuleFileExtensionRestrictionPropParameters(GitHubModel):
+    """RepositoryRuleFileExtensionRestrictionPropParameters"""
 
-class RulesetVersion(GitHubModel):
-    """Ruleset version
-
-    The historical version of a ruleset
-    """
-
-    version_id: int = Field(description="The ID of the previous version of the ruleset")
-    actor: RulesetVersionPropActor = Field(
-        description="The actor who updated the ruleset"
+    restricted_file_extensions: list[str] = Field(
+        description="The file extensions that are restricted from being pushed to the commit graph."
     )
-    updated_at: datetime = Field()
 
 
-model_rebuild(RulesetVersion)
+model_rebuild(RepositoryRuleFileExtensionRestrictionPropParameters)
 
-__all__ = ("RulesetVersion",)
+__all__ = ("RepositoryRuleFileExtensionRestrictionPropParameters",)

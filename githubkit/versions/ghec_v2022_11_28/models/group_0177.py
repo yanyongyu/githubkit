@@ -10,42 +10,56 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Any, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 
 
-class GistCommit(GitHubModel):
-    """Gist Commit
+class BaseGist(GitHubModel):
+    """Base Gist
 
-    Gist Commit
+    Base Gist
     """
 
     url: str = Field()
-    version: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: BaseGistPropFiles = Field()
+    public: bool = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    comments_enabled: Missing[bool] = Field(default=UNSET)
     user: Union[None, SimpleUser] = Field()
-    change_status: GistCommitPropChangeStatus = Field()
-    committed_at: datetime = Field()
+    comments_url: str = Field()
+    owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
-class GistCommitPropChangeStatus(GitHubModel):
-    """GistCommitPropChangeStatus"""
-
-    total: Missing[int] = Field(default=UNSET)
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
+class BaseGistPropFiles(ExtraGitHubModel):
+    """BaseGistPropFiles"""
 
 
-model_rebuild(GistCommit)
-model_rebuild(GistCommitPropChangeStatus)
+model_rebuild(BaseGist)
+model_rebuild(BaseGistPropFiles)
 
 __all__ = (
-    "GistCommit",
-    "GistCommitPropChangeStatus",
+    "BaseGist",
+    "BaseGistPropFiles",
 )

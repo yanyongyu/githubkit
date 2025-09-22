@@ -13,61 +13,60 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ContentTreeType(TypedDict):
-    """Content Tree
+class RepositoryCollaboratorPermissionType(TypedDict):
+    """Repository Collaborator Permission
 
-    Content Tree
+    Repository Collaborator Permission
     """
 
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    content: NotRequired[str]
+    permission: str
+    role_name: str
+    user: Union[None, CollaboratorType]
+
+
+class CollaboratorType(TypedDict):
+    """Collaborator
+
+    Collaborator
+    """
+
+    login: str
+    id: int
+    email: NotRequired[Union[str, None]]
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    entries: NotRequired[list[ContentTreePropEntriesItemsType]]
-    encoding: NotRequired[str]
-    links: ContentTreePropLinksType
-
-
-class ContentTreePropLinksType(TypedDict):
-    """ContentTreePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentTreePropEntriesItemsType(TypedDict):
-    """ContentTreePropEntriesItems"""
-
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
     type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentTreePropEntriesItemsPropLinksType
+    site_admin: bool
+    permissions: NotRequired[CollaboratorPropPermissionsType]
+    role_name: str
+    user_view_type: NotRequired[str]
 
 
-class ContentTreePropEntriesItemsPropLinksType(TypedDict):
-    """ContentTreePropEntriesItemsPropLinks"""
+class CollaboratorPropPermissionsType(TypedDict):
+    """CollaboratorPropPermissions"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+    admin: bool
 
 
 __all__ = (
-    "ContentTreePropEntriesItemsPropLinksType",
-    "ContentTreePropEntriesItemsType",
-    "ContentTreePropLinksType",
-    "ContentTreeType",
+    "CollaboratorPropPermissionsType",
+    "CollaboratorType",
+    "RepositoryCollaboratorPermissionType",
 )

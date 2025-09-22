@@ -9,32 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0281 import BranchProtectionType
+from .group_0003 import SimpleUserType
 
 
-class ShortBranchType(TypedDict):
-    """Short Branch
+class EnvironmentApprovalsType(TypedDict):
+    """Environment Approval
 
-    Short Branch
+    An entry in the reviews log for environment deployments
     """
 
-    name: str
-    commit: ShortBranchPropCommitType
-    protected: bool
-    protection: NotRequired[BranchProtectionType]
-    protection_url: NotRequired[str]
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsType]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserType
+    comment: str
 
 
-class ShortBranchPropCommitType(TypedDict):
-    """ShortBranchPropCommit"""
+class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
 
-    sha: str
-    url: str
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
 
 
 __all__ = (
-    "ShortBranchPropCommitType",
-    "ShortBranchType",
+    "EnvironmentApprovalsPropEnvironmentsItemsType",
+    "EnvironmentApprovalsType",
 )

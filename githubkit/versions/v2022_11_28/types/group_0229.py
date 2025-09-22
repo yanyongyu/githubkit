@@ -9,22 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class AutolinkType(TypedDict):
-    """Autolink reference
+class ActionsWorkflowAccessToRepositoryType(TypedDict):
+    """ActionsWorkflowAccessToRepository"""
 
-    An autolink reference.
-    """
-
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
-    updated_at: NotRequired[Union[datetime, None]]
+    access_level: Literal["none", "user", "organization"]
 
 
-__all__ = ("AutolinkType",)
+__all__ = ("ActionsWorkflowAccessToRepositoryType",)

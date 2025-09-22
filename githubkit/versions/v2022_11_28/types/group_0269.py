@@ -9,31 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0028 import CodeSecurityConfigurationType
+from .group_0003 import SimpleUserType
 
 
-class CodeSecurityConfigurationForRepositoryType(TypedDict):
-    """CodeSecurityConfigurationForRepository
+class CodeScanningCodeqlDatabaseType(TypedDict):
+    """CodeQL Database
 
-    Code security configuration associated with a repository and attachment status
+    A CodeQL database.
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserType
+    content_type: str
+    size: int
+    created_at: datetime
+    updated_at: datetime
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
-__all__ = ("CodeSecurityConfigurationForRepositoryType",)
+__all__ = ("CodeScanningCodeqlDatabaseType",)

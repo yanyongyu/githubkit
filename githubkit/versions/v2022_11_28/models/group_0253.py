@@ -15,22 +15,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0246 import BranchProtection
+from .group_0251 import Commit
 
-class CodeScanningAutofixCommits(GitHubModel):
-    """CodeScanningAutofixCommits
 
-    Commit an autofix for a code scanning alert
+class BranchWithProtection(GitHubModel):
+    """Branch With Protection
+
+    Branch With Protection
     """
 
-    target_ref: Missing[str] = Field(
-        default=UNSET,
-        description='The Git reference of target branch for the commit. Branch needs to already exist.  For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
+    name: str = Field()
+    commit: Commit = Field(title="Commit", description="Commit")
+    links: BranchWithProtectionPropLinks = Field(alias="_links")
+    protected: bool = Field()
+    protection: BranchProtection = Field(
+        title="Branch Protection", description="Branch Protection"
     )
-    message: Missing[str] = Field(
-        default=UNSET, description="Commit message to be used."
-    )
+    protection_url: str = Field()
+    pattern: Missing[str] = Field(default=UNSET)
+    required_approving_review_count: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAutofixCommits)
+class BranchWithProtectionPropLinks(GitHubModel):
+    """BranchWithProtectionPropLinks"""
 
-__all__ = ("CodeScanningAutofixCommits",)
+    html: str = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(BranchWithProtection)
+model_rebuild(BranchWithProtectionPropLinks)
+
+__all__ = (
+    "BranchWithProtection",
+    "BranchWithProtectionPropLinks",
+)

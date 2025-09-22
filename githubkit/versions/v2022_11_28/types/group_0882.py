@@ -9,14 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
-
-    enabled_repositories: Literal["all", "selected", "none"]
+from .group_0073 import ActionsHostedRunnerType
 
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",)
+class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersGetResponse200"""
+
+    total_count: int
+    runners: list[ActionsHostedRunnerType]
+
+
+__all__ = ("OrgsOrgActionsHostedRunnersGetResponse200Type",)

@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 
 from pydantic import Field
@@ -17,116 +18,49 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0019 import LicenseSimple
+from .group_0143 import CodeOfConductSimple
 
-class FileCommit(GitHubModel):
-    """File Commit
 
-    File Commit
+class CommunityProfilePropFiles(GitHubModel):
+    """CommunityProfilePropFiles"""
+
+    code_of_conduct: Union[None, CodeOfConductSimple] = Field()
+    code_of_conduct_file: Union[None, CommunityHealthFile] = Field()
+    license_: Union[None, LicenseSimple] = Field(alias="license")
+    contributing: Union[None, CommunityHealthFile] = Field()
+    readme: Union[None, CommunityHealthFile] = Field()
+    issue_template: Union[None, CommunityHealthFile] = Field()
+    pull_request_template: Union[None, CommunityHealthFile] = Field()
+
+
+class CommunityHealthFile(GitHubModel):
+    """Community Health File"""
+
+    url: str = Field()
+    html_url: str = Field()
+
+
+class CommunityProfile(GitHubModel):
+    """Community Profile
+
+    Community Profile
     """
 
-    content: Union[FileCommitPropContent, None] = Field()
-    commit: FileCommitPropCommit = Field()
+    health_percentage: int = Field()
+    description: Union[str, None] = Field()
+    documentation: Union[str, None] = Field()
+    files: CommunityProfilePropFiles = Field()
+    updated_at: Union[datetime, None] = Field()
+    content_reports_enabled: Missing[bool] = Field(default=UNSET)
 
 
-class FileCommitPropContent(GitHubModel):
-    """FileCommitPropContent"""
-
-    name: Missing[str] = Field(default=UNSET)
-    path: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-    size: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    git_url: Missing[str] = Field(default=UNSET)
-    download_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    links: Missing[FileCommitPropContentPropLinks] = Field(
-        default=UNSET, alias="_links"
-    )
-
-
-class FileCommitPropContentPropLinks(GitHubModel):
-    """FileCommitPropContentPropLinks"""
-
-    self_: Missing[str] = Field(default=UNSET, alias="self")
-    git: Missing[str] = Field(default=UNSET)
-    html: Missing[str] = Field(default=UNSET)
-
-
-class FileCommitPropCommit(GitHubModel):
-    """FileCommitPropCommit"""
-
-    sha: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    author: Missing[FileCommitPropCommitPropAuthor] = Field(default=UNSET)
-    committer: Missing[FileCommitPropCommitPropCommitter] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    tree: Missing[FileCommitPropCommitPropTree] = Field(default=UNSET)
-    parents: Missing[list[FileCommitPropCommitPropParentsItems]] = Field(default=UNSET)
-    verification: Missing[FileCommitPropCommitPropVerification] = Field(default=UNSET)
-
-
-class FileCommitPropCommitPropAuthor(GitHubModel):
-    """FileCommitPropCommitPropAuthor"""
-
-    date: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-
-
-class FileCommitPropCommitPropCommitter(GitHubModel):
-    """FileCommitPropCommitPropCommitter"""
-
-    date: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-
-
-class FileCommitPropCommitPropTree(GitHubModel):
-    """FileCommitPropCommitPropTree"""
-
-    url: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-
-
-class FileCommitPropCommitPropParentsItems(GitHubModel):
-    """FileCommitPropCommitPropParentsItems"""
-
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-
-
-class FileCommitPropCommitPropVerification(GitHubModel):
-    """FileCommitPropCommitPropVerification"""
-
-    verified: Missing[bool] = Field(default=UNSET)
-    reason: Missing[str] = Field(default=UNSET)
-    signature: Missing[Union[str, None]] = Field(default=UNSET)
-    payload: Missing[Union[str, None]] = Field(default=UNSET)
-    verified_at: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(FileCommit)
-model_rebuild(FileCommitPropContent)
-model_rebuild(FileCommitPropContentPropLinks)
-model_rebuild(FileCommitPropCommit)
-model_rebuild(FileCommitPropCommitPropAuthor)
-model_rebuild(FileCommitPropCommitPropCommitter)
-model_rebuild(FileCommitPropCommitPropTree)
-model_rebuild(FileCommitPropCommitPropParentsItems)
-model_rebuild(FileCommitPropCommitPropVerification)
+model_rebuild(CommunityProfilePropFiles)
+model_rebuild(CommunityHealthFile)
+model_rebuild(CommunityProfile)
 
 __all__ = (
-    "FileCommit",
-    "FileCommitPropCommit",
-    "FileCommitPropCommitPropAuthor",
-    "FileCommitPropCommitPropCommitter",
-    "FileCommitPropCommitPropParentsItems",
-    "FileCommitPropCommitPropTree",
-    "FileCommitPropCommitPropVerification",
-    "FileCommitPropContent",
-    "FileCommitPropContentPropLinks",
+    "CommunityHealthFile",
+    "CommunityProfile",
+    "CommunityProfilePropFiles",
 )

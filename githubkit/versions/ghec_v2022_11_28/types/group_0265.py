@@ -9,55 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class PullRequestMinimalType(TypedDict):
-    """Pull Request Minimal"""
+class ProjectCardType(TypedDict):
+    """Project Card
 
-    id: int
-    number: int
+    Project cards represent a scope of work.
+    """
+
     url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
-
-
-class PullRequestMinimalPropHeadType(TypedDict):
-    """PullRequestMinimalPropHead"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoType
-
-
-class PullRequestMinimalPropHeadPropRepoType(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
-
     id: int
-    url: str
-    name: str
+    node_id: str
+    note: Union[str, None]
+    creator: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    archived: NotRequired[bool]
+    column_name: NotRequired[str]
+    project_id: NotRequired[str]
+    column_url: str
+    content_url: NotRequired[str]
+    project_url: str
 
 
-class PullRequestMinimalPropBaseType(TypedDict):
-    """PullRequestMinimalPropBase"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoType
-
-
-class PullRequestMinimalPropBasePropRepoType(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int
-    url: str
-    name: str
-
-
-__all__ = (
-    "PullRequestMinimalPropBasePropRepoType",
-    "PullRequestMinimalPropBaseType",
-    "PullRequestMinimalPropHeadPropRepoType",
-    "PullRequestMinimalPropHeadType",
-    "PullRequestMinimalType",
-)
+__all__ = ("ProjectCardType",)

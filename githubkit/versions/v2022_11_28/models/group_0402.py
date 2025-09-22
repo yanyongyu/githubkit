@@ -9,32 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositorySubscription(GitHubModel):
-    """Repository Invitation
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    subscribed: bool = Field(
-        description="Determines if notifications should be received from this repository."
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
     )
-    ignored: bool = Field(
-        description="Determines if all notifications should be blocked from this repository."
+    pattern_scope: Missing[str] = Field(
+        default=UNSET,
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
     )
-    reason: Union[str, None] = Field()
-    created_at: datetime = Field()
-    url: str = Field()
-    repository_url: str = Field()
 
 
-model_rebuild(RepositorySubscription)
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1)
 
-__all__ = ("RepositorySubscription",)
+__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1",)

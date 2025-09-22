@@ -13,37 +13,33 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0065 import CodeScanningAlertRuleSummaryType
+from .group_0066 import CodeScanningAnalysisToolType
+from .group_0067 import CodeScanningAlertInstanceType
 
-class CodeScanningDefaultSetupType(TypedDict):
-    """CodeScanningDefaultSetup
 
-    Configuration for code scanning default setup.
-    """
+class CodeScanningAlertItemsType(TypedDict):
+    """CodeScanningAlertItems"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
+    number: int
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
     ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    updated_at: NotRequired[Union[datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
 
 
-__all__ = ("CodeScanningDefaultSetupType",)
+__all__ = ("CodeScanningAlertItemsType",)
