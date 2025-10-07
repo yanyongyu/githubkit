@@ -141,6 +141,7 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/dee4dc2b
 "/components/schemas/webhook-workflow-run-requested/properties/workflow_run/properties/pull_requests/items/properties/id" = {type = "integer"}
 "/components/schemas/webhook-workflow-run-requested/properties/workflow_run/properties/pull_requests/items/properties/number" = {type = "integer"}
 "/webhooks/repository-dispatch-sample.collected/post" = {operationId = "repository-dispatch"}
+"/components/schemas/webhooks_answer/properties/parent_id" = {type = ["integer", "null"]}
 "/components/schemas/dependabot-alert-with-repository/properties/dependency/properties/relationship/enum" = {"<add>" = ["inconclusive"]}
 "/components/schemas/code-scanning-alert-classification/enum" = {"<add>" = ["documentation"]}
 

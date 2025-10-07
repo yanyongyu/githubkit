@@ -34,7 +34,7 @@ class WebhooksAnswerType(TypedDict):
     html_url: str
     id: int
     node_id: str
-    parent_id: None
+    parent_id: Union[int, None]
     reactions: NotRequired[WebhooksAnswerPropReactionsType]
     repository_url: str
     updated_at: datetime
