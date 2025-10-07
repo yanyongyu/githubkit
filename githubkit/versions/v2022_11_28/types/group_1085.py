@@ -9,29 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
     total_count: int
-    secrets: list[DependabotSecretType]
+    devcontainers: list[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType
+    ]
 
 
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
 
-    Set secrets for Dependabot.
-    """
-
-    name: str
-    created_at: datetime
-    updated_at: datetime
+    path: str
+    name: NotRequired[str]
+    display_name: NotRequired[str]
 
 
 __all__ = (
-    "DependabotSecretType",
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
 )

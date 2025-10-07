@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,17 +18,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
-    """UserCodespacesCodespaceNamePublishPostBody"""
+class TeamsTeamIdMembershipsUsernamePutBody(GitHubModel):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="A name for the new repository."
-    )
-    private: Missing[bool] = Field(
-        default=UNSET, description="Whether the new repository should be private."
+    role: Missing[Literal["member", "maintainer"]] = Field(
+        default=UNSET, description="The role that this user should have in the team."
     )
 
 
-model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
+model_rebuild(TeamsTeamIdMembershipsUsernamePutBody)
 
-__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)
+__all__ = ("TeamsTeamIdMembershipsUsernamePutBody",)

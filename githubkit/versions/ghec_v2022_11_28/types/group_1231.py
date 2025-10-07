@@ -9,32 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0203 import CodespaceMachineType
 
 
-class ReposOwnerRepoDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoDeploymentsPostBody"""
+class ReposOwnerRepoCodespacesMachinesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
 
-    ref: str
-    task: NotRequired[str]
-    auto_merge: NotRequired[bool]
-    required_contexts: NotRequired[list[str]]
-    payload: NotRequired[
-        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
-    ]
-    environment: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
+    total_count: int
+    machines: list[CodespaceMachineType]
 
 
-ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type: TypeAlias = dict[str, Any]
-"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
-"""
-
-
-__all__ = (
-    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type",
-    "ReposOwnerRepoDeploymentsPostBodyType",
-)
+__all__ = ("ReposOwnerRepoCodespacesMachinesGetResponse200Type",)

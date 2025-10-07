@@ -9,27 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0048 import IssueType
+from .group_0135 import PullRequestSimpleType
+from .group_0138 import ProjectsV2DraftIssueType
 
-class CustomPropertyType(TypedDict):
-    """Organization Custom Property
 
-    Custom property defined on an organization
+class ProjectsV2ItemSimpleType(TypedDict):
+    """Projects v2 Item
+
+    An item belonging to a project
     """
 
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    id: float
+    node_id: NotRequired[str]
+    content: NotRequired[
+        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
     ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    archived_at: Union[datetime, None]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
 
 
-__all__ = ("CustomPropertyType",)
+__all__ = ("ProjectsV2ItemSimpleType",)

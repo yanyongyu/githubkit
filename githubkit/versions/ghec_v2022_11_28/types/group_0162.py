@@ -9,35 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetAllCostCentersType(TypedDict):
-    """GetAllCostCenters"""
+class AdvancedSecurityActiveCommittersType(TypedDict):
+    """AdvancedSecurityActiveCommitters"""
 
-    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
+    total_advanced_security_committers: NotRequired[int]
+    total_count: NotRequired[int]
+    maximum_advanced_security_committers: NotRequired[int]
+    purchased_advanced_security_committers: NotRequired[int]
+    repositories: list[AdvancedSecurityActiveCommittersRepositoryType]
 
 
-class GetAllCostCentersPropCostCentersItemsType(TypedDict):
-    """GetAllCostCentersPropCostCentersItems"""
+class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
+    """AdvancedSecurityActiveCommittersRepository"""
 
-    id: str
     name: str
-    state: NotRequired[Literal["active", "deleted"]]
-    azure_subscription: NotRequired[Union[str, None]]
-    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
+    advanced_security_committers: int
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUserType
+    ]
 
 
-class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
-    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+class AdvancedSecurityActiveCommittersUserType(TypedDict):
+    """AdvancedSecurityActiveCommittersUser"""
 
-    type: str
-    name: str
+    user_login: str
+    last_pushed_date: str
+    last_pushed_email: str
 
 
 __all__ = (
-    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
-    "GetAllCostCentersPropCostCentersItemsType",
-    "GetAllCostCentersType",
+    "AdvancedSecurityActiveCommittersRepositoryType",
+    "AdvancedSecurityActiveCommittersType",
+    "AdvancedSecurityActiveCommittersUserType",
 )

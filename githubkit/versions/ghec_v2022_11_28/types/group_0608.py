@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0520 import DiscussionType
+from .group_0353 import DependabotAlertType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
 
 
-class WebhookDiscussionClosedType(TypedDict):
-    """discussion closed event"""
+class WebhookDependabotAlertReintroducedType(TypedDict):
+    """Dependabot alert reintroduced event"""
 
-    action: Literal["closed"]
-    discussion: DiscussionType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["reintroduced"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDiscussionClosedType",)
+__all__ = ("WebhookDependabotAlertReintroducedType",)

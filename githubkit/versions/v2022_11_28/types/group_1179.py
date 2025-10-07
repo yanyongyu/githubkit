@@ -12,13 +12,11 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesGenerateNotesPostBodyType(TypedDict):
-    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse405Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    previous_tag_name: NotRequired[str]
-    configuration_file_path: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoReleasesGenerateNotesPostBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse405Type",)

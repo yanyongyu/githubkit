@@ -13,25 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0488 import WebhooksSponsorshipType
-from .group_0489 import WebhooksChanges8Type
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0815 import WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
 
 
-class WebhookSponsorshipTierChangedType(TypedDict):
-    """sponsorship tier_changed event"""
+class WebhookSecurityAdvisoryWithdrawnType(TypedDict):
+    """security_advisory withdrawn event"""
 
-    action: Literal["tier_changed"]
-    changes: WebhooksChanges8Type
+    action: Literal["withdrawn"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookSponsorshipTierChangedType",)
+__all__ = ("WebhookSecurityAdvisoryWithdrawnType",)

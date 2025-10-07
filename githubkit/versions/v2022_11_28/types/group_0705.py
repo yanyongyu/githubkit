@@ -13,23 +13,40 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0474 import WebhooksProjectType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0477 import WebhooksProjectCardType
 
 
-class WebhookProjectDeletedType(TypedDict):
-    """project deleted event"""
+class WebhookProjectCardEditedType(TypedDict):
+    """project_card edited event"""
 
-    action: Literal["deleted"]
+    action: Literal["edited"]
+    changes: WebhookProjectCardEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
-    sender: NotRequired[SimpleUserType]
+    project_card: WebhooksProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookProjectDeletedType",)
+class WebhookProjectCardEditedPropChangesType(TypedDict):
+    """WebhookProjectCardEditedPropChanges"""
+
+    note: WebhookProjectCardEditedPropChangesPropNoteType
+
+
+class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None]
+
+
+__all__ = (
+    "WebhookProjectCardEditedPropChangesPropNoteType",
+    "WebhookProjectCardEditedPropChangesType",
+    "WebhookProjectCardEditedType",
+)

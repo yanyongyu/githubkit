@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,40 +17,195 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
-
-    total_count: int = Field()
-    secrets: list[CodespacesOrgSecret] = Field()
+from .group_0029 import CodeScanningOptions
+from .group_0030 import CodeScanningDefaultSetupOptions
 
 
-class CodespacesOrgSecret(GitHubModel):
-    """Codespaces Secret
+class OrgsOrgCodeSecurityConfigurationsPostBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsPostBody"""
 
-    Secrets for a GitHub Codespace.
+    name: str = Field(
+        description="The name of the code security configuration. Must be unique within the organization."
+    )
+    description: str = Field(
+        max_length=255, description="A description of the code security configuration"
+    )
+    advanced_security: Missing[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features.\n\n> [!WARNING]\n> `code_security` and `secret_protection` are deprecated values for this field. Prefer the individual `code_security` and `secret_protection` fields to set the status of these features.\n",
+    )
+    code_security: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET,
+        description="The enablement status of GitHub Code Security features.",
+    )
+    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependency Graph"
+    )
+    dependency_graph_autosubmit_action: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of Automatic dependency submission",
+    )
+    dependency_graph_autosubmit_action_options: Missing[
+        OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
+    ] = Field(
+        default=UNSET, description="Feature options for Automatic dependency submission"
+    )
+    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependabot alerts"
+    )
+    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of Dependabot security updates",
+        )
+    )
+    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
+        default=UNSET,
+        description="Security Configuration feature options for code scanning",
+    )
+    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of code scanning default setup",
+        )
+    )
+    code_scanning_default_setup_options: Missing[
+        Union[CodeScanningDefaultSetupOptions, None]
+    ] = Field(
+        default=UNSET, description="Feature options for code scanning default setup"
+    )
+    code_scanning_delegated_alert_dismissal: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of code scanning delegated alert dismissal",
+    )
+    secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET,
+        description="The enablement status of GitHub Secret Protection features.",
+    )
+    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of secret scanning"
+    )
+    secret_scanning_push_protection: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning push protection",
+    )
+    secret_scanning_delegated_bypass: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning delegated bypass",
+    )
+    secret_scanning_delegated_bypass_options: Missing[
+        OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions
+    ] = Field(
+        default=UNSET,
+        description="Feature options for secret scanning delegated bypass",
+    )
+    secret_scanning_validity_checks: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning validity checks",
+    )
+    secret_scanning_non_provider_patterns: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning non provider patterns",
+    )
+    secret_scanning_generic_secrets: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET, description="The enablement status of Copilot secret scanning"
+    )
+    secret_scanning_delegated_alert_dismissal: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning delegated alert dismissal",
+    )
+    private_vulnerability_reporting: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of private vulnerability reporting",
+    )
+    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
+        default=UNSET, description="The enforcement status for a security configuration"
+    )
+
+
+class OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions(
+    GitHubModel
+):
+    """OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOpti
+    ons
+
+    Feature options for Automatic dependency submission
     """
 
-    name: str = Field(description="The name of the secret")
-    created_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    updated_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
-    )
-    selected_repositories_url: Missing[str] = Field(
+    labeled_runners: Missing[bool] = Field(
         default=UNSET,
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
+        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
     )
 
 
-model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesOrgSecret)
+class OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions(
+    GitHubModel
+):
+    """OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOption
+    s
+
+    Feature options for secret scanning delegated bypass
+    """
+
+    reviewers: Missing[
+        list[
+            OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The bypass reviewers for secret scanning delegated bypass",
+    )
+
+
+class OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
+    GitHubModel
+):
+    """OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOption
+    sPropReviewersItems
+    """
+
+    reviewer_id: int = Field(
+        description="The ID of the team or role selected as a bypass reviewer"
+    )
+    reviewer_type: Literal["TEAM", "ROLE"] = Field(
+        description="The type of the bypass reviewer"
+    )
+
+
+model_rebuild(OrgsOrgCodeSecurityConfigurationsPostBody)
+model_rebuild(
+    OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
+)
+model_rebuild(
+    OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions
+)
+model_rebuild(
+    OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+)
 
 __all__ = (
-    "CodespacesOrgSecret",
-    "OrgsOrgCodespacesSecretsGetResponse200",
+    "OrgsOrgCodeSecurityConfigurationsPostBody",
+    "OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
+    "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions",
+    "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
 )

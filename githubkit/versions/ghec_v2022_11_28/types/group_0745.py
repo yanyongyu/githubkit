@@ -13,23 +13,22 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0536 import WebhooksMembershipType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0540 import MergeGroupType
 
 
-class WebhookOrganizationMemberRemovedType(TypedDict):
-    """organization member_removed event"""
+class WebhookMergeGroupDestroyedType(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["member_removed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
     installation: NotRequired[SimpleInstallationType]
-    membership: WebhooksMembershipType
-    organization: OrganizationSimpleWebhooksType
+    merge_group: MergeGroupType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookOrganizationMemberRemovedType",)
+__all__ = ("WebhookMergeGroupDestroyedType",)

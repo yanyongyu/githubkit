@@ -9,25 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class CustomPropertyValue(GitHubModel):
-    """Custom Property Value
-
-    Custom property name and associated value
-    """
-
-    property_name: str = Field(description="The name of the property")
-    value: Union[str, list[str], None] = Field(
-        description="The value assigned to the property"
-    )
+from .group_0245 import Link
 
 
-model_rebuild(CustomPropertyValue)
+class PullRequestSimplePropLinks(GitHubModel):
+    """PullRequestSimplePropLinks"""
 
-__all__ = ("CustomPropertyValue",)
+    comments: Link = Field(title="Link", description="Hypermedia Link")
+    commits: Link = Field(title="Link", description="Hypermedia Link")
+    statuses: Link = Field(title="Link", description="Hypermedia Link")
+    html: Link = Field(title="Link", description="Hypermedia Link")
+    issue: Link = Field(title="Link", description="Hypermedia Link")
+    review_comments: Link = Field(title="Link", description="Hypermedia Link")
+    review_comment: Link = Field(title="Link", description="Hypermedia Link")
+    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
+
+
+model_rebuild(PullRequestSimplePropLinks)
+
+__all__ = ("PullRequestSimplePropLinks",)

@@ -10,24 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class SshSigningKey(GitHubModel):
-    """SSH Signing Key
+class Key(GitHubModel):
+    """Key
 
-    A public SSH key used to sign Git commits
+    Key
     """
 
     key: str = Field()
     id: int = Field()
+    url: str = Field()
     title: str = Field()
     created_at: datetime = Field()
+    verified: bool = Field()
+    read_only: bool = Field()
+    last_used: Missing[Union[datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(SshSigningKey)
+model_rebuild(Key)
 
-__all__ = ("SshSigningKey",)
+__all__ = ("Key",)

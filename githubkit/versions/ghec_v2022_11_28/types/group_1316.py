@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    reviewers: list[str]
-    team_reviewers: NotRequired[list[str]]
+    enabled: bool
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType",)
+__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",)

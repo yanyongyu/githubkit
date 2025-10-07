@@ -9,29 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0457 import WebhooksLabelType
-from .group_0627 import WebhookIssuesLabeledPropIssueType
+
+class WebhookIssuesClosedPropIssueAllof0PropPullRequestType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[datetime, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
 
 
-class WebhookIssuesLabeledType(TypedDict):
-    """issues labeled event"""
-
-    action: Literal["labeled"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesLabeledPropIssueType
-    label: NotRequired[WebhooksLabelType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-__all__ = ("WebhookIssuesLabeledType",)
+__all__ = ("WebhookIssuesClosedPropIssueAllof0PropPullRequestType",)

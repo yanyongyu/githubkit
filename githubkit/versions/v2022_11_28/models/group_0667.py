@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0442 import EnterpriseWebhooks
-from .group_0443 import SimpleInstallation
-from .group_0444 import OrganizationSimpleWebhooks
-from .group_0445 import RepositoryWebhooks
-from .group_0463 import WebhooksMilestone
+from .group_0446 import EnterpriseWebhooks
+from .group_0447 import SimpleInstallation
+from .group_0448 import OrganizationSimpleWebhooks
+from .group_0449 import RepositoryWebhooks
+from .group_0457 import WebhooksUser
 
 
-class WebhookMilestoneDeleted(GitHubModel):
-    """milestone deleted event"""
+class WebhookMemberAdded(GitHubModel):
+    """member added event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["added"] = Field()
+    changes: Missing[WebhookMemberAddedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,10 +40,7 @@ class WebhookMilestoneDeleted(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    milestone: WebhooksMilestone = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
-    )
+    member: Union[WebhooksUser, None] = Field(title="User")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -55,6 +53,50 @@ class WebhookMilestoneDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookMilestoneDeleted)
+class WebhookMemberAddedPropChanges(GitHubModel):
+    """WebhookMemberAddedPropChanges"""
 
-__all__ = ("WebhookMilestoneDeleted",)
+    permission: Missing[WebhookMemberAddedPropChangesPropPermission] = Field(
+        default=UNSET,
+        description="This field is included for legacy purposes; use the `role_name` field instead. The `maintain`\nrole is mapped to `write` and the `triage` role is mapped to `read`. To determine the role\nassigned to the collaborator, use the `role_name` field instead, which will provide the full\nrole name, including custom roles.",
+    )
+    role_name: Missing[WebhookMemberAddedPropChangesPropRoleName] = Field(
+        default=UNSET, description="The role assigned to the collaborator."
+    )
+
+
+class WebhookMemberAddedPropChangesPropPermission(GitHubModel):
+    """WebhookMemberAddedPropChangesPropPermission
+
+    This field is included for legacy purposes; use the `role_name` field instead.
+    The `maintain`
+    role is mapped to `write` and the `triage` role is mapped to `read`. To
+    determine the role
+    assigned to the collaborator, use the `role_name` field instead, which will
+    provide the full
+    role name, including custom roles.
+    """
+
+    to: Literal["write", "admin", "read"] = Field()
+
+
+class WebhookMemberAddedPropChangesPropRoleName(GitHubModel):
+    """WebhookMemberAddedPropChangesPropRoleName
+
+    The role assigned to the collaborator.
+    """
+
+    to: str = Field()
+
+
+model_rebuild(WebhookMemberAdded)
+model_rebuild(WebhookMemberAddedPropChanges)
+model_rebuild(WebhookMemberAddedPropChangesPropPermission)
+model_rebuild(WebhookMemberAddedPropChangesPropRoleName)
+
+__all__ = (
+    "WebhookMemberAdded",
+    "WebhookMemberAddedPropChanges",
+    "WebhookMemberAddedPropChangesPropPermission",
+    "WebhookMemberAddedPropChangesPropRoleName",
+)

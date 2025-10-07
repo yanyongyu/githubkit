@@ -13,23 +13,26 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0520 import DiscussionType
+from .group_0290 import DeploymentType
+from .group_0417 import PullRequestType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
 
 
-class WebhookDiscussionDeletedType(TypedDict):
-    """discussion deleted event"""
+class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
+    """deployment protection rule requested event"""
 
-    action: Literal["deleted"]
-    discussion: DiscussionType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[DeploymentType]
+    pull_requests: NotRequired[list[PullRequestType]]
+    repository: NotRequired[RepositoryWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    installation: NotRequired[SimpleInstallationType]
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookDiscussionDeletedType",)
+__all__ = ("WebhookDeploymentProtectionRuleRequestedType",)

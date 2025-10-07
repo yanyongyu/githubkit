@@ -13,24 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0249 import CustomPropertyValueType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0590 import WebhookCodeScanningAlertFixedPropAlertType
 
 
-class WebhookCustomPropertyValuesUpdatedType(TypedDict):
-    """Custom property values updated event"""
+class WebhookCodeScanningAlertFixedType(TypedDict):
+    """code_scanning_alert fixed event"""
 
-    action: Literal["updated"]
+    action: Literal["fixed"]
+    alert: WebhookCodeScanningAlertFixedPropAlertType
+    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    ref: str
     repository: RepositoryWebhooksType
-    organization: OrganizationSimpleWebhooksType
-    sender: NotRequired[SimpleUserType]
-    new_property_values: list[CustomPropertyValueType]
-    old_property_values: list[CustomPropertyValueType]
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookCustomPropertyValuesUpdatedType",)
+__all__ = ("WebhookCodeScanningAlertFixedType",)

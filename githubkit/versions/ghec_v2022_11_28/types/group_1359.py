@@ -11,14 +11,11 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0189 import MinimalRepositoryType
+
+class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType(TypedDict):
+    """TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody"""
+
+    body: str
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
-
-
-__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",)
+__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType",)

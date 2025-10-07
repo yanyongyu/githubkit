@@ -9,20 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0141 import (
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
-)
+
+class RepositoryRuleCodeScanningPropParametersType(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
+
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetType(TypedDict):
-    """Repository ruleset conditions for repository IDs
+class RepositoryRuleParamsCodeScanningToolType(TypedDict):
+    """CodeScanningTool
 
-    Parameters for a repository ID condition
+    A tool that must provide code scanning results for this rule to pass.
     """
 
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ]
+    tool: str
 
 
-__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetType",)
+__all__ = (
+    "RepositoryRuleCodeScanningPropParametersType",
+    "RepositoryRuleParamsCodeScanningToolType",
+)

@@ -10,66 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
+from .group_0349 import TimelineCrossReferencedEventPropSourceType
 
 
-class TimelineReviewedEventType(TypedDict):
-    """Timeline Reviewed Event
+class TimelineCrossReferencedEventType(TypedDict):
+    """Timeline Cross Referenced Event
 
-    Timeline Reviewed Event
+    Timeline Cross Referenced Event
     """
 
-    event: Literal["reviewed"]
-    id: int
-    node_id: str
-    user: SimpleUserType
-    body: Union[str, None]
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: TimelineReviewedEventPropLinksType
-    submitted_at: NotRequired[datetime]
-    updated_at: NotRequired[Union[datetime, None]]
-    commit_id: str
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    source: TimelineCrossReferencedEventPropSourceType
 
 
-class TimelineReviewedEventPropLinksType(TypedDict):
-    """TimelineReviewedEventPropLinks"""
-
-    html: TimelineReviewedEventPropLinksPropHtmlType
-    pull_request: TimelineReviewedEventPropLinksPropPullRequestType
-
-
-class TimelineReviewedEventPropLinksPropHtmlType(TypedDict):
-    """TimelineReviewedEventPropLinksPropHtml"""
-
-    href: str
-
-
-class TimelineReviewedEventPropLinksPropPullRequestType(TypedDict):
-    """TimelineReviewedEventPropLinksPropPullRequest"""
-
-    href: str
-
-
-__all__ = (
-    "TimelineReviewedEventPropLinksPropHtmlType",
-    "TimelineReviewedEventPropLinksPropPullRequestType",
-    "TimelineReviewedEventPropLinksType",
-    "TimelineReviewedEventType",
-)
+__all__ = ("TimelineCrossReferencedEventType",)

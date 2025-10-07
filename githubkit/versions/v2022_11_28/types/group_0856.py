@@ -9,12 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
-
-EmojisGetResponse200Type: TypeAlias = dict[str, Any]
-"""EmojisGetResponse200
-"""
+from typing import Union
+from typing_extensions import TypedDict
 
 
-__all__ = ("EmojisGetResponse200Type",)
+class AppManifestsCodeConversionsPostResponse201Allof1Type(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
+
+    client_id: str
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
+
+
+__all__ = ("AppManifestsCodeConversionsPostResponse201Allof1Type",)

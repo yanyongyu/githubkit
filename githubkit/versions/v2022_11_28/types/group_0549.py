@@ -13,19 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0455 import DiscussionType
-from .group_0550 import WebhookDiscussionTransferredPropChangesType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0459 import DiscussionType
+from .group_0460 import WebhooksCommentType
 
 
-class WebhookDiscussionTransferredType(TypedDict):
-    """discussion transferred event"""
+class WebhookDiscussionCommentCreatedType(TypedDict):
+    """discussion_comment created event"""
 
-    action: Literal["transferred"]
-    changes: WebhookDiscussionTransferredPropChangesType
+    action: Literal["created"]
+    comment: WebhooksCommentType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -34,4 +34,4 @@ class WebhookDiscussionTransferredType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDiscussionTransferredType",)
+__all__ = ("WebhookDiscussionCommentCreatedType",)

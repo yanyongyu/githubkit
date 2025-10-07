@@ -12,56 +12,26 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0518 import WebhooksUserType
-from .group_0533 import WebhooksTeamType
+from .group_0003 import SimpleUserType
+from .group_0171 import IssueTypeType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0533 import WebhooksIssueType
 
 
-class WebhookMembershipAddedType(TypedDict):
-    """membership added event"""
+class WebhookIssuesUntypedType(TypedDict):
+    """issues untyped event"""
 
-    action: Literal["added"]
+    action: Literal["untyped"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    scope: Literal["team"]
-    sender: Union[WebhookMembershipAddedPropSenderType, None]
-    team: WebhooksTeamType
+    issue: WebhooksIssueType
+    type: Union[IssueTypeType, None]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookMembershipAddedPropSenderType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-__all__ = (
-    "WebhookMembershipAddedPropSenderType",
-    "WebhookMembershipAddedType",
-)
+__all__ = ("WebhookIssuesUntypedType",)

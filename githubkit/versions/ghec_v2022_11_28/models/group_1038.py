@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,32 +16,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class OrgsOrgActionsRunnerGroupsGetResponse200(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
-    total_count: int = Field()
-    secrets: list[OrganizationActionsSecret] = Field()
+    total_count: float = Field()
+    runner_groups: list[RunnerGroupsOrg] = Field()
 
 
-class OrganizationActionsSecret(GitHubModel):
-    """Actions Secret for an Organization
+class RunnerGroupsOrg(GitHubModel):
+    """RunnerGroupsOrg"""
 
-    Secrets for GitHub Actions for an organization.
-    """
-
-    name: str = Field(description="The name of the secret.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
+    id: float = Field()
+    name: str = Field()
+    visibility: str = Field()
+    default: bool = Field()
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="Link to the selected repositories resource for this runner group. Not present unless visibility was set to `selected`",
     )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    runners_url: str = Field()
+    hosted_runners_url: Missing[str] = Field(default=UNSET)
+    network_configuration_id: Missing[str] = Field(
+        default=UNSET,
+        description="The identifier of a hosted compute network configuration.",
+    )
+    inherited: bool = Field()
+    inherited_allows_public_repositories: Missing[bool] = Field(default=UNSET)
+    allows_public_repositories: bool = Field()
+    workflow_restrictions_read_only: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
+    )
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    )
 
 
-model_rebuild(OrgsOrgActionsSecretsGetResponse200)
-model_rebuild(OrganizationActionsSecret)
+model_rebuild(OrgsOrgActionsRunnerGroupsGetResponse200)
+model_rebuild(RunnerGroupsOrg)
 
 __all__ = (
-    "OrganizationActionsSecret",
-    "OrgsOrgActionsSecretsGetResponse200",
+    "OrgsOrgActionsRunnerGroupsGetResponse200",
+    "RunnerGroupsOrg",
 )

@@ -12,17 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0222 import Artifact
-
-
-class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
-
-    total_count: int = Field()
-    artifacts: list[Artifact] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoActionsArtifactsGetResponse200)
+class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403(GitHubModel):
+    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403"""
 
-__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200",)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403)
+
+__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403",)

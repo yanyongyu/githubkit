@@ -9,21 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsWorkflowAccessToRepository(GitHubModel):
-    """ActionsWorkflowAccessToRepository"""
+class OidcCustomSubRepo(GitHubModel):
+    """Actions OIDC subject customization for a repository
 
-    access_level: Literal["none", "user", "organization", "enterprise"] = Field(
-        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization. `enterprise` level access allows sharing across the enterprise."
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool = Field(
+        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
+    )
+    include_claim_keys: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
     )
 
 
-model_rebuild(ActionsWorkflowAccessToRepository)
+model_rebuild(OidcCustomSubRepo)
 
-__all__ = ("ActionsWorkflowAccessToRepository",)
+__all__ = ("OidcCustomSubRepo",)

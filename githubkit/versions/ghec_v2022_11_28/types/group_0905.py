@@ -9,65 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType
+from .group_0020 import RepositoryType
+from .group_0175 import IssueType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
 
 
-class WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type(TypedDict):
-    """Workflow Job
+class WebhookSubIssuesParentIssueRemovedType(TypedDict):
+    """parent issue removed event"""
 
-    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
-    and `started_at` are the same as those in a [`check_run`](#check_run) object.
-    """
-
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "skipped",
-            "cancelled",
-            "action_required",
-            "neutral",
-            "timed_out",
-        ],
-    ]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType]
-    url: str
+    action: Literal["parent_issue_removed"]
+    parent_issue_id: float
+    parent_issue: IssueType
+    parent_issue_repo: RepositoryType
+    sub_issue_id: float
+    sub_issue: IssueType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType(TypedDict):
-    """Workflow Step"""
-
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
-    name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "queued"]
-
-
-__all__ = (
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType",
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type",
-)
+__all__ = ("WebhookSubIssuesParentIssueRemovedType",)

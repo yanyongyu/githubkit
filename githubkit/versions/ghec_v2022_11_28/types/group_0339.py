@@ -10,48 +10,57 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0019 import LicenseSimpleType
-from .group_0251 import CodeOfConductSimpleType
+from .group_0003 import SimpleUserType
+from .group_0172 import ReactionRollupType
 
 
-class CommunityProfilePropFilesType(TypedDict):
-    """CommunityProfilePropFiles"""
+class CommitCommentType(TypedDict):
+    """Commit Comment
 
-    code_of_conduct: Union[None, CodeOfConductSimpleType]
-    code_of_conduct_file: Union[None, CommunityHealthFileType]
-    license_: Union[None, LicenseSimpleType]
-    contributing: Union[None, CommunityHealthFileType]
-    readme: Union[None, CommunityHealthFileType]
-    issue_template: Union[None, CommunityHealthFileType]
-    pull_request_template: Union[None, CommunityHealthFileType]
-
-
-class CommunityHealthFileType(TypedDict):
-    """Community Health File"""
-
-    url: str
-    html_url: str
-
-
-class CommunityProfileType(TypedDict):
-    """Community Profile
-
-    Community Profile
+    Commit Comment
     """
 
-    health_percentage: int
-    description: Union[str, None]
-    documentation: Union[str, None]
-    files: CommunityProfilePropFilesType
-    updated_at: Union[datetime, None]
-    content_reports_enabled: NotRequired[bool]
+    html_url: str
+    url: str
+    id: int
+    node_id: str
+    body: str
+    path: Union[str, None]
+    position: Union[int, None]
+    line: Union[int, None]
+    commit_id: str
+    user: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    reactions: NotRequired[ReactionRollupType]
+
+
+class TimelineCommitCommentedEventType(TypedDict):
+    """Timeline Commit Commented Event
+
+    Timeline Commit Commented Event
+    """
+
+    event: NotRequired[Literal["commit_commented"]]
+    node_id: NotRequired[str]
+    commit_id: NotRequired[str]
+    comments: NotRequired[list[CommitCommentType]]
 
 
 __all__ = (
-    "CommunityHealthFileType",
-    "CommunityProfilePropFilesType",
-    "CommunityProfileType",
+    "CommitCommentType",
+    "TimelineCommitCommentedEventType",
 )

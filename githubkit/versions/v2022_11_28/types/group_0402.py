@@ -9,14 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0039 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationWikiCommitType,
+)
+from .group_0040 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestTitleType,
+)
+from .group_0041 import (
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationPullRequestCommentType,
+)
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+class SecretScanningLocationType(TypedDict):
+    """SecretScanningLocation"""
+
+    type: NotRequired[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
+    ]
+    details: NotRequired[
+        Union[
+            SecretScanningLocationCommitType,
+            SecretScanningLocationWikiCommitType,
+            SecretScanningLocationIssueTitleType,
+            SecretScanningLocationIssueBodyType,
+            SecretScanningLocationIssueCommentType,
+            SecretScanningLocationDiscussionTitleType,
+            SecretScanningLocationDiscussionBodyType,
+            SecretScanningLocationDiscussionCommentType,
+            SecretScanningLocationPullRequestTitleType,
+            SecretScanningLocationPullRequestBodyType,
+            SecretScanningLocationPullRequestCommentType,
+            SecretScanningLocationPullRequestReviewType,
+            SecretScanningLocationPullRequestReviewCommentType,
+        ]
+    ]
 
 
-__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",)
+__all__ = ("SecretScanningLocationType",)

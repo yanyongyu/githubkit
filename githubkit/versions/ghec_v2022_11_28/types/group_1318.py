@@ -11,11 +11,13 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
-
-    body: str
+from .group_0252 import CustomPropertyValueType
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType",)
+class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
+
+    properties: list[CustomPropertyValueType]
+
+
+__all__ = ("ReposOwnerRepoPropertiesValuesPatchBodyType",)

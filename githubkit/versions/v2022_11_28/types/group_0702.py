@@ -13,40 +13,40 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0475 import WebhooksProjectColumnType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0477 import WebhooksProjectCardType
 
 
-class WebhookProjectColumnEditedType(TypedDict):
-    """project_column edited event"""
+class WebhookProjectCardConvertedType(TypedDict):
+    """project_card converted event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectColumnEditedPropChangesType
+    action: Literal["converted"]
+    changes: WebhookProjectCardConvertedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
+    project_card: WebhooksProjectCardType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookProjectColumnEditedPropChangesType(TypedDict):
-    """WebhookProjectColumnEditedPropChanges"""
+class WebhookProjectCardConvertedPropChangesType(TypedDict):
+    """WebhookProjectCardConvertedPropChanges"""
 
-    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
+    note: WebhookProjectCardConvertedPropChangesPropNoteType
 
 
-class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectColumnEditedPropChangesPropName"""
+class WebhookProjectCardConvertedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
 
     from_: str
 
 
 __all__ = (
-    "WebhookProjectColumnEditedPropChangesPropNameType",
-    "WebhookProjectColumnEditedPropChangesType",
-    "WebhookProjectColumnEditedType",
+    "WebhookProjectCardConvertedPropChangesPropNoteType",
+    "WebhookProjectCardConvertedPropChangesType",
+    "WebhookProjectCardConvertedType",
 )

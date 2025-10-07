@@ -9,25 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PullRequestPropLabelsItems(GitHubModel):
-    """PullRequestPropLabelsItems"""
+class PagesDeploymentStatus(GitHubModel):
+    """GitHub Pages deployment status"""
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    description: Union[str, None] = Field()
-    color: str = Field()
-    default: bool = Field()
+    status: Missing[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+        ]
+    ] = Field(default=UNSET, description="The current status of the deployment.")
 
 
-model_rebuild(PullRequestPropLabelsItems)
+model_rebuild(PagesDeploymentStatus)
 
-__all__ = ("PullRequestPropLabelsItems",)
+__all__ = ("PagesDeploymentStatus",)

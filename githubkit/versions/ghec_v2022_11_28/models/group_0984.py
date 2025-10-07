@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,69 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody(GitHubModel):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
-
-    pattern_config_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
-    )
-    provider_pattern_settings: Missing[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
-        ]
-    ] = Field(default=UNSET, description="Pattern settings for provider patterns.")
-    custom_pattern_settings: Missing[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
-        ]
-    ] = Field(default=UNSET, description="Pattern settings for custom patterns.")
-
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems(
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
-    ternSettingsItems
-    """
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
 
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The ID of the pattern to configure."
-    )
-    push_protection_setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
-        default=UNSET, description="Push protection setting to set for the pattern."
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
-    rnSettingsItems
-    """
-
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The ID of the pattern to configure."
-    )
-    custom_pattern_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
-    )
-    push_protection_setting: Missing[Literal["disabled", "enabled"]] = Field(
-        default=UNSET, description="Push protection setting to set for the pattern."
-    )
-
-
-model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody)
 model_rebuild(
-    EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
-)
-model_rebuild(
-    EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+    EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202",
 )

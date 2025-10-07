@@ -9,31 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing_extensions import TypedDict
+
+from .group_0020 import RepositoryType
 
 
-class BillingUsageReportUserType(TypedDict):
-    """BillingUsageReportUser"""
+class StarredRepositoryType(TypedDict):
+    """Starred Repository
 
-    usage_items: NotRequired[list[BillingUsageReportUserPropUsageItemsItemsType]]
+    Starred Repository
+    """
 
-
-class BillingUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportUserPropUsageItemsItems"""
-
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    repository_name: NotRequired[str]
+    starred_at: datetime
+    repo: RepositoryType
 
 
-__all__ = (
-    "BillingUsageReportUserPropUsageItemsItemsType",
-    "BillingUsageReportUserType",
-)
+__all__ = ("StarredRepositoryType",)

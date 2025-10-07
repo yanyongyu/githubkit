@@ -9,14 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0064 import MinimalRepositoryType
 
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",)
+__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type",)

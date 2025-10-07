@@ -11,14 +11,12 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0087 import NetworkConfigurationType
+
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
+
+    key_id: str
+    key: str
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
-
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
-
-
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",)
+__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",)

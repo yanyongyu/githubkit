@@ -9,71 +9,133 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType
-from .group_0279 import PullRequestMinimalType
-from .group_0306 import DeploymentSimpleType
+from .group_0298 import BranchRestrictionPolicyType
+from .group_0308 import ProtectedBranchPropRequiredPullRequestReviewsType
 
 
-class CheckRunType(TypedDict):
-    """CheckRun
+class ProtectedBranchType(TypedDict):
+    """Protected Branch
 
-    A check performed on the code of a given code change
+    Branch protections protect branches
     """
 
-    id: int
-    head_sha: str
-    node_id: str
-    external_id: Union[str, None]
     url: str
-    html_url: Union[str, None]
-    details_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    required_status_checks: NotRequired[StatusCheckPolicyType]
+    required_pull_request_reviews: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsType
     ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
+    required_signatures: NotRequired[ProtectedBranchPropRequiredSignaturesType]
+    enforce_admins: NotRequired[ProtectedBranchPropEnforceAdminsType]
+    required_linear_history: NotRequired[ProtectedBranchPropRequiredLinearHistoryType]
+    allow_force_pushes: NotRequired[ProtectedBranchPropAllowForcePushesType]
+    allow_deletions: NotRequired[ProtectedBranchPropAllowDeletionsType]
+    restrictions: NotRequired[BranchRestrictionPolicyType]
+    required_conversation_resolution: NotRequired[
+        ProtectedBranchPropRequiredConversationResolutionType
     ]
-    started_at: Union[datetime, None]
-    completed_at: Union[datetime, None]
-    output: CheckRunPropOutputType
-    name: str
-    check_suite: Union[CheckRunPropCheckSuiteType, None]
-    app: Union[None, IntegrationType, None]
-    pull_requests: list[PullRequestMinimalType]
-    deployment: NotRequired[DeploymentSimpleType]
+    block_creations: NotRequired[ProtectedBranchPropBlockCreationsType]
+    lock_branch: NotRequired[ProtectedBranchPropLockBranchType]
+    allow_fork_syncing: NotRequired[ProtectedBranchPropAllowForkSyncingType]
 
 
-class CheckRunPropOutputType(TypedDict):
-    """CheckRunPropOutput"""
+class ProtectedBranchPropRequiredSignaturesType(TypedDict):
+    """ProtectedBranchPropRequiredSignatures"""
 
-    title: Union[str, None]
-    summary: Union[str, None]
-    text: Union[str, None]
-    annotations_count: int
-    annotations_url: str
+    url: str
+    enabled: bool
 
 
-class CheckRunPropCheckSuiteType(TypedDict):
-    """CheckRunPropCheckSuite"""
+class ProtectedBranchPropEnforceAdminsType(TypedDict):
+    """ProtectedBranchPropEnforceAdmins"""
 
-    id: int
+    url: str
+    enabled: bool
+
+
+class ProtectedBranchPropRequiredLinearHistoryType(TypedDict):
+    """ProtectedBranchPropRequiredLinearHistory"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropAllowForcePushesType(TypedDict):
+    """ProtectedBranchPropAllowForcePushes"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropAllowDeletionsType(TypedDict):
+    """ProtectedBranchPropAllowDeletions"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropRequiredConversationResolutionType(TypedDict):
+    """ProtectedBranchPropRequiredConversationResolution"""
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropBlockCreationsType(TypedDict):
+    """ProtectedBranchPropBlockCreations"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropLockBranchType(TypedDict):
+    """ProtectedBranchPropLockBranch
+
+    Whether to set the branch as read-only. If this is true, users will not be able
+    to push to the branch.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropAllowForkSyncingType(TypedDict):
+    """ProtectedBranchPropAllowForkSyncing
+
+    Whether users can pull changes from upstream when the branch is locked. Set to
+    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class StatusCheckPolicyType(TypedDict):
+    """Status Check Policy
+
+    Status Check Policy
+    """
+
+    url: str
+    strict: bool
+    contexts: list[str]
+    checks: list[StatusCheckPolicyPropChecksItemsType]
+    contexts_url: str
+
+
+class StatusCheckPolicyPropChecksItemsType(TypedDict):
+    """StatusCheckPolicyPropChecksItems"""
+
+    context: str
+    app_id: Union[int, None]
 
 
 __all__ = (
-    "CheckRunPropCheckSuiteType",
-    "CheckRunPropOutputType",
-    "CheckRunType",
+    "ProtectedBranchPropAllowDeletionsType",
+    "ProtectedBranchPropAllowForcePushesType",
+    "ProtectedBranchPropAllowForkSyncingType",
+    "ProtectedBranchPropBlockCreationsType",
+    "ProtectedBranchPropEnforceAdminsType",
+    "ProtectedBranchPropLockBranchType",
+    "ProtectedBranchPropRequiredConversationResolutionType",
+    "ProtectedBranchPropRequiredLinearHistoryType",
+    "ProtectedBranchPropRequiredSignaturesType",
+    "ProtectedBranchType",
+    "StatusCheckPolicyPropChecksItemsType",
+    "StatusCheckPolicyType",
 )

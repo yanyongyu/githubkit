@@ -13,24 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0478 import PullRequestWebhookType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0480 import WebhooksProjectChangesType
+from .group_0481 import ProjectsV2ItemType
 
 
-class WebhookPullRequestConvertedToDraftType(TypedDict):
-    """pull_request converted_to_draft event"""
+class WebhookProjectsV2ItemRestoredType(TypedDict):
+    """Projects v2 Item Restored Event"""
 
-    action: Literal["converted_to_draft"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["restored"]
+    changes: WebhooksProjectChangesType
     installation: NotRequired[SimpleInstallationType]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: PullRequestWebhookType
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookPullRequestConvertedToDraftType",)
+__all__ = ("WebhookProjectsV2ItemRestoredType",)

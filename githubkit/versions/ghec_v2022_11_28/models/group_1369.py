@@ -12,20 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0020 import Repository
+from .group_0204 import Codespace
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+class UserCodespacesGetResponse200(GitHubModel):
+    """UserCodespacesGetResponse200"""
 
     total_count: int = Field()
-    repository_selection: Missing[str] = Field(default=UNSET)
-    repositories: list[Repository] = Field()
+    codespaces: list[Codespace] = Field()
 
 
-model_rebuild(UserInstallationsInstallationIdRepositoriesGetResponse200)
+model_rebuild(UserCodespacesGetResponse200)
 
-__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200",)
+__all__ = ("UserCodespacesGetResponse200",)

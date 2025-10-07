@@ -9,35 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0008 import EnterpriseType
-from .group_0009 import IntegrationPropPermissionsType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
 
 
-class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
-    """AppManifestsCodeConversionsPostResponse201"""
+class WebhookWorkflowDispatchType(TypedDict):
+    """workflow_dispatch event"""
 
-    id: int
-    slug: NotRequired[str]
-    node_id: str
-    client_id: str
-    owner: Union[SimpleUserType, EnterpriseType]
-    name: str
-    description: Union[str, None]
-    external_url: str
-    html_url: str
-    created_at: datetime
-    updated_at: datetime
-    permissions: IntegrationPropPermissionsType
-    events: list[str]
-    installations_count: NotRequired[int]
-    client_secret: str
-    webhook_secret: Union[str, None]
-    pem: str
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    inputs: Union[WebhookWorkflowDispatchPropInputsType, None]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    ref: str
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    workflow: str
 
 
-__all__ = ("AppManifestsCodeConversionsPostResponse201Type",)
+WebhookWorkflowDispatchPropInputsType: TypeAlias = dict[str, Any]
+"""WebhookWorkflowDispatchPropInputs
+"""
+
+
+__all__ = (
+    "WebhookWorkflowDispatchPropInputsType",
+    "WebhookWorkflowDispatchType",
+)

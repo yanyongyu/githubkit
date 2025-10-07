@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,19 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0442 import EnterpriseWebhooks
-from .group_0443 import SimpleInstallation
-from .group_0444 import OrganizationSimpleWebhooks
-from .group_0445 import RepositoryWebhooks
-from .group_0463 import WebhooksMilestone
+from .group_0446 import EnterpriseWebhooks
+from .group_0447 import SimpleInstallation
+from .group_0448 import OrganizationSimpleWebhooks
+from .group_0449 import RepositoryWebhooks
+from .group_0457 import WebhooksUser
 
 
-class WebhookMilestoneEdited(GitHubModel):
-    """milestone edited event"""
+class WebhookMemberEdited(GitHubModel):
+    """member edited event"""
 
     action: Literal["edited"] = Field()
-    changes: WebhookMilestoneEditedPropChanges = Field(
-        description="The changes to the milestone if the action was `edited`."
+    changes: WebhookMemberEditedPropChanges = Field(
+        description="The changes to the collaborator permissions"
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -42,10 +42,7 @@ class WebhookMilestoneEdited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    milestone: WebhooksMilestone = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
-    )
+    member: Union[WebhooksUser, None] = Field(title="User")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -58,56 +55,44 @@ class WebhookMilestoneEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookMilestoneEditedPropChanges(GitHubModel):
-    """WebhookMilestoneEditedPropChanges
+class WebhookMemberEditedPropChanges(GitHubModel):
+    """WebhookMemberEditedPropChanges
 
-    The changes to the milestone if the action was `edited`.
+    The changes to the collaborator permissions
     """
 
-    description: Missing[WebhookMilestoneEditedPropChangesPropDescription] = Field(
+    old_permission: Missing[WebhookMemberEditedPropChangesPropOldPermission] = Field(
         default=UNSET
     )
-    due_on: Missing[WebhookMilestoneEditedPropChangesPropDueOn] = Field(default=UNSET)
-    title: Missing[WebhookMilestoneEditedPropChangesPropTitle] = Field(default=UNSET)
-
-
-class WebhookMilestoneEditedPropChangesPropDescription(GitHubModel):
-    """WebhookMilestoneEditedPropChangesPropDescription"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the description if the action was `edited`.",
+    permission: Missing[WebhookMemberEditedPropChangesPropPermission] = Field(
+        default=UNSET
     )
 
 
-class WebhookMilestoneEditedPropChangesPropDueOn(GitHubModel):
-    """WebhookMilestoneEditedPropChangesPropDueOn"""
+class WebhookMemberEditedPropChangesPropOldPermission(GitHubModel):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
 
     from_: str = Field(
         alias="from",
-        description="The previous version of the due date if the action was `edited`.",
+        description="The previous permissions of the collaborator if the action was edited.",
     )
 
 
-class WebhookMilestoneEditedPropChangesPropTitle(GitHubModel):
-    """WebhookMilestoneEditedPropChangesPropTitle"""
+class WebhookMemberEditedPropChangesPropPermission(GitHubModel):
+    """WebhookMemberEditedPropChangesPropPermission"""
 
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the title if the action was `edited`.",
-    )
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookMilestoneEdited)
-model_rebuild(WebhookMilestoneEditedPropChanges)
-model_rebuild(WebhookMilestoneEditedPropChangesPropDescription)
-model_rebuild(WebhookMilestoneEditedPropChangesPropDueOn)
-model_rebuild(WebhookMilestoneEditedPropChangesPropTitle)
+model_rebuild(WebhookMemberEdited)
+model_rebuild(WebhookMemberEditedPropChanges)
+model_rebuild(WebhookMemberEditedPropChangesPropOldPermission)
+model_rebuild(WebhookMemberEditedPropChangesPropPermission)
 
 __all__ = (
-    "WebhookMilestoneEdited",
-    "WebhookMilestoneEditedPropChanges",
-    "WebhookMilestoneEditedPropChangesPropDescription",
-    "WebhookMilestoneEditedPropChangesPropDueOn",
-    "WebhookMilestoneEditedPropChangesPropTitle",
+    "WebhookMemberEdited",
+    "WebhookMemberEditedPropChanges",
+    "WebhookMemberEditedPropChangesPropOldPermission",
+    "WebhookMemberEditedPropChangesPropPermission",
 )

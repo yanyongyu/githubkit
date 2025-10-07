@@ -9,32 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0011 import WebhookConfigType
-from .group_0323 import HookResponseType
 
+class GitTreeType(TypedDict):
+    """Git Tree
 
-class HookType(TypedDict):
-    """Webhook
-
-    Webhooks for repositories.
+    The hierarchy between files in a Git repository.
     """
 
+    sha: str
+    url: NotRequired[str]
+    truncated: bool
+    tree: list[GitTreePropTreeItemsType]
+
+
+class GitTreePropTreeItemsType(TypedDict):
+    """GitTreePropTreeItems"""
+
+    path: str
+    mode: str
     type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: datetime
-    created_at: datetime
-    url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    sha: str
+    size: NotRequired[int]
+    url: NotRequired[str]
 
 
-__all__ = ("HookType",)
+__all__ = (
+    "GitTreePropTreeItemsType",
+    "GitTreeType",
+)

@@ -9,29 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0018 import InstallationType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0518 import WebhooksUserType
-from .group_0523 import WebhooksRepositoriesItemsType
+from .group_0514 import RepositoryWebhooksType
+from .group_0526 import DiscussionType
 
 
-class WebhookInstallationCreatedType(TypedDict):
-    """installation created event"""
+class WebhookDiscussionTransferredPropChangesType(TypedDict):
+    """WebhookDiscussionTransferredPropChanges"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[Union[WebhooksUserType, None]]
-    sender: SimpleUserType
+    new_discussion: DiscussionType
+    new_repository: RepositoryWebhooksType
 
 
-__all__ = ("WebhookInstallationCreatedType",)
+__all__ = ("WebhookDiscussionTransferredPropChangesType",)

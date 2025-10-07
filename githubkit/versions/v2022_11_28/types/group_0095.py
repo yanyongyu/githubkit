@@ -9,24 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0094 import TeamType
 
-class CodeScanningAlertRuleSummaryType(TypedDict):
-    """CodeScanningAlertRuleSummary"""
 
-    id: NotRequired[Union[str, None]]
+class CampaignSummaryType(TypedDict):
+    """Campaign summary
+
+    The campaign metadata and alert stats.
+    """
+
+    number: int
+    created_at: datetime
+    updated_at: datetime
     name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
-    security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
-    ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+    description: str
+    managers: list[SimpleUserType]
+    team_managers: NotRequired[list[TeamType]]
+    published_at: NotRequired[datetime]
+    ends_at: datetime
+    closed_at: NotRequired[Union[datetime, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
 
 
-__all__ = ("CodeScanningAlertRuleSummaryType",)
+class CampaignSummaryPropAlertStatsType(TypedDict):
+    """CampaignSummaryPropAlertStats"""
+
+    open_count: int
+    closed_count: int
+    in_progress_count: int
+
+
+__all__ = (
+    "CampaignSummaryPropAlertStatsType",
+    "CampaignSummaryType",
+)

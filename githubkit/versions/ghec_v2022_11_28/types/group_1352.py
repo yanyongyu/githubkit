@@ -12,25 +12,14 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyType(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBodyType(TypedDict):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
-    synced_at: NotRequired[str]
-
-
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-    id: NotRequired[str]
-    name: NotRequired[str]
+    owner: NotRequired[str]
+    name: str
     description: NotRequired[str]
+    include_all_branches: NotRequired[bool]
+    private: NotRequired[bool]
 
 
-__all__ = (
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyType",
-)
+__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBodyType",)

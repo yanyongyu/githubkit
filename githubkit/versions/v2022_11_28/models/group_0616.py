@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,17 +17,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class WebhookIssuesClosedPropIssueAllof0PropPullRequest(GitHubModel):
-    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
-
-    diff_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    patch_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
+from .group_0048 import Issue
+from .group_0447 import SimpleInstallation
+from .group_0448 import OrganizationSimpleWebhooks
+from .group_0449 import RepositoryWebhooks
 
 
-model_rebuild(WebhookIssuesClosedPropIssueAllof0PropPullRequest)
+class WebhookIssueDependenciesBlockingAdded(GitHubModel):
+    """blocking issue added event"""
 
-__all__ = ("WebhookIssuesClosedPropIssueAllof0PropPullRequest",)
+    action: Literal["blocking_added"] = Field()
+    blocked_issue_id: float = Field(description="The ID of the blocked issue.")
+    blocked_issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    blocked_issue_repo: Repository = Field(
+        title="Repository", description="A repository on GitHub."
+    )
+    blocking_issue_id: float = Field(description="The ID of the blocking issue.")
+    blocking_issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+model_rebuild(WebhookIssueDependenciesBlockingAdded)
+
+__all__ = ("WebhookIssueDependenciesBlockingAdded",)

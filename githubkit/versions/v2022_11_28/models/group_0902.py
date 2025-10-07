@@ -9,19 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersPutBody(GitHubModel):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
 
-    runners: list[int] = Field(
-        description="List of runner IDs to add to the runner group."
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy that controls whether self-hosted runners can be used in the organization"
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody)
+model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersPutBody)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody",)
+__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersPutBody",)

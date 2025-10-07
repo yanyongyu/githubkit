@@ -13,38 +13,24 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
+class ReposOwnerRepoGitTreesPostBodyType(TypedDict):
+    """ReposOwnerRepoGitTreesPostBody"""
 
-    title: NotRequired[Union[str, int, None]]
-    body: NotRequired[Union[str, None]]
-    assignee: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[
-        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
-    ]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[
-            Union[
-                str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type
-            ]
-        ]
-    ]
-    assignees: NotRequired[list[str]]
-    type: NotRequired[Union[str, None]]
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType]
+    base_tree: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
+    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
+    path: NotRequired[str]
+    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
+    type: NotRequired[Literal["blob", "tree", "commit"]]
+    sha: NotRequired[Union[str, None]]
+    content: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
+    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
+    "ReposOwnerRepoGitTreesPostBodyType",
 )

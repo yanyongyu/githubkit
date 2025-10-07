@@ -11,15 +11,17 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType
+
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
+
+    users: NotRequired[list[str]]
+    organizations: NotRequired[list[str]]
+    repositories: NotRequired[list[str]]
 
 
-class InstallationRepositoriesGetResponse200Type(TypedDict):
-    """InstallationRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[RepositoryType]
-    repository_selection: NotRequired[str]
-
-
-__all__ = ("InstallationRepositoriesGetResponse200Type",)
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType",
+)

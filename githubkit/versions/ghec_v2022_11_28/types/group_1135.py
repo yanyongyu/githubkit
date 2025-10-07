@@ -12,11 +12,12 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsColumnsCardsCardIdMovesPostBodyType(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsPostBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
 
-    position: str
-    column_id: NotRequired[int]
+    title: str
+    body: str
+    private: NotRequired[bool]
 
 
-__all__ = ("ProjectsColumnsCardsCardIdMovesPostBodyType",)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",)

@@ -13,24 +13,31 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetCostCenterType(TypedDict):
-    """GetCostCenter"""
+class GetAllCostCentersType(TypedDict):
+    """GetAllCostCenters"""
+
+    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
+
+
+class GetAllCostCentersPropCostCentersItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
 
     id: str
     name: str
-    azure_subscription: NotRequired[Union[str, None]]
     state: NotRequired[Literal["active", "deleted"]]
-    resources: list[GetCostCenterPropResourcesItemsType]
+    azure_subscription: NotRequired[Union[str, None]]
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
 
 
-class GetCostCenterPropResourcesItemsType(TypedDict):
-    """GetCostCenterPropResourcesItems"""
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
 
     type: str
     name: str
 
 
 __all__ = (
-    "GetCostCenterPropResourcesItemsType",
-    "GetCostCenterType",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
+    "GetAllCostCentersPropCostCentersItemsType",
+    "GetAllCostCentersType",
 )

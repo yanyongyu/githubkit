@@ -11,14 +11,11 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0047 import RunnerType
+
+class ProjectsColumnsColumnIdMovesPostBodyType(TypedDict):
+    """ProjectsColumnsColumnIdMovesPostBody"""
+
+    position: str
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
-
-    total_count: int
-    runners: list[RunnerType]
-
-
-__all__ = ("ReposOwnerRepoActionsRunnersGetResponse200Type",)
+__all__ = ("ProjectsColumnsColumnIdMovesPostBodyType",)

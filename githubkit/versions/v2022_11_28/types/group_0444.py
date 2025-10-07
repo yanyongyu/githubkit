@@ -9,31 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationSimpleWebhooksType(TypedDict):
-    """Organization Simple
+class BillingPremiumRequestUsageReportUserType(TypedDict):
+    """BillingPremiumRequestUsageReportUser"""
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
-    """
-
-    login: str
-    id: int
-    node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
+    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodType
+    user: str
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingPremiumRequestUsageReportUserPropUsageItemsItemsType]
 
 
-__all__ = ("OrganizationSimpleWebhooksType",)
+class BillingPremiumRequestUsageReportUserPropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: int
+    gross_amount: float
+    discount_quantity: int
+    discount_amount: float
+    net_quantity: int
+    net_amount: float
+
+
+__all__ = (
+    "BillingPremiumRequestUsageReportUserPropTimePeriodType",
+    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportUserType",
+)

@@ -12,14 +12,32 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType(
     TypedDict
 ):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
-    bypass_review_id: NotRequired[int]
+    strict: NotRequired[bool]
+    contexts: NotRequired[list[str]]
+    checks: NotRequired[
+        list[
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
+        ]
+    ]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
+    ms
+    """
+
+    context: str
+    app_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType",
 )

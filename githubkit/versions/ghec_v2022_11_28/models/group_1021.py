@@ -12,17 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0020 import Repository
-
-
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
-
-    total_count: float = Field()
-    repositories: list[Repository] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgActionsPermissionsRepositoriesGetResponse200)
+class OrganizationsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
+    """OrganizationsOrgDependabotRepositoryAccessPatchBody
 
-__all__ = ("OrgsOrgActionsPermissionsRepositoriesGetResponse200",)
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to add."
+    )
+    repository_ids_to_remove: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to remove."
+    )
+
+
+model_rebuild(OrganizationsOrgDependabotRepositoryAccessPatchBody)
+
+__all__ = ("OrganizationsOrgDependabotRepositoryAccessPatchBody",)

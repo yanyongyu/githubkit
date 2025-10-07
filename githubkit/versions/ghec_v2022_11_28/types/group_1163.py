@@ -9,16 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0271 import ArtifactType
-
-
-class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
-
-    total_count: int
-    artifacts: list[ArtifactType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type",)
+class ProjectsProjectIdCollaboratorsUsernamePutBodyType(TypedDict):
+    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
+
+    permission: NotRequired[Literal["read", "write", "admin"]]
+
+
+__all__ = ("ProjectsProjectIdCollaboratorsUsernamePutBodyType",)

@@ -9,59 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from .group_0353 import MetadataType
+from typing_extensions import NotRequired, TypedDict
 
 
-class SnapshotType(TypedDict):
-    """snapshot
+class DependencyGraphSpdxSbomType(TypedDict):
+    """Dependency Graph SPDX SBOM
 
-    Create a new snapshot of a repository's dependencies.
+    A schema for the SPDX JSON format returned by the Dependency Graph.
     """
 
-    version: int
-    job: SnapshotPropJobType
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorType
-    metadata: NotRequired[MetadataType]
-    manifests: NotRequired[SnapshotPropManifestsType]
-    scanned: datetime
+    sbom: DependencyGraphSpdxSbomPropSbomType
 
 
-class SnapshotPropJobType(TypedDict):
-    """SnapshotPropJob"""
+class DependencyGraphSpdxSbomPropSbomType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbom"""
 
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropDetectorType(TypedDict):
-    """SnapshotPropDetector
-
-    A description of the detector used.
-    """
-
+    spdxid: str
+    spdx_version: str
+    comment: NotRequired[str]
+    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoType
     name: str
-    version: str
-    url: str
+    data_license: str
+    document_namespace: str
+    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsType]
+    relationships: NotRequired[
+        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType]
+    ]
 
 
-SnapshotPropManifestsType: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
+class DependencyGraphSpdxSbomPropSbomPropCreationInfoType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
 
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
-"""
+    created: str
+    creators: list[str]
+
+
+class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
+
+    relationship_type: NotRequired[str]
+    spdx_element_id: NotRequired[str]
+    related_spdx_element: NotRequired[str]
+
+
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
+
+    spdxid: NotRequired[str]
+    name: NotRequired[str]
+    version_info: NotRequired[str]
+    download_location: NotRequired[str]
+    files_analyzed: NotRequired[bool]
+    license_concluded: NotRequired[str]
+    license_declared: NotRequired[str]
+    supplier: NotRequired[str]
+    copyright_text: NotRequired[str]
+    external_refs: NotRequired[
+        list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType]
+    ]
+
+
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType(
+    TypedDict
+):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
+
+    reference_category: str
+    reference_locator: str
+    reference_type: str
 
 
 __all__ = (
-    "SnapshotPropDetectorType",
-    "SnapshotPropJobType",
-    "SnapshotPropManifestsType",
-    "SnapshotType",
+    "DependencyGraphSpdxSbomPropSbomPropCreationInfoType",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType",
+    "DependencyGraphSpdxSbomPropSbomType",
+    "DependencyGraphSpdxSbomType",
 )

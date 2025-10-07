@@ -14,25 +14,25 @@ from typing_extensions import NotRequired, TypedDict
 from .group_0093 import (
     EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
 )
-from .group_0097 import RepositoryRulesetConditionsPropRefNameType
-from .group_0099 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+from .group_0095 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
 )
+from .group_0097 import RepositoryRulesetConditionsPropRefNameType
 
 
-class EnterpriseRulesetConditionsOneof1Type(TypedDict):
-    """organization_name_and_repository_property
+class EnterpriseRulesetConditionsOneof0Type(TypedDict):
+    """organization_name_and_repository_name
 
-    Conditions to target organizations by name and repositories by property
+    Conditions to target organizations by name and all repositories
     """
 
     organization_name: (
         EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
     )
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
     )
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-__all__ = ("EnterpriseRulesetConditionsOneof1Type",)
+__all__ = ("EnterpriseRulesetConditionsOneof0Type",)

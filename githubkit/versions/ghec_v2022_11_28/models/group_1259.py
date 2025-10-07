@@ -12,17 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0280 import ActionsVariable
 
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBody(GitHubModel):
-    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-    email: Missing[str] = Field(default=UNSET, description="The new Git author email.")
-    name: Missing[str] = Field(default=UNSET, description="The new Git author name.")
+    total_count: int = Field()
+    variables: list[ActionsVariable] = Field()
 
 
-model_rebuild(ReposOwnerRepoImportAuthorsAuthorIdPatchBody)
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200)
 
-__all__ = ("ReposOwnerRepoImportAuthorsAuthorIdPatchBody",)
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200",)

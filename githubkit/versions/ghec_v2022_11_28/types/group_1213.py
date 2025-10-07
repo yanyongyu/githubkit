@@ -9,16 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0201 import CodespaceType
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodespacesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesGetResponse200"""
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
 
-    total_count: int
-    codespaces: list[CodespaceType]
+    bypass_review_id: NotRequired[int]
 
 
-__all__ = ("ReposOwnerRepoCodespacesGetResponse200Type",)
+__all__ = (
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type",
+)

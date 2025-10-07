@@ -12,10 +12,16 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoCheckSuitesPostBodyType(TypedDict):
-    """ReposOwnerRepoCheckSuitesPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
 
-    head_sha: str
+    Examples:
+        {'teams': ['justice-league']}
+    """
+
+    teams: list[str]
 
 
-__all__ = ("ReposOwnerRepoCheckSuitesPostBodyType",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type",)

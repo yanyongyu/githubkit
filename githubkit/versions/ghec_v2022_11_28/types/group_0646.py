@@ -9,39 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0645 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType,
-)
-
-
-class WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneType(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType, None
-    ]
-    description: Union[str, None]
-    due_on: Union[datetime, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
-    url: str
+from .group_0003 import SimpleUserType
+from .group_0018 import InstallationType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0529 import WebhooksRepositoriesItemsType
 
 
-__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneType",)
+class WebhookInstallationNewPermissionsAcceptedType(TypedDict):
+    """installation new_permissions_accepted event"""
+
+    action: Literal["new_permissions_accepted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: InstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    requester: NotRequired[None]
+    sender: SimpleUserType
+
+
+__all__ = ("WebhookInstallationNewPermissionsAcceptedType",)

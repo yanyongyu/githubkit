@@ -13,16 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
 
 
-class WebhookRepositoryUnarchivedType(TypedDict):
-    """repository unarchived event"""
+class WebhookRepositoryRenamedType(TypedDict):
+    """repository renamed event"""
 
-    action: Literal["unarchived"]
+    action: Literal["renamed"]
+    changes: WebhookRepositoryRenamedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -30,4 +31,27 @@ class WebhookRepositoryUnarchivedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookRepositoryUnarchivedType",)
+class WebhookRepositoryRenamedPropChangesType(TypedDict):
+    """WebhookRepositoryRenamedPropChanges"""
+
+    repository: WebhookRepositoryRenamedPropChangesPropRepositoryType
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryType(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepository"""
+
+    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryType",
+    "WebhookRepositoryRenamedPropChangesType",
+    "WebhookRepositoryRenamedType",
+)

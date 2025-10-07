@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,22 +17,27 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0138 import RepositoryRuleWorkflowsPropParameters
 
-class SecretScanningPushProtectionBypass(GitHubModel):
-    """SecretScanningPushProtectionBypass"""
 
-    reason: Missing[Literal["false_positive", "used_in_tests", "will_fix_later"]] = (
-        Field(default=UNSET, description="The reason for bypassing push protection.")
-    )
-    expire_at: Missing[Union[datetime, None]] = Field(
+class RepositoryRuleDetailedOneof19(GitHubModel):
+    """RepositoryRuleDetailedOneof19"""
+
+    type: Literal["workflows"] = Field()
+    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
-        description="The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="The type of source for the ruleset that includes this rule.",
     )
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The token type this bypass is for."
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
     )
 
 
-model_rebuild(SecretScanningPushProtectionBypass)
+model_rebuild(RepositoryRuleDetailedOneof19)
 
-__all__ = ("SecretScanningPushProtectionBypass",)
+__all__ = ("RepositoryRuleDetailedOneof19",)

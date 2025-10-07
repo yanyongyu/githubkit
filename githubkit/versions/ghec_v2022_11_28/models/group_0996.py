@@ -18,25 +18,69 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
 
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A new name for the team."
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A new description for the team."
-    )
-    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
+    pattern_config_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be changed.\n",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
-    group_id: Missing[Union[str, None]] = Field(
+    provider_pattern_settings: Missing[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for provider patterns.")
+    custom_pattern_settings: Missing[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for custom patterns.")
+
+
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
+    ternSettingsItems
+    """
+
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    push_protection_setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
+    )
+
+
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
+    rnSettingsItems
+    """
+
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The ID of the IdP group to assign team membership with. The new IdP group will replace the existing one, or replace existing direct members if the team isn't currently linked to an IdP group.",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    )
+    push_protection_setting: Missing[Literal["disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsTeamSlugPatchBody)
+model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+)
+model_rebuild(
+    EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+)
 
-__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBody",)
+__all__ = (
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
+)

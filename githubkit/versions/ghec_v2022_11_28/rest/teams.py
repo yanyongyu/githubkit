@@ -192,11 +192,11 @@ class TeamsClient:
 
         GET /orgs/{org}/external-groups
 
-        Lists external groups available in an organization. You can query the groups using the `display_name` parameter, only groups with a `group_name` containing the text provided in the `display_name` parameter will be returned.  You can also limit your page results using the `per_page` parameter. GitHub Enterprise Cloud generates a url-encoded `page` token using a cursor value for where the next page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89)."
+        Lists external groups provisioned on the enterprise that are available to an organization. You can query the groups using the `display_name` parameter, only groups with a `group_name` containing the text provided in the `display_name` parameter will be returned.  You can also limit your page results using the `per_page` parameter. GitHub Enterprise Cloud generates a url-encoded `page` token using a cursor value for where the next page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89)."
 
         You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-external-groups-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-external-groups-available-to-an-organization
         """
 
         from ..models import ExternalGroups
@@ -234,11 +234,11 @@ class TeamsClient:
 
         GET /orgs/{org}/external-groups
 
-        Lists external groups available in an organization. You can query the groups using the `display_name` parameter, only groups with a `group_name` containing the text provided in the `display_name` parameter will be returned.  You can also limit your page results using the `per_page` parameter. GitHub Enterprise Cloud generates a url-encoded `page` token using a cursor value for where the next page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89)."
+        Lists external groups provisioned on the enterprise that are available to an organization. You can query the groups using the `display_name` parameter, only groups with a `group_name` containing the text provided in the `display_name` parameter will be returned.  You can also limit your page results using the `per_page` parameter. GitHub Enterprise Cloud generates a url-encoded `page` token using a cursor value for where the next page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89)."
 
         You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/enterprise-cloud@latest//github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-external-groups-in-an-organization
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/teams/external-groups#list-external-groups-available-to-an-organization
         """
 
         from ..models import ExternalGroups

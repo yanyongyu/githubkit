@@ -11,19 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0020 import Repository
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof1(GitHubModel):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
-    attestation_ids: list[int] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of unique IDs associated with the artifact attestations to delete.",
-    )
+    total_count: int = Field()
+    repository_selection: Missing[str] = Field(default=UNSET)
+    repositories: list[Repository] = Field()
 
 
-model_rebuild(UsersUsernameAttestationsDeleteRequestPostBodyOneof1)
+model_rebuild(UserInstallationsInstallationIdRepositoriesGetResponse200)
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof1",)
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200",)

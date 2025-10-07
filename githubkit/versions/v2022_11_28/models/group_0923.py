@@ -11,57 +11,17 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgAttestationsBulkListPostResponse200(GitHubModel):
-    """OrgsOrgAttestationsBulkListPostResponse200"""
+class OrgsOrgActionsSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
 
-    attestations_subject_digests: Missing[
-        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
-    ] = Field(default=UNSET, description="Mapping of subject digest to bundles.")
-    page_info: Missing[OrgsOrgAttestationsBulkListPostResponse200PropPageInfo] = Field(
-        default=UNSET, description="Information about the current page."
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
     )
 
 
-class OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests(
-    ExtraGitHubModel
-):
-    """OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+model_rebuild(OrgsOrgActionsSecretsSecretNameRepositoriesPutBody)
 
-    Mapping of subject digest to bundles.
-    """
-
-
-class OrgsOrgAttestationsBulkListPostResponse200PropPageInfo(GitHubModel):
-    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
-
-    Information about the current page.
-    """
-
-    has_next: Missing[bool] = Field(
-        default=UNSET, description="Indicates whether there is a next page."
-    )
-    has_previous: Missing[bool] = Field(
-        default=UNSET, description="Indicates whether there is a previous page."
-    )
-    next_: Missing[str] = Field(
-        default=UNSET, alias="next", description="The cursor to the next page."
-    )
-    previous: Missing[str] = Field(
-        default=UNSET, description="The cursor to the previous page."
-    )
-
-
-model_rebuild(OrgsOrgAttestationsBulkListPostResponse200)
-model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests)
-model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropPageInfo)
-
-__all__ = (
-    "OrgsOrgAttestationsBulkListPostResponse200",
-    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
-    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfo",
-)
+__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",)

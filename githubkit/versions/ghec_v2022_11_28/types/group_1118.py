@@ -10,22 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgTeamsPostBodyType(TypedDict):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBody"""
 
-    name: str
-    description: NotRequired[str]
-    maintainers: NotRequired[list[str]]
-    repo_names: NotRequired[list[str]]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push"]]
-    parent_team_id: NotRequired[int]
+    type: Literal["Issue", "PullRequest"]
+    id: int
 
 
-__all__ = ("OrgsOrgTeamsPostBodyType",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyType",)

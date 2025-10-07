@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -45,6 +45,17 @@ class TeamSimple(GitHubModel):
     ldap_dn: Missing[str] = Field(
         default=UNSET,
         description="Distinguished Name (DN) that team maps to within LDAP environment",
+    )
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
+    )
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
     )
 
 

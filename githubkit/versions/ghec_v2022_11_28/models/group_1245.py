@@ -14,13 +14,19 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody"""
+class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201(GitHubModel):
+    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
+    id: int = Field(description="ID of the created snapshot.")
+    created_at: str = Field(description="The time at which the snapshot was created.")
+    result: str = Field(
+        description='Either "SUCCESS", "ACCEPTED", or "INVALID". "SUCCESS" indicates that the snapshot was successfully created and the repository\'s dependencies were updated. "ACCEPTED" indicates that the snapshot was successfully created, but the repository\'s dependencies were not updated. "INVALID" indicates that the snapshot was malformed.'
+    )
+    message: str = Field(
+        description="A message providing further details about the result, such as why the dependencies were not updated."
+    )
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody)
+model_rebuild(ReposOwnerRepoDependencyGraphSnapshotsPostResponse201)
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody",)
+__all__ = ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",)

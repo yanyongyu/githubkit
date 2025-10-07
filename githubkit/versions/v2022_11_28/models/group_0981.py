@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,87 +18,53 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0145 import RepositoryRulesetBypassActor
-from .group_0154 import OrgRulesetConditionsOneof0
-from .group_0155 import OrgRulesetConditionsOneof1
-from .group_0156 import OrgRulesetConditionsOneof2
-from .group_0157 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
+
+class OrgsOrgPrivateRegistriesGetResponse200(GitHubModel):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
+
+    total_count: int = Field()
+    configurations: list[OrgPrivateRegistryConfiguration] = Field()
+
+
+class OrgPrivateRegistryConfiguration(GitHubModel):
+    """Organization private registry
+
+    Private registry configuration for an organization
+    """
+
+    name: str = Field(description="The name of the private registry configuration.")
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ] = Field(description="The registry type.")
+    username: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The username to use when authenticating with the private registry.",
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry."
+    )
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+
+
+model_rebuild(OrgsOrgPrivateRegistriesGetResponse200)
+model_rebuild(OrgPrivateRegistryConfiguration)
+
+__all__ = (
+    "OrgPrivateRegistryConfiguration",
+    "OrgsOrgPrivateRegistriesGetResponse200",
 )
-from .group_0158 import RepositoryRuleUpdate
-from .group_0160 import RepositoryRuleRequiredLinearHistory
-from .group_0163 import RepositoryRuleRequiredDeployments
-from .group_0166 import RepositoryRulePullRequest
-from .group_0168 import RepositoryRuleRequiredStatusChecks
-from .group_0170 import RepositoryRuleCommitMessagePattern
-from .group_0172 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0174 import RepositoryRuleCommitterEmailPattern
-from .group_0176 import RepositoryRuleBranchNamePattern
-from .group_0178 import RepositoryRuleTagNamePattern
-from .group_0180 import RepositoryRuleFilePathRestriction
-from .group_0182 import RepositoryRuleMaxFilePathLength
-from .group_0184 import RepositoryRuleFileExtensionRestriction
-from .group_0186 import RepositoryRuleMaxFileSize
-from .group_0189 import RepositoryRuleWorkflows
-from .group_0191 import RepositoryRuleCodeScanning
-
-
-class OrgsOrgRulesetsPostBody(GitHubModel):
-    """OrgsOrgRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    conditions: Missing[
-        Union[
-            OrgRulesetConditionsOneof0,
-            OrgRulesetConditionsOneof1,
-            OrgRulesetConditionsOneof2,
-        ]
-    ] = Field(
-        default=UNSET,
-        title="Organization ruleset conditions",
-        description="Conditions for an organization ruleset.\nThe branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.\nThe push rulesets conditions object does not require the `ref_name` property.\nFor repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`.",
-    )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
-
-
-model_rebuild(OrgsOrgRulesetsPostBody)
-
-__all__ = ("OrgsOrgRulesetsPostBody",)

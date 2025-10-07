@@ -9,32 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class OrgsOrgActionsRunnerGroupsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
-    total_count: int
-    secrets: list[OrganizationActionsSecretType]
+    total_count: float
+    runner_groups: list[RunnerGroupsOrgType]
 
 
-class OrganizationActionsSecretType(TypedDict):
-    """Actions Secret for an Organization
+class RunnerGroupsOrgType(TypedDict):
+    """RunnerGroupsOrg"""
 
-    Secrets for GitHub Actions for an organization.
-    """
-
+    id: float
     name: str
-    created_at: datetime
-    updated_at: datetime
-    visibility: Literal["all", "private", "selected"]
+    visibility: str
+    default: bool
     selected_repositories_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    inherited: bool
+    inherited_allows_public_repositories: NotRequired[bool]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrganizationActionsSecretType",
-    "OrgsOrgActionsSecretsGetResponse200Type",
+    "OrgsOrgActionsRunnerGroupsGetResponse200Type",
+    "RunnerGroupsOrgType",
 )

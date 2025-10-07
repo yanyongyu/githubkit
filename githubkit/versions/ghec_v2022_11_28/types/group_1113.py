@@ -9,51 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
+class OrgsOrgPrivateRegistriesGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
-        ]
-    ]
-    custom_pattern_settings: NotRequired[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
-        ]
-    ]
+    total_count: int
+    configurations: list[OrgPrivateRegistryConfigurationType]
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
-    ems
+class OrgPrivateRegistryConfigurationType(TypedDict):
+    """Organization private registry
+
+    Private registry configuration for an organization
     """
 
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
-    s
-    """
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
+    name: str
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ]
+    username: NotRequired[Union[str, None]]
+    visibility: Literal["all", "private", "selected"]
+    created_at: datetime
+    updated_at: datetime
 
 
 __all__ = (
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyType",
+    "OrgPrivateRegistryConfigurationType",
+    "OrgsOrgPrivateRegistriesGetResponse200Type",
 )

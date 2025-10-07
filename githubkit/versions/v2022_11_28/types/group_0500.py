@@ -13,36 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0448 import CheckRunWithSimpleCheckSuiteType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0452 import CheckRunWithSimpleCheckSuiteType
 
 
-class WebhookCheckRunRequestedActionType(TypedDict):
-    """Check Run Requested Action Event"""
+class WebhookCheckRunCompletedType(TypedDict):
+    """Check Run Completed Event"""
 
-    action: Literal["requested_action"]
+    action: Literal["completed"]
     check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    requested_action: NotRequired[WebhookCheckRunRequestedActionPropRequestedActionType]
     sender: SimpleUserType
 
 
-class WebhookCheckRunRequestedActionPropRequestedActionType(TypedDict):
-    """WebhookCheckRunRequestedActionPropRequestedAction
-
-    The action requested by the user.
-    """
-
-    identifier: NotRequired[str]
-
-
-__all__ = (
-    "WebhookCheckRunRequestedActionPropRequestedActionType",
-    "WebhookCheckRunRequestedActionType",
-)
+__all__ = ("WebhookCheckRunCompletedType",)

@@ -18,39 +18,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsPostBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
+class EnterprisesEnterpriseActionsHostedRunnersPostBody(GitHubModel):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
 
-    name: str = Field(description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all"]] = Field(
-        default=UNSET,
-        description="Visibility of a runner group. You can select all organizations or select individual organization.",
+    name: str = Field(
+        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
     )
-    selected_organization_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="List of organization IDs that can access the runner group.",
+    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage = Field(
+        description="The image of runner. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`."
     )
-    runners: Missing[list[int]] = Field(
-        default=UNSET, description="List of runner IDs to add to the runner group."
+    size: str = Field(
+        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`"
     )
-    allows_public_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
+    runner_group_id: int = Field(
+        description="The existing runner group to add this runner to."
     )
-    restricted_to_workflows: Missing[bool] = Field(
+    maximum_runners: Missing[int] = Field(
         default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
     )
-    selected_workflows: Missing[list[str]] = Field(
+    enable_static_ip: Missing[bool] = Field(
         default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
-    )
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
+        description="Whether this runner should be created with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsPostBody)
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage(GitHubModel):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsPostBody",)
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: Missing[str] = Field(
+        default=UNSET, description="The unique identifier of the runner image."
+    )
+    source: Missing[Literal["github", "partner", "custom"]] = Field(
+        default=UNSET, description="The source of the runner image."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersPostBody)
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage)
+
+__all__ = (
+    "EnterprisesEnterpriseActionsHostedRunnersPostBody",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage",
+)

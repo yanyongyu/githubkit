@@ -9,25 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0555 import WebhooksTeam1Type
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0559 import WebhooksSponsorshipType
+from .group_0560 import WebhooksChanges8Type
 
 
-class WebhookTeamAddType(TypedDict):
-    """team_add event"""
+class WebhookSponsorshipTierChangedType(TypedDict):
+    """sponsorship tier_changed event"""
 
+    action: Literal["tier_changed"]
+    changes: WebhooksChanges8Type
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
-    team: WebhooksTeam1Type
+    sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookTeamAddType",)
+__all__ = ("WebhookSponsorshipTierChangedType",)

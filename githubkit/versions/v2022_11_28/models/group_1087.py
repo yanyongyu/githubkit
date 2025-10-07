@@ -9,24 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201(GitHubModel):
-    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
+class ReposOwnerRepoCodespacesNewGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
 
-    id: int = Field(description="ID of the created snapshot.")
-    created_at: str = Field(description="The time at which the snapshot was created.")
-    result: str = Field(
-        description='Either "SUCCESS", "ACCEPTED", or "INVALID". "SUCCESS" indicates that the snapshot was successfully created and the repository\'s dependencies were updated. "ACCEPTED" indicates that the snapshot was successfully created, but the repository\'s dependencies were not updated. "INVALID" indicates that the snapshot was malformed.'
+    billable_owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    message: str = Field(
-        description="A message providing further details about the result, such as why the dependencies were not updated."
+    defaults: Missing[ReposOwnerRepoCodespacesNewGetResponse200PropDefaults] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(ReposOwnerRepoDependencyGraphSnapshotsPostResponse201)
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaults(GitHubModel):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
 
-__all__ = ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",)
+    location: str = Field()
+    devcontainer_path: Union[str, None] = Field()
+
+
+model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200)
+model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200PropDefaults)
+
+__all__ = (
+    "ReposOwnerRepoCodespacesNewGetResponse200",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults",
+)

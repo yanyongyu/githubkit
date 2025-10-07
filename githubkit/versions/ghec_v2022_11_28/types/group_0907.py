@@ -9,71 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0286 import DeploymentType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
+from .group_0020 import RepositoryType
+from .group_0175 import IssueType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
 
 
-class WebhookWorkflowJobInProgressType(TypedDict):
-    """workflow_job in_progress event"""
+class WebhookSubIssuesSubIssueRemovedType(TypedDict):
+    """sub-issue removed event"""
 
-    action: Literal["in_progress"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["sub_issue_removed"]
+    sub_issue_id: float
+    sub_issue: IssueType
+    sub_issue_repo: RepositoryType
+    parent_issue_id: float
+    parent_issue: IssueType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJobType
-    deployment: NotRequired[DeploymentType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobType(TypedDict):
-    """WebhookWorkflowJobInProgressPropWorkflowJob"""
-
-    check_run_url: str
-    completed_at: Union[Union[str, None], None]
-    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[Union[int, None], None]
-    runner_group_name: Union[Union[str, None], None]
-    runner_id: Union[Union[int, None], None]
-    runner_name: Union[Union[str, None], None]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed"]
-    head_branch: Union[Union[str, None], None]
-    workflow_name: Union[Union[str, None], None]
-    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType]
-    url: str
-
-
-class WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType(TypedDict):
-    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
-
-    completed_at: Union[Union[str, None], None]
-    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
-    name: str
-    number: int
-    started_at: Union[Union[str, None], None]
-    status: Literal["in_progress", "completed", "queued", "pending"]
-
-
-__all__ = (
-    "WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType",
-    "WebhookWorkflowJobInProgressPropWorkflowJobType",
-    "WebhookWorkflowJobInProgressType",
-)
+__all__ = ("WebhookSubIssuesSubIssueRemovedType",)

@@ -9,17 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
+class ReposOwnerRepoCommentsCommentIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoCommentsCommentIdPatchBody"""
 
-    dismissal_review_id: NotRequired[int]
+    body: str
 
 
-__all__ = (
-    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type",
-)
+__all__ = ("ReposOwnerRepoCommentsCommentIdPatchBodyType",)

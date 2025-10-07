@@ -24,6 +24,8 @@ if TYPE_CHECKING:
 
     from ..models import (
         ActionsBillingUsage,
+        BillingPremiumRequestUsageReportOrg,
+        BillingPremiumRequestUsageReportUser,
         BillingUsageReport,
         BillingUsageReportUser,
         CombinedBillingUsage,
@@ -31,6 +33,8 @@ if TYPE_CHECKING:
     )
     from ..types import (
         ActionsBillingUsageType,
+        BillingPremiumRequestUsageReportOrgType,
+        BillingPremiumRequestUsageReportUserType,
         BillingUsageReportType,
         BillingUsageReportUserType,
         CombinedBillingUsageType,
@@ -51,6 +55,124 @@ class BillingClient:
         raise RuntimeError(
             "GitHub client has already been collected. "
             "Do not use this client after the client has been collected."
+        )
+
+    def get_github_billing_premium_request_usage_report_org(
+        self,
+        org: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        user: Missing[str] = UNSET,
+        model: Missing[str] = UNSET,
+        product: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        BillingPremiumRequestUsageReportOrg, BillingPremiumRequestUsageReportOrgType
+    ]:
+        """billing/get-github-billing-premium-request-usage-report-org
+
+        GET /organizations/{org}/settings/billing/premium_request/usage
+
+        Gets a report of premium request usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
+
+        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            BillingPremiumRequestUsageReportOrg,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/organizations/{org}/settings/billing/premium_request/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "user": user,
+            "model": model,
+            "product": product,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingPremiumRequestUsageReportOrg,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_github_billing_premium_request_usage_report_org(
+        self,
+        org: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        user: Missing[str] = UNSET,
+        model: Missing[str] = UNSET,
+        product: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        BillingPremiumRequestUsageReportOrg, BillingPremiumRequestUsageReportOrgType
+    ]:
+        """billing/get-github-billing-premium-request-usage-report-org
+
+        GET /organizations/{org}/settings/billing/premium_request/usage
+
+        Gets a report of premium request usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
+
+        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            BillingPremiumRequestUsageReportOrg,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/organizations/{org}/settings/billing/premium_request/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "user": user,
+            "model": model,
+            "product": product,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingPremiumRequestUsageReportOrg,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
         )
 
     def get_github_billing_usage_report_org(
@@ -499,6 +621,120 @@ class BillingClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=PackagesBillingUsage,
+        )
+
+    def get_github_billing_premium_request_usage_report_user(
+        self,
+        username: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        model: Missing[str] = UNSET,
+        product: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        BillingPremiumRequestUsageReportUser, BillingPremiumRequestUsageReportUserType
+    ]:
+        """billing/get-github-billing-premium-request-usage-report-user
+
+        GET /users/{username}/settings/billing/premium_request/usage
+
+        Gets a report of premium request usage for a user.
+
+        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-a-user
+        """
+
+        from ..models import (
+            BasicError,
+            BillingPremiumRequestUsageReportUser,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/users/{username}/settings/billing/premium_request/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "model": model,
+            "product": product,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingPremiumRequestUsageReportUser,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_github_billing_premium_request_usage_report_user(
+        self,
+        username: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        model: Missing[str] = UNSET,
+        product: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        BillingPremiumRequestUsageReportUser, BillingPremiumRequestUsageReportUserType
+    ]:
+        """billing/get-github-billing-premium-request-usage-report-user
+
+        GET /users/{username}/settings/billing/premium_request/usage
+
+        Gets a report of premium request usage for a user.
+
+        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-a-user
+        """
+
+        from ..models import (
+            BasicError,
+            BillingPremiumRequestUsageReportUser,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/users/{username}/settings/billing/premium_request/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "model": model,
+            "product": product,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingPremiumRequestUsageReportUser,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
         )
 
     def get_shared_storage_billing_user(

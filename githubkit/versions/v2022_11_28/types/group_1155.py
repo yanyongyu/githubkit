@@ -9,13 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-    enabled: bool
+    title: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[datetime]
 
 
-__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",)
+__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType",)

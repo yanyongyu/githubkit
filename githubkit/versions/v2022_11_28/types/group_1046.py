@@ -9,17 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
+class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
-    Examples:
-        {'apps': ['my-app']}
+    total_count: int
+    workflows: list[WorkflowType]
+
+
+class WorkflowType(TypedDict):
+    """Workflow
+
+    A GitHub Actions workflow
     """
 
-    apps: list[str]
+    id: int
+    node_id: str
+    name: str
+    path: str
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    ]
+    created_at: datetime
+    updated_at: datetime
+    url: str
+    html_url: str
+    badge_url: str
+    deleted_at: NotRequired[datetime]
 
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType",)
+__all__ = (
+    "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
+    "WorkflowType",
+)

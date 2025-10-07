@@ -9,15 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0559 import WebhooksSponsorshipType
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof1Type(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
 
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+class WebhookSponsorshipCancelledType(TypedDict):
+    """sponsorship cancelled event"""
+
+    action: Literal["cancelled"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof1Type",)
+__all__ = ("WebhookSponsorshipCancelledType",)

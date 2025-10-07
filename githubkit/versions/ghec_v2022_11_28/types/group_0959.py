@@ -12,10 +12,13 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody"""
 
-    errors: NotRequired[list[str]]
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType",)

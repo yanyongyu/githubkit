@@ -9,17 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_1151 import ReposOwnerRepoPagesPostBodyPropSourceType
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
+class ReposOwnerRepoMergeUpstreamPostBodyType(TypedDict):
+    """ReposOwnerRepoMergeUpstreamPostBody"""
 
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: ReposOwnerRepoPagesPostBodyPropSourceType
+    branch: str
 
 
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0Type",)
+__all__ = ("ReposOwnerRepoMergeUpstreamPostBodyType",)

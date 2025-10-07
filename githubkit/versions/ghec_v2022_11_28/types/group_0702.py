@@ -13,25 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0703 import WebhookIssuesOpenedPropChangesType
-from .group_0705 import WebhookIssuesOpenedPropIssueType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0703 import WebhookIssuesDeletedPropIssueType
 
 
-class WebhookIssuesOpenedType(TypedDict):
-    """issues opened event"""
+class WebhookIssuesDeletedType(TypedDict):
+    """issues deleted event"""
 
-    action: Literal["opened"]
-    changes: NotRequired[WebhookIssuesOpenedPropChangesType]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesOpenedPropIssueType
+    issue: WebhookIssuesDeletedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesOpenedType",)
+__all__ = ("WebhookIssuesDeletedType",)

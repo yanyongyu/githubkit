@@ -9,11 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class GistsGistIdStarGetResponse404Type(TypedDict):
-    """GistsGistIdStarGetResponse404"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00
+    """
+
+    message: NotRequired[str]
+    reassigned_resources: NotRequired[
+        Union[
+            list[
+                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType
+            ],
+            None,
+        ]
+    ]
 
 
-__all__ = ("GistsGistIdStarGetResponse404Type",)
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00PropReassignedResourcesItems
+    """
+
+    resource_type: NotRequired[str]
+    name: NotRequired[str]
+    previous_cost_center: NotRequired[str]
+
+
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type",
+)

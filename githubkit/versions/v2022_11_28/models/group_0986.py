@@ -13,28 +13,20 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgSettingsNetworkConfigurationsPostBody(GitHubModel):
-    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBody"""
 
-    name: str = Field(
-        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
+    type: Literal["Issue", "PullRequest"] = Field(
+        description="The type of item to add to the project. Must be either Issue or PullRequest."
     )
-    compute_service: Missing[Literal["none", "actions"]] = Field(
-        default=UNSET,
-        description="The hosted compute service to use for the network configuration.",
-    )
-    network_settings_ids: list[str] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The identifier of the network settings to use for the network configuration. Exactly one network settings must be specified.",
+    id: int = Field(
+        description="The numeric ID of the issue or pull request to add to the project."
     )
 
 
-model_rebuild(OrgsOrgSettingsNetworkConfigurationsPostBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBody)
 
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsPostBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBody",)

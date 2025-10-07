@@ -13,21 +13,40 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0472 import PersonalAccessTokenRequestType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0475 import WebhooksMembershipType
 
 
-class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
-    """personal_access_token_request cancelled event"""
+class WebhookOrganizationRenamedType(TypedDict):
+    """organization renamed event"""
 
-    action: Literal["cancelled"]
-    personal_access_token_request: PersonalAccessTokenRequestType
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    membership: NotRequired[WebhooksMembershipType]
     organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
-    installation: SimpleInstallationType
 
 
-__all__ = ("WebhookPersonalAccessTokenRequestCancelledType",)
+class WebhookOrganizationRenamedPropChangesType(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
+
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
+
+
+class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
+
+    from_: NotRequired[str]
+
+
+__all__ = (
+    "WebhookOrganizationRenamedPropChangesPropLoginType",
+    "WebhookOrganizationRenamedPropChangesType",
+    "WebhookOrganizationRenamedType",
+)

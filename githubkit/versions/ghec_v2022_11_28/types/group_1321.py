@@ -9,13 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
+class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
 
-    expected_head_sha: NotRequired[str]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",)
+__all__ = ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType",)

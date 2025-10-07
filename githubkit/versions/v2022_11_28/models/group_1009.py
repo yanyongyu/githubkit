@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,13 +18,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDeleteResponse403(GitHubModel):
-    """ReposOwnerRepoDeleteResponse403"""
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    role: Missing[Literal["member", "maintainer"]] = Field(
+        default=UNSET, description="The role that this user should have in the team."
+    )
 
 
-model_rebuild(ReposOwnerRepoDeleteResponse403)
+model_rebuild(OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody)
 
-__all__ = ("ReposOwnerRepoDeleteResponse403",)
+__all__ = ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",)

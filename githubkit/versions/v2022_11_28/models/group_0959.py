@@ -9,13 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import GitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1(GitHubModel):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
+
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
+    )
 
 
-model_rebuild(OrgsOrgInteractionLimitsGetResponse200Anyof1)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteBody)
 
-__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",)

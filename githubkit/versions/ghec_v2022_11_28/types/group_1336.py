@@ -12,12 +12,10 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoTransferPostBodyType(TypedDict):
-    """ReposOwnerRepoTransferPostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-    new_owner: str
-    new_name: NotRequired[str]
-    team_ids: NotRequired[list[int]]
+    expected_head_sha: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoTransferPostBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",)

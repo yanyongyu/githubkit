@@ -9,39 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsBillingUsageType(TypedDict):
-    """ActionsBillingUsage"""
+class SecretScanningPatternConfigurationType(TypedDict):
+    """Secret scanning pattern configuration
 
-    total_minutes_used: int
-    total_paid_minutes_used: int
-    included_minutes: int
-    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdownType
+    A collection of secret scanning patterns and their settings related to push
+    protection.
+    """
+
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
+    custom_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
 
 
-class ActionsBillingUsagePropMinutesUsedBreakdownType(TypedDict):
-    """ActionsBillingUsagePropMinutesUsedBreakdown"""
+class SecretScanningPatternOverrideType(TypedDict):
+    """SecretScanningPatternOverride"""
 
-    ubuntu: NotRequired[int]
-    macos: NotRequired[int]
-    windows: NotRequired[int]
-    ubuntu_4_core: NotRequired[int]
-    ubuntu_8_core: NotRequired[int]
-    ubuntu_16_core: NotRequired[int]
-    ubuntu_32_core: NotRequired[int]
-    ubuntu_64_core: NotRequired[int]
-    windows_4_core: NotRequired[int]
-    windows_8_core: NotRequired[int]
-    windows_16_core: NotRequired[int]
-    windows_32_core: NotRequired[int]
-    windows_64_core: NotRequired[int]
-    macos_12_core: NotRequired[int]
-    total: NotRequired[int]
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    slug: NotRequired[str]
+    display_name: NotRequired[str]
+    alert_total: NotRequired[int]
+    alert_total_percentage: NotRequired[int]
+    false_positives: NotRequired[int]
+    false_positive_rate: NotRequired[int]
+    bypass_rate: NotRequired[int]
+    default_setting: NotRequired[Literal["disabled", "enabled"]]
+    enterprise_setting: NotRequired[
+        Union[None, Literal["not-set", "disabled", "enabled"]]
+    ]
+    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
 
 
 __all__ = (
-    "ActionsBillingUsagePropMinutesUsedBreakdownType",
-    "ActionsBillingUsageType",
+    "SecretScanningPatternConfigurationType",
+    "SecretScanningPatternOverrideType",
 )

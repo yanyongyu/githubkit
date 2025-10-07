@@ -13,10 +13,14 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
+    TypedDict
+):
+    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    query_suite: NotRequired[Literal["default", "extended"]]
+    name: NotRequired[str]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: NotRequired[list[str]]
 
 
-__all__ = ("OrgsOrgSecurityProductEnablementPostBodyType",)
+__all__ = ("OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType",)

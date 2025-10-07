@@ -11,41 +11,50 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0507 import OrganizationSimpleWebhooks
-from .group_0508 import RepositoryWebhooks
-from .group_0760 import WebhookPingPropHook
 
+class WebhookRubygemsMetadata(GitHubModel):
+    """Ruby Gems metadata"""
 
-class WebhookPing(GitHubModel):
-    """WebhookPing"""
-
-    hook: Missing[WebhookPingPropHook] = Field(
-        default=UNSET, title="Webhook", description="The webhook that is being pinged"
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    readme: Missing[str] = Field(default=UNSET)
+    homepage: Missing[str] = Field(default=UNSET)
+    version_info: Missing[WebhookRubygemsMetadataPropVersionInfo] = Field(default=UNSET)
+    platform: Missing[str] = Field(default=UNSET)
+    metadata: Missing[WebhookRubygemsMetadataPropMetadata] = Field(default=UNSET)
+    repo: Missing[str] = Field(default=UNSET)
+    dependencies: Missing[list[WebhookRubygemsMetadataPropDependenciesItems]] = Field(
+        default=UNSET
     )
-    hook_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the webhook that triggered the ping."
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    zen: Missing[str] = Field(default=UNSET, description="Random string of GitHub zen.")
+    commit_oid: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookPing)
+class WebhookRubygemsMetadataPropVersionInfo(GitHubModel):
+    """WebhookRubygemsMetadataPropVersionInfo"""
 
-__all__ = ("WebhookPing",)
+    version: Missing[str] = Field(default=UNSET)
+
+
+class WebhookRubygemsMetadataPropMetadata(ExtraGitHubModel):
+    """WebhookRubygemsMetadataPropMetadata"""
+
+
+class WebhookRubygemsMetadataPropDependenciesItems(ExtraGitHubModel):
+    """WebhookRubygemsMetadataPropDependenciesItems"""
+
+
+model_rebuild(WebhookRubygemsMetadata)
+model_rebuild(WebhookRubygemsMetadataPropVersionInfo)
+model_rebuild(WebhookRubygemsMetadataPropMetadata)
+model_rebuild(WebhookRubygemsMetadataPropDependenciesItems)
+
+__all__ = (
+    "WebhookRubygemsMetadata",
+    "WebhookRubygemsMetadataPropDependenciesItems",
+    "WebhookRubygemsMetadataPropMetadata",
+    "WebhookRubygemsMetadataPropVersionInfo",
+)

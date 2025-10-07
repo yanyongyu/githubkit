@@ -9,17 +9,12 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+EmojisGetResponse200Type: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
-
-    name: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    group_id: NotRequired[Union[str, None]]
-
-
-__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",)
+__all__ = ("EmojisGetResponse200Type",)

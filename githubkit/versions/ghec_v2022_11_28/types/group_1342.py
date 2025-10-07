@@ -9,15 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class TeamsTeamIdDiscussionsPostBodyType(TypedDict):
-    """TeamsTeamIdDiscussionsPostBody"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    title: str
-    body: str
-    private: NotRequired[bool]
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
-__all__ = ("TeamsTeamIdDiscussionsPostBodyType",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",)

@@ -9,24 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0192 import OrganizationCustomRepositoryRole
 
+class EnterprisesEnterpriseTeamsTeamSlugPatchBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
 
-class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
-
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of custom roles in this organization"
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A new name for the team."
     )
-    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A new description for the team."
+    )
+    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
+        default=UNSET,
+        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be changed.\n",
+    )
+    group_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The ID of the IdP group to assign team membership with. The new IdP group will replace the existing one, or replace existing direct members if the team isn't currently linked to an IdP group.",
+    )
 
 
-model_rebuild(OrganizationsOrganizationIdCustomRolesGetResponse200)
+model_rebuild(EnterprisesEnterpriseTeamsTeamSlugPatchBody)
 
-__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200",)
+__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBody",)

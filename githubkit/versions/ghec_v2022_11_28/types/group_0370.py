@@ -9,45 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0298 import VerificationType
+from typing_extensions import TypedDict
 
 
-class GitTagType(TypedDict):
-    """Git Tag
+class ShortBlobType(TypedDict):
+    """Short Blob
 
-    Metadata for a Git tag
+    Short Blob
     """
 
-    node_id: str
-    tag: str
-    sha: str
     url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
-
-
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
-
-    date: str
-    email: str
-    name: str
-
-
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
-
     sha: str
-    type: str
-    url: str
 
 
-__all__ = (
-    "GitTagPropObjectType",
-    "GitTagPropTaggerType",
-    "GitTagType",
-)
+__all__ = ("ShortBlobType",)

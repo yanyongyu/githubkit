@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0505 import EnterpriseWebhooks
-from .group_0506 import SimpleInstallation
-from .group_0507 import OrganizationSimpleWebhooks
-from .group_0508 import RepositoryWebhooks
-from .group_0518 import WebhooksUser
+from .group_0511 import EnterpriseWebhooks
+from .group_0512 import SimpleInstallation
+from .group_0513 import OrganizationSimpleWebhooks
+from .group_0514 import RepositoryWebhooks
+from .group_0728 import WebhookIssuesUnlockedPropIssue
 
 
-class WebhookMemberAdded(GitHubModel):
-    """member added event"""
+class WebhookIssuesUnlocked(GitHubModel):
+    """issues unlocked event"""
 
-    action: Literal["added"] = Field()
-    changes: Missing[WebhookMemberAddedPropChanges] = Field(default=UNSET)
+    action: Literal["unlocked"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,7 +39,10 @@ class WebhookMemberAdded(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    member: Union[WebhooksUser, None] = Field(title="User")
+    issue: WebhookIssuesUnlockedPropIssue = Field(
+        title="Issue",
+        description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -53,50 +55,6 @@ class WebhookMemberAdded(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookMemberAddedPropChanges(GitHubModel):
-    """WebhookMemberAddedPropChanges"""
+model_rebuild(WebhookIssuesUnlocked)
 
-    permission: Missing[WebhookMemberAddedPropChangesPropPermission] = Field(
-        default=UNSET,
-        description="This field is included for legacy purposes; use the `role_name` field instead. The `maintain`\nrole is mapped to `write` and the `triage` role is mapped to `read`. To determine the role\nassigned to the collaborator, use the `role_name` field instead, which will provide the full\nrole name, including custom roles.",
-    )
-    role_name: Missing[WebhookMemberAddedPropChangesPropRoleName] = Field(
-        default=UNSET, description="The role assigned to the collaborator."
-    )
-
-
-class WebhookMemberAddedPropChangesPropPermission(GitHubModel):
-    """WebhookMemberAddedPropChangesPropPermission
-
-    This field is included for legacy purposes; use the `role_name` field instead.
-    The `maintain`
-    role is mapped to `write` and the `triage` role is mapped to `read`. To
-    determine the role
-    assigned to the collaborator, use the `role_name` field instead, which will
-    provide the full
-    role name, including custom roles.
-    """
-
-    to: Literal["write", "admin", "read"] = Field()
-
-
-class WebhookMemberAddedPropChangesPropRoleName(GitHubModel):
-    """WebhookMemberAddedPropChangesPropRoleName
-
-    The role assigned to the collaborator.
-    """
-
-    to: str = Field()
-
-
-model_rebuild(WebhookMemberAdded)
-model_rebuild(WebhookMemberAddedPropChanges)
-model_rebuild(WebhookMemberAddedPropChangesPropPermission)
-model_rebuild(WebhookMemberAddedPropChangesPropRoleName)
-
-__all__ = (
-    "WebhookMemberAdded",
-    "WebhookMemberAddedPropChanges",
-    "WebhookMemberAddedPropChangesPropPermission",
-    "WebhookMemberAddedPropChangesPropRoleName",
-)
+__all__ = ("WebhookIssuesUnlocked",)

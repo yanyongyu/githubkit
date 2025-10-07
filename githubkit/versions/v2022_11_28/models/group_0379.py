@@ -18,10 +18,10 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleDetailedOneof3(GitHubModel):
-    """RepositoryRuleDetailedOneof3"""
+class RepositoryRuleDetailedOneof0(GitHubModel):
+    """RepositoryRuleDetailedOneof0"""
 
-    type: Literal["required_linear_history"] = Field()
+    type: Literal["creation"] = Field()
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -35,6 +35,6 @@ class RepositoryRuleDetailedOneof3(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof3)
+model_rebuild(RepositoryRuleDetailedOneof0)
 
-__all__ = ("RepositoryRuleDetailedOneof3",)
+__all__ = ("RepositoryRuleDetailedOneof0",)

@@ -12,10 +12,14 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    enable_debug_logging: NotRequired[bool]
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunPostBodyType",)
+__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",)

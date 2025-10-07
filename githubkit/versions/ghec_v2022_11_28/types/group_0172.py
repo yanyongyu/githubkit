@@ -9,37 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class IssueFieldValueType(TypedDict):
-    """Issue Field Value
+class ReactionRollupType(TypedDict):
+    """Reaction Rollup"""
 
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int
-    node_id: str
-    data_type: Literal["text", "single_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionType, None]
-    ]
-
-
-class IssueFieldValuePropSingleSelectOptionType(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
-
-    Details about the selected option (only present for single_select fields)
-    """
-
-    id: int
-    name: str
-    color: str
+    url: str
+    total_count: int
+    plus_one: int
+    minus_one: int
+    laugh: int
+    confused: int
+    heart: int
+    hooray: int
+    eyes: int
+    rocket: int
 
 
-__all__ = (
-    "IssueFieldValuePropSingleSelectOptionType",
-    "IssueFieldValueType",
-)
+__all__ = ("ReactionRollupType",)

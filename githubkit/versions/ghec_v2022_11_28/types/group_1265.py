@@ -9,16 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoGitRefsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    ref: str
+    sha: str
 
 
-__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType",)
+__all__ = ("ReposOwnerRepoGitRefsPostBodyType",)

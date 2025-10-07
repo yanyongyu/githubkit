@@ -9,48 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0064 import MinimalRepository
 
 
-class CheckSuitePreference(GitHubModel):
-    """Check Suite Preference
+class CheckAnnotation(GitHubModel):
+    """Check Annotation
 
-    Check suite configuration preferences for a repository.
+    Check Annotation
     """
 
-    preferences: CheckSuitePreferencePropPreferences = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
+    path: str = Field()
+    start_line: int = Field()
+    end_line: int = Field()
+    start_column: Union[int, None] = Field()
+    end_column: Union[int, None] = Field()
+    annotation_level: Union[str, None] = Field()
+    title: Union[str, None] = Field()
+    message: Union[str, None] = Field()
+    raw_details: Union[str, None] = Field()
+    blob_href: str = Field()
 
 
-class CheckSuitePreferencePropPreferences(GitHubModel):
-    """CheckSuitePreferencePropPreferences"""
+model_rebuild(CheckAnnotation)
 
-    auto_trigger_checks: Missing[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems]
-    ] = Field(default=UNSET)
-
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems(GitHubModel):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
-
-    app_id: int = Field()
-    setting: bool = Field()
-
-
-model_rebuild(CheckSuitePreference)
-model_rebuild(CheckSuitePreferencePropPreferences)
-model_rebuild(CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems)
-
-__all__ = (
-    "CheckSuitePreference",
-    "CheckSuitePreferencePropPreferences",
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
-)
+__all__ = ("CheckAnnotation",)

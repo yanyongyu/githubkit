@@ -16,21 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoTransferPostBody(GitHubModel):
-    """ReposOwnerRepoTransferPostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-    new_owner: str = Field(
-        description="The username or organization name the repository will be transferred to."
-    )
-    new_name: Missing[str] = Field(
-        default=UNSET, description="The new name to be given to the repository."
-    )
-    team_ids: Missing[list[int]] = Field(
+    expected_head_sha: Missing[str] = Field(
         default=UNSET,
-        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
+        description="The expected SHA of the pull request's HEAD ref. This is the most recent commit on the pull request's branch. If the expected SHA does not match the pull request's HEAD, you will receive a `422 Unprocessable Entity` status. You can use the \"[List commits](https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-commits)\" endpoint to find the most recent commit SHA. Default: SHA of the pull request's current HEAD ref.",
     )
 
 
-model_rebuild(ReposOwnerRepoTransferPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutBody)
 
-__all__ = ("ReposOwnerRepoTransferPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBody",)

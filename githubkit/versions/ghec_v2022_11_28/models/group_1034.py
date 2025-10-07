@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0047 import Runner
+
+class OrgsOrgActionsPermissionsRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
+
+    selected_repository_ids: list[int] = Field(
+        description="List of repository IDs to enable for GitHub Actions."
+    )
 
 
-class OrgsOrgActionsRunnersGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnersGetResponse200"""
+model_rebuild(OrgsOrgActionsPermissionsRepositoriesPutBody)
 
-    total_count: int = Field()
-    runners: list[Runner] = Field()
-
-
-model_rebuild(OrgsOrgActionsRunnersGetResponse200)
-
-__all__ = ("OrgsOrgActionsRunnersGetResponse200",)
+__all__ = ("OrgsOrgActionsPermissionsRepositoriesPutBody",)

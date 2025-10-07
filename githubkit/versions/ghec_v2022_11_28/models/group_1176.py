@@ -11,18 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0281 import WorkflowRun
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
 
-    total_count: int = Field()
-    workflow_runs: list[WorkflowRun] = Field()
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to add to the runner.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200)
+model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody)
 
-__all__ = ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200",)
+__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",)

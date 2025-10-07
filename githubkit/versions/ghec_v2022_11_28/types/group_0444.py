@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0137 import RepositoryRuleWorkflowsPropParametersType
+from .group_0127 import RepositoryRuleTagNamePatternPropParametersType
 
 
-class RepositoryRuleDetailedOneof19Type(TypedDict):
-    """RepositoryRuleDetailedOneof19"""
+class RepositoryRuleDetailedOneof14Type(TypedDict):
+    """RepositoryRuleDetailedOneof14"""
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleDetailedOneof19Type",)
+__all__ = ("RepositoryRuleDetailedOneof14Type",)

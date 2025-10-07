@@ -16,30 +16,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBody(GitHubModel):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBody(GitHubModel):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems] = Field(
-        description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove."
+    owner: Missing[str] = Field(
+        default=UNSET,
+        description="The organization or person who will own the new repository. To create a new repository in an organization, the authenticated user must be a member of the specified organization.",
     )
-    synced_at: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="The name of the new repository.")
+    description: Missing[str] = Field(
+        default=UNSET, description="A short description of the new repository."
+    )
+    include_all_branches: Missing[bool] = Field(
+        default=UNSET,
+        description="Set to `true` to include the directory structure and files from all branches in the template repository, and not just the default branch. Default: `false`.",
+    )
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Either `true` to create a new private repository or `false` to create a new public one.",
+    )
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+model_rebuild(ReposTemplateOwnerTemplateRepoGeneratePostBody)
 
-    group_id: str = Field(description="ID of the IdP group.")
-    group_name: str = Field(description="Name of the IdP group.")
-    group_description: str = Field(description="Description of the IdP group.")
-    id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBody)
-model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems)
-
-__all__ = (
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBody",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems",
-)
+__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBody",)

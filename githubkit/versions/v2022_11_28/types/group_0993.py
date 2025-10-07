@@ -9,17 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType(
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
+
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_settings: NotRequired[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
+        ]
+    ]
+    custom_pattern_settings: NotRequired[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
+        ]
+    ]
+
+
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
     TypedDict
 ):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
+    ems
+    """
 
-    body: str
+    token_type: NotRequired[str]
+    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+
+
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
+    TypedDict
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
+    s
+    """
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyType",
 )

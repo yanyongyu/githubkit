@@ -37,6 +37,7 @@ if TYPE_CHECKING:
         BranchShort,
         BranchWithProtection,
         CheckAutomatedSecurityFixes,
+        CheckImmutableReleases,
         CloneTraffic,
         CodeownersErrors,
         Collaborator,
@@ -142,6 +143,7 @@ if TYPE_CHECKING:
         BranchShortType,
         BranchWithProtectionType,
         CheckAutomatedSecurityFixesType,
+        CheckImmutableReleasesType,
         CloneTrafficType,
         CodeownersErrorsType,
         CollaboratorType,
@@ -14915,6 +14917,204 @@ class ReposClient:
             },
         )
 
+    def check_immutable_releases(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[CheckImmutableReleases, CheckImmutableReleasesType]:
+        """repos/check-immutable-releases
+
+        GET /repos/{owner}/{repo}/immutable-releases
+
+        Shows whether immutable releases are enabled or disabled. Also identifies whether immutability is being
+        enforced by the repository owner.  The authenticated user must have admin read access to the repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-immutable-releases-are-enabled-for-a-repository
+        """
+
+        from ..models import CheckImmutableReleases
+
+        url = f"/repos/{owner}/{repo}/immutable-releases"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CheckImmutableReleases,
+            error_models={},
+        )
+
+    async def async_check_immutable_releases(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[CheckImmutableReleases, CheckImmutableReleasesType]:
+        """repos/check-immutable-releases
+
+        GET /repos/{owner}/{repo}/immutable-releases
+
+        Shows whether immutable releases are enabled or disabled. Also identifies whether immutability is being
+        enforced by the repository owner.  The authenticated user must have admin read access to the repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-immutable-releases-are-enabled-for-a-repository
+        """
+
+        from ..models import CheckImmutableReleases
+
+        url = f"/repos/{owner}/{repo}/immutable-releases"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CheckImmutableReleases,
+            error_models={},
+        )
+
+    def enable_immutable_releases(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """repos/enable-immutable-releases
+
+        PUT /repos/{owner}/{repo}/immutable-releases
+
+        Enables immutable releases for a repository. The authenticated user must have admin access to the repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-immutable-releases
+        """
+
+        from ..models import BasicError
+
+        url = f"/repos/{owner}/{repo}/immutable-releases"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "409": BasicError,
+            },
+        )
+
+    async def async_enable_immutable_releases(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """repos/enable-immutable-releases
+
+        PUT /repos/{owner}/{repo}/immutable-releases
+
+        Enables immutable releases for a repository. The authenticated user must have admin access to the repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-immutable-releases
+        """
+
+        from ..models import BasicError
+
+        url = f"/repos/{owner}/{repo}/immutable-releases"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "409": BasicError,
+            },
+        )
+
+    def disable_immutable_releases(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """repos/disable-immutable-releases
+
+        DELETE /repos/{owner}/{repo}/immutable-releases
+
+        Disables immutable releases for a repository. The authenticated user must have admin access to the repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-immutable-releases
+        """
+
+        from ..models import BasicError
+
+        url = f"/repos/{owner}/{repo}/immutable-releases"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "409": BasicError,
+            },
+        )
+
+    async def async_disable_immutable_releases(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """repos/disable-immutable-releases
+
+        DELETE /repos/{owner}/{repo}/immutable-releases
+
+        Disables immutable releases for a repository. The authenticated user must have admin access to the repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-immutable-releases
+        """
+
+        from ..models import BasicError
+
+        url = f"/repos/{owner}/{repo}/immutable-releases"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "409": BasicError,
+            },
+        )
+
     def list_invitations(
         self,
         owner: str,
@@ -17677,7 +17877,7 @@ class ReposClient:
             },
         )
 
-    def get_custom_properties_values(
+    def custom_properties_for_repos_get_repository_values(
         self,
         owner: str,
         repo: str,
@@ -17685,7 +17885,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueType]]:
-        """repos/get-custom-properties-values
+        """repos/custom-properties-for-repos-get-repository-values
 
         GET /repos/{owner}/{repo}/properties/values
 
@@ -17713,7 +17913,7 @@ class ReposClient:
             },
         )
 
-    async def async_get_custom_properties_values(
+    async def async_custom_properties_for_repos_get_repository_values(
         self,
         owner: str,
         repo: str,
@@ -17721,7 +17921,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueType]]:
-        """repos/get-custom-properties-values
+        """repos/custom-properties-for-repos-get-repository-values
 
         GET /repos/{owner}/{repo}/properties/values
 
@@ -17750,7 +17950,7 @@ class ReposClient:
         )
 
     @overload
-    def create_or_update_custom_properties_values(
+    def custom_properties_for_repos_create_or_update_repository_values(
         self,
         owner: str,
         repo: str,
@@ -17761,7 +17961,7 @@ class ReposClient:
     ) -> Response: ...
 
     @overload
-    def create_or_update_custom_properties_values(
+    def custom_properties_for_repos_create_or_update_repository_values(
         self,
         owner: str,
         repo: str,
@@ -17772,7 +17972,7 @@ class ReposClient:
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
 
-    def create_or_update_custom_properties_values(
+    def custom_properties_for_repos_create_or_update_repository_values(
         self,
         owner: str,
         repo: str,
@@ -17782,7 +17982,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """repos/create-or-update-custom-properties-values
+        """repos/custom-properties-for-repos-create-or-update-repository-values
 
         PATCH /repos/{owner}/{repo}/properties/values
 
@@ -17827,7 +18027,7 @@ class ReposClient:
         )
 
     @overload
-    async def async_create_or_update_custom_properties_values(
+    async def async_custom_properties_for_repos_create_or_update_repository_values(
         self,
         owner: str,
         repo: str,
@@ -17838,7 +18038,7 @@ class ReposClient:
     ) -> Response: ...
 
     @overload
-    async def async_create_or_update_custom_properties_values(
+    async def async_custom_properties_for_repos_create_or_update_repository_values(
         self,
         owner: str,
         repo: str,
@@ -17849,7 +18049,7 @@ class ReposClient:
         properties: list[CustomPropertyValueType],
     ) -> Response: ...
 
-    async def async_create_or_update_custom_properties_values(
+    async def async_custom_properties_for_repos_create_or_update_repository_values(
         self,
         owner: str,
         repo: str,
@@ -17859,7 +18059,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
-        """repos/create-or-update-custom-properties-values
+        """repos/custom-properties-for-repos-create-or-update-repository-values
 
         PATCH /repos/{owner}/{repo}/properties/values
 

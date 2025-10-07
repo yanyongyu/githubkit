@@ -9,16 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0047 import RunnerType
+
+class EnterprisesEnterpriseActionsPermissionsPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsPutBody"""
+
+    enabled_organizations: Literal["all", "none", "selected"]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
-class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
-
-    total_count: NotRequired[float]
-    runners: NotRequired[list[RunnerType]]
-
-
-__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200Type",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsPutBodyType",)

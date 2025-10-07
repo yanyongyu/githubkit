@@ -9,24 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class TeamsTeamIdDiscussionsPostBody(GitHubModel):
-    """TeamsTeamIdDiscussionsPostBody"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    title: str = Field(description="The discussion post's title.")
-    body: str = Field(description="The discussion post's body text.")
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"] = Field(
+        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the release."
     )
 
 
-model_rebuild(TeamsTeamIdDiscussionsPostBody)
+model_rebuild(ReposOwnerRepoReleasesReleaseIdReactionsPostBody)
 
-__all__ = ("TeamsTeamIdDiscussionsPostBody",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",)

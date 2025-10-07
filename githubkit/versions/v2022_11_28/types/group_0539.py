@@ -13,25 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0455 import DiscussionType
-from .group_0456 import WebhooksCommentType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0453 import WebhooksDeployKeyType
 
 
-class WebhookDiscussionCommentCreatedType(TypedDict):
-    """discussion_comment created event"""
+class WebhookDeployKeyDeletedType(TypedDict):
+    """deploy_key deleted event"""
 
-    action: Literal["created"]
-    comment: WebhooksCommentType
-    discussion: DiscussionType
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDiscussionCommentCreatedType",)
+__all__ = ("WebhookDeployKeyDeletedType",)

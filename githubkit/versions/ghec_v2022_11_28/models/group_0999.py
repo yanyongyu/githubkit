@@ -9,46 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GistsGistIdPatchBody(GitHubModel):
-    """GistsGistIdPatchBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the gist."
+    id: Missing[str] = Field(
+        default=UNSET, description="Unique identifier for the cost center"
     )
-    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
+    name: Missing[str] = Field(default=UNSET, description="Name of the cost center")
+    azure_subscription: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+    )
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
+    )
+    resources: Missing[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
+        ]
+    ] = Field(
+        default=UNSET, description="List of resources assigned to this cost center"
     )
 
 
-class GistsGistIdPatchBodyPropFiles(ExtraGitHubModel):
-    """GistsGistIdPatchBodyPropFiles
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
 
-    The gist files to be updated, renamed, or deleted. Each `key` must match the
-    current filename
-    (including extension) of the targeted gist file. For example: `hello.py`.
-
-    To delete a file, set the whole file to null. For example: `hello.py : null`.
-    The file will also be
-    deleted if the specified object does not contain at least one of `content` or
-    `filename`.
-
-    Examples:
-        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
-    """
+    type: Missing[str] = Field(
+        default=UNSET, description="Type of resource (User, Org, or Repo)"
+    )
+    name: Missing[str] = Field(default=UNSET, description="Name/login of the resource")
 
 
-model_rebuild(GistsGistIdPatchBody)
-model_rebuild(GistsGistIdPatchBodyPropFiles)
+model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
+)
 
 __all__ = (
-    "GistsGistIdPatchBody",
-    "GistsGistIdPatchBodyPropFiles",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems",
 )

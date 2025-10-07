@@ -6,14 +6,14 @@ version = "2022-11-28"
 identifier = "2022-11-28"
 module = "v2022_11_28"
 is_latest = true
-source = "https://raw.githubusercontent.com/github/rest-api-description/1fffcfe35ca7da072adbfa86a242f20fa0c17f9f/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
+source = "https://raw.githubusercontent.com/github/rest-api-description/dee4dc2b1ab40c75c2ae562e4300503b632f4424/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
 
 [[descriptions]]
 version = "2022-11-28"
 identifier = "ghec-2022-11-28"
 module = "ghec_v2022_11_28"
 is_latest = false
-source = "https://raw.githubusercontent.com/github/rest-api-description/1fffcfe35ca7da072adbfa86a242f20fa0c17f9f/descriptions-next/ghec/ghec.2022-11-28.json"
+source = "https://raw.githubusercontent.com/github/rest-api-description/dee4dc2b1ab40c75c2ae562e4300503b632f4424/descriptions-next/ghec/ghec.2022-11-28.json"
 
 [[overrides]]
 [overrides.field_overrides]

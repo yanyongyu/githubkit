@@ -41,6 +41,7 @@ if TYPE_CHECKING:
         CustomProperty,
         HookDelivery,
         HookDeliveryItem,
+        ImmutableReleasesOrganizationSettings,
         IssueType,
         MinimalRepository,
         OrganizationCustomRepositoryRole,
@@ -63,6 +64,7 @@ if TYPE_CHECKING:
         OrgsOrgInstallationsGetResponse200,
         OrgsOrgOrganizationRolesGetResponse200,
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
         PushRuleBypassRequest,
         RepositoryFineGrainedPermission,
         RulesetVersion,
@@ -90,6 +92,7 @@ if TYPE_CHECKING:
         CustomPropertyValueType,
         HookDeliveryItemType,
         HookDeliveryType,
+        ImmutableReleasesOrganizationSettingsType,
         IssueTypeType,
         MinimalRepositoryType,
         OrganizationCreateIssueTypeType,
@@ -138,6 +141,9 @@ if TYPE_CHECKING:
         OrgsOrgPropertiesSchemaPatchBodyType,
         OrgsOrgPropertiesValuesPatchBodyType,
         OrgsOrgSecurityProductEnablementPostBodyType,
+        OrgsOrgSettingsImmutableReleasesPutBodyType,
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type,
+        OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType,
         PushRuleBypassRequestType,
         RepositoryFineGrainedPermissionType,
         RulesetVersionType,
@@ -1296,7 +1302,7 @@ class OrgsClient:
 
         **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-attestations-by-bulk-subject-digests
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestations-by-bulk-subject-digests
         """
 
         from ..models import (
@@ -1392,7 +1398,7 @@ class OrgsClient:
 
         **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-attestations-by-bulk-subject-digests
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestations-by-bulk-subject-digests
         """
 
         from ..models import (
@@ -1780,7 +1786,7 @@ class OrgsClient:
 
         **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-attestations
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestations
         """
 
         from ..models import OrgsOrgAttestationsSubjectDigestGetResponse200
@@ -1830,7 +1836,7 @@ class OrgsClient:
 
         **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-attestations
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/attestations#list-attestations
         """
 
         from ..models import OrgsOrgAttestationsSubjectDigestGetResponse200
@@ -11527,6 +11533,542 @@ class OrgsClient:
         """
 
         url = f"/orgs/{org}/security-managers/teams/{team_slug}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    def get_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ImmutableReleasesOrganizationSettings, ImmutableReleasesOrganizationSettingsType
+    ]:
+        """orgs/get-immutable-releases-settings
+
+        GET /orgs/{org}/settings/immutable-releases
+
+        Gets the immutable releases policy for repositories in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#get-immutable-releases-settings-for-an-organization
+        """
+
+        from ..models import ImmutableReleasesOrganizationSettings
+
+        url = f"/orgs/{org}/settings/immutable-releases"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ImmutableReleasesOrganizationSettings,
+        )
+
+    async def async_get_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ImmutableReleasesOrganizationSettings, ImmutableReleasesOrganizationSettingsType
+    ]:
+        """orgs/get-immutable-releases-settings
+
+        GET /orgs/{org}/settings/immutable-releases
+
+        Gets the immutable releases policy for repositories in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#get-immutable-releases-settings-for-an-organization
+        """
+
+        from ..models import ImmutableReleasesOrganizationSettings
+
+        url = f"/orgs/{org}/settings/immutable-releases"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ImmutableReleasesOrganizationSettings,
+        )
+
+    @overload
+    def set_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgSettingsImmutableReleasesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        enforced_repositories: Literal["all", "none", "selected"],
+        selected_repository_ids: Missing[list[int]] = UNSET,
+    ) -> Response: ...
+
+    def set_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgSettingsImmutableReleasesPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/set-immutable-releases-settings
+
+        PUT /orgs/{org}/settings/immutable-releases
+
+        Sets the immutable releases policy for repositories in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#set-immutable-releases-settings-for-an-organization
+        """
+
+        from ..models import OrgsOrgSettingsImmutableReleasesPutBody
+
+        url = f"/orgs/{org}/settings/immutable-releases"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgSettingsImmutableReleasesPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    @overload
+    async def async_set_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgSettingsImmutableReleasesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        enforced_repositories: Literal["all", "none", "selected"],
+        selected_repository_ids: Missing[list[int]] = UNSET,
+    ) -> Response: ...
+
+    async def async_set_immutable_releases_settings(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgSettingsImmutableReleasesPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/set-immutable-releases-settings
+
+        PUT /orgs/{org}/settings/immutable-releases
+
+        Sets the immutable releases policy for repositories in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#set-immutable-releases-settings-for-an-organization
+        """
+
+        from ..models import OrgsOrgSettingsImmutableReleasesPutBody
+
+        url = f"/orgs/{org}/settings/immutable-releases"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgSettingsImmutableReleasesPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    def get_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type,
+    ]:
+        """orgs/get-immutable-releases-settings-repositories
+
+        GET /orgs/{org}/settings/immutable-releases/repositories
+
+        List all of the repositories that have been selected for immutable releases enforcement in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-selected-repositories-for-immutable-releases-enforcement
+        """
+
+        from ..models import OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
+        )
+
+    async def async_get_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type,
+    ]:
+        """orgs/get-immutable-releases-settings-repositories
+
+        GET /orgs/{org}/settings/immutable-releases/repositories
+
+        List all of the repositories that have been selected for immutable releases enforcement in an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-selected-repositories-for-immutable-releases-enforcement
+        """
+
+        from ..models import OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
+        )
+
+    @overload
+    def set_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_repository_ids: list[int],
+    ) -> Response: ...
+
+    def set_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/set-immutable-releases-settings-repositories
+
+        PUT /orgs/{org}/settings/immutable-releases/repositories
+
+        Replaces all repositories that have been selected for immutable releases enforcement in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#set-selected-repositories-for-immutable-releases-enforcement
+        """
+
+        from ..models import OrgsOrgSettingsImmutableReleasesRepositoriesPutBody
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgSettingsImmutableReleasesRepositoriesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    @overload
+    async def async_set_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_repository_ids: list[int],
+    ) -> Response: ...
+
+    async def async_set_immutable_releases_settings_repositories(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/set-immutable-releases-settings-repositories
+
+        PUT /orgs/{org}/settings/immutable-releases/repositories
+
+        Replaces all repositories that have been selected for immutable releases enforcement in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#set-selected-repositories-for-immutable-releases-enforcement
+        """
+
+        from ..models import OrgsOrgSettingsImmutableReleasesRepositoriesPutBody
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgSettingsImmutableReleasesRepositoriesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    def enable_selected_repository_immutable_releases_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """orgs/enable-selected-repository-immutable-releases-organization
+
+        PUT /orgs/{org}/settings/immutable-releases/repositories/{repository_id}
+
+        Adds a repository to the list of selected repositories that are enforced for immutable releases in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization
+        """
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    async def async_enable_selected_repository_immutable_releases_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """orgs/enable-selected-repository-immutable-releases-organization
+
+        PUT /orgs/{org}/settings/immutable-releases/repositories/{repository_id}
+
+        Adds a repository to the list of selected repositories that are enforced for immutable releases in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization
+        """
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    def disable_selected_repository_immutable_releases_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """orgs/disable-selected-repository-immutable-releases-organization
+
+        DELETE /orgs/{org}/settings/immutable-releases/repositories/{repository_id}
+
+        Removes a repository from the list of selected repositories that are enforced for immutable releases in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization
+        """
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    async def async_disable_selected_repository_immutable_releases_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """orgs/disable-selected-repository-immutable-releases-organization
+
+        DELETE /orgs/{org}/settings/immutable-releases/repositories/{repository_id}
+
+        Removes a repository from the list of selected repositories that are enforced for immutable releases in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization
+        """
+
+        url = f"/orgs/{org}/settings/immutable-releases/repositories/{repository_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 

@@ -13,18 +13,13 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0273 import Job
+
+class ProjectsProjectIdColumnsPostBody(GitHubModel):
+    """ProjectsProjectIdColumnsPostBody"""
+
+    name: str = Field(description="Name of the project column")
 
 
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
+model_rebuild(ProjectsProjectIdColumnsPostBody)
 
-    total_count: int = Field()
-    jobs: list[Job] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200",)
+__all__ = ("ProjectsProjectIdColumnsPostBody",)

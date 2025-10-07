@@ -13,52 +13,25 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0453 import WebhooksUserType
+from .group_0044 import IssueTypeType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0466 import WebhooksIssueType
 
 
-class WebhookMemberEditedType(TypedDict):
-    """member edited event"""
+class WebhookIssuesUntypedType(TypedDict):
+    """issues untyped event"""
 
-    action: Literal["edited"]
-    changes: WebhookMemberEditedPropChangesType
+    action: Literal["untyped"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
+    issue: WebhooksIssueType
+    type: Union[IssueTypeType, None]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookMemberEditedPropChangesType(TypedDict):
-    """WebhookMemberEditedPropChanges
-
-    The changes to the collaborator permissions
-    """
-
-    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
-    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
-
-
-class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
-    """WebhookMemberEditedPropChangesPropOldPermission"""
-
-    from_: str
-
-
-class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
-    """WebhookMemberEditedPropChangesPropPermission"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-__all__ = (
-    "WebhookMemberEditedPropChangesPropOldPermissionType",
-    "WebhookMemberEditedPropChangesPropPermissionType",
-    "WebhookMemberEditedPropChangesType",
-    "WebhookMemberEditedType",
-)
+__all__ = ("WebhookIssuesUntypedType",)

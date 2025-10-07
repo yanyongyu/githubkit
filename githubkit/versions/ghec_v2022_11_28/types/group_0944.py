@@ -11,18 +11,12 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0047 import RunnerType
+
+class EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200"""
+
+    total_count: int
+    platforms: list[str]
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
-
-    total_count: float
-    runners: list[RunnerType]
-
-
-__all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
-)
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type",)

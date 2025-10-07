@@ -9,13 +9,12 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+EmojisGetResponse200Type: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
-
-    disable_self_hosted_runners_for_all_orgs: bool
-
-
-__all__ = ("EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType",)
+__all__ = ("EmojisGetResponse200Type",)

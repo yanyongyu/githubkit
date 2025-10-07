@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,18 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class NotificationsPutBody(GitHubModel):
-    """NotificationsPutBody"""
+class EnterprisesEnterpriseTeamsPostBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsPostBody"""
 
-    last_read_at: Missing[datetime] = Field(
+    name: str = Field(description="The name of the team.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A description of the team."
+    )
+    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
         default=UNSET,
-        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
+        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be set.\n",
     )
-    read: Missing[bool] = Field(
-        default=UNSET, description="Whether the notification has been read."
+    group_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The ID of the IdP group to assign team membership with. You can get this value from the [REST API endpoints for SCIM](https://docs.github.com/enterprise-cloud@latest//rest/scim#list-provisioned-scim-groups-for-an-enterprise).",
     )
 
 
-model_rebuild(NotificationsPutBody)
+model_rebuild(EnterprisesEnterpriseTeamsPostBody)
 
-__all__ = ("NotificationsPutBody",)
+__all__ = ("EnterprisesEnterpriseTeamsPostBody",)

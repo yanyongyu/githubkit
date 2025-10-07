@@ -9,33 +9,174 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
 
 
-class WebhookCustomPropertyDeletedType(TypedDict):
-    """custom property deleted event"""
+class WebhookCodeScanningAlertClosedByUserPropAlertType(TypedDict):
+    """WebhookCodeScanningAlertClosedByUserPropAlert
 
-    action: Literal["deleted"]
-    definition: WebhookCustomPropertyDeletedPropDefinitionType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    The code scanning alert involved in the event.
+    """
+
+    assignees: NotRequired[list[SimpleUserType]]
+    created_at: datetime
+    dismissed_at: datetime
+    dismissed_by: Union[
+        WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByType, None
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    fixed_at: NotRequired[None]
+    html_url: str
+    most_recent_instance: NotRequired[
+        Union[
+            WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstanceType,
+            None,
+        ]
+    ]
+    number: int
+    rule: WebhookCodeScanningAlertClosedByUserPropAlertPropRuleType
+    state: Literal["dismissed", "fixed"]
+    tool: WebhookCodeScanningAlertClosedByUserPropAlertPropToolType
+    url: str
+    dismissal_approved_by: NotRequired[
+        Union[
+            WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedByType,
+            None,
+        ]
+    ]
 
 
-class WebhookCustomPropertyDeletedPropDefinitionType(TypedDict):
-    """WebhookCustomPropertyDeletedPropDefinition"""
+class WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByType(TypedDict):
+    """User"""
 
-    property_name: str
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstanceType(
+    TypedDict
+):
+    """Alert Instance"""
+
+    analysis_key: str
+    category: NotRequired[str]
+    classifications: NotRequired[list[str]]
+    commit_sha: NotRequired[str]
+    environment: str
+    location: NotRequired[
+        WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocationType
+    ]
+    message: NotRequired[
+        WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessageType
+    ]
+    ref: str
+    state: Literal["open", "dismissed", "fixed"]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocationType(
+    TypedDict
+):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation"""
+
+    end_column: NotRequired[int]
+    end_line: NotRequired[int]
+    path: NotRequired[str]
+    start_column: NotRequired[int]
+    start_line: NotRequired[int]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessageType(
+    TypedDict
+):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage"""
+
+    text: NotRequired[str]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropRuleType(TypedDict):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropRule"""
+
+    description: str
+    full_description: NotRequired[str]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
+    id: str
+    name: NotRequired[str]
+    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    tags: NotRequired[Union[list[str], None]]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropToolType(TypedDict):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropTool"""
+
+    guid: NotRequired[Union[str, None]]
+    name: str
+    version: Union[str, None]
+
+
+class WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedByType(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookCustomPropertyDeletedPropDefinitionType",
-    "WebhookCustomPropertyDeletedType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedByType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedByType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocationType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessageType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstanceType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropRuleType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropToolType",
+    "WebhookCodeScanningAlertClosedByUserPropAlertType",
 )

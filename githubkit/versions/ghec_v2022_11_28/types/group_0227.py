@@ -9,17 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationFineGrainedPermissionType(TypedDict):
-    """Organization Fine-Grained Permission
-
-    A fine-grained permission that protects organization resources.
-    """
+class OrganizationUpdateIssueTypeType(TypedDict):
+    """OrganizationUpdateIssueType"""
 
     name: str
-    description: str
+    is_enabled: bool
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
 
 
-__all__ = ("OrganizationFineGrainedPermissionType",)
+__all__ = ("OrganizationUpdateIssueTypeType",)

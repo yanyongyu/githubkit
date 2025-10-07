@@ -13,23 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0300 import DependabotAlertType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0522 import WebhookCodeScanningAlertReopenedByUserPropAlertType
 
 
-class WebhookDependabotAlertAutoDismissedType(TypedDict):
-    """Dependabot alert auto-dismissed event"""
+class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
+    """code_scanning_alert reopened_by_user event"""
 
-    action: Literal["auto_dismissed"]
-    alert: DependabotAlertType
+    action: Literal["reopened_by_user"]
+    alert: WebhookCodeScanningAlertReopenedByUserPropAlertType
+    commit_oid: str
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDependabotAlertAutoDismissedType",)
+__all__ = ("WebhookCodeScanningAlertReopenedByUserType",)

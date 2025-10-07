@@ -9,25 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0472 import PersonalAccessTokenRequestType
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
-    """personal_access_token_request created event"""
+class WebhookRubygemsMetadataType(TypedDict):
+    """Ruby Gems metadata"""
 
-    action: Literal["created"]
-    personal_access_token_request: PersonalAccessTokenRequestType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    organization: OrganizationSimpleWebhooksType
-    sender: SimpleUserType
-    installation: NotRequired[SimpleInstallationType]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    readme: NotRequired[str]
+    homepage: NotRequired[str]
+    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
+    platform: NotRequired[str]
+    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
+    repo: NotRequired[str]
+    dependencies: NotRequired[list[WebhookRubygemsMetadataPropDependenciesItemsType]]
+    commit_oid: NotRequired[str]
 
 
-__all__ = ("WebhookPersonalAccessTokenRequestCreatedType",)
+class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
+    """WebhookRubygemsMetadataPropVersionInfo"""
+
+    version: NotRequired[str]
+
+
+WebhookRubygemsMetadataPropMetadataType: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropMetadata
+"""
+
+
+WebhookRubygemsMetadataPropDependenciesItemsType: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropDependenciesItems
+"""
+
+
+__all__ = (
+    "WebhookRubygemsMetadataPropDependenciesItemsType",
+    "WebhookRubygemsMetadataPropMetadataType",
+    "WebhookRubygemsMetadataPropVersionInfoType",
+    "WebhookRubygemsMetadataType",
+)

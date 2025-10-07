@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
+class OrgsOrgCopilotBillingSelectedTeamsPostBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
 
-    selected_repository_ids: list[int]
+    selected_teams: list[str]
 
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostBodyType",)

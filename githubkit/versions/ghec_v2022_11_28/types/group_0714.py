@@ -13,25 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0522 import WebhooksLabelType
-from .group_0527 import WebhooksIssueType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0715 import WebhookIssuesOpenedPropChangesType
+from .group_0717 import WebhookIssuesOpenedPropIssueType
 
 
-class WebhookIssuesUnlabeledType(TypedDict):
-    """issues unlabeled event"""
+class WebhookIssuesOpenedType(TypedDict):
+    """issues opened event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["opened"]
+    changes: NotRequired[WebhookIssuesOpenedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    label: NotRequired[WebhooksLabelType]
+    issue: WebhookIssuesOpenedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesUnlabeledType",)
+__all__ = ("WebhookIssuesOpenedType",)

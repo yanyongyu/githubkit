@@ -9,14 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoPullsPullNumberMergePutResponse409Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
-
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+from .group_1312 import ReposOwnerRepoPagesPostBodyPropSourceType
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse409Type",)
+class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
+
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: ReposOwnerRepoPagesPostBodyPropSourceType
+
+
+__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0Type",)

@@ -9,27 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0256 import RepositoryAdvisoryType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
+from .group_0840 import (
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType,
+)
 
 
-class WebhookRepositoryAdvisoryPublishedType(TypedDict):
-    """Repository advisory published event"""
+class WebhookRegistryPackagePublishedPropRegistryPackageType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackage"""
 
-    action: Literal["published"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    repository_advisory: RepositoryAdvisoryType
-    sender: NotRequired[SimpleUserType]
+    created_at: Union[str, None]
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
+    id: int
+    name: str
+    namespace: str
+    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType
+    package_type: str
+    package_version: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType, None
+    ]
+    registry: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType, None
+    ]
+    updated_at: Union[str, None]
 
 
-__all__ = ("WebhookRepositoryAdvisoryPublishedType",)
+class WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
+
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
+    node_id: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+    user_view_type: NotRequired[str]
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
+
+    about_url: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    vendor: NotRequired[str]
+
+
+__all__ = (
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType",
+    "WebhookRegistryPackagePublishedPropRegistryPackageType",
+)

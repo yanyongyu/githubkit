@@ -9,15 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody"""
+class ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
 
-    status: Literal["approve", "deny"]
-    message: str
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType",)
+__all__ = ("ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType",)

@@ -13,17 +13,38 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0186 import MarketplaceListingPlanType
 
-class KeySimpleType(TypedDict):
-    """Key Simple
 
-    Key Simple
+class UserMarketplacePurchaseType(TypedDict):
+    """User Marketplace Purchase
+
+    User Marketplace Purchase
     """
 
+    billing_cycle: str
+    next_billing_date: Union[datetime, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    account: MarketplaceAccountType
+    plan: MarketplaceListingPlanType
+
+
+class MarketplaceAccountType(TypedDict):
+    """Marketplace Account"""
+
+    url: str
     id: int
-    key: str
-    created_at: NotRequired[datetime]
-    last_used: NotRequired[Union[datetime, None]]
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
 
 
-__all__ = ("KeySimpleType",)
+__all__ = (
+    "MarketplaceAccountType",
+    "UserMarketplacePurchaseType",
+)

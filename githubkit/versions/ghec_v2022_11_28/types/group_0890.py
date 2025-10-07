@@ -9,21 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookStatusPropCommitPropCommitPropCommitterAllof0Type(TypedDict):
-    """Committer
-
-    Metaproperties for Git author/committer information.
-    """
-
-    date: NotRequired[datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+from .group_0190 import SecurityAndAnalysisType
 
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof0Type",)
+class WebhookSecurityAndAnalysisPropChangesPropFromType(TypedDict):
+    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
+
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
+
+
+__all__ = ("WebhookSecurityAndAnalysisPropChangesPropFromType",)

@@ -9,22 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    PatchBody
+    """
 
-    advanced_security_enabled_for_new_repositories: NotRequired[bool]
-    advanced_security_enabled_new_user_namespace_repos: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
-    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
-        Union[bool, None]
-    ]
+    repository_selection: Literal["all", "selected"]
+    repositories: NotRequired[list[str]]
 
 
-__all__ = ("EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType",)
+__all__ = (
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType",
+)

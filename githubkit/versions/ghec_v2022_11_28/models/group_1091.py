@@ -13,16 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0201 import Codespace
+
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int = Field()
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteResponse200)
 
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
-
-
-model_rebuild(OrgsOrgMembersUsernameCodespacesGetResponse200)
-
-__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",)

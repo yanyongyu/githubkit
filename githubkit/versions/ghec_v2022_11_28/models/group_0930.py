@@ -9,20 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0033 import ActionsHostedRunnerCuratedImage
+
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202(GitHubModel):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200"""
+model_rebuild(AppHookDeliveriesDeliveryIdAttemptsPostResponse202)
 
-    total_count: int = Field()
-    images: list[ActionsHostedRunnerCuratedImage] = Field()
-
-
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200)
-
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200",)
+__all__ = ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202",)

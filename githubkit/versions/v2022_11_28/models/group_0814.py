@@ -18,19 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0442 import EnterpriseWebhooks
-from .group_0443 import SimpleInstallation
-from .group_0444 import OrganizationSimpleWebhooks
-from .group_0445 import RepositoryWebhooks
-from .group_0488 import WebhooksSponsorship
-from .group_0489 import WebhooksChanges8
+from .group_0446 import EnterpriseWebhooks
+from .group_0447 import SimpleInstallation
+from .group_0448 import OrganizationSimpleWebhooks
+from .group_0449 import RepositoryWebhooks
+from .group_0815 import WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
 
 
-class WebhookSponsorshipTierChanged(GitHubModel):
-    """sponsorship tier_changed event"""
+class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
+    """security_advisory withdrawn event"""
 
-    action: Literal["tier_changed"] = Field()
-    changes: WebhooksChanges8 = Field()
+    action: Literal["withdrawn"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -51,10 +49,14 @@ class WebhookSponsorshipTierChanged(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    sponsorship: WebhooksSponsorship = Field()
+    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory = Field(
+        description="The details of the security advisory, including summary, description, and severity."
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookSponsorshipTierChanged)
+model_rebuild(WebhookSecurityAdvisoryWithdrawn)
 
-__all__ = ("WebhookSponsorshipTierChanged",)
+__all__ = ("WebhookSecurityAdvisoryWithdrawn",)

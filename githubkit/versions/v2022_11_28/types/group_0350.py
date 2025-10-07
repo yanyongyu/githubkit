@@ -9,29 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
+from typing_extensions import NotRequired, TypedDict
 
 
-class TimelineAssignedIssueEventType(TypedDict):
-    """Timeline Assigned Issue Event
+class TimelineCommittedEventType(TypedDict):
+    """Timeline Committed Event
 
-    Timeline Assigned Issue Event
+    Timeline Committed Event
     """
 
-    id: int
+    event: NotRequired[Literal["committed"]]
+    sha: str
     node_id: str
     url: str
-    actor: SimpleUserType
-    event: Literal["assigned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
+    author: TimelineCommittedEventPropAuthorType
+    committer: TimelineCommittedEventPropCommitterType
+    message: str
+    tree: TimelineCommittedEventPropTreeType
+    parents: list[TimelineCommittedEventPropParentsItemsType]
+    verification: TimelineCommittedEventPropVerificationType
+    html_url: str
 
 
-__all__ = ("TimelineAssignedIssueEventType",)
+class TimelineCommittedEventPropAuthorType(TypedDict):
+    """TimelineCommittedEventPropAuthor
+
+    Identifying information for the git-user
+    """
+
+    date: datetime
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropCommitterType(TypedDict):
+    """TimelineCommittedEventPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: datetime
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropTreeType(TypedDict):
+    """TimelineCommittedEventPropTree"""
+
+    sha: str
+    url: str
+
+
+class TimelineCommittedEventPropParentsItemsType(TypedDict):
+    """TimelineCommittedEventPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class TimelineCommittedEventPropVerificationType(TypedDict):
+    """TimelineCommittedEventPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
+
+
+__all__ = (
+    "TimelineCommittedEventPropAuthorType",
+    "TimelineCommittedEventPropCommitterType",
+    "TimelineCommittedEventPropParentsItemsType",
+    "TimelineCommittedEventPropTreeType",
+    "TimelineCommittedEventPropVerificationType",
+    "TimelineCommittedEventType",
+)

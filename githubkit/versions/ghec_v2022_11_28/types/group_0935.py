@@ -11,14 +11,11 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0042 import OrganizationSimpleType
+
+class ApplicationsClientIdTokenPatchBodyType(TypedDict):
+    """ApplicationsClientIdTokenPatchBody"""
+
+    access_token: str
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
-
-    total_count: float
-    organizations: list[OrganizationSimpleType]
-
-
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type",)
+__all__ = ("ApplicationsClientIdTokenPatchBodyType",)

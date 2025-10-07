@@ -12,17 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
+    )
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422)
+model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody)
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",)
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody",)

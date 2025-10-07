@@ -9,17 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0089 import CustomPropertyType
 
 
-class EnterprisesEnterpriseTeamsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class EnterprisesEnterprisePropertiesSchemaPatchBodyType(TypedDict):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    group_id: NotRequired[Union[str, None]]
+    properties: list[CustomPropertyType]
 
 
-__all__ = ("EnterprisesEnterpriseTeamsPostBodyType",)
+__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBodyType",)

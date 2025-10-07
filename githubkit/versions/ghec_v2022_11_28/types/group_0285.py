@@ -10,45 +10,71 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0078 import TeamType
+from .group_0191 import MinimalRepositoryType
+from .group_0283 import PullRequestMinimalType
+from .group_0284 import SimpleCommitType
 
 
-class PendingDeploymentPropReviewersItemsType(TypedDict):
-    """PendingDeploymentPropReviewersItems"""
+class WorkflowRunType(TypedDict):
+    """Workflow Run
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
-
-
-class PendingDeploymentType(TypedDict):
-    """Pending Deployment
-
-    Details of a deployment that is waiting for protection rules to pass
+    An invocation of a workflow
     """
 
-    environment: PendingDeploymentPropEnvironmentType
-    wait_timer: int
-    wait_timer_started_at: Union[datetime, None]
-    current_user_can_approve: bool
-    reviewers: list[PendingDeploymentPropReviewersItemsType]
+    id: int
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    check_suite_id: NotRequired[int]
+    check_suite_node_id: NotRequired[str]
+    head_branch: Union[str, None]
+    head_sha: str
+    path: str
+    run_number: int
+    run_attempt: NotRequired[int]
+    referenced_workflows: NotRequired[Union[list[ReferencedWorkflowType], None]]
+    event: str
+    status: Union[str, None]
+    conclusion: Union[str, None]
+    workflow_id: int
+    url: str
+    html_url: str
+    pull_requests: Union[list[PullRequestMinimalType], None]
+    created_at: datetime
+    updated_at: datetime
+    actor: NotRequired[SimpleUserType]
+    triggering_actor: NotRequired[SimpleUserType]
+    run_started_at: NotRequired[datetime]
+    jobs_url: str
+    logs_url: str
+    check_suite_url: str
+    artifacts_url: str
+    cancel_url: str
+    rerun_url: str
+    previous_attempt_url: NotRequired[Union[str, None]]
+    workflow_url: str
+    head_commit: Union[None, SimpleCommitType]
+    repository: MinimalRepositoryType
+    head_repository: MinimalRepositoryType
+    head_repository_id: NotRequired[int]
+    display_title: str
 
 
-class PendingDeploymentPropEnvironmentType(TypedDict):
-    """PendingDeploymentPropEnvironment"""
+class ReferencedWorkflowType(TypedDict):
+    """Referenced workflow
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
+    A workflow referenced/reused by the initial caller workflow
+    """
+
+    path: str
+    sha: str
+    ref: NotRequired[str]
 
 
 __all__ = (
-    "PendingDeploymentPropEnvironmentType",
-    "PendingDeploymentPropReviewersItemsType",
-    "PendingDeploymentType",
+    "ReferencedWorkflowType",
+    "WorkflowRunType",
 )

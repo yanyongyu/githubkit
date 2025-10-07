@@ -14,25 +14,17 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0111 import RepositoryRuleRequiredDeploymentsPropParameters
 
 
-class RepositoryRuleRequiredDeployments(GitHubModel):
-    """required_deployments
+class RepositoryRuleRequiredLinearHistory(GitHubModel):
+    """required_linear_history
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    type: Literal["required_deployments"] = Field()
-    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["required_linear_history"] = Field()
 
 
-model_rebuild(RepositoryRuleRequiredDeployments)
+model_rebuild(RepositoryRuleRequiredLinearHistory)
 
-__all__ = ("RepositoryRuleRequiredDeployments",)
+__all__ = ("RepositoryRuleRequiredLinearHistory",)

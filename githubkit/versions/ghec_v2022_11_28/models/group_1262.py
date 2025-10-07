@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,17 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
-    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
+class ReposOwnerRepoForksPostBody(GitHubModel):
+    """ReposOwnerRepoForksPostBody"""
 
-    permissions: Missing[Literal["read", "write", "maintain", "triage", "admin"]] = (
-        Field(
-            default=UNSET,
-            description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
-        )
+    organization: Missing[str] = Field(
+        default=UNSET,
+        description="Optional parameter to specify the organization name if forking into an organization.",
+    )
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="When forking from an existing repository, a new name for the fork.",
+    )
+    default_branch_only: Missing[bool] = Field(
+        default=UNSET,
+        description="When forking from an existing repository, fork with only the default branch.",
     )
 
 
-model_rebuild(ReposOwnerRepoInvitationsInvitationIdPatchBody)
+model_rebuild(ReposOwnerRepoForksPostBody)
 
-__all__ = ("ReposOwnerRepoInvitationsInvitationIdPatchBody",)
+__all__ = ("ReposOwnerRepoForksPostBody",)

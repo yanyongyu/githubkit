@@ -13,35 +13,25 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0070 import CodeSecurityConfiguration
 
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody(GitHubModel):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
-    e200
-    """
-
-    default_for_new_repos: Missing[
-        Literal["all", "none", "private_and_internal", "public"]
-    ] = Field(
+    client_id: str = Field(description="The Client ID of the GitHub App to install.")
+    repository_selection: Literal["all", "selected", "none"] = Field(
+        description="The repository selection for the GitHub App. Must be one of:\n* `all` - the installation can access all repositories in the organization.\n* `selected` - the installation can access only the listed repositories.\n* `none` - no repository permissions are requested. Only use when the app does not request repository permissions."
+    )
+    repositories: Missing[list[str]] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Specifies which types of repository this security configuration is applied to by default.",
-    )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+        description="The names of the repositories to which the installation will be granted access. This is the simple name of the repository, not the full name (e.g., `hello-world` not `octocat/hello-world`). This is only required when `repository_selection` is `selected`.",
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200
-)
+model_rebuild(EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody)
 
-__all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",
-)
+__all__ = ("EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody",)

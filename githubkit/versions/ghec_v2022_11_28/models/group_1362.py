@@ -9,20 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0200 import CodespaceMachine
+
+class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody(GitHubModel):
+    """TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody"""
+
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(
+        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the team discussion."
+    )
 
 
-class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubModel):
-    """UserCodespacesCodespaceNameMachinesGetResponse200"""
+model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody)
 
-    total_count: int = Field()
-    machines: list[CodespaceMachine] = Field()
-
-
-model_rebuild(UserCodespacesCodespaceNameMachinesGetResponse200)
-
-__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200",)
+__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody",)

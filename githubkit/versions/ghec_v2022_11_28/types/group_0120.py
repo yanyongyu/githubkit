@@ -12,14 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleCommitAuthorEmailPatternPropParametersType(TypedDict):
-    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
-
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+from .group_0121 import RepositoryRuleCommitAuthorEmailPatternPropParametersType
 
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPatternPropParametersType",)
+class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
+    """commit_author_email_pattern
+
+    Parameters to be used for the commit_author_email_pattern rule
+    """
+
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
+
+
+__all__ = ("RepositoryRuleCommitAuthorEmailPatternType",)

@@ -18,20 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0442 import EnterpriseWebhooks
-from .group_0443 import SimpleInstallation
-from .group_0444 import OrganizationSimpleWebhooks
-from .group_0445 import RepositoryWebhooks
-from .group_0455 import Discussion
+from .group_0446 import EnterpriseWebhooks
+from .group_0447 import SimpleInstallation
+from .group_0448 import OrganizationSimpleWebhooks
+from .group_0449 import RepositoryWebhooks
+from .group_0453 import WebhooksDeployKey
 
 
-class WebhookDiscussionClosed(GitHubModel):
-    """discussion closed event"""
+class WebhookDeployKeyCreated(GitHubModel):
+    """deploy_key created event"""
 
-    action: Literal["closed"] = Field()
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
-    )
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -41,6 +38,9 @@ class WebhookDiscussionClosed(GitHubModel):
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    key: WebhooksDeployKey = Field(
+        description="The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key) resource."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -54,6 +54,6 @@ class WebhookDiscussionClosed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionClosed)
+model_rebuild(WebhookDeployKeyCreated)
 
-__all__ = ("WebhookDiscussionClosed",)
+__all__ = ("WebhookDeployKeyCreated",)

@@ -10,19 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType
+from .group_0059 import MarketplaceListingPlanType
 
 
-class StarredRepositoryType(TypedDict):
-    """Starred Repository
+class UserMarketplacePurchaseType(TypedDict):
+    """User Marketplace Purchase
 
-    Starred Repository
+    User Marketplace Purchase
     """
 
-    starred_at: datetime
-    repo: RepositoryType
+    billing_cycle: str
+    next_billing_date: Union[datetime, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    account: MarketplaceAccountType
+    plan: MarketplaceListingPlanType
 
 
-__all__ = ("StarredRepositoryType",)
+class MarketplaceAccountType(TypedDict):
+    """Marketplace Account"""
+
+    url: str
+    id: int
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "MarketplaceAccountType",
+    "UserMarketplacePurchaseType",
+)

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Annotated, Literal, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,21 +19,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0442 import EnterpriseWebhooks
-from .group_0443 import SimpleInstallation
-from .group_0444 import OrganizationSimpleWebhooks
-from .group_0445 import RepositoryWebhooks
+from .group_0446 import EnterpriseWebhooks
+from .group_0447 import SimpleInstallation
+from .group_0448 import OrganizationSimpleWebhooks
+from .group_0449 import RepositoryWebhooks
 
 
-class WebhookCodeScanningAlertCreated(GitHubModel):
-    """code_scanning_alert created event"""
+class WebhookCheckSuiteRequested(GitHubModel):
+    """check_suite requested event"""
 
-    action: Literal["created"] = Field()
-    alert: WebhookCodeScanningAlertCreatedPropAlert = Field(
-        description="The code scanning alert involved in the event."
-    )
-    commit_oid: str = Field(
-        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
+    action: Literal["requested"] = Field()
+    check_suite: WebhookCheckSuiteRequestedPropCheckSuite = Field(
+        description="The [check_suite](https://docs.github.com/rest/checks/suites#get-a-check-suite)."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -50,9 +47,6 @@ class WebhookCodeScanningAlertCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    ref: str = Field(
-        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
-    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -60,147 +54,306 @@ class WebhookCodeScanningAlertCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookCodeScanningAlertCreatedPropAlert(GitHubModel):
-    """WebhookCodeScanningAlertCreatedPropAlert
+class WebhookCheckSuiteRequestedPropCheckSuite(GitHubModel):
+    """WebhookCheckSuiteRequestedPropCheckSuite
 
-    The code scanning alert involved in the event.
+    The [check_suite](https://docs.github.com/rest/checks/suites#get-a-check-suite).
     """
 
-    created_at: Union[datetime, None] = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`"
+    after: Union[str, None] = Field()
+    app: WebhookCheckSuiteRequestedPropCheckSuitePropApp = Field(
+        title="App",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
     )
-    dismissed_at: None = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    before: Union[str, None] = Field()
+    check_runs_url: str = Field()
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            "skipped",
+        ],
+    ] = Field(
+        description="The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed."
     )
-    dismissed_by: None = Field()
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+    created_at: datetime = Field()
+    head_branch: Union[str, None] = Field(
+        description="The head branch name the changes are on."
+    )
+    head_commit: WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommit = Field(
+        title="SimpleCommit"
+    )
+    head_sha: str = Field(
+        description="The SHA of the head commit that is being checked."
+    )
+    id: int = Field()
+    latest_check_runs_count: int = Field()
+    node_id: str = Field()
+    pull_requests: list[
+        WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItems
+    ] = Field(
+        description="An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty."
+    )
+    rerequestable: Missing[bool] = Field(default=UNSET)
+    runs_rerequestable: Missing[bool] = Field(default=UNSET)
+    status: Union[None, Literal["requested", "in_progress", "completed", "queued"]] = (
         Field(
-            default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
+            description="The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`."
         )
     )
-    dismissed_reason: None = Field(
-        description="The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`."
+    updated_at: datetime = Field()
+    url: str = Field(description="URL that points to the check suite API resource.")
+
+
+class WebhookCheckSuiteRequestedPropCheckSuitePropApp(GitHubModel):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[datetime, None] = Field()
+    description: Union[str, None] = Field()
+    events: Missing[list[str]] = Field(
+        default=UNSET, description="The list of events for the GitHub app"
     )
-    fixed_at: Missing[None] = Field(
-        default=UNSET,
-        description="The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    external_url: Union[str, None] = Field()
+    html_url: str = Field()
+    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
+    client_id: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Client ID of the GitHub app"
     )
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    instances_url: Missing[str] = Field(default=UNSET)
-    most_recent_instance: Missing[
-        Union[WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance, None]
-    ] = Field(default=UNSET, title="Alert Instance")
-    number: int = Field(description="The code scanning alert number.")
-    rule: WebhookCodeScanningAlertCreatedPropAlertPropRule = Field()
-    state: Union[None, Literal["open", "dismissed"]] = Field(
-        description="State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed."
+    name: str = Field(description="The name of the GitHub app")
+    node_id: str = Field()
+    owner: Union[WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwner, None] = (
+        Field(title="User")
     )
-    tool: Union[WebhookCodeScanningAlertCreatedPropAlertPropTool, None] = Field()
-    updated_at: Missing[Union[str, None]] = Field(default=UNSET)
-    url: str = Field()
-    dismissal_approved_by: Missing[None] = Field(default=UNSET)
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance(GitHubModel):
-    """Alert Instance"""
-
-    analysis_key: str = Field(
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."
+    permissions: Missing[
+        WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissions
+    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
     )
-    category: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the configuration under which the analysis was executed.",
-    )
-    classifications: Missing[list[str]] = Field(default=UNSET)
-    commit_sha: Missing[str] = Field(default=UNSET)
-    environment: str = Field(
-        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed."
-    )
-    location: Missing[
-        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation
-    ] = Field(default=UNSET)
-    message: Missing[
-        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage
-    ] = Field(default=UNSET)
-    ref: str = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`."
-    )
-    state: Literal["open", "dismissed", "fixed"] = Field(
-        description="State of a code scanning alert."
-    )
+    updated_at: Union[datetime, None] = Field()
 
 
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation(
-    GitHubModel
-):
-    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation"""
+class WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwner(GitHubModel):
+    """User"""
 
-    end_column: Missing[int] = Field(default=UNSET)
-    end_line: Missing[int] = Field(default=UNSET)
-    path: Missing[str] = Field(default=UNSET)
-    start_column: Missing[int] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage(
-    GitHubModel
-):
-    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage"""
-
-    text: Missing[str] = Field(default=UNSET)
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropRule(GitHubModel):
-    """WebhookCodeScanningAlertCreatedPropAlertPropRule"""
-
-    description: str = Field(
-        description="A short description of the rule used to detect the alert."
-    )
-    full_description: Missing[str] = Field(default=UNSET)
-    help_: Missing[Union[str, None]] = Field(default=UNSET, alias="help")
-    help_uri: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A link to the documentation for the rule used to detect the alert.",
-    )
-    id: str = Field(
-        description="A unique identifier for the rule used to detect the alert."
-    )
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
     name: Missing[str] = Field(default=UNSET)
-    severity: Union[None, Literal["none", "note", "warning", "error"]] = Field(
-        description="The severity of the alert."
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissions(GitHubModel):
+    """WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissions
+
+    The set of permissions for the GitHub app
+    """
+
+    actions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    administration: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    checks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    content_references: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    contents: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    deployments: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    emails: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    environments: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    issues: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    keys: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    members: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    metadata: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_administration: Missing[Literal["read", "write"]] = Field(
+        default=UNSET
     )
-    tags: Missing[Union[list[str], None]] = Field(default=UNSET)
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropTool(GitHubModel):
-    """WebhookCodeScanningAlertCreatedPropAlertPropTool"""
-
-    guid: Missing[Union[str, None]] = Field(default=UNSET)
-    name: str = Field(
-        description="The name of the tool used to generate the code scanning analysis alert."
+    organization_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_plan: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_projects: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET
     )
-    version: Union[str, None] = Field(
-        description="The version of the tool used to detect the alert."
+    organization_secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_self_hosted_runners: Missing[Literal["read", "write"]] = Field(
+        default=UNSET
     )
+    organization_user_blocking: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    pages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    pull_requests: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    repository_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    repository_projects: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET
+    )
+    secret_scanning_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    security_events: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    security_scanning_alert: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    single_file: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    statuses: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    team_discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    vulnerability_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    workflows: Missing[Literal["read", "write"]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookCodeScanningAlertCreated)
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlert)
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance)
+class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommit(GitHubModel):
+    """SimpleCommit"""
+
+    author: WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthor = Field(
+        title="Committer",
+        description="Metaproperties for Git author/committer information.",
+    )
+    committer: WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitter = (
+        Field(
+            title="Committer",
+            description="Metaproperties for Git author/committer information.",
+        )
+    )
+    id: str = Field()
+    message: str = Field()
+    timestamp: str = Field()
+    tree_id: str = Field()
+
+
+class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthor(GitHubModel):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: Missing[datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
+
+
+class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitter(GitHubModel):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: Missing[datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
+
+
+class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItems(GitHubModel):
+    """Check Run Pull Request"""
+
+    base: WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBase = (
+        Field()
+    )
+    head: WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHead = (
+        Field()
+    )
+    id: int = Field()
+    number: int = Field()
+    url: str = Field()
+
+
+class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBase(
+    GitHubModel
+):
+    """WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBase"""
+
+    ref: str = Field()
+    repo: WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo = Field(
+        title="Repo Ref"
+    )
+    sha: str = Field()
+
+
+class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo(
+    GitHubModel
+):
+    """Repo Ref"""
+
+    id: int = Field()
+    name: str = Field()
+    url: str = Field()
+
+
+class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHead(
+    GitHubModel
+):
+    """WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHead"""
+
+    ref: str = Field()
+    repo: WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo = Field(
+        title="Repo Ref"
+    )
+    sha: str = Field()
+
+
+class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo(
+    GitHubModel
+):
+    """Repo Ref"""
+
+    id: int = Field()
+    name: str = Field()
+    url: str = Field()
+
+
+model_rebuild(WebhookCheckSuiteRequested)
+model_rebuild(WebhookCheckSuiteRequestedPropCheckSuite)
+model_rebuild(WebhookCheckSuiteRequestedPropCheckSuitePropApp)
+model_rebuild(WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwner)
+model_rebuild(WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissions)
+model_rebuild(WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommit)
+model_rebuild(WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthor)
+model_rebuild(WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitter)
+model_rebuild(WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItems)
+model_rebuild(WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBase)
 model_rebuild(
-    WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation
+    WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo
 )
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage)
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropRule)
-model_rebuild(WebhookCodeScanningAlertCreatedPropAlertPropTool)
+model_rebuild(WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHead)
+model_rebuild(
+    WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo
+)
 
 __all__ = (
-    "WebhookCodeScanningAlertCreated",
-    "WebhookCodeScanningAlertCreatedPropAlert",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage",
-    "WebhookCodeScanningAlertCreatedPropAlertPropRule",
-    "WebhookCodeScanningAlertCreatedPropAlertPropTool",
+    "WebhookCheckSuiteRequested",
+    "WebhookCheckSuiteRequestedPropCheckSuite",
+    "WebhookCheckSuiteRequestedPropCheckSuitePropApp",
+    "WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwner",
+    "WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissions",
+    "WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommit",
+    "WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthor",
+    "WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitter",
+    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItems",
+    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBase",
+    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo",
+    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHead",
+    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo",
 )

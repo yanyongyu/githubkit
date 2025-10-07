@@ -9,18 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-
-class CustomPropertyValueType(TypedDict):
-    """Custom Property Value
-
-    Custom property name and associated value
-    """
-
-    property_name: str
-    value: Union[str, list[str], None]
+from .group_0245 import LinkType
 
 
-__all__ = ("CustomPropertyValueType",)
+class PullRequestSimplePropLinksType(TypedDict):
+    """PullRequestSimplePropLinks"""
+
+    comments: LinkType
+    commits: LinkType
+    statuses: LinkType
+    html: LinkType
+    issue: LinkType
+    review_comments: LinkType
+    review_comment: LinkType
+    self_: LinkType
+
+
+__all__ = ("PullRequestSimplePropLinksType",)

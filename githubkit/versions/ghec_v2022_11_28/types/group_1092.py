@@ -9,14 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgMembershipsUsernamePutBodyType(TypedDict):
-    """OrgsOrgMembershipsUsernamePutBody"""
-
-    role: NotRequired[Literal["admin", "member"]]
+from .group_0194 import OrganizationCustomRepositoryRoleType
 
 
-__all__ = ("OrgsOrgMembershipsUsernamePutBodyType",)
+class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
+
+
+__all__ = ("OrgsOrgCustomRepositoryRolesGetResponse200Type",)

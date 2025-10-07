@@ -9,135 +9,196 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0077 import TeamSimple
-from .group_0168 import Milestone
-from .group_0243 import AutoMerge
-from .group_0413 import PullRequestPropLabelsItems
-from .group_0414 import PullRequestPropBase, PullRequestPropHead
-from .group_0415 import PullRequestPropLinks
 
 
-class PullRequestWebhook(GitHubModel):
-    """PullRequestWebhook"""
+class PersonalAccessTokenRequest(GitHubModel):
+    """Personal Access Token Request
 
-    url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    issue_url: str = Field()
-    commits_url: str = Field()
-    review_comments_url: str = Field()
-    review_comment_url: str = Field()
-    comments_url: str = Field()
-    statuses_url: str = Field()
-    number: int = Field(
-        description="Number uniquely identifying the pull request within its repository."
+    Details of a Personal Access Token Request.
+    """
+
+    id: int = Field(
+        description="Unique identifier of the request for access via fine-grained personal access token. Used as the `pat_request_id` parameter in the list and review API calls."
     )
-    state: Literal["open", "closed"] = Field(
-        description="State of this Pull Request. Either `open` or `closed`."
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    permissions_added: PersonalAccessTokenRequestPropPermissionsAdded = Field(
+        description="New requested permissions, categorized by type of permission."
     )
-    locked: bool = Field()
-    title: str = Field(description="The title of the pull request.")
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    body: Union[str, None] = Field()
-    labels: list[PullRequestPropLabelsItems] = Field()
-    milestone: Union[None, Milestone] = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
-    merged_at: Union[datetime, None] = Field()
-    merge_commit_sha: Union[str, None] = Field()
-    assignee: Union[None, SimpleUser] = Field()
-    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
-    requested_reviewers: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
-    requested_teams: Missing[Union[list[TeamSimple], None]] = Field(default=UNSET)
-    head: PullRequestPropHead = Field()
-    base: PullRequestPropBase = Field()
-    links: PullRequestPropLinks = Field(alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgraded = Field(
+        description="Requested permissions that elevate access for a previously approved request for access, categorized by type of permission."
     )
-    auto_merge: Union[AutoMerge, None] = Field(
-        title="Auto merge", description="The status of auto merging a pull request."
+    permissions_result: PersonalAccessTokenRequestPropPermissionsResult = Field(
+        description="Permissions requested, categorized by type of permission. This field incorporates `permissions_added` and `permissions_upgraded`."
     )
-    draft: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether or not the pull request is a draft.",
+    repository_selection: Literal["none", "all", "subset"] = Field(
+        description="Type of repository selection requested."
     )
-    merged: bool = Field()
-    mergeable: Union[bool, None] = Field()
-    rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
-    mergeable_state: str = Field()
-    merged_by: Union[None, SimpleUser] = Field()
-    comments: int = Field()
-    review_comments: int = Field()
-    maintainer_can_modify: bool = Field(
-        description="Indicates whether maintainers can modify the pull request."
+    repository_count: Union[int, None] = Field(
+        description="The number of repositories the token is requesting access to. This field is only populated when `repository_selection` is `subset`."
     )
-    commits: int = Field()
-    additions: int = Field()
-    deletions: int = Field()
-    changed_files: int = Field()
-    allow_auto_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow auto-merge for pull requests."
-    )
-    allow_update_branch: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to allow updating the pull request's branch.",
-    )
-    delete_branch_on_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to delete head branches when pull requests are merged.",
-    )
-    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
-        default=UNSET,
-        description="The default value for a merge commit message.\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
-    )
-    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
-        default=UNSET,
-        description='The default value for a merge commit title.\n- `PR_TITLE` - default to the pull request\'s title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").',
-    )
-    squash_merge_commit_message: Missing[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit message:\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
-    )
-    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+    repositories: Union[list[PersonalAccessTokenRequestPropRepositoriesItems], None] = (
         Field(
-            default=UNSET,
-            description="The default value for a squash merge commit title:\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+            description="An array of repository objects the token is requesting access to. This field is only populated when `repository_selection` is `subset`."
         )
     )
-    use_squash_pr_title_as_default: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.**",
+    created_at: str = Field(
+        description="Date and time when the request for access was created."
+    )
+    token_id: int = Field(
+        description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
+    )
+    token_name: str = Field(
+        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
+    )
+    token_expired: bool = Field(
+        description="Whether the associated fine-grained personal access token has expired."
+    )
+    token_expires_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token expires."
+    )
+    token_last_used_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token was last used for authentication."
     )
 
 
-model_rebuild(PullRequestWebhook)
+class PersonalAccessTokenRequestPropRepositoriesItems(GitHubModel):
+    """PersonalAccessTokenRequestPropRepositoriesItems"""
 
-__all__ = ("PullRequestWebhook",)
+    full_name: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    name: str = Field(description="The name of the repository.")
+    node_id: str = Field()
+    private: bool = Field(description="Whether the repository is private or public.")
+
+
+class PersonalAccessTokenRequestPropPermissionsAdded(GitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsAdded
+
+    New requested permissions, categorized by type of permission.
+    """
+
+    organization: Missing[
+        PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        PersonalAccessTokenRequestPropPermissionsAddedPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[PersonalAccessTokenRequestPropPermissionsAddedPropOther] = Field(
+        default=UNSET
+    )
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropOrganization(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropOrganization"""
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropRepository(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropOther(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropOther"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgraded(GitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsUpgraded
+
+    Requested permissions that elevate access for a previously approved request for
+    access, categorized by type of permission.
+    """
+
+    organization: Missing[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[PersonalAccessTokenRequestPropPermissionsUpgradedPropOther] = Field(
+        default=UNSET
+    )
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization(
+    ExtraGitHubModel
+):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropOther(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOther"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResult(GitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsResult
+
+    Permissions requested, categorized by type of permission. This field
+    incorporates `permissions_added` and `permissions_upgraded`.
+    """
+
+    organization: Missing[
+        PersonalAccessTokenRequestPropPermissionsResultPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        PersonalAccessTokenRequestPropPermissionsResultPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[PersonalAccessTokenRequestPropPermissionsResultPropOther] = Field(
+        default=UNSET
+    )
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropOrganization(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsResultPropOrganization"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropRepository(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsResultPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropOther(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsResultPropOther"""
+
+
+model_rebuild(PersonalAccessTokenRequest)
+model_rebuild(PersonalAccessTokenRequestPropRepositoriesItems)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsAdded)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsAddedPropOrganization)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsAddedPropRepository)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsAddedPropOther)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgraded)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgradedPropOther)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsResult)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsResultPropOrganization)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsResultPropRepository)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsResultPropOther)
+
+__all__ = (
+    "PersonalAccessTokenRequest",
+    "PersonalAccessTokenRequestPropPermissionsAdded",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganization",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOther",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropRepository",
+    "PersonalAccessTokenRequestPropPermissionsResult",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOrganization",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOther",
+    "PersonalAccessTokenRequestPropPermissionsResultPropRepository",
+    "PersonalAccessTokenRequestPropPermissionsUpgraded",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOther",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository",
+    "PersonalAccessTokenRequestPropRepositoriesItems",
+)

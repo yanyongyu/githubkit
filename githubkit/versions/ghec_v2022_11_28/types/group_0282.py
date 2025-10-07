@@ -9,38 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
+from typing_extensions import TypedDict
 
 
-class EnvironmentApprovalsType(TypedDict):
-    """Environment Approval
+class ActionsWorkflowAccessToRepositoryType(TypedDict):
+    """ActionsWorkflowAccessToRepository"""
 
-    An entry in the reviews log for environment deployments
-    """
-
-    environments: list[EnvironmentApprovalsPropEnvironmentsItemsType]
-    state: Literal["approved", "rejected", "pending"]
-    user: SimpleUserType
-    comment: str
+    access_level: Literal["none", "user", "organization", "enterprise"]
 
 
-class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
-    """EnvironmentApprovalsPropEnvironmentsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-
-
-__all__ = (
-    "EnvironmentApprovalsPropEnvironmentsItemsType",
-    "EnvironmentApprovalsType",
-)
+__all__ = ("ActionsWorkflowAccessToRepositoryType",)

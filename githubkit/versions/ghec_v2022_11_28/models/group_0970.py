@@ -9,20 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0058 import (
+    AmazonS3AccessKeysConfig,
+    AzureBlobConfig,
+    AzureHubConfig,
+    DatadogConfig,
+    HecConfig,
+)
+from .group_0059 import AmazonS3OidcConfig, SplunkConfig
+from .group_0060 import GoogleCloudConfig
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody(GitHubModel):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
 
-    selected_enterprise_teams: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of enterprise team names within the enterprise to which to grant access to GitHub Copilot.",
+    enabled: bool = Field(description="This setting pauses or resumes a stream.")
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ] = Field(
+        description="The audit log streaming provider. The name is case sensitive."
     )
+    vendor_specific: Union[
+        AzureBlobConfig,
+        AzureHubConfig,
+        AmazonS3OidcConfig,
+        AmazonS3AccessKeysConfig,
+        SplunkConfig,
+        HecConfig,
+        GoogleCloudConfig,
+        DatadogConfig,
+    ] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody)
+model_rebuild(EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody)
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody",)
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody",)

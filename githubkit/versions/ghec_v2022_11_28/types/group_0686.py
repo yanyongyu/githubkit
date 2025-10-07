@@ -9,19 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookIssuesClosedPropIssueAllof0PropPullRequestType(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[datetime, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+from .group_0003 import SimpleUserType
+from .group_0020 import RepositoryType
+from .group_0175 import IssueType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
 
 
-__all__ = ("WebhookIssuesClosedPropIssueAllof0PropPullRequestType",)
+class WebhookIssueDependenciesBlockedByAddedType(TypedDict):
+    """blocked by issue added event"""
+
+    action: Literal["blocked_by_added"]
+    blocked_issue_id: float
+    blocked_issue: IssueType
+    blocking_issue_id: float
+    blocking_issue: IssueType
+    blocking_issue_repo: RepositoryType
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+
+
+__all__ = ("WebhookIssueDependenciesBlockedByAddedType",)

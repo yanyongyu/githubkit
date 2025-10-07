@@ -9,35 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class GistsGistIdPatchBodyType(TypedDict):
-    """GistsGistIdPatchBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    description: NotRequired[str]
-    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
+    id: NotRequired[str]
+    name: NotRequired[str]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: NotRequired[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType
+        ]
+    ]
 
 
-GistsGistIdPatchBodyPropFilesType: TypeAlias = dict[str, Any]
-"""GistsGistIdPatchBodyPropFiles
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
 
-The gist files to be updated, renamed, or deleted. Each `key` must match the
-current filename
-(including extension) of the targeted gist file. For example: `hello.py`.
-
-To delete a file, set the whole file to null. For example: `hello.py : null`.
-The file will also be
-deleted if the specified object does not contain at least one of `content` or
-`filename`.
-
-Examples:
-    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
-"""
+    type: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "GistsGistIdPatchBodyPropFilesType",
-    "GistsGistIdPatchBodyType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type",
 )

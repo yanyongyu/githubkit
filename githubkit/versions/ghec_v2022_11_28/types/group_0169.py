@@ -9,32 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class IssueTypeType(TypedDict):
-    """Issue Type
+class BillingUsageReportType(TypedDict):
+    """BillingUsageReport"""
 
-    The type of issue.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    description: Union[str, None]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-    is_enabled: NotRequired[bool]
+    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
 
 
-__all__ = ("IssueTypeType",)
+class BillingUsageReportPropUsageItemsItemsType(TypedDict):
+    """BillingUsageReportPropUsageItemsItems"""
+
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    organization_name: str
+    repository_name: NotRequired[str]
+
+
+__all__ = (
+    "BillingUsageReportPropUsageItemsItemsType",
+    "BillingUsageReportType",
+)

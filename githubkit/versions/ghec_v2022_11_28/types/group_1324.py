@@ -9,15 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
+class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
 
-    name: NotRequired[str]
-    label: NotRequired[str]
-    state: NotRequired[str]
+    body: str
+    commit_id: str
+    path: str
+    position: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    line: NotRequired[int]
+    start_line: NotRequired[int]
+    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
+    in_reply_to: NotRequired[int]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
-__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberCommentsPostBodyType",)

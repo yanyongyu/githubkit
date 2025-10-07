@@ -9,16 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0192 import OrganizationCustomRepositoryRoleType
+
+class EnterprisesEnterpriseTeamsTeamSlugPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+
+    name: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    group_id: NotRequired[Union[str, None]]
 
 
-class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
-
-
-__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200Type",)
+__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",)

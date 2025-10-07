@@ -9,32 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class SubIssuesSummary(GitHubModel):
-    """Sub-issues Summary"""
+class IssueType(GitHubModel):
+    """Issue Type
 
-    total: int = Field()
-    completed: int = Field()
-    percent_completed: int = Field()
+    The type of issue.
+    """
+
+    id: int = Field(description="The unique identifier of the issue type.")
+    node_id: str = Field(description="The node identifier of the issue type.")
+    name: str = Field(description="The name of the issue type.")
+    description: Union[str, None] = Field(
+        description="The description of the issue type."
+    )
+    color: Missing[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ] = Field(default=UNSET, description="The color of the issue type.")
+    created_at: Missing[datetime] = Field(
+        default=UNSET, description="The time the issue type created."
+    )
+    updated_at: Missing[datetime] = Field(
+        default=UNSET, description="The time the issue type last updated."
+    )
+    is_enabled: Missing[bool] = Field(
+        default=UNSET, description="The enabled state of the issue type."
+    )
 
 
-class IssueDependenciesSummary(GitHubModel):
-    """Issue Dependencies Summary"""
+model_rebuild(IssueType)
 
-    blocked_by: int = Field()
-    blocking: int = Field()
-    total_blocked_by: int = Field()
-    total_blocking: int = Field()
-
-
-model_rebuild(SubIssuesSummary)
-model_rebuild(IssueDependenciesSummary)
-
-__all__ = (
-    "IssueDependenciesSummary",
-    "SubIssuesSummary",
-)
+__all__ = ("IssueType",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -32,6 +32,9 @@ class TeamSimpleType(TypedDict):
     repositories_url: str
     slug: str
     ldap_dn: NotRequired[str]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
 __all__ = ("TeamSimpleType",)

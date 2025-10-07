@@ -9,16 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody"""
 
-    body: str
-    path: NotRequired[str]
-    position: NotRequired[int]
-    line: NotRequired[int]
+    state: Literal["open", "dismissed"]
+    dismissed_reason: NotRequired[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    create_request: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBodyType",)
+__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType",)

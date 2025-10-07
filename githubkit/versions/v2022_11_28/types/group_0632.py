@@ -13,25 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0633 import WebhookIssuesOpenedPropChangesType
-from .group_0635 import WebhookIssuesOpenedPropIssueType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0467 import WebhooksMilestoneType
+from .group_0633 import WebhookIssuesDemilestonedPropIssueType
 
 
-class WebhookIssuesOpenedType(TypedDict):
-    """issues opened event"""
+class WebhookIssuesDemilestonedType(TypedDict):
+    """issues demilestoned event"""
 
-    action: Literal["opened"]
-    changes: NotRequired[WebhookIssuesOpenedPropChangesType]
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesOpenedPropIssueType
+    issue: WebhookIssuesDemilestonedPropIssueType
+    milestone: NotRequired[WebhooksMilestoneType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesOpenedType",)
+__all__ = ("WebhookIssuesDemilestonedType",)

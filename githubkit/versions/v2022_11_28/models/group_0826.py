@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,16 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0442 import EnterpriseWebhooks
-from .group_0443 import SimpleInstallation
-from .group_0444 import OrganizationSimpleWebhooks
-from .group_0445 import RepositoryWebhooks
-from .group_0490 import WebhooksTeam1
+from .group_0446 import EnterpriseWebhooks
+from .group_0447 import SimpleInstallation
+from .group_0448 import OrganizationSimpleWebhooks
+from .group_0449 import RepositoryWebhooks
 
 
-class WebhookTeamAdd(GitHubModel):
-    """team_add event"""
+class WebhookStarDeleted(GitHubModel):
+    """star deleted event"""
 
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -46,12 +48,11 @@ class WebhookTeamAdd(GitHubModel):
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    team: WebhooksTeam1 = Field(
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
+    starred_at: None = Field(
+        description="The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action."
     )
 
 
-model_rebuild(WebhookTeamAdd)
+model_rebuild(WebhookStarDeleted)
 
-__all__ = ("WebhookTeamAdd",)
+__all__ = ("WebhookStarDeleted",)

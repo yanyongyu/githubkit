@@ -663,7 +663,8 @@ class DependabotClient:
         epss_percentage: Missing[str] = UNSET,
         artifact_registry_url: Missing[str] = UNSET,
         artifact_registry: Missing[str] = UNSET,
-        has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
+        has: Missing[Union[str, list[Literal["patch", "deployment"]]]] = UNSET,
+        runtime_risk: Missing[str] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
@@ -707,6 +708,7 @@ class DependabotClient:
             "artifact_registry_url": artifact_registry_url,
             "artifact_registry": artifact_registry,
             "has": has,
+            "runtime_risk": runtime_risk,
             "scope": scope,
             "sort": sort,
             "direction": direction,
@@ -745,7 +747,8 @@ class DependabotClient:
         epss_percentage: Missing[str] = UNSET,
         artifact_registry_url: Missing[str] = UNSET,
         artifact_registry: Missing[str] = UNSET,
-        has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
+        has: Missing[Union[str, list[Literal["patch", "deployment"]]]] = UNSET,
+        runtime_risk: Missing[str] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
@@ -789,6 +792,7 @@ class DependabotClient:
             "artifact_registry_url": artifact_registry_url,
             "artifact_registry": artifact_registry,
             "has": has,
+            "runtime_risk": runtime_risk,
             "scope": scope,
             "sort": sort,
             "direction": direction,
@@ -1059,7 +1063,7 @@ class DependabotClient:
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: Missing[list[str]] = UNSET,
+        selected_repository_ids: Missing[list[Union[int, str]]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def create_or_update_org_secret(
@@ -1131,7 +1135,7 @@ class DependabotClient:
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: Missing[list[str]] = UNSET,
+        selected_repository_ids: Missing[list[Union[int, str]]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_create_or_update_org_secret(

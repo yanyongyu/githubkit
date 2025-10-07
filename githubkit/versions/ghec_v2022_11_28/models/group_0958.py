@@ -9,50 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0058 import (
-    AmazonS3AccessKeysConfig,
-    AzureBlobConfig,
-    AzureHubConfig,
-    DatadogConfig,
-    HecConfig,
-)
-from .group_0059 import AmazonS3OidcConfig, SplunkConfig
-from .group_0060 import GoogleCloudConfig
+from .group_0047 import Runner
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody(GitHubModel):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-    enabled: bool = Field(description="This setting pauses or resumes a stream.")
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ] = Field(
-        description="The audit log streaming provider. The name is case sensitive."
-    )
-    vendor_specific: Union[
-        AzureBlobConfig,
-        AzureHubConfig,
-        AmazonS3OidcConfig,
-        AmazonS3AccessKeysConfig,
-        SplunkConfig,
-        HecConfig,
-        GoogleCloudConfig,
-        DatadogConfig,
-    ] = Field()
+    total_count: Missing[float] = Field(default=UNSET)
+    runners: Missing[list[Runner]] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnersGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200",)

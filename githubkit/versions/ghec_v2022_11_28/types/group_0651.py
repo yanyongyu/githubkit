@@ -9,36 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0647 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
-)
+from .group_0003 import SimpleUserType
+from .group_0018 import InstallationType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0529 import WebhooksRepositoriesItemsType
 
 
-class WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp"""
+class WebhookInstallationUnsuspendType(TypedDict):
+    """installation unsuspend event"""
 
-    created_at: Union[datetime, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[datetime, None]
+    action: Literal["unsuspend"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: InstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    requester: NotRequired[None]
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubAppType",)
+__all__ = ("WebhookInstallationUnsuspendType",)

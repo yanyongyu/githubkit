@@ -9,15 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0018 import InstallationType
 
 
-class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+class OrgsOrgInstallationsGetResponse200Type(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
 
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
+    total_count: int
+    installations: list[InstallationType]
 
 
-__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType",)
+__all__ = ("OrgsOrgInstallationsGetResponse200Type",)

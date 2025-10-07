@@ -12,29 +12,43 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageReportType(TypedDict):
-    """BillingUsageReport"""
+class BillingPremiumRequestUsageReportOrgType(TypedDict):
+    """BillingPremiumRequestUsageReportOrg"""
 
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
+    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriodType
+    organization: str
+    user: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType]
 
 
-class BillingUsageReportPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
+class BillingPremiumRequestUsageReportOrgPropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
 
-    date: str
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
+
     product: str
     sku: str
-    quantity: int
+    model: str
     unit_type: str
     price_per_unit: float
+    gross_quantity: int
     gross_amount: float
+    discount_quantity: int
     discount_amount: float
+    net_quantity: int
     net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
 
 
 __all__ = (
-    "BillingUsageReportPropUsageItemsItemsType",
-    "BillingUsageReportType",
+    "BillingPremiumRequestUsageReportOrgPropTimePeriodType",
+    "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportOrgType",
 )

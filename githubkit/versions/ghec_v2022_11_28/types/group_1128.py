@@ -9,14 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0191 import MinimalRepositoryType
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType",)
+__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type",)

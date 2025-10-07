@@ -13,26 +13,26 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
-from .group_0048 import IssueType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0492 import WebhooksSponsorshipType
+from .group_0493 import WebhooksChanges8Type
 
 
-class WebhookSubIssuesParentIssueRemovedType(TypedDict):
-    """parent issue removed event"""
+class WebhookSponsorshipPendingTierChangeType(TypedDict):
+    """sponsorship pending_tier_change event"""
 
-    action: Literal["parent_issue_removed"]
-    parent_issue_id: float
-    parent_issue: IssueType
-    parent_issue_repo: RepositoryType
-    sub_issue_id: float
-    sub_issue: IssueType
+    action: Literal["pending_tier_change"]
+    changes: WebhooksChanges8Type
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookSubIssuesParentIssueRemovedType",)
+__all__ = ("WebhookSponsorshipPendingTierChangeType",)

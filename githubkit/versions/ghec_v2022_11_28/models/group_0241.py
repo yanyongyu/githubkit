@@ -9,72 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 
 
-class ProjectsV2ItemWithContent(GitHubModel):
-    """Projects v2 Item
+class ProjectsV2StatusUpdate(GitHubModel):
+    """Projects v2 Status Update
 
-    An item belonging to a project
+    An status update belonging to a project
     """
 
-    id: float = Field(description="The unique identifier of the project item.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project item."
-    )
-    project_url: Missing[str] = Field(
-        default=UNSET, description="The API URL of the project that contains this item."
-    )
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
-    )
-    content: Missing[Union[ProjectsV2ItemWithContentPropContent, None]] = Field(
+    id: float = Field(description="The unique identifier of the status update.")
+    node_id: str = Field(description="The node ID of the status update.")
+    project_node_id: Missing[str] = Field(
         default=UNSET,
-        description="The content of the item, which varies by content type.",
+        description="The node ID of the project that this status update belongs to.",
     )
     creator: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
-    created_at: datetime = Field(description="The time when the item was created.")
-    updated_at: datetime = Field(description="The time when the item was last updated.")
-    archived_at: Union[datetime, None] = Field(
-        description="The time when the item was archived."
+    created_at: datetime = Field(
+        description="The time when the status update was created."
     )
-    item_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The API URL of this item."
+    updated_at: datetime = Field(
+        description="The time when the status update was last updated."
     )
-    fields: Missing[list[ProjectsV2ItemWithContentPropFieldsItems]] = Field(
-        default=UNSET, description="The fields and values associated with this item."
+    status: Missing[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ] = Field(default=UNSET, description="The current status.")
+    start_date: Missing[date] = Field(
+        default=UNSET, description="The start date of the period covered by the update."
+    )
+    target_date: Missing[date] = Field(
+        default=UNSET, description="The target date associated with the update."
+    )
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Body of the status update"
     )
 
 
-class ProjectsV2ItemWithContentPropContent(ExtraGitHubModel):
-    """ProjectsV2ItemWithContentPropContent
+model_rebuild(ProjectsV2StatusUpdate)
 
-    The content of the item, which varies by content type.
-    """
-
-
-class ProjectsV2ItemWithContentPropFieldsItems(ExtraGitHubModel):
-    """ProjectsV2ItemWithContentPropFieldsItems"""
-
-
-model_rebuild(ProjectsV2ItemWithContent)
-model_rebuild(ProjectsV2ItemWithContentPropContent)
-model_rebuild(ProjectsV2ItemWithContentPropFieldsItems)
-
-__all__ = (
-    "ProjectsV2ItemWithContent",
-    "ProjectsV2ItemWithContentPropContent",
-    "ProjectsV2ItemWithContentPropFieldsItems",
-)
+__all__ = ("ProjectsV2StatusUpdate",)

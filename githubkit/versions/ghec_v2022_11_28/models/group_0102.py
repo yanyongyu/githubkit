@@ -15,26 +15,51 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0093 import (
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
-)
-from .group_0095 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
-)
-from .group_0097 import RepositoryRulesetConditionsPropRefName
 
+class EnterpriseRulesetConditionsOrganizationPropertyTarget(GitHubModel):
+    """Repository ruleset conditions for organization properties
 
-class EnterpriseRulesetConditionsOneof0(GitHubModel):
-    """organization_name_and_repository_name
-
-    Conditions to target organizations by name and all repositories
+    Parameters for a organization property condition
     """
 
-    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty = Field()
 
 
-model_rebuild(EnterpriseRulesetConditionsOneof0)
+class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty(
+    GitHubModel
+):
+    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
 
-__all__ = ("EnterpriseRulesetConditionsOneof0",)
+    include: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
+        default=UNSET,
+        description="The organization properties and values to include. All of these properties must match for the condition to pass.",
+    )
+    exclude: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
+        default=UNSET,
+        description="The organization properties and values to exclude. The condition will not pass if any of these properties match.",
+    )
+
+
+class EnterpriseRulesetConditionsOrganizationPropertySpec(GitHubModel):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a organization property
+    """
+
+    name: str = Field(description="The name of the organization property to target")
+    property_values: list[str] = Field(
+        description="The values to match for the organization property"
+    )
+
+
+model_rebuild(EnterpriseRulesetConditionsOrganizationPropertyTarget)
+model_rebuild(
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty
+)
+model_rebuild(EnterpriseRulesetConditionsOrganizationPropertySpec)
+
+__all__ = (
+    "EnterpriseRulesetConditionsOrganizationPropertySpec",
+    "EnterpriseRulesetConditionsOrganizationPropertyTarget",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty",
+)

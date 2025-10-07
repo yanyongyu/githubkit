@@ -10,46 +10,81 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class SecretScanningScanHistoryType(TypedDict):
-    """SecretScanningScanHistory"""
-
-    incremental_scans: NotRequired[list[SecretScanningScanType]]
-    pattern_update_scans: NotRequired[list[SecretScanningScanType]]
-    backfill_scans: NotRequired[list[SecretScanningScanType]]
-    custom_pattern_backfill_scans: NotRequired[
-        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType]
-    ]
-
-
-class SecretScanningScanType(TypedDict):
-    """SecretScanningScan
-
-    Information on a single scan performed by secret scanning on the repository
-    """
-
-    type: NotRequired[str]
-    status: NotRequired[str]
-    completed_at: NotRequired[Union[datetime, None]]
-    started_at: NotRequired[Union[datetime, None]]
-
-
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType(TypedDict):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
-
-    type: NotRequired[str]
-    status: NotRequired[str]
-    completed_at: NotRequired[Union[datetime, None]]
-    started_at: NotRequired[Union[datetime, None]]
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
-
-
-__all__ = (
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType",
-    "SecretScanningScanHistoryType",
-    "SecretScanningScanType",
+from .group_0003 import SimpleUserType
+from .group_0039 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationWikiCommitType,
 )
+from .group_0040 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestTitleType,
+)
+from .group_0041 import (
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationPullRequestCommentType,
+)
+
+
+class SecretScanningAlertType(TypedDict):
+    """SecretScanningAlert"""
+
+    number: NotRequired[int]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[Union[None, datetime]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    locations_url: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolved_at: NotRequired[Union[datetime, None]]
+    resolved_by: NotRequired[Union[None, SimpleUserType]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    secret: NotRequired[str]
+    push_protection_bypassed: NotRequired[Union[bool, None]]
+    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypassed_at: NotRequired[Union[datetime, None]]
+    push_protection_bypass_request_reviewer: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    publicly_leaked: NotRequired[Union[bool, None]]
+    multi_repo: NotRequired[Union[bool, None]]
+    is_base64_encoded: NotRequired[Union[bool, None]]
+    first_location_detected: NotRequired[
+        Union[
+            None,
+            SecretScanningLocationCommitType,
+            SecretScanningLocationWikiCommitType,
+            SecretScanningLocationIssueTitleType,
+            SecretScanningLocationIssueBodyType,
+            SecretScanningLocationIssueCommentType,
+            SecretScanningLocationDiscussionTitleType,
+            SecretScanningLocationDiscussionBodyType,
+            SecretScanningLocationDiscussionCommentType,
+            SecretScanningLocationPullRequestTitleType,
+            SecretScanningLocationPullRequestBodyType,
+            SecretScanningLocationPullRequestCommentType,
+            SecretScanningLocationPullRequestReviewType,
+            SecretScanningLocationPullRequestReviewCommentType,
+        ]
+    ]
+    has_more_locations: NotRequired[bool]
+    assigned_to: NotRequired[Union[None, SimpleUserType]]
+
+
+__all__ = ("SecretScanningAlertType",)

@@ -138,7 +138,7 @@ class AppPermissions(GitHubModel):
     )
     organization_custom_properties: Missing[Literal["read", "write", "admin"]] = Field(
         default=UNSET,
-        description="The level of permission to grant the access token for custom property management.",
+        description="The level of permission to grant the access token for repository custom properties management at the organization level.",
     )
     organization_copilot_seat_management: Missing[Literal["write", "read"]] = Field(
         default=UNSET,

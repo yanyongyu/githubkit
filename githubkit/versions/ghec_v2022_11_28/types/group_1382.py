@@ -9,13 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
+class UserGpgKeysPostBodyType(TypedDict):
+    """UserGpgKeysPostBody"""
 
-    attestation_ids: list[int]
+    name: NotRequired[str]
+    armored_public_key: str
 
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type",)
+__all__ = ("UserGpgKeysPostBodyType",)

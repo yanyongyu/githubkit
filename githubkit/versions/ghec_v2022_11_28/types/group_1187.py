@@ -12,14 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
+class ReposOwnerRepoActionsVariablesPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsVariablesPostBody"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str]
+    name: str
+    value: str
 
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType",)
+__all__ = ("ReposOwnerRepoActionsVariablesPostBodyType",)

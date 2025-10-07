@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,50 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesPostBodyOneof1(GitHubModel):
-    """UserCodespacesPostBodyOneof1"""
+class TeamsTeamIdPatchBody(GitHubModel):
+    """TeamsTeamIdPatchBody"""
 
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequest = Field(
-        description="Pull request number for this codespace"
+    name: str = Field(description="The name of the team.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the team."
     )
-    location: Missing[str] = Field(
+    privacy: Missing[Literal["secret", "closed"]] = Field(
         default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
+        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
     )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
         default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
+        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
     )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
+    permission: Missing[Literal["pull", "push", "admin"]] = Field(
         default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
+        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
     )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
+    parent_team_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of a team to set as the parent team."
     )
 
 
-class UserCodespacesPostBodyOneof1PropPullRequest(GitHubModel):
-    """UserCodespacesPostBodyOneof1PropPullRequest
+model_rebuild(TeamsTeamIdPatchBody)
 
-    Pull request number for this codespace
-    """
-
-    pull_request_number: int = Field(description="Pull request number")
-    repository_id: int = Field(description="Repository id for this codespace")
-
-
-model_rebuild(UserCodespacesPostBodyOneof1)
-model_rebuild(UserCodespacesPostBodyOneof1PropPullRequest)
-
-__all__ = (
-    "UserCodespacesPostBodyOneof1",
-    "UserCodespacesPostBodyOneof1PropPullRequest",
-)
+__all__ = ("TeamsTeamIdPatchBody",)

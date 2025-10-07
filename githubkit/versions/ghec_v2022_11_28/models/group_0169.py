@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,37 +16,48 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class IssueType(GitHubModel):
-    """Issue Type
+class BillingUsageReport(GitHubModel):
+    """BillingUsageReport"""
 
-    The type of issue.
-    """
-
-    id: int = Field(description="The unique identifier of the issue type.")
-    node_id: str = Field(description="The node identifier of the issue type.")
-    name: str = Field(description="The name of the issue type.")
-    description: Union[str, None] = Field(
-        description="The description of the issue type."
-    )
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="The color of the issue type.")
-    created_at: Missing[datetime] = Field(
-        default=UNSET, description="The time the issue type created."
-    )
-    updated_at: Missing[datetime] = Field(
-        default=UNSET, description="The time the issue type last updated."
-    )
-    is_enabled: Missing[bool] = Field(
-        default=UNSET, description="The enabled state of the issue type."
+    usage_items: Missing[list[BillingUsageReportPropUsageItemsItems]] = Field(
+        default=UNSET, alias="usageItems"
     )
 
 
-model_rebuild(IssueType)
+class BillingUsageReportPropUsageItemsItems(GitHubModel):
+    """BillingUsageReportPropUsageItemsItems"""
 
-__all__ = ("IssueType",)
+    date: str = Field(description="Date of the usage line item.")
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    quantity: int = Field(description="Quantity of the usage line item.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+    organization_name: str = Field(
+        alias="organizationName", description="Name of the organization."
+    )
+    repository_name: Missing[str] = Field(
+        default=UNSET, alias="repositoryName", description="Name of the repository."
+    )
+
+
+model_rebuild(BillingUsageReport)
+model_rebuild(BillingUsageReportPropUsageItemsItems)
+
+__all__ = (
+    "BillingUsageReport",
+    "BillingUsageReportPropUsageItemsItems",
+)

@@ -9,24 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserSocialAccountsDeleteBody(GitHubModel):
-    """UserSocialAccountsDeleteBody
+class UserEmailVisibilityPatchBody(GitHubModel):
+    """UserEmailVisibilityPatchBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str] = Field(
-        description="Full URLs for the social media profiles to delete."
+    visibility: Literal["public", "private"] = Field(
+        description="Denotes whether an email is publicly visible."
     )
 
 
-model_rebuild(UserSocialAccountsDeleteBody)
+model_rebuild(UserEmailVisibilityPatchBody)
 
-__all__ = ("UserSocialAccountsDeleteBody",)
+__all__ = ("UserEmailVisibilityPatchBody",)

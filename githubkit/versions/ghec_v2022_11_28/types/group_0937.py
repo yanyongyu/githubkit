@@ -12,14 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
+class CredentialsRevokePostBodyType(TypedDict):
+    """CredentialsRevokePostBody"""
 
-    disable_self_hosted_runners_for_all_orgs: bool
+    credentials: list[str]
 
 
-__all__ = (
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type",
-)
+__all__ = ("CredentialsRevokePostBodyType",)

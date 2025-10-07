@@ -17,40 +17,33 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0078 import Team
+from .group_0301 import GitUser
+from .group_0302 import Verification
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
-    GitHubModel
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class CommitPropCommit(GitHubModel):
+    """CommitPropCommit"""
 
     url: str = Field()
-    users_url: str = Field()
-    teams_url: str = Field()
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
-    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
+    author: Union[None, GitUser] = Field()
+    committer: Union[None, GitUser] = Field()
+    message: str = Field()
+    comment_count: int = Field()
+    tree: CommitPropCommitPropTree = Field()
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
-    GitHubModel
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+class CommitPropCommitPropTree(GitHubModel):
+    """CommitPropCommitPropTree"""
 
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
-    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
+    sha: str = Field()
+    url: str = Field()
 
 
-model_rebuild(ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions)
-model_rebuild(
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-)
+model_rebuild(CommitPropCommit)
+model_rebuild(CommitPropCommitPropTree)
 
 __all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
+    "CommitPropCommit",
+    "CommitPropCommitPropTree",
 )

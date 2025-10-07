@@ -18,22 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0505 import EnterpriseWebhooks
-from .group_0506 import SimpleInstallation
-from .group_0507 import OrganizationSimpleWebhooks
-from .group_0508 import RepositoryWebhooks
-from .group_0520 import Discussion
-from .group_0521 import WebhooksComment
+from .group_0511 import EnterpriseWebhooks
+from .group_0512 import SimpleInstallation
+from .group_0513 import OrganizationSimpleWebhooks
+from .group_0514 import RepositoryWebhooks
+from .group_0520 import WebhooksDeployKey
 
 
-class WebhookDiscussionCommentDeleted(GitHubModel):
-    """discussion_comment deleted event"""
+class WebhookDeployKeyCreated(GitHubModel):
+    """deploy_key created event"""
 
-    action: Literal["deleted"] = Field()
-    comment: WebhooksComment = Field()
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
-    )
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,6 +38,9 @@ class WebhookDiscussionCommentDeleted(GitHubModel):
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    key: WebhooksDeployKey = Field(
+        description="The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#get-a-deploy-key) resource."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -56,6 +54,6 @@ class WebhookDiscussionCommentDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionCommentDeleted)
+model_rebuild(WebhookDeployKeyCreated)
 
-__all__ = ("WebhookDiscussionCommentDeleted",)
+__all__ = ("WebhookDeployKeyCreated",)

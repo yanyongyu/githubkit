@@ -181,6 +181,24 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.types import BaseGistType as BaseGistType
     from githubkit.versions.v2022_11_28.types import BasicErrorType as BasicErrorType
     from githubkit.versions.v2022_11_28.types import (
+        BillingPremiumRequestUsageReportOrgPropTimePeriodType as BillingPremiumRequestUsageReportOrgPropTimePeriodType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType as BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        BillingPremiumRequestUsageReportOrgType as BillingPremiumRequestUsageReportOrgType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        BillingPremiumRequestUsageReportUserPropTimePeriodType as BillingPremiumRequestUsageReportUserPropTimePeriodType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        BillingPremiumRequestUsageReportUserPropUsageItemsItemsType as BillingPremiumRequestUsageReportUserPropUsageItemsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        BillingPremiumRequestUsageReportUserType as BillingPremiumRequestUsageReportUserType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         BillingUsageReportPropUsageItemsItemsType as BillingUsageReportPropUsageItemsItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -256,6 +274,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         CheckAutomatedSecurityFixesType as CheckAutomatedSecurityFixesType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        CheckImmutableReleasesType as CheckImmutableReleasesType,
     )
     from githubkit.versions.v2022_11_28.types import (
         CheckRunPropCheckSuiteType as CheckRunPropCheckSuiteType,
@@ -1010,6 +1031,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import HovercardType as HovercardType
     from githubkit.versions.v2022_11_28.types import (
+        ImmutableReleasesOrganizationSettingsType as ImmutableReleasesOrganizationSettingsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ImportPropProjectChoicesItemsType as ImportPropProjectChoicesItemsType,
     )
     from githubkit.versions.v2022_11_28.types import ImportType as ImportType
@@ -1680,6 +1704,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgSecurityProductEnablementPostBodyType as OrgsOrgSecurityProductEnablementPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgSettingsImmutableReleasesPutBodyType as OrgsOrgSettingsImmutableReleasesPutBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type as OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType as OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgSettingsNetworkConfigurationsGetResponse200Type as OrgsOrgSettingsNetworkConfigurationsGetResponse200Type,
@@ -10184,6 +10217,9 @@ else:
             "ThreadSubscriptionType",
             "OrganizationSimpleType",
             "DependabotRepositoryAccessDetailsType",
+            "BillingPremiumRequestUsageReportOrgType",
+            "BillingPremiumRequestUsageReportOrgPropTimePeriodType",
+            "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType",
             "BillingUsageReportType",
             "BillingUsageReportPropUsageItemsItemsType",
             "OrganizationFullType",
@@ -10401,6 +10437,7 @@ else:
             "ActionsBillingUsagePropMinutesUsedBreakdownType",
             "PackagesBillingUsageType",
             "CombinedBillingUsageType",
+            "ImmutableReleasesOrganizationSettingsType",
             "NetworkSettingsType",
             "TeamFullType",
             "TeamOrganizationType",
@@ -10637,6 +10674,7 @@ else:
             "GitTreePropTreeItemsType",
             "HookResponseType",
             "HookType",
+            "CheckImmutableReleasesType",
             "ImportType",
             "ImportPropProjectChoicesItemsType",
             "PorterAuthorType",
@@ -10830,6 +10868,9 @@ else:
             "HovercardType",
             "HovercardPropContextsItemsType",
             "KeySimpleType",
+            "BillingPremiumRequestUsageReportUserType",
+            "BillingPremiumRequestUsageReportUserPropTimePeriodType",
+            "BillingPremiumRequestUsageReportUserPropUsageItemsItemsType",
             "BillingUsageReportUserType",
             "BillingUsageReportUserPropUsageItemsItemsType",
             "EnterpriseWebhooksType",
@@ -13130,6 +13171,9 @@ else:
             "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
             "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
             "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",
+            "OrgsOrgSettingsImmutableReleasesPutBodyType",
+            "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type",
+            "OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType",
             "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
             "NetworkConfigurationType",
             "OrgsOrgSettingsNetworkConfigurationsPostBodyType",

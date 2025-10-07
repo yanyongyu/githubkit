@@ -9,13 +9,100 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0158 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
+from .group_0159 import RepositoryRuleUpdateType
+from .group_0161 import RepositoryRuleRequiredLinearHistoryType
+from .group_0162 import RepositoryRuleMergeQueueType
+from .group_0164 import RepositoryRuleRequiredDeploymentsType
+from .group_0167 import RepositoryRulePullRequestType
+from .group_0169 import RepositoryRuleRequiredStatusChecksType
+from .group_0171 import RepositoryRuleCommitMessagePatternType
+from .group_0173 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0175 import RepositoryRuleCommitterEmailPatternType
+from .group_0177 import RepositoryRuleBranchNamePatternType
+from .group_0179 import RepositoryRuleTagNamePatternType
+from .group_0181 import RepositoryRuleFilePathRestrictionType
+from .group_0183 import RepositoryRuleMaxFilePathLengthType
+from .group_0185 import RepositoryRuleFileExtensionRestrictionType
+from .group_0187 import RepositoryRuleMaxFileSizeType
+from .group_0190 import RepositoryRuleWorkflowsType
+from .group_0192 import RepositoryRuleCodeScanningType
+from .group_0194 import RepositoryRuleCopilotCodeReviewType
+from .group_0797 import (
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType,
+)
 
 
-class WebhookSecretScanningAlertLocationCreatedFormEncodedType(TypedDict):
-    """Secret Scanning Alert Location Created Event"""
+class WebhookRepositoryRulesetEditedPropChangesPropRulesType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
 
-    payload: str
+    added: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
+            ]
+        ]
+    ]
+    deleted: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
+            ]
+        ]
+    ]
+    updated: NotRequired[
+        list[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType]
+    ]
 
 
-__all__ = ("WebhookSecretScanningAlertLocationCreatedFormEncodedType",)
+__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRulesType",)

@@ -11,17 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
-
-    users: NotRequired[list[str]]
-    organizations: NotRequired[list[str]]
-    repositories: NotRequired[list[str]]
+from .group_0079 import CopilotSeatDetailsType
 
 
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType",
-)
+class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
+
+
+__all__ = ("EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type",)

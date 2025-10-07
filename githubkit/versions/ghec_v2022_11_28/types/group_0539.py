@@ -9,57 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectType(TypedDict):
-    """Project"""
+class WebhooksTeamType(TypedDict):
+    """Team
 
-    body: Union[str, None]
-    columns_url: str
-    created_at: datetime
-    creator: Union[WebhooksProjectPropCreatorType, None]
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    number: int
-    owner_url: str
-    state: Literal["open", "closed"]
-    updated_at: datetime
-    url: str
+    Groups of organization members that gives permissions on specified repositories.
+    """
 
-
-class WebhooksProjectPropCreatorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
+    description: NotRequired[Union[str, None]]
     html_url: NotRequired[str]
     id: int
-    login: str
-    name: NotRequired[str]
+    members_url: NotRequired[str]
+    name: str
     node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    parent: NotRequired[Union[WebhooksTeamPropParentType, None]]
+    permission: NotRequired[str]
+    privacy: NotRequired[Literal["open", "closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    repositories_url: NotRequired[str]
+    slug: NotRequired[str]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    type: NotRequired[Literal["enterprise", "organization"]]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+
+
+class WebhooksTeamPropParentType(TypedDict):
+    """WebhooksTeamPropParent"""
+
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
+    repositories_url: str
+    slug: str
+    url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
 __all__ = (
-    "WebhooksProjectPropCreatorType",
-    "WebhooksProjectType",
+    "WebhooksTeamPropParentType",
+    "WebhooksTeamType",
 )

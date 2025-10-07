@@ -9,66 +9,157 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
 
 
-class WebhookRepositoryEditedType(TypedDict):
-    """repository edited event"""
+class WebhookReleasePrereleasedType(TypedDict):
+    """release prereleased event"""
 
-    action: Literal["edited"]
-    changes: WebhookRepositoryEditedPropChangesType
+    action: Literal["prereleased"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhookReleasePrereleasedPropReleaseType
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookRepositoryEditedPropChangesType(TypedDict):
-    """WebhookRepositoryEditedPropChanges"""
+class WebhookReleasePrereleasedPropReleaseType(TypedDict):
+    """Release
 
-    default_branch: NotRequired[WebhookRepositoryEditedPropChangesPropDefaultBranchType]
-    description: NotRequired[WebhookRepositoryEditedPropChangesPropDescriptionType]
-    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageType]
-    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsType]
+    The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
+    object.
+    """
+
+    assets: list[Union[WebhookReleasePrereleasedPropReleasePropAssetsItemsType, None]]
+    assets_url: str
+    author: Union[WebhookReleasePrereleasedPropReleasePropAuthorType, None]
+    body: Union[str, None]
+    created_at: Union[datetime, None]
+    discussion_url: NotRequired[str]
+    draft: bool
+    html_url: str
+    id: int
+    immutable: bool
+    name: Union[str, None]
+    node_id: str
+    prerelease: Literal[True]
+    published_at: Union[datetime, None]
+    reactions: NotRequired[WebhookReleasePrereleasedPropReleasePropReactionsType]
+    tag_name: str
+    tarball_url: Union[str, None]
+    target_commitish: str
+    upload_url: str
+    updated_at: Union[datetime, None]
+    url: str
+    zipball_url: Union[str, None]
 
 
-class WebhookRepositoryEditedPropChangesPropDefaultBranchType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
+class WebhookReleasePrereleasedPropReleasePropAssetsItemsType(TypedDict):
+    """Release Asset
 
-    from_: str
+    Data related to a release.
+    """
+
+    browser_download_url: str
+    content_type: str
+    created_at: datetime
+    download_count: int
+    id: int
+    label: Union[str, None]
+    name: str
+    node_id: str
+    size: int
+    digest: Union[str, None]
+    state: Literal["uploaded"]
+    updated_at: datetime
+    uploader: NotRequired[
+        Union[WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploaderType, None]
+    ]
+    url: str
 
 
-class WebhookRepositoryEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
+class WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
+    """User"""
 
-    from_: Union[str, None]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
-class WebhookRepositoryEditedPropChangesPropHomepageType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
+class WebhookReleasePrereleasedPropReleasePropAuthorType(TypedDict):
+    """User"""
 
-    from_: Union[str, None]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookRepositoryEditedPropChangesPropTopicsType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
+class WebhookReleasePrereleasedPropReleasePropReactionsType(TypedDict):
+    """Reactions"""
 
-    from_: NotRequired[Union[list[str], None]]
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
 
 
 __all__ = (
-    "WebhookRepositoryEditedPropChangesPropDefaultBranchType",
-    "WebhookRepositoryEditedPropChangesPropDescriptionType",
-    "WebhookRepositoryEditedPropChangesPropHomepageType",
-    "WebhookRepositoryEditedPropChangesPropTopicsType",
-    "WebhookRepositoryEditedPropChangesType",
-    "WebhookRepositoryEditedType",
+    "WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploaderType",
+    "WebhookReleasePrereleasedPropReleasePropAssetsItemsType",
+    "WebhookReleasePrereleasedPropReleasePropAuthorType",
+    "WebhookReleasePrereleasedPropReleasePropReactionsType",
+    "WebhookReleasePrereleasedPropReleaseType",
+    "WebhookReleasePrereleasedType",
 )

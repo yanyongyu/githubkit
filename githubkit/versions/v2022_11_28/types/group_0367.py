@@ -9,18 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class PullRequestMergeResultType(TypedDict):
-    """Pull Request Merge Result
+class PullRequestPropLabelsItemsType(TypedDict):
+    """PullRequestPropLabelsItems"""
 
-    Pull Request Merge Result
-    """
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
 
-    sha: str
-    merged: bool
-    message: str
 
-
-__all__ = ("PullRequestMergeResultType",)
+__all__ = ("PullRequestPropLabelsItemsType",)

@@ -9,23 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PorterLargeFile(GitHubModel):
-    """Porter Large File
+class HookResponse(GitHubModel):
+    """Hook Response"""
 
-    Porter Large File
-    """
-
-    ref_name: str = Field()
-    path: str = Field()
-    oid: str = Field()
-    size: int = Field()
+    code: Union[int, None] = Field()
+    status: Union[str, None] = Field()
+    message: Union[str, None] = Field()
 
 
-model_rebuild(PorterLargeFile)
+model_rebuild(HookResponse)
 
-__all__ = ("PorterLargeFile",)
+__all__ = ("HookResponse",)

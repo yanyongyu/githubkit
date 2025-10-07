@@ -9,29 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0641 import WebhookIssueCommentCreatedPropCommentType
-from .group_0642 import WebhookIssueCommentCreatedPropIssueType
+
+class WebhookForkPropForkeeAllof0PropPermissionsType(TypedDict):
+    """WebhookForkPropForkeeAllof0PropPermissions"""
+
+    admin: bool
+    maintain: NotRequired[bool]
+    pull: bool
+    push: bool
+    triage: NotRequired[bool]
 
 
-class WebhookIssueCommentCreatedType(TypedDict):
-    """issue_comment created event"""
-
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentCreatedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-__all__ = ("WebhookIssueCommentCreatedType",)
+__all__ = ("WebhookForkPropForkeeAllof0PropPermissionsType",)

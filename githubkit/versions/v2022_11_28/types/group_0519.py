@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0141 import CustomPropertyValueType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0520 import WebhookCodeScanningAlertReopenedPropAlertType
 
 
-class WebhookCustomPropertyValuesUpdatedType(TypedDict):
-    """Custom property values updated event"""
+class WebhookCodeScanningAlertReopenedType(TypedDict):
+    """code_scanning_alert reopened event"""
 
-    action: Literal["updated"]
+    action: Literal["reopened"]
+    alert: Union[WebhookCodeScanningAlertReopenedPropAlertType, None]
+    commit_oid: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    ref: Union[str, None]
     repository: RepositoryWebhooksType
-    organization: OrganizationSimpleWebhooksType
-    sender: NotRequired[SimpleUserType]
-    new_property_values: list[CustomPropertyValueType]
-    old_property_values: list[CustomPropertyValueType]
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookCustomPropertyValuesUpdatedType",)
+__all__ = ("WebhookCodeScanningAlertReopenedType",)

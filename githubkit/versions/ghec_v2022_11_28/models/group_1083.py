@@ -12,17 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0189 import MinimalRepository
-
-
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
+from .group_0079 import CopilotSeatDetails
 
 
-model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200)
+class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",)
+    total_seats: Missing[int] = Field(
+        default=UNSET,
+        description="Total number of Copilot seats for the organization currently being billed.",
+    )
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
+
+__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200",)

@@ -10,20 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0194 import RepositoryRuleCopilotCodeReviewPropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleCopilotCodeReviewType(TypedDict):
-    """copilot_code_review
+class RepositoryRuleCodeScanningPropParametersType(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review.
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
+
+
+class RepositoryRuleParamsCodeScanningToolType(TypedDict):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
     """
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ]
+    tool: str
 
 
-__all__ = ("RepositoryRuleCopilotCodeReviewType",)
+__all__ = (
+    "RepositoryRuleCodeScanningPropParametersType",
+    "RepositoryRuleParamsCodeScanningToolType",
+)

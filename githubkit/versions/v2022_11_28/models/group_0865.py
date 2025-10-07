@@ -11,17 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody"""
+class CredentialsRevokePostBody(GitHubModel):
+    """CredentialsRevokePostBody"""
 
-    usernames: list[str] = Field(
-        description="The GitHub user handles to be removed from the team."
+    credentials: list[str] = Field(
+        max_length=1000 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="A list of credentials to be revoked, up to 1000 per request.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody)
+model_rebuild(CredentialsRevokePostBody)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody",)
+__all__ = ("CredentialsRevokePostBody",)

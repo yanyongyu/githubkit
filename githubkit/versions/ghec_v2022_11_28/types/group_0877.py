@@ -9,15 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0878 import WebhookSecurityAndAnalysisPropChangesPropFromType
+from .group_0003 import SimpleUserType
+from .group_0453 import SecretScanningLocationType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0557 import SecretScanningAlertWebhookType
 
 
-class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
-    """WebhookSecurityAndAnalysisPropChanges"""
+class WebhookSecretScanningAlertLocationCreatedType(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
-    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
+    action: Literal["created"]
+    alert: SecretScanningAlertWebhookType
+    installation: NotRequired[SimpleInstallationType]
+    location: SecretScanningLocationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookSecurityAndAnalysisPropChangesType",)
+__all__ = ("WebhookSecretScanningAlertLocationCreatedType",)

@@ -9,17 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody
+class ReposOwnerRepoAutolinksPostBodyType(TypedDict):
+    """ReposOwnerRepoAutolinksPostBody"""
 
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str]
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType",)
+__all__ = ("ReposOwnerRepoAutolinksPostBodyType",)

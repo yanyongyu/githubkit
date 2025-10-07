@@ -9,19 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
+class EnterprisesEnterpriseNetworkConfigurationsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
 
-    users: NotRequired[list[str]]
-    organizations: NotRequired[list[str]]
-    repositories: NotRequired[list[str]]
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
 
 
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType",
-)
+__all__ = ("EnterprisesEnterpriseNetworkConfigurationsPostBodyType",)

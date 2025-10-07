@@ -13,11 +13,14 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
+class ReposOwnerRepoPullsPullNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
+    title: NotRequired[str]
     body: NotRequired[str]
-    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberPatchBodyType",)

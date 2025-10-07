@@ -9,38 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
+class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsSecretsGetResponse200"""
 
-    total_count: NotRequired[int]
-    storage_records: NotRequired[
-        list[
-            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType
-        ]
-    ]
+    total_count: int
+    secrets: list[OrganizationActionsSecretType]
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
+class OrganizationActionsSecretType(TypedDict):
+    """Actions Secret for an Organization
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[Union[str, None]]
-    registry_url: NotRequired[str]
-    repository: NotRequired[Union[str, None]]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    Secrets for GitHub Actions for an organization.
+    """
+
+    name: str
+    created_at: datetime
+    updated_at: datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type",
+    "OrganizationActionsSecretType",
+    "OrgsOrgActionsSecretsGetResponse200Type",
 )

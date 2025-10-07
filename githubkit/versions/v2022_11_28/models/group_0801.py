@@ -19,46 +19,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0442 import EnterpriseWebhooks
-from .group_0443 import SimpleInstallation
-from .group_0444 import OrganizationSimpleWebhooks
-from .group_0445 import RepositoryWebhooks
+from .group_0446 import EnterpriseWebhooks
+from .group_0447 import SimpleInstallation
+from .group_0448 import OrganizationSimpleWebhooks
+from .group_0449 import RepositoryWebhooks
 
 
-class WebhookSecretScanningScanCompleted(GitHubModel):
-    """secret_scanning_scan completed event"""
+class WebhookRepositoryVulnerabilityAlertDismiss(GitHubModel):
+    """repository_vulnerability_alert dismiss event"""
 
-    action: Literal["completed"] = Field()
-    type: Literal["backfill", "custom-pattern-backfill", "pattern-version-backfill"] = (
-        Field(description="What type of scan was completed")
-    )
-    source: Literal["git", "issues", "pull-requests", "discussions", "wiki"] = Field(
-        description="What type of content was scanned"
-    )
-    started_at: datetime = Field(
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    completed_at: datetime = Field(
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    secret_types: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="List of patterns that were updated. This will be empty for normal backfill scans or custom pattern updates",
-    )
-    custom_pattern_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="If the scan was triggered by a custom pattern update, this will be the name of the pattern that was updated",
-    )
-    custom_pattern_scope: Missing[
-        Union[None, Literal["repository", "organization", "enterprise"]]
-    ] = Field(
-        default=UNSET,
-        description="If the scan was triggered by a custom pattern update, this will be the scope of the pattern that was updated",
-    )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    action: Literal["dismiss"] = Field()
+    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlert = Field(
+        title="Repository Vulnerability Alert Alert",
+        description="The security alert of the vulnerable dependency.",
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -75,11 +48,74 @@ class WebhookSecretScanningScanCompleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecretScanningScanCompleted)
+class WebhookRepositoryVulnerabilityAlertDismissPropAlert(GitHubModel):
+    """Repository Vulnerability Alert Alert
 
-__all__ = ("WebhookSecretScanningScanCompleted",)
+    The security alert of the vulnerable dependency.
+    """
+
+    affected_package_name: str = Field()
+    affected_range: str = Field()
+    created_at: str = Field()
+    dismiss_comment: Missing[Union[str, None]] = Field(default=UNSET)
+    dismiss_reason: str = Field()
+    dismissed_at: str = Field()
+    dismisser: Union[
+        WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser, None
+    ] = Field(title="User")
+    external_identifier: str = Field()
+    external_reference: Union[str, None] = Field()
+    fix_reason: Missing[str] = Field(default=UNSET)
+    fixed_at: Missing[datetime] = Field(default=UNSET)
+    fixed_in: Missing[str] = Field(default=UNSET)
+    ghsa_id: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    number: int = Field()
+    severity: str = Field()
+    state: Literal["dismissed"] = Field()
+
+
+class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismiss)
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlert)
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser)
+
+__all__ = (
+    "WebhookRepositoryVulnerabilityAlertDismiss",
+    "WebhookRepositoryVulnerabilityAlertDismissPropAlert",
+    "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser",
+)

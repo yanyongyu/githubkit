@@ -9,16 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType
+from .group_0241 import ProjectsV2StatusUpdateType
 
 
-class LinkType(TypedDict):
-    """Link
+class ProjectsV2Type(TypedDict):
+    """Projects v2 Project
 
-    Hypermedia Link
+    A projects v2 project
     """
 
-    href: str
+    id: float
+    node_id: str
+    owner: SimpleUserType
+    creator: SimpleUserType
+    title: str
+    description: Union[str, None]
+    public: bool
+    closed_at: Union[datetime, None]
+    created_at: datetime
+    updated_at: datetime
+    number: int
+    short_description: Union[str, None]
+    deleted_at: Union[datetime, None]
+    deleted_by: Union[None, SimpleUserType]
+    state: NotRequired[Literal["open", "closed"]]
+    latest_status_update: NotRequired[Union[None, ProjectsV2StatusUpdateType]]
+    is_template: NotRequired[bool]
 
 
-__all__ = ("LinkType",)
+__all__ = ("ProjectsV2Type",)

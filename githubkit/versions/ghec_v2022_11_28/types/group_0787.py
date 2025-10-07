@@ -13,41 +13,23 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0542 import ProjectsV2ItemType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0545 import WebhooksProjectType
 
 
-class WebhookProjectsV2ItemReorderedType(TypedDict):
-    """Projects v2 Item Reordered Event"""
+class WebhookProjectDeletedType(TypedDict):
+    """project deleted event"""
 
-    action: Literal["reordered"]
-    changes: WebhookProjectsV2ItemReorderedPropChangesType
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
-    sender: SimpleUserType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project: WebhooksProjectType
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectsV2ItemReorderedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
-
-    previous_projects_v2_item_node_id: NotRequired[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType
-    ]
-
-
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType(
-    TypedDict
-):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-__all__ = (
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType",
-    "WebhookProjectsV2ItemReorderedPropChangesType",
-    "WebhookProjectsV2ItemReorderedType",
-)
+__all__ = ("WebhookProjectDeletedType",)

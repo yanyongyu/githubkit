@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,22 +16,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class ProjectsColumnsColumnIdCardsPostResponse503(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostResponse503"""
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
-    )
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[
+        list[ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoActionsPermissionsPutBody)
+class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"""
 
-__all__ = ("ReposOwnerRepoActionsPermissionsPutBody",)
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ProjectsColumnsColumnIdCardsPostResponse503)
+model_rebuild(ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems)
+
+__all__ = (
+    "ProjectsColumnsColumnIdCardsPostResponse503",
+    "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems",
+)

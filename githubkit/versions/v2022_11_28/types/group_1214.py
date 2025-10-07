@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserEmailVisibilityPatchBodyType(TypedDict):
-    """UserEmailVisibilityPatchBody"""
+class TeamsTeamIdProjectsProjectIdPutResponse403Type(TypedDict):
+    """TeamsTeamIdProjectsProjectIdPutResponse403"""
 
-    visibility: Literal["public", "private"]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-__all__ = ("UserEmailVisibilityPatchBodyType",)
+__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403Type",)

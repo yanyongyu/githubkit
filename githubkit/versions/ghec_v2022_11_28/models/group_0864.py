@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0505 import EnterpriseWebhooks
-from .group_0506 import SimpleInstallation
-from .group_0507 import OrganizationSimpleWebhooks
-from .group_0508 import RepositoryWebhooks
-from .group_0551 import SecretScanningAlertWebhook
+from .group_0150 import RepositoryRuleset
+from .group_0511 import EnterpriseWebhooks
+from .group_0512 import SimpleInstallation
+from .group_0513 import OrganizationSimpleWebhooks
+from .group_0514 import RepositoryWebhooks
+from .group_0865 import WebhookRepositoryRulesetEditedPropChanges
 
 
-class WebhookSecretScanningAlertCreated(GitHubModel):
-    """secret_scanning_alert created event"""
+class WebhookRepositoryRulesetEdited(GitHubModel):
+    """repository ruleset edited event"""
 
-    action: Literal["created"] = Field()
-    alert: SecretScanningAlertWebhook = Field()
+    action: Literal["edited"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,15 +45,19 @@ class WebhookSecretScanningAlertCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository_ruleset: RepositoryRuleset = Field(
+        title="Repository ruleset",
+        description="A set of rules to apply when specified conditions are met.",
     )
+    changes: Missing[WebhookRepositoryRulesetEditedPropChanges] = Field(default=UNSET)
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecretScanningAlertCreated)
+model_rebuild(WebhookRepositoryRulesetEdited)
 
-__all__ = ("WebhookSecretScanningAlertCreated",)
+__all__ = ("WebhookRepositoryRulesetEdited",)

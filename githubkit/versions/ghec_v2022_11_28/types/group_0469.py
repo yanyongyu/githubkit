@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0468 import TrafficType
 
 
-class MetaType(TypedDict):
-    """Meta
+class CloneTrafficType(TypedDict):
+    """Clone Traffic
 
-    The metadata associated with the creation/updates to the user.
+    Clone Traffic
     """
 
-    resource_type: Literal["User", "Group"]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
+    count: int
+    uniques: int
+    clones: list[TrafficType]
 
 
-__all__ = ("MetaType",)
+__all__ = ("CloneTrafficType",)

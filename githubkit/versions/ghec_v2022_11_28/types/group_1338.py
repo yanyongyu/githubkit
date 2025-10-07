@@ -9,44 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ScimV2OrganizationsOrgUsersPostBodyType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBody"""
+class ReposOwnerRepoReleasesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
 
-    user_name: str
-    display_name: NotRequired[str]
-    name: ScimV2OrganizationsOrgUsersPostBodyPropNameType
-    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType]
-    schemas: NotRequired[list[str]]
-    external_id: NotRequired[str]
-    groups: NotRequired[list[str]]
-    active: NotRequired[bool]
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropNameType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str
-    family_name: str
-    formatted: NotRequired[str]
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
-
-    value: str
-    primary: NotRequired[bool]
-    type: NotRequired[str]
-
-
-__all__ = (
-    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType",
-    "ScimV2OrganizationsOrgUsersPostBodyPropNameType",
-    "ScimV2OrganizationsOrgUsersPostBodyType",
-)
+__all__ = ("ReposOwnerRepoReleasesPostBodyType",)

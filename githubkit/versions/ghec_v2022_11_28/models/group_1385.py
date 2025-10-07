@@ -9,36 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
-
-    fields: list[
-        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems
-    ] = Field(description="A list of field updates to apply.")
+class UserInteractionLimitsGetResponse200Anyof1(GitHubModel):
+    """UserInteractionLimitsGetResponse200Anyof1"""
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems(
-    GitHubModel
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+model_rebuild(UserInteractionLimitsGetResponse200Anyof1)
 
-    id: int = Field(description="The ID of the project field to update.")
-    value: Union[str, float, None] = Field(
-        description="The new value for the field:\n- For text, number, and date fields, provide the new value directly.\n- For single select and iteration fields, provide the ID of the option or iteration.\n- To clear the field, set this to null."
-    )
-
-
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody)
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems)
-
-__all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
-)
+__all__ = ("UserInteractionLimitsGetResponse200Anyof1",)

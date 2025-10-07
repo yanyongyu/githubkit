@@ -9,17 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0445 import RepositoryWebhooksType
-from .group_0455 import DiscussionType
+from .group_0003 import SimpleUserType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0459 import DiscussionType
+from .group_0460 import WebhooksCommentType
 
 
-class WebhookDiscussionTransferredPropChangesType(TypedDict):
-    """WebhookDiscussionTransferredPropChanges"""
+class WebhookDiscussionCommentDeletedType(TypedDict):
+    """discussion_comment deleted event"""
 
-    new_discussion: DiscussionType
-    new_repository: RepositoryWebhooksType
+    action: Literal["deleted"]
+    comment: WebhooksCommentType
+    discussion: DiscussionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookDiscussionTransferredPropChangesType",)
+__all__ = ("WebhookDiscussionCommentDeletedType",)

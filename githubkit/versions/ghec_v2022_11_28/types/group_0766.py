@@ -9,62 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
 
 
-class WebhookProjectCardMovedType(TypedDict):
-    """project_card moved event"""
+class WebhookPageBuildType(TypedDict):
+    """page_build event"""
 
-    action: Literal["moved"]
-    changes: NotRequired[WebhookProjectCardMovedPropChangesType]
+    build: WebhookPageBuildPropBuildType
     enterprise: NotRequired[EnterpriseWebhooksType]
+    id: int
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhookProjectCardMovedPropProjectCardType
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookProjectCardMovedPropChangesType(TypedDict):
-    """WebhookProjectCardMovedPropChanges"""
+class WebhookPageBuildPropBuildType(TypedDict):
+    """WebhookPageBuildPropBuild
 
-    column_id: WebhookProjectCardMovedPropChangesPropColumnIdType
+    The [List GitHub Pages builds](https://docs.github.com/enterprise-
+    cloud@latest//rest/pages/pages#list-github-pages-builds) itself.
+    """
 
-
-class WebhookProjectCardMovedPropChangesPropColumnIdType(TypedDict):
-    """WebhookProjectCardMovedPropChangesPropColumnId"""
-
-    from_: int
-
-
-class WebhookProjectCardMovedPropProjectCardType(TypedDict):
-    """WebhookProjectCardMovedPropProjectCard"""
-
-    after_id: Union[Union[int, None], None]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: datetime
-    creator: Union[WebhookProjectCardMovedPropProjectCardMergedCreatorType, None]
-    id: int
-    node_id: str
-    note: Union[Union[str, None], None]
-    project_url: str
-    updated_at: datetime
+    commit: Union[str, None]
+    created_at: str
+    duration: int
+    error: WebhookPageBuildPropBuildPropErrorType
+    pusher: Union[WebhookPageBuildPropBuildPropPusherType, None]
+    status: str
+    updated_at: str
     url: str
 
 
-class WebhookProjectCardMovedPropProjectCardMergedCreatorType(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardMergedCreator"""
+class WebhookPageBuildPropBuildPropErrorType(TypedDict):
+    """WebhookPageBuildPropBuildPropError"""
+
+    message: Union[str, None]
+
+
+class WebhookPageBuildPropBuildPropPusherType(TypedDict):
+    """User"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -85,15 +76,14 @@ class WebhookProjectCardMovedPropProjectCardMergedCreatorType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectCardMovedPropChangesPropColumnIdType",
-    "WebhookProjectCardMovedPropChangesType",
-    "WebhookProjectCardMovedPropProjectCardMergedCreatorType",
-    "WebhookProjectCardMovedPropProjectCardType",
-    "WebhookProjectCardMovedType",
+    "WebhookPageBuildPropBuildPropErrorType",
+    "WebhookPageBuildPropBuildPropPusherType",
+    "WebhookPageBuildPropBuildType",
+    "WebhookPageBuildType",
 )

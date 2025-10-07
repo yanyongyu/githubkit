@@ -13,21 +13,51 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0541 import WebhooksProjectChangesType
-from .group_0542 import ProjectsV2ItemType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0545 import WebhooksProjectType
 
 
-class WebhookProjectsV2ItemRestoredType(TypedDict):
-    """Projects v2 Item Restored Event"""
+class WebhookProjectEditedType(TypedDict):
+    """project edited event"""
 
-    action: Literal["restored"]
-    changes: WebhooksProjectChangesType
+    action: Literal["edited"]
+    changes: NotRequired[WebhookProjectEditedPropChangesType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
-    sender: SimpleUserType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project: WebhooksProjectType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookProjectsV2ItemRestoredType",)
+class WebhookProjectEditedPropChangesType(TypedDict):
+    """WebhookProjectEditedPropChanges
+
+    The changes to the project if the action was `edited`.
+    """
+
+    body: NotRequired[WebhookProjectEditedPropChangesPropBodyType]
+    name: NotRequired[WebhookProjectEditedPropChangesPropNameType]
+
+
+class WebhookProjectEditedPropChangesPropBodyType(TypedDict):
+    """WebhookProjectEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookProjectEditedPropChangesPropNameType(TypedDict):
+    """WebhookProjectEditedPropChangesPropName"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookProjectEditedPropChangesPropBodyType",
+    "WebhookProjectEditedPropChangesPropNameType",
+    "WebhookProjectEditedPropChangesType",
+    "WebhookProjectEditedType",
+)

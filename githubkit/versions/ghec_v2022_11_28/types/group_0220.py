@@ -13,18 +13,16 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsUserStatsItemsType(TypedDict):
-    """ApiInsightsUserStatsItems"""
+class ApiInsightsSubjectStatsItemsType(TypedDict):
+    """ApiInsightsSubjectStatsItems"""
 
-    actor_type: NotRequired[str]
-    actor_name: NotRequired[str]
-    actor_id: NotRequired[int]
-    integration_id: NotRequired[Union[int, None]]
-    oauth_application_id: NotRequired[Union[int, None]]
+    subject_type: NotRequired[str]
+    subject_name: NotRequired[str]
+    subject_id: NotRequired[int]
     total_request_count: NotRequired[int]
     rate_limited_request_count: NotRequired[int]
     last_rate_limited_timestamp: NotRequired[Union[str, None]]
     last_request_timestamp: NotRequired[str]
 
 
-__all__ = ("ApiInsightsUserStatsItemsType",)
+__all__ = ("ApiInsightsSubjectStatsItemsType",)

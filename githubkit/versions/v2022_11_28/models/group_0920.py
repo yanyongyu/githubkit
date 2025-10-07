@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,39 +19,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200(GitHubModel):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
+class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
+    """OrgsOrgActionsSecretsGetResponse200"""
 
-    total_count: Missing[int] = Field(default=UNSET)
-    storage_records: Missing[
-        list[
-            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
-        ]
-    ] = Field(default=UNSET)
+    total_count: int = Field()
+    secrets: list[OrganizationActionsSecret] = Field()
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
+class OrganizationActionsSecret(GitHubModel):
+    """Actions Secret for an Organization
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    digest: Missing[str] = Field(default=UNSET)
-    artifact_url: Missing[Union[str, None]] = Field(default=UNSET)
-    registry_url: Missing[str] = Field(default=UNSET)
-    repository: Missing[Union[str, None]] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
+    Secrets for GitHub Actions for an organization.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a secret"
+    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostResponse200)
-model_rebuild(
-    OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
-)
+model_rebuild(OrgsOrgActionsSecretsGetResponse200)
+model_rebuild(OrganizationActionsSecret)
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems",
+    "OrganizationActionsSecret",
+    "OrgsOrgActionsSecretsGetResponse200",
 )

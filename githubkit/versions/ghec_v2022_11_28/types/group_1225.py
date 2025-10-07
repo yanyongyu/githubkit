@@ -9,45 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoContentsPathPutBodyType(TypedDict):
-    """ReposOwnerRepoContentsPathPutBody"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type(TypedDict):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
 
-    message: str
-    content: str
-    sha: NotRequired[str]
-    branch: NotRequired[str]
-    committer: NotRequired[ReposOwnerRepoContentsPathPutBodyPropCommitterType]
-    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorType]
-
-
-class ReposOwnerRepoContentsPathPutBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoContentsPathPutBodyPropCommitter
-
-    The person that committed the file. Default: the authenticated user.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
+    language: Literal[
+        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "rust", "swift"
+    ]
+    query_pack: str
+    repositories: NotRequired[list[str]]
+    repository_lists: list[str]
+    repository_owners: NotRequired[list[str]]
 
 
-class ReposOwnerRepoContentsPathPutBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoContentsPathPutBodyPropAuthor
-
-    The author of the file. Default: The `committer` or the authenticated user if
-    you omit `committer`.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
-
-
-__all__ = (
-    "ReposOwnerRepoContentsPathPutBodyPropAuthorType",
-    "ReposOwnerRepoContentsPathPutBodyPropCommitterType",
-    "ReposOwnerRepoContentsPathPutBodyType",
-)
+__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type",)

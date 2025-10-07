@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,25 +18,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoStatusesShaPostBody(GitHubModel):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
 
-    state: Literal["error", "failure", "pending", "success"] = Field(
-        description="The state of the status."
-    )
-    target_url: Missing[Union[str, None]] = Field(
+    commit_id: Missing[str] = Field(
         default=UNSET,
-        description="The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.  \nFor example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:  \n`http://ci.example.com/user/repo/build/sha`",
+        description="The SHA of the commit that needs a review. Not using the latest commit SHA may render your review comment outdated if a subsequent commit modifies the line you specify as the `position`. Defaults to the most recent commit in the pull request when you do not specify a value.",
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A short description of the status."
-    )
-    context: Missing[str] = Field(
+    body: Missing[str] = Field(
         default=UNSET,
-        description="A string label to differentiate this status from the status of other systems. This field is case-insensitive.",
+        description="**Required** when using `REQUEST_CHANGES` or `COMMENT` for the `event` parameter. The body text of the pull request review.",
+    )
+    event: Missing[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = Field(
+        default=UNSET,
+        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready.",
+    )
+    comments: Missing[
+        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems]
+    ] = Field(
+        default=UNSET,
+        description="Use the following table to specify the location, destination, and contents of the draft review comment.",
     )
 
 
-model_rebuild(ReposOwnerRepoStatusesShaPostBody)
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
 
-__all__ = ("ReposOwnerRepoStatusesShaPostBody",)
+    path: str = Field(
+        description="The relative path to the file that necessitates a review comment."
+    )
+    position: Missing[int] = Field(
+        default=UNSET,
+        description='The position in the diff where you want to add a review comment. Note this value is not the same as the line number in the file. The `position` value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.',
+    )
+    body: str = Field(description="Text of the review comment.")
+    line: Missing[int] = Field(default=UNSET)
+    side: Missing[str] = Field(default=UNSET)
+    start_line: Missing[int] = Field(default=UNSET)
+    start_side: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems)
+
+__all__ = (
+    "ReposOwnerRepoPullsPullNumberReviewsPostBody",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems",
+)

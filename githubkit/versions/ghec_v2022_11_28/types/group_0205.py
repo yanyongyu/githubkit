@@ -9,17 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomRepositoryRoleCreateSchemaType(TypedDict):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
+class CodespacesPublicKeyType(TypedDict):
+    """CodespacesPublicKey
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
+    The public key used for setting Codespaces secrets.
+    """
+
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-__all__ = ("OrganizationCustomRepositoryRoleCreateSchemaType",)
+__all__ = ("CodespacesPublicKeyType",)

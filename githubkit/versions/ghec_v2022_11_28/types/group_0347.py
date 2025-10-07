@@ -9,53 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleViolationErrorType(TypedDict):
-    """RepositoryRuleViolationError
+class ContentFileType(TypedDict):
+    """Content File
 
-    Repository rule violation was detected
+    Content File
     """
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    status: NotRequired[str]
-    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataType]
+    type: Literal["file"]
+    encoding: str
+    size: int
+    name: str
+    path: str
+    content: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksType
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
 
 
-class RepositoryRuleViolationErrorPropMetadataType(TypedDict):
-    """RepositoryRuleViolationErrorPropMetadata"""
+class ContentFilePropLinksType(TypedDict):
+    """ContentFilePropLinks"""
 
-    secret_scanning: NotRequired[
-        RepositoryRuleViolationErrorPropMetadataPropSecretScanningType
-    ]
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningType(TypedDict):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
-
-    bypass_placeholders: NotRequired[
-        list[
-            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType
-        ]
-    ]
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType(
-    TypedDict
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
-    Items
-    """
-
-    placeholder_id: NotRequired[str]
-    token_type: NotRequired[str]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningType",
-    "RepositoryRuleViolationErrorPropMetadataType",
-    "RepositoryRuleViolationErrorType",
+    "ContentFilePropLinksType",
+    "ContentFileType",
 )

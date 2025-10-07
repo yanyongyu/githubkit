@@ -9,89 +9,163 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0077 import TeamSimpleType
-from .group_0168 import MilestoneType
-from .group_0243 import AutoMergeType
-from .group_0413 import PullRequestPropLabelsItemsType
-from .group_0414 import PullRequestPropBaseType, PullRequestPropHeadType
-from .group_0415 import PullRequestPropLinksType
 
 
-class PullRequestWebhookType(TypedDict):
-    """PullRequestWebhook"""
+class PersonalAccessTokenRequestType(TypedDict):
+    """Personal Access Token Request
 
-    url: str
+    Details of a Personal Access Token Request.
+    """
+
     id: int
+    owner: SimpleUserType
+    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedType
+    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgradedType
+    permissions_result: PersonalAccessTokenRequestPropPermissionsResultType
+    repository_selection: Literal["none", "all", "subset"]
+    repository_count: Union[int, None]
+    repositories: Union[list[PersonalAccessTokenRequestPropRepositoriesItemsType], None]
+    created_at: str
+    token_id: int
+    token_name: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
+
+
+class PersonalAccessTokenRequestPropRepositoriesItemsType(TypedDict):
+    """PersonalAccessTokenRequestPropRepositoriesItems"""
+
+    full_name: str
+    id: int
+    name: str
     node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: Literal["open", "closed"]
-    locked: bool
-    title: str
-    user: SimpleUserType
-    body: Union[str, None]
-    labels: list[PullRequestPropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
-    active_lock_reason: NotRequired[Union[str, None]]
-    created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
-    merged_at: Union[datetime, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserType], None]]
-    requested_teams: NotRequired[Union[list[TeamSimpleType], None]]
-    head: PullRequestPropHeadType
-    base: PullRequestPropBaseType
-    links: PullRequestPropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeType, None]
-    draft: NotRequired[bool]
-    merged: bool
-    mergeable: Union[bool, None]
-    rebaseable: NotRequired[Union[bool, None]]
-    mergeable_state: str
-    merged_by: Union[None, SimpleUserType]
-    comments: int
-    review_comments: int
-    maintainer_can_modify: bool
-    commits: int
-    additions: int
-    deletions: int
-    changed_files: int
-    allow_auto_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    use_squash_pr_title_as_default: NotRequired[bool]
+    private: bool
 
 
-__all__ = ("PullRequestWebhookType",)
+class PersonalAccessTokenRequestPropPermissionsAddedType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsAdded
+
+    New requested permissions, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType
+    ]
+    other: NotRequired[PersonalAccessTokenRequestPropPermissionsAddedPropOtherType]
+
+
+PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropRepository
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsAddedPropOtherType: TypeAlias = dict[str, Any]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropOther
+"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsUpgraded
+
+    Requested permissions that elevate access for a previously approved request for
+    access, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType
+    ]
+    other: NotRequired[PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType]
+
+
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
+"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResultType(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsResult
+
+    Permissions requested, categorized by type of permission. This field
+    incorporates `permissions_added` and `permissions_upgraded`.
+    """
+
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType
+    ]
+    other: NotRequired[PersonalAccessTokenRequestPropPermissionsResultPropOtherType]
+
+
+PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsResultPropOrganization
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsResultPropRepository
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsResultPropOtherType: TypeAlias = dict[str, Any]
+"""PersonalAccessTokenRequestPropPermissionsResultPropOther
+"""
+
+
+__all__ = (
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsAddedType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsResultType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedType",
+    "PersonalAccessTokenRequestPropRepositoriesItemsType",
+    "PersonalAccessTokenRequestType",
+)

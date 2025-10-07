@@ -17,14 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0169 import RepositoryRuleRequiredStatusChecksPropParameters
+from .group_0165 import RepositoryRuleRequiredDeploymentsPropParameters
 
 
-class RepositoryRuleDetailedOneof8(GitHubModel):
-    """RepositoryRuleDetailedOneof8"""
+class RepositoryRuleDetailedOneof5(GitHubModel):
+    """RepositoryRuleDetailedOneof5"""
 
-    type: Literal["required_status_checks"] = Field()
-    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
+    type: Literal["required_deployments"] = Field()
+    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
         default=UNSET
     )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
@@ -40,6 +40,6 @@ class RepositoryRuleDetailedOneof8(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof8)
+model_rebuild(RepositoryRuleDetailedOneof5)
 
-__all__ = ("RepositoryRuleDetailedOneof8",)
+__all__ = ("RepositoryRuleDetailedOneof5",)

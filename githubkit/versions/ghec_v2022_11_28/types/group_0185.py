@@ -10,30 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0186 import (
-    MarketplacePurchasePropMarketplacePendingChangeType,
-    MarketplacePurchasePropMarketplacePurchaseType,
-)
+from typing_extensions import TypedDict
 
 
-class MarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase
+class LicenseType(TypedDict):
+    """License
 
-    Marketplace Purchase
+    License
     """
 
-    url: str
-    type: str
-    id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
-    ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
+    key: str
+    name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
 
 
-__all__ = ("MarketplacePurchaseType",)
+__all__ = ("LicenseType",)

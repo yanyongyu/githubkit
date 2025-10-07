@@ -9,44 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0473 import WebhooksProjectCardType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0476 import PersonalAccessTokenRequestType
 
 
-class WebhookProjectCardEditedType(TypedDict):
-    """project_card edited event"""
+class WebhookPersonalAccessTokenRequestApprovedType(TypedDict):
+    """personal_access_token_request approved event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectCardEditedPropChangesType
+    action: Literal["approved"]
+    personal_access_token_request: PersonalAccessTokenRequestType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhooksProjectCardType
-    repository: NotRequired[RepositoryWebhooksType]
+    organization: OrganizationSimpleWebhooksType
     sender: SimpleUserType
+    installation: SimpleInstallationType
 
 
-class WebhookProjectCardEditedPropChangesType(TypedDict):
-    """WebhookProjectCardEditedPropChanges"""
-
-    note: WebhookProjectCardEditedPropChangesPropNoteType
-
-
-class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
-    """WebhookProjectCardEditedPropChangesPropNote"""
-
-    from_: Union[str, None]
-
-
-__all__ = (
-    "WebhookProjectCardEditedPropChangesPropNoteType",
-    "WebhookProjectCardEditedPropChangesType",
-    "WebhookProjectCardEditedType",
-)
+__all__ = ("WebhookPersonalAccessTokenRequestApprovedType",)

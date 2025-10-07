@@ -9,27 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0446 import WebhooksRuleType
+
+class WebhooksChanges8Type(TypedDict):
+    """WebhooksChanges8"""
+
+    tier: WebhooksChanges8PropTierType
 
 
-class WebhookBranchProtectionRuleCreatedType(TypedDict):
-    """branch protection rule created event"""
+class WebhooksChanges8PropTierType(TypedDict):
+    """WebhooksChanges8PropTier"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    rule: WebhooksRuleType
-    sender: SimpleUserType
+    from_: WebhooksChanges8PropTierPropFromType
 
 
-__all__ = ("WebhookBranchProtectionRuleCreatedType",)
+class WebhooksChanges8PropTierPropFromType(TypedDict):
+    """Sponsorship Tier
+
+    The `tier_changed` and `pending_tier_change` will include the original tier
+    before the change or pending change. For more information, see the pending tier
+    change payload.
+    """
+
+    created_at: str
+    description: str
+    is_custom_ammount: NotRequired[bool]
+    is_custom_amount: NotRequired[bool]
+    is_one_time: bool
+    monthly_price_in_cents: int
+    monthly_price_in_dollars: int
+    name: str
+    node_id: str
+
+
+__all__ = (
+    "WebhooksChanges8PropTierPropFromType",
+    "WebhooksChanges8PropTierType",
+    "WebhooksChanges8Type",
+)

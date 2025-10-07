@@ -9,15 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyType(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBody"""
+class OrgsOrgOutsideCollaboratorsUsernamePutBodyType(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
+    async_: NotRequired[bool]
 
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyType",)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBodyType",)

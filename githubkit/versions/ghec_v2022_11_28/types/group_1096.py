@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    selected_repository_ids: list[int]
 
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",)
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType",)

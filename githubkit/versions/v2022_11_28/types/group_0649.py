@@ -13,23 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0457 import WebhooksLabelType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0468 import WebhooksIssue2Type
+from .group_0650 import WebhookIssuesTransferredPropChangesType
 
 
-class WebhookLabelCreatedType(TypedDict):
-    """label created event"""
+class WebhookIssuesTransferredType(TypedDict):
+    """issues transferred event"""
 
-    action: Literal["created"]
+    action: Literal["transferred"]
+    changes: WebhookIssuesTransferredPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelType
+    issue: WebhooksIssue2Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookLabelCreatedType",)
+__all__ = ("WebhookIssuesTransferredType",)

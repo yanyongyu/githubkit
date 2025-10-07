@@ -173,6 +173,24 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import BasicError as BasicError
     from githubkit.versions.v2022_11_28.models import (
+        BillingPremiumRequestUsageReportOrg as BillingPremiumRequestUsageReportOrg,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        BillingPremiumRequestUsageReportOrgPropTimePeriod as BillingPremiumRequestUsageReportOrgPropTimePeriod,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        BillingPremiumRequestUsageReportOrgPropUsageItemsItems as BillingPremiumRequestUsageReportOrgPropUsageItemsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        BillingPremiumRequestUsageReportUser as BillingPremiumRequestUsageReportUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        BillingPremiumRequestUsageReportUserPropTimePeriod as BillingPremiumRequestUsageReportUserPropTimePeriod,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        BillingPremiumRequestUsageReportUserPropUsageItemsItems as BillingPremiumRequestUsageReportUserPropUsageItemsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         BillingUsageReport as BillingUsageReport,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -244,6 +262,9 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import CheckAnnotation as CheckAnnotation
     from githubkit.versions.v2022_11_28.models import (
         CheckAutomatedSecurityFixes as CheckAutomatedSecurityFixes,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        CheckImmutableReleases as CheckImmutableReleases,
     )
     from githubkit.versions.v2022_11_28.models import CheckRun as CheckRun
     from githubkit.versions.v2022_11_28.models import (
@@ -957,6 +978,9 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import (
         HovercardPropContextsItems as HovercardPropContextsItems,
     )
+    from githubkit.versions.v2022_11_28.models import (
+        ImmutableReleasesOrganizationSettings as ImmutableReleasesOrganizationSettings,
+    )
     from githubkit.versions.v2022_11_28.models import Import as Import
     from githubkit.versions.v2022_11_28.models import (
         ImportPropProjectChoicesItems as ImportPropProjectChoicesItems,
@@ -1606,6 +1630,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgSecurityProductEnablementPostBody as OrgsOrgSecurityProductEnablementPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgSettingsImmutableReleasesPutBody as OrgsOrgSettingsImmutableReleasesPutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200 as OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgSettingsImmutableReleasesRepositoriesPutBody as OrgsOrgSettingsImmutableReleasesRepositoriesPutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgSettingsNetworkConfigurationsGetResponse200 as OrgsOrgSettingsNetworkConfigurationsGetResponse200,
@@ -10002,6 +10035,9 @@ else:
             "ThreadSubscription",
             "OrganizationSimple",
             "DependabotRepositoryAccessDetails",
+            "BillingPremiumRequestUsageReportOrg",
+            "BillingPremiumRequestUsageReportOrgPropTimePeriod",
+            "BillingPremiumRequestUsageReportOrgPropUsageItemsItems",
             "BillingUsageReport",
             "BillingUsageReportPropUsageItemsItems",
             "OrganizationFull",
@@ -10219,6 +10255,7 @@ else:
             "ActionsBillingUsagePropMinutesUsedBreakdown",
             "PackagesBillingUsage",
             "CombinedBillingUsage",
+            "ImmutableReleasesOrganizationSettings",
             "NetworkSettings",
             "TeamFull",
             "TeamOrganization",
@@ -10455,6 +10492,7 @@ else:
             "GitTreePropTreeItems",
             "HookResponse",
             "Hook",
+            "CheckImmutableReleases",
             "Import",
             "ImportPropProjectChoicesItems",
             "PorterAuthor",
@@ -10648,6 +10686,9 @@ else:
             "Hovercard",
             "HovercardPropContextsItems",
             "KeySimple",
+            "BillingPremiumRequestUsageReportUser",
+            "BillingPremiumRequestUsageReportUserPropTimePeriod",
+            "BillingPremiumRequestUsageReportUserPropUsageItemsItems",
             "BillingUsageReportUser",
             "BillingUsageReportUserPropUsageItemsItems",
             "EnterpriseWebhooks",
@@ -12948,6 +12989,9 @@ else:
             "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
             "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
             "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",
+            "OrgsOrgSettingsImmutableReleasesPutBody",
+            "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200",
+            "OrgsOrgSettingsImmutableReleasesRepositoriesPutBody",
             "OrgsOrgSettingsNetworkConfigurationsGetResponse200",
             "NetworkConfiguration",
             "OrgsOrgSettingsNetworkConfigurationsPostBody",

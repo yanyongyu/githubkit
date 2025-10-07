@@ -9,24 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1145 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type
+
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+
+    sub_issue_id: int
+    after_id: NotRequired[int]
+    before_id: NotRequired[int]
 
 
-class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof2"""
-
-    cname: Union[str, None]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-        ]
-    ]
-
-
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof2Type",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType",)

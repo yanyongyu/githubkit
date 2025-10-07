@@ -12,11 +12,52 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReviewCustomGatesCommentRequiredType(TypedDict):
-    """ReviewCustomGatesCommentRequired"""
+class PullRequestMinimalType(TypedDict):
+    """Pull Request Minimal"""
 
-    environment_name: str
-    comment: str
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadType
+    base: PullRequestMinimalPropBaseType
 
 
-__all__ = ("ReviewCustomGatesCommentRequiredType",)
+class PullRequestMinimalPropHeadType(TypedDict):
+    """PullRequestMinimalPropHead"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropHeadPropRepoType
+
+
+class PullRequestMinimalPropHeadPropRepoType(TypedDict):
+    """PullRequestMinimalPropHeadPropRepo"""
+
+    id: int
+    url: str
+    name: str
+
+
+class PullRequestMinimalPropBaseType(TypedDict):
+    """PullRequestMinimalPropBase"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropBasePropRepoType
+
+
+class PullRequestMinimalPropBasePropRepoType(TypedDict):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int
+    url: str
+    name: str
+
+
+__all__ = (
+    "PullRequestMinimalPropBasePropRepoType",
+    "PullRequestMinimalPropBaseType",
+    "PullRequestMinimalPropHeadPropRepoType",
+    "PullRequestMinimalPropHeadType",
+    "PullRequestMinimalType",
+)

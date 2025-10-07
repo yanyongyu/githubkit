@@ -11,19 +11,20 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof1(GitHubModel):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
+class UserGpgKeysPostBody(GitHubModel):
+    """UserGpgKeysPostBody"""
 
-    attestation_ids: list[int] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of unique IDs associated with the artifact attestations to delete.",
+    name: Missing[str] = Field(
+        default=UNSET, description="A descriptive name for the new key."
     )
+    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
 
 
-model_rebuild(UsersUsernameAttestationsDeleteRequestPostBodyOneof1)
+model_rebuild(UserGpgKeysPostBody)
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof1",)
+__all__ = ("UserGpgKeysPostBody",)

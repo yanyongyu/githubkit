@@ -15,20 +15,77 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0010 import Integration
+from .group_0191 import MinimalRepository
+from .group_0283 import PullRequestMinimal
+from .group_0284 import SimpleCommit
 
 
-class CodeScanningAutofix(GitHubModel):
-    """CodeScanningAutofix"""
+class CheckSuite(GitHubModel):
+    """CheckSuite
 
-    status: Literal["pending", "error", "success", "outdated"] = Field(
-        description="The status of an autofix."
+    A suite of checks performed on the code of a given code change
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    head_branch: Union[str, None] = Field()
+    head_sha: str = Field(
+        description="The SHA of the head commit that is being checked."
     )
-    description: Union[str, None] = Field(description="The description of an autofix.")
-    started_at: datetime = Field(
-        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
+    ] = Field(
+        description="The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites."
     )
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+    ] = Field()
+    url: Union[str, None] = Field()
+    before: Union[str, None] = Field()
+    after: Union[str, None] = Field()
+    pull_requests: Union[list[PullRequestMinimal], None] = Field()
+    app: Union[None, Integration, None] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    created_at: Union[datetime, None] = Field()
+    updated_at: Union[datetime, None] = Field()
+    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
+    latest_check_runs_count: int = Field()
+    check_runs_url: str = Field()
+    rerequestable: Missing[bool] = Field(default=UNSET)
+    runs_rerequestable: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAutofix)
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
 
-__all__ = ("CodeScanningAutofix",)
+    total_count: int = Field()
+    check_suites: list[CheckSuite] = Field()
+
+
+model_rebuild(CheckSuite)
+model_rebuild(ReposOwnerRepoCommitsRefCheckSuitesGetResponse200)
+
+__all__ = (
+    "CheckSuite",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200",
+)

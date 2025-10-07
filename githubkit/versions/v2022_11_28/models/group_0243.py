@@ -9,43 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0244 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
-)
 
+class Autolink(GitHubModel):
+    """Autolink reference
 
-class ProtectedBranchPullRequestReview(GitHubModel):
-    """Protected Branch Pull Request Review
-
-    Protected Branch Pull Request Review
+    An autolink reference.
     """
 
-    url: Missing[str] = Field(default=UNSET)
-    dismissal_restrictions: Missing[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-    ] = Field(
-        default=UNSET,
-        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+    id: int = Field()
+    key_prefix: str = Field(description="The prefix of a key that is linkified.")
+    url_template: str = Field(
+        description="A template for the target URL that is generated if a key was found."
     )
-    dismiss_stale_reviews: bool = Field()
-    require_code_owner_reviews: bool = Field()
-    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+    is_alphanumeric: bool = Field(
+        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
     )
+    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(ProtectedBranchPullRequestReview)
+model_rebuild(Autolink)
 
-__all__ = ("ProtectedBranchPullRequestReview",)
+__all__ = ("Autolink",)

@@ -13,17 +13,18 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0455 import DiscussionType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0459 import DiscussionType
 
 
-class WebhookDiscussionUnpinnedType(TypedDict):
-    """discussion unpinned event"""
+class WebhookDiscussionEditedType(TypedDict):
+    """discussion edited event"""
 
-    action: Literal["unpinned"]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookDiscussionEditedPropChangesType]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -32,4 +33,28 @@ class WebhookDiscussionUnpinnedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDiscussionUnpinnedType",)
+class WebhookDiscussionEditedPropChangesType(TypedDict):
+    """WebhookDiscussionEditedPropChanges"""
+
+    body: NotRequired[WebhookDiscussionEditedPropChangesPropBodyType]
+    title: NotRequired[WebhookDiscussionEditedPropChangesPropTitleType]
+
+
+class WebhookDiscussionEditedPropChangesPropBodyType(TypedDict):
+    """WebhookDiscussionEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookDiscussionEditedPropChangesPropTitleType(TypedDict):
+    """WebhookDiscussionEditedPropChangesPropTitle"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookDiscussionEditedPropChangesPropBodyType",
+    "WebhookDiscussionEditedPropChangesPropTitleType",
+    "WebhookDiscussionEditedPropChangesType",
+    "WebhookDiscussionEditedType",
+)

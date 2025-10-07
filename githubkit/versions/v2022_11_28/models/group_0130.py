@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,140 +18,53 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0129 import ProjectsV2StatusUpdate
 
-class ProjectsV2Field(GitHubModel):
-    """Projects v2 Field
 
-    A field inside a projects v2 project
+class ProjectsV2(GitHubModel):
+    """Projects v2 Project
+
+    A projects v2 project
     """
 
-    id: int = Field(description="The unique identifier of the field.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the field."
+    id: float = Field(description="The unique identifier of the project.")
+    node_id: str = Field(description="The node ID of the project.")
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    title: str = Field(description="The project title.")
+    description: Union[str, None] = Field(
+        description="A short description of the project."
     )
-    project_url: str = Field(
-        description="The API URL of the project that contains the field."
+    public: bool = Field(
+        description="Whether the project is visible to anyone with access to the owner."
     )
-    name: str = Field(description="The name of the field.")
-    data_type: Literal[
-        "assignees",
-        "linked_pull_requests",
-        "reviewers",
-        "labels",
-        "milestone",
-        "repository",
-        "title",
-        "text",
-        "single_select",
-        "number",
-        "date",
-        "iteration",
-        "issue_type",
-        "parent_issue",
-        "sub_issues_progress",
-    ] = Field(description="The field's data type.")
-    options: Missing[list[ProjectsV2SingleSelectOptions]] = Field(
-        default=UNSET, description="The options available for single select fields."
+    closed_at: Union[datetime, None] = Field(
+        description="The time when the project was closed."
     )
-    configuration: Missing[ProjectsV2FieldPropConfiguration] = Field(
-        default=UNSET, description="Configuration for iteration fields."
-    )
-    created_at: datetime = Field(description="The time when the field was created.")
+    created_at: datetime = Field(description="The time when the project was created.")
     updated_at: datetime = Field(
-        description="The time when the field was last updated."
+        description="The time when the project was last updated."
+    )
+    number: int = Field(description="The project number.")
+    short_description: Union[str, None] = Field(
+        description="A concise summary of the project."
+    )
+    deleted_at: Union[datetime, None] = Field(
+        description="The time when the project was deleted."
+    )
+    deleted_by: Union[None, SimpleUser] = Field()
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET, description="The current state of the project."
+    )
+    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
+        default=UNSET
+    )
+    is_template: Missing[bool] = Field(
+        default=UNSET, description="Whether this project is a template"
     )
 
 
-class ProjectsV2SingleSelectOptions(GitHubModel):
-    """Projects v2 Single Select Option
+model_rebuild(ProjectsV2)
 
-    An option for a single select field
-    """
-
-    id: str = Field(description="The unique identifier of the option.")
-    name: ProjectsV2SingleSelectOptionsPropName = Field(
-        description="The display name of the option, in raw text and HTML formats."
-    )
-    description: ProjectsV2SingleSelectOptionsPropDescription = Field(
-        description="The description of the option, in raw text and HTML formats."
-    )
-    color: str = Field(description="The color associated with the option.")
-
-
-class ProjectsV2SingleSelectOptionsPropName(GitHubModel):
-    """ProjectsV2SingleSelectOptionsPropName
-
-    The display name of the option, in raw text and HTML formats.
-    """
-
-    raw: str = Field()
-    html: str = Field()
-
-
-class ProjectsV2SingleSelectOptionsPropDescription(GitHubModel):
-    """ProjectsV2SingleSelectOptionsPropDescription
-
-    The description of the option, in raw text and HTML formats.
-    """
-
-    raw: str = Field()
-    html: str = Field()
-
-
-class ProjectsV2FieldPropConfiguration(GitHubModel):
-    """ProjectsV2FieldPropConfiguration
-
-    Configuration for iteration fields.
-    """
-
-    start_day: Missing[int] = Field(
-        default=UNSET, description="The day of the week when the iteration starts."
-    )
-    duration: Missing[int] = Field(
-        default=UNSET, description="The duration of the iteration in days."
-    )
-    iterations: Missing[list[ProjectsV2IterationSettings]] = Field(default=UNSET)
-
-
-class ProjectsV2IterationSettings(GitHubModel):
-    """Projects v2 Iteration Setting
-
-    An iteration setting for an iteration field
-    """
-
-    id: str = Field(description="The unique identifier of the iteration setting.")
-    start_date: date = Field(description="The start date of the iteration.")
-    duration: int = Field(description="The duration of the iteration in days.")
-    title: ProjectsV2IterationSettingsPropTitle = Field(
-        description="The iteration title, in raw text and HTML formats."
-    )
-    completed: bool = Field(description="Whether the iteration has been completed.")
-
-
-class ProjectsV2IterationSettingsPropTitle(GitHubModel):
-    """ProjectsV2IterationSettingsPropTitle
-
-    The iteration title, in raw text and HTML formats.
-    """
-
-    raw: str = Field()
-    html: str = Field()
-
-
-model_rebuild(ProjectsV2Field)
-model_rebuild(ProjectsV2SingleSelectOptions)
-model_rebuild(ProjectsV2SingleSelectOptionsPropName)
-model_rebuild(ProjectsV2SingleSelectOptionsPropDescription)
-model_rebuild(ProjectsV2FieldPropConfiguration)
-model_rebuild(ProjectsV2IterationSettings)
-model_rebuild(ProjectsV2IterationSettingsPropTitle)
-
-__all__ = (
-    "ProjectsV2Field",
-    "ProjectsV2FieldPropConfiguration",
-    "ProjectsV2IterationSettings",
-    "ProjectsV2IterationSettingsPropTitle",
-    "ProjectsV2SingleSelectOptions",
-    "ProjectsV2SingleSelectOptionsPropDescription",
-    "ProjectsV2SingleSelectOptionsPropName",
-)
+__all__ = ("ProjectsV2",)

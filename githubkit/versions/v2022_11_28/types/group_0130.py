@@ -9,116 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0129 import ProjectsV2StatusUpdateType
 
-class ProjectsV2FieldType(TypedDict):
-    """Projects v2 Field
 
-    A field inside a projects v2 project
+class ProjectsV2Type(TypedDict):
+    """Projects v2 Project
+
+    A projects v2 project
     """
 
-    id: int
-    node_id: NotRequired[str]
-    project_url: str
-    name: str
-    data_type: Literal[
-        "assignees",
-        "linked_pull_requests",
-        "reviewers",
-        "labels",
-        "milestone",
-        "repository",
-        "title",
-        "text",
-        "single_select",
-        "number",
-        "date",
-        "iteration",
-        "issue_type",
-        "parent_issue",
-        "sub_issues_progress",
-    ]
-    options: NotRequired[list[ProjectsV2SingleSelectOptionsType]]
-    configuration: NotRequired[ProjectsV2FieldPropConfigurationType]
+    id: float
+    node_id: str
+    owner: SimpleUserType
+    creator: SimpleUserType
+    title: str
+    description: Union[str, None]
+    public: bool
+    closed_at: Union[datetime, None]
     created_at: datetime
     updated_at: datetime
+    number: int
+    short_description: Union[str, None]
+    deleted_at: Union[datetime, None]
+    deleted_by: Union[None, SimpleUserType]
+    state: NotRequired[Literal["open", "closed"]]
+    latest_status_update: NotRequired[Union[None, ProjectsV2StatusUpdateType]]
+    is_template: NotRequired[bool]
 
 
-class ProjectsV2SingleSelectOptionsType(TypedDict):
-    """Projects v2 Single Select Option
-
-    An option for a single select field
-    """
-
-    id: str
-    name: ProjectsV2SingleSelectOptionsPropNameType
-    description: ProjectsV2SingleSelectOptionsPropDescriptionType
-    color: str
-
-
-class ProjectsV2SingleSelectOptionsPropNameType(TypedDict):
-    """ProjectsV2SingleSelectOptionsPropName
-
-    The display name of the option, in raw text and HTML formats.
-    """
-
-    raw: str
-    html: str
-
-
-class ProjectsV2SingleSelectOptionsPropDescriptionType(TypedDict):
-    """ProjectsV2SingleSelectOptionsPropDescription
-
-    The description of the option, in raw text and HTML formats.
-    """
-
-    raw: str
-    html: str
-
-
-class ProjectsV2FieldPropConfigurationType(TypedDict):
-    """ProjectsV2FieldPropConfiguration
-
-    Configuration for iteration fields.
-    """
-
-    start_day: NotRequired[int]
-    duration: NotRequired[int]
-    iterations: NotRequired[list[ProjectsV2IterationSettingsType]]
-
-
-class ProjectsV2IterationSettingsType(TypedDict):
-    """Projects v2 Iteration Setting
-
-    An iteration setting for an iteration field
-    """
-
-    id: str
-    start_date: date
-    duration: int
-    title: ProjectsV2IterationSettingsPropTitleType
-    completed: bool
-
-
-class ProjectsV2IterationSettingsPropTitleType(TypedDict):
-    """ProjectsV2IterationSettingsPropTitle
-
-    The iteration title, in raw text and HTML formats.
-    """
-
-    raw: str
-    html: str
-
-
-__all__ = (
-    "ProjectsV2FieldPropConfigurationType",
-    "ProjectsV2FieldType",
-    "ProjectsV2IterationSettingsPropTitleType",
-    "ProjectsV2IterationSettingsType",
-    "ProjectsV2SingleSelectOptionsPropDescriptionType",
-    "ProjectsV2SingleSelectOptionsPropNameType",
-    "ProjectsV2SingleSelectOptionsType",
-)
+__all__ = ("ProjectsV2Type",)

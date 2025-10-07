@@ -9,45 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0246 import BranchProtection
-from .group_0251 import Commit
+from .group_0003 import SimpleUser
+from .group_0252 import DiffEntry
+from .group_0254 import CommitPropCommit
 
 
-class BranchWithProtection(GitHubModel):
-    """Branch With Protection
+class Commit(GitHubModel):
+    """Commit
 
-    Branch With Protection
+    Commit
     """
 
-    name: str = Field()
-    commit: Commit = Field(title="Commit", description="Commit")
-    links: BranchWithProtectionPropLinks = Field(alias="_links")
-    protected: bool = Field()
-    protection: BranchProtection = Field(
-        title="Branch Protection", description="Branch Protection"
-    )
-    protection_url: str = Field()
-    pattern: Missing[str] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
+    url: str = Field()
+    sha: str = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    comments_url: str = Field()
+    commit: CommitPropCommit = Field()
+    author: Union[SimpleUser, EmptyObject, None] = Field()
+    committer: Union[SimpleUser, EmptyObject, None] = Field()
+    parents: list[CommitPropParentsItems] = Field()
+    stats: Missing[CommitPropStats] = Field(default=UNSET)
+    files: Missing[list[DiffEntry]] = Field(default=UNSET)
 
 
-class BranchWithProtectionPropLinks(GitHubModel):
-    """BranchWithProtectionPropLinks"""
+class EmptyObject(GitHubModel):
+    """Empty Object
 
-    html: str = Field()
-    self_: str = Field(alias="self")
+    An object without any properties.
+    """
 
 
-model_rebuild(BranchWithProtection)
-model_rebuild(BranchWithProtectionPropLinks)
+class CommitPropParentsItems(GitHubModel):
+    """CommitPropParentsItems"""
+
+    sha: str = Field()
+    url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
+
+
+class CommitPropStats(GitHubModel):
+    """CommitPropStats"""
+
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+    total: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(Commit)
+model_rebuild(EmptyObject)
+model_rebuild(CommitPropParentsItems)
+model_rebuild(CommitPropStats)
 
 __all__ = (
-    "BranchWithProtection",
-    "BranchWithProtectionPropLinks",
+    "Commit",
+    "CommitPropParentsItems",
+    "CommitPropStats",
+    "EmptyObject",
 )

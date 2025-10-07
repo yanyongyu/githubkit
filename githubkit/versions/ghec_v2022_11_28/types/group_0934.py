@@ -9,16 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseActionsPermissionsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
+class ApplicationsClientIdTokenDeleteBodyType(TypedDict):
+    """ApplicationsClientIdTokenDeleteBody"""
 
-    enabled_organizations: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    access_token: str
 
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsPutBodyType",)
+__all__ = ("ApplicationsClientIdTokenDeleteBodyType",)

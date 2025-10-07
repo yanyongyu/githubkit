@@ -9,27 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0540 import WebhooksProjectColumnType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0772 import WebhookPingPropHookType
 
 
-class WebhookProjectColumnDeletedType(TypedDict):
-    """project_column deleted event"""
+class WebhookPingType(TypedDict):
+    """WebhookPing"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    hook: NotRequired[WebhookPingPropHookType]
+    hook_id: NotRequired[int]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    repository: NotRequired[RepositoryWebhooksType]
     sender: NotRequired[SimpleUserType]
+    zen: NotRequired[str]
 
 
-__all__ = ("WebhookProjectColumnDeletedType",)
+__all__ = ("WebhookPingType",)

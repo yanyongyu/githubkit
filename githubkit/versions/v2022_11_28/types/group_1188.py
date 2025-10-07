@@ -9,13 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoTagsProtectionPostBodyType(TypedDict):
-    """ReposOwnerRepoTagsProtectionPostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-    pattern: str
+    expected_head_sha: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoTagsProtectionPostBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",)

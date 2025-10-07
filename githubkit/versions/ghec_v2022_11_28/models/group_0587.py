@@ -18,19 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0089 import CustomProperty
-from .group_0505 import EnterpriseWebhooks
-from .group_0506 import SimpleInstallation
-from .group_0507 import OrganizationSimpleWebhooks
+from .group_0511 import EnterpriseWebhooks
+from .group_0512 import SimpleInstallation
+from .group_0513 import OrganizationSimpleWebhooks
+from .group_0514 import RepositoryWebhooks
+from .group_0588 import WebhookCodeScanningAlertCreatedPropAlert
 
 
-class WebhookCustomPropertyPromotedToEnterprise(GitHubModel):
-    """custom property promoted to business event"""
+class WebhookCodeScanningAlertCreated(GitHubModel):
+    """code_scanning_alert created event"""
 
-    action: Literal["promote_to_enterprise"] = Field()
-    definition: CustomProperty = Field(
-        title="Organization Custom Property",
-        description="Custom property defined on an organization",
+    action: Literal["created"] = Field()
+    alert: WebhookCodeScanningAlertCreatedPropAlert = Field(
+        description="The code scanning alert involved in the event."
+    )
+    commit_oid: str = Field(
+        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -47,11 +50,16 @@ class WebhookCustomPropertyPromotedToEnterprise(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    ref: str = Field(
+        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
     )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCustomPropertyPromotedToEnterprise)
+model_rebuild(WebhookCodeScanningAlertCreated)
 
-__all__ = ("WebhookCustomPropertyPromotedToEnterprise",)
+__all__ = ("WebhookCodeScanningAlertCreated",)

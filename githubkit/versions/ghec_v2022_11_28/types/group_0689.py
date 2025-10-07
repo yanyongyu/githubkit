@@ -9,35 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0684 import (
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
-)
+from .group_0003 import SimpleUserType
+from .group_0020 import RepositoryType
+from .group_0175 import IssueType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
 
 
-class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssueDependenciesBlockingRemovedType(TypedDict):
+    """blocking issue removed event"""
 
-    created_at: Union[datetime, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType, None
-    ]
-    permissions: NotRequired[
-        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[datetime, None]
+    action: Literal["blocking_removed"]
+    blocked_issue_id: float
+    blocked_issue: IssueType
+    blocked_issue_repo: RepositoryType
+    blocking_issue_id: float
+    blocking_issue: IssueType
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType",)
+__all__ = ("WebhookIssueDependenciesBlockingRemovedType",)

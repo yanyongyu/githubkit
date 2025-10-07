@@ -11,12 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
-    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
-
-    key_id: str
-    key: str
+from .group_0204 import CodespaceType
 
 
-__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",)
+class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+
+    total_count: int
+    codespaces: list[CodespaceType]
+
+
+__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200Type",)

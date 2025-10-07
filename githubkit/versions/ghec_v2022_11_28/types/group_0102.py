@@ -11,28 +11,37 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0093 import (
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
-)
-from .group_0095 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-)
-from .group_0097 import RepositoryRulesetConditionsPropRefNameType
 
+class EnterpriseRulesetConditionsOrganizationPropertyTargetType(TypedDict):
+    """Repository ruleset conditions for organization properties
 
-class EnterpriseRulesetConditionsOneof0Type(TypedDict):
-    """organization_name_and_repository_name
-
-    Conditions to target organizations by name and all repositories
+    Parameters for a organization property condition
     """
 
-    organization_name: (
-        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
-    )
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
 
 
-__all__ = ("EnterpriseRulesetConditionsOneof0Type",)
+class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
+
+    include: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
+    exclude: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
+
+
+class EnterpriseRulesetConditionsOrganizationPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a organization property
+    """
+
+    name: str
+    property_values: list[str]
+
+
+__all__ = (
+    "EnterpriseRulesetConditionsOrganizationPropertySpecType",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetType",
+)

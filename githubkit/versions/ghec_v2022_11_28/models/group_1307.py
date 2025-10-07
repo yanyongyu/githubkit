@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,30 +17,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1306 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-class ReposOwnerRepoPullsPullNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The title of the pull request."
-    )
-    body: Missing[str] = Field(
-        default=UNSET, description="The contents of the pull request."
-    )
-    state: Missing[Literal["open", "closed"]] = Field(
+class ReposOwnerRepoPagesPutBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
+
+    cname: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="State of this Pull Request. Either `open` or `closed`.",
+        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/enterprise-cloud@latest//pages/configuring-a-custom-domain-for-your-github-pages-site)."',
     )
-    base: Missing[str] = Field(
+    https_enforced: Missing[bool] = Field(
         default=UNSET,
-        description="The name of the branch you want your changes pulled into. This should be an existing branch on the current repository. You cannot update the base branch on a pull request to point to another repository.",
+        description="Specify whether HTTPS should be enforced for the repository.",
     )
-    maintainer_can_modify: Missing[bool] = Field(
+    build_type: Literal["legacy", "workflow"] = Field(
+        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch."
+    )
+    source: Missing[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
+        ]
+    ] = Field(default=UNSET)
+    public: Missing[bool] = Field(
         default=UNSET,
-        description="Indicates whether [maintainers can modify](https://docs.github.com/enterprise-cloud@latest//articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
+        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberPatchBody)
+model_rebuild(ReposOwnerRepoPagesPutBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberPatchBody",)
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof0",)

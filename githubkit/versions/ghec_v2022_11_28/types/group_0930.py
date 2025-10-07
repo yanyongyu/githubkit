@@ -11,16 +11,9 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0033 import ActionsHostedRunnerCuratedImageType
+
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type(TypedDict):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200"""
-
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageType]
-
-
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type",)
+__all__ = ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type",)

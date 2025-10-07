@@ -9,29 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0169 import IssueTypeType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0527 import WebhooksIssueType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0534 import WebhooksMilestoneType
+from .group_0713 import WebhookIssuesMilestonedPropIssueType
 
 
-class WebhookIssuesTypedType(TypedDict):
-    """issues typed event"""
+class WebhookIssuesMilestonedType(TypedDict):
+    """issues milestoned event"""
 
-    action: Literal["typed"]
+    action: Literal["milestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    type: Union[IssueTypeType, None]
+    issue: WebhookIssuesMilestonedPropIssueType
+    milestone: WebhooksMilestoneType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesTypedType",)
+__all__ = ("WebhookIssuesMilestonedType",)

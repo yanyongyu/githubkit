@@ -9,27 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0474 import WebhooksProjectType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0700 import WebhookPingPropHookType
 
 
-class WebhookProjectClosedType(TypedDict):
-    """project closed event"""
+class WebhookPingType(TypedDict):
+    """WebhookPing"""
 
-    action: Literal["closed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    hook: NotRequired[WebhookPingPropHookType]
+    hook_id: NotRequired[int]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
+    zen: NotRequired[str]
 
 
-__all__ = ("WebhookProjectClosedType",)
+__all__ = ("WebhookPingType",)

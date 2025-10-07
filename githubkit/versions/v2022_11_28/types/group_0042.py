@@ -86,6 +86,7 @@ class OrganizationSecretScanningAlertType(TypedDict):
         ]
     ]
     has_more_locations: NotRequired[bool]
+    assigned_to: NotRequired[Union[None, SimpleUserType]]
 
 
 __all__ = ("OrganizationSecretScanningAlertType",)

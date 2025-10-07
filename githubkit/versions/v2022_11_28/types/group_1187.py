@@ -9,14 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSubscriptionPutBodyType(TypedDict):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    subscribed: NotRequired[bool]
-    ignored: NotRequired[bool]
+    body: NotRequired[str]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
 
 
-__all__ = ("ReposOwnerRepoSubscriptionPutBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType",)

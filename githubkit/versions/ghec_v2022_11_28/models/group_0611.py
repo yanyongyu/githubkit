@@ -18,23 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0505 import EnterpriseWebhooks
-from .group_0506 import SimpleInstallation
-from .group_0507 import OrganizationSimpleWebhooks
-from .group_0508 import RepositoryWebhooks
-from .group_0520 import Discussion
-from .group_0521 import WebhooksComment
+from .group_0511 import EnterpriseWebhooks
+from .group_0512 import SimpleInstallation
+from .group_0513 import OrganizationSimpleWebhooks
+from .group_0514 import RepositoryWebhooks
+from .group_0520 import WebhooksDeployKey
 
 
-class WebhookDiscussionCommentEdited(GitHubModel):
-    """discussion_comment edited event"""
+class WebhookDeployKeyDeleted(GitHubModel):
+    """deploy_key deleted event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookDiscussionCommentEditedPropChanges = Field()
-    comment: WebhooksComment = Field()
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
-    )
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,6 +38,9 @@ class WebhookDiscussionCommentEdited(GitHubModel):
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    key: WebhooksDeployKey = Field(
+        description="The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#get-a-deploy-key) resource."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -57,24 +54,6 @@ class WebhookDiscussionCommentEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookDiscussionCommentEditedPropChanges(GitHubModel):
-    """WebhookDiscussionCommentEditedPropChanges"""
+model_rebuild(WebhookDeployKeyDeleted)
 
-    body: WebhookDiscussionCommentEditedPropChangesPropBody = Field()
-
-
-class WebhookDiscussionCommentEditedPropChangesPropBody(GitHubModel):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookDiscussionCommentEdited)
-model_rebuild(WebhookDiscussionCommentEditedPropChanges)
-model_rebuild(WebhookDiscussionCommentEditedPropChangesPropBody)
-
-__all__ = (
-    "WebhookDiscussionCommentEdited",
-    "WebhookDiscussionCommentEditedPropChanges",
-    "WebhookDiscussionCommentEditedPropChangesPropBody",
-)
+__all__ = ("WebhookDeployKeyDeleted",)

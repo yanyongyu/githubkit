@@ -12,14 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    group_id: int = Field(description="External Group Id")
+    pattern_config_version: Missing[str] = Field(
+        default=UNSET, description="The updated pattern configuration version."
+    )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugExternalGroupsPatchBody)
+model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
 
-__all__ = ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBody",)
+__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)

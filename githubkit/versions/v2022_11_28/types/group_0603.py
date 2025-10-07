@@ -9,36 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0599 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
-)
+from .group_0003 import SimpleUserType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0464 import WebhooksIssueCommentType
+from .group_0465 import WebhooksChangesType
+from .group_0604 import WebhookIssueCommentEditedPropIssueType
 
 
-class WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssueCommentEditedType(TypedDict):
+    """issue_comment edited event"""
 
-    created_at: Union[datetime, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[datetime, None]
+    action: Literal["edited"]
+    changes: WebhooksChangesType
+    comment: WebhooksIssueCommentType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssueCommentEditedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppType",)
+__all__ = ("WebhookIssueCommentEditedType",)

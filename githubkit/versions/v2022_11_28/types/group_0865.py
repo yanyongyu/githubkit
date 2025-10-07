@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody"""
+class CredentialsRevokePostBodyType(TypedDict):
+    """CredentialsRevokePostBody"""
 
-    usernames: list[str]
+    credentials: list[str]
 
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType",)
+__all__ = ("CredentialsRevokePostBodyType",)

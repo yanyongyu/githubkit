@@ -9,27 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput
+
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run.
+    """
+
+    title: NotRequired[str]
+    summary: str
+    text: NotRequired[str]
+    annotations: NotRequired[
+        list[
+            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType
+        ]
+    ]
+    images: NotRequired[
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType]
+    ]
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems"""
 
-    billable_owner: NotRequired[SimpleUserType]
-    defaults: NotRequired[ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType]
+    path: str
+    start_line: int
+    end_line: int
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    annotation_level: Literal["notice", "warning", "failure"]
+    message: str
+    title: NotRequired[str]
+    raw_details: NotRequired[str]
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems"""
 
-    location: str
-    devcontainer_path: Union[str, None]
+    alt: str
+    image_url: str
+    caption: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems"""
+
+    label: str
+    description: str
+    identifier: str
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
-    "ReposOwnerRepoCodespacesNewGetResponse200Type",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType",
 )

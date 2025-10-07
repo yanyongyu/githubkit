@@ -13,23 +13,59 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0679 import WebhookPackagePublishedPropPackageType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0467 import WebhooksMilestoneType
 
 
-class WebhookPackagePublishedType(TypedDict):
-    """package published event"""
+class WebhookMilestoneEditedType(TypedDict):
+    """milestone edited event"""
 
-    action: Literal["published"]
+    action: Literal["edited"]
+    changes: WebhookMilestoneEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    milestone: WebhooksMilestoneType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    package: WebhookPackagePublishedPropPackageType
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookPackagePublishedType",)
+class WebhookMilestoneEditedPropChangesType(TypedDict):
+    """WebhookMilestoneEditedPropChanges
+
+    The changes to the milestone if the action was `edited`.
+    """
+
+    description: NotRequired[WebhookMilestoneEditedPropChangesPropDescriptionType]
+    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnType]
+    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleType]
+
+
+class WebhookMilestoneEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropDescription"""
+
+    from_: str
+
+
+class WebhookMilestoneEditedPropChangesPropDueOnType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropDueOn"""
+
+    from_: str
+
+
+class WebhookMilestoneEditedPropChangesPropTitleType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropTitle"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookMilestoneEditedPropChangesPropDescriptionType",
+    "WebhookMilestoneEditedPropChangesPropDueOnType",
+    "WebhookMilestoneEditedPropChangesPropTitleType",
+    "WebhookMilestoneEditedPropChangesType",
+    "WebhookMilestoneEditedType",
+)

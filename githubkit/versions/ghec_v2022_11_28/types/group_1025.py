@@ -11,11 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
-
-    selected_repository_ids: list[int]
+from .group_0032 import ActionsHostedRunnerType
 
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType",)
+class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersGetResponse200"""
+
+    total_count: int
+    runners: list[ActionsHostedRunnerType]
+
+
+__all__ = ("OrgsOrgActionsHostedRunnersGetResponse200Type",)

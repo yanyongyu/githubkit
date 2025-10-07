@@ -9,27 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType
+from .group_0010 import IntegrationType
 
 
-class DeployKeyType(TypedDict):
-    """Deploy Key
+class TimelineAssignedIssueEventType(TypedDict):
+    """Timeline Assigned Issue Event
 
-    An SSH key granting access to a single repository.
+    Timeline Assigned Issue Event
     """
 
     id: int
-    key: str
+    node_id: str
     url: str
-    title: str
-    verified: bool
+    actor: SimpleUserType
+    event: Literal["assigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    read_only: bool
-    added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[datetime, None]]
-    enabled: NotRequired[bool]
+    performed_via_github_app: Union[None, IntegrationType, None]
+    assignee: SimpleUserType
 
 
-__all__ = ("DeployKeyType",)
+__all__ = ("TimelineAssignedIssueEventType",)

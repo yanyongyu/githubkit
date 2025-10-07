@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,69 +19,52 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBody(GitHubModel):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
+class OrgsOrgPrivateRegistriesGetResponse200(GitHubModel):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
 
-    pattern_config_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
-    )
-    provider_pattern_settings: Missing[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
-        ]
-    ] = Field(default=UNSET, description="Pattern settings for provider patterns.")
-    custom_pattern_settings: Missing[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
-        ]
-    ] = Field(default=UNSET, description="Pattern settings for custom patterns.")
+    total_count: int = Field()
+    configurations: list[OrgPrivateRegistryConfiguration] = Field()
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems(
-    GitHubModel
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
-    ems
+class OrgPrivateRegistryConfiguration(GitHubModel):
+    """Organization private registry
+
+    Private registry configuration for an organization
     """
 
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The ID of the pattern to configure."
-    )
-    push_protection_setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
-        default=UNSET, description="Push protection setting to set for the pattern."
-    )
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems(
-    GitHubModel
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
-    s
-    """
-
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The ID of the pattern to configure."
-    )
-    custom_pattern_version: Missing[Union[str, None]] = Field(
+    name: str = Field(description="The name of the private registry configuration.")
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ] = Field(description="The registry type.")
+    username: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+        description="The username to use when authenticating with the private registry.",
     )
-    push_protection_setting: Missing[Literal["disabled", "enabled"]] = Field(
-        default=UNSET, description="Push protection setting to set for the pattern."
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry."
     )
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchBody)
-model_rebuild(
-    OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
-)
-model_rebuild(
-    OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
-)
+model_rebuild(OrgsOrgPrivateRegistriesGetResponse200)
+model_rebuild(OrgPrivateRegistryConfiguration)
 
 __all__ = (
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBody",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
+    "OrgPrivateRegistryConfiguration",
+    "OrgsOrgPrivateRegistriesGetResponse200",
 )

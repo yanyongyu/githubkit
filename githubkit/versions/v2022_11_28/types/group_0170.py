@@ -9,20 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0171 import RepositoryRuleCommitMessagePatternPropParametersType
+
+class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
+
+    do_not_enforce_on_create: NotRequired[bool]
+    required_status_checks: list[RepositoryRuleParamsStatusCheckConfigurationType]
+    strict_required_status_checks_policy: bool
 
 
-class RepositoryRuleCommitMessagePatternType(TypedDict):
-    """commit_message_pattern
+class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
+    """StatusCheckConfiguration
 
-    Parameters to be used for the commit_message_pattern rule
+    Required status check
     """
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
+    context: str
+    integration_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleCommitMessagePatternType",)
+__all__ = (
+    "RepositoryRuleParamsStatusCheckConfigurationType",
+    "RepositoryRuleRequiredStatusChecksPropParametersType",
+)

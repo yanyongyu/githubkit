@@ -9,20 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0033 import ActionsHostedRunnerCuratedImageType
-
-
-class EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200"""
-
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageType]
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-__all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
-)
+class AppHookConfigPatchBodyType(TypedDict):
+    """AppHookConfigPatchBody"""
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+
+
+__all__ = ("AppHookConfigPatchBodyType",)

@@ -13,21 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0472 import PersonalAccessTokenRequestType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0689 import WebhookPackagePublishedPropPackageType
 
 
-class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
-    """personal_access_token_request denied event"""
+class WebhookPackagePublishedType(TypedDict):
+    """package published event"""
 
-    action: Literal["denied"]
-    personal_access_token_request: PersonalAccessTokenRequestType
-    organization: OrganizationSimpleWebhooksType
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    package: WebhookPackagePublishedPropPackageType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
-    installation: SimpleInstallationType
 
 
-__all__ = ("WebhookPersonalAccessTokenRequestDeniedType",)
+__all__ = ("WebhookPackagePublishedType",)

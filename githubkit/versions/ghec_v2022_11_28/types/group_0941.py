@@ -9,19 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0033 import ActionsHostedRunnerCuratedImageType
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
-    name: NotRequired[str]
-    visibility: NotRequired[Literal["selected", "all"]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
-    network_configuration_id: NotRequired[Union[str, None]]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageType]
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType",)
+__all__ = (
+    "EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
+)

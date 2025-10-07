@@ -18,23 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0442 import EnterpriseWebhooks
-from .group_0443 import SimpleInstallation
-from .group_0444 import OrganizationSimpleWebhooks
-from .group_0445 import RepositoryWebhooks
-from .group_0488 import WebhooksSponsorship
-from .group_0489 import WebhooksChanges8
+from .group_0446 import EnterpriseWebhooks
+from .group_0447 import SimpleInstallation
+from .group_0448 import OrganizationSimpleWebhooks
+from .group_0449 import RepositoryWebhooks
+from .group_0491 import WebhooksSecurityAdvisory
 
 
-class WebhookSponsorshipPendingTierChange(GitHubModel):
-    """sponsorship pending_tier_change event"""
+class WebhookSecurityAdvisoryUpdated(GitHubModel):
+    """security_advisory updated event"""
 
-    action: Literal["pending_tier_change"] = Field()
-    changes: WebhooksChanges8 = Field()
-    effective_date: Missing[str] = Field(
-        default=UNSET,
-        description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
-    )
+    action: Literal["updated"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,10 +49,14 @@ class WebhookSponsorshipPendingTierChange(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    sponsorship: WebhooksSponsorship = Field()
+    security_advisory: WebhooksSecurityAdvisory = Field(
+        description="The details of the security advisory, including summary, description, and severity."
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookSponsorshipPendingTierChange)
+model_rebuild(WebhookSecurityAdvisoryUpdated)
 
-__all__ = ("WebhookSponsorshipPendingTierChange",)
+__all__ = ("WebhookSecurityAdvisoryUpdated",)

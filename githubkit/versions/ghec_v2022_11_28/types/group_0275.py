@@ -10,18 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsSecretType(TypedDict):
-    """Actions Secret
+class ArtifactType(TypedDict):
+    """Artifact
 
-    Set secrets for GitHub Actions.
+    An artifact
     """
 
+    id: int
+    node_id: str
     name: str
-    created_at: datetime
-    updated_at: datetime
+    size_in_bytes: int
+    url: str
+    archive_download_url: str
+    expired: bool
+    created_at: Union[datetime, None]
+    expires_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    digest: NotRequired[Union[str, None]]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
 
 
-__all__ = ("ActionsSecretType",)
+class ArtifactPropWorkflowRunType(TypedDict):
+    """ArtifactPropWorkflowRun"""
+
+    id: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
+
+
+__all__ = (
+    "ArtifactPropWorkflowRunType",
+    "ArtifactType",
+)

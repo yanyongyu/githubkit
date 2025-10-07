@@ -326,7 +326,6 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         advanced_search: Missing[str] = UNSET,
-        search_type: Missing[Literal["semantic"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
@@ -357,7 +356,6 @@ class SearchClient:
             "per_page": per_page,
             "page": page,
             "advanced_search": advanced_search,
-            "search_type": search_type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -399,7 +397,6 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         advanced_search: Missing[str] = UNSET,
-        search_type: Missing[Literal["semantic"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
@@ -430,7 +427,6 @@ class SearchClient:
             "per_page": per_page,
             "page": page,
             "advanced_search": advanced_search,
-            "search_type": search_type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

@@ -9,17 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0020 import RepositoryType
+from .group_0204 import CodespaceType
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+class UserCodespacesGetResponse200Type(TypedDict):
+    """UserCodespacesGetResponse200"""
 
     total_count: int
-    repository_selection: NotRequired[str]
-    repositories: list[RepositoryType]
+    codespaces: list[CodespaceType]
 
 
-__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200Type",)
+__all__ = ("UserCodespacesGetResponse200Type",)

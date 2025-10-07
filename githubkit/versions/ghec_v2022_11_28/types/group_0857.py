@@ -9,119 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0106 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
-from .group_0107 import RepositoryRuleUpdateType
-from .group_0109 import RepositoryRuleRequiredLinearHistoryType
-from .group_0110 import RepositoryRuleRequiredDeploymentsType
-from .group_0113 import RepositoryRulePullRequestType
-from .group_0115 import RepositoryRuleRequiredStatusChecksType
-from .group_0117 import RepositoryRuleCommitMessagePatternType
-from .group_0119 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0121 import RepositoryRuleCommitterEmailPatternType
-from .group_0123 import RepositoryRuleBranchNamePatternType
-from .group_0125 import RepositoryRuleTagNamePatternType
-from .group_0127 import RepositoryRuleFilePathRestrictionType
-from .group_0129 import RepositoryRuleMaxFilePathLengthType
-from .group_0131 import RepositoryRuleFileExtensionRestrictionType
-from .group_0133 import RepositoryRuleMaxFileSizeType
-from .group_0136 import RepositoryRuleWorkflowsType
-from .group_0138 import RepositoryRuleCodeScanningType
-from .group_0145 import RepositoryRuleMergeQueueType
-from .group_0147 import RepositoryRuleCopilotCodeReviewType
+from .group_0003 import SimpleUserType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems"""
+class WebhookRepositoryEditedType(TypedDict):
+    """repository edited event"""
 
-    rule: NotRequired[
-        Union[
-            RepositoryRuleCreationType,
-            RepositoryRuleUpdateType,
-            RepositoryRuleDeletionType,
-            RepositoryRuleRequiredLinearHistoryType,
-            RepositoryRuleMergeQueueType,
-            RepositoryRuleRequiredDeploymentsType,
-            RepositoryRuleRequiredSignaturesType,
-            RepositoryRulePullRequestType,
-            RepositoryRuleRequiredStatusChecksType,
-            RepositoryRuleNonFastForwardType,
-            RepositoryRuleCommitMessagePatternType,
-            RepositoryRuleCommitAuthorEmailPatternType,
-            RepositoryRuleCommitterEmailPatternType,
-            RepositoryRuleBranchNamePatternType,
-            RepositoryRuleTagNamePatternType,
-            RepositoryRuleFilePathRestrictionType,
-            RepositoryRuleMaxFilePathLengthType,
-            RepositoryRuleFileExtensionRestrictionType,
-            RepositoryRuleMaxFileSizeType,
-            RepositoryRuleWorkflowsType,
-            RepositoryRuleCodeScanningType,
-            RepositoryRuleCopilotCodeReviewType,
-        ]
-    ]
-    changes: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType
-    ]
+    action: Literal["edited"]
+    changes: WebhookRepositoryEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges"""
+class WebhookRepositoryEditedPropChangesType(TypedDict):
+    """WebhookRepositoryEditedPropChanges"""
 
-    configuration: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType
-    ]
-    rule_type: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType
-    ]
-    pattern: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType
-    ]
+    default_branch: NotRequired[WebhookRepositoryEditedPropChangesPropDefaultBranchType]
+    description: NotRequired[WebhookRepositoryEditedPropChangesPropDescriptionType]
+    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageType]
+    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsType]
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pConfiguration
-    """
+class WebhookRepositoryEditedPropChangesPropDefaultBranchType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
 
-    from_: NotRequired[str]
+    from_: str
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pRuleType
-    """
+class WebhookRepositoryEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropDescription"""
 
-    from_: NotRequired[str]
+    from_: Union[str, None]
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pPattern
-    """
+class WebhookRepositoryEditedPropChangesPropHomepageType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropHomepage"""
 
-    from_: NotRequired[str]
+    from_: Union[str, None]
+
+
+class WebhookRepositoryEditedPropChangesPropTopicsType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropTopics"""
+
+    from_: NotRequired[Union[list[str], None]]
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType",
+    "WebhookRepositoryEditedPropChangesPropDefaultBranchType",
+    "WebhookRepositoryEditedPropChangesPropDescriptionType",
+    "WebhookRepositoryEditedPropChangesPropHomepageType",
+    "WebhookRepositoryEditedPropChangesPropTopicsType",
+    "WebhookRepositoryEditedPropChangesType",
+    "WebhookRepositoryEditedType",
 )

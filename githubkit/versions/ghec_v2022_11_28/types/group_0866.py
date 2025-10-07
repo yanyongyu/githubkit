@@ -9,13 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0096 import RepositoryRulesetConditionsType
+from .group_0867 import (
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType,
+)
 
 
-class WebhookSecretScanningAlertLocationCreatedFormEncodedType(TypedDict):
-    """Secret Scanning Alert Location Created Event"""
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
 
-    payload: str
+    added: NotRequired[list[RepositoryRulesetConditionsType]]
+    deleted: NotRequired[list[RepositoryRulesetConditionsType]]
+    updated: NotRequired[
+        list[
+            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
+        ]
+    ]
 
 
-__all__ = ("WebhookSecretScanningAlertLocationCreatedFormEncodedType",)
+__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropConditionsType",)

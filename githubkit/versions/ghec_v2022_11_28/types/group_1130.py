@@ -9,13 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0087 import NetworkConfigurationType
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-    permission: NotRequired[str]
+    total_count: int
+    network_configurations: list[NetworkConfigurationType]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",)
+__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",)

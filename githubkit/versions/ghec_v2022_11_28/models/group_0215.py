@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,38 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgHook(GitHubModel):
-    """Org Hook
+class ExternalGroups(GitHubModel):
+    """ExternalGroups
 
-    Org Hook
+    A list of external groups available to be connected to a team
     """
 
-    id: int = Field()
-    url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    name: str = Field()
-    events: list[str] = Field()
-    active: bool = Field()
-    config: OrgHookPropConfig = Field()
-    updated_at: datetime = Field()
-    created_at: datetime = Field()
-    type: str = Field()
+    groups: Missing[list[ExternalGroupsPropGroupsItems]] = Field(
+        default=UNSET,
+        description="An array of external groups available to be mapped to a team",
+    )
 
 
-class OrgHookPropConfig(GitHubModel):
-    """OrgHookPropConfig"""
+class ExternalGroupsPropGroupsItems(GitHubModel):
+    """ExternalGroupsPropGroupsItems"""
 
-    url: Missing[str] = Field(default=UNSET)
-    insecure_ssl: Missing[str] = Field(default=UNSET)
-    content_type: Missing[str] = Field(default=UNSET)
-    secret: Missing[str] = Field(default=UNSET)
+    group_id: int = Field(description="The internal ID of the group")
+    group_name: str = Field(description="The display name of the group")
+    updated_at: str = Field(description="The time of the last update for this group")
 
 
-model_rebuild(OrgHook)
-model_rebuild(OrgHookPropConfig)
+model_rebuild(ExternalGroups)
+model_rebuild(ExternalGroupsPropGroupsItems)
 
 __all__ = (
-    "OrgHook",
-    "OrgHookPropConfig",
+    "ExternalGroups",
+    "ExternalGroupsPropGroupsItems",
 )

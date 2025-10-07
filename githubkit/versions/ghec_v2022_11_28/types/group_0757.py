@@ -13,21 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0537 import PersonalAccessTokenRequestType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0542 import WebhooksMembershipType
 
 
-class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
-    """personal_access_token_request created event"""
+class WebhookOrganizationMemberRemovedType(TypedDict):
+    """organization member_removed event"""
 
-    action: Literal["created"]
-    personal_access_token_request: PersonalAccessTokenRequestType
+    action: Literal["member_removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    organization: OrganizationSimpleWebhooksType
-    sender: SimpleUserType
     installation: NotRequired[SimpleInstallationType]
+    membership: WebhooksMembershipType
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookPersonalAccessTokenRequestCreatedType",)
+__all__ = ("WebhookOrganizationMemberRemovedType",)

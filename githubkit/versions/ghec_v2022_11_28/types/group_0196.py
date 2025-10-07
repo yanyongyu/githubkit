@@ -9,18 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsOrganizationPermissionsType(TypedDict):
-    """ActionsOrganizationPermissions"""
+class BillingPremiumRequestUsageReportOrgType(TypedDict):
+    """BillingPremiumRequestUsageReportOrg"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriodType
+    organization: str
+    user: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType]
 
 
-__all__ = ("ActionsOrganizationPermissionsType",)
+class BillingPremiumRequestUsageReportOrgPropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: int
+    gross_amount: float
+    discount_quantity: int
+    discount_amount: float
+    net_quantity: int
+    net_amount: float
+
+
+__all__ = (
+    "BillingPremiumRequestUsageReportOrgPropTimePeriodType",
+    "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportOrgType",
+)

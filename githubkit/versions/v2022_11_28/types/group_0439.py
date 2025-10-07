@@ -12,23 +12,14 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class HovercardType(TypedDict):
-    """Hovercard
+class SocialAccountType(TypedDict):
+    """Social account
 
-    Hovercard
+    Social media account
     """
 
-    contexts: list[HovercardPropContextsItemsType]
+    provider: str
+    url: str
 
 
-class HovercardPropContextsItemsType(TypedDict):
-    """HovercardPropContextsItems"""
-
-    message: str
-    octicon: str
-
-
-__all__ = (
-    "HovercardPropContextsItemsType",
-    "HovercardType",
-)
+__all__ = ("SocialAccountType",)

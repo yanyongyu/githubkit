@@ -9,30 +9,114 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
 from .group_0010 import IntegrationType
+from .group_0048 import IssueType
+from .group_0094 import TeamType
 
 
-class AssignedIssueEventType(TypedDict):
-    """Assigned Issue Event
+class IssueEventType(TypedDict):
+    """Issue Event
 
-    Assigned Issue Event
+    Issue Event
     """
 
     id: int
     node_id: str
     url: str
-    actor: SimpleUserType
+    actor: Union[None, SimpleUserType]
     event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    assignee: SimpleUserType
-    assigner: SimpleUserType
+    created_at: datetime
+    issue: NotRequired[Union[None, IssueType]]
+    label: NotRequired[IssueEventLabelType]
+    assignee: NotRequired[Union[None, SimpleUserType]]
+    assigner: NotRequired[Union[None, SimpleUserType]]
+    review_requester: NotRequired[Union[None, SimpleUserType]]
+    requested_reviewer: NotRequired[Union[None, SimpleUserType]]
+    requested_team: NotRequired[TeamType]
+    dismissed_review: NotRequired[IssueEventDismissedReviewType]
+    milestone: NotRequired[IssueEventMilestoneType]
+    project_card: NotRequired[IssueEventProjectCardType]
+    rename: NotRequired[IssueEventRenameType]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    lock_reason: NotRequired[Union[str, None]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-__all__ = ("AssignedIssueEventType",)
+class IssueEventLabelType(TypedDict):
+    """Issue Event Label
+
+    Issue Event Label
+    """
+
+    name: Union[str, None]
+    color: Union[str, None]
+
+
+class IssueEventDismissedReviewType(TypedDict):
+    """Issue Event Dismissed Review"""
+
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[Union[str, None]]
+
+
+class IssueEventMilestoneType(TypedDict):
+    """Issue Event Milestone
+
+    Issue Event Milestone
+    """
+
+    title: str
+
+
+class IssueEventProjectCardType(TypedDict):
+    """Issue Event Project Card
+
+    Issue Event Project Card
+    """
+
+    url: str
+    id: int
+    project_url: str
+    project_id: int
+    column_name: str
+    previous_column_name: NotRequired[str]
+
+
+class IssueEventRenameType(TypedDict):
+    """Issue Event Rename
+
+    Issue Event Rename
+    """
+
+    from_: str
+    to: str
+
+
+__all__ = (
+    "IssueEventDismissedReviewType",
+    "IssueEventLabelType",
+    "IssueEventMilestoneType",
+    "IssueEventProjectCardType",
+    "IssueEventRenameType",
+    "IssueEventType",
+)

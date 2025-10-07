@@ -9,52 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class IssueFieldValue(GitHubModel):
-    """Issue Field Value
+class ReactionRollup(GitHubModel):
+    """Reaction Rollup"""
 
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int = Field(description="Unique identifier for the issue field.")
-    node_id: str = Field()
-    data_type: Literal["text", "single_select", "number", "date"] = Field(
-        description="The data type of the issue field"
-    )
-    value: Union[str, float, int, None] = Field(
-        description="The value of the issue field"
-    )
-    single_select_option: Missing[
-        Union[IssueFieldValuePropSingleSelectOption, None]
-    ] = Field(
-        default=UNSET,
-        description="Details about the selected option (only present for single_select fields)",
-    )
+    url: str = Field()
+    total_count: int = Field()
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    laugh: int = Field()
+    confused: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    eyes: int = Field()
+    rocket: int = Field()
 
 
-class IssueFieldValuePropSingleSelectOption(GitHubModel):
-    """IssueFieldValuePropSingleSelectOption
+model_rebuild(ReactionRollup)
 
-    Details about the selected option (only present for single_select fields)
-    """
-
-    id: int = Field(description="Unique identifier for the option.")
-    name: str = Field(description="The name of the option")
-    color: str = Field(description="The color of the option")
-
-
-model_rebuild(IssueFieldValue)
-model_rebuild(IssueFieldValuePropSingleSelectOption)
-
-__all__ = (
-    "IssueFieldValue",
-    "IssueFieldValuePropSingleSelectOption",
-)
+__all__ = ("ReactionRollup",)

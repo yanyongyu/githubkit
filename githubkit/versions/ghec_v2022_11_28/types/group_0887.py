@@ -9,202 +9,113 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
+from .group_0001 import CvssSeveritiesType
 
 
-class WebhookStatusType(TypedDict):
-    """status event"""
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
 
-    avatar_url: NotRequired[Union[str, None]]
-    branches: list[WebhookStatusPropBranchesItemsType]
-    commit: WebhookStatusPropCommitType
-    context: str
-    created_at: str
-    description: Union[str, None]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    id: int
-    installation: NotRequired[SimpleInstallationType]
-    name: str
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-    sha: str
-    state: Literal["pending", "success", "failure", "error"]
-    target_url: Union[str, None]
-    updated_at: str
+    The details of the security advisory, including summary, description, and
+    severity.
+    """
 
-
-class WebhookStatusPropBranchesItemsType(TypedDict):
-    """WebhookStatusPropBranchesItems"""
-
-    commit: WebhookStatusPropBranchesItemsPropCommitType
-    name: str
-    protected: bool
-
-
-class WebhookStatusPropBranchesItemsPropCommitType(TypedDict):
-    """WebhookStatusPropBranchesItemsPropCommit"""
-
-    sha: Union[str, None]
-    url: Union[str, None]
-
-
-class WebhookStatusPropCommitType(TypedDict):
-    """WebhookStatusPropCommit"""
-
-    author: Union[WebhookStatusPropCommitPropAuthorType, None]
-    comments_url: str
-    commit: WebhookStatusPropCommitPropCommitType
-    committer: Union[WebhookStatusPropCommitPropCommitterType, None]
-    html_url: str
-    node_id: str
-    parents: list[WebhookStatusPropCommitPropParentsItemsType]
-    sha: str
-    url: str
-
-
-class WebhookStatusPropCommitPropAuthorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookStatusPropCommitPropCommitterType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookStatusPropCommitPropParentsItemsType(TypedDict):
-    """WebhookStatusPropCommitPropParentsItems"""
-
-    html_url: str
-    sha: str
-    url: str
-
-
-class WebhookStatusPropCommitPropCommitType(TypedDict):
-    """WebhookStatusPropCommitPropCommit"""
-
-    author: WebhookStatusPropCommitPropCommitPropAuthorType
-    comment_count: int
-    committer: WebhookStatusPropCommitPropCommitPropCommitterType
-    message: str
-    tree: WebhookStatusPropCommitPropCommitPropTreeType
-    url: str
-    verification: WebhookStatusPropCommitPropCommitPropVerificationType
-
-
-class WebhookStatusPropCommitPropCommitPropAuthorType(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropAuthor"""
-
-    date: datetime
-    email: str
-    name: str
-    username: NotRequired[str]
-
-
-class WebhookStatusPropCommitPropCommitPropCommitterType(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropCommitter"""
-
-    date: datetime
-    email: str
-    name: str
-    username: NotRequired[str]
-
-
-class WebhookStatusPropCommitPropCommitPropTreeType(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropTree"""
-
-    sha: str
-    url: str
-
-
-class WebhookStatusPropCommitPropCommitPropVerificationType(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropVerification"""
-
-    payload: Union[str, None]
-    reason: Literal[
-        "expired_key",
-        "not_signing_key",
-        "gpgverify_error",
-        "gpgverify_unavailable",
-        "unsigned",
-        "unknown_signature_type",
-        "no_user",
-        "unverified_email",
-        "bad_email",
-        "unknown_key",
-        "malformed_signature",
-        "invalid",
-        "valid",
-        "bad_cert",
-        "ocsp_pending",
+    cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    cwes: list[WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType]
+    description: str
+    ghsa_id: str
+    identifiers: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType
     ]
-    signature: Union[str, None]
-    verified: bool
-    verified_at: Union[str, None]
+    published_at: str
+    references: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType
+    ]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType
+    ]
+    withdrawn_at: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss"""
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
+
+    url: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
+        None,
+    ]
+    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
+    severity: str
+    vulnerable_version_range: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    FirstPatchedVersion
+    """
+
+    identifier: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    Package
+    """
+
+    ecosystem: str
+    name: str
 
 
 __all__ = (
-    "WebhookStatusPropBranchesItemsPropCommitType",
-    "WebhookStatusPropBranchesItemsType",
-    "WebhookStatusPropCommitPropAuthorType",
-    "WebhookStatusPropCommitPropCommitPropAuthorType",
-    "WebhookStatusPropCommitPropCommitPropCommitterType",
-    "WebhookStatusPropCommitPropCommitPropTreeType",
-    "WebhookStatusPropCommitPropCommitPropVerificationType",
-    "WebhookStatusPropCommitPropCommitType",
-    "WebhookStatusPropCommitPropCommitterType",
-    "WebhookStatusPropCommitPropParentsItemsType",
-    "WebhookStatusPropCommitType",
-    "WebhookStatusType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType",
 )

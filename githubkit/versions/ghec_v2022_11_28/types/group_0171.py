@@ -9,27 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class SubIssuesSummaryType(TypedDict):
-    """Sub-issues Summary"""
+class IssueTypeType(TypedDict):
+    """Issue Type
 
-    total: int
-    completed: int
-    percent_completed: int
+    The type of issue.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    description: Union[str, None]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+    is_enabled: NotRequired[bool]
 
 
-class IssueDependenciesSummaryType(TypedDict):
-    """Issue Dependencies Summary"""
-
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
-
-
-__all__ = (
-    "IssueDependenciesSummaryType",
-    "SubIssuesSummaryType",
-)
+__all__ = ("IssueTypeType",)

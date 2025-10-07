@@ -12,20 +12,14 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
+class ReposOwnerRepoCommentsCommentIdPatchBody(GitHubModel):
+    """ReposOwnerRepoCommentsCommentIdPatchBody"""
 
-    dismissal_review_id: Missing[int] = Field(
-        default=UNSET, description="ID of the dismissal review."
-    )
+    body: str = Field(description="The contents of the comment")
 
 
-model_rebuild(ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200)
+model_rebuild(ReposOwnerRepoCommentsCommentIdPatchBody)
 
-__all__ = ("ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200",)
+__all__ = ("ReposOwnerRepoCommentsCommentIdPatchBody",)

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,62 +17,56 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0093 import Team
+from .group_0093 import TeamSimple
 
 
-class CampaignSummary(GitHubModel):
-    """Campaign summary
+class Team(GitHubModel):
+    """Team
 
-    The campaign metadata and alert stats.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    number: int = Field(description="The number of the newly created campaign")
-    created_at: datetime = Field(
-        description="The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    members_url: str = Field()
+    repositories_url: str = Field()
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
     )
-    updated_at: datetime = Field(
-        description="The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    name: Missing[str] = Field(default=UNSET, description="The campaign name")
-    description: str = Field(description="The campaign description")
-    managers: list[SimpleUser] = Field(description="The campaign managers")
-    team_managers: Missing[list[Team]] = Field(
-        default=UNSET, description="The campaign team managers"
-    )
-    published_at: Missing[datetime] = Field(
+    organization_id: Missing[int] = Field(
         default=UNSET,
-        description="The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        description="Unique identifier of the organization to which this team belongs",
     )
-    ends_at: datetime = Field(
-        description="The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    closed_at: Missing[Union[datetime, None]] = Field(
+    enterprise_id: Missing[int] = Field(
         default=UNSET,
-        description="The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.",
+        description="Unique identifier of the enterprise to which this team belongs",
     )
-    state: Literal["open", "closed"] = Field(
-        title="Campaign state",
-        description="Indicates whether a campaign is open or closed",
-    )
-    contact_link: Union[str, None] = Field(
-        description="The contact link of the campaign."
-    )
-    alert_stats: Missing[CampaignSummaryPropAlertStats] = Field(default=UNSET)
+    parent: Union[None, TeamSimple] = Field()
 
 
-class CampaignSummaryPropAlertStats(GitHubModel):
-    """CampaignSummaryPropAlertStats"""
+class TeamPropPermissions(GitHubModel):
+    """TeamPropPermissions"""
 
-    open_count: int = Field(description="The number of open alerts")
-    closed_count: int = Field(description="The number of closed alerts")
-    in_progress_count: int = Field(description="The number of in-progress alerts")
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
 
 
-model_rebuild(CampaignSummary)
-model_rebuild(CampaignSummaryPropAlertStats)
+model_rebuild(Team)
+model_rebuild(TeamPropPermissions)
 
 __all__ = (
-    "CampaignSummary",
-    "CampaignSummaryPropAlertStats",
+    "Team",
+    "TeamPropPermissions",
 )

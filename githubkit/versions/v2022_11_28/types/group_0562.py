@@ -9,29 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0018 import InstallationType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0453 import WebhooksUserType
-from .group_0458 import WebhooksRepositoriesItemsType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0459 import DiscussionType
+from .group_0461 import WebhooksLabelType
 
 
-class WebhookInstallationCreatedType(TypedDict):
-    """installation created event"""
+class WebhookDiscussionUnlabeledType(TypedDict):
+    """discussion unlabeled event"""
 
-    action: Literal["created"]
+    action: Literal["unlabeled"]
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    installation: NotRequired[SimpleInstallationType]
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[Union[WebhooksUserType, None]]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookInstallationCreatedType",)
+__all__ = ("WebhookDiscussionUnlabeledType",)

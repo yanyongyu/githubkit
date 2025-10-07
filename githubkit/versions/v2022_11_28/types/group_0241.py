@@ -9,22 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class AutolinkType(TypedDict):
-    """Autolink reference
+class WorkflowUsageType(TypedDict):
+    """Workflow Usage
 
-    An autolink reference.
+    Workflow Usage
     """
 
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
-    updated_at: NotRequired[Union[datetime, None]]
+    billable: WorkflowUsagePropBillableType
 
 
-__all__ = ("AutolinkType",)
+class WorkflowUsagePropBillableType(TypedDict):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
+
+
+class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropMacosType(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropWindowsType(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: NotRequired[int]
+
+
+__all__ = (
+    "WorkflowUsagePropBillablePropMacosType",
+    "WorkflowUsagePropBillablePropUbuntuType",
+    "WorkflowUsagePropBillablePropWindowsType",
+    "WorkflowUsagePropBillableType",
+    "WorkflowUsageType",
+)

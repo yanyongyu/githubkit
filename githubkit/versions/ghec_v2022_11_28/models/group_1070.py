@@ -11,17 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints."
+    selected_repository_ids: Missing[list[int]] = Field(
+        max_length=250 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="An array of repository IDs to detach from configurations. Up to 250 IDs can be provided.",
     )
 
 
-model_rebuild(OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsDetachDeleteBody)
 
-__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",)

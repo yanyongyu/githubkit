@@ -12,12 +12,13 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
 
-    name: str
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
-__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type",)

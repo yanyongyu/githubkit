@@ -13,14 +13,12 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
 
-    Update the source for the repository. Must include the branch name and path.
-    """
-
-    branch: str
-    path: Literal["/", "/docs"]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-__all__ = ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType",)

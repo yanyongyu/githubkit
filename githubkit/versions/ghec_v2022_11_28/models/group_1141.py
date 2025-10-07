@@ -14,17 +14,12 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsColumnIdCardsPostBodyOneof1(GitHubModel):
-    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
+class OrgsOrgTeamsTeamSlugExternalGroupsPatchBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
 
-    content_id: int = Field(
-        description="The unique identifier of the content associated with the card"
-    )
-    content_type: str = Field(
-        description="The piece of content associated with the card"
-    )
+    group_id: int = Field(description="External Group Id")
 
 
-model_rebuild(ProjectsColumnsColumnIdCardsPostBodyOneof1)
+model_rebuild(OrgsOrgTeamsTeamSlugExternalGroupsPatchBody)
 
-__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof1",)
+__all__ = ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBody",)

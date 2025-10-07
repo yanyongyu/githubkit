@@ -9,44 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0467 import WebhooksMilestoneType
 
 
-class WebhookRubygemsMetadataType(TypedDict):
-    """Ruby Gems metadata"""
+class WebhookMilestoneDeletedType(TypedDict):
+    """milestone deleted event"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    readme: NotRequired[str]
-    homepage: NotRequired[str]
-    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
-    platform: NotRequired[str]
-    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
-    repo: NotRequired[str]
-    dependencies: NotRequired[list[WebhookRubygemsMetadataPropDependenciesItemsType]]
-    commit_oid: NotRequired[str]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    milestone: WebhooksMilestoneType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
-    """WebhookRubygemsMetadataPropVersionInfo"""
-
-    version: NotRequired[str]
-
-
-WebhookRubygemsMetadataPropMetadataType: TypeAlias = dict[str, Any]
-"""WebhookRubygemsMetadataPropMetadata
-"""
-
-
-WebhookRubygemsMetadataPropDependenciesItemsType: TypeAlias = dict[str, Any]
-"""WebhookRubygemsMetadataPropDependenciesItems
-"""
-
-
-__all__ = (
-    "WebhookRubygemsMetadataPropDependenciesItemsType",
-    "WebhookRubygemsMetadataPropMetadataType",
-    "WebhookRubygemsMetadataPropVersionInfoType",
-    "WebhookRubygemsMetadataType",
-)
+__all__ = ("WebhookMilestoneDeletedType",)

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,21 +19,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0505 import EnterpriseWebhooks
-from .group_0506 import SimpleInstallation
-from .group_0507 import OrganizationSimpleWebhooks
-from .group_0508 import RepositoryWebhooks
-from .group_0539 import WebhooksProject
+from .group_0511 import EnterpriseWebhooks
+from .group_0512 import SimpleInstallation
+from .group_0513 import OrganizationSimpleWebhooks
+from .group_0514 import RepositoryWebhooks
 
 
-class WebhookProjectEdited(GitHubModel):
-    """project edited event"""
+class WebhookProjectCardDeleted(GitHubModel):
+    """project_card deleted event"""
 
-    action: Literal["edited"] = Field()
-    changes: Missing[WebhookProjectEditedPropChanges] = Field(
-        default=UNSET,
-        description="The changes to the project if the action was `edited`.",
-    )
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -48,53 +44,66 @@ class WebhookProjectEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project: WebhooksProject = Field(title="Project")
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    project_card: WebhookProjectCardDeletedPropProjectCard = Field(title="Project Card")
+    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+class WebhookProjectCardDeletedPropProjectCard(GitHubModel):
+    """Project Card"""
+
+    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    archived: bool = Field(description="Whether or not the card is archived")
+    column_id: Union[int, None] = Field()
+    column_url: str = Field()
+    content_url: Missing[str] = Field(default=UNSET)
+    created_at: datetime = Field()
+    creator: Union[WebhookProjectCardDeletedPropProjectCardPropCreator, None] = Field(
+        title="User"
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    id: int = Field(description="The project card's ID")
+    node_id: str = Field()
+    note: Union[str, None] = Field()
+    project_url: str = Field()
+    updated_at: datetime = Field()
+    url: str = Field()
+
+
+class WebhookProjectCardDeletedPropProjectCardPropCreator(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
     )
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookProjectEditedPropChanges(GitHubModel):
-    """WebhookProjectEditedPropChanges
-
-    The changes to the project if the action was `edited`.
-    """
-
-    body: Missing[WebhookProjectEditedPropChangesPropBody] = Field(default=UNSET)
-    name: Missing[WebhookProjectEditedPropChangesPropName] = Field(default=UNSET)
-
-
-class WebhookProjectEditedPropChangesPropBody(GitHubModel):
-    """WebhookProjectEditedPropChangesPropBody"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the body if the action was `edited`.",
-    )
-
-
-class WebhookProjectEditedPropChangesPropName(GitHubModel):
-    """WebhookProjectEditedPropChangesPropName"""
-
-    from_: str = Field(
-        alias="from",
-        description="The changes to the project if the action was `edited`.",
-    )
-
-
-model_rebuild(WebhookProjectEdited)
-model_rebuild(WebhookProjectEditedPropChanges)
-model_rebuild(WebhookProjectEditedPropChangesPropBody)
-model_rebuild(WebhookProjectEditedPropChangesPropName)
+model_rebuild(WebhookProjectCardDeleted)
+model_rebuild(WebhookProjectCardDeletedPropProjectCard)
+model_rebuild(WebhookProjectCardDeletedPropProjectCardPropCreator)
 
 __all__ = (
-    "WebhookProjectEdited",
-    "WebhookProjectEditedPropChanges",
-    "WebhookProjectEditedPropChangesPropBody",
-    "WebhookProjectEditedPropChangesPropName",
+    "WebhookProjectCardDeleted",
+    "WebhookProjectCardDeletedPropProjectCard",
+    "WebhookProjectCardDeletedPropProjectCardPropCreator",
 )

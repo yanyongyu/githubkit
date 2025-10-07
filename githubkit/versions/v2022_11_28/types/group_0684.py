@@ -9,52 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0457 import WebhooksUserType
 
 
-class WebhookPageBuildType(TypedDict):
-    """page_build event"""
+class WebhookOrganizationMemberInvitedType(TypedDict):
+    """organization member_invited event"""
 
-    build: WebhookPageBuildPropBuildType
+    action: Literal["member_invited"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    id: int
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    invitation: WebhookOrganizationMemberInvitedPropInvitationType
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
+    user: NotRequired[Union[WebhooksUserType, None]]
 
 
-class WebhookPageBuildPropBuildType(TypedDict):
-    """WebhookPageBuildPropBuild
+class WebhookOrganizationMemberInvitedPropInvitationType(TypedDict):
+    """WebhookOrganizationMemberInvitedPropInvitation
 
-    The [List GitHub Pages builds](https://docs.github.com/rest/pages/pages#list-
-    github-pages-builds) itself.
+    The invitation for the user or email if the action is `member_invited`.
     """
 
-    commit: Union[str, None]
-    created_at: str
-    duration: int
-    error: WebhookPageBuildPropBuildPropErrorType
-    pusher: Union[WebhookPageBuildPropBuildPropPusherType, None]
-    status: str
-    updated_at: str
-    url: str
+    created_at: datetime
+    email: Union[str, None]
+    failed_at: Union[datetime, None]
+    failed_reason: Union[str, None]
+    id: float
+    invitation_teams_url: str
+    inviter: Union[WebhookOrganizationMemberInvitedPropInvitationPropInviterType, None]
+    login: Union[str, None]
+    node_id: str
+    role: str
+    team_count: float
+    invitation_source: NotRequired[str]
 
 
-class WebhookPageBuildPropBuildPropErrorType(TypedDict):
-    """WebhookPageBuildPropBuildPropError"""
-
-    message: Union[str, None]
-
-
-class WebhookPageBuildPropBuildPropPusherType(TypedDict):
+class WebhookOrganizationMemberInvitedPropInvitationPropInviterType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -82,8 +82,7 @@ class WebhookPageBuildPropBuildPropPusherType(TypedDict):
 
 
 __all__ = (
-    "WebhookPageBuildPropBuildPropErrorType",
-    "WebhookPageBuildPropBuildPropPusherType",
-    "WebhookPageBuildPropBuildType",
-    "WebhookPageBuildType",
+    "WebhookOrganizationMemberInvitedPropInvitationPropInviterType",
+    "WebhookOrganizationMemberInvitedPropInvitationType",
+    "WebhookOrganizationMemberInvitedType",
 )

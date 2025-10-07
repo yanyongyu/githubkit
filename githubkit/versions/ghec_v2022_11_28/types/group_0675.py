@@ -13,26 +13,27 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
-from .group_0173 import IssueType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0531 import WebhooksIssueCommentType
+from .group_0532 import WebhooksChangesType
+from .group_0676 import WebhookIssueCommentEditedPropIssueType
 
 
-class WebhookIssueDependenciesBlockedByRemovedType(TypedDict):
-    """blocked by issue removed event"""
+class WebhookIssueCommentEditedType(TypedDict):
+    """issue_comment edited event"""
 
-    action: Literal["blocked_by_removed"]
-    blocked_issue_id: float
-    blocked_issue: IssueType
-    blocking_issue_id: float
-    blocking_issue: IssueType
-    blocking_issue_repo: RepositoryType
+    action: Literal["edited"]
+    changes: WebhooksChangesType
+    comment: WebhooksIssueCommentType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
+    issue: WebhookIssueCommentEditedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssueDependenciesBlockedByRemovedType",)
+__all__ = ("WebhookIssueCommentEditedType",)

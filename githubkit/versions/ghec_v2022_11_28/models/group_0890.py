@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 
 from pydantic import Field
@@ -18,19 +17,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class WebhookStatusPropCommitPropCommitPropCommitterAllof0(GitHubModel):
-    """Committer
-
-    Metaproperties for Git author/committer information.
-    """
-
-    date: Missing[datetime] = Field(default=UNSET)
-    email: Union[str, None] = Field()
-    name: str = Field(description="The git author's name.")
-    username: Missing[str] = Field(default=UNSET)
+from .group_0190 import SecurityAndAnalysis
 
 
-model_rebuild(WebhookStatusPropCommitPropCommitPropCommitterAllof0)
+class WebhookSecurityAndAnalysisPropChangesPropFrom(GitHubModel):
+    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof0",)
+    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
+        default=UNSET
+    )
+
+
+model_rebuild(WebhookSecurityAndAnalysisPropChangesPropFrom)
+
+__all__ = ("WebhookSecurityAndAnalysisPropChangesPropFrom",)

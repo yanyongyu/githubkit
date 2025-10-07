@@ -9,16 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseNetworkConfigurationsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
-
-    name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
+from .group_0079 import CopilotSeatDetailsType
 
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsPostBodyType",)
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
+
+
+__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",)

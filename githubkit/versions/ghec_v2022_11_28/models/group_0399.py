@@ -9,34 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0010 import Integration
+from .group_0400 import TimelineCrossReferencedEventPropSource
 
 
-class TimelineAssignedIssueEvent(GitHubModel):
-    """Timeline Assigned Issue Event
+class TimelineCrossReferencedEvent(GitHubModel):
+    """Timeline Cross Referenced Event
 
-    Timeline Assigned Issue Event
+    Timeline Cross Referenced Event
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["assigned"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["cross-referenced"] = Field()
+    actor: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    source: TimelineCrossReferencedEventPropSource = Field()
 
 
-model_rebuild(TimelineAssignedIssueEvent)
+model_rebuild(TimelineCrossReferencedEvent)
 
-__all__ = ("TimelineAssignedIssueEvent",)
+__all__ = ("TimelineCrossReferencedEvent",)

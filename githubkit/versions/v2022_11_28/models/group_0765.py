@@ -14,26 +14,41 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0442 import EnterpriseWebhooks
-from .group_0443 import SimpleInstallation
-from .group_0444 import OrganizationSimpleWebhooks
-from .group_0445 import RepositoryWebhooks
+from .group_0446 import EnterpriseWebhooks
+from .group_0447 import SimpleInstallation
+from .group_0448 import OrganizationSimpleWebhooks
 
 
-class WebhookReleasePrereleased(GitHubModel):
-    """release prereleased event"""
+class WebhookPush(GitHubModel):
+    """push event"""
 
-    action: Literal["prereleased"] = Field()
+    after: str = Field(
+        description="The SHA of the most recent commit on `ref` after the push."
+    )
+    base_ref: Union[str, None] = Field()
+    before: str = Field(
+        description="The SHA of the most recent commit on `ref` before the push."
+    )
+    commits: list[WebhookPushPropCommitsItems] = Field(
+        description="An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 2048 commits. If necessary, you can use the [Commits API](https://docs.github.com/rest/commits) to fetch additional commits."
+    )
+    compare: str = Field(
+        description="URL that shows the changes in this `ref` update, from the `before` commit to the `after` commit. For a newly created `ref` that is directly based on the default branch, this is the comparison between the head of the default branch and the `after` commit. Otherwise, this shows all commits until the `after` commit."
+    )
+    created: bool = Field(description="Whether this push created the `ref`.")
+    deleted: bool = Field(description="Whether this push deleted the `ref`.")
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
+    forced: bool = Field(description="Whether this push was a force push of the `ref`.")
+    head_commit: Union[WebhookPushPropHeadCommit, None] = Field(title="Commit")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -44,111 +59,297 @@ class WebhookReleasePrereleased(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    release: WebhookReleasePrereleasedPropRelease = Field(
-        title="Release",
-        description="The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.",
+    pusher: WebhookPushPropPusher = Field(
+        title="Committer",
+        description="Metaproperties for Git author/committer information.",
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    ref: str = Field(
+        description="The full git ref that was pushed. Example: `refs/heads/main` or `refs/tags/v3.14.1`."
+    )
+    repository: WebhookPushPropRepository = Field(
+        title="Repository", description="A git repository"
     )
     sender: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-class WebhookReleasePrereleasedPropRelease(GitHubModel):
-    """Release
+class WebhookPushPropHeadCommit(GitHubModel):
+    """Commit"""
 
-    The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
-    object.
+    added: Missing[list[str]] = Field(
+        default=UNSET, description="An array of files added in the commit."
+    )
+    author: WebhookPushPropHeadCommitPropAuthor = Field(
+        title="Committer",
+        description="Metaproperties for Git author/committer information.",
+    )
+    committer: WebhookPushPropHeadCommitPropCommitter = Field(
+        title="Committer",
+        description="Metaproperties for Git author/committer information.",
+    )
+    distinct: bool = Field(
+        description="Whether this commit is distinct from any that have been pushed before."
+    )
+    id: str = Field()
+    message: str = Field(description="The commit message.")
+    modified: Missing[list[str]] = Field(
+        default=UNSET, description="An array of files modified by the commit."
+    )
+    removed: Missing[list[str]] = Field(
+        default=UNSET, description="An array of files removed in the commit."
+    )
+    timestamp: datetime = Field(description="The ISO 8601 timestamp of the commit.")
+    tree_id: str = Field()
+    url: str = Field(description="URL that points to the commit API resource.")
+
+
+class WebhookPushPropHeadCommitPropAuthor(GitHubModel):
+    """Committer
+
+    Metaproperties for Git author/committer information.
     """
 
-    assets: list[Union[WebhookReleasePrereleasedPropReleasePropAssetsItems, None]] = (
-        Field()
-    )
-    assets_url: str = Field()
-    author: Union[WebhookReleasePrereleasedPropReleasePropAuthor, None] = Field(
-        title="User"
-    )
-    body: Union[str, None] = Field()
-    created_at: Union[datetime, None] = Field()
-    discussion_url: Missing[str] = Field(default=UNSET)
-    draft: bool = Field(description="Whether the release is a draft or published")
-    html_url: str = Field()
-    id: int = Field()
-    immutable: bool = Field(description="Whether or not the release is immutable.")
-    name: Union[str, None] = Field()
-    node_id: str = Field()
-    prerelease: Literal[True] = Field(
-        description="Whether the release is identified as a prerelease or a full release."
-    )
-    published_at: Union[datetime, None] = Field()
-    reactions: Missing[WebhookReleasePrereleasedPropReleasePropReactions] = Field(
-        default=UNSET, title="Reactions"
-    )
-    tag_name: str = Field(description="The name of the tag.")
-    tarball_url: Union[str, None] = Field()
-    target_commitish: str = Field(
-        description="Specifies the commitish value that determines where the Git tag is created from."
-    )
-    upload_url: str = Field()
-    updated_at: Union[datetime, None] = Field()
-    url: str = Field()
-    zipball_url: Union[str, None] = Field()
+    date: Missing[datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
 
 
-class WebhookReleasePrereleasedPropReleasePropAssetsItems(GitHubModel):
-    """Release Asset
+class WebhookPushPropHeadCommitPropCommitter(GitHubModel):
+    """Committer
 
-    Data related to a release.
+    Metaproperties for Git author/committer information.
     """
 
-    browser_download_url: str = Field()
-    content_type: str = Field()
-    created_at: datetime = Field()
-    download_count: int = Field()
-    id: int = Field()
-    label: Union[str, None] = Field()
-    name: str = Field(description="The file name of the asset.")
-    node_id: str = Field()
-    size: int = Field()
-    digest: Union[str, None] = Field()
-    state: Literal["uploaded"] = Field(description="State of the release asset.")
-    updated_at: datetime = Field()
-    uploader: Missing[
-        Union[WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploader, None]
-    ] = Field(default=UNSET, title="User")
-    url: str = Field()
+    date: Missing[datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
 
 
-class WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploader(GitHubModel):
-    """User"""
+class WebhookPushPropPusher(GitHubModel):
+    """Committer
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
+    Metaproperties for Git author/committer information.
+    """
+
+    date: Missing[datetime] = Field(default=UNSET)
     email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
 
 
-class WebhookReleasePrereleasedPropReleasePropAuthor(GitHubModel):
+class WebhookPushPropCommitsItems(GitHubModel):
+    """Commit"""
+
+    added: Missing[list[str]] = Field(
+        default=UNSET,
+        description="An array of files added in the commit. A maximum of 3000 changed files will be reported per commit.",
+    )
+    author: WebhookPushPropCommitsItemsPropAuthor = Field(
+        title="Committer",
+        description="Metaproperties for Git author/committer information.",
+    )
+    committer: WebhookPushPropCommitsItemsPropCommitter = Field(
+        title="Committer",
+        description="Metaproperties for Git author/committer information.",
+    )
+    distinct: bool = Field(
+        description="Whether this commit is distinct from any that have been pushed before."
+    )
+    id: str = Field()
+    message: str = Field(description="The commit message.")
+    modified: Missing[list[str]] = Field(
+        default=UNSET,
+        description="An array of files modified by the commit. A maximum of 3000 changed files will be reported per commit.",
+    )
+    removed: Missing[list[str]] = Field(
+        default=UNSET,
+        description="An array of files removed in the commit. A maximum of 3000 changed files will be reported per commit.",
+    )
+    timestamp: datetime = Field(description="The ISO 8601 timestamp of the commit.")
+    tree_id: str = Field()
+    url: str = Field(description="URL that points to the commit API resource.")
+
+
+class WebhookPushPropCommitsItemsPropAuthor(GitHubModel):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: Missing[datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
+
+
+class WebhookPushPropCommitsItemsPropCommitter(GitHubModel):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: Missing[datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
+
+
+class WebhookPushPropRepository(GitHubModel):
+    """Repository
+
+    A git repository
+    """
+
+    allow_auto_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow auto-merge for pull requests."
+    )
+    allow_forking: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow private forks"
+    )
+    allow_merge_commit: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow merge commits for pull requests."
+    )
+    allow_rebase_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow rebase merges for pull requests."
+    )
+    allow_squash_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow squash merges for pull requests."
+    )
+    allow_update_branch: Missing[bool] = Field(default=UNSET)
+    archive_url: str = Field()
+    archived: bool = Field(
+        default=False, description="Whether the repository is archived."
+    )
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    clone_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    created_at: Union[int, datetime] = Field()
+    custom_properties: Missing[WebhookPushPropRepositoryPropCustomProperties] = Field(
+        default=UNSET,
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
+    )
+    default_branch: str = Field(description="The default branch of the repository.")
+    delete_branch_on_merge: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to delete head branches when pull requests are merged",
+    )
+    deployments_url: str = Field()
+    description: Union[str, None] = Field()
+    disabled: Missing[bool] = Field(
+        default=UNSET, description="Returns whether or not this repository is disabled."
+    )
+    downloads_url: str = Field()
+    events_url: str = Field()
+    fork: bool = Field()
+    forks: int = Field()
+    forks_count: int = Field()
+    forks_url: str = Field()
+    full_name: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    git_url: str = Field()
+    has_downloads: bool = Field(
+        default=True, description="Whether downloads are enabled."
+    )
+    has_issues: bool = Field(default=True, description="Whether issues are enabled.")
+    has_pages: bool = Field()
+    has_projects: bool = Field(
+        default=True, description="Whether projects are enabled."
+    )
+    has_wiki: bool = Field(default=True, description="Whether the wiki is enabled.")
+    has_discussions: bool = Field(
+        default=False, description="Whether discussions are enabled."
+    )
+    homepage: Union[str, None] = Field()
+    hooks_url: str = Field()
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    is_template: Missing[bool] = Field(default=UNSET)
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    language: Union[str, None] = Field()
+    languages_url: str = Field()
+    license_: Union[WebhookPushPropRepositoryPropLicense, None] = Field(
+        alias="license", title="License"
+    )
+    master_branch: Missing[str] = Field(default=UNSET)
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    mirror_url: Union[str, None] = Field()
+    name: str = Field(description="The name of the repository.")
+    node_id: str = Field()
+    notifications_url: str = Field()
+    open_issues: int = Field()
+    open_issues_count: int = Field()
+    organization: Missing[str] = Field(default=UNSET)
+    owner: Union[WebhookPushPropRepositoryPropOwner, None] = Field(title="User")
+    permissions: Missing[WebhookPushPropRepositoryPropPermissions] = Field(
+        default=UNSET
+    )
+    private: bool = Field(description="Whether the repository is private or public.")
+    public: Missing[bool] = Field(default=UNSET)
+    pulls_url: str = Field()
+    pushed_at: Union[int, datetime, None] = Field()
+    releases_url: str = Field()
+    role_name: Missing[Union[str, None]] = Field(default=UNSET)
+    size: int = Field()
+    ssh_url: str = Field()
+    stargazers: Missing[int] = Field(default=UNSET)
+    stargazers_count: int = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    svn_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    topics: list[str] = Field()
+    trees_url: str = Field()
+    updated_at: datetime = Field()
+    url: str = Field()
+    visibility: Literal["public", "private", "internal"] = Field()
+    watchers: int = Field()
+    watchers_count: int = Field()
+    web_commit_signoff_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to require contributors to sign off on web-based commits",
+    )
+
+
+class WebhookPushPropRepositoryPropCustomProperties(ExtraGitHubModel):
+    """WebhookPushPropRepositoryPropCustomProperties
+
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values.
+    """
+
+
+class WebhookPushPropRepositoryPropLicense(GitHubModel):
+    """License"""
+
+    key: str = Field()
+    name: str = Field()
+    node_id: str = Field()
+    spdx_id: str = Field()
+    url: Union[str, None] = Field()
+
+
+class WebhookPushPropRepositoryPropOwner(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -175,33 +376,42 @@ class WebhookReleasePrereleasedPropReleasePropAuthor(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookReleasePrereleasedPropReleasePropReactions(GitHubModel):
-    """Reactions"""
+class WebhookPushPropRepositoryPropPermissions(GitHubModel):
+    """WebhookPushPropRepositoryPropPermissions"""
 
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
+    admin: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
+    pull: bool = Field()
+    push: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(WebhookReleasePrereleased)
-model_rebuild(WebhookReleasePrereleasedPropRelease)
-model_rebuild(WebhookReleasePrereleasedPropReleasePropAssetsItems)
-model_rebuild(WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploader)
-model_rebuild(WebhookReleasePrereleasedPropReleasePropAuthor)
-model_rebuild(WebhookReleasePrereleasedPropReleasePropReactions)
+model_rebuild(WebhookPush)
+model_rebuild(WebhookPushPropHeadCommit)
+model_rebuild(WebhookPushPropHeadCommitPropAuthor)
+model_rebuild(WebhookPushPropHeadCommitPropCommitter)
+model_rebuild(WebhookPushPropPusher)
+model_rebuild(WebhookPushPropCommitsItems)
+model_rebuild(WebhookPushPropCommitsItemsPropAuthor)
+model_rebuild(WebhookPushPropCommitsItemsPropCommitter)
+model_rebuild(WebhookPushPropRepository)
+model_rebuild(WebhookPushPropRepositoryPropCustomProperties)
+model_rebuild(WebhookPushPropRepositoryPropLicense)
+model_rebuild(WebhookPushPropRepositoryPropOwner)
+model_rebuild(WebhookPushPropRepositoryPropPermissions)
 
 __all__ = (
-    "WebhookReleasePrereleased",
-    "WebhookReleasePrereleasedPropRelease",
-    "WebhookReleasePrereleasedPropReleasePropAssetsItems",
-    "WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploader",
-    "WebhookReleasePrereleasedPropReleasePropAuthor",
-    "WebhookReleasePrereleasedPropReleasePropReactions",
+    "WebhookPush",
+    "WebhookPushPropCommitsItems",
+    "WebhookPushPropCommitsItemsPropAuthor",
+    "WebhookPushPropCommitsItemsPropCommitter",
+    "WebhookPushPropHeadCommit",
+    "WebhookPushPropHeadCommitPropAuthor",
+    "WebhookPushPropHeadCommitPropCommitter",
+    "WebhookPushPropPusher",
+    "WebhookPushPropRepository",
+    "WebhookPushPropRepositoryPropCustomProperties",
+    "WebhookPushPropRepositoryPropLicense",
+    "WebhookPushPropRepositoryPropOwner",
+    "WebhookPushPropRepositoryPropPermissions",
 )

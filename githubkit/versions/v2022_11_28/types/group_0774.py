@@ -9,38 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0487 import WebhooksReleaseType
 
 
-class WebhookRepositoryDispatchSampleType(TypedDict):
-    """repository_dispatch event"""
+class WebhookReleaseEditedType(TypedDict):
+    """release edited event"""
 
-    action: str
-    branch: str
-    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayloadType, None]
+    action: Literal["edited"]
+    changes: WebhookReleaseEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: SimpleInstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksReleaseType
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-WebhookRepositoryDispatchSamplePropClientPayloadType: TypeAlias = dict[str, Any]
-"""WebhookRepositoryDispatchSamplePropClientPayload
+class WebhookReleaseEditedPropChangesType(TypedDict):
+    """WebhookReleaseEditedPropChanges"""
 
-The `client_payload` that was specified in the `POST
-/repos/{owner}/{repo}/dispatches` request body.
-"""
+    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyType]
+    name: NotRequired[WebhookReleaseEditedPropChangesPropNameType]
+    tag_name: NotRequired[WebhookReleaseEditedPropChangesPropTagNameType]
+    make_latest: NotRequired[WebhookReleaseEditedPropChangesPropMakeLatestType]
+
+
+class WebhookReleaseEditedPropChangesPropBodyType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropNameType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropTagNameType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropTagName"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropMakeLatestType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+
+    to: bool
 
 
 __all__ = (
-    "WebhookRepositoryDispatchSamplePropClientPayloadType",
-    "WebhookRepositoryDispatchSampleType",
+    "WebhookReleaseEditedPropChangesPropBodyType",
+    "WebhookReleaseEditedPropChangesPropMakeLatestType",
+    "WebhookReleaseEditedPropChangesPropNameType",
+    "WebhookReleaseEditedPropChangesPropTagNameType",
+    "WebhookReleaseEditedPropChangesType",
+    "WebhookReleaseEditedType",
 )

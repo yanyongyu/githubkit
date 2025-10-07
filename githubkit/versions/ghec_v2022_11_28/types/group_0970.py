@@ -9,15 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0058 import (
+    AmazonS3AccessKeysConfigType,
+    AzureBlobConfigType,
+    AzureHubConfigType,
+    DatadogConfigType,
+    HecConfigType,
+)
+from .group_0059 import AmazonS3OidcConfigType, SplunkConfigType
+from .group_0060 import GoogleCloudConfigType
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody"""
 
-    selected_enterprise_teams: list[str]
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+
+    enabled: bool
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ]
+    vendor_specific: Union[
+        AzureBlobConfigType,
+        AzureHubConfigType,
+        AmazonS3OidcConfigType,
+        AmazonS3AccessKeysConfigType,
+        SplunkConfigType,
+        HecConfigType,
+        GoogleCloudConfigType,
+        DatadogConfigType,
+    ]
 
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType",)
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType",)

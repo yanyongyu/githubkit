@@ -16,15 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserGpgKeysPostBody(GitHubModel):
-    """UserGpgKeysPostBody"""
+class TeamsTeamIdTeamSyncGroupMappingsPatchBody(GitHubModel):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
+    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems] = Field(
+        description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove."
     )
-    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
+    synced_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(UserGpgKeysPostBody)
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
-__all__ = ("UserGpgKeysPostBody",)
+    group_id: str = Field(description="ID of the IdP group.")
+    group_name: str = Field(description="Name of the IdP group.")
+    group_description: str = Field(description="Description of the IdP group.")
+    id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBody)
+model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems)
+
+__all__ = (
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBody",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems",
+)

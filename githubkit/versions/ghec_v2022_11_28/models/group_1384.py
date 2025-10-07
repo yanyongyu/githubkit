@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0020 import Repository
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBody(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBody"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
-    )
-    id: int = Field(
-        description="The numeric ID of the issue or pull request to add to the project."
-    )
+    total_count: int = Field()
+    repository_selection: Missing[str] = Field(default=UNSET)
+    repositories: list[Repository] = Field()
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsPostBody)
+model_rebuild(UserInstallationsInstallationIdRepositoriesGetResponse200)
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBody",)
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200",)

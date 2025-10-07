@@ -9,41 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0273 import CodeScanningVariantAnalysisSkippedRepoGroupType
 
 
-class CodeScanningDefaultSetupType(TypedDict):
-    """CodeScanningDefaultSetup
+class CodeScanningVariantAnalysisPropSkippedRepositoriesType(TypedDict):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    Configuration for code scanning default setup.
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
-    ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    updated_at: NotRequired[Union[datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    not_found_repos: (
+        CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType
+    )
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
 
 
-__all__ = ("CodeScanningDefaultSetupType",)
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
+    TypedDict
+):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+
+    repository_count: int
+    repository_full_names: list[str]
+
+
+__all__ = (
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
+)

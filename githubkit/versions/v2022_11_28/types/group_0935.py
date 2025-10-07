@@ -11,14 +11,11 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0100 import CodespaceType
+
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+
+    attestation_ids: list[int]
 
 
-class OrgsOrgCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceType]
-
-
-__all__ = ("OrgsOrgCodespacesGetResponse200Type",)
+__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",)

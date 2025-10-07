@@ -19,43 +19,37 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
+from .group_0078 import Team
 
 
-class RemovedFromProjectIssueEvent(GitHubModel):
-    """Removed from Project Issue Event
+class ReviewRequestRemovedIssueEvent(GitHubModel):
+    """Review Request Removed Issue Event
 
-    Removed from Project Issue Event
+    Review Request Removed Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["removed_from_project"] = Field()
+    event: Literal["review_request_removed"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[RemovedFromProjectIssueEventPropProjectCard] = Field(
-        default=UNSET
+    review_requester: SimpleUser = Field(
+        title="Simple User", description="A GitHub user."
+    )
+    requested_team: Missing[Team] = Field(
+        default=UNSET,
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
+    requested_reviewer: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-class RemovedFromProjectIssueEventPropProjectCard(GitHubModel):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+model_rebuild(ReviewRequestRemovedIssueEvent)
 
-    id: int = Field()
-    url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(RemovedFromProjectIssueEvent)
-model_rebuild(RemovedFromProjectIssueEventPropProjectCard)
-
-__all__ = (
-    "RemovedFromProjectIssueEvent",
-    "RemovedFromProjectIssueEventPropProjectCard",
-)
+__all__ = ("ReviewRequestRemovedIssueEvent",)

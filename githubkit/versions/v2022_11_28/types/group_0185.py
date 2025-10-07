@@ -9,13 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0186 import RepositoryRuleFileExtensionRestrictionPropParametersType
 
 
-class RepositoryRuleFileExtensionRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+class RepositoryRuleFileExtensionRestrictionType(TypedDict):
+    """file_extension_restriction
 
-    restricted_file_extensions: list[str]
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
+    """
+
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
 
 
-__all__ = ("RepositoryRuleFileExtensionRestrictionPropParametersType",)
+__all__ = ("RepositoryRuleFileExtensionRestrictionType",)

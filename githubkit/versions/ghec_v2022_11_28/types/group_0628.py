@@ -9,17 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookForkPropForkeeAllof0PropPermissionsType(TypedDict):
-    """WebhookForkPropForkeeAllof0PropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+from .group_0003 import SimpleUserType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0526 import DiscussionType
 
 
-__all__ = ("WebhookForkPropForkeeAllof0PropPermissionsType",)
+class WebhookDiscussionLockedType(TypedDict):
+    """discussion locked event"""
+
+    action: Literal["locked"]
+    discussion: DiscussionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+
+
+__all__ = ("WebhookDiscussionLockedType",)

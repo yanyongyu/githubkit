@@ -13,26 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
-from .group_0048 import IssueType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0492 import WebhooksSponsorshipType
+from .group_0493 import WebhooksChanges8Type
 
 
-class WebhookSubIssuesSubIssueAddedType(TypedDict):
-    """sub-issue added event"""
+class WebhookSponsorshipTierChangedType(TypedDict):
+    """sponsorship tier_changed event"""
 
-    action: Literal["sub_issue_added"]
-    sub_issue_id: float
-    sub_issue: IssueType
-    sub_issue_repo: RepositoryType
-    parent_issue_id: float
-    parent_issue: IssueType
+    action: Literal["tier_changed"]
+    changes: WebhooksChanges8Type
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookSubIssuesSubIssueAddedType",)
+__all__ = ("WebhookSponsorshipTierChangedType",)

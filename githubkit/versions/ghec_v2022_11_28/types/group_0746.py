@@ -9,44 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0536 import WebhooksMembershipType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
 
 
-class WebhookOrganizationRenamedType(TypedDict):
-    """organization renamed event"""
+class WebhookMetaDeletedType(TypedDict):
+    """meta deleted event"""
 
-    action: Literal["renamed"]
-    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    hook: WebhookMetaDeletedPropHookType
+    hook_id: int
     installation: NotRequired[SimpleInstallationType]
-    membership: NotRequired[WebhooksMembershipType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookOrganizationRenamedPropChangesType(TypedDict):
-    """WebhookOrganizationRenamedPropChanges"""
+class WebhookMetaDeletedPropHookType(TypedDict):
+    """WebhookMetaDeletedPropHook
 
-    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
+    The deleted webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    """
+
+    active: bool
+    config: WebhookMetaDeletedPropHookPropConfigType
+    created_at: str
+    events: list[str]
+    id: int
+    name: str
+    type: str
+    updated_at: str
 
 
-class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
+class WebhookMetaDeletedPropHookPropConfigType(TypedDict):
+    """WebhookMetaDeletedPropHookPropConfig"""
 
-    from_: NotRequired[str]
+    content_type: Literal["json", "form"]
+    insecure_ssl: str
+    secret: NotRequired[str]
+    url: str
 
 
 __all__ = (
-    "WebhookOrganizationRenamedPropChangesPropLoginType",
-    "WebhookOrganizationRenamedPropChangesType",
-    "WebhookOrganizationRenamedType",
+    "WebhookMetaDeletedPropHookPropConfigType",
+    "WebhookMetaDeletedPropHookType",
+    "WebhookMetaDeletedType",
 )

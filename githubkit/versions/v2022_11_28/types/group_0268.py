@@ -9,18 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAnalysisDeletionType(TypedDict):
-    """Analysis deletion
+class CodeScanningAutofixCommitsResponseType(TypedDict):
+    """CodeScanningAutofixCommitsResponse"""
 
-    Successful deletion of a code scanning analysis
-    """
-
-    next_analysis_url: Union[str, None]
-    confirm_delete_url: Union[str, None]
+    target_ref: NotRequired[str]
+    sha: NotRequired[str]
 
 
-__all__ = ("CodeScanningAnalysisDeletionType",)
+__all__ = ("CodeScanningAutofixCommitsResponseType",)

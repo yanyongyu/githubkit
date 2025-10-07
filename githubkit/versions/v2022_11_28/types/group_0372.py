@@ -11,31 +11,63 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
 
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
+class PullRequestReviewType(TypedDict):
+    """Pull Request Review
 
-    Data related to a release.
+    Pull Request Reviews are reviews on pull requests.
     """
 
-    url: str
-    browser_download_url: str
     id: int
     node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: datetime
-    updated_at: datetime
-    uploader: Union[None, SimpleUserType]
+    user: Union[None, SimpleUserType]
+    body: str
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: PullRequestReviewPropLinksType
+    submitted_at: NotRequired[datetime]
+    commit_id: Union[str, None]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-__all__ = ("ReleaseAssetType",)
+class PullRequestReviewPropLinksType(TypedDict):
+    """PullRequestReviewPropLinks"""
+
+    html: PullRequestReviewPropLinksPropHtmlType
+    pull_request: PullRequestReviewPropLinksPropPullRequestType
+
+
+class PullRequestReviewPropLinksPropHtmlType(TypedDict):
+    """PullRequestReviewPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
+    """PullRequestReviewPropLinksPropPullRequest"""
+
+    href: str
+
+
+__all__ = (
+    "PullRequestReviewPropLinksPropHtmlType",
+    "PullRequestReviewPropLinksPropPullRequestType",
+    "PullRequestReviewPropLinksType",
+    "PullRequestReviewType",
+)

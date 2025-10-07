@@ -13,22 +13,59 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0534 import MergeGroupType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0528 import WebhooksLabelType
 
 
-class WebhookMergeGroupDestroyedType(TypedDict):
-    """WebhookMergeGroupDestroyed"""
+class WebhookLabelEditedType(TypedDict):
+    """label edited event"""
 
-    action: Literal["destroyed"]
-    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookLabelEditedPropChangesType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    merge_group: MergeGroupType
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookMergeGroupDestroyedType",)
+class WebhookLabelEditedPropChangesType(TypedDict):
+    """WebhookLabelEditedPropChanges
+
+    The changes to the label if the action was `edited`.
+    """
+
+    color: NotRequired[WebhookLabelEditedPropChangesPropColorType]
+    description: NotRequired[WebhookLabelEditedPropChangesPropDescriptionType]
+    name: NotRequired[WebhookLabelEditedPropChangesPropNameType]
+
+
+class WebhookLabelEditedPropChangesPropColorType(TypedDict):
+    """WebhookLabelEditedPropChangesPropColor"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookLabelEditedPropChangesPropDescription"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropNameType(TypedDict):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookLabelEditedPropChangesPropColorType",
+    "WebhookLabelEditedPropChangesPropDescriptionType",
+    "WebhookLabelEditedPropChangesPropNameType",
+    "WebhookLabelEditedPropChangesType",
+    "WebhookLabelEditedType",
+)

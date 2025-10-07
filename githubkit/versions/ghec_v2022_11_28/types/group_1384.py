@@ -9,15 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0020 import RepositoryType
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyType(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBody"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
+    total_count: int
+    repository_selection: NotRequired[str]
+    repositories: list[RepositoryType]
 
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyType",)
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200Type",)

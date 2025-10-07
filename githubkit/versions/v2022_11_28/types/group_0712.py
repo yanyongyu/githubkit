@@ -13,21 +13,40 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0476 import WebhooksProjectChangesType
-from .group_0477 import ProjectsV2ItemType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0479 import WebhooksProjectColumnType
 
 
-class WebhookProjectsV2ItemArchivedType(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookProjectColumnEditedType(TypedDict):
+    """project_column edited event"""
 
-    action: Literal["archived"]
-    changes: WebhooksProjectChangesType
+    action: Literal["edited"]
+    changes: WebhookProjectColumnEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
-    sender: SimpleUserType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_column: WebhooksProjectColumnType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookProjectsV2ItemArchivedType",)
+class WebhookProjectColumnEditedPropChangesType(TypedDict):
+    """WebhookProjectColumnEditedPropChanges"""
+
+    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
+
+
+class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
+    """WebhookProjectColumnEditedPropChangesPropName"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookProjectColumnEditedPropChangesPropNameType",
+    "WebhookProjectColumnEditedPropChangesType",
+    "WebhookProjectColumnEditedType",
+)

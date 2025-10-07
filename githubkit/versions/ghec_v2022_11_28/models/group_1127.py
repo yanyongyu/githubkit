@@ -18,14 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+class OrgsOrgSettingsImmutableReleasesPutBody(GitHubModel):
+    """OrgsOrgSettingsImmutableReleasesPutBody"""
 
-    role: Missing[Literal["member", "maintainer"]] = Field(
-        default=UNSET, description="The role that this user should have in the team."
+    enforced_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls how immutable releases are enforced in the organization."
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints.",
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody)
+model_rebuild(OrgsOrgSettingsImmutableReleasesPutBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",)
+__all__ = ("OrgsOrgSettingsImmutableReleasesPutBody",)

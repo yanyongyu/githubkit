@@ -11,13 +11,19 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0089 import CustomPropertyType
+
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201
+
+    The total number of seats created for the members of the specified enterprise
+    team(s).
+    """
+
+    seats_created: int
 
 
-class EnterprisesEnterprisePropertiesSchemaPatchBodyType(TypedDict):
-    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
-
-    properties: list[CustomPropertyType]
-
-
-__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBodyType",)
+__all__ = (
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type",
+)

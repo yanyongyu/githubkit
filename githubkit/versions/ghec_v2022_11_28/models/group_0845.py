@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0505 import EnterpriseWebhooks
-from .group_0506 import SimpleInstallation
-from .group_0507 import OrganizationSimpleWebhooks
-from .group_0508 import RepositoryWebhooks
+from .group_0511 import EnterpriseWebhooks
+from .group_0512 import SimpleInstallation
+from .group_0513 import OrganizationSimpleWebhooks
+from .group_0514 import RepositoryWebhooks
+from .group_0554 import WebhooksRelease
 
 
-class WebhookRepositoryEdited(GitHubModel):
-    """repository edited event"""
+class WebhookReleaseDeleted(GitHubModel):
+    """release deleted event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookRepositoryEditedPropChanges = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,6 +44,10 @@ class WebhookRepositoryEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    release: WebhooksRelease = Field(
+        title="Release",
+        description="The [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases/#get-a-release) object.",
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -51,57 +55,6 @@ class WebhookRepositoryEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookRepositoryEditedPropChanges(GitHubModel):
-    """WebhookRepositoryEditedPropChanges"""
+model_rebuild(WebhookReleaseDeleted)
 
-    default_branch: Missing[WebhookRepositoryEditedPropChangesPropDefaultBranch] = (
-        Field(default=UNSET)
-    )
-    description: Missing[WebhookRepositoryEditedPropChangesPropDescription] = Field(
-        default=UNSET
-    )
-    homepage: Missing[WebhookRepositoryEditedPropChangesPropHomepage] = Field(
-        default=UNSET
-    )
-    topics: Missing[WebhookRepositoryEditedPropChangesPropTopics] = Field(default=UNSET)
-
-
-class WebhookRepositoryEditedPropChangesPropDefaultBranch(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
-
-    from_: str = Field(alias="from")
-
-
-class WebhookRepositoryEditedPropChangesPropDescription(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
-
-    from_: Union[str, None] = Field(alias="from")
-
-
-class WebhookRepositoryEditedPropChangesPropHomepage(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
-
-    from_: Union[str, None] = Field(alias="from")
-
-
-class WebhookRepositoryEditedPropChangesPropTopics(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
-
-    from_: Missing[Union[list[str], None]] = Field(default=UNSET, alias="from")
-
-
-model_rebuild(WebhookRepositoryEdited)
-model_rebuild(WebhookRepositoryEditedPropChanges)
-model_rebuild(WebhookRepositoryEditedPropChangesPropDefaultBranch)
-model_rebuild(WebhookRepositoryEditedPropChangesPropDescription)
-model_rebuild(WebhookRepositoryEditedPropChangesPropHomepage)
-model_rebuild(WebhookRepositoryEditedPropChangesPropTopics)
-
-__all__ = (
-    "WebhookRepositoryEdited",
-    "WebhookRepositoryEditedPropChanges",
-    "WebhookRepositoryEditedPropChangesPropDefaultBranch",
-    "WebhookRepositoryEditedPropChangesPropDescription",
-    "WebhookRepositoryEditedPropChangesPropHomepage",
-    "WebhookRepositoryEditedPropChangesPropTopics",
-)
+__all__ = ("WebhookReleaseDeleted",)

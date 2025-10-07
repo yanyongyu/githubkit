@@ -9,20 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoPagesDeploymentsPostBody
+class ReposOwnerRepoMilestonesPostBodyType(TypedDict):
+    """ReposOwnerRepoMilestonesPostBody"""
 
-    The object used to create GitHub Pages deployment
-    """
-
-    artifact_id: NotRequired[float]
-    artifact_url: NotRequired[str]
-    environment: NotRequired[str]
-    pages_build_version: str
-    oidc_token: str
+    title: str
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[datetime]
 
 
-__all__ = ("ReposOwnerRepoPagesDeploymentsPostBodyType",)
+__all__ = ("ReposOwnerRepoMilestonesPostBodyType",)

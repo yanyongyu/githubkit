@@ -13,15 +13,9 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType
 
-
-class WebhooksIssueCommentType(TypedDict):
-    """issue comment
-
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
-    """
+class WebhooksAnswerType(TypedDict):
+    """WebhooksAnswer"""
 
     author_association: Literal[
         "COLLABORATOR",
@@ -34,19 +28,20 @@ class WebhooksIssueCommentType(TypedDict):
         "OWNER",
     ]
     body: str
+    child_comment_count: int
     created_at: datetime
+    discussion_id: int
     html_url: str
     id: int
-    issue_url: str
     node_id: str
-    performed_via_github_app: Union[IntegrationType, None]
-    reactions: WebhooksIssueCommentPropReactionsType
+    parent_id: None
+    reactions: NotRequired[WebhooksAnswerPropReactionsType]
+    repository_url: str
     updated_at: datetime
-    url: str
-    user: Union[WebhooksIssueCommentPropUserType, None]
+    user: Union[WebhooksAnswerPropUserType, None]
 
 
-class WebhooksIssueCommentPropReactionsType(TypedDict):
+class WebhooksAnswerPropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -61,7 +56,7 @@ class WebhooksIssueCommentPropReactionsType(TypedDict):
     url: str
 
 
-class WebhooksIssueCommentPropUserType(TypedDict):
+class WebhooksAnswerPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -83,13 +78,13 @@ class WebhooksIssueCommentPropUserType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksIssueCommentPropReactionsType",
-    "WebhooksIssueCommentPropUserType",
-    "WebhooksIssueCommentType",
+    "WebhooksAnswerPropReactionsType",
+    "WebhooksAnswerPropUserType",
+    "WebhooksAnswerType",
 )

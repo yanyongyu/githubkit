@@ -11,21 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0089 import CustomProperty
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterprisePropertiesSchemaPatchBody(GitHubModel):
-    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201
 
-    properties: list[CustomProperty] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The array of custom properties to create or update.",
-    )
+    The total number of seats created for the members of the specified enterprise
+    team(s).
+    """
+
+    seats_created: int = Field()
 
 
-model_rebuild(EnterprisesEnterprisePropertiesSchemaPatchBody)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201)
 
-__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBody",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201",)

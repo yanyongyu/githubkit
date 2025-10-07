@@ -18,18 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0505 import EnterpriseWebhooks
-from .group_0506 import SimpleInstallation
-from .group_0507 import OrganizationSimpleWebhooks
-from .group_0508 import RepositoryWebhooks
-from .group_0522 import WebhooksLabel
-from .group_0527 import WebhooksIssue
+from .group_0511 import EnterpriseWebhooks
+from .group_0512 import SimpleInstallation
+from .group_0513 import OrganizationSimpleWebhooks
+from .group_0514 import RepositoryWebhooks
+from .group_0715 import WebhookIssuesOpenedPropChanges
+from .group_0717 import WebhookIssuesOpenedPropIssue
 
 
-class WebhookIssuesUnlabeled(GitHubModel):
-    """issues unlabeled event"""
+class WebhookIssuesOpened(GitHubModel):
+    """issues opened event"""
 
-    action: Literal["unlabeled"] = Field()
+    action: Literal["opened"] = Field()
+    changes: Missing[WebhookIssuesOpenedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,11 +41,10 @@ class WebhookIssuesUnlabeled(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhooksIssue = Field(
+    issue: WebhookIssuesOpenedPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
     )
-    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -57,6 +57,6 @@ class WebhookIssuesUnlabeled(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesUnlabeled)
+model_rebuild(WebhookIssuesOpened)
 
-__all__ = ("WebhookIssuesUnlabeled",)
+__all__ = ("WebhookIssuesOpened",)

@@ -11,14 +11,11 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0226 import ActionsSecretType
+
+class ProjectsColumnsColumnIdPatchBodyType(TypedDict):
+    """ProjectsColumnsColumnIdPatchBody"""
+
+    name: str
 
 
-class ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[ActionsSecretType]
-
-
-__all__ = ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",)
+__all__ = ("ProjectsColumnsColumnIdPatchBodyType",)

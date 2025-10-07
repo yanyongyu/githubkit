@@ -9,46 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0018 import InstallationType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0453 import WebhooksUserType
-from .group_0459 import WebhooksRepositoriesAddedItemsType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0566 import WebhookForkPropForkeeType
 
 
-class WebhookInstallationRepositoriesAddedType(TypedDict):
-    """installation_repositories added event"""
+class WebhookForkType(TypedDict):
+    """fork event
 
-    action: Literal["added"]
+    A user forks a repository.
+    """
+
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    forkee: WebhookForkPropForkeeType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories_added: list[WebhooksRepositoriesAddedItemsType]
-    repositories_removed: list[
-        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType
-    ]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_selection: Literal["all", "selected"]
-    requester: Union[WebhooksUserType, None]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType(TypedDict):
-    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
-
-    full_name: NotRequired[str]
-    id: NotRequired[int]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    private: NotRequired[bool]
-
-
-__all__ = (
-    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType",
-    "WebhookInstallationRepositoriesAddedType",
-)
+__all__ = ("WebhookForkType",)

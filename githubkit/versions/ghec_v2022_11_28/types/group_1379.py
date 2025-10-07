@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class UsersUsernameAttestationsBulkListPostBodyType(TypedDict):
-    """UsersUsernameAttestationsBulkListPostBody"""
+class UserEmailVisibilityPatchBodyType(TypedDict):
+    """UserEmailVisibilityPatchBody"""
 
-    subject_digests: list[str]
-    predicate_type: NotRequired[str]
+    visibility: Literal["public", "private"]
 
 
-__all__ = ("UsersUsernameAttestationsBulkListPostBodyType",)
+__all__ = ("UserEmailVisibilityPatchBodyType",)

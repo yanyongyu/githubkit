@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0449 import RepositoryWebhooksType
+from .group_0459 import DiscussionType
 
 
-class WebhookGithubAppAuthorizationRevokedType(TypedDict):
-    """github_app_authorization revoked event"""
+class WebhookDiscussionTransferredPropChangesType(TypedDict):
+    """WebhookDiscussionTransferredPropChanges"""
 
-    action: Literal["revoked"]
-    sender: SimpleUserType
+    new_discussion: DiscussionType
+    new_repository: RepositoryWebhooksType
 
 
-__all__ = ("WebhookGithubAppAuthorizationRevokedType",)
+__all__ = ("WebhookDiscussionTransferredPropChangesType",)

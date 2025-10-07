@@ -9,34 +9,98 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class TimelineCommittedEvent(GitHubModel):
+    """Timeline Committed Event
 
-class TimelineAssignedIssueEvent(GitHubModel):
-    """Timeline Assigned Issue Event
-
-    Timeline Assigned Issue Event
+    Timeline Committed Event
     """
 
-    id: int = Field()
+    event: Missing[Literal["committed"]] = Field(default=UNSET)
+    sha: str = Field(description="SHA for the commit")
     node_id: str = Field()
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["assigned"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    author: TimelineCommittedEventPropAuthor = Field(
+        description="Identifying information for the git-user"
+    )
+    committer: TimelineCommittedEventPropCommitter = Field(
+        description="Identifying information for the git-user"
+    )
+    message: str = Field(description="Message describing the purpose of the commit")
+    tree: TimelineCommittedEventPropTree = Field()
+    parents: list[TimelineCommittedEventPropParentsItems] = Field()
+    verification: TimelineCommittedEventPropVerification = Field()
+    html_url: str = Field()
 
 
-model_rebuild(TimelineAssignedIssueEvent)
+class TimelineCommittedEventPropAuthor(GitHubModel):
+    """TimelineCommittedEventPropAuthor
 
-__all__ = ("TimelineAssignedIssueEvent",)
+    Identifying information for the git-user
+    """
+
+    date: datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class TimelineCommittedEventPropCommitter(GitHubModel):
+    """TimelineCommittedEventPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class TimelineCommittedEventPropTree(GitHubModel):
+    """TimelineCommittedEventPropTree"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+
+
+class TimelineCommittedEventPropParentsItems(GitHubModel):
+    """TimelineCommittedEventPropParentsItems"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+    html_url: str = Field()
+
+
+class TimelineCommittedEventPropVerification(GitHubModel):
+    """TimelineCommittedEventPropVerification"""
+
+    verified: bool = Field()
+    reason: str = Field()
+    signature: Union[str, None] = Field()
+    payload: Union[str, None] = Field()
+    verified_at: Union[str, None] = Field()
+
+
+model_rebuild(TimelineCommittedEvent)
+model_rebuild(TimelineCommittedEventPropAuthor)
+model_rebuild(TimelineCommittedEventPropCommitter)
+model_rebuild(TimelineCommittedEventPropTree)
+model_rebuild(TimelineCommittedEventPropParentsItems)
+model_rebuild(TimelineCommittedEventPropVerification)
+
+__all__ = (
+    "TimelineCommittedEvent",
+    "TimelineCommittedEventPropAuthor",
+    "TimelineCommittedEventPropCommitter",
+    "TimelineCommittedEventPropParentsItems",
+    "TimelineCommittedEventPropTree",
+    "TimelineCommittedEventPropVerification",
+)

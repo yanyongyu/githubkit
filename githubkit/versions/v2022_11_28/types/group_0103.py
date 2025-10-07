@@ -9,64 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0067 import OrganizationSimpleType
-from .group_0093 import TeamType
 
+class CopilotOrganizationDetailsType(TypedDict):
+    """Copilot Organization Details
 
-class CopilotSeatDetailsType(TypedDict):
-    """Copilot Business Seat Detail
-
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    assignee: NotRequired[Union[None, SimpleUserType]]
-    organization: NotRequired[Union[None, OrganizationSimpleType]]
-    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
-    pending_cancellation_date: NotRequired[Union[date, None]]
-    last_activity_at: NotRequired[Union[datetime, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    last_authenticated_at: NotRequired[Union[datetime, None]]
-    created_at: datetime
-    updated_at: NotRequired[datetime]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+    seat_breakdown: CopilotOrganizationSeatBreakdownType
+    public_code_suggestions: Literal["allow", "block", "unconfigured"]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ]
+    plan_type: NotRequired[Literal["business", "enterprise"]]
 
 
-class EnterpriseTeamType(TypedDict):
-    """Enterprise Team
+class CopilotOrganizationSeatBreakdownType(TypedDict):
+    """Copilot Seat Breakdown
 
-    Group of enterprise owners and/or members
+    The breakdown of Copilot Business seats for the organization.
     """
 
-    id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
-    url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
-    created_at: datetime
-    updated_at: datetime
-
-
-class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
 
 
 __all__ = (
-    "CopilotSeatDetailsType",
-    "EnterpriseTeamType",
-    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
+    "CopilotOrganizationDetailsType",
+    "CopilotOrganizationSeatBreakdownType",
 )

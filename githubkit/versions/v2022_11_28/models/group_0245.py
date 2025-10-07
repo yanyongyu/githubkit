@@ -15,116 +15,37 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0093 import Team
+from .group_0246 import (
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
+)
 
 
-class BranchRestrictionPolicy(GitHubModel):
-    """Branch Restriction Policy
+class ProtectedBranchPullRequestReview(GitHubModel):
+    """Protected Branch Pull Request Review
 
-    Branch Restriction Policy
+    Protected Branch Pull Request Review
     """
 
-    url: str = Field()
-    users_url: str = Field()
-    teams_url: str = Field()
-    apps_url: str = Field()
-    users: list[BranchRestrictionPolicyPropUsersItems] = Field()
-    teams: list[Team] = Field()
-    apps: list[BranchRestrictionPolicyPropAppsItems] = Field()
-
-
-class BranchRestrictionPolicyPropUsersItems(GitHubModel):
-    """BranchRestrictionPolicyPropUsersItems"""
-
-    login: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    avatar_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class BranchRestrictionPolicyPropAppsItems(GitHubModel):
-    """BranchRestrictionPolicyPropAppsItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    slug: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    owner: Missing[BranchRestrictionPolicyPropAppsItemsPropOwner] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    client_id: Missing[str] = Field(default=UNSET)
-    description: Missing[str] = Field(default=UNSET)
-    external_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    permissions: Missing[BranchRestrictionPolicyPropAppsItemsPropPermissions] = Field(
-        default=UNSET
+    dismissal_restrictions: Missing[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+    ] = Field(
+        default=UNSET,
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
     )
-    events: Missing[list[str]] = Field(default=UNSET)
+    dismiss_stale_reviews: bool = Field()
+    require_code_owner_reviews: bool = Field()
+    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+    )
 
 
-class BranchRestrictionPolicyPropAppsItemsPropOwner(GitHubModel):
-    """BranchRestrictionPolicyPropAppsItemsPropOwner"""
+model_rebuild(ProtectedBranchPullRequestReview)
 
-    login: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    hooks_url: Missing[str] = Field(default=UNSET)
-    issues_url: Missing[str] = Field(default=UNSET)
-    members_url: Missing[str] = Field(default=UNSET)
-    public_members_url: Missing[str] = Field(default=UNSET)
-    avatar_url: Missing[str] = Field(default=UNSET)
-    description: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class BranchRestrictionPolicyPropAppsItemsPropPermissions(GitHubModel):
-    """BranchRestrictionPolicyPropAppsItemsPropPermissions"""
-
-    metadata: Missing[str] = Field(default=UNSET)
-    contents: Missing[str] = Field(default=UNSET)
-    issues: Missing[str] = Field(default=UNSET)
-    single_file: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(BranchRestrictionPolicy)
-model_rebuild(BranchRestrictionPolicyPropUsersItems)
-model_rebuild(BranchRestrictionPolicyPropAppsItems)
-model_rebuild(BranchRestrictionPolicyPropAppsItemsPropOwner)
-model_rebuild(BranchRestrictionPolicyPropAppsItemsPropPermissions)
-
-__all__ = (
-    "BranchRestrictionPolicy",
-    "BranchRestrictionPolicyPropAppsItems",
-    "BranchRestrictionPolicyPropAppsItemsPropOwner",
-    "BranchRestrictionPolicyPropAppsItemsPropPermissions",
-    "BranchRestrictionPolicyPropUsersItems",
-)
+__all__ = ("ProtectedBranchPullRequestReview",)

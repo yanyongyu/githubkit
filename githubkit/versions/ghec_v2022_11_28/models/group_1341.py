@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,32 +18,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamsTeamIdPatchBody(GitHubModel):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoReleasesReleaseIdPatchBody(GitHubModel):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the team."
-    )
-    privacy: Missing[Literal["secret", "closed"]] = Field(
+    tag_name: Missing[str] = Field(default=UNSET, description="The name of the tag.")
+    target_commitish: Missing[str] = Field(
         default=UNSET,
-        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
+        description="Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
+    name: Missing[str] = Field(default=UNSET, description="The name of the release.")
+    body: Missing[str] = Field(
+        default=UNSET, description="Text describing the contents of the tag."
+    )
+    draft: Missing[bool] = Field(
         default=UNSET,
-        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
+        description="`true` makes the release a draft, and `false` publishes the release.",
     )
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+    prerelease: Missing[bool] = Field(
         default=UNSET,
-        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
+        description="`true` to identify the release as a prerelease, `false` to identify the release as a full release.",
     )
-    parent_team_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of a team to set as the parent team."
+    make_latest: Missing[Literal["true", "false", "legacy"]] = Field(
+        default=UNSET,
+        description="Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
+    )
+    discussion_category_name: Missing[str] = Field(
+        default=UNSET,
+        description='If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/enterprise-cloud@latest//discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."',
     )
 
 
-model_rebuild(TeamsTeamIdPatchBody)
+model_rebuild(ReposOwnerRepoReleasesReleaseIdPatchBody)
 
-__all__ = ("TeamsTeamIdPatchBody",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBody",)

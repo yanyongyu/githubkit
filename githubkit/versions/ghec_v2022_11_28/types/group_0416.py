@@ -9,18 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestMergeResultType(TypedDict):
-    """Pull Request Merge Result
+class PagesHealthCheckType(TypedDict):
+    """Pages Health Check Status
 
-    Pull Request Merge Result
+    Pages Health Check Status
     """
 
-    sha: str
-    merged: bool
-    message: str
+    domain: NotRequired[PagesHealthCheckPropDomainType]
+    alt_domain: NotRequired[Union[PagesHealthCheckPropAltDomainType, None]]
 
 
-__all__ = ("PullRequestMergeResultType",)
+class PagesHealthCheckPropDomainType(TypedDict):
+    """PagesHealthCheckPropDomain"""
+
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
+
+
+class PagesHealthCheckPropAltDomainType(TypedDict):
+    """PagesHealthCheckPropAltDomain"""
+
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "PagesHealthCheckPropAltDomainType",
+    "PagesHealthCheckPropDomainType",
+    "PagesHealthCheckType",
+)

@@ -13,42 +13,26 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0455 import DiscussionType
-from .group_0456 import WebhooksCommentType
+from .group_0239 import DeploymentType
+from .group_0366 import PullRequestType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
 
 
-class WebhookDiscussionCommentEditedType(TypedDict):
-    """discussion_comment edited event"""
+class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
+    """deployment protection rule requested event"""
 
-    action: Literal["edited"]
-    changes: WebhookDiscussionCommentEditedPropChangesType
-    comment: WebhooksCommentType
-    discussion: DiscussionType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[DeploymentType]
+    pull_requests: NotRequired[list[PullRequestType]]
+    repository: NotRequired[RepositoryWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    installation: NotRequired[SimpleInstallationType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDiscussionCommentEditedPropChangesType(TypedDict):
-    """WebhookDiscussionCommentEditedPropChanges"""
-
-    body: WebhookDiscussionCommentEditedPropChangesPropBodyType
-
-
-class WebhookDiscussionCommentEditedPropChangesPropBodyType(TypedDict):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookDiscussionCommentEditedPropChangesPropBodyType",
-    "WebhookDiscussionCommentEditedPropChangesType",
-    "WebhookDiscussionCommentEditedType",
-)
+__all__ = ("WebhookDeploymentProtectionRuleRequestedType",)

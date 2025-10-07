@@ -9,28 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class WebhookStatusPropCommitPropCommitPropAuthorAllof0(GitHubModel):
-    """Committer
-
-    Metaproperties for Git author/committer information.
-    """
-
-    date: Missing[datetime] = Field(default=UNSET)
-    email: Union[str, None] = Field()
-    name: str = Field(description="The git author's name.")
-    username: Missing[str] = Field(default=UNSET)
+from .group_0003 import SimpleUser
+from .group_0255 import FullRepository
+from .group_0511 import EnterpriseWebhooks
+from .group_0512 import SimpleInstallation
+from .group_0513 import OrganizationSimpleWebhooks
+from .group_0889 import WebhookSecurityAndAnalysisPropChanges
 
 
-model_rebuild(WebhookStatusPropCommitPropCommitPropAuthorAllof0)
+class WebhookSecurityAndAnalysis(GitHubModel):
+    """security_and_analysis event"""
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof0",)
+    changes: WebhookSecurityAndAnalysisPropChanges = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: FullRepository = Field(
+        title="Full Repository", description="Full Repository"
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+
+
+model_rebuild(WebhookSecurityAndAnalysis)
+
+__all__ = ("WebhookSecurityAndAnalysis",)

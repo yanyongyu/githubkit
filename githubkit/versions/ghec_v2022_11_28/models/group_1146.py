@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,26 +16,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsProjectIdPatchBody(GitHubModel):
-    """ProjectsProjectIdPatchBody"""
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="Name of the project")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the project"
-    )
-    state: Missing[str] = Field(
-        default=UNSET, description="State of the project; either 'open' or 'closed'"
-    )
-    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
+    groups: Missing[
+        list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems]
+    ] = Field(
         default=UNSET,
-        description="The baseline permission that all organization members have on this project",
-    )
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether or not this project can be seen by everyone.",
+        description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove.",
     )
 
 
-model_rebuild(ProjectsProjectIdPatchBody)
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
-__all__ = ("ProjectsProjectIdPatchBody",)
+    group_id: str = Field(description="ID of the IdP group.")
+    group_name: str = Field(description="Name of the IdP group.")
+    group_description: str = Field(description="Description of the IdP group.")
+
+
+model_rebuild(OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody)
+model_rebuild(OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems)
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems",
+)

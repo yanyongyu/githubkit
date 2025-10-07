@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookStatusPropCommitPropCommitPropAuthorAllof1Type(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
-
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+from .group_0890 import WebhookSecurityAndAnalysisPropChangesPropFromType
 
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof1Type",)
+class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
+    """WebhookSecurityAndAnalysisPropChanges"""
+
+    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
+
+
+__all__ = ("WebhookSecurityAndAnalysisPropChangesType",)

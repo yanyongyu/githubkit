@@ -17,46 +17,53 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0362 import DeploymentBranchPolicySettings
 
-class ReposOwnerRepoGitTreesPostBody(GitHubModel):
-    """ReposOwnerRepoGitTreesPostBody"""
 
-    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItems] = Field(
-        description="Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure."
-    )
-    base_tree: Missing[str] = Field(
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
+
+    wait_timer: Missing[int] = Field(
         default=UNSET,
-        description="The SHA1 of an existing Git tree object which will be used as the base for the new tree. If provided, a new Git tree object will be created from entries in the Git tree object pointed to by `base_tree` and entries defined in the `tree` parameter. Entries defined in the `tree` parameter will overwrite items from `base_tree` with the same `path`. If you're creating new changes on a branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current latest commit on the branch you're working on.\nIf not provided, GitHub will create a new Git tree object from only the entries defined in the `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a part of the parent commit's tree and were not defined in the `tree` parameter will be listed as deleted by the new commit.",
+        description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
     )
-
-
-class ReposOwnerRepoGitTreesPostBodyPropTreeItems(GitHubModel):
-    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
-
-    path: Missing[str] = Field(
-        default=UNSET, description="The file referenced in the tree."
-    )
-    mode: Missing[Literal["100644", "100755", "040000", "160000", "120000"]] = Field(
+    prevent_self_review: Missing[bool] = Field(
         default=UNSET,
-        description="The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.",
+        description="Whether or not a user who created the job is prevented from approving their own job.",
     )
-    type: Missing[Literal["blob", "tree", "commit"]] = Field(
-        default=UNSET, description="Either `blob`, `tree`, or `commit`."
-    )
-    sha: Missing[Union[str, None]] = Field(
+    reviewers: Missing[
+        Union[
+            list[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems],
+            None,
+        ]
+    ] = Field(
         default=UNSET,
-        description="The SHA1 checksum ID of the object in the tree. Also called `tree.sha`. If the value is `null` then the file will be deleted.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
+        description="The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
     )
-    content: Missing[str] = Field(
-        default=UNSET,
-        description="The content you want this file to have. GitHub will write this blob out and use that SHA for this entry. Use either this, or `tree.sha`.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
+    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
+        Field(
+            default=UNSET,
+            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
+        )
     )
 
 
-model_rebuild(ReposOwnerRepoGitTreesPostBody)
-model_rebuild(ReposOwnerRepoGitTreesPostBodyPropTreeItems)
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+
+    type: Missing[Literal["User", "Team"]] = Field(
+        default=UNSET, description="The type of reviewer."
+    )
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The id of the user or team who can review the deployment",
+    )
+
+
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBody)
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems)
 
 __all__ = (
-    "ReposOwnerRepoGitTreesPostBody",
-    "ReposOwnerRepoGitTreesPostBodyPropTreeItems",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems",
 )

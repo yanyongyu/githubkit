@@ -13,24 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0018 import InstallationType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0523 import WebhooksRepositoriesItemsType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0526 import DiscussionType
+from .group_0528 import WebhooksLabelType
 
 
-class WebhookInstallationNewPermissionsAcceptedType(TypedDict):
-    """installation new_permissions_accepted event"""
+class WebhookDiscussionUnlabeledType(TypedDict):
+    """discussion unlabeled event"""
 
-    action: Literal["new_permissions_accepted"]
+    action: Literal["unlabeled"]
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    installation: NotRequired[SimpleInstallationType]
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookInstallationNewPermissionsAcceptedType",)
+__all__ = ("WebhookDiscussionUnlabeledType",)

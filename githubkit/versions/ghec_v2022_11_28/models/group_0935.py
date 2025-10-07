@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0042 import OrganizationSimple
+
+class ApplicationsClientIdTokenPatchBody(GitHubModel):
+    """ApplicationsClientIdTokenPatchBody"""
+
+    access_token: str = Field(
+        description="The access_token of the OAuth or GitHub application."
+    )
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+model_rebuild(ApplicationsClientIdTokenPatchBody)
 
-    total_count: float = Field()
-    organizations: list[OrganizationSimple] = Field()
-
-
-model_rebuild(EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200)
-
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200",)
+__all__ = ("ApplicationsClientIdTokenPatchBody",)

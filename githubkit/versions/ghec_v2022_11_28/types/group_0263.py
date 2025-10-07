@@ -9,45 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
+from .group_0172 import ReactionRollupType
 
 
-class TeamProjectType(TypedDict):
-    """Team Project
+class TeamDiscussionType(TypedDict):
+    """Team Discussion
 
-    A team's access to a project.
+    A team discussion is a persistent record of a free-form conversation within a
+    team.
     """
 
-    owner_url: str
-    url: str
+    author: Union[None, SimpleUserType]
+    body: str
+    body_html: str
+    body_version: str
+    comments_count: int
+    comments_url: str
+    created_at: datetime
+    last_edited_at: Union[datetime, None]
     html_url: str
-    columns_url: str
-    id: int
     node_id: str
-    name: str
-    body: Union[str, None]
     number: int
-    state: str
-    creator: SimpleUserType
-    created_at: str
-    updated_at: str
-    organization_permission: NotRequired[str]
-    private: NotRequired[bool]
-    permissions: TeamProjectPropPermissionsType
+    pinned: bool
+    private: bool
+    team_url: str
+    title: str
+    updated_at: datetime
+    url: str
+    reactions: NotRequired[ReactionRollupType]
 
 
-class TeamProjectPropPermissionsType(TypedDict):
-    """TeamProjectPropPermissions"""
-
-    read: bool
-    write: bool
-    admin: bool
-
-
-__all__ = (
-    "TeamProjectPropPermissionsType",
-    "TeamProjectType",
-)
+__all__ = ("TeamDiscussionType",)

@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0442 import EnterpriseWebhooks
-from .group_0443 import SimpleInstallation
-from .group_0444 import OrganizationSimpleWebhooks
-from .group_0445 import RepositoryWebhooks
-from .group_0475 import WebhooksProjectColumn
+from .group_0446 import EnterpriseWebhooks
+from .group_0447 import SimpleInstallation
+from .group_0448 import OrganizationSimpleWebhooks
+from .group_0449 import RepositoryWebhooks
+from .group_0477 import WebhooksProjectCard
 
 
-class WebhookProjectColumnEdited(GitHubModel):
-    """project_column edited event"""
+class WebhookProjectCardConverted(GitHubModel):
+    """project_card converted event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookProjectColumnEditedPropChanges = Field()
+    action: Literal["converted"] = Field()
+    changes: WebhookProjectCardConvertedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,35 +45,33 @@ class WebhookProjectColumnEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_column: WebhooksProjectColumn = Field(title="Project Column")
+    project_card: WebhooksProjectCard = Field(title="Project Card")
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectColumnEditedPropChanges(GitHubModel):
-    """WebhookProjectColumnEditedPropChanges"""
+class WebhookProjectCardConvertedPropChanges(GitHubModel):
+    """WebhookProjectCardConvertedPropChanges"""
 
-    name: Missing[WebhookProjectColumnEditedPropChangesPropName] = Field(default=UNSET)
+    note: WebhookProjectCardConvertedPropChangesPropNote = Field()
 
 
-class WebhookProjectColumnEditedPropChangesPropName(GitHubModel):
-    """WebhookProjectColumnEditedPropChangesPropName"""
+class WebhookProjectCardConvertedPropChangesPropNote(GitHubModel):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
 
     from_: str = Field(alias="from")
 
 
-model_rebuild(WebhookProjectColumnEdited)
-model_rebuild(WebhookProjectColumnEditedPropChanges)
-model_rebuild(WebhookProjectColumnEditedPropChangesPropName)
+model_rebuild(WebhookProjectCardConverted)
+model_rebuild(WebhookProjectCardConvertedPropChanges)
+model_rebuild(WebhookProjectCardConvertedPropChangesPropNote)
 
 __all__ = (
-    "WebhookProjectColumnEdited",
-    "WebhookProjectColumnEditedPropChanges",
-    "WebhookProjectColumnEditedPropChangesPropName",
+    "WebhookProjectCardConverted",
+    "WebhookProjectCardConvertedPropChanges",
+    "WebhookProjectCardConvertedPropChangesPropNote",
 )

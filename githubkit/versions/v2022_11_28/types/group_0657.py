@@ -9,64 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0442 import EnterpriseWebhooksType
-from .group_0443 import SimpleInstallationType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0453 import WebhooksUserType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0468 import WebhooksIssue2Type
 
 
-class WebhookMemberAddedType(TypedDict):
-    """member added event"""
+class WebhookIssuesUnpinnedType(TypedDict):
+    """issues unpinned event"""
 
-    action: Literal["added"]
-    changes: NotRequired[WebhookMemberAddedPropChangesType]
+    action: Literal["unpinned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
+    issue: WebhooksIssue2Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookMemberAddedPropChangesType(TypedDict):
-    """WebhookMemberAddedPropChanges"""
-
-    permission: NotRequired[WebhookMemberAddedPropChangesPropPermissionType]
-    role_name: NotRequired[WebhookMemberAddedPropChangesPropRoleNameType]
-
-
-class WebhookMemberAddedPropChangesPropPermissionType(TypedDict):
-    """WebhookMemberAddedPropChangesPropPermission
-
-    This field is included for legacy purposes; use the `role_name` field instead.
-    The `maintain`
-    role is mapped to `write` and the `triage` role is mapped to `read`. To
-    determine the role
-    assigned to the collaborator, use the `role_name` field instead, which will
-    provide the full
-    role name, including custom roles.
-    """
-
-    to: Literal["write", "admin", "read"]
-
-
-class WebhookMemberAddedPropChangesPropRoleNameType(TypedDict):
-    """WebhookMemberAddedPropChangesPropRoleName
-
-    The role assigned to the collaborator.
-    """
-
-    to: str
-
-
-__all__ = (
-    "WebhookMemberAddedPropChangesPropPermissionType",
-    "WebhookMemberAddedPropChangesPropRoleNameType",
-    "WebhookMemberAddedPropChangesType",
-    "WebhookMemberAddedType",
-)
+__all__ = ("WebhookIssuesUnpinnedType",)

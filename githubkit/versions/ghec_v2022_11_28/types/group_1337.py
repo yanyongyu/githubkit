@@ -12,14 +12,11 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposTemplateOwnerTemplateRepoGeneratePostBodyType(TypedDict):
-    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    owner: NotRequired[str]
-    name: str
-    description: NotRequired[str]
-    include_all_branches: NotRequired[bool]
-    private: NotRequired[bool]
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
-__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",)

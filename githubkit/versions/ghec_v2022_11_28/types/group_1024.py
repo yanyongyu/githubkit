@@ -9,18 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0020 import RepositoryType
+from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type(
-    TypedDict
-):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
-    total_count: NotRequired[int]
-    repositories: NotRequired[list[RepositoryType]]
+    total_count: int
+    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
 
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",)
+class ActionsCacheUsageByRepositoryType(TypedDict):
+    """Actions Cache Usage by repository
+
+    GitHub Actions Cache Usage by repository.
+    """
+
+    full_name: str
+    active_caches_size_in_bytes: int
+    active_caches_count: int
+
+
+__all__ = (
+    "ActionsCacheUsageByRepositoryType",
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
+)

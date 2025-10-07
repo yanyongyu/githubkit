@@ -13,21 +13,42 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0444 import OrganizationSimpleWebhooksType
-from .group_0445 import RepositoryWebhooksType
-from .group_0454 import WebhooksAnswerType
-from .group_0455 import DiscussionType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+from .group_0459 import DiscussionType
+from .group_0460 import WebhooksCommentType
 
 
-class WebhookDiscussionUnansweredType(TypedDict):
-    """discussion unanswered event"""
+class WebhookDiscussionCommentEditedType(TypedDict):
+    """discussion_comment edited event"""
 
-    action: Literal["unanswered"]
+    action: Literal["edited"]
+    changes: WebhookDiscussionCommentEditedPropChangesType
+    comment: WebhooksCommentType
     discussion: DiscussionType
-    old_answer: WebhooksAnswerType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookDiscussionUnansweredType",)
+class WebhookDiscussionCommentEditedPropChangesType(TypedDict):
+    """WebhookDiscussionCommentEditedPropChanges"""
+
+    body: WebhookDiscussionCommentEditedPropChangesPropBodyType
+
+
+class WebhookDiscussionCommentEditedPropChangesPropBodyType(TypedDict):
+    """WebhookDiscussionCommentEditedPropChangesPropBody"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookDiscussionCommentEditedPropChangesPropBodyType",
+    "WebhookDiscussionCommentEditedPropChangesType",
+    "WebhookDiscussionCommentEditedType",
+)

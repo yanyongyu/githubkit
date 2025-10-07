@@ -15,31 +15,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0256 import (
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
-    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
-)
+from .group_0248 import BranchProtection
+from .group_0253 import Commit
 
 
-class ProtectedBranchPropRequiredPullRequestReviews(GitHubModel):
-    """ProtectedBranchPropRequiredPullRequestReviews"""
+class BranchWithProtection(GitHubModel):
+    """Branch With Protection
 
-    url: str = Field()
-    dismiss_stale_reviews: Missing[bool] = Field(default=UNSET)
-    require_code_owner_reviews: Missing[bool] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+    Branch With Protection
+    """
+
+    name: str = Field()
+    commit: Commit = Field(title="Commit", description="Commit")
+    links: BranchWithProtectionPropLinks = Field(alias="_links")
+    protected: bool = Field()
+    protection: BranchProtection = Field(
+        title="Branch Protection", description="Branch Protection"
     )
-    dismissal_restrictions: Missing[
-        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-    ] = Field(default=UNSET)
+    protection_url: str = Field()
+    pattern: Missing[str] = Field(default=UNSET)
+    required_approving_review_count: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(ProtectedBranchPropRequiredPullRequestReviews)
+class BranchWithProtectionPropLinks(GitHubModel):
+    """BranchWithProtectionPropLinks"""
 
-__all__ = ("ProtectedBranchPropRequiredPullRequestReviews",)
+    html: str = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(BranchWithProtection)
+model_rebuild(BranchWithProtectionPropLinks)
+
+__all__ = (
+    "BranchWithProtection",
+    "BranchWithProtectionPropLinks",
+)

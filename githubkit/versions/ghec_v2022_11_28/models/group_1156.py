@@ -13,16 +13,18 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0276 import ActionsVariable
+
+class ProjectsColumnsColumnIdCardsPostBodyOneof1(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
+
+    content_id: int = Field(
+        description="The unique identifier of the content associated with the card"
+    )
+    content_type: str = Field(
+        description="The piece of content associated with the card"
+    )
 
 
-class ReposOwnerRepoActionsOrganizationVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
+model_rebuild(ProjectsColumnsColumnIdCardsPostBodyOneof1)
 
-    total_count: int = Field()
-    variables: list[ActionsVariable] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsOrganizationVariablesGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200",)
+__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof1",)

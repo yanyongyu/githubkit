@@ -9,24 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0146 import RepositoryRulesetConditionsType
-from .group_0785 import (
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType,
+from .group_0003 import SimpleUserType
+from .group_0446 import EnterpriseWebhooksType
+from .group_0447 import SimpleInstallationType
+from .group_0448 import OrganizationSimpleWebhooksType
+from .group_0449 import RepositoryWebhooksType
+
+
+class WebhookRepositoryDispatchSampleType(TypedDict):
+    """repository_dispatch event"""
+
+    action: str
+    branch: str
+    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayloadType, None]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: SimpleInstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+
+
+WebhookRepositoryDispatchSamplePropClientPayloadType: TypeAlias = dict[str, Any]
+"""WebhookRepositoryDispatchSamplePropClientPayload
+
+The `client_payload` that was specified in the `POST
+/repos/{owner}/{repo}/dispatches` request body.
+"""
+
+
+__all__ = (
+    "WebhookRepositoryDispatchSamplePropClientPayloadType",
+    "WebhookRepositoryDispatchSampleType",
 )
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
-
-    added: NotRequired[list[RepositoryRulesetConditionsType]]
-    deleted: NotRequired[list[RepositoryRulesetConditionsType]]
-    updated: NotRequired[
-        list[
-            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
-        ]
-    ]
-
-
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropConditionsType",)

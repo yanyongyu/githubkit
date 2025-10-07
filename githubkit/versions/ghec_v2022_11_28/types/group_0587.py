@@ -13,21 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0089 import CustomPropertyType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0588 import WebhookCodeScanningAlertCreatedPropAlertType
 
 
-class WebhookCustomPropertyPromotedToEnterpriseType(TypedDict):
-    """custom property promoted to business event"""
+class WebhookCodeScanningAlertCreatedType(TypedDict):
+    """code_scanning_alert created event"""
 
-    action: Literal["promote_to_enterprise"]
-    definition: CustomPropertyType
+    action: Literal["created"]
+    alert: WebhookCodeScanningAlertCreatedPropAlertType
+    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    ref: str
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookCustomPropertyPromotedToEnterpriseType",)
+__all__ = ("WebhookCodeScanningAlertCreatedType",)

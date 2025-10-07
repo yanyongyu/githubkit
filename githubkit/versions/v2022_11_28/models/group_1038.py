@@ -9,91 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
-    attestations: Missing[
-        list[ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems]
-    ] = Field(default=UNSET)
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems(
-    GitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    bundle: Missing[
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
-    ] = Field(
-        default=UNSET,
-        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information.",
+    environment_ids: list[int] = Field(
+        description="The list of environment ids to approve or reject"
     )
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
+    state: Literal["approved", "rejected"] = Field(
+        description="Whether to approve or reject deployment to the specified environments."
+    )
+    comment: str = Field(description="A comment to accompany the deployment review")
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle(
-    GitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
-    ndle
+model_rebuild(ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody)
 
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
-    verification_material: Missing[
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
-    ] = Field(default=UNSET, alias="verificationMaterial")
-    dsse_envelope: Missing[
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
-    ] = Field(default=UNSET, alias="dsseEnvelope")
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
-    ndlePropVerificationMaterial
-    """
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
-    ndlePropDsseEnvelope
-    """
-
-
-model_rebuild(ReposOwnerRepoAttestationsSubjectDigestGetResponse200)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems
-)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
-)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
-)
-model_rebuild(
-    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
-)
-
-__all__ = (
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
-)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",)

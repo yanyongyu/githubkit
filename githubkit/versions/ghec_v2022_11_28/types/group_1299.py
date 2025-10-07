@@ -9,17 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1297 import ReposOwnerRepoPagesPostBodyPropSourceType
+
+class ReposOwnerRepoLabelsNamePatchBodyType(TypedDict):
+    """ReposOwnerRepoLabelsNamePatchBody"""
+
+    new_name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[str]
 
 
-class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof1"""
-
-    build_type: Literal["legacy", "workflow"]
-    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
-
-
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof1Type",)
+__all__ = ("ReposOwnerRepoLabelsNamePatchBodyType",)

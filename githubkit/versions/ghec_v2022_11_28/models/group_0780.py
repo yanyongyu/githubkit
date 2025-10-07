@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,31 +17,53 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0239 import ProjectsV2
-from .group_0506 import SimpleInstallation
-from .group_0507 import OrganizationSimpleWebhooks
+
+class WebhookProjectCardMovedPropProjectCardAllof1(GitHubModel):
+    """WebhookProjectCardMovedPropProjectCardAllof1"""
+
+    after_id: Union[int, None] = Field()
+    archived: Missing[bool] = Field(default=UNSET)
+    column_id: Missing[int] = Field(default=UNSET)
+    column_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    creator: Missing[
+        Union[WebhookProjectCardMovedPropProjectCardAllof1PropCreator, None]
+    ] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    note: Missing[Union[str, None]] = Field(default=UNSET)
+    project_url: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookProjectsV2ProjectDeleted(GitHubModel):
-    """Projects v2 Project Deleted Event"""
+class WebhookProjectCardMovedPropProjectCardAllof1PropCreator(GitHubModel):
+    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
 
-    action: Literal["deleted"] = Field()
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    projects_v2: ProjectsV2 = Field(
-        title="Projects v2 Project", description="A projects v2 project"
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    avatar_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectsV2ProjectDeleted)
+model_rebuild(WebhookProjectCardMovedPropProjectCardAllof1)
+model_rebuild(WebhookProjectCardMovedPropProjectCardAllof1PropCreator)
 
-__all__ = ("WebhookProjectsV2ProjectDeleted",)
+__all__ = (
+    "WebhookProjectCardMovedPropProjectCardAllof1",
+    "WebhookProjectCardMovedPropProjectCardAllof1PropCreator",
+)

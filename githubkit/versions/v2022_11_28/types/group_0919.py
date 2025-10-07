@@ -9,20 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0088 import RunnerLabelType
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
-    name: str
-    digest: str
-    artifact_url: NotRequired[str]
-    path: NotRequired[str]
-    registry_url: str
-    repository: NotRequired[str]
-    status: NotRequired[Literal["active", "eol", "deleted"]]
+    total_count: int
+    labels: list[RunnerLabelType]
 
 
-__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBodyType",)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type",)

@@ -12,32 +12,55 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0368 import CustomDeploymentRuleApp
 
 
-class GitRef(GitHubModel):
-    """Git Reference
+class DeploymentProtectionRule(GitHubModel):
+    """Deployment protection rule
 
-    Git references within a repository
+    Deployment protection rule
     """
 
-    ref: str = Field()
-    node_id: str = Field()
-    url: str = Field()
-    object_: GitRefPropObject = Field(alias="object")
+    id: int = Field(
+        description="The unique identifier for the deployment protection rule."
+    )
+    node_id: str = Field(description="The node ID for the deployment protection rule.")
+    enabled: bool = Field(
+        description="Whether the deployment protection rule is enabled for the environment."
+    )
+    app: CustomDeploymentRuleApp = Field(
+        title="Custom deployment protection rule app",
+        description="A GitHub App that is providing a custom deployment protection rule.",
+    )
 
 
-class GitRefPropObject(GitHubModel):
-    """GitRefPropObject"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    type: str = Field()
-    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
-    url: str = Field()
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of enabled custom deployment protection rules for this environment",
+    )
+    custom_deployment_protection_rules: Missing[list[DeploymentProtectionRule]] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(GitRef)
-model_rebuild(GitRefPropObject)
+model_rebuild(DeploymentProtectionRule)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+)
 
 __all__ = (
-    "GitRef",
-    "GitRefPropObject",
+    "DeploymentProtectionRule",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200",
 )

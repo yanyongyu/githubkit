@@ -13,25 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0505 import EnterpriseWebhooksType
-from .group_0506 import SimpleInstallationType
-from .group_0507 import OrganizationSimpleWebhooksType
-from .group_0508 import RepositoryWebhooksType
-from .group_0525 import WebhooksIssueCommentType
-from .group_0653 import WebhookIssueCommentDeletedPropIssueType
+from .group_0511 import EnterpriseWebhooksType
+from .group_0512 import SimpleInstallationType
+from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0514 import RepositoryWebhooksType
+from .group_0653 import WebhookIssueCommentCreatedPropCommentType
+from .group_0654 import WebhookIssueCommentCreatedPropIssueType
 
 
-class WebhookIssueCommentDeletedType(TypedDict):
-    """issue_comment deleted event"""
+class WebhookIssueCommentCreatedType(TypedDict):
+    """issue_comment created event"""
 
-    action: Literal["deleted"]
-    comment: WebhooksIssueCommentType
+    action: Literal["created"]
+    comment: WebhookIssueCommentCreatedPropCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentDeletedPropIssueType
+    issue: WebhookIssueCommentCreatedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssueCommentDeletedType",)
+__all__ = ("WebhookIssueCommentCreatedType",)

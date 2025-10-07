@@ -9,53 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitTagsPostBody(GitHubModel):
-    """ReposOwnerRepoGitTagsPostBody"""
+class ReposOwnerRepoDispatchesPostBody(GitHubModel):
+    """ReposOwnerRepoDispatchesPostBody"""
 
-    tag: str = Field(
-        description='The tag\'s name. This is typically a version (e.g., "v0.0.1").'
+    event_type: str = Field(
+        min_length=1,
+        max_length=100,
+        description="A custom webhook event name. Must be 100 characters or fewer.",
     )
-    message: str = Field(description="The tag message.")
-    object_: str = Field(
-        alias="object", description="The SHA of the git object this is tagging."
-    )
-    type: Literal["commit", "tree", "blob"] = Field(
-        description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`."
-    )
-    tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
+    client_payload: Missing[ReposOwnerRepoDispatchesPostBodyPropClientPayload] = Field(
         default=UNSET,
-        description="An object with information about the individual creating the tag.",
+        description="JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10. The total size of the JSON payload must be less than 64KB.",
     )
 
 
-class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
-    """ReposOwnerRepoGitTagsPostBodyPropTagger
+class ReposOwnerRepoDispatchesPostBodyPropClientPayload(ExtraGitHubModel):
+    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
 
-    An object with information about the individual creating the tag.
+    JSON payload with extra information about the webhook event that your action or
+    workflow may use. The maximum number of top-level properties is 10. The total
+    size of the JSON payload must be less than 64KB.
     """
 
-    name: str = Field(description="The name of the author of the tag")
-    email: str = Field(description="The email of the author of the tag")
-    date: Missing[datetime] = Field(
-        default=UNSET,
-        description="When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
 
-
-model_rebuild(ReposOwnerRepoGitTagsPostBody)
-model_rebuild(ReposOwnerRepoGitTagsPostBodyPropTagger)
+model_rebuild(ReposOwnerRepoDispatchesPostBody)
+model_rebuild(ReposOwnerRepoDispatchesPostBodyPropClientPayload)
 
 __all__ = (
-    "ReposOwnerRepoGitTagsPostBody",
-    "ReposOwnerRepoGitTagsPostBodyPropTagger",
+    "ReposOwnerRepoDispatchesPostBody",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayload",
 )

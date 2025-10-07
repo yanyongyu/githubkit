@@ -9,13 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
+class ReposOwnerRepoImportPutBodyType(TypedDict):
+    """ReposOwnerRepoImportPutBody"""
 
-    issue_id: int
+    vcs_url: str
+    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    tfvc_project: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType",)
+__all__ = ("ReposOwnerRepoImportPutBodyType",)

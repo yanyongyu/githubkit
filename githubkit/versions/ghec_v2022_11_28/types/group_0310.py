@@ -9,38 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0189 import MinimalRepositoryType
+from .group_0010 import IntegrationType
 
 
-class CheckSuitePreferenceType(TypedDict):
-    """Check Suite Preference
+class DeploymentSimpleType(TypedDict):
+    """Deployment
 
-    Check suite configuration preferences for a repository.
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
     """
 
-    preferences: CheckSuitePreferencePropPreferencesType
-    repository: MinimalRepositoryType
+    url: str
+    id: int
+    node_id: str
+    task: str
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
+    created_at: datetime
+    updated_at: datetime
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-class CheckSuitePreferencePropPreferencesType(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
-    ]
-
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
-
-    app_id: int
-    setting: bool
-
-
-__all__ = (
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
-    "CheckSuitePreferencePropPreferencesType",
-    "CheckSuitePreferenceType",
-)
+__all__ = ("DeploymentSimpleType",)

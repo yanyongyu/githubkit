@@ -9,21 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Traffic(GitHubModel):
-    """Traffic"""
+class Tag(GitHubModel):
+    """Tag
 
-    timestamp: datetime = Field()
-    uniques: int = Field()
-    count: int = Field()
+    Tag
+    """
+
+    name: str = Field()
+    commit: TagPropCommit = Field()
+    zipball_url: str = Field()
+    tarball_url: str = Field()
+    node_id: str = Field()
 
 
-model_rebuild(Traffic)
+class TagPropCommit(GitHubModel):
+    """TagPropCommit"""
 
-__all__ = ("Traffic",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(Tag)
+model_rebuild(TagPropCommit)
+
+__all__ = (
+    "Tag",
+    "TagPropCommit",
+)

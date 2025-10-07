@@ -9,16 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody"""
+class ApplicationsClientIdTokenPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenPostBody"""
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
+    access_token: str
 
 
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType",)
+__all__ = ("ApplicationsClientIdTokenPostBodyType",)

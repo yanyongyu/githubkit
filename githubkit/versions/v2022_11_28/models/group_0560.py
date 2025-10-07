@@ -9,22 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
+from .group_0449 import RepositoryWebhooks
+from .group_0459 import Discussion
 
 
-class WebhookGithubAppAuthorizationRevoked(GitHubModel):
-    """github_app_authorization revoked event"""
+class WebhookDiscussionTransferredPropChanges(GitHubModel):
+    """WebhookDiscussionTransferredPropChanges"""
 
-    action: Literal["revoked"] = Field()
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    new_discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
+    )
+    new_repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
 
 
-model_rebuild(WebhookGithubAppAuthorizationRevoked)
+model_rebuild(WebhookDiscussionTransferredPropChanges)
 
-__all__ = ("WebhookGithubAppAuthorizationRevoked",)
+__all__ = ("WebhookDiscussionTransferredPropChanges",)

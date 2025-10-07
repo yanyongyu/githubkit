@@ -9,16 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0201 import CodespaceType
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesGetResponse200Type(TypedDict):
-    """UserCodespacesGetResponse200"""
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
 
-    total_count: int
-    codespaces: list[CodespaceType]
+    schemas: NotRequired[list[str]]
+    display_name: NotRequired[str]
+    external_id: NotRequired[str]
+    groups: NotRequired[list[str]]
+    active: NotRequired[bool]
+    user_name: str
+    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType
+    emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType]
 
 
-__all__ = ("UserCodespacesGetResponse200Type",)
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
+
+    type: NotRequired[str]
+    value: str
+    primary: NotRequired[bool]
+
+
+__all__ = (
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyType",
+)

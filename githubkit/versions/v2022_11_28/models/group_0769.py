@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0205 import RepositoryAdvisory
-from .group_0442 import EnterpriseWebhooks
-from .group_0443 import SimpleInstallation
-from .group_0444 import OrganizationSimpleWebhooks
-from .group_0445 import RepositoryWebhooks
+from .group_0446 import EnterpriseWebhooks
+from .group_0447 import SimpleInstallation
+from .group_0448 import OrganizationSimpleWebhooks
+from .group_0449 import RepositoryWebhooks
+from .group_0770 import WebhookRegistryPackageUpdatedPropRegistryPackage
 
 
-class WebhookRepositoryAdvisoryPublished(GitHubModel):
-    """Repository advisory published event"""
+class WebhookRegistryPackageUpdated(GitHubModel):
+    """WebhookRegistryPackageUpdated"""
 
-    action: Literal["published"] = Field()
+    action: Literal["updated"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,18 +44,15 @@ class WebhookRepositoryAdvisoryPublished(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackage = Field()
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    repository_advisory: RepositoryAdvisory = Field(
-        description="A repository security advisory."
-    )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryAdvisoryPublished)
+model_rebuild(WebhookRegistryPackageUpdated)
 
-__all__ = ("WebhookRepositoryAdvisoryPublished",)
+__all__ = ("WebhookRegistryPackageUpdated",)

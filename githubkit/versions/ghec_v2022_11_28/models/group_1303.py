@@ -9,21 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0249 import CustomPropertyValue
 
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
-
-    properties: list[CustomPropertyValue] = Field(
-        description="A list of custom property names and associated values to apply to the repositories."
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the milestone."
+    )
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET,
+        description="The state of the milestone. Either `open` or `closed`.",
+    )
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the milestone."
+    )
+    due_on: Missing[datetime] = Field(
+        default=UNSET,
+        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-model_rebuild(ReposOwnerRepoPropertiesValuesPatchBody)
+model_rebuild(ReposOwnerRepoMilestonesMilestoneNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoPropertiesValuesPatchBody",)
+__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",)
