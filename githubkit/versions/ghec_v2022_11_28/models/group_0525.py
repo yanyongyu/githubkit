@@ -42,7 +42,7 @@ class WebhooksAnswer(GitHubModel):
     html_url: str = Field()
     id: int = Field()
     node_id: str = Field()
-    parent_id: None = Field()
+    parent_id: Union[int, None] = Field()
     reactions: Missing[WebhooksAnswerPropReactions] = Field(
         default=UNSET, title="Reactions"
     )

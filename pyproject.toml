@@ -549,6 +549,13 @@ source = "descriptions-next/ghec/ghec.2022-11-28.json"
 "/webhooks/repository-dispatch-sample.collected/post" = { operationId = "repository-dispatch" }
 # "/components/schemas/webhook-repository-dispatch-sample/properties/action" = { enum = "<unset>" }
 
+# https://github.com/yanyongyu/githubkit/issues/239
+# discussion answer's parent id may be not null
+"/components/schemas/webhooks_answer/properties/parent_id" = { type = [
+  "integer",
+  "null",
+] }
+
 # https://github.com/yanyongyu/githubkit/issues/205
 # https://github.com/github/rest-api-description/issues/4727
 "/components/schemas/dependabot-alert-with-repository/properties/dependency/properties/relationship/enum" = { "<add>" = [
