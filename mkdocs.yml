@@ -125,7 +125,8 @@ nav:
       - Contributing: contributing.md
   - Quick Start:
       - quickstart/index.md
-      - Call API with PAT: quickstart/call-api-with-pat.md
+      - Calling API with PAT: quickstart/calling-api-with-pat.md
+      - Connecting to GitHub Enterprise: quickstart/connecting-to-github-enterprise.md
       - OAuth APP Web Flow: quickstart/oauth-web-flow.md
       - OAuth APP Device Flow: quickstart/oauth-device-flow.md
       - GitHub APP: quickstart/github-app.md
