@@ -10,11 +10,17 @@ Here are some common use cases to help you get started quickly. For more detaile
 
 <!-- prettier-ignore-start -->
 
-- :octicons-file-code-16: [Call API with PAT](./call-api-with-pat.md)
+- :octicons-file-code-16: [Calling API with PAT](./calling-api-with-pat.md)
 
     ---
 
     Use [Personal Access Token (PAT)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to call GitHub API
+
+- :octicons-file-code-16: [Connecting to GitHub Enterprise](./connecting-to-github-enterprise.md)
+
+    ---
+
+    Interact with the GitHub Enterprise API (Cloud or Server)
 
 - :octicons-file-code-16: [OAuth APP Web Flow](./oauth-web-flow.md)
 
