@@ -110,29 +110,65 @@ If you provide all 4 properties in a `pageInfo`, githubkit will default to **for
 
 Then, you can iterate over the paginated results by using the graphql `paginate` method:
 
-```python
-for result in github.graphql.paginate(
-    query, variables={"owner": "owner", "repo": "repo"}
-):
-    print(result)
-```
+=== "Sync"
+
+    ```python hl_lines="1"
+    for result in github.graphql.paginate(
+        query, variables={"owner": "owner", "repo": "repo"}
+    ):
+        print(result)
+    ```
+
+=== "Async"
+
+    ```python hl_lines="1"
+    async for result in github.graphql.paginate(
+        query, variables={"owner": "owner", "repo": "repo"}
+    ):
+        print(result)
+    ```
 
 Note that the `result` is a dict containing the list of nodes/edges for each page and the `pageInfo` object. You should iterate over the `nodes` or `edges` list to get the actual data. For example:
 
-```python
-for result in github.graphql.paginate(query, {"owner": "owner", "repo": "repo"}):
-    for issue in result["repository"]["issues"]["nodes"]:
-        print(issue)
-```
+=== "Sync"
+
+    ```python
+    for result in github.graphql.paginate(
+        query, variables={"owner": "owner", "repo": "repo"}
+    ):
+        for issue in result["repository"]["issues"]["nodes"]:
+            print(issue)
+    ```
+
+=== "Async"
+
+    ```python
+    async for result in github.graphql.paginate(
+        query, variables={"owner": "owner", "repo": "repo"}
+    ):
+        for issue in result["repository"]["issues"]["nodes"]:
+            print(issue)
+    ```
 
 You can also provide a initial cursor value to start pagination from a specific point:
 
-```python hl_lines="2"
-for result in github.graphql.paginate(
-    query, variables={"owner": "owner", "repo": "repo", "cursor": "initial_cursor"}
-):
-    print(result)
-```
+=== "Sync"
+
+    ```python hl_lines="2"
+    for result in github.graphql.paginate(
+        query, variables={"owner": "owner", "repo": "repo", "cursor": "initial_cursor"}
+    ):
+        print(result)
+    ```
+
+=== "Async"
+
+    ```python hl_lines="2"
+    async for result in github.graphql.paginate(
+        query, variables={"owner": "owner", "repo": "repo", "cursor": "initial_cursor"}
+    ):
+        print(result)
+    ```
 
 !!! tips
 
