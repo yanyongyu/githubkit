@@ -5,11 +5,9 @@ Connecting to the GitHub Enterprise is similar to the public GitHub API, but req
 - To connect to **GitHub Enterprise Server**, you must provide the server's API endpoint in the `base_url` parameter.
 - You need to switch the REST API schema version when using client.
 
-The example below highlights these two changes.
-
 === "Sync"
 
-    ```python hl_lines="4, 7"
+    ```python hl_lines="4 7"
     from githubkit import GitHub
     from githubkit.versions.latest.models import PublicUser, PrivateUser
 
@@ -25,7 +23,7 @@ The example below highlights these two changes.
 
 === "Async"
 
-    ```python hl_lines="4, 7"
+    ```python hl_lines="4 7"
     from githubkit import GitHub
     from githubkit.versions.latest.models import PublicUser, PrivateUser
 
