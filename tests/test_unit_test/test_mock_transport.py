@@ -1,15 +1,11 @@
 import json
 from pathlib import Path
-from typing import TypeVar
 
 import httpx
 import pytest
 
 from githubkit import GitHub
 from githubkit.versions.latest.models import FullRepository
-
-T = TypeVar("T")
-
 
 FAKE_RESPONSE = json.loads((Path(__file__).parent / "fake_response.json").read_text())
 
