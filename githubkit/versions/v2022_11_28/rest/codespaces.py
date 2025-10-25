@@ -1962,7 +1962,7 @@ class CodespacesClient:
         from ..models import (
             BasicError,
             Codespace,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ReposOwnerRepoCodespacesPostBody,
         )
 
@@ -1993,7 +1993,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2058,7 +2058,7 @@ class CodespacesClient:
         from ..models import (
             BasicError,
             Codespace,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ReposOwnerRepoCodespacesPostBody,
         )
 
@@ -2089,7 +2089,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2432,7 +2432,7 @@ class CodespacesClient:
         from ..models import (
             BasicError,
             CodespacesPermissionsCheckForDevcontainer,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ValidationError,
         )
 
@@ -2457,7 +2457,7 @@ class CodespacesClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2488,7 +2488,7 @@ class CodespacesClient:
         from ..models import (
             BasicError,
             CodespacesPermissionsCheckForDevcontainer,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ValidationError,
         )
 
@@ -2513,7 +2513,7 @@ class CodespacesClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -3026,7 +3026,7 @@ class CodespacesClient:
         from ..models import (
             BasicError,
             Codespace,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ReposOwnerRepoPullsPullNumberCodespacesPostBody,
         )
 
@@ -3056,7 +3056,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -3125,7 +3125,7 @@ class CodespacesClient:
         from ..models import (
             BasicError,
             Codespace,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ReposOwnerRepoPullsPullNumberCodespacesPostBody,
         )
 
@@ -3155,7 +3155,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -3331,7 +3331,7 @@ class CodespacesClient:
         from ..models import (
             BasicError,
             Codespace,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             UserCodespacesPostBodyOneof0,
             UserCodespacesPostBodyOneof1,
         )
@@ -3362,7 +3362,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -3444,7 +3444,7 @@ class CodespacesClient:
         from ..models import (
             BasicError,
             Codespace,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             UserCodespacesPostBodyOneof0,
             UserCodespacesPostBodyOneof1,
         )
@@ -3475,7 +3475,7 @@ class CodespacesClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 

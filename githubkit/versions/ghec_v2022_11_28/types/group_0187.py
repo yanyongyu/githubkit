@@ -9,31 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0188 import (
-    MarketplacePurchasePropMarketplacePendingChangeType,
-    MarketplacePurchasePropMarketplacePurchaseType,
-)
+from .group_0003 import SimpleUserType
 
 
-class MarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase
+class MilestoneType(TypedDict):
+    """Milestone
 
-    Marketplace Purchase
+    A collection of related issues and pull requests.
     """
 
     url: str
-    type: str
+    html_url: str
+    labels_url: str
     id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
-    ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
+    node_id: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[None, SimpleUserType]
+    open_issues: int
+    closed_issues: int
+    created_at: datetime
+    updated_at: datetime
+    closed_at: Union[datetime, None]
+    due_on: Union[datetime, None]
 
 
-__all__ = ("MarketplacePurchaseType",)
+__all__ = ("MilestoneType",)

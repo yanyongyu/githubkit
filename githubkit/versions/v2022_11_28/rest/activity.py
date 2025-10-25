@@ -95,11 +95,7 @@ class ActivityClient:
         See also: https://docs.github.com/rest/activity/events#list-public-events
         """
 
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            Event,
-        )
+        from ..models import BasicError, Event, EventsGetResponse503
 
         url = "/events"
 
@@ -119,7 +115,7 @@ class ActivityClient:
             response_model=list[Event],
             error_models={
                 "403": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -141,11 +137,7 @@ class ActivityClient:
         See also: https://docs.github.com/rest/activity/events#list-public-events
         """
 
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            Event,
-        )
+        from ..models import BasicError, Event, EventsGetResponse503
 
         url = "/events"
 
@@ -165,7 +157,7 @@ class ActivityClient:
             response_model=list[Event],
             error_models={
                 "403": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 

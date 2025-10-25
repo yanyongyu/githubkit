@@ -9,25 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksChangesType(TypedDict):
-    """WebhooksChanges
+class ExemptionResponseType(TypedDict):
+    """Exemption response
 
-    The changes to the comment.
+    A response to an exemption request by a delegated bypasser.
     """
 
-    body: NotRequired[WebhooksChangesPropBodyType]
+    id: NotRequired[int]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[datetime]
 
 
-class WebhooksChangesPropBodyType(TypedDict):
-    """WebhooksChangesPropBody"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhooksChangesPropBodyType",
-    "WebhooksChangesType",
-)
+__all__ = ("ExemptionResponseType",)

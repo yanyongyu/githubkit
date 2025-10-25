@@ -9,20 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0468 import TrafficType
+from typing_extensions import NotRequired, TypedDict
 
 
-class ViewTrafficType(TypedDict):
-    """View Traffic
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    View Traffic
-    """
-
-    count: int
-    uniques: int
-    views: list[TrafficType]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
-__all__ = ("ViewTrafficType",)
+__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",)

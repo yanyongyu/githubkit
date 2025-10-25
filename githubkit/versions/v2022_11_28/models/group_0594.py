@@ -18,8 +18,8 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0044 import IssueType
-from .group_0046 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0041 import IssueType
+from .group_0043 import IssueDependenciesSummary, SubIssuesSummary
 from .group_0595 import (
     WebhookIssueCommentDeletedPropIssueAllof0PropAssignee,
     WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems,

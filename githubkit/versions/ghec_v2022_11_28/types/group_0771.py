@@ -9,23 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0513 import OrganizationSimpleWebhooksType
-from .group_0514 import RepositoryWebhooksType
-from .group_0772 import WebhookPingPropHookType
+from .group_0527 import EnterpriseWebhooksType
+from .group_0528 import SimpleInstallationType
 
 
-class WebhookPingType(TypedDict):
-    """WebhookPing"""
+class WebhookOrganizationCustomPropertyDeletedType(TypedDict):
+    """organization custom property deleted event"""
 
-    hook: NotRequired[WebhookPingPropHookType]
-    hook_id: NotRequired[int]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
+    action: Literal["deleted"]
+    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionType
+    enterprise: EnterpriseWebhooksType
+    installation: NotRequired[SimpleInstallationType]
     sender: NotRequired[SimpleUserType]
-    zen: NotRequired[str]
 
 
-__all__ = ("WebhookPingType",)
+class WebhookOrganizationCustomPropertyDeletedPropDefinitionType(TypedDict):
+    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
+
+
+__all__ = (
+    "WebhookOrganizationCustomPropertyDeletedPropDefinitionType",
+    "WebhookOrganizationCustomPropertyDeletedType",
+)

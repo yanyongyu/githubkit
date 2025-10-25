@@ -14,19 +14,12 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserSocialAccountsPostBody(GitHubModel):
-    """UserSocialAccountsPostBody
+class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody(GitHubModel):
+    """TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str] = Field(
-        description="Full URLs for the social media profiles to add."
-    )
+    body: str = Field(description="The discussion comment's body text.")
 
 
-model_rebuild(UserSocialAccountsPostBody)
+model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody)
 
-__all__ = ("UserSocialAccountsPostBody",)
+__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody",)

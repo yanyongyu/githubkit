@@ -9,31 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0313 import (
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
+)
 
 
-class CheckAnnotation(GitHubModel):
-    """Check Annotation
+class ProtectedBranchPullRequestReview(GitHubModel):
+    """Protected Branch Pull Request Review
 
-    Check Annotation
+    Protected Branch Pull Request Review
     """
 
-    path: str = Field()
-    start_line: int = Field()
-    end_line: int = Field()
-    start_column: Union[int, None] = Field()
-    end_column: Union[int, None] = Field()
-    annotation_level: Union[str, None] = Field()
-    title: Union[str, None] = Field()
-    message: Union[str, None] = Field()
-    raw_details: Union[str, None] = Field()
-    blob_href: str = Field()
+    url: Missing[str] = Field(default=UNSET)
+    dismissal_restrictions: Missing[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+    ] = Field(
+        default=UNSET,
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+    )
+    dismiss_stale_reviews: bool = Field()
+    require_code_owner_reviews: bool = Field()
+    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+    )
 
 
-model_rebuild(CheckAnnotation)
+model_rebuild(ProtectedBranchPullRequestReview)
 
-__all__ = ("CheckAnnotation",)
+__all__ = ("ProtectedBranchPullRequestReview",)

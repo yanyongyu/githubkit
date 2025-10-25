@@ -10,41 +10,52 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
 
+class PackageVersionType(TypedDict):
+    """Package Version
 
-class OrganizationRoleType(TypedDict):
-    """Organization Role
-
-    Organization roles
+    A version of a software package
     """
 
     id: int
     name: str
-    description: NotRequired[Union[str, None]]
-    base_role: NotRequired[
-        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
-    ]
-    source: NotRequired[
-        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
-    ]
-    permissions: list[str]
-    organization: Union[None, SimpleUserType]
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
     created_at: datetime
     updated_at: datetime
+    deleted_at: NotRequired[datetime]
+    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
-    """OrgsOrgOrganizationRolesGetResponse200"""
+class PackageVersionPropMetadataType(TypedDict):
+    """Package Version Metadata"""
 
-    total_count: NotRequired[int]
-    roles: NotRequired[list[OrganizationRoleType]]
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerType]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
+
+
+class PackageVersionPropMetadataPropContainerType(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropDockerType(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrganizationRoleType",
-    "OrgsOrgOrganizationRolesGetResponse200Type",
+    "PackageVersionPropMetadataPropContainerType",
+    "PackageVersionPropMetadataPropDockerType",
+    "PackageVersionPropMetadataType",
+    "PackageVersionType",
 )

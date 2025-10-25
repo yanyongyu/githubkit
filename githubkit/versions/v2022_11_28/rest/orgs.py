@@ -36,6 +36,7 @@ if TYPE_CHECKING:
         ApiInsightsUserStatsItems,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         CustomProperty,
+        CustomPropertyValue,
         HookDelivery,
         HookDeliveryItem,
         ImmutableReleasesOrganizationSettings,
@@ -53,6 +54,7 @@ if TYPE_CHECKING:
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
         OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
         OrgsOrgAttestationsBulkListPostResponse200,
+        OrgsOrgAttestationsRepositoriesGetResponse200Items,
         OrgsOrgAttestationsSubjectDigestGetResponse200,
         OrgsOrgInstallationsGetResponse200,
         OrgsOrgOrganizationRolesGetResponse200,
@@ -89,6 +91,7 @@ if TYPE_CHECKING:
         OrganizationProgrammaticAccessGrantType,
         OrganizationRoleType,
         OrganizationSimpleType,
+        OrganizationsOrgOrgPropertiesValuesPatchBodyType,
         OrganizationUpdateIssueTypeType,
         OrgHookType,
         OrgMembershipType,
@@ -100,6 +103,7 @@ if TYPE_CHECKING:
         OrgsOrgAttestationsBulkListPostResponse200Type,
         OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type,
         OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type,
+        OrgsOrgAttestationsRepositoriesGetResponse200ItemsType,
         OrgsOrgAttestationsSubjectDigestGetResponse200Type,
         OrgsOrgHooksHookIdConfigPatchBodyType,
         OrgsOrgHooksHookIdPatchBodyPropConfigType,
@@ -228,6 +232,250 @@ class OrgsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationSimple],
+        )
+
+    def custom_properties_for_orgs_get_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueType]]:
+        """orgs/custom-properties-for-orgs-get-organization-values
+
+        GET /organizations/{org}/org-properties/values
+
+        Gets all custom property values that are set for an organization.
+
+        The organization must belong to an enterprise.
+
+        Access requirements:
+        - Organization admins
+        - OAuth tokens and personal access tokens (classic) with the `read:org` scope
+        - Actors with the organization-level "read custom properties for an organization" fine-grained permission or above
+
+        See also: https://docs.github.com/rest/orgs/custom-properties-for-orgs#get-all-custom-property-values-for-an-organization
+        """
+
+        from ..models import BasicError, CustomPropertyValue
+
+        url = f"/organizations/{org}/org-properties/values"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CustomPropertyValue],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_custom_properties_for_orgs_get_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueType]]:
+        """orgs/custom-properties-for-orgs-get-organization-values
+
+        GET /organizations/{org}/org-properties/values
+
+        Gets all custom property values that are set for an organization.
+
+        The organization must belong to an enterprise.
+
+        Access requirements:
+        - Organization admins
+        - OAuth tokens and personal access tokens (classic) with the `read:org` scope
+        - Actors with the organization-level "read custom properties for an organization" fine-grained permission or above
+
+        See also: https://docs.github.com/rest/orgs/custom-properties-for-orgs#get-all-custom-property-values-for-an-organization
+        """
+
+        from ..models import BasicError, CustomPropertyValue
+
+        url = f"/organizations/{org}/org-properties/values"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CustomPropertyValue],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def custom_properties_for_orgs_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrganizationsOrgOrgPropertiesValuesPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    def custom_properties_for_orgs_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        properties: list[CustomPropertyValueType],
+    ) -> Response: ...
+
+    def custom_properties_for_orgs_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrganizationsOrgOrgPropertiesValuesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/custom-properties-for-orgs-create-or-update-organization-values
+
+        PATCH /organizations/{org}/org-properties/values
+
+        Create new or update existing custom property values for an organization.
+        To remove a custom property value from an organization, set the property value to `null`.
+
+        The organization must belong to an enterprise.
+
+        Access requirements:
+        - Organization admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:org` scope
+        - Actors with the organization-level "edit custom properties for an organization" fine-grained permission
+
+        See also: https://docs.github.com/rest/orgs/custom-properties-for-orgs#create-or-update-custom-property-values-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrganizationsOrgOrgPropertiesValuesPatchBody,
+            ValidationError,
+        )
+
+        url = f"/organizations/{org}/org-properties/values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrganizationsOrgOrgPropertiesValuesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_custom_properties_for_orgs_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrganizationsOrgOrgPropertiesValuesPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_custom_properties_for_orgs_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        properties: list[CustomPropertyValueType],
+    ) -> Response: ...
+
+    async def async_custom_properties_for_orgs_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrganizationsOrgOrgPropertiesValuesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/custom-properties-for-orgs-create-or-update-organization-values
+
+        PATCH /organizations/{org}/org-properties/values
+
+        Create new or update existing custom property values for an organization.
+        To remove a custom property value from an organization, set the property value to `null`.
+
+        The organization must belong to an enterprise.
+
+        Access requirements:
+        - Organization admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:org` scope
+        - Actors with the organization-level "edit custom properties for an organization" fine-grained permission
+
+        See also: https://docs.github.com/rest/orgs/custom-properties-for-orgs#create-or-update-custom-property-values-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrganizationsOrgOrgPropertiesValuesPatchBody,
+            ValidationError,
+        )
+
+        url = f"/organizations/{org}/org-properties/values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrganizationsOrgOrgPropertiesValuesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
         )
 
     def get(
@@ -1338,6 +1586,98 @@ class OrgsClient:
             error_models={
                 "404": BasicError,
             },
+        )
+
+    def list_attestation_repositories(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        predicate_type: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[OrgsOrgAttestationsRepositoriesGetResponse200Items],
+        list[OrgsOrgAttestationsRepositoriesGetResponse200ItemsType],
+    ]:
+        """orgs/list-attestation-repositories
+
+        GET /orgs/{org}/attestations/repositories
+
+        List repositories owned by the provided organization that have created at least one attested artifact
+        Results will be sorted in ascending order by repository ID
+
+        See also: https://docs.github.com/rest/orgs/attestations#list-attestation-repositories
+        """
+
+        from ..models import OrgsOrgAttestationsRepositoriesGetResponse200Items
+
+        url = f"/orgs/{org}/attestations/repositories"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+            "predicate_type": predicate_type,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[OrgsOrgAttestationsRepositoriesGetResponse200Items],
+        )
+
+    async def async_list_attestation_repositories(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        predicate_type: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[OrgsOrgAttestationsRepositoriesGetResponse200Items],
+        list[OrgsOrgAttestationsRepositoriesGetResponse200ItemsType],
+    ]:
+        """orgs/list-attestation-repositories
+
+        GET /orgs/{org}/attestations/repositories
+
+        List repositories owned by the provided organization that have created at least one attested artifact
+        Results will be sorted in ascending order by repository ID
+
+        See also: https://docs.github.com/rest/orgs/attestations#list-attestation-repositories
+        """
+
+        from ..models import OrgsOrgAttestationsRepositoriesGetResponse200Items
+
+        url = f"/orgs/{org}/attestations/repositories"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+            "predicate_type": predicate_type,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[OrgsOrgAttestationsRepositoriesGetResponse200Items],
         )
 
     def delete_attestations_by_id(

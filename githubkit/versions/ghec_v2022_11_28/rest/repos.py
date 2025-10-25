@@ -173,6 +173,8 @@ if TYPE_CHECKING:
         EnterpriseRulesetConditionsOneof1Type,
         EnterpriseRulesetConditionsOneof2Type,
         EnterpriseRulesetConditionsOneof3Type,
+        EnterpriseRulesetConditionsOneof4Type,
+        EnterpriseRulesetConditionsOneof5Type,
         EnterprisesEnterpriseRulesetsPostBodyType,
         EnterprisesEnterpriseRulesetsRulesetIdPutBodyType,
         EnvironmentType,
@@ -401,6 +403,8 @@ class ReposClient:
                 EnterpriseRulesetConditionsOneof1Type,
                 EnterpriseRulesetConditionsOneof2Type,
                 EnterpriseRulesetConditionsOneof3Type,
+                EnterpriseRulesetConditionsOneof4Type,
+                EnterpriseRulesetConditionsOneof5Type,
             ]
         ] = UNSET,
         rules: Missing[
@@ -509,6 +513,8 @@ class ReposClient:
                 EnterpriseRulesetConditionsOneof1Type,
                 EnterpriseRulesetConditionsOneof2Type,
                 EnterpriseRulesetConditionsOneof3Type,
+                EnterpriseRulesetConditionsOneof4Type,
+                EnterpriseRulesetConditionsOneof5Type,
             ]
         ] = UNSET,
         rules: Missing[
@@ -695,6 +701,8 @@ class ReposClient:
                 EnterpriseRulesetConditionsOneof1Type,
                 EnterpriseRulesetConditionsOneof2Type,
                 EnterpriseRulesetConditionsOneof3Type,
+                EnterpriseRulesetConditionsOneof4Type,
+                EnterpriseRulesetConditionsOneof5Type,
             ]
         ] = UNSET,
         rules: Missing[
@@ -808,6 +816,8 @@ class ReposClient:
                 EnterpriseRulesetConditionsOneof1Type,
                 EnterpriseRulesetConditionsOneof2Type,
                 EnterpriseRulesetConditionsOneof3Type,
+                EnterpriseRulesetConditionsOneof4Type,
+                EnterpriseRulesetConditionsOneof5Type,
             ]
         ] = UNSET,
         rules: Missing[

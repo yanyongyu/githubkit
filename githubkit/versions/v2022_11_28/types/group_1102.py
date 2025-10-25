@@ -9,13 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0260 import CheckRunType
 
 
-class ReposOwnerRepoDeploymentsPostResponse202Type(TypedDict):
-    """ReposOwnerRepoDeploymentsPostResponse202"""
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
 
-    message: NotRequired[str]
+    total_count: int
+    check_runs: list[CheckRunType]
 
 
-__all__ = ("ReposOwnerRepoDeploymentsPostResponse202Type",)
+__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",)

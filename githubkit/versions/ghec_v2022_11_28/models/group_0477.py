@@ -9,46 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class Group(GitHubModel):
-    """Group"""
+class CommitActivity(GitHubModel):
+    """Commit Activity
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
-    )
-    external_id: str = Field(
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
-    )
-    display_name: str = Field(
-        alias="displayName", description="A human-readable name for a security group."
-    )
-    members: Missing[list[GroupPropMembersItems]] = Field(
-        default=UNSET, description="The group members."
-    )
+    Commit Activity
+    """
+
+    days: list[int] = Field()
+    total: int = Field()
+    week: int = Field()
 
 
-class GroupPropMembersItems(GitHubModel):
-    """GroupPropMembersItems"""
+model_rebuild(CommitActivity)
 
-    value: str = Field(description="The local unique identifier for the member")
-    display_name: str = Field(
-        alias="displayName", description="The display name associated with the member"
-    )
-
-
-model_rebuild(Group)
-model_rebuild(GroupPropMembersItems)
-
-__all__ = (
-    "Group",
-    "GroupPropMembersItems",
-)
+__all__ = ("CommitActivity",)

@@ -21,11 +21,11 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
 from .group_0020 import Repository
-from .group_0043 import Milestone
-from .group_0044 import IssueType
-from .group_0045 import ReactionRollup
-from .group_0046 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0047 import IssueFieldValue
+from .group_0040 import Milestone
+from .group_0041 import IssueType
+from .group_0042 import ReactionRollup
+from .group_0043 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0044 import IssueFieldValue
 from .group_0422 import SearchResultTextMatchesItems
 
 

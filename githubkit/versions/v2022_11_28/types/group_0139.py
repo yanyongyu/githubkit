@@ -9,34 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0048 import IssueType
-from .group_0135 import PullRequestSimpleType
-from .group_0138 import ProjectsV2DraftIssueType
+from .group_0065 import CustomPropertyValueType
 
 
-class ProjectsV2ItemSimpleType(TypedDict):
-    """Projects v2 Item
+class OrgRepoCustomPropertyValuesType(TypedDict):
+    """Organization Repository Custom Property Values
 
-    An item belonging to a project
+    List of custom property values for a repository
     """
 
-    id: float
-    node_id: NotRequired[str]
-    content: NotRequired[
-        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
-    ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    archived_at: Union[datetime, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueType]
 
 
-__all__ = ("ProjectsV2ItemSimpleType",)
+__all__ = ("OrgRepoCustomPropertyValuesType",)

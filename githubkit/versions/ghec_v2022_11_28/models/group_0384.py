@@ -9,45 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class CustomDeploymentRuleApp(GitHubModel):
+    """Custom deployment protection rule app
 
-class UnlabeledIssueEvent(GitHubModel):
-    """Unlabeled Issue Event
-
-    Unlabeled Issue Event
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["unlabeled"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    label: UnlabeledIssueEventPropLabel = Field()
+    id: int = Field(
+        description="The unique identifier of the deployment protection rule integration."
+    )
+    slug: str = Field(
+        description="The slugified name of the deployment protection rule integration."
+    )
+    integration_url: str = Field(
+        description="The URL for the endpoint to get details about the app."
+    )
+    node_id: str = Field(
+        description="The node ID for the deployment protection rule integration."
+    )
 
 
-class UnlabeledIssueEventPropLabel(GitHubModel):
-    """UnlabeledIssueEventPropLabel"""
+model_rebuild(CustomDeploymentRuleApp)
 
-    name: str = Field()
-    color: str = Field()
-
-
-model_rebuild(UnlabeledIssueEvent)
-model_rebuild(UnlabeledIssueEventPropLabel)
-
-__all__ = (
-    "UnlabeledIssueEvent",
-    "UnlabeledIssueEventPropLabel",
-)
+__all__ = ("CustomDeploymentRuleApp",)

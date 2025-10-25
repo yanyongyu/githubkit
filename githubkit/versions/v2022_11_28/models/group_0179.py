@@ -17,21 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0180 import RepositoryRuleTagNamePatternPropParameters
+from .group_0180 import RepositoryRuleMaxFilePathLengthPropParameters
 
 
-class RepositoryRuleTagNamePattern(GitHubModel):
-    """tag_name_pattern
+class RepositoryRuleMaxFilePathLength(GitHubModel):
+    """max_file_path_length
 
-    Parameters to be used for the tag_name_pattern rule
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
     """
 
-    type: Literal["tag_name_pattern"] = Field()
-    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
+    type: Literal["max_file_path_length"] = Field()
+    parameters: Missing[RepositoryRuleMaxFilePathLengthPropParameters] = Field(
         default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleTagNamePattern)
+model_rebuild(RepositoryRuleMaxFilePathLength)
 
-__all__ = ("RepositoryRuleTagNamePattern",)
+__all__ = ("RepositoryRuleMaxFilePathLength",)

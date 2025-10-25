@@ -17,22 +17,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class RepositoryRuleBranchNamePatternPropParameters(GitHubModel):
-    """RepositoryRuleBranchNamePatternPropParameters"""
-
-    name: Missing[str] = Field(
-        default=UNSET, description="How this rule will appear to users."
-    )
-    negate: Missing[bool] = Field(
-        default=UNSET, description="If true, the rule will fail if the pattern matches."
-    )
-    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
-        description="The operator to use for matching."
-    )
-    pattern: str = Field(description="The pattern to match with.")
+from .group_0126 import RepositoryRuleUpdatePropParameters
 
 
-model_rebuild(RepositoryRuleBranchNamePatternPropParameters)
+class RepositoryRuleUpdate(GitHubModel):
+    """update
 
-__all__ = ("RepositoryRuleBranchNamePatternPropParameters",)
+    Only allow users with bypass permission to update matching refs.
+    """
+
+    type: Literal["update"] = Field()
+    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
+
+
+model_rebuild(RepositoryRuleUpdate)
+
+__all__ = ("RepositoryRuleUpdate",)

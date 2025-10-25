@@ -256,6 +256,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
+        state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[GetAllCostCenters, GetAllCostCentersType]:
@@ -276,11 +277,16 @@ class BillingClient:
 
         url = f"/enterprises/{enterprise}/settings/billing/cost-centers"
 
+        params = {
+            "state": state,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(params),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GetAllCostCenters,
@@ -296,6 +302,7 @@ class BillingClient:
         self,
         enterprise: str,
         *,
+        state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[GetAllCostCenters, GetAllCostCentersType]:
@@ -316,11 +323,16 @@ class BillingClient:
 
         url = f"/enterprises/{enterprise}/settings/billing/cost-centers"
 
+        params = {
+            "state": state,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(params),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GetAllCostCenters,
@@ -1317,6 +1329,8 @@ class BillingClient:
 
         Gets a report of premium request usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise.
 
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
         See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-premium-request-usage-report-for-an-enterprise
         """
 
@@ -1379,6 +1393,8 @@ class BillingClient:
         GET /enterprises/{enterprise}/settings/billing/premium_request/usage
 
         Gets a report of premium request usage for an enterprise. To use this endpoint, you must be an administrator or billing manager of the enterprise.
+
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-premium-request-usage-report-for-an-enterprise
         """
@@ -1627,6 +1643,8 @@ class BillingClient:
 
         Gets a report of premium request usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
 
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
         See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-an-organization
         """
 
@@ -1685,6 +1703,8 @@ class BillingClient:
         GET /organizations/{org}/settings/billing/premium_request/usage
 
         Gets a report of premium request usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
+
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-an-organization
         """
@@ -2292,6 +2312,8 @@ class BillingClient:
 
         Gets a report of premium request usage for a user.
 
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
         See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-a-user
         """
 
@@ -2348,6 +2370,8 @@ class BillingClient:
         GET /users/{username}/settings/billing/premium_request/usage
 
         Gets a report of premium request usage for a user.
+
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-a-user
         """

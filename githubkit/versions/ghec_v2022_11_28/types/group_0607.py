@@ -9,27 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0353 import DependabotAlertType
-from .group_0511 import EnterpriseWebhooksType
-from .group_0512 import SimpleInstallationType
-from .group_0513 import OrganizationSimpleWebhooksType
-from .group_0514 import RepositoryWebhooksType
+from .group_0527 import EnterpriseWebhooksType
+from .group_0528 import SimpleInstallationType
+from .group_0529 import OrganizationSimpleWebhooksType
+from .group_0530 import RepositoryWebhooksType
+from .group_0608 import WebhookCodeScanningAlertReopenedPropAlertType
 
 
-class WebhookDependabotAlertFixedType(TypedDict):
-    """Dependabot alert fixed event"""
+class WebhookCodeScanningAlertReopenedType(TypedDict):
+    """code_scanning_alert reopened event"""
 
-    action: Literal["fixed"]
-    alert: DependabotAlertType
+    action: Literal["reopened"]
+    alert: Union[WebhookCodeScanningAlertReopenedPropAlertType, None]
+    commit_oid: Union[str, None]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    ref: Union[str, None]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDependabotAlertFixedType",)
+__all__ = ("WebhookCodeScanningAlertReopenedType",)

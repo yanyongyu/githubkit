@@ -9,19 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0166 import RepositoryRuleRequiredStatusChecksPropParameters
 
 
-class RepositoryRuleRequiredDeploymentsPropParameters(GitHubModel):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
+class RepositoryRuleRequiredStatusChecks(GitHubModel):
+    """required_status_checks
 
-    required_deployment_environments: list[str] = Field(
-        description="The environments that must be successfully deployed to before branches can be merged."
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
+    """
+
+    type: Literal["required_status_checks"] = Field()
+    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleRequiredDeploymentsPropParameters)
+model_rebuild(RepositoryRuleRequiredStatusChecks)
 
-__all__ = ("RepositoryRuleRequiredDeploymentsPropParameters",)
+__all__ = ("RepositoryRuleRequiredStatusChecks",)

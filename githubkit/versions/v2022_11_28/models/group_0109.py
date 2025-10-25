@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,38 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgHook(GitHubModel):
-    """Org Hook
+class ApiInsightsSummaryStats(GitHubModel):
+    """Summary Stats
 
-    Org Hook
+    API Insights usage summary stats for an organization
     """
 
-    id: int = Field()
-    url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    name: str = Field()
-    events: list[str] = Field()
-    active: bool = Field()
-    config: OrgHookPropConfig = Field()
-    updated_at: datetime = Field()
-    created_at: datetime = Field()
-    type: str = Field()
+    total_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests within the queried time period",
+    )
+    rate_limited_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests that were rate limited within the queried time period",
+    )
 
 
-class OrgHookPropConfig(GitHubModel):
-    """OrgHookPropConfig"""
+model_rebuild(ApiInsightsSummaryStats)
 
-    url: Missing[str] = Field(default=UNSET)
-    insecure_ssl: Missing[str] = Field(default=UNSET)
-    content_type: Missing[str] = Field(default=UNSET)
-    secret: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(OrgHook)
-model_rebuild(OrgHookPropConfig)
-
-__all__ = (
-    "OrgHook",
-    "OrgHookPropConfig",
-)
+__all__ = ("ApiInsightsSummaryStats",)

@@ -13,25 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0511 import EnterpriseWebhooksType
-from .group_0512 import SimpleInstallationType
-from .group_0513 import OrganizationSimpleWebhooksType
-from .group_0514 import RepositoryWebhooksType
-from .group_0525 import WebhooksAnswerType
-from .group_0526 import DiscussionType
+from .group_0527 import EnterpriseWebhooksType
+from .group_0528 import SimpleInstallationType
+from .group_0529 import OrganizationSimpleWebhooksType
+from .group_0530 import RepositoryWebhooksType
 
 
-class WebhookDiscussionAnsweredType(TypedDict):
-    """discussion answered event"""
+class WebhookDeleteType(TypedDict):
+    """delete event"""
 
-    action: Literal["answered"]
-    answer: WebhooksAnswerType
-    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    pusher_type: str
+    ref: str
+    ref_type: Literal["tag", "branch"]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDiscussionAnsweredType",)
+__all__ = ("WebhookDeleteType",)

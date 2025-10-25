@@ -9,27 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0010 import IntegrationType
+from .group_0080 import TeamType
 
-class DeployKeyType(TypedDict):
-    """Deploy Key
 
-    An SSH key granting access to a single repository.
+class ReviewRequestRemovedIssueEventType(TypedDict):
+    """Review Request Removed Issue Event
+
+    Review Request Removed Issue Event
     """
 
     id: int
-    key: str
+    node_id: str
     url: str
-    title: str
-    verified: bool
+    actor: SimpleUserType
+    event: Literal["review_request_removed"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    read_only: bool
-    added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[datetime, None]]
-    enabled: NotRequired[bool]
+    performed_via_github_app: Union[None, IntegrationType, None]
+    review_requester: SimpleUserType
+    requested_team: NotRequired[TeamType]
+    requested_reviewer: NotRequired[SimpleUserType]
 
 
-__all__ = ("DeployKeyType",)
+__all__ = ("ReviewRequestRemovedIssueEventType",)

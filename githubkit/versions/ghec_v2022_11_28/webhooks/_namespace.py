@@ -64,6 +64,10 @@ if TYPE_CHECKING:
     from .milestone import MilestoneEvent
     from .org_block import OrgBlockEvent
     from .organization import OrganizationEvent
+    from .organization_custom_property import OrganizationCustomPropertyEvent
+    from .organization_custom_property_values import (
+        OrganizationCustomPropertyValuesEvent,
+    )
     from .package import PackageEvent
     from .page_build import PageBuildEvent
     from .personal_access_token_request import PersonalAccessTokenRequestEvent
@@ -145,6 +149,8 @@ EventNameType: TypeAlias = Literal[
     "meta",
     "milestone",
     "org_block",
+    "organization_custom_property",
+    "organization_custom_property_values",
     "organization",
     "package",
     "page_build",
@@ -226,6 +232,8 @@ VALID_EVENT_NAMES: set[EventNameType] = {
     "meta",
     "milestone",
     "org_block",
+    "organization_custom_property",
+    "organization_custom_property_values",
     "organization",
     "package",
     "page_build",
@@ -466,6 +474,16 @@ class WebhookNamespace:
     def parse(
         name: Literal["org_block"], payload: Union[str, bytes]
     ) -> "OrgBlockEvent": ...
+    @overload
+    @staticmethod
+    def parse(
+        name: Literal["organization_custom_property"], payload: Union[str, bytes]
+    ) -> "OrganizationCustomPropertyEvent": ...
+    @overload
+    @staticmethod
+    def parse(
+        name: Literal["organization_custom_property_values"], payload: Union[str, bytes]
+    ) -> "OrganizationCustomPropertyValuesEvent": ...
     @overload
     @staticmethod
     def parse(
@@ -886,6 +904,16 @@ class WebhookNamespace:
     def parse_obj(
         name: Literal["org_block"], payload: Mapping[str, Any]
     ) -> "OrgBlockEvent": ...
+    @overload
+    @staticmethod
+    def parse_obj(
+        name: Literal["organization_custom_property"], payload: Mapping[str, Any]
+    ) -> "OrganizationCustomPropertyEvent": ...
+    @overload
+    @staticmethod
+    def parse_obj(
+        name: Literal["organization_custom_property_values"], payload: Mapping[str, Any]
+    ) -> "OrganizationCustomPropertyValuesEvent": ...
     @overload
     @staticmethod
     def parse_obj(

@@ -19,39 +19,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
+class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
+    """OrgsOrgActionsSecretsGetResponse200"""
 
     total_count: int = Field()
-    secrets: list[CodespacesOrgSecret] = Field()
+    secrets: list[OrganizationActionsSecret] = Field()
 
 
-class CodespacesOrgSecret(GitHubModel):
-    """Codespaces Secret
+class OrganizationActionsSecret(GitHubModel):
+    """Actions Secret for an Organization
 
-    Secrets for a GitHub Codespace.
+    Secrets for GitHub Actions for an organization.
     """
 
-    name: str = Field(description="The name of the secret")
-    created_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    updated_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
     visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
+        description="Visibility of a secret"
     )
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
-    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesOrgSecret)
+model_rebuild(OrgsOrgActionsSecretsGetResponse200)
+model_rebuild(OrganizationActionsSecret)
 
 __all__ = (
-    "CodespacesOrgSecret",
-    "OrgsOrgCodespacesSecretsGetResponse200",
+    "OrganizationActionsSecret",
+    "OrgsOrgActionsSecretsGetResponse200",
 )

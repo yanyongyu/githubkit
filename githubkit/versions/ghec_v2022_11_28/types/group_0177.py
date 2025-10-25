@@ -9,76 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0175 import IssueType
-from .group_0176 import IssueCommentType
 
+class SecretScanningPatternConfigurationType(TypedDict):
+    """Secret scanning pattern configuration
 
-class EventPropPayloadType(TypedDict):
-    """EventPropPayload"""
-
-    action: NotRequired[str]
-    issue: NotRequired[IssueType]
-    comment: NotRequired[IssueCommentType]
-    pages: NotRequired[list[EventPropPayloadPropPagesItemsType]]
-
-
-class EventPropPayloadPropPagesItemsType(TypedDict):
-    """EventPropPayloadPropPagesItems"""
-
-    page_name: NotRequired[str]
-    title: NotRequired[str]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class EventType(TypedDict):
-    """Event
-
-    Event
+    A collection of secret scanning patterns and their settings related to push
+    protection.
     """
 
-    id: str
-    type: Union[str, None]
-    actor: ActorType
-    repo: EventPropRepoType
-    org: NotRequired[ActorType]
-    payload: EventPropPayloadType
-    public: bool
-    created_at: Union[datetime, None]
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
+    custom_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
 
 
-class ActorType(TypedDict):
-    """Actor
+class SecretScanningPatternOverrideType(TypedDict):
+    """SecretScanningPatternOverride"""
 
-    Actor
-    """
-
-    id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
-    url: str
-    avatar_url: str
-
-
-class EventPropRepoType(TypedDict):
-    """EventPropRepo"""
-
-    id: int
-    name: str
-    url: str
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    slug: NotRequired[str]
+    display_name: NotRequired[str]
+    alert_total: NotRequired[int]
+    alert_total_percentage: NotRequired[int]
+    false_positives: NotRequired[int]
+    false_positive_rate: NotRequired[int]
+    bypass_rate: NotRequired[int]
+    default_setting: NotRequired[Literal["disabled", "enabled"]]
+    enterprise_setting: NotRequired[
+        Union[None, Literal["not-set", "disabled", "enabled"]]
+    ]
+    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
 
 
 __all__ = (
-    "ActorType",
-    "EventPropPayloadPropPagesItemsType",
-    "EventPropPayloadType",
-    "EventPropRepoType",
-    "EventType",
+    "SecretScanningPatternConfigurationType",
+    "SecretScanningPatternOverrideType",
 )

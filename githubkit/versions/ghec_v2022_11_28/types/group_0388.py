@@ -9,38 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
 
+class GitCommitType(TypedDict):
+    """Git Commit
 
-class DemilestonedIssueEventType(TypedDict):
-    """Demilestoned Issue Event
-
-    Demilestoned Issue Event
+    Low-level Git commit operations within a repository
     """
 
-    id: int
+    sha: str
     node_id: str
     url: str
-    actor: SimpleUserType
-    event: Literal["demilestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: DemilestonedIssueEventPropMilestoneType
+    author: GitCommitPropAuthorType
+    committer: GitCommitPropCommitterType
+    message: str
+    tree: GitCommitPropTreeType
+    parents: list[GitCommitPropParentsItemsType]
+    verification: GitCommitPropVerificationType
+    html_url: str
 
 
-class DemilestonedIssueEventPropMilestoneType(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
+class GitCommitPropAuthorType(TypedDict):
+    """GitCommitPropAuthor
 
-    title: str
+    Identifying information for the git-user
+    """
+
+    date: datetime
+    email: str
+    name: str
+
+
+class GitCommitPropCommitterType(TypedDict):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: datetime
+    email: str
+    name: str
+
+
+class GitCommitPropTreeType(TypedDict):
+    """GitCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class GitCommitPropParentsItemsType(TypedDict):
+    """GitCommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class GitCommitPropVerificationType(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
 
 
 __all__ = (
-    "DemilestonedIssueEventPropMilestoneType",
-    "DemilestonedIssueEventType",
+    "GitCommitPropAuthorType",
+    "GitCommitPropCommitterType",
+    "GitCommitPropParentsItemsType",
+    "GitCommitPropTreeType",
+    "GitCommitPropVerificationType",
+    "GitCommitType",
 )

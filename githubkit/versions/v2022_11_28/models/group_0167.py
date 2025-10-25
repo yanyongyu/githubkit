@@ -17,20 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0168 import RepositoryRulePullRequestPropParameters
+from .group_0168 import RepositoryRuleCommitMessagePatternPropParameters
 
 
-class RepositoryRulePullRequest(GitHubModel):
-    """pull_request
+class RepositoryRuleCommitMessagePattern(GitHubModel):
+    """commit_message_pattern
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Parameters to be used for the commit_message_pattern rule
     """
 
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
+    type: Literal["commit_message_pattern"] = Field()
+    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(RepositoryRulePullRequest)
+model_rebuild(RepositoryRuleCommitMessagePattern)
 
-__all__ = ("RepositoryRulePullRequest",)
+__all__ = ("RepositoryRuleCommitMessagePattern",)

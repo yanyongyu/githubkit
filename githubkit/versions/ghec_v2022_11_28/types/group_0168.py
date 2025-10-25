@@ -9,15 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing_extensions import TypedDict
 
-
-class CombinedBillingUsageType(TypedDict):
-    """CombinedBillingUsage"""
-
-    days_left_in_billing_cycle: int
-    estimated_paid_storage_for_month: int
-    estimated_storage_for_month: int
+from .group_0169 import RulesetVersionPropActorType
 
 
-__all__ = ("CombinedBillingUsageType",)
+class RulesetVersionType(TypedDict):
+    """Ruleset version
+
+    The historical version of a ruleset
+    """
+
+    version_id: int
+    actor: RulesetVersionPropActorType
+    updated_at: datetime
+
+
+__all__ = ("RulesetVersionType",)

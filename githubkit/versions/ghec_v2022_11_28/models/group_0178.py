@@ -16,79 +16,92 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Feed(GitHubModel):
-    """Feed
+class ActionsBillingUsage(GitHubModel):
+    """ActionsBillingUsage"""
 
-    Feed
-    """
-
-    timeline_url: str = Field()
-    user_url: str = Field()
-    current_user_public_url: Missing[str] = Field(default=UNSET)
-    current_user_url: Missing[str] = Field(default=UNSET)
-    current_user_actor_url: Missing[str] = Field(default=UNSET)
-    current_user_organization_url: Missing[str] = Field(default=UNSET)
-    current_user_organization_urls: Missing[list[str]] = Field(default=UNSET)
-    security_advisories_url: Missing[str] = Field(default=UNSET)
-    repository_discussions_url: Missing[str] = Field(
-        default=UNSET, description="A feed of discussions for a given repository."
+    total_minutes_used: int = Field(
+        description="The sum of the free and paid GitHub Actions minutes used."
     )
-    repository_discussions_category_url: Missing[str] = Field(
+    total_paid_minutes_used: int = Field(
+        description="The total paid GitHub Actions minutes used."
+    )
+    included_minutes: int = Field(
+        description="The amount of free GitHub Actions minutes available."
+    )
+    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdown = Field()
+
+
+class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubModel):
+    """ActionsBillingUsagePropMinutesUsedBreakdown"""
+
+    ubuntu: Missing[int] = Field(
         default=UNSET,
-        description="A feed of discussions for a given repository and category.",
+        alias="UBUNTU",
+        description="Total minutes used on Ubuntu runner machines.",
     )
-    links: FeedPropLinks = Field(alias="_links")
+    macos: Missing[int] = Field(
+        default=UNSET,
+        alias="MACOS",
+        description="Total minutes used on macOS runner machines.",
+    )
+    windows: Missing[int] = Field(
+        default=UNSET,
+        alias="WINDOWS",
+        description="Total minutes used on Windows runner machines.",
+    )
+    ubuntu_4_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 4 core runner machines.",
+    )
+    ubuntu_8_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 8 core runner machines.",
+    )
+    ubuntu_16_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 16 core runner machines.",
+    )
+    ubuntu_32_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 32 core runner machines.",
+    )
+    ubuntu_64_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 64 core runner machines.",
+    )
+    windows_4_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 4 core runner machines.",
+    )
+    windows_8_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 8 core runner machines.",
+    )
+    windows_16_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 16 core runner machines.",
+    )
+    windows_32_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 32 core runner machines.",
+    )
+    windows_64_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 64 core runner machines.",
+    )
+    macos_12_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on macOS 12 core runner machines.",
+    )
+    total: Missing[int] = Field(
+        default=UNSET, description="Total minutes used on all runner machines."
+    )
 
 
-class FeedPropLinks(GitHubModel):
-    """FeedPropLinks"""
-
-    timeline: LinkWithType = Field(
-        title="Link With Type", description="Hypermedia Link with Type"
-    )
-    user: LinkWithType = Field(
-        title="Link With Type", description="Hypermedia Link with Type"
-    )
-    security_advisories: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_public: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_actor: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_organization: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_organizations: Missing[list[LinkWithType]] = Field(default=UNSET)
-    repository_discussions: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    repository_discussions_category: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-
-
-class LinkWithType(GitHubModel):
-    """Link With Type
-
-    Hypermedia Link with Type
-    """
-
-    href: str = Field()
-    type: str = Field()
-
-
-model_rebuild(Feed)
-model_rebuild(FeedPropLinks)
-model_rebuild(LinkWithType)
+model_rebuild(ActionsBillingUsage)
+model_rebuild(ActionsBillingUsagePropMinutesUsedBreakdown)
 
 __all__ = (
-    "Feed",
-    "FeedPropLinks",
-    "LinkWithType",
+    "ActionsBillingUsage",
+    "ActionsBillingUsagePropMinutesUsedBreakdown",
 )

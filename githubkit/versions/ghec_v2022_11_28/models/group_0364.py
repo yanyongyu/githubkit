@@ -9,33 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0365 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class ContentSymlink(GitHubModel):
+    """Symlink Content
 
-    id: int = Field()
-    node_id: str = Field()
-    prevent_self_review: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether deployments to this environment can be approved by the user who created the deployment.",
-    )
-    type: str = Field()
-    reviewers: Missing[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
-    ] = Field(
-        default=UNSET,
-        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
-    )
+    An object describing a symlink
+    """
+
+    type: Literal["symlink"] = Field()
+    target: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentSymlinkPropLinks = Field(alias="_links")
 
 
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
+class ContentSymlinkPropLinks(GitHubModel):
+    """ContentSymlinkPropLinks"""
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(ContentSymlink)
+model_rebuild(ContentSymlinkPropLinks)
+
+__all__ = (
+    "ContentSymlink",
+    "ContentSymlinkPropLinks",
+)

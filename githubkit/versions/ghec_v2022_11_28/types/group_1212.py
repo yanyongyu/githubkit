@@ -9,19 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType(
-    TypedDict
-):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody"""
-
-    status: Literal["approve", "reject"]
-    message: str
+from .group_0293 import JobType
 
 
-__all__ = (
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType",
-)
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
+
+    total_count: int
+    jobs: list[JobType]
+
+
+__all__ = ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",)

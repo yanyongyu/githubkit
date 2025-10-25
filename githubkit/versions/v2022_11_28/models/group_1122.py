@@ -15,35 +15,24 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0011 import WebhookConfig
 
+class ReposOwnerRepoForksPostBody(GitHubModel):
+    """ReposOwnerRepoForksPostBody"""
 
-class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
-
-    config: Missing[WebhookConfig] = Field(
+    organization: Missing[str] = Field(
         default=UNSET,
-        title="Webhook Configuration",
-        description="Configuration object of the webhook",
+        description="Optional parameter to specify the organization name if forking into an organization.",
     )
-    events: Missing[list[str]] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
+        description="When forking from an existing repository, a new name for the fork.",
     )
-    add_events: Missing[list[str]] = Field(
+    default_branch_only: Missing[bool] = Field(
         default=UNSET,
-        description="Determines a list of events to be added to the list of events that the Hook triggers for.",
-    )
-    remove_events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
-    )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+        description="When forking from an existing repository, fork with only the default branch.",
     )
 
 
-model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
+model_rebuild(ReposOwnerRepoForksPostBody)
 
-__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)
+__all__ = ("ReposOwnerRepoForksPostBody",)

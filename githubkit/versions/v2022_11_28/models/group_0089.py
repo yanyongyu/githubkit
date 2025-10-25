@@ -15,27 +15,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0088 import RunnerLabel
 
+class ActionsPublicKey(GitHubModel):
+    """ActionsPublicKey
 
-class Runner(GitHubModel):
-    """Self hosted runners
-
-    A self hosted runner
+    The public key used for setting Actions Secrets.
     """
 
-    id: int = Field(description="The ID of the runner.")
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the runner group."
-    )
-    name: str = Field(description="The name of the runner.")
-    os: str = Field(description="The Operating System of the runner.")
-    status: str = Field(description="The status of the runner.")
-    busy: bool = Field()
-    labels: list[RunnerLabel] = Field()
-    ephemeral: Missing[bool] = Field(default=UNSET)
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(Runner)
+model_rebuild(ActionsPublicKey)
 
-__all__ = ("Runner",)
+__all__ = ("ActionsPublicKey",)

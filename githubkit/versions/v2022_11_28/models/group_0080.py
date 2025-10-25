@@ -12,14 +12,30 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsArtifactAndLogRetention(GitHubModel):
-    """ActionsArtifactAndLogRetention"""
+class ActionsForkPrWorkflowsPrivateReposRequest(GitHubModel):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
 
-    days: int = Field(description="The number of days to retain artifacts and logs")
+    run_workflows_from_fork_pull_requests: bool = Field(
+        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
+    )
+    send_write_tokens_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request.",
+    )
+    send_secrets_and_variables: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks.",
+    )
+    require_approval_for_fork_pr_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run.",
+    )
 
 
-model_rebuild(ActionsArtifactAndLogRetention)
+model_rebuild(ActionsForkPrWorkflowsPrivateReposRequest)
 
-__all__ = ("ActionsArtifactAndLogRetention",)
+__all__ = ("ActionsForkPrWorkflowsPrivateReposRequest",)

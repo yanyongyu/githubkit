@@ -10,55 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0196 import RulesetVersionPropActor
+from .group_0199 import RulesetVersionWithStateAllof1PropState
 
 
-class RuleSuitesItems(GitHubModel):
-    """RuleSuitesItems"""
+class RulesetVersionWithState(GitHubModel):
+    """RulesetVersionWithState"""
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the rule insight."
+    version_id: int = Field(description="The ID of the previous version of the ruleset")
+    actor: RulesetVersionPropActor = Field(
+        description="The actor who updated the ruleset"
     )
-    actor_id: Missing[int] = Field(
-        default=UNSET, description="The number that identifies the user."
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET, description="The handle for the GitHub user account."
-    )
-    before_sha: Missing[str] = Field(
-        default=UNSET, description="The first commit sha before the push evaluation."
-    )
-    after_sha: Missing[str] = Field(
-        default=UNSET, description="The last commit sha in the push evaluation."
-    )
-    ref: Missing[str] = Field(
-        default=UNSET, description="The ref name that the evaluation ran on."
-    )
-    repository_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the repository associated with the rule evaluation.",
-    )
-    repository_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the repository without the `.git` extension.",
-    )
-    pushed_at: Missing[datetime] = Field(default=UNSET)
-    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` enforcement status.",
-    )
-    evaluation_result: Missing[Literal["pass", "fail", "bypass"]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
+    updated_at: datetime = Field()
+    state: RulesetVersionWithStateAllof1PropState = Field(
+        description="The state of the ruleset version"
     )
 
 
-model_rebuild(RuleSuitesItems)
+model_rebuild(RulesetVersionWithState)
 
-__all__ = ("RuleSuitesItems",)
+__all__ = ("RulesetVersionWithState",)

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,131 +18,93 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0070 import ActionsHostedRunnerMachineSpec
 
-class OrganizationFull(GitHubModel):
-    """Organization Full
 
-    Organization Full
+class ActionsHostedRunner(GitHubModel):
+    """GitHub-hosted hosted runner
+
+    A Github-hosted hosted runner.
     """
 
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    company: Missing[Union[str, None]] = Field(default=UNSET)
-    blog: Missing[Union[str, None]] = Field(default=UNSET)
-    location: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
-    is_verified: Missing[bool] = Field(default=UNSET)
-    has_organization_projects: bool = Field()
-    has_repository_projects: bool = Field()
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
-    html_url: str = Field()
-    type: str = Field()
-    total_private_repos: Missing[int] = Field(default=UNSET)
-    owned_private_repos: Missing[int] = Field(default=UNSET)
-    private_gists: Missing[Union[int, None]] = Field(default=UNSET)
-    disk_usage: Missing[Union[int, None]] = Field(default=UNSET)
-    collaborators: Missing[Union[int, None]] = Field(
+    id: int = Field(description="The unique identifier of the hosted runner.")
+    name: str = Field(description="The name of the hosted runner.")
+    runner_group_id: Missing[int] = Field(
         default=UNSET,
-        description="The number of collaborators on private repositories.\n\nThis field may be null if the number of private repositories is over 50,000.",
+        description="The unique identifier of the group that the hosted runner belongs to.",
     )
-    billing_email: Missing[Union[str, None]] = Field(default=UNSET)
-    plan: Missing[OrganizationFullPropPlan] = Field(default=UNSET)
-    default_repository_permission: Missing[Union[str, None]] = Field(default=UNSET)
-    default_repository_branch: Missing[Union[str, None]] = Field(
+    image_details: Union[None, ActionsHostedRunnerPoolImage] = Field()
+    machine_size_details: ActionsHostedRunnerMachineSpec = Field(
+        title="Github-owned VM details.",
+        description="Provides details of a particular machine spec.",
+    )
+    status: Literal["Ready", "Provisioning", "Shutdown", "Deleting", "Stuck"] = Field(
+        description="The status of the runner."
+    )
+    platform: str = Field(description="The operating system of the image.")
+    maximum_runners: Missing[int] = Field(
         default=UNSET,
-        description="The default branch for repositories created in this organization.",
+        description="The maximum amount of hosted runners. Runners will not scale automatically above this number. Use this setting to limit your cost.",
     )
-    members_can_create_repositories: Missing[Union[bool, None]] = Field(default=UNSET)
-    two_factor_requirement_enabled: Missing[Union[bool, None]] = Field(default=UNSET)
-    members_allowed_repository_creation_type: Missing[str] = Field(default=UNSET)
-    members_can_create_public_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_private_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_internal_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_pages: Missing[bool] = Field(default=UNSET)
-    members_can_create_public_pages: Missing[bool] = Field(default=UNSET)
-    members_can_create_private_pages: Missing[bool] = Field(default=UNSET)
-    members_can_delete_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_change_repo_visibility: Missing[bool] = Field(default=UNSET)
-    members_can_invite_outside_collaborators: Missing[bool] = Field(default=UNSET)
-    members_can_delete_issues: Missing[bool] = Field(default=UNSET)
-    display_commenter_full_name_setting_enabled: Missing[bool] = Field(default=UNSET)
-    readers_can_create_discussions: Missing[bool] = Field(default=UNSET)
-    members_can_create_teams: Missing[bool] = Field(default=UNSET)
-    members_can_view_dependency_insights: Missing[bool] = Field(default=UNSET)
-    members_can_fork_private_repositories: Missing[Union[bool, None]] = Field(
-        default=UNSET
+    public_ip_enabled: bool = Field(
+        description="Whether public IP is enabled for the hosted runners."
     )
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
-    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
+    public_ips: Missing[list[PublicIp]] = Field(
         default=UNSET,
-        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/rest/code-security/configurations) instead.\n\nWhether GitHub Advanced Security is enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+        description="The public IP ranges when public IP is enabled for the hosted runners.",
     )
-    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
+    last_active_on: Missing[Union[datetime, None]] = Field(
         default=UNSET,
-        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/rest/code-security/configurations) instead.\n\nWhether Dependabot alerts are automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+        description="The time at which the runner was last used, in ISO 8601 format.",
     )
-    dependabot_security_updates_enabled_for_new_repositories: Missing[bool] = Field(
+    image_gen: Missing[bool] = Field(
         default=UNSET,
-        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/rest/code-security/configurations) instead.\n\nWhether Dependabot security updates are automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
-    )
-    dependency_graph_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/rest/code-security/configurations) instead.\n\nWhether dependency graph is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
-    )
-    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/rest/code-security/configurations) instead.\n\nWhether secret scanning is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
-    )
-    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/rest/code-security/configurations) instead.\n\nWhether secret scanning push protection is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
-    )
-    secret_scanning_push_protection_custom_link_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether a custom link is shown to contributors who are blocked from pushing a secret by push protection.",
-    )
-    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional URL string to display to contributors who are blocked from pushing a secret.",
-    )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    archived_at: Union[datetime, None] = Field()
-    deploy_keys_enabled_for_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Controls whether or not deploy keys may be added and used for repositories in the organization.",
+        description="Whether custom image generation is enabled for the hosted runners.",
     )
 
 
-class OrganizationFullPropPlan(GitHubModel):
-    """OrganizationFullPropPlan"""
+class ActionsHostedRunnerPoolImage(GitHubModel):
+    """GitHub-hosted runner image details.
 
-    name: str = Field()
-    space: int = Field()
-    private_repos: int = Field()
-    filled_seats: Missing[int] = Field(default=UNSET)
-    seats: Missing[int] = Field(default=UNSET)
+    Provides details of a hosted runner image
+    """
+
+    id: str = Field(
+        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
+    )
+    size_gb: int = Field(description="Image size in GB.")
+    display_name: str = Field(description="Display name for this image.")
+    source: Literal["github", "partner", "custom"] = Field(
+        description="The image provider."
+    )
+    version: Missing[str] = Field(
+        default=UNSET, description="The image version of the hosted runner pool."
+    )
 
 
-model_rebuild(OrganizationFull)
-model_rebuild(OrganizationFullPropPlan)
+class PublicIp(GitHubModel):
+    """Public IP for a GitHub-hosted larger runners.
+
+    Provides details of Public IP for a GitHub-hosted larger runners
+    """
+
+    enabled: Missing[bool] = Field(
+        default=UNSET, description="Whether public IP is enabled."
+    )
+    prefix: Missing[str] = Field(
+        default=UNSET, description="The prefix for the public IP."
+    )
+    length: Missing[int] = Field(
+        default=UNSET, description="The length of the IP prefix."
+    )
+
+
+model_rebuild(ActionsHostedRunner)
+model_rebuild(ActionsHostedRunnerPoolImage)
+model_rebuild(PublicIp)
 
 __all__ = (
-    "OrganizationFull",
-    "OrganizationFullPropPlan",
+    "ActionsHostedRunner",
+    "ActionsHostedRunnerPoolImage",
+    "PublicIp",
 )

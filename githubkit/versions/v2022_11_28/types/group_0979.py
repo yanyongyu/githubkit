@@ -9,15 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class OrgsOrgPersonalAccessTokensPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokensPostBody"""
-
-    action: Literal["revoke"]
-    pat_ids: list[int]
+from .group_0098 import CodespaceType
 
 
-__all__ = ("OrgsOrgPersonalAccessTokensPostBodyType",)
+class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+
+    total_count: int
+    codespaces: list[CodespaceType]
+
+
+__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200Type",)

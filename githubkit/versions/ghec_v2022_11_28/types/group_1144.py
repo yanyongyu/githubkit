@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type(TypedDict):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403"""
+class OrgsOrgPersonalAccessTokensPatIdPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    action: Literal["revoke"]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type",)
+__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBodyType",)

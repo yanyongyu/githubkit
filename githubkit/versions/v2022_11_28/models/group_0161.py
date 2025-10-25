@@ -9,22 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleRequiredLinearHistory(GitHubModel):
-    """required_linear_history
+class RepositoryRuleRequiredDeploymentsPropParameters(GitHubModel):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    Prevent merge commits from being pushed to matching refs.
-    """
+    required_deployment_environments: list[str] = Field(
+        description="The environments that must be successfully deployed to before branches can be merged."
+    )
 
-    type: Literal["required_linear_history"] = Field()
 
+model_rebuild(RepositoryRuleRequiredDeploymentsPropParameters)
 
-model_rebuild(RepositoryRuleRequiredLinearHistory)
-
-__all__ = ("RepositoryRuleRequiredLinearHistory",)
+__all__ = ("RepositoryRuleRequiredDeploymentsPropParameters",)

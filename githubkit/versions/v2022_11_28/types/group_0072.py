@@ -9,14 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsCacheUsageOrgEnterpriseType(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class ActionsHostedRunnerCuratedImageType(TypedDict):
+    """GitHub-hosted runner image details.
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    Provides details of a hosted runner image
+    """
+
+    id: str
+    platform: str
+    size_gb: int
+    display_name: str
+    source: Literal["github", "partner", "custom"]
 
 
-__all__ = ("ActionsCacheUsageOrgEnterpriseType",)
+__all__ = ("ActionsHostedRunnerCuratedImageType",)

@@ -9,16 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0142 import RepositoryRulesetBypassActorType
+from .group_0151 import OrgRulesetConditionsOneof0Type
+from .group_0152 import OrgRulesetConditionsOneof1Type
+from .group_0153 import OrgRulesetConditionsOneof2Type
+from .group_0154 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
+from .group_0155 import RepositoryRuleUpdateType
+from .group_0157 import RepositoryRuleRequiredLinearHistoryType
+from .group_0160 import RepositoryRuleRequiredDeploymentsType
+from .group_0163 import RepositoryRulePullRequestType
+from .group_0165 import RepositoryRuleRequiredStatusChecksType
+from .group_0167 import RepositoryRuleCommitMessagePatternType
+from .group_0169 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0171 import RepositoryRuleCommitterEmailPatternType
+from .group_0173 import RepositoryRuleBranchNamePatternType
+from .group_0175 import RepositoryRuleTagNamePatternType
+from .group_0177 import RepositoryRuleFilePathRestrictionType
+from .group_0179 import RepositoryRuleMaxFilePathLengthType
+from .group_0181 import RepositoryRuleFileExtensionRestrictionType
+from .group_0183 import RepositoryRuleMaxFileSizeType
+from .group_0186 import RepositoryRuleWorkflowsType
+from .group_0188 import RepositoryRuleCodeScanningType
 
-class OrgsOrgSettingsNetworkConfigurationsPostBodyType(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+
+class OrgsOrgRulesetsPostBodyType(TypedDict):
+    """OrgsOrgRulesetsPostBody"""
 
     name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[
+        Union[
+            OrgRulesetConditionsOneof0Type,
+            OrgRulesetConditionsOneof1Type,
+            OrgRulesetConditionsOneof2Type,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+            ]
+        ]
+    ]
 
 
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsPostBodyType",)
+__all__ = ("OrgsOrgRulesetsPostBodyType",)

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,18 +19,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0511 import EnterpriseWebhooks
-from .group_0512 import SimpleInstallation
-from .group_0513 import OrganizationSimpleWebhooks
-from .group_0514 import RepositoryWebhooks
-from .group_0559 import WebhooksSponsorship
+from .group_0527 import EnterpriseWebhooks
+from .group_0528 import SimpleInstallation
+from .group_0529 import OrganizationSimpleWebhooks
+from .group_0530 import RepositoryWebhooks
 
 
-class WebhookSponsorshipEdited(GitHubModel):
-    """sponsorship edited event"""
+class WebhookRepositoryVulnerabilityAlertDismiss(GitHubModel):
+    """repository_vulnerability_alert dismiss event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookSponsorshipEditedPropChanges = Field()
+    action: Literal["dismiss"] = Field()
+    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlert = Field(
+        title="Repository Vulnerability Alert Alert",
+        description="The security alert of the vulnerable dependency.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,38 +48,74 @@ class WebhookSponsorshipEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    sponsorship: WebhooksSponsorship = Field()
 
 
-class WebhookSponsorshipEditedPropChanges(GitHubModel):
-    """WebhookSponsorshipEditedPropChanges"""
+class WebhookRepositoryVulnerabilityAlertDismissPropAlert(GitHubModel):
+    """Repository Vulnerability Alert Alert
 
-    privacy_level: Missing[WebhookSponsorshipEditedPropChangesPropPrivacyLevel] = Field(
-        default=UNSET
-    )
+    The security alert of the vulnerable dependency.
+    """
+
+    affected_package_name: str = Field()
+    affected_range: str = Field()
+    created_at: str = Field()
+    dismiss_comment: Missing[Union[str, None]] = Field(default=UNSET)
+    dismiss_reason: str = Field()
+    dismissed_at: str = Field()
+    dismisser: Union[
+        WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser, None
+    ] = Field(title="User")
+    external_identifier: str = Field()
+    external_reference: Union[str, None] = Field()
+    fix_reason: Missing[str] = Field(default=UNSET)
+    fixed_at: Missing[datetime] = Field(default=UNSET)
+    fixed_in: Missing[str] = Field(default=UNSET)
+    ghsa_id: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    number: int = Field()
+    severity: str = Field()
+    state: Literal["dismissed"] = Field()
 
 
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevel(GitHubModel):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser(GitHubModel):
+    """User"""
 
-    from_: str = Field(
-        alias="from",
-        description="The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy.",
-    )
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookSponsorshipEdited)
-model_rebuild(WebhookSponsorshipEditedPropChanges)
-model_rebuild(WebhookSponsorshipEditedPropChangesPropPrivacyLevel)
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismiss)
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlert)
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser)
 
 __all__ = (
-    "WebhookSponsorshipEdited",
-    "WebhookSponsorshipEditedPropChanges",
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevel",
+    "WebhookRepositoryVulnerabilityAlertDismiss",
+    "WebhookRepositoryVulnerabilityAlertDismissPropAlert",
+    "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser",
 )

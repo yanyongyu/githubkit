@@ -12,34 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ExternalGroups(GitHubModel):
-    """ExternalGroups
+class OidcCustomSub(GitHubModel):
+    """Actions OIDC Subject customization
 
-    A list of external groups available to be connected to a team
+    Actions OIDC Subject customization
     """
 
-    groups: Missing[list[ExternalGroupsPropGroupsItems]] = Field(
-        default=UNSET,
-        description="An array of external groups available to be mapped to a team",
+    include_claim_keys: list[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
     )
 
 
-class ExternalGroupsPropGroupsItems(GitHubModel):
-    """ExternalGroupsPropGroupsItems"""
+model_rebuild(OidcCustomSub)
 
-    group_id: int = Field(description="The internal ID of the group")
-    group_name: str = Field(description="The display name of the group")
-    updated_at: str = Field(description="The time of the last update for this group")
-
-
-model_rebuild(ExternalGroups)
-model_rebuild(ExternalGroupsPropGroupsItems)
-
-__all__ = (
-    "ExternalGroups",
-    "ExternalGroupsPropGroupsItems",
-)
+__all__ = ("OidcCustomSub",)

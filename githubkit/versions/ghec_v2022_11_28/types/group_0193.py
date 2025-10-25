@@ -10,23 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0010 import IntegrationType
+from .group_0189 import ReactionRollupType
 
-class ThreadSubscriptionType(TypedDict):
-    """Thread Subscription
 
-    Thread Subscription
+class IssueCommentType(TypedDict):
+    """Issue Comment
+
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: Union[datetime, None]
+    id: int
+    node_id: str
     url: str
-    thread_url: NotRequired[str]
-    repository_url: NotRequired[str]
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = ("ThreadSubscriptionType",)
+__all__ = ("IssueCommentType",)

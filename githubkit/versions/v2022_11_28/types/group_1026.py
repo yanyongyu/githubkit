@@ -9,17 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class ProjectsProjectIdPatchBodyType(TypedDict):
+    """ProjectsProjectIdPatchBody"""
 
-    Actions OIDC subject customization for a repository
-    """
+    name: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    state: NotRequired[str]
+    organization_permission: NotRequired[Literal["read", "write", "admin", "none"]]
+    private: NotRequired[bool]
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
 
-
-__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",)
+__all__ = ("ProjectsProjectIdPatchBodyType",)

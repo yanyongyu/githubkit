@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,23 +19,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName(GitHubModel):
-    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
+class NetworkConfiguration(GitHubModel):
+    """Hosted compute network configuration
 
-    include: Missing[list[str]] = Field(
+    A hosted compute network configuration.
+    """
+
+    id: str = Field(description="The unique identifier of the network configuration.")
+    name: str = Field(description="The name of the network configuration.")
+    compute_service: Missing[Literal["none", "actions", "codespaces"]] = Field(
         default=UNSET,
-        description="Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.",
+        description="The hosted compute service the network configuration supports.",
     )
-    exclude: Missing[list[str]] = Field(
+    network_settings_ids: Missing[list[str]] = Field(
         default=UNSET,
-        description="Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.",
+        description="The unique identifier of each network settings in the configuration.",
     )
-    protected: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether renaming of target repositories is prevented.",
+    created_on: Union[datetime, None] = Field(
+        description="The time at which the network configuration was created, in ISO 8601 format."
     )
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName)
+model_rebuild(NetworkConfiguration)
 
-__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",)
+__all__ = ("NetworkConfiguration",)

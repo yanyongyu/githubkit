@@ -9,46 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from datetime import date, datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0172 import ReactionRollupType
-from .group_0426 import ReleaseAssetType
 
+class PageType(TypedDict):
+    """GitHub Pages
 
-class ReleaseType(TypedDict):
-    """Release
-
-    A release.
+    The configuration for GitHub Pages for a repository.
     """
 
     url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
-    id: int
-    node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: datetime
-    published_at: Union[datetime, None]
-    updated_at: NotRequired[Union[datetime, None]]
-    author: SimpleUserType
-    assets: list[ReleaseAssetType]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
+    status: Union[None, Literal["built", "building", "errored"]]
+    cname: Union[str, None]
+    protected_domain_state: NotRequired[
+        Union[None, Literal["pending", "verified", "unverified"]]
+    ]
+    pending_domain_unverified_at: NotRequired[Union[datetime, None]]
+    custom_404: bool
+    html_url: NotRequired[str]
+    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
+    source: NotRequired[PagesSourceHashType]
+    public: bool
+    https_certificate: NotRequired[PagesHttpsCertificateType]
+    https_enforced: NotRequired[bool]
 
 
-__all__ = ("ReleaseType",)
+class PagesSourceHashType(TypedDict):
+    """Pages Source Hash"""
+
+    branch: str
+    path: str
+
+
+class PagesHttpsCertificateType(TypedDict):
+    """Pages Https Certificate"""
+
+    state: Literal[
+        "new",
+        "authorization_created",
+        "authorization_pending",
+        "authorized",
+        "authorization_revoked",
+        "issued",
+        "uploaded",
+        "approved",
+        "errored",
+        "bad_authz",
+        "destroy_pending",
+        "dns_changed",
+    ]
+    description: str
+    domains: list[str]
+    expires_at: NotRequired[date]
+
+
+__all__ = (
+    "PageType",
+    "PagesHttpsCertificateType",
+    "PagesSourceHashType",
+)

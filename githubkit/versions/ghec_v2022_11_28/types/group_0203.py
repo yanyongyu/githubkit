@@ -13,19 +13,25 @@ from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class CodespaceMachineType(TypedDict):
-    """Codespace machine
+class MarketplaceListingPlanType(TypedDict):
+    """Marketplace Listing Plan
 
-    A description of the machine powering a codespace.
+    Marketplace Listing Plan
     """
 
+    url: str
+    accounts_url: str
+    id: int
+    number: int
     name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
+    description: str
+    monthly_price_in_cents: int
+    yearly_price_in_cents: int
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    has_free_trial: bool
+    unit_name: Union[str, None]
+    state: str
+    bullets: list[str]
 
 
-__all__ = ("CodespaceMachineType",)
+__all__ = ("MarketplaceListingPlanType",)

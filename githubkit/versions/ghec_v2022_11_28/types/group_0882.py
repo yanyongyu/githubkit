@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0511 import EnterpriseWebhooksType
-from .group_0512 import SimpleInstallationType
-from .group_0513 import OrganizationSimpleWebhooksType
-from .group_0514 import RepositoryWebhooksType
-from .group_0557 import SecretScanningAlertWebhookType
+from .group_0167 import RepositoryRulesetType
+from .group_0527 import EnterpriseWebhooksType
+from .group_0528 import SimpleInstallationType
+from .group_0529 import OrganizationSimpleWebhooksType
+from .group_0530 import RepositoryWebhooksType
 
 
-class WebhookSecretScanningAlertValidatedType(TypedDict):
-    """secret_scanning_alert validated event"""
+class WebhookRepositoryRulesetCreatedType(TypedDict):
+    """repository ruleset created event"""
 
-    action: Literal["validated"]
-    alert: SecretScanningAlertWebhookType
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookSecretScanningAlertValidatedType",)
+__all__ = ("WebhookRepositoryRulesetCreatedType",)

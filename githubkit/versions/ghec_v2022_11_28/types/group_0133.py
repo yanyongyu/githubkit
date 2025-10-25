@@ -9,13 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0134 import RepositoryRuleRequiredStatusChecksPropParametersType
 
 
-class RepositoryRuleFileExtensionRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+class RepositoryRuleRequiredStatusChecksType(TypedDict):
+    """required_status_checks
 
-    restricted_file_extensions: list[str]
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
+    """
+
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
 
 
-__all__ = ("RepositoryRuleFileExtensionRestrictionPropParametersType",)
+__all__ = ("RepositoryRuleRequiredStatusChecksType",)

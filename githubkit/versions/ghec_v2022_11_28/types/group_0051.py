@@ -10,19 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0020 import RepositoryType
 
-class AnnouncementType(TypedDict):
-    """Enterprise Announcement
 
-    Enterprise global announcement
+class AuthenticationTokenType(TypedDict):
+    """Authentication Token
+
+    Authentication Token
     """
 
-    announcement: Union[str, None]
-    expires_at: NotRequired[Union[datetime, None]]
-    user_dismissible: NotRequired[Union[bool, None]]
+    token: str
+    expires_at: datetime
+    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
+    repositories: NotRequired[list[RepositoryType]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
 
 
-__all__ = ("AnnouncementType",)
+class AuthenticationTokenPropPermissionsType(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+__all__ = (
+    "AuthenticationTokenPropPermissionsType",
+    "AuthenticationTokenType",
+)

@@ -9,36 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
+from .group_0010 import IntegrationType
 
 
-class PageBuildType(TypedDict):
-    """Page Build
+class RemovedFromProjectIssueEventType(TypedDict):
+    """Removed from Project Issue Event
 
-    Page Build
+    Removed from Project Issue Event
     """
 
+    id: int
+    node_id: str
     url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: datetime
-    updated_at: datetime
+    actor: SimpleUserType
+    event: Literal["removed_from_project"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
 
 
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
+class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
+    """RemovedFromProjectIssueEventPropProjectCard"""
 
-    message: Union[str, None]
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
 
 
 __all__ = (
-    "PageBuildPropErrorType",
-    "PageBuildType",
+    "RemovedFromProjectIssueEventPropProjectCardType",
+    "RemovedFromProjectIssueEventType",
 )

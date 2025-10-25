@@ -9,30 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class GroupMappingType(TypedDict):
-    """GroupMapping
+class ProjectsV2ItemWithContentType(TypedDict):
+    """Projects v2 Item
 
-    External Groups to be mapped to a team for membership
+    An item belonging to a project
     """
 
-    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
+    id: float
+    node_id: NotRequired[str]
+    project_url: NotRequired[str]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    content: NotRequired[Union[ProjectsV2ItemWithContentPropContentType, None]]
+    creator: NotRequired[SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    archived_at: Union[datetime, None]
+    item_url: NotRequired[Union[str, None]]
+    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsType]]
 
 
-class GroupMappingPropGroupsItemsType(TypedDict):
-    """GroupMappingPropGroupsItems"""
+ProjectsV2ItemWithContentPropContentType: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropContent
 
-    group_id: str
-    group_name: str
-    group_description: str
-    status: NotRequired[str]
-    synced_at: NotRequired[Union[str, None]]
+The content of the item, which varies by content type.
+"""
+
+
+ProjectsV2ItemWithContentPropFieldsItemsType: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropFieldsItems
+"""
 
 
 __all__ = (
-    "GroupMappingPropGroupsItemsType",
-    "GroupMappingType",
+    "ProjectsV2ItemWithContentPropContentType",
+    "ProjectsV2ItemWithContentPropFieldsItemsType",
+    "ProjectsV2ItemWithContentType",
 )

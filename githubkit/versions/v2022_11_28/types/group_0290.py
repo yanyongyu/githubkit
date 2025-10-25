@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0064 import MinimalRepositoryType
+from .group_0061 import MinimalRepositoryType
 
 
 class CombinedCommitStatusType(TypedDict):

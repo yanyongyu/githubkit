@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,40 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ContentFile(GitHubModel):
-    """Content File
+class CodeScanningDefaultSetupUpdateResponse(GitHubModel):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    Content File
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    type: Literal["file"] = Field()
-    encoding: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    content: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentFilePropLinks = Field(alias="_links")
-    target: Missing[str] = Field(default=UNSET)
-    submodule_git_url: Missing[str] = Field(default=UNSET)
+    run_id: Missing[int] = Field(
+        default=UNSET, description="ID of the corresponding run."
+    )
+    run_url: Missing[str] = Field(
+        default=UNSET, description="URL of the corresponding run."
+    )
 
 
-class ContentFilePropLinks(GitHubModel):
-    """ContentFilePropLinks"""
+model_rebuild(CodeScanningDefaultSetupUpdateResponse)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentFile)
-model_rebuild(ContentFilePropLinks)
-
-__all__ = (
-    "ContentFile",
-    "ContentFilePropLinks",
-)
+__all__ = ("CodeScanningDefaultSetupUpdateResponse",)

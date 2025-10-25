@@ -14,13 +14,43 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
     total_count: int = Field()
-    platforms: list[str] = Field()
+    images: list[ActionsHostedRunnerCustomImage] = Field()
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersPlatformsGetResponse200)
+class ActionsHostedRunnerCustomImage(GitHubModel):
+    """GitHub-hosted runner custom image details
 
-__all__ = ("OrgsOrgActionsHostedRunnersPlatformsGetResponse200",)
+    Provides details of a custom runner image
+    """
+
+    id: int = Field(
+        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
+    )
+    platform: str = Field(description="The operating system of the image.")
+    total_versions_size: int = Field(
+        description="Total size of all the image versions in GB."
+    )
+    name: str = Field(description="Display name for this image.")
+    source: str = Field(description="The image provider.")
+    versions_count: int = Field(
+        description="The number of image versions associated with the image."
+    )
+    latest_version: str = Field(
+        description="The latest image version associated with the image."
+    )
+    state: str = Field(
+        description="The number of image versions associated with the image."
+    )
+
+
+model_rebuild(OrgsOrgActionsHostedRunnersImagesCustomGetResponse200)
+model_rebuild(ActionsHostedRunnerCustomImage)
+
+__all__ = (
+    "ActionsHostedRunnerCustomImage",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200",
+)

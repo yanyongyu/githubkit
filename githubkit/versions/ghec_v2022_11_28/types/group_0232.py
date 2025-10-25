@@ -9,17 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomOrganizationRoleCreateSchemaType(TypedDict):
-    """OrganizationCustomOrganizationRoleCreateSchema"""
+class ExternalGroupsType(TypedDict):
+    """ExternalGroups
 
-    name: str
-    description: NotRequired[str]
-    permissions: list[str]
-    base_role: NotRequired[Literal["read", "triage", "write", "maintain", "admin"]]
+    A list of external groups available to be connected to a team
+    """
+
+    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
 
 
-__all__ = ("OrganizationCustomOrganizationRoleCreateSchemaType",)
+class ExternalGroupsPropGroupsItemsType(TypedDict):
+    """ExternalGroupsPropGroupsItems"""
+
+    group_id: int
+    group_name: str
+    updated_at: str
+
+
+__all__ = (
+    "ExternalGroupsPropGroupsItemsType",
+    "ExternalGroupsType",
+)

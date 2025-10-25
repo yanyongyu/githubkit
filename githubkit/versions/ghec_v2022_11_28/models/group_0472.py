@@ -12,21 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0468 import Traffic
-
-
-class ViewTraffic(GitHubModel):
-    """View Traffic
-
-    View Traffic
-    """
-
-    count: int = Field()
-    uniques: int = Field()
-    views: list[Traffic] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ViewTraffic)
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-__all__ = ("ViewTraffic",)
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
+    )
+    pattern_scope: Missing[str] = Field(
+        default=UNSET,
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
+    )
+
+
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1)
+
+__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1",)

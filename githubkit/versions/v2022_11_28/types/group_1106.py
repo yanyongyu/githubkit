@@ -9,32 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
     total_count: int
-    branch_policies: list[DeploymentBranchPolicyType]
+    secrets: list[DependabotSecretType]
 
 
-class DeploymentBranchPolicyType(TypedDict):
-    """Deployment branch policy
+class DependabotSecretType(TypedDict):
+    """Dependabot Secret
 
-    Details of a deployment branch or tag policy.
+    Set secrets for Dependabot.
     """
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
+    name: str
+    created_at: datetime
+    updated_at: datetime
 
 
 __all__ = (
-    "DeploymentBranchPolicyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
+    "DependabotSecretType",
+    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
 )

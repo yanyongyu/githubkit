@@ -11,26 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class BranchShortType(TypedDict):
-    """Branch Short
-
-    Branch Short
-    """
-
-    name: str
-    commit: BranchShortPropCommitType
-    protected: bool
+from .group_0339 import CodeScanningVariantAnalysisRepositoryType
 
 
-class BranchShortPropCommitType(TypedDict):
-    """BranchShortPropCommit"""
+class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    sha: str
-    url: str
+    repository_count: int
+    repositories: list[CodeScanningVariantAnalysisRepositoryType]
 
 
-__all__ = (
-    "BranchShortPropCommitType",
-    "BranchShortType",
-)
+__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroupType",)

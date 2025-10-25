@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0097 import RepositoryRulesetConditionsPropRefNameType
-from .group_0099 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-)
+from .group_0146 import RepositoryRuleFilePathRestrictionPropParametersType
 
 
-class OrgRulesetConditionsOneof2Type(TypedDict):
-    """repository_property_and_ref_name
+class RepositoryRuleFilePathRestrictionType(TypedDict):
+    """file_path_restriction
 
-    Conditions to target repositories by property and refs by name
+    Prevent commits that include changes in specified file and folder paths from
+    being pushed to the commit graph. This includes absolute paths that contain file
+    names.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
 
 
-__all__ = ("OrgRulesetConditionsOneof2Type",)
+__all__ = ("RepositoryRuleFilePathRestrictionType",)

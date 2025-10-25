@@ -9,17 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class CheckAutomatedSecurityFixesType(TypedDict):
-    """Check Dependabot security updates
+class ActionsSecretType(TypedDict):
+    """Actions Secret
 
-    Check Dependabot security updates
+    Set secrets for GitHub Actions.
     """
 
-    enabled: bool
-    paused: bool
+    name: str
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("CheckAutomatedSecurityFixesType",)
+__all__ = ("ActionsSecretType",)

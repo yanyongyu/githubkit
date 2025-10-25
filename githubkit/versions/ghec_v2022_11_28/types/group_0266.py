@@ -9,19 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class TeamMembershipType(TypedDict):
-    """Team Membership
-
-    Team Membership
-    """
-
-    url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+from .group_0262 import LinkType
 
 
-__all__ = ("TeamMembershipType",)
+class PullRequestSimplePropLinksType(TypedDict):
+    """PullRequestSimplePropLinks"""
+
+    comments: LinkType
+    commits: LinkType
+    statuses: LinkType
+    html: LinkType
+    issue: LinkType
+    review_comments: LinkType
+    review_comment: LinkType
+    self_: LinkType
+
+
+__all__ = ("PullRequestSimplePropLinksType",)

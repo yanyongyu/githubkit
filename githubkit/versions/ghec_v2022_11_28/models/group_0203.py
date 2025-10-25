@@ -16,29 +16,27 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodespaceMachine(GitHubModel):
-    """Codespace machine
+class MarketplaceListingPlan(GitHubModel):
+    """Marketplace Listing Plan
 
-    A description of the machine powering a codespace.
+    Marketplace Listing Plan
     """
 
-    name: str = Field(description="The name of the machine.")
-    display_name: str = Field(
-        description="The display name of the machine includes cores, memory, and storage."
-    )
-    operating_system: str = Field(description="The operating system of the machine.")
-    storage_in_bytes: int = Field(
-        description="How much storage is available to the codespace."
-    )
-    memory_in_bytes: int = Field(
-        description="How much memory is available to the codespace."
-    )
-    cpus: int = Field(description="How many cores are available to the codespace.")
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]] = Field(
-        description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
-    )
+    url: str = Field()
+    accounts_url: str = Field()
+    id: int = Field()
+    number: int = Field()
+    name: str = Field()
+    description: str = Field()
+    monthly_price_in_cents: int = Field()
+    yearly_price_in_cents: int = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    has_free_trial: bool = Field()
+    unit_name: Union[str, None] = Field()
+    state: str = Field()
+    bullets: list[str] = Field()
 
 
-model_rebuild(CodespaceMachine)
+model_rebuild(MarketplaceListingPlan)
 
-__all__ = ("CodespaceMachine",)
+__all__ = ("MarketplaceListingPlan",)

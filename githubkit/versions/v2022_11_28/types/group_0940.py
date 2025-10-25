@@ -9,13 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
 
-    selected_repository_ids: NotRequired[list[int]]
+    attestation_ids: list[int]
 
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",)
+__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",)

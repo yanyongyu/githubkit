@@ -9,41 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0299 import BranchProtection
 
 
-class ShortBranch(GitHubModel):
-    """Short Branch
+class SimpleCommit(GitHubModel):
+    """Simple Commit
 
-    Short Branch
+    A commit.
     """
 
-    name: str = Field()
-    commit: ShortBranchPropCommit = Field()
-    protected: bool = Field()
-    protection: Missing[BranchProtection] = Field(
-        default=UNSET, title="Branch Protection", description="Branch Protection"
+    id: str = Field(description="SHA for the commit")
+    tree_id: str = Field(description="SHA for the commit's tree")
+    message: str = Field(description="Message describing the purpose of the commit")
+    timestamp: datetime = Field(description="Timestamp of the commit")
+    author: Union[SimpleCommitPropAuthor, None] = Field(
+        description="Information about the Git author"
     )
-    protection_url: Missing[str] = Field(default=UNSET)
+    committer: Union[SimpleCommitPropCommitter, None] = Field(
+        description="Information about the Git committer"
+    )
 
 
-class ShortBranchPropCommit(GitHubModel):
-    """ShortBranchPropCommit"""
+class SimpleCommitPropAuthor(GitHubModel):
+    """SimpleCommitPropAuthor
 
-    sha: str = Field()
-    url: str = Field()
+    Information about the Git author
+    """
+
+    name: str = Field(description="Name of the commit's author")
+    email: str = Field(description="Git email address of the commit's author")
 
 
-model_rebuild(ShortBranch)
-model_rebuild(ShortBranchPropCommit)
+class SimpleCommitPropCommitter(GitHubModel):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str = Field(description="Name of the commit's committer")
+    email: str = Field(description="Git email address of the commit's committer")
+
+
+model_rebuild(SimpleCommit)
+model_rebuild(SimpleCommitPropAuthor)
+model_rebuild(SimpleCommitPropCommitter)
 
 __all__ = (
-    "ShortBranch",
-    "ShortBranchPropCommit",
+    "SimpleCommit",
+    "SimpleCommitPropAuthor",
+    "SimpleCommitPropCommitter",
 )

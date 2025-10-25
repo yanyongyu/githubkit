@@ -9,16 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0079 import CopilotSeatDetailsType
+
+class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[OrganizationActionsVariableType]
 
 
-class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+class OrganizationActionsVariableType(TypedDict):
+    """Actions Variable for an Organization
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
+    Organization variable for GitHub Actions.
+    """
+
+    name: str
+    value: str
+    created_at: datetime
+    updated_at: datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200Type",)
+__all__ = (
+    "OrganizationActionsVariableType",
+    "OrgsOrgActionsVariablesGetResponse200Type",
+)

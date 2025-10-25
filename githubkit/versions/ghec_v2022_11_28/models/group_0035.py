@@ -9,22 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsOidcCustomIssuerPolicyForEnterprise(GitHubModel):
-    """ActionsOidcCustomIssuerPolicyForEnterprise"""
+class ActionsHostedRunnerCuratedImage(GitHubModel):
+    """GitHub-hosted runner image details.
 
-    include_enterprise_slug: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the enterprise customer requested a custom issuer URL.",
+    Provides details of a hosted runner image
+    """
+
+    id: str = Field(
+        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
+    )
+    platform: str = Field(description="The operating system of the image.")
+    size_gb: int = Field(description="Image size in GB.")
+    display_name: str = Field(description="Display name for this image.")
+    source: Literal["github", "partner", "custom"] = Field(
+        description="The image provider."
     )
 
 
-model_rebuild(ActionsOidcCustomIssuerPolicyForEnterprise)
+model_rebuild(ActionsHostedRunnerCuratedImage)
 
-__all__ = ("ActionsOidcCustomIssuerPolicyForEnterprise",)
+__all__ = ("ActionsHostedRunnerCuratedImage",)

@@ -57,6 +57,10 @@ class ActionsHostedRunner(GitHubModel):
         default=UNSET,
         description="The time at which the runner was last used, in ISO 8601 format.",
     )
+    image_gen: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether custom image generation is enabled for the hosted runners.",
+    )
 
 
 class ActionsHostedRunnerPoolImage(GitHubModel):
@@ -72,6 +76,9 @@ class ActionsHostedRunnerPoolImage(GitHubModel):
     display_name: str = Field(description="Display name for this image.")
     source: Literal["github", "partner", "custom"] = Field(
         description="The image provider."
+    )
+    version: Missing[str] = Field(
+        default=UNSET, description="The image version of the hosted runner pool."
     )
 
 

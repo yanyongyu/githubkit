@@ -9,44 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0068 import SimpleRepositoryType
-from .group_0082 import DependabotAlertSecurityVulnerabilityType
-from .group_0083 import DependabotAlertSecurityAdvisoryType
-from .group_0085 import DependabotAlertWithRepositoryPropDependencyType
+from datetime import date
+from typing_extensions import TypedDict
 
 
-class DependabotAlertWithRepositoryType(TypedDict):
-    """DependabotAlertWithRepository
+class CopilotUsageMetrics1DayReportType(TypedDict):
+    """Copilot Metrics 1 Day Report
 
-    A Dependabot alert.
+    Links to download the Copilot usage metrics report for an enterprise for a
+    specific day.
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
-    url: str
-    html_url: str
-    created_at: datetime
-    updated_at: datetime
-    dismissed_at: Union[datetime, None]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[datetime, None]
-    auto_dismissed_at: NotRequired[Union[datetime, None]]
-    repository: SimpleRepositoryType
+    download_links: list[str]
+    report_day: date
 
 
-__all__ = ("DependabotAlertWithRepositoryType",)
+__all__ = ("CopilotUsageMetrics1DayReportType",)

@@ -9,67 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0378 import DeploymentBranchPolicySettingsType
+from .group_0380 import EnvironmentPropProtectionRulesItemsAnyof1Type
 
-class ImportType(TypedDict):
-    """Import
 
-    A repository import from an external source.
+class EnvironmentType(TypedDict):
+    """Environment
+
+    Details of a deployment environment
     """
 
-    vcs: Union[str, None]
-    use_lfs: NotRequired[bool]
-    vcs_url: str
-    svc_root: NotRequired[str]
-    tfvc_project: NotRequired[str]
-    status: Literal[
-        "auth",
-        "error",
-        "none",
-        "detecting",
-        "choose",
-        "auth_failed",
-        "importing",
-        "mapping",
-        "waiting_to_push",
-        "pushing",
-        "complete",
-        "setup",
-        "unknown",
-        "detection_found_multiple",
-        "detection_found_nothing",
-        "detection_needs_auth",
-    ]
-    status_text: NotRequired[Union[str, None]]
-    failed_step: NotRequired[Union[str, None]]
-    error_message: NotRequired[Union[str, None]]
-    import_percent: NotRequired[Union[int, None]]
-    commit_count: NotRequired[Union[int, None]]
-    push_percent: NotRequired[Union[int, None]]
-    has_large_files: NotRequired[bool]
-    large_files_size: NotRequired[int]
-    large_files_count: NotRequired[int]
-    project_choices: NotRequired[list[ImportPropProjectChoicesItemsType]]
-    message: NotRequired[str]
-    authors_count: NotRequired[Union[int, None]]
+    id: int
+    node_id: str
+    name: str
     url: str
     html_url: str
-    authors_url: str
-    repository_url: str
-    svn_root: NotRequired[str]
+    created_at: datetime
+    updated_at: datetime
+    protection_rules: NotRequired[
+        list[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0Type,
+                EnvironmentPropProtectionRulesItemsAnyof1Type,
+                EnvironmentPropProtectionRulesItemsAnyof2Type,
+            ]
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsType, None]
+    ]
 
 
-class ImportPropProjectChoicesItemsType(TypedDict):
-    """ImportPropProjectChoicesItems"""
+class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
 
-    vcs: NotRequired[str]
-    tfvc_project: NotRequired[str]
-    human_name: NotRequired[str]
+    id: int
+    node_id: str
+    type: str
+    wait_timer: NotRequired[int]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
+
+    id: int
+    node_id: str
+    type: str
+
+
+class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
+
+    total_count: NotRequired[int]
+    environments: NotRequired[list[EnvironmentType]]
 
 
 __all__ = (
-    "ImportPropProjectChoicesItemsType",
-    "ImportType",
+    "EnvironmentPropProtectionRulesItemsAnyof0Type",
+    "EnvironmentPropProtectionRulesItemsAnyof2Type",
+    "EnvironmentType",
+    "ReposOwnerRepoEnvironmentsGetResponse200Type",
 )

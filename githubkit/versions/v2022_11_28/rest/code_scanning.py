@@ -124,7 +124,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningOrganizationAlertItems,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/orgs/{org}/code-scanning/alerts"
@@ -153,7 +153,7 @@ class CodeScanningClient:
             response_model=list[CodeScanningOrganizationAlertItems],
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -195,7 +195,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningOrganizationAlertItems,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/orgs/{org}/code-scanning/alerts"
@@ -224,7 +224,7 @@ class CodeScanningClient:
             response_model=list[CodeScanningOrganizationAlertItems],
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -265,11 +265,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningAlertItems,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningAlertItems, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts"
 
@@ -300,7 +296,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -341,11 +337,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningAlertItems,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningAlertItems, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts"
 
@@ -376,7 +368,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -400,11 +392,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-alert
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningAlert,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningAlert, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
 
@@ -419,7 +407,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -443,11 +431,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-alert
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningAlert,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningAlert, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
 
@@ -462,7 +446,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -520,7 +504,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningAlert,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody,
         )
 
@@ -550,7 +534,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -608,7 +592,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningAlert,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody,
         )
 
@@ -638,7 +622,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -662,11 +646,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#get-the-status-of-an-autofix-for-a-code-scanning-alert
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningAutofix,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningAutofix, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix"
 
@@ -682,7 +662,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -706,11 +686,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#get-the-status-of-an-autofix-for-a-code-scanning-alert
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningAutofix,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningAutofix, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix"
 
@@ -726,7 +702,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -754,11 +730,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#create-an-autofix-for-a-code-scanning-alert
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningAutofix,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningAutofix, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix"
 
@@ -774,7 +746,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -802,11 +774,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#create-an-autofix-for-a-code-scanning-alert
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningAutofix,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningAutofix, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix"
 
@@ -822,7 +790,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -888,7 +856,7 @@ class CodeScanningClient:
             BasicError,
             CodeScanningAutofixCommits,
             CodeScanningAutofixCommitsResponse,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = (
@@ -917,7 +885,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -983,7 +951,7 @@ class CodeScanningClient:
             BasicError,
             CodeScanningAutofixCommits,
             CodeScanningAutofixCommitsResponse,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = (
@@ -1012,7 +980,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1040,11 +1008,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningAlertInstance,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningAlertInstance, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances"
 
@@ -1067,7 +1031,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1095,11 +1059,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningAlertInstance,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningAlertInstance, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances"
 
@@ -1122,7 +1082,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1166,11 +1126,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningAnalysis,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningAnalysis, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/analyses"
 
@@ -1198,7 +1154,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1242,11 +1198,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningAnalysis,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningAnalysis, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/analyses"
 
@@ -1274,7 +1226,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1312,11 +1264,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningAnalysis,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningAnalysis, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
 
@@ -1332,7 +1280,7 @@ class CodeScanningClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1370,11 +1318,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningAnalysis,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningAnalysis, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
 
@@ -1390,7 +1334,7 @@ class CodeScanningClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1479,7 +1423,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningAnalysisDeletion,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
@@ -1501,7 +1445,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1590,7 +1534,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningAnalysisDeletion,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"
@@ -1612,7 +1556,7 @@ class CodeScanningClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1640,7 +1584,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningCodeqlDatabase,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases"
@@ -1656,7 +1600,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1684,7 +1628,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningCodeqlDatabase,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases"
@@ -1700,7 +1644,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1733,7 +1677,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningCodeqlDatabase,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}"
@@ -1749,7 +1693,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1782,7 +1726,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningCodeqlDatabase,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}"
@@ -1798,7 +1742,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1822,10 +1766,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#delete-a-codeql-database
         """
 
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}"
 
@@ -1839,7 +1780,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1863,10 +1804,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#delete-a-codeql-database
         """
 
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}"
 
@@ -1880,7 +1818,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2014,7 +1952,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningVariantAnalysis,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2,
@@ -2050,7 +1988,7 @@ class CodeScanningClient:
             error_models={
                 "404": BasicError,
                 "422": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2184,7 +2122,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningVariantAnalysis,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2,
@@ -2220,7 +2158,7 @@ class CodeScanningClient:
             error_models={
                 "404": BasicError,
                 "422": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2247,7 +2185,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningVariantAnalysis,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/variant-analyses/{codeql_variant_analysis_id}"
@@ -2262,7 +2200,7 @@ class CodeScanningClient:
             response_model=CodeScanningVariantAnalysis,
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2289,7 +2227,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningVariantAnalysis,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/variant-analyses/{codeql_variant_analysis_id}"
@@ -2304,7 +2242,7 @@ class CodeScanningClient:
             response_model=CodeScanningVariantAnalysis,
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2335,7 +2273,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningVariantAnalysisRepoTask,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/variant-analyses/{codeql_variant_analysis_id}/repos/{repo_owner}/{repo_name}"
@@ -2350,7 +2288,7 @@ class CodeScanningClient:
             response_model=CodeScanningVariantAnalysisRepoTask,
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2381,7 +2319,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningVariantAnalysisRepoTask,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/variant-analyses/{codeql_variant_analysis_id}/repos/{repo_owner}/{repo_name}"
@@ -2396,7 +2334,7 @@ class CodeScanningClient:
             response_model=CodeScanningVariantAnalysisRepoTask,
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2419,11 +2357,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningDefaultSetup,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningDefaultSetup, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
 
@@ -2438,7 +2372,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2461,11 +2395,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningDefaultSetup,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningDefaultSetup, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
 
@@ -2480,7 +2410,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2551,7 +2481,7 @@ class CodeScanningClient:
             BasicError,
             CodeScanningDefaultSetupUpdate,
             EmptyObject,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
@@ -2579,7 +2509,7 @@ class CodeScanningClient:
                 "404": BasicError,
                 "409": BasicError,
                 "422": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2650,7 +2580,7 @@ class CodeScanningClient:
             BasicError,
             CodeScanningDefaultSetupUpdate,
             EmptyObject,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/default-setup"
@@ -2678,7 +2608,7 @@ class CodeScanningClient:
                 "404": BasicError,
                 "409": BasicError,
                 "422": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2766,7 +2696,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningSarifsReceipt,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ReposOwnerRepoCodeScanningSarifsPostBody,
         )
 
@@ -2793,7 +2723,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2881,7 +2811,7 @@ class CodeScanningClient:
         from ..models import (
             BasicError,
             CodeScanningSarifsReceipt,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ReposOwnerRepoCodeScanningSarifsPostBody,
         )
 
@@ -2908,7 +2838,7 @@ class CodeScanningClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2931,11 +2861,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#get-information-about-a-sarif-upload
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningSarifsStatus,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningSarifsStatus, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}"
 
@@ -2949,7 +2875,7 @@ class CodeScanningClient:
             response_model=CodeScanningSarifsStatus,
             error_models={
                 "403": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -2972,11 +2898,7 @@ class CodeScanningClient:
         See also: https://docs.github.com/rest/code-scanning/code-scanning#get-information-about-a-sarif-upload
         """
 
-        from ..models import (
-            BasicError,
-            CodeScanningSarifsStatus,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CodeScanningSarifsStatus, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}"
 
@@ -2990,6 +2912,6 @@ class CodeScanningClient:
             response_model=CodeScanningSarifsStatus,
             error_models={
                 "403": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )

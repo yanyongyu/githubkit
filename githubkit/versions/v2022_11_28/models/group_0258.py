@@ -19,7 +19,7 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0094 import Team
+from .group_0091 import Team
 
 
 class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(

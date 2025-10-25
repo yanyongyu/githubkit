@@ -18,14 +18,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0696 import (
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
+from .group_0697 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
 )
 
 
-class WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp(GitHubModel):
-    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp(GitHubModel):
+    """WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp"""
 
     created_at: Union[datetime, None] = Field()
     description: Union[str, None] = Field()
@@ -38,10 +38,10 @@ class WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp(GitHubModel):
     name: str = Field(description="The name of the GitHub app")
     node_id: str = Field()
     owner: Union[
-        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
     ] = Field(title="User")
     permissions: Missing[
-        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
     ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
     slug: Missing[str] = Field(
         default=UNSET, description="The slug name of the GitHub app"
@@ -49,6 +49,6 @@ class WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp(GitHubModel):
     updated_at: Union[datetime, None] = Field()
 
 
-model_rebuild(WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp)
+model_rebuild(WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp)
 
-__all__ = ("WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp",)
+__all__ = ("WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp",)

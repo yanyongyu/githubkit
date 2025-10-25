@@ -9,18 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0474 import MetaType
-from .group_0484 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
+from typing_extensions import TypedDict
 
 
-class ScimEnterpriseUserResponseAllof1Type(TypedDict):
-    """ScimEnterpriseUserResponseAllof1"""
+class TopicType(TypedDict):
+    """Topic
 
-    id: str
-    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
-    meta: MetaType
+    A topic aggregates entities that are related to a subject.
+    """
+
+    names: list[str]
 
 
-__all__ = ("ScimEnterpriseUserResponseAllof1Type",)
+__all__ = ("TopicType",)

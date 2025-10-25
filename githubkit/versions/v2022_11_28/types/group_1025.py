@@ -12,10 +12,12 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsJobsJobIdRerunPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
+class ProjectsProjectIdDeleteResponse403Type(TypedDict):
+    """ProjectsProjectIdDeleteResponse403"""
 
-    enable_debug_logging: NotRequired[bool]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[list[str]]
 
 
-__all__ = ("ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",)
+__all__ = ("ProjectsProjectIdDeleteResponse403Type",)

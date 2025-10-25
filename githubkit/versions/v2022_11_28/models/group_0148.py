@@ -16,19 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRulesetConditionsPropRefName(GitHubModel):
-    """RepositoryRulesetConditionsPropRefName"""
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId(GitHubModel):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
 
-    include: Missing[list[str]] = Field(
+    repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches.",
-    )
-    exclude: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.",
+        description="The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass.",
     )
 
 
-model_rebuild(RepositoryRulesetConditionsPropRefName)
+model_rebuild(RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId)
 
-__all__ = ("RepositoryRulesetConditionsPropRefName",)
+__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId",)

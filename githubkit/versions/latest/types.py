@@ -50,6 +50,12 @@ if TYPE_CHECKING:
         ActionsHostedRunnerCuratedImageType as ActionsHostedRunnerCuratedImageType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ActionsHostedRunnerCustomImageType as ActionsHostedRunnerCustomImageType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsHostedRunnerCustomImageVersionType as ActionsHostedRunnerCustomImageVersionType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ActionsHostedRunnerLimitsPropPublicIpsType as ActionsHostedRunnerLimitsPropPublicIpsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -804,13 +810,16 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType as EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type as EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType as EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType as EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         EnterprisesEnterpriseTeamsPostBodyType as EnterprisesEnterpriseTeamsPostBodyType,
@@ -852,6 +861,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         EventPropRepoType as EventPropRepoType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        EventsGetResponse503Type as EventsGetResponse503Type,
     )
     from githubkit.versions.v2022_11_28.types import EventType as EventType
     from githubkit.versions.v2022_11_28.types import (
@@ -1285,6 +1297,9 @@ if TYPE_CHECKING:
         OrganizationsOrgDependabotRepositoryAccessPatchBodyType as OrganizationsOrgDependabotRepositoryAccessPatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrganizationsOrgOrgPropertiesValuesPatchBodyType as OrganizationsOrgOrgPropertiesValuesPatchBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrganizationUpdateIssueTypeType as OrganizationUpdateIssueTypeType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1323,6 +1338,12 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType as OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type as OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type as OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type as OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
@@ -1466,6 +1487,9 @@ if TYPE_CHECKING:
         OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type as OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgAttestationsRepositoriesGetResponse200ItemsType as OrgsOrgAttestationsRepositoriesGetResponse200ItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1484,10 +1508,13 @@ if TYPE_CHECKING:
         OrgsOrgCampaignsCampaignNumberPatchBodyType as OrgsOrgCampaignsCampaignNumberPatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType as OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
+        OrgsOrgCampaignsPostBodyOneof0Type as OrgsOrgCampaignsPostBodyOneof0Type,
     )
     from githubkit.versions.v2022_11_28.types import (
-        OrgsOrgCampaignsPostBodyType as OrgsOrgCampaignsPostBodyType,
+        OrgsOrgCampaignsPostBodyOneof1Type as OrgsOrgCampaignsPostBodyOneof1Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType as OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType as OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
@@ -10141,20 +10168,7 @@ else:
             "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
             "DependabotAlertWithRepositoryType",
             "DependabotAlertWithRepositoryPropDependencyType",
-            "SecretScanningLocationCommitType",
-            "SecretScanningLocationWikiCommitType",
-            "SecretScanningLocationIssueBodyType",
-            "SecretScanningLocationDiscussionTitleType",
-            "SecretScanningLocationDiscussionCommentType",
-            "SecretScanningLocationPullRequestBodyType",
-            "SecretScanningLocationPullRequestReviewType",
-            "SecretScanningLocationIssueTitleType",
-            "SecretScanningLocationIssueCommentType",
-            "SecretScanningLocationPullRequestTitleType",
-            "SecretScanningLocationPullRequestReviewCommentType",
-            "SecretScanningLocationDiscussionBodyType",
-            "SecretScanningLocationPullRequestCommentType",
-            "OrganizationSecretScanningAlertType",
+            "OrganizationSimpleType",
             "MilestoneType",
             "IssueTypeType",
             "ReactionRollupType",
@@ -10215,8 +10229,8 @@ else:
             "ThreadType",
             "ThreadPropSubjectType",
             "ThreadSubscriptionType",
-            "OrganizationSimpleType",
             "DependabotRepositoryAccessDetailsType",
+            "CustomPropertyValueType",
             "BillingPremiumRequestUsageReportOrgType",
             "BillingPremiumRequestUsageReportOrgPropTimePeriodType",
             "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType",
@@ -10345,7 +10359,6 @@ else:
             "ProjectsV2ItemSimpleType",
             "CustomPropertyType",
             "CustomPropertySetPayloadType",
-            "CustomPropertyValueType",
             "OrgRepoCustomPropertyValuesType",
             "CodeOfConductSimpleType",
             "FullRepositoryType",
@@ -10422,6 +10435,20 @@ else:
             "RulesetVersionWithStateType",
             "RulesetVersionWithStateAllof1Type",
             "RulesetVersionWithStateAllof1PropStateType",
+            "SecretScanningLocationCommitType",
+            "SecretScanningLocationWikiCommitType",
+            "SecretScanningLocationIssueBodyType",
+            "SecretScanningLocationDiscussionTitleType",
+            "SecretScanningLocationDiscussionCommentType",
+            "SecretScanningLocationPullRequestBodyType",
+            "SecretScanningLocationPullRequestReviewType",
+            "SecretScanningLocationIssueTitleType",
+            "SecretScanningLocationIssueCommentType",
+            "SecretScanningLocationPullRequestTitleType",
+            "SecretScanningLocationPullRequestReviewCommentType",
+            "SecretScanningLocationDiscussionBodyType",
+            "SecretScanningLocationPullRequestCommentType",
+            "OrganizationSecretScanningAlertType",
             "SecretScanningPatternConfigurationType",
             "SecretScanningPatternOverrideType",
             "RepositoryAdvisoryCreditType",
@@ -13016,11 +13043,13 @@ else:
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
-            "EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type",
             "EnterprisesEnterpriseTeamsPostBodyType",
             "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType",
             "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType",
+            "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType",
+            "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType",
             "EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",
+            "EventsGetResponse503Type",
             "GistsPostBodyType",
             "GistsPostBodyPropFilesType",
             "GistsGistIdGetResponse403Type",
@@ -13037,12 +13066,17 @@ else:
             "NotificationsThreadsThreadIdSubscriptionPutBodyType",
             "OrganizationsOrgDependabotRepositoryAccessPatchBodyType",
             "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
+            "OrganizationsOrgOrgPropertiesValuesPatchBodyType",
             "OrgsOrgPatchBodyType",
             "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
             "ActionsCacheUsageByRepositoryType",
             "OrgsOrgActionsHostedRunnersGetResponse200Type",
             "OrgsOrgActionsHostedRunnersPostBodyType",
             "OrgsOrgActionsHostedRunnersPostBodyPropImageType",
+            "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
+            "ActionsHostedRunnerCustomImageType",
+            "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
+            "ActionsHostedRunnerCustomImageVersionType",
             "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
             "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type",
             "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
@@ -13092,13 +13126,15 @@ else:
             "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType",
             "OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type",
             "OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",
+            "OrgsOrgAttestationsRepositoriesGetResponse200ItemsType",
             "OrgsOrgAttestationsSubjectDigestGetResponse200Type",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
-            "OrgsOrgCampaignsPostBodyType",
             "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType",
+            "OrgsOrgCampaignsPostBodyOneof0Type",
+            "OrgsOrgCampaignsPostBodyOneof1Type",
             "OrgsOrgCampaignsCampaignNumberPatchBodyType",
             "OrgsOrgCodeSecurityConfigurationsPostBodyType",
             "OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType",

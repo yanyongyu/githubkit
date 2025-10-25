@@ -14,19 +14,26 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksWorkflowJobRun(GitHubModel):
-    """WebhooksWorkflowJobRun"""
+class Hovercard(GitHubModel):
+    """Hovercard
 
-    conclusion: None = Field()
-    created_at: str = Field()
-    environment: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: None = Field()
-    status: str = Field()
-    updated_at: str = Field()
+    Hovercard
+    """
+
+    contexts: list[HovercardPropContextsItems] = Field()
 
 
-model_rebuild(WebhooksWorkflowJobRun)
+class HovercardPropContextsItems(GitHubModel):
+    """HovercardPropContextsItems"""
 
-__all__ = ("WebhooksWorkflowJobRun",)
+    message: str = Field()
+    octicon: str = Field()
+
+
+model_rebuild(Hovercard)
+model_rebuild(HovercardPropContextsItems)
+
+__all__ = (
+    "Hovercard",
+    "HovercardPropContextsItems",
+)

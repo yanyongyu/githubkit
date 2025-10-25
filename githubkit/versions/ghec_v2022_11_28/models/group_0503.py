@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 
 from pydantic import Field
@@ -18,43 +17,30 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0186 import MarketplaceListingPlan
 
+class SearchResultTextMatchesItems(GitHubModel):
+    """SearchResultTextMatchesItems"""
 
-class UserMarketplacePurchase(GitHubModel):
-    """User Marketplace Purchase
-
-    User Marketplace Purchase
-    """
-
-    billing_cycle: str = Field()
-    next_billing_date: Union[datetime, None] = Field()
-    unit_count: Union[int, None] = Field()
-    on_free_trial: bool = Field()
-    free_trial_ends_on: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    account: MarketplaceAccount = Field(title="Marketplace Account")
-    plan: MarketplaceListingPlan = Field(
-        title="Marketplace Listing Plan", description="Marketplace Listing Plan"
+    object_url: Missing[str] = Field(default=UNSET)
+    object_type: Missing[Union[str, None]] = Field(default=UNSET)
+    property_: Missing[str] = Field(default=UNSET, alias="property")
+    fragment: Missing[str] = Field(default=UNSET)
+    matches: Missing[list[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
+        default=UNSET
     )
 
 
-class MarketplaceAccount(GitHubModel):
-    """Marketplace Account"""
+class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-    url: str = Field()
-    id: int = Field()
-    type: str = Field()
-    node_id: Missing[str] = Field(default=UNSET)
-    login: str = Field()
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
+    text: Missing[str] = Field(default=UNSET)
+    indices: Missing[list[int]] = Field(default=UNSET)
 
 
-model_rebuild(UserMarketplacePurchase)
-model_rebuild(MarketplaceAccount)
+model_rebuild(SearchResultTextMatchesItems)
+model_rebuild(SearchResultTextMatchesItemsPropMatchesItems)
 
 __all__ = (
-    "MarketplaceAccount",
-    "UserMarketplacePurchase",
+    "SearchResultTextMatchesItems",
+    "SearchResultTextMatchesItemsPropMatchesItems",
 )

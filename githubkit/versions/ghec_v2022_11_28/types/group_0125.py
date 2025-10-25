@@ -12,14 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleBranchNamePatternPropParametersType(TypedDict):
-    """RepositoryRuleBranchNamePatternPropParameters"""
-
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+from .group_0126 import RepositoryRuleUpdatePropParametersType
 
 
-__all__ = ("RepositoryRuleBranchNamePatternPropParametersType",)
+class RepositoryRuleUpdateType(TypedDict):
+    """update
+
+    Only allow users with bypass permission to update matching refs.
+    """
+
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
+
+
+__all__ = ("RepositoryRuleUpdateType",)

@@ -9,37 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0078 import TeamType
+
+class ActionsRepositoryPermissionsType(TypedDict):
+    """ActionsRepositoryPermissions"""
+
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
-
-    users: NotRequired[list[SimpleUserType]]
-    teams: NotRequired[list[TeamType]]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
-    url: NotRequired[str]
-    users_url: NotRequired[str]
-    teams_url: NotRequired[str]
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
-    """
-
-    users: NotRequired[list[SimpleUserType]]
-    teams: NotRequired[list[TeamType]]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
-
-
-__all__ = (
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
-)
+__all__ = ("ActionsRepositoryPermissionsType",)

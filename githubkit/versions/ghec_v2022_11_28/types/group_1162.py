@@ -9,15 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0095 import NetworkConfigurationType
 
 
-class ProjectsProjectIdPatchResponse403Type(TypedDict):
-    """ProjectsProjectIdPatchResponse403"""
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[list[str]]
+    total_count: int
+    network_configurations: list[NetworkConfigurationType]
 
 
-__all__ = ("ProjectsProjectIdPatchResponse403Type",)
+__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",)

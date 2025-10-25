@@ -10,19 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class InteractionLimitResponseType(TypedDict):
-    """Interaction Limits
+class CredentialAuthorizationType(TypedDict):
+    """Credential Authorization
 
-    Interaction limit settings.
+    Credential Authorization
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    origin: str
-    expires_at: datetime
+    login: str
+    credential_id: int
+    credential_type: str
+    token_last_eight: NotRequired[str]
+    credential_authorized_at: datetime
+    scopes: NotRequired[list[str]]
+    fingerprint: NotRequired[str]
+    credential_accessed_at: Union[datetime, None]
+    authorized_credential_id: Union[int, None]
+    authorized_credential_title: NotRequired[Union[str, None]]
+    authorized_credential_note: NotRequired[Union[str, None]]
+    authorized_credential_expires_at: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("InteractionLimitResponseType",)
+__all__ = ("CredentialAuthorizationType",)

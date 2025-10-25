@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,52 +17,27 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0078 import Team
 
+class ActionsRepositoryPermissions(GitHubModel):
+    """ActionsRepositoryPermissions"""
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
-
-    users: Missing[list[SimpleUser]] = Field(
-        default=UNSET, description="The list of users with review dismissal access."
+    enabled: bool = Field(
+        description="Whether GitHub Actions is enabled on the repository."
     )
-    teams: Missing[list[Team]] = Field(
-        default=UNSET, description="The list of teams with review dismissal access."
-    )
-    apps: Missing[list[Union[Integration, None]]] = Field(
-        default=UNSET, description="The list of apps with review dismissal access."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    users_url: Missing[str] = Field(default=UNSET)
-    teams_url: Missing[str] = Field(default=UNSET)
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
-    """
-
-    users: Missing[list[SimpleUser]] = Field(
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
         default=UNSET,
-        description="The list of users allowed to bypass pull request requirements.",
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
     )
-    teams: Missing[list[Team]] = Field(
+    selected_actions_url: Missing[str] = Field(
         default=UNSET,
-        description="The list of teams allowed to bypass pull request requirements.",
+        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
     )
-    apps: Missing[list[Union[Integration, None]]] = Field(
+    sha_pinning_required: Missing[bool] = Field(
         default=UNSET,
-        description="The list of apps allowed to bypass pull request requirements.",
+        description="Whether actions must be pinned to a full-length commit SHA.",
     )
 
 
-model_rebuild(ProtectedBranchPullRequestReviewPropDismissalRestrictions)
-model_rebuild(ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances)
+model_rebuild(ActionsRepositoryPermissions)
 
-__all__ = (
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
-)
+__all__ = ("ActionsRepositoryPermissions",)

@@ -9,26 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Annotated, Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRulesetConditionsPropRefName(GitHubModel):
-    """RepositoryRulesetConditionsPropRefName"""
+class CustomPropertyBase(GitHubModel):
+    """CustomPropertyBase"""
 
-    include: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches.",
+    property_name: Missing[str] = Field(
+        default=UNSET, description="The name of the property"
     )
-    exclude: Missing[list[str]] = Field(
+    url: Missing[str] = Field(
         default=UNSET,
-        description="Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.",
+        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
+    )
+    source_type: Missing[Literal["organization", "enterprise"]] = Field(
+        default=UNSET, description="The source type of the property"
+    )
+    value_type: Missing[
+        Literal["string", "single_select", "multi_select", "true_false"]
+    ] = Field(default=UNSET, description="The type of the value for the property")
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
+    )
+    default_value: Missing[Union[str, list[str], None]] = Field(
+        default=UNSET, description="Default value of the property"
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
+    )
+    allowed_values: Missing[
+        Union[
+            Annotated[
+                list[Annotated[str, Field(max_length=75)]],
+                Field(max_length=200 if PYDANTIC_V2 else None),
+            ],
+            None,
+        ]
+    ] = Field(
+        default=UNSET,
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
     )
 
 
-model_rebuild(RepositoryRulesetConditionsPropRefName)
+model_rebuild(CustomPropertyBase)
 
-__all__ = ("RepositoryRulesetConditionsPropRefName",)
+__all__ = ("CustomPropertyBase",)

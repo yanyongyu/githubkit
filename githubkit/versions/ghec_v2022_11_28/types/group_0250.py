@@ -9,26 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+
+class OrganizationCustomOrganizationRoleUpdateSchemaType(TypedDict):
+    """OrganizationCustomOrganizationRoleUpdateSchema"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    permissions: NotRequired[list[str]]
+    base_role: NotRequired[
+        Literal["none", "read", "triage", "write", "maintain", "admin"]
+    ]
 
 
-class ProjectsV2DraftIssueType(TypedDict):
-    """Draft Issue
-
-    A draft issue in a project
-    """
-
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-
-
-__all__ = ("ProjectsV2DraftIssueType",)
+__all__ = ("OrganizationCustomOrganizationRoleUpdateSchemaType",)

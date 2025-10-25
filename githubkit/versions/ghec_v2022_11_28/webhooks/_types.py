@@ -109,6 +109,16 @@ from .org_block import Event as OrgBlockEvent
 from .org_block import action_types as org_block_action_types
 from .organization import Event as OrganizationEvent
 from .organization import action_types as organization_action_types
+from .organization_custom_property import Event as OrganizationCustomPropertyEvent
+from .organization_custom_property import (
+    action_types as organization_custom_property_action_types,
+)
+from .organization_custom_property_values import (
+    Event as OrganizationCustomPropertyValuesEvent,
+)
+from .organization_custom_property_values import (
+    action_types as organization_custom_property_values_action_types,
+)
 from .package import Event as PackageEvent
 from .package import action_types as package_action_types
 from .page_build import Event as PageBuildEvent
@@ -240,6 +250,8 @@ WebhookEvent = Union[
     MetaEvent,
     MilestoneEvent,
     OrgBlockEvent,
+    OrganizationCustomPropertyEvent,
+    OrganizationCustomPropertyValuesEvent,
     OrganizationEvent,
     PackageEvent,
     PageBuildEvent,
@@ -322,6 +334,8 @@ webhook_action_types = {
     "meta": meta_action_types,
     "milestone": milestone_action_types,
     "org_block": org_block_action_types,
+    "organization_custom_property": organization_custom_property_action_types,
+    "organization_custom_property_values": organization_custom_property_values_action_types,
     "organization": organization_action_types,
     "package": package_action_types,
     "page_build": page_build_action_types,
@@ -404,6 +418,8 @@ webhook_event_types = {
     "meta": MetaEvent,
     "milestone": MilestoneEvent,
     "org_block": OrgBlockEvent,
+    "organization_custom_property": OrganizationCustomPropertyEvent,
+    "organization_custom_property_values": OrganizationCustomPropertyValuesEvent,
     "organization": OrganizationEvent,
     "package": PackageEvent,
     "page_build": PageBuildEvent,

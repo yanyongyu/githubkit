@@ -17,20 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0191 import RepositoryRuleWorkflowsPropParameters
+from .group_0191 import RepositoryRuleCopilotCodeReviewPropParameters
 
 
-class RepositoryRuleWorkflows(GitHubModel):
-    """workflows
+class RepositoryRuleCopilotCodeReview(GitHubModel):
+    """copilot_code_review
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review.
     """
 
-    type: Literal["workflows"] = Field()
-    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
+    type: Literal["copilot_code_review"] = Field()
+    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(RepositoryRuleWorkflows)
+model_rebuild(RepositoryRuleCopilotCodeReview)
 
-__all__ = ("RepositoryRuleWorkflows",)
+__all__ = ("RepositoryRuleCopilotCodeReview",)

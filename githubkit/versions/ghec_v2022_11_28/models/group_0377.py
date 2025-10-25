@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,39 +18,49 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0011 import WebhookConfig
-from .group_0376 import HookResponse
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
 
-class Hook(GitHubModel):
-    """Webhook
+class DeploymentStatus(GitHubModel):
+    """Deployment Status
 
-    Webhooks for repositories.
+    The status of a deployment.
     """
 
-    type: str = Field()
-    id: int = Field(description="Unique identifier of the webhook.")
-    name: str = Field(
-        description="The name of a valid service, use 'web' for a webhook."
-    )
-    active: bool = Field(
-        description="Determines whether the hook is actually triggered on pushes."
-    )
-    events: list[str] = Field(
-        description="Determines what events the hook is triggered for. Default: ['push']."
-    )
-    config: WebhookConfig = Field(
-        title="Webhook Configuration", description="Configuration object of the webhook"
-    )
-    updated_at: datetime = Field()
-    created_at: datetime = Field()
     url: str = Field()
-    test_url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    last_response: HookResponse = Field(title="Hook Response")
+    id: int = Field()
+    node_id: str = Field()
+    state: Literal[
+        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    ] = Field(description="The state of the status.")
+    creator: Union[None, SimpleUser] = Field()
+    description: str = Field(
+        max_length=140, default="", description="A short description of the status."
+    )
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="The environment of the deployment that the status is for.",
+    )
+    target_url: str = Field(
+        default="",
+        description="Closing down notice: the URL to associate with this status.",
+    )
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    deployment_url: str = Field()
+    repository_url: str = Field()
+    environment_url: Missing[str] = Field(
+        default=UNSET, description="The URL for accessing your environment."
+    )
+    log_url: Missing[str] = Field(
+        default=UNSET, description="The URL to associate with this status."
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(Hook)
+model_rebuild(DeploymentStatus)
 
-__all__ = ("Hook",)
+__all__ = ("DeploymentStatus",)

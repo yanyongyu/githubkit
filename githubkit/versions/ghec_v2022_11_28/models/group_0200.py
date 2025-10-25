@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
@@ -17,19 +18,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class SelfHostedRunnersSettings(GitHubModel):
-    """SelfHostedRunnersSettings"""
-
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
-    )
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
-    )
+from .group_0003 import SimpleUser
 
 
-model_rebuild(SelfHostedRunnersSettings)
+class GistCommit(GitHubModel):
+    """Gist Commit
 
-__all__ = ("SelfHostedRunnersSettings",)
+    Gist Commit
+    """
+
+    url: str = Field()
+    version: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    change_status: GistCommitPropChangeStatus = Field()
+    committed_at: datetime = Field()
+
+
+class GistCommitPropChangeStatus(GitHubModel):
+    """GistCommitPropChangeStatus"""
+
+    total: Missing[int] = Field(default=UNSET)
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(GistCommit)
+model_rebuild(GistCommitPropChangeStatus)
+
+__all__ = (
+    "GistCommit",
+    "GistCommitPropChangeStatus",
+)

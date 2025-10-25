@@ -14,22 +14,33 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsHostedRunnerMachineSpec(GitHubModel):
-    """Github-owned VM details.
+class ActionsHostedRunnerLimits(GitHubModel):
+    """ActionsHostedRunnerLimits"""
 
-    Provides details of a particular machine spec.
+    public_ips: ActionsHostedRunnerLimitsPropPublicIps = Field(
+        title="Static public IP Limits for GitHub-hosted Hosted Runners.",
+        description="Provides details of static public IP limits for GitHub-hosted Hosted Runners",
+    )
+
+
+class ActionsHostedRunnerLimitsPropPublicIps(GitHubModel):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
+
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
     """
 
-    id: str = Field(
-        description="The ID used for the `size` parameter when creating a new runner."
+    maximum: int = Field(
+        description="The maximum number of static public IP addresses that can be used for Hosted Runners."
     )
-    cpu_cores: int = Field(description="The number of cores.")
-    memory_gb: int = Field(description="The available RAM for the machine spec.")
-    storage_gb: int = Field(
-        description="The available SSD storage for the machine spec."
+    current_usage: int = Field(
+        description="The current number of static public IP addresses in use by Hosted Runners."
     )
 
 
-model_rebuild(ActionsHostedRunnerMachineSpec)
+model_rebuild(ActionsHostedRunnerLimits)
+model_rebuild(ActionsHostedRunnerLimitsPropPublicIps)
 
-__all__ = ("ActionsHostedRunnerMachineSpec",)
+__all__ = (
+    "ActionsHostedRunnerLimits",
+    "ActionsHostedRunnerLimitsPropPublicIps",
+)

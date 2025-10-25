@@ -17,80 +17,131 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0474 import Meta
 
+class RepositoryAdvisoryUpdate(GitHubModel):
+    """RepositoryAdvisoryUpdate"""
 
-class ScimEnterpriseGroupResponse(GitHubModel):
-    """ScimEnterpriseGroupResponse"""
-
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    summary: Missing[str] = Field(
+        max_length=1024, default=UNSET, description="A short summary of the advisory."
     )
-    external_id: Missing[Union[str, None]] = Field(
+    description: Missing[str] = Field(
+        max_length=65535,
         default=UNSET,
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
+        description="A detailed description of what the advisory impacts.",
     )
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="displayName",
-        description="A human-readable name for a security group.",
+    cve_id: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
     )
-    members: Missing[list[ScimEnterpriseGroupResponseMergedMembers]] = Field(
-        default=UNSET, description="The group members."
-    )
-    id: Missing[str] = Field(
-        default=UNSET, description="The internally generated id for the group object."
-    )
-    meta: Missing[Meta] = Field(
-        default=UNSET,
-        description="The metadata associated with the creation/updates to the user.",
-    )
-
-
-class ScimEnterpriseGroupResponseMergedMembers(GitHubModel):
-    """ScimEnterpriseGroupResponseMergedMembers"""
-
-    value: str = Field(description="The local unique identifier for the member")
-    ref: str = Field(alias="$ref")
-    display: Missing[str] = Field(
-        default=UNSET, description="The display name associated with the member"
-    )
-
-
-class ScimEnterpriseGroupList(GitHubModel):
-    """ScimEnterpriseGroupList"""
-
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
+    vulnerabilities: Missing[list[RepositoryAdvisoryUpdatePropVulnerabilitiesItems]] = (
         Field(
-            description="The URIs that are used to indicate the namespaces of the list SCIM schemas."
+            default=UNSET,
+            description="A product affected by the vulnerability detailed in a repository security advisory.",
         )
     )
-    total_results: int = Field(
-        alias="totalResults", description="Number of results found"
+    cwe_ids: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
     )
-    resources: list[ScimEnterpriseGroupResponse] = Field(
-        alias="Resources", description="Information about each provisioned group."
+    credits_: Missing[Union[list[RepositoryAdvisoryUpdatePropCreditsItems], None]] = (
+        Field(
+            default=UNSET,
+            alias="credits",
+            description="A list of users receiving credit for their participation in the security advisory.",
+        )
     )
-    start_index: int = Field(
-        alias="startIndex", description="A starting index for the returned page"
+    severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
+        Field(
+            default=UNSET,
+            description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
+        )
     )
-    items_per_page: int = Field(
-        alias="itemsPerPage", description="Number of objects per page"
+    cvss_vector_string: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
+    )
+    state: Missing[Literal["published", "closed", "draft"]] = Field(
+        default=UNSET, description="The state of the advisory."
+    )
+    collaborating_users: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="A list of usernames who have been granted write access to the advisory.",
+    )
+    collaborating_teams: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="A list of team slugs which have been granted write access to the advisory.",
     )
 
 
-model_rebuild(ScimEnterpriseGroupResponse)
-model_rebuild(ScimEnterpriseGroupResponseMergedMembers)
-model_rebuild(ScimEnterpriseGroupList)
+class RepositoryAdvisoryUpdatePropCreditsItems(GitHubModel):
+    """RepositoryAdvisoryUpdatePropCreditsItems"""
+
+    login: str = Field(description="The username of the user credited.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItems(GitHubModel):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage = Field(
+        description="The name of the package affected by the vulnerability."
+    )
+    vulnerable_version_range: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The range of the package versions affected by the vulnerability.",
+    )
+    patched_versions: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The package version(s) that resolve the vulnerability.",
+    )
+    vulnerable_functions: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="The functions in the package that are affected."
+    )
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ] = Field(description="The package's language or package management ecosystem.")
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The unique package name within its ecosystem."
+    )
+
+
+model_rebuild(RepositoryAdvisoryUpdate)
+model_rebuild(RepositoryAdvisoryUpdatePropCreditsItems)
+model_rebuild(RepositoryAdvisoryUpdatePropVulnerabilitiesItems)
+model_rebuild(RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage)
 
 __all__ = (
-    "ScimEnterpriseGroupList",
-    "ScimEnterpriseGroupResponse",
-    "ScimEnterpriseGroupResponseMergedMembers",
+    "RepositoryAdvisoryUpdate",
+    "RepositoryAdvisoryUpdatePropCreditsItems",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItems",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage",
 )

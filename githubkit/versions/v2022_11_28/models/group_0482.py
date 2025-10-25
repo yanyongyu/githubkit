@@ -19,9 +19,9 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0043 import Milestone
-from .group_0093 import TeamSimple
-from .group_0134 import AutoMerge
+from .group_0040 import Milestone
+from .group_0090 import TeamSimple
+from .group_0131 import AutoMerge
 from .group_0367 import PullRequestPropLabelsItems
 from .group_0368 import PullRequestPropBase, PullRequestPropHead
 from .group_0369 import PullRequestPropLinks

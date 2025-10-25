@@ -9,17 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
 
-    name: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    group_id: NotRequired[Union[str, None]]
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
 
 
-__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type",)

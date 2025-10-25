@@ -14,39 +14,27 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ContentSubmodule(GitHubModel):
-    """Submodule Content
+class CodeScanningSarifsStatus(GitHubModel):
+    """CodeScanningSarifsStatus"""
 
-    An object describing a submodule
-    """
-
-    type: Literal["submodule"] = Field()
-    submodule_git_url: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentSubmodulePropLinks = Field(alias="_links")
+    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
+        default=UNSET,
+        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
+    )
+    analyses_url: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The REST API URL for getting the analyses associated with the upload.",
+    )
+    errors: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="Any errors that ocurred during processing of the delivery.",
+    )
 
 
-class ContentSubmodulePropLinks(GitHubModel):
-    """ContentSubmodulePropLinks"""
+model_rebuild(CodeScanningSarifsStatus)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentSubmodule)
-model_rebuild(ContentSubmodulePropLinks)
-
-__all__ = (
-    "ContentSubmodule",
-    "ContentSubmodulePropLinks",
-)
+__all__ = ("CodeScanningSarifsStatus",)

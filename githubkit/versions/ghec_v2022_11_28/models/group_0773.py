@@ -9,22 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0101 import CustomPropertyValue
+from .group_0527 import EnterpriseWebhooks
+from .group_0528 import SimpleInstallation
+from .group_0529 import OrganizationSimpleWebhooks
 
 
-class WebhookPingFormEncoded(GitHubModel):
-    """WebhookPingFormEncoded
+class WebhookOrganizationCustomPropertyValuesUpdated(GitHubModel):
+    """Custom property values updated event"""
 
-    The webhooks ping payload encoded with URL encoding.
-    """
-
-    payload: str = Field(
-        description="A URL-encoded string of the ping JSON payload. The decoded payload is a JSON object."
+    action: Literal["updated"] = Field()
+    enterprise: EnterpriseWebhooks = Field(
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    new_property_values: list[CustomPropertyValue] = Field(
+        description="The new custom property values."
+    )
+    old_property_values: list[CustomPropertyValue] = Field(
+        description="The old custom property values."
     )
 
 
-model_rebuild(WebhookPingFormEncoded)
+model_rebuild(WebhookOrganizationCustomPropertyValuesUpdated)
 
-__all__ = ("WebhookPingFormEncoded",)
+__all__ = ("WebhookOrganizationCustomPropertyValuesUpdated",)

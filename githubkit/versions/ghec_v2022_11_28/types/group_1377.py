@@ -9,16 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0203 import CodespaceMachineType
-
-
-class UserCodespacesCodespaceNameMachinesGetResponse200Type(TypedDict):
-    """UserCodespacesCodespaceNameMachinesGetResponse200"""
-
-    total_count: int
-    machines: list[CodespaceMachineType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200Type",)
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
+
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+
+
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType",)

@@ -9,28 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0017 import AppPermissionsType
 
+class InstallableOrganizationType(TypedDict):
+    """Installable Organization
 
-class EnterpriseOrganizationInstallationType(TypedDict):
-    """Enterprise Organization Installation
-
-    A GitHub App Installation on an enterprise-owned organization
+    A GitHub organization on which a GitHub App can be installed.
     """
 
     id: int
-    app_slug: NotRequired[str]
-    client_id: str
-    repository_selection: Literal["all", "selected"]
-    repositories_url: str
-    permissions: AppPermissionsType
-    events: NotRequired[list[str]]
-    created_at: datetime
-    updated_at: datetime
+    login: str
+    accessible_repositories_url: NotRequired[str]
 
 
-__all__ = ("EnterpriseOrganizationInstallationType",)
+__all__ = ("InstallableOrganizationType",)

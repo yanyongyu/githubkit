@@ -9,29 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
 from .group_0010 import IntegrationType
+from .group_0080 import TeamType
 
 
-class StateChangeIssueEventType(TypedDict):
-    """State Change Issue Event
+class ReviewRequestedIssueEventType(TypedDict):
+    """Review Requested Issue Event
 
-    State Change Issue Event
+    Review Requested Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["review_requested"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    state_reason: NotRequired[Union[str, None]]
+    review_requester: SimpleUserType
+    requested_team: NotRequired[TeamType]
+    requested_reviewer: NotRequired[SimpleUserType]
 
 
-__all__ = ("StateChangeIssueEventType",)
+__all__ = ("ReviewRequestedIssueEventType",)

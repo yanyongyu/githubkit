@@ -9,17 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DependabotPublicKeyType(TypedDict):
-    """DependabotPublicKey
+class ThreadSubscriptionType(TypedDict):
+    """Thread Subscription
 
-    The public key used for setting Dependabot Secrets.
+    Thread Subscription
     """
 
-    key_id: str
-    key: str
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[datetime, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
-__all__ = ("DependabotPublicKeyType",)
+__all__ = ("ThreadSubscriptionType",)

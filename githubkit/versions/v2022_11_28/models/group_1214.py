@@ -16,13 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamsTeamIdProjectsProjectIdPutResponse403(GitHubModel):
-    """TeamsTeamIdProjectsProjectIdPutResponse403"""
+class TeamsTeamIdDiscussionsPostBody(GitHubModel):
+    """TeamsTeamIdDiscussionsPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    title: str = Field(description="The discussion post's title.")
+    body: str = Field(description="The discussion post's body text.")
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
+    )
 
 
-model_rebuild(TeamsTeamIdProjectsProjectIdPutResponse403)
+model_rebuild(TeamsTeamIdDiscussionsPostBody)
 
-__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403",)
+__all__ = ("TeamsTeamIdDiscussionsPostBody",)

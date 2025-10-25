@@ -12,70 +12,22 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0091 import RepositoryRulesetBypassActorType
-from .group_0096 import RepositoryRulesetConditionsType
-from .group_0107 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
-from .group_0108 import RepositoryRuleUpdateType
-from .group_0110 import RepositoryRuleRequiredLinearHistoryType
-from .group_0111 import RepositoryRuleRequiredDeploymentsType
-from .group_0114 import RepositoryRulePullRequestType
-from .group_0116 import RepositoryRuleRequiredStatusChecksType
-from .group_0118 import RepositoryRuleCommitMessagePatternType
-from .group_0120 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0122 import RepositoryRuleCommitterEmailPatternType
-from .group_0124 import RepositoryRuleBranchNamePatternType
-from .group_0126 import RepositoryRuleTagNamePatternType
-from .group_0128 import RepositoryRuleFilePathRestrictionType
-from .group_0130 import RepositoryRuleMaxFilePathLengthType
-from .group_0132 import RepositoryRuleFileExtensionRestrictionType
-from .group_0134 import RepositoryRuleMaxFileSizeType
-from .group_0137 import RepositoryRuleWorkflowsType
-from .group_0139 import RepositoryRuleCodeScanningType
-from .group_0146 import RepositoryRuleMergeQueueType
-from .group_0148 import RepositoryRuleCopilotCodeReviewType
+from .group_1338 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type
 
 
-class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
-    """ReposOwnerRepoRulesetsPostBody"""
+class ReposOwnerRepoPagesPutBodyAnyof4Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof4"""
 
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[RepositoryRulesetConditionsType]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCopilotCodeReviewType,
-            ]
+    cname: NotRequired[Union[str, None]]
+    https_enforced: bool
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
         ]
     ]
+    public: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoRulesetsPostBodyType",)
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof4Type",)

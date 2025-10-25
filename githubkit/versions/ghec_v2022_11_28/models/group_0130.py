@@ -14,25 +14,42 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0131 import RepositoryRuleMaxFilePathLengthPropParameters
 
 
-class RepositoryRuleMaxFilePathLength(GitHubModel):
-    """max_file_path_length
+class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
+    """RequiredReviewerConfiguration
 
-    Prevent commits that include file paths that exceed the specified character
-    limit from being pushed to the commit graph.
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
     """
 
-    type: Literal["max_file_path_length"] = Field()
-    parameters: Missing[RepositoryRuleMaxFilePathLengthPropParameters] = Field(
-        default=UNSET
+    file_patterns: list[str] = Field(
+        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use the same syntax as `.gitignore` files."
+    )
+    minimum_approvals: int = Field(
+        description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
+    )
+    reviewer: RepositoryRuleParamsReviewer = Field(
+        title="Reviewer", description="A required reviewing team"
     )
 
 
-model_rebuild(RepositoryRuleMaxFilePathLength)
+class RepositoryRuleParamsReviewer(GitHubModel):
+    """Reviewer
 
-__all__ = ("RepositoryRuleMaxFilePathLength",)
+    A required reviewing team
+    """
+
+    id: int = Field(
+        description="ID of the reviewer which must review changes to matching files."
+    )
+    type: Literal["Team"] = Field(description="The type of the reviewer")
+
+
+model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
+model_rebuild(RepositoryRuleParamsReviewer)
+
+__all__ = (
+    "RepositoryRuleParamsRequiredReviewerConfiguration",
+    "RepositoryRuleParamsReviewer",
+)

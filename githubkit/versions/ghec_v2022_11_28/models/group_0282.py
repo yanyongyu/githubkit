@@ -16,14 +16,21 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsWorkflowAccessToRepository(GitHubModel):
-    """ActionsWorkflowAccessToRepository"""
+class TeamMembership(GitHubModel):
+    """Team Membership
 
-    access_level: Literal["none", "user", "organization", "enterprise"] = Field(
-        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization. `enterprise` level access allows sharing across the enterprise."
+    Team Membership
+    """
+
+    url: str = Field()
+    role: Literal["member", "maintainer"] = Field(
+        default="member", description="The role of the user in the team."
+    )
+    state: Literal["active", "pending"] = Field(
+        description="The state of the user's membership in the team."
     )
 
 
-model_rebuild(ActionsWorkflowAccessToRepository)
+model_rebuild(TeamMembership)
 
-__all__ = ("ActionsWorkflowAccessToRepository",)
+__all__ = ("TeamMembership",)

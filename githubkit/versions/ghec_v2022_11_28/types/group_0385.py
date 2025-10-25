@@ -9,30 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
+from .group_0384 import CustomDeploymentRuleAppType
 
 
-class AssignedIssueEventType(TypedDict):
-    """Assigned Issue Event
+class DeploymentProtectionRuleType(TypedDict):
+    """Deployment protection rule
 
-    Assigned Issue Event
+    Deployment protection rule
     """
 
     id: int
     node_id: str
-    url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    assignee: SimpleUserType
-    assigner: SimpleUserType
+    enabled: bool
+    app: CustomDeploymentRuleAppType
 
 
-__all__ = ("AssignedIssueEventType",)
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
+
+
+__all__ = (
+    "DeploymentProtectionRuleType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
+)

@@ -16,22 +16,31 @@ from .group_0003 import SimpleUserType
 from .group_0010 import IntegrationType
 
 
-class TimelineAssignedIssueEventType(TypedDict):
-    """Timeline Assigned Issue Event
+class DemilestonedIssueEventType(TypedDict):
+    """Demilestoned Issue Event
 
-    Timeline Assigned Issue Event
+    Demilestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["assigned"]
+    event: Literal["demilestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
+    milestone: DemilestonedIssueEventPropMilestoneType
 
 
-__all__ = ("TimelineAssignedIssueEventType",)
+class DemilestonedIssueEventPropMilestoneType(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
+
+    title: str
+
+
+__all__ = (
+    "DemilestonedIssueEventPropMilestoneType",
+    "DemilestonedIssueEventType",
+)

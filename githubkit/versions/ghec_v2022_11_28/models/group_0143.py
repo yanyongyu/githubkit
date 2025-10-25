@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0095 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
-)
-from .group_0097 import RepositoryRulesetConditionsPropRefName
+from .group_0144 import RepositoryRuleTagNamePatternPropParameters
 
 
-class OrgRulesetConditionsOneof0(GitHubModel):
-    """repository_name_and_ref_name
+class RepositoryRuleTagNamePattern(GitHubModel):
+    """tag_name_pattern
 
-    Conditions to target repositories by name and refs by name
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    type: Literal["tag_name_pattern"] = Field()
+    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(OrgRulesetConditionsOneof0)
+model_rebuild(RepositoryRuleTagNamePattern)
 
-__all__ = ("OrgRulesetConditionsOneof0",)
+__all__ = ("RepositoryRuleTagNamePattern",)

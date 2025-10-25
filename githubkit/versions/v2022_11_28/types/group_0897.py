@@ -12,11 +12,30 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
     total_count: int
-    platforms: list[str]
+    images: list[ActionsHostedRunnerCustomImageType]
 
 
-__all__ = ("OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type",)
+class ActionsHostedRunnerCustomImageType(TypedDict):
+    """GitHub-hosted runner custom image details
+
+    Provides details of a custom runner image
+    """
+
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
+
+
+__all__ = (
+    "ActionsHostedRunnerCustomImageType",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
+)

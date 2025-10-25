@@ -14,22 +14,36 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0317 import GitUser
+from .group_0318 import Verification
 
 
-class CodeScanningAnalysisDeletion(GitHubModel):
-    """Analysis deletion
+class CommitPropCommit(GitHubModel):
+    """CommitPropCommit"""
 
-    Successful deletion of a code scanning analysis
-    """
-
-    next_analysis_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, without last analysis deletion confirmation"
-    )
-    confirm_delete_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, with last analysis deletion confirmation"
-    )
+    url: str = Field()
+    author: Union[None, GitUser] = Field()
+    committer: Union[None, GitUser] = Field()
+    message: str = Field()
+    comment_count: int = Field()
+    tree: CommitPropCommitPropTree = Field()
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-model_rebuild(CodeScanningAnalysisDeletion)
+class CommitPropCommitPropTree(GitHubModel):
+    """CommitPropCommitPropTree"""
 
-__all__ = ("CodeScanningAnalysisDeletion",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(CommitPropCommit)
+model_rebuild(CommitPropCommitPropTree)
+
+__all__ = (
+    "CommitPropCommit",
+    "CommitPropCommitPropTree",
+)

@@ -9,17 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DependabotAlertPackageType(TypedDict):
-    """DependabotAlertPackage
+class EnterpriseTeamType(TypedDict):
+    """Enterprise Team
 
-    Details for the vulnerable package.
+    Group of enterprise owners and/or members
     """
 
-    ecosystem: str
+    id: int
     name: str
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("DependabotAlertPackageType",)
+__all__ = ("EnterpriseTeamType",)

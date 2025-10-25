@@ -9,26 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0008 import EnterpriseType
 
-class RepositoryRulesetBypassActorType(TypedDict):
-    """Repository Ruleset Bypass Actor
 
-    An actor that can bypass rules in a ruleset
+class EnterpriseRoleType(TypedDict):
+    """Enterprise Role
+
+    Enterprise custom roles
     """
 
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "EnterpriseOwner",
-    ]
-    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    source: NotRequired[Union[None, Literal["Enterprise", "Predefined"]]]
+    permissions: list[str]
+    enterprise: Union[None, EnterpriseType]
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("RepositoryRulesetBypassActorType",)
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[EnterpriseRoleType]]
+
+
+__all__ = (
+    "EnterpriseRoleType",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200Type",
+)

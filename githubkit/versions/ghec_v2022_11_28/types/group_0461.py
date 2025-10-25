@@ -9,18 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0146 import RepositoryRuleFilePathRestrictionPropParametersType
 
 
-class CommitActivityType(TypedDict):
-    """Commit Activity
+class RepositoryRuleDetailedOneof15Type(TypedDict):
+    """RepositoryRuleDetailedOneof15"""
 
-    Commit Activity
-    """
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
-    days: list[int]
-    total: int
-    week: int
 
-
-__all__ = ("CommitActivityType",)
+__all__ = ("RepositoryRuleDetailedOneof15Type",)

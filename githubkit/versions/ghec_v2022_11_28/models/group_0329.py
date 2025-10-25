@@ -18,56 +18,74 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0010 import Integration
+from .group_0208 import MinimalRepository
+from .group_0299 import PullRequestMinimal
+from .group_0300 import SimpleCommit
 
-class CodeScanningDefaultSetup(GitHubModel):
-    """CodeScanningDefaultSetup
 
-    Configuration for code scanning default setup.
+class CheckSuite(GitHubModel):
+    """CheckSuite
+
+    A suite of checks performed on the code of a given code change
     """
 
-    state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET,
-        description="Code scanning default setup has been configured or not.",
+    id: int = Field()
+    node_id: str = Field()
+    head_branch: Union[str, None] = Field()
+    head_sha: str = Field(
+        description="The SHA of the head commit that is being checked."
     )
-    languages: Missing[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    runner_type: Missing[Union[None, Literal["standard", "labeled"]]] = Field(
-        default=UNSET, description="Runner type to be used."
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
+    ] = Field(
+        description="The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites."
     )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Runner label to be used if the runner type is labeled.",
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+    ] = Field()
+    url: Union[str, None] = Field()
+    before: Union[str, None] = Field()
+    after: Union[str, None] = Field()
+    pull_requests: Union[list[PullRequestMinimal], None] = Field()
+    app: Union[None, Integration, None] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    query_suite: Missing[Literal["default", "extended"]] = Field(
-        default=UNSET, description="CodeQL query suite to be used."
-    )
-    threat_model: Missing[Literal["remote", "remote_and_local"]] = Field(
-        default=UNSET,
-        description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
-    )
-    updated_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET, description="Timestamp of latest configuration update."
-    )
-    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
-        default=UNSET, description="The frequency of the periodic analysis."
-    )
+    created_at: Union[datetime, None] = Field()
+    updated_at: Union[datetime, None] = Field()
+    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
+    latest_check_runs_count: int = Field()
+    check_runs_url: str = Field()
+    rerequestable: Missing[bool] = Field(default=UNSET)
+    runs_rerequestable: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningDefaultSetup)
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
 
-__all__ = ("CodeScanningDefaultSetup",)
+    total_count: int = Field()
+    check_suites: list[CheckSuite] = Field()
+
+
+model_rebuild(CheckSuite)
+model_rebuild(ReposOwnerRepoCommitsRefCheckSuitesGetResponse200)
+
+__all__ = (
+    "CheckSuite",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200",
+)

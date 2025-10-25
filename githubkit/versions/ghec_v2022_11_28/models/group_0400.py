@@ -9,26 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0175 import Issue
-
-
-class TimelineCrossReferencedEventPropSource(GitHubModel):
-    """TimelineCrossReferencedEventPropSource"""
-
-    type: Missing[str] = Field(default=UNSET)
-    issue: Missing[Issue] = Field(
-        default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
 
-model_rebuild(TimelineCrossReferencedEventPropSource)
+class UnlabeledIssueEvent(GitHubModel):
+    """Unlabeled Issue Event
 
-__all__ = ("TimelineCrossReferencedEventPropSource",)
+    Unlabeled Issue Event
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["unlabeled"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    label: UnlabeledIssueEventPropLabel = Field()
+
+
+class UnlabeledIssueEventPropLabel(GitHubModel):
+    """UnlabeledIssueEventPropLabel"""
+
+    name: str = Field()
+    color: str = Field()
+
+
+model_rebuild(UnlabeledIssueEvent)
+model_rebuild(UnlabeledIssueEventPropLabel)
+
+__all__ = (
+    "UnlabeledIssueEvent",
+    "UnlabeledIssueEventPropLabel",
+)

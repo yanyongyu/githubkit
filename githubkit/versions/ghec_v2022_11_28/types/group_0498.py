@@ -9,25 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodespaceExportDetailsType(TypedDict):
-    """Fetches information about an export of a codespace.
-
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
-    """
-
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[datetime, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+from .group_0490 import MetaType
+from .group_0495 import UserEmailsResponseItemsType, UserNameResponseType
+from .group_0496 import UserRoleItemsType
+from .group_0500 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
 
 
-__all__ = ("CodespaceExportDetailsType",)
+class ScimEnterpriseUserResponseType(TypedDict):
+    """ScimEnterpriseUserResponse"""
+
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: NotRequired[Union[str, None]]
+    active: bool
+    user_name: NotRequired[str]
+    name: NotRequired[UserNameResponseType]
+    display_name: NotRequired[Union[str, None]]
+    emails: list[UserEmailsResponseItemsType]
+    roles: NotRequired[list[UserRoleItemsType]]
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
+
+
+class ScimEnterpriseUserListType(TypedDict):
+    """ScimEnterpriseUserList"""
+
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: list[ScimEnterpriseUserResponseType]
+    start_index: int
+    items_per_page: int
+
+
+__all__ = (
+    "ScimEnterpriseUserListType",
+    "ScimEnterpriseUserResponseType",
+)

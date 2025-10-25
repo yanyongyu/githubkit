@@ -12,17 +12,23 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class WebhooksWorkflowJobRunType(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class HovercardType(TypedDict):
+    """Hovercard
 
-    conclusion: None
-    created_at: str
-    environment: str
-    html_url: str
-    id: int
-    name: None
-    status: str
-    updated_at: str
+    Hovercard
+    """
+
+    contexts: list[HovercardPropContextsItemsType]
 
 
-__all__ = ("WebhooksWorkflowJobRunType",)
+class HovercardPropContextsItemsType(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
+
+
+__all__ = (
+    "HovercardPropContextsItemsType",
+    "HovercardType",
+)

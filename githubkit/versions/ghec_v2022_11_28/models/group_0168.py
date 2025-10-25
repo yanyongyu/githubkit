@@ -9,25 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0169 import RulesetVersionPropActor
 
-class CombinedBillingUsage(GitHubModel):
-    """CombinedBillingUsage"""
 
-    days_left_in_billing_cycle: int = Field(
-        description="Numbers of days left in billing cycle."
+class RulesetVersion(GitHubModel):
+    """Ruleset version
+
+    The historical version of a ruleset
+    """
+
+    version_id: int = Field(description="The ID of the previous version of the ruleset")
+    actor: RulesetVersionPropActor = Field(
+        description="The actor who updated the ruleset"
     )
-    estimated_paid_storage_for_month: int = Field(
-        description="Estimated storage space (GB) used in billing cycle."
-    )
-    estimated_storage_for_month: int = Field(
-        description="Estimated sum of free and paid storage space (GB) used in billing cycle."
-    )
+    updated_at: datetime = Field()
 
 
-model_rebuild(CombinedBillingUsage)
+model_rebuild(RulesetVersion)
 
-__all__ = ("CombinedBillingUsage",)
+__all__ = ("RulesetVersion",)

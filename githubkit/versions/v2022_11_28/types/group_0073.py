@@ -12,16 +12,23 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ActionsHostedRunnerMachineSpecType(TypedDict):
-    """Github-owned VM details.
+class ActionsHostedRunnerLimitsType(TypedDict):
+    """ActionsHostedRunnerLimits"""
 
-    Provides details of a particular machine spec.
+    public_ips: ActionsHostedRunnerLimitsPropPublicIpsType
+
+
+class ActionsHostedRunnerLimitsPropPublicIpsType(TypedDict):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
+
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
     """
 
-    id: str
-    cpu_cores: int
-    memory_gb: int
-    storage_gb: int
+    maximum: int
+    current_usage: int
 
 
-__all__ = ("ActionsHostedRunnerMachineSpecType",)
+__all__ = (
+    "ActionsHostedRunnerLimitsPropPublicIpsType",
+    "ActionsHostedRunnerLimitsType",
+)

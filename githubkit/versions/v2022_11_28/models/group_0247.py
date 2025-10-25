@@ -15,7 +15,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0094 import Team
+from .group_0091 import Team
 
 
 class BranchRestrictionPolicy(GitHubModel):

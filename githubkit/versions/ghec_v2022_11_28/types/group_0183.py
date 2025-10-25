@@ -9,35 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
+from typing_extensions import TypedDict
 
 
-class GistCommitType(TypedDict):
-    """Gist Commit
+class PackagesBillingUsageType(TypedDict):
+    """PackagesBillingUsage"""
 
-    Gist Commit
-    """
-
-    url: str
-    version: str
-    user: Union[None, SimpleUserType]
-    change_status: GistCommitPropChangeStatusType
-    committed_at: datetime
+    total_gigabytes_bandwidth_used: int
+    total_paid_gigabytes_bandwidth_used: int
+    included_gigabytes_bandwidth: int
 
 
-class GistCommitPropChangeStatusType(TypedDict):
-    """GistCommitPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-__all__ = (
-    "GistCommitPropChangeStatusType",
-    "GistCommitType",
-)
+__all__ = ("PackagesBillingUsageType",)

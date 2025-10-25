@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,38 +16,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
+class ProjectsColumnsColumnIdCardsPostResponse503(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostResponse503"""
 
-    total_count: int = Field()
-    workflows: list[Workflow] = Field()
-
-
-class Workflow(GitHubModel):
-    """Workflow
-
-    A GitHub Actions workflow
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    path: str = Field()
-    state: Literal[
-        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
-    ] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
-    html_url: str = Field()
-    badge_url: str = Field()
-    deleted_at: Missing[datetime] = Field(default=UNSET)
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[
+        list[ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoActionsWorkflowsGetResponse200)
-model_rebuild(Workflow)
+class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"""
+
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ProjectsColumnsColumnIdCardsPostResponse503)
+model_rebuild(ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems)
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsGetResponse200",
-    "Workflow",
+    "ProjectsColumnsColumnIdCardsPostResponse503",
+    "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems",
 )

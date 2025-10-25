@@ -9,20 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0112 import RepositoryRuleRequiredDeploymentsPropParametersType
-
-
-class RepositoryRuleDetailedOneof5Type(TypedDict):
-    """RepositoryRuleDetailedOneof5"""
-
-    type: Literal["required_deployments"]
-    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+from .group_0003 import SimpleUserType
+from .group_0020 import RepositoryType
 
 
-__all__ = ("RepositoryRuleDetailedOneof5Type",)
+class PullRequestPropHeadType(TypedDict):
+    """PullRequestPropHead"""
+
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
+    user: Union[None, SimpleUserType]
+
+
+class PullRequestPropBaseType(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: SimpleUserType
+
+
+__all__ = (
+    "PullRequestPropBaseType",
+    "PullRequestPropHeadType",
+)

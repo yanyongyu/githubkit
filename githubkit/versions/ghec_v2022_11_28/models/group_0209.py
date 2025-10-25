@@ -9,35 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0208 import MinimalRepository
 
 
-class OrganizationCustomRepositoryRoleUpdateSchema(GitHubModel):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
+class Thread(GitHubModel):
+    """Thread
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
+    Thread
+    """
+
+    id: str = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
-    )
-    base_role: Missing[Literal["read", "triage", "write", "maintain"]] = Field(
-        default=UNSET,
-        description="The system role from which this role inherits permissions.",
-    )
-    permissions: Missing[list[str]] = Field(
-        default=UNSET,
-        description="A list of additional permissions included in this role.",
-    )
+    subject: ThreadPropSubject = Field()
+    reason: str = Field()
+    unread: bool = Field()
+    updated_at: str = Field()
+    last_read_at: Union[str, None] = Field()
+    url: str = Field()
+    subscription_url: str = Field()
 
 
-model_rebuild(OrganizationCustomRepositoryRoleUpdateSchema)
+class ThreadPropSubject(GitHubModel):
+    """ThreadPropSubject"""
 
-__all__ = ("OrganizationCustomRepositoryRoleUpdateSchema",)
+    title: str = Field()
+    url: str = Field()
+    latest_comment_url: str = Field()
+    type: str = Field()
+
+
+model_rebuild(Thread)
+model_rebuild(ThreadPropSubject)
+
+__all__ = (
+    "Thread",
+    "ThreadPropSubject",
+)

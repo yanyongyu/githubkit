@@ -17,23 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0182 import RepositoryRuleFilePathRestrictionPropParameters
+from .group_0182 import RepositoryRuleFileExtensionRestrictionPropParameters
 
 
-class RepositoryRuleFilePathRestriction(GitHubModel):
-    """file_path_restriction
+class RepositoryRuleFileExtensionRestriction(GitHubModel):
+    """file_extension_restriction
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
     """
 
-    type: Literal["file_path_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFilePathRestrictionPropParameters] = Field(
+    type: Literal["file_extension_restriction"] = Field()
+    parameters: Missing[RepositoryRuleFileExtensionRestrictionPropParameters] = Field(
         default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleFilePathRestriction)
+model_rebuild(RepositoryRuleFileExtensionRestriction)
 
-__all__ = ("RepositoryRuleFilePathRestriction",)
+__all__ = ("RepositoryRuleFileExtensionRestriction",)

@@ -18,17 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0511 import EnterpriseWebhooks
-from .group_0512 import SimpleInstallation
-from .group_0513 import OrganizationSimpleWebhooks
-from .group_0514 import RepositoryWebhooks
-from .group_0542 import WebhooksMembership
+from .group_0527 import EnterpriseWebhooks
+from .group_0528 import SimpleInstallation
+from .group_0529 import OrganizationSimpleWebhooks
+from .group_0530 import RepositoryWebhooks
+from .group_0553 import WebhooksMarketplacePurchase
+from .group_0554 import WebhooksPreviousMarketplacePurchase
 
 
-class WebhookOrganizationDeleted(GitHubModel):
-    """organization deleted event"""
+class WebhookMarketplacePurchasePurchased(GitHubModel):
+    """marketplace_purchase purchased event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["purchased"] = Field()
+    effective_date: str = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,14 +41,16 @@ class WebhookOrganizationDeleted(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    membership: Missing[WebhooksMembership] = Field(
-        default=UNSET,
-        title="Membership",
-        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
+    marketplace_purchase: WebhooksMarketplacePurchase = Field(
+        title="Marketplace Purchase"
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    previous_marketplace_purchase: Missing[WebhooksPreviousMarketplacePurchase] = Field(
+        default=UNSET, title="Marketplace Purchase"
     )
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
@@ -56,6 +60,6 @@ class WebhookOrganizationDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookOrganizationDeleted)
+model_rebuild(WebhookMarketplacePurchasePurchased)
 
-__all__ = ("WebhookOrganizationDeleted",)
+__all__ = ("WebhookMarketplacePurchasePurchased",)

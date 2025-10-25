@@ -9,36 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import date, datetime
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0081 import DependabotAlertPackageType
+from .group_0003 import SimpleUserType
+from .group_0044 import OrganizationSimpleType
+from .group_0080 import TeamType
+from .group_0081 import EnterpriseTeamType
 
 
-class DependabotAlertSecurityVulnerabilityType(TypedDict):
-    """DependabotAlertSecurityVulnerability
+class CopilotSeatDetailsType(TypedDict):
+    """Copilot Business Seat Detail
 
-    Details pertaining to one vulnerable version range for the advisory.
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
     """
 
-    package: DependabotAlertPackageType
-    severity: Literal["low", "medium", "high", "critical"]
-    vulnerable_version_range: str
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
-    ]
+    assignee: NotRequired[Union[None, SimpleUserType]]
+    organization: NotRequired[Union[None, OrganizationSimpleType]]
+    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
+    pending_cancellation_date: NotRequired[Union[date, None]]
+    last_activity_at: NotRequired[Union[datetime, None]]
+    last_activity_editor: NotRequired[Union[str, None]]
+    last_authenticated_at: NotRequired[Union[datetime, None]]
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
-
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str
-
-
-__all__ = (
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
-    "DependabotAlertSecurityVulnerabilityType",
-)
+__all__ = ("CopilotSeatDetailsType",)

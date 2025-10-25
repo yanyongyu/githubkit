@@ -13,16 +13,13 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0280 import ActionsVariable
+
+class ProjectsColumnsColumnIdPatchBody(GitHubModel):
+    """ProjectsColumnsColumnIdPatchBody"""
+
+    name: str = Field(description="Name of the project column")
 
 
-class ReposOwnerRepoActionsVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsVariablesGetResponse200"""
+model_rebuild(ProjectsColumnsColumnIdPatchBody)
 
-    total_count: int = Field()
-    variables: list[ActionsVariable] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsVariablesGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsVariablesGetResponse200",)
+__all__ = ("ProjectsColumnsColumnIdPatchBody",)

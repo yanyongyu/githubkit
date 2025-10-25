@@ -9,71 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0840 import (
-    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType,
-)
+from .group_0003 import SimpleUserType
+from .group_0527 import EnterpriseWebhooksType
+from .group_0528 import SimpleInstallationType
+from .group_0529 import OrganizationSimpleWebhooksType
+from .group_0530 import RepositoryWebhooksType
+from .group_0565 import PullRequestWebhookType
 
 
-class WebhookRegistryPackagePublishedPropRegistryPackageType(TypedDict):
-    """WebhookRegistryPackagePublishedPropRegistryPackage"""
+class WebhookPullRequestReadyForReviewType(TypedDict):
+    """pull_request ready_for_review event"""
 
-    created_at: Union[str, None]
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType
-    package_type: str
-    package_version: Union[
-        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType, None
-    ]
-    registry: Union[
-        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType, None
-    ]
-    updated_at: Union[str, None]
+    action: Literal["ready_for_review"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    number: int
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    pull_request: PullRequestWebhookType
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType(TypedDict):
-    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
-
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: str
-    html_url: str
-    id: int
-    login: str
-    node_id: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
-    user_view_type: NotRequired[str]
-
-
-class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType(TypedDict):
-    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
-
-    about_url: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    vendor: NotRequired[str]
-
-
-__all__ = (
-    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType",
-    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType",
-    "WebhookRegistryPackagePublishedPropRegistryPackageType",
-)
+__all__ = ("WebhookPullRequestReadyForReviewType",)

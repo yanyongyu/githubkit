@@ -12,29 +12,14 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageReportType(TypedDict):
-    """BillingUsageReport"""
+class RulesetVersionPropActorType(TypedDict):
+    """RulesetVersionPropActor
 
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
+    The actor who updated the ruleset
+    """
 
-
-class BillingUsageReportPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
-
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
+    id: NotRequired[int]
+    type: NotRequired[str]
 
 
-__all__ = (
-    "BillingUsageReportPropUsageItemsItemsType",
-    "BillingUsageReportType",
-)
+__all__ = ("RulesetVersionPropActorType",)

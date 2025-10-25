@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ScimEnterpriseUserResponseAllof1PropGroupsItems(GitHubModel):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+class Traffic(GitHubModel):
+    """Traffic"""
 
-    value: Missing[str] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET, alias="$ref")
-    display: Missing[str] = Field(default=UNSET)
+    timestamp: datetime = Field()
+    uniques: int = Field()
+    count: int = Field()
 
 
-model_rebuild(ScimEnterpriseUserResponseAllof1PropGroupsItems)
+model_rebuild(Traffic)
 
-__all__ = ("ScimEnterpriseUserResponseAllof1PropGroupsItems",)
+__all__ = ("Traffic",)

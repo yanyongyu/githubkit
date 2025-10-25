@@ -9,32 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0078 import TeamType
+from .group_0318 import VerificationType
 
 
-class ReviewRequestedIssueEventType(TypedDict):
-    """Review Requested Issue Event
+class GitTagType(TypedDict):
+    """Git Tag
 
-    Review Requested Issue Event
+    Metadata for a Git tag
     """
 
-    id: int
     node_id: str
+    tag: str
+    sha: str
     url: str
-    actor: SimpleUserType
-    event: Literal["review_requested"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    review_requester: SimpleUserType
-    requested_team: NotRequired[TeamType]
-    requested_reviewer: NotRequired[SimpleUserType]
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-__all__ = ("ReviewRequestedIssueEventType",)
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
+
+
+__all__ = (
+    "GitTagPropObjectType",
+    "GitTagPropTaggerType",
+    "GitTagType",
+)

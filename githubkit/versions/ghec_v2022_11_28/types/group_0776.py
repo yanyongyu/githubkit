@@ -14,43 +14,47 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0511 import EnterpriseWebhooksType
-from .group_0512 import SimpleInstallationType
-from .group_0513 import OrganizationSimpleWebhooksType
-from .group_0514 import RepositoryWebhooksType
+from .group_0527 import EnterpriseWebhooksType
+from .group_0528 import SimpleInstallationType
+from .group_0529 import OrganizationSimpleWebhooksType
+from .group_0530 import RepositoryWebhooksType
+from .group_0540 import WebhooksUserType
 
 
-class WebhookProjectCardDeletedType(TypedDict):
-    """project_card deleted event"""
+class WebhookOrganizationMemberInvitedType(TypedDict):
+    """organization member_invited event"""
 
-    action: Literal["deleted"]
+    action: Literal["member_invited"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhookProjectCardDeletedPropProjectCardType
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    invitation: WebhookOrganizationMemberInvitedPropInvitationType
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
+    user: NotRequired[Union[WebhooksUserType, None]]
 
 
-class WebhookProjectCardDeletedPropProjectCardType(TypedDict):
-    """Project Card"""
+class WebhookOrganizationMemberInvitedPropInvitationType(TypedDict):
+    """WebhookOrganizationMemberInvitedPropInvitation
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: Union[int, None]
-    column_url: str
-    content_url: NotRequired[str]
+    The invitation for the user or email if the action is `member_invited`.
+    """
+
     created_at: datetime
-    creator: Union[WebhookProjectCardDeletedPropProjectCardPropCreatorType, None]
-    id: int
+    email: Union[str, None]
+    failed_at: Union[datetime, None]
+    failed_reason: Union[str, None]
+    id: float
+    invitation_teams_url: str
+    inviter: Union[WebhookOrganizationMemberInvitedPropInvitationPropInviterType, None]
+    login: Union[str, None]
     node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: datetime
-    url: str
+    role: str
+    team_count: float
+    invitation_source: NotRequired[str]
 
 
-class WebhookProjectCardDeletedPropProjectCardPropCreatorType(TypedDict):
+class WebhookOrganizationMemberInvitedPropInvitationPropInviterType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -72,13 +76,13 @@ class WebhookProjectCardDeletedPropProjectCardPropCreatorType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectCardDeletedPropProjectCardPropCreatorType",
-    "WebhookProjectCardDeletedPropProjectCardType",
-    "WebhookProjectCardDeletedType",
+    "WebhookOrganizationMemberInvitedPropInvitationPropInviterType",
+    "WebhookOrganizationMemberInvitedPropInvitationType",
+    "WebhookOrganizationMemberInvitedType",
 )

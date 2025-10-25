@@ -9,24 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrganizationUpdateIssueTypeType(TypedDict):
-    """OrganizationUpdateIssueType"""
+class DependabotPublicKeyType(TypedDict):
+    """DependabotPublicKey
 
-    name: str
-    is_enabled: bool
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
+    The public key used for setting Dependabot Secrets.
+    """
+
+    key_id: str
+    key: str
 
 
-__all__ = ("OrganizationUpdateIssueTypeType",)
+__all__ = ("DependabotPublicKeyType",)

@@ -14,33 +14,19 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsHostedRunnerLimits(GitHubModel):
-    """ActionsHostedRunnerLimits"""
+class ActionsHostedRunnerCustomImageVersion(GitHubModel):
+    """GitHub-hosted runner custom image version details.
 
-    public_ips: ActionsHostedRunnerLimitsPropPublicIps = Field(
-        title="Static public IP Limits for GitHub-hosted Hosted Runners.",
-        description="Provides details of static public IP limits for GitHub-hosted Hosted Runners",
-    )
-
-
-class ActionsHostedRunnerLimitsPropPublicIps(GitHubModel):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
-
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    Provides details of a hosted runner custom image version
     """
 
-    maximum: int = Field(
-        description="The maximum number of static public IP addresses that can be used for Hosted Runners."
-    )
-    current_usage: int = Field(
-        description="The current number of static public IP addresses in use by Hosted Runners."
-    )
+    version: str = Field(description="The version of image.")
+    state: str = Field(description="The state of image version.")
+    size_gb: int = Field(description="Image version size in GB.")
+    created_on: str = Field(description="The creation date time of the image version.")
+    state_details: str = Field(description="The image version status details.")
 
 
-model_rebuild(ActionsHostedRunnerLimits)
-model_rebuild(ActionsHostedRunnerLimitsPropPublicIps)
+model_rebuild(ActionsHostedRunnerCustomImageVersion)
 
-__all__ = (
-    "ActionsHostedRunnerLimits",
-    "ActionsHostedRunnerLimitsPropPublicIps",
-)
+__all__ = ("ActionsHostedRunnerCustomImageVersion",)

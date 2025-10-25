@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,23 +18,40 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0020 import Repository
 
-class RunnerLabel(GitHubModel):
-    """Self hosted runner label
 
-    A label for a self hosted runner
+class AuthenticationToken(GitHubModel):
+    """Authentication Token
+
+    Authentication Token
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="Unique identifier of the label."
+    token: str = Field(description="The token used for authentication")
+    expires_at: datetime = Field(description="The time this token expires")
+    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
+    repositories: Missing[list[Repository]] = Field(
+        default=UNSET, description="The repositories this token has access to"
     )
-    name: str = Field(description="Name of the label.")
-    type: Missing[Literal["read-only", "custom"]] = Field(
+    single_file: Missing[Union[str, None]] = Field(default=UNSET)
+    repository_selection: Missing[Literal["all", "selected"]] = Field(
         default=UNSET,
-        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
+        description="Describe whether all repositories have been selected or there's a selection involved",
     )
 
 
-model_rebuild(RunnerLabel)
+class AuthenticationTokenPropPermissions(GitHubModel):
+    """AuthenticationTokenPropPermissions
 
-__all__ = ("RunnerLabel",)
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+model_rebuild(AuthenticationToken)
+model_rebuild(AuthenticationTokenPropPermissions)
+
+__all__ = (
+    "AuthenticationToken",
+    "AuthenticationTokenPropPermissions",
+)

@@ -9,19 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0010 import IntegrationType
 
-class MergedUpstreamType(TypedDict):
-    """Merged upstream
 
-    Results of a successful merge upstream request
+class AddedToProjectIssueEventType(TypedDict):
+    """Added to Project Issue Event
+
+    Added to Project Issue Event
     """
 
-    message: NotRequired[str]
-    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
-    base_branch: NotRequired[str]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["added_to_project"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardType]
 
 
-__all__ = ("MergedUpstreamType",)
+class AddedToProjectIssueEventPropProjectCardType(TypedDict):
+    """AddedToProjectIssueEventPropProjectCard"""
+
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
+
+
+__all__ = (
+    "AddedToProjectIssueEventPropProjectCardType",
+    "AddedToProjectIssueEventType",
+)

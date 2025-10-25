@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0163 import RepositoryRuleMergeQueuePropParameters
+from .group_0159 import RepositoryRuleMergeQueuePropParameters
 
 
 class RepositoryRuleDetailedOneof4(GitHubModel):

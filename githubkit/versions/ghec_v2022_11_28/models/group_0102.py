@@ -12,54 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0101 import CustomPropertyValue
 
 
-class EnterpriseRulesetConditionsOrganizationPropertyTarget(GitHubModel):
-    """Repository ruleset conditions for organization properties
+class CustomPropertiesForOrgsGetEnterprisePropertyValues(GitHubModel):
+    """Enterprise Organization Custom Property Values
 
-    Parameters for a organization property condition
+    List of custom property values for an organization
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty = Field()
-
-
-class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty(
-    GitHubModel
-):
-    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
-
-    include: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
-        default=UNSET,
-        description="The organization properties and values to include. All of these properties must match for the condition to pass.",
-    )
-    exclude: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
-        default=UNSET,
-        description="The organization properties and values to exclude. The condition will not pass if any of these properties match.",
+    organization_id: int = Field()
+    organization_login: str = Field()
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values"
     )
 
 
-class EnterpriseRulesetConditionsOrganizationPropertySpec(GitHubModel):
-    """Repository ruleset property targeting definition
+model_rebuild(CustomPropertiesForOrgsGetEnterprisePropertyValues)
 
-    Parameters for a targeting a organization property
-    """
-
-    name: str = Field(description="The name of the organization property to target")
-    property_values: list[str] = Field(
-        description="The values to match for the organization property"
-    )
-
-
-model_rebuild(EnterpriseRulesetConditionsOrganizationPropertyTarget)
-model_rebuild(
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty
-)
-model_rebuild(EnterpriseRulesetConditionsOrganizationPropertySpec)
-
-__all__ = (
-    "EnterpriseRulesetConditionsOrganizationPropertySpec",
-    "EnterpriseRulesetConditionsOrganizationPropertyTarget",
-    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty",
-)
+__all__ = ("CustomPropertiesForOrgsGetEnterprisePropertyValues",)

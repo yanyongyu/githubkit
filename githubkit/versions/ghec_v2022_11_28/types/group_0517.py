@@ -10,178 +10,69 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Any, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0516 import ExemptionResponseType
 
+class GpgKeyType(TypedDict):
+    """GPG Key
 
-class ExemptionRequestType(TypedDict):
-    """Exemption Request
-
-    A request from a user to be exempted from a set of rules.
+    A unique encryption key
     """
+
+    id: int
+    name: NotRequired[Union[str, None]]
+    primary_key_id: Union[int, None]
+    key_id: str
+    public_key: str
+    emails: list[GpgKeyPropEmailsItemsType]
+    subkeys: list[GpgKeyPropSubkeysItemsType]
+    can_sign: bool
+    can_encrypt_comms: bool
+    can_encrypt_storage: bool
+    can_certify: bool
+    created_at: datetime
+    expires_at: Union[datetime, None]
+    revoked: bool
+    raw_key: Union[str, None]
+
+
+class GpgKeyPropEmailsItemsType(TypedDict):
+    """GpgKeyPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsType(TypedDict):
+    """GpgKeyPropSubkeysItems"""
 
     id: NotRequired[int]
-    number: NotRequired[Union[int, None]]
-    repository_id: NotRequired[int]
-    requester_id: NotRequired[int]
-    requester_login: NotRequired[str]
-    request_type: NotRequired[
-        Literal[
-            "push_ruleset_bypass",
-            "secret_scanning",
-            "secret_scanning_closure",
-            "code_scanning_alert_dismissal",
-        ]
-    ]
-    exemption_request_data: NotRequired[
-        Union[
-            ExemptionRequestPushRulesetBypassType,
-            ExemptionRequestSecretScanningType,
-            DismissalRequestSecretScanningType,
-            DismissalRequestCodeScanningType,
-        ]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "rejected", "cancelled", "completed"]]
-    requester_comment: NotRequired[Union[str, None]]
-    metadata: NotRequired[
-        Union[
-            ExemptionRequestSecretScanningMetadataType,
-            DismissalRequestSecretScanningMetadataType,
-            DismissalRequestCodeScanningMetadataType,
-            None,
-        ]
-    ]
-    expires_at: NotRequired[datetime]
-    created_at: NotRequired[datetime]
-    responses: NotRequired[Union[list[ExemptionResponseType], None]]
-    html_url: NotRequired[str]
+    primary_key_id: NotRequired[int]
+    key_id: NotRequired[str]
+    public_key: NotRequired[str]
+    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsType]]
+    subkeys: NotRequired[list[Any]]
+    can_sign: NotRequired[bool]
+    can_encrypt_comms: NotRequired[bool]
+    can_encrypt_storage: NotRequired[bool]
+    can_certify: NotRequired[bool]
+    created_at: NotRequired[str]
+    expires_at: NotRequired[Union[str, None]]
+    raw_key: NotRequired[Union[str, None]]
+    revoked: NotRequired[bool]
 
 
-class ExemptionRequestSecretScanningMetadataType(TypedDict):
-    """Secret Scanning Push Protection Exemption Request Metadata
+class GpgKeyPropSubkeysItemsPropEmailsItemsType(TypedDict):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
 
-    Metadata for a secret scanning push protection exemption request.
-    """
-
-    label: NotRequired[str]
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests"]]
-
-
-class DismissalRequestSecretScanningMetadataType(TypedDict):
-    """Secret scanning alert dismissal request metadata
-
-    Metadata for a secret scanning alert dismissal request.
-    """
-
-    alert_title: NotRequired[str]
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
-
-
-class DismissalRequestCodeScanningMetadataType(TypedDict):
-    """Code scanning alert dismissal request metadata
-
-    Metadata for a code scanning alert dismissal request.
-    """
-
-    alert_title: NotRequired[str]
-    reason: NotRequired[Literal["false positive", "won't fix", "used in tests"]]
-
-
-class ExemptionRequestPushRulesetBypassType(TypedDict):
-    """Push ruleset bypass exemption request data
-
-    Push rules that are being requested to be bypassed.
-    """
-
-    type: NotRequired[Literal["push_ruleset_bypass"]]
-    data: NotRequired[list[ExemptionRequestPushRulesetBypassPropDataItemsType]]
-
-
-class ExemptionRequestPushRulesetBypassPropDataItemsType(TypedDict):
-    """ExemptionRequestPushRulesetBypassPropDataItems"""
-
-    ruleset_id: NotRequired[int]
-    ruleset_name: NotRequired[str]
-    total_violations: NotRequired[int]
-    rule_type: NotRequired[str]
-
-
-class DismissalRequestSecretScanningType(TypedDict):
-    """Secret scanning alert dismissal request data
-
-    Secret scanning alerts that have dismissal requests.
-    """
-
-    type: NotRequired[Literal["secret_scanning_closure"]]
-    data: NotRequired[list[DismissalRequestSecretScanningPropDataItemsType]]
-
-
-class DismissalRequestSecretScanningPropDataItemsType(TypedDict):
-    """DismissalRequestSecretScanningPropDataItems"""
-
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
-    secret_type: NotRequired[str]
-    alert_number: NotRequired[str]
-
-
-class DismissalRequestCodeScanningType(TypedDict):
-    """Code scanning alert dismissal request data
-
-    Code scanning alerts that have dismissal requests.
-    """
-
-    type: NotRequired[Literal["code_scanning_alert_dismissal"]]
-    data: NotRequired[list[DismissalRequestCodeScanningPropDataItemsType]]
-
-
-class DismissalRequestCodeScanningPropDataItemsType(TypedDict):
-    """DismissalRequestCodeScanningPropDataItems"""
-
-    alert_number: NotRequired[str]
-
-
-class ExemptionRequestSecretScanningType(TypedDict):
-    """Secret scanning push protection exemption request data
-
-    Secret scanning push protections that are being requested to be bypassed.
-    """
-
-    type: NotRequired[Literal["secret_scanning"]]
-    data: NotRequired[list[ExemptionRequestSecretScanningPropDataItemsType]]
-
-
-class ExemptionRequestSecretScanningPropDataItemsType(TypedDict):
-    """ExemptionRequestSecretScanningPropDataItems"""
-
-    secret_type: NotRequired[str]
-    locations: NotRequired[
-        list[ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType]
-    ]
-
-
-class ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType(TypedDict):
-    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
-
-    commit: NotRequired[str]
-    branch: NotRequired[str]
-    path: NotRequired[str]
+    email: NotRequired[str]
+    verified: NotRequired[bool]
 
 
 __all__ = (
-    "DismissalRequestCodeScanningMetadataType",
-    "DismissalRequestCodeScanningPropDataItemsType",
-    "DismissalRequestCodeScanningType",
-    "DismissalRequestSecretScanningMetadataType",
-    "DismissalRequestSecretScanningPropDataItemsType",
-    "DismissalRequestSecretScanningType",
-    "ExemptionRequestPushRulesetBypassPropDataItemsType",
-    "ExemptionRequestPushRulesetBypassType",
-    "ExemptionRequestSecretScanningMetadataType",
-    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType",
-    "ExemptionRequestSecretScanningPropDataItemsType",
-    "ExemptionRequestSecretScanningType",
-    "ExemptionRequestType",
+    "GpgKeyPropEmailsItemsType",
+    "GpgKeyPropSubkeysItemsPropEmailsItemsType",
+    "GpgKeyPropSubkeysItemsType",
+    "GpgKeyType",
 )

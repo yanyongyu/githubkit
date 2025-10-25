@@ -11,16 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0226 import JobType
+from .group_0229 import ActionsVariableType
 
 
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
 
     total_count: int
-    jobs: list[JobType]
+    variables: list[ActionsVariableType]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",)

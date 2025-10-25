@@ -9,52 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0357 import Metadata
+from .group_0019 import LicenseSimple
+from .group_0270 import CodeOfConductSimple
 
 
-class Manifest(GitHubModel):
-    """Manifest"""
+class CommunityProfilePropFiles(GitHubModel):
+    """CommunityProfilePropFiles"""
 
-    name: str = Field(description="The name of the manifest.")
-    file: Missing[ManifestPropFile] = Field(default=UNSET)
-    metadata: Missing[Metadata] = Field(
-        default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
-    )
-    resolved: Missing[ManifestPropResolved] = Field(
-        default=UNSET, description="A collection of resolved package dependencies."
-    )
+    code_of_conduct: Union[None, CodeOfConductSimple] = Field()
+    code_of_conduct_file: Union[None, CommunityHealthFile] = Field()
+    license_: Union[None, LicenseSimple] = Field(alias="license")
+    contributing: Union[None, CommunityHealthFile] = Field()
+    readme: Union[None, CommunityHealthFile] = Field()
+    issue_template: Union[None, CommunityHealthFile] = Field()
+    pull_request_template: Union[None, CommunityHealthFile] = Field()
 
 
-class ManifestPropFile(GitHubModel):
-    """ManifestPropFile"""
+class CommunityHealthFile(GitHubModel):
+    """Community Health File"""
 
-    source_location: Missing[str] = Field(
-        default=UNSET,
-        description="The path of the manifest file relative to the root of the Git repository.",
-    )
+    url: str = Field()
+    html_url: str = Field()
 
 
-class ManifestPropResolved(ExtraGitHubModel):
-    """ManifestPropResolved
+class CommunityProfile(GitHubModel):
+    """Community Profile
 
-    A collection of resolved package dependencies.
+    Community Profile
     """
 
+    health_percentage: int = Field()
+    description: Union[str, None] = Field()
+    documentation: Union[str, None] = Field()
+    files: CommunityProfilePropFiles = Field()
+    updated_at: Union[datetime, None] = Field()
+    content_reports_enabled: Missing[bool] = Field(default=UNSET)
 
-model_rebuild(Manifest)
-model_rebuild(ManifestPropFile)
-model_rebuild(ManifestPropResolved)
+
+model_rebuild(CommunityProfilePropFiles)
+model_rebuild(CommunityHealthFile)
+model_rebuild(CommunityProfile)
 
 __all__ = (
-    "Manifest",
-    "ManifestPropFile",
-    "ManifestPropResolved",
+    "CommunityHealthFile",
+    "CommunityProfile",
+    "CommunityProfilePropFiles",
 )

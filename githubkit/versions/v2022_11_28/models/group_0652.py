@@ -18,7 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0044 import IssueType
+from .group_0041 import IssueType
 from .group_0446 import EnterpriseWebhooks
 from .group_0447 import SimpleInstallation
 from .group_0448 import OrganizationSimpleWebhooks

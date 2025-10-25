@@ -9,122 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0146 import RepositoryRulesetBypassActorType
-from .group_0147 import RepositoryRulesetConditionsType
-from .group_0155 import OrgRulesetConditionsOneof0Type
-from .group_0156 import OrgRulesetConditionsOneof1Type
-from .group_0157 import OrgRulesetConditionsOneof2Type
-from .group_0158 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
-from .group_0159 import RepositoryRuleUpdateType
-from .group_0161 import RepositoryRuleRequiredLinearHistoryType
-from .group_0162 import RepositoryRuleMergeQueueType
-from .group_0164 import RepositoryRuleRequiredDeploymentsType
-from .group_0167 import RepositoryRulePullRequestType
-from .group_0169 import RepositoryRuleRequiredStatusChecksType
-from .group_0171 import RepositoryRuleCommitMessagePatternType
-from .group_0173 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0175 import RepositoryRuleCommitterEmailPatternType
-from .group_0177 import RepositoryRuleBranchNamePatternType
-from .group_0179 import RepositoryRuleTagNamePatternType
-from .group_0181 import RepositoryRuleFilePathRestrictionType
-from .group_0183 import RepositoryRuleMaxFilePathLengthType
-from .group_0185 import RepositoryRuleFileExtensionRestrictionType
-from .group_0187 import RepositoryRuleMaxFileSizeType
-from .group_0190 import RepositoryRuleWorkflowsType
-from .group_0192 import RepositoryRuleCodeScanningType
-from .group_0194 import RepositoryRuleCopilotCodeReviewType
 
+class RulesetVersionPropActorType(TypedDict):
+    """RulesetVersionPropActor
 
-class RepositoryRulesetType(TypedDict):
-    """Repository ruleset
-
-    A set of rules to apply when specified conditions are met.
+    The actor who updated the ruleset
     """
 
-    id: int
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    source_type: NotRequired[Literal["Repository", "Organization", "Enterprise"]]
-    source: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    current_user_can_bypass: NotRequired[
-        Literal["always", "pull_requests_only", "never", "exempt"]
-    ]
-    node_id: NotRequired[str]
-    links: NotRequired[RepositoryRulesetPropLinksType]
-    conditions: NotRequired[
-        Union[
-            RepositoryRulesetConditionsType,
-            OrgRulesetConditionsOneof0Type,
-            OrgRulesetConditionsOneof1Type,
-            OrgRulesetConditionsOneof2Type,
-            None,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCopilotCodeReviewType,
-            ]
-        ]
-    ]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
+    id: NotRequired[int]
+    type: NotRequired[str]
 
 
-class RepositoryRulesetPropLinksType(TypedDict):
-    """RepositoryRulesetPropLinks"""
-
-    self_: NotRequired[RepositoryRulesetPropLinksPropSelfType]
-    html: NotRequired[Union[RepositoryRulesetPropLinksPropHtmlType, None]]
-
-
-class RepositoryRulesetPropLinksPropSelfType(TypedDict):
-    """RepositoryRulesetPropLinksPropSelf"""
-
-    href: NotRequired[str]
-
-
-class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
-    """RepositoryRulesetPropLinksPropHtml"""
-
-    href: NotRequired[str]
-
-
-__all__ = (
-    "RepositoryRulesetPropLinksPropHtmlType",
-    "RepositoryRulesetPropLinksPropSelfType",
-    "RepositoryRulesetPropLinksType",
-    "RepositoryRulesetType",
-)
+__all__ = ("RulesetVersionPropActorType",)

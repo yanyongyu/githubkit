@@ -9,20 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0121 import RepositoryRuleCommitAuthorEmailPatternPropParametersType
+from .group_0109 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+)
+from .group_0111 import RepositoryRulesetConditionsPropRefNameType
+from .group_0115 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+)
 
 
-class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
-    """commit_author_email_pattern
+class EnterpriseRulesetConditionsOneof2Type(TypedDict):
+    """organization_id_and_repository_name
 
-    Parameters to be used for the commit_author_email_pattern rule
+    Conditions to target organizations by id and all repositories
     """
 
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
+    )
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPatternType",)
+__all__ = ("EnterpriseRulesetConditionsOneof2Type",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,29 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class OrganizationCustomOrganizationRoleUpdateSchema(GitHubModel):
-    """OrganizationCustomOrganizationRoleUpdateSchema"""
-
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
-    )
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description about the intended use of this role or the permissions it grants.",
-    )
-    permissions: Missing[list[str]] = Field(
-        default=UNSET,
-        description="A list of additional permissions included in this role.",
-    )
-    base_role: Missing[
-        Literal["none", "read", "triage", "write", "maintain", "admin"]
-    ] = Field(
-        default=UNSET,
-        description="The system role from which this role can inherit permissions.",
-    )
+from .group_0003 import SimpleUser
 
 
-model_rebuild(OrganizationCustomOrganizationRoleUpdateSchema)
+class OrganizationInvitation(GitHubModel):
+    """Organization Invitation
 
-__all__ = ("OrganizationCustomOrganizationRoleUpdateSchema",)
+    Organization Invitation
+    """
+
+    id: int = Field()
+    login: Union[str, None] = Field()
+    email: Union[str, None] = Field()
+    role: str = Field()
+    created_at: str = Field()
+    failed_at: Missing[Union[str, None]] = Field(default=UNSET)
+    failed_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    inviter: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    team_count: int = Field()
+    node_id: str = Field()
+    invitation_teams_url: str = Field()
+    invitation_source: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrganizationInvitation)
+
+__all__ = ("OrganizationInvitation",)

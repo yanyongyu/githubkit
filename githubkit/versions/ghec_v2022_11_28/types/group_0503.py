@@ -9,42 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0186 import MarketplaceListingPlanType
+
+class SearchResultTextMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItems"""
+
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[list[SearchResultTextMatchesItemsPropMatchesItemsType]]
 
 
-class UserMarketplacePurchaseType(TypedDict):
-    """User Marketplace Purchase
+class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-    User Marketplace Purchase
-    """
-
-    billing_cycle: str
-    next_billing_date: Union[datetime, None]
-    unit_count: Union[int, None]
-    on_free_trial: bool
-    free_trial_ends_on: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    account: MarketplaceAccountType
-    plan: MarketplaceListingPlanType
-
-
-class MarketplaceAccountType(TypedDict):
-    """Marketplace Account"""
-
-    url: str
-    id: int
-    type: str
-    node_id: NotRequired[str]
-    login: str
-    email: NotRequired[Union[str, None]]
-    organization_billing_email: NotRequired[Union[str, None]]
+    text: NotRequired[str]
+    indices: NotRequired[list[int]]
 
 
 __all__ = (
-    "MarketplaceAccountType",
-    "UserMarketplacePurchaseType",
+    "SearchResultTextMatchesItemsPropMatchesItemsType",
+    "SearchResultTextMatchesItemsType",
 )

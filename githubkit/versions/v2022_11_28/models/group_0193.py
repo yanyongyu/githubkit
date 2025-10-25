@@ -9,42 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleCodeScanningPropParameters(GitHubModel):
-    """RepositoryRuleCodeScanningPropParameters"""
+class RuleSuitesItems(GitHubModel):
+    """RuleSuitesItems"""
 
-    code_scanning_tools: list[RepositoryRuleParamsCodeScanningTool] = Field(
-        description="Tools that must provide code scanning results for this rule to pass."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the rule insight."
+    )
+    actor_id: Missing[int] = Field(
+        default=UNSET, description="The number that identifies the user."
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    before_sha: Missing[str] = Field(
+        default=UNSET, description="The first commit sha before the push evaluation."
+    )
+    after_sha: Missing[str] = Field(
+        default=UNSET, description="The last commit sha in the push evaluation."
+    )
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref name that the evaluation ran on."
+    )
+    repository_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the repository associated with the rule evaluation.",
+    )
+    repository_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository without the `.git` extension.",
+    )
+    pushed_at: Missing[datetime] = Field(default=UNSET)
+    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` enforcement status.",
+    )
+    evaluation_result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
     )
 
 
-class RepositoryRuleParamsCodeScanningTool(GitHubModel):
-    """CodeScanningTool
+model_rebuild(RuleSuitesItems)
 
-    A tool that must provide code scanning results for this rule to pass.
-    """
-
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"] = Field(
-        description='The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
-    )
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
-    ] = Field(
-        description='The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
-    )
-    tool: str = Field(description="The name of a code scanning tool")
-
-
-model_rebuild(RepositoryRuleCodeScanningPropParameters)
-model_rebuild(RepositoryRuleParamsCodeScanningTool)
-
-__all__ = (
-    "RepositoryRuleCodeScanningPropParameters",
-    "RepositoryRuleParamsCodeScanningTool",
-)
+__all__ = ("RuleSuitesItems",)

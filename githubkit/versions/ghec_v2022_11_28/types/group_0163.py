@@ -9,35 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class GetAllCostCentersType(TypedDict):
-    """GetAllCostCenters"""
-
-    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
+from .group_0164 import RepositoryRuleMergeQueuePropParametersType
 
 
-class GetAllCostCentersPropCostCentersItemsType(TypedDict):
-    """GetAllCostCentersPropCostCentersItems"""
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    id: str
-    name: str
-    state: NotRequired[Literal["active", "deleted"]]
-    azure_subscription: NotRequired[Union[str, None]]
-    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
+    Merges must be performed via a merge queue.
+    """
 
-
-class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
-    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
-
-    type: str
-    name: str
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-__all__ = (
-    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
-    "GetAllCostCentersPropCostCentersItemsType",
-    "GetAllCostCentersType",
-)
+__all__ = ("RepositoryRuleMergeQueueType",)

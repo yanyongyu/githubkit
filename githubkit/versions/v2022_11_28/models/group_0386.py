@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0168 import RepositoryRulePullRequestPropParameters
+from .group_0164 import RepositoryRulePullRequestPropParameters
 
 
 class RepositoryRuleDetailedOneof7(GitHubModel):

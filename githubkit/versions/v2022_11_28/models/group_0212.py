@@ -18,7 +18,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0093 import TeamSimple
+from .group_0090 import TeamSimple
 
 
 class TeamFull(GitHubModel):

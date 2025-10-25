@@ -9,27 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class WebhooksDeployKeyType(TypedDict):
-    """WebhooksDeployKey
+class SocialAccountType(TypedDict):
+    """Social account
 
-    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-
-    keys/deploy-keys#get-a-deploy-key) resource.
+    Social media account
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
-    id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
+    provider: str
     url: str
-    verified: bool
-    enabled: NotRequired[bool]
 
 
-__all__ = ("WebhooksDeployKeyType",)
+__all__ = ("SocialAccountType",)

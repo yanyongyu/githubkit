@@ -10,16 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0166 import RepositoryRuleCopilotCodeReviewPropParametersType
 
 
-class DeleteCostCenterType(TypedDict):
-    """DeleteCostCenter"""
+class RepositoryRuleCopilotCodeReviewType(TypedDict):
+    """copilot_code_review
 
-    message: str
-    id: str
-    name: str
-    cost_center_state: Literal["CostCenterArchived"]
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review.
+    """
+
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
 
 
-__all__ = ("DeleteCostCenterType",)
+__all__ = ("RepositoryRuleCopilotCodeReviewType",)

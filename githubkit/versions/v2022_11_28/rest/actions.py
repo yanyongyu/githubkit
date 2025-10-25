@@ -36,6 +36,8 @@ if TYPE_CHECKING:
         ActionsForkPrWorkflowsPrivateRepos,
         ActionsGetDefaultWorkflowPermissions,
         ActionsHostedRunner,
+        ActionsHostedRunnerCustomImage,
+        ActionsHostedRunnerCustomImageVersion,
         ActionsHostedRunnerLimits,
         ActionsOrganizationPermissions,
         ActionsPublicKey,
@@ -54,6 +56,8 @@ if TYPE_CHECKING:
         OrganizationActionsVariable,
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
         OrgsOrgActionsHostedRunnersGetResponse200,
+        OrgsOrgActionsHostedRunnersImagesCustomGetResponse200,
+        OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200,
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
@@ -107,6 +111,8 @@ if TYPE_CHECKING:
         ActionsForkPrWorkflowsPrivateReposRequestType,
         ActionsForkPrWorkflowsPrivateReposType,
         ActionsGetDefaultWorkflowPermissionsType,
+        ActionsHostedRunnerCustomImageType,
+        ActionsHostedRunnerCustomImageVersionType,
         ActionsHostedRunnerLimitsType,
         ActionsHostedRunnerType,
         ActionsOrganizationPermissionsType,
@@ -128,6 +134,8 @@ if TYPE_CHECKING:
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
         OrgsOrgActionsHostedRunnersGetResponse200Type,
         OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType,
+        OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type,
+        OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type,
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type,
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type,
@@ -489,6 +497,7 @@ class ActionsClient:
         runner_group_id: int,
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
+        image_gen: Missing[bool] = UNSET,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
 
     def create_hosted_runner_for_org(
@@ -558,6 +567,7 @@ class ActionsClient:
         runner_group_id: int,
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
+        image_gen: Missing[bool] = UNSET,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
 
     async def async_create_hosted_runner_for_org(
@@ -601,6 +611,412 @@ class ActionsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ActionsHostedRunner,
+        )
+
+    def list_custom_images_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgActionsHostedRunnersImagesCustomGetResponse200,
+        OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type,
+    ]:
+        """actions/list-custom-images-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/images/custom
+
+        List custom images for an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#list-custom-images-for-an-organization
+        """
+
+        from ..models import OrgsOrgActionsHostedRunnersImagesCustomGetResponse200
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/custom"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgActionsHostedRunnersImagesCustomGetResponse200,
+        )
+
+    async def async_list_custom_images_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgActionsHostedRunnersImagesCustomGetResponse200,
+        OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type,
+    ]:
+        """actions/list-custom-images-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/images/custom
+
+        List custom images for an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#list-custom-images-for-an-organization
+        """
+
+        from ..models import OrgsOrgActionsHostedRunnersImagesCustomGetResponse200
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/custom"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgActionsHostedRunnersImagesCustomGetResponse200,
+        )
+
+    def get_custom_image_for_org(
+        self,
+        org: str,
+        image_definition_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[ActionsHostedRunnerCustomImage, ActionsHostedRunnerCustomImageType]:
+        """actions/get-custom-image-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}
+
+        Get a custom image definition for GitHub Actions Hosted Runners.
+
+        OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-a-custom-image-definition-for-github-actions-hosted-runners
+        """
+
+        from ..models import ActionsHostedRunnerCustomImage
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsHostedRunnerCustomImage,
+        )
+
+    async def async_get_custom_image_for_org(
+        self,
+        org: str,
+        image_definition_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[ActionsHostedRunnerCustomImage, ActionsHostedRunnerCustomImageType]:
+        """actions/get-custom-image-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}
+
+        Get a custom image definition for GitHub Actions Hosted Runners.
+
+        OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-a-custom-image-definition-for-github-actions-hosted-runners
+        """
+
+        from ..models import ActionsHostedRunnerCustomImage
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsHostedRunnerCustomImage,
+        )
+
+    def delete_custom_image_from_org(
+        self,
+        org: str,
+        image_definition_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/delete-custom-image-from-org
+
+        DELETE /orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}
+
+        Delete a custom image from the organization.
+
+        OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#delete-a-custom-image-from-the-organization
+        """
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    async def async_delete_custom_image_from_org(
+        self,
+        org: str,
+        image_definition_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/delete-custom-image-from-org
+
+        DELETE /orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}
+
+        Delete a custom image from the organization.
+
+        OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#delete-a-custom-image-from-the-organization
+        """
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    def list_custom_image_versions_for_org(
+        self,
+        image_definition_id: int,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200,
+        OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type,
+    ]:
+        """actions/list-custom-image-versions-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions
+
+        List image versions of a custom image for an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#list-image-versions-of-a-custom-image-for-an-organization
+        """
+
+        from ..models import (
+            OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200,
+        )
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200,
+        )
+
+    async def async_list_custom_image_versions_for_org(
+        self,
+        image_definition_id: int,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200,
+        OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type,
+    ]:
+        """actions/list-custom-image-versions-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions
+
+        List image versions of a custom image for an organization.
+
+        OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#list-image-versions-of-a-custom-image-for-an-organization
+        """
+
+        from ..models import (
+            OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200,
+        )
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200,
+        )
+
+    def get_custom_image_version_for_org(
+        self,
+        org: str,
+        image_definition_id: int,
+        version: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsHostedRunnerCustomImageVersion, ActionsHostedRunnerCustomImageVersionType
+    ]:
+        """actions/get-custom-image-version-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}
+
+        Get an image version of a custom image for GitHub Actions Hosted Runners.
+
+        OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-an-image-version-of-a-custom-image-for-github-actions-hosted-runners
+        """
+
+        from ..models import ActionsHostedRunnerCustomImageVersion
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsHostedRunnerCustomImageVersion,
+        )
+
+    async def async_get_custom_image_version_for_org(
+        self,
+        org: str,
+        image_definition_id: int,
+        version: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsHostedRunnerCustomImageVersion, ActionsHostedRunnerCustomImageVersionType
+    ]:
+        """actions/get-custom-image-version-for-org
+
+        GET /orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}
+
+        Get an image version of a custom image for GitHub Actions Hosted Runners.
+
+        OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#get-an-image-version-of-a-custom-image-for-github-actions-hosted-runners
+        """
+
+        from ..models import ActionsHostedRunnerCustomImageVersion
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsHostedRunnerCustomImageVersion,
+        )
+
+    def delete_custom_image_version_from_org(
+        self,
+        org: str,
+        image_definition_id: int,
+        version: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/delete-custom-image-version-from-org
+
+        DELETE /orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}
+
+        Delete an image version of custom image from the organization.
+
+        OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#delete-an-image-version-of-custom-image-from-the-organization
+        """
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    async def async_delete_custom_image_version_from_org(
+        self,
+        org: str,
+        image_definition_id: int,
+        version: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/delete-custom-image-version-from-org
+
+        DELETE /orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}
+
+        Delete an image version of custom image from the organization.
+
+        OAuth tokens and personal access tokens (classic) need the `manage_runners:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/hosted-runners#delete-an-image-version-of-custom-image-from-the-organization
+        """
+
+        url = f"/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
         )
 
     def get_hosted_runners_github_owned_images_for_org(
@@ -1079,6 +1495,7 @@ class ActionsClient:
         runner_group_id: Missing[int] = UNSET,
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
+        image_version: Missing[Union[str, None]] = UNSET,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
 
     def update_hosted_runner_for_org(
@@ -1154,6 +1571,7 @@ class ActionsClient:
         runner_group_id: Missing[int] = UNSET,
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
+        image_version: Missing[Union[str, None]] = UNSET,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
 
     async def async_update_hosted_runner_for_org(

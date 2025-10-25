@@ -9,29 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReviewCustomGatesStateRequired(GitHubModel):
-    """ReviewCustomGatesStateRequired"""
+class RateLimit(GitHubModel):
+    """Rate Limit"""
 
-    environment_name: str = Field(
-        description="The name of the environment to approve or reject."
-    )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
-    )
-    comment: Missing[str] = Field(
-        default=UNSET, description="Optional comment to include with the review."
-    )
+    limit: int = Field()
+    remaining: int = Field()
+    reset: int = Field()
+    used: int = Field()
 
 
-model_rebuild(ReviewCustomGatesStateRequired)
+model_rebuild(RateLimit)
 
-__all__ = ("ReviewCustomGatesStateRequired",)
+__all__ = ("RateLimit",)

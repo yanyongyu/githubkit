@@ -9,31 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
+from datetime import datetime
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ProjectsV2StatusUpdateType(TypedDict):
-    """Projects v2 Status Update
+class InteractionLimitResponseType(TypedDict):
+    """Interaction Limits
 
-    An status update belonging to a project
+    Interaction limit settings.
     """
 
-    id: float
-    node_id: str
-    project_node_id: NotRequired[str]
-    creator: NotRequired[SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    status: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ]
-    start_date: NotRequired[date]
-    target_date: NotRequired[date]
-    body: NotRequired[Union[str, None]]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: datetime
 
 
-__all__ = ("ProjectsV2StatusUpdateType",)
+__all__ = ("InteractionLimitResponseType",)

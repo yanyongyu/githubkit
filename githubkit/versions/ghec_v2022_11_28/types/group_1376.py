@@ -9,15 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0105 import RepositoryRulesetBypassActorType
+from .group_0110 import RepositoryRulesetConditionsType
+from .group_0124 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
+from .group_0125 import RepositoryRuleUpdateType
+from .group_0127 import RepositoryRuleRequiredLinearHistoryType
+from .group_0128 import RepositoryRuleRequiredDeploymentsType
+from .group_0131 import RepositoryRulePullRequestType
+from .group_0133 import RepositoryRuleRequiredStatusChecksType
+from .group_0135 import RepositoryRuleCommitMessagePatternType
+from .group_0137 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0139 import RepositoryRuleCommitterEmailPatternType
+from .group_0141 import RepositoryRuleBranchNamePatternType
+from .group_0143 import RepositoryRuleTagNamePatternType
+from .group_0145 import RepositoryRuleFilePathRestrictionType
+from .group_0147 import RepositoryRuleMaxFilePathLengthType
+from .group_0149 import RepositoryRuleFileExtensionRestrictionType
+from .group_0151 import RepositoryRuleMaxFileSizeType
+from .group_0154 import RepositoryRuleWorkflowsType
+from .group_0156 import RepositoryRuleCodeScanningType
+from .group_0163 import RepositoryRuleMergeQueueType
+from .group_0165 import RepositoryRuleCopilotCodeReviewType
 
-class UserCodespacesCodespaceNamePatchBodyType(TypedDict):
-    """UserCodespacesCodespaceNamePatchBody"""
 
-    machine: NotRequired[str]
-    display_name: NotRequired[str]
-    recent_folders: NotRequired[list[str]]
+class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+
+    name: NotRequired[str]
+    target: NotRequired[Literal["branch", "tag", "push"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[RepositoryRulesetConditionsType]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
+            ]
+        ]
+    ]
 
 
-__all__ = ("UserCodespacesCodespaceNamePatchBodyType",)
+__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBodyType",)

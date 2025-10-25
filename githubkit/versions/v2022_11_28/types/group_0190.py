@@ -12,18 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0191 import RepositoryRuleWorkflowsPropParametersType
+from .group_0191 import RepositoryRuleCopilotCodeReviewPropParametersType
 
 
-class RepositoryRuleWorkflowsType(TypedDict):
-    """workflows
+class RepositoryRuleCopilotCodeReviewType(TypedDict):
+    """copilot_code_review
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review.
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
 
 
-__all__ = ("RepositoryRuleWorkflowsType",)
+__all__ = ("RepositoryRuleCopilotCodeReviewType",)

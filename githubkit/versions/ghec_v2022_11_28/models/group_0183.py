@@ -9,43 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
 
 
-class GistCommit(GitHubModel):
-    """Gist Commit
+class PackagesBillingUsage(GitHubModel):
+    """PackagesBillingUsage"""
 
-    Gist Commit
-    """
-
-    url: str = Field()
-    version: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    change_status: GistCommitPropChangeStatus = Field()
-    committed_at: datetime = Field()
-
-
-class GistCommitPropChangeStatus(GitHubModel):
-    """GistCommitPropChangeStatus"""
-
-    total: Missing[int] = Field(default=UNSET)
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
+    total_gigabytes_bandwidth_used: int = Field(
+        description="Sum of the free and paid storage space (GB) for GitHuub Packages."
+    )
+    total_paid_gigabytes_bandwidth_used: int = Field(
+        description="Total paid storage space (GB) for GitHuub Packages."
+    )
+    included_gigabytes_bandwidth: int = Field(
+        description="Free storage space (GB) for GitHub Packages."
+    )
 
 
-model_rebuild(GistCommit)
-model_rebuild(GistCommitPropChangeStatus)
+model_rebuild(PackagesBillingUsage)
 
-__all__ = (
-    "GistCommit",
-    "GistCommitPropChangeStatus",
-)
+__all__ = ("PackagesBillingUsage",)

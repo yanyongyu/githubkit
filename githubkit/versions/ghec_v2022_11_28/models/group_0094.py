@@ -12,21 +12,45 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0095 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
-)
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRulesetConditionsRepositoryNameTarget(GitHubModel):
-    """Repository ruleset conditions for repository names
+class GetLicenseSyncStatus(GitHubModel):
+    """License Sync Status
 
-    Parameters for a repository name condition
+    Information about the status of a license sync job for an enterprise.
     """
 
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    server_instances: Missing[list[GetLicenseSyncStatusPropServerInstancesItems]] = (
+        Field(default=UNSET)
+    )
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryNameTarget)
+class GetLicenseSyncStatusPropServerInstancesItems(GitHubModel):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
 
-__all__ = ("RepositoryRulesetConditionsRepositoryNameTarget",)
+    server_id: Missing[str] = Field(default=UNSET)
+    hostname: Missing[str] = Field(default=UNSET)
+    last_sync: Missing[GetLicenseSyncStatusPropServerInstancesItemsPropLastSync] = (
+        Field(default=UNSET)
+    )
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSync(GitHubModel):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    error: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(GetLicenseSyncStatus)
+model_rebuild(GetLicenseSyncStatusPropServerInstancesItems)
+model_rebuild(GetLicenseSyncStatusPropServerInstancesItemsPropLastSync)
+
+__all__ = (
+    "GetLicenseSyncStatus",
+    "GetLicenseSyncStatusPropServerInstancesItems",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSync",
+)

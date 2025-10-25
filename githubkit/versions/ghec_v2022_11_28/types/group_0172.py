@@ -12,19 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReactionRollupType(TypedDict):
-    """Reaction Rollup"""
+class RulesetVersionWithStateAllof1PropStateType(TypedDict):
+    """RulesetVersionWithStateAllof1PropState
 
-    url: str
-    total_count: int
-    plus_one: int
-    minus_one: int
-    laugh: int
-    confused: int
-    heart: int
-    hooray: int
-    eyes: int
-    rocket: int
+    The state of the ruleset version
+    """
 
 
-__all__ = ("ReactionRollupType",)
+__all__ = ("RulesetVersionWithStateAllof1PropStateType",)

@@ -14,7 +14,7 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0019 import LicenseSimpleType
-from .group_0144 import CodeOfConductSimpleType
+from .group_0140 import CodeOfConductSimpleType
 
 
 class CommunityProfilePropFilesType(TypedDict):

@@ -18,20 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0511 import EnterpriseWebhooks
-from .group_0512 import SimpleInstallation
-from .group_0513 import OrganizationSimpleWebhooks
-from .group_0514 import RepositoryWebhooks
-from .group_0534 import WebhooksMilestone
+from .group_0527 import EnterpriseWebhooks
+from .group_0528 import SimpleInstallation
+from .group_0529 import OrganizationSimpleWebhooks
+from .group_0530 import RepositoryWebhooks
+from .group_0553 import WebhooksMarketplacePurchase
+from .group_0554 import WebhooksPreviousMarketplacePurchase
 
 
-class WebhookMilestoneEdited(GitHubModel):
-    """milestone edited event"""
+class WebhookMarketplacePurchaseCancelled(GitHubModel):
+    """marketplace_purchase cancelled event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookMilestoneEditedPropChanges = Field(
-        description="The changes to the milestone if the action was `edited`."
-    )
+    action: Literal["cancelled"] = Field()
+    effective_date: str = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -42,72 +41,25 @@ class WebhookMilestoneEdited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    milestone: WebhooksMilestone = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
+    marketplace_purchase: WebhooksMarketplacePurchase = Field(
+        title="Marketplace Purchase"
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    previous_marketplace_purchase: Missing[WebhooksPreviousMarketplacePurchase] = Field(
+        default=UNSET, title="Marketplace Purchase"
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookMilestoneEditedPropChanges(GitHubModel):
-    """WebhookMilestoneEditedPropChanges
+model_rebuild(WebhookMarketplacePurchaseCancelled)
 
-    The changes to the milestone if the action was `edited`.
-    """
-
-    description: Missing[WebhookMilestoneEditedPropChangesPropDescription] = Field(
-        default=UNSET
-    )
-    due_on: Missing[WebhookMilestoneEditedPropChangesPropDueOn] = Field(default=UNSET)
-    title: Missing[WebhookMilestoneEditedPropChangesPropTitle] = Field(default=UNSET)
-
-
-class WebhookMilestoneEditedPropChangesPropDescription(GitHubModel):
-    """WebhookMilestoneEditedPropChangesPropDescription"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the description if the action was `edited`.",
-    )
-
-
-class WebhookMilestoneEditedPropChangesPropDueOn(GitHubModel):
-    """WebhookMilestoneEditedPropChangesPropDueOn"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the due date if the action was `edited`.",
-    )
-
-
-class WebhookMilestoneEditedPropChangesPropTitle(GitHubModel):
-    """WebhookMilestoneEditedPropChangesPropTitle"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the title if the action was `edited`.",
-    )
-
-
-model_rebuild(WebhookMilestoneEdited)
-model_rebuild(WebhookMilestoneEditedPropChanges)
-model_rebuild(WebhookMilestoneEditedPropChangesPropDescription)
-model_rebuild(WebhookMilestoneEditedPropChangesPropDueOn)
-model_rebuild(WebhookMilestoneEditedPropChangesPropTitle)
-
-__all__ = (
-    "WebhookMilestoneEdited",
-    "WebhookMilestoneEditedPropChanges",
-    "WebhookMilestoneEditedPropChangesPropDescription",
-    "WebhookMilestoneEditedPropChangesPropDueOn",
-    "WebhookMilestoneEditedPropChangesPropTitle",
-)
+__all__ = ("WebhookMarketplacePurchaseCancelled",)

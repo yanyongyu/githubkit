@@ -9,42 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
 
+class ExternalGroupType(TypedDict):
+    """ExternalGroup
 
-class OrganizationRoleType(TypedDict):
-    """Organization Role
-
-    Organization roles
+    Information about an external group's usage and its members
     """
 
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: NotRequired[
-        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
-    ]
-    source: NotRequired[
-        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
-    ]
-    permissions: list[str]
-    organization: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
+    group_id: int
+    group_name: str
+    updated_at: NotRequired[str]
+    teams: list[ExternalGroupPropTeamsItemsType]
+    members: list[ExternalGroupPropMembersItemsType]
 
 
-class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
-    """OrgsOrgOrganizationRolesGetResponse200"""
+class ExternalGroupPropTeamsItemsType(TypedDict):
+    """ExternalGroupPropTeamsItems"""
 
-    total_count: NotRequired[int]
-    roles: NotRequired[list[OrganizationRoleType]]
+    team_id: int
+    team_name: str
+
+
+class ExternalGroupPropMembersItemsType(TypedDict):
+    """ExternalGroupPropMembersItems"""
+
+    member_id: int
+    member_login: str
+    member_name: str
+    member_email: str
 
 
 __all__ = (
-    "OrganizationRoleType",
-    "OrgsOrgOrganizationRolesGetResponse200Type",
+    "ExternalGroupPropMembersItemsType",
+    "ExternalGroupPropTeamsItemsType",
+    "ExternalGroupType",
 )

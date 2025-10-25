@@ -16,40 +16,39 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleRequiredStatusChecksPropParameters(GitHubModel):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
+class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty(
+    GitHubModel
+):
+    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
 
-    do_not_enforce_on_create: Missing[bool] = Field(
+    include: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
         default=UNSET,
-        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
+        description="The organization properties and values to include. All of these properties must match for the condition to pass.",
     )
-    required_status_checks: list[RepositoryRuleParamsStatusCheckConfiguration] = Field(
-        description="Status checks that are required."
-    )
-    strict_required_status_checks_policy: bool = Field(
-        description="Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled."
+    exclude: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
+        default=UNSET,
+        description="The organization properties and values to exclude. The condition will not pass if any of these properties match.",
     )
 
 
-class RepositoryRuleParamsStatusCheckConfiguration(GitHubModel):
-    """StatusCheckConfiguration
+class EnterpriseRulesetConditionsOrganizationPropertySpec(GitHubModel):
+    """Repository ruleset property targeting definition
 
-    Required status check
+    Parameters for a targeting a organization property
     """
 
-    context: str = Field(
-        description="The status check context name that must be present on the commit."
-    )
-    integration_id: Missing[int] = Field(
-        default=UNSET,
-        description="The optional integration ID that this status check must originate from.",
+    name: str = Field(description="The name of the organization property to target")
+    property_values: list[str] = Field(
+        description="The values to match for the organization property"
     )
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecksPropParameters)
-model_rebuild(RepositoryRuleParamsStatusCheckConfiguration)
+model_rebuild(
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty
+)
+model_rebuild(EnterpriseRulesetConditionsOrganizationPropertySpec)
 
 __all__ = (
-    "RepositoryRuleParamsStatusCheckConfiguration",
-    "RepositoryRuleRequiredStatusChecksPropParameters",
+    "EnterpriseRulesetConditionsOrganizationPropertySpec",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty",
 )

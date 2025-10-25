@@ -13,15 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class RepositoryRuleRequiredDeploymentsPropParameters(GitHubModel):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
-
-    required_deployment_environments: list[str] = Field(
-        description="The environments that must be successfully deployed to before branches can be merged."
-    )
+from .group_0113 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
 
 
-model_rebuild(RepositoryRuleRequiredDeploymentsPropParameters)
+class RepositoryRulesetConditionsRepositoryPropertyTarget(GitHubModel):
+    """Repository ruleset conditions for repository properties
 
-__all__ = ("RepositoryRuleRequiredDeploymentsPropParameters",)
+    Parameters for a repository property condition
+    """
+
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
+
+
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTarget)
+
+__all__ = ("RepositoryRulesetConditionsRepositoryPropertyTarget",)

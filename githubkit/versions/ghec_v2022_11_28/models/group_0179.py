@@ -9,57 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any, Union
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class AdvancedSecurityActiveCommitters(GitHubModel):
+    """AdvancedSecurityActiveCommitters"""
 
-class BaseGist(GitHubModel):
-    """Base Gist
-
-    Base Gist
-    """
-
-    url: str = Field()
-    forks_url: str = Field()
-    commits_url: str = Field()
-    id: str = Field()
-    node_id: str = Field()
-    git_pull_url: str = Field()
-    git_push_url: str = Field()
-    html_url: str = Field()
-    files: BaseGistPropFiles = Field()
-    public: bool = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    description: Union[str, None] = Field()
-    comments: int = Field()
-    comments_enabled: Missing[bool] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
-    comments_url: str = Field()
-    owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
+    total_count: Missing[int] = Field(default=UNSET)
+    maximum_advanced_security_committers: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
     )
-    truncated: Missing[bool] = Field(default=UNSET)
-    forks: Missing[list[Any]] = Field(default=UNSET)
-    history: Missing[list[Any]] = Field(default=UNSET)
+    purchased_advanced_security_committers: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of GitHub Advanced Security licences purchased",
+    )
+    repositories: list[AdvancedSecurityActiveCommittersRepository] = Field()
 
 
-class BaseGistPropFiles(ExtraGitHubModel):
-    """BaseGistPropFiles"""
+class AdvancedSecurityActiveCommittersRepository(GitHubModel):
+    """AdvancedSecurityActiveCommittersRepository"""
+
+    name: str = Field()
+    advanced_security_committers: int = Field()
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUser
+    ] = Field()
 
 
-model_rebuild(BaseGist)
-model_rebuild(BaseGistPropFiles)
+class AdvancedSecurityActiveCommittersUser(GitHubModel):
+    """AdvancedSecurityActiveCommittersUser"""
+
+    user_login: str = Field()
+    last_pushed_date: str = Field()
+    last_pushed_email: str = Field()
+
+
+model_rebuild(AdvancedSecurityActiveCommitters)
+model_rebuild(AdvancedSecurityActiveCommittersRepository)
+model_rebuild(AdvancedSecurityActiveCommittersUser)
 
 __all__ = (
-    "BaseGist",
-    "BaseGistPropFiles",
+    "AdvancedSecurityActiveCommitters",
+    "AdvancedSecurityActiveCommittersRepository",
+    "AdvancedSecurityActiveCommittersUser",
 )

@@ -18,39 +18,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200(GitHubModel):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
 
-    total_count: Missing[int] = Field(default=UNSET)
-    storage_records: Missing[
-        list[
-            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
-        ]
-    ] = Field(default=UNSET)
-
-
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    digest: Missing[str] = Field(default=UNSET)
-    artifact_url: Missing[Union[str, None]] = Field(default=UNSET)
-    registry_url: Missing[str] = Field(default=UNSET)
-    repository: Missing[Union[str, None]] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
+    )
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The existing runner group to add this runner to."
+    )
+    maximum_runners: Missing[int] = Field(
+        default=UNSET,
+        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+    )
+    enable_static_ip: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
+    )
+    image_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+    )
 
 
-model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostResponse200)
-model_rebuild(
-    OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
-)
+model_rebuild(OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody)
 
-__all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems",
-)
+__all__ = ("OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody",)

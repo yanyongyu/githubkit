@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal
 
 from pydantic import Field
@@ -17,27 +18,25 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class PagesDeploymentStatus(GitHubModel):
-    """GitHub Pages deployment status"""
-
-    status: Missing[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-        ]
-    ] = Field(default=UNSET, description="The current status of the deployment.")
+from .group_0003 import SimpleUser
+from .group_0416 import TimelineCrossReferencedEventPropSource
 
 
-model_rebuild(PagesDeploymentStatus)
+class TimelineCrossReferencedEvent(GitHubModel):
+    """Timeline Cross Referenced Event
 
-__all__ = ("PagesDeploymentStatus",)
+    Timeline Cross Referenced Event
+    """
+
+    event: Literal["cross-referenced"] = Field()
+    actor: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    source: TimelineCrossReferencedEventPropSource = Field()
+
+
+model_rebuild(TimelineCrossReferencedEvent)
+
+__all__ = ("TimelineCrossReferencedEvent",)

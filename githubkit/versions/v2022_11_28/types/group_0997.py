@@ -11,11 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
-
-    selected_repository_ids: list[int]
+from .group_0065 import CustomPropertyValueType
 
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType",)
+class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
+
+    repository_names: list[str]
+    properties: list[CustomPropertyValueType]
+
+
+__all__ = ("OrgsOrgPropertiesValuesPatchBodyType",)

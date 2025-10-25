@@ -9,18 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class AccessibleRepositoryType(TypedDict):
-    """Accessible Repository
+class AnnouncementType(TypedDict):
+    """Enterprise Announcement
 
-    A repository that may be made accessible to a GitHub App.
+    Enterprise global announcement
     """
 
-    id: int
-    name: str
-    full_name: str
+    announcement: Union[str, None]
+    expires_at: NotRequired[Union[datetime, None]]
+    user_dismissible: NotRequired[Union[bool, None]]
 
 
-__all__ = ("AccessibleRepositoryType",)
+__all__ = ("AnnouncementType",)

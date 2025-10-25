@@ -9,68 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0362 import DeploymentBranchPolicySettingsType
-from .group_0364 import EnvironmentPropProtectionRulesItemsAnyof1Type
 
+class ContentFileType(TypedDict):
+    """Content File
 
-class EnvironmentType(TypedDict):
-    """Environment
-
-    Details of a deployment environment
+    Content File
     """
 
-    id: int
-    node_id: str
+    type: Literal["file"]
+    encoding: str
+    size: int
     name: str
+    path: str
+    content: str
+    sha: str
     url: str
-    html_url: str
-    created_at: datetime
-    updated_at: datetime
-    protection_rules: NotRequired[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0Type,
-                EnvironmentPropProtectionRulesItemsAnyof1Type,
-                EnvironmentPropProtectionRulesItemsAnyof2Type,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksType
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
+class ContentFilePropLinksType(TypedDict):
+    """ContentFilePropLinks"""
 
-    id: int
-    node_id: str
-    type: str
-    wait_timer: NotRequired[int]
-
-
-class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
-
-    id: int
-    node_id: str
-    type: str
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: NotRequired[int]
-    environments: NotRequired[list[EnvironmentType]]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof0Type",
-    "EnvironmentPropProtectionRulesItemsAnyof2Type",
-    "EnvironmentType",
-    "ReposOwnerRepoEnvironmentsGetResponse200Type",
+    "ContentFilePropLinksType",
+    "ContentFileType",
 )

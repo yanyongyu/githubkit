@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,53 +18,115 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CredentialAuthorization(GitHubModel):
-    """Credential Authorization
+class SecurityAndAnalysis(GitHubModel):
+    """SecurityAndAnalysis"""
 
-    Credential Authorization
+    advanced_security: Missing[SecurityAndAnalysisPropAdvancedSecurity] = Field(
+        default=UNSET,
+        description="Enable or disable GitHub Advanced Security for the repository.\n\nFor standalone Code Scanning or Secret Protection products, this parameter cannot be used.\n",
+    )
+    code_security: Missing[SecurityAndAnalysisPropCodeSecurity] = Field(default=UNSET)
+    dependabot_security_updates: Missing[
+        SecurityAndAnalysisPropDependabotSecurityUpdates
+    ] = Field(
+        default=UNSET,
+        description="Enable or disable Dependabot security updates for the repository.",
+    )
+    secret_scanning: Missing[SecurityAndAnalysisPropSecretScanning] = Field(
+        default=UNSET
+    )
+    secret_scanning_push_protection: Missing[
+        SecurityAndAnalysisPropSecretScanningPushProtection
+    ] = Field(default=UNSET)
+    secret_scanning_non_provider_patterns: Missing[
+        SecurityAndAnalysisPropSecretScanningNonProviderPatterns
+    ] = Field(default=UNSET)
+    secret_scanning_ai_detection: Missing[
+        SecurityAndAnalysisPropSecretScanningAiDetection
+    ] = Field(default=UNSET)
+    secret_scanning_validity_checks: Missing[
+        SecurityAndAnalysisPropSecretScanningValidityChecks
+    ] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropAdvancedSecurity(GitHubModel):
+    """SecurityAndAnalysisPropAdvancedSecurity
+
+    Enable or disable GitHub Advanced Security for the repository.
+
+    For standalone Code Scanning or Secret Protection products, this parameter
+    cannot be used.
     """
 
-    login: str = Field(description="User login that owns the underlying credential.")
-    credential_id: int = Field(
-        description="Unique identifier for the authorization of the credential. Use this to revoke authorization of the underlying token or key."
-    )
-    credential_type: str = Field(
-        description="Human-readable description of the credential type."
-    )
-    token_last_eight: Missing[str] = Field(
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropCodeSecurity(GitHubModel):
+    """SecurityAndAnalysisPropCodeSecurity"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropDependabotSecurityUpdates(GitHubModel):
+    """SecurityAndAnalysisPropDependabotSecurityUpdates
+
+    Enable or disable Dependabot security updates for the repository.
+    """
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(
         default=UNSET,
-        description="Last eight characters of the credential. Only included in responses with credential_type of personal access token.",
-    )
-    credential_authorized_at: datetime = Field(
-        description="Date when the credential was authorized for use."
-    )
-    scopes: Missing[list[str]] = Field(
-        default=UNSET, description="List of oauth scopes the token has been granted."
-    )
-    fingerprint: Missing[str] = Field(
-        default=UNSET,
-        description="Unique string to distinguish the credential. Only included in responses with credential_type of SSH Key.",
-    )
-    credential_accessed_at: Union[datetime, None] = Field(
-        description="Date when the credential was last accessed. May be null if it was never accessed"
-    )
-    authorized_credential_id: Union[int, None] = Field(
-        description="The ID of the underlying token that was authorized by the user. This will remain unchanged across authorizations of the token."
-    )
-    authorized_credential_title: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The title given to the ssh key. This will only be present when the credential is an ssh key.",
-    )
-    authorized_credential_note: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The note given to the token. This will only be present when the credential is a token.",
-    )
-    authorized_credential_expires_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The expiry for the token. This will only be present when the credential is a token.",
+        description="The enablement status of Dependabot security updates for the repository.",
     )
 
 
-model_rebuild(CredentialAuthorization)
+class SecurityAndAnalysisPropSecretScanning(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanning"""
 
-__all__ = ("CredentialAuthorization",)
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningPushProtection(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningPushProtection"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningNonProviderPatterns(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningAiDetection(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningAiDetection"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningValidityChecks(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+model_rebuild(SecurityAndAnalysis)
+model_rebuild(SecurityAndAnalysisPropAdvancedSecurity)
+model_rebuild(SecurityAndAnalysisPropCodeSecurity)
+model_rebuild(SecurityAndAnalysisPropDependabotSecurityUpdates)
+model_rebuild(SecurityAndAnalysisPropSecretScanning)
+model_rebuild(SecurityAndAnalysisPropSecretScanningPushProtection)
+model_rebuild(SecurityAndAnalysisPropSecretScanningNonProviderPatterns)
+model_rebuild(SecurityAndAnalysisPropSecretScanningAiDetection)
+model_rebuild(SecurityAndAnalysisPropSecretScanningValidityChecks)
+
+__all__ = (
+    "SecurityAndAnalysis",
+    "SecurityAndAnalysisPropAdvancedSecurity",
+    "SecurityAndAnalysisPropCodeSecurity",
+    "SecurityAndAnalysisPropDependabotSecurityUpdates",
+    "SecurityAndAnalysisPropSecretScanning",
+    "SecurityAndAnalysisPropSecretScanningAiDetection",
+    "SecurityAndAnalysisPropSecretScanningNonProviderPatterns",
+    "SecurityAndAnalysisPropSecretScanningPushProtection",
+    "SecurityAndAnalysisPropSecretScanningValidityChecks",
+)

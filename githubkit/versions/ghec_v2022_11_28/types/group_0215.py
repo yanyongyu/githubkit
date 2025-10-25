@@ -9,27 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ExternalGroupsType(TypedDict):
-    """ExternalGroups
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    A list of external groups available to be connected to a team
+    Actions OIDC Subject customization
     """
 
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
+    include_claim_keys: list[str]
 
 
-class ExternalGroupsPropGroupsItemsType(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
-
-    group_id: int
-    group_name: str
-    updated_at: str
-
-
-__all__ = (
-    "ExternalGroupsPropGroupsItemsType",
-    "ExternalGroupsType",
-)
+__all__ = ("OidcCustomSubType",)

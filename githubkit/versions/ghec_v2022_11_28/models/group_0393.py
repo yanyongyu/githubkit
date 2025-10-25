@@ -9,34 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
+from .group_0011 import WebhookConfig
+from .group_0392 import HookResponse
 
 
-class LockedIssueEvent(GitHubModel):
-    """Locked Issue Event
+class Hook(GitHubModel):
+    """Webhook
 
-    Locked Issue Event
+    Webhooks for repositories.
     """
 
-    id: int = Field()
-    node_id: str = Field()
+    type: str = Field()
+    id: int = Field(description="Unique identifier of the webhook.")
+    name: str = Field(
+        description="The name of a valid service, use 'web' for a webhook."
+    )
+    active: bool = Field(
+        description="Determines whether the hook is actually triggered on pushes."
+    )
+    events: list[str] = Field(
+        description="Determines what events the hook is triggered for. Default: ['push']."
+    )
+    config: WebhookConfig = Field(
+        title="Webhook Configuration", description="Configuration object of the webhook"
+    )
+    updated_at: datetime = Field()
+    created_at: datetime = Field()
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["locked"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    lock_reason: Union[str, None] = Field()
+    test_url: str = Field()
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    last_response: HookResponse = Field(title="Hook Response")
 
 
-model_rebuild(LockedIssueEvent)
+model_rebuild(Hook)
 
-__all__ = ("LockedIssueEvent",)
+__all__ = ("Hook",)

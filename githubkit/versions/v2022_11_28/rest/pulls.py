@@ -864,11 +864,7 @@ class PullsClient:
         See also: https://docs.github.com/rest/pulls/pulls#get-a-pull-request
         """
 
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            PullRequest,
-        )
+        from ..models import BasicError, EventsGetResponse503, PullRequest
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
@@ -884,7 +880,7 @@ class PullsClient:
                 "404": BasicError,
                 "406": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -928,11 +924,7 @@ class PullsClient:
         See also: https://docs.github.com/rest/pulls/pulls#get-a-pull-request
         """
 
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            PullRequest,
-        )
+        from ..models import BasicError, EventsGetResponse503, PullRequest
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
@@ -948,7 +940,7 @@ class PullsClient:
                 "404": BasicError,
                 "406": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1765,7 +1757,7 @@ class PullsClient:
         from ..models import (
             BasicError,
             DiffEntry,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ValidationError,
         )
 
@@ -1788,7 +1780,7 @@ class PullsClient:
             error_models={
                 "422": ValidationError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1825,7 +1817,7 @@ class PullsClient:
         from ..models import (
             BasicError,
             DiffEntry,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ValidationError,
         )
 
@@ -1848,7 +1840,7 @@ class PullsClient:
             error_models={
                 "422": ValidationError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 

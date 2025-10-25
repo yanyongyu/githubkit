@@ -9,25 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsForkPrContributorApproval(GitHubModel):
-    """ActionsForkPrContributorApproval"""
+class ActionsArtifactAndLogRetentionResponse(GitHubModel):
+    """ActionsArtifactAndLogRetentionResponse"""
 
-    approval_policy: Literal[
-        "first_time_contributors_new_to_github",
-        "first_time_contributors",
-        "all_external_contributors",
-    ] = Field(
-        description="The policy that controls when fork PR workflows require approval from a maintainer."
+    days: int = Field(description="The number of days artifacts and logs are retained")
+    maximum_allowed_days: int = Field(
+        description="The maximum number of days that can be configured"
     )
 
 
-model_rebuild(ActionsForkPrContributorApproval)
+model_rebuild(ActionsArtifactAndLogRetentionResponse)
 
-__all__ = ("ActionsForkPrContributorApproval",)
+__all__ = ("ActionsArtifactAndLogRetentionResponse",)

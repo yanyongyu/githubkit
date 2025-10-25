@@ -9,28 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0081 import EnterpriseTeam
 
-class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName(
-    GitHubModel
-):
-    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
 
-    include: Missing[list[str]] = Field(
+class EnterpriseUserRoleAssignmentAllof1(GitHubModel):
+    """EnterpriseUserRoleAssignmentAllof1"""
+
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
         default=UNSET,
-        description="Array of organization names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all organizations and ~EMUS to target all enterprise managed user accounts.",
+        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
     )
-    exclude: Missing[list[str]] = Field(
+    inherited_from: Missing[list[EnterpriseTeam]] = Field(
         default=UNSET,
-        description="Array of organization names or patterns to exclude. The condition will not pass if any of these patterns match.",
+        description="Enterprise Team the user has gotten the role through",
     )
 
 
-model_rebuild(EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName)
+model_rebuild(EnterpriseUserRoleAssignmentAllof1)
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName",)
+__all__ = ("EnterpriseUserRoleAssignmentAllof1",)

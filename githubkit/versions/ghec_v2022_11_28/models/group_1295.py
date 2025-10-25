@@ -16,18 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
+class ReposOwnerRepoGitBlobsPostBody(GitHubModel):
+    """ReposOwnerRepoGitBlobsPostBody"""
 
-    sub_issue_id: int = Field(
-        description="The id of the sub-issue to add. The sub-issue must belong to the same repository owner as the parent issue"
-    )
-    replace_parent: Missing[bool] = Field(
+    content: str = Field(description="The new blob's content.")
+    encoding: Missing[str] = Field(
         default=UNSET,
-        description="Option that, when true, instructs the operation to replace the sub-issues current parent issue",
+        description='The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported.',
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody)
+model_rebuild(ReposOwnerRepoGitBlobsPostBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",)
+__all__ = ("ReposOwnerRepoGitBlobsPostBody",)

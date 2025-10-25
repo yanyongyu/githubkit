@@ -11,14 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0075 import ActionsHostedRunnerCuratedImageType
 
-
-class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
     total_count: int
-    images: list[ActionsHostedRunnerCuratedImageType]
+    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
 
 
-__all__ = ("OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type",)
+class ActionsCacheUsageByRepositoryType(TypedDict):
+    """Actions Cache Usage by repository
+
+    GitHub Actions Cache Usage by repository.
+    """
+
+    full_name: str
+    active_caches_size_in_bytes: int
+    active_caches_count: int
+
+
+__all__ = (
+    "ActionsCacheUsageByRepositoryType",
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
+)

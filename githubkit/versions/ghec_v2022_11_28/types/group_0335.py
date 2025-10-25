@@ -9,32 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeownersErrorsType(TypedDict):
-    """CODEOWNERS errors
+class CodeScanningAutofixCommitsResponseType(TypedDict):
+    """CodeScanningAutofixCommitsResponse"""
 
-    A list of errors found in a repo's CODEOWNERS file
-    """
-
-    errors: list[CodeownersErrorsPropErrorsItemsType]
+    target_ref: NotRequired[str]
+    sha: NotRequired[str]
 
 
-class CodeownersErrorsPropErrorsItemsType(TypedDict):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int
-    column: int
-    source: NotRequired[str]
-    kind: str
-    suggestion: NotRequired[Union[str, None]]
-    message: str
-    path: str
-
-
-__all__ = (
-    "CodeownersErrorsPropErrorsItemsType",
-    "CodeownersErrorsType",
-)
+__all__ = ("CodeScanningAutofixCommitsResponseType",)

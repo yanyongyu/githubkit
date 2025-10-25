@@ -14,8 +14,8 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0100 import CodespaceMachineType
-from .group_0145 import FullRepositoryType
+from .group_0097 import CodespaceMachineType
+from .group_0141 import FullRepositoryType
 
 
 class CodespaceWithFullRepositoryType(TypedDict):

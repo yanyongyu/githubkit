@@ -12,24 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0142 import CustomPropertyValue
+from .group_0144 import RepositoryRulesetConditionsPropRefName
 
 
-class OrgRepoCustomPropertyValues(GitHubModel):
-    """Organization Repository Custom Property Values
+class RepositoryRulesetConditions(GitHubModel):
+    """Repository ruleset conditions for ref names
 
-    List of custom property values for a repository
+    Parameters for a repository ruleset ref name condition
     """
 
-    repository_id: int = Field()
-    repository_name: str = Field()
-    repository_full_name: str = Field()
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values"
-    )
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
 
 
-model_rebuild(OrgRepoCustomPropertyValues)
+model_rebuild(RepositoryRulesetConditions)
 
-__all__ = ("OrgRepoCustomPropertyValues",)
+__all__ = ("RepositoryRulesetConditions",)

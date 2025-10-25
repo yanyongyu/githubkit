@@ -16,40 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleWorkflowsPropParameters(GitHubModel):
-    """RepositoryRuleWorkflowsPropParameters"""
+class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    do_not_enforce_on_create: Missing[bool] = Field(
+    review_draft_pull_requests: Missing[bool] = Field(
         default=UNSET,
-        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
+        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
     )
-    workflows: list[RepositoryRuleParamsWorkflowFileReference] = Field(
-        description="Workflows that must pass for this rule to pass."
-    )
-
-
-class RepositoryRuleParamsWorkflowFileReference(GitHubModel):
-    """WorkflowFileReference
-
-    A workflow that must run for this rule to pass
-    """
-
-    path: str = Field(description="The path to the workflow file")
-    ref: Missing[str] = Field(
-        default=UNSET, description="The ref (branch or tag) of the workflow file to use"
-    )
-    repository_id: int = Field(
-        description="The ID of the repository where the workflow is defined"
-    )
-    sha: Missing[str] = Field(
-        default=UNSET, description="The commit SHA of the workflow file to use"
+    review_on_push: Missing[bool] = Field(
+        default=UNSET,
+        description="Copilot automatically reviews each new push to the pull request.",
     )
 
 
-model_rebuild(RepositoryRuleWorkflowsPropParameters)
-model_rebuild(RepositoryRuleParamsWorkflowFileReference)
+model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
 
-__all__ = (
-    "RepositoryRuleParamsWorkflowFileReference",
-    "RepositoryRuleWorkflowsPropParameters",
-)
+__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)

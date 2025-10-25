@@ -18,97 +18,89 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0077 import TeamSimple
-from .group_0170 import Milestone
-from .group_0246 import AutoMerge
-from .group_0418 import PullRequestPropLabelsItems
-from .group_0419 import PullRequestPropBase, PullRequestPropHead
-from .group_0420 import PullRequestPropLinks
 
+class TimelineCommittedEvent(GitHubModel):
+    """Timeline Committed Event
 
-class PullRequest(GitHubModel):
-    """Pull Request
-
-    Pull requests let you tell others about changes you've pushed to a repository on
-    GitHub. Once a pull request is sent, interested parties can review the set of
-    changes, discuss potential modifications, and even push follow-up commits if
-    necessary.
+    Timeline Committed Event
     """
 
-    url: str = Field()
-    id: int = Field()
+    event: Missing[Literal["committed"]] = Field(default=UNSET)
+    sha: str = Field(description="SHA for the commit")
     node_id: str = Field()
+    url: str = Field()
+    author: TimelineCommittedEventPropAuthor = Field(
+        description="Identifying information for the git-user"
+    )
+    committer: TimelineCommittedEventPropCommitter = Field(
+        description="Identifying information for the git-user"
+    )
+    message: str = Field(description="Message describing the purpose of the commit")
+    tree: TimelineCommittedEventPropTree = Field()
+    parents: list[TimelineCommittedEventPropParentsItems] = Field()
+    verification: TimelineCommittedEventPropVerification = Field()
     html_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    issue_url: str = Field()
-    commits_url: str = Field()
-    review_comments_url: str = Field()
-    review_comment_url: str = Field()
-    comments_url: str = Field()
-    statuses_url: str = Field()
-    number: int = Field(
-        description="Number uniquely identifying the pull request within its repository."
-    )
-    state: Literal["open", "closed"] = Field(
-        description="State of this Pull Request. Either `open` or `closed`."
-    )
-    locked: bool = Field()
-    title: str = Field(description="The title of the pull request.")
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    body: Union[str, None] = Field()
-    labels: list[PullRequestPropLabelsItems] = Field()
-    milestone: Union[None, Milestone] = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
-    merged_at: Union[datetime, None] = Field()
-    merge_commit_sha: Union[str, None] = Field()
-    assignee: Union[None, SimpleUser] = Field()
-    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
-    requested_reviewers: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
-    requested_teams: Missing[Union[list[TeamSimple], None]] = Field(default=UNSET)
-    head: PullRequestPropHead = Field()
-    base: PullRequestPropBase = Field()
-    links: PullRequestPropLinks = Field(alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    auto_merge: Union[AutoMerge, None] = Field(
-        title="Auto merge", description="The status of auto merging a pull request."
-    )
-    draft: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether or not the pull request is a draft.",
-    )
-    merged: bool = Field()
-    mergeable: Union[bool, None] = Field()
-    rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
-    mergeable_state: str = Field()
-    merged_by: Union[None, SimpleUser] = Field()
-    comments: int = Field()
-    review_comments: int = Field()
-    maintainer_can_modify: bool = Field(
-        description="Indicates whether maintainers can modify the pull request."
-    )
-    commits: int = Field()
-    additions: int = Field()
-    deletions: int = Field()
-    changed_files: int = Field()
 
 
-model_rebuild(PullRequest)
+class TimelineCommittedEventPropAuthor(GitHubModel):
+    """TimelineCommittedEventPropAuthor
 
-__all__ = ("PullRequest",)
+    Identifying information for the git-user
+    """
+
+    date: datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class TimelineCommittedEventPropCommitter(GitHubModel):
+    """TimelineCommittedEventPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class TimelineCommittedEventPropTree(GitHubModel):
+    """TimelineCommittedEventPropTree"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+
+
+class TimelineCommittedEventPropParentsItems(GitHubModel):
+    """TimelineCommittedEventPropParentsItems"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+    html_url: str = Field()
+
+
+class TimelineCommittedEventPropVerification(GitHubModel):
+    """TimelineCommittedEventPropVerification"""
+
+    verified: bool = Field()
+    reason: str = Field()
+    signature: Union[str, None] = Field()
+    payload: Union[str, None] = Field()
+    verified_at: Union[str, None] = Field()
+
+
+model_rebuild(TimelineCommittedEvent)
+model_rebuild(TimelineCommittedEventPropAuthor)
+model_rebuild(TimelineCommittedEventPropCommitter)
+model_rebuild(TimelineCommittedEventPropTree)
+model_rebuild(TimelineCommittedEventPropParentsItems)
+model_rebuild(TimelineCommittedEventPropVerification)
+
+__all__ = (
+    "TimelineCommittedEvent",
+    "TimelineCommittedEventPropAuthor",
+    "TimelineCommittedEventPropCommitter",
+    "TimelineCommittedEventPropParentsItems",
+    "TimelineCommittedEventPropTree",
+    "TimelineCommittedEventPropVerification",
+)

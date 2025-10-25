@@ -12,17 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0275 import Artifact
-
-
-class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
-
-    total_count: int = Field()
-    artifacts: list[Artifact] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoActionsArtifactsGetResponse200)
+class OrgsOrgTeamsTeamSlugDiscussionsPostBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
 
-__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200",)
+    title: str = Field(description="The discussion post's title.")
+    body: str = Field(description="The discussion post's body text.")
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
+    )
+
+
+model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsPostBody)
+
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBody",)

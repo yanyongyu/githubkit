@@ -32,8 +32,9 @@ if TYPE_CHECKING:
     from ..types import (
         CampaignSummaryType,
         OrgsOrgCampaignsCampaignNumberPatchBodyType,
+        OrgsOrgCampaignsPostBodyOneof0Type,
+        OrgsOrgCampaignsPostBodyOneof1Type,
         OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
-        OrgsOrgCampaignsPostBodyType,
     )
 
 
@@ -77,11 +78,7 @@ class CampaignsClient:
         See also: https://docs.github.com/rest/campaigns/campaigns#list-campaigns-for-an-organization
         """
 
-        from ..models import (
-            BasicError,
-            CampaignSummary,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CampaignSummary, EventsGetResponse503
 
         url = f"/orgs/{org}/campaigns"
 
@@ -104,7 +101,7 @@ class CampaignsClient:
             response_model=list[CampaignSummary],
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -133,11 +130,7 @@ class CampaignsClient:
         See also: https://docs.github.com/rest/campaigns/campaigns#list-campaigns-for-an-organization
         """
 
-        from ..models import (
-            BasicError,
-            CampaignSummary,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CampaignSummary, EventsGetResponse503
 
         url = f"/orgs/{org}/campaigns"
 
@@ -160,7 +153,7 @@ class CampaignsClient:
             response_model=list[CampaignSummary],
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -171,7 +164,9 @@ class CampaignsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: OrgsOrgCampaignsPostBodyType,
+        data: Union[
+            OrgsOrgCampaignsPostBodyOneof0Type, OrgsOrgCampaignsPostBodyOneof1Type
+        ],
     ) -> Response[CampaignSummary, CampaignSummaryType]: ...
 
     @overload
@@ -188,9 +183,29 @@ class CampaignsClient:
         team_managers: Missing[list[str]] = UNSET,
         ends_at: datetime,
         contact_link: Missing[Union[str, None]] = UNSET,
-        code_scanning_alerts: list[
-            OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType
+        code_scanning_alerts: Union[
+            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None
         ],
+        generate_issues: Missing[bool] = UNSET,
+    ) -> Response[CampaignSummary, CampaignSummaryType]: ...
+
+    @overload
+    def create_campaign(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        description: str,
+        managers: Missing[list[str]] = UNSET,
+        team_managers: Missing[list[str]] = UNSET,
+        ends_at: datetime,
+        contact_link: Missing[Union[str, None]] = UNSET,
+        code_scanning_alerts: Missing[
+            Union[list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None]
+        ] = UNSET,
         generate_issues: Missing[bool] = UNSET,
     ) -> Response[CampaignSummary, CampaignSummaryType]: ...
 
@@ -200,7 +215,11 @@ class CampaignsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[OrgsOrgCampaignsPostBodyType] = UNSET,
+        data: Missing[
+            Union[
+                OrgsOrgCampaignsPostBodyOneof0Type, OrgsOrgCampaignsPostBodyOneof1Type
+            ]
+        ] = UNSET,
         **kwargs,
     ) -> Response[CampaignSummary, CampaignSummaryType]:
         """campaigns/create-campaign
@@ -219,11 +238,14 @@ class CampaignsClient:
         See also: https://docs.github.com/rest/campaigns/campaigns#create-a-campaign-for-an-organization
         """
 
+        from typing import Union
+
         from ..models import (
             BasicError,
             CampaignSummary,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            OrgsOrgCampaignsPostBody,
+            EventsGetResponse503,
+            OrgsOrgCampaignsPostBodyOneof0,
+            OrgsOrgCampaignsPostBodyOneof1,
         )
 
         url = f"/orgs/{org}/campaigns"
@@ -236,7 +258,10 @@ class CampaignsClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(OrgsOrgCampaignsPostBody, json)
+            json = type_validate_python(
+                Union[OrgsOrgCampaignsPostBodyOneof0, OrgsOrgCampaignsPostBodyOneof1],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -250,7 +275,7 @@ class CampaignsClient:
                 "400": BasicError,
                 "404": BasicError,
                 "422": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -261,7 +286,9 @@ class CampaignsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: OrgsOrgCampaignsPostBodyType,
+        data: Union[
+            OrgsOrgCampaignsPostBodyOneof0Type, OrgsOrgCampaignsPostBodyOneof1Type
+        ],
     ) -> Response[CampaignSummary, CampaignSummaryType]: ...
 
     @overload
@@ -278,9 +305,29 @@ class CampaignsClient:
         team_managers: Missing[list[str]] = UNSET,
         ends_at: datetime,
         contact_link: Missing[Union[str, None]] = UNSET,
-        code_scanning_alerts: list[
-            OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType
+        code_scanning_alerts: Union[
+            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None
         ],
+        generate_issues: Missing[bool] = UNSET,
+    ) -> Response[CampaignSummary, CampaignSummaryType]: ...
+
+    @overload
+    async def async_create_campaign(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        description: str,
+        managers: Missing[list[str]] = UNSET,
+        team_managers: Missing[list[str]] = UNSET,
+        ends_at: datetime,
+        contact_link: Missing[Union[str, None]] = UNSET,
+        code_scanning_alerts: Missing[
+            Union[list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None]
+        ] = UNSET,
         generate_issues: Missing[bool] = UNSET,
     ) -> Response[CampaignSummary, CampaignSummaryType]: ...
 
@@ -290,7 +337,11 @@ class CampaignsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[OrgsOrgCampaignsPostBodyType] = UNSET,
+        data: Missing[
+            Union[
+                OrgsOrgCampaignsPostBodyOneof0Type, OrgsOrgCampaignsPostBodyOneof1Type
+            ]
+        ] = UNSET,
         **kwargs,
     ) -> Response[CampaignSummary, CampaignSummaryType]:
         """campaigns/create-campaign
@@ -309,11 +360,14 @@ class CampaignsClient:
         See also: https://docs.github.com/rest/campaigns/campaigns#create-a-campaign-for-an-organization
         """
 
+        from typing import Union
+
         from ..models import (
             BasicError,
             CampaignSummary,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            OrgsOrgCampaignsPostBody,
+            EventsGetResponse503,
+            OrgsOrgCampaignsPostBodyOneof0,
+            OrgsOrgCampaignsPostBodyOneof1,
         )
 
         url = f"/orgs/{org}/campaigns"
@@ -326,7 +380,10 @@ class CampaignsClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(OrgsOrgCampaignsPostBody, json)
+            json = type_validate_python(
+                Union[OrgsOrgCampaignsPostBodyOneof0, OrgsOrgCampaignsPostBodyOneof1],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -340,7 +397,7 @@ class CampaignsClient:
                 "400": BasicError,
                 "404": BasicError,
                 "422": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -365,11 +422,7 @@ class CampaignsClient:
         See also: https://docs.github.com/rest/campaigns/campaigns#get-a-campaign-for-an-organization
         """
 
-        from ..models import (
-            BasicError,
-            CampaignSummary,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CampaignSummary, EventsGetResponse503
 
         url = f"/orgs/{org}/campaigns/{campaign_number}"
 
@@ -384,7 +437,7 @@ class CampaignsClient:
             error_models={
                 "404": BasicError,
                 "422": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -409,11 +462,7 @@ class CampaignsClient:
         See also: https://docs.github.com/rest/campaigns/campaigns#get-a-campaign-for-an-organization
         """
 
-        from ..models import (
-            BasicError,
-            CampaignSummary,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CampaignSummary, EventsGetResponse503
 
         url = f"/orgs/{org}/campaigns/{campaign_number}"
 
@@ -428,7 +477,7 @@ class CampaignsClient:
             error_models={
                 "404": BasicError,
                 "422": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -453,10 +502,7 @@ class CampaignsClient:
         See also: https://docs.github.com/rest/campaigns/campaigns#delete-a-campaign-for-an-organization
         """
 
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, EventsGetResponse503
 
         url = f"/orgs/{org}/campaigns/{campaign_number}"
 
@@ -469,7 +515,7 @@ class CampaignsClient:
             stream=stream,
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -494,10 +540,7 @@ class CampaignsClient:
         See also: https://docs.github.com/rest/campaigns/campaigns#delete-a-campaign-for-an-organization
         """
 
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, EventsGetResponse503
 
         url = f"/orgs/{org}/campaigns/{campaign_number}"
 
@@ -510,7 +553,7 @@ class CampaignsClient:
             stream=stream,
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -569,7 +612,7 @@ class CampaignsClient:
         from ..models import (
             BasicError,
             CampaignSummary,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             OrgsOrgCampaignsCampaignNumberPatchBody,
         )
 
@@ -597,7 +640,7 @@ class CampaignsClient:
                 "400": BasicError,
                 "404": BasicError,
                 "422": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -656,7 +699,7 @@ class CampaignsClient:
         from ..models import (
             BasicError,
             CampaignSummary,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             OrgsOrgCampaignsCampaignNumberPatchBody,
         )
 
@@ -684,6 +727,6 @@ class CampaignsClient:
                 "400": BasicError,
                 "404": BasicError,
                 "422": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )

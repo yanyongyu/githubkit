@@ -9,230 +9,145 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class CodeSecurityConfiguration(GitHubModel):
-    """CodeSecurityConfiguration
+class SimpleRepository(GitHubModel):
+    """Simple Repository
 
-    A code security configuration
+    A GitHub repository.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the code security configuration"
+    id: int = Field(description="A unique identifier of the repository.")
+    node_id: str = Field(description="The GraphQL identifier of the repository.")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field(
+        description="The full, globally unique, name of the repository."
     )
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the code security configuration. Must be unique within the organization.",
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    private: bool = Field(description="Whether the repository is private.")
+    html_url: str = Field(description="The URL to view the repository on GitHub.com.")
+    description: Union[str, None] = Field(description="The repository description.")
+    fork: bool = Field(description="Whether the repository is a fork.")
+    url: str = Field(
+        description="The URL to get more information about the repository from the GitHub API."
     )
-    target_type: Missing[Literal["global", "organization", "enterprise"]] = Field(
-        default=UNSET, description="The type of the code security configuration."
+    archive_url: str = Field(
+        description="A template for the API URL to download the repository as an archive."
     )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the code security configuration"
+    assignees_url: str = Field(
+        description="A template for the API URL to list the available assignees for issues in the repository."
     )
-    advanced_security: Missing[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
-    ] = Field(
-        default=UNSET, description="The enablement status of GitHub Advanced Security"
+    blobs_url: str = Field(
+        description="A template for the API URL to create or retrieve a raw Git blob in the repository."
     )
-    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependency Graph"
+    branches_url: str = Field(
+        description="A template for the API URL to get information about branches in the repository."
     )
-    dependency_graph_autosubmit_action: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of Automatic dependency submission",
+    collaborators_url: str = Field(
+        description="A template for the API URL to get information about collaborators of the repository."
     )
-    dependency_graph_autosubmit_action_options: Missing[
-        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
-    ] = Field(
-        default=UNSET, description="Feature options for Automatic dependency submission"
+    comments_url: str = Field(
+        description="A template for the API URL to get information about comments on the repository."
     )
-    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependabot alerts"
+    commits_url: str = Field(
+        description="A template for the API URL to get information about commits on the repository."
     )
-    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of Dependabot security updates",
-        )
+    compare_url: str = Field(
+        description="A template for the API URL to compare two commits or refs."
     )
-    code_scanning_options: Missing[
-        Union[CodeSecurityConfigurationPropCodeScanningOptions, None]
-    ] = Field(default=UNSET, description="Feature options for code scanning")
-    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of code scanning default setup",
-        )
+    contents_url: str = Field(
+        description="A template for the API URL to get the contents of the repository."
     )
-    code_scanning_default_setup_options: Missing[
-        Union[CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions, None]
-    ] = Field(
-        default=UNSET, description="Feature options for code scanning default setup"
+    contributors_url: str = Field(
+        description="A template for the API URL to list the contributors to the repository."
     )
-    code_scanning_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of code scanning delegated alert dismissal",
+    deployments_url: str = Field(
+        description="The API URL to list the deployments of the repository."
     )
-    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of secret scanning"
+    downloads_url: str = Field(
+        description="The API URL to list the downloads on the repository."
     )
-    secret_scanning_push_protection: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning push protection",
+    events_url: str = Field(
+        description="The API URL to list the events of the repository."
     )
-    secret_scanning_delegated_bypass: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning delegated bypass",
+    forks_url: str = Field(
+        description="The API URL to list the forks of the repository."
     )
-    secret_scanning_delegated_bypass_options: Missing[
-        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
-    ] = Field(
-        default=UNSET,
-        description="Feature options for secret scanning delegated bypass",
+    git_commits_url: str = Field(
+        description="A template for the API URL to get information about Git commits of the repository."
     )
-    secret_scanning_validity_checks: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning validity checks",
+    git_refs_url: str = Field(
+        description="A template for the API URL to get information about Git refs of the repository."
     )
-    secret_scanning_non_provider_patterns: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning non-provider patterns",
+    git_tags_url: str = Field(
+        description="A template for the API URL to get information about Git tags of the repository."
     )
-    secret_scanning_generic_secrets: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET, description="The enablement status of Copilot secret scanning"
+    issue_comment_url: str = Field(
+        description="A template for the API URL to get information about issue comments on the repository."
     )
-    secret_scanning_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning delegated alert dismissal",
+    issue_events_url: str = Field(
+        description="A template for the API URL to get information about issue events on the repository."
     )
-    private_vulnerability_reporting: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of private vulnerability reporting",
+    issues_url: str = Field(
+        description="A template for the API URL to get information about issues on the repository."
     )
-    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
-        default=UNSET, description="The enforcement status for a security configuration"
+    keys_url: str = Field(
+        description="A template for the API URL to get information about deploy keys on the repository."
     )
-    url: Missing[str] = Field(default=UNSET, description="The URL of the configuration")
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the configuration"
+    labels_url: str = Field(
+        description="A template for the API URL to get information about labels of the repository."
     )
-    created_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
-
-
-class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions(GitHubModel):
-    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
-
-    Feature options for Automatic dependency submission
-    """
-
-    labeled_runners: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
+    languages_url: str = Field(
+        description="The API URL to get information about the languages of the repository."
+    )
+    merges_url: str = Field(
+        description="The API URL to merge branches in the repository."
+    )
+    milestones_url: str = Field(
+        description="A template for the API URL to get information about milestones of the repository."
+    )
+    notifications_url: str = Field(
+        description="A template for the API URL to get information about notifications on the repository."
+    )
+    pulls_url: str = Field(
+        description="A template for the API URL to get information about pull requests on the repository."
+    )
+    releases_url: str = Field(
+        description="A template for the API URL to get information about releases on the repository."
+    )
+    stargazers_url: str = Field(
+        description="The API URL to list the stargazers on the repository."
+    )
+    statuses_url: str = Field(
+        description="A template for the API URL to get information about statuses of a commit."
+    )
+    subscribers_url: str = Field(
+        description="The API URL to list the subscribers on the repository."
+    )
+    subscription_url: str = Field(
+        description="The API URL to subscribe to notifications for this repository."
+    )
+    tags_url: str = Field(
+        description="The API URL to get information about tags on the repository."
+    )
+    teams_url: str = Field(
+        description="The API URL to list the teams on the repository."
+    )
+    trees_url: str = Field(
+        description="A template for the API URL to create or retrieve a raw Git tree of the repository."
+    )
+    hooks_url: str = Field(
+        description="The API URL to list the hooks on the repository."
     )
 
 
-class CodeSecurityConfigurationPropCodeScanningOptions(GitHubModel):
-    """CodeSecurityConfigurationPropCodeScanningOptions
+model_rebuild(SimpleRepository)
 
-    Feature options for code scanning
-    """
-
-    allow_advanced: Missing[Union[bool, None]] = Field(
-        default=UNSET, description="Whether to allow repos which use advanced setup"
-    )
-
-
-class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions(GitHubModel):
-    """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
-
-    Feature options for code scanning default setup
-    """
-
-    runner_type: Missing[Union[None, Literal["standard", "labeled", "not_set"]]] = (
-        Field(
-            default=UNSET,
-            description="Whether to use labeled runners or standard GitHub runners.",
-        )
-    )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The label of the runner to use for code scanning when runner_type is 'labeled'.",
-    )
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions(GitHubModel):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
-
-    Feature options for secret scanning delegated bypass
-    """
-
-    reviewers: Missing[
-        list[
-            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The bypass reviewers for secret scanning delegated bypass",
-    )
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
-    GitHubModel
-):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
-    ems
-    """
-
-    reviewer_id: int = Field(
-        description="The ID of the team or role selected as a bypass reviewer"
-    )
-    reviewer_type: Literal["TEAM", "ROLE"] = Field(
-        description="The type of the bypass reviewer"
-    )
-
-
-model_rebuild(CodeSecurityConfiguration)
-model_rebuild(CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions)
-model_rebuild(CodeSecurityConfigurationPropCodeScanningOptions)
-model_rebuild(CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions)
-model_rebuild(CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions)
-model_rebuild(
-    CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-)
-
-__all__ = (
-    "CodeSecurityConfiguration",
-    "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions",
-    "CodeSecurityConfigurationPropCodeScanningOptions",
-    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
-)
+__all__ = ("SimpleRepository",)

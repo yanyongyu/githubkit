@@ -9,29 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0511 import EnterpriseWebhooksType
-from .group_0512 import SimpleInstallationType
-from .group_0513 import OrganizationSimpleWebhooksType
-from .group_0514 import RepositoryWebhooksType
-from .group_0594 import WebhookCodeScanningAlertReopenedByUserPropAlertType
+from typing_extensions import TypedDict
 
 
-class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
-    """code_scanning_alert reopened_by_user event"""
+class WebhookCheckRunRequestedActionFormEncodedType(TypedDict):
+    """Check Run Requested Action Event
 
-    action: Literal["reopened_by_user"]
-    alert: WebhookCodeScanningAlertReopenedByUserPropAlertType
-    commit_oid: str
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    The check_run.requested_action webhook encoded with URL encoding
+    """
+
+    payload: str
 
 
-__all__ = ("WebhookCodeScanningAlertReopenedByUserType",)
+__all__ = ("WebhookCheckRunRequestedActionFormEncodedType",)

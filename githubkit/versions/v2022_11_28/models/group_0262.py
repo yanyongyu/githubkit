@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0010 import Integration
-from .group_0064 import MinimalRepository
+from .group_0061 import MinimalRepository
 from .group_0232 import PullRequestMinimal
 from .group_0233 import SimpleCommit
 

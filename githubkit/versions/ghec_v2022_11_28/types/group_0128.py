@@ -12,19 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0129 import RepositoryRuleFilePathRestrictionPropParametersType
+from .group_0129 import RepositoryRuleRequiredDeploymentsPropParametersType
 
 
-class RepositoryRuleFilePathRestrictionType(TypedDict):
-    """file_path_restriction
+class RepositoryRuleRequiredDeploymentsType(TypedDict):
+    """required_deployments
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
 
 
-__all__ = ("RepositoryRuleFilePathRestrictionType",)
+__all__ = ("RepositoryRuleRequiredDeploymentsType",)

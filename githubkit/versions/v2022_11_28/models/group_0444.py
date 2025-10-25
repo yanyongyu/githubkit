@@ -58,20 +58,20 @@ class BillingPremiumRequestUsageReportUserPropUsageItemsItems(GitHubModel):
     price_per_unit: float = Field(
         alias="pricePerUnit", description="Price per unit of the usage line item."
     )
-    gross_quantity: int = Field(
+    gross_quantity: float = Field(
         alias="grossQuantity", description="Gross quantity of the usage line item."
     )
     gross_amount: float = Field(
         alias="grossAmount", description="Gross amount of the usage line item."
     )
-    discount_quantity: int = Field(
+    discount_quantity: float = Field(
         alias="discountQuantity",
         description="Discount quantity of the usage line item.",
     )
     discount_amount: float = Field(
         alias="discountAmount", description="Discount amount of the usage line item."
     )
-    net_quantity: int = Field(
+    net_quantity: float = Field(
         alias="netQuantity", description="Net quantity of the usage line item."
     )
     net_amount: float = Field(

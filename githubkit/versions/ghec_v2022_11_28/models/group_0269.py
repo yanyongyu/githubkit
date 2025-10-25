@@ -9,41 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0101 import CustomPropertyValue
 
 
-class ProjectCard(GitHubModel):
-    """Project Card
+class OrgRepoCustomPropertyValues(GitHubModel):
+    """Organization Repository Custom Property Values
 
-    Project cards represent a scope of work.
+    List of custom property values for a repository
     """
 
-    url: str = Field()
-    id: int = Field(description="The project card's ID")
-    node_id: str = Field()
-    note: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    archived: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the card is archived"
+    repository_id: int = Field()
+    repository_name: str = Field()
+    repository_full_name: str = Field()
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values"
     )
-    column_name: Missing[str] = Field(default=UNSET)
-    project_id: Missing[str] = Field(default=UNSET)
-    column_url: str = Field()
-    content_url: Missing[str] = Field(default=UNSET)
-    project_url: str = Field()
 
 
-model_rebuild(ProjectCard)
+model_rebuild(OrgRepoCustomPropertyValues)
 
-__all__ = ("ProjectCard",)
+__all__ = ("OrgRepoCustomPropertyValues",)

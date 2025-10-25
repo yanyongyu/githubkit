@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,52 +16,97 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodespacesPostBody(GitHubModel):
-    """ReposOwnerRepoCodespacesPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
 
-    ref: Missing[str] = Field(
+    dismissal_restrictions: Missing[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions
+    ] = Field(
         default=UNSET,
-        description="Git ref (typically a branch name) for this codespace",
+        description="Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.",
     )
-    location: Missing[str] = Field(
+    dismiss_stale_reviews: Missing[bool] = Field(
         default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
+        description="Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.",
     )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+    require_code_owner_reviews: Missing[bool] = Field(
         default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
+        description="Blocks merging pull requests until [code owners](https://docs.github.com/enterprise-cloud@latest//articles/about-code-owners/) have reviewed.",
     )
-    client_ip: Missing[str] = Field(
+    required_approving_review_count: Missing[int] = Field(
         default=UNSET,
-        description="IP for location auto-detection when proxying a request",
+        description="Specifies the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.",
     )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
+    require_last_push_approval: Missing[bool] = Field(
         default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
+        description="Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`",
     )
-    multi_repo_permissions_opt_out: Missing[bool] = Field(
+    bypass_pull_request_allowances: Missing[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances
+    ] = Field(
         default=UNSET,
-        description="Whether to authorize requested permissions from devcontainer.json",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    retention_period_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
     )
 
 
-model_rebuild(ReposOwnerRepoCodespacesPostBody)
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
+    missalRestrictions
 
-__all__ = ("ReposOwnerRepoCodespacesPostBody",)
+    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
+    empty `dismissal_restrictions` object to disable. User and team
+    `dismissal_restrictions` are only available for organization-owned repositories.
+    Omit this parameter for personal repositories.
+    """
+
+    users: Missing[list[str]] = Field(
+        default=UNSET, description="The list of user `login`s with dismissal access"
+    )
+    teams: Missing[list[str]] = Field(
+        default=UNSET, description="The list of team `slug`s with dismissal access"
+    )
+    apps: Missing[list[str]] = Field(
+        default=UNSET, description="The list of app `slug`s with dismissal access"
+    )
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
+    assPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of user `login`s allowed to bypass pull request requirements.",
+    )
+    teams: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of team `slug`s allowed to bypass pull request requirements.",
+    )
+    apps: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of app `slug`s allowed to bypass pull request requirements.",
+    )
+
+
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions
+)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances
+)
+
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions",
+)

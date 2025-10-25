@@ -9,17 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAutofixCommitsType(TypedDict):
-    """CodeScanningAutofixCommits
+class VerificationType(TypedDict):
+    """Verification"""
 
-    Commit an autofix for a code scanning alert
-    """
+    verified: bool
+    reason: str
+    payload: Union[str, None]
+    signature: Union[str, None]
+    verified_at: NotRequired[Union[str, None]]
 
-    target_ref: NotRequired[str]
-    message: NotRequired[str]
 
-
-__all__ = ("CodeScanningAutofixCommitsType",)
+__all__ = ("VerificationType",)

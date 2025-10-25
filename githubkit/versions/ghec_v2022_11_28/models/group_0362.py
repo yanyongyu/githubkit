@@ -9,26 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DeploymentBranchPolicySettings(GitHubModel):
-    """DeploymentBranchPolicySettings
+class ContentDirectoryItems(GitHubModel):
+    """ContentDirectoryItems"""
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
-    """
+    type: Literal["dir", "file", "submodule", "symlink"] = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    content: Missing[str] = Field(default=UNSET)
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentDirectoryItemsPropLinks = Field(alias="_links")
 
-    protected_branches: bool = Field(
-        description="Whether only branches with branch protection rules can deploy to this environment. If `protected_branches` is `true`, `custom_branch_policies` must be `false`; if `protected_branches` is `false`, `custom_branch_policies` must be `true`."
-    )
-    custom_branch_policies: bool = Field(
-        description="Whether only branches that match the specified name patterns can deploy to this environment.  If `custom_branch_policies` is `true`, `protected_branches` must be `false`; if `custom_branch_policies` is `false`, `protected_branches` must be `true`."
-    )
+
+class ContentDirectoryItemsPropLinks(GitHubModel):
+    """ContentDirectoryItemsPropLinks"""
+
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
 
 
-model_rebuild(DeploymentBranchPolicySettings)
+model_rebuild(ContentDirectoryItems)
+model_rebuild(ContentDirectoryItemsPropLinks)
 
-__all__ = ("DeploymentBranchPolicySettings",)
+__all__ = (
+    "ContentDirectoryItems",
+    "ContentDirectoryItemsPropLinks",
+)

@@ -9,52 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0527 import EnterpriseWebhooks
+from .group_0528 import SimpleInstallation
+from .group_0529 import OrganizationSimpleWebhooks
+from .group_0530 import RepositoryWebhooks
+from .group_0540 import WebhooksUser
+from .group_0555 import WebhooksTeam
 
-class WebhookRubygemsMetadata(GitHubModel):
-    """Ruby Gems metadata"""
 
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[str] = Field(default=UNSET)
-    readme: Missing[str] = Field(default=UNSET)
-    homepage: Missing[str] = Field(default=UNSET)
-    version_info: Missing[WebhookRubygemsMetadataPropVersionInfo] = Field(default=UNSET)
-    platform: Missing[str] = Field(default=UNSET)
-    metadata: Missing[WebhookRubygemsMetadataPropMetadata] = Field(default=UNSET)
-    repo: Missing[str] = Field(default=UNSET)
-    dependencies: Missing[list[WebhookRubygemsMetadataPropDependenciesItems]] = Field(
-        default=UNSET
+class WebhookMembershipRemoved(GitHubModel):
+    """membership removed event"""
+
+    action: Literal["removed"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    commit_oid: Missing[str] = Field(default=UNSET)
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    member: Union[WebhooksUser, None] = Field(title="User")
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    scope: Literal["team", "organization"] = Field(
+        description="The scope of the membership. Currently, can only be `team`."
+    )
+    sender: Union[WebhookMembershipRemovedPropSender, None] = Field(title="User")
+    team: WebhooksTeam = Field(
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
 
 
-class WebhookRubygemsMetadataPropVersionInfo(GitHubModel):
-    """WebhookRubygemsMetadataPropVersionInfo"""
+class WebhookMembershipRemovedPropSender(GitHubModel):
+    """User"""
 
-    version: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookRubygemsMetadataPropMetadata(ExtraGitHubModel):
-    """WebhookRubygemsMetadataPropMetadata"""
-
-
-class WebhookRubygemsMetadataPropDependenciesItems(ExtraGitHubModel):
-    """WebhookRubygemsMetadataPropDependenciesItems"""
-
-
-model_rebuild(WebhookRubygemsMetadata)
-model_rebuild(WebhookRubygemsMetadataPropVersionInfo)
-model_rebuild(WebhookRubygemsMetadataPropMetadata)
-model_rebuild(WebhookRubygemsMetadataPropDependenciesItems)
+model_rebuild(WebhookMembershipRemoved)
+model_rebuild(WebhookMembershipRemovedPropSender)
 
 __all__ = (
-    "WebhookRubygemsMetadata",
-    "WebhookRubygemsMetadataPropDependenciesItems",
-    "WebhookRubygemsMetadataPropMetadata",
-    "WebhookRubygemsMetadataPropVersionInfo",
+    "WebhookMembershipRemoved",
+    "WebhookMembershipRemovedPropSender",
 )

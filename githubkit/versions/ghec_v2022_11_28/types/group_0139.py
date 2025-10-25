@@ -12,19 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0140 import RepositoryRuleCodeScanningPropParametersType
+from .group_0140 import RepositoryRuleCommitterEmailPatternPropParametersType
 
 
-class RepositoryRuleCodeScanningType(TypedDict):
-    """code_scanning
+class RepositoryRuleCommitterEmailPatternType(TypedDict):
+    """committer_email_pattern
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    Parameters to be used for the committer_email_pattern rule
     """
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+    type: Literal["committer_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleCodeScanningType",)
+__all__ = ("RepositoryRuleCommitterEmailPatternType",)

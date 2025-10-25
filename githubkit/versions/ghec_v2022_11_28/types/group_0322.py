@@ -9,29 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0315 import BranchProtectionType
+from .group_0320 import CommitType
 
 
-class CodeScanningCodeqlDatabaseType(TypedDict):
-    """CodeQL Database
+class BranchWithProtectionType(TypedDict):
+    """Branch With Protection
 
-    A CodeQL database.
+    Branch With Protection
     """
 
-    id: int
     name: str
-    language: str
-    uploader: SimpleUserType
-    content_type: str
-    size: int
-    created_at: datetime
-    updated_at: datetime
-    url: str
-    commit_oid: NotRequired[Union[str, None]]
+    commit: CommitType
+    links: BranchWithProtectionPropLinksType
+    protected: bool
+    protection: BranchProtectionType
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
 
 
-__all__ = ("CodeScanningCodeqlDatabaseType",)
+class BranchWithProtectionPropLinksType(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
+
+
+__all__ = (
+    "BranchWithProtectionPropLinksType",
+    "BranchWithProtectionType",
+)

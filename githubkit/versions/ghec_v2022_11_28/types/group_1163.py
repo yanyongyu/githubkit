@@ -13,10 +13,12 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsProjectIdCollaboratorsUsernamePutBodyType(TypedDict):
-    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
+class OrgsOrgSettingsNetworkConfigurationsPostBodyType(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
 
 
-__all__ = ("ProjectsProjectIdCollaboratorsUsernamePutBodyType",)
+__all__ = ("OrgsOrgSettingsNetworkConfigurationsPostBodyType",)

@@ -9,18 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyValueType(TypedDict):
-    """Custom Property Value
+class RepositoryRulesetBypassActorType(TypedDict):
+    """Repository Ruleset Bypass Actor
 
-    Custom property name and associated value
+    An actor that can bypass rules in a ruleset
     """
 
-    property_name: str
-    value: Union[str, list[str], None]
+    actor_id: NotRequired[Union[int, None]]
+    actor_type: Literal[
+        "Integration", "OrganizationAdmin", "RepositoryRole", "Team", "DeployKey"
+    ]
+    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
 
 
-__all__ = ("CustomPropertyValueType",)
+__all__ = ("RepositoryRulesetBypassActorType",)

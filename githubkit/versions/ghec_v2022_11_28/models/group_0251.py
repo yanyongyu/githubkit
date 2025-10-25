@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,45 +17,60 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0175 import Issue
-from .group_0247 import PullRequestSimple
-from .group_0250 import ProjectsV2DraftIssue
+from .group_0079 import TeamSimple
 
 
-class ProjectsV2ItemSimple(GitHubModel):
-    """Projects v2 Item
+class TeamRoleAssignment(GitHubModel):
+    """A Role Assignment for a Team
 
-    An item belonging to a project
+    The Relationship a Team has with a role.
     """
 
-    id: float = Field(description="The unique identifier of the project item.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project item."
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+        default=UNSET,
+        description="Determines if the team has a direct, indirect, or mixed relationship to a role",
     )
-    content: Missing[Union[Issue, PullRequestSimple, ProjectsV2DraftIssue]] = Field(
-        default=UNSET, description="The content represented by the item."
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamRoleAssignmentPropPermissions] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    members_url: str = Field()
+    repositories_url: str = Field()
+    parent: Union[None, TeamSimple] = Field()
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
     )
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
     )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: datetime = Field(description="The time when the item was created.")
-    updated_at: datetime = Field(description="The time when the item was last updated.")
-    archived_at: Union[datetime, None] = Field(
-        description="The time when the item was archived."
-    )
-    project_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the project this item belongs to."
-    )
-    item_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the item in the project."
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
     )
 
 
-model_rebuild(ProjectsV2ItemSimple)
+class TeamRoleAssignmentPropPermissions(GitHubModel):
+    """TeamRoleAssignmentPropPermissions"""
 
-__all__ = ("ProjectsV2ItemSimple",)
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
+
+
+model_rebuild(TeamRoleAssignment)
+model_rebuild(TeamRoleAssignmentPropPermissions)
+
+__all__ = (
+    "TeamRoleAssignment",
+    "TeamRoleAssignmentPropPermissions",
+)

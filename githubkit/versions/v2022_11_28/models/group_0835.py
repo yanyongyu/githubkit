@@ -19,7 +19,7 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0020 import Repository
-from .group_0048 import Issue
+from .group_0045 import Issue
 from .group_0447 import SimpleInstallation
 from .group_0448 import OrganizationSimpleWebhooks
 from .group_0449 import RepositoryWebhooks

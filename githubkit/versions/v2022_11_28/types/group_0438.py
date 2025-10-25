@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0059 import MarketplaceListingPlanType
+from .group_0056 import MarketplaceListingPlanType
 
 
 class UserMarketplacePurchaseType(TypedDict):

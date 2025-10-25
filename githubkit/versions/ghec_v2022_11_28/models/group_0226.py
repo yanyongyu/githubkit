@@ -18,26 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCreateIssueType(GitHubModel):
-    """OrganizationCreateIssueType"""
+class OrganizationCustomRepositoryRoleUpdateSchema(GitHubModel):
+    """OrganizationCustomRepositoryRoleUpdateSchema"""
 
-    name: str = Field(description="Name of the issue type.")
-    is_enabled: bool = Field(
-        description="Whether or not the issue type is enabled at the organization level."
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the custom role."
     )
     description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue type."
+        default=UNSET,
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="Color for the issue type.")
+    base_role: Missing[Literal["read", "triage", "write", "maintain"]] = Field(
+        default=UNSET,
+        description="The system role from which this role inherits permissions.",
+    )
+    permissions: Missing[list[str]] = Field(
+        default=UNSET,
+        description="A list of additional permissions included in this role.",
+    )
 
 
-model_rebuild(OrganizationCreateIssueType)
+model_rebuild(OrganizationCustomRepositoryRoleUpdateSchema)
 
-__all__ = ("OrganizationCreateIssueType",)
+__all__ = ("OrganizationCustomRepositoryRoleUpdateSchema",)

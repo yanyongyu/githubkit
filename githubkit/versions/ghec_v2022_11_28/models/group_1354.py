@@ -9,61 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
+class ReposOwnerRepoPullsPullNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    schemas: Missing[list[str]] = Field(default=UNSET)
-    display_name: Missing[str] = Field(
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the pull request."
+    )
+    body: Missing[str] = Field(
+        default=UNSET, description="The contents of the pull request."
+    )
+    state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET,
-        alias="displayName",
-        description="The name of the user, suitable for display to end-users",
+        description="State of this Pull Request. Either `open` or `closed`.",
     )
-    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
-    groups: Missing[list[str]] = Field(default=UNSET)
-    active: Missing[bool] = Field(default=UNSET)
-    user_name: str = Field(
-        alias="userName",
-        description="Configured by the admin. Could be an email, login, or username",
+    base: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the branch you want your changes pulled into. This should be an existing branch on the current repository. You cannot update the base branch on a pull request to point to another repository.",
     )
-    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName = Field()
-    emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="user emails"
+    maintainer_can_modify: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether [maintainers can modify](https://docs.github.com/enterprise-cloud@latest//articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
     )
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
+model_rebuild(ReposOwnerRepoPullsPullNumberPatchBody)
 
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str = Field(alias="givenName")
-    family_name: str = Field(alias="familyName")
-    formatted: Missing[str] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
-
-    type: Missing[str] = Field(default=UNSET)
-    value: str = Field()
-    primary: Missing[bool] = Field(default=UNSET)
-
-
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBody)
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName)
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems)
-
-__all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBody",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberPatchBody",)

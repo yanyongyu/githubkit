@@ -13,54 +13,64 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0067 import OrganizationSimple
+from .group_0090 import TeamSimple
 
 
-class OrgMembership(GitHubModel):
-    """Org Membership
+class TeamRoleAssignment(GitHubModel):
+    """A Role Assignment for a Team
 
-    Org Membership
+    The Relationship a Team has with a role.
     """
 
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+        default=UNSET,
+        description="Determines if the team has a direct, indirect, or mixed relationship to a role",
+    )
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamRoleAssignmentPropPermissions] = Field(default=UNSET)
     url: str = Field()
-    state: Literal["active", "pending"] = Field(
-        description="The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation."
+    html_url: str = Field()
+    members_url: str = Field()
+    repositories_url: str = Field()
+    parent: Union[None, TeamSimple] = Field()
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
     )
-    role: Literal["admin", "member", "billing_manager"] = Field(
-        description="The user's membership type in the organization."
-    )
-    direct_membership: Missing[bool] = Field(
+    organization_id: Missing[int] = Field(
         default=UNSET,
-        description="Whether the user has direct membership in the organization.",
+        description="Unique identifier of the organization to which this team belongs",
     )
-    enterprise_teams_providing_indirect_membership: Missing[list[str]] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
+    enterprise_id: Missing[int] = Field(
         default=UNSET,
-        description="The slugs of the enterprise teams providing the user with indirect membership in the organization.\nA limit of 100 enterprise team slugs is returned.",
+        description="Unique identifier of the enterprise to which this team belongs",
     )
-    organization_url: str = Field()
-    organization: OrganizationSimple = Field(
-        title="Organization Simple", description="A GitHub organization."
-    )
-    user: Union[None, SimpleUser] = Field()
-    permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
 
 
-class OrgMembershipPropPermissions(GitHubModel):
-    """OrgMembershipPropPermissions"""
+class TeamRoleAssignmentPropPermissions(GitHubModel):
+    """TeamRoleAssignmentPropPermissions"""
 
-    can_create_repository: bool = Field()
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
 
 
-model_rebuild(OrgMembership)
-model_rebuild(OrgMembershipPropPermissions)
+model_rebuild(TeamRoleAssignment)
+model_rebuild(TeamRoleAssignmentPropPermissions)
 
 __all__ = (
-    "OrgMembership",
-    "OrgMembershipPropPermissions",
+    "TeamRoleAssignment",
+    "TeamRoleAssignmentPropPermissions",
 )

@@ -9,30 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleCodeScanningPropParametersType(TypedDict):
-    """RepositoryRuleCodeScanningPropParameters"""
+class RuleSuitesItemsType(TypedDict):
+    """RuleSuitesItems"""
 
-    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
-
-
-class RepositoryRuleParamsCodeScanningToolType(TypedDict):
-    """CodeScanningTool
-
-    A tool that must provide code scanning results for this rule to pass.
-    """
-
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
-    ]
-    tool: str
+    id: NotRequired[int]
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
 
 
-__all__ = (
-    "RepositoryRuleCodeScanningPropParametersType",
-    "RepositoryRuleParamsCodeScanningToolType",
-)
+__all__ = ("RuleSuitesItemsType",)

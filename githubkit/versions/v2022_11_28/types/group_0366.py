@@ -14,9 +14,9 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0043 import MilestoneType
-from .group_0093 import TeamSimpleType
-from .group_0134 import AutoMergeType
+from .group_0040 import MilestoneType
+from .group_0090 import TeamSimpleType
+from .group_0131 import AutoMergeType
 from .group_0367 import PullRequestPropLabelsItemsType
 from .group_0368 import PullRequestPropBaseType, PullRequestPropHeadType
 from .group_0369 import PullRequestPropLinksType

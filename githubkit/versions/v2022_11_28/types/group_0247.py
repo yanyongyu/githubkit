@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0094 import TeamType
+from .group_0091 import TeamType
 
 
 class BranchRestrictionPolicyType(TypedDict):

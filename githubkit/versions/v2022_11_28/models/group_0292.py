@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0019 import LicenseSimple
-from .group_0144 import CodeOfConductSimple
+from .group_0140 import CodeOfConductSimple
 
 
 class CommunityProfilePropFiles(GitHubModel):

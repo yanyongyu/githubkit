@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,31 +18,52 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0008 import Enterprise
 
-class RepositoryRulesetBypassActor(GitHubModel):
-    """Repository Ruleset Bypass Actor
 
-    An actor that can bypass rules in a ruleset
+class EnterpriseRole(GitHubModel):
+    """Enterprise Role
+
+    Enterprise custom roles
     """
 
-    actor_id: Missing[Union[int, None]] = Field(
+    id: int = Field(description="The unique identifier of the role.")
+    name: str = Field(description="The name of the role.")
+    description: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin` and `EnterpriseOwner` are not applicable for personal repositories.",
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "EnterpriseOwner",
-    ] = Field(description="The type of actor that can bypass a ruleset")
-    bypass_mode: Missing[Literal["always", "pull_request", "exempt"]] = Field(
+    source: Missing[Union[None, Literal["Enterprise", "Predefined"]]] = Field(
         default=UNSET,
-        description="When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created.",
+        description='Source answers the question, "where did this role come from?"',
+    )
+    permissions: list[str] = Field(
+        description="A list of permissions included in this role."
+    )
+    enterprise: Union[None, Enterprise] = Field()
+    created_at: datetime = Field(description="The date and time the role was created.")
+    updated_at: datetime = Field(
+        description="The date and time the role was last updated."
     )
 
 
-model_rebuild(RepositoryRulesetBypassActor)
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
 
-__all__ = ("RepositoryRulesetBypassActor",)
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of enterprise roles available to the enterprise.",
+    )
+    roles: Missing[list[EnterpriseRole]] = Field(
+        default=UNSET,
+        description="The list of enterprise roles available to the enterprise.",
+    )
+
+
+model_rebuild(EnterpriseRole)
+model_rebuild(EnterprisesEnterpriseEnterpriseRolesGetResponse200)
+
+__all__ = (
+    "EnterpriseRole",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200",
+)

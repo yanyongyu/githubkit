@@ -12,7 +12,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0097 import CodeScanningAnalysisToolType
+from .group_0094 import CodeScanningAnalysisToolType
 
 
 class CodeScanningAnalysisType(TypedDict):

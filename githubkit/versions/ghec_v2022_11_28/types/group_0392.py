@@ -9,41 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ReviewDismissedIssueEventType(TypedDict):
-    """Review Dismissed Issue Event
+class HookResponseType(TypedDict):
+    """Hook Response"""
 
-    Review Dismissed Issue Event
-    """
-
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["review_dismissed"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewType
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
-class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
-    """ReviewDismissedIssueEventPropDismissedReview"""
-
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[str]
-
-
-__all__ = (
-    "ReviewDismissedIssueEventPropDismissedReviewType",
-    "ReviewDismissedIssueEventType",
-)
+__all__ = ("HookResponseType",)

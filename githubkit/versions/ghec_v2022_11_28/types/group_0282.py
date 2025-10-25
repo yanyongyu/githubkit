@@ -13,10 +13,15 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsWorkflowAccessToRepositoryType(TypedDict):
-    """ActionsWorkflowAccessToRepository"""
+class TeamMembershipType(TypedDict):
+    """Team Membership
 
-    access_level: Literal["none", "user", "organization", "enterprise"]
+    Team Membership
+    """
+
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
-__all__ = ("ActionsWorkflowAccessToRepositoryType",)
+__all__ = ("TeamMembershipType",)

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0133 import LinkType
+from .group_0130 import LinkType
 
 
 class ReviewCommentPropLinksType(TypedDict):

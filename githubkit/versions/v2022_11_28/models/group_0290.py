@@ -18,7 +18,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0064 import MinimalRepository
+from .group_0061 import MinimalRepository
 
 
 class CombinedCommitStatus(GitHubModel):

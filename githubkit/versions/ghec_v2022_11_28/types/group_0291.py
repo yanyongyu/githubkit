@@ -9,85 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WorkflowRunUsageType(TypedDict):
-    """Workflow Run Usage
+class ArtifactType(TypedDict):
+    """Artifact
 
-    Workflow Run Usage
+    An artifact
     """
 
-    billable: WorkflowRunUsagePropBillableType
-    run_duration_ms: NotRequired[int]
+    id: int
+    node_id: str
+    name: str
+    size_in_bytes: int
+    url: str
+    archive_download_url: str
+    expired: bool
+    created_at: Union[datetime, None]
+    expires_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    digest: NotRequired[Union[str, None]]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
 
 
-class WorkflowRunUsagePropBillableType(TypedDict):
-    """WorkflowRunUsagePropBillable"""
+class ArtifactPropWorkflowRunType(TypedDict):
+    """ArtifactPropWorkflowRun"""
 
-    ubuntu: NotRequired[WorkflowRunUsagePropBillablePropUbuntuType]
-    macos: NotRequired[WorkflowRunUsagePropBillablePropMacosType]
-    windows: NotRequired[WorkflowRunUsagePropBillablePropWindowsType]
-
-
-class WorkflowRunUsagePropBillablePropUbuntuType(TypedDict):
-    """WorkflowRunUsagePropBillablePropUbuntu"""
-
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType]
-    ]
-
-
-class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType(TypedDict):
-    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
-
-    job_id: int
-    duration_ms: int
-
-
-class WorkflowRunUsagePropBillablePropMacosType(TypedDict):
-    """WorkflowRunUsagePropBillablePropMacos"""
-
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType]
-    ]
-
-
-class WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType(TypedDict):
-    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
-
-    job_id: int
-    duration_ms: int
-
-
-class WorkflowRunUsagePropBillablePropWindowsType(TypedDict):
-    """WorkflowRunUsagePropBillablePropWindows"""
-
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType]
-    ]
-
-
-class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType(TypedDict):
-    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
-
-    job_id: int
-    duration_ms: int
+    id: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
 
 
 __all__ = (
-    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType",
-    "WorkflowRunUsagePropBillablePropMacosType",
-    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType",
-    "WorkflowRunUsagePropBillablePropUbuntuType",
-    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType",
-    "WorkflowRunUsagePropBillablePropWindowsType",
-    "WorkflowRunUsagePropBillableType",
-    "WorkflowRunUsageType",
+    "ArtifactPropWorkflowRunType",
+    "ArtifactType",
 )

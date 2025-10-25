@@ -9,35 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+
+class SubIssuesSummaryType(TypedDict):
+    """Sub-issues Summary"""
+
+    total: int
+    completed: int
+    percent_completed: int
 
 
-class MilestoneType(TypedDict):
-    """Milestone
+class IssueDependenciesSummaryType(TypedDict):
+    """Issue Dependencies Summary"""
 
-    A collection of related issues and pull requests.
-    """
-
-    url: str
-    html_url: str
-    labels_url: str
-    id: int
-    node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    open_issues: int
-    closed_issues: int
-    created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
-    due_on: Union[datetime, None]
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
 
 
-__all__ = ("MilestoneType",)
+__all__ = (
+    "IssueDependenciesSummaryType",
+    "SubIssuesSummaryType",
+)

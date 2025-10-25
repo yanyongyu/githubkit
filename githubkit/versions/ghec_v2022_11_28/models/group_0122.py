@@ -9,29 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0123 import RepositoryRuleCommitterEmailPatternPropParameters
+from .group_0109 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
+from .group_0111 import RepositoryRulesetConditionsPropRefName
+from .group_0117 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
+)
 
 
-class RepositoryRuleCommitterEmailPattern(GitHubModel):
-    """committer_email_pattern
+class EnterpriseRulesetConditionsOneof4(GitHubModel):
+    """organization_property_and_repository_name
 
-    Parameters to be used for the committer_email_pattern rule
+    Conditions to target organizations by property and all repositories
     """
 
-    type: Literal["committer_email_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitterEmailPatternPropParameters] = Field(
-        default=UNSET
-    )
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty = Field()
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleCommitterEmailPattern)
+model_rebuild(EnterpriseRulesetConditionsOneof4)
 
-__all__ = ("RepositoryRuleCommitterEmailPattern",)
+__all__ = ("EnterpriseRulesetConditionsOneof4",)

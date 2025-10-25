@@ -9,21 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0142 import CustomPropertyValueType
+from .group_0144 import RepositoryRulesetConditionsPropRefNameType
 
 
-class OrgRepoCustomPropertyValuesType(TypedDict):
-    """Organization Repository Custom Property Values
+class RepositoryRulesetConditionsType(TypedDict):
+    """Repository ruleset conditions for ref names
 
-    List of custom property values for a repository
+    Parameters for a repository ruleset ref name condition
     """
 
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: list[CustomPropertyValueType]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-__all__ = ("OrgRepoCustomPropertyValuesType",)
+__all__ = ("RepositoryRulesetConditionsType",)

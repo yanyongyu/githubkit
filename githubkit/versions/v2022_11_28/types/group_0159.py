@@ -10,19 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0160 import RepositoryRuleUpdatePropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleUpdateType(TypedDict):
-    """update
+class RepositoryRuleMergeQueuePropParametersType(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    Only allow users with bypass permission to update matching refs.
-    """
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
 
-
-__all__ = ("RepositoryRuleUpdateType",)
+__all__ = ("RepositoryRuleMergeQueuePropParametersType",)

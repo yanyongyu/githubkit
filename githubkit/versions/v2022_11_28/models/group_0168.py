@@ -18,35 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRulePullRequestPropParameters(GitHubModel):
-    """RepositoryRulePullRequestPropParameters"""
+class RepositoryRuleCommitMessagePatternPropParameters(GitHubModel):
+    """RepositoryRuleCommitMessagePatternPropParameters"""
 
-    allowed_merge_methods: Missing[list[Literal["merge", "squash", "rebase"]]] = Field(
-        default=UNSET,
-        description="Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled.",
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
-    automatic_copilot_code_review_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Request Copilot code review for new pull requests automatically if the author has access to Copilot code review.",
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
     )
-    dismiss_stale_reviews_on_push: bool = Field(
-        description="New, reviewable commits pushed will dismiss previous pull request review approvals."
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
     )
-    require_code_owner_review: bool = Field(
-        description="Require an approving review in pull requests that modify files that have a designated code owner."
-    )
-    require_last_push_approval: bool = Field(
-        description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
-    )
-    required_approving_review_count: int = Field(
-        le=10.0,
-        description="The number of approving reviews that are required before a pull request can be merged.",
-    )
-    required_review_thread_resolution: bool = Field(
-        description="All conversations on code must be resolved before a pull request can be merged."
-    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRulePullRequestPropParameters)
+model_rebuild(RepositoryRuleCommitMessagePatternPropParameters)
 
-__all__ = ("RepositoryRulePullRequestPropParameters",)
+__all__ = ("RepositoryRuleCommitMessagePatternPropParameters",)

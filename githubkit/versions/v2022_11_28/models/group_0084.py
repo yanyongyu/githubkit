@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,23 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SelectedActions(GitHubModel):
-    """SelectedActions"""
+class ActionsSetDefaultWorkflowPermissions(GitHubModel):
+    """ActionsSetDefaultWorkflowPermissions"""
 
-    github_owned_allowed: Missing[bool] = Field(
+    default_workflow_permissions: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
-        description="Whether GitHub-owned actions are allowed. For example, this includes the actions in the `actions` organization.",
+        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows.",
     )
-    verified_allowed: Missing[bool] = Field(
+    can_approve_pull_request_reviews: Missing[bool] = Field(
         default=UNSET,
-        description="Whether actions from GitHub Marketplace verified creators are allowed. Set to `true` to allow all actions by GitHub Marketplace verified creators.",
-    )
-    patterns_allowed: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`.\n\n> [!NOTE]\n> The `patterns_allowed` setting only applies to public repositories.",
+        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
     )
 
 
-model_rebuild(SelectedActions)
+model_rebuild(ActionsSetDefaultWorkflowPermissions)
 
-__all__ = ("SelectedActions",)
+__all__ = ("ActionsSetDefaultWorkflowPermissions",)

@@ -9,31 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class BillingUsageReportUserType(TypedDict):
-    """BillingUsageReportUser"""
-
-    usage_items: NotRequired[list[BillingUsageReportUserPropUsageItemsItemsType]]
+from .group_0503 import SearchResultTextMatchesItemsType
 
 
-class BillingUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportUserPropUsageItemsItems"""
+class TopicSearchResultItemType(TypedDict):
+    """Topic Search Result Item
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    repository_name: NotRequired[str]
+    Topic Search Result Item
+    """
+
+    name: str
+    display_name: Union[str, None]
+    short_description: Union[str, None]
+    description: Union[str, None]
+    created_by: Union[str, None]
+    released: Union[str, None]
+    created_at: datetime
+    updated_at: datetime
+    featured: bool
+    curated: bool
+    score: float
+    repository_count: NotRequired[Union[int, None]]
+    logo_url: NotRequired[Union[str, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    related: NotRequired[Union[list[TopicSearchResultItemPropRelatedItemsType], None]]
+    aliases: NotRequired[Union[list[TopicSearchResultItemPropAliasesItemsType], None]]
+
+
+class TopicSearchResultItemPropRelatedItemsType(TypedDict):
+    """TopicSearchResultItemPropRelatedItems"""
+
+    topic_relation: NotRequired[
+        TopicSearchResultItemPropRelatedItemsPropTopicRelationType
+    ]
+
+
+class TopicSearchResultItemPropRelatedItemsPropTopicRelationType(TypedDict):
+    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    topic_id: NotRequired[int]
+    relation_type: NotRequired[str]
+
+
+class TopicSearchResultItemPropAliasesItemsType(TypedDict):
+    """TopicSearchResultItemPropAliasesItems"""
+
+    topic_relation: NotRequired[
+        TopicSearchResultItemPropAliasesItemsPropTopicRelationType
+    ]
+
+
+class TopicSearchResultItemPropAliasesItemsPropTopicRelationType(TypedDict):
+    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    topic_id: NotRequired[int]
+    relation_type: NotRequired[str]
+
+
+class SearchTopicsGetResponse200Type(TypedDict):
+    """SearchTopicsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[TopicSearchResultItemType]
 
 
 __all__ = (
-    "BillingUsageReportUserPropUsageItemsItemsType",
-    "BillingUsageReportUserType",
+    "SearchTopicsGetResponse200Type",
+    "TopicSearchResultItemPropAliasesItemsPropTopicRelationType",
+    "TopicSearchResultItemPropAliasesItemsType",
+    "TopicSearchResultItemPropRelatedItemsPropTopicRelationType",
+    "TopicSearchResultItemPropRelatedItemsType",
+    "TopicSearchResultItemType",
 )

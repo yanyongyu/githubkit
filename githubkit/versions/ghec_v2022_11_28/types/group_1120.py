@@ -11,13 +11,11 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0089 import CustomPropertyType
+
+class OrgsOrgCopilotBillingSelectedUsersPostBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
+
+    selected_usernames: list[str]
 
 
-class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
-
-    properties: list[CustomPropertyType]
-
-
-__all__ = ("OrgsOrgPropertiesSchemaPatchBodyType",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostBodyType",)

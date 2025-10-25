@@ -9,36 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType
+from .group_0048 import RunnerLabelType
 
 
-class AuthenticationTokenType(TypedDict):
-    """Authentication Token
+class RunnerType(TypedDict):
+    """Self hosted runners
 
-    Authentication Token
+    A self hosted runner
     """
 
-    token: str
-    expires_at: datetime
-    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
-    repositories: NotRequired[list[RepositoryType]]
-    single_file: NotRequired[Union[str, None]]
-    repository_selection: NotRequired[Literal["all", "selected"]]
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelType]
+    ephemeral: NotRequired[bool]
 
 
-class AuthenticationTokenPropPermissionsType(TypedDict):
-    """AuthenticationTokenPropPermissions
-
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
-
-
-__all__ = (
-    "AuthenticationTokenPropPermissionsType",
-    "AuthenticationTokenType",
-)
+__all__ = ("RunnerType",)

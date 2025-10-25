@@ -9,21 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulesetBypassActorType(TypedDict):
-    """Repository Ruleset Bypass Actor
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType(TypedDict):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-    An actor that can bypass rules in a ruleset
-    """
-
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration", "OrganizationAdmin", "RepositoryRole", "Team", "DeployKey"
-    ]
-    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
+    protected: NotRequired[bool]
 
 
-__all__ = ("RepositoryRulesetBypassActorType",)
+__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",)

@@ -9,17 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0086 import DependabotAlertPackageType
 
 
-class ShortBlobType(TypedDict):
-    """Short Blob
+class DependabotAlertPropDependencyType(TypedDict):
+    """DependabotAlertPropDependency
 
-    Short Blob
+    Details for the vulnerable dependency.
     """
 
-    url: str
-    sha: str
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
 
 
-__all__ = ("ShortBlobType",)
+__all__ = ("DependabotAlertPropDependencyType",)

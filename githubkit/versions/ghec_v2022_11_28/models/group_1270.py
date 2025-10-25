@@ -15,35 +15,23 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0011 import WebhookConfig
 
+class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
-
-    config: Missing[WebhookConfig] = Field(
-        default=UNSET,
-        title="Webhook Configuration",
-        description="Configuration object of the webhook",
+    body: str = Field(description="The contents of the comment.")
+    path: Missing[str] = Field(
+        default=UNSET, description="Relative path of the file to comment on."
     )
-    events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
+    position: Missing[int] = Field(
+        default=UNSET, description="Line index in the diff to comment on."
     )
-    add_events: Missing[list[str]] = Field(
+    line: Missing[int] = Field(
         default=UNSET,
-        description="Determines a list of events to be added to the list of events that the Hook triggers for.",
-    )
-    remove_events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
-    )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+        description="**Closing down notice**. Use **position** parameter instead. Line number in the file to comment on.",
     )
 
 
-model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
+model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
 
-__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)
+__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)

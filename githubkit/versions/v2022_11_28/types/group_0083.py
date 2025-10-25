@@ -9,16 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ActionsForkPrWorkflowsPrivateReposRequestType(TypedDict):
-    """ActionsForkPrWorkflowsPrivateReposRequest"""
+class ActionsGetDefaultWorkflowPermissionsType(TypedDict):
+    """ActionsGetDefaultWorkflowPermissions"""
 
-    run_workflows_from_fork_pull_requests: bool
-    send_write_tokens_to_workflows: NotRequired[bool]
-    send_secrets_and_variables: NotRequired[bool]
-    require_approval_for_fork_pr_workflows: NotRequired[bool]
+    default_workflow_permissions: Literal["read", "write"]
+    can_approve_pull_request_reviews: bool
 
 
-__all__ = ("ActionsForkPrWorkflowsPrivateReposRequestType",)
+__all__ = ("ActionsGetDefaultWorkflowPermissionsType",)

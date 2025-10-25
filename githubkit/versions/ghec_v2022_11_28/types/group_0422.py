@@ -9,20 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0078 import TeamType
+from .group_0010 import IntegrationType
 
 
-class PullRequestReviewRequestType(TypedDict):
-    """Pull Request Review Request
+class StateChangeIssueEventType(TypedDict):
+    """State Change Issue Event
 
-    Pull Request Review Request
+    State Change Issue Event
     """
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    state_reason: NotRequired[Union[str, None]]
 
 
-__all__ = ("PullRequestReviewRequestType",)
+__all__ = ("StateChangeIssueEventType",)

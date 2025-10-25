@@ -89,8 +89,6 @@ class DependabotClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        first: Missing[int] = UNSET,
-        last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
@@ -132,8 +130,6 @@ class DependabotClient:
             "direction": direction,
             "before": before,
             "after": after,
-            "first": first,
-            "last": last,
             "per_page": per_page,
         }
 
@@ -168,8 +164,6 @@ class DependabotClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        first: Missing[int] = UNSET,
-        last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
@@ -211,8 +205,6 @@ class DependabotClient:
             "direction": direction,
             "before": before,
             "after": after,
-            "first": first,
-            "last": last,
             "per_page": per_page,
         }
 
@@ -670,8 +662,6 @@ class DependabotClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        first: Missing[int] = UNSET,
-        last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
@@ -714,8 +704,6 @@ class DependabotClient:
             "direction": direction,
             "before": before,
             "after": after,
-            "first": first,
-            "last": last,
             "per_page": per_page,
         }
 
@@ -754,8 +742,6 @@ class DependabotClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        first: Missing[int] = UNSET,
-        last: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
@@ -798,8 +784,6 @@ class DependabotClient:
             "direction": direction,
             "before": before,
             "after": after,
-            "first": first,
-            "last": last,
             "per_page": per_page,
         }
 
@@ -1643,12 +1627,9 @@ class DependabotClient:
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        first: Missing[int] = UNSET,
-        last: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
@@ -1676,12 +1657,9 @@ class DependabotClient:
             "scope": scope,
             "sort": sort,
             "direction": direction,
-            "page": page,
             "per_page": per_page,
             "before": before,
             "after": after,
-            "first": first,
-            "last": last,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1716,12 +1694,9 @@ class DependabotClient:
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
-        first: Missing[int] = UNSET,
-        last: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
@@ -1749,12 +1724,9 @@ class DependabotClient:
             "scope": scope,
             "sort": sort,
             "direction": direction,
-            "page": page,
             "per_page": per_page,
             "before": before,
             "after": after,
-            "first": first,
-            "last": last,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

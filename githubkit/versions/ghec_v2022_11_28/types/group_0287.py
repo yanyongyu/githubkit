@@ -9,14 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-
-class ReviewCustomGatesCommentRequiredType(TypedDict):
-    """ReviewCustomGatesCommentRequired"""
-
-    environment_name: str
-    comment: str
+from .group_0003 import SimpleUserType
 
 
-__all__ = ("ReviewCustomGatesCommentRequiredType",)
+class ProjectCollaboratorPermissionType(TypedDict):
+    """Project Collaborator Permission
+
+    Project Collaborator Permission
+    """
+
+    permission: str
+    user: Union[None, SimpleUserType]
+
+
+__all__ = ("ProjectCollaboratorPermissionType",)

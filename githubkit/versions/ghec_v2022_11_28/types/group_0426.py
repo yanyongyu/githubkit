@@ -9,33 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
+class MergedUpstreamType(TypedDict):
+    """Merged upstream
 
-    Data related to a release.
+    Results of a successful merge upstream request
     """
 
-    url: str
-    browser_download_url: str
-    id: int
-    node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: datetime
-    updated_at: datetime
-    uploader: Union[None, SimpleUserType]
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
-__all__ = ("ReleaseAssetType",)
+__all__ = ("MergedUpstreamType",)

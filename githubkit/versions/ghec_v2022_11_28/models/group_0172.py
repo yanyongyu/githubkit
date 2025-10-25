@@ -9,26 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReactionRollup(GitHubModel):
-    """Reaction Rollup"""
+class RulesetVersionWithStateAllof1PropState(GitHubModel):
+    """RulesetVersionWithStateAllof1PropState
 
-    url: str = Field()
-    total_count: int = Field()
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    laugh: int = Field()
-    confused: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    eyes: int = Field()
-    rocket: int = Field()
+    The state of the ruleset version
+    """
 
 
-model_rebuild(ReactionRollup)
+model_rebuild(RulesetVersionWithStateAllof1PropState)
 
-__all__ = ("ReactionRollup",)
+__all__ = ("RulesetVersionWithStateAllof1PropState",)

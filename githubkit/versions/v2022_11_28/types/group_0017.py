@@ -46,6 +46,7 @@ class AppPermissionsType(TypedDict):
     statuses: NotRequired[Literal["read", "write"]]
     vulnerability_alerts: NotRequired[Literal["read", "write"]]
     workflows: NotRequired[Literal["write"]]
+    custom_properties_for_organizations: NotRequired[Literal["read", "write"]]
     members: NotRequired[Literal["read", "write"]]
     organization_administration: NotRequired[Literal["read", "write"]]
     organization_custom_roles: NotRequired[Literal["read", "write"]]
@@ -71,6 +72,9 @@ class AppPermissionsType(TypedDict):
     interaction_limits: NotRequired[Literal["read", "write"]]
     profile: NotRequired[Literal["write"]]
     starring: NotRequired[Literal["read", "write"]]
+    enterprise_custom_properties_for_organizations: NotRequired[
+        Literal["read", "write", "admin"]
+    ]
 
 
 __all__ = ("AppPermissionsType",)

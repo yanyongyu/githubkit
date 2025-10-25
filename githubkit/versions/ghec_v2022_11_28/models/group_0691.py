@@ -18,17 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0511 import EnterpriseWebhooks
-from .group_0512 import SimpleInstallation
-from .group_0513 import OrganizationSimpleWebhooks
-from .group_0514 import RepositoryWebhooks
-from .group_0692 import WebhookIssuesClosedPropIssue
+from .group_0527 import EnterpriseWebhooks
+from .group_0528 import SimpleInstallation
+from .group_0529 import OrganizationSimpleWebhooks
+from .group_0530 import RepositoryWebhooks
+from .group_0547 import WebhooksIssueComment
+from .group_0548 import WebhooksChanges
+from .group_0692 import WebhookIssueCommentEditedPropIssue
 
 
-class WebhookIssuesClosed(GitHubModel):
-    """issues closed event"""
+class WebhookIssueCommentEdited(GitHubModel):
+    """issue_comment edited event"""
 
-    action: Literal["closed"] = Field(description="The action that was performed.")
+    action: Literal["edited"] = Field()
+    changes: WebhooksChanges = Field(description="The changes to the comment.")
+    comment: WebhooksIssueComment = Field(
+        title="issue comment",
+        description="The [comment](https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment) itself.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,8 +46,8 @@ class WebhookIssuesClosed(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesClosedPropIssue = Field(
-        description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself."
+    issue: WebhookIssueCommentEditedPropIssue = Field(
+        description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) the comment belongs to."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -54,6 +61,6 @@ class WebhookIssuesClosed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesClosed)
+model_rebuild(WebhookIssueCommentEdited)
 
-__all__ = ("WebhookIssuesClosed",)
+__all__ = ("WebhookIssueCommentEdited",)

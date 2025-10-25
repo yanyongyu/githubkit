@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,45 +16,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
-    """Organization private registry
+class ApiInsightsTimeStatsItems(GitHubModel):
+    """ApiInsightsTimeStatsItems"""
 
-    Private registry configuration for an organization
-    """
-
-    name: str = Field(description="The name of the private registry configuration.")
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ] = Field(description="The registry type.")
-    username: Missing[str] = Field(
-        default=UNSET,
-        description="The username to use when authenticating with the private registry.",
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
-    )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    timestamp: Missing[str] = Field(default=UNSET)
+    total_request_count: Missing[int] = Field(default=UNSET)
+    rate_limited_request_count: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(OrgPrivateRegistryConfigurationWithSelectedRepositories)
+model_rebuild(ApiInsightsTimeStatsItems)
 
-__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositories",)
+__all__ = ("ApiInsightsTimeStatsItems",)

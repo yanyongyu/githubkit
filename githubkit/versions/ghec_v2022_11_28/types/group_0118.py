@@ -9,20 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0119 import RepositoryRuleCommitMessagePatternPropParametersType
+from .group_0107 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
+)
+from .group_0109 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+)
+from .group_0111 import RepositoryRulesetConditionsPropRefNameType
 
 
-class RepositoryRuleCommitMessagePatternType(TypedDict):
-    """commit_message_pattern
+class EnterpriseRulesetConditionsOneof0Type(TypedDict):
+    """organization_name_and_repository_name
 
-    Parameters to be used for the commit_message_pattern rule
+    Conditions to target organizations by name and all repositories
     """
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
+    organization_name: (
+        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
+    )
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-__all__ = ("RepositoryRuleCommitMessagePatternType",)
+__all__ = ("EnterpriseRulesetConditionsOneof0Type",)

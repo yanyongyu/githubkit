@@ -9,100 +9,148 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class BillingPremiumRequestUsageReportGhe(GitHubModel):
-    """BillingPremiumRequestUsageReportGhe"""
-
-    time_period: BillingPremiumRequestUsageReportGhePropTimePeriod = Field(
-        alias="timePeriod"
-    )
-    enterprise: str = Field(description="The unique identifier of the enterprise.")
-    user: Missing[str] = Field(
-        default=UNSET, description="The name of the user for the usage report."
-    )
-    organization: Missing[str] = Field(
-        default=UNSET, description="The name of the organization for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model for the usage report."
-    )
-    cost_center: Missing[BillingPremiumRequestUsageReportGhePropCostCenter] = Field(
-        default=UNSET, alias="costCenter"
-    )
-    usage_items: list[BillingPremiumRequestUsageReportGhePropUsageItemsItems] = Field(
-        alias="usageItems"
-    )
-
-
-class BillingPremiumRequestUsageReportGhePropTimePeriod(GitHubModel):
-    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
-
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
-    )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
-    )
+from .group_0105 import RepositoryRulesetBypassActor
+from .group_0110 import RepositoryRulesetConditions
+from .group_0124 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0125 import RepositoryRuleUpdate
+from .group_0127 import RepositoryRuleRequiredLinearHistory
+from .group_0128 import RepositoryRuleRequiredDeployments
+from .group_0131 import RepositoryRulePullRequest
+from .group_0133 import RepositoryRuleRequiredStatusChecks
+from .group_0135 import RepositoryRuleCommitMessagePattern
+from .group_0137 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0139 import RepositoryRuleCommitterEmailPattern
+from .group_0141 import RepositoryRuleBranchNamePattern
+from .group_0143 import RepositoryRuleTagNamePattern
+from .group_0145 import RepositoryRuleFilePathRestriction
+from .group_0147 import RepositoryRuleMaxFilePathLength
+from .group_0149 import RepositoryRuleFileExtensionRestriction
+from .group_0151 import RepositoryRuleMaxFileSize
+from .group_0154 import RepositoryRuleWorkflows
+from .group_0156 import RepositoryRuleCodeScanning
+from .group_0160 import OrgRulesetConditionsOneof0
+from .group_0161 import OrgRulesetConditionsOneof1
+from .group_0162 import OrgRulesetConditionsOneof2
+from .group_0163 import RepositoryRuleMergeQueue
+from .group_0165 import RepositoryRuleCopilotCodeReview
 
 
-class BillingPremiumRequestUsageReportGhePropCostCenter(GitHubModel):
-    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+class RepositoryRuleset(GitHubModel):
+    """Repository ruleset
 
-    id: str = Field(description="The unique identifier of the cost center.")
-    name: str = Field(description="The name of the cost center.")
+    A set of rules to apply when specified conditions are met.
+    """
+
+    id: int = Field(description="The ID of the ruleset")
+    name: str = Field(description="The name of the ruleset")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
+    )
+    source_type: Missing[Literal["Repository", "Organization", "Enterprise"]] = Field(
+        default=UNSET, description="The type of the source of the ruleset"
+    )
+    source: str = Field(description="The name of the source")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    current_user_can_bypass: Missing[
+        Literal["always", "pull_requests_only", "never", "exempt"]
+    ] = Field(
+        default=UNSET,
+        description="The bypass type of the user making the API request for this ruleset. This field is only returned when\nquerying the repository-level endpoint.",
+    )
+    node_id: Missing[str] = Field(default=UNSET)
+    links: Missing[RepositoryRulesetPropLinks] = Field(default=UNSET, alias="_links")
+    conditions: Missing[
+        Union[
+            RepositoryRulesetConditions,
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(default=UNSET)
+    updated_at: Missing[datetime] = Field(default=UNSET)
 
 
-class BillingPremiumRequestUsageReportGhePropUsageItemsItems(GitHubModel):
-    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
+class RepositoryRulesetPropLinks(GitHubModel):
+    """RepositoryRulesetPropLinks"""
 
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    model: str = Field(description="Model name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
+    self_: Missing[RepositoryRulesetPropLinksPropSelf] = Field(
+        default=UNSET, alias="self"
     )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: int = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: int = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: int = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
+    html: Missing[Union[RepositoryRulesetPropLinksPropHtml, None]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(BillingPremiumRequestUsageReportGhe)
-model_rebuild(BillingPremiumRequestUsageReportGhePropTimePeriod)
-model_rebuild(BillingPremiumRequestUsageReportGhePropCostCenter)
-model_rebuild(BillingPremiumRequestUsageReportGhePropUsageItemsItems)
+class RepositoryRulesetPropLinksPropSelf(GitHubModel):
+    """RepositoryRulesetPropLinksPropSelf"""
+
+    href: Missing[str] = Field(default=UNSET, description="The URL of the ruleset")
+
+
+class RepositoryRulesetPropLinksPropHtml(GitHubModel):
+    """RepositoryRulesetPropLinksPropHtml"""
+
+    href: Missing[str] = Field(default=UNSET, description="The html URL of the ruleset")
+
+
+model_rebuild(RepositoryRuleset)
+model_rebuild(RepositoryRulesetPropLinks)
+model_rebuild(RepositoryRulesetPropLinksPropSelf)
+model_rebuild(RepositoryRulesetPropLinksPropHtml)
 
 __all__ = (
-    "BillingPremiumRequestUsageReportGhe",
-    "BillingPremiumRequestUsageReportGhePropCostCenter",
-    "BillingPremiumRequestUsageReportGhePropTimePeriod",
-    "BillingPremiumRequestUsageReportGhePropUsageItemsItems",
+    "RepositoryRuleset",
+    "RepositoryRulesetPropLinks",
+    "RepositoryRulesetPropLinksPropHtml",
+    "RepositoryRulesetPropLinksPropSelf",
 )

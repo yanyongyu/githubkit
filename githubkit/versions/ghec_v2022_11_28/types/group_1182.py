@@ -12,10 +12,11 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
+class ProjectsColumnsCardsCardIdMovesPostBodyType(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostBody"""
 
-    enable_debug_logging: NotRequired[bool]
+    position: str
+    column_id: NotRequired[int]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunPostBodyType",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostBodyType",)

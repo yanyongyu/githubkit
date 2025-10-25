@@ -9,22 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0245 import LinkType
-
-
-class PullRequestSimplePropLinksType(TypedDict):
-    """PullRequestSimplePropLinks"""
-
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-__all__ = ("PullRequestSimplePropLinksType",)
+class OrganizationCustomOrganizationRoleCreateSchemaType(TypedDict):
+    """OrganizationCustomOrganizationRoleCreateSchema"""
+
+    name: str
+    description: NotRequired[str]
+    permissions: list[str]
+    base_role: NotRequired[Literal["read", "triage", "write", "maintain", "admin"]]
+
+
+__all__ = ("OrganizationCustomOrganizationRoleCreateSchemaType",)

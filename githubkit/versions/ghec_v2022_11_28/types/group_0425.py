@@ -9,17 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0245 import LinkType
+from .group_0019 import LicenseSimpleType
 
 
-class ReviewCommentPropLinksType(TypedDict):
-    """ReviewCommentPropLinks"""
+class LicenseContentType(TypedDict):
+    """License Content
 
-    self_: LinkType
-    html: LinkType
-    pull_request: LinkType
+    License Content
+    """
+
+    name: str
+    path: str
+    sha: str
+    size: int
+    url: str
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksType
+    license_: Union[None, LicenseSimpleType]
 
 
-__all__ = ("ReviewCommentPropLinksType",)
+class LicenseContentPropLinksType(TypedDict):
+    """LicenseContentPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+__all__ = (
+    "LicenseContentPropLinksType",
+    "LicenseContentType",
+)

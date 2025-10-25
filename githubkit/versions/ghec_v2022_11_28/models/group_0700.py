@@ -16,18 +16,18 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0694 import WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator
+from .group_0695 import WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreator
 
 
-class WebhookIssuesClosedPropIssueMergedMilestone(GitHubModel):
-    """WebhookIssuesClosedPropIssueMergedMilestone"""
+class WebhookIssueCommentEditedPropIssueMergedMilestone(GitHubModel):
+    """WebhookIssueCommentEditedPropIssueMergedMilestone"""
 
     closed_at: Union[datetime, None] = Field()
     closed_issues: int = Field()
     created_at: datetime = Field()
-    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator, None] = (
-        Field(title="User")
-    )
+    creator: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreator, None
+    ] = Field(title="User")
     description: Union[str, None] = Field()
     due_on: Union[datetime, None] = Field()
     html_url: str = Field()
@@ -42,6 +42,6 @@ class WebhookIssuesClosedPropIssueMergedMilestone(GitHubModel):
     url: str = Field()
 
 
-model_rebuild(WebhookIssuesClosedPropIssueMergedMilestone)
+model_rebuild(WebhookIssueCommentEditedPropIssueMergedMilestone)
 
-__all__ = ("WebhookIssuesClosedPropIssueMergedMilestone",)
+__all__ = ("WebhookIssueCommentEditedPropIssueMergedMilestone",)

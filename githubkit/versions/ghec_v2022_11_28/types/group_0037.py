@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsArtifactAndLogRetentionResponseType(TypedDict):
-    """ActionsArtifactAndLogRetentionResponse"""
+class ActionsOidcCustomIssuerPolicyForEnterpriseType(TypedDict):
+    """ActionsOidcCustomIssuerPolicyForEnterprise"""
 
-    days: int
-    maximum_allowed_days: int
+    include_enterprise_slug: NotRequired[bool]
 
 
-__all__ = ("ActionsArtifactAndLogRetentionResponseType",)
+__all__ = ("ActionsOidcCustomIssuerPolicyForEnterpriseType",)

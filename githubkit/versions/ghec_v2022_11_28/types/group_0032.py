@@ -33,6 +33,7 @@ class ActionsHostedRunnerType(TypedDict):
     public_ip_enabled: bool
     public_ips: NotRequired[list[PublicIpType]]
     last_active_on: NotRequired[Union[datetime, None]]
+    image_gen: NotRequired[bool]
 
 
 class ActionsHostedRunnerPoolImageType(TypedDict):
@@ -45,6 +46,7 @@ class ActionsHostedRunnerPoolImageType(TypedDict):
     size_gb: int
     display_name: str
     source: Literal["github", "partner", "custom"]
+    version: NotRequired[str]
 
 
 class PublicIpType(TypedDict):

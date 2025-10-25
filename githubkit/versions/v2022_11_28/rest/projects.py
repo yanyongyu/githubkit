@@ -20,7 +20,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import Literal
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
     from githubkit.response import Response
@@ -392,7 +392,7 @@ class ProjectsClient:
         org: str,
         *,
         q: Missing[str] = UNSET,
-        fields: Missing[list[str]] = UNSET,
+        fields: Missing[Union[str, list[str]]] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
@@ -441,7 +441,7 @@ class ProjectsClient:
         org: str,
         *,
         q: Missing[str] = UNSET,
-        fields: Missing[list[str]] = UNSET,
+        fields: Missing[Union[str, list[str]]] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
@@ -644,7 +644,7 @@ class ProjectsClient:
         org: str,
         item_id: int,
         *,
-        fields: Missing[list[str]] = UNSET,
+        fields: Missing[Union[str, list[str]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]:
@@ -686,7 +686,7 @@ class ProjectsClient:
         org: str,
         item_id: int,
         *,
-        fields: Missing[list[str]] = UNSET,
+        fields: Missing[Union[str, list[str]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]:
@@ -1293,7 +1293,7 @@ class ProjectsClient:
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         q: Missing[str] = UNSET,
-        fields: Missing[list[str]] = UNSET,
+        fields: Missing[Union[str, list[str]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentType]]:
@@ -1342,7 +1342,7 @@ class ProjectsClient:
         after: Missing[str] = UNSET,
         per_page: Missing[int] = UNSET,
         q: Missing[str] = UNSET,
-        fields: Missing[list[str]] = UNSET,
+        fields: Missing[Union[str, list[str]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentType]]:
@@ -1542,7 +1542,7 @@ class ProjectsClient:
         username: str,
         item_id: int,
         *,
-        fields: Missing[list[str]] = UNSET,
+        fields: Missing[Union[str, list[str]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]:
@@ -1584,7 +1584,7 @@ class ProjectsClient:
         username: str,
         item_id: int,
         *,
-        fields: Missing[list[str]] = UNSET,
+        fields: Missing[Union[str, list[str]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]:

@@ -19,31 +19,54 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksMilestone3(GitHubModel):
-    """Milestone
+class WebhooksAnswer(GitHubModel):
+    """WebhooksAnswer"""
 
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[datetime, None] = Field()
-    closed_issues: int = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+    )
+    body: str = Field()
+    child_comment_count: int = Field()
     created_at: datetime = Field()
-    creator: Union[WebhooksMilestone3PropCreator, None] = Field(title="User")
-    description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
+    discussion_id: int = Field()
     html_url: str = Field()
     id: int = Field()
-    labels_url: str = Field()
     node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
+    parent_id: Union[int, None] = Field()
+    reactions: Missing[WebhooksAnswerPropReactions] = Field(
+        default=UNSET, title="Reactions"
+    )
+    repository_url: str = Field()
     updated_at: datetime = Field()
+    user: Union[WebhooksAnswerPropUser, None] = Field(title="User")
+
+
+class WebhooksAnswerPropReactions(GitHubModel):
+    """Reactions"""
+
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
     url: str = Field()
 
 
-class WebhooksMilestone3PropCreator(GitHubModel):
+class WebhooksAnswerPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -70,10 +93,12 @@ class WebhooksMilestone3PropCreator(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksMilestone3)
-model_rebuild(WebhooksMilestone3PropCreator)
+model_rebuild(WebhooksAnswer)
+model_rebuild(WebhooksAnswerPropReactions)
+model_rebuild(WebhooksAnswerPropUser)
 
 __all__ = (
-    "WebhooksMilestone3",
-    "WebhooksMilestone3PropCreator",
+    "WebhooksAnswer",
+    "WebhooksAnswerPropReactions",
+    "WebhooksAnswerPropUser",
 )

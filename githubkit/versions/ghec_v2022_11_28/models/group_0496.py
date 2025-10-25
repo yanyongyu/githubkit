@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,70 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PrivateUser(GitHubModel):
-    """Private User
+class UserRoleItems(GitHubModel):
+    """UserRoleItems"""
 
-    Private User
-    """
-
-    login: str = Field()
-    id: int = Field()
-    user_view_type: Missing[str] = Field(default=UNSET)
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    name: Union[str, None] = Field()
-    company: Union[str, None] = Field()
-    blog: Union[str, None] = Field()
-    location: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    notification_email: Missing[Union[str, None]] = Field(default=UNSET)
-    hireable: Union[bool, None] = Field()
-    bio: Union[str, None] = Field()
-    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    private_gists: int = Field()
-    total_private_repos: int = Field()
-    owned_private_repos: int = Field()
-    disk_usage: int = Field()
-    collaborators: int = Field()
-    two_factor_authentication: bool = Field()
-    plan: Missing[PrivateUserPropPlan] = Field(default=UNSET)
-    business_plus: Missing[bool] = Field(default=UNSET)
-    ldap_dn: Missing[str] = Field(default=UNSET)
+    display: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+    ] = Field(description="The role value representing a user role in GitHub.")
+    primary: Missing[bool] = Field(
+        default=UNSET, description="Is the role a primary role for the user."
+    )
 
 
-class PrivateUserPropPlan(GitHubModel):
-    """PrivateUserPropPlan"""
+model_rebuild(UserRoleItems)
 
-    collaborators: int = Field()
-    name: str = Field()
-    space: int = Field()
-    private_repos: int = Field()
-
-
-model_rebuild(PrivateUser)
-model_rebuild(PrivateUserPropPlan)
-
-__all__ = (
-    "PrivateUser",
-    "PrivateUserPropPlan",
-)
+__all__ = ("UserRoleItems",)

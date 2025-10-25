@@ -16,14 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ApiInsightsTimeStatsItems(GitHubModel):
-    """ApiInsightsTimeStatsItems"""
+class CodespacesPublicKey(GitHubModel):
+    """CodespacesPublicKey
 
-    timestamp: Missing[str] = Field(default=UNSET)
-    total_request_count: Missing[int] = Field(default=UNSET)
-    rate_limited_request_count: Missing[int] = Field(default=UNSET)
+    The public key used for setting Codespaces secrets.
+    """
+
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ApiInsightsTimeStatsItems)
+model_rebuild(CodespacesPublicKey)
 
-__all__ = ("ApiInsightsTimeStatsItems",)
+__all__ = ("CodespacesPublicKey",)

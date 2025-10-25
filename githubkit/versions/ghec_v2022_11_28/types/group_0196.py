@@ -9,46 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class BillingPremiumRequestUsageReportOrgType(TypedDict):
-    """BillingPremiumRequestUsageReportOrg"""
+class BaseGistType(TypedDict):
+    """Base Gist
 
-    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriodType
-    organization: str
-    user: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType]
+    Base Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesType
+    public: bool
+    created_at: datetime
+    updated_at: datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserType]
+    comments_url: str
+    owner: NotRequired[SimpleUserType]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-class BillingPremiumRequestUsageReportOrgPropTimePeriodType(TypedDict):
-    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType(TypedDict):
-    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: int
-    gross_amount: float
-    discount_quantity: int
-    discount_amount: float
-    net_quantity: int
-    net_amount: float
+BaseGistPropFilesType: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
 
 
 __all__ = (
-    "BillingPremiumRequestUsageReportOrgPropTimePeriodType",
-    "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType",
-    "BillingPremiumRequestUsageReportOrgType",
+    "BaseGistPropFilesType",
+    "BaseGistType",
 )

@@ -9,20 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EmailType(TypedDict):
-    """Email
+class ScimEnterpriseUserResponseAllof1PropGroupsItemsType(TypedDict):
+    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
 
-    Email
-    """
-
-    email: str
-    primary: bool
-    verified: bool
-    visibility: Union[str, None]
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
 
 
-__all__ = ("EmailType",)
+__all__ = ("ScimEnterpriseUserResponseAllof1PropGroupsItemsType",)

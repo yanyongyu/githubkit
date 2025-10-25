@@ -9,15 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class ActionsGetDefaultWorkflowPermissionsType(TypedDict):
-    """ActionsGetDefaultWorkflowPermissions"""
+class OrganizationSimpleType(TypedDict):
+    """Organization Simple
 
-    default_workflow_permissions: Literal["read", "write"]
-    can_approve_pull_request_reviews: bool
+    A GitHub organization.
+    """
+
+    login: str
+    id: int
+    node_id: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
-__all__ = ("ActionsGetDefaultWorkflowPermissionsType",)
+__all__ = ("OrganizationSimpleType",)

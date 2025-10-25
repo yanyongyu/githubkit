@@ -12,24 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsPublicKey(GitHubModel):
-    """ActionsPublicKey
+class GitignoreTemplate(GitHubModel):
+    """Gitignore Template
 
-    The public key used for setting Actions Secrets.
+    Gitignore Template
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
-    id: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
+    name: str = Field()
+    source: str = Field()
 
 
-model_rebuild(ActionsPublicKey)
+model_rebuild(GitignoreTemplate)
 
-__all__ = ("ActionsPublicKey",)
+__all__ = ("GitignoreTemplate",)

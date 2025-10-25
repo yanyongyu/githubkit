@@ -31,6 +31,7 @@ if TYPE_CHECKING:
     from .dependency_graph import DependencyGraphClient
     from .emojis import EmojisClient
     from .enterprise_team_memberships import EnterpriseTeamMembershipsClient
+    from .enterprise_team_organizations import EnterpriseTeamOrganizationsClient
     from .enterprise_teams import EnterpriseTeamsClient
     from .gists import GistsClient
     from .git import GitClient
@@ -127,12 +128,6 @@ class RestNamespace:
         return DependabotClient(self._github)
 
     @cached_property
-    def secret_scanning(self) -> "SecretScanningClient":
-        from .secret_scanning import SecretScanningClient
-
-        return SecretScanningClient(self._github)
-
-    @cached_property
     def enterprise_teams(self) -> "EnterpriseTeamsClient":
         from .enterprise_teams import EnterpriseTeamsClient
 
@@ -143,6 +138,12 @@ class RestNamespace:
         from .enterprise_team_memberships import EnterpriseTeamMembershipsClient
 
         return EnterpriseTeamMembershipsClient(self._github)
+
+    @cached_property
+    def enterprise_team_organizations(self) -> "EnterpriseTeamOrganizationsClient":
+        from .enterprise_team_organizations import EnterpriseTeamOrganizationsClient
+
+        return EnterpriseTeamOrganizationsClient(self._github)
 
     @cached_property
     def activity(self) -> "ActivityClient":
@@ -269,6 +270,12 @@ class RestNamespace:
         from .repos import ReposClient
 
         return ReposClient(self._github)
+
+    @cached_property
+    def secret_scanning(self) -> "SecretScanningClient":
+        from .secret_scanning import SecretScanningClient
+
+        return SecretScanningClient(self._github)
 
     @cached_property
     def hosted_compute(self) -> "HostedComputeClient":

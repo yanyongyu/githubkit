@@ -9,34 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class License(GitHubModel):
-    """License
+class CombinedBillingUsage(GitHubModel):
+    """CombinedBillingUsage"""
 
-    License
-    """
-
-    key: str = Field()
-    name: str = Field()
-    spdx_id: Union[str, None] = Field()
-    url: Union[str, None] = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    description: str = Field()
-    implementation: str = Field()
-    permissions: list[str] = Field()
-    conditions: list[str] = Field()
-    limitations: list[str] = Field()
-    body: str = Field()
-    featured: bool = Field()
+    days_left_in_billing_cycle: int = Field(
+        description="Numbers of days left in billing cycle."
+    )
+    estimated_paid_storage_for_month: int = Field(
+        description="Estimated storage space (GB) used in billing cycle."
+    )
+    estimated_storage_for_month: int = Field(
+        description="Estimated sum of free and paid storage space (GB) used in billing cycle."
+    )
 
 
-model_rebuild(License)
+model_rebuild(CombinedBillingUsage)
 
-__all__ = ("License",)
+__all__ = ("CombinedBillingUsage",)

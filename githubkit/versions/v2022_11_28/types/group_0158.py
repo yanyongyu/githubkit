@@ -10,48 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0159 import RepositoryRuleMergeQueuePropParametersType
 
 
-class RepositoryRuleCreationType(TypedDict):
-    """creation
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    Only allow users with bypass permission to create matching refs.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["creation"]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-class RepositoryRuleDeletionType(TypedDict):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"]
-
-
-class RepositoryRuleRequiredSignaturesType(TypedDict):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"]
-
-
-class RepositoryRuleNonFastForwardType(TypedDict):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"]
-
-
-__all__ = (
-    "RepositoryRuleCreationType",
-    "RepositoryRuleDeletionType",
-    "RepositoryRuleNonFastForwardType",
-    "RepositoryRuleRequiredSignaturesType",
-)
+__all__ = ("RepositoryRuleMergeQueueType",)

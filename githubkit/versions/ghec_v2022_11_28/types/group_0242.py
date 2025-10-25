@@ -9,37 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0241 import ProjectsV2StatusUpdateType
 
+class InteractionLimitType(TypedDict):
+    """Interaction Restrictions
 
-class ProjectsV2Type(TypedDict):
-    """Projects v2 Project
-
-    A projects v2 project
+    Limit interactions to a specific type of user for a specified duration
     """
 
-    id: float
-    node_id: str
-    owner: SimpleUserType
-    creator: SimpleUserType
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[datetime, None]
-    created_at: datetime
-    updated_at: datetime
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[datetime, None]
-    deleted_by: Union[None, SimpleUserType]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[Union[None, ProjectsV2StatusUpdateType]]
-    is_template: NotRequired[bool]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ]
 
 
-__all__ = ("ProjectsV2Type",)
+__all__ = ("InteractionLimitType",)

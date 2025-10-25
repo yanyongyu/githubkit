@@ -9,105 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0020 import RepositoryType
-from .group_0043 import MilestoneType
-from .group_0044 import IssueTypeType
-from .group_0045 import ReactionRollupType
-from .group_0046 import IssueDependenciesSummaryType, SubIssuesSummaryType
-from .group_0047 import IssueFieldValueType
 
+class FeedType(TypedDict):
+    """Feed
 
-class IssueType(TypedDict):
-    """Issue
-
-    Issues are a great way to keep track of tasks, enhancements, and bugs for your
-    projects.
+    Feed
     """
 
-    id: int
-    node_id: str
-    url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
-    html_url: str
-    number: int
-    state: str
-    state_reason: NotRequired[
-        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
-    ]
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserType]
-    labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
-    assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    milestone: Union[None, MilestoneType]
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    comments: int
-    pull_request: NotRequired[IssuePropPullRequestType]
-    closed_at: Union[datetime, None]
-    created_at: datetime
-    updated_at: datetime
-    draft: NotRequired[bool]
-    closed_by: NotRequired[Union[None, SimpleUserType]]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeType, None]]
-    repository: NotRequired[RepositoryType]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    reactions: NotRequired[ReactionRollupType]
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    parent_issue_url: NotRequired[Union[str, None]]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    issue_field_values: NotRequired[list[IssueFieldValueType]]
+    timeline_url: str
+    user_url: str
+    current_user_public_url: NotRequired[str]
+    current_user_url: NotRequired[str]
+    current_user_actor_url: NotRequired[str]
+    current_user_organization_url: NotRequired[str]
+    current_user_organization_urls: NotRequired[list[str]]
+    security_advisories_url: NotRequired[str]
+    repository_discussions_url: NotRequired[str]
+    repository_discussions_category_url: NotRequired[str]
+    links: FeedPropLinksType
 
 
-class IssuePropLabelsItemsOneof1Type(TypedDict):
-    """IssuePropLabelsItemsOneof1"""
+class FeedPropLinksType(TypedDict):
+    """FeedPropLinks"""
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-    default: NotRequired[bool]
+    timeline: LinkWithTypeType
+    user: LinkWithTypeType
+    security_advisories: NotRequired[LinkWithTypeType]
+    current_user: NotRequired[LinkWithTypeType]
+    current_user_public: NotRequired[LinkWithTypeType]
+    current_user_actor: NotRequired[LinkWithTypeType]
+    current_user_organization: NotRequired[LinkWithTypeType]
+    current_user_organizations: NotRequired[list[LinkWithTypeType]]
+    repository_discussions: NotRequired[LinkWithTypeType]
+    repository_discussions_category: NotRequired[LinkWithTypeType]
 
 
-class IssuePropPullRequestType(TypedDict):
-    """IssuePropPullRequest"""
+class LinkWithTypeType(TypedDict):
+    """Link With Type
 
-    merged_at: NotRequired[Union[datetime, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
+    Hypermedia Link with Type
+    """
+
+    href: str
+    type: str
 
 
 __all__ = (
-    "IssuePropLabelsItemsOneof1Type",
-    "IssuePropPullRequestType",
-    "IssueType",
+    "FeedPropLinksType",
+    "FeedType",
+    "LinkWithTypeType",
 )

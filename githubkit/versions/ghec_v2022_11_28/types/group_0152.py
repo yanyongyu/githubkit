@@ -9,17 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RulesetVersionPropActorType(TypedDict):
-    """RulesetVersionPropActor
+class RepositoryRuleMaxFileSizePropParametersType(TypedDict):
+    """RepositoryRuleMaxFileSizePropParameters"""
 
-    The actor who updated the ruleset
-    """
-
-    id: NotRequired[int]
-    type: NotRequired[str]
+    max_file_size: int
 
 
-__all__ = ("RulesetVersionPropActorType",)
+__all__ = ("RepositoryRuleMaxFileSizePropParametersType",)

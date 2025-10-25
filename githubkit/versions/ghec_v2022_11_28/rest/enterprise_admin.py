@@ -37,8 +37,10 @@ if TYPE_CHECKING:
         AuditLogEvent,
         AuditLogStreamKey,
         AuthenticationToken,
+        CustomPropertiesForOrgsGetEnterprisePropertyValues,
         CustomProperty,
         EnterpriseAccessRestrictions,
+        EnterpriseRole,
         EnterpriseSecurityAnalysisSettings,
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
         EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
@@ -48,13 +50,17 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsRunnersGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200,
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
+        EnterpriseTeam,
+        EnterpriseUserRoleAssignment,
         GetAuditLogStreamConfig,
         GetAuditLogStreamConfigsItems,
         GetConsumedLicenses,
         GetLicenseSyncStatus,
         NetworkConfiguration,
         NetworkSettings,
+        OrganizationCustomProperty,
         PushRuleBypassRequest,
         RulesetVersion,
         RulesetVersionWithState,
@@ -83,10 +89,13 @@ if TYPE_CHECKING:
         AuthenticationTokenType,
         AzureBlobConfigType,
         AzureHubConfigType,
+        CustomPropertiesForOrgsGetEnterprisePropertyValuesType,
         CustomPropertySetPayloadType,
         CustomPropertyType,
+        CustomPropertyValueType,
         DatadogConfigType,
         EnterpriseAccessRestrictionsType,
+        EnterpriseRoleType,
         EnterpriseSecurityAnalysisSettingsType,
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type,
         EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
@@ -108,10 +117,15 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseAuditLogStreamsPostBodyType,
         EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
         EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200Type,
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type,
         EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
         EnterprisesEnterpriseNetworkConfigurationsPostBodyType,
+        EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType,
+        EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType,
         EnterprisesEnterprisePropertiesSchemaPatchBodyType,
+        EnterpriseTeamType,
+        EnterpriseUserRoleAssignmentType,
         GetAuditLogStreamConfigsItemsType,
         GetAuditLogStreamConfigType,
         GetConsumedLicensesType,
@@ -122,6 +136,8 @@ if TYPE_CHECKING:
         HecConfigType,
         NetworkConfigurationType,
         NetworkSettingsType,
+        OrganizationCustomPropertyPayloadType,
+        OrganizationCustomPropertyType,
         PatchSchemaPropOperationsItemsType,
         PatchSchemaType,
         PushRuleBypassRequestType,
@@ -5726,6 +5742,888 @@ class EnterpriseAdminClient:
             response_model=GetConsumedLicenses,
         )
 
+    def list_enterprise_roles(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200,
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200Type,
+    ]:
+        """enterprise-admin/list-enterprise-roles
+
+        GET /enterprises/{enterprise}/enterprise-roles
+
+        Lists the enterprise roles available in this enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#get-all-enterprise-roles-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseEnterpriseRolesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/enterprise-roles"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseEnterpriseRolesGetResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_enterprise_roles(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200,
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200Type,
+    ]:
+        """enterprise-admin/list-enterprise-roles
+
+        GET /enterprises/{enterprise}/enterprise-roles
+
+        Lists the enterprise roles available in this enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#get-all-enterprise-roles-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseEnterpriseRolesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/enterprise-roles"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseEnterpriseRolesGetResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def revoke_all_enterprise_roles_team(
+        self,
+        enterprise: str,
+        team_slug: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/revoke-all-enterprise-roles-team
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}
+
+        Removes all assigned enterprise roles from a team in an enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-team
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_revoke_all_enterprise_roles_team(
+        self,
+        enterprise: str,
+        team_slug: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/revoke-all-enterprise-roles-team
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}
+
+        Removes all assigned enterprise roles from a team in an enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-team
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def assign_team_to_enterprise_role(
+        self,
+        enterprise: str,
+        team_slug: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/assign-team-to-enterprise-role
+
+        PUT /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}
+
+        Assigns an enterprise role to a team in an enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-a-team
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_assign_team_to_enterprise_role(
+        self,
+        enterprise: str,
+        team_slug: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/assign-team-to-enterprise-role
+
+        PUT /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}
+
+        Assigns an enterprise role to a team in an enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-a-team
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def revoke_enterprise_role_team(
+        self,
+        enterprise: str,
+        team_slug: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/revoke-enterprise-role-team
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}
+
+        Removes an enterprise role from a team in an enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-an-enterprise-role-from-a-team
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_revoke_enterprise_role_team(
+        self,
+        enterprise: str,
+        team_slug: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/revoke-enterprise-role-team
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}
+
+        Removes an enterprise role from a team in an enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-an-enterprise-role-from-a-team
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def remove_all_enterprise_roles_from_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/remove-all-enterprise-roles-from-user
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/users/{username}
+
+        Removes all enterprise roles from an enterprise user in an enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-user
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/users/{username}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_remove_all_enterprise_roles_from_user(
+        self,
+        enterprise: str,
+        username: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/remove-all-enterprise-roles-from-user
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/users/{username}
+
+        Removes all enterprise roles from an enterprise user in an enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-all-enterprise-roles-from-a-user
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/users/{username}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def assign_enterprise_role_to_user(
+        self,
+        enterprise: str,
+        username: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/assign-enterprise-role-to-user
+
+        PUT /enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}
+
+        Assigns an enterprise role to a user in an enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-an-enterprise-user
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_assign_enterprise_role_to_user(
+        self,
+        enterprise: str,
+        username: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/assign-enterprise-role-to-user
+
+        PUT /enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}
+
+        Assigns an enterprise role to a user in an enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#assign-an-enterprise-role-to-an-enterprise-user
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def remove_enterprise_user_role_assignment(
+        self,
+        enterprise: str,
+        username: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/remove-enterprise-user-role-assignment
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}
+
+        Removes an enterprise role from an enterprise user.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-enterprise-user-role-assignment
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_remove_enterprise_user_role_assignment(
+        self,
+        enterprise: str,
+        username: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/remove-enterprise-user-role-assignment
+
+        DELETE /enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}
+
+        Removes an enterprise role from an enterprise user.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `write_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#remove-enterprise-user-role-assignment
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def get_enterprise_role(
+        self,
+        enterprise: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[EnterpriseRole, EnterpriseRoleType]:
+        """enterprise-admin/get-enterprise-role
+
+        GET /enterprises/{enterprise}/enterprise-roles/{role_id}
+
+        Gets a custom enterprise role that is available within the enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#get-an-enterprise-role
+        """
+
+        from ..models import BasicError, EnterpriseRole
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseRole,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_enterprise_role(
+        self,
+        enterprise: str,
+        role_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[EnterpriseRole, EnterpriseRoleType]:
+        """enterprise-admin/get-enterprise-role
+
+        GET /enterprises/{enterprise}/enterprise-roles/{role_id}
+
+        Gets a custom enterprise role that is available within the enterprise.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#get-an-enterprise-role
+        """
+
+        from ..models import BasicError, EnterpriseRole
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/{role_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseRole,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def list_enterprise_role_teams(
+        self,
+        enterprise: str,
+        role_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamType]]:
+        """enterprise-admin/list-enterprise-role-teams
+
+        GET /enterprises/{enterprise}/enterprise-roles/{role_id}/teams
+
+        Lists the teams that are assigned to an enterprise role.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#list-teams-that-are-assigned-to-an-enterprise-role
+        """
+
+        from ..models import BasicError, EnterpriseTeam
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/{role_id}/teams"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[EnterpriseTeam],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_enterprise_role_teams(
+        self,
+        enterprise: str,
+        role_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamType]]:
+        """enterprise-admin/list-enterprise-role-teams
+
+        GET /enterprises/{enterprise}/enterprise-roles/{role_id}/teams
+
+        Lists the teams that are assigned to an enterprise role.
+
+        To use this endpoint, the authenticated user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#list-teams-that-are-assigned-to-an-enterprise-role
+        """
+
+        from ..models import BasicError, EnterpriseTeam
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/{role_id}/teams"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[EnterpriseTeam],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def list_enterprise_role_users(
+        self,
+        enterprise: str,
+        role_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[EnterpriseUserRoleAssignment], list[EnterpriseUserRoleAssignmentType]
+    ]:
+        """enterprise-admin/list-enterprise-role-users
+
+        GET /enterprises/{enterprise}/enterprise-roles/{role_id}/users
+
+        Lists enterprise members that are assigned to an enterprise role.
+
+        To use this endpoint, a user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `enterprise:admin` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#list-users-that-are-assigned-to-an-enterprise-role
+        """
+
+        from ..models import BasicError, EnterpriseUserRoleAssignment
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/{role_id}/users"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[EnterpriseUserRoleAssignment],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_enterprise_role_users(
+        self,
+        enterprise: str,
+        role_id: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[EnterpriseUserRoleAssignment], list[EnterpriseUserRoleAssignmentType]
+    ]:
+        """enterprise-admin/list-enterprise-role-users
+
+        GET /enterprises/{enterprise}/enterprise-roles/{role_id}/users
+
+        Lists enterprise members that are assigned to an enterprise role.
+
+        To use this endpoint, a user must be one of:
+
+          - An administrator for the enterprise.
+          - A user, or a user on a team, with the fine-grained permission `read_enterprise_custom_enterprise_role` in the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) require the `enterprise:admin` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/enterprise-roles#list-users-that-are-assigned-to-an-enterprise-role
+        """
+
+        from ..models import BasicError, EnterpriseUserRoleAssignment
+
+        url = f"/enterprises/{enterprise}/enterprise-roles/{role_id}/users"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[EnterpriseUserRoleAssignment],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def get_license_sync_status(
         self,
         enterprise: str,
@@ -6346,6 +7244,870 @@ class EnterpriseAdminClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=NetworkSettings,
+        )
+
+    def custom_properties_for_orgs_get_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-get-enterprise-definitions
+
+        GET /enterprises/{enterprise}/org-properties/schema
+
+        Gets all organization custom property definitions that are defined on an enterprise.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
+        - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#get-organization-custom-properties-schema-for-an-enterprise
+        """
+
+        from ..models import BasicError, OrganizationCustomProperty
+
+        url = f"/enterprises/{enterprise}/org-properties/schema"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[OrganizationCustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_custom_properties_for_orgs_get_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-get-enterprise-definitions
+
+        GET /enterprises/{enterprise}/org-properties/schema
+
+        Gets all organization custom property definitions that are defined on an enterprise.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
+        - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#get-organization-custom-properties-schema-for-an-enterprise
+        """
+
+        from ..models import BasicError, OrganizationCustomProperty
+
+        url = f"/enterprises/{enterprise}/org-properties/schema"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[OrganizationCustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def custom_properties_for_orgs_create_or_update_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType,
+    ) -> Response[
+        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+    ]: ...
+
+    @overload
+    def custom_properties_for_orgs_create_or_update_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        properties: list[OrganizationCustomPropertyType],
+    ) -> Response[
+        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+    ]: ...
+
+    def custom_properties_for_orgs_create_or_update_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-definitions
+
+        PATCH /enterprises/{enterprise}/org-properties/schema
+
+        Creates new or updates existing organization custom properties defined on an enterprise in a batch.
+
+        If the property already exists, the existing property will be replaced with the new values.
+        Missing optional values will fall back to default values, previous values will be overwritten.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-organization-custom-property-definitions-on-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseOrgPropertiesSchemaPatchBody,
+            OrganizationCustomProperty,
+            ValidationErrorSimple,
+        )
+
+        url = f"/enterprises/{enterprise}/org-properties/schema"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseOrgPropertiesSchemaPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[OrganizationCustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType,
+    ) -> Response[
+        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+    ]: ...
+
+    @overload
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        properties: list[OrganizationCustomPropertyType],
+    ) -> Response[
+        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+    ]: ...
+
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_definitions(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-definitions
+
+        PATCH /enterprises/{enterprise}/org-properties/schema
+
+        Creates new or updates existing organization custom properties defined on an enterprise in a batch.
+
+        If the property already exists, the existing property will be replaced with the new values.
+        Missing optional values will fall back to default values, previous values will be overwritten.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-organization-custom-property-definitions-on-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseOrgPropertiesSchemaPatchBody,
+            OrganizationCustomProperty,
+            ValidationErrorSimple,
+        )
+
+        url = f"/enterprises/{enterprise}/org-properties/schema"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseOrgPropertiesSchemaPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[OrganizationCustomProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def custom_properties_for_orgs_get_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]:
+        """enterprise-admin/custom-properties-for-orgs-get-enterprise-definition
+
+        GET /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
+
+        Gets an organization custom property definition that is defined on an enterprise.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
+        - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#get-an-organization-custom-property-definition-from-an-enterprise
+        """
+
+        from ..models import BasicError, OrganizationCustomProperty
+
+        url = f"/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationCustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_custom_properties_for_orgs_get_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]:
+        """enterprise-admin/custom-properties-for-orgs-get-enterprise-definition
+
+        GET /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
+
+        Gets an organization custom property definition that is defined on an enterprise.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
+        - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#get-an-organization-custom-property-definition-from-an-enterprise
+        """
+
+        from ..models import BasicError, OrganizationCustomProperty
+
+        url = f"/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationCustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def custom_properties_for_orgs_create_or_update_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrganizationCustomPropertyPayloadType,
+    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]: ...
+
+    @overload
+    def custom_properties_for_orgs_create_or_update_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        value_type: Literal["string", "single_select", "multi_select", "true_false"],
+        required: Missing[bool] = UNSET,
+        default_value: Missing[Union[str, list[str], None]] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        allowed_values: Missing[Union[list[str], None]] = UNSET,
+        values_editable_by: Missing[
+            Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+        ] = UNSET,
+    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]: ...
+
+    def custom_properties_for_orgs_create_or_update_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrganizationCustomPropertyPayloadType] = UNSET,
+        **kwargs,
+    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]:
+        """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-definition
+
+        PUT /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
+
+        Creates a new or updates an existing organization custom property definition that is defined on an enterprise.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-an-organization-custom-property-definition-on-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            OrganizationCustomProperty,
+            OrganizationCustomPropertyPayload,
+            ValidationErrorSimple,
+        )
+
+        url = f"/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrganizationCustomPropertyPayload, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationCustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrganizationCustomPropertyPayloadType,
+    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]: ...
+
+    @overload
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        value_type: Literal["string", "single_select", "multi_select", "true_false"],
+        required: Missing[bool] = UNSET,
+        default_value: Missing[Union[str, list[str], None]] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        allowed_values: Missing[Union[list[str], None]] = UNSET,
+        values_editable_by: Missing[
+            Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+        ] = UNSET,
+    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]: ...
+
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrganizationCustomPropertyPayloadType] = UNSET,
+        **kwargs,
+    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]:
+        """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-definition
+
+        PUT /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
+
+        Creates a new or updates an existing organization custom property definition that is defined on an enterprise.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-an-organization-custom-property-definition-on-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            OrganizationCustomProperty,
+            OrganizationCustomPropertyPayload,
+            ValidationErrorSimple,
+        )
+
+        url = f"/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrganizationCustomPropertyPayload, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationCustomProperty,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def custom_properties_for_orgs_delete_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/custom-properties-for-orgs-delete-enterprise-definition
+
+        DELETE /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
+
+        Removes an organization custom property definition that is defined on an enterprise.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#remove-an-organization-custom-property-definition-from-an-enterprise
+        """
+
+        from ..models import BasicError, ValidationErrorSimple
+
+        url = f"/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    async def async_custom_properties_for_orgs_delete_enterprise_definition(
+        self,
+        enterprise: str,
+        custom_property_name: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """enterprise-admin/custom-properties-for-orgs-delete-enterprise-definition
+
+        DELETE /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
+
+        Removes an organization custom property definition that is defined on an enterprise.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "manage enterprise custom properties for organizations" fine-grained permission
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#remove-an-organization-custom-property-definition-from-an-enterprise
+        """
+
+        from ..models import BasicError, ValidationErrorSimple
+
+        url = f"/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def custom_properties_for_orgs_get_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[CustomPropertiesForOrgsGetEnterprisePropertyValues],
+        list[CustomPropertiesForOrgsGetEnterprisePropertyValuesType],
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-get-enterprise-values
+
+        GET /enterprises/{enterprise}/org-properties/values
+
+        Lists enterprise organizations with all of their custom property values.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
+        - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#list-custom-property-values-for-organizations-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            CustomPropertiesForOrgsGetEnterprisePropertyValues,
+        )
+
+        url = f"/enterprises/{enterprise}/org-properties/values"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CustomPropertiesForOrgsGetEnterprisePropertyValues],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_custom_properties_for_orgs_get_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[CustomPropertiesForOrgsGetEnterprisePropertyValues],
+        list[CustomPropertiesForOrgsGetEnterprisePropertyValuesType],
+    ]:
+        """enterprise-admin/custom-properties-for-orgs-get-enterprise-values
+
+        GET /enterprises/{enterprise}/org-properties/values
+
+        Lists enterprise organizations with all of their custom property values.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `read:enterprise` scope
+        - Actors with the enterprise-level "read enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#list-custom-property-values-for-organizations-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            CustomPropertiesForOrgsGetEnterprisePropertyValues,
+        )
+
+        url = f"/enterprises/{enterprise}/org-properties/values"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[CustomPropertiesForOrgsGetEnterprisePropertyValues],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def custom_properties_for_orgs_create_or_update_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    def custom_properties_for_orgs_create_or_update_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        organization_logins: list[str],
+        properties: list[CustomPropertyValueType],
+    ) -> Response: ...
+
+    def custom_properties_for_orgs_create_or_update_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-values
+
+        PATCH /enterprises/{enterprise}/org-properties/values
+
+        Create or update custom property values for organizations in an enterprise.
+
+        To remove a custom property value from an organization, set the property value to `null`.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "edit enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-custom-property-values-for-organizations-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseOrgPropertiesValuesPatchBody,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/org-properties/values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseOrgPropertiesValuesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        organization_logins: list[str],
+        properties: list[CustomPropertyValueType],
+    ) -> Response: ...
+
+    async def async_custom_properties_for_orgs_create_or_update_enterprise_values(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-values
+
+        PATCH /enterprises/{enterprise}/org-properties/values
+
+        Create or update custom property values for organizations in an enterprise.
+
+        To remove a custom property value from an organization, set the property value to `null`.
+
+        Access requirements:
+        - Enterprise admins
+        - OAuth tokens and personal access tokens (classic) with the `admin:enterprise` scope
+        - Actors with the enterprise-level "edit enterprise custom properties for organizations" fine-grained permission or above
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/custom-properties-for-orgs#create-or-update-custom-property-values-for-organizations-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseOrgPropertiesValuesPatchBody,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/org-properties/values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseOrgPropertiesValuesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
         )
 
     def custom_properties_for_repos_get_enterprise_definitions(

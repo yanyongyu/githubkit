@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,77 +18,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
-from .group_0283 import PullRequestMinimal
-from .group_0310 import DeploymentSimple
-from .group_0518 import SimpleCheckSuite
+from .group_0203 import MarketplaceListingPlan
 
 
-class CheckRunWithSimpleCheckSuite(GitHubModel):
-    """CheckRun
+class UserMarketplacePurchase(GitHubModel):
+    """User Marketplace Purchase
 
-    A check performed on the code of a given code change
+    User Marketplace Purchase
     """
 
-    app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    billing_cycle: str = Field()
+    next_billing_date: Union[datetime, None] = Field()
+    unit_count: Union[int, None] = Field()
+    on_free_trial: bool = Field()
+    free_trial_ends_on: Union[datetime, None] = Field()
+    updated_at: Union[datetime, None] = Field()
+    account: MarketplaceAccount = Field(title="Marketplace Account")
+    plan: MarketplaceListingPlan = Field(
+        title="Marketplace Listing Plan", description="Marketplace Listing Plan"
     )
-    check_suite: SimpleCheckSuite = Field(
-        description="A suite of checks performed on the code of a given code change"
-    )
-    completed_at: Union[datetime, None] = Field()
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ] = Field()
-    deployment: Missing[DeploymentSimple] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
-    )
-    details_url: str = Field()
-    external_id: str = Field()
-    head_sha: str = Field(description="The SHA of the commit that is being checked.")
-    html_url: str = Field()
-    id: int = Field(description="The id of the check.")
-    name: str = Field(description="The name of the check.")
-    node_id: str = Field()
-    output: CheckRunWithSimpleCheckSuitePropOutput = Field()
-    pull_requests: list[PullRequestMinimal] = Field()
-    started_at: datetime = Field()
-    status: Literal["queued", "in_progress", "completed", "pending"] = Field(
-        description="The phase of the lifecycle that the check is currently in."
-    )
+
+
+class MarketplaceAccount(GitHubModel):
+    """Marketplace Account"""
+
     url: str = Field()
+    id: int = Field()
+    type: str = Field()
+    node_id: Missing[str] = Field(default=UNSET)
+    login: str = Field()
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class CheckRunWithSimpleCheckSuitePropOutput(GitHubModel):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
-
-    annotations_count: int = Field()
-    annotations_url: str = Field()
-    summary: Union[str, None] = Field()
-    text: Union[str, None] = Field()
-    title: Union[str, None] = Field()
-
-
-model_rebuild(CheckRunWithSimpleCheckSuite)
-model_rebuild(CheckRunWithSimpleCheckSuitePropOutput)
+model_rebuild(UserMarketplacePurchase)
+model_rebuild(MarketplaceAccount)
 
 __all__ = (
-    "CheckRunWithSimpleCheckSuite",
-    "CheckRunWithSimpleCheckSuitePropOutput",
+    "MarketplaceAccount",
+    "UserMarketplacePurchase",
 )

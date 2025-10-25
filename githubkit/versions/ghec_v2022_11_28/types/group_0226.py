@@ -13,20 +13,13 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCreateIssueTypeType(TypedDict):
-    """OrganizationCreateIssueType"""
+class OrganizationCustomRepositoryRoleUpdateSchemaType(TypedDict):
+    """OrganizationCustomRepositoryRoleUpdateSchema"""
 
-    name: str
-    is_enabled: bool
+    name: NotRequired[str]
     description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
+    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
+    permissions: NotRequired[list[str]]
 
 
-__all__ = ("OrganizationCreateIssueTypeType",)
+__all__ = ("OrganizationCustomRepositoryRoleUpdateSchemaType",)

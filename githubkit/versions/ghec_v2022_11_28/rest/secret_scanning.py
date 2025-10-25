@@ -2912,6 +2912,9 @@ class SecretScanningClient:
 
         Lists the latest default incremental and backfill scans by type for a repository. Scans from Copilot Secret Scanning are not included.
 
+        > [!NOTE]
+        > This endpoint requires [GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security)."
+
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository
@@ -2950,6 +2953,9 @@ class SecretScanningClient:
         GET /repos/{owner}/{repo}/secret-scanning/scan-history
 
         Lists the latest default incremental and backfill scans by type for a repository. Scans from Copilot Secret Scanning are not included.
+
+        > [!NOTE]
+        > This endpoint requires [GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security)."
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 

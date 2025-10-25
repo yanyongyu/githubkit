@@ -17,20 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0138 import RepositoryRuleWorkflowsPropParameters
+from .group_0138 import RepositoryRuleCommitAuthorEmailPatternPropParameters
 
 
-class RepositoryRuleWorkflows(GitHubModel):
-    """workflows
+class RepositoryRuleCommitAuthorEmailPattern(GitHubModel):
+    """commit_author_email_pattern
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Parameters to be used for the commit_author_email_pattern rule
     """
 
-    type: Literal["workflows"] = Field()
-    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
+    type: Literal["commit_author_email_pattern"] = Field()
+    parameters: Missing[RepositoryRuleCommitAuthorEmailPatternPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(RepositoryRuleWorkflows)
+model_rebuild(RepositoryRuleCommitAuthorEmailPattern)
 
-__all__ = ("RepositoryRuleWorkflows",)
+__all__ = ("RepositoryRuleCommitAuthorEmailPattern",)

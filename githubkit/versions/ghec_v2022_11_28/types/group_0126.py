@@ -9,20 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0127 import RepositoryRuleTagNamePatternPropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleTagNamePatternType(TypedDict):
-    """tag_name_pattern
+class RepositoryRuleUpdatePropParametersType(TypedDict):
+    """RepositoryRuleUpdatePropParameters"""
 
-    Parameters to be used for the tag_name_pattern rule
-    """
-
-    type: Literal["tag_name_pattern"]
-    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
+    update_allows_fetch_and_merge: bool
 
 
-__all__ = ("RepositoryRuleTagNamePatternType",)
+__all__ = ("RepositoryRuleUpdatePropParametersType",)

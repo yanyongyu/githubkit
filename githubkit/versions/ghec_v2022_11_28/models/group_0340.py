@@ -13,29 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class BranchShort(GitHubModel):
-    """Branch Short
-
-    Branch Short
-    """
-
-    name: str = Field()
-    commit: BranchShortPropCommit = Field()
-    protected: bool = Field()
+from .group_0339 import CodeScanningVariantAnalysisRepository
 
 
-class BranchShortPropCommit(GitHubModel):
-    """BranchShortPropCommit"""
+class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    sha: str = Field()
-    url: str = Field()
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
+    )
+    repositories: list[CodeScanningVariantAnalysisRepository] = Field(
+        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
+    )
 
 
-model_rebuild(BranchShort)
-model_rebuild(BranchShortPropCommit)
+model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
 
-__all__ = (
-    "BranchShort",
-    "BranchShortPropCommit",
-)
+__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)

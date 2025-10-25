@@ -9,28 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0097 import RepositoryRulesetConditionsPropRefName
-from .group_0099 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
-)
+from .group_0146 import RepositoryRuleFilePathRestrictionPropParameters
 
 
-class OrgRulesetConditionsOneof2(GitHubModel):
-    """repository_property_and_ref_name
+class RepositoryRuleFilePathRestriction(GitHubModel):
+    """file_path_restriction
 
-    Conditions to target repositories by property and refs by name
+    Prevent commits that include changes in specified file and folder paths from
+    being pushed to the commit graph. This includes absolute paths that contain file
+    names.
     """
 
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
+    type: Literal["file_path_restriction"] = Field()
+    parameters: Missing[RepositoryRuleFilePathRestrictionPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(OrgRulesetConditionsOneof2)
+model_rebuild(RepositoryRuleFilePathRestriction)
 
-__all__ = ("OrgRulesetConditionsOneof2",)
+__all__ = ("RepositoryRuleFilePathRestriction",)

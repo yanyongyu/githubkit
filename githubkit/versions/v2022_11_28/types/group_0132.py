@@ -10,45 +10,83 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
+from .group_0040 import MilestoneType
+from .group_0091 import TeamType
+from .group_0131 import AutoMergeType
+from .group_0133 import PullRequestSimplePropBaseType, PullRequestSimplePropHeadType
+from .group_0134 import PullRequestSimplePropLinksType
 
 
-class ProjectsV2ItemWithContentType(TypedDict):
-    """Projects v2 Item
+class PullRequestSimpleType(TypedDict):
+    """Pull Request Simple
 
-    An item belonging to a project
+    Pull Request Simple
     """
 
-    id: float
-    node_id: NotRequired[str]
-    project_url: NotRequired[str]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    content: NotRequired[Union[ProjectsV2ItemWithContentPropContentType, None]]
-    creator: NotRequired[SimpleUserType]
+    url: str
+    id: int
+    node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: str
+    locked: bool
+    title: str
+    user: Union[None, SimpleUserType]
+    body: Union[str, None]
+    labels: list[PullRequestSimplePropLabelsItemsType]
+    milestone: Union[None, MilestoneType]
+    active_lock_reason: NotRequired[Union[str, None]]
     created_at: datetime
     updated_at: datetime
-    archived_at: Union[datetime, None]
-    item_url: NotRequired[Union[str, None]]
-    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsType]]
+    closed_at: Union[datetime, None]
+    merged_at: Union[datetime, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    requested_reviewers: NotRequired[Union[list[SimpleUserType], None]]
+    requested_teams: NotRequired[Union[list[TeamType], None]]
+    head: PullRequestSimplePropHeadType
+    base: PullRequestSimplePropBaseType
+    links: PullRequestSimplePropLinksType
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeType, None]
+    draft: NotRequired[bool]
 
 
-ProjectsV2ItemWithContentPropContentType: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropContent
+class PullRequestSimplePropLabelsItemsType(TypedDict):
+    """PullRequestSimplePropLabelsItems"""
 
-The content of the item, which varies by content type.
-"""
-
-
-ProjectsV2ItemWithContentPropFieldsItemsType: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropFieldsItems
-"""
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
 
 
 __all__ = (
-    "ProjectsV2ItemWithContentPropContentType",
-    "ProjectsV2ItemWithContentPropFieldsItemsType",
-    "ProjectsV2ItemWithContentType",
+    "PullRequestSimplePropLabelsItemsType",
+    "PullRequestSimpleType",
 )

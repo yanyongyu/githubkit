@@ -14,42 +14,45 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
-    """RequiredReviewerConfiguration
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
+    GitHubModel
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
+    include: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+        default=UNSET,
+        description="The repository properties and values to include. All of these properties must match for the condition to pass.",
+    )
+    exclude: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+        default=UNSET,
+        description="The repository properties and values to exclude. The condition will not pass if any of these properties match.",
+    )
+
+
+class RepositoryRulesetConditionsRepositoryPropertySpec(GitHubModel):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a repository property
     """
 
-    file_patterns: list[str] = Field(
-        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use the same syntax as `.gitignore` files."
+    name: str = Field(description="The name of the repository property to target")
+    property_values: list[str] = Field(
+        description="The values to match for the repository property"
     )
-    minimum_approvals: int = Field(
-        description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
-    )
-    reviewer: RepositoryRuleParamsReviewer = Field(
-        title="Reviewer", description="A required reviewing team"
+    source: Missing[Literal["custom", "system"]] = Field(
+        default=UNSET,
+        description="The source of the repository property. Defaults to 'custom' if not specified.",
     )
 
 
-class RepositoryRuleParamsReviewer(GitHubModel):
-    """Reviewer
-
-    A required reviewing team
-    """
-
-    id: int = Field(
-        description="ID of the reviewer which must review changes to matching files."
-    )
-    type: Literal["Team"] = Field(description="The type of the reviewer")
-
-
-model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
-model_rebuild(RepositoryRuleParamsReviewer)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertySpec)
 
 __all__ = (
-    "RepositoryRuleParamsRequiredReviewerConfiguration",
-    "RepositoryRuleParamsReviewer",
+    "RepositoryRulesetConditionsRepositoryPropertySpec",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
 )

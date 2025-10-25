@@ -14,14 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleFilePathRestrictionPropParameters(GitHubModel):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
+class RepositoryRuleFileExtensionRestrictionPropParameters(GitHubModel):
+    """RepositoryRuleFileExtensionRestrictionPropParameters"""
 
-    restricted_file_paths: list[str] = Field(
-        description="The file paths that are restricted from being pushed to the commit graph."
+    restricted_file_extensions: list[str] = Field(
+        description="The file extensions that are restricted from being pushed to the commit graph."
     )
 
 
-model_rebuild(RepositoryRuleFilePathRestrictionPropParameters)
+model_rebuild(RepositoryRuleFileExtensionRestrictionPropParameters)
 
-__all__ = ("RepositoryRuleFilePathRestrictionPropParameters",)
+__all__ = ("RepositoryRuleFileExtensionRestrictionPropParameters",)

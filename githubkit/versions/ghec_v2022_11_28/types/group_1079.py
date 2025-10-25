@@ -14,17 +14,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodespacesSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
+class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsSecretsGetResponse200"""
 
     total_count: int
-    secrets: list[CodespacesOrgSecretType]
+    secrets: list[OrganizationActionsSecretType]
 
 
-class CodespacesOrgSecretType(TypedDict):
-    """Codespaces Secret
+class OrganizationActionsSecretType(TypedDict):
+    """Actions Secret for an Organization
 
-    Secrets for a GitHub Codespace.
+    Secrets for GitHub Actions for an organization.
     """
 
     name: str
@@ -35,6 +35,6 @@ class CodespacesOrgSecretType(TypedDict):
 
 
 __all__ = (
-    "CodespacesOrgSecretType",
-    "OrgsOrgCodespacesSecretsGetResponse200Type",
+    "OrganizationActionsSecretType",
+    "OrgsOrgActionsSecretsGetResponse200Type",
 )

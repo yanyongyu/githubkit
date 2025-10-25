@@ -9,21 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0115 import RepositoryRulePullRequestPropParametersType
+from .group_0115 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+)
 
 
-class RepositoryRulePullRequestType(TypedDict):
-    """pull_request
+class EnterpriseRulesetConditionsOrganizationIdTargetType(TypedDict):
+    """Repository ruleset conditions for organization IDs
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Parameters for an organization ID condition
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
+    )
 
 
-__all__ = ("RepositoryRulePullRequestType",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationIdTargetType",)

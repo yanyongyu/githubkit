@@ -11,40 +11,50 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0373 import Metadata
 
-class GitTree(GitHubModel):
-    """Git Tree
 
-    The hierarchy between files in a Git repository.
-    """
+class Manifest(GitHubModel):
+    """Manifest"""
 
-    sha: str = Field()
-    url: Missing[str] = Field(default=UNSET)
-    truncated: bool = Field()
-    tree: list[GitTreePropTreeItems] = Field(
-        description="Objects specifying a tree structure"
+    name: str = Field(description="The name of the manifest.")
+    file: Missing[ManifestPropFile] = Field(default=UNSET)
+    metadata: Missing[Metadata] = Field(
+        default=UNSET,
+        title="metadata",
+        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
+    )
+    resolved: Missing[ManifestPropResolved] = Field(
+        default=UNSET, description="A collection of resolved package dependencies."
     )
 
 
-class GitTreePropTreeItems(GitHubModel):
-    """GitTreePropTreeItems"""
+class ManifestPropFile(GitHubModel):
+    """ManifestPropFile"""
 
-    path: str = Field()
-    mode: str = Field()
-    type: str = Field()
-    sha: str = Field()
-    size: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    source_location: Missing[str] = Field(
+        default=UNSET,
+        description="The path of the manifest file relative to the root of the Git repository.",
+    )
 
 
-model_rebuild(GitTree)
-model_rebuild(GitTreePropTreeItems)
+class ManifestPropResolved(ExtraGitHubModel):
+    """ManifestPropResolved
+
+    A collection of resolved package dependencies.
+    """
+
+
+model_rebuild(Manifest)
+model_rebuild(ManifestPropFile)
+model_rebuild(ManifestPropResolved)
 
 __all__ = (
-    "GitTree",
-    "GitTreePropTreeItems",
+    "Manifest",
+    "ManifestPropFile",
+    "ManifestPropResolved",
 )

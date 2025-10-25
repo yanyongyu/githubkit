@@ -14,22 +14,25 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0166 import RepositoryRuleCopilotCodeReviewPropParameters
 
 
-class DeleteCostCenter(GitHubModel):
-    """DeleteCostCenter"""
+class RepositoryRuleCopilotCodeReview(GitHubModel):
+    """copilot_code_review
 
-    message: str = Field(
-        description="A message indicating the result of the deletion operation"
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review.
+    """
+
+    type: Literal["copilot_code_review"] = Field()
+    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
+        default=UNSET
     )
-    id: str = Field(description="The unique identifier of the deleted cost center")
-    name: str = Field(description="The name of the deleted cost center")
-    cost_center_state: Literal["CostCenterArchived"] = Field(
-        alias="costCenterState",
-        description="The state of the cost center after deletion",
-    )
 
 
-model_rebuild(DeleteCostCenter)
+model_rebuild(RepositoryRuleCopilotCodeReview)
 
-__all__ = ("DeleteCostCenter",)
+__all__ = ("RepositoryRuleCopilotCodeReview",)

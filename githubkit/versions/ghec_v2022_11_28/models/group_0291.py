@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,97 +19,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WorkflowRunUsage(GitHubModel):
-    """Workflow Run Usage
+class Artifact(GitHubModel):
+    """Artifact
 
-    Workflow Run Usage
+    An artifact
     """
 
-    billable: WorkflowRunUsagePropBillable = Field()
-    run_duration_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowRunUsagePropBillable(GitHubModel):
-    """WorkflowRunUsagePropBillable"""
-
-    ubuntu: Missing[WorkflowRunUsagePropBillablePropUbuntu] = Field(
-        default=UNSET, alias="UBUNTU"
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field(description="The name of the artifact.")
+    size_in_bytes: int = Field(description="The size in bytes of the artifact.")
+    url: str = Field()
+    archive_download_url: str = Field()
+    expired: bool = Field(description="Whether or not the artifact has expired.")
+    created_at: Union[datetime, None] = Field()
+    expires_at: Union[datetime, None] = Field()
+    updated_at: Union[datetime, None] = Field()
+    digest: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The SHA256 digest of the artifact. This field will only be populated on artifacts uploaded with upload-artifact v4 or newer. For older versions, this field will be null.",
     )
-    macos: Missing[WorkflowRunUsagePropBillablePropMacos] = Field(
-        default=UNSET, alias="MACOS"
-    )
-    windows: Missing[WorkflowRunUsagePropBillablePropWindows] = Field(
-        default=UNSET, alias="WINDOWS"
-    )
+    workflow_run: Missing[Union[ArtifactPropWorkflowRun, None]] = Field(default=UNSET)
 
 
-class WorkflowRunUsagePropBillablePropUbuntu(GitHubModel):
-    """WorkflowRunUsagePropBillablePropUbuntu"""
+class ArtifactPropWorkflowRun(GitHubModel):
+    """ArtifactPropWorkflowRun"""
 
-    total_ms: int = Field()
-    jobs: int = Field()
-    job_runs: Missing[list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems]] = (
-        Field(default=UNSET)
-    )
-
-
-class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems(GitHubModel):
-    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
-
-    job_id: int = Field()
-    duration_ms: int = Field()
+    id: Missing[int] = Field(default=UNSET)
+    repository_id: Missing[int] = Field(default=UNSET)
+    head_repository_id: Missing[int] = Field(default=UNSET)
+    head_branch: Missing[str] = Field(default=UNSET)
+    head_sha: Missing[str] = Field(default=UNSET)
 
 
-class WorkflowRunUsagePropBillablePropMacos(GitHubModel):
-    """WorkflowRunUsagePropBillablePropMacos"""
-
-    total_ms: int = Field()
-    jobs: int = Field()
-    job_runs: Missing[list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItems]] = (
-        Field(default=UNSET)
-    )
-
-
-class WorkflowRunUsagePropBillablePropMacosPropJobRunsItems(GitHubModel):
-    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
-
-    job_id: int = Field()
-    duration_ms: int = Field()
-
-
-class WorkflowRunUsagePropBillablePropWindows(GitHubModel):
-    """WorkflowRunUsagePropBillablePropWindows"""
-
-    total_ms: int = Field()
-    jobs: int = Field()
-    job_runs: Missing[list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems]] = (
-        Field(default=UNSET)
-    )
-
-
-class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems(GitHubModel):
-    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
-
-    job_id: int = Field()
-    duration_ms: int = Field()
-
-
-model_rebuild(WorkflowRunUsage)
-model_rebuild(WorkflowRunUsagePropBillable)
-model_rebuild(WorkflowRunUsagePropBillablePropUbuntu)
-model_rebuild(WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems)
-model_rebuild(WorkflowRunUsagePropBillablePropMacos)
-model_rebuild(WorkflowRunUsagePropBillablePropMacosPropJobRunsItems)
-model_rebuild(WorkflowRunUsagePropBillablePropWindows)
-model_rebuild(WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems)
+model_rebuild(Artifact)
+model_rebuild(ArtifactPropWorkflowRun)
 
 __all__ = (
-    "WorkflowRunUsage",
-    "WorkflowRunUsagePropBillable",
-    "WorkflowRunUsagePropBillablePropMacos",
-    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItems",
-    "WorkflowRunUsagePropBillablePropUbuntu",
-    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems",
-    "WorkflowRunUsagePropBillablePropWindows",
-    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
+    "Artifact",
+    "ArtifactPropWorkflowRun",
 )

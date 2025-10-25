@@ -9,25 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CheckAutomatedSecurityFixes(GitHubModel):
-    """Check Dependabot security updates
+class ActionsSecret(GitHubModel):
+    """Actions Secret
 
-    Check Dependabot security updates
+    Set secrets for GitHub Actions.
     """
 
-    enabled: bool = Field(
-        description="Whether Dependabot security updates are enabled for the repository."
-    )
-    paused: bool = Field(
-        description="Whether Dependabot security updates are paused for the repository."
-    )
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(CheckAutomatedSecurityFixes)
+model_rebuild(ActionsSecret)
 
-__all__ = ("CheckAutomatedSecurityFixes",)
+__all__ = ("ActionsSecret",)

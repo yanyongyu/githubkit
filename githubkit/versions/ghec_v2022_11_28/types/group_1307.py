@@ -9,25 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_1306 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPagesPutBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof0"""
+class ReposOwnerRepoImportLfsPatchBodyType(TypedDict):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    cname: NotRequired[Union[str, None]]
-    https_enforced: NotRequired[bool]
-    build_type: Literal["legacy", "workflow"]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-        ]
-    ]
-    public: NotRequired[bool]
+    use_lfs: Literal["opt_in", "opt_out"]
 
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof0Type",)
+__all__ = ("ReposOwnerRepoImportLfsPatchBodyType",)

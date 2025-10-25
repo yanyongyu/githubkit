@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0063 import SecurityAndAnalysisType
+from .group_0060 import SecurityAndAnalysisType
 
 
 class WebhookSecurityAndAnalysisPropChangesPropFromType(TypedDict):

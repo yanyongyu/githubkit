@@ -9,28 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0101 import CustomPropertyValue
 
 
-class MarkdownPostBody(GitHubModel):
-    """MarkdownPostBody"""
+class EnterprisesEnterpriseOrgPropertiesValuesPatchBody(GitHubModel):
+    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
 
-    text: str = Field(description="The Markdown text to render in HTML.")
-    mode: Missing[Literal["markdown", "gfm"]] = Field(
-        default=UNSET, description="The rendering mode."
+    organization_logins: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of organizations that the custom property values will be applied to.",
     )
-    context: Missing[str] = Field(
-        default=UNSET,
-        description="The repository context to use when creating references in `gfm` mode.  For example, setting `context` to `octo-org/octo-repo` will change the text `#42` into an HTML link to issue 42 in the `octo-org/octo-repo` repository.",
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the organizations."
     )
 
 
-model_rebuild(MarkdownPostBody)
+model_rebuild(EnterprisesEnterpriseOrgPropertiesValuesPatchBody)
 
-__all__ = ("MarkdownPostBody",)
+__all__ = ("EnterprisesEnterpriseOrgPropertiesValuesPatchBody",)

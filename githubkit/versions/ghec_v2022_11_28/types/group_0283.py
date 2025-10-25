@@ -9,55 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class PullRequestMinimalType(TypedDict):
-    """Pull Request Minimal"""
+class TeamProjectType(TypedDict):
+    """Team Project
 
+    A team's access to a project.
+    """
+
+    owner_url: str
+    url: str
+    html_url: str
+    columns_url: str
     id: int
+    node_id: str
+    name: str
+    body: Union[str, None]
     number: int
-    url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
+    state: str
+    creator: SimpleUserType
+    created_at: str
+    updated_at: str
+    organization_permission: NotRequired[str]
+    private: NotRequired[bool]
+    permissions: TeamProjectPropPermissionsType
 
 
-class PullRequestMinimalPropHeadType(TypedDict):
-    """PullRequestMinimalPropHead"""
+class TeamProjectPropPermissionsType(TypedDict):
+    """TeamProjectPropPermissions"""
 
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoType
-
-
-class PullRequestMinimalPropHeadPropRepoType(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
-
-    id: int
-    url: str
-    name: str
-
-
-class PullRequestMinimalPropBaseType(TypedDict):
-    """PullRequestMinimalPropBase"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoType
-
-
-class PullRequestMinimalPropBasePropRepoType(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int
-    url: str
-    name: str
+    read: bool
+    write: bool
+    admin: bool
 
 
 __all__ = (
-    "PullRequestMinimalPropBasePropRepoType",
-    "PullRequestMinimalPropBaseType",
-    "PullRequestMinimalPropHeadPropRepoType",
-    "PullRequestMinimalPropHeadType",
-    "PullRequestMinimalType",
+    "TeamProjectPropPermissionsType",
+    "TeamProjectType",
 )

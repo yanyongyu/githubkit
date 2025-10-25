@@ -38,11 +38,11 @@ class BillingPremiumRequestUsageReportUserPropUsageItemsItemsType(TypedDict):
     model: str
     unit_type: str
     price_per_unit: float
-    gross_quantity: int
+    gross_quantity: float
     gross_amount: float
-    discount_quantity: int
+    discount_quantity: float
     discount_amount: float
-    net_quantity: int
+    net_quantity: float
     net_amount: float
 
 

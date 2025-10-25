@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
@@ -17,34 +18,40 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0323 import CodeScanningVariantAnalysisRepository
+from .group_0010 import Integration
 
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItems(GitHubModel):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+class DeploymentSimple(GitHubModel):
+    """Deployment
 
-    repository: CodeScanningVariantAnalysisRepository = Field(
-        title="Repository Identifier", description="Repository Identifier"
-    )
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ] = Field(
-        description="The new status of the CodeQL variant analysis repository task."
-    )
-    result_count: Missing[int] = Field(
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
+    """
+
+    url: str = Field()
+    id: int = Field(description="Unique identifier of the deployment")
+    node_id: str = Field()
+    task: str = Field(description="Parameter to specify a task to execute")
+    original_environment: Missing[str] = Field(default=UNSET)
+    environment: str = Field(description="Name for the target deployment environment.")
+    description: Union[str, None] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    statuses_url: str = Field()
+    repository_url: str = Field()
+    transient_environment: Missing[bool] = Field(
         default=UNSET,
-        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
     )
-    artifact_size_in_bytes: Missing[int] = Field(
+    production_environment: Missing[bool] = Field(
         default=UNSET,
-        description="The size of the artifact. This is only available for successful analyses.",
+        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
     )
-    failure_message: Missing[str] = Field(
-        default=UNSET,
-        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(CodeScanningVariantAnalysisPropScannedRepositoriesItems)
+model_rebuild(DeploymentSimple)
 
-__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",)
+__all__ = ("DeploymentSimple",)

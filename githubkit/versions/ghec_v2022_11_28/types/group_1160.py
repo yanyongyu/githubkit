@@ -9,15 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0208 import MinimalRepositoryType
 
 
-class ProjectsProjectIdDeleteResponse403Type(TypedDict):
-    """ProjectsProjectIdDeleteResponse403"""
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[list[str]]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-__all__ = ("ProjectsProjectIdDeleteResponse403Type",)
+__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type",)

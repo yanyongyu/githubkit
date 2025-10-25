@@ -9,61 +9,117 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoDeploymentsPostBody"""
+class ReposOwnerRepoCheckRunsPostBodyPropOutput(GitHubModel):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutput
 
-    ref: str = Field(
-        description="The ref to deploy. This can be a branch, tag, or SHA."
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run.
+    """
+
+    title: str = Field(description="The title of the check run.")
+    summary: str = Field(
+        max_length=65535,
+        description="The summary of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
     )
-    task: Missing[str] = Field(
+    text: Missing[str] = Field(
+        max_length=65535,
         default=UNSET,
-        description="Specifies a task to execute (e.g., `deploy` or `deploy:migrations`).",
+        description="The details of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
     )
-    auto_merge: Missing[bool] = Field(
+    annotations: Missing[
+        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems]
+    ] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Attempts to automatically merge the default branch into the requested ref, if it's behind the default branch.",
+        description='Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the **Checks** and **Files changed** tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about how you can view annotations on GitHub, see "[About status checks](https://docs.github.com/enterprise-cloud@latest//articles/about-status-checks#checks)".',
     )
-    required_contexts: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The [status](https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.",
-    )
-    payload: Missing[Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0, str]] = (
-        Field(default=UNSET)
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="Name for the target deployment environment (e.g., `production`, `staging`, `qa`).",
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the deployment."
-    )
-    transient_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`",
-    )
-    production_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.",
+    images: Missing[list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems]] = (
+        Field(
+            default=UNSET,
+            description="Adds images to the output displayed in the GitHub pull request UI.",
+        )
     )
 
 
-class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0(ExtraGitHubModel):
-    """ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0"""
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems(GitHubModel):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
+
+    path: str = Field(
+        description="The path of the file to add an annotation to. For example, `assets/css/main.css`."
+    )
+    start_line: int = Field(
+        description="The start line of the annotation. Line numbers start at 1."
+    )
+    end_line: int = Field(description="The end line of the annotation.")
+    start_column: Missing[int] = Field(
+        default=UNSET,
+        description="The start column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values. Column numbers start at 1.",
+    )
+    end_column: Missing[int] = Field(
+        default=UNSET,
+        description="The end column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values.",
+    )
+    annotation_level: Literal["notice", "warning", "failure"] = Field(
+        description="The level of the annotation."
+    )
+    message: str = Field(
+        description="A short description of the feedback for these lines of code. The maximum size is 64 KB."
+    )
+    title: Missing[str] = Field(
+        default=UNSET,
+        description="The title that represents the annotation. The maximum size is 255 characters.",
+    )
+    raw_details: Missing[str] = Field(
+        default=UNSET,
+        description="Details about this annotation. The maximum size is 64 KB.",
+    )
 
 
-model_rebuild(ReposOwnerRepoDeploymentsPostBody)
-model_rebuild(ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0)
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems(GitHubModel):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
+
+    alt: str = Field(description="The alternative text for the image.")
+    image_url: str = Field(description="The full URL of the image.")
+    caption: Missing[str] = Field(
+        default=UNSET, description="A short image description."
+    )
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropActionsItems(GitHubModel):
+    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
+
+    label: str = Field(
+        max_length=20,
+        description="The text to be displayed on a button in the web UI. The maximum size is 20 characters.",
+    )
+    description: str = Field(
+        max_length=40,
+        description="A short explanation of what this action would do. The maximum size is 40 characters.",
+    )
+    identifier: str = Field(
+        max_length=20,
+        description="A reference for the action on the integrator's system. The maximum size is 20 characters.",
+    )
+
+
+model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutput)
+model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems)
+model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems)
+model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropActionsItems)
 
 __all__ = (
-    "ReposOwnerRepoDeploymentsPostBody",
-    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0",
+    "ReposOwnerRepoCheckRunsPostBodyPropActionsItems",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutput",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems",
 )

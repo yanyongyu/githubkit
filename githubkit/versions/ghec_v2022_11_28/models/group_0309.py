@@ -9,48 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0078 import Team
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
-    GitHubModel
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class Activity(GitHubModel):
+    """Activity
 
-    url: str = Field()
-    users_url: str = Field()
-    teams_url: str = Field()
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
-    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
+    Activity
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    before: str = Field(description="The SHA of the commit before the activity.")
+    after: str = Field(description="The SHA of the commit after the activity.")
+    ref: str = Field(
+        description="The full Git reference, formatted as `refs/heads/<branch name>`."
+    )
+    timestamp: datetime = Field(description="The time when the activity occurred.")
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
+    ] = Field(description="The type of the activity that was performed.")
+    actor: Union[None, SimpleUser] = Field()
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
-    GitHubModel
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+model_rebuild(Activity)
 
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
-    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
-
-
-model_rebuild(ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions)
-model_rebuild(
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-)
-
-__all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
-)
+__all__ = ("Activity",)

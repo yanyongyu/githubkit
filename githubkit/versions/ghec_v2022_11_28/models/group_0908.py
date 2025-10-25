@@ -16,16 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0511 import EnterpriseWebhooks
-from .group_0512 import SimpleInstallation
-from .group_0513 import OrganizationSimpleWebhooks
-from .group_0514 import RepositoryWebhooks
-from .group_0561 import WebhooksTeam1
+from .group_0271 import FullRepository
+from .group_0527 import EnterpriseWebhooks
+from .group_0528 import SimpleInstallation
+from .group_0529 import OrganizationSimpleWebhooks
+from .group_0909 import WebhookSecurityAndAnalysisPropChanges
 
 
-class WebhookTeamAdd(GitHubModel):
-    """team_add event"""
+class WebhookSecurityAndAnalysis(GitHubModel):
+    """security_and_analysis event"""
 
+    changes: WebhookSecurityAndAnalysisPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -41,17 +42,14 @@ class WebhookTeamAdd(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    repository: FullRepository = Field(
+        title="Full Repository", description="Full Repository"
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    team: WebhooksTeam1 = Field(
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-model_rebuild(WebhookTeamAdd)
+model_rebuild(WebhookSecurityAndAnalysis)
 
-__all__ = ("WebhookTeamAdd",)
+__all__ = ("WebhookSecurityAndAnalysis",)

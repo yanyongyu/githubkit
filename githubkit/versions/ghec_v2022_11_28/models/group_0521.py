@@ -16,21 +16,18 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksWorkflow(GitHubModel):
-    """Workflow"""
+class SshSigningKey(GitHubModel):
+    """SSH Signing Key
 
-    badge_url: str = Field()
-    created_at: datetime = Field()
-    html_url: str = Field()
+    A public SSH key used to sign Git commits
+    """
+
+    key: str = Field()
     id: int = Field()
-    name: str = Field()
-    node_id: str = Field()
-    path: str = Field()
-    state: str = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
+    title: str = Field()
+    created_at: datetime = Field()
 
 
-model_rebuild(WebhooksWorkflow)
+model_rebuild(SshSigningKey)
 
-__all__ = ("WebhooksWorkflow",)
+__all__ = ("SshSigningKey",)

@@ -14,37 +14,25 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0082 import DependabotAlertSecurityVulnerabilityType
-from .group_0083 import DependabotAlertSecurityAdvisoryType
-from .group_0354 import DependabotAlertPropDependencyType
+from .group_0208 import MinimalRepositoryType
 
 
-class DependabotAlertType(TypedDict):
-    """DependabotAlert
+class RepositoryInvitationType(TypedDict):
+    """Repository Invitation
 
-    A Dependabot alert.
+    Repository invitations let you manage who you collaborate with.
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    id: int
+    repository: MinimalRepositoryType
+    invitee: Union[None, SimpleUserType]
+    inviter: Union[None, SimpleUserType]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
+    created_at: datetime
+    expired: NotRequired[bool]
     url: str
     html_url: str
-    created_at: datetime
-    updated_at: datetime
-    dismissed_at: Union[datetime, None]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[datetime, None]
-    auto_dismissed_at: NotRequired[Union[datetime, None]]
+    node_id: str
 
 
-__all__ = ("DependabotAlertType",)
+__all__ = ("RepositoryInvitationType",)

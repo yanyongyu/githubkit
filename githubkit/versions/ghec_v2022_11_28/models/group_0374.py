@@ -9,53 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0302 import Verification
+from .group_0373 import Metadata
 
 
-class GitTag(GitHubModel):
-    """Git Tag
+class Dependency(GitHubModel):
+    """Dependency"""
 
-    Metadata for a Git tag
-    """
-
-    node_id: str = Field()
-    tag: str = Field(description="Name of the tag")
-    sha: str = Field()
-    url: str = Field(description="URL for the tag")
-    message: str = Field(description="Message describing the purpose of the tag")
-    tagger: GitTagPropTagger = Field()
-    object_: GitTagPropObject = Field(alias="object")
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
-
-
-class GitTagPropTagger(GitHubModel):
-    """GitTagPropTagger"""
-
-    date: str = Field()
-    email: str = Field()
-    name: str = Field()
-
-
-class GitTagPropObject(GitHubModel):
-    """GitTagPropObject"""
-
-    sha: str = Field()
-    type: str = Field()
-    url: str = Field()
+    package_url: Missing[str] = Field(
+        pattern="^pkg",
+        default=UNSET,
+        description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
+    )
+    metadata: Missing[Metadata] = Field(
+        default=UNSET,
+        title="metadata",
+        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
+    )
+    relationship: Missing[Literal["direct", "indirect"]] = Field(
+        default=UNSET,
+        description="A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
+    )
+    scope: Missing[Literal["runtime", "development"]] = Field(
+        default=UNSET,
+        description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
+    )
+    dependencies: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of package-url (PURLs) of direct child dependencies.",
+    )
 
 
-model_rebuild(GitTag)
-model_rebuild(GitTagPropTagger)
-model_rebuild(GitTagPropObject)
+model_rebuild(Dependency)
 
-__all__ = (
-    "GitTag",
-    "GitTagPropObject",
-    "GitTagPropTagger",
-)
+__all__ = ("Dependency",)

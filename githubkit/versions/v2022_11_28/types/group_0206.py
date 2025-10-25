@@ -15,7 +15,7 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0001 import CvssSeveritiesType
 from .group_0003 import SimpleUserType
-from .group_0094 import TeamType
+from .group_0091 import TeamType
 from .group_0205 import RepositoryAdvisoryCreditType
 
 

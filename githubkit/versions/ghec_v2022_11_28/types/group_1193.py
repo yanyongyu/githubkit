@@ -9,13 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAttestationsPostResponse201Type(TypedDict):
-    """ReposOwnerRepoAttestationsPostResponse201"""
+class ProjectsProjectIdPatchBodyType(TypedDict):
+    """ProjectsProjectIdPatchBody"""
 
-    id: NotRequired[int]
+    name: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    state: NotRequired[str]
+    organization_permission: NotRequired[Literal["read", "write", "admin", "none"]]
+    private: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoAttestationsPostResponse201Type",)
+__all__ = ("ProjectsProjectIdPatchBodyType",)

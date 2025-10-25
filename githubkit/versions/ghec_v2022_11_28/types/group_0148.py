@@ -9,21 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0149 import RepositoryRuleCopilotCodeReviewPropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleCopilotCodeReviewType(TypedDict):
-    """copilot_code_review
+class RepositoryRuleMaxFilePathLengthPropParametersType(TypedDict):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review.
-    """
-
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
+    max_file_path_length: int
 
 
-__all__ = ("RepositoryRuleCopilotCodeReviewType",)
+__all__ = ("RepositoryRuleMaxFilePathLengthPropParametersType",)

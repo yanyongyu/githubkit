@@ -9,13 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
+class TeamsTeamIdProjectsProjectIdPutResponse403Type(TypedDict):
+    """TeamsTeamIdProjectsProjectIdPutResponse403"""
 
-    attestation_ids: list[int]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type",)
+__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403Type",)

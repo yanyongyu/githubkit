@@ -18,9 +18,9 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0044 import IssueType
-from .group_0046 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0047 import IssueFieldValue
+from .group_0041 import IssueType
+from .group_0043 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0044 import IssueFieldValue
 
 
 class WebhookIssuesMilestonedPropIssue(GitHubModel):

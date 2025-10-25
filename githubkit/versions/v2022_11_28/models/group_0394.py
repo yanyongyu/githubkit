@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0182 import RepositoryRuleFilePathRestrictionPropParameters
+from .group_0178 import RepositoryRuleFilePathRestrictionPropParameters
 
 
 class RepositoryRuleDetailedOneof15(GitHubModel):

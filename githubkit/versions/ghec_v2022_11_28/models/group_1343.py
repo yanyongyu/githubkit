@@ -17,83 +17,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0091 import RepositoryRulesetBypassActor
-from .group_0096 import RepositoryRulesetConditions
-from .group_0107 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0108 import RepositoryRuleUpdate
-from .group_0110 import RepositoryRuleRequiredLinearHistory
-from .group_0111 import RepositoryRuleRequiredDeployments
-from .group_0114 import RepositoryRulePullRequest
-from .group_0116 import RepositoryRuleRequiredStatusChecks
-from .group_0118 import RepositoryRuleCommitMessagePattern
-from .group_0120 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0122 import RepositoryRuleCommitterEmailPattern
-from .group_0124 import RepositoryRuleBranchNamePattern
-from .group_0126 import RepositoryRuleTagNamePattern
-from .group_0128 import RepositoryRuleFilePathRestriction
-from .group_0130 import RepositoryRuleMaxFilePathLength
-from .group_0132 import RepositoryRuleFileExtensionRestriction
-from .group_0134 import RepositoryRuleMaxFileSize
-from .group_0137 import RepositoryRuleWorkflows
-from .group_0139 import RepositoryRuleCodeScanning
-from .group_0146 import RepositoryRuleMergeQueue
-from .group_0148 import RepositoryRuleCopilotCodeReview
+from .group_1338 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
 
-class ReposOwnerRepoRulesetsPostBody(GitHubModel):
-    """ReposOwnerRepoRulesetsPostBody"""
+class ReposOwnerRepoPagesPutBodyAnyof4(GitHubModel):
+    """ReposOwnerRepoPagesPutBodyAnyof4"""
 
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    cname: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/enterprise-cloud@latest//pages/configuring-a-custom-domain-for-your-github-pages-site)."',
     )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
+    https_enforced: bool = Field(
+        description="Specify whether HTTPS should be enforced for the repository."
+    )
+    build_type: Missing[Literal["legacy", "workflow"]] = Field(
         default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
+        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
+    source: Missing[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
         ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    ] = Field(default=UNSET)
+    public: Missing[bool] = Field(
+        default=UNSET,
+        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility.",
+    )
 
 
-model_rebuild(ReposOwnerRepoRulesetsPostBody)
+model_rebuild(ReposOwnerRepoPagesPutBodyAnyof4)
 
-__all__ = ("ReposOwnerRepoRulesetsPostBody",)
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof4",)

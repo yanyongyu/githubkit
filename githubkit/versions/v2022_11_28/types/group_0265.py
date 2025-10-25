@@ -14,8 +14,8 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0097 import CodeScanningAnalysisToolType
-from .group_0098 import CodeScanningAlertInstanceType
+from .group_0094 import CodeScanningAnalysisToolType
+from .group_0095 import CodeScanningAlertInstanceType
 
 
 class CodeScanningAlertType(TypedDict):

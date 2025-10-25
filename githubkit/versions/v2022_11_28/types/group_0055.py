@@ -9,36 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
 
+class LicenseType(TypedDict):
+    """License
 
-class GistCommentType(TypedDict):
-    """Gist Comment
-
-    A comment made to a gist.
+    License
     """
 
-    id: int
+    key: str
+    name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
     node_id: str
-    url: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
     body: str
-    user: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    featured: bool
 
 
-__all__ = ("GistCommentType",)
+__all__ = ("LicenseType",)

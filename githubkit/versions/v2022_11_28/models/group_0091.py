@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,40 +17,56 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0020 import Repository
+from .group_0090 import TeamSimple
 
 
-class AuthenticationToken(GitHubModel):
-    """Authentication Token
+class Team(GitHubModel):
+    """Team
 
-    Authentication Token
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    token: str = Field(description="The token used for authentication")
-    expires_at: datetime = Field(description="The time this token expires")
-    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
-    repositories: Missing[list[Repository]] = Field(
-        default=UNSET, description="The repositories this token has access to"
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    members_url: str = Field()
+    repositories_url: str = Field()
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
     )
-    single_file: Missing[Union[str, None]] = Field(default=UNSET)
-    repository_selection: Missing[Literal["all", "selected"]] = Field(
+    organization_id: Missing[int] = Field(
         default=UNSET,
-        description="Describe whether all repositories have been selected or there's a selection involved",
+        description="Unique identifier of the organization to which this team belongs",
     )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
+    )
+    parent: Union[None, TeamSimple] = Field()
 
 
-class AuthenticationTokenPropPermissions(GitHubModel):
-    """AuthenticationTokenPropPermissions
+class TeamPropPermissions(GitHubModel):
+    """TeamPropPermissions"""
 
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
 
 
-model_rebuild(AuthenticationToken)
-model_rebuild(AuthenticationTokenPropPermissions)
+model_rebuild(Team)
+model_rebuild(TeamPropPermissions)
 
 __all__ = (
-    "AuthenticationToken",
-    "AuthenticationTokenPropPermissions",
+    "Team",
+    "TeamPropPermissions",
 )

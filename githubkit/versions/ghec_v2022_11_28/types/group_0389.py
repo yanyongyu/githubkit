@@ -9,39 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
 
+class GitRefType(TypedDict):
+    """Git Reference
 
-class RenamedIssueEventType(TypedDict):
-    """Renamed Issue Event
-
-    Renamed Issue Event
+    Git references within a repository
     """
 
-    id: int
+    ref: str
     node_id: str
     url: str
-    actor: SimpleUserType
-    event: Literal["renamed"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    rename: RenamedIssueEventPropRenameType
+    object_: GitRefPropObjectType
 
 
-class RenamedIssueEventPropRenameType(TypedDict):
-    """RenamedIssueEventPropRename"""
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
 
-    from_: str
-    to: str
+    type: str
+    sha: str
+    url: str
 
 
 __all__ = (
-    "RenamedIssueEventPropRenameType",
-    "RenamedIssueEventType",
+    "GitRefPropObjectType",
+    "GitRefType",
 )

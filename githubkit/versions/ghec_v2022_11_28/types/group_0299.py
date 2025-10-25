@@ -9,138 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0296 import ProtectedBranchPullRequestReviewType
-from .group_0298 import BranchRestrictionPolicyType
+from typing_extensions import TypedDict
 
 
-class BranchProtectionType(TypedDict):
-    """Branch Protection
+class PullRequestMinimalType(TypedDict):
+    """Pull Request Minimal"""
 
-    Branch Protection
-    """
-
-    url: NotRequired[str]
-    enabled: NotRequired[bool]
-    required_status_checks: NotRequired[ProtectedBranchRequiredStatusCheckType]
-    enforce_admins: NotRequired[ProtectedBranchAdminEnforcedType]
-    required_pull_request_reviews: NotRequired[ProtectedBranchPullRequestReviewType]
-    restrictions: NotRequired[BranchRestrictionPolicyType]
-    required_linear_history: NotRequired[BranchProtectionPropRequiredLinearHistoryType]
-    allow_force_pushes: NotRequired[BranchProtectionPropAllowForcePushesType]
-    allow_deletions: NotRequired[BranchProtectionPropAllowDeletionsType]
-    block_creations: NotRequired[BranchProtectionPropBlockCreationsType]
-    required_conversation_resolution: NotRequired[
-        BranchProtectionPropRequiredConversationResolutionType
-    ]
-    name: NotRequired[str]
-    protection_url: NotRequired[str]
-    required_signatures: NotRequired[BranchProtectionPropRequiredSignaturesType]
-    lock_branch: NotRequired[BranchProtectionPropLockBranchType]
-    allow_fork_syncing: NotRequired[BranchProtectionPropAllowForkSyncingType]
-
-
-class ProtectedBranchAdminEnforcedType(TypedDict):
-    """Protected Branch Admin Enforced
-
-    Protected Branch Admin Enforced
-    """
-
+    id: int
+    number: int
     url: str
-    enabled: bool
+    head: PullRequestMinimalPropHeadType
+    base: PullRequestMinimalPropBaseType
 
 
-class BranchProtectionPropRequiredLinearHistoryType(TypedDict):
-    """BranchProtectionPropRequiredLinearHistory"""
+class PullRequestMinimalPropHeadType(TypedDict):
+    """PullRequestMinimalPropHead"""
 
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropAllowForcePushesType(TypedDict):
-    """BranchProtectionPropAllowForcePushes"""
-
-    enabled: NotRequired[bool]
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropHeadPropRepoType
 
 
-class BranchProtectionPropAllowDeletionsType(TypedDict):
-    """BranchProtectionPropAllowDeletions"""
+class PullRequestMinimalPropHeadPropRepoType(TypedDict):
+    """PullRequestMinimalPropHeadPropRepo"""
 
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropBlockCreationsType(TypedDict):
-    """BranchProtectionPropBlockCreations"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropRequiredConversationResolutionType(TypedDict):
-    """BranchProtectionPropRequiredConversationResolution"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropRequiredSignaturesType(TypedDict):
-    """BranchProtectionPropRequiredSignatures"""
-
+    id: int
     url: str
-    enabled: bool
+    name: str
 
 
-class BranchProtectionPropLockBranchType(TypedDict):
-    """BranchProtectionPropLockBranch
+class PullRequestMinimalPropBaseType(TypedDict):
+    """PullRequestMinimalPropBase"""
 
-    Whether to set the branch as read-only. If this is true, users will not be able
-    to push to the branch.
-    """
-
-    enabled: NotRequired[bool]
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropBasePropRepoType
 
 
-class BranchProtectionPropAllowForkSyncingType(TypedDict):
-    """BranchProtectionPropAllowForkSyncing
+class PullRequestMinimalPropBasePropRepoType(TypedDict):
+    """PullRequestMinimalPropBasePropRepo"""
 
-    Whether users can pull changes from upstream when the branch is locked. Set to
-    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-    """
-
-    enabled: NotRequired[bool]
-
-
-class ProtectedBranchRequiredStatusCheckType(TypedDict):
-    """Protected Branch Required Status Check
-
-    Protected Branch Required Status Check
-    """
-
-    url: NotRequired[str]
-    enforcement_level: NotRequired[str]
-    contexts: list[str]
-    checks: list[ProtectedBranchRequiredStatusCheckPropChecksItemsType]
-    contexts_url: NotRequired[str]
-    strict: NotRequired[bool]
-
-
-class ProtectedBranchRequiredStatusCheckPropChecksItemsType(TypedDict):
-    """ProtectedBranchRequiredStatusCheckPropChecksItems"""
-
-    context: str
-    app_id: Union[int, None]
+    id: int
+    url: str
+    name: str
 
 
 __all__ = (
-    "BranchProtectionPropAllowDeletionsType",
-    "BranchProtectionPropAllowForcePushesType",
-    "BranchProtectionPropAllowForkSyncingType",
-    "BranchProtectionPropBlockCreationsType",
-    "BranchProtectionPropLockBranchType",
-    "BranchProtectionPropRequiredConversationResolutionType",
-    "BranchProtectionPropRequiredLinearHistoryType",
-    "BranchProtectionPropRequiredSignaturesType",
-    "BranchProtectionType",
-    "ProtectedBranchAdminEnforcedType",
-    "ProtectedBranchRequiredStatusCheckPropChecksItemsType",
-    "ProtectedBranchRequiredStatusCheckType",
+    "PullRequestMinimalPropBasePropRepoType",
+    "PullRequestMinimalPropBaseType",
+    "PullRequestMinimalPropHeadPropRepoType",
+    "PullRequestMinimalPropHeadType",
+    "PullRequestMinimalType",
 )

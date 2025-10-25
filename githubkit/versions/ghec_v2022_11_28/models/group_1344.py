@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,84 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0091 import RepositoryRulesetBypassActor
-from .group_0096 import RepositoryRulesetConditions
-from .group_0107 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0108 import RepositoryRuleUpdate
-from .group_0110 import RepositoryRuleRequiredLinearHistory
-from .group_0111 import RepositoryRuleRequiredDeployments
-from .group_0114 import RepositoryRulePullRequest
-from .group_0116 import RepositoryRuleRequiredStatusChecks
-from .group_0118 import RepositoryRuleCommitMessagePattern
-from .group_0120 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0122 import RepositoryRuleCommitterEmailPattern
-from .group_0124 import RepositoryRuleBranchNamePattern
-from .group_0126 import RepositoryRuleTagNamePattern
-from .group_0128 import RepositoryRuleFilePathRestriction
-from .group_0130 import RepositoryRuleMaxFilePathLength
-from .group_0132 import RepositoryRuleFileExtensionRestriction
-from .group_0134 import RepositoryRuleMaxFileSize
-from .group_0137 import RepositoryRuleWorkflows
-from .group_0139 import RepositoryRuleCodeScanning
-from .group_0146 import RepositoryRuleMergeQueue
-from .group_0148 import RepositoryRuleCopilotCodeReview
 
+class ReposOwnerRepoPagesPostBodyPropSource(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+    The source branch and directory used to publish your Pages site.
+    """
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
+    branch: str = Field(
+        description="The repository branch used to publish your site's source files."
     )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+    path: Missing[Literal["/", "/docs"]] = Field(
         default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
+        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/`",
     )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
-        default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
-    )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
+model_rebuild(ReposOwnerRepoPagesPostBodyPropSource)
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)
+__all__ = ("ReposOwnerRepoPagesPostBodyPropSource",)

@@ -12,14 +12,15 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class CheckImmutableReleasesType(TypedDict):
-    """Check immutable releases
+class DeploymentBranchPolicySettingsType(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    Check immutable releases
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
     """
 
-    enabled: bool
-    enforced_by_owner: bool
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
-__all__ = ("CheckImmutableReleasesType",)
+__all__ = ("DeploymentBranchPolicySettingsType",)

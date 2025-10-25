@@ -12,18 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0168 import RepositoryRulePullRequestPropParametersType
+from .group_0168 import RepositoryRuleCommitMessagePatternPropParametersType
 
 
-class RepositoryRulePullRequestType(TypedDict):
-    """pull_request
+class RepositoryRuleCommitMessagePatternType(TypedDict):
+    """commit_message_pattern
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Parameters to be used for the commit_message_pattern rule
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+    type: Literal["commit_message_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
 
 
-__all__ = ("RepositoryRulePullRequestType",)
+__all__ = ("RepositoryRuleCommitMessagePatternType",)

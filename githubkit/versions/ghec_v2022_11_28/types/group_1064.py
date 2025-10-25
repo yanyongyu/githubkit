@@ -9,13 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
 
-    subject_digests: list[str]
+    enabled_repositories: Literal["all", "selected", "none"]
 
 
-__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type",)
+__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",)

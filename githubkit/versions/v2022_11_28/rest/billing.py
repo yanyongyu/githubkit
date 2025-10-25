@@ -78,13 +78,15 @@ class BillingClient:
 
         Gets a report of premium request usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
 
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
         See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-an-organization
         """
 
         from ..models import (
             BasicError,
             BillingPremiumRequestUsageReportOrg,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/organizations/{org}/settings/billing/premium_request/usage"
@@ -112,7 +114,7 @@ class BillingClient:
                 "403": BasicError,
                 "404": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -137,13 +139,15 @@ class BillingClient:
 
         Gets a report of premium request usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
 
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
         See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-an-organization
         """
 
         from ..models import (
             BasicError,
             BillingPremiumRequestUsageReportOrg,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/organizations/{org}/settings/billing/premium_request/usage"
@@ -171,7 +175,7 @@ class BillingClient:
                 "403": BasicError,
                 "404": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -197,11 +201,7 @@ class BillingClient:
         See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-report-for-an-organization
         """
 
-        from ..models import (
-            BasicError,
-            BillingUsageReport,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, BillingUsageReport, EventsGetResponse503
 
         url = f"/organizations/{org}/settings/billing/usage"
 
@@ -225,7 +225,7 @@ class BillingClient:
                 "400": BasicError,
                 "403": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -251,11 +251,7 @@ class BillingClient:
         See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-report-for-an-organization
         """
 
-        from ..models import (
-            BasicError,
-            BillingUsageReport,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, BillingUsageReport, EventsGetResponse503
 
         url = f"/organizations/{org}/settings/billing/usage"
 
@@ -279,7 +275,7 @@ class BillingClient:
                 "400": BasicError,
                 "403": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -643,13 +639,15 @@ class BillingClient:
 
         Gets a report of premium request usage for a user.
 
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
         See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-a-user
         """
 
         from ..models import (
             BasicError,
             BillingPremiumRequestUsageReportUser,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/users/{username}/settings/billing/premium_request/usage"
@@ -676,7 +674,7 @@ class BillingClient:
                 "403": BasicError,
                 "404": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -700,13 +698,15 @@ class BillingClient:
 
         Gets a report of premium request usage for a user.
 
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
         See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-a-user
         """
 
         from ..models import (
             BasicError,
             BillingPremiumRequestUsageReportUser,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
         )
 
         url = f"/users/{username}/settings/billing/premium_request/usage"
@@ -733,7 +733,7 @@ class BillingClient:
                 "403": BasicError,
                 "404": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -827,11 +827,7 @@ class BillingClient:
         See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-report-for-a-user
         """
 
-        from ..models import (
-            BasicError,
-            BillingUsageReportUser,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, BillingUsageReportUser, EventsGetResponse503
 
         url = f"/users/{username}/settings/billing/usage"
 
@@ -855,7 +851,7 @@ class BillingClient:
                 "400": BasicError,
                 "403": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -881,11 +877,7 @@ class BillingClient:
         See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-report-for-a-user
         """
 
-        from ..models import (
-            BasicError,
-            BillingUsageReportUser,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, BillingUsageReportUser, EventsGetResponse503
 
         url = f"/users/{username}/settings/billing/usage"
 
@@ -909,6 +901,6 @@ class BillingClient:
                 "400": BasicError,
                 "403": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )

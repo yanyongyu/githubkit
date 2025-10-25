@@ -9,17 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleRequiredLinearHistoryType(TypedDict):
-    """required_linear_history
+class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    Prevent merge commits from being pushed to matching refs.
-    """
-
-    type: Literal["required_linear_history"]
+    required_deployment_environments: list[str]
 
 
-__all__ = ("RepositoryRuleRequiredLinearHistoryType",)
+__all__ = ("RepositoryRuleRequiredDeploymentsPropParametersType",)

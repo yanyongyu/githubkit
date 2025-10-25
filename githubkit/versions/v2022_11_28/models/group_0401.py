@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0039 import (
+from .group_0200 import (
     SecretScanningLocationCommit,
     SecretScanningLocationDiscussionComment,
     SecretScanningLocationDiscussionTitle,
@@ -28,13 +28,13 @@ from .group_0039 import (
     SecretScanningLocationPullRequestReview,
     SecretScanningLocationWikiCommit,
 )
-from .group_0040 import (
+from .group_0201 import (
     SecretScanningLocationIssueComment,
     SecretScanningLocationIssueTitle,
     SecretScanningLocationPullRequestReviewComment,
     SecretScanningLocationPullRequestTitle,
 )
-from .group_0041 import (
+from .group_0202 import (
     SecretScanningLocationDiscussionBody,
     SecretScanningLocationPullRequestComment,
 )

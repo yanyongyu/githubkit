@@ -11,23 +11,19 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0088 import RunnerLabelType
 
+class ActionsPublicKeyType(TypedDict):
+    """ActionsPublicKey
 
-class RunnerType(TypedDict):
-    """Self hosted runners
-
-    A self hosted runner
+    The public key used for setting Actions Secrets.
     """
 
-    id: int
-    runner_group_id: NotRequired[int]
-    name: str
-    os: str
-    status: str
-    busy: bool
-    labels: list[RunnerLabelType]
-    ephemeral: NotRequired[bool]
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-__all__ = ("RunnerType",)
+__all__ = ("ActionsPublicKeyType",)

@@ -12,34 +12,46 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0067 import OrganizationSimpleType
+from .group_0090 import TeamSimpleType
 
 
-class OrgMembershipType(TypedDict):
-    """Org Membership
+class TeamRoleAssignmentType(TypedDict):
+    """A Role Assignment for a Team
 
-    Org Membership
+    The Relationship a Team has with a role.
     """
 
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
     url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleType
-    user: Union[None, SimpleUserType]
-    permissions: NotRequired[OrgMembershipPropPermissionsType]
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[None, TeamSimpleType]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class OrgMembershipPropPermissionsType(TypedDict):
-    """OrgMembershipPropPermissions"""
+class TeamRoleAssignmentPropPermissionsType(TypedDict):
+    """TeamRoleAssignmentPropPermissions"""
 
-    can_create_repository: bool
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
 __all__ = (
-    "OrgMembershipPropPermissionsType",
-    "OrgMembershipType",
+    "TeamRoleAssignmentPropPermissionsType",
+    "TeamRoleAssignmentType",
 )

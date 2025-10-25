@@ -18,397 +18,279 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0171 import IssueType
-from .group_0173 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0174 import IssueFieldValue
+from .group_0532 import ExemptionResponse
 
 
-class WebhooksIssue(GitHubModel):
-    """Issue
+class ExemptionRequest(GitHubModel):
+    """Exemption Request
 
-    The [issue](https://docs.github.com/enterprise-
-    cloud@latest//rest/issues/issues#get-an-issue) itself.
+    A request from a user to be exempted from a set of rules.
     """
 
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
-    ] = Field()
-    assignee: Missing[Union[WebhooksIssuePropAssignee, None]] = Field(
-        default=UNSET, title="User"
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the exemption request."
     )
-    assignees: list[Union[WebhooksIssuePropAssigneesItems, None]] = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
-    )
-    body: Union[str, None] = Field(description="Contents of the issue")
-    closed_at: Union[datetime, None] = Field()
-    comments: int = Field()
-    comments_url: str = Field()
-    created_at: datetime = Field()
-    draft: Missing[bool] = Field(default=UNSET)
-    events_url: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels: Missing[list[WebhooksIssuePropLabelsItems]] = Field(default=UNSET)
-    labels_url: str = Field()
-    locked: Missing[bool] = Field(default=UNSET)
-    milestone: Union[WebhooksIssuePropMilestone, None] = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
-    )
-    node_id: str = Field()
-    number: int = Field()
-    performed_via_github_app: Missing[
-        Union[WebhooksIssuePropPerformedViaGithubApp, None]
-    ] = Field(
+    number: Missing[Union[int, None]] = Field(
         default=UNSET,
-        title="App",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+        description="The number uniquely identifying the exemption request within it's repository.",
     )
-    pull_request: Missing[WebhooksIssuePropPullRequest] = Field(default=UNSET)
-    reactions: WebhooksIssuePropReactions = Field(title="Reactions")
-    repository_url: str = Field()
-    sub_issues_summary: Missing[SubIssuesSummary] = Field(
-        default=UNSET, title="Sub-issues Summary"
+    repository_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the repository the exemption request is for.",
     )
-    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
-        default=UNSET, title="Issue Dependencies Summary"
+    requester_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the user who requested the exemption."
     )
-    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET, description="State of the issue; either 'open' or 'closed'"
+    requester_login: Missing[str] = Field(
+        default=UNSET, description="The login of the user who requested the exemption."
     )
-    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    timeline_url: Missing[str] = Field(default=UNSET)
-    title: str = Field(description="Title of the issue")
-    type: Missing[Union[IssueType, None]] = Field(
-        default=UNSET, title="Issue Type", description="The type of issue."
+    request_type: Missing[
+        Literal[
+            "push_ruleset_bypass",
+            "secret_scanning",
+            "secret_scanning_closure",
+            "code_scanning_alert_dismissal",
+        ]
+    ] = Field(default=UNSET, description="The type of request.")
+    exemption_request_data: Missing[
+        Union[
+            ExemptionRequestPushRulesetBypass,
+            ExemptionRequestSecretScanning,
+            DismissalRequestSecretScanning,
+            DismissalRequestCodeScanning,
+        ]
+    ] = Field(default=UNSET)
+    resource_identifier: Missing[str] = Field(
+        default=UNSET,
+        description="The unique identifier for the request type of the exemption request. For example, a commit SHA.",
     )
-    updated_at: datetime = Field()
-    url: str = Field(description="URL for the issue")
-    user: Union[WebhooksIssuePropUser, None] = Field(title="User")
-
-
-class WebhooksIssuePropAssignee(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
+    status: Missing[Literal["pending", "rejected", "cancelled", "completed"]] = Field(
+        default=UNSET, description="The status of the exemption request."
     )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhooksIssuePropAssigneesItems(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
+    requester_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment the requester provided when creating the exemption request.",
     )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhooksIssuePropLabelsItems(GitHubModel):
-    """Label"""
-
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
+    metadata: Missing[
+        Union[
+            ExemptionRequestSecretScanningMetadata,
+            DismissalRequestSecretScanningMetadata,
+            DismissalRequestCodeScanningMetadata,
+            None,
+        ]
+    ] = Field(default=UNSET, description="Metadata about the exemption request.")
+    expires_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time the exemption request will expire.",
     )
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    id: int = Field()
-    name: str = Field(description="The name of the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time the exemption request was created.",
+    )
+    responses: Missing[Union[list[ExemptionResponse], None]] = Field(
+        default=UNSET, description="The responses to the exemption request."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the exemption request in a browser."
+    )
 
 
-class WebhooksIssuePropMilestone(GitHubModel):
-    """Milestone
+class ExemptionRequestSecretScanningMetadata(GitHubModel):
+    """Secret Scanning Push Protection Exemption Request Metadata
 
-    A collection of related issues and pull requests.
+    Metadata for a secret scanning push protection exemption request.
     """
 
-    closed_at: Union[datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: datetime = Field()
-    creator: Union[WebhooksIssuePropMilestonePropCreator, None] = Field(title="User")
-    description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: datetime = Field()
-    url: str = Field()
-
-
-class WebhooksIssuePropMilestonePropCreator(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
+    label: Missing[str] = Field(
+        default=UNSET, description="The label for the secret type"
     )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    reason: Missing[Literal["fixed_later", "false_positive", "tests"]] = Field(
+        default=UNSET, description="The reason for the exemption request"
+    )
 
 
-class WebhooksIssuePropPerformedViaGithubApp(GitHubModel):
-    """App
+class DismissalRequestSecretScanningMetadata(GitHubModel):
+    """Secret scanning alert dismissal request metadata
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
+    Metadata for a secret scanning alert dismissal request.
     """
 
-    created_at: Union[datetime, None] = Field()
-    description: Union[str, None] = Field()
-    events: Missing[list[str]] = Field(
-        default=UNSET, description="The list of events for the GitHub app"
+    alert_title: Missing[str] = Field(
+        default=UNSET, description="The title of the secret alert"
     )
-    external_url: Union[str, None] = Field()
-    html_url: str = Field()
-    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
-    name: str = Field(description="The name of the GitHub app")
-    node_id: str = Field()
-    owner: Union[WebhooksIssuePropPerformedViaGithubAppPropOwner, None] = Field(
-        title="User"
+    reason: Missing[Literal["fixed_later", "false_positive", "tests", "revoked"]] = (
+        Field(default=UNSET, description="The reason for the dismissal request")
     )
-    permissions: Missing[WebhooksIssuePropPerformedViaGithubAppPropPermissions] = Field(
-        default=UNSET, description="The set of permissions for the GitHub app"
-    )
-    slug: Missing[str] = Field(
-        default=UNSET, description="The slug name of the GitHub app"
-    )
-    updated_at: Union[datetime, None] = Field()
 
 
-class WebhooksIssuePropPerformedViaGithubAppPropOwner(GitHubModel):
-    """User"""
+class DismissalRequestCodeScanningMetadata(GitHubModel):
+    """Code scanning alert dismissal request metadata
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhooksIssuePropPerformedViaGithubAppPropPermissions(GitHubModel):
-    """WebhooksIssuePropPerformedViaGithubAppPropPermissions
-
-    The set of permissions for the GitHub app
+    Metadata for a code scanning alert dismissal request.
     """
 
-    actions: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    administration: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    checks: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    content_references: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    contents: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    deployments: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    emails: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    environments: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    issues: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    keys: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    members: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    metadata: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_administration: Missing[Literal["read", "write"]] = Field(
-        default=UNSET
+    alert_title: Missing[str] = Field(
+        default=UNSET, description="The title of the code scanning alert"
     )
-    organization_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_plan: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_projects: Missing[Literal["read", "write", "admin"]] = Field(
-        default=UNSET
+    reason: Missing[Literal["false positive", "won't fix", "used in tests"]] = Field(
+        default=UNSET, description="The reason for the dismissal request"
     )
-    organization_secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_self_hosted_runners: Missing[Literal["read", "write"]] = Field(
-        default=UNSET
+
+
+class ExemptionRequestPushRulesetBypass(GitHubModel):
+    """Push ruleset bypass exemption request data
+
+    Push rules that are being requested to be bypassed.
+    """
+
+    type: Missing[Literal["push_ruleset_bypass"]] = Field(
+        default=UNSET, description="The type of request"
     )
-    organization_user_blocking: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    pages: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    pull_requests: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    repository_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    repository_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    secret_scanning_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    security_events: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    security_scanning_alert: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    single_file: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    statuses: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    team_discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    vulnerability_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    workflows: Missing[Literal["read", "write"]] = Field(default=UNSET)
-
-
-class WebhooksIssuePropPullRequest(GitHubModel):
-    """WebhooksIssuePropPullRequest"""
-
-    diff_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    patch_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhooksIssuePropReactions(GitHubModel):
-    """Reactions"""
-
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
-
-
-class WebhooksIssuePropUser(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
+    data: Missing[list[ExemptionRequestPushRulesetBypassPropDataItems]] = Field(
+        default=UNSET,
+        description="The data pertaining to the push rules that are being requested to be bypassed.",
     )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksIssue)
-model_rebuild(WebhooksIssuePropAssignee)
-model_rebuild(WebhooksIssuePropAssigneesItems)
-model_rebuild(WebhooksIssuePropLabelsItems)
-model_rebuild(WebhooksIssuePropMilestone)
-model_rebuild(WebhooksIssuePropMilestonePropCreator)
-model_rebuild(WebhooksIssuePropPerformedViaGithubApp)
-model_rebuild(WebhooksIssuePropPerformedViaGithubAppPropOwner)
-model_rebuild(WebhooksIssuePropPerformedViaGithubAppPropPermissions)
-model_rebuild(WebhooksIssuePropPullRequest)
-model_rebuild(WebhooksIssuePropReactions)
-model_rebuild(WebhooksIssuePropUser)
+class ExemptionRequestPushRulesetBypassPropDataItems(GitHubModel):
+    """ExemptionRequestPushRulesetBypassPropDataItems"""
+
+    ruleset_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the ruleset for the rules that were violated",
+    )
+    ruleset_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the ruleset for the rules that were violated",
+    )
+    total_violations: Missing[int] = Field(
+        default=UNSET, description="The number of violations"
+    )
+    rule_type: Missing[str] = Field(
+        default=UNSET, description="The type of rule that was violated"
+    )
+
+
+class DismissalRequestSecretScanning(GitHubModel):
+    """Secret scanning alert dismissal request data
+
+    Secret scanning alerts that have dismissal requests.
+    """
+
+    type: Missing[Literal["secret_scanning_closure"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[DismissalRequestSecretScanningPropDataItems]] = Field(
+        default=UNSET,
+        description="The data related to the secret scanning alerts that have dismissal requests.",
+    )
+
+
+class DismissalRequestSecretScanningPropDataItems(GitHubModel):
+    """DismissalRequestSecretScanningPropDataItems"""
+
+    reason: Missing[Literal["fixed_later", "false_positive", "tests", "revoked"]] = (
+        Field(default=UNSET, description="The reason for the dismissal request")
+    )
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that was detected"
+    )
+    alert_number: Missing[str] = Field(
+        default=UNSET, description="The number of the alert that was detected"
+    )
+
+
+class DismissalRequestCodeScanning(GitHubModel):
+    """Code scanning alert dismissal request data
+
+    Code scanning alerts that have dismissal requests.
+    """
+
+    type: Missing[Literal["code_scanning_alert_dismissal"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[DismissalRequestCodeScanningPropDataItems]] = Field(
+        default=UNSET,
+        description="The data related to the code scanning alerts that have dismissal requests.",
+    )
+
+
+class DismissalRequestCodeScanningPropDataItems(GitHubModel):
+    """DismissalRequestCodeScanningPropDataItems"""
+
+    alert_number: Missing[str] = Field(
+        default=UNSET, description="The number of the alert to be dismissed"
+    )
+
+
+class ExemptionRequestSecretScanning(GitHubModel):
+    """Secret scanning push protection exemption request data
+
+    Secret scanning push protections that are being requested to be bypassed.
+    """
+
+    type: Missing[Literal["secret_scanning"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[ExemptionRequestSecretScanningPropDataItems]] = Field(
+        default=UNSET,
+        description="The data pertaining to the secret scanning push protections that are being requested to be bypassed.",
+    )
+
+
+class ExemptionRequestSecretScanningPropDataItems(GitHubModel):
+    """ExemptionRequestSecretScanningPropDataItems"""
+
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that was detected"
+    )
+    locations: Missing[
+        list[ExemptionRequestSecretScanningPropDataItemsPropLocationsItems]
+    ] = Field(
+        default=UNSET, description="The location data of the secret that was detected"
+    )
+
+
+class ExemptionRequestSecretScanningPropDataItemsPropLocationsItems(GitHubModel):
+    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
+
+    commit: Missing[str] = Field(
+        default=UNSET, description="The commit SHA where the secret was detected"
+    )
+    branch: Missing[str] = Field(
+        default=UNSET, description="The branch where the secret was detected"
+    )
+    path: Missing[str] = Field(
+        default=UNSET, description="The path of the file where the secret was detected"
+    )
+
+
+model_rebuild(ExemptionRequest)
+model_rebuild(ExemptionRequestSecretScanningMetadata)
+model_rebuild(DismissalRequestSecretScanningMetadata)
+model_rebuild(DismissalRequestCodeScanningMetadata)
+model_rebuild(ExemptionRequestPushRulesetBypass)
+model_rebuild(ExemptionRequestPushRulesetBypassPropDataItems)
+model_rebuild(DismissalRequestSecretScanning)
+model_rebuild(DismissalRequestSecretScanningPropDataItems)
+model_rebuild(DismissalRequestCodeScanning)
+model_rebuild(DismissalRequestCodeScanningPropDataItems)
+model_rebuild(ExemptionRequestSecretScanning)
+model_rebuild(ExemptionRequestSecretScanningPropDataItems)
+model_rebuild(ExemptionRequestSecretScanningPropDataItemsPropLocationsItems)
 
 __all__ = (
-    "WebhooksIssue",
-    "WebhooksIssuePropAssignee",
-    "WebhooksIssuePropAssigneesItems",
-    "WebhooksIssuePropLabelsItems",
-    "WebhooksIssuePropMilestone",
-    "WebhooksIssuePropMilestonePropCreator",
-    "WebhooksIssuePropPerformedViaGithubApp",
-    "WebhooksIssuePropPerformedViaGithubAppPropOwner",
-    "WebhooksIssuePropPerformedViaGithubAppPropPermissions",
-    "WebhooksIssuePropPullRequest",
-    "WebhooksIssuePropReactions",
-    "WebhooksIssuePropUser",
+    "DismissalRequestCodeScanning",
+    "DismissalRequestCodeScanningMetadata",
+    "DismissalRequestCodeScanningPropDataItems",
+    "DismissalRequestSecretScanning",
+    "DismissalRequestSecretScanningMetadata",
+    "DismissalRequestSecretScanningPropDataItems",
+    "ExemptionRequest",
+    "ExemptionRequestPushRulesetBypass",
+    "ExemptionRequestPushRulesetBypassPropDataItems",
+    "ExemptionRequestSecretScanning",
+    "ExemptionRequestSecretScanningMetadata",
+    "ExemptionRequestSecretScanningPropDataItems",
+    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItems",
 )

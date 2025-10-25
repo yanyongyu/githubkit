@@ -10,17 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0317 import GitUserType
+from .group_0318 import VerificationType
 
 
-class CodeScanningAnalysisDeletionType(TypedDict):
-    """Analysis deletion
+class CommitPropCommitType(TypedDict):
+    """CommitPropCommit"""
 
-    Successful deletion of a code scanning analysis
-    """
+    url: str
+    author: Union[None, GitUserType]
+    committer: Union[None, GitUserType]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeType
+    verification: NotRequired[VerificationType]
 
-    next_analysis_url: Union[str, None]
-    confirm_delete_url: Union[str, None]
+
+class CommitPropCommitPropTreeType(TypedDict):
+    """CommitPropCommitPropTree"""
+
+    sha: str
+    url: str
 
 
-__all__ = ("CodeScanningAnalysisDeletionType",)
+__all__ = (
+    "CommitPropCommitPropTreeType",
+    "CommitPropCommitType",
+)

@@ -12,52 +12,36 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class FeedType(TypedDict):
-    """Feed
+class ActionsBillingUsageType(TypedDict):
+    """ActionsBillingUsage"""
 
-    Feed
-    """
-
-    timeline_url: str
-    user_url: str
-    current_user_public_url: NotRequired[str]
-    current_user_url: NotRequired[str]
-    current_user_actor_url: NotRequired[str]
-    current_user_organization_url: NotRequired[str]
-    current_user_organization_urls: NotRequired[list[str]]
-    security_advisories_url: NotRequired[str]
-    repository_discussions_url: NotRequired[str]
-    repository_discussions_category_url: NotRequired[str]
-    links: FeedPropLinksType
+    total_minutes_used: int
+    total_paid_minutes_used: int
+    included_minutes: int
+    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdownType
 
 
-class FeedPropLinksType(TypedDict):
-    """FeedPropLinks"""
+class ActionsBillingUsagePropMinutesUsedBreakdownType(TypedDict):
+    """ActionsBillingUsagePropMinutesUsedBreakdown"""
 
-    timeline: LinkWithTypeType
-    user: LinkWithTypeType
-    security_advisories: NotRequired[LinkWithTypeType]
-    current_user: NotRequired[LinkWithTypeType]
-    current_user_public: NotRequired[LinkWithTypeType]
-    current_user_actor: NotRequired[LinkWithTypeType]
-    current_user_organization: NotRequired[LinkWithTypeType]
-    current_user_organizations: NotRequired[list[LinkWithTypeType]]
-    repository_discussions: NotRequired[LinkWithTypeType]
-    repository_discussions_category: NotRequired[LinkWithTypeType]
-
-
-class LinkWithTypeType(TypedDict):
-    """Link With Type
-
-    Hypermedia Link with Type
-    """
-
-    href: str
-    type: str
+    ubuntu: NotRequired[int]
+    macos: NotRequired[int]
+    windows: NotRequired[int]
+    ubuntu_4_core: NotRequired[int]
+    ubuntu_8_core: NotRequired[int]
+    ubuntu_16_core: NotRequired[int]
+    ubuntu_32_core: NotRequired[int]
+    ubuntu_64_core: NotRequired[int]
+    windows_4_core: NotRequired[int]
+    windows_8_core: NotRequired[int]
+    windows_16_core: NotRequired[int]
+    windows_32_core: NotRequired[int]
+    windows_64_core: NotRequired[int]
+    macos_12_core: NotRequired[int]
+    total: NotRequired[int]
 
 
 __all__ = (
-    "FeedPropLinksType",
-    "FeedType",
-    "LinkWithTypeType",
+    "ActionsBillingUsagePropMinutesUsedBreakdownType",
+    "ActionsBillingUsageType",
 )

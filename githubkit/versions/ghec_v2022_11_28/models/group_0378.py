@@ -14,20 +14,21 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CheckImmutableReleases(GitHubModel):
-    """Check immutable releases
+class DeploymentBranchPolicySettings(GitHubModel):
+    """DeploymentBranchPolicySettings
 
-    Check immutable releases
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
     """
 
-    enabled: bool = Field(
-        description="Whether immutable releases are enabled for the repository."
+    protected_branches: bool = Field(
+        description="Whether only branches with branch protection rules can deploy to this environment. If `protected_branches` is `true`, `custom_branch_policies` must be `false`; if `protected_branches` is `false`, `custom_branch_policies` must be `true`."
     )
-    enforced_by_owner: bool = Field(
-        description="Whether immutable releases are enforced by the repository owner."
+    custom_branch_policies: bool = Field(
+        description="Whether only branches that match the specified name patterns can deploy to this environment.  If `custom_branch_policies` is `true`, `protected_branches` must be `false`; if `custom_branch_policies` is `false`, `protected_branches` must be `true`."
     )
 
 
-model_rebuild(CheckImmutableReleases)
+model_rebuild(DeploymentBranchPolicySettings)
 
-__all__ = ("CheckImmutableReleases",)
+__all__ = ("DeploymentBranchPolicySettings",)

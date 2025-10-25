@@ -9,31 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CustomDeploymentRuleApp(GitHubModel):
-    """Custom deployment protection rule app
+class Contributor(GitHubModel):
+    """Contributor
 
-    A GitHub App that is providing a custom deployment protection rule.
+    Contributor
     """
 
-    id: int = Field(
-        description="The unique identifier of the deployment protection rule integration."
-    )
-    slug: str = Field(
-        description="The slugified name of the deployment protection rule integration."
-    )
-    integration_url: str = Field(
-        description="The URL for the endpoint to get details about the app."
-    )
-    node_id: str = Field(
-        description="The node ID for the deployment protection rule integration."
-    )
+    login: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[Union[str, None]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    type: str = Field()
+    site_admin: Missing[bool] = Field(default=UNSET)
+    contributions: int = Field()
+    email: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CustomDeploymentRuleApp)
+model_rebuild(Contributor)
 
-__all__ = ("CustomDeploymentRuleApp",)
+__all__ = ("Contributor",)

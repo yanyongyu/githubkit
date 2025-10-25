@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0152 import RulesetVersionPropActorType
+from .group_0152 import RepositoryRuleMaxFileSizePropParametersType
 
 
-class RulesetVersionType(TypedDict):
-    """Ruleset version
+class RepositoryRuleMaxFileSizeType(TypedDict):
+    """max_file_size
 
-    The historical version of a ruleset
+    Prevent commits with individual files that exceed the specified limit from being
+    pushed to the commit graph.
     """
 
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: datetime
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
 
 
-__all__ = ("RulesetVersionType",)
+__all__ = ("RepositoryRuleMaxFileSizeType",)

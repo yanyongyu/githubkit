@@ -14,7 +14,7 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
 from .group_0010 import IntegrationType
-from .group_0094 import TeamType
+from .group_0091 import TeamType
 
 
 class ReviewRequestRemovedIssueEventType(TypedDict):

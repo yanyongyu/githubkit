@@ -9,22 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class AutolinkType(TypedDict):
-    """Autolink reference
+class OidcCustomSubRepoType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    An autolink reference.
+    Actions OIDC subject customization for a repository
     """
 
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
-    updated_at: NotRequired[Union[datetime, None]]
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
 
 
-__all__ = ("AutolinkType",)
+__all__ = ("OidcCustomSubRepoType",)

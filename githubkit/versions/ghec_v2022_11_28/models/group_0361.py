@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,49 +17,67 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class ContentTree(GitHubModel):
+    """Content Tree
 
-class DeploymentStatus(GitHubModel):
-    """Deployment Status
-
-    The status of a deployment.
+    Content Tree
     """
 
+    type: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    content: Missing[str] = Field(default=UNSET)
     url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ] = Field(description="The state of the status.")
-    creator: Union[None, SimpleUser] = Field()
-    description: str = Field(
-        max_length=140, default="", description="A short description of the status."
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="The environment of the deployment that the status is for.",
-    )
-    target_url: str = Field(
-        default="",
-        description="Closing down notice: the URL to associate with this status.",
-    )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    deployment_url: str = Field()
-    repository_url: str = Field()
-    environment_url: Missing[str] = Field(
-        default=UNSET, description="The URL for accessing your environment."
-    )
-    log_url: Missing[str] = Field(
-        default=UNSET, description="The URL to associate with this status."
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    entries: Missing[list[ContentTreePropEntriesItems]] = Field(default=UNSET)
+    encoding: Missing[str] = Field(default=UNSET)
+    links: ContentTreePropLinks = Field(alias="_links")
 
 
-model_rebuild(DeploymentStatus)
+class ContentTreePropLinks(GitHubModel):
+    """ContentTreePropLinks"""
 
-__all__ = ("DeploymentStatus",)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+class ContentTreePropEntriesItems(GitHubModel):
+    """ContentTreePropEntriesItems"""
+
+    type: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentTreePropEntriesItemsPropLinks = Field(alias="_links")
+
+
+class ContentTreePropEntriesItemsPropLinks(GitHubModel):
+    """ContentTreePropEntriesItemsPropLinks"""
+
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(ContentTree)
+model_rebuild(ContentTreePropLinks)
+model_rebuild(ContentTreePropEntriesItems)
+model_rebuild(ContentTreePropEntriesItemsPropLinks)
+
+__all__ = (
+    "ContentTree",
+    "ContentTreePropEntriesItems",
+    "ContentTreePropEntriesItemsPropLinks",
+    "ContentTreePropLinks",
+)

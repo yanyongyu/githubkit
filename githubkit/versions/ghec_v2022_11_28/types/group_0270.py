@@ -9,24 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class ProjectColumnType(TypedDict):
-    """Project Column
+class CodeOfConductSimpleType(TypedDict):
+    """Code Of Conduct Simple
 
-    Project columns contain cards of work.
+    Code of Conduct Simple
     """
 
     url: str
-    project_url: str
-    cards_url: str
-    id: int
-    node_id: str
+    key: str
     name: str
-    created_at: datetime
-    updated_at: datetime
+    html_url: Union[str, None]
 
 
-__all__ = ("ProjectColumnType",)
+__all__ = ("CodeOfConductSimpleType",)

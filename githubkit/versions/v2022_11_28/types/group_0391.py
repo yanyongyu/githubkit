@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0176 import RepositoryRuleCommitterEmailPatternPropParametersType
+from .group_0172 import RepositoryRuleCommitterEmailPatternPropParametersType
 
 
 class RepositoryRuleDetailedOneof12Type(TypedDict):

@@ -9,48 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0077 import TeamSimpleType
 
+class GetConsumedLicensesType(TypedDict):
+    """Enterprise Consumed Licenses
 
-class TeamType(TypedDict):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
+    A breakdown of the licenses consumed by an enterprise.
     """
 
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    parent: Union[None, TeamSimpleType]
+    total_seats_consumed: NotRequired[int]
+    total_seats_purchased: NotRequired[int]
+    users: NotRequired[list[GetConsumedLicensesPropUsersItemsType]]
 
 
-class TeamPropPermissionsType(TypedDict):
-    """TeamPropPermissions"""
+class GetConsumedLicensesPropUsersItemsType(TypedDict):
+    """GetConsumedLicensesPropUsersItems"""
 
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    github_com_login: NotRequired[str]
+    github_com_name: NotRequired[Union[str, None]]
+    enterprise_server_user_ids: NotRequired[list[str]]
+    github_com_user: NotRequired[bool]
+    enterprise_server_user: NotRequired[Union[bool, None]]
+    visual_studio_subscription_user: NotRequired[bool]
+    license_type: NotRequired[str]
+    github_com_profile: NotRequired[Union[str, None]]
+    github_com_member_roles: NotRequired[list[str]]
+    github_com_enterprise_roles: NotRequired[list[str]]
+    github_com_verified_domain_emails: NotRequired[list[str]]
+    github_com_saml_name_id: NotRequired[Union[str, None]]
+    github_com_orgs_with_pending_invites: NotRequired[list[str]]
+    github_com_two_factor_auth: NotRequired[Union[bool, None]]
+    enterprise_server_emails: NotRequired[list[str]]
+    visual_studio_license_status: NotRequired[Union[str, None]]
+    visual_studio_subscription_email: NotRequired[Union[str, None]]
+    total_user_accounts: NotRequired[int]
 
 
 __all__ = (
-    "TeamPropPermissionsType",
-    "TeamType",
+    "GetConsumedLicensesPropUsersItemsType",
+    "GetConsumedLicensesType",
 )

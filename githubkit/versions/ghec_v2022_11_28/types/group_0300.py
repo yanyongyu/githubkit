@@ -9,32 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0299 import BranchProtectionType
+
+class SimpleCommitType(TypedDict):
+    """Simple Commit
+
+    A commit.
+    """
+
+    id: str
+    tree_id: str
+    message: str
+    timestamp: datetime
+    author: Union[SimpleCommitPropAuthorType, None]
+    committer: Union[SimpleCommitPropCommitterType, None]
 
 
-class ShortBranchType(TypedDict):
-    """Short Branch
+class SimpleCommitPropAuthorType(TypedDict):
+    """SimpleCommitPropAuthor
 
-    Short Branch
+    Information about the Git author
     """
 
     name: str
-    commit: ShortBranchPropCommitType
-    protected: bool
-    protection: NotRequired[BranchProtectionType]
-    protection_url: NotRequired[str]
+    email: str
 
 
-class ShortBranchPropCommitType(TypedDict):
-    """ShortBranchPropCommit"""
+class SimpleCommitPropCommitterType(TypedDict):
+    """SimpleCommitPropCommitter
 
-    sha: str
-    url: str
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
 
 
 __all__ = (
-    "ShortBranchPropCommitType",
-    "ShortBranchType",
+    "SimpleCommitPropAuthorType",
+    "SimpleCommitPropCommitterType",
+    "SimpleCommitType",
 )

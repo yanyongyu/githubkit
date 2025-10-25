@@ -9,31 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0003 import SimpleUserType
 
 
-class ProjectsV2StatusUpdateType(TypedDict):
-    """Projects v2 Status Update
+class ProjectsV2ItemWithContentType(TypedDict):
+    """Projects v2 Item
 
-    An status update belonging to a project
+    An item belonging to a project
     """
 
     id: float
-    node_id: str
-    project_node_id: NotRequired[str]
+    node_id: NotRequired[str]
+    project_url: NotRequired[str]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    content: NotRequired[Union[ProjectsV2ItemWithContentPropContentType, None]]
     creator: NotRequired[SimpleUserType]
     created_at: datetime
     updated_at: datetime
-    status: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ]
-    start_date: NotRequired[date]
-    target_date: NotRequired[date]
-    body: NotRequired[Union[str, None]]
+    archived_at: Union[datetime, None]
+    item_url: NotRequired[Union[str, None]]
+    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsType]]
 
 
-__all__ = ("ProjectsV2StatusUpdateType",)
+ProjectsV2ItemWithContentPropContentType: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropContent
+
+The content of the item, which varies by content type.
+"""
+
+
+ProjectsV2ItemWithContentPropFieldsItemsType: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropFieldsItems
+"""
+
+
+__all__ = (
+    "ProjectsV2ItemWithContentPropContentType",
+    "ProjectsV2ItemWithContentPropFieldsItemsType",
+    "ProjectsV2ItemWithContentType",
+)

@@ -9,15 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-MetadataType: TypeAlias = dict[str, Any]
-"""metadata
-
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+from .group_0208 import MinimalRepositoryType
 
 
-__all__ = ("MetadataType",)
+class CombinedCommitStatusType(TypedDict):
+    """Combined Commit Status
+
+    Combined Commit Status
+    """
+
+    state: str
+    statuses: list[SimpleCommitStatusType]
+    sha: str
+    total_count: int
+    repository: MinimalRepositoryType
+    commit_url: str
+    url: str
+
+
+class SimpleCommitStatusType(TypedDict):
+    """Simple Commit Status"""
+
+    description: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: datetime
+    updated_at: datetime
+
+
+__all__ = (
+    "CombinedCommitStatusType",
+    "SimpleCommitStatusType",
+)

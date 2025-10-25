@@ -9,54 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type(TypedDict):
-    """Workflow Job
+class WebhookStatusPropCommitPropCommitPropAuthorAllof0Type(TypedDict):
+    """Committer
 
-    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
-    and `started_at` are the same as those in a [`check_run`](#check_run) object.
+    Metaproperties for Git author/committer information.
     """
 
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
+    date: NotRequired[datetime]
+    email: Union[str, None]
     name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed"]
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType]
-    url: str
+    username: NotRequired[str]
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType(TypedDict):
-    """Workflow Step"""
-
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
-    name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "queued", "pending"]
-
-
-__all__ = (
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type",
-)
+__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof0Type",)

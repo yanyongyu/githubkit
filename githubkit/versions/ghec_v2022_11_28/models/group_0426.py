@@ -9,40 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class MergedUpstream(GitHubModel):
+    """Merged upstream
 
-class ReleaseAsset(GitHubModel):
-    """Release Asset
-
-    Data related to a release.
+    Results of a successful merge upstream request
     """
 
-    url: str = Field()
-    browser_download_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field(description="The file name of the asset.")
-    label: Union[str, None] = Field()
-    state: Literal["uploaded", "open"] = Field(
-        description="State of the release asset."
-    )
-    content_type: str = Field()
-    size: int = Field()
-    digest: Union[str, None] = Field()
-    download_count: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    uploader: Union[None, SimpleUser] = Field()
+    message: Missing[str] = Field(default=UNSET)
+    merge_type: Missing[Literal["merge", "fast-forward", "none"]] = Field(default=UNSET)
+    base_branch: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReleaseAsset)
+model_rebuild(MergedUpstream)
 
-__all__ = ("ReleaseAsset",)
+__all__ = ("MergedUpstream",)

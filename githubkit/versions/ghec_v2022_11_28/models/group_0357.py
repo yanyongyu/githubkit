@@ -9,17 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from datetime import datetime
+from typing import Union
+
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0208 import MinimalRepository
 
 
-class Metadata(ExtraGitHubModel):
-    """metadata
+class CombinedCommitStatus(GitHubModel):
+    """Combined Commit Status
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    Combined Commit Status
     """
 
+    state: str = Field()
+    statuses: list[SimpleCommitStatus] = Field()
+    sha: str = Field()
+    total_count: int = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    commit_url: str = Field()
+    url: str = Field()
 
-model_rebuild(Metadata)
 
-__all__ = ("Metadata",)
+class SimpleCommitStatus(GitHubModel):
+    """Simple Commit Status"""
+
+    description: Union[str, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    state: str = Field()
+    context: str = Field()
+    target_url: Union[str, None] = Field()
+    required: Missing[Union[bool, None]] = Field(default=UNSET)
+    avatar_url: Union[str, None] = Field()
+    url: str = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+
+
+model_rebuild(CombinedCommitStatus)
+model_rebuild(SimpleCommitStatus)
+
+__all__ = (
+    "CombinedCommitStatus",
+    "SimpleCommitStatus",
+)

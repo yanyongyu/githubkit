@@ -9,32 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0172 import RulesetVersionWithStateAllof1PropStateType
 
 
-class IssueTypeType(TypedDict):
-    """Issue Type
+class RulesetVersionWithStateAllof1Type(TypedDict):
+    """RulesetVersionWithStateAllof1"""
 
-    The type of issue.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    description: Union[str, None]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-    is_enabled: NotRequired[bool]
+    state: RulesetVersionWithStateAllof1PropStateType
 
 
-__all__ = ("IssueTypeType",)
+__all__ = ("RulesetVersionWithStateAllof1Type",)

@@ -12,29 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0097 import RepositoryRulesetConditionsPropRefName
-from .group_0099 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
-)
-from .group_0101 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
+from .group_0107 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
 )
 
 
-class EnterpriseRulesetConditionsOneof3(GitHubModel):
-    """organization_id_and_repository_property
+class EnterpriseRulesetConditionsOrganizationNameTarget(GitHubModel):
+    """Repository ruleset conditions for organization names
 
-    Conditions to target organization by id and repositories by property
+    Parameters for an organization name condition
     """
 
-    organization_id: EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId = Field()
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
 
 
-model_rebuild(EnterpriseRulesetConditionsOneof3)
+model_rebuild(EnterpriseRulesetConditionsOrganizationNameTarget)
 
-__all__ = ("EnterpriseRulesetConditionsOneof3",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationNameTarget",)

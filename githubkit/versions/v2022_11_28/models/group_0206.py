@@ -20,7 +20,7 @@ from githubkit.utils import UNSET
 
 from .group_0001 import CvssSeverities
 from .group_0003 import SimpleUser
-from .group_0094 import Team
+from .group_0091 import Team
 from .group_0205 import RepositoryAdvisoryCredit
 
 

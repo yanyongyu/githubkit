@@ -11,14 +11,16 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0046 import RunnerLabelType
+from .group_0035 import ActionsHostedRunnerCuratedImageType
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
+class EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200"""
 
     total_count: int
-    labels: list[RunnerLabelType]
+    images: list[ActionsHostedRunnerCuratedImageType]
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type",)
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type",)

@@ -9,16 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0285 import WorkflowRunType
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsGetResponse200"""
+class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
-    total_count: int
-    workflow_runs: list[WorkflowRunType]
+    permission: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsGetResponse200Type",)
+__all__ = ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",)

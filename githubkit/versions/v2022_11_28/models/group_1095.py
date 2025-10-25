@@ -9,73 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class ReposOwnerRepoContentsPathPutBody(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBody"""
 
-    message: str = Field(description="The commit message.")
-    content: str = Field(description="The new file content, using Base64 encoding.")
-    sha: Missing[str] = Field(
-        default=UNSET,
-        description="**Required if you are updating a file**. The blob SHA of the file being replaced.",
+class ReposOwnerRepoCodespacesNewGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
+
+    billable_owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    branch: Missing[str] = Field(
-        default=UNSET,
-        description="The branch name. Default: the repository’s default branch.",
-    )
-    committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitter] = Field(
-        default=UNSET,
-        description="The person that committed the file. Default: the authenticated user.",
-    )
-    author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthor] = Field(
-        default=UNSET,
-        description="The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.",
+    defaults: Missing[ReposOwnerRepoCodespacesNewGetResponse200PropDefaults] = Field(
+        default=UNSET
     )
 
 
-class ReposOwnerRepoContentsPathPutBodyPropCommitter(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaults(GitHubModel):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
 
-    The person that committed the file. Default: the authenticated user.
-    """
-
-    name: str = Field(
-        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
-    )
-    email: str = Field(
-        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
-    )
-    date: Missing[str] = Field(default=UNSET)
+    location: str = Field()
+    devcontainer_path: Union[str, None] = Field()
 
 
-class ReposOwnerRepoContentsPathPutBodyPropAuthor(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBodyPropAuthor
-
-    The author of the file. Default: The `committer` or the authenticated user if
-    you omit `committer`.
-    """
-
-    name: str = Field(
-        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
-    )
-    email: str = Field(
-        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
-    )
-    date: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ReposOwnerRepoContentsPathPutBody)
-model_rebuild(ReposOwnerRepoContentsPathPutBodyPropCommitter)
-model_rebuild(ReposOwnerRepoContentsPathPutBodyPropAuthor)
+model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200)
+model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200PropDefaults)
 
 __all__ = (
-    "ReposOwnerRepoContentsPathPutBody",
-    "ReposOwnerRepoContentsPathPutBodyPropAuthor",
-    "ReposOwnerRepoContentsPathPutBodyPropCommitter",
+    "ReposOwnerRepoCodespacesNewGetResponse200",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults",
 )

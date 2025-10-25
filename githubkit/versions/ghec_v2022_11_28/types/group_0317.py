@@ -10,16 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAutofixType(TypedDict):
-    """CodeScanningAutofix"""
+class GitUserType(TypedDict):
+    """Git User
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: datetime
+    Metaproperties for Git author/committer information.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[datetime]
 
 
-__all__ = ("CodeScanningAutofixType",)
+__all__ = ("GitUserType",)

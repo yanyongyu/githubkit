@@ -18,47 +18,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamSimple(GitHubModel):
-    """Team Simple
+class CodeScanningAlertRuleSummary(GitHubModel):
+    """CodeScanningAlertRuleSummary"""
 
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int = Field(description="Unique identifier of the team")
-    node_id: str = Field()
-    url: str = Field(description="URL for the team")
-    members_url: str = Field()
-    name: str = Field(description="Name of the team")
-    description: Union[str, None] = Field(description="Description of the team")
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
-    )
-    privacy: Missing[str] = Field(
-        default=UNSET, description="The level of privacy this team should have"
-    )
-    notification_setting: Missing[str] = Field(
-        default=UNSET, description="The notification setting the team has set"
-    )
-    html_url: str = Field()
-    repositories_url: str = Field()
-    slug: str = Field()
-    ldap_dn: Missing[str] = Field(
+    id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Distinguished Name (DN) that team maps to within LDAP environment",
+        description="A unique identifier for the rule used to detect the alert.",
     )
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the rule used to detect the alert."
     )
-    organization_id: Missing[int] = Field(
+    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
+        default=UNSET, description="The severity of the alert."
+    )
+    security_severity_level: Missing[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ] = Field(default=UNSET, description="The security severity of the alert.")
+    description: Missing[str] = Field(
         default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
+        description="A short description of the rule used to detect the alert.",
     )
-    enterprise_id: Missing[int] = Field(
+    full_description: Missing[str] = Field(
+        default=UNSET, description="A description of the rule used to detect the alert."
+    )
+    tags: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A set of tags applicable for the rule."
+    )
+    help_: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
+        alias="help",
+        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
+    )
+    help_uri: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A link to the documentation for the rule used to detect the alert.",
     )
 
 
-model_rebuild(TeamSimple)
+model_rebuild(CodeScanningAlertRuleSummary)
 
-__all__ = ("TeamSimple",)
+__all__ = ("CodeScanningAlertRuleSummary",)

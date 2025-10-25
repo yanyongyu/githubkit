@@ -9,25 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0400 import TimelineCrossReferencedEventPropSourceType
+from .group_0010 import IntegrationType
 
 
-class TimelineCrossReferencedEventType(TypedDict):
-    """Timeline Cross Referenced Event
+class LabeledIssueEventType(TypedDict):
+    """Labeled Issue Event
 
-    Timeline Cross Referenced Event
+    Labeled Issue Event
     """
 
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    source: TimelineCrossReferencedEventPropSourceType
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["labeled"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    label: LabeledIssueEventPropLabelType
 
 
-__all__ = ("TimelineCrossReferencedEventType",)
+class LabeledIssueEventPropLabelType(TypedDict):
+    """LabeledIssueEventPropLabel"""
+
+    name: str
+    color: str
+
+
+__all__ = (
+    "LabeledIssueEventPropLabelType",
+    "LabeledIssueEventType",
+)

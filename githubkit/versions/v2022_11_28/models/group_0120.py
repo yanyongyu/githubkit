@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,41 +17,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0020 import Repository
+from .group_0090 import TeamSimple
 
 
-class Migration(GitHubModel):
-    """Migration
+class UserRoleAssignment(GitHubModel):
+    """A Role Assignment for a User
 
-    A migration.
+    The Relationship a User has with a role.
     """
 
-    id: int = Field()
-    owner: Union[None, SimpleUser] = Field()
-    guid: str = Field()
-    state: str = Field()
-    lock_repositories: bool = Field()
-    exclude_metadata: bool = Field()
-    exclude_git_data: bool = Field()
-    exclude_attachments: bool = Field()
-    exclude_releases: bool = Field()
-    exclude_owner_projects: bool = Field()
-    org_metadata_only: bool = Field()
-    repositories: list[Repository] = Field(
-        description="The repositories included in the migration. Only returned for export migrations."
-    )
-    url: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    node_id: str = Field()
-    archive_url: Missing[str] = Field(default=UNSET)
-    exclude: Missing[list[str]] = Field(
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
         default=UNSET,
-        description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
+        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
     )
+    inherited_from: Missing[list[TeamSimple]] = Field(
+        default=UNSET, description="Team the user has gotten the role through"
+    )
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(Migration)
+model_rebuild(UserRoleAssignment)
 
-__all__ = ("Migration",)
+__all__ = ("UserRoleAssignment",)

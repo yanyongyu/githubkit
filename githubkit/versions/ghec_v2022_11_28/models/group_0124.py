@@ -14,24 +14,52 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0125 import RepositoryRuleBranchNamePatternPropParameters
 
 
-class RepositoryRuleBranchNamePattern(GitHubModel):
-    """branch_name_pattern
+class RepositoryRuleCreation(GitHubModel):
+    """creation
 
-    Parameters to be used for the branch_name_pattern rule
+    Only allow users with bypass permission to create matching refs.
     """
 
-    type: Literal["branch_name_pattern"] = Field()
-    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["creation"] = Field()
 
 
-model_rebuild(RepositoryRuleBranchNamePattern)
+class RepositoryRuleDeletion(GitHubModel):
+    """deletion
 
-__all__ = ("RepositoryRuleBranchNamePattern",)
+    Only allow users with bypass permissions to delete matching refs.
+    """
+
+    type: Literal["deletion"] = Field()
+
+
+class RepositoryRuleRequiredSignatures(GitHubModel):
+    """required_signatures
+
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"] = Field()
+
+
+class RepositoryRuleNonFastForward(GitHubModel):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"] = Field()
+
+
+model_rebuild(RepositoryRuleCreation)
+model_rebuild(RepositoryRuleDeletion)
+model_rebuild(RepositoryRuleRequiredSignatures)
+model_rebuild(RepositoryRuleNonFastForward)
+
+__all__ = (
+    "RepositoryRuleCreation",
+    "RepositoryRuleDeletion",
+    "RepositoryRuleNonFastForward",
+    "RepositoryRuleRequiredSignatures",
+)

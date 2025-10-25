@@ -14,48 +14,35 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class PackageVersionType(TypedDict):
-    """Package Version
+class OrgPrivateRegistryConfigurationWithSelectedRepositoriesType(TypedDict):
+    """Organization private registry
 
-    A version of a software package
+    Private registry configuration for an organization
     """
 
-    id: int
     name: str
-    url: str
-    package_html_url: str
-    html_url: NotRequired[str]
-    license_: NotRequired[str]
-    description: NotRequired[str]
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ]
+    username: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
     created_at: datetime
     updated_at: datetime
-    deleted_at: NotRequired[datetime]
-    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-class PackageVersionPropMetadataType(TypedDict):
-    """Package Version Metadata"""
-
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    container: NotRequired[PackageVersionPropMetadataPropContainerType]
-    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
-
-
-class PackageVersionPropMetadataPropContainerType(TypedDict):
-    """Container Metadata"""
-
-    tags: list[str]
-
-
-class PackageVersionPropMetadataPropDockerType(TypedDict):
-    """Docker Metadata"""
-
-    tag: NotRequired[list[str]]
-
-
-__all__ = (
-    "PackageVersionPropMetadataPropContainerType",
-    "PackageVersionPropMetadataPropDockerType",
-    "PackageVersionPropMetadataType",
-    "PackageVersionType",
-)
+__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",)

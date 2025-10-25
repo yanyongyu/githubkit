@@ -17,23 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0129 import RepositoryRuleFilePathRestrictionPropParameters
+from .group_0129 import RepositoryRuleRequiredDeploymentsPropParameters
 
 
-class RepositoryRuleFilePathRestriction(GitHubModel):
-    """file_path_restriction
+class RepositoryRuleRequiredDeployments(GitHubModel):
+    """required_deployments
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["file_path_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFilePathRestrictionPropParameters] = Field(
+    type: Literal["required_deployments"] = Field()
+    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
         default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleFilePathRestriction)
+model_rebuild(RepositoryRuleRequiredDeployments)
 
-__all__ = ("RepositoryRuleFilePathRestriction",)
+__all__ = ("RepositoryRuleRequiredDeployments",)

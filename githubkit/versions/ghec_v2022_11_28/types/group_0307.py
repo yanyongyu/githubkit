@@ -9,133 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0298 import BranchRestrictionPolicyType
-from .group_0308 import ProtectedBranchPropRequiredPullRequestReviewsType
 
+class WorkflowRunUsageType(TypedDict):
+    """Workflow Run Usage
 
-class ProtectedBranchType(TypedDict):
-    """Protected Branch
-
-    Branch protections protect branches
+    Workflow Run Usage
     """
 
-    url: str
-    required_status_checks: NotRequired[StatusCheckPolicyType]
-    required_pull_request_reviews: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsType
+    billable: WorkflowRunUsagePropBillableType
+    run_duration_ms: NotRequired[int]
+
+
+class WorkflowRunUsagePropBillableType(TypedDict):
+    """WorkflowRunUsagePropBillable"""
+
+    ubuntu: NotRequired[WorkflowRunUsagePropBillablePropUbuntuType]
+    macos: NotRequired[WorkflowRunUsagePropBillablePropMacosType]
+    windows: NotRequired[WorkflowRunUsagePropBillablePropWindowsType]
+
+
+class WorkflowRunUsagePropBillablePropUbuntuType(TypedDict):
+    """WorkflowRunUsagePropBillablePropUbuntu"""
+
+    total_ms: int
+    jobs: int
+    job_runs: NotRequired[
+        list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType]
     ]
-    required_signatures: NotRequired[ProtectedBranchPropRequiredSignaturesType]
-    enforce_admins: NotRequired[ProtectedBranchPropEnforceAdminsType]
-    required_linear_history: NotRequired[ProtectedBranchPropRequiredLinearHistoryType]
-    allow_force_pushes: NotRequired[ProtectedBranchPropAllowForcePushesType]
-    allow_deletions: NotRequired[ProtectedBranchPropAllowDeletionsType]
-    restrictions: NotRequired[BranchRestrictionPolicyType]
-    required_conversation_resolution: NotRequired[
-        ProtectedBranchPropRequiredConversationResolutionType
+
+
+class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType(TypedDict):
+    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
+
+    job_id: int
+    duration_ms: int
+
+
+class WorkflowRunUsagePropBillablePropMacosType(TypedDict):
+    """WorkflowRunUsagePropBillablePropMacos"""
+
+    total_ms: int
+    jobs: int
+    job_runs: NotRequired[
+        list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType]
     ]
-    block_creations: NotRequired[ProtectedBranchPropBlockCreationsType]
-    lock_branch: NotRequired[ProtectedBranchPropLockBranchType]
-    allow_fork_syncing: NotRequired[ProtectedBranchPropAllowForkSyncingType]
 
 
-class ProtectedBranchPropRequiredSignaturesType(TypedDict):
-    """ProtectedBranchPropRequiredSignatures"""
+class WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType(TypedDict):
+    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
 
-    url: str
-    enabled: bool
-
-
-class ProtectedBranchPropEnforceAdminsType(TypedDict):
-    """ProtectedBranchPropEnforceAdmins"""
-
-    url: str
-    enabled: bool
+    job_id: int
+    duration_ms: int
 
 
-class ProtectedBranchPropRequiredLinearHistoryType(TypedDict):
-    """ProtectedBranchPropRequiredLinearHistory"""
+class WorkflowRunUsagePropBillablePropWindowsType(TypedDict):
+    """WorkflowRunUsagePropBillablePropWindows"""
 
-    enabled: bool
-
-
-class ProtectedBranchPropAllowForcePushesType(TypedDict):
-    """ProtectedBranchPropAllowForcePushes"""
-
-    enabled: bool
+    total_ms: int
+    jobs: int
+    job_runs: NotRequired[
+        list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType]
+    ]
 
 
-class ProtectedBranchPropAllowDeletionsType(TypedDict):
-    """ProtectedBranchPropAllowDeletions"""
+class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType(TypedDict):
+    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
 
-    enabled: bool
-
-
-class ProtectedBranchPropRequiredConversationResolutionType(TypedDict):
-    """ProtectedBranchPropRequiredConversationResolution"""
-
-    enabled: NotRequired[bool]
-
-
-class ProtectedBranchPropBlockCreationsType(TypedDict):
-    """ProtectedBranchPropBlockCreations"""
-
-    enabled: bool
-
-
-class ProtectedBranchPropLockBranchType(TypedDict):
-    """ProtectedBranchPropLockBranch
-
-    Whether to set the branch as read-only. If this is true, users will not be able
-    to push to the branch.
-    """
-
-    enabled: NotRequired[bool]
-
-
-class ProtectedBranchPropAllowForkSyncingType(TypedDict):
-    """ProtectedBranchPropAllowForkSyncing
-
-    Whether users can pull changes from upstream when the branch is locked. Set to
-    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-    """
-
-    enabled: NotRequired[bool]
-
-
-class StatusCheckPolicyType(TypedDict):
-    """Status Check Policy
-
-    Status Check Policy
-    """
-
-    url: str
-    strict: bool
-    contexts: list[str]
-    checks: list[StatusCheckPolicyPropChecksItemsType]
-    contexts_url: str
-
-
-class StatusCheckPolicyPropChecksItemsType(TypedDict):
-    """StatusCheckPolicyPropChecksItems"""
-
-    context: str
-    app_id: Union[int, None]
+    job_id: int
+    duration_ms: int
 
 
 __all__ = (
-    "ProtectedBranchPropAllowDeletionsType",
-    "ProtectedBranchPropAllowForcePushesType",
-    "ProtectedBranchPropAllowForkSyncingType",
-    "ProtectedBranchPropBlockCreationsType",
-    "ProtectedBranchPropEnforceAdminsType",
-    "ProtectedBranchPropLockBranchType",
-    "ProtectedBranchPropRequiredConversationResolutionType",
-    "ProtectedBranchPropRequiredLinearHistoryType",
-    "ProtectedBranchPropRequiredSignaturesType",
-    "ProtectedBranchType",
-    "StatusCheckPolicyPropChecksItemsType",
-    "StatusCheckPolicyType",
+    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType",
+    "WorkflowRunUsagePropBillablePropMacosType",
+    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType",
+    "WorkflowRunUsagePropBillablePropUbuntuType",
+    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType",
+    "WorkflowRunUsagePropBillablePropWindowsType",
+    "WorkflowRunUsagePropBillableType",
+    "WorkflowRunUsageType",
 )

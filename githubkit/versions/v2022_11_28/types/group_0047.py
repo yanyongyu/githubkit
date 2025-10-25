@@ -9,37 +9,76 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0045 import IssueType
+from .group_0046 import IssueCommentType
 
-class IssueFieldValueType(TypedDict):
-    """Issue Field Value
 
-    A value assigned to an issue field
+class EventPropPayloadType(TypedDict):
+    """EventPropPayload"""
+
+    action: NotRequired[str]
+    issue: NotRequired[IssueType]
+    comment: NotRequired[IssueCommentType]
+    pages: NotRequired[list[EventPropPayloadPropPagesItemsType]]
+
+
+class EventPropPayloadPropPagesItemsType(TypedDict):
+    """EventPropPayloadPropPagesItems"""
+
+    page_name: NotRequired[str]
+    title: NotRequired[str]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class EventType(TypedDict):
+    """Event
+
+    Event
     """
 
-    issue_field_id: int
-    node_id: str
-    data_type: Literal["text", "single_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionType, None]
-    ]
+    id: str
+    type: Union[str, None]
+    actor: ActorType
+    repo: EventPropRepoType
+    org: NotRequired[ActorType]
+    payload: EventPropPayloadType
+    public: bool
+    created_at: Union[datetime, None]
 
 
-class IssueFieldValuePropSingleSelectOptionType(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
+class ActorType(TypedDict):
+    """Actor
 
-    Details about the selected option (only present for single_select fields)
+    Actor
     """
 
     id: int
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
+    url: str
+    avatar_url: str
+
+
+class EventPropRepoType(TypedDict):
+    """EventPropRepo"""
+
+    id: int
     name: str
-    color: str
+    url: str
 
 
 __all__ = (
-    "IssueFieldValuePropSingleSelectOptionType",
-    "IssueFieldValueType",
+    "ActorType",
+    "EventPropPayloadPropPagesItemsType",
+    "EventPropPayloadType",
+    "EventPropRepoType",
+    "EventType",
 )

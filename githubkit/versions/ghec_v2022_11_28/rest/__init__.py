@@ -32,6 +32,7 @@ if TYPE_CHECKING:
     from .emojis import EmojisClient
     from .enterprise_admin import EnterpriseAdminClient
     from .enterprise_team_memberships import EnterpriseTeamMembershipsClient
+    from .enterprise_team_organizations import EnterpriseTeamOrganizationsClient
     from .enterprise_teams import EnterpriseTeamsClient
     from .gists import GistsClient
     from .git import GitClient
@@ -188,6 +189,12 @@ class RestNamespace:
         from .enterprise_team_memberships import EnterpriseTeamMembershipsClient
 
         return EnterpriseTeamMembershipsClient(self._github)
+
+    @cached_property
+    def enterprise_team_organizations(self) -> "EnterpriseTeamOrganizationsClient":
+        from .enterprise_team_organizations import EnterpriseTeamOrganizationsClient
+
+        return EnterpriseTeamOrganizationsClient(self._github)
 
     @cached_property
     def activity(self) -> "ActivityClient":

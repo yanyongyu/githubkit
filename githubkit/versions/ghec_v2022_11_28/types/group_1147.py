@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    query_suite: NotRequired[Literal["default", "extended"]]
+    key_id: str
+    key: str
 
 
-__all__ = ("OrgsOrgSecurityProductEnablementPostBodyType",)
+__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",)

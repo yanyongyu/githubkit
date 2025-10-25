@@ -15,41 +15,19 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0064 import MinimalRepository
 
+class CustomPropertyValue(GitHubModel):
+    """Custom Property Value
 
-class Thread(GitHubModel):
-    """Thread
-
-    Thread
+    Custom property name and associated value
     """
 
-    id: str = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    property_name: str = Field(description="The name of the property")
+    value: Union[str, list[str], None] = Field(
+        description="The value assigned to the property"
     )
-    subject: ThreadPropSubject = Field()
-    reason: str = Field()
-    unread: bool = Field()
-    updated_at: str = Field()
-    last_read_at: Union[str, None] = Field()
-    url: str = Field()
-    subscription_url: str = Field()
 
 
-class ThreadPropSubject(GitHubModel):
-    """ThreadPropSubject"""
+model_rebuild(CustomPropertyValue)
 
-    title: str = Field()
-    url: str = Field()
-    latest_comment_url: str = Field()
-    type: str = Field()
-
-
-model_rebuild(Thread)
-model_rebuild(ThreadPropSubject)
-
-__all__ = (
-    "Thread",
-    "ThreadPropSubject",
-)
+__all__ = ("CustomPropertyValue",)

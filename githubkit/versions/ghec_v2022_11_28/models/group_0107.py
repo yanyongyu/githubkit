@@ -9,57 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleCreation(GitHubModel):
-    """creation
+class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName(
+    GitHubModel
+):
+    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
 
-    Only allow users with bypass permission to create matching refs.
-    """
-
-    type: Literal["creation"] = Field()
-
-
-class RepositoryRuleDeletion(GitHubModel):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"] = Field()
+    include: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of organization names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all organizations and ~EMUS to target all enterprise managed user accounts.",
+    )
+    exclude: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of organization names or patterns to exclude. The condition will not pass if any of these patterns match.",
+    )
 
 
-class RepositoryRuleRequiredSignatures(GitHubModel):
-    """required_signatures
+model_rebuild(EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName)
 
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"] = Field()
-
-
-class RepositoryRuleNonFastForward(GitHubModel):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"] = Field()
-
-
-model_rebuild(RepositoryRuleCreation)
-model_rebuild(RepositoryRuleDeletion)
-model_rebuild(RepositoryRuleRequiredSignatures)
-model_rebuild(RepositoryRuleNonFastForward)
-
-__all__ = (
-    "RepositoryRuleCreation",
-    "RepositoryRuleDeletion",
-    "RepositoryRuleNonFastForward",
-    "RepositoryRuleRequiredSignatures",
-)
+__all__ = ("EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName",)

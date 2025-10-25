@@ -9,20 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict
-
-from .group_0152 import RulesetVersionPropActorType
-from .group_0155 import RulesetVersionWithStateAllof1PropStateType
+from typing_extensions import NotRequired, TypedDict
 
 
-class RulesetVersionWithStateType(TypedDict):
-    """RulesetVersionWithState"""
+class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
+    """RestrictedCommits
 
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: datetime
-    state: RulesetVersionWithStateAllof1PropStateType
+    Restricted commit
+    """
+
+    oid: str
+    reason: NotRequired[str]
 
 
-__all__ = ("RulesetVersionWithStateType",)
+__all__ = ("RepositoryRuleParamsRestrictedCommitsType",)

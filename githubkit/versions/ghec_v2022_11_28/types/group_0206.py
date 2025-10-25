@@ -9,43 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CopilotOrganizationDetailsType(TypedDict):
-    """Copilot Organization Details
+class ApiOverviewType(TypedDict):
+    """Api Overview
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
+    Api Overview
     """
 
-    seat_breakdown: CopilotOrganizationSeatBreakdownType
-    public_code_suggestions: Literal["allow", "block", "unconfigured"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
+    verifiable_password_authentication: bool
+    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsType]
+    ssh_keys: NotRequired[list[str]]
+    hooks: NotRequired[list[str]]
+    github_enterprise_importer: NotRequired[list[str]]
+    web: NotRequired[list[str]]
+    api: NotRequired[list[str]]
+    git: NotRequired[list[str]]
+    packages: NotRequired[list[str]]
+    pages: NotRequired[list[str]]
+    importer: NotRequired[list[str]]
+    actions: NotRequired[list[str]]
+    actions_macos: NotRequired[list[str]]
+    codespaces: NotRequired[list[str]]
+    dependabot: NotRequired[list[str]]
+    copilot: NotRequired[list[str]]
+    domains: NotRequired[ApiOverviewPropDomainsType]
+
+
+class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
+    """ApiOverviewPropSshKeyFingerprints"""
+
+    sha256_rsa: NotRequired[str]
+    sha256_dsa: NotRequired[str]
+    sha256_ecdsa: NotRequired[str]
+    sha256_ed25519: NotRequired[str]
+
+
+class ApiOverviewPropDomainsType(TypedDict):
+    """ApiOverviewPropDomains"""
+
+    website: NotRequired[list[str]]
+    codespaces: NotRequired[list[str]]
+    copilot: NotRequired[list[str]]
+    packages: NotRequired[list[str]]
+    actions: NotRequired[list[str]]
+    actions_inbound: NotRequired[ApiOverviewPropDomainsPropActionsInboundType]
+    artifact_attestations: NotRequired[
+        ApiOverviewPropDomainsPropArtifactAttestationsType
     ]
-    plan_type: NotRequired[Literal["business", "enterprise"]]
 
 
-class CopilotOrganizationSeatBreakdownType(TypedDict):
-    """Copilot Seat Breakdown
+class ApiOverviewPropDomainsPropActionsInboundType(TypedDict):
+    """ApiOverviewPropDomainsPropActionsInbound"""
 
-    The breakdown of Copilot Business seats for the organization.
-    """
+    full_domains: NotRequired[list[str]]
+    wildcard_domains: NotRequired[list[str]]
 
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
+
+class ApiOverviewPropDomainsPropArtifactAttestationsType(TypedDict):
+    """ApiOverviewPropDomainsPropArtifactAttestations"""
+
+    trust_domain: NotRequired[str]
+    services: NotRequired[list[str]]
 
 
 __all__ = (
-    "CopilotOrganizationDetailsType",
-    "CopilotOrganizationSeatBreakdownType",
+    "ApiOverviewPropDomainsPropActionsInboundType",
+    "ApiOverviewPropDomainsPropArtifactAttestationsType",
+    "ApiOverviewPropDomainsType",
+    "ApiOverviewPropSshKeyFingerprintsType",
+    "ApiOverviewType",
 )

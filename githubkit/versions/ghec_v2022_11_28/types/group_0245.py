@@ -9,16 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType
+from .group_0044 import OrganizationSimpleType
 
 
-class LinkType(TypedDict):
-    """Link
+class OrgMembershipType(TypedDict):
+    """Org Membership
 
-    Hypermedia Link
+    Org Membership
     """
 
-    href: str
+    url: str
+    state: Literal["active", "pending"]
+    role: Literal["admin", "member", "billing_manager"]
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    organization_url: str
+    organization: OrganizationSimpleType
+    user: Union[None, SimpleUserType]
+    permissions: NotRequired[OrgMembershipPropPermissionsType]
 
 
-__all__ = ("LinkType",)
+class OrgMembershipPropPermissionsType(TypedDict):
+    """OrgMembershipPropPermissions"""
+
+    can_create_repository: bool
+
+
+__all__ = (
+    "OrgMembershipPropPermissionsType",
+    "OrgMembershipType",
+)

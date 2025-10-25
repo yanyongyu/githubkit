@@ -9,19 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0134 import RepositoryRuleRequiredStatusChecksPropParameters
 
 
-class RepositoryRuleFileExtensionRestrictionPropParameters(GitHubModel):
-    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+class RepositoryRuleRequiredStatusChecks(GitHubModel):
+    """required_status_checks
 
-    restricted_file_extensions: list[str] = Field(
-        description="The file extensions that are restricted from being pushed to the commit graph."
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
+    """
+
+    type: Literal["required_status_checks"] = Field()
+    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleFileExtensionRestrictionPropParameters)
+model_rebuild(RepositoryRuleRequiredStatusChecks)
 
-__all__ = ("RepositoryRuleFileExtensionRestrictionPropParameters",)
+__all__ = ("RepositoryRuleRequiredStatusChecks",)

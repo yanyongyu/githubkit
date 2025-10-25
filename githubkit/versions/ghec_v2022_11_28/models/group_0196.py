@@ -9,85 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Any, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class BillingPremiumRequestUsageReportOrg(GitHubModel):
-    """BillingPremiumRequestUsageReportOrg"""
-
-    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriod = Field(
-        alias="timePeriod"
-    )
-    organization: str = Field(description="The unique identifier of the organization.")
-    user: Missing[str] = Field(
-        default=UNSET, description="The name of the user for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model for the usage report."
-    )
-    usage_items: list[BillingPremiumRequestUsageReportOrgPropUsageItemsItems] = Field(
-        alias="usageItems"
-    )
+from .group_0003 import SimpleUser
 
 
-class BillingPremiumRequestUsageReportOrgPropTimePeriod(GitHubModel):
-    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
+class BaseGist(GitHubModel):
+    """Base Gist
 
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
-    )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
-    )
+    Base Gist
+    """
 
-
-class BillingPremiumRequestUsageReportOrgPropUsageItemsItems(GitHubModel):
-    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
-
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    model: str = Field(description="Model name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
+    url: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: BaseGistPropFiles = Field()
+    public: bool = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    comments_enabled: Missing[bool] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    comments_url: str = Field()
+    owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: int = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: int = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: int = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
-model_rebuild(BillingPremiumRequestUsageReportOrg)
-model_rebuild(BillingPremiumRequestUsageReportOrgPropTimePeriod)
-model_rebuild(BillingPremiumRequestUsageReportOrgPropUsageItemsItems)
+class BaseGistPropFiles(ExtraGitHubModel):
+    """BaseGistPropFiles"""
+
+
+model_rebuild(BaseGist)
+model_rebuild(BaseGistPropFiles)
 
 __all__ = (
-    "BillingPremiumRequestUsageReportOrg",
-    "BillingPremiumRequestUsageReportOrgPropTimePeriod",
-    "BillingPremiumRequestUsageReportOrgPropUsageItemsItems",
+    "BaseGist",
+    "BaseGistPropFiles",
 )

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,43 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0301 import GitUser
-from .group_0302 import Verification
+
+class Meta(GitHubModel):
+    """Meta
+
+    The metadata associated with the creation/updates to the user.
+    """
+
+    resource_type: Literal["User", "Group"] = Field(
+        alias="resourceType", description="A type of a resource"
+    )
+    created: Missing[str] = Field(
+        default=UNSET, description="A date and time when the user was created."
+    )
+    last_modified: Missing[str] = Field(
+        default=UNSET,
+        alias="lastModified",
+        description="A data and time when the user was last modified.",
+    )
+    location: Missing[str] = Field(
+        default=UNSET, description="A URL location of an object"
+    )
 
 
-class CommitSearchResultItemPropCommit(GitHubModel):
-    """CommitSearchResultItemPropCommit"""
+model_rebuild(Meta)
 
-    author: CommitSearchResultItemPropCommitPropAuthor = Field()
-    committer: Union[None, GitUser] = Field()
-    comment_count: int = Field()
-    message: str = Field()
-    tree: CommitSearchResultItemPropCommitPropTree = Field()
-    url: str = Field()
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
-
-
-class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
-    """CommitSearchResultItemPropCommitPropAuthor"""
-
-    name: str = Field()
-    email: str = Field()
-    date: datetime = Field()
-
-
-class CommitSearchResultItemPropCommitPropTree(GitHubModel):
-    """CommitSearchResultItemPropCommitPropTree"""
-
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(CommitSearchResultItemPropCommit)
-model_rebuild(CommitSearchResultItemPropCommitPropAuthor)
-model_rebuild(CommitSearchResultItemPropCommitPropTree)
-
-__all__ = (
-    "CommitSearchResultItemPropCommit",
-    "CommitSearchResultItemPropCommitPropAuthor",
-    "CommitSearchResultItemPropCommitPropTree",
-)
+__all__ = ("Meta",)

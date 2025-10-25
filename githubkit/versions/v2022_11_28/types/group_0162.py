@@ -10,19 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0163 import RepositoryRuleMergeQueuePropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleMergeQueueType(TypedDict):
-    """merge_queue
+class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
+    """RequiredReviewerConfiguration
 
-    Merges must be performed via a merge queue.
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
     """
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer: RepositoryRuleParamsReviewerType
 
 
-__all__ = ("RepositoryRuleMergeQueueType",)
+class RepositoryRuleParamsReviewerType(TypedDict):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int
+    type: Literal["Team"]
+
+
+__all__ = (
+    "RepositoryRuleParamsRequiredReviewerConfigurationType",
+    "RepositoryRuleParamsReviewerType",
+)

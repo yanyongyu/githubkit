@@ -13,19 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0242 import ProjectsV2Type
-from .group_0512 import SimpleInstallationType
-from .group_0513 import OrganizationSimpleWebhooksType
+from .group_0527 import EnterpriseWebhooksType
+from .group_0528 import SimpleInstallationType
+from .group_0529 import OrganizationSimpleWebhooksType
+from .group_0559 import PersonalAccessTokenRequestType
 
 
-class WebhookProjectsV2ProjectClosedType(TypedDict):
-    """Projects v2 Project Closed Event"""
+class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
+    """personal_access_token_request denied event"""
 
-    action: Literal["closed"]
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["denied"]
+    personal_access_token_request: PersonalAccessTokenRequestType
     organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
+    enterprise: NotRequired[EnterpriseWebhooksType]
     sender: SimpleUserType
+    installation: SimpleInstallationType
 
 
-__all__ = ("WebhookProjectsV2ProjectClosedType",)
+__all__ = ("WebhookPersonalAccessTokenRequestDeniedType",)

@@ -17,31 +17,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0303 import DiffEntry
-from .group_0304 import Commit
+from .group_0070 import SimpleRepository
 
 
-class CommitComparison(GitHubModel):
-    """Commit Comparison
+class CodeScanningVariantAnalysisRepoTask(GitHubModel):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    Commit Comparison
-    """
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
+    )
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ] = Field(
+        description="The new status of the CodeQL variant analysis repository task."
+    )
+    artifact_size_in_bytes: Missing[int] = Field(
+        default=UNSET,
+        description="The size of the artifact. This is only available for successful analyses.",
+    )
+    result_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+    )
+    failure_message: Missing[str] = Field(
+        default=UNSET,
+        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    )
+    database_commit_sha: Missing[str] = Field(
+        default=UNSET,
+        description="The SHA of the commit the CodeQL database was built against. This is only available for successful analyses.",
+    )
+    source_location_prefix: Missing[str] = Field(
+        default=UNSET,
+        description="The source location prefix to use. This is only available for successful analyses.",
+    )
+    artifact_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL of the artifact. This is only available for successful analyses.",
+    )
 
-    url: str = Field()
-    html_url: str = Field()
-    permalink_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    base_commit: Commit = Field(title="Commit", description="Commit")
-    merge_base_commit: Commit = Field(title="Commit", description="Commit")
-    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
-    ahead_by: int = Field()
-    behind_by: int = Field()
-    total_commits: int = Field()
-    commits: list[Commit] = Field()
-    files: Missing[list[DiffEntry]] = Field(default=UNSET)
 
+model_rebuild(CodeScanningVariantAnalysisRepoTask)
 
-model_rebuild(CommitComparison)
-
-__all__ = ("CommitComparison",)
+__all__ = ("CodeScanningVariantAnalysisRepoTask",)

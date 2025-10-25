@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleFilePathRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
+class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    restricted_file_paths: list[str]
+    required_deployment_environments: list[str]
 
 
-__all__ = ("RepositoryRuleFilePathRestrictionPropParametersType",)
+__all__ = ("RepositoryRuleRequiredDeploymentsPropParametersType",)

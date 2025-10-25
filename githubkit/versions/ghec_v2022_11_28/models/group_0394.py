@@ -9,53 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
 
-class AddedToProjectIssueEvent(GitHubModel):
-    """Added to Project Issue Event
+class CheckImmutableReleases(GitHubModel):
+    """Check immutable releases
 
-    Added to Project Issue Event
+    Check immutable releases
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["added_to_project"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[AddedToProjectIssueEventPropProjectCard] = Field(
-        default=UNSET
+    enabled: bool = Field(
+        description="Whether immutable releases are enabled for the repository."
+    )
+    enforced_by_owner: bool = Field(
+        description="Whether immutable releases are enforced by the repository owner."
     )
 
 
-class AddedToProjectIssueEventPropProjectCard(GitHubModel):
-    """AddedToProjectIssueEventPropProjectCard"""
+model_rebuild(CheckImmutableReleases)
 
-    id: int = Field()
-    url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(AddedToProjectIssueEvent)
-model_rebuild(AddedToProjectIssueEventPropProjectCard)
-
-__all__ = (
-    "AddedToProjectIssueEvent",
-    "AddedToProjectIssueEventPropProjectCard",
-)
+__all__ = ("CheckImmutableReleases",)

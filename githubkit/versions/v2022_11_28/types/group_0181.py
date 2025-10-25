@@ -12,19 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0182 import RepositoryRuleFilePathRestrictionPropParametersType
+from .group_0182 import RepositoryRuleFileExtensionRestrictionPropParametersType
 
 
-class RepositoryRuleFilePathRestrictionType(TypedDict):
-    """file_path_restriction
+class RepositoryRuleFileExtensionRestrictionType(TypedDict):
+    """file_extension_restriction
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
     """
 
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
 
 
-__all__ = ("RepositoryRuleFilePathRestrictionType",)
+__all__ = ("RepositoryRuleFileExtensionRestrictionType",)

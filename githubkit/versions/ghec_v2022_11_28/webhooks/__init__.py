@@ -158,6 +158,18 @@ if TYPE_CHECKING:
     from .org_block import org_block_action_types as org_block_action_types
     from .organization import OrganizationEvent as OrganizationEvent
     from .organization import organization_action_types as organization_action_types
+    from .organization_custom_property import (
+        OrganizationCustomPropertyEvent as OrganizationCustomPropertyEvent,
+    )
+    from .organization_custom_property import (
+        organization_custom_property_action_types as organization_custom_property_action_types,
+    )
+    from .organization_custom_property_values import (
+        OrganizationCustomPropertyValuesEvent as OrganizationCustomPropertyValuesEvent,
+    )
+    from .organization_custom_property_values import (
+        organization_custom_property_values_action_types as organization_custom_property_values_action_types,
+    )
     from .package import PackageEvent as PackageEvent
     from .package import package_action_types as package_action_types
     from .page_build import PageBuildEvent as PageBuildEvent
@@ -382,6 +394,14 @@ else:
         ".meta": ("MetaEvent", "meta_action_types"),
         ".milestone": ("MilestoneEvent", "milestone_action_types"),
         ".org_block": ("OrgBlockEvent", "org_block_action_types"),
+        ".organization_custom_property": (
+            "OrganizationCustomPropertyEvent",
+            "organization_custom_property_action_types",
+        ),
+        ".organization_custom_property_values": (
+            "OrganizationCustomPropertyValuesEvent",
+            "organization_custom_property_values_action_types",
+        ),
         ".organization": ("OrganizationEvent", "organization_action_types"),
         ".package": ("PackageEvent", "package_action_types"),
         ".page_build": ("PageBuildEvent", "page_build_action_types"),

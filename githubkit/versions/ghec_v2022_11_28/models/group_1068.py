@@ -9,55 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCampaignsCampaignNumberPatchBody(GitHubModel):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsPostBody"""
 
-    name: Missing[str] = Field(
-        min_length=1,
-        max_length=50,
+    name: str = Field(description="Name of the runner group.")
+    visibility: Missing[Literal["selected", "all", "private"]] = Field(
         default=UNSET,
-        description="The name of the campaign",
+        description="Visibility of a runner group. You can select all repositories, select individual repositories, or limit access to private repositories.",
     )
-    description: Missing[str] = Field(
-        min_length=1,
-        max_length=255,
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="A description for the campaign",
+        description="List of repository IDs that can access the runner group.",
     )
-    managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
+    runners: Missing[list[int]] = Field(
+        default=UNSET, description="List of runner IDs to add to the runner group."
+    )
+    allows_public_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
+        description="Whether the runner group can be used by `public` repositories.",
     )
-    team_managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
+    restricted_to_workflows: Missing[bool] = Field(
         default=UNSET,
-        description="The slugs of the teams to set as the campaign managers.",
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
     )
-    ends_at: Missing[datetime] = Field(
+    selected_workflows: Missing[list[str]] = Field(
         default=UNSET,
-        description="The end date and time of the campaign, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
     )
-    contact_link: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contact link of the campaign. Must be a URI."
-    )
-    state: Missing[Literal["open", "closed"]] = Field(
+    network_configuration_id: Missing[str] = Field(
         default=UNSET,
-        title="Campaign state",
-        description="Indicates whether a campaign is open or closed",
+        description="The identifier of a hosted compute network configuration.",
     )
 
 
-model_rebuild(OrgsOrgCampaignsCampaignNumberPatchBody)
+model_rebuild(OrgsOrgActionsRunnerGroupsPostBody)
 
-__all__ = ("OrgsOrgCampaignsCampaignNumberPatchBody",)
+__all__ = ("OrgsOrgActionsRunnerGroupsPostBody",)

@@ -9,14 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
-
-    review_draft_pull_requests: NotRequired[bool]
-    review_on_push: NotRequired[bool]
+from .group_0150 import RepositoryRuleFileExtensionRestrictionPropParametersType
 
 
-__all__ = ("RepositoryRuleCopilotCodeReviewPropParametersType",)
+class RepositoryRuleFileExtensionRestrictionType(TypedDict):
+    """file_extension_restriction
+
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
+    """
+
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
+
+
+__all__ = ("RepositoryRuleFileExtensionRestrictionType",)

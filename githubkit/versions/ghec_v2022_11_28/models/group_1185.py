@@ -12,18 +12,32 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
+class ProjectsColumnsCardsCardIdMovesPostResponse503(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-a-repository-public-key) endpoint.",
-    )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[
+        list[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoActionsSecretsSecretNamePutBody)
+class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
 
-__all__ = ("ReposOwnerRepoActionsSecretsSecretNamePutBody",)
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse503)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems)
+
+__all__ = (
+    "ProjectsColumnsCardsCardIdMovesPostResponse503",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems",
+)

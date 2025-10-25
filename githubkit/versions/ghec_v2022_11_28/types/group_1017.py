@@ -9,15 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0103 import CustomPropertyType
 
 
-class NotificationsPutBodyType(TypedDict):
-    """NotificationsPutBody"""
+class EnterprisesEnterprisePropertiesSchemaPatchBodyType(TypedDict):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    last_read_at: NotRequired[datetime]
-    read: NotRequired[bool]
+    properties: list[CustomPropertyType]
 
 
-__all__ = ("NotificationsPutBodyType",)
+__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBodyType",)

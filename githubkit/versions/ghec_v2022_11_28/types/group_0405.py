@@ -16,22 +16,32 @@ from .group_0003 import SimpleUserType
 from .group_0010 import IntegrationType
 
 
-class TimelineUnassignedIssueEventType(TypedDict):
-    """Timeline Unassigned Issue Event
+class RenamedIssueEventType(TypedDict):
+    """Renamed Issue Event
 
-    Timeline Unassigned Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["unassigned"]
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
+    rename: RenamedIssueEventPropRenameType
 
 
-__all__ = ("TimelineUnassignedIssueEventType",)
+class RenamedIssueEventPropRenameType(TypedDict):
+    """RenamedIssueEventPropRename"""
+
+    from_: str
+    to: str
+
+
+__all__ = (
+    "RenamedIssueEventPropRenameType",
+    "RenamedIssueEventType",
+)

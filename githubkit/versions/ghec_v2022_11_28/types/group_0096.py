@@ -11,16 +11,18 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0097 import RepositoryRulesetConditionsPropRefNameType
 
+class NetworkSettingsType(TypedDict):
+    """Hosted compute network settings resource
 
-class RepositoryRulesetConditionsType(TypedDict):
-    """Repository ruleset conditions for ref names
-
-    Parameters for a repository ruleset ref name condition
+    A hosted compute network settings resource.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
-__all__ = ("RepositoryRulesetConditionsType",)
+__all__ = ("NetworkSettingsType",)

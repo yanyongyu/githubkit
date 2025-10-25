@@ -9,55 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Annotated, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1097 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems
 
-class OrgsOrgHooksHookIdPatchBody(GitHubModel):
-    """OrgsOrgHooksHookIdPatchBody"""
 
-    config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfig] = Field(
-        default=UNSET,
-        description="Key/value pairs to provide settings for this webhook.",
+class OrgsOrgCampaignsPostBodyOneof0(GitHubModel):
+    """OrgsOrgCampaignsPostBodyOneof0"""
+
+    name: str = Field(
+        min_length=1, max_length=50, description="The name of the campaign"
     )
-    events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for.",
+    description: str = Field(
+        min_length=1, max_length=255, description="A description for the campaign"
     )
-    active: Missing[bool] = Field(
+    managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
     )
-    name: Missing[str] = Field(default=UNSET)
-
-
-class OrgsOrgHooksHookIdPatchBodyPropConfig(GitHubModel):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str = Field(description="The URL to which the payloads will be delivered.")
-    content_type: Missing[str] = Field(
+    team_managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+        description="The slugs of the teams to set as the campaign managers.",
     )
-    secret: Missing[str] = Field(
+    ends_at: datetime = Field(
+        description="The end date and time of the campaign. The date must be in the future."
+    )
+    contact_link: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contact link of the campaign. Must be a URI."
+    )
+    code_scanning_alerts: Union[
+        Annotated[
+            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems],
+            Field(min_length=1 if PYDANTIC_V2 else None),
+        ],
+        None,
+    ] = Field(description="The code scanning alerts to include in this campaign")
+    generate_issues: Missing[bool] = Field(
         default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
+        description="If true, will automatically generate issues for the campaign. The default is false.",
     )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgHooksHookIdPatchBody)
-model_rebuild(OrgsOrgHooksHookIdPatchBodyPropConfig)
+model_rebuild(OrgsOrgCampaignsPostBodyOneof0)
 
-__all__ = (
-    "OrgsOrgHooksHookIdPatchBody",
-    "OrgsOrgHooksHookIdPatchBodyPropConfig",
-)
+__all__ = ("OrgsOrgCampaignsPostBodyOneof0",)

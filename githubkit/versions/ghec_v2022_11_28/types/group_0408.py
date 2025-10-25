@@ -9,14 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-LanguageType: TypeAlias = dict[str, Any]
-"""Language
-
-Language
-"""
+from .group_0003 import SimpleUserType
+from .group_0010 import IntegrationType
 
 
-__all__ = ("LanguageType",)
+class ReviewDismissedIssueEventType(TypedDict):
+    """Review Dismissed Issue Event
+
+    Review Dismissed Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["review_dismissed"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewType
+
+
+class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
+    """ReviewDismissedIssueEventPropDismissedReview"""
+
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[str]
+
+
+__all__ = (
+    "ReviewDismissedIssueEventPropDismissedReviewType",
+    "ReviewDismissedIssueEventType",
+)

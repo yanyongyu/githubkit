@@ -9,22 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0111 import RepositoryRulesetConditionsPropRefName
 
 
-class RepositoryRuleRequiredLinearHistory(GitHubModel):
-    """required_linear_history
+class RepositoryRulesetConditions(GitHubModel):
+    """Repository ruleset conditions for ref names
 
-    Prevent merge commits from being pushed to matching refs.
+    Parameters for a repository ruleset ref name condition
     """
 
-    type: Literal["required_linear_history"] = Field()
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleRequiredLinearHistory)
+model_rebuild(RepositoryRulesetConditions)
 
-__all__ = ("RepositoryRuleRequiredLinearHistory",)
+__all__ = ("RepositoryRulesetConditions",)

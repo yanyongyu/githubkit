@@ -9,45 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0302 import VerificationType
+from .group_0373 import MetadataType
 
 
-class GitTagType(TypedDict):
-    """Git Tag
+class DependencyType(TypedDict):
+    """Dependency"""
 
-    Metadata for a Git tag
-    """
-
-    node_id: str
-    tag: str
-    sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataType]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
 
 
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
-
-    date: str
-    email: str
-    name: str
-
-
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
-
-    sha: str
-    type: str
-    url: str
-
-
-__all__ = (
-    "GitTagPropObjectType",
-    "GitTagPropTaggerType",
-    "GitTagType",
-)
+__all__ = ("DependencyType",)

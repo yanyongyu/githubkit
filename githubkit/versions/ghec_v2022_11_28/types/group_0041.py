@@ -9,16 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ActionsForkPrWorkflowsPrivateReposRequestType(TypedDict):
-    """ActionsForkPrWorkflowsPrivateReposRequest"""
+class ActionsForkPrContributorApprovalType(TypedDict):
+    """ActionsForkPrContributorApproval"""
 
-    run_workflows_from_fork_pull_requests: bool
-    send_write_tokens_to_workflows: NotRequired[bool]
-    send_secrets_and_variables: NotRequired[bool]
-    require_approval_for_fork_pr_workflows: NotRequired[bool]
+    approval_policy: Literal[
+        "first_time_contributors_new_to_github",
+        "first_time_contributors",
+        "all_external_contributors",
+    ]
 
 
-__all__ = ("ActionsForkPrWorkflowsPrivateReposRequestType",)
+__all__ = ("ActionsForkPrContributorApprovalType",)

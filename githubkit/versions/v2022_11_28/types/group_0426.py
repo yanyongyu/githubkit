@@ -16,11 +16,11 @@ from typing_extensions import NotRequired, TypedDict
 from .group_0003 import SimpleUserType
 from .group_0010 import IntegrationType
 from .group_0020 import RepositoryType
-from .group_0043 import MilestoneType
-from .group_0044 import IssueTypeType
-from .group_0045 import ReactionRollupType
-from .group_0046 import IssueDependenciesSummaryType, SubIssuesSummaryType
-from .group_0047 import IssueFieldValueType
+from .group_0040 import MilestoneType
+from .group_0041 import IssueTypeType
+from .group_0042 import ReactionRollupType
+from .group_0043 import IssueDependenciesSummaryType, SubIssuesSummaryType
+from .group_0044 import IssueFieldValueType
 from .group_0422 import SearchResultTextMatchesItemsType
 
 

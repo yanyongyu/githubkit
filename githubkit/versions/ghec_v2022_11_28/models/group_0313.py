@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,74 +17,52 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0191 import MinimalRepository
-from .group_0283 import PullRequestMinimal
-from .group_0284 import SimpleCommit
+from .group_0080 import Team
 
 
-class CheckSuite(GitHubModel):
-    """CheckSuite
+class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    A suite of checks performed on the code of a given code change
+    users: Missing[list[SimpleUser]] = Field(
+        default=UNSET, description="The list of users with review dismissal access."
+    )
+    teams: Missing[list[Team]] = Field(
+        default=UNSET, description="The list of teams with review dismissal access."
+    )
+    apps: Missing[list[Union[Integration, None]]] = Field(
+        default=UNSET, description="The list of apps with review dismissal access."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    users_url: Missing[str] = Field(default=UNSET)
+    teams_url: Missing[str] = Field(default=UNSET)
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    head_branch: Union[str, None] = Field()
-    head_sha: str = Field(
-        description="The SHA of the head commit that is being checked."
+    users: Missing[list[SimpleUser]] = Field(
+        default=UNSET,
+        description="The list of users allowed to bypass pull request requirements.",
     )
-    status: Union[
-        None,
-        Literal[
-            "queued", "in_progress", "completed", "waiting", "requested", "pending"
-        ],
-    ] = Field(
-        description="The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites."
+    teams: Missing[list[Team]] = Field(
+        default=UNSET,
+        description="The list of teams allowed to bypass pull request requirements.",
     )
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-            "startup_failure",
-            "stale",
-        ],
-    ] = Field()
-    url: Union[str, None] = Field()
-    before: Union[str, None] = Field()
-    after: Union[str, None] = Field()
-    pull_requests: Union[list[PullRequestMinimal], None] = Field()
-    app: Union[None, Integration, None] = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    apps: Missing[list[Union[Integration, None]]] = Field(
+        default=UNSET,
+        description="The list of apps allowed to bypass pull request requirements.",
     )
-    created_at: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
-    latest_check_runs_count: int = Field()
-    check_runs_url: str = Field()
-    rerequestable: Missing[bool] = Field(default=UNSET)
-    runs_rerequestable: Missing[bool] = Field(default=UNSET)
 
 
-class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
-    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
-
-    total_count: int = Field()
-    check_suites: list[CheckSuite] = Field()
-
-
-model_rebuild(CheckSuite)
-model_rebuild(ReposOwnerRepoCommitsRefCheckSuitesGetResponse200)
+model_rebuild(ProtectedBranchPullRequestReviewPropDismissalRestrictions)
+model_rebuild(ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances)
 
 __all__ = (
-    "CheckSuite",
-    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
 )

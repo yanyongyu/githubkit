@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,33 +19,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubModel):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
+class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
-    auto_trigger_checks: Missing[
-        list[ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems]
-    ] = Field(
-        default=UNSET,
-        description="Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default.",
-    )
+    total_count: int = Field()
+    workflows: list[Workflow] = Field()
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems(
-    GitHubModel
-):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+class Workflow(GitHubModel):
+    """Workflow
 
-    app_id: int = Field(description="The `id` of the GitHub App.")
-    setting: bool = Field(
-        default=True,
-        description="Set to `true` to enable automatic creation of CheckSuite events upon pushes to the repository, or `false` to disable them.",
-    )
+    A GitHub Actions workflow
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    path: str = Field()
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    ] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    url: str = Field()
+    html_url: str = Field()
+    badge_url: str = Field()
+    deleted_at: Missing[datetime] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBody)
-model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems)
+model_rebuild(ReposOwnerRepoActionsWorkflowsGetResponse200)
+model_rebuild(Workflow)
 
 __all__ = (
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200",
+    "Workflow",
 )

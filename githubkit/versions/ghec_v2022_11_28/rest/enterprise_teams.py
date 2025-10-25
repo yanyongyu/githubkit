@@ -153,6 +153,9 @@ class EnterpriseTeamsClient:
         name: str,
         description: Missing[Union[str, None]] = UNSET,
         sync_to_organizations: Missing[Literal["all", "disabled"]] = UNSET,
+        organization_selection_type: Missing[
+            Literal["disabled", "selected", "all"]
+        ] = UNSET,
         group_id: Missing[Union[str, None]] = UNSET,
     ) -> Response[EnterpriseTeam, EnterpriseTeamType]: ...
 
@@ -219,6 +222,9 @@ class EnterpriseTeamsClient:
         name: str,
         description: Missing[Union[str, None]] = UNSET,
         sync_to_organizations: Missing[Literal["all", "disabled"]] = UNSET,
+        organization_selection_type: Missing[
+            Literal["disabled", "selected", "all"]
+        ] = UNSET,
         group_id: Missing[Union[str, None]] = UNSET,
     ) -> Response[EnterpriseTeam, EnterpriseTeamType]: ...
 
@@ -425,6 +431,9 @@ class EnterpriseTeamsClient:
         name: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         sync_to_organizations: Missing[Literal["all", "disabled"]] = UNSET,
+        organization_selection_type: Missing[
+            Literal["disabled", "selected", "all"]
+        ] = UNSET,
         group_id: Missing[Union[str, None]] = UNSET,
     ) -> Response[EnterpriseTeam, EnterpriseTeamType]: ...
 
@@ -503,6 +512,9 @@ class EnterpriseTeamsClient:
         name: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         sync_to_organizations: Missing[Literal["all", "disabled"]] = UNSET,
+        organization_selection_type: Missing[
+            Literal["disabled", "selected", "all"]
+        ] = UNSET,
         group_id: Missing[Union[str, None]] = UNSET,
     ) -> Response[EnterpriseTeam, EnterpriseTeamType]: ...
 

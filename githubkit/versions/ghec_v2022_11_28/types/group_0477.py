@@ -9,27 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class GroupType(TypedDict):
-    """Group"""
+class CommitActivityType(TypedDict):
+    """Commit Activity
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: NotRequired[list[GroupPropMembersItemsType]]
+    Commit Activity
+    """
 
-
-class GroupPropMembersItemsType(TypedDict):
-    """GroupPropMembersItems"""
-
-    value: str
-    display_name: str
+    days: list[int]
+    total: int
+    week: int
 
 
-__all__ = (
-    "GroupPropMembersItemsType",
-    "GroupType",
-)
+__all__ = ("CommitActivityType",)

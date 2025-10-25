@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,38 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+
+class ApiInsightsUserStatsItems(GitHubModel):
+    """ApiInsightsUserStatsItems"""
+
+    actor_type: Missing[str] = Field(default=UNSET)
+    actor_name: Missing[str] = Field(default=UNSET)
+    actor_id: Missing[int] = Field(default=UNSET)
+    integration_id: Missing[Union[int, None]] = Field(default=UNSET)
+    oauth_application_id: Missing[Union[int, None]] = Field(default=UNSET)
+    total_request_count: Missing[int] = Field(default=UNSET)
+    rate_limited_request_count: Missing[int] = Field(default=UNSET)
+    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
+    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-class Project(GitHubModel):
-    """Project
+model_rebuild(ApiInsightsUserStatsItems)
 
-    Projects are a way to organize columns and cards of work.
-    """
-
-    owner_url: str = Field()
-    url: str = Field()
-    html_url: str = Field()
-    columns_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field(description="Name of the project")
-    body: Union[str, None] = Field(description="Body of the project")
-    number: int = Field()
-    state: str = Field(description="State of the project; either 'open' or 'closed'")
-    creator: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
-        default=UNSET,
-        description="The baseline permission that all organization members have on this project. Only present if owner is an organization.",
-    )
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether or not this project can be seen by everyone. Only present if owner is an organization.",
-    )
-
-
-model_rebuild(Project)
-
-__all__ = ("Project",)
+__all__ = ("ApiInsightsUserStatsItems",)

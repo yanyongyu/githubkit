@@ -12,13 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OidcCustomSubType(TypedDict):
-    """Actions OIDC Subject customization
+class ActionsArtifactAndLogRetentionType(TypedDict):
+    """ActionsArtifactAndLogRetention"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: list[str]
+    days: int
 
 
-__all__ = ("OidcCustomSubType",)
+__all__ = ("ActionsArtifactAndLogRetentionType",)

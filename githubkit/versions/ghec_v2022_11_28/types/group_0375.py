@@ -9,33 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0373 import MetadataType
 
 
-class GitTreeType(TypedDict):
-    """Git Tree
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    The hierarchy between files in a Git repository.
-    """
-
-    sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsType]
+    name: str
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
 
 
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
 
-    path: str
-    mode: str
-    type: str
-    sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
+    source_location: NotRequired[str]
+
+
+ManifestPropResolvedType: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
 
 
 __all__ = (
-    "GitTreePropTreeItemsType",
-    "GitTreeType",
+    "ManifestPropFileType",
+    "ManifestPropResolvedType",
+    "ManifestType",
 )

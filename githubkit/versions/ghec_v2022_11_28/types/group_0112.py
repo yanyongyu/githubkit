@@ -11,11 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
-
-    required_deployment_environments: list[str]
+from .group_0113 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+)
 
 
-__all__ = ("RepositoryRuleRequiredDeploymentsPropParametersType",)
+class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
+    """Repository ruleset conditions for repository properties
+
+    Parameters for a repository property condition
+    """
+
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
+
+
+__all__ = ("RepositoryRulesetConditionsRepositoryPropertyTargetType",)

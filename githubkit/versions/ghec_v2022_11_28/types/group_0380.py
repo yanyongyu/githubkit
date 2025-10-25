@@ -9,22 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0381 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType
 
 
-class PorterAuthorType(TypedDict):
-    """Porter Author
-
-    Porter Author
-    """
+class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
     id: int
-    remote_id: str
-    remote_name: str
-    email: str
-    name: str
-    url: str
-    import_url: str
+    node_id: str
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
+    ]
 
 
-__all__ = ("PorterAuthorType",)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1Type",)

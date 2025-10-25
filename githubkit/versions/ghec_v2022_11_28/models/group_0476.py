@@ -9,42 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0474 import Meta
+from .group_0003 import SimpleUser
 
 
-class ScimEnterpriseGroupResponseAllof1(GitHubModel):
-    """ScimEnterpriseGroupResponseAllof1"""
+class Stargazer(GitHubModel):
+    """Stargazer
 
-    id: Missing[str] = Field(
-        default=UNSET, description="The internally generated id for the group object."
-    )
-    members: Missing[list[ScimEnterpriseGroupResponseAllof1PropMembersItems]] = Field(
-        default=UNSET, description="The security group members."
-    )
-    meta: Missing[Meta] = Field(
-        default=UNSET,
-        description="The metadata associated with the creation/updates to the user.",
-    )
+    Stargazer
+    """
+
+    starred_at: datetime = Field()
+    user: Union[None, SimpleUser] = Field()
 
 
-class ScimEnterpriseGroupResponseAllof1PropMembersItems(GitHubModel):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+model_rebuild(Stargazer)
 
-    value: Missing[str] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET, alias="$ref")
-    display: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ScimEnterpriseGroupResponseAllof1)
-model_rebuild(ScimEnterpriseGroupResponseAllof1PropMembersItems)
-
-__all__ = (
-    "ScimEnterpriseGroupResponseAllof1",
-    "ScimEnterpriseGroupResponseAllof1PropMembersItems",
-)
+__all__ = ("Stargazer",)

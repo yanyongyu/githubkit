@@ -9,85 +9,89 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CopilotOrganizationDetails(ExtraGitHubModel):
-    """Copilot Organization Details
+class ApiOverview(GitHubModel):
+    """Api Overview
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
+    Api Overview
     """
 
-    seat_breakdown: CopilotOrganizationSeatBreakdown = Field(
-        title="Copilot Seat Breakdown",
-        description="The breakdown of Copilot Business seats for the organization.",
+    verifiable_password_authentication: bool = Field()
+    ssh_key_fingerprints: Missing[ApiOverviewPropSshKeyFingerprints] = Field(
+        default=UNSET
     )
-    public_code_suggestions: Literal["allow", "block", "unconfigured"] = Field(
-        description="The organization policy for allowing or blocking suggestions matching public code (duplication detection filter)."
+    ssh_keys: Missing[list[str]] = Field(default=UNSET)
+    hooks: Missing[list[str]] = Field(default=UNSET)
+    github_enterprise_importer: Missing[list[str]] = Field(default=UNSET)
+    web: Missing[list[str]] = Field(default=UNSET)
+    api: Missing[list[str]] = Field(default=UNSET)
+    git: Missing[list[str]] = Field(default=UNSET)
+    packages: Missing[list[str]] = Field(default=UNSET)
+    pages: Missing[list[str]] = Field(default=UNSET)
+    importer: Missing[list[str]] = Field(default=UNSET)
+    actions: Missing[list[str]] = Field(default=UNSET)
+    actions_macos: Missing[list[str]] = Field(default=UNSET)
+    codespaces: Missing[list[str]] = Field(default=UNSET)
+    dependabot: Missing[list[str]] = Field(default=UNSET)
+    copilot: Missing[list[str]] = Field(default=UNSET)
+    domains: Missing[ApiOverviewPropDomains] = Field(default=UNSET)
+
+
+class ApiOverviewPropSshKeyFingerprints(GitHubModel):
+    """ApiOverviewPropSshKeyFingerprints"""
+
+    sha256_rsa: Missing[str] = Field(default=UNSET, alias="SHA256_RSA")
+    sha256_dsa: Missing[str] = Field(default=UNSET, alias="SHA256_DSA")
+    sha256_ecdsa: Missing[str] = Field(default=UNSET, alias="SHA256_ECDSA")
+    sha256_ed25519: Missing[str] = Field(default=UNSET, alias="SHA256_ED25519")
+
+
+class ApiOverviewPropDomains(GitHubModel):
+    """ApiOverviewPropDomains"""
+
+    website: Missing[list[str]] = Field(default=UNSET)
+    codespaces: Missing[list[str]] = Field(default=UNSET)
+    copilot: Missing[list[str]] = Field(default=UNSET)
+    packages: Missing[list[str]] = Field(default=UNSET)
+    actions: Missing[list[str]] = Field(default=UNSET)
+    actions_inbound: Missing[ApiOverviewPropDomainsPropActionsInbound] = Field(
+        default=UNSET
     )
-    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot Chat in the IDE.",
-    )
-    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot features on GitHub.com.",
-    )
-    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot in the CLI.",
-    )
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
-    ] = Field(description="The mode of assigning new seats.")
-    plan_type: Missing[Literal["business", "enterprise"]] = Field(
-        default=UNSET,
-        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
+    artifact_attestations: Missing[ApiOverviewPropDomainsPropArtifactAttestations] = (
+        Field(default=UNSET)
     )
 
 
-class CopilotOrganizationSeatBreakdown(GitHubModel):
-    """Copilot Seat Breakdown
+class ApiOverviewPropDomainsPropActionsInbound(GitHubModel):
+    """ApiOverviewPropDomainsPropActionsInbound"""
 
-    The breakdown of Copilot Business seats for the organization.
-    """
-
-    total: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of seats being billed for the organization as of the current billing cycle.",
-    )
-    added_this_cycle: Missing[int] = Field(
-        default=UNSET, description="Seats added during the current billing cycle."
-    )
-    pending_cancellation: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
-    )
-    pending_invitation: Missing[int] = Field(
-        default=UNSET,
-        description="The number of users who have been invited to receive a Copilot seat through this organization.",
-    )
-    active_this_cycle: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have used Copilot during the current billing cycle.",
-    )
-    inactive_this_cycle: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have not used Copilot during the current billing cycle.",
-    )
+    full_domains: Missing[list[str]] = Field(default=UNSET)
+    wildcard_domains: Missing[list[str]] = Field(default=UNSET)
 
 
-model_rebuild(CopilotOrganizationDetails)
-model_rebuild(CopilotOrganizationSeatBreakdown)
+class ApiOverviewPropDomainsPropArtifactAttestations(GitHubModel):
+    """ApiOverviewPropDomainsPropArtifactAttestations"""
+
+    trust_domain: Missing[str] = Field(default=UNSET)
+    services: Missing[list[str]] = Field(default=UNSET)
+
+
+model_rebuild(ApiOverview)
+model_rebuild(ApiOverviewPropSshKeyFingerprints)
+model_rebuild(ApiOverviewPropDomains)
+model_rebuild(ApiOverviewPropDomainsPropActionsInbound)
+model_rebuild(ApiOverviewPropDomainsPropArtifactAttestations)
 
 __all__ = (
-    "CopilotOrganizationDetails",
-    "CopilotOrganizationSeatBreakdown",
+    "ApiOverview",
+    "ApiOverviewPropDomains",
+    "ApiOverviewPropDomainsPropActionsInbound",
+    "ApiOverviewPropDomainsPropArtifactAttestations",
+    "ApiOverviewPropSshKeyFingerprints",
 )

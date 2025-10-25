@@ -53,6 +53,12 @@ if TYPE_CHECKING:
         ActionsHostedRunnerCuratedImage as ActionsHostedRunnerCuratedImage,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ActionsHostedRunnerCustomImage as ActionsHostedRunnerCustomImage,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ActionsHostedRunnerCustomImageVersion as ActionsHostedRunnerCustomImageVersion,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ActionsHostedRunnerLimits as ActionsHostedRunnerLimits,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -769,13 +775,16 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions as EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        EnterprisesEnterpriseSecretScanningAlertsGetResponse503 as EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody as EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody as EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         EnterprisesEnterpriseTeamsPostBody as EnterprisesEnterpriseTeamsPostBody,
@@ -814,6 +823,9 @@ if TYPE_CHECKING:
         EventPropPayloadPropPagesItems as EventPropPayloadPropPagesItems,
     )
     from githubkit.versions.v2022_11_28.models import EventPropRepo as EventPropRepo
+    from githubkit.versions.v2022_11_28.models import (
+        EventsGetResponse503 as EventsGetResponse503,
+    )
     from githubkit.versions.v2022_11_28.models import Feed as Feed
     from githubkit.versions.v2022_11_28.models import FeedPropLinks as FeedPropLinks
     from githubkit.versions.v2022_11_28.models import FileCommit as FileCommit
@@ -1213,6 +1225,9 @@ if TYPE_CHECKING:
         OrganizationsOrgDependabotRepositoryAccessPatchBody as OrganizationsOrgDependabotRepositoryAccessPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrganizationsOrgOrgPropertiesValuesPatchBody as OrganizationsOrgOrgPropertiesValuesPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         OrganizationUpdateIssueType as OrganizationUpdateIssueType,
     )
     from githubkit.versions.v2022_11_28.models import OrgHook as OrgHook
@@ -1249,6 +1264,12 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody as OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgActionsHostedRunnersImagesCustomGetResponse200 as OrgsOrgActionsHostedRunnersImagesCustomGetResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200 as OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200 as OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
@@ -1392,6 +1413,9 @@ if TYPE_CHECKING:
         OrgsOrgAttestationsDeleteRequestPostBodyOneof1 as OrgsOrgAttestationsDeleteRequestPostBodyOneof1,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgAttestationsRepositoriesGetResponse200Items as OrgsOrgAttestationsRepositoriesGetResponse200Items,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgAttestationsSubjectDigestGetResponse200 as OrgsOrgAttestationsSubjectDigestGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1410,7 +1434,10 @@ if TYPE_CHECKING:
         OrgsOrgCampaignsCampaignNumberPatchBody as OrgsOrgCampaignsCampaignNumberPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        OrgsOrgCampaignsPostBody as OrgsOrgCampaignsPostBody,
+        OrgsOrgCampaignsPostBodyOneof0 as OrgsOrgCampaignsPostBodyOneof0,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgCampaignsPostBodyOneof1 as OrgsOrgCampaignsPostBodyOneof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems as OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems,
@@ -9959,20 +9986,7 @@ else:
             "DependabotAlertSecurityAdvisoryPropReferencesItems",
             "DependabotAlertWithRepository",
             "DependabotAlertWithRepositoryPropDependency",
-            "SecretScanningLocationCommit",
-            "SecretScanningLocationWikiCommit",
-            "SecretScanningLocationIssueBody",
-            "SecretScanningLocationDiscussionTitle",
-            "SecretScanningLocationDiscussionComment",
-            "SecretScanningLocationPullRequestBody",
-            "SecretScanningLocationPullRequestReview",
-            "SecretScanningLocationIssueTitle",
-            "SecretScanningLocationIssueComment",
-            "SecretScanningLocationPullRequestTitle",
-            "SecretScanningLocationPullRequestReviewComment",
-            "SecretScanningLocationDiscussionBody",
-            "SecretScanningLocationPullRequestComment",
-            "OrganizationSecretScanningAlert",
+            "OrganizationSimple",
             "Milestone",
             "IssueType",
             "ReactionRollup",
@@ -10033,8 +10047,8 @@ else:
             "Thread",
             "ThreadPropSubject",
             "ThreadSubscription",
-            "OrganizationSimple",
             "DependabotRepositoryAccessDetails",
+            "CustomPropertyValue",
             "BillingPremiumRequestUsageReportOrg",
             "BillingPremiumRequestUsageReportOrgPropTimePeriod",
             "BillingPremiumRequestUsageReportOrgPropUsageItemsItems",
@@ -10163,7 +10177,6 @@ else:
             "ProjectsV2ItemSimple",
             "CustomProperty",
             "CustomPropertySetPayload",
-            "CustomPropertyValue",
             "OrgRepoCustomPropertyValues",
             "CodeOfConductSimple",
             "FullRepository",
@@ -10240,6 +10253,20 @@ else:
             "RulesetVersionWithState",
             "RulesetVersionWithStateAllof1",
             "RulesetVersionWithStateAllof1PropState",
+            "SecretScanningLocationCommit",
+            "SecretScanningLocationWikiCommit",
+            "SecretScanningLocationIssueBody",
+            "SecretScanningLocationDiscussionTitle",
+            "SecretScanningLocationDiscussionComment",
+            "SecretScanningLocationPullRequestBody",
+            "SecretScanningLocationPullRequestReview",
+            "SecretScanningLocationIssueTitle",
+            "SecretScanningLocationIssueComment",
+            "SecretScanningLocationPullRequestTitle",
+            "SecretScanningLocationPullRequestReviewComment",
+            "SecretScanningLocationDiscussionBody",
+            "SecretScanningLocationPullRequestComment",
+            "OrganizationSecretScanningAlert",
             "SecretScanningPatternConfiguration",
             "SecretScanningPatternOverride",
             "RepositoryAdvisoryCredit",
@@ -12834,11 +12861,13 @@ else:
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody",
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",
-            "EnterprisesEnterpriseSecretScanningAlertsGetResponse503",
             "EnterprisesEnterpriseTeamsPostBody",
             "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody",
             "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody",
+            "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody",
+            "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody",
             "EnterprisesEnterpriseTeamsTeamSlugPatchBody",
+            "EventsGetResponse503",
             "GistsPostBody",
             "GistsPostBodyPropFiles",
             "GistsGistIdGetResponse403",
@@ -12855,12 +12884,17 @@ else:
             "NotificationsThreadsThreadIdSubscriptionPutBody",
             "OrganizationsOrgDependabotRepositoryAccessPatchBody",
             "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody",
+            "OrganizationsOrgOrgPropertiesValuesPatchBody",
             "OrgsOrgPatchBody",
             "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
             "ActionsCacheUsageByRepository",
             "OrgsOrgActionsHostedRunnersGetResponse200",
             "OrgsOrgActionsHostedRunnersPostBody",
             "OrgsOrgActionsHostedRunnersPostBodyPropImage",
+            "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200",
+            "ActionsHostedRunnerCustomImage",
+            "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
+            "ActionsHostedRunnerCustomImageVersion",
             "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200",
             "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200",
             "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200",
@@ -12910,13 +12944,15 @@ else:
             "OrgsOrgAttestationsBulkListPostResponse200PropPageInfo",
             "OrgsOrgAttestationsDeleteRequestPostBodyOneof0",
             "OrgsOrgAttestationsDeleteRequestPostBodyOneof1",
+            "OrgsOrgAttestationsRepositoriesGetResponse200Items",
             "OrgsOrgAttestationsSubjectDigestGetResponse200",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
-            "OrgsOrgCampaignsPostBody",
             "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems",
+            "OrgsOrgCampaignsPostBodyOneof0",
+            "OrgsOrgCampaignsPostBodyOneof1",
             "OrgsOrgCampaignsCampaignNumberPatchBody",
             "OrgsOrgCodeSecurityConfigurationsPostBody",
             "OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",

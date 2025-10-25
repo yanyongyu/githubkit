@@ -8982,12 +8982,7 @@ class ReposClient:
         See also: https://docs.github.com/rest/commits/commits#get-a-commit
         """
 
-        from ..models import (
-            BasicError,
-            Commit,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            ValidationError,
-        )
+        from ..models import BasicError, Commit, EventsGetResponse503, ValidationError
 
         url = f"/repos/{owner}/{repo}/commits/{ref}"
 
@@ -9009,7 +9004,7 @@ class ReposClient:
                 "422": ValidationError,
                 "404": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
                 "409": BasicError,
             },
         )
@@ -9073,12 +9068,7 @@ class ReposClient:
         See also: https://docs.github.com/rest/commits/commits#get-a-commit
         """
 
-        from ..models import (
-            BasicError,
-            Commit,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            ValidationError,
-        )
+        from ..models import BasicError, Commit, EventsGetResponse503, ValidationError
 
         url = f"/repos/{owner}/{repo}/commits/{ref}"
 
@@ -9100,7 +9090,7 @@ class ReposClient:
                 "422": ValidationError,
                 "404": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
                 "409": BasicError,
             },
         )
@@ -9441,11 +9431,7 @@ class ReposClient:
         See also: https://docs.github.com/rest/commits/commits#compare-two-commits
         """
 
-        from ..models import (
-            BasicError,
-            CommitComparison,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CommitComparison, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/compare/{basehead}"
 
@@ -9466,7 +9452,7 @@ class ReposClient:
             error_models={
                 "404": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -9540,11 +9526,7 @@ class ReposClient:
         See also: https://docs.github.com/rest/commits/commits#compare-two-commits
         """
 
-        from ..models import (
-            BasicError,
-            CommitComparison,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-        )
+        from ..models import BasicError, CommitComparison, EventsGetResponse503
 
         url = f"/repos/{owner}/{repo}/compare/{basehead}"
 
@@ -9565,7 +9547,7 @@ class ReposClient:
             error_models={
                 "404": BasicError,
                 "500": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -9993,7 +9975,7 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             FileCommit,
             ReposOwnerRepoContentsPathDeleteBody,
             ValidationError,
@@ -10023,7 +10005,7 @@ class ReposClient:
                 "422": ValidationError,
                 "404": BasicError,
                 "409": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -10089,7 +10071,7 @@ class ReposClient:
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             FileCommit,
             ReposOwnerRepoContentsPathDeleteBody,
             ValidationError,
@@ -10119,7 +10101,7 @@ class ReposClient:
                 "422": ValidationError,
                 "404": BasicError,
                 "409": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 

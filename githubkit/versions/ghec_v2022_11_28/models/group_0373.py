@@ -9,35 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class GitRef(GitHubModel):
-    """Git Reference
+class Metadata(ExtraGitHubModel):
+    """metadata
 
-    Git references within a repository
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
     """
 
-    ref: str = Field()
-    node_id: str = Field()
-    url: str = Field()
-    object_: GitRefPropObject = Field(alias="object")
 
+model_rebuild(Metadata)
 
-class GitRefPropObject(GitHubModel):
-    """GitRefPropObject"""
-
-    type: str = Field()
-    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
-    url: str = Field()
-
-
-model_rebuild(GitRef)
-model_rebuild(GitRefPropObject)
-
-__all__ = (
-    "GitRef",
-    "GitRefPropObject",
-)
+__all__ = ("Metadata",)

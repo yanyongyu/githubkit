@@ -12,20 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RulesetVersionPropActor(GitHubModel):
-    """RulesetVersionPropActor
+class RepositoryRuleMaxFileSizePropParameters(GitHubModel):
+    """RepositoryRuleMaxFileSizePropParameters"""
 
-    The actor who updated the ruleset
-    """
+    max_file_size: int = Field(
+        le=100.0,
+        ge=1.0,
+        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
+    )
 
-    id: Missing[int] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
 
+model_rebuild(RepositoryRuleMaxFileSizePropParameters)
 
-model_rebuild(RulesetVersionPropActor)
-
-__all__ = ("RulesetVersionPropActor",)
+__all__ = ("RepositoryRuleMaxFileSizePropParameters",)

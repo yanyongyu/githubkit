@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from datetime import date, datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,54 +18,83 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0172 import ReactionRollup
-from .group_0426 import ReleaseAsset
 
+class Page(GitHubModel):
+    """GitHub Pages
 
-class Release(GitHubModel):
-    """Release
-
-    A release.
+    The configuration for GitHub Pages for a repository.
     """
 
-    url: str = Field()
-    html_url: str = Field()
-    assets_url: str = Field()
-    upload_url: str = Field()
-    tarball_url: Union[str, None] = Field()
-    zipball_url: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    tag_name: str = Field(description="The name of the tag.")
-    target_commitish: str = Field(
-        description="Specifies the commitish value that determines where the Git tag is created from."
+    url: str = Field(description="The API address for accessing this Page resource.")
+    status: Union[None, Literal["built", "building", "errored"]] = Field(
+        description="The status of the most recent build of the Page."
     )
-    name: Union[str, None] = Field()
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    draft: bool = Field(
-        description="true to create a draft (unpublished) release, false to create a published one."
+    cname: Union[str, None] = Field(description="The Pages site's custom domain")
+    protected_domain_state: Missing[
+        Union[None, Literal["pending", "verified", "unverified"]]
+    ] = Field(default=UNSET, description="The state if the domain is verified")
+    pending_domain_unverified_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The timestamp when a pending domain becomes unverified.",
     )
-    prerelease: bool = Field(
-        description="Whether to identify the release as a prerelease or a full release."
+    custom_404: bool = Field(
+        default=False, description="Whether the Page has a custom 404 page."
     )
-    immutable: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the release is immutable."
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The web address the Page can be accessed from."
     )
-    created_at: datetime = Field()
-    published_at: Union[datetime, None] = Field()
-    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    author: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assets: list[ReleaseAsset] = Field()
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
-    mentions_count: Missing[int] = Field(default=UNSET)
-    discussion_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the release discussion."
+    build_type: Missing[Union[None, Literal["legacy", "workflow"]]] = Field(
+        default=UNSET, description="The process in which the Page will be built."
     )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    source: Missing[PagesSourceHash] = Field(default=UNSET, title="Pages Source Hash")
+    public: bool = Field(
+        description="Whether the GitHub Pages site is publicly visible. If set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site."
+    )
+    https_certificate: Missing[PagesHttpsCertificate] = Field(
+        default=UNSET, title="Pages Https Certificate"
+    )
+    https_enforced: Missing[bool] = Field(
+        default=UNSET, description="Whether https is enabled on the domain"
+    )
 
 
-model_rebuild(Release)
+class PagesSourceHash(GitHubModel):
+    """Pages Source Hash"""
 
-__all__ = ("Release",)
+    branch: str = Field()
+    path: str = Field()
+
+
+class PagesHttpsCertificate(GitHubModel):
+    """Pages Https Certificate"""
+
+    state: Literal[
+        "new",
+        "authorization_created",
+        "authorization_pending",
+        "authorized",
+        "authorization_revoked",
+        "issued",
+        "uploaded",
+        "approved",
+        "errored",
+        "bad_authz",
+        "destroy_pending",
+        "dns_changed",
+    ] = Field()
+    description: str = Field()
+    domains: list[str] = Field(
+        description="Array of the domain set and its alternate name (if it is configured)"
+    )
+    expires_at: Missing[date] = Field(default=UNSET)
+
+
+model_rebuild(Page)
+model_rebuild(PagesSourceHash)
+model_rebuild(PagesHttpsCertificate)
+
+__all__ = (
+    "Page",
+    "PagesHttpsCertificate",
+    "PagesSourceHash",
+)

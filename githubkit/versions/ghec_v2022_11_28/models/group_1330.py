@@ -16,17 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
+class ReposOwnerRepoLabelsPostBody(GitHubModel):
+    """ReposOwnerRepoLabelsPostBody"""
 
-    reviewers: Missing[list[str]] = Field(
-        default=UNSET, description="An array of user `login`s that will be requested."
+    name: str = Field(
+        description='The name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."'
     )
-    team_reviewers: list[str] = Field(
-        description="An array of team `slug`s that will be requested."
+    color: Missing[str] = Field(
+        default=UNSET,
+        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
+    )
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description of the label. Must be 100 characters or fewer.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1)
+model_rebuild(ReposOwnerRepoLabelsPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",)
+__all__ = ("ReposOwnerRepoLabelsPostBody",)

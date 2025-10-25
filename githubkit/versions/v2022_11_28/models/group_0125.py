@@ -9,103 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 
 
-class OrganizationProgrammaticAccessGrantRequest(GitHubModel):
-    """Simple Organization Programmatic Access Grant Request
+class Project(GitHubModel):
+    """Project
 
-    Minimal representation of an organization programmatic access grant request for
-    enumerations
+    Projects are a way to organize columns and cards of work.
     """
 
-    id: int = Field(
-        description="Unique identifier of the request for access via fine-grained personal access token. The `pat_request_id` used to review PAT requests."
+    owner_url: str = Field()
+    url: str = Field()
+    html_url: str = Field()
+    columns_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field(description="Name of the project")
+    body: Union[str, None] = Field(description="Body of the project")
+    number: int = Field()
+    state: str = Field(description="State of the project; either 'open' or 'closed'")
+    creator: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
+        default=UNSET,
+        description="The baseline permission that all organization members have on this project. Only present if owner is an organization.",
     )
-    reason: Union[str, None] = Field(description="Reason for requesting access.")
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    repository_selection: Literal["none", "all", "subset"] = Field(
-        description="Type of repository selection requested."
-    )
-    repositories_url: str = Field(
-        description="URL to the list of repositories requested to be accessed via fine-grained personal access token. Should only be followed when `repository_selection` is `subset`."
-    )
-    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissions = Field(
-        description="Permissions requested, categorized by type of permission."
-    )
-    created_at: str = Field(
-        description="Date and time when the request for access was created."
-    )
-    token_id: int = Field(
-        description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
-    )
-    token_name: str = Field(
-        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
-    )
-    token_expired: bool = Field(
-        description="Whether the associated fine-grained personal access token has expired."
-    )
-    token_expires_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token expires."
-    )
-    token_last_used_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token was last used for authentication."
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether or not this project can be seen by everyone. Only present if owner is an organization.",
     )
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissions(GitHubModel):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+model_rebuild(Project)
 
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
-    ] = Field(default=UNSET)
-    other: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
-    ] = Field(default=UNSET)
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
-
-
-model_rebuild(OrganizationProgrammaticAccessGrantRequest)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissions)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther)
-
-__all__ = (
-    "OrganizationProgrammaticAccessGrantRequest",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissions",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository",
-)
+__all__ = ("Project",)

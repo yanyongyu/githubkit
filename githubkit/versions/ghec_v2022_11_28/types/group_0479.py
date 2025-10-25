@@ -9,27 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class UserNameResponseType(TypedDict):
-    """UserNameResponse"""
+class ParticipationStatsType(TypedDict):
+    """Participation Stats"""
 
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
+    all_: list[int]
+    owner: list[int]
 
 
-class UserEmailsResponseItemsType(TypedDict):
-    """UserEmailsResponseItems"""
-
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
-
-
-__all__ = (
-    "UserEmailsResponseItemsType",
-    "UserNameResponseType",
-)
+__all__ = ("ParticipationStatsType",)

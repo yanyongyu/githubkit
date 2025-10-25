@@ -786,7 +786,7 @@ class IssuesClient:
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             Issue,
             ReposOwnerRepoIssuesPostBody,
             ValidationError,
@@ -816,7 +816,7 @@ class IssuesClient:
                 "400": BasicError,
                 "403": BasicError,
                 "422": ValidationError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
                 "404": BasicError,
                 "410": BasicError,
             },
@@ -884,7 +884,7 @@ class IssuesClient:
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             Issue,
             ReposOwnerRepoIssuesPostBody,
             ValidationError,
@@ -914,7 +914,7 @@ class IssuesClient:
                 "400": BasicError,
                 "403": BasicError,
                 "422": ValidationError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
                 "404": BasicError,
                 "410": BasicError,
             },
@@ -1679,7 +1679,7 @@ class IssuesClient:
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             Issue,
             ReposOwnerRepoIssuesIssueNumberPatchBody,
             ValidationError,
@@ -1707,7 +1707,7 @@ class IssuesClient:
             response_model=Issue,
             error_models={
                 "422": ValidationError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
                 "403": BasicError,
                 "404": BasicError,
                 "410": BasicError,
@@ -1785,7 +1785,7 @@ class IssuesClient:
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             Issue,
             ReposOwnerRepoIssuesIssueNumberPatchBody,
             ValidationError,
@@ -1813,7 +1813,7 @@ class IssuesClient:
             response_model=Issue,
             error_models={
                 "422": ValidationError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
                 "403": BasicError,
                 "404": BasicError,
                 "410": BasicError,
@@ -4807,7 +4807,7 @@ class IssuesClient:
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             Issue,
             ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody,
             ValidationErrorSimple,
@@ -4839,7 +4839,7 @@ class IssuesClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationErrorSimple,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -4894,7 +4894,7 @@ class IssuesClient:
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             Issue,
             ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody,
             ValidationErrorSimple,
@@ -4926,7 +4926,7 @@ class IssuesClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationErrorSimple,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 

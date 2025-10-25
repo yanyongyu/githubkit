@@ -67,154 +67,6 @@ class SecretScanningClient:
             "Do not use this client after the client has been collected."
         )
 
-    def list_alerts_for_enterprise(
-        self,
-        enterprise: str,
-        *,
-        state: Missing[Literal["open", "resolved"]] = UNSET,
-        secret_type: Missing[str] = UNSET,
-        resolution: Missing[str] = UNSET,
-        sort: Missing[Literal["created", "updated"]] = UNSET,
-        direction: Missing[Literal["asc", "desc"]] = UNSET,
-        per_page: Missing[int] = UNSET,
-        before: Missing[str] = UNSET,
-        after: Missing[str] = UNSET,
-        validity: Missing[str] = UNSET,
-        is_publicly_leaked: Missing[bool] = UNSET,
-        is_multi_repo: Missing[bool] = UNSET,
-        hide_secret: Missing[bool] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[
-        list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
-    ]:
-        """secret-scanning/list-alerts-for-enterprise
-
-        GET /enterprises/{enterprise}/secret-scanning/alerts
-
-        Lists secret scanning alerts for eligible repositories in an enterprise, from newest to oldest.
-
-        Alerts are only returned for organizations in the enterprise for which the authenticated user is an organization owner or a [security manager](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization).
-
-        The authenticated user must be a member of the enterprise in order to use this endpoint.
-
-        OAuth app tokens and personal access tokens (classic) need the `repo` scope or `security_events` scope to use this endpoint.
-
-        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise
-        """
-
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            OrganizationSecretScanningAlert,
-        )
-
-        url = f"/enterprises/{enterprise}/secret-scanning/alerts"
-
-        params = {
-            "state": state,
-            "secret_type": secret_type,
-            "resolution": resolution,
-            "sort": sort,
-            "direction": direction,
-            "per_page": per_page,
-            "before": before,
-            "after": after,
-            "validity": validity,
-            "is_publicly_leaked": is_publicly_leaked,
-            "is_multi_repo": is_multi_repo,
-            "hide_secret": hide_secret,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[OrganizationSecretScanningAlert],
-            error_models={
-                "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_list_alerts_for_enterprise(
-        self,
-        enterprise: str,
-        *,
-        state: Missing[Literal["open", "resolved"]] = UNSET,
-        secret_type: Missing[str] = UNSET,
-        resolution: Missing[str] = UNSET,
-        sort: Missing[Literal["created", "updated"]] = UNSET,
-        direction: Missing[Literal["asc", "desc"]] = UNSET,
-        per_page: Missing[int] = UNSET,
-        before: Missing[str] = UNSET,
-        after: Missing[str] = UNSET,
-        validity: Missing[str] = UNSET,
-        is_publicly_leaked: Missing[bool] = UNSET,
-        is_multi_repo: Missing[bool] = UNSET,
-        hide_secret: Missing[bool] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[
-        list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
-    ]:
-        """secret-scanning/list-alerts-for-enterprise
-
-        GET /enterprises/{enterprise}/secret-scanning/alerts
-
-        Lists secret scanning alerts for eligible repositories in an enterprise, from newest to oldest.
-
-        Alerts are only returned for organizations in the enterprise for which the authenticated user is an organization owner or a [security manager](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization).
-
-        The authenticated user must be a member of the enterprise in order to use this endpoint.
-
-        OAuth app tokens and personal access tokens (classic) need the `repo` scope or `security_events` scope to use this endpoint.
-
-        See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise
-        """
-
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            OrganizationSecretScanningAlert,
-        )
-
-        url = f"/enterprises/{enterprise}/secret-scanning/alerts"
-
-        params = {
-            "state": state,
-            "secret_type": secret_type,
-            "resolution": resolution,
-            "sort": sort,
-            "direction": direction,
-            "per_page": per_page,
-            "before": before,
-            "after": after,
-            "validity": validity,
-            "is_publicly_leaked": is_publicly_leaked,
-            "is_multi_repo": is_multi_repo,
-            "hide_secret": hide_secret,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(params),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[OrganizationSecretScanningAlert],
-            error_models={
-                "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            },
-        )
-
     def list_alerts_for_org(
         self,
         org: str,
@@ -252,7 +104,7 @@ class SecretScanningClient:
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             OrganizationSecretScanningAlert,
         )
 
@@ -285,7 +137,7 @@ class SecretScanningClient:
             response_model=list[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -326,7 +178,7 @@ class SecretScanningClient:
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             OrganizationSecretScanningAlert,
         )
 
@@ -359,7 +211,7 @@ class SecretScanningClient:
             response_model=list[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -669,10 +521,7 @@ class SecretScanningClient:
         See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository
         """
 
-        from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            SecretScanningAlert,
-        )
+        from ..models import EventsGetResponse503, SecretScanningAlert
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts"
 
@@ -702,7 +551,7 @@ class SecretScanningClient:
             stream=stream,
             response_model=list[SecretScanningAlert],
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -740,10 +589,7 @@ class SecretScanningClient:
         See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository
         """
 
-        from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            SecretScanningAlert,
-        )
+        from ..models import EventsGetResponse503, SecretScanningAlert
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts"
 
@@ -773,7 +619,7 @@ class SecretScanningClient:
             stream=stream,
             response_model=list[SecretScanningAlert],
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -800,10 +646,7 @@ class SecretScanningClient:
         See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert
         """
 
-        from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            SecretScanningAlert,
-        )
+        from ..models import EventsGetResponse503, SecretScanningAlert
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
@@ -821,7 +664,7 @@ class SecretScanningClient:
             stream=stream,
             response_model=SecretScanningAlert,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -848,10 +691,7 @@ class SecretScanningClient:
         See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert
         """
 
-        from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            SecretScanningAlert,
-        )
+        from ..models import EventsGetResponse503, SecretScanningAlert
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
@@ -869,7 +709,7 @@ class SecretScanningClient:
             stream=stream,
             response_model=SecretScanningAlert,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -931,7 +771,7 @@ class SecretScanningClient:
         """
 
         from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody,
             SecretScanningAlert,
         )
@@ -959,7 +799,7 @@ class SecretScanningClient:
             stream=stream,
             response_model=SecretScanningAlert,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1021,7 +861,7 @@ class SecretScanningClient:
         """
 
         from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody,
             SecretScanningAlert,
         )
@@ -1049,7 +889,7 @@ class SecretScanningClient:
             stream=stream,
             response_model=SecretScanningAlert,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1077,10 +917,7 @@ class SecretScanningClient:
         See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert
         """
 
-        from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            SecretScanningLocation,
-        )
+        from ..models import EventsGetResponse503, SecretScanningLocation
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations"
 
@@ -1099,7 +936,7 @@ class SecretScanningClient:
             stream=stream,
             response_model=list[SecretScanningLocation],
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1127,10 +964,7 @@ class SecretScanningClient:
         See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert
         """
 
-        from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            SecretScanningLocation,
-        )
+        from ..models import EventsGetResponse503, SecretScanningLocation
 
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations"
 
@@ -1149,7 +983,7 @@ class SecretScanningClient:
             stream=stream,
             response_model=list[SecretScanningLocation],
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1209,7 +1043,7 @@ class SecretScanningClient:
         """
 
         from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
             SecretScanningPushProtectionBypass,
         )
@@ -1237,7 +1071,7 @@ class SecretScanningClient:
             stream=stream,
             response_model=SecretScanningPushProtectionBypass,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1297,7 +1131,7 @@ class SecretScanningClient:
         """
 
         from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            EventsGetResponse503,
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
             SecretScanningPushProtectionBypass,
         )
@@ -1325,7 +1159,7 @@ class SecretScanningClient:
             stream=stream,
             response_model=SecretScanningPushProtectionBypass,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1343,15 +1177,15 @@ class SecretScanningClient:
 
         Lists the latest default incremental and backfill scans by type for a repository. Scans from Copilot Secret Scanning are not included.
 
+        > [!NOTE]
+        > This endpoint requires [GitHub Advanced Security](https://docs.github.com/get-started/learning-about-github/about-github-advanced-security)."
+
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
         See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository
         """
 
-        from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            SecretScanningScanHistory,
-        )
+        from ..models import EventsGetResponse503, SecretScanningScanHistory
 
         url = f"/repos/{owner}/{repo}/secret-scanning/scan-history"
 
@@ -1364,7 +1198,7 @@ class SecretScanningClient:
             stream=stream,
             response_model=SecretScanningScanHistory,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -1382,15 +1216,15 @@ class SecretScanningClient:
 
         Lists the latest default incremental and backfill scans by type for a repository. Scans from Copilot Secret Scanning are not included.
 
+        > [!NOTE]
+        > This endpoint requires [GitHub Advanced Security](https://docs.github.com/get-started/learning-about-github/about-github-advanced-security)."
+
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
         See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-secret-scanning-scan-history-for-a-repository
         """
 
-        from ..models import (
-            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
-            SecretScanningScanHistory,
-        )
+        from ..models import EventsGetResponse503, SecretScanningScanHistory
 
         url = f"/repos/{owner}/{repo}/secret-scanning/scan-history"
 
@@ -1403,6 +1237,6 @@ class SecretScanningClient:
             stream=stream,
             response_model=SecretScanningScanHistory,
             error_models={
-                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "503": EventsGetResponse503,
             },
         )

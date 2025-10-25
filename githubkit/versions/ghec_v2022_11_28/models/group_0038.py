@@ -9,17 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsArtifactAndLogRetention(GitHubModel):
-    """ActionsArtifactAndLogRetention"""
+class ActionsEnterprisePermissions(GitHubModel):
+    """ActionsEnterprisePermissions"""
 
-    days: int = Field(description="The number of days to retain artifacts and logs")
+    enabled_organizations: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions."
+    )
+    selected_organizations_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the selected organizations that are allowed to run GitHub Actions, when `enabled_organizations` is set to `selected`.",
+    )
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+        default=UNSET,
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+    )
+    selected_actions_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
+    )
+    sha_pinning_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether actions must be pinned to a full-length commit SHA.",
+    )
 
 
-model_rebuild(ActionsArtifactAndLogRetention)
+model_rebuild(ActionsEnterprisePermissions)
 
-__all__ = ("ActionsArtifactAndLogRetention",)
+__all__ = ("ActionsEnterprisePermissions",)

@@ -10,20 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0131 import RepositoryRuleMaxFilePathLengthPropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleMaxFilePathLengthType(TypedDict):
-    """max_file_path_length
+class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
+    """RequiredReviewerConfiguration
 
-    Prevent commits that include file paths that exceed the specified character
-    limit from being pushed to the commit graph.
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
     """
 
-    type: Literal["max_file_path_length"]
-    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer: RepositoryRuleParamsReviewerType
 
 
-__all__ = ("RepositoryRuleMaxFilePathLengthType",)
+class RepositoryRuleParamsReviewerType(TypedDict):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int
+    type: Literal["Team"]
+
+
+__all__ = (
+    "RepositoryRuleParamsRequiredReviewerConfigurationType",
+    "RepositoryRuleParamsReviewerType",
+)

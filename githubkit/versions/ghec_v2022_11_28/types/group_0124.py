@@ -10,19 +10,48 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0125 import RepositoryRuleBranchNamePatternPropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleBranchNamePatternType(TypedDict):
-    """branch_name_pattern
+class RepositoryRuleCreationType(TypedDict):
+    """creation
 
-    Parameters to be used for the branch_name_pattern rule
+    Only allow users with bypass permission to create matching refs.
     """
 
-    type: Literal["branch_name_pattern"]
-    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
+    type: Literal["creation"]
 
 
-__all__ = ("RepositoryRuleBranchNamePatternType",)
+class RepositoryRuleDeletionType(TypedDict):
+    """deletion
+
+    Only allow users with bypass permissions to delete matching refs.
+    """
+
+    type: Literal["deletion"]
+
+
+class RepositoryRuleRequiredSignaturesType(TypedDict):
+    """required_signatures
+
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"]
+
+
+class RepositoryRuleNonFastForwardType(TypedDict):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"]
+
+
+__all__ = (
+    "RepositoryRuleCreationType",
+    "RepositoryRuleDeletionType",
+    "RepositoryRuleNonFastForwardType",
+    "RepositoryRuleRequiredSignaturesType",
+)

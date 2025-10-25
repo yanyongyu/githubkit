@@ -10,86 +10,51 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType
 
+class WebhooksRuleType(TypedDict):
+    """branch protection rule
 
-class WebhooksIssueCommentType(TypedDict):
-    """issue comment
-
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/enterprise-cloud@latest//github/administering-
+    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
+    branches#about-branch-protection-settings) applied to branches that match the
+    name. Binary settings are boolean. Multi-level configurations are one of `off`,
+    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
     """
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
+    admin_enforced: bool
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
+    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
+    authorized_actor_names: list[str]
+    authorized_actors_only: bool
+    authorized_dismissal_actors_only: bool
+    create_protected: NotRequired[bool]
     created_at: datetime
-    html_url: str
+    dismiss_stale_reviews_on_push: bool
     id: int
-    issue_url: str
-    node_id: str
-    performed_via_github_app: Union[IntegrationType, None]
-    reactions: WebhooksIssueCommentPropReactionsType
+    ignore_approvals_from_contributors: bool
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ]
+    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
+    lock_allows_fork_sync: NotRequired[bool]
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
+    name: str
+    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
+    repository_id: int
+    require_code_owner_review: bool
+    require_last_push_approval: NotRequired[bool]
+    required_approving_review_count: int
+    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
+    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
+    required_status_checks: list[str]
+    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
+    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
+    strict_required_status_checks_policy: bool
     updated_at: datetime
-    url: str
-    user: Union[WebhooksIssueCommentPropUserType, None]
 
 
-class WebhooksIssueCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksIssueCommentPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-__all__ = (
-    "WebhooksIssueCommentPropReactionsType",
-    "WebhooksIssueCommentPropUserType",
-    "WebhooksIssueCommentType",
-)
+__all__ = ("WebhooksRuleType",)

@@ -12,18 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0138 import RepositoryRuleWorkflowsPropParametersType
+from .group_0138 import RepositoryRuleCommitAuthorEmailPatternPropParametersType
 
 
-class RepositoryRuleWorkflowsType(TypedDict):
-    """workflows
+class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
+    """commit_author_email_pattern
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Parameters to be used for the commit_author_email_pattern rule
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleWorkflowsType",)
+__all__ = ("RepositoryRuleCommitAuthorEmailPatternType",)

@@ -9,33 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheListType(TypedDict):
-    """Repository actions caches
+class ImmutableReleasesOrganizationSettingsType(TypedDict):
+    """Check immutable releases organization settings
 
-    Repository actions caches
+    Check immutable releases settings for an organization.
     """
 
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class ActionsCacheListPropActionsCachesItemsType(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[datetime]
-    created_at: NotRequired[datetime]
-    size_in_bytes: NotRequired[int]
-
-
-__all__ = (
-    "ActionsCacheListPropActionsCachesItemsType",
-    "ActionsCacheListType",
-)
+__all__ = ("ImmutableReleasesOrganizationSettingsType",)

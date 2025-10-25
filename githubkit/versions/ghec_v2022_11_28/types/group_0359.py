@@ -9,36 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0357 import MetadataType
-
-
-class ManifestType(TypedDict):
-    """Manifest"""
-
-    name: str
-    file: NotRequired[ManifestPropFileType]
-    metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
+from .group_0019 import LicenseSimpleType
+from .group_0270 import CodeOfConductSimpleType
 
 
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
+class CommunityProfilePropFilesType(TypedDict):
+    """CommunityProfilePropFiles"""
 
-    source_location: NotRequired[str]
+    code_of_conduct: Union[None, CodeOfConductSimpleType]
+    code_of_conduct_file: Union[None, CommunityHealthFileType]
+    license_: Union[None, LicenseSimpleType]
+    contributing: Union[None, CommunityHealthFileType]
+    readme: Union[None, CommunityHealthFileType]
+    issue_template: Union[None, CommunityHealthFileType]
+    pull_request_template: Union[None, CommunityHealthFileType]
 
 
-ManifestPropResolvedType: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
+class CommunityHealthFileType(TypedDict):
+    """Community Health File"""
 
-A collection of resolved package dependencies.
-"""
+    url: str
+    html_url: str
+
+
+class CommunityProfileType(TypedDict):
+    """Community Profile
+
+    Community Profile
+    """
+
+    health_percentage: int
+    description: Union[str, None]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesType
+    updated_at: Union[datetime, None]
+    content_reports_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "ManifestPropFileType",
-    "ManifestPropResolvedType",
-    "ManifestType",
+    "CommunityHealthFileType",
+    "CommunityProfilePropFilesType",
+    "CommunityProfileType",
 )

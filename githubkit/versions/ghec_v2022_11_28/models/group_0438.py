@@ -9,37 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0117 import RepositoryRuleRequiredStatusChecksPropParameters
-
-
-class RepositoryRuleDetailedOneof8(GitHubModel):
-    """RepositoryRuleDetailedOneof8"""
-
-    type: Literal["required_status_checks"] = Field()
-    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
-        default=UNSET
-    )
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
-    )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
-    )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
-    )
+from .group_0003 import SimpleUser
+from .group_0080 import Team
 
 
-model_rebuild(RepositoryRuleDetailedOneof8)
+class PullRequestReviewRequest(GitHubModel):
+    """Pull Request Review Request
 
-__all__ = ("RepositoryRuleDetailedOneof8",)
+    Pull Request Review Request
+    """
+
+    users: list[SimpleUser] = Field()
+    teams: list[Team] = Field()
+
+
+model_rebuild(PullRequestReviewRequest)
+
+__all__ = ("PullRequestReviewRequest",)

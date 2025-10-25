@@ -13,7 +13,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0133 import Link
+from .group_0130 import Link
 
 
 class ReviewCommentPropLinks(GitHubModel):

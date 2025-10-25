@@ -9,54 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0191 import MinimalRepositoryType
-from .group_0301 import GitUserType
-from .group_0487 import SearchResultTextMatchesItemsType
-from .group_0490 import CommitSearchResultItemPropCommitType
+
+class GroupResponseType(TypedDict):
+    """GroupResponse"""
+
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[GroupResponsePropMembersItemsType]]
 
 
-class CommitSearchResultItemType(TypedDict):
-    """Commit Search Result Item
+class GroupResponsePropMembersItemsType(TypedDict):
+    """GroupResponsePropMembersItems"""
 
-    Commit Search Result Item
-    """
-
-    url: str
-    sha: str
-    html_url: str
-    comments_url: str
-    commit: CommitSearchResultItemPropCommitType
-    author: Union[None, SimpleUserType]
-    committer: Union[None, GitUserType]
-    parents: list[CommitSearchResultItemPropParentsItemsType]
-    repository: MinimalRepositoryType
-    score: float
-    node_id: str
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-
-
-class CommitSearchResultItemPropParentsItemsType(TypedDict):
-    """CommitSearchResultItemPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class SearchCommitsGetResponse200Type(TypedDict):
-    """SearchCommitsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CommitSearchResultItemType]
+    value: str
+    ref: str
+    display: NotRequired[str]
 
 
 __all__ = (
-    "CommitSearchResultItemPropParentsItemsType",
-    "CommitSearchResultItemType",
-    "SearchCommitsGetResponse200Type",
+    "GroupResponsePropMembersItemsType",
+    "GroupResponseType",
 )

@@ -12,30 +12,36 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
-    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
+    GitHubModel
+):
+    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
-    )
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
-    )
-    enable_static_ip: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
-    )
+    total_count: int = Field()
+    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody)
+class ActionsHostedRunnerCustomImageVersion(GitHubModel):
+    """GitHub-hosted runner custom image version details.
 
-__all__ = ("OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody",)
+    Provides details of a hosted runner custom image version
+    """
+
+    version: str = Field(description="The version of image.")
+    state: str = Field(description="The state of image version.")
+    size_gb: int = Field(description="Image version size in GB.")
+    created_on: str = Field(description="The creation date time of the image version.")
+    state_details: str = Field(description="The image version status details.")
+
+
+model_rebuild(
+    OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
+)
+model_rebuild(ActionsHostedRunnerCustomImageVersion)
+
+__all__ = (
+    "ActionsHostedRunnerCustomImageVersion",
+    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
+)

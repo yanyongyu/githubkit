@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoSubscriptionPutBodyType(TypedDict):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    subscribed: NotRequired[bool]
-    ignored: NotRequired[bool]
+    enabled: bool
 
 
-__all__ = ("ReposOwnerRepoSubscriptionPutBodyType",)
+__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",)

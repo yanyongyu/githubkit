@@ -9,20 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0468 import TrafficType
+from .group_0173 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationWikiCommitType,
+)
+from .group_0174 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestTitleType,
+)
+from .group_0175 import (
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationPullRequestCommentType,
+)
 
 
-class CloneTrafficType(TypedDict):
-    """Clone Traffic
+class SecretScanningLocationType(TypedDict):
+    """SecretScanningLocation"""
 
-    Clone Traffic
-    """
+    type: NotRequired[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
+    ]
+    details: NotRequired[
+        Union[
+            SecretScanningLocationCommitType,
+            SecretScanningLocationWikiCommitType,
+            SecretScanningLocationIssueTitleType,
+            SecretScanningLocationIssueBodyType,
+            SecretScanningLocationIssueCommentType,
+            SecretScanningLocationDiscussionTitleType,
+            SecretScanningLocationDiscussionBodyType,
+            SecretScanningLocationDiscussionCommentType,
+            SecretScanningLocationPullRequestTitleType,
+            SecretScanningLocationPullRequestBodyType,
+            SecretScanningLocationPullRequestCommentType,
+            SecretScanningLocationPullRequestReviewType,
+            SecretScanningLocationPullRequestReviewCommentType,
+        ]
+    ]
 
-    count: int
-    uniques: int
-    clones: list[TrafficType]
 
-
-__all__ = ("CloneTrafficType",)
+__all__ = ("SecretScanningLocationType",)

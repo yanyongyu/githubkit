@@ -9,16 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class CodeScanningSarifsStatusType(TypedDict):
-    """CodeScanningSarifsStatus"""
+class CodeScanningAutofixType(TypedDict):
+    """CodeScanningAutofix"""
 
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+    status: Literal["pending", "error", "success", "outdated"]
+    description: Union[str, None]
+    started_at: datetime
 
 
-__all__ = ("CodeScanningSarifsStatusType",)
+__all__ = ("CodeScanningAutofixType",)

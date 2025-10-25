@@ -9,37 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class CustomPropertySetPayload(GitHubModel):
+    """Custom Property Set Payload
 
-class ProjectsV2DraftIssue(GitHubModel):
-    """Draft Issue
-
-    A draft issue in a project
+    Custom property set payload
     """
 
-    id: float = Field(description="The ID of the draft issue")
-    node_id: str = Field(description="The node ID of the draft issue")
-    title: str = Field(description="The title of the draft issue")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The body content of the draft issue"
+    value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
+        Field(description="The type of the value for the property")
     )
-    user: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field(description="The time the draft issue was created")
-    updated_at: datetime = Field(
-        description="The time the draft issue was last updated"
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
     )
+    default_value: Missing[Union[str, list[str], None]] = Field(
+        default=UNSET, description="Default value of the property"
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
+    )
+    allowed_values: Missing[
+        Union[
+            Annotated[
+                list[Annotated[str, Field(max_length=75)]],
+                Field(max_length=200 if PYDANTIC_V2 else None),
+            ],
+            None,
+        ]
+    ] = Field(
+        default=UNSET,
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+    )
+    values_editable_by: Missing[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
-model_rebuild(ProjectsV2DraftIssue)
+model_rebuild(CustomPropertySetPayload)
 
-__all__ = ("ProjectsV2DraftIssue",)
+__all__ = ("CustomPropertySetPayload",)

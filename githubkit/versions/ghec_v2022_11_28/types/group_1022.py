@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
 
-    default_level: Literal["public", "internal"]
+    name: str
 
 
-__all__ = ("OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",)
+__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType",)

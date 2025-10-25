@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,28 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class OrganizationCustomOrganizationRoleUpdateSchema(GitHubModel):
+    """OrganizationCustomOrganizationRoleUpdateSchema"""
 
-class ProjectsV2DraftIssue(GitHubModel):
-    """Draft Issue
-
-    A draft issue in a project
-    """
-
-    id: float = Field(description="The ID of the draft issue")
-    node_id: str = Field(description="The node ID of the draft issue")
-    title: str = Field(description="The title of the draft issue")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The body content of the draft issue"
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the custom role."
     )
-    user: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field(description="The time the draft issue was created")
-    updated_at: datetime = Field(
-        description="The time the draft issue was last updated"
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description about the intended use of this role or the permissions it grants.",
+    )
+    permissions: Missing[list[str]] = Field(
+        default=UNSET,
+        description="A list of additional permissions included in this role.",
+    )
+    base_role: Missing[
+        Literal["none", "read", "triage", "write", "maintain", "admin"]
+    ] = Field(
+        default=UNSET,
+        description="The system role from which this role can inherit permissions.",
     )
 
 
-model_rebuild(ProjectsV2DraftIssue)
+model_rebuild(OrganizationCustomOrganizationRoleUpdateSchema)
 
-__all__ = ("ProjectsV2DraftIssue",)
+__all__ = ("OrganizationCustomOrganizationRoleUpdateSchema",)

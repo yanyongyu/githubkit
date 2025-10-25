@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
 
+class CustomPropertySetPayloadType(TypedDict):
+    """Custom Property Set Payload
 
-class ProjectsV2DraftIssueType(TypedDict):
-    """Draft Issue
-
-    A draft issue in a project
+    Custom property set payload
     """
 
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
+    value_type: Literal["string", "single_select", "multi_select", "true_false"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
 
 
-__all__ = ("ProjectsV2DraftIssueType",)
+__all__ = ("CustomPropertySetPayloadType",)

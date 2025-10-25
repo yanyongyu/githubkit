@@ -9,73 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0146 import RepositoryRulesetBypassActorType
-from .group_0147 import RepositoryRulesetConditionsType
-from .group_0158 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
-from .group_0159 import RepositoryRuleUpdateType
-from .group_0161 import RepositoryRuleRequiredLinearHistoryType
-from .group_0162 import RepositoryRuleMergeQueueType
-from .group_0164 import RepositoryRuleRequiredDeploymentsType
-from .group_0167 import RepositoryRulePullRequestType
-from .group_0169 import RepositoryRuleRequiredStatusChecksType
-from .group_0171 import RepositoryRuleCommitMessagePatternType
-from .group_0173 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0175 import RepositoryRuleCommitterEmailPatternType
-from .group_0177 import RepositoryRuleBranchNamePatternType
-from .group_0179 import RepositoryRuleTagNamePatternType
-from .group_0181 import RepositoryRuleFilePathRestrictionType
-from .group_0183 import RepositoryRuleMaxFilePathLengthType
-from .group_0185 import RepositoryRuleFileExtensionRestrictionType
-from .group_0187 import RepositoryRuleMaxFileSizeType
-from .group_0190 import RepositoryRuleWorkflowsType
-from .group_0192 import RepositoryRuleCodeScanningType
-from .group_0194 import RepositoryRuleCopilotCodeReviewType
+
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
+
+    body: NotRequired[str]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
 
 
-class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
-    """ReposOwnerRepoRulesetsPostBody"""
-
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[RepositoryRulesetConditionsType]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCopilotCodeReviewType,
-            ]
-        ]
-    ]
-
-
-__all__ = ("ReposOwnerRepoRulesetsPostBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType",)

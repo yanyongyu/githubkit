@@ -9,23 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DependabotAlertPackage(GitHubModel):
-    """DependabotAlertPackage
+class EnterpriseTeam(GitHubModel):
+    """Enterprise Team
 
-    Details for the vulnerable package.
+    Group of enterprise owners and/or members
     """
 
-    ecosystem: str = Field(
-        description="The package's language or package management ecosystem."
+    id: int = Field()
+    name: str = Field()
+    description: Missing[str] = Field(default=UNSET)
+    slug: str = Field()
+    url: str = Field()
+    sync_to_organizations: Missing[str] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
     )
-    name: str = Field(description="The unique package name within its ecosystem.")
+    organization_selection_type: Missing[str] = Field(default=UNSET)
+    group_id: Union[str, None] = Field()
+    group_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    )
+    html_url: str = Field()
+    members_url: str = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(DependabotAlertPackage)
+model_rebuild(EnterpriseTeam)
 
-__all__ = ("DependabotAlertPackage",)
+__all__ = ("EnterpriseTeam",)

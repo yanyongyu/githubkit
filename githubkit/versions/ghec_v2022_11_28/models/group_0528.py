@@ -9,27 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksLabel(GitHubModel):
-    """Label"""
+class SimpleInstallation(GitHubModel):
+    """Simple Installation
 
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    id: int = Field()
-    name: str = Field(description="The name of the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
+    cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-
+    with-github-apps)."
+    """
+
+    id: int = Field(description="The ID of the installation.")
+    node_id: str = Field(description="The global node ID of the installation.")
 
 
-model_rebuild(WebhooksLabel)
+model_rebuild(SimpleInstallation)
 
-__all__ = ("WebhooksLabel",)
+__all__ = ("SimpleInstallation",)

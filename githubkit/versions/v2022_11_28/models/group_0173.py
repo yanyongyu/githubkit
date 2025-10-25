@@ -17,21 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0174 import RepositoryRuleCommitAuthorEmailPatternPropParameters
+from .group_0174 import RepositoryRuleBranchNamePatternPropParameters
 
 
-class RepositoryRuleCommitAuthorEmailPattern(GitHubModel):
-    """commit_author_email_pattern
+class RepositoryRuleBranchNamePattern(GitHubModel):
+    """branch_name_pattern
 
-    Parameters to be used for the commit_author_email_pattern rule
+    Parameters to be used for the branch_name_pattern rule
     """
 
-    type: Literal["commit_author_email_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitAuthorEmailPatternPropParameters] = Field(
+    type: Literal["branch_name_pattern"] = Field()
+    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
         default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleCommitAuthorEmailPattern)
+model_rebuild(RepositoryRuleBranchNamePattern)
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPattern",)
+__all__ = ("RepositoryRuleBranchNamePattern",)

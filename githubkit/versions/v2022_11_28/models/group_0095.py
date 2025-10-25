@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,62 +17,72 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0094 import Team
+
+class CodeScanningAlertInstance(GitHubModel):
+    """CodeScanningAlertInstance"""
+
+    ref: Missing[str] = Field(
+        default=UNSET,
+        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
+    )
+    analysis_key: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
+    )
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
+    )
+    category: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
+    )
+    state: Missing[Union[None, Literal["open", "dismissed", "fixed"]]] = Field(
+        default=UNSET, description="State of a code scanning alert."
+    )
+    commit_sha: Missing[str] = Field(default=UNSET)
+    message: Missing[CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
+    location: Missing[CodeScanningAlertLocation] = Field(
+        default=UNSET, description="Describe a region within a file for the alert."
+    )
+    html_url: Missing[str] = Field(default=UNSET)
+    classifications: Missing[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
+    ] = Field(
+        default=UNSET,
+        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
+    )
 
 
-class CampaignSummary(GitHubModel):
-    """Campaign summary
+class CodeScanningAlertLocation(GitHubModel):
+    """CodeScanningAlertLocation
 
-    The campaign metadata and alert stats.
+    Describe a region within a file for the alert.
     """
 
-    number: int = Field(description="The number of the newly created campaign")
-    created_at: datetime = Field(
-        description="The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    updated_at: datetime = Field(
-        description="The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    name: Missing[str] = Field(default=UNSET, description="The campaign name")
-    description: str = Field(description="The campaign description")
-    managers: list[SimpleUser] = Field(description="The campaign managers")
-    team_managers: Missing[list[Team]] = Field(
-        default=UNSET, description="The campaign team managers"
-    )
-    published_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
-    )
-    ends_at: datetime = Field(
-        description="The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    closed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.",
-    )
-    state: Literal["open", "closed"] = Field(
-        title="Campaign state",
-        description="Indicates whether a campaign is open or closed",
-    )
-    contact_link: Union[str, None] = Field(
-        description="The contact link of the campaign."
-    )
-    alert_stats: Missing[CampaignSummaryPropAlertStats] = Field(default=UNSET)
+    path: Missing[str] = Field(default=UNSET)
+    start_line: Missing[int] = Field(default=UNSET)
+    end_line: Missing[int] = Field(default=UNSET)
+    start_column: Missing[int] = Field(default=UNSET)
+    end_column: Missing[int] = Field(default=UNSET)
 
 
-class CampaignSummaryPropAlertStats(GitHubModel):
-    """CampaignSummaryPropAlertStats"""
+class CodeScanningAlertInstancePropMessage(GitHubModel):
+    """CodeScanningAlertInstancePropMessage"""
 
-    open_count: int = Field(description="The number of open alerts")
-    closed_count: int = Field(description="The number of closed alerts")
-    in_progress_count: int = Field(description="The number of in-progress alerts")
+    text: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CampaignSummary)
-model_rebuild(CampaignSummaryPropAlertStats)
+model_rebuild(CodeScanningAlertInstance)
+model_rebuild(CodeScanningAlertLocation)
+model_rebuild(CodeScanningAlertInstancePropMessage)
 
 __all__ = (
-    "CampaignSummary",
-    "CampaignSummaryPropAlertStats",
+    "CodeScanningAlertInstance",
+    "CodeScanningAlertInstancePropMessage",
+    "CodeScanningAlertLocation",
 )

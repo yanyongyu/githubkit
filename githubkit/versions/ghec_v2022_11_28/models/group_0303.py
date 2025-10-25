@@ -9,36 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class DiffEntry(GitHubModel):
-    """Diff Entry
+class ReviewCustomGatesCommentRequired(GitHubModel):
+    """ReviewCustomGatesCommentRequired"""
 
-    Diff Entry
-    """
-
-    sha: Union[str, None] = Field()
-    filename: str = Field()
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ] = Field()
-    additions: int = Field()
-    deletions: int = Field()
-    changes: int = Field()
-    blob_url: Union[str, None] = Field()
-    raw_url: Union[str, None] = Field()
-    contents_url: str = Field()
-    patch: Missing[str] = Field(default=UNSET)
-    previous_filename: Missing[str] = Field(default=UNSET)
+    environment_name: str = Field(
+        description="The name of the environment to approve or reject."
+    )
+    comment: str = Field(
+        description="Comment associated with the pending deployment protection rule. **Required when state is not provided.**"
+    )
 
 
-model_rebuild(DiffEntry)
+model_rebuild(ReviewCustomGatesCommentRequired)
 
-__all__ = ("DiffEntry",)
+__all__ = ("ReviewCustomGatesCommentRequired",)

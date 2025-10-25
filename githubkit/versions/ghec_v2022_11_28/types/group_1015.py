@@ -9,17 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0020 import RepositoryType
-
-
-class InstallationRepositoriesGetResponse200Type(TypedDict):
-    """InstallationRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[RepositoryType]
-    repository_selection: NotRequired[str]
+from .group_0098 import OrganizationCustomPropertyType
 
 
-__all__ = ("InstallationRepositoriesGetResponse200Type",)
+class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
+
+    properties: list[OrganizationCustomPropertyType]
+
+
+__all__ = ("EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType",)

@@ -10,31 +10,36 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0011 import WebhookConfigType
-from .group_0376 import HookResponseType
+from .group_0003 import SimpleUserType
+from .group_0010 import IntegrationType
 
 
-class HookType(TypedDict):
-    """Webhook
+class DeploymentStatusType(TypedDict):
+    """Deployment Status
 
-    Webhooks for repositories.
+    The status of a deployment.
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: datetime
-    created_at: datetime
     url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    id: int
+    node_id: str
+    state: Literal[
+        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    ]
+    creator: Union[None, SimpleUserType]
+    description: str
+    environment: NotRequired[str]
+    target_url: str
+    created_at: datetime
+    updated_at: datetime
+    deployment_url: str
+    repository_url: str
+    environment_url: NotRequired[str]
+    log_url: NotRequired[str]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-__all__ = ("HookType",)
+__all__ = ("DeploymentStatusType",)

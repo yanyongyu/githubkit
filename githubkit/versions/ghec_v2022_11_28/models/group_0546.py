@@ -9,30 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class WebhooksProjectColumn(GitHubModel):
-    """Project Column"""
+class WebhooksRepositoriesAddedItems(GitHubModel):
+    """WebhooksRepositoriesAddedItems"""
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    cards_url: str = Field()
-    created_at: datetime = Field()
-    id: int = Field(description="The unique identifier of the project column")
-    name: str = Field(description="Name of the project column")
+    full_name: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    name: str = Field(description="The name of the repository.")
     node_id: str = Field()
-    project_url: str = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
+    private: bool = Field(description="Whether the repository is private or public.")
 
 
-model_rebuild(WebhooksProjectColumn)
+model_rebuild(WebhooksRepositoriesAddedItems)
 
-__all__ = ("WebhooksProjectColumn",)
+__all__ = ("WebhooksRepositoriesAddedItems",)

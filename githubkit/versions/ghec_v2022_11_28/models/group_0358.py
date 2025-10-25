@@ -9,44 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0357 import Metadata
+from .group_0003 import SimpleUser
 
 
-class Dependency(GitHubModel):
-    """Dependency"""
+class Status(GitHubModel):
+    """Status
 
-    package_url: Missing[str] = Field(
-        pattern="^pkg",
-        default=UNSET,
-        description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
-    )
-    metadata: Missing[Metadata] = Field(
-        default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
-    )
-    relationship: Missing[Literal["direct", "indirect"]] = Field(
-        default=UNSET,
-        description="A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
-    )
-    scope: Missing[Literal["runtime", "development"]] = Field(
-        default=UNSET,
-        description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
-    )
-    dependencies: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of package-url (PURLs) of direct child dependencies.",
-    )
+    The status of a commit.
+    """
+
+    url: str = Field()
+    avatar_url: Union[str, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    state: str = Field()
+    description: Union[str, None] = Field()
+    target_url: Union[str, None] = Field()
+    context: str = Field()
+    created_at: str = Field()
+    updated_at: str = Field()
+    creator: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(Dependency)
+model_rebuild(Status)
 
-__all__ = ("Dependency",)
+__all__ = ("Status",)

@@ -13,17 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
-
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/actions/secrets#get-a-repository-public-key) endpoint.",
-    )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+from .group_0234 import WorkflowRun
 
 
-model_rebuild(ReposOwnerRepoActionsSecretsSecretNamePutBody)
+class ReposOwnerRepoActionsRunsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsRunsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoActionsSecretsSecretNamePutBody",)
+    total_count: int = Field()
+    workflow_runs: list[WorkflowRun] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsRunsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsRunsGetResponse200",)

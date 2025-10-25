@@ -9,45 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0376 import HookResponseType
+from .group_0003 import SimpleUserType
+from .group_0098 import OrganizationCustomPropertyType
+from .group_0527 import EnterpriseWebhooksType
+from .group_0528 import SimpleInstallationType
 
 
-class WebhookPingPropHookType(TypedDict):
-    """Webhook
+class WebhookOrganizationCustomPropertyUpdatedType(TypedDict):
+    """organization custom property updated event"""
 
-    The webhook that is being pinged
-    """
-
-    active: bool
-    app_id: NotRequired[int]
-    config: WebhookPingPropHookPropConfigType
-    created_at: datetime
-    deliveries_url: NotRequired[str]
-    events: list[str]
-    id: int
-    last_response: NotRequired[HookResponseType]
-    name: Literal["web"]
-    ping_url: NotRequired[str]
-    test_url: NotRequired[str]
-    type: str
-    updated_at: datetime
-    url: NotRequired[str]
+    action: Literal["updated"]
+    definition: OrganizationCustomPropertyType
+    enterprise: EnterpriseWebhooksType
+    installation: NotRequired[SimpleInstallationType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookPingPropHookPropConfigType(TypedDict):
-    """WebhookPingPropHookPropConfig"""
-
-    content_type: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    secret: NotRequired[str]
-    url: NotRequired[str]
-
-
-__all__ = (
-    "WebhookPingPropHookPropConfigType",
-    "WebhookPingPropHookType",
-)
+__all__ = ("WebhookOrganizationCustomPropertyUpdatedType",)

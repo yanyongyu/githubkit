@@ -11,14 +11,13 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0074 import ActionsHostedRunnerType
+from .group_0065 import CustomPropertyValueType
 
 
-class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersGetResponse200"""
+class OrganizationsOrgOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
 
-    total_count: int
-    runners: list[ActionsHostedRunnerType]
+    properties: list[CustomPropertyValueType]
 
 
-__all__ = ("OrgsOrgActionsHostedRunnersGetResponse200Type",)
+__all__ = ("OrganizationsOrgOrgPropertiesValuesPatchBodyType",)

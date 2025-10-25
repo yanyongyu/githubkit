@@ -9,98 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class SecurityAndAnalysisType(TypedDict):
-    """SecurityAndAnalysis"""
+class SubIssuesSummaryType(TypedDict):
+    """Sub-issues Summary"""
 
-    advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
-    code_security: NotRequired[SecurityAndAnalysisPropCodeSecurityType]
-    dependabot_security_updates: NotRequired[
-        SecurityAndAnalysisPropDependabotSecurityUpdatesType
-    ]
-    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
-    secret_scanning_push_protection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningPushProtectionType
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        SecurityAndAnalysisPropSecretScanningNonProviderPatternsType
-    ]
-    secret_scanning_ai_detection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningAiDetectionType
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        SecurityAndAnalysisPropSecretScanningValidityChecksType
-    ]
+    total: int
+    completed: int
+    percent_completed: int
 
 
-class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
-    """SecurityAndAnalysisPropAdvancedSecurity
+class IssueDependenciesSummaryType(TypedDict):
+    """Issue Dependencies Summary"""
 
-    Enable or disable GitHub Advanced Security for the repository.
-
-    For standalone Code Scanning or Secret Protection products, this parameter
-    cannot be used.
-    """
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropCodeSecurityType(TypedDict):
-    """SecurityAndAnalysisPropCodeSecurity"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropDependabotSecurityUpdatesType(TypedDict):
-    """SecurityAndAnalysisPropDependabotSecurityUpdates
-
-    Enable or disable Dependabot security updates for the repository.
-    """
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanning"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtectionType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningNonProviderPatternsType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningAiDetectionType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningAiDetection"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningValidityChecksType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
 
 
 __all__ = (
-    "SecurityAndAnalysisPropAdvancedSecurityType",
-    "SecurityAndAnalysisPropCodeSecurityType",
-    "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
-    "SecurityAndAnalysisPropSecretScanningAiDetectionType",
-    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
-    "SecurityAndAnalysisPropSecretScanningPushProtectionType",
-    "SecurityAndAnalysisPropSecretScanningType",
-    "SecurityAndAnalysisPropSecretScanningValidityChecksType",
-    "SecurityAndAnalysisType",
+    "IssueDependenciesSummaryType",
+    "SubIssuesSummaryType",
 )

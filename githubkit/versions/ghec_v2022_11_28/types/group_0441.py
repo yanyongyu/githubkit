@@ -9,20 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0121 import RepositoryRuleCommitAuthorEmailPatternPropParametersType
-
-
-class RepositoryRuleDetailedOneof11Type(TypedDict):
-    """RepositoryRuleDetailedOneof11"""
-
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+from .group_0262 import LinkType
 
 
-__all__ = ("RepositoryRuleDetailedOneof11Type",)
+class ReviewCommentPropLinksType(TypedDict):
+    """ReviewCommentPropLinks"""
+
+    self_: LinkType
+    html: LinkType
+    pull_request: LinkType
+
+
+__all__ = ("ReviewCommentPropLinksType",)

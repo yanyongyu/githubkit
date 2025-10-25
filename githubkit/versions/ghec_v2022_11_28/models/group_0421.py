@@ -9,22 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
-class PullRequestMergeResult(GitHubModel):
-    """Pull Request Merge Result
 
-    Pull Request Merge Result
+class TimelineUnassignedIssueEvent(GitHubModel):
+    """Timeline Unassigned Issue Event
+
+    Timeline Unassigned Issue Event
     """
 
-    sha: str = Field()
-    merged: bool = Field()
-    message: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["unassigned"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(PullRequestMergeResult)
+model_rebuild(TimelineUnassignedIssueEvent)
 
-__all__ = ("PullRequestMergeResult",)
+__all__ = ("TimelineUnassignedIssueEvent",)

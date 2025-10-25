@@ -10,47 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType
 
 
-class BaseGistType(TypedDict):
-    """Base Gist
+class GistCommentType(TypedDict):
+    """Gist Comment
 
-    Base Gist
+    A comment made to a gist.
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
+    id: int
     node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: BaseGistPropFilesType
-    public: bool
+    url: str
+    body: str
+    user: Union[None, SimpleUserType]
     created_at: datetime
     updated_at: datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserType]
-    comments_url: str
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-BaseGistPropFilesType: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
-"""
-
-
-__all__ = (
-    "BaseGistPropFilesType",
-    "BaseGistType",
-)
+__all__ = ("GistCommentType",)

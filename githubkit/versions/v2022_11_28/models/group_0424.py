@@ -18,7 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0064 import MinimalRepository
+from .group_0061 import MinimalRepository
 from .group_0250 import GitUser
 from .group_0422 import SearchResultTextMatchesItems
 from .group_0425 import CommitSearchResultItemPropCommit

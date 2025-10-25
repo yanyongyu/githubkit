@@ -13,25 +13,26 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0511 import EnterpriseWebhooksType
-from .group_0512 import SimpleInstallationType
-from .group_0513 import OrganizationSimpleWebhooksType
-from .group_0514 import RepositoryWebhooksType
-from .group_0534 import WebhooksMilestoneType
-from .group_0705 import WebhookIssuesDemilestonedPropIssueType
+from .group_0020 import RepositoryType
+from .group_0192 import IssueType
+from .group_0528 import SimpleInstallationType
+from .group_0529 import OrganizationSimpleWebhooksType
+from .group_0530 import RepositoryWebhooksType
 
 
-class WebhookIssuesDemilestonedType(TypedDict):
-    """issues demilestoned event"""
+class WebhookIssueDependenciesBlockingAddedType(TypedDict):
+    """blocking issue added event"""
 
-    action: Literal["demilestoned"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["blocking_added"]
+    blocked_issue_id: float
+    blocked_issue: IssueType
+    blocked_issue_repo: RepositoryType
+    blocking_issue_id: float
+    blocking_issue: IssueType
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesDemilestonedPropIssueType
-    milestone: NotRequired[WebhooksMilestoneType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    organization: OrganizationSimpleWebhooksType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesDemilestonedType",)
+__all__ = ("WebhookIssueDependenciesBlockingAddedType",)

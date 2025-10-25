@@ -10,25 +10,25 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodeScanningAutofix(GitHubModel):
-    """CodeScanningAutofix"""
+class GitUser(GitHubModel):
+    """Git User
 
-    status: Literal["pending", "error", "success", "outdated"] = Field(
-        description="The status of an autofix."
-    )
-    description: Union[str, None] = Field(description="The description of an autofix.")
-    started_at: datetime = Field(
-        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
+    Metaproperties for Git author/committer information.
+    """
+
+    name: Missing[str] = Field(default=UNSET)
+    email: Missing[str] = Field(default=UNSET)
+    date: Missing[datetime] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAutofix)
+model_rebuild(GitUser)
 
-__all__ = ("CodeScanningAutofix",)
+__all__ = ("GitUser",)

@@ -13,19 +13,16 @@ from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class WebhooksWorkflowType(TypedDict):
-    """Workflow"""
+class SshSigningKeyType(TypedDict):
+    """SSH Signing Key
 
-    badge_url: str
-    created_at: datetime
-    html_url: str
+    A public SSH key used to sign Git commits
+    """
+
+    key: str
     id: int
-    name: str
-    node_id: str
-    path: str
-    state: str
-    updated_at: datetime
-    url: str
+    title: str
+    created_at: datetime
 
 
-__all__ = ("WebhooksWorkflowType",)
+__all__ = ("SshSigningKeyType",)

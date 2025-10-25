@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -19,61 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PackageVersion(GitHubModel):
-    """Package Version
+class ApiInsightsRouteStatsItems(GitHubModel):
+    """ApiInsightsRouteStatsItems"""
 
-    A version of a software package
-    """
-
-    id: int = Field(description="Unique identifier of the package version.")
-    name: str = Field(description="The name of the package version.")
-    url: str = Field()
-    package_html_url: str = Field()
-    html_url: Missing[str] = Field(default=UNSET)
-    license_: Missing[str] = Field(default=UNSET, alias="license")
-    description: Missing[str] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    deleted_at: Missing[datetime] = Field(default=UNSET)
-    metadata: Missing[PackageVersionPropMetadata] = Field(
-        default=UNSET, title="Package Version Metadata"
+    http_method: Missing[str] = Field(default=UNSET, description="The HTTP method")
+    api_route: Missing[str] = Field(
+        default=UNSET, description="The API path's route template"
     )
-
-
-class PackageVersionPropMetadata(GitHubModel):
-    """Package Version Metadata"""
-
-    package_type: Literal[
-        "npm", "maven", "rubygems", "docker", "nuget", "container"
-    ] = Field()
-    container: Missing[PackageVersionPropMetadataPropContainer] = Field(
-        default=UNSET, title="Container Metadata"
+    total_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests within the queried time period",
     )
-    docker: Missing[PackageVersionPropMetadataPropDocker] = Field(
-        default=UNSET, title="Docker Metadata"
+    rate_limited_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests that were rate limited within the queried time period",
     )
+    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
+    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-class PackageVersionPropMetadataPropContainer(GitHubModel):
-    """Container Metadata"""
+model_rebuild(ApiInsightsRouteStatsItems)
 
-    tags: list[str] = Field()
-
-
-class PackageVersionPropMetadataPropDocker(GitHubModel):
-    """Docker Metadata"""
-
-    tag: Missing[list[str]] = Field(default=UNSET)
-
-
-model_rebuild(PackageVersion)
-model_rebuild(PackageVersionPropMetadata)
-model_rebuild(PackageVersionPropMetadataPropContainer)
-model_rebuild(PackageVersionPropMetadataPropDocker)
-
-__all__ = (
-    "PackageVersion",
-    "PackageVersionPropMetadata",
-    "PackageVersionPropMetadataPropContainer",
-    "PackageVersionPropMetadataPropDocker",
-)
+__all__ = ("ApiInsightsRouteStatsItems",)

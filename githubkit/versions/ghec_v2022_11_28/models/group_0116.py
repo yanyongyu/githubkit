@@ -9,30 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0117 import RepositoryRuleRequiredStatusChecksPropParameters
+from .group_0117 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
+)
 
 
-class RepositoryRuleRequiredStatusChecks(GitHubModel):
-    """required_status_checks
+class EnterpriseRulesetConditionsOrganizationPropertyTarget(GitHubModel):
+    """Repository ruleset conditions for organization properties
 
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    Parameters for a organization property condition
     """
 
-    type: Literal["required_status_checks"] = Field()
-    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
-        default=UNSET
-    )
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty = Field()
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecks)
+model_rebuild(EnterpriseRulesetConditionsOrganizationPropertyTarget)
 
-__all__ = ("RepositoryRuleRequiredStatusChecks",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationPropertyTarget",)

@@ -9,23 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class WebhooksProjectColumnType(TypedDict):
-    """Project Column"""
+class WebhooksRepositoriesAddedItemsType(TypedDict):
+    """WebhooksRepositoriesAddedItems"""
 
-    after_id: NotRequired[Union[int, None]]
-    cards_url: str
-    created_at: datetime
+    full_name: str
     id: int
     name: str
     node_id: str
-    project_url: str
-    updated_at: datetime
-    url: str
+    private: bool
 
 
-__all__ = ("WebhooksProjectColumnType",)
+__all__ = ("WebhooksRepositoriesAddedItemsType",)

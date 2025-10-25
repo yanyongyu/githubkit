@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0045 import ReactionRollup
+from .group_0042 import ReactionRollup
 
 
 class CommitComment(GitHubModel):

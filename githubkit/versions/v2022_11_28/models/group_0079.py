@@ -14,15 +14,23 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsArtifactAndLogRetentionResponse(GitHubModel):
-    """ActionsArtifactAndLogRetentionResponse"""
+class ActionsForkPrWorkflowsPrivateRepos(GitHubModel):
+    """ActionsForkPrWorkflowsPrivateRepos"""
 
-    days: int = Field(description="The number of days artifacts and logs are retained")
-    maximum_allowed_days: int = Field(
-        description="The maximum number of days that can be configured"
+    run_workflows_from_fork_pull_requests: bool = Field(
+        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
+    )
+    send_write_tokens_to_workflows: bool = Field(
+        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request."
+    )
+    send_secrets_and_variables: bool = Field(
+        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks."
+    )
+    require_approval_for_fork_pr_workflows: bool = Field(
+        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run."
     )
 
 
-model_rebuild(ActionsArtifactAndLogRetentionResponse)
+model_rebuild(ActionsForkPrWorkflowsPrivateRepos)
 
-__all__ = ("ActionsArtifactAndLogRetentionResponse",)
+__all__ = ("ActionsForkPrWorkflowsPrivateRepos",)

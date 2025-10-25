@@ -9,25 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0068 import SimpleRepositoryType
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class CodeScanningVariantAnalysisRepoTaskType(TypedDict):
-    """CodeScanningVariantAnalysisRepoTask"""
+class CheckAnnotationType(TypedDict):
+    """Check Annotation
 
-    repository: SimpleRepositoryType
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ]
-    artifact_size_in_bytes: NotRequired[int]
-    result_count: NotRequired[int]
-    failure_message: NotRequired[str]
-    database_commit_sha: NotRequired[str]
-    source_location_prefix: NotRequired[str]
-    artifact_url: NotRequired[str]
+    Check Annotation
+    """
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: Union[int, None]
+    end_column: Union[int, None]
+    annotation_level: Union[str, None]
+    title: Union[str, None]
+    message: Union[str, None]
+    raw_details: Union[str, None]
+    blob_href: str
 
 
-__all__ = ("CodeScanningVariantAnalysisRepoTaskType",)
+__all__ = ("CheckAnnotationType",)

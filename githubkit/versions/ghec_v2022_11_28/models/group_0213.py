@@ -9,40 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0191 import MinimalRepository
+
+class BillingPremiumRequestUsageReportOrg(GitHubModel):
+    """BillingPremiumRequestUsageReportOrg"""
+
+    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriod = Field(
+        alias="timePeriod"
+    )
+    organization: str = Field(description="The unique identifier of the organization.")
+    user: Missing[str] = Field(
+        default=UNSET, description="The name of the user for the usage report."
+    )
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
+    )
+    model: Missing[str] = Field(
+        default=UNSET, description="The model for the usage report."
+    )
+    usage_items: list[BillingPremiumRequestUsageReportOrgPropUsageItemsItems] = Field(
+        alias="usageItems"
+    )
 
 
-class Package(GitHubModel):
-    """Package
+class BillingPremiumRequestUsageReportOrgPropTimePeriod(GitHubModel):
+    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
 
-    A software package
-    """
-
-    id: int = Field(description="Unique identifier of the package.")
-    name: str = Field(description="The name of the package.")
-    package_type: Literal[
-        "npm", "maven", "rubygems", "docker", "nuget", "container"
-    ] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    version_count: int = Field(description="The number of versions of the package.")
-    visibility: Literal["private", "public"] = Field()
-    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    repository: Missing[Union[None, MinimalRepository]] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
+    )
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
+    )
 
 
-model_rebuild(Package)
+class BillingPremiumRequestUsageReportOrgPropUsageItemsItems(GitHubModel):
+    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
 
-__all__ = ("Package",)
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    model: str = Field(description="Model name.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+
+
+model_rebuild(BillingPremiumRequestUsageReportOrg)
+model_rebuild(BillingPremiumRequestUsageReportOrgPropTimePeriod)
+model_rebuild(BillingPremiumRequestUsageReportOrgPropUsageItemsItems)
+
+__all__ = (
+    "BillingPremiumRequestUsageReportOrg",
+    "BillingPremiumRequestUsageReportOrgPropTimePeriod",
+    "BillingPremiumRequestUsageReportOrgPropUsageItemsItems",
+)

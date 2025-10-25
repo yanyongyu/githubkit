@@ -9,81 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class GitCommitType(TypedDict):
-    """Git Commit
+class DependencyGraphSpdxSbomType(TypedDict):
+    """Dependency Graph SPDX SBOM
 
-    Low-level Git commit operations within a repository
+    A schema for the SPDX JSON format returned by the Dependency Graph.
     """
 
-    sha: str
-    node_id: str
-    url: str
-    author: GitCommitPropAuthorType
-    committer: GitCommitPropCommitterType
-    message: str
-    tree: GitCommitPropTreeType
-    parents: list[GitCommitPropParentsItemsType]
-    verification: GitCommitPropVerificationType
-    html_url: str
+    sbom: DependencyGraphSpdxSbomPropSbomType
 
 
-class GitCommitPropAuthorType(TypedDict):
-    """GitCommitPropAuthor
+class DependencyGraphSpdxSbomPropSbomType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbom"""
 
-    Identifying information for the git-user
-    """
-
-    date: datetime
-    email: str
+    spdxid: str
+    spdx_version: str
+    comment: NotRequired[str]
+    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoType
     name: str
+    data_license: str
+    document_namespace: str
+    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsType]
+    relationships: NotRequired[
+        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType]
+    ]
 
 
-class GitCommitPropCommitterType(TypedDict):
-    """GitCommitPropCommitter
+class DependencyGraphSpdxSbomPropSbomPropCreationInfoType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
 
-    Identifying information for the git-user
-    """
-
-    date: datetime
-    email: str
-    name: str
+    created: str
+    creators: list[str]
 
 
-class GitCommitPropTreeType(TypedDict):
-    """GitCommitPropTree"""
+class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
 
-    sha: str
-    url: str
-
-
-class GitCommitPropParentsItemsType(TypedDict):
-    """GitCommitPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
+    relationship_type: NotRequired[str]
+    spdx_element_id: NotRequired[str]
+    related_spdx_element: NotRequired[str]
 
 
-class GitCommitPropVerificationType(TypedDict):
-    """GitCommitPropVerification"""
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
 
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
+    spdxid: NotRequired[str]
+    name: NotRequired[str]
+    version_info: NotRequired[str]
+    download_location: NotRequired[str]
+    files_analyzed: NotRequired[bool]
+    license_concluded: NotRequired[str]
+    license_declared: NotRequired[str]
+    supplier: NotRequired[str]
+    copyright_text: NotRequired[str]
+    external_refs: NotRequired[
+        list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType]
+    ]
+
+
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType(
+    TypedDict
+):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
+
+    reference_category: str
+    reference_locator: str
+    reference_type: str
 
 
 __all__ = (
-    "GitCommitPropAuthorType",
-    "GitCommitPropCommitterType",
-    "GitCommitPropParentsItemsType",
-    "GitCommitPropTreeType",
-    "GitCommitPropVerificationType",
-    "GitCommitType",
+    "DependencyGraphSpdxSbomPropSbomPropCreationInfoType",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType",
+    "DependencyGraphSpdxSbomPropSbomType",
+    "DependencyGraphSpdxSbomType",
 )

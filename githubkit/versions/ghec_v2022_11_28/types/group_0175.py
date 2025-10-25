@@ -9,105 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0020 import RepositoryType
-from .group_0170 import MilestoneType
-from .group_0171 import IssueTypeType
-from .group_0172 import ReactionRollupType
-from .group_0173 import IssueDependenciesSummaryType, SubIssuesSummaryType
-from .group_0174 import IssueFieldValueType
+from typing_extensions import TypedDict
 
 
-class IssueType(TypedDict):
-    """Issue
+class SecretScanningLocationDiscussionBodyType(TypedDict):
+    """SecretScanningLocationDiscussionBody
 
-    Issues are a great way to keep track of tasks, enhancements, and bugs for your
-    projects.
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
     """
 
-    id: int
-    node_id: str
-    url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
-    html_url: str
-    number: int
-    state: str
-    state_reason: NotRequired[
-        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
-    ]
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserType]
-    labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
-    assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    milestone: Union[None, MilestoneType]
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    comments: int
-    pull_request: NotRequired[IssuePropPullRequestType]
-    closed_at: Union[datetime, None]
-    created_at: datetime
-    updated_at: datetime
-    draft: NotRequired[bool]
-    closed_by: NotRequired[Union[None, SimpleUserType]]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeType, None]]
-    repository: NotRequired[RepositoryType]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    reactions: NotRequired[ReactionRollupType]
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    parent_issue_url: NotRequired[Union[str, None]]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    issue_field_values: NotRequired[list[IssueFieldValueType]]
+    discussion_body_url: str
 
 
-class IssuePropLabelsItemsOneof1Type(TypedDict):
-    """IssuePropLabelsItemsOneof1"""
+class SecretScanningLocationPullRequestCommentType(TypedDict):
+    """SecretScanningLocationPullRequestComment
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-    default: NotRequired[bool]
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
 
-
-class IssuePropPullRequestType(TypedDict):
-    """IssuePropPullRequest"""
-
-    merged_at: NotRequired[Union[datetime, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
+    pull_request_comment_url: str
 
 
 __all__ = (
-    "IssuePropLabelsItemsOneof1Type",
-    "IssuePropPullRequestType",
-    "IssueType",
+    "SecretScanningLocationDiscussionBodyType",
+    "SecretScanningLocationPullRequestCommentType",
 )

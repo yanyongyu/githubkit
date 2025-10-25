@@ -9,21 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0086 import DependabotAlertPackage
 
 
-class ShortBlob(GitHubModel):
-    """Short Blob
+class DependabotAlertPropDependency(GitHubModel):
+    """DependabotAlertPropDependency
 
-    Short Blob
+    Details for the vulnerable dependency.
     """
 
-    url: str = Field()
-    sha: str = Field()
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
+    )
+    manifest_path: Missing[str] = Field(
+        default=UNSET,
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
+    )
+    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
+    )
+    relationship: Missing[Union[None, Literal["unknown", "direct", "transitive"]]] = (
+        Field(
+            default=UNSET,
+            description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+        )
+    )
 
 
-model_rebuild(ShortBlob)
+model_rebuild(DependabotAlertPropDependency)
 
-__all__ = ("ShortBlob",)
+__all__ = ("DependabotAlertPropDependency",)

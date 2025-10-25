@@ -17,21 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0140 import RepositoryRuleCodeScanningPropParameters
+from .group_0140 import RepositoryRuleCommitterEmailPatternPropParameters
 
 
-class RepositoryRuleCodeScanning(GitHubModel):
-    """code_scanning
+class RepositoryRuleCommitterEmailPattern(GitHubModel):
+    """committer_email_pattern
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    Parameters to be used for the committer_email_pattern rule
     """
 
-    type: Literal["code_scanning"] = Field()
-    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
+    type: Literal["committer_email_pattern"] = Field()
+    parameters: Missing[RepositoryRuleCommitterEmailPatternPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(RepositoryRuleCodeScanning)
+model_rebuild(RepositoryRuleCommitterEmailPattern)
 
-__all__ = ("RepositoryRuleCodeScanning",)
+__all__ = ("RepositoryRuleCommitterEmailPattern",)

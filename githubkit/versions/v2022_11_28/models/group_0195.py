@@ -9,26 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0196 import RulesetVersionPropActor
 
 
-class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
+class RulesetVersion(GitHubModel):
+    """Ruleset version
 
-    review_draft_pull_requests: Missing[bool] = Field(
-        default=UNSET,
-        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
+    The historical version of a ruleset
+    """
+
+    version_id: int = Field(description="The ID of the previous version of the ruleset")
+    actor: RulesetVersionPropActor = Field(
+        description="The actor who updated the ruleset"
     )
-    review_on_push: Missing[bool] = Field(
-        default=UNSET,
-        description="Copilot automatically reviews each new push to the pull request.",
-    )
+    updated_at: datetime = Field()
 
 
-model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
+model_rebuild(RulesetVersion)
 
-__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)
+__all__ = ("RulesetVersion",)

@@ -13,9 +13,9 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0044 import IssueTypeType
-from .group_0046 import IssueDependenciesSummaryType, SubIssuesSummaryType
-from .group_0047 import IssueFieldValueType
+from .group_0041 import IssueTypeType
+from .group_0043 import IssueDependenciesSummaryType, SubIssuesSummaryType
+from .group_0044 import IssueFieldValueType
 
 
 class WebhookIssuesLabeledPropIssueType(TypedDict):

@@ -9,29 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0119 import RepositoryRuleCommitMessagePatternPropParameters
+from .group_0107 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
+)
+from .group_0109 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
+from .group_0111 import RepositoryRulesetConditionsPropRefName
 
 
-class RepositoryRuleCommitMessagePattern(GitHubModel):
-    """commit_message_pattern
+class EnterpriseRulesetConditionsOneof0(GitHubModel):
+    """organization_name_and_repository_name
 
-    Parameters to be used for the commit_message_pattern rule
+    Conditions to target organizations by name and all repositories
     """
 
-    type: Literal["commit_message_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
-        default=UNSET
-    )
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleCommitMessagePattern)
+model_rebuild(EnterpriseRulesetConditionsOneof0)
 
-__all__ = ("RepositoryRuleCommitMessagePattern",)
+__all__ = ("EnterpriseRulesetConditionsOneof0",)
