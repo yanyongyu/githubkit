@@ -84,6 +84,23 @@ If `trust_env` is set to `True`, githubkit (httpx) will look for the environment
 
 If you want to set a proxy for client programmatically, you can pass a proxy URL to the `proxy` option. See [httpx's proxies documentation](https://www.python-httpx.org/advanced/proxies/) for more information.
 
+### `transport`, `async_transport`
+
+These two options let you provide a custom [HTTPX transport](https://www.python-httpx.org/advanced/transports/) for the underlying HTTP client.
+
+They accept instances of the following types:
+
+- `httpx.BaseTransport` (sync transport) — pass via the `transport` option.
+- `httpx.AsyncBaseTransport` (async transport) — pass via the `async_transport` option.
+
+When provided, githubkit will forward the transport to create the client. This is useful for:
+
+- providing a custom network implementation;
+- injecting test-only transports (for example `httpx.MockTransport`) to stub responses in unit tests;
+- using alternative transports provided by HTTPX or third parties.
+
+Note that if you pass `None` to the option, the default transport will be created by HTTPX.
+
 ### `cache_strategy`
 
 The `cache_strategy` option defines how to cache the tokens or http responses. You can provide a githubkit built-in cache strategy or a custom one that implements the `BaseCacheStrategy` interface. By default, githubkit uses the `MemCacheStrategy` to cache the data in memory.

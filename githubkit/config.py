@@ -24,6 +24,8 @@ class Config:
     ssl_verify: Union[bool, "ssl.SSLContext"]
     trust_env: bool  # effects the `httpx` proxy and ssl cert
     proxy: Optional[ProxyTypes]
+    transport: Optional[httpx.BaseTransport]
+    async_transport: Optional[httpx.AsyncBaseTransport]
     cache_strategy: BaseCacheStrategy
     http_cache: bool
     throttler: BaseThrottler
@@ -113,6 +115,8 @@ def get_config(
     ssl_verify: Union[bool, "ssl.SSLContext"] = True,
     trust_env: bool = True,
     proxy: Optional[ProxyTypes] = None,
+    transport: Optional[httpx.BaseTransport] = None,
+    async_transport: Optional[httpx.AsyncBaseTransport] = None,
     cache_strategy: Optional[BaseCacheStrategy] = None,
     http_cache: bool = True,
     throttler: Optional[BaseThrottler] = None,
@@ -129,6 +133,8 @@ def get_config(
         ssl_verify,
         trust_env,
         proxy,
+        transport,
+        async_transport,
         build_cache_strategy(cache_strategy),
         http_cache,
         build_throttler(throttler),
