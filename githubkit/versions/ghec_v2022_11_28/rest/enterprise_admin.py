@@ -17,7 +17,7 @@ from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from datetime import datetime
@@ -1199,7 +1199,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
@@ -1244,7 +1244,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
@@ -1967,7 +1967,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
@@ -2012,7 +2012,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
@@ -2502,7 +2502,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
@@ -2548,7 +2548,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
@@ -2868,7 +2868,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -2916,7 +2916,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -3237,7 +3237,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnersGetResponse200,
@@ -3282,7 +3282,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseActionsRunnersGetResponse200,
@@ -4576,7 +4576,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[AuditLogEvent],
@@ -4630,7 +4630,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[AuditLogEvent],
@@ -5319,7 +5319,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PushRuleBypassRequest],
@@ -5382,7 +5382,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[PushRuleBypassRequest],
@@ -5694,7 +5694,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GetConsumedLicenses,
@@ -5736,7 +5736,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GetConsumedLicenses,
@@ -6460,7 +6460,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[EnterpriseTeam],
@@ -6510,7 +6510,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[EnterpriseTeam],
@@ -6562,7 +6562,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[EnterpriseUserRoleAssignment],
@@ -6614,7 +6614,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[EnterpriseUserRoleAssignment],
@@ -6727,7 +6727,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
@@ -6768,7 +6768,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
@@ -7885,7 +7885,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[CustomPropertiesForOrgsGetEnterprisePropertyValues],
@@ -7938,7 +7938,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[CustomPropertiesForOrgsGetEnterprisePropertyValues],
@@ -8749,7 +8749,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[RulesetVersion],
@@ -8792,7 +8792,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[RulesetVersion],
@@ -9008,7 +9008,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ScimEnterpriseGroupList,
@@ -9057,7 +9057,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ScimEnterpriseGroupList,
@@ -9245,7 +9245,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ScimEnterpriseGroupResponse,
@@ -9288,7 +9288,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ScimEnterpriseGroupResponse,
@@ -9720,7 +9720,7 @@ class EnterpriseAdminClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ScimEnterpriseUserList,
@@ -9767,7 +9767,7 @@ class EnterpriseAdminClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ScimEnterpriseUserList,

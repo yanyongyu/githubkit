@@ -1,10 +1,12 @@
 from functools import partial
 
+import httpx
 import pytest
 
 from githubkit import GitHub
 from githubkit.versions import LATEST_VERSION
 from githubkit.versions.latest.models import FullRepository, Issue
+from tests.utils import get_mock_github
 
 OWNER = "yanyongyu"
 REPO = "githubkit"
@@ -18,6 +20,31 @@ query($owner: String!, $repo: String!) {
   }
 }
 """
+
+
+def test_array_query():
+    def _handle(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, json={})
+
+    g = get_mock_github(_handle)
+    resp = g.rest.projects.list_items_for_org(
+        org=OWNER, project_number=1, fields=["1", "2"]
+    )
+    assert "fields[]" in resp.raw_request.url.params, (
+        "array fields query param not exists"
+    )
+    assert len(resp.raw_request.url.params.get_list("fields[]")) > 1, (
+        "array fields length should be more than one"
+    )
+    assert "fields" not in resp.raw_request.url.params, (
+        "fields query param should not exist"
+    )
+
+    resp = g.rest.projects.list_items_for_org(org=OWNER, project_number=1, fields="1")
+    assert "fields" in resp.raw_request.url.params, "fields query param not exists"
+    assert "fields[]" not in resp.raw_request.url.params, (
+        "array fields query param should not exist"
+    )
 
 
 def test_call(g: GitHub):
