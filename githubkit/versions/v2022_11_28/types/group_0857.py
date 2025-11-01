@@ -9,17 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class AppHookConfigPatchBodyType(TypedDict):
-    """AppHookConfigPatchBody"""
-
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+from .group_0003 import SimpleUserType
+from .group_0008 import EnterpriseType
+from .group_0009 import IntegrationPropPermissionsType
 
 
-__all__ = ("AppHookConfigPatchBodyType",)
+class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201"""
+
+    id: int
+    slug: NotRequired[str]
+    node_id: str
+    client_id: str
+    owner: Union[SimpleUserType, EnterpriseType]
+    name: str
+    description: Union[str, None]
+    external_url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    permissions: IntegrationPropPermissionsType
+    events: list[str]
+    installations_count: NotRequired[int]
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
+
+
+__all__ = ("AppManifestsCodeConversionsPostResponse201Type",)

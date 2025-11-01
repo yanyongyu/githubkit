@@ -19,52 +19,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0258 import ProjectsV2StatusUpdate
 
 
-class ProjectsV2(GitHubModel):
-    """Projects v2 Project
+class Project(GitHubModel):
+    """Project
 
-    A projects v2 project
+    Projects are a way to organize columns and cards of work.
     """
 
-    id: float = Field(description="The unique identifier of the project.")
-    node_id: str = Field(description="The node ID of the project.")
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    title: str = Field(description="The project title.")
-    description: Union[str, None] = Field(
-        description="A short description of the project."
+    owner_url: str = Field()
+    url: str = Field()
+    html_url: str = Field()
+    columns_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field(description="Name of the project")
+    body: Union[str, None] = Field(description="Body of the project")
+    number: int = Field()
+    state: str = Field(description="State of the project; either 'open' or 'closed'")
+    creator: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
+        default=UNSET,
+        description="The baseline permission that all organization members have on this project. Only present if owner is an organization.",
     )
-    public: bool = Field(
-        description="Whether the project is visible to anyone with access to the owner."
-    )
-    closed_at: Union[datetime, None] = Field(
-        description="The time when the project was closed."
-    )
-    created_at: datetime = Field(description="The time when the project was created.")
-    updated_at: datetime = Field(
-        description="The time when the project was last updated."
-    )
-    number: int = Field(description="The project number.")
-    short_description: Union[str, None] = Field(
-        description="A concise summary of the project."
-    )
-    deleted_at: Union[datetime, None] = Field(
-        description="The time when the project was deleted."
-    )
-    deleted_by: Union[None, SimpleUser] = Field()
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET, description="The current state of the project."
-    )
-    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
-        default=UNSET
-    )
-    is_template: Missing[bool] = Field(
-        default=UNSET, description="Whether this project is a template"
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether or not this project can be seen by everyone. Only present if owner is an organization.",
     )
 
 
-model_rebuild(ProjectsV2)
+model_rebuild(Project)
 
-__all__ = ("ProjectsV2",)
+__all__ = ("Project",)

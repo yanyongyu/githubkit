@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,180 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningAlertDismissalRequest(GitHubModel):
-    """Code scanning alert dismissal request
+class OrganizationCustomRepositoryRoleUpdateSchema(GitHubModel):
+    """OrganizationCustomRepositoryRoleUpdateSchema"""
 
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the dismissal request."
-    )
-    number: Missing[int] = Field(
-        default=UNSET,
-        description="The number uniquely identifying the dismissal request within its repository.",
-    )
-    repository: Missing[CodeScanningAlertDismissalRequestPropRepository] = Field(
-        default=UNSET, description="The repository the dismissal request is for."
-    )
-    organization: Missing[CodeScanningAlertDismissalRequestPropOrganization] = Field(
-        default=UNSET,
-        description="The organization associated with the repository the dismissal request is for.",
-    )
-    requester: Missing[CodeScanningAlertDismissalRequestPropRequester] = Field(
-        default=UNSET, description="The user who requested the dismissal request."
-    )
-    request_type: Missing[str] = Field(
-        default=UNSET, description="The type of request."
-    )
-    data: Missing[Union[list[CodeScanningAlertDismissalRequestPropDataItems], None]] = (
-        Field(
-            default=UNSET, description="Data describing the dismissal request metadata."
-        )
-    )
-    resource_identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The unique identifier for the request type of the dismissal request.",
-    )
-    status: Missing[Literal["pending", "denied", "approved", "expired"]] = Field(
-        default=UNSET, description="The status of the dismissal request."
-    )
-    requester_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment the requester provided when creating the dismissal request.",
-    )
-    expires_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time the dismissal request will expire.",
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time the dismissal request was created.",
-    )
-    responses: Missing[Union[list[DismissalRequestResponse], None]] = Field(
-        default=UNSET, description="The responses to the dismissal request."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the dismissal request in a browser."
-    )
-
-
-class CodeScanningAlertDismissalRequestPropRepository(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropRepository
-
-    The repository the dismissal request is for.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the repository the dismissal request is for.",
-    )
     name: Missing[str] = Field(
+        default=UNSET, description="The name of the custom role."
+    )
+    description: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The name of the repository the dismissal request is for.",
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    full_name: Missing[str] = Field(
+    base_role: Missing[Literal["read", "triage", "write", "maintain"]] = Field(
         default=UNSET,
-        description="The full name of the repository the dismissal request is for.",
+        description="The system role from which this role inherits permissions.",
     )
-
-
-class CodeScanningAlertDismissalRequestPropOrganization(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the organization."
-    )
-
-
-class CodeScanningAlertDismissalRequestPropRequester(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: Missing[int] = Field(
+    permissions: Missing[list[str]] = Field(
         default=UNSET,
-        description="The ID of the GitHub user who requested the dismissal request.",
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who requested the dismissal request.",
+        description="A list of additional permissions included in this role.",
     )
 
 
-class CodeScanningAlertDismissalRequestPropDataItems(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
+model_rebuild(OrganizationCustomRepositoryRoleUpdateSchema)
 
-    reason: Missing[str] = Field(
-        default=UNSET, description="The reason for the dismissal request."
-    )
-    alert_number: Missing[str] = Field(default=UNSET, description="alert number.")
-    pr_review_thread_id: Missing[str] = Field(
-        default=UNSET, description="The ID of the pull request review thread."
-    )
-
-
-class DismissalRequestResponse(GitHubModel):
-    """Dismissal request response
-
-    A response made by a requester to dismiss the request.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the response to the dismissal request."
-    )
-    reviewer: Missing[DismissalRequestResponsePropReviewer] = Field(
-        default=UNSET, description="The user who reviewed the dismissal request."
-    )
-    message: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The response comment of the reviewer."
-    )
-    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
-        default=UNSET,
-        description="The response status to the dismissal request until dismissed.",
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time the response to the dismissal request was created.",
-    )
-
-
-class DismissalRequestResponsePropReviewer(GitHubModel):
-    """DismissalRequestResponsePropReviewer
-
-    The user who reviewed the dismissal request.
-    """
-
-    actor_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the GitHub user who reviewed the dismissal request.",
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who reviewed the dismissal request.",
-    )
-
-
-model_rebuild(CodeScanningAlertDismissalRequest)
-model_rebuild(CodeScanningAlertDismissalRequestPropRepository)
-model_rebuild(CodeScanningAlertDismissalRequestPropOrganization)
-model_rebuild(CodeScanningAlertDismissalRequestPropRequester)
-model_rebuild(CodeScanningAlertDismissalRequestPropDataItems)
-model_rebuild(DismissalRequestResponse)
-model_rebuild(DismissalRequestResponsePropReviewer)
-
-__all__ = (
-    "CodeScanningAlertDismissalRequest",
-    "CodeScanningAlertDismissalRequestPropDataItems",
-    "CodeScanningAlertDismissalRequestPropOrganization",
-    "CodeScanningAlertDismissalRequestPropRepository",
-    "CodeScanningAlertDismissalRequestPropRequester",
-    "DismissalRequestResponse",
-    "DismissalRequestResponsePropReviewer",
-)
+__all__ = ("OrganizationCustomRepositoryRoleUpdateSchema",)

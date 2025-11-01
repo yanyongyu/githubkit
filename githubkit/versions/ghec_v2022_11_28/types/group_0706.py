@@ -9,29 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0527 import EnterpriseWebhooksType
-from .group_0528 import SimpleInstallationType
-from .group_0529 import OrganizationSimpleWebhooksType
-from .group_0530 import RepositoryWebhooksType
-from .group_0540 import WebhooksUserType
-from .group_0549 import WebhooksIssueType
+from .group_0020 import RepositoryType
+from .group_0193 import IssueType
+from .group_0531 import SimpleInstallationType
+from .group_0532 import OrganizationSimpleWebhooksType
+from .group_0533 import RepositoryWebhooksType
 
 
-class WebhookIssuesAssignedType(TypedDict):
-    """issues assigned event"""
+class WebhookIssueDependenciesBlockedByRemovedType(TypedDict):
+    """blocked by issue removed event"""
 
-    action: Literal["assigned"]
-    assignee: NotRequired[Union[WebhooksUserType, None]]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["blocked_by_removed"]
+    blocked_issue_id: float
+    blocked_issue: IssueType
+    blocking_issue_id: float
+    blocking_issue: IssueType
+    blocking_issue_repo: RepositoryType
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    organization: OrganizationSimpleWebhooksType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesAssignedType",)
+__all__ = ("WebhookIssueDependenciesBlockedByRemovedType",)

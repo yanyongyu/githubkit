@@ -10,28 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0068 import CodeScanningAnalysisToolType
 
 
-class CodeScanningCodeqlDatabaseType(TypedDict):
-    """CodeQL Database
+class CodeScanningAnalysisType(TypedDict):
+    """CodeScanningAnalysis"""
 
-    A CodeQL database.
-    """
-
-    id: int
-    name: str
-    language: str
-    uploader: SimpleUserType
-    content_type: str
-    size: int
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
     created_at: datetime
-    updated_at: datetime
+    results_count: int
+    rules_count: int
+    id: int
     url: str
-    commit_oid: NotRequired[Union[str, None]]
+    sarif_id: str
+    tool: CodeScanningAnalysisToolType
+    deletable: bool
+    warning: str
 
 
-__all__ = ("CodeScanningCodeqlDatabaseType",)
+__all__ = ("CodeScanningAnalysisType",)

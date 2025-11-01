@@ -18,37 +18,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0712 import (
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-)
+
+class WebhookIssuesClosedPropIssueAllof0PropPullRequest(GitHubModel):
+    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
+
+    diff_url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    patch_url: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp(GitHubModel):
-    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
+model_rebuild(WebhookIssuesClosedPropIssueAllof0PropPullRequest)
 
-    created_at: Union[datetime, None] = Field()
-    description: Union[str, None] = Field()
-    events: Missing[list[str]] = Field(
-        default=UNSET, description="The list of events for the GitHub app"
-    )
-    external_url: Union[str, None] = Field()
-    html_url: str = Field()
-    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
-    name: str = Field(description="The name of the GitHub app")
-    node_id: str = Field()
-    owner: Union[
-        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
-    ] = Field(title="User")
-    permissions: Missing[
-        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
-    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
-    slug: Missing[str] = Field(
-        default=UNSET, description="The slug name of the GitHub app"
-    )
-    updated_at: Union[datetime, None] = Field()
-
-
-model_rebuild(WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp)
-
-__all__ = ("WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp",)
+__all__ = ("WebhookIssuesClosedPropIssueAllof0PropPullRequest",)

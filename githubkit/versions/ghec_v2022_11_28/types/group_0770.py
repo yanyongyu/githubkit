@@ -13,17 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0098 import OrganizationCustomPropertyType
-from .group_0527 import EnterpriseWebhooksType
+from .group_0530 import EnterpriseWebhooksType
+from .group_0531 import SimpleInstallationType
+from .group_0532 import OrganizationSimpleWebhooksType
+from .group_0533 import RepositoryWebhooksType
+from .group_0560 import WebhooksMilestone3Type
 
 
-class WebhookOrganizationCustomPropertyCreatedType(TypedDict):
-    """organization custom property created event"""
+class WebhookMilestoneOpenedType(TypedDict):
+    """milestone opened event"""
 
-    action: Literal["created"]
-    definition: OrganizationCustomPropertyType
-    enterprise: EnterpriseWebhooksType
-    sender: NotRequired[SimpleUserType]
+    action: Literal["opened"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    milestone: WebhooksMilestone3Type
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookOrganizationCustomPropertyCreatedType",)
+__all__ = ("WebhookMilestoneOpenedType",)

@@ -9,40 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0064 import BypassResponseType
 
-class ExternalGroupType(TypedDict):
-    """ExternalGroup
 
-    Information about an external group's usage and its members
+class SecretScanningDismissalRequestType(TypedDict):
+    """Secret scanning alert dismissal request
+
+    A dismissal request made by a user asking to close a secret scanning alert in
+    this repository.
     """
 
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsType]
-    members: list[ExternalGroupPropMembersItemsType]
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[SecretScanningDismissalRequestPropRepositoryType]
+    organization: NotRequired[SecretScanningDismissalRequestPropOrganizationType]
+    requester: NotRequired[SecretScanningDismissalRequestPropRequesterType]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[SecretScanningDismissalRequestPropDataItemsType], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[
+        Literal["pending", "denied", "approved", "cancelled", "expired"]
+    ]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[datetime]
+    created_at: NotRequired[datetime]
+    responses: NotRequired[Union[list[BypassResponseType], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-class ExternalGroupPropTeamsItemsType(TypedDict):
-    """ExternalGroupPropTeamsItems"""
+class SecretScanningDismissalRequestPropRepositoryType(TypedDict):
+    """SecretScanningDismissalRequestPropRepository
 
-    team_id: int
-    team_name: str
+    The repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
 
 
-class ExternalGroupPropMembersItemsType(TypedDict):
-    """ExternalGroupPropMembersItems"""
+class SecretScanningDismissalRequestPropOrganizationType(TypedDict):
+    """SecretScanningDismissalRequestPropOrganization
 
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class SecretScanningDismissalRequestPropRequesterType(TypedDict):
+    """SecretScanningDismissalRequestPropRequester
+
+    The user who requested the dismissal.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class SecretScanningDismissalRequestPropDataItemsType(TypedDict):
+    """SecretScanningDismissalRequestPropDataItems"""
+
+    secret_type: NotRequired[str]
+    alert_number: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
 
 
 __all__ = (
-    "ExternalGroupPropMembersItemsType",
-    "ExternalGroupPropTeamsItemsType",
-    "ExternalGroupType",
+    "SecretScanningDismissalRequestPropDataItemsType",
+    "SecretScanningDismissalRequestPropOrganizationType",
+    "SecretScanningDismissalRequestPropRepositoryType",
+    "SecretScanningDismissalRequestPropRequesterType",
+    "SecretScanningDismissalRequestType",
 )

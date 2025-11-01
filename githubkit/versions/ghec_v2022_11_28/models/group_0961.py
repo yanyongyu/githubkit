@@ -9,20 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0033 import ActionsHostedRunnerCustomImage
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
-
-    total_count: int = Field()
-    images: list[ActionsHostedRunnerCustomImage] = Field()
+class EmojisGetResponse200(ExtraGitHubModel):
+    """EmojisGetResponse200"""
 
 
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200)
+model_rebuild(EmojisGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200",)
+__all__ = ("EmojisGetResponse200",)

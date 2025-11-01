@@ -9,26 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class MergedUpstream(GitHubModel):
-    """Merged upstream
+class Language(ExtraGitHubModel):
+    """Language
 
-    Results of a successful merge upstream request
+    Language
     """
 
-    message: Missing[str] = Field(default=UNSET)
-    merge_type: Missing[Literal["merge", "fast-forward", "none"]] = Field(default=UNSET)
-    base_branch: Missing[str] = Field(default=UNSET)
 
+model_rebuild(Language)
 
-model_rebuild(MergedUpstream)
-
-__all__ = ("MergedUpstream",)
+__all__ = ("Language",)

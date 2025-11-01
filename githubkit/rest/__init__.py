@@ -208,6 +208,24 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import (
         BillingUsageReportUserPropUsageItemsItems as BillingUsageReportUserPropUsageItemsItems,
     )
+    from githubkit.versions.v2022_11_28.models import (
+        BillingUsageSummaryReportOrg as BillingUsageSummaryReportOrg,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        BillingUsageSummaryReportOrgPropTimePeriod as BillingUsageSummaryReportOrgPropTimePeriod,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        BillingUsageSummaryReportOrgPropUsageItemsItems as BillingUsageSummaryReportOrgPropUsageItemsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        BillingUsageSummaryReportUser as BillingUsageSummaryReportUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        BillingUsageSummaryReportUserPropTimePeriod as BillingUsageSummaryReportUserPropTimePeriod,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        BillingUsageSummaryReportUserPropUsageItemsItems as BillingUsageSummaryReportUserPropUsageItemsItems,
+    )
     from githubkit.versions.v2022_11_28.models import Blob as Blob
     from githubkit.versions.v2022_11_28.models import (
         BranchProtection as BranchProtection,
@@ -1834,9 +1852,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ProjectsProjectIdCollaboratorsUsernamePutBody as ProjectsProjectIdCollaboratorsUsernamePutBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsProjectIdColumnsPostBody as ProjectsProjectIdColumnsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         ProjectsProjectIdDeleteResponse403 as ProjectsProjectIdDeleteResponse403,
@@ -10054,6 +10069,9 @@ else:
             "BillingPremiumRequestUsageReportOrgPropUsageItemsItems",
             "BillingUsageReport",
             "BillingUsageReportPropUsageItemsItems",
+            "BillingUsageSummaryReportOrg",
+            "BillingUsageSummaryReportOrgPropTimePeriod",
+            "BillingUsageSummaryReportOrgPropUsageItemsItems",
             "OrganizationFull",
             "OrganizationFullPropPlan",
             "ActionsCacheUsageOrgEnterprise",
@@ -10718,6 +10736,9 @@ else:
             "BillingPremiumRequestUsageReportUserPropUsageItemsItems",
             "BillingUsageReportUser",
             "BillingUsageReportUserPropUsageItemsItems",
+            "BillingUsageSummaryReportUser",
+            "BillingUsageSummaryReportUserPropTimePeriod",
+            "BillingUsageSummaryReportUserPropUsageItemsItems",
             "EnterpriseWebhooks",
             "SimpleInstallation",
             "OrganizationSimpleWebhooks",
@@ -13052,7 +13073,6 @@ else:
             "ProjectsProjectIdPatchBody",
             "ProjectsProjectIdPatchResponse403",
             "ProjectsProjectIdCollaboratorsUsernamePutBody",
-            "ProjectsProjectIdColumnsPostBody",
             "ReposOwnerRepoDeleteResponse403",
             "ReposOwnerRepoPatchBody",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysis",

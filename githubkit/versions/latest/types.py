@@ -216,6 +216,24 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.types import (
         BillingUsageReportUserType as BillingUsageReportUserType,
     )
+    from githubkit.versions.v2022_11_28.types import (
+        BillingUsageSummaryReportOrgPropTimePeriodType as BillingUsageSummaryReportOrgPropTimePeriodType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        BillingUsageSummaryReportOrgPropUsageItemsItemsType as BillingUsageSummaryReportOrgPropUsageItemsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        BillingUsageSummaryReportOrgType as BillingUsageSummaryReportOrgType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        BillingUsageSummaryReportUserPropTimePeriodType as BillingUsageSummaryReportUserPropTimePeriodType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        BillingUsageSummaryReportUserPropUsageItemsItemsType as BillingUsageSummaryReportUserPropUsageItemsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        BillingUsageSummaryReportUserType as BillingUsageSummaryReportUserType,
+    )
     from githubkit.versions.v2022_11_28.types import BlobType as BlobType
     from githubkit.versions.v2022_11_28.types import (
         BranchProtectionPropAllowDeletionsType as BranchProtectionPropAllowDeletionsType,
@@ -1921,9 +1939,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ProjectsProjectIdCollaboratorsUsernamePutBodyType as ProjectsProjectIdCollaboratorsUsernamePutBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsProjectIdColumnsPostBodyType as ProjectsProjectIdColumnsPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ProjectsProjectIdDeleteResponse403Type as ProjectsProjectIdDeleteResponse403Type,
@@ -10236,6 +10251,9 @@ else:
             "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType",
             "BillingUsageReportType",
             "BillingUsageReportPropUsageItemsItemsType",
+            "BillingUsageSummaryReportOrgType",
+            "BillingUsageSummaryReportOrgPropTimePeriodType",
+            "BillingUsageSummaryReportOrgPropUsageItemsItemsType",
             "OrganizationFullType",
             "OrganizationFullPropPlanType",
             "ActionsCacheUsageOrgEnterpriseType",
@@ -10900,6 +10918,9 @@ else:
             "BillingPremiumRequestUsageReportUserPropUsageItemsItemsType",
             "BillingUsageReportUserType",
             "BillingUsageReportUserPropUsageItemsItemsType",
+            "BillingUsageSummaryReportUserType",
+            "BillingUsageSummaryReportUserPropTimePeriodType",
+            "BillingUsageSummaryReportUserPropUsageItemsItemsType",
             "EnterpriseWebhooksType",
             "SimpleInstallationType",
             "OrganizationSimpleWebhooksType",
@@ -13234,7 +13255,6 @@ else:
             "ProjectsProjectIdPatchBodyType",
             "ProjectsProjectIdPatchResponse403Type",
             "ProjectsProjectIdCollaboratorsUsernamePutBodyType",
-            "ProjectsProjectIdColumnsPostBodyType",
             "ReposOwnerRepoDeleteResponse403Type",
             "ReposOwnerRepoPatchBodyType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType",

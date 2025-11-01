@@ -9,17 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
-
-    pattern_config_version: NotRequired[str]
-
-
-__all__ = (
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type",
+from .group_0105 import RepositoryRulesetBypassActorType
+from .group_0118 import EnterpriseRulesetConditionsOneof0Type
+from .group_0119 import EnterpriseRulesetConditionsOneof1Type
+from .group_0120 import EnterpriseRulesetConditionsOneof2Type
+from .group_0121 import EnterpriseRulesetConditionsOneof3Type
+from .group_0122 import EnterpriseRulesetConditionsOneof4Type
+from .group_0123 import EnterpriseRulesetConditionsOneof5Type
+from .group_0124 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
 )
+from .group_0125 import RepositoryRuleUpdateType
+from .group_0127 import RepositoryRuleRequiredLinearHistoryType
+from .group_0128 import RepositoryRuleRequiredDeploymentsType
+from .group_0131 import RepositoryRulePullRequestType
+from .group_0133 import RepositoryRuleRequiredStatusChecksType
+from .group_0135 import RepositoryRuleCommitMessagePatternType
+from .group_0137 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0139 import RepositoryRuleCommitterEmailPatternType
+from .group_0141 import RepositoryRuleBranchNamePatternType
+from .group_0143 import RepositoryRuleTagNamePatternType
+from .group_0145 import RepositoryRuleFilePathRestrictionType
+from .group_0147 import RepositoryRuleMaxFilePathLengthType
+from .group_0149 import RepositoryRuleFileExtensionRestrictionType
+from .group_0151 import RepositoryRuleMaxFileSizeType
+from .group_0154 import RepositoryRuleWorkflowsType
+from .group_0156 import RepositoryRuleCodeScanningType
+
+
+class EnterprisesEnterpriseRulesetsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseRulesetsPostBody"""
+
+    name: str
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[
+        Union[
+            EnterpriseRulesetConditionsOneof0Type,
+            EnterpriseRulesetConditionsOneof1Type,
+            EnterpriseRulesetConditionsOneof2Type,
+            EnterpriseRulesetConditionsOneof3Type,
+            EnterpriseRulesetConditionsOneof4Type,
+            EnterpriseRulesetConditionsOneof5Type,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+            ]
+        ]
+    ]
+
+
+__all__ = ("EnterprisesEnterpriseRulesetsPostBodyType",)

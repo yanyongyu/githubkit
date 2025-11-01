@@ -9,39 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0189 import ReactionRollupType
 
+class GroupMappingType(TypedDict):
+    """GroupMapping
 
-class TeamDiscussionType(TypedDict):
-    """Team Discussion
-
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
+    External Groups to be mapped to a team for membership
     """
 
-    author: Union[None, SimpleUserType]
-    body: str
-    body_html: str
-    body_version: str
-    comments_count: int
-    comments_url: str
-    created_at: datetime
-    last_edited_at: Union[datetime, None]
-    html_url: str
-    node_id: str
-    number: int
-    pinned: bool
-    private: bool
-    team_url: str
-    title: str
-    updated_at: datetime
-    url: str
-    reactions: NotRequired[ReactionRollupType]
+    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
 
 
-__all__ = ("TeamDiscussionType",)
+class GroupMappingPropGroupsItemsType(TypedDict):
+    """GroupMappingPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "GroupMappingPropGroupsItemsType",
+    "GroupMappingType",
+)

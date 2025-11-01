@@ -18,77 +18,37 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
-from .group_0299 import PullRequestMinimal
-from .group_0326 import DeploymentSimple
-from .group_0534 import SimpleCheckSuite
 
+class ExemptionResponse(GitHubModel):
+    """Exemption response
 
-class CheckRunWithSimpleCheckSuite(GitHubModel):
-    """CheckRun
-
-    A check performed on the code of a given code change
+    A response to an exemption request by a delegated bypasser.
     """
 
-    app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the exemption response."
     )
-    check_suite: SimpleCheckSuite = Field(
-        description="A suite of checks performed on the code of a given code change"
-    )
-    completed_at: Union[datetime, None] = Field()
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ] = Field()
-    deployment: Missing[DeploymentSimple] = Field(
+    reviewer_id: Missing[int] = Field(
         default=UNSET,
-        title="Deployment",
-        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
+        description="The ID of the user who reviewed the exemption request.",
     )
-    details_url: str = Field()
-    external_id: str = Field()
-    head_sha: str = Field(description="The SHA of the commit that is being checked.")
-    html_url: str = Field()
-    id: int = Field(description="The id of the check.")
-    name: str = Field(description="The name of the check.")
-    node_id: str = Field()
-    output: CheckRunWithSimpleCheckSuitePropOutput = Field()
-    pull_requests: list[PullRequestMinimal] = Field()
-    started_at: datetime = Field()
-    status: Literal["queued", "in_progress", "completed", "pending"] = Field(
-        description="The phase of the lifecycle that the check is currently in."
+    reviewer_login: Missing[str] = Field(
+        default=UNSET,
+        description="The login of the user who reviewed the exemption request.",
     )
-    url: str = Field()
+    status: Missing[Literal["approved", "rejected", "dismissed"]] = Field(
+        default=UNSET, description="The status of the exemption response."
+    )
+    reviewer_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment the reviewer provided when responding to the exemption request.",
+    )
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time the exemption request was created.",
+    )
 
 
-class CheckRunWithSimpleCheckSuitePropOutput(GitHubModel):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
+model_rebuild(ExemptionResponse)
 
-    annotations_count: int = Field()
-    annotations_url: str = Field()
-    summary: Union[str, None] = Field()
-    text: Union[str, None] = Field()
-    title: Union[str, None] = Field()
-
-
-model_rebuild(CheckRunWithSimpleCheckSuite)
-model_rebuild(CheckRunWithSimpleCheckSuitePropOutput)
-
-__all__ = (
-    "CheckRunWithSimpleCheckSuite",
-    "CheckRunWithSimpleCheckSuitePropOutput",
-)
+__all__ = ("ExemptionResponse",)

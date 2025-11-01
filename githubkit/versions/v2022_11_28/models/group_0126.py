@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -21,41 +21,35 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 
 
-class ProjectsV2StatusUpdate(GitHubModel):
-    """Projects v2 Status Update
+class Project(GitHubModel):
+    """Project
 
-    An status update belonging to a project
+    Projects are a way to organize columns and cards of work.
     """
 
-    id: float = Field(description="The unique identifier of the status update.")
-    node_id: str = Field(description="The node ID of the status update.")
-    project_node_id: Missing[str] = Field(
+    owner_url: str = Field()
+    url: str = Field()
+    html_url: str = Field()
+    columns_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field(description="Name of the project")
+    body: Union[str, None] = Field(description="Body of the project")
+    number: int = Field()
+    state: str = Field(description="State of the project; either 'open' or 'closed'")
+    creator: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
         default=UNSET,
-        description="The node ID of the project that this status update belongs to.",
+        description="The baseline permission that all organization members have on this project. Only present if owner is an organization.",
     )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: datetime = Field(
-        description="The time when the status update was created."
-    )
-    updated_at: datetime = Field(
-        description="The time when the status update was last updated."
-    )
-    status: Missing[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ] = Field(default=UNSET, description="The current status.")
-    start_date: Missing[date] = Field(
-        default=UNSET, description="The start date of the period covered by the update."
-    )
-    target_date: Missing[date] = Field(
-        default=UNSET, description="The target date associated with the update."
-    )
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the status update"
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether or not this project can be seen by everyone. Only present if owner is an organization.",
     )
 
 
-model_rebuild(ProjectsV2StatusUpdate)
+model_rebuild(Project)
 
-__all__ = ("ProjectsV2StatusUpdate",)
+__all__ = ("Project",)

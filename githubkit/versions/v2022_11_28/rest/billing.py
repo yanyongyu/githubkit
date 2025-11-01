@@ -28,6 +28,8 @@ if TYPE_CHECKING:
         BillingPremiumRequestUsageReportUser,
         BillingUsageReport,
         BillingUsageReportUser,
+        BillingUsageSummaryReportOrg,
+        BillingUsageSummaryReportUser,
         CombinedBillingUsage,
         PackagesBillingUsage,
     )
@@ -37,6 +39,8 @@ if TYPE_CHECKING:
         BillingPremiumRequestUsageReportUserType,
         BillingUsageReportType,
         BillingUsageReportUserType,
+        BillingUsageSummaryReportOrgType,
+        BillingUsageSummaryReportUserType,
         CombinedBillingUsageType,
         PackagesBillingUsageType,
     )
@@ -186,7 +190,6 @@ class BillingClient:
         year: Missing[int] = UNSET,
         month: Missing[int] = UNSET,
         day: Missing[int] = UNSET,
-        hour: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[BillingUsageReport, BillingUsageReportType]:
@@ -209,7 +212,6 @@ class BillingClient:
             "year": year,
             "month": month,
             "day": day,
-            "hour": hour,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -236,7 +238,6 @@ class BillingClient:
         year: Missing[int] = UNSET,
         month: Missing[int] = UNSET,
         day: Missing[int] = UNSET,
-        hour: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[BillingUsageReport, BillingUsageReportType]:
@@ -259,7 +260,6 @@ class BillingClient:
             "year": year,
             "month": month,
             "day": day,
-            "hour": hour,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -271,6 +271,128 @@ class BillingClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=BillingUsageReport,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    def get_github_billing_usage_summary_report_org(
+        self,
+        org: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        repository: Missing[str] = UNSET,
+        product: Missing[str] = UNSET,
+        sku: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[BillingUsageSummaryReportOrg, BillingUsageSummaryReportOrgType]:
+        """billing/get-github-billing-usage-summary-report-org
+
+        GET /organizations/{org}/settings/billing/usage/summary
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets a summary report of usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
+
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
+        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-summary-report-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            BillingUsageSummaryReportOrg,
+            EventsGetResponse503,
+        )
+
+        url = f"/organizations/{org}/settings/billing/usage/summary"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "repository": repository,
+            "product": product,
+            "sku": sku,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingUsageSummaryReportOrg,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    async def async_get_github_billing_usage_summary_report_org(
+        self,
+        org: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        repository: Missing[str] = UNSET,
+        product: Missing[str] = UNSET,
+        sku: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[BillingUsageSummaryReportOrg, BillingUsageSummaryReportOrgType]:
+        """billing/get-github-billing-usage-summary-report-org
+
+        GET /organizations/{org}/settings/billing/usage/summary
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets a summary report of usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
+
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
+        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-summary-report-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            BillingUsageSummaryReportOrg,
+            EventsGetResponse503,
+        )
+
+        url = f"/organizations/{org}/settings/billing/usage/summary"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "repository": repository,
+            "product": product,
+            "sku": sku,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingUsageSummaryReportOrg,
             error_models={
                 "400": BasicError,
                 "403": BasicError,
@@ -812,7 +934,6 @@ class BillingClient:
         year: Missing[int] = UNSET,
         month: Missing[int] = UNSET,
         day: Missing[int] = UNSET,
-        hour: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[BillingUsageReportUser, BillingUsageReportUserType]:
@@ -835,7 +956,6 @@ class BillingClient:
             "year": year,
             "month": month,
             "day": day,
-            "hour": hour,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -862,7 +982,6 @@ class BillingClient:
         year: Missing[int] = UNSET,
         month: Missing[int] = UNSET,
         day: Missing[int] = UNSET,
-        hour: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[BillingUsageReportUser, BillingUsageReportUserType]:
@@ -885,7 +1004,6 @@ class BillingClient:
             "year": year,
             "month": month,
             "day": day,
-            "hour": hour,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -900,6 +1018,130 @@ class BillingClient:
             error_models={
                 "400": BasicError,
                 "403": BasicError,
+                "500": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    def get_github_billing_usage_summary_report_user(
+        self,
+        username: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        repository: Missing[str] = UNSET,
+        product: Missing[str] = UNSET,
+        sku: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[BillingUsageSummaryReportUser, BillingUsageSummaryReportUserType]:
+        """billing/get-github-billing-usage-summary-report-user
+
+        GET /users/{username}/settings/billing/usage/summary
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets a summary report of usage for a user.
+
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
+        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-summary-report-for-a-user
+        """
+
+        from ..models import (
+            BasicError,
+            BillingUsageSummaryReportUser,
+            EventsGetResponse503,
+        )
+
+        url = f"/users/{username}/settings/billing/usage/summary"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "repository": repository,
+            "product": product,
+            "sku": sku,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingUsageSummaryReportUser,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    async def async_get_github_billing_usage_summary_report_user(
+        self,
+        username: str,
+        *,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        repository: Missing[str] = UNSET,
+        product: Missing[str] = UNSET,
+        sku: Missing[str] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[BillingUsageSummaryReportUser, BillingUsageSummaryReportUserType]:
+        """billing/get-github-billing-usage-summary-report-user
+
+        GET /users/{username}/settings/billing/usage/summary
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets a summary report of usage for a user.
+
+        **Note:** Only data from the past 24 months is accessible via this endpoint.
+
+        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-summary-report-for-a-user
+        """
+
+        from ..models import (
+            BasicError,
+            BillingUsageSummaryReportUser,
+            EventsGetResponse503,
+        )
+
+        url = f"/users/{username}/settings/billing/usage/summary"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "repository": repository,
+            "product": product,
+            "sku": sku,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingUsageSummaryReportUser,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
                 "500": BasicError,
                 "503": EventsGetResponse503,
             },

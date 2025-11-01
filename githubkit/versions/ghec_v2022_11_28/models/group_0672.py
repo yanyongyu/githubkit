@@ -18,8 +18,62 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0010 import Integration
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropAssignee(GitHubModel):
+
+class WebhookIssueCommentCreatedPropComment(GitHubModel):
+    """issue comment
+
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
+    """
+
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+    )
+    body: str = Field(description="Contents of the issue comment")
+    created_at: datetime = Field()
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the issue comment")
+    issue_url: str = Field()
+    node_id: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    reactions: WebhookIssueCommentCreatedPropCommentPropReactions = Field(
+        title="Reactions"
+    )
+    updated_at: datetime = Field()
+    url: str = Field(description="URL for the issue comment")
+    user: Union[WebhookIssueCommentCreatedPropCommentPropUser, None] = Field(
+        title="User"
+    )
+
+
+class WebhookIssueCommentCreatedPropCommentPropReactions(GitHubModel):
+    """Reactions"""
+
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
+
+
+class WebhookIssueCommentCreatedPropCommentPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -41,43 +95,17 @@ class WebhookIssueCommentCreatedPropIssueAllof0PropAssignee(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems(GitHubModel):
-    """Label"""
-
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    id: int = Field()
-    name: str = Field(description="The name of the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
-
-
-class WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest(GitHubModel):
-    """WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest"""
-
-    diff_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    patch_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropAssignee)
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems)
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest)
+model_rebuild(WebhookIssueCommentCreatedPropComment)
+model_rebuild(WebhookIssueCommentCreatedPropCommentPropReactions)
+model_rebuild(WebhookIssueCommentCreatedPropCommentPropUser)
 
 __all__ = (
-    "WebhookIssueCommentCreatedPropIssueAllof0PropAssignee",
-    "WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems",
-    "WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest",
+    "WebhookIssueCommentCreatedPropComment",
+    "WebhookIssueCommentCreatedPropCommentPropReactions",
+    "WebhookIssueCommentCreatedPropCommentPropUser",
 )

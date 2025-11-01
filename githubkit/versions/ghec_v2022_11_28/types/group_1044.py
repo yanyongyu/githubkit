@@ -11,11 +11,15 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class NotificationsPutResponse202Type(TypedDict):
-    """NotificationsPutResponse202"""
-
-    message: NotRequired[str]
+from .group_0020 import RepositoryType
 
 
-__all__ = ("NotificationsPutResponse202Type",)
+class InstallationRepositoriesGetResponse200Type(TypedDict):
+    """InstallationRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[RepositoryType]
+    repository_selection: NotRequired[str]
+
+
+__all__ = ("InstallationRepositoriesGetResponse200Type",)

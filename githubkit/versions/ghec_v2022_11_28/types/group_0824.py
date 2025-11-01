@@ -9,77 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0258 import ProjectsV2StatusUpdateType
-from .group_0528 import SimpleInstallationType
-from .group_0529 import OrganizationSimpleWebhooksType
+from .group_0261 import ProjectsV2Type
+from .group_0531 import SimpleInstallationType
+from .group_0532 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2StatusUpdateEditedType(TypedDict):
-    """Projects v2 Status Update Edited Event"""
+class WebhookProjectsV2ProjectReopenedType(TypedDict):
+    """Projects v2 Project Reopened Event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookProjectsV2StatusUpdateEditedPropChangesType]
+    action: Literal["reopened"]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2_status_update: ProjectsV2StatusUpdateType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserType
 
 
-class WebhookProjectsV2StatusUpdateEditedPropChangesType(TypedDict):
-    """WebhookProjectsV2StatusUpdateEditedPropChanges"""
-
-    body: NotRequired[WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType]
-    status: NotRequired[WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType]
-    start_date: NotRequired[
-        WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType
-    ]
-    target_date: NotRequired[
-        WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType
-    ]
-
-
-class WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType(TypedDict):
-    """WebhookProjectsV2StatusUpdateEditedPropChangesPropBody"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType(TypedDict):
-    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus"""
-
-    from_: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ]
-    to: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ]
-
-
-class WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType(TypedDict):
-    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate"""
-
-    from_: NotRequired[Union[date, None]]
-    to: NotRequired[Union[date, None]]
-
-
-class WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType(TypedDict):
-    """WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate"""
-
-    from_: NotRequired[Union[date, None]]
-    to: NotRequired[Union[date, None]]
-
-
-__all__ = (
-    "WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType",
-    "WebhookProjectsV2StatusUpdateEditedPropChangesType",
-    "WebhookProjectsV2StatusUpdateEditedType",
-)
+__all__ = ("WebhookProjectsV2ProjectReopenedType",)

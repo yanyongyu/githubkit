@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,33 +17,28 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0317 import GitUser
-from .group_0318 import Verification
+
+class DiffEntry(GitHubModel):
+    """Diff Entry
+
+    Diff Entry
+    """
+
+    sha: Union[str, None] = Field()
+    filename: str = Field()
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ] = Field()
+    additions: int = Field()
+    deletions: int = Field()
+    changes: int = Field()
+    blob_url: Union[str, None] = Field()
+    raw_url: Union[str, None] = Field()
+    contents_url: str = Field()
+    patch: Missing[str] = Field(default=UNSET)
+    previous_filename: Missing[str] = Field(default=UNSET)
 
 
-class CommitPropCommit(GitHubModel):
-    """CommitPropCommit"""
+model_rebuild(DiffEntry)
 
-    url: str = Field()
-    author: Union[None, GitUser] = Field()
-    committer: Union[None, GitUser] = Field()
-    message: str = Field()
-    comment_count: int = Field()
-    tree: CommitPropCommitPropTree = Field()
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
-
-
-class CommitPropCommitPropTree(GitHubModel):
-    """CommitPropCommitPropTree"""
-
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(CommitPropCommit)
-model_rebuild(CommitPropCommitPropTree)
-
-__all__ = (
-    "CommitPropCommit",
-    "CommitPropCommitPropTree",
-)
+__all__ = ("DiffEntry",)

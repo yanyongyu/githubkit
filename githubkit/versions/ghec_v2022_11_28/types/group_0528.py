@@ -9,22 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class SimpleInstallationType(TypedDict):
-    """Simple Installation
+class BillingUsageReportUserType(TypedDict):
+    """BillingUsageReportUser"""
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
-    cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-
-    with-github-apps)."
-    """
-
-    id: int
-    node_id: str
+    usage_items: NotRequired[list[BillingUsageReportUserPropUsageItemsItemsType]]
 
 
-__all__ = ("SimpleInstallationType",)
+class BillingUsageReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingUsageReportUserPropUsageItemsItems"""
+
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    repository_name: NotRequired[str]
+
+
+__all__ = (
+    "BillingUsageReportUserPropUsageItemsItemsType",
+    "BillingUsageReportUserType",
+)

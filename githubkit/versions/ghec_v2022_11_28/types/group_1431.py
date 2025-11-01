@@ -9,15 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyType(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBody"""
+class UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
+    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
+    attestation_ids: list[int]
 
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyType",)
+__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type",)

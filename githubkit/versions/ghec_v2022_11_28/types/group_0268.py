@@ -9,34 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0192 import IssueType
-from .group_0264 import PullRequestSimpleType
-from .group_0267 import ProjectsV2DraftIssueType
+from .group_0264 import LinkType
 
 
-class ProjectsV2ItemSimpleType(TypedDict):
-    """Projects v2 Item
+class PullRequestSimplePropLinksType(TypedDict):
+    """PullRequestSimplePropLinks"""
 
-    An item belonging to a project
-    """
-
-    id: float
-    node_id: NotRequired[str]
-    content: NotRequired[
-        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
-    ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    archived_at: Union[datetime, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
+    comments: LinkType
+    commits: LinkType
+    statuses: LinkType
+    html: LinkType
+    issue: LinkType
+    review_comments: LinkType
+    review_comment: LinkType
+    self_: LinkType
 
 
-__all__ = ("ProjectsV2ItemSimpleType",)
+__all__ = ("PullRequestSimplePropLinksType",)

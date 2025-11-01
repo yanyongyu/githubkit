@@ -9,33 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0131 import LinkType
 
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
+class ReviewCommentPropLinksType(TypedDict):
+    """ReviewCommentPropLinks"""
 
-    Data related to a release.
-    """
-
-    url: str
-    browser_download_url: str
-    id: int
-    node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: datetime
-    updated_at: datetime
-    uploader: Union[None, SimpleUserType]
+    self_: LinkType
+    html: LinkType
+    pull_request: LinkType
 
 
-__all__ = ("ReleaseAssetType",)
+__all__ = ("ReviewCommentPropLinksType",)

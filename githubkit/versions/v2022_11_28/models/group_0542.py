@@ -14,25 +14,26 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0446 import EnterpriseWebhooks
-from .group_0447 import SimpleInstallation
-from .group_0448 import OrganizationSimpleWebhooks
-from .group_0449 import RepositoryWebhooks
-from .group_0455 import WebhooksApprover, WebhooksReviewersItems
-from .group_0456 import WebhooksWorkflowJobRun
+from .group_0448 import EnterpriseWebhooks
+from .group_0449 import SimpleInstallation
+from .group_0450 import OrganizationSimpleWebhooks
+from .group_0451 import RepositoryWebhooks
+from .group_0456 import WebhooksWorkflow
 
 
-class WebhookDeploymentReviewApproved(GitHubModel):
-    """WebhookDeploymentReviewApproved"""
+class WebhookDeploymentCreated(GitHubModel):
+    """deployment created event"""
 
-    action: Literal["approved"] = Field()
-    approver: Missing[WebhooksApprover] = Field(default=UNSET)
-    comment: Missing[str] = Field(default=UNSET)
+    action: Literal["created"] = Field()
+    deployment: WebhookDeploymentCreatedPropDeployment = Field(
+        title="Deployment",
+        description="The [deployment](https://docs.github.com/rest/deployments/deployments#list-deployments).",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,7 +44,8 @@ class WebhookDeploymentReviewApproved(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
@@ -51,35 +53,194 @@ class WebhookDeploymentReviewApproved(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    reviewers: Missing[list[WebhooksReviewersItems]] = Field(default=UNSET)
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    since: str = Field()
-    workflow_job_run: Missing[WebhooksWorkflowJobRun] = Field(default=UNSET)
-    workflow_job_runs: Missing[
-        list[WebhookDeploymentReviewApprovedPropWorkflowJobRunsItems]
-    ] = Field(default=UNSET)
-    workflow_run: Union[WebhookDeploymentReviewApprovedPropWorkflowRun, None] = Field(
+    workflow: Union[WebhooksWorkflow, None] = Field(title="Workflow")
+    workflow_run: Union[WebhookDeploymentCreatedPropWorkflowRun, None] = Field(
         title="Deployment Workflow Run"
     )
 
 
-class WebhookDeploymentReviewApprovedPropWorkflowJobRunsItems(GitHubModel):
-    """WebhookDeploymentReviewApprovedPropWorkflowJobRunsItems"""
+class WebhookDeploymentCreatedPropDeployment(GitHubModel):
+    """Deployment
 
-    conclusion: Missing[None] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    environment: Missing[str] = Field(default=UNSET)
+    The [deployment](https://docs.github.com/rest/deployments/deployments#list-
+    deployments).
+    """
+
+    created_at: str = Field()
+    creator: Union[WebhookDeploymentCreatedPropDeploymentPropCreator, None] = Field(
+        title="User"
+    )
+    description: Union[str, None] = Field()
+    environment: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    original_environment: str = Field()
+    payload: Union[str, WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1] = (
+        Field()
+    )
+    performed_via_github_app: Missing[
+        Union[WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp, None]
+    ] = Field(
+        default=UNSET,
+        title="App",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    )
+    production_environment: Missing[bool] = Field(default=UNSET)
+    ref: str = Field()
+    repository_url: str = Field()
+    sha: str = Field()
+    statuses_url: str = Field()
+    task: str = Field()
+    transient_environment: Missing[bool] = Field(default=UNSET)
+    updated_at: str = Field()
+    url: str = Field()
+
+
+class WebhookDeploymentCreatedPropDeploymentPropCreator(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookDeploymentReviewApprovedPropWorkflowRun(GitHubModel):
+class WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1(ExtraGitHubModel):
+    """WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1"""
+
+
+class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp(GitHubModel):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[datetime, None] = Field()
+    description: Union[str, None] = Field()
+    events: Missing[list[str]] = Field(
+        default=UNSET, description="The list of events for the GitHub app"
+    )
+    external_url: Union[str, None] = Field()
+    html_url: str = Field()
+    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
+    name: str = Field(description="The name of the GitHub app")
+    node_id: str = Field()
+    owner: Union[
+        WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner, None
+    ] = Field(title="User")
+    permissions: Missing[
+        WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions
+    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
+    )
+    updated_at: Union[datetime, None] = Field()
+
+
+class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner(
+    GitHubModel
+):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions(
+    GitHubModel
+):
+    """WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions
+
+    The set of permissions for the GitHub app
+    """
+
+    actions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    administration: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    checks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    content_references: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    contents: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    deployments: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    emails: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    environments: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    issues: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    keys: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    members: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    metadata: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_administration: Missing[Literal["read", "write"]] = Field(
+        default=UNSET
+    )
+    organization_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_plan: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_self_hosted_runners: Missing[Literal["read", "write"]] = Field(
+        default=UNSET
+    )
+    organization_user_blocking: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    pages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    pull_requests: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    repository_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    repository_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    secret_scanning_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    security_events: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    security_scanning_alert: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    single_file: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    statuses: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    team_discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    vulnerability_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    workflows: Missing[Literal["read", "write"]] = Field(default=UNSET)
+
+
+class WebhookDeploymentCreatedPropWorkflowRun(GitHubModel):
     """Deployment Workflow Run"""
 
-    actor: Union[WebhookDeploymentReviewApprovedPropWorkflowRunPropActor, None] = Field(
+    actor: Union[WebhookDeploymentCreatedPropWorkflowRunPropActor, None] = Field(
         title="User"
     )
     artifacts_url: Missing[str] = Field(default=UNSET)
@@ -103,11 +264,9 @@ class WebhookDeploymentReviewApprovedPropWorkflowRun(GitHubModel):
     display_title: str = Field()
     event: str = Field()
     head_branch: str = Field()
-    head_commit: Missing[
-        Union[WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadCommit, None]
-    ] = Field(default=UNSET)
+    head_commit: Missing[None] = Field(default=UNSET)
     head_repository: Missing[
-        WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepository
+        WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository
     ] = Field(default=UNSET)
     head_sha: str = Field()
     html_url: str = Field()
@@ -117,21 +276,19 @@ class WebhookDeploymentReviewApprovedPropWorkflowRun(GitHubModel):
     name: str = Field()
     node_id: str = Field()
     path: str = Field()
-    previous_attempt_url: Missing[Union[str, None]] = Field(default=UNSET)
+    previous_attempt_url: Missing[None] = Field(default=UNSET)
     pull_requests: list[
-        WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItems
+        WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItems
     ] = Field()
     referenced_workflows: Missing[
         Union[
-            list[
-                WebhookDeploymentReviewApprovedPropWorkflowRunPropReferencedWorkflowsItems
-            ],
+            list[WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems],
             None,
         ]
     ] = Field(default=UNSET)
-    repository: Missing[
-        WebhookDeploymentReviewApprovedPropWorkflowRunPropRepository
-    ] = Field(default=UNSET)
+    repository: Missing[WebhookDeploymentCreatedPropWorkflowRunPropRepository] = Field(
+        default=UNSET
+    )
     rerun_url: Missing[str] = Field(default=UNSET)
     run_attempt: int = Field()
     run_number: int = Field()
@@ -139,16 +296,16 @@ class WebhookDeploymentReviewApprovedPropWorkflowRun(GitHubModel):
     status: Literal[
         "requested", "in_progress", "completed", "queued", "waiting", "pending"
     ] = Field()
-    triggering_actor: Union[
-        WebhookDeploymentReviewApprovedPropWorkflowRunPropTriggeringActor, None
-    ] = Field(title="User")
+    triggering_actor: Missing[
+        Union[WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActor, None]
+    ] = Field(default=UNSET, title="User")
     updated_at: datetime = Field()
     url: str = Field()
     workflow_id: int = Field()
     workflow_url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookDeploymentReviewApprovedPropWorkflowRunPropActor(GitHubModel):
+class WebhookDeploymentCreatedPropWorkflowRunPropActor(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -175,21 +332,15 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropActor(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadCommit(GitHubModel):
-    """WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadCommit"""
-
-
-class WebhookDeploymentReviewApprovedPropWorkflowRunPropReferencedWorkflowsItems(
-    GitHubModel
-):
-    """WebhookDeploymentReviewApprovedPropWorkflowRunPropReferencedWorkflowsItems"""
+class WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems(GitHubModel):
+    """WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems"""
 
     path: str = Field()
     ref: Missing[str] = Field(default=UNSET)
     sha: str = Field()
 
 
-class WebhookDeploymentReviewApprovedPropWorkflowRunPropTriggeringActor(GitHubModel):
+class WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActor(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -216,8 +367,8 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropTriggeringActor(GitHubMo
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepository(GitHubModel):
-    """WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepository"""
+class WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository(GitHubModel):
+    """WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository"""
 
     archive_url: Missing[str] = Field(default=UNSET)
     assignees_url: Missing[str] = Field(default=UNSET)
@@ -230,7 +381,7 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepository(GitHubMod
     contents_url: Missing[str] = Field(default=UNSET)
     contributors_url: Missing[str] = Field(default=UNSET)
     deployments_url: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
+    description: Missing[None] = Field(default=UNSET)
     downloads_url: Missing[str] = Field(default=UNSET)
     events_url: Missing[str] = Field(default=UNSET)
     fork: Missing[bool] = Field(default=UNSET)
@@ -254,7 +405,7 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepository(GitHubMod
     node_id: Missing[str] = Field(default=UNSET)
     notifications_url: Missing[str] = Field(default=UNSET)
     owner: Missing[
-        WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepositoryPropOwner
+        WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner
     ] = Field(default=UNSET)
     private: Missing[bool] = Field(default=UNSET)
     pulls_url: Missing[str] = Field(default=UNSET)
@@ -269,10 +420,8 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepository(GitHubMod
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepositoryPropOwner(
-    GitHubModel
-):
-    """WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepositoryPropOwner"""
+class WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner(GitHubModel):
+    """WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     events_url: Missing[str] = Field(default=UNSET)
@@ -292,11 +441,10 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepositoryPropOwner(
     subscriptions_url: Missing[str] = Field(default=UNSET)
     type: Missing[str] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookDeploymentReviewApprovedPropWorkflowRunPropRepository(GitHubModel):
-    """WebhookDeploymentReviewApprovedPropWorkflowRunPropRepository"""
+class WebhookDeploymentCreatedPropWorkflowRunPropRepository(GitHubModel):
+    """WebhookDeploymentCreatedPropWorkflowRunPropRepository"""
 
     archive_url: Missing[str] = Field(default=UNSET)
     assignees_url: Missing[str] = Field(default=UNSET)
@@ -309,7 +457,7 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropRepository(GitHubModel):
     contents_url: Missing[str] = Field(default=UNSET)
     contributors_url: Missing[str] = Field(default=UNSET)
     deployments_url: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
+    description: Missing[None] = Field(default=UNSET)
     downloads_url: Missing[str] = Field(default=UNSET)
     events_url: Missing[str] = Field(default=UNSET)
     fork: Missing[bool] = Field(default=UNSET)
@@ -332,9 +480,9 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropRepository(GitHubModel):
     name: Missing[str] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
     notifications_url: Missing[str] = Field(default=UNSET)
-    owner: Missing[
-        WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryPropOwner
-    ] = Field(default=UNSET)
+    owner: Missing[WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner] = (
+        Field(default=UNSET)
+    )
     private: Missing[bool] = Field(default=UNSET)
     pulls_url: Missing[str] = Field(default=UNSET)
     releases_url: Missing[str] = Field(default=UNSET)
@@ -348,10 +496,8 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropRepository(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryPropOwner(
-    GitHubModel
-):
-    """WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryPropOwner"""
+class WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner(GitHubModel):
+    """WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     events_url: Missing[str] = Field(default=UNSET)
@@ -371,32 +517,29 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryPropOwner(
     subscriptions_url: Missing[str] = Field(default=UNSET)
     type: Missing[str] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItems(GitHubModel):
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItems(GitHubModel):
     """Check Run Pull Request"""
 
-    base: WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBase = Field()
-    head: WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHead = Field()
+    base: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase = Field()
+    head: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead = Field()
     id: int = Field()
     number: int = Field()
     url: str = Field()
 
 
-class WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBase(
-    GitHubModel
-):
-    """WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBase"""
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase(GitHubModel):
+    """WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase"""
 
     ref: str = Field()
-    repo: WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo = Field(
+    repo: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo = Field(
         title="Repo Ref"
     )
     sha: str = Field()
 
 
-class WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo(
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo(
     GitHubModel
 ):
     """Repo Ref"""
@@ -406,19 +549,17 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBas
     url: str = Field()
 
 
-class WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHead(
-    GitHubModel
-):
-    """WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHead"""
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead(GitHubModel):
+    """WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead"""
 
     ref: str = Field()
-    repo: WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo = Field(
+    repo: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo = Field(
         title="Repo Ref"
     )
     sha: str = Field()
 
 
-class WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo(
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo(
     GitHubModel
 ):
     """Repo Ref"""
@@ -428,48 +569,52 @@ class WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHea
     url: str = Field()
 
 
-model_rebuild(WebhookDeploymentReviewApproved)
-model_rebuild(WebhookDeploymentReviewApprovedPropWorkflowJobRunsItems)
-model_rebuild(WebhookDeploymentReviewApprovedPropWorkflowRun)
-model_rebuild(WebhookDeploymentReviewApprovedPropWorkflowRunPropActor)
-model_rebuild(WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadCommit)
+model_rebuild(WebhookDeploymentCreated)
+model_rebuild(WebhookDeploymentCreatedPropDeployment)
+model_rebuild(WebhookDeploymentCreatedPropDeploymentPropCreator)
+model_rebuild(WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1)
+model_rebuild(WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp)
+model_rebuild(WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner)
 model_rebuild(
-    WebhookDeploymentReviewApprovedPropWorkflowRunPropReferencedWorkflowsItems
+    WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions
 )
-model_rebuild(WebhookDeploymentReviewApprovedPropWorkflowRunPropTriggeringActor)
-model_rebuild(WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepository)
-model_rebuild(WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepositoryPropOwner)
-model_rebuild(WebhookDeploymentReviewApprovedPropWorkflowRunPropRepository)
-model_rebuild(WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryPropOwner)
-model_rebuild(WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItems)
+model_rebuild(WebhookDeploymentCreatedPropWorkflowRun)
+model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropActor)
+model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems)
+model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActor)
+model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository)
+model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner)
+model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropRepository)
+model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner)
+model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItems)
+model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase)
 model_rebuild(
-    WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBase
+    WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo
 )
+model_rebuild(WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead)
 model_rebuild(
-    WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo
-)
-model_rebuild(
-    WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHead
-)
-model_rebuild(
-    WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo
+    WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo
 )
 
 __all__ = (
-    "WebhookDeploymentReviewApproved",
-    "WebhookDeploymentReviewApprovedPropWorkflowJobRunsItems",
-    "WebhookDeploymentReviewApprovedPropWorkflowRun",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropActor",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadCommit",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepository",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepositoryPropOwner",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItems",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBase",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHead",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropReferencedWorkflowsItems",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropRepository",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryPropOwner",
-    "WebhookDeploymentReviewApprovedPropWorkflowRunPropTriggeringActor",
+    "WebhookDeploymentCreated",
+    "WebhookDeploymentCreatedPropDeployment",
+    "WebhookDeploymentCreatedPropDeploymentPropCreator",
+    "WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1",
+    "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp",
+    "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner",
+    "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions",
+    "WebhookDeploymentCreatedPropWorkflowRun",
+    "WebhookDeploymentCreatedPropWorkflowRunPropActor",
+    "WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository",
+    "WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItems",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
+    "WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems",
+    "WebhookDeploymentCreatedPropWorkflowRunPropRepository",
+    "WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner",
+    "WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActor",
 )

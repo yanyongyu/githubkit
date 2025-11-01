@@ -9,36 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType
+from datetime import date, datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class PageBuildType(TypedDict):
-    """Page Build
+class PageType(TypedDict):
+    """GitHub Pages
 
-    Page Build
+    The configuration for GitHub Pages for a repository.
     """
 
     url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: datetime
-    updated_at: datetime
+    status: Union[None, Literal["built", "building", "errored"]]
+    cname: Union[str, None]
+    protected_domain_state: NotRequired[
+        Union[None, Literal["pending", "verified", "unverified"]]
+    ]
+    pending_domain_unverified_at: NotRequired[Union[datetime, None]]
+    custom_404: bool
+    html_url: NotRequired[str]
+    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
+    source: NotRequired[PagesSourceHashType]
+    public: bool
+    https_certificate: NotRequired[PagesHttpsCertificateType]
+    https_enforced: NotRequired[bool]
 
 
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
+class PagesSourceHashType(TypedDict):
+    """Pages Source Hash"""
 
-    message: Union[str, None]
+    branch: str
+    path: str
+
+
+class PagesHttpsCertificateType(TypedDict):
+    """Pages Https Certificate"""
+
+    state: Literal[
+        "new",
+        "authorization_created",
+        "authorization_pending",
+        "authorized",
+        "authorization_revoked",
+        "issued",
+        "uploaded",
+        "approved",
+        "errored",
+        "bad_authz",
+        "destroy_pending",
+        "dns_changed",
+    ]
+    description: str
+    domains: list[str]
+    expires_at: NotRequired[date]
 
 
 __all__ = (
-    "PageBuildPropErrorType",
-    "PageBuildType",
+    "PageType",
+    "PagesHttpsCertificateType",
+    "PagesSourceHashType",
 )

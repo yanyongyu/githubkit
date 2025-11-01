@@ -9,37 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksProject(GitHubModel):
-    """Project"""
+class WebhooksMembership(GitHubModel):
+    """Membership
 
-    body: Union[str, None] = Field(description="Body of the project")
-    columns_url: str = Field()
-    created_at: datetime = Field()
-    creator: Union[WebhooksProjectPropCreator, None] = Field(title="User")
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field(description="Name of the project")
-    node_id: str = Field()
-    number: int = Field()
-    owner_url: str = Field()
-    state: Literal["open", "closed"] = Field(
-        description="State of the project; either 'open' or 'closed'"
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
+    """
+
+    organization_url: str = Field()
+    role: str = Field()
+    direct_membership: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the user has direct membership in the organization.",
     )
-    updated_at: datetime = Field()
+    enterprise_teams_providing_indirect_membership: Missing[list[str]] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The slugs of the enterprise teams providing the user with indirect membership in the organization.\nA limit of 100 enterprise team slugs is returned.",
+    )
+    state: str = Field()
     url: str = Field()
+    user: Union[WebhooksMembershipPropUser, None] = Field(title="User")
 
 
-class WebhooksProjectPropCreator(GitHubModel):
+class WebhooksMembershipPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -66,10 +68,10 @@ class WebhooksProjectPropCreator(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksProject)
-model_rebuild(WebhooksProjectPropCreator)
+model_rebuild(WebhooksMembership)
+model_rebuild(WebhooksMembershipPropUser)
 
 __all__ = (
-    "WebhooksProject",
-    "WebhooksProjectPropCreator",
+    "WebhooksMembership",
+    "WebhooksMembershipPropUser",
 )

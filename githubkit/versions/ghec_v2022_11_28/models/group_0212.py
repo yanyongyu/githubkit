@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,25 +18,32 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0070 import SimpleRepository
+from .group_0003 import SimpleUser
 
 
-class DependabotRepositoryAccessDetails(GitHubModel):
-    """Dependabot Repository Access Details
+class OrganizationCustomRepositoryRole(GitHubModel):
+    """Organization Custom Repository Role
 
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Custom repository roles created by organization owners
     """
 
-    default_level: Missing[Union[None, Literal["public", "internal"]]] = Field(
+    id: int = Field(description="The unique identifier of the custom role.")
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The default repository access level for Dependabot updates.",
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    accessible_repositories: Missing[list[Union[None, SimpleRepository]]] = Field(
-        default=UNSET
+    base_role: Literal["read", "triage", "write", "maintain"] = Field(
+        description="The system role from which this role inherits permissions."
     )
+    permissions: list[str] = Field(
+        description="A list of additional permissions included in this role."
+    )
+    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(DependabotRepositoryAccessDetails)
+model_rebuild(OrganizationCustomRepositoryRole)
 
-__all__ = ("DependabotRepositoryAccessDetails",)
+__all__ = ("OrganizationCustomRepositoryRole",)

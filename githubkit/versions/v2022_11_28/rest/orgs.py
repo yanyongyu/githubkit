@@ -920,6 +920,7 @@ class OrgsClient:
         registry_url: str,
         repository: Missing[str] = UNSET,
         status: Missing[Literal["active", "eol", "deleted"]] = UNSET,
+        github_repository: Missing[str] = UNSET,
     ) -> Response[
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
@@ -1005,6 +1006,7 @@ class OrgsClient:
         registry_url: str,
         repository: Missing[str] = UNSET,
         status: Missing[Literal["active", "eol", "deleted"]] = UNSET,
+        github_repository: Missing[str] = UNSET,
     ) -> Response[
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,

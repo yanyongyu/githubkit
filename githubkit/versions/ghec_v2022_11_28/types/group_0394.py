@@ -9,17 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class CheckImmutableReleasesType(TypedDict):
-    """Check immutable releases
+class HookResponseType(TypedDict):
+    """Hook Response"""
 
-    Check immutable releases
-    """
-
-    enabled: bool
-    enforced_by_owner: bool
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
-__all__ = ("CheckImmutableReleasesType",)
+__all__ = ("HookResponseType",)

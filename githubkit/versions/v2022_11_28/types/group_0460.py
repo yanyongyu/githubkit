@@ -9,12 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksCommentType(TypedDict):
-    """WebhooksComment"""
+class WebhooksAnswerType(TypedDict):
+    """WebhooksAnswer"""
 
     author_association: Literal[
         "COLLABORATOR",
@@ -28,19 +29,19 @@ class WebhooksCommentType(TypedDict):
     ]
     body: str
     child_comment_count: int
-    created_at: str
+    created_at: datetime
     discussion_id: int
     html_url: str
     id: int
     node_id: str
     parent_id: Union[int, None]
-    reactions: WebhooksCommentPropReactionsType
+    reactions: NotRequired[WebhooksAnswerPropReactionsType]
     repository_url: str
-    updated_at: str
-    user: Union[WebhooksCommentPropUserType, None]
+    updated_at: datetime
+    user: Union[WebhooksAnswerPropUserType, None]
 
 
-class WebhooksCommentPropReactionsType(TypedDict):
+class WebhooksAnswerPropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -55,7 +56,7 @@ class WebhooksCommentPropReactionsType(TypedDict):
     url: str
 
 
-class WebhooksCommentPropUserType(TypedDict):
+class WebhooksAnswerPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -83,7 +84,7 @@ class WebhooksCommentPropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhooksCommentPropReactionsType",
-    "WebhooksCommentPropUserType",
-    "WebhooksCommentType",
+    "WebhooksAnswerPropReactionsType",
+    "WebhooksAnswerPropUserType",
+    "WebhooksAnswerType",
 )

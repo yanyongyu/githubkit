@@ -9,26 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0249 import BranchProtection
 
-class GitUser(GitHubModel):
-    """Git User
 
-    Metaproperties for Git author/committer information.
+class ShortBranch(GitHubModel):
+    """Short Branch
+
+    Short Branch
     """
 
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-    date: Missing[datetime] = Field(default=UNSET)
+    name: str = Field()
+    commit: ShortBranchPropCommit = Field()
+    protected: bool = Field()
+    protection: Missing[BranchProtection] = Field(
+        default=UNSET, title="Branch Protection", description="Branch Protection"
+    )
+    protection_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(GitUser)
+class ShortBranchPropCommit(GitHubModel):
+    """ShortBranchPropCommit"""
 
-__all__ = ("GitUser",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(ShortBranch)
+model_rebuild(ShortBranchPropCommit)
+
+__all__ = (
+    "ShortBranch",
+    "ShortBranchPropCommit",
+)

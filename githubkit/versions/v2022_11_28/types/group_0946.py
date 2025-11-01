@@ -10,20 +10,25 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0945 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType
 
-class OrgsOrgCampaignsCampaignNumberPatchBodyType(TypedDict):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
+class OrgsOrgCampaignsPostBodyOneof0Type(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof0"""
+
+    name: str
+    description: str
     managers: NotRequired[list[str]]
     team_managers: NotRequired[list[str]]
-    ends_at: NotRequired[datetime]
+    ends_at: datetime
     contact_link: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
+    code_scanning_alerts: Union[
+        list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None
+    ]
+    generate_issues: NotRequired[bool]
 
 
-__all__ = ("OrgsOrgCampaignsCampaignNumberPatchBodyType",)
+__all__ = ("OrgsOrgCampaignsPostBodyOneof0Type",)

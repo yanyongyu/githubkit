@@ -9,30 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ImmutableReleasesOrganizationSettings(GitHubModel):
-    """Check immutable releases organization settings
+class CombinedBillingUsage(GitHubModel):
+    """CombinedBillingUsage"""
 
-    Check immutable releases settings for an organization.
-    """
-
-    enforced_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls how immutable releases are enforced in the organization."
+    days_left_in_billing_cycle: int = Field(
+        description="Numbers of days left in billing cycle."
     )
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.",
+    estimated_paid_storage_for_month: int = Field(
+        description="Estimated storage space (GB) used in billing cycle."
+    )
+    estimated_storage_for_month: int = Field(
+        description="Estimated sum of free and paid storage space (GB) used in billing cycle."
     )
 
 
-model_rebuild(ImmutableReleasesOrganizationSettings)
+model_rebuild(CombinedBillingUsage)
 
-__all__ = ("ImmutableReleasesOrganizationSettings",)
+__all__ = ("CombinedBillingUsage",)

@@ -9,109 +9,137 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0659 import WebhookForkPropForkeeAllof0PropPermissionsType
 
-class WebhookForkPropForkeeAllof1Type(TypedDict):
-    """WebhookForkPropForkeeAllof1"""
 
+class WebhookForkPropForkeeType(TypedDict):
+    """WebhookForkPropForkee
+
+    The created [`repository`](https://docs.github.com/enterprise-
+    cloud@latest//rest/repos/repos#get-a-repository) resource.
+    """
+
+    allow_auto_merge: NotRequired[bool]
     allow_forking: NotRequired[bool]
-    archive_url: NotRequired[str]
-    archived: NotRequired[bool]
-    assignees_url: NotRequired[str]
-    blobs_url: NotRequired[str]
-    branches_url: NotRequired[str]
-    clone_url: NotRequired[str]
-    collaborators_url: NotRequired[str]
-    comments_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    compare_url: NotRequired[str]
-    contents_url: NotRequired[str]
-    contributors_url: NotRequired[str]
-    created_at: NotRequired[str]
-    default_branch: NotRequired[str]
-    deployments_url: NotRequired[str]
-    description: NotRequired[Union[str, None]]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_squash_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    archive_url: str
+    archived: bool
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    clone_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    created_at: datetime
+    default_branch: str
+    delete_branch_on_merge: NotRequired[bool]
+    deployments_url: str
+    description: Union[Union[str, None], None]
     disabled: NotRequired[bool]
-    downloads_url: NotRequired[str]
-    events_url: NotRequired[str]
-    fork: NotRequired[Literal[True]]
-    forks: NotRequired[int]
-    forks_count: NotRequired[int]
-    forks_url: NotRequired[str]
-    full_name: NotRequired[str]
-    git_commits_url: NotRequired[str]
-    git_refs_url: NotRequired[str]
-    git_tags_url: NotRequired[str]
-    git_url: NotRequired[str]
-    has_downloads: NotRequired[bool]
-    has_issues: NotRequired[bool]
-    has_pages: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    homepage: NotRequired[Union[str, None]]
-    hooks_url: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
+    downloads_url: str
+    events_url: str
+    fork: Literal[True]
+    forks: int
+    forks_count: int
+    forks_url: str
+    full_name: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    has_downloads: bool
+    has_issues: bool
+    has_pages: bool
+    has_projects: bool
+    has_wiki: bool
+    homepage: Union[Union[str, None], None]
+    hooks_url: str
+    html_url: str
+    id: int
     is_template: NotRequired[bool]
-    issue_comment_url: NotRequired[str]
-    issue_events_url: NotRequired[str]
-    issues_url: NotRequired[str]
-    keys_url: NotRequired[str]
-    labels_url: NotRequired[str]
-    language: NotRequired[None]
-    languages_url: NotRequired[str]
-    license_: NotRequired[Union[WebhookForkPropForkeeAllof1PropLicenseType, None]]
-    merges_url: NotRequired[str]
-    milestones_url: NotRequired[str]
-    mirror_url: NotRequired[None]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    notifications_url: NotRequired[str]
-    open_issues: NotRequired[int]
-    open_issues_count: NotRequired[int]
-    owner: NotRequired[WebhookForkPropForkeeAllof1PropOwnerType]
-    private: NotRequired[bool]
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    language: Union[None, None]
+    languages_url: str
+    license_: Union[WebhookForkPropForkeeMergedLicenseType, None]
+    master_branch: NotRequired[str]
+    merges_url: str
+    milestones_url: str
+    mirror_url: Union[None, None]
+    name: str
+    node_id: str
+    notifications_url: str
+    open_issues: int
+    open_issues_count: int
+    organization: NotRequired[str]
+    owner: WebhookForkPropForkeeMergedOwnerType
+    permissions: NotRequired[WebhookForkPropForkeeAllof0PropPermissionsType]
+    private: bool
     public: NotRequired[bool]
-    pulls_url: NotRequired[str]
-    pushed_at: NotRequired[str]
-    releases_url: NotRequired[str]
-    size: NotRequired[int]
-    ssh_url: NotRequired[str]
-    stargazers_count: NotRequired[int]
-    stargazers_url: NotRequired[str]
-    statuses_url: NotRequired[str]
-    subscribers_url: NotRequired[str]
-    subscription_url: NotRequired[str]
-    svn_url: NotRequired[str]
-    tags_url: NotRequired[str]
-    teams_url: NotRequired[str]
-    topics: NotRequired[list[Union[str, None]]]
-    trees_url: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
-    visibility: NotRequired[str]
-    watchers: NotRequired[int]
-    watchers_count: NotRequired[int]
+    pulls_url: str
+    pushed_at: datetime
+    releases_url: str
+    role_name: NotRequired[Union[str, None]]
+    size: int
+    ssh_url: str
+    stargazers: NotRequired[int]
+    stargazers_count: int
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    svn_url: str
+    tags_url: str
+    teams_url: str
+    topics: list[str]
+    trees_url: str
+    updated_at: datetime
+    url: str
+    visibility: Literal["public", "private", "internal"]
+    watchers: int
+    watchers_count: int
+    web_commit_signoff_required: NotRequired[bool]
 
 
-class WebhookForkPropForkeeAllof1PropLicenseType(TypedDict):
-    """WebhookForkPropForkeeAllof1PropLicense"""
+class WebhookForkPropForkeeMergedLicenseType(TypedDict):
+    """WebhookForkPropForkeeMergedLicense"""
+
+    key: str
+    name: str
+    node_id: str
+    spdx_id: str
+    url: Union[str, None]
 
 
-class WebhookForkPropForkeeAllof1PropOwnerType(TypedDict):
-    """WebhookForkPropForkeeAllof1PropOwner"""
+class WebhookForkPropForkeeMergedOwnerType(TypedDict):
+    """WebhookForkPropForkeeMergedOwner"""
 
     avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
     events_url: NotRequired[str]
     followers_url: NotRequired[str]
     following_url: NotRequired[str]
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
     node_id: NotRequired[str]
     organizations_url: NotRequired[str]
     received_events_url: NotRequired[str]
@@ -119,12 +147,13 @@ class WebhookForkPropForkeeAllof1PropOwnerType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookForkPropForkeeAllof1PropLicenseType",
-    "WebhookForkPropForkeeAllof1PropOwnerType",
-    "WebhookForkPropForkeeAllof1Type",
+    "WebhookForkPropForkeeMergedLicenseType",
+    "WebhookForkPropForkeeMergedOwnerType",
+    "WebhookForkPropForkeeType",
 )

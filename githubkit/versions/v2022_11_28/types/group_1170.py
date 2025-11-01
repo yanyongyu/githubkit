@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1166 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type
+from .group_1167 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type
 
 
-class ReposOwnerRepoPagesPutBodyAnyof3Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof3"""
+class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
 
-    cname: NotRequired[Union[str, None]]
+    cname: Union[str, None]
     https_enforced: NotRequired[bool]
     build_type: NotRequired[Literal["legacy", "workflow"]]
     source: NotRequired[
@@ -29,4 +29,4 @@ class ReposOwnerRepoPagesPutBodyAnyof3Type(TypedDict):
     ]
 
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof3Type",)
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof2Type",)

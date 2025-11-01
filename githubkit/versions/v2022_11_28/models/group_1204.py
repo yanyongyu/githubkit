@@ -17,44 +17,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0142 import RepositoryRulesetBypassActor
-from .group_0143 import RepositoryRulesetConditions
-from .group_0154 import (
+from .group_0143 import RepositoryRulesetBypassActor
+from .group_0144 import RepositoryRulesetConditions
+from .group_0155 import (
     RepositoryRuleCreation,
     RepositoryRuleDeletion,
     RepositoryRuleNonFastForward,
     RepositoryRuleRequiredSignatures,
 )
-from .group_0155 import RepositoryRuleUpdate
-from .group_0157 import RepositoryRuleRequiredLinearHistory
-from .group_0158 import RepositoryRuleMergeQueue
-from .group_0160 import RepositoryRuleRequiredDeployments
-from .group_0163 import RepositoryRulePullRequest
-from .group_0165 import RepositoryRuleRequiredStatusChecks
-from .group_0167 import RepositoryRuleCommitMessagePattern
-from .group_0169 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0171 import RepositoryRuleCommitterEmailPattern
-from .group_0173 import RepositoryRuleBranchNamePattern
-from .group_0175 import RepositoryRuleTagNamePattern
-from .group_0177 import RepositoryRuleFilePathRestriction
-from .group_0179 import RepositoryRuleMaxFilePathLength
-from .group_0181 import RepositoryRuleFileExtensionRestriction
-from .group_0183 import RepositoryRuleMaxFileSize
-from .group_0186 import RepositoryRuleWorkflows
-from .group_0188 import RepositoryRuleCodeScanning
-from .group_0190 import RepositoryRuleCopilotCodeReview
+from .group_0156 import RepositoryRuleUpdate
+from .group_0158 import RepositoryRuleRequiredLinearHistory
+from .group_0159 import RepositoryRuleMergeQueue
+from .group_0161 import RepositoryRuleRequiredDeployments
+from .group_0164 import RepositoryRulePullRequest
+from .group_0166 import RepositoryRuleRequiredStatusChecks
+from .group_0168 import RepositoryRuleCommitMessagePattern
+from .group_0170 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0172 import RepositoryRuleCommitterEmailPattern
+from .group_0174 import RepositoryRuleBranchNamePattern
+from .group_0176 import RepositoryRuleTagNamePattern
+from .group_0178 import RepositoryRuleFilePathRestriction
+from .group_0180 import RepositoryRuleMaxFilePathLength
+from .group_0182 import RepositoryRuleFileExtensionRestriction
+from .group_0184 import RepositoryRuleMaxFileSize
+from .group_0187 import RepositoryRuleWorkflows
+from .group_0189 import RepositoryRuleCodeScanning
+from .group_0191 import RepositoryRuleCopilotCodeReview
 
 
-class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+class ReposOwnerRepoRulesetsPostBody(GitHubModel):
+    """ReposOwnerRepoRulesetsPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    name: str = Field(description="The name of the ruleset.")
     target: Missing[Literal["branch", "tag", "push"]] = Field(
         default=UNSET, description="The target of the ruleset"
     )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
-        default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
     )
     bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
@@ -95,6 +94,6 @@ class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
     ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
+model_rebuild(ReposOwnerRepoRulesetsPostBody)
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)
+__all__ = ("ReposOwnerRepoRulesetsPostBody",)

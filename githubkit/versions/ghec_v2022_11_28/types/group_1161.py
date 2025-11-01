@@ -9,13 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    selected_repository_ids: list[int]
+    pattern_config_version: NotRequired[str]
 
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType",)
+__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",)

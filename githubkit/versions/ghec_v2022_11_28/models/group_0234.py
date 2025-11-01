@@ -12,18 +12,34 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryFineGrainedPermission(GitHubModel):
-    """Repository Fine-Grained Permission
+class ExternalGroups(GitHubModel):
+    """ExternalGroups
 
-    A fine-grained permission that protects repository resources.
+    A list of external groups available to be connected to a team
     """
 
-    name: str = Field()
-    description: str = Field()
+    groups: Missing[list[ExternalGroupsPropGroupsItems]] = Field(
+        default=UNSET,
+        description="An array of external groups available to be mapped to a team",
+    )
 
 
-model_rebuild(RepositoryFineGrainedPermission)
+class ExternalGroupsPropGroupsItems(GitHubModel):
+    """ExternalGroupsPropGroupsItems"""
 
-__all__ = ("RepositoryFineGrainedPermission",)
+    group_id: int = Field(description="The internal ID of the group")
+    group_name: str = Field(description="The display name of the group")
+    updated_at: str = Field(description="The time of the last update for this group")
+
+
+model_rebuild(ExternalGroups)
+model_rebuild(ExternalGroupsPropGroupsItems)
+
+__all__ = (
+    "ExternalGroups",
+    "ExternalGroupsPropGroupsItems",
+)

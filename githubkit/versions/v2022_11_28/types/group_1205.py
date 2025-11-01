@@ -12,15 +12,70 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0143 import RepositoryRulesetBypassActorType
+from .group_0144 import RepositoryRulesetConditionsType
+from .group_0155 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
+from .group_0156 import RepositoryRuleUpdateType
+from .group_0158 import RepositoryRuleRequiredLinearHistoryType
+from .group_0159 import RepositoryRuleMergeQueueType
+from .group_0161 import RepositoryRuleRequiredDeploymentsType
+from .group_0164 import RepositoryRulePullRequestType
+from .group_0166 import RepositoryRuleRequiredStatusChecksType
+from .group_0168 import RepositoryRuleCommitMessagePatternType
+from .group_0170 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0172 import RepositoryRuleCommitterEmailPatternType
+from .group_0174 import RepositoryRuleBranchNamePatternType
+from .group_0176 import RepositoryRuleTagNamePatternType
+from .group_0178 import RepositoryRuleFilePathRestrictionType
+from .group_0180 import RepositoryRuleMaxFilePathLengthType
+from .group_0182 import RepositoryRuleFileExtensionRestrictionType
+from .group_0184 import RepositoryRuleMaxFileSizeType
+from .group_0187 import RepositoryRuleWorkflowsType
+from .group_0189 import RepositoryRuleCodeScanningType
+from .group_0191 import RepositoryRuleCopilotCodeReviewType
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
 
-    state: Literal["open", "resolved"]
-    resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+
+    name: NotRequired[str]
+    target: NotRequired[Literal["branch", "tag", "push"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[RepositoryRulesetConditionsType]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
+            ]
+        ]
     ]
-    resolution_comment: NotRequired[Union[str, None]]
 
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType",)
+__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBodyType",)

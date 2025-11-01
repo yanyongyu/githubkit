@@ -14,283 +14,367 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0532 import ExemptionResponse
+from .group_0003 import SimpleUser
+from .group_0019 import LicenseSimple
 
 
-class ExemptionRequest(GitHubModel):
-    """Exemption Request
+class RepositoryWebhooks(GitHubModel):
+    """Repository
 
-    A request from a user to be exempted from a set of rules.
+    The repository on GitHub where the event occurred. Webhook payloads contain the
+    `repository` property
+    when the event occurs from activity in a repository.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the exemption request."
+    id: int = Field(description="Unique identifier of the repository")
+    node_id: str = Field()
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field()
+    license_: Union[None, LicenseSimple] = Field(alias="license")
+    organization: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    forks: int = Field()
+    permissions: Missing[RepositoryWebhooksPropPermissions] = Field(default=UNSET)
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    private: bool = Field(
+        default=False, description="Whether the repository is private or public."
     )
-    number: Missing[Union[int, None]] = Field(
+    html_url: str = Field()
+    description: Union[str, None] = Field()
+    fork: bool = Field()
+    url: str = Field()
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    forks_url: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    git_url: str = Field()
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    notifications_url: str = Field()
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    ssh_url: str = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    clone_url: str = Field()
+    mirror_url: Union[str, None] = Field()
+    hooks_url: str = Field()
+    svn_url: str = Field()
+    homepage: Union[str, None] = Field()
+    language: Union[str, None] = Field()
+    forks_count: int = Field()
+    stargazers_count: int = Field()
+    watchers_count: int = Field()
+    size: int = Field(
+        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0."
+    )
+    default_branch: str = Field(description="The default branch of the repository.")
+    open_issues_count: int = Field()
+    is_template: Missing[bool] = Field(
         default=UNSET,
-        description="The number uniquely identifying the exemption request within it's repository.",
+        description="Whether this repository acts as a template that can be used to generate new repositories.",
     )
-    repository_id: Missing[int] = Field(
+    topics: Missing[list[str]] = Field(default=UNSET)
+    custom_properties: Missing[RepositoryWebhooksPropCustomProperties] = Field(
         default=UNSET,
-        description="The ID of the repository the exemption request is for.",
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
     )
-    requester_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the user who requested the exemption."
+    has_issues: bool = Field(default=True, description="Whether issues are enabled.")
+    has_projects: bool = Field(
+        default=True, description="Whether projects are enabled."
     )
-    requester_login: Missing[str] = Field(
-        default=UNSET, description="The login of the user who requested the exemption."
+    has_wiki: bool = Field(default=True, description="Whether the wiki is enabled.")
+    has_pages: bool = Field()
+    has_downloads: bool = Field(
+        default=True, description="Whether downloads are enabled."
     )
-    request_type: Missing[
-        Literal[
-            "push_ruleset_bypass",
-            "secret_scanning",
-            "secret_scanning_closure",
-            "code_scanning_alert_dismissal",
-        ]
-    ] = Field(default=UNSET, description="The type of request.")
-    exemption_request_data: Missing[
-        Union[
-            ExemptionRequestPushRulesetBypass,
-            ExemptionRequestSecretScanning,
-            DismissalRequestSecretScanning,
-            DismissalRequestCodeScanning,
-        ]
+    has_discussions: Missing[bool] = Field(
+        default=UNSET, description="Whether discussions are enabled."
+    )
+    archived: bool = Field(
+        default=False, description="Whether the repository is archived."
+    )
+    disabled: bool = Field(
+        description="Returns whether or not this repository disabled."
+    )
+    visibility: Missing[str] = Field(
+        default=UNSET,
+        description="The repository visibility: public, private, or internal.",
+    )
+    pushed_at: Union[datetime, None] = Field()
+    created_at: Union[datetime, None] = Field()
+    updated_at: Union[datetime, None] = Field()
+    allow_rebase_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow rebase merges for pull requests."
+    )
+    template_repository: Missing[
+        Union[RepositoryWebhooksPropTemplateRepository, None]
     ] = Field(default=UNSET)
-    resource_identifier: Missing[str] = Field(
+    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
+    allow_squash_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow squash merges for pull requests."
+    )
+    allow_auto_merge: Missing[bool] = Field(
         default=UNSET,
-        description="The unique identifier for the request type of the exemption request. For example, a commit SHA.",
+        description="Whether to allow Auto-merge to be used on pull requests.",
     )
-    status: Missing[Literal["pending", "rejected", "cancelled", "completed"]] = Field(
-        default=UNSET, description="The status of the exemption request."
-    )
-    requester_comment: Missing[Union[str, None]] = Field(
+    delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,
-        description="The comment the requester provided when creating the exemption request.",
+        description="Whether to delete head branches when pull requests are merged",
     )
-    metadata: Missing[
-        Union[
-            ExemptionRequestSecretScanningMetadata,
-            DismissalRequestSecretScanningMetadata,
-            DismissalRequestCodeScanningMetadata,
-            None,
-        ]
-    ] = Field(default=UNSET, description="Metadata about the exemption request.")
-    expires_at: Missing[datetime] = Field(
+    allow_update_branch: Missing[bool] = Field(
         default=UNSET,
-        description="The date and time the exemption request will expire.",
+        description="Whether or not a pull request head branch that is behind its base branch can always be updated even if it is not required to be up to date before merging.",
     )
-    created_at: Missing[datetime] = Field(
+    use_squash_pr_title_as_default: Missing[bool] = Field(
         default=UNSET,
-        description="The date and time the exemption request was created.",
+        description="Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.",
     )
-    responses: Missing[Union[list[ExemptionResponse], None]] = Field(
-        default=UNSET, description="The responses to the exemption request."
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the exemption request in a browser."
-    )
-
-
-class ExemptionRequestSecretScanningMetadata(GitHubModel):
-    """Secret Scanning Push Protection Exemption Request Metadata
-
-    Metadata for a secret scanning push protection exemption request.
-    """
-
-    label: Missing[str] = Field(
-        default=UNSET, description="The label for the secret type"
-    )
-    reason: Missing[Literal["fixed_later", "false_positive", "tests"]] = Field(
-        default=UNSET, description="The reason for the exemption request"
-    )
-
-
-class DismissalRequestSecretScanningMetadata(GitHubModel):
-    """Secret scanning alert dismissal request metadata
-
-    Metadata for a secret scanning alert dismissal request.
-    """
-
-    alert_title: Missing[str] = Field(
-        default=UNSET, description="The title of the secret alert"
-    )
-    reason: Missing[Literal["fixed_later", "false_positive", "tests", "revoked"]] = (
-        Field(default=UNSET, description="The reason for the dismissal request")
-    )
-
-
-class DismissalRequestCodeScanningMetadata(GitHubModel):
-    """Code scanning alert dismissal request metadata
-
-    Metadata for a code scanning alert dismissal request.
-    """
-
-    alert_title: Missing[str] = Field(
-        default=UNSET, description="The title of the code scanning alert"
-    )
-    reason: Missing[Literal["false positive", "won't fix", "used in tests"]] = Field(
-        default=UNSET, description="The reason for the dismissal request"
-    )
-
-
-class ExemptionRequestPushRulesetBypass(GitHubModel):
-    """Push ruleset bypass exemption request data
-
-    Push rules that are being requested to be bypassed.
-    """
-
-    type: Missing[Literal["push_ruleset_bypass"]] = Field(
-        default=UNSET, description="The type of request"
-    )
-    data: Missing[list[ExemptionRequestPushRulesetBypassPropDataItems]] = Field(
-        default=UNSET,
-        description="The data pertaining to the push rules that are being requested to be bypassed.",
-    )
-
-
-class ExemptionRequestPushRulesetBypassPropDataItems(GitHubModel):
-    """ExemptionRequestPushRulesetBypassPropDataItems"""
-
-    ruleset_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the ruleset for the rules that were violated",
-    )
-    ruleset_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the ruleset for the rules that were violated",
-    )
-    total_violations: Missing[int] = Field(
-        default=UNSET, description="The number of violations"
-    )
-    rule_type: Missing[str] = Field(
-        default=UNSET, description="The type of rule that was violated"
-    )
-
-
-class DismissalRequestSecretScanning(GitHubModel):
-    """Secret scanning alert dismissal request data
-
-    Secret scanning alerts that have dismissal requests.
-    """
-
-    type: Missing[Literal["secret_scanning_closure"]] = Field(
-        default=UNSET, description="The type of request"
-    )
-    data: Missing[list[DismissalRequestSecretScanningPropDataItems]] = Field(
-        default=UNSET,
-        description="The data related to the secret scanning alerts that have dismissal requests.",
-    )
-
-
-class DismissalRequestSecretScanningPropDataItems(GitHubModel):
-    """DismissalRequestSecretScanningPropDataItems"""
-
-    reason: Missing[Literal["fixed_later", "false_positive", "tests", "revoked"]] = (
-        Field(default=UNSET, description="The reason for the dismissal request")
-    )
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that was detected"
-    )
-    alert_number: Missing[str] = Field(
-        default=UNSET, description="The number of the alert that was detected"
-    )
-
-
-class DismissalRequestCodeScanning(GitHubModel):
-    """Code scanning alert dismissal request data
-
-    Code scanning alerts that have dismissal requests.
-    """
-
-    type: Missing[Literal["code_scanning_alert_dismissal"]] = Field(
-        default=UNSET, description="The type of request"
-    )
-    data: Missing[list[DismissalRequestCodeScanningPropDataItems]] = Field(
-        default=UNSET,
-        description="The data related to the code scanning alerts that have dismissal requests.",
-    )
-
-
-class DismissalRequestCodeScanningPropDataItems(GitHubModel):
-    """DismissalRequestCodeScanningPropDataItems"""
-
-    alert_number: Missing[str] = Field(
-        default=UNSET, description="The number of the alert to be dismissed"
-    )
-
-
-class ExemptionRequestSecretScanning(GitHubModel):
-    """Secret scanning push protection exemption request data
-
-    Secret scanning push protections that are being requested to be bypassed.
-    """
-
-    type: Missing[Literal["secret_scanning"]] = Field(
-        default=UNSET, description="The type of request"
-    )
-    data: Missing[list[ExemptionRequestSecretScanningPropDataItems]] = Field(
-        default=UNSET,
-        description="The data pertaining to the secret scanning push protections that are being requested to be bypassed.",
-    )
-
-
-class ExemptionRequestSecretScanningPropDataItems(GitHubModel):
-    """ExemptionRequestSecretScanningPropDataItems"""
-
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that was detected"
-    )
-    locations: Missing[
-        list[ExemptionRequestSecretScanningPropDataItemsPropLocationsItems]
+    squash_merge_commit_message: Missing[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
     ] = Field(
-        default=UNSET, description="The location data of the secret that was detected"
+        default=UNSET,
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+    )
+    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        default=UNSET,
+        description="The default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+    )
+    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        default=UNSET,
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+    )
+    allow_merge_commit: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow merge commits for pull requests."
+    )
+    allow_forking: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow forking this repo"
+    )
+    web_commit_signoff_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to require contributors to sign off on web-based commits",
+    )
+    subscribers_count: Missing[int] = Field(default=UNSET)
+    network_count: Missing[int] = Field(default=UNSET)
+    open_issues: int = Field()
+    watchers: int = Field()
+    master_branch: Missing[str] = Field(default=UNSET)
+    starred_at: Missing[str] = Field(default=UNSET)
+    anonymous_access_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether anonymous git access is enabled for this repository",
     )
 
 
-class ExemptionRequestSecretScanningPropDataItemsPropLocationsItems(GitHubModel):
-    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
+class RepositoryWebhooksPropPermissions(GitHubModel):
+    """RepositoryWebhooksPropPermissions"""
 
-    commit: Missing[str] = Field(
-        default=UNSET, description="The commit SHA where the secret was detected"
-    )
-    branch: Missing[str] = Field(
-        default=UNSET, description="The branch where the secret was detected"
-    )
-    path: Missing[str] = Field(
-        default=UNSET, description="The path of the file where the secret was detected"
-    )
+    admin: bool = Field()
+    pull: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
+    push: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(ExemptionRequest)
-model_rebuild(ExemptionRequestSecretScanningMetadata)
-model_rebuild(DismissalRequestSecretScanningMetadata)
-model_rebuild(DismissalRequestCodeScanningMetadata)
-model_rebuild(ExemptionRequestPushRulesetBypass)
-model_rebuild(ExemptionRequestPushRulesetBypassPropDataItems)
-model_rebuild(DismissalRequestSecretScanning)
-model_rebuild(DismissalRequestSecretScanningPropDataItems)
-model_rebuild(DismissalRequestCodeScanning)
-model_rebuild(DismissalRequestCodeScanningPropDataItems)
-model_rebuild(ExemptionRequestSecretScanning)
-model_rebuild(ExemptionRequestSecretScanningPropDataItems)
-model_rebuild(ExemptionRequestSecretScanningPropDataItemsPropLocationsItems)
+class RepositoryWebhooksPropCustomProperties(ExtraGitHubModel):
+    """RepositoryWebhooksPropCustomProperties
+
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values.
+    """
+
+
+class RepositoryWebhooksPropTemplateRepository(GitHubModel):
+    """RepositoryWebhooksPropTemplateRepository"""
+
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    full_name: Missing[str] = Field(default=UNSET)
+    owner: Missing[RepositoryWebhooksPropTemplateRepositoryPropOwner] = Field(
+        default=UNSET
+    )
+    private: Missing[bool] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    fork: Missing[bool] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    archive_url: Missing[str] = Field(default=UNSET)
+    assignees_url: Missing[str] = Field(default=UNSET)
+    blobs_url: Missing[str] = Field(default=UNSET)
+    branches_url: Missing[str] = Field(default=UNSET)
+    collaborators_url: Missing[str] = Field(default=UNSET)
+    comments_url: Missing[str] = Field(default=UNSET)
+    commits_url: Missing[str] = Field(default=UNSET)
+    compare_url: Missing[str] = Field(default=UNSET)
+    contents_url: Missing[str] = Field(default=UNSET)
+    contributors_url: Missing[str] = Field(default=UNSET)
+    deployments_url: Missing[str] = Field(default=UNSET)
+    downloads_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    forks_url: Missing[str] = Field(default=UNSET)
+    git_commits_url: Missing[str] = Field(default=UNSET)
+    git_refs_url: Missing[str] = Field(default=UNSET)
+    git_tags_url: Missing[str] = Field(default=UNSET)
+    git_url: Missing[str] = Field(default=UNSET)
+    issue_comment_url: Missing[str] = Field(default=UNSET)
+    issue_events_url: Missing[str] = Field(default=UNSET)
+    issues_url: Missing[str] = Field(default=UNSET)
+    keys_url: Missing[str] = Field(default=UNSET)
+    labels_url: Missing[str] = Field(default=UNSET)
+    languages_url: Missing[str] = Field(default=UNSET)
+    merges_url: Missing[str] = Field(default=UNSET)
+    milestones_url: Missing[str] = Field(default=UNSET)
+    notifications_url: Missing[str] = Field(default=UNSET)
+    pulls_url: Missing[str] = Field(default=UNSET)
+    releases_url: Missing[str] = Field(default=UNSET)
+    ssh_url: Missing[str] = Field(default=UNSET)
+    stargazers_url: Missing[str] = Field(default=UNSET)
+    statuses_url: Missing[str] = Field(default=UNSET)
+    subscribers_url: Missing[str] = Field(default=UNSET)
+    subscription_url: Missing[str] = Field(default=UNSET)
+    tags_url: Missing[str] = Field(default=UNSET)
+    teams_url: Missing[str] = Field(default=UNSET)
+    trees_url: Missing[str] = Field(default=UNSET)
+    clone_url: Missing[str] = Field(default=UNSET)
+    mirror_url: Missing[str] = Field(default=UNSET)
+    hooks_url: Missing[str] = Field(default=UNSET)
+    svn_url: Missing[str] = Field(default=UNSET)
+    homepage: Missing[str] = Field(default=UNSET)
+    language: Missing[str] = Field(default=UNSET)
+    forks_count: Missing[int] = Field(default=UNSET)
+    stargazers_count: Missing[int] = Field(default=UNSET)
+    watchers_count: Missing[int] = Field(default=UNSET)
+    size: Missing[int] = Field(default=UNSET)
+    default_branch: Missing[str] = Field(default=UNSET)
+    open_issues_count: Missing[int] = Field(default=UNSET)
+    is_template: Missing[bool] = Field(default=UNSET)
+    topics: Missing[list[str]] = Field(default=UNSET)
+    has_issues: Missing[bool] = Field(default=UNSET)
+    has_projects: Missing[bool] = Field(default=UNSET)
+    has_wiki: Missing[bool] = Field(default=UNSET)
+    has_pages: Missing[bool] = Field(default=UNSET)
+    has_downloads: Missing[bool] = Field(default=UNSET)
+    archived: Missing[bool] = Field(default=UNSET)
+    disabled: Missing[bool] = Field(default=UNSET)
+    visibility: Missing[str] = Field(default=UNSET)
+    pushed_at: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    permissions: Missing[RepositoryWebhooksPropTemplateRepositoryPropPermissions] = (
+        Field(default=UNSET)
+    )
+    allow_rebase_merge: Missing[bool] = Field(default=UNSET)
+    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
+    allow_squash_merge: Missing[bool] = Field(default=UNSET)
+    allow_auto_merge: Missing[bool] = Field(default=UNSET)
+    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
+    allow_update_branch: Missing[bool] = Field(default=UNSET)
+    use_squash_pr_title_as_default: Missing[bool] = Field(default=UNSET)
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
+    )
+    squash_merge_commit_message: Missing[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
+        default=UNSET,
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+    )
+    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        default=UNSET,
+        description="The default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+    )
+    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        default=UNSET,
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+    )
+    allow_merge_commit: Missing[bool] = Field(default=UNSET)
+    subscribers_count: Missing[int] = Field(default=UNSET)
+    network_count: Missing[int] = Field(default=UNSET)
+
+
+class RepositoryWebhooksPropTemplateRepositoryPropOwner(GitHubModel):
+    """RepositoryWebhooksPropTemplateRepositoryPropOwner"""
+
+    login: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+
+
+class RepositoryWebhooksPropTemplateRepositoryPropPermissions(GitHubModel):
+    """RepositoryWebhooksPropTemplateRepositoryPropPermissions"""
+
+    admin: Missing[bool] = Field(default=UNSET)
+    maintain: Missing[bool] = Field(default=UNSET)
+    push: Missing[bool] = Field(default=UNSET)
+    triage: Missing[bool] = Field(default=UNSET)
+    pull: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(RepositoryWebhooks)
+model_rebuild(RepositoryWebhooksPropPermissions)
+model_rebuild(RepositoryWebhooksPropCustomProperties)
+model_rebuild(RepositoryWebhooksPropTemplateRepository)
+model_rebuild(RepositoryWebhooksPropTemplateRepositoryPropOwner)
+model_rebuild(RepositoryWebhooksPropTemplateRepositoryPropPermissions)
 
 __all__ = (
-    "DismissalRequestCodeScanning",
-    "DismissalRequestCodeScanningMetadata",
-    "DismissalRequestCodeScanningPropDataItems",
-    "DismissalRequestSecretScanning",
-    "DismissalRequestSecretScanningMetadata",
-    "DismissalRequestSecretScanningPropDataItems",
-    "ExemptionRequest",
-    "ExemptionRequestPushRulesetBypass",
-    "ExemptionRequestPushRulesetBypassPropDataItems",
-    "ExemptionRequestSecretScanning",
-    "ExemptionRequestSecretScanningMetadata",
-    "ExemptionRequestSecretScanningPropDataItems",
-    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItems",
+    "RepositoryWebhooks",
+    "RepositoryWebhooksPropCustomProperties",
+    "RepositoryWebhooksPropPermissions",
+    "RepositoryWebhooksPropTemplateRepository",
+    "RepositoryWebhooksPropTemplateRepositoryPropOwner",
+    "RepositoryWebhooksPropTemplateRepositoryPropPermissions",
 )

@@ -15,38 +15,99 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
 from .group_0010 import IntegrationType
-from .group_0189 import ReactionRollupType
+from .group_0020 import RepositoryType
+from .group_0188 import MilestoneType
+from .group_0189 import IssueTypeType
+from .group_0190 import ReactionRollupType
+from .group_0191 import IssueDependenciesSummaryType, SubIssuesSummaryType
+from .group_0192 import IssueFieldValueType
 
 
-class IssueCommentType(TypedDict):
-    """Issue Comment
+class IssueType(TypedDict):
+    """Issue
 
-    Comments provide a way for people to collaborate on an issue.
+    Issues are a great way to keep track of tasks, enhancements, and bugs for your
+    projects.
     """
 
     id: int
     node_id: str
     url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
     html_url: str
+    number: int
+    state: str
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
+    ]
+    title: str
+    body: NotRequired[Union[str, None]]
     user: Union[None, SimpleUserType]
+    labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    milestone: Union[None, MilestoneType]
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    comments: int
+    pull_request: NotRequired[IssuePropPullRequestType]
+    closed_at: Union[datetime, None]
     created_at: datetime
     updated_at: datetime
-    issue_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    draft: NotRequired[bool]
+    closed_by: NotRequired[Union[None, SimpleUserType]]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeType, None]]
+    repository: NotRequired[RepositoryType]
     performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
     reactions: NotRequired[ReactionRollupType]
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
+    parent_issue_url: NotRequired[Union[str, None]]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
+    issue_field_values: NotRequired[list[IssueFieldValueType]]
 
 
-__all__ = ("IssueCommentType",)
+class IssuePropLabelsItemsOneof1Type(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+
+
+class IssuePropPullRequestType(TypedDict):
+    """IssuePropPullRequest"""
+
+    merged_at: NotRequired[Union[datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+__all__ = (
+    "IssuePropLabelsItemsOneof1Type",
+    "IssuePropPullRequestType",
+    "IssueType",
+)

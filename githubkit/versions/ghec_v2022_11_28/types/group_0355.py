@@ -14,53 +14,25 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0189 import ReactionRollupType
+from .group_0209 import MinimalRepositoryType
 
 
-class CommitCommentType(TypedDict):
-    """Commit Comment
+class RepositoryInvitationType(TypedDict):
+    """Repository Invitation
 
-    Commit Comment
+    Repository invitations let you manage who you collaborate with.
     """
 
-    html_url: str
-    url: str
     id: int
-    node_id: str
-    body: str
-    path: Union[str, None]
-    position: Union[int, None]
-    line: Union[int, None]
-    commit_id: str
-    user: Union[None, SimpleUserType]
+    repository: MinimalRepositoryType
+    invitee: Union[None, SimpleUserType]
+    inviter: Union[None, SimpleUserType]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
     created_at: datetime
-    updated_at: datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    reactions: NotRequired[ReactionRollupType]
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
-class TimelineCommitCommentedEventType(TypedDict):
-    """Timeline Commit Commented Event
-
-    Timeline Commit Commented Event
-    """
-
-    event: NotRequired[Literal["commit_commented"]]
-    node_id: NotRequired[str]
-    commit_id: NotRequired[str]
-    comments: NotRequired[list[CommitCommentType]]
-
-
-__all__ = (
-    "CommitCommentType",
-    "TimelineCommitCommentedEventType",
-)
+__all__ = ("RepositoryInvitationType",)

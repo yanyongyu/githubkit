@@ -14,25 +14,25 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
 from .group_0020 import RepositoryType
-from .group_0192 import IssueType
-from .group_0528 import SimpleInstallationType
-from .group_0529 import OrganizationSimpleWebhooksType
-from .group_0530 import RepositoryWebhooksType
+from .group_0193 import IssueType
+from .group_0531 import SimpleInstallationType
+from .group_0532 import OrganizationSimpleWebhooksType
+from .group_0533 import RepositoryWebhooksType
 
 
-class WebhookIssueDependenciesBlockingRemovedType(TypedDict):
-    """blocking issue removed event"""
+class WebhookIssueDependenciesBlockedByAddedType(TypedDict):
+    """blocked by issue added event"""
 
-    action: Literal["blocking_removed"]
+    action: Literal["blocked_by_added"]
     blocked_issue_id: float
     blocked_issue: IssueType
-    blocked_issue_repo: RepositoryType
     blocking_issue_id: float
     blocking_issue: IssueType
+    blocking_issue_repo: RepositoryType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssueDependenciesBlockingRemovedType",)
+__all__ = ("WebhookIssueDependenciesBlockedByAddedType",)
