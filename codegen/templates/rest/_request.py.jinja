@@ -93,7 +93,7 @@ if self._github.config.rest_api_validate_body:
 "{{ endpoint.method | upper }}",
 url,
 {% if endpoint.query_params %}
-params=exclude_unset(params),
+params=exclude_unset(parse_query_params(params)),
 {% endif %}
 {% if endpoint.request_body %}
 {% set name = TYPE_MAPPING[endpoint.request_body.type] %}

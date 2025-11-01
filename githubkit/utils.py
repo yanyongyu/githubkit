@@ -82,6 +82,19 @@ def is_async(obj: Any) -> bool:
     return inspect.iscoroutinefunction(func_)
 
 
+def parse_query_params(params: dict[str, Any]) -> dict[str, Any]:
+    """GitHub query params use `name[]` format to send an array.
+
+    See also: https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api?apiVersion=2022-11-28
+    """
+    new_params: dict[str, Any] = {}
+    for key, value in params.items():
+        if isinstance(value, list):
+            key = f"{key}[]"
+        new_params[key] = value
+    return new_params
+
+
 class TaggedUnion(Generic[T]):
     __slots__ = ("discriminator", "tag", "type_")
 

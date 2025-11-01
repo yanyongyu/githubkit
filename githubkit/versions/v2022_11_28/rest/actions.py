@@ -17,7 +17,7 @@ from pydantic import BaseModel
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import UNSET, exclude_unset
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     from typing import Literal, Union
@@ -337,7 +337,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
@@ -381,7 +381,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
@@ -424,7 +424,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsHostedRunnersGetResponse200,
@@ -467,7 +467,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsHostedRunnersGetResponse200,
@@ -2520,7 +2520,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsPermissionsRepositoriesGetResponse200,
@@ -2563,7 +2563,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsPermissionsRepositoriesGetResponse200,
@@ -3283,7 +3283,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200,
@@ -3333,7 +3333,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200,
@@ -3894,7 +3894,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsGetResponse200,
@@ -3939,7 +3939,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsGetResponse200,
@@ -4411,7 +4411,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
@@ -4457,7 +4457,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
@@ -4503,7 +4503,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
@@ -4549,7 +4549,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
@@ -4861,7 +4861,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -4907,7 +4907,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
@@ -5219,7 +5219,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsRunnersGetResponse200,
@@ -5265,7 +5265,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsRunnersGetResponse200,
@@ -6506,7 +6506,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsSecretsGetResponse200,
@@ -6551,7 +6551,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsSecretsGetResponse200,
@@ -6950,7 +6950,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
@@ -6997,7 +6997,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
@@ -7331,7 +7331,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsVariablesGetResponse200,
@@ -7375,7 +7375,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsVariablesGetResponse200,
@@ -7838,7 +7838,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
@@ -7886,7 +7886,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
@@ -8225,7 +8225,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsArtifactsGetResponse200,
@@ -8273,7 +8273,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsArtifactsGetResponse200,
@@ -8604,7 +8604,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ActionsCacheList,
@@ -8655,7 +8655,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ActionsCacheList,
@@ -8696,7 +8696,7 @@ class ActionsClient:
         return self._github.request(
             "DELETE",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ActionsCacheList,
@@ -8737,7 +8737,7 @@ class ActionsClient:
         return await self._github.arequest(
             "DELETE",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ActionsCacheList,
@@ -9394,7 +9394,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
@@ -9441,7 +9441,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
@@ -9487,7 +9487,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
@@ -9533,7 +9533,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
@@ -11113,7 +11113,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsRunnersGetResponse200,
@@ -11161,7 +11161,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsRunnersGetResponse200,
@@ -12476,7 +12476,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsRunsGetResponse200,
@@ -12557,7 +12557,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsRunsGetResponse200,
@@ -12599,7 +12599,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=WorkflowRun,
@@ -12641,7 +12641,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=WorkflowRun,
@@ -12900,7 +12900,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
@@ -12949,7 +12949,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
@@ -12992,7 +12992,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=WorkflowRun,
@@ -13035,7 +13035,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=WorkflowRun,
@@ -13087,7 +13087,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
@@ -13142,7 +13142,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
@@ -13621,7 +13621,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
@@ -13671,7 +13671,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
@@ -14496,7 +14496,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsSecretsGetResponse200,
@@ -14543,7 +14543,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsSecretsGetResponse200,
@@ -14953,7 +14953,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsVariablesGetResponse200,
@@ -14999,7 +14999,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsVariablesGetResponse200,
@@ -15473,7 +15473,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsWorkflowsGetResponse200,
@@ -15519,7 +15519,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsWorkflowsGetResponse200,
@@ -15957,7 +15957,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
@@ -16039,7 +16039,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
@@ -16171,7 +16171,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
@@ -16221,7 +16221,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
@@ -16660,7 +16660,7 @@ class ActionsClient:
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
@@ -16709,7 +16709,7 @@ class ActionsClient:
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,

@@ -16,7 +16,7 @@ from typing import TYPE_CHECKING, Literal, Optional, Annotated, overload
 from pydantic import BaseModel, Field
 
 from githubkit.typing import Missing, UnsetType
-from githubkit.utils import exclude_unset, UNSET
+from githubkit.utils import UNSET, exclude_unset, parse_query_params
 from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
