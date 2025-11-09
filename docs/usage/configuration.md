@@ -99,7 +99,7 @@ When provided, githubkit will forward the transport to create the client. This i
 - injecting test-only transports (for example `httpx.MockTransport`) to stub responses in unit tests;
 - using alternative transports provided by HTTPX or third parties.
 
-Note that if you pass `None` to the option, the default transport will be created by HTTPX.
+Note that if you provide a custom transport, proxy environment variables will have no effect. If you set the option to `None`, HTTPX will create the default transport.
 
 ### `cache_strategy`
 
