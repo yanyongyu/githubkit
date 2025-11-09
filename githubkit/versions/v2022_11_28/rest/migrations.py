@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
@@ -686,6 +687,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_import_status(
         self,
         owner: str,
@@ -757,6 +759,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_import_status(
         self,
         owner: str,
@@ -829,6 +832,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def start_import(
         self,
         owner: str,
@@ -840,6 +844,7 @@ class MigrationsClient:
     ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def start_import(
         self,
         owner: str,
@@ -855,6 +860,7 @@ class MigrationsClient:
         tfvc_project: Missing[str] = UNSET,
     ) -> Response[Import, ImportTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def start_import(
         self,
         owner: str,
@@ -914,6 +920,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_start_import(
         self,
         owner: str,
@@ -925,6 +932,7 @@ class MigrationsClient:
     ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_start_import(
         self,
         owner: str,
@@ -940,6 +948,7 @@ class MigrationsClient:
         tfvc_project: Missing[str] = UNSET,
     ) -> Response[Import, ImportTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_start_import(
         self,
         owner: str,
@@ -998,6 +1007,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def cancel_import(
         self,
         owner: str,
@@ -1034,6 +1044,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_cancel_import(
         self,
         owner: str,
@@ -1071,6 +1082,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_import(
         self,
         owner: str,
@@ -1082,6 +1094,7 @@ class MigrationsClient:
     ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_import(
         self,
         owner: str,
@@ -1096,6 +1109,7 @@ class MigrationsClient:
         tfvc_project: Missing[str] = UNSET,
     ) -> Response[Import, ImportTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_import(
         self,
         owner: str,
@@ -1155,6 +1169,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_import(
         self,
         owner: str,
@@ -1166,6 +1181,7 @@ class MigrationsClient:
     ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_import(
         self,
         owner: str,
@@ -1180,6 +1196,7 @@ class MigrationsClient:
         tfvc_project: Missing[str] = UNSET,
     ) -> Response[Import, ImportTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_import(
         self,
         owner: str,
@@ -1238,6 +1255,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_commit_authors(
         self,
         owner: str,
@@ -1284,6 +1302,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_commit_authors(
         self,
         owner: str,
@@ -1331,6 +1350,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def map_commit_author(
         self,
         owner: str,
@@ -1343,6 +1363,7 @@ class MigrationsClient:
     ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def map_commit_author(
         self,
         owner: str,
@@ -1356,6 +1377,7 @@ class MigrationsClient:
         name: Missing[str] = UNSET,
     ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def map_commit_author(
         self,
         owner: str,
@@ -1417,6 +1439,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_map_commit_author(
         self,
         owner: str,
@@ -1429,6 +1452,7 @@ class MigrationsClient:
     ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_map_commit_author(
         self,
         owner: str,
@@ -1442,6 +1466,7 @@ class MigrationsClient:
         name: Missing[str] = UNSET,
     ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_map_commit_author(
         self,
         owner: str,
@@ -1502,6 +1527,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_large_files(
         self,
         owner: str,
@@ -1539,6 +1565,7 @@ class MigrationsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_large_files(
         self,
         owner: str,
@@ -1577,6 +1604,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_lfs_preference(
         self,
         owner: str,
@@ -1588,6 +1616,7 @@ class MigrationsClient:
     ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_lfs_preference(
         self,
         owner: str,
@@ -1599,6 +1628,7 @@ class MigrationsClient:
         use_lfs: Literal["opt_in", "opt_out"],
     ) -> Response[Import, ImportTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_lfs_preference(
         self,
         owner: str,
@@ -1659,6 +1689,7 @@ class MigrationsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_lfs_preference(
         self,
         owner: str,
@@ -1670,6 +1701,7 @@ class MigrationsClient:
     ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_lfs_preference(
         self,
         owner: str,
@@ -1681,6 +1713,7 @@ class MigrationsClient:
         use_lfs: Literal["opt_in", "opt_out"],
     ) -> Response[Import, ImportTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_lfs_preference(
         self,
         owner: str,

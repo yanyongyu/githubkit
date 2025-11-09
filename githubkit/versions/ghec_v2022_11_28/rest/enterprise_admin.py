@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
@@ -5418,6 +5419,7 @@ class EnterpriseAdminClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5461,6 +5463,7 @@ class EnterpriseAdminClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5505,6 +5508,7 @@ class EnterpriseAdminClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def patch_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5517,6 +5521,7 @@ class EnterpriseAdminClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def patch_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5537,6 +5542,7 @@ class EnterpriseAdminClient:
         ] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def patch_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5596,6 +5602,7 @@ class EnterpriseAdminClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_patch_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5608,6 +5615,7 @@ class EnterpriseAdminClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_patch_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -5628,6 +5636,7 @@ class EnterpriseAdminClient:
         ] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_patch_security_analysis_settings_for_enterprise(
         self,
         enterprise: str,
@@ -8928,6 +8937,7 @@ class EnterpriseAdminClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def post_security_product_enablement_for_enterprise(
         self,
         enterprise: str,
@@ -8976,6 +8986,7 @@ class EnterpriseAdminClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_post_security_product_enablement_for_enterprise(
         self,
         enterprise: str,

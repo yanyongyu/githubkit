@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
@@ -259,6 +260,7 @@ class OrgsClient:
             response_model=list[OrganizationSimple],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_custom_roles(
         self,
         organization_id: str,
@@ -299,6 +301,7 @@ class OrgsClient:
             response_model=OrganizationsOrganizationIdCustomRolesGetResponse200,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_custom_roles(
         self,
         organization_id: str,
@@ -3468,6 +3471,7 @@ class OrgsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_custom_role(
         self,
         org: str,
@@ -3481,6 +3485,7 @@ class OrgsClient:
     ]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_custom_role(
         self,
         org: str,
@@ -3497,6 +3502,7 @@ class OrgsClient:
         OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_custom_role(
         self,
         org: str,
@@ -3561,6 +3567,7 @@ class OrgsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_custom_role(
         self,
         org: str,
@@ -3574,6 +3581,7 @@ class OrgsClient:
     ]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_custom_role(
         self,
         org: str,
@@ -3590,6 +3598,7 @@ class OrgsClient:
         OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_custom_role(
         self,
         org: str,
@@ -3653,6 +3662,7 @@ class OrgsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_custom_role(
         self,
         org: str,
@@ -3697,6 +3707,7 @@ class OrgsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_custom_role(
         self,
         org: str,
@@ -3741,6 +3752,7 @@ class OrgsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def delete_custom_role(
         self,
         org: str,
@@ -3777,6 +3789,7 @@ class OrgsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_delete_custom_role(
         self,
         org: str,
@@ -3814,6 +3827,7 @@ class OrgsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_custom_role(
         self,
         org: str,
@@ -3828,6 +3842,7 @@ class OrgsClient:
     ]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_custom_role(
         self,
         org: str,
@@ -3845,6 +3860,7 @@ class OrgsClient:
         OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_custom_role(
         self,
         org: str,
@@ -3910,6 +3926,7 @@ class OrgsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_custom_role(
         self,
         org: str,
@@ -3924,6 +3941,7 @@ class OrgsClient:
     ]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_custom_role(
         self,
         org: str,
@@ -3941,6 +3959,7 @@ class OrgsClient:
         OrganizationCustomRepositoryRoleTypeForResponse,
     ]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_custom_role(
         self,
         org: str,
@@ -4097,6 +4116,7 @@ class OrgsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_fine_grained_permissions(
         self,
         org: str,
@@ -4137,6 +4157,7 @@ class OrgsClient:
             response_model=list[RepositoryFineGrainedPermission],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_fine_grained_permissions(
         self,
         org: str,
@@ -11787,6 +11808,7 @@ class OrgsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_security_manager_teams(
         self,
         org: str,
@@ -11818,6 +11840,7 @@ class OrgsClient:
             response_model=list[TeamSimple],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_security_manager_teams(
         self,
         org: str,
@@ -11849,6 +11872,7 @@ class OrgsClient:
             response_model=list[TeamSimple],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_security_manager_team(
         self,
         org: str,
@@ -11878,6 +11902,7 @@ class OrgsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_security_manager_team(
         self,
         org: str,
@@ -11907,6 +11932,7 @@ class OrgsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def remove_security_manager_team(
         self,
         org: str,
@@ -11936,6 +11962,7 @@ class OrgsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_remove_security_manager_team(
         self,
         org: str,
@@ -12504,6 +12531,7 @@ class OrgsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -12524,6 +12552,7 @@ class OrgsClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -12544,6 +12573,7 @@ class OrgsClient:
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -12604,6 +12634,7 @@ class OrgsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -12624,6 +12655,7 @@ class OrgsClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -12644,6 +12676,7 @@ class OrgsClient:
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,

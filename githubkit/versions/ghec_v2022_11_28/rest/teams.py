@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
@@ -2804,6 +2805,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_projects_in_org(
         self,
         org: str,
@@ -2845,6 +2847,7 @@ class TeamsClient:
             response_model=list[TeamProject],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_projects_in_org(
         self,
         org: str,
@@ -2886,6 +2889,7 @@ class TeamsClient:
             response_model=list[TeamProject],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def check_permissions_for_project_in_org(
         self,
         org: str,
@@ -2921,6 +2925,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_check_permissions_for_project_in_org(
         self,
         org: str,
@@ -2957,6 +2962,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_project_permissions_in_org(
         self,
         org: str,
@@ -2971,6 +2977,7 @@ class TeamsClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_project_permissions_in_org(
         self,
         org: str,
@@ -2983,6 +2990,7 @@ class TeamsClient:
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_project_permissions_in_org(
         self,
         org: str,
@@ -3041,6 +3049,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_project_permissions_in_org(
         self,
         org: str,
@@ -3055,6 +3064,7 @@ class TeamsClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_project_permissions_in_org(
         self,
         org: str,
@@ -3067,6 +3077,7 @@ class TeamsClient:
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_project_permissions_in_org(
         self,
         org: str,
@@ -3124,6 +3135,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def remove_project_in_org(
         self,
         org: str,
@@ -3155,6 +3167,7 @@ class TeamsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_remove_project_in_org(
         self,
         org: str,
@@ -3886,6 +3899,7 @@ class TeamsClient:
             response_model=list[Team],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_legacy(
         self,
         team_id: int,
@@ -3920,6 +3934,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_legacy(
         self,
         team_id: int,
@@ -3954,6 +3969,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def delete_legacy(
         self,
         team_id: int,
@@ -3992,6 +4008,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_delete_legacy(
         self,
         team_id: int,
@@ -4031,6 +4048,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_legacy(
         self,
         team_id: int,
@@ -4041,6 +4059,7 @@ class TeamsClient:
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_legacy(
         self,
         team_id: int,
@@ -4058,6 +4077,7 @@ class TeamsClient:
         parent_team_id: Missing[Union[int, None]] = UNSET,
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_legacy(
         self,
         team_id: int,
@@ -4112,6 +4132,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_legacy(
         self,
         team_id: int,
@@ -4122,6 +4143,7 @@ class TeamsClient:
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_legacy(
         self,
         team_id: int,
@@ -4139,6 +4161,7 @@ class TeamsClient:
         parent_team_id: Missing[Union[int, None]] = UNSET,
     ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_legacy(
         self,
         team_id: int,
@@ -4192,6 +4215,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_discussions_legacy(
         self,
         team_id: int,
@@ -4237,6 +4261,7 @@ class TeamsClient:
             response_model=list[TeamDiscussion],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_discussions_legacy(
         self,
         team_id: int,
@@ -4283,6 +4308,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_discussion_legacy(
         self,
         team_id: int,
@@ -4293,6 +4319,7 @@ class TeamsClient:
     ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_discussion_legacy(
         self,
         team_id: int,
@@ -4305,6 +4332,7 @@ class TeamsClient:
         private: Missing[bool] = UNSET,
     ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_discussion_legacy(
         self,
         team_id: int,
@@ -4355,6 +4383,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_discussion_legacy(
         self,
         team_id: int,
@@ -4365,6 +4394,7 @@ class TeamsClient:
     ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_discussion_legacy(
         self,
         team_id: int,
@@ -4377,6 +4407,7 @@ class TeamsClient:
         private: Missing[bool] = UNSET,
     ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_discussion_legacy(
         self,
         team_id: int,
@@ -4426,6 +4457,7 @@ class TeamsClient:
             response_model=TeamDiscussion,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_discussion_legacy(
         self,
         team_id: int,
@@ -4462,6 +4494,7 @@ class TeamsClient:
             response_model=TeamDiscussion,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_discussion_legacy(
         self,
         team_id: int,
@@ -4498,6 +4531,7 @@ class TeamsClient:
             response_model=TeamDiscussion,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def delete_discussion_legacy(
         self,
         team_id: int,
@@ -4531,6 +4565,7 @@ class TeamsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_delete_discussion_legacy(
         self,
         team_id: int,
@@ -4565,6 +4600,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_discussion_legacy(
         self,
         team_id: int,
@@ -4576,6 +4612,7 @@ class TeamsClient:
     ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_discussion_legacy(
         self,
         team_id: int,
@@ -4588,6 +4625,7 @@ class TeamsClient:
         body: Missing[str] = UNSET,
     ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_discussion_legacy(
         self,
         team_id: int,
@@ -4642,6 +4680,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_discussion_legacy(
         self,
         team_id: int,
@@ -4653,6 +4692,7 @@ class TeamsClient:
     ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_discussion_legacy(
         self,
         team_id: int,
@@ -4665,6 +4705,7 @@ class TeamsClient:
         body: Missing[str] = UNSET,
     ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_discussion_legacy(
         self,
         team_id: int,
@@ -4718,6 +4759,7 @@ class TeamsClient:
             response_model=TeamDiscussion,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_discussion_comments_legacy(
         self,
         team_id: int,
@@ -4766,6 +4808,7 @@ class TeamsClient:
             response_model=list[TeamDiscussionComment],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_discussion_comments_legacy(
         self,
         team_id: int,
@@ -4815,6 +4858,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_discussion_comment_legacy(
         self,
         team_id: int,
@@ -4826,6 +4870,7 @@ class TeamsClient:
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_discussion_comment_legacy(
         self,
         team_id: int,
@@ -4837,6 +4882,7 @@ class TeamsClient:
         body: str,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_discussion_comment_legacy(
         self,
         team_id: int,
@@ -4895,6 +4941,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_discussion_comment_legacy(
         self,
         team_id: int,
@@ -4906,6 +4953,7 @@ class TeamsClient:
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_discussion_comment_legacy(
         self,
         team_id: int,
@@ -4917,6 +4965,7 @@ class TeamsClient:
         body: str,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_discussion_comment_legacy(
         self,
         team_id: int,
@@ -4974,6 +5023,7 @@ class TeamsClient:
             response_model=TeamDiscussionComment,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_discussion_comment_legacy(
         self,
         team_id: int,
@@ -5011,6 +5061,7 @@ class TeamsClient:
             response_model=TeamDiscussionComment,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_discussion_comment_legacy(
         self,
         team_id: int,
@@ -5048,6 +5099,7 @@ class TeamsClient:
             response_model=TeamDiscussionComment,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def delete_discussion_comment_legacy(
         self,
         team_id: int,
@@ -5082,6 +5134,7 @@ class TeamsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_delete_discussion_comment_legacy(
         self,
         team_id: int,
@@ -5117,6 +5170,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_discussion_comment_legacy(
         self,
         team_id: int,
@@ -5129,6 +5183,7 @@ class TeamsClient:
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_discussion_comment_legacy(
         self,
         team_id: int,
@@ -5141,6 +5196,7 @@ class TeamsClient:
         body: str,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_discussion_comment_legacy(
         self,
         team_id: int,
@@ -5199,6 +5255,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_discussion_comment_legacy(
         self,
         team_id: int,
@@ -5211,6 +5268,7 @@ class TeamsClient:
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_discussion_comment_legacy(
         self,
         team_id: int,
@@ -5223,6 +5281,7 @@ class TeamsClient:
         body: str,
     ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_discussion_comment_legacy(
         self,
         team_id: int,
@@ -5280,6 +5339,7 @@ class TeamsClient:
             response_model=TeamDiscussionComment,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_pending_invitations_legacy(
         self,
         team_id: int,
@@ -5323,6 +5383,7 @@ class TeamsClient:
             response_model=list[OrganizationInvitation],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_pending_invitations_legacy(
         self,
         team_id: int,
@@ -5366,6 +5427,7 @@ class TeamsClient:
             response_model=list[OrganizationInvitation],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_members_legacy(
         self,
         team_id: int,
@@ -5412,6 +5474,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_members_legacy(
         self,
         team_id: int,
@@ -5458,6 +5521,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_member_legacy(
         self,
         team_id: int,
@@ -5491,6 +5555,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_member_legacy(
         self,
         team_id: int,
@@ -5524,6 +5589,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_member_legacy(
         self,
         team_id: int,
@@ -5568,6 +5634,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_member_legacy(
         self,
         team_id: int,
@@ -5612,6 +5679,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def remove_member_legacy(
         self,
         team_id: int,
@@ -5650,6 +5718,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_remove_member_legacy(
         self,
         team_id: int,
@@ -5688,6 +5757,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5732,6 +5802,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5777,6 +5848,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5788,6 +5860,7 @@ class TeamsClient:
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5799,6 +5872,7 @@ class TeamsClient:
         role: Missing[Literal["member", "maintainer"]] = UNSET,
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5862,6 +5936,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5873,6 +5948,7 @@ class TeamsClient:
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5884,6 +5960,7 @@ class TeamsClient:
         role: Missing[Literal["member", "maintainer"]] = UNSET,
     ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5946,6 +6023,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def remove_membership_for_user_legacy(
         self,
         team_id: int,
@@ -5983,6 +6061,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_remove_membership_for_user_legacy(
         self,
         team_id: int,
@@ -6020,6 +6099,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_projects_legacy(
         self,
         team_id: int,
@@ -6063,6 +6143,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_projects_legacy(
         self,
         team_id: int,
@@ -6106,6 +6187,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def check_permissions_for_project_legacy(
         self,
         team_id: int,
@@ -6140,6 +6222,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_check_permissions_for_project_legacy(
         self,
         team_id: int,
@@ -6175,6 +6258,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_project_permissions_legacy(
         self,
         team_id: int,
@@ -6186,6 +6270,7 @@ class TeamsClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_project_permissions_legacy(
         self,
         team_id: int,
@@ -6197,6 +6282,7 @@ class TeamsClient:
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_project_permissions_legacy(
         self,
         team_id: int,
@@ -6252,6 +6338,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_project_permissions_legacy(
         self,
         team_id: int,
@@ -6263,6 +6350,7 @@ class TeamsClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_project_permissions_legacy(
         self,
         team_id: int,
@@ -6274,6 +6362,7 @@ class TeamsClient:
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_project_permissions_legacy(
         self,
         team_id: int,
@@ -6328,6 +6417,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def remove_project_legacy(
         self,
         team_id: int,
@@ -6364,6 +6454,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_remove_project_legacy(
         self,
         team_id: int,
@@ -6400,6 +6491,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_repos_legacy(
         self,
         team_id: int,
@@ -6442,6 +6534,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_repos_legacy(
         self,
         team_id: int,
@@ -6484,6 +6577,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def check_permissions_for_repo_legacy(
         self,
         team_id: int,
@@ -6523,6 +6617,7 @@ class TeamsClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_check_permissions_for_repo_legacy(
         self,
         team_id: int,
@@ -6563,6 +6658,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_repo_permissions_legacy(
         self,
         team_id: int,
@@ -6575,6 +6671,7 @@ class TeamsClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_repo_permissions_legacy(
         self,
         team_id: int,
@@ -6587,6 +6684,7 @@ class TeamsClient:
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_or_update_repo_permissions_legacy(
         self,
         team_id: int,
@@ -6644,6 +6742,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_repo_permissions_legacy(
         self,
         team_id: int,
@@ -6656,6 +6755,7 @@ class TeamsClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_repo_permissions_legacy(
         self,
         team_id: int,
@@ -6668,6 +6768,7 @@ class TeamsClient:
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_or_update_repo_permissions_legacy(
         self,
         team_id: int,
@@ -6724,6 +6825,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def remove_repo_legacy(
         self,
         team_id: int,
@@ -6756,6 +6858,7 @@ class TeamsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_remove_repo_legacy(
         self,
         team_id: int,
@@ -6788,6 +6891,7 @@ class TeamsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_idp_groups_for_legacy(
         self,
         team_id: int,
@@ -6827,6 +6931,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_idp_groups_for_legacy(
         self,
         team_id: int,
@@ -6867,6 +6972,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_or_update_idp_group_connections_legacy(
         self,
         team_id: int,
@@ -6877,6 +6983,7 @@ class TeamsClient:
     ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_or_update_idp_group_connections_legacy(
         self,
         team_id: int,
@@ -6888,6 +6995,7 @@ class TeamsClient:
         synced_at: Missing[str] = UNSET,
     ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_or_update_idp_group_connections_legacy(
         self,
         team_id: int,
@@ -6945,6 +7053,7 @@ class TeamsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_or_update_idp_group_connections_legacy(
         self,
         team_id: int,
@@ -6955,6 +7064,7 @@ class TeamsClient:
     ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_or_update_idp_group_connections_legacy(
         self,
         team_id: int,
@@ -6966,6 +7076,7 @@ class TeamsClient:
         synced_at: Missing[str] = UNSET,
     ) -> Response[GroupMapping, GroupMappingTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_or_update_idp_group_connections_legacy(
         self,
         team_id: int,
@@ -7022,6 +7133,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_child_legacy(
         self,
         team_id: int,
@@ -7066,6 +7178,7 @@ class TeamsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_child_legacy(
         self,
         team_id: int,

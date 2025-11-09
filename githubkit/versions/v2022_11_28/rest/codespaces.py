@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
@@ -208,6 +209,7 @@ class CodespacesClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_codespaces_access(
         self,
         org: str,
@@ -218,6 +220,7 @@ class CodespacesClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_codespaces_access(
         self,
         org: str,
@@ -234,6 +237,7 @@ class CodespacesClient:
         selected_usernames: Missing[list[str]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_codespaces_access(
         self,
         org: str,
@@ -282,6 +286,7 @@ class CodespacesClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_codespaces_access(
         self,
         org: str,
@@ -292,6 +297,7 @@ class CodespacesClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_codespaces_access(
         self,
         org: str,
@@ -308,6 +314,7 @@ class CodespacesClient:
         selected_usernames: Missing[list[str]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_codespaces_access(
         self,
         org: str,
@@ -356,6 +363,7 @@ class CodespacesClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_codespaces_access_users(
         self,
         org: str,
@@ -366,6 +374,7 @@ class CodespacesClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_codespaces_access_users(
         self,
         org: str,
@@ -376,6 +385,7 @@ class CodespacesClient:
         selected_usernames: list[str],
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def set_codespaces_access_users(
         self,
         org: str,
@@ -434,6 +444,7 @@ class CodespacesClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_codespaces_access_users(
         self,
         org: str,
@@ -444,6 +455,7 @@ class CodespacesClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_codespaces_access_users(
         self,
         org: str,
@@ -454,6 +466,7 @@ class CodespacesClient:
         selected_usernames: list[str],
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_set_codespaces_access_users(
         self,
         org: str,
@@ -512,6 +525,7 @@ class CodespacesClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def delete_codespaces_access_users(
         self,
         org: str,
@@ -522,6 +536,7 @@ class CodespacesClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def delete_codespaces_access_users(
         self,
         org: str,
@@ -532,6 +547,7 @@ class CodespacesClient:
         selected_usernames: list[str],
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def delete_codespaces_access_users(
         self,
         org: str,
@@ -590,6 +606,7 @@ class CodespacesClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_delete_codespaces_access_users(
         self,
         org: str,
@@ -600,6 +617,7 @@ class CodespacesClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_delete_codespaces_access_users(
         self,
         org: str,
@@ -610,6 +628,7 @@ class CodespacesClient:
         selected_usernames: list[str],
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_delete_codespaces_access_users(
         self,
         org: str,
