@@ -18,43 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBody(GitHubModel):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgActionsVariablesPostBody(GitHubModel):
+    """OrgsOrgActionsVariablesPostBody"""
 
-    name: str = Field(min_length=1, description="The name of the artifact.")
-    digest: str = Field(
-        min_length=71,
-        max_length=71,
-        pattern="^sha256:[a-f0-9]{64}$",
-        description="The digest of the artifact (algorithm:hex-encoded-digest).",
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
     )
-    artifact_url: Missing[str] = Field(
-        pattern="^https://",
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="The URL where the artifact is stored.",
-    )
-    path: Missing[str] = Field(default=UNSET, description="The path of the artifact.")
-    registry_url: str = Field(
-        min_length=1,
-        pattern="^https://",
-        description="The base URL of the artifact registry.",
-    )
-    repository: Missing[str] = Field(
-        default=UNSET, description="The repository name within the registry."
-    )
-    status: Missing[Literal["active", "eol", "deleted"]] = Field(
-        default=UNSET,
-        description="The status of the artifact (e.g., active, inactive).",
-    )
-    github_repository: Missing[str] = Field(
-        min_length=1,
-        max_length=100,
-        pattern="^[A-Za-z0-9.\\-_]+$",
-        default=UNSET,
-        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
     )
 
 
-model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostBody)
+model_rebuild(OrgsOrgActionsVariablesPostBody)
 
-__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBody",)
+__all__ = ("OrgsOrgActionsVariablesPostBody",)

@@ -9,26 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0945 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCampaignsPostBodyOneof0Type(TypedDict):
-    """OrgsOrgCampaignsPostBodyOneof0"""
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
 
-    name: str
-    description: str
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: datetime
-    contact_link: NotRequired[Union[str, None]]
-    code_scanning_alerts: Union[
-        list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None
-    ]
-    generate_issues: NotRequired[bool]
+    attestation_ids: list[int]
 
 
-__all__ = ("OrgsOrgCampaignsPostBodyOneof0Type",)
+__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",)

@@ -13,21 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0103 import CustomPropertyType
-from .group_0530 import EnterpriseWebhooksType
-from .group_0531 import SimpleInstallationType
-from .group_0532 import OrganizationSimpleWebhooksType
+from .group_0534 import EnterpriseWebhooksType
+from .group_0535 import SimpleInstallationType
+from .group_0536 import OrganizationSimpleWebhooksType
+from .group_0537 import RepositoryWebhooksType
+from .group_0617 import WebhookCodeScanningAlertReopenedByUserPropAlertType
 
 
-class WebhookCustomPropertyCreatedType(TypedDict):
-    """custom property created event"""
+class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
+    """code_scanning_alert reopened_by_user event"""
 
-    action: Literal["created"]
-    definition: CustomPropertyType
+    action: Literal["reopened_by_user"]
+    alert: WebhookCodeScanningAlertReopenedByUserPropAlertType
+    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    ref: str
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookCustomPropertyCreatedType",)
+__all__ = ("WebhookCodeScanningAlertReopenedByUserType",)

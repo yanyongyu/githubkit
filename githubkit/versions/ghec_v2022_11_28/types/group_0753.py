@@ -9,30 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0530 import EnterpriseWebhooksType
-from .group_0531 import SimpleInstallationType
-from .group_0532 import OrganizationSimpleWebhooksType
-from .group_0533 import RepositoryWebhooksType
-from .group_0556 import WebhooksMarketplacePurchaseType
-from .group_0557 import WebhooksPreviousMarketplacePurchaseType
+from .group_0194 import IssueTypeType
+from .group_0534 import EnterpriseWebhooksType
+from .group_0535 import SimpleInstallationType
+from .group_0536 import OrganizationSimpleWebhooksType
+from .group_0537 import RepositoryWebhooksType
+from .group_0556 import WebhooksIssueType
 
 
-class WebhookMarketplacePurchaseCancelledType(TypedDict):
-    """marketplace_purchase cancelled event"""
+class WebhookIssuesUntypedType(TypedDict):
+    """issues untyped event"""
 
-    action: Literal["cancelled"]
-    effective_date: str
+    action: Literal["untyped"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhooksMarketplacePurchaseType
+    issue: WebhooksIssueType
+    type: Union[IssueTypeType, None]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookMarketplacePurchaseCancelledType",)
+__all__ = ("WebhookIssuesUntypedType",)

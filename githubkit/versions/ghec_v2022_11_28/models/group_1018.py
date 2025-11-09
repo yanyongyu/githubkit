@@ -11,21 +11,23 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0098 import OrganizationCustomProperty
+from .group_0082 import CopilotSeatDetails
 
 
-class EnterprisesEnterpriseOrgPropertiesSchemaPatchBody(GitHubModel):
-    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
 
-    properties: list[OrganizationCustomProperty] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The array of organization custom properties to create or update.",
+    total_seats: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of Copilot seats the enterprise is being billed for. Users with access through enterprise, enterprise teams or multiple organizations are only counted once.",
     )
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseOrgPropertiesSchemaPatchBody)
+model_rebuild(EnterprisesEnterpriseMembersUsernameCopilotGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseOrgPropertiesSchemaPatchBody",)
+__all__ = ("EnterprisesEnterpriseMembersUsernameCopilotGetResponse200",)

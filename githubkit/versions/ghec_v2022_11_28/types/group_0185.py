@@ -9,15 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CombinedBillingUsageType(TypedDict):
-    """CombinedBillingUsage"""
+class GetAllCostCentersType(TypedDict):
+    """GetAllCostCenters"""
 
-    days_left_in_billing_cycle: int
-    estimated_paid_storage_for_month: int
-    estimated_storage_for_month: int
+    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
 
 
-__all__ = ("CombinedBillingUsageType",)
+class GetAllCostCentersPropCostCentersItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
+
+    id: str
+    name: str
+    state: NotRequired[Literal["active", "deleted"]]
+    azure_subscription: NotRequired[Union[str, None]]
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+__all__ = (
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
+    "GetAllCostCentersPropCostCentersItemsType",
+    "GetAllCostCentersType",
+)

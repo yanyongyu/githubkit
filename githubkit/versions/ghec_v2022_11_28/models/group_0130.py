@@ -24,7 +24,7 @@ class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
     """
 
     file_patterns: list[str] = Field(
-        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use the same syntax as `.gitignore` files."
+        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax."
     )
     minimum_approvals: int = Field(
         description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."

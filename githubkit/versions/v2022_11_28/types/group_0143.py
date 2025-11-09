@@ -9,21 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class RepositoryRulesetBypassActorType(TypedDict):
-    """Repository Ruleset Bypass Actor
+class CodeOfConductSimpleType(TypedDict):
+    """Code Of Conduct Simple
 
-    An actor that can bypass rules in a ruleset
+    Code of Conduct Simple
     """
 
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration", "OrganizationAdmin", "RepositoryRole", "Team", "DeployKey"
-    ]
-    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
-__all__ = ("RepositoryRulesetBypassActorType",)
+__all__ = ("CodeOfConductSimpleType",)

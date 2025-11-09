@@ -9,84 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0423 import SearchResultTextMatchesItemsType
+from .group_0425 import SearchResultTextMatchesItemsType
 
 
-class TopicSearchResultItemType(TypedDict):
-    """Topic Search Result Item
+class LabelSearchResultItemType(TypedDict):
+    """Label Search Result Item
 
-    Topic Search Result Item
+    Label Search Result Item
     """
 
+    id: int
+    node_id: str
+    url: str
     name: str
-    display_name: Union[str, None]
-    short_description: Union[str, None]
+    color: str
+    default: bool
     description: Union[str, None]
-    created_by: Union[str, None]
-    released: Union[str, None]
-    created_at: datetime
-    updated_at: datetime
-    featured: bool
-    curated: bool
     score: float
-    repository_count: NotRequired[Union[int, None]]
-    logo_url: NotRequired[Union[str, None]]
     text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-    related: NotRequired[Union[list[TopicSearchResultItemPropRelatedItemsType], None]]
-    aliases: NotRequired[Union[list[TopicSearchResultItemPropAliasesItemsType], None]]
 
 
-class TopicSearchResultItemPropRelatedItemsType(TypedDict):
-    """TopicSearchResultItemPropRelatedItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropRelatedItemsPropTopicRelationType
-    ]
-
-
-class TopicSearchResultItemPropRelatedItemsPropTopicRelationType(TypedDict):
-    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
-
-
-class TopicSearchResultItemPropAliasesItemsType(TypedDict):
-    """TopicSearchResultItemPropAliasesItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropAliasesItemsPropTopicRelationType
-    ]
-
-
-class TopicSearchResultItemPropAliasesItemsPropTopicRelationType(TypedDict):
-    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
-
-
-class SearchTopicsGetResponse200Type(TypedDict):
-    """SearchTopicsGetResponse200"""
+class SearchLabelsGetResponse200Type(TypedDict):
+    """SearchLabelsGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: list[TopicSearchResultItemType]
+    items: list[LabelSearchResultItemType]
 
 
 __all__ = (
-    "SearchTopicsGetResponse200Type",
-    "TopicSearchResultItemPropAliasesItemsPropTopicRelationType",
-    "TopicSearchResultItemPropAliasesItemsType",
-    "TopicSearchResultItemPropRelatedItemsPropTopicRelationType",
-    "TopicSearchResultItemPropRelatedItemsType",
-    "TopicSearchResultItemType",
+    "LabelSearchResultItemType",
+    "SearchLabelsGetResponse200Type",
 )

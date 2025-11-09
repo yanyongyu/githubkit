@@ -10,37 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class MigrationType(TypedDict):
-    """Migration
+class InteractionLimitResponseType(TypedDict):
+    """Interaction Limits
 
-    A migration.
+    Interaction limit settings.
     """
 
-    id: int
-    owner: Union[None, SimpleUserType]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[RepositoryType]
-    url: str
-    created_at: datetime
-    updated_at: datetime
-    node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: datetime
 
 
-__all__ = ("MigrationType",)
+__all__ = ("InteractionLimitResponseType",)

@@ -13,17 +13,13 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgActionsVariablesPostBodyType(TypedDict):
+    """OrgsOrgActionsVariablesPostBody"""
 
     name: str
-    digest: str
-    artifact_url: NotRequired[str]
-    path: NotRequired[str]
-    registry_url: str
-    repository: NotRequired[str]
-    status: NotRequired[Literal["active", "eol", "deleted"]]
-    github_repository: NotRequired[str]
+    value: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBodyType",)
+__all__ = ("OrgsOrgActionsVariablesPostBodyType",)

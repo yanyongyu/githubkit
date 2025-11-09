@@ -9,19 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ContentTrafficType(TypedDict):
-    """Content Traffic
+class TagProtectionType(TypedDict):
+    """Tag protection
 
-    Content Traffic
+    Tag protection
     """
 
-    path: str
-    title: str
-    count: int
-    uniques: int
+    id: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    enabled: NotRequired[bool]
+    pattern: str
 
 
-__all__ = ("ContentTrafficType",)
+__all__ = ("TagProtectionType",)

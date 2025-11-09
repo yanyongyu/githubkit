@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
-    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-    default_level: Literal["public", "internal"] = Field(
-        description="The default repository access level for Dependabot updates."
+    ignored: Missing[bool] = Field(
+        default=UNSET, description="Whether to block all notifications from a thread."
     )
 
 
-model_rebuild(OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody)
+model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
 
-__all__ = ("OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody",)
+__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)

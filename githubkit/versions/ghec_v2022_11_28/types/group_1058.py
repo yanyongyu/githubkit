@@ -11,18 +11,13 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0034 import ActionsHostedRunnerCustomImageVersionType
+from .group_0101 import CustomPropertyValueType
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
-    TypedDict
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+class OrganizationsOrgOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
 
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
+    properties: list[CustomPropertyValueType]
 
 
-__all__ = (
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
-)
+__all__ = ("OrganizationsOrgOrgPropertiesValuesPatchBodyType",)

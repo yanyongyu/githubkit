@@ -9,45 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class BillingUsageSummaryReportOrgType(TypedDict):
-    """BillingUsageSummaryReportOrg"""
+class DeleteBudgetType(TypedDict):
+    """DeleteBudget"""
 
-    time_period: BillingUsageSummaryReportOrgPropTimePeriodType
-    organization: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsType]
+    message: str
+    id: str
 
 
-class BillingUsageSummaryReportOrgPropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportOrgPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingUsageSummaryReportOrgPropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-__all__ = (
-    "BillingUsageSummaryReportOrgPropTimePeriodType",
-    "BillingUsageSummaryReportOrgPropUsageItemsItemsType",
-    "BillingUsageSummaryReportOrgType",
-)
+__all__ = ("DeleteBudgetType",)

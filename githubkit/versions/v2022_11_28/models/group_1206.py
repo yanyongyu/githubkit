@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
     state: Literal["open", "resolved"] = Field(
         description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
@@ -36,6 +36,6 @@ class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubModel):
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody)
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0",)

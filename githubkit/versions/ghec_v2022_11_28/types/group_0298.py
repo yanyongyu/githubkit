@@ -10,16 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsVariableType(TypedDict):
-    """Actions Variable"""
+class ActionsCacheListType(TypedDict):
+    """Repository actions caches
 
-    name: str
-    value: str
-    created_at: datetime
-    updated_at: datetime
+    Repository actions caches
+    """
+
+    total_count: int
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
 
 
-__all__ = ("ActionsVariableType",)
+class ActionsCacheListPropActionsCachesItemsType(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
+
+    id: NotRequired[int]
+    ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[datetime]
+    created_at: NotRequired[datetime]
+    size_in_bytes: NotRequired[int]
+
+
+__all__ = (
+    "ActionsCacheListPropActionsCachesItemsType",
+    "ActionsCacheListType",
+)

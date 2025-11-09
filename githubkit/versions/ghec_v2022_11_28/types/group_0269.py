@@ -9,26 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType
+from .group_0020 import RepositoryType
 
 
-class ProjectsV2DraftIssueType(TypedDict):
-    """Draft Issue
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    A draft issue in a project
-    """
-
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
     user: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
 
 
-__all__ = ("ProjectsV2DraftIssueType",)
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[None, SimpleUserType]
+
+
+__all__ = (
+    "PullRequestSimplePropBaseType",
+    "PullRequestSimplePropHeadType",
+)

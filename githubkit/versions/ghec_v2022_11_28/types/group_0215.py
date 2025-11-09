@@ -9,45 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0214 import MinimalRepositoryType
 
 
-class BillingUsageSummaryReportOrgType(TypedDict):
-    """BillingUsageSummaryReportOrg"""
+class ThreadType(TypedDict):
+    """Thread
 
-    time_period: BillingUsageSummaryReportOrgPropTimePeriodType
-    organization: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsType]
+    Thread
+    """
 
-
-class BillingUsageSummaryReportOrgPropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportOrgPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    id: str
+    repository: MinimalRepositoryType
+    subject: ThreadPropSubjectType
+    reason: str
+    unread: bool
+    updated_at: str
+    last_read_at: Union[str, None]
+    url: str
+    subscription_url: str
 
 
-class BillingUsageSummaryReportOrgPropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
+class ThreadPropSubjectType(TypedDict):
+    """ThreadPropSubject"""
 
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    title: str
+    url: str
+    latest_comment_url: str
+    type: str
 
 
 __all__ = (
-    "BillingUsageSummaryReportOrgPropTimePeriodType",
-    "BillingUsageSummaryReportOrgPropUsageItemsItemsType",
-    "BillingUsageSummaryReportOrgType",
+    "ThreadPropSubjectType",
+    "ThreadType",
 )

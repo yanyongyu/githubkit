@@ -9,18 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class CodeScanningAnalysisDeletionType(TypedDict):
-    """Analysis deletion
+class CodeScanningAutofixType(TypedDict):
+    """CodeScanningAutofix"""
 
-    Successful deletion of a code scanning analysis
-    """
-
-    next_analysis_url: Union[str, None]
-    confirm_delete_url: Union[str, None]
+    status: Literal["pending", "error", "success", "outdated"]
+    description: Union[str, None]
+    started_at: datetime
 
 
-__all__ = ("CodeScanningAnalysisDeletionType",)
+__all__ = ("CodeScanningAutofixType",)

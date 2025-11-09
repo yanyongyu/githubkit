@@ -9,14 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAttestationsBulkListPostBodyType(TypedDict):
-    """OrgsOrgAttestationsBulkListPostBody"""
+class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
 
-    subject_digests: list[str]
-    predicate_type: NotRequired[str]
+    total_count: int
+    variables: list[OrganizationActionsVariableType]
 
 
-__all__ = ("OrgsOrgAttestationsBulkListPostBodyType",)
+class OrganizationActionsVariableType(TypedDict):
+    """Actions Variable for an Organization
+
+    Organization variable for GitHub Actions.
+    """
+
+    name: str
+    value: str
+    created_at: datetime
+    updated_at: datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
+
+
+__all__ = (
+    "OrganizationActionsVariableType",
+    "OrgsOrgActionsVariablesGetResponse200Type",
+)

@@ -9,47 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgHook(GitHubModel):
-    """Org Hook
+class DependabotPublicKey(GitHubModel):
+    """DependabotPublicKey
 
-    Org Hook
+    The public key used for setting Dependabot Secrets.
     """
 
-    id: int = Field()
-    url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    name: str = Field()
-    events: list[str] = Field()
-    active: bool = Field()
-    config: OrgHookPropConfig = Field()
-    updated_at: datetime = Field()
-    created_at: datetime = Field()
-    type: str = Field()
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
 
 
-class OrgHookPropConfig(GitHubModel):
-    """OrgHookPropConfig"""
+model_rebuild(DependabotPublicKey)
 
-    url: Missing[str] = Field(default=UNSET)
-    insecure_ssl: Missing[str] = Field(default=UNSET)
-    content_type: Missing[str] = Field(default=UNSET)
-    secret: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(OrgHook)
-model_rebuild(OrgHookPropConfig)
-
-__all__ = (
-    "OrgHook",
-    "OrgHookPropConfig",
-)
+__all__ = ("DependabotPublicKey",)

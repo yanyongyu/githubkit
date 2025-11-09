@@ -9,20 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsSubjectStatsItemsType(TypedDict):
-    """ApiInsightsSubjectStatsItems"""
+class ExternalGroupsType(TypedDict):
+    """ExternalGroups
 
-    subject_type: NotRequired[str]
-    subject_name: NotRequired[str]
-    subject_id: NotRequired[int]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    A list of external groups available to be connected to a team
+    """
+
+    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
 
 
-__all__ = ("ApiInsightsSubjectStatsItemsType",)
+class ExternalGroupsPropGroupsItemsType(TypedDict):
+    """ExternalGroupsPropGroupsItems"""
+
+    group_id: int
+    group_name: str
+    updated_at: str
+
+
+__all__ = (
+    "ExternalGroupsPropGroupsItemsType",
+    "ExternalGroupsType",
+)

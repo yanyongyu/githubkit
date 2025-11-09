@@ -13,45 +13,41 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0019 import LicenseSimpleType
-from .group_0141 import CodeOfConductSimpleType
+from .group_0061 import MinimalRepositoryType
 
 
-class CommunityProfilePropFilesType(TypedDict):
-    """CommunityProfilePropFiles"""
+class CombinedCommitStatusType(TypedDict):
+    """Combined Commit Status
 
-    code_of_conduct: Union[None, CodeOfConductSimpleType]
-    code_of_conduct_file: Union[None, CommunityHealthFileType]
-    license_: Union[None, LicenseSimpleType]
-    contributing: Union[None, CommunityHealthFileType]
-    readme: Union[None, CommunityHealthFileType]
-    issue_template: Union[None, CommunityHealthFileType]
-    pull_request_template: Union[None, CommunityHealthFileType]
-
-
-class CommunityHealthFileType(TypedDict):
-    """Community Health File"""
-
-    url: str
-    html_url: str
-
-
-class CommunityProfileType(TypedDict):
-    """Community Profile
-
-    Community Profile
+    Combined Commit Status
     """
 
-    health_percentage: int
+    state: str
+    statuses: list[SimpleCommitStatusType]
+    sha: str
+    total_count: int
+    repository: MinimalRepositoryType
+    commit_url: str
+    url: str
+
+
+class SimpleCommitStatusType(TypedDict):
+    """Simple Commit Status"""
+
     description: Union[str, None]
-    documentation: Union[str, None]
-    files: CommunityProfilePropFilesType
-    updated_at: Union[datetime, None]
-    content_reports_enabled: NotRequired[bool]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: datetime
+    updated_at: datetime
 
 
 __all__ = (
-    "CommunityHealthFileType",
-    "CommunityProfilePropFilesType",
-    "CommunityProfileType",
+    "CombinedCommitStatusType",
+    "SimpleCommitStatusType",
 )

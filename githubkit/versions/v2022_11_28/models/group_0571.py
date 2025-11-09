@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,108 +18,160 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0572 import WebhookForkPropForkeeAllof0PropPermissions
 
-class WebhookForkPropForkeeAllof1(GitHubModel):
-    """WebhookForkPropForkeeAllof1"""
 
-    allow_forking: Missing[bool] = Field(default=UNSET)
-    archive_url: Missing[str] = Field(default=UNSET)
-    archived: Missing[bool] = Field(default=UNSET)
-    assignees_url: Missing[str] = Field(default=UNSET)
-    blobs_url: Missing[str] = Field(default=UNSET)
-    branches_url: Missing[str] = Field(default=UNSET)
-    clone_url: Missing[str] = Field(default=UNSET)
-    collaborators_url: Missing[str] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    commits_url: Missing[str] = Field(default=UNSET)
-    compare_url: Missing[str] = Field(default=UNSET)
-    contents_url: Missing[str] = Field(default=UNSET)
-    contributors_url: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    default_branch: Missing[str] = Field(default=UNSET)
-    deployments_url: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    disabled: Missing[bool] = Field(default=UNSET)
-    downloads_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    fork: Missing[Literal[True]] = Field(default=UNSET)
-    forks: Missing[int] = Field(default=UNSET)
-    forks_count: Missing[int] = Field(default=UNSET)
-    forks_url: Missing[str] = Field(default=UNSET)
-    full_name: Missing[str] = Field(default=UNSET)
-    git_commits_url: Missing[str] = Field(default=UNSET)
-    git_refs_url: Missing[str] = Field(default=UNSET)
-    git_tags_url: Missing[str] = Field(default=UNSET)
-    git_url: Missing[str] = Field(default=UNSET)
-    has_downloads: Missing[bool] = Field(default=UNSET)
-    has_issues: Missing[bool] = Field(default=UNSET)
-    has_pages: Missing[bool] = Field(default=UNSET)
-    has_projects: Missing[bool] = Field(default=UNSET)
-    has_wiki: Missing[bool] = Field(default=UNSET)
-    homepage: Missing[Union[str, None]] = Field(default=UNSET)
-    hooks_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    is_template: Missing[bool] = Field(default=UNSET)
-    issue_comment_url: Missing[str] = Field(default=UNSET)
-    issue_events_url: Missing[str] = Field(default=UNSET)
-    issues_url: Missing[str] = Field(default=UNSET)
-    keys_url: Missing[str] = Field(default=UNSET)
-    labels_url: Missing[str] = Field(default=UNSET)
-    language: Missing[None] = Field(default=UNSET)
-    languages_url: Missing[str] = Field(default=UNSET)
-    license_: Missing[Union[WebhookForkPropForkeeAllof1PropLicense, None]] = Field(
-        default=UNSET, alias="license"
+class WebhookForkPropForkeeAllof0(GitHubModel):
+    """Repository
+
+    A git repository
+    """
+
+    allow_auto_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow auto-merge for pull requests."
     )
-    merges_url: Missing[str] = Field(default=UNSET)
-    milestones_url: Missing[str] = Field(default=UNSET)
-    mirror_url: Missing[None] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    notifications_url: Missing[str] = Field(default=UNSET)
-    open_issues: Missing[int] = Field(default=UNSET)
-    open_issues_count: Missing[int] = Field(default=UNSET)
-    owner: Missing[WebhookForkPropForkeeAllof1PropOwner] = Field(default=UNSET)
-    private: Missing[bool] = Field(default=UNSET)
+    allow_forking: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow private forks"
+    )
+    allow_merge_commit: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow merge commits for pull requests."
+    )
+    allow_rebase_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow rebase merges for pull requests."
+    )
+    allow_squash_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow squash merges for pull requests."
+    )
+    allow_update_branch: Missing[bool] = Field(default=UNSET)
+    archive_url: str = Field()
+    archived: bool = Field(
+        default=False, description="Whether the repository is archived."
+    )
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    clone_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    created_at: Union[int, datetime] = Field()
+    default_branch: str = Field(description="The default branch of the repository.")
+    delete_branch_on_merge: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to delete head branches when pull requests are merged",
+    )
+    deployments_url: str = Field()
+    description: Union[str, None] = Field()
+    disabled: Missing[bool] = Field(
+        default=UNSET, description="Returns whether or not this repository is disabled."
+    )
+    downloads_url: str = Field()
+    events_url: str = Field()
+    fork: bool = Field()
+    forks: int = Field()
+    forks_count: int = Field()
+    forks_url: str = Field()
+    full_name: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    git_url: str = Field()
+    has_downloads: bool = Field(
+        default=True, description="Whether downloads are enabled."
+    )
+    has_issues: bool = Field(default=True, description="Whether issues are enabled.")
+    has_pages: bool = Field()
+    has_projects: bool = Field(
+        default=True, description="Whether projects are enabled."
+    )
+    has_wiki: bool = Field(default=True, description="Whether the wiki is enabled.")
+    homepage: Union[str, None] = Field()
+    hooks_url: str = Field()
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    is_template: Missing[bool] = Field(default=UNSET)
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    language: Union[str, None] = Field()
+    languages_url: str = Field()
+    license_: Union[WebhookForkPropForkeeAllof0PropLicense, None] = Field(
+        alias="license", title="License"
+    )
+    master_branch: Missing[str] = Field(default=UNSET)
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    mirror_url: Union[str, None] = Field()
+    name: str = Field(description="The name of the repository.")
+    node_id: str = Field()
+    notifications_url: str = Field()
+    open_issues: int = Field()
+    open_issues_count: int = Field()
+    organization: Missing[str] = Field(default=UNSET)
+    owner: Union[WebhookForkPropForkeeAllof0PropOwner, None] = Field(title="User")
+    permissions: Missing[WebhookForkPropForkeeAllof0PropPermissions] = Field(
+        default=UNSET
+    )
+    private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
-    pulls_url: Missing[str] = Field(default=UNSET)
-    pushed_at: Missing[str] = Field(default=UNSET)
-    releases_url: Missing[str] = Field(default=UNSET)
-    size: Missing[int] = Field(default=UNSET)
-    ssh_url: Missing[str] = Field(default=UNSET)
-    stargazers_count: Missing[int] = Field(default=UNSET)
-    stargazers_url: Missing[str] = Field(default=UNSET)
-    statuses_url: Missing[str] = Field(default=UNSET)
-    subscribers_url: Missing[str] = Field(default=UNSET)
-    subscription_url: Missing[str] = Field(default=UNSET)
-    svn_url: Missing[str] = Field(default=UNSET)
-    tags_url: Missing[str] = Field(default=UNSET)
-    teams_url: Missing[str] = Field(default=UNSET)
-    topics: Missing[list[Union[str, None]]] = Field(default=UNSET)
-    trees_url: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    visibility: Missing[str] = Field(default=UNSET)
-    watchers: Missing[int] = Field(default=UNSET)
-    watchers_count: Missing[int] = Field(default=UNSET)
+    pulls_url: str = Field()
+    pushed_at: Union[int, datetime, None] = Field()
+    releases_url: str = Field()
+    role_name: Missing[Union[str, None]] = Field(default=UNSET)
+    size: int = Field()
+    ssh_url: str = Field()
+    stargazers: Missing[int] = Field(default=UNSET)
+    stargazers_count: int = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    svn_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    topics: list[str] = Field()
+    trees_url: str = Field()
+    updated_at: datetime = Field()
+    url: str = Field()
+    visibility: Literal["public", "private", "internal"] = Field()
+    watchers: int = Field()
+    watchers_count: int = Field()
+    web_commit_signoff_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to require contributors to sign off on web-based commits",
+    )
 
 
-class WebhookForkPropForkeeAllof1PropLicense(GitHubModel):
-    """WebhookForkPropForkeeAllof1PropLicense"""
+class WebhookForkPropForkeeAllof0PropLicense(GitHubModel):
+    """License"""
+
+    key: str = Field()
+    name: str = Field()
+    node_id: str = Field()
+    spdx_id: str = Field()
+    url: Union[str, None] = Field()
 
 
-class WebhookForkPropForkeeAllof1PropOwner(GitHubModel):
-    """WebhookForkPropForkeeAllof1PropOwner"""
+class WebhookForkPropForkeeAllof0PropOwner(GitHubModel):
+    """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
     events_url: Missing[str] = Field(default=UNSET)
     followers_url: Missing[str] = Field(default=UNSET)
     following_url: Missing[str] = Field(default=UNSET)
     gists_url: Missing[str] = Field(default=UNSET)
     gravatar_id: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
     organizations_url: Missing[str] = Field(default=UNSET)
     received_events_url: Missing[str] = Field(default=UNSET)
@@ -126,16 +179,17 @@ class WebhookForkPropForkeeAllof1PropOwner(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookForkPropForkeeAllof1)
-model_rebuild(WebhookForkPropForkeeAllof1PropLicense)
-model_rebuild(WebhookForkPropForkeeAllof1PropOwner)
+model_rebuild(WebhookForkPropForkeeAllof0)
+model_rebuild(WebhookForkPropForkeeAllof0PropLicense)
+model_rebuild(WebhookForkPropForkeeAllof0PropOwner)
 
 __all__ = (
-    "WebhookForkPropForkeeAllof1",
-    "WebhookForkPropForkeeAllof1PropLicense",
-    "WebhookForkPropForkeeAllof1PropOwner",
+    "WebhookForkPropForkeeAllof0",
+    "WebhookForkPropForkeeAllof0PropLicense",
+    "WebhookForkPropForkeeAllof0PropOwner",
 )

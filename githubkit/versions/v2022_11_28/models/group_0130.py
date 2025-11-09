@@ -14,67 +14,57 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0129 import ProjectsV2StatusUpdate
 
 
-class ProjectsV2ItemWithContent(GitHubModel):
-    """Projects v2 Item
+class ProjectsV2(GitHubModel):
+    """Projects v2 Project
 
-    An item belonging to a project
+    A projects v2 project
     """
 
-    id: float = Field(description="The unique identifier of the project item.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project item."
+    id: float = Field(description="The unique identifier of the project.")
+    node_id: str = Field(description="The node ID of the project.")
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    title: str = Field(description="The project title.")
+    description: Union[str, None] = Field(
+        description="A short description of the project."
     )
-    project_url: Missing[str] = Field(
-        default=UNSET, description="The API URL of the project that contains this item."
+    public: bool = Field(
+        description="Whether the project is visible to anyone with access to the owner."
     )
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
+    closed_at: Union[datetime, None] = Field(
+        description="The time when the project was closed."
     )
-    content: Missing[Union[ProjectsV2ItemWithContentPropContent, None]] = Field(
-        default=UNSET,
-        description="The content of the item, which varies by content type.",
+    created_at: datetime = Field(description="The time when the project was created.")
+    updated_at: datetime = Field(
+        description="The time when the project was last updated."
     )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    number: int = Field(description="The project number.")
+    short_description: Union[str, None] = Field(
+        description="A concise summary of the project."
     )
-    created_at: datetime = Field(description="The time when the item was created.")
-    updated_at: datetime = Field(description="The time when the item was last updated.")
-    archived_at: Union[datetime, None] = Field(
-        description="The time when the item was archived."
+    deleted_at: Union[datetime, None] = Field(
+        description="The time when the project was deleted."
     )
-    item_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The API URL of this item."
+    deleted_by: Union[None, SimpleUser] = Field()
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET, description="The current state of the project."
     )
-    fields: Missing[list[ProjectsV2ItemWithContentPropFieldsItems]] = Field(
-        default=UNSET, description="The fields and values associated with this item."
+    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
+        default=UNSET
+    )
+    is_template: Missing[bool] = Field(
+        default=UNSET, description="Whether this project is a template"
     )
 
 
-class ProjectsV2ItemWithContentPropContent(ExtraGitHubModel):
-    """ProjectsV2ItemWithContentPropContent
+model_rebuild(ProjectsV2)
 
-    The content of the item, which varies by content type.
-    """
-
-
-class ProjectsV2ItemWithContentPropFieldsItems(ExtraGitHubModel):
-    """ProjectsV2ItemWithContentPropFieldsItems"""
-
-
-model_rebuild(ProjectsV2ItemWithContent)
-model_rebuild(ProjectsV2ItemWithContentPropContent)
-model_rebuild(ProjectsV2ItemWithContentPropFieldsItems)
-
-__all__ = (
-    "ProjectsV2ItemWithContent",
-    "ProjectsV2ItemWithContentPropContent",
-    "ProjectsV2ItemWithContentPropFieldsItems",
-)
+__all__ = ("ProjectsV2",)

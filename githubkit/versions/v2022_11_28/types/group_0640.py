@@ -13,23 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0448 import EnterpriseWebhooksType
-from .group_0449 import SimpleInstallationType
-from .group_0450 import OrganizationSimpleWebhooksType
-from .group_0451 import RepositoryWebhooksType
-from .group_0641 import WebhookIssuesLockedPropIssueType
+from .group_0450 import EnterpriseWebhooksType
+from .group_0451 import SimpleInstallationType
+from .group_0452 import OrganizationSimpleWebhooksType
+from .group_0453 import RepositoryWebhooksType
+from .group_0465 import WebhooksLabelType
+from .group_0641 import WebhookIssuesLabeledPropIssueType
 
 
-class WebhookIssuesLockedType(TypedDict):
-    """issues locked event"""
+class WebhookIssuesLabeledType(TypedDict):
+    """issues labeled event"""
 
-    action: Literal["locked"]
+    action: Literal["labeled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesLockedPropIssueType
+    issue: WebhookIssuesLabeledPropIssueType
+    label: NotRequired[WebhooksLabelType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesLockedType",)
+__all__ = ("WebhookIssuesLabeledType",)

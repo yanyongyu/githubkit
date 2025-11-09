@@ -18,30 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PatchSchema(GitHubModel):
-    """PatchSchema"""
+class Meta(GitHubModel):
+    """Meta
 
-    operations: list[PatchSchemaPropOperationsItems] = Field(
-        alias="Operations", description="patch operations list"
+    The metadata associated with the creation/updates to the user.
+    """
+
+    resource_type: Literal["User", "Group"] = Field(
+        alias="resourceType", description="A type of a resource"
     )
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
-
-
-class PatchSchemaPropOperationsItems(GitHubModel):
-    """PatchSchemaPropOperationsItems"""
-
-    op: Literal["add", "replace", "remove"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[str] = Field(
+    created: Missing[str] = Field(
+        default=UNSET, description="A date and time when the user was created."
+    )
+    last_modified: Missing[str] = Field(
         default=UNSET,
-        description="Corresponding 'value' of that field specified by 'path'",
+        alias="lastModified",
+        description="A data and time when the user was last modified.",
+    )
+    location: Missing[str] = Field(
+        default=UNSET, description="A URL location of an object"
     )
 
 
-model_rebuild(PatchSchema)
-model_rebuild(PatchSchemaPropOperationsItems)
+model_rebuild(Meta)
 
-__all__ = (
-    "PatchSchema",
-    "PatchSchemaPropOperationsItems",
-)
+__all__ = ("Meta",)

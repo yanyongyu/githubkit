@@ -9,41 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0342 import CodeScanningVariantAnalysisSkippedRepoGroup
 
+class CodeScanningVariantAnalysisRepository(GitHubModel):
+    """Repository Identifier
 
-class CodeScanningVariantAnalysisPropSkippedRepositories(GitHubModel):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
-
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
+    Repository Identifier
     """
 
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
-    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos = Field()
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
-
-
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos(GitHubModel):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
-
-    repository_count: int = Field(
-        description="The total number of repositories that were skipped for this reason."
+    id: int = Field(description="A unique identifier of the repository.")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field(
+        description="The full, globally unique, name of the repository."
     )
-    repository_full_names: list[str] = Field(
-        description="A list of full repository names that were skipped. This list may not include all repositories that were skipped."
-    )
+    private: bool = Field(description="Whether the repository is private.")
+    stargazers_count: int = Field()
+    updated_at: Union[datetime, None] = Field()
 
 
-model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositories)
-model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos)
+model_rebuild(CodeScanningVariantAnalysisRepository)
 
-__all__ = (
-    "CodeScanningVariantAnalysisPropSkippedRepositories",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos",
-)
+__all__ = ("CodeScanningVariantAnalysisRepository",)

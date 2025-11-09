@@ -9,48 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from .group_0003 import SimpleUserType
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class BaseGistType(TypedDict):
-    """Base Gist
+class IssueFieldValueType(TypedDict):
+    """Issue Field Value
 
-    Base Gist
+    A value assigned to an issue field
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
+    issue_field_id: int
     node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: BaseGistPropFilesType
-    public: bool
-    created_at: datetime
-    updated_at: datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserType]
-    comments_url: str
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    data_type: Literal["text", "single_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionType, None]
+    ]
 
 
-BaseGistPropFilesType: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
-"""
+class IssueFieldValuePropSingleSelectOptionType(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
+
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int
+    name: str
+    color: str
 
 
 __all__ = (
-    "BaseGistPropFilesType",
-    "BaseGistType",
+    "IssueFieldValuePropSingleSelectOptionType",
+    "IssueFieldValueType",
 )

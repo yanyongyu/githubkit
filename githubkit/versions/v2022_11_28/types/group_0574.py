@@ -9,29 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0018 import InstallationType
-from .group_0448 import EnterpriseWebhooksType
-from .group_0450 import OrganizationSimpleWebhooksType
-from .group_0451 import RepositoryWebhooksType
-from .group_0459 import WebhooksUserType
-from .group_0464 import WebhooksRepositoriesItemsType
 
 
-class WebhookInstallationCreatedType(TypedDict):
-    """installation created event"""
+class WebhookGithubAppAuthorizationRevokedType(TypedDict):
+    """github_app_authorization revoked event"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[Union[WebhooksUserType, None]]
+    action: Literal["revoked"]
     sender: SimpleUserType
 
 
-__all__ = ("WebhookInstallationCreatedType",)
+__all__ = ("WebhookGithubAppAuthorizationRevokedType",)

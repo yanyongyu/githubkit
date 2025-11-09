@@ -9,56 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Annotated, Union
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1100 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems
 
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200(GitHubModel):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
 
-class OrgsOrgCampaignsPostBodyOneof0(GitHubModel):
-    """OrgsOrgCampaignsPostBodyOneof0"""
-
-    name: str = Field(
-        min_length=1, max_length=50, description="The name of the campaign"
-    )
-    description: str = Field(
-        min_length=1, max_length=255, description="A description for the campaign"
-    )
-    managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
+    total_count: Missing[int] = Field(
         default=UNSET,
-        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
+        description="The number of storage records for this digest and organization",
     )
-    team_managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The slugs of the teams to set as the campaign managers.",
-    )
-    ends_at: datetime = Field(
-        description="The end date and time of the campaign. The date must be in the future."
-    )
-    contact_link: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contact link of the campaign. Must be a URI."
-    )
-    code_scanning_alerts: Union[
-        Annotated[
-            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems],
-            Field(min_length=1 if PYDANTIC_V2 else None),
-        ],
-        None,
-    ] = Field(description="The code scanning alerts to include in this campaign")
-    generate_issues: Missing[bool] = Field(
-        default=UNSET,
-        description="If true, will automatically generate issues for the campaign. The default is false.",
-    )
+    storage_records: Missing[
+        list[
+            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems
+        ]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCampaignsPostBodyOneof0)
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
+    rdsItems
+    """
 
-__all__ = ("OrgsOrgCampaignsPostBodyOneof0",)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    digest: Missing[str] = Field(default=UNSET)
+    artifact_url: Missing[str] = Field(default=UNSET)
+    registry_url: Missing[str] = Field(default=UNSET)
+    repository: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200)
+model_rebuild(
+    OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems
+)
+
+__all__ = (
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems",
+)

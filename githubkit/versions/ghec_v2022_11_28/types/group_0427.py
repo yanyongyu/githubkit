@@ -9,42 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0019 import LicenseSimpleType
+from .group_0003 import SimpleUserType
+from .group_0010 import IntegrationType
 
 
-class LicenseContentType(TypedDict):
-    """License Content
+class TimelineUnassignedIssueEventType(TypedDict):
+    """Timeline Unassigned Issue Event
 
-    License Content
+    Timeline Unassigned Issue Event
     """
 
-    name: str
-    path: str
-    sha: str
-    size: int
+    id: int
+    node_id: str
     url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksType
-    license_: Union[None, LicenseSimpleType]
+    actor: SimpleUserType
+    event: Literal["unassigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    assignee: SimpleUserType
 
 
-class LicenseContentPropLinksType(TypedDict):
-    """LicenseContentPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-__all__ = (
-    "LicenseContentPropLinksType",
-    "LicenseContentType",
-)
+__all__ = ("TimelineUnassignedIssueEventType",)

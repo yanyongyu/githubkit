@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,43 +16,90 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class IssueFieldValue(GitHubModel):
-    """Issue Field Value
+class BillingUsageSummaryReportGhe(GitHubModel):
+    """BillingUsageSummaryReportGhe"""
 
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int = Field(description="Unique identifier for the issue field.")
-    node_id: str = Field()
-    data_type: Literal["text", "single_select", "number", "date"] = Field(
-        description="The data type of the issue field"
+    time_period: BillingUsageSummaryReportGhePropTimePeriod = Field(alias="timePeriod")
+    enterprise: str = Field(description="The unique identifier of the enterprise.")
+    organization: Missing[str] = Field(
+        default=UNSET, description="The name of the organization for the usage report."
     )
-    value: Union[str, float, int, None] = Field(
-        description="The value of the issue field"
+    repository: Missing[str] = Field(
+        default=UNSET, description="The name of the repository for the usage report."
     )
-    single_select_option: Missing[
-        Union[IssueFieldValuePropSingleSelectOption, None]
-    ] = Field(
-        default=UNSET,
-        description="Details about the selected option (only present for single_select fields)",
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
+    )
+    sku: Missing[str] = Field(
+        default=UNSET, description="The SKU for the usage report."
+    )
+    cost_center: Missing[BillingUsageSummaryReportGhePropCostCenter] = Field(
+        default=UNSET, alias="costCenter"
+    )
+    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItems] = Field(
+        alias="usageItems"
     )
 
 
-class IssueFieldValuePropSingleSelectOption(GitHubModel):
-    """IssueFieldValuePropSingleSelectOption
+class BillingUsageSummaryReportGhePropTimePeriod(GitHubModel):
+    """BillingUsageSummaryReportGhePropTimePeriod"""
 
-    Details about the selected option (only present for single_select fields)
-    """
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
+    )
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
+    )
 
-    id: int = Field(description="Unique identifier for the option.")
-    name: str = Field(description="The name of the option")
-    color: str = Field(description="The color of the option")
+
+class BillingUsageSummaryReportGhePropCostCenter(GitHubModel):
+    """BillingUsageSummaryReportGhePropCostCenter"""
+
+    id: str = Field(description="The unique identifier of the cost center.")
+    name: str = Field(description="The name of the cost center.")
 
 
-model_rebuild(IssueFieldValue)
-model_rebuild(IssueFieldValuePropSingleSelectOption)
+class BillingUsageSummaryReportGhePropUsageItemsItems(GitHubModel):
+    """BillingUsageSummaryReportGhePropUsageItemsItems"""
+
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+
+
+model_rebuild(BillingUsageSummaryReportGhe)
+model_rebuild(BillingUsageSummaryReportGhePropTimePeriod)
+model_rebuild(BillingUsageSummaryReportGhePropCostCenter)
+model_rebuild(BillingUsageSummaryReportGhePropUsageItemsItems)
 
 __all__ = (
-    "IssueFieldValue",
-    "IssueFieldValuePropSingleSelectOption",
+    "BillingUsageSummaryReportGhe",
+    "BillingUsageSummaryReportGhePropCostCenter",
+    "BillingUsageSummaryReportGhePropTimePeriod",
+    "BillingUsageSummaryReportGhePropUsageItemsItems",
 )

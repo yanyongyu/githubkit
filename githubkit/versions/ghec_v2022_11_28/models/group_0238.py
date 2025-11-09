@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,25 +16,47 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ApiInsightsRouteStatsItems(GitHubModel):
-    """ApiInsightsRouteStatsItems"""
+class ExternalGroup(GitHubModel):
+    """ExternalGroup
 
-    http_method: Missing[str] = Field(default=UNSET, description="The HTTP method")
-    api_route: Missing[str] = Field(
-        default=UNSET, description="The API path's route template"
+    Information about an external group's usage and its members
+    """
+
+    group_id: int = Field(description="The internal ID of the group")
+    group_name: str = Field(description="The display name for the group")
+    updated_at: Missing[str] = Field(
+        default=UNSET, description="The date when the group was last updated_at"
     )
-    total_request_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of requests within the queried time period",
+    teams: list[ExternalGroupPropTeamsItems] = Field(
+        description="An array of teams linked to this group"
     )
-    rate_limited_request_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of requests that were rate limited within the queried time period",
+    members: list[ExternalGroupPropMembersItems] = Field(
+        description="An array of external members linked to this group"
     )
-    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
-    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ApiInsightsRouteStatsItems)
+class ExternalGroupPropTeamsItems(GitHubModel):
+    """ExternalGroupPropTeamsItems"""
 
-__all__ = ("ApiInsightsRouteStatsItems",)
+    team_id: int = Field(description="The id for a team")
+    team_name: str = Field(description="The name of the team")
+
+
+class ExternalGroupPropMembersItems(GitHubModel):
+    """ExternalGroupPropMembersItems"""
+
+    member_id: int = Field(description="The internal user ID of the identity")
+    member_login: str = Field(description="The handle/login for the user")
+    member_name: str = Field(description="The user display name/profile name")
+    member_email: str = Field(description="An email attached to a user")
+
+
+model_rebuild(ExternalGroup)
+model_rebuild(ExternalGroupPropTeamsItems)
+model_rebuild(ExternalGroupPropMembersItems)
+
+__all__ = (
+    "ExternalGroup",
+    "ExternalGroupPropMembersItems",
+    "ExternalGroupPropTeamsItems",
+)

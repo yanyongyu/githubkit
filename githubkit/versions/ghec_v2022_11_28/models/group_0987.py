@@ -11,18 +11,20 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0049 import Runner
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
+class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
-    )
+    total_count: Missing[float] = Field(default=UNSET)
+    runners: Missing[list[Runner]] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnersGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200",)

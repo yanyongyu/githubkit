@@ -18,43 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBody(GitHubModel):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgActionsSecretsSecretNamePutBody(GitHubModel):
+    """OrgsOrgActionsSecretsSecretNamePutBody"""
 
-    name: str = Field(min_length=1, description="The name of the artifact.")
-    digest: str = Field(
-        min_length=71,
-        max_length=71,
-        pattern="^sha256:[a-f0-9]{64}$",
-        description="The digest of the artifact (algorithm:hex-encoded-digest).",
+    encrypted_value: str = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-public-key) endpoint.",
     )
-    artifact_url: Missing[str] = Field(
-        pattern="^https://",
+    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="The URL where the artifact is stored.",
-    )
-    path: Missing[str] = Field(default=UNSET, description="The path of the artifact.")
-    registry_url: str = Field(
-        min_length=1,
-        pattern="^https://",
-        description="The base URL of the artifact registry.",
-    )
-    repository: Missing[str] = Field(
-        default=UNSET, description="The repository name within the registry."
-    )
-    status: Missing[Literal["active", "eol", "deleted"]] = Field(
-        default=UNSET,
-        description="The status of the artifact (e.g., active, inactive).",
-    )
-    github_repository: Missing[str] = Field(
-        min_length=1,
-        max_length=100,
-        pattern="^[A-Za-z0-9.\\-_]+$",
-        default=UNSET,
-        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
     )
 
 
-model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostBody)
+model_rebuild(OrgsOrgActionsSecretsSecretNamePutBody)
 
-__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBody",)
+__all__ = ("OrgsOrgActionsSecretsSecretNamePutBody",)

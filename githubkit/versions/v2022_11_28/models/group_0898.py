@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,58 +18,68 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsHostedRunnersPostBody(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPostBody"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
 
-    name: str = Field(
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
-    )
-    image: OrgsOrgActionsHostedRunnersPostBodyPropImage = Field(
-        description="The image of runner. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`."
-    )
-    size: str = Field(
-        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`"
-    )
-    runner_group_id: int = Field(
-        description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
+    message: Missing[str] = Field(default=UNSET)
+    budget: Missing[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget
+    ] = Field(default=UNSET)
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget(
+    GitHubModel
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
+
+    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
+    budget_amount: Missing[float] = Field(
         default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
-    enable_static_ip: Missing[bool] = Field(
+    prevent_further_usage: Missing[bool] = Field(
         default=UNSET,
-        description="Whether this runner should be created with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
+        description="Whether to prevent additional spending once the budget is exceeded",
     )
-    image_gen: Missing[bool] = Field(
+    budget_alerting: Missing[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ] = Field(default=UNSET, description="The scope of the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
+    )
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
+        default=UNSET, description="The type of pricing for the budget"
+    )
+    budget_product_sku: Missing[str] = Field(
         default=UNSET,
-        description="Whether this runner should be used to generate custom images.",
+        description="A single product or SKU that will be covered in the budget",
     )
 
 
-class OrgsOrgActionsHostedRunnersPostBodyPropImage(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPostBodyPropImage
-
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting(
+    GitHubModel
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
+    etAlerting
     """
 
-    id: Missing[str] = Field(
-        default=UNSET, description="The unique identifier of the runner image."
-    )
-    source: Missing[Literal["github", "partner", "custom"]] = Field(
-        default=UNSET, description="The source of the runner image."
-    )
-    version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
+    alert_recipients: list[str] = Field(
+        description="Array of user login names who will receive alerts"
     )
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersPostBody)
-model_rebuild(OrgsOrgActionsHostedRunnersPostBodyPropImage)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget)
+model_rebuild(
+    OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting
+)
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersPostBody",
-    "OrgsOrgActionsHostedRunnersPostBodyPropImage",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting",
 )

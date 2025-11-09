@@ -9,23 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0072 import CodeSecurityConfigurationType
+from .group_1108 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
-    TypedDict
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
+class OrgsOrgCampaignsPostBodyOneof0Type(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof0"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
+    name: str
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: datetime
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: Union[
+        list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None
     ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    generate_issues: NotRequired[bool]
 
 
-__all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
-)
+__all__ = ("OrgsOrgCampaignsPostBodyOneof0Type",)

@@ -9,17 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0187 import RepositoryRuleMaxFileSizePropParametersType
 
-class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
-    """RestrictedCommits
 
-    Restricted commit
+class RepositoryRuleMaxFileSizeType(TypedDict):
+    """max_file_size
+
+    Prevent commits with individual files that exceed the specified limit from being
+    pushed to the commit graph.
     """
 
-    oid: str
-    reason: NotRequired[str]
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
 
 
-__all__ = ("RepositoryRuleParamsRestrictedCommitsType",)
+__all__ = ("RepositoryRuleMaxFileSizeType",)

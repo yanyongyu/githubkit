@@ -15,23 +15,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0492 import Meta
-from .group_0502 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
+class UserNameResponse(GitHubModel):
+    """UserNameResponse"""
 
-class ScimEnterpriseUserResponseAllof1(GitHubModel):
-    """ScimEnterpriseUserResponseAllof1"""
-
-    id: str = Field(description="The internally generated id for the user object.")
-    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
+    formatted: Missing[str] = Field(
         default=UNSET,
-        description="Provisioned SCIM groups that the user is a member of.",
+        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
     )
-    meta: Meta = Field(
-        description="The metadata associated with the creation/updates to the user."
+    family_name: Missing[str] = Field(
+        default=UNSET, alias="familyName", description="The family name of the user."
+    )
+    given_name: Missing[str] = Field(
+        default=UNSET, alias="givenName", description="The given name of the user."
+    )
+    middle_name: Missing[str] = Field(
+        default=UNSET, alias="middleName", description="The middle name(s) of the user."
     )
 
 
-model_rebuild(ScimEnterpriseUserResponseAllof1)
+class UserEmailsResponseItems(GitHubModel):
+    """UserEmailsResponseItems"""
 
-__all__ = ("ScimEnterpriseUserResponseAllof1",)
+    value: str = Field(description="The email address.")
+    type: Missing[str] = Field(default=UNSET, description="The type of email address.")
+    primary: Missing[bool] = Field(
+        default=UNSET, description="Whether this email address is the primary address."
+    )
+
+
+model_rebuild(UserNameResponse)
+model_rebuild(UserEmailsResponseItems)
+
+__all__ = (
+    "UserEmailsResponseItems",
+    "UserNameResponse",
+)

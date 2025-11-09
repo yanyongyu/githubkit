@@ -9,17 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
 
-class OidcCustomSubRepoType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class ActionsCacheListType(TypedDict):
+    """Repository actions caches
 
-    Actions OIDC subject customization for a repository
+    Repository actions caches
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
+    total_count: int
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
 
 
-__all__ = ("OidcCustomSubRepoType",)
+class ActionsCacheListPropActionsCachesItemsType(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
+
+    id: NotRequired[int]
+    ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[datetime]
+    created_at: NotRequired[datetime]
+    size_in_bytes: NotRequired[int]
+
+
+__all__ = (
+    "ActionsCacheListPropActionsCachesItemsType",
+    "ActionsCacheListType",
+)

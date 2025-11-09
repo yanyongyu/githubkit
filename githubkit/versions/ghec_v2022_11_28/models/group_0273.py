@@ -9,196 +9,149 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from datetime import date, datetime
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0019 import LicenseSimple
-from .group_0020 import Repository
-from .group_0208 import SecurityAndAnalysis
-from .group_0272 import CodeOfConductSimple
 
+class ProjectsV2Field(GitHubModel):
+    """Projects v2 Field
 
-class FullRepository(GitHubModel):
-    """Full Repository
-
-    Full Repository
+    A field inside a projects v2 project
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    full_name: str = Field()
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    private: bool = Field()
-    html_url: str = Field()
-    description: Union[str, None] = Field()
-    fork: bool = Field()
-    url: str = Field()
-    archive_url: str = Field()
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    deployments_url: str = Field()
-    downloads_url: str = Field()
-    events_url: str = Field()
-    forks_url: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    git_url: str = Field()
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    languages_url: str = Field()
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    notifications_url: str = Field()
-    pulls_url: str = Field()
-    releases_url: str = Field()
-    ssh_url: str = Field()
-    stargazers_url: str = Field()
-    statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    trees_url: str = Field()
-    clone_url: str = Field()
-    mirror_url: Union[str, None] = Field()
-    hooks_url: str = Field()
-    svn_url: str = Field()
-    homepage: Union[str, None] = Field()
-    language: Union[str, None] = Field()
-    forks_count: int = Field()
-    stargazers_count: int = Field()
-    watchers_count: int = Field()
-    size: int = Field(
-        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0."
+    id: int = Field(description="The unique identifier of the field.")
+    node_id: Missing[str] = Field(
+        default=UNSET, description="The node ID of the field."
     )
-    default_branch: str = Field()
-    open_issues_count: int = Field()
-    is_template: Missing[bool] = Field(default=UNSET)
-    topics: Missing[list[str]] = Field(default=UNSET)
-    has_issues: bool = Field()
-    has_projects: bool = Field()
-    has_wiki: bool = Field()
-    has_pages: bool = Field()
-    has_downloads: Missing[bool] = Field(default=UNSET)
-    has_discussions: bool = Field()
-    archived: bool = Field()
-    disabled: bool = Field(
-        description="Returns whether or not this repository disabled."
+    project_url: str = Field(
+        description="The API URL of the project that contains the field."
     )
-    visibility: Missing[str] = Field(
-        default=UNSET,
-        description="The repository visibility: public, private, or internal.",
+    name: str = Field(description="The name of the field.")
+    data_type: Literal[
+        "assignees",
+        "linked_pull_requests",
+        "reviewers",
+        "labels",
+        "milestone",
+        "repository",
+        "title",
+        "text",
+        "single_select",
+        "number",
+        "date",
+        "iteration",
+        "issue_type",
+        "parent_issue",
+        "sub_issues_progress",
+    ] = Field(description="The field's data type.")
+    options: Missing[list[ProjectsV2SingleSelectOptions]] = Field(
+        default=UNSET, description="The options available for single select fields."
     )
-    pushed_at: datetime = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    permissions: Missing[FullRepositoryPropPermissions] = Field(default=UNSET)
-    allow_rebase_merge: Missing[bool] = Field(default=UNSET)
-    template_repository: Missing[Union[None, Repository]] = Field(default=UNSET)
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
-    allow_squash_merge: Missing[bool] = Field(default=UNSET)
-    allow_auto_merge: Missing[bool] = Field(default=UNSET)
-    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
-    allow_merge_commit: Missing[bool] = Field(default=UNSET)
-    allow_update_branch: Missing[bool] = Field(default=UNSET)
-    use_squash_pr_title_as_default: Missing[bool] = Field(default=UNSET)
-    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
-        Field(
-            default=UNSET,
-            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
-        )
+    configuration: Missing[ProjectsV2FieldPropConfiguration] = Field(
+        default=UNSET, description="Configuration for iteration fields."
     )
-    squash_merge_commit_message: Missing[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
-    )
-    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
-        default=UNSET,
-        description="The default value for a merge commit title.\n\n  - `PR_TITLE` - default to the pull request's title.\n  - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
-    )
-    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
-        default=UNSET,
-        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
-    )
-    allow_forking: Missing[bool] = Field(default=UNSET)
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
-    subscribers_count: int = Field()
-    network_count: int = Field()
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    organization: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    parent: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
-    )
-    source: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
-    )
-    forks: int = Field()
-    master_branch: Missing[str] = Field(default=UNSET)
-    open_issues: int = Field()
-    watchers: int = Field()
-    anonymous_access_enabled: Missing[bool] = Field(
-        default=UNSET, description="Whether anonymous git access is allowed."
-    )
-    code_of_conduct: Missing[CodeOfConductSimple] = Field(
-        default=UNSET,
-        title="Code Of Conduct Simple",
-        description="Code of Conduct Simple",
-    )
-    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
-        default=UNSET
-    )
-    custom_properties: Missing[FullRepositoryPropCustomProperties] = Field(
-        default=UNSET,
-        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
+    created_at: datetime = Field(description="The time when the field was created.")
+    updated_at: datetime = Field(
+        description="The time when the field was last updated."
     )
 
 
-class FullRepositoryPropPermissions(GitHubModel):
-    """FullRepositoryPropPermissions"""
+class ProjectsV2SingleSelectOptions(GitHubModel):
+    """Projects v2 Single Select Option
 
-    admin: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    pull: bool = Field()
-
-
-class FullRepositoryPropCustomProperties(ExtraGitHubModel):
-    """FullRepositoryPropCustomProperties
-
-    The custom properties that were defined for the repository. The keys are the
-    custom property names, and the values are the corresponding custom property
-    values.
+    An option for a single select field
     """
 
+    id: str = Field(description="The unique identifier of the option.")
+    name: ProjectsV2SingleSelectOptionsPropName = Field(
+        description="The display name of the option, in raw text and HTML formats."
+    )
+    description: ProjectsV2SingleSelectOptionsPropDescription = Field(
+        description="The description of the option, in raw text and HTML formats."
+    )
+    color: str = Field(description="The color associated with the option.")
 
-model_rebuild(FullRepository)
-model_rebuild(FullRepositoryPropPermissions)
-model_rebuild(FullRepositoryPropCustomProperties)
+
+class ProjectsV2SingleSelectOptionsPropName(GitHubModel):
+    """ProjectsV2SingleSelectOptionsPropName
+
+    The display name of the option, in raw text and HTML formats.
+    """
+
+    raw: str = Field()
+    html: str = Field()
+
+
+class ProjectsV2SingleSelectOptionsPropDescription(GitHubModel):
+    """ProjectsV2SingleSelectOptionsPropDescription
+
+    The description of the option, in raw text and HTML formats.
+    """
+
+    raw: str = Field()
+    html: str = Field()
+
+
+class ProjectsV2FieldPropConfiguration(GitHubModel):
+    """ProjectsV2FieldPropConfiguration
+
+    Configuration for iteration fields.
+    """
+
+    start_day: Missing[int] = Field(
+        default=UNSET, description="The day of the week when the iteration starts."
+    )
+    duration: Missing[int] = Field(
+        default=UNSET, description="The duration of the iteration in days."
+    )
+    iterations: Missing[list[ProjectsV2IterationSettings]] = Field(default=UNSET)
+
+
+class ProjectsV2IterationSettings(GitHubModel):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str = Field(description="The unique identifier of the iteration setting.")
+    start_date: date = Field(description="The start date of the iteration.")
+    duration: int = Field(description="The duration of the iteration in days.")
+    title: ProjectsV2IterationSettingsPropTitle = Field(
+        description="The iteration title, in raw text and HTML formats."
+    )
+    completed: bool = Field(description="Whether the iteration has been completed.")
+
+
+class ProjectsV2IterationSettingsPropTitle(GitHubModel):
+    """ProjectsV2IterationSettingsPropTitle
+
+    The iteration title, in raw text and HTML formats.
+    """
+
+    raw: str = Field()
+    html: str = Field()
+
+
+model_rebuild(ProjectsV2Field)
+model_rebuild(ProjectsV2SingleSelectOptions)
+model_rebuild(ProjectsV2SingleSelectOptionsPropName)
+model_rebuild(ProjectsV2SingleSelectOptionsPropDescription)
+model_rebuild(ProjectsV2FieldPropConfiguration)
+model_rebuild(ProjectsV2IterationSettings)
+model_rebuild(ProjectsV2IterationSettingsPropTitle)
 
 __all__ = (
-    "FullRepository",
-    "FullRepositoryPropCustomProperties",
-    "FullRepositoryPropPermissions",
+    "ProjectsV2Field",
+    "ProjectsV2FieldPropConfiguration",
+    "ProjectsV2IterationSettings",
+    "ProjectsV2IterationSettingsPropTitle",
+    "ProjectsV2SingleSelectOptions",
+    "ProjectsV2SingleSelectOptionsPropDescription",
+    "ProjectsV2SingleSelectOptionsPropName",
 )

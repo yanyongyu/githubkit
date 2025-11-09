@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAttestationsRepositoriesGetResponse200ItemsType(TypedDict):
-    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+class OrgsOrgAttestationsBulkListPostBodyType(TypedDict):
+    """OrgsOrgAttestationsBulkListPostBody"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
-__all__ = ("OrgsOrgAttestationsRepositoriesGetResponse200ItemsType",)
+__all__ = ("OrgsOrgAttestationsBulkListPostBodyType",)

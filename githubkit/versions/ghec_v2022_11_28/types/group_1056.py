@@ -9,35 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersPostBodyType(TypedDict):
-    """OrgsOrgActionsHostedRunnersPostBody"""
+class OrganizationsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
+    """OrganizationsOrgDependabotRepositoryAccessPatchBody
 
-    name: str
-    image: OrgsOrgActionsHostedRunnersPostBodyPropImageType
-    size: str
-    runner_group_id: int
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    image_gen: NotRequired[bool]
-
-
-class OrgsOrgActionsHostedRunnersPostBodyPropImageType(TypedDict):
-    """OrgsOrgActionsHostedRunnersPostBodyPropImage
-
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
     """
 
-    id: NotRequired[str]
-    source: NotRequired[Literal["github", "partner", "custom"]]
-    version: NotRequired[Union[str, None]]
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
-__all__ = (
-    "OrgsOrgActionsHostedRunnersPostBodyPropImageType",
-    "OrgsOrgActionsHostedRunnersPostBodyType",
-)
+__all__ = ("OrganizationsOrgDependabotRepositoryAccessPatchBodyType",)

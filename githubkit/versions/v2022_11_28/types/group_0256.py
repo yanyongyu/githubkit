@@ -9,36 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0249 import BranchProtectionType
-from .group_0254 import CommitType
+from .group_0003 import SimpleUserType
+from .group_0255 import DiffEntryType
+from .group_0257 import CommitPropCommitType
 
 
-class BranchWithProtectionType(TypedDict):
-    """Branch With Protection
+class CommitType(TypedDict):
+    """Commit
 
-    Branch With Protection
+    Commit
     """
 
-    name: str
-    commit: CommitType
-    links: BranchWithProtectionPropLinksType
-    protected: bool
-    protection: BranchProtectionType
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
+    url: str
+    sha: str
+    node_id: str
+    html_url: str
+    comments_url: str
+    commit: CommitPropCommitType
+    author: Union[SimpleUserType, EmptyObjectType, None]
+    committer: Union[SimpleUserType, EmptyObjectType, None]
+    parents: list[CommitPropParentsItemsType]
+    stats: NotRequired[CommitPropStatsType]
+    files: NotRequired[list[DiffEntryType]]
 
 
-class BranchWithProtectionPropLinksType(TypedDict):
-    """BranchWithProtectionPropLinks"""
+class EmptyObjectType(TypedDict):
+    """Empty Object
 
-    html: str
-    self_: str
+    An object without any properties.
+    """
+
+
+class CommitPropParentsItemsType(TypedDict):
+    """CommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: NotRequired[str]
+
+
+class CommitPropStatsType(TypedDict):
+    """CommitPropStats"""
+
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
 
 
 __all__ = (
-    "BranchWithProtectionPropLinksType",
-    "BranchWithProtectionType",
+    "CommitPropParentsItemsType",
+    "CommitPropStatsType",
+    "CommitType",
+    "EmptyObjectType",
 )

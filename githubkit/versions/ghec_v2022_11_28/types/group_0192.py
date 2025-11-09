@@ -9,37 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class IssueFieldValueType(TypedDict):
-    """Issue Field Value
+class BillingUsageSummaryReportGheType(TypedDict):
+    """BillingUsageSummaryReportGhe"""
 
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int
-    node_id: str
-    data_type: Literal["text", "single_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionType, None]
-    ]
+    time_period: BillingUsageSummaryReportGhePropTimePeriodType
+    enterprise: str
+    organization: NotRequired[str]
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterType]
+    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsType]
 
 
-class IssueFieldValuePropSingleSelectOptionType(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
+class BillingUsageSummaryReportGhePropTimePeriodType(TypedDict):
+    """BillingUsageSummaryReportGhePropTimePeriod"""
 
-    Details about the selected option (only present for single_select fields)
-    """
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
-    id: int
+
+class BillingUsageSummaryReportGhePropCostCenterType(TypedDict):
+    """BillingUsageSummaryReportGhePropCostCenter"""
+
+    id: str
     name: str
-    color: str
+
+
+class BillingUsageSummaryReportGhePropUsageItemsItemsType(TypedDict):
+    """BillingUsageSummaryReportGhePropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "IssueFieldValuePropSingleSelectOptionType",
-    "IssueFieldValueType",
+    "BillingUsageSummaryReportGhePropCostCenterType",
+    "BillingUsageSummaryReportGhePropTimePeriodType",
+    "BillingUsageSummaryReportGhePropUsageItemsItemsType",
+    "BillingUsageSummaryReportGheType",
 )

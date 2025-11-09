@@ -9,116 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class ProjectsV2FieldType(TypedDict):
-    """Projects v2 Field
+class OrganizationProgrammaticAccessGrantType(TypedDict):
+    """Organization Programmatic Access Grant
 
-    A field inside a projects v2 project
+    Minimal representation of an organization programmatic access grant for
+    enumerations
     """
 
     id: int
-    node_id: NotRequired[str]
-    project_url: str
-    name: str
-    data_type: Literal[
-        "assignees",
-        "linked_pull_requests",
-        "reviewers",
-        "labels",
-        "milestone",
-        "repository",
-        "title",
-        "text",
-        "single_select",
-        "number",
-        "date",
-        "iteration",
-        "issue_type",
-        "parent_issue",
-        "sub_issues_progress",
+    owner: SimpleUserType
+    repository_selection: Literal["none", "all", "subset"]
+    repositories_url: str
+    permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
+    access_granted_at: str
+    token_id: int
+    token_name: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType
     ]
-    options: NotRequired[list[ProjectsV2SingleSelectOptionsType]]
-    configuration: NotRequired[ProjectsV2FieldPropConfigurationType]
-    created_at: datetime
-    updated_at: datetime
+    repository: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType
+    ]
+    other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
 
 
-class ProjectsV2SingleSelectOptionsType(TypedDict):
-    """Projects v2 Single Select Option
-
-    An option for a single select field
-    """
-
-    id: str
-    name: ProjectsV2SingleSelectOptionsPropNameType
-    description: ProjectsV2SingleSelectOptionsPropDescriptionType
-    color: str
+OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType: TypeAlias = (
+    dict[str, Any]
+)
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+"""
 
 
-class ProjectsV2SingleSelectOptionsPropNameType(TypedDict):
-    """ProjectsV2SingleSelectOptionsPropName
-
-    The display name of the option, in raw text and HTML formats.
-    """
-
-    raw: str
-    html: str
+OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
+"""
 
 
-class ProjectsV2SingleSelectOptionsPropDescriptionType(TypedDict):
-    """ProjectsV2SingleSelectOptionsPropDescription
-
-    The description of the option, in raw text and HTML formats.
-    """
-
-    raw: str
-    html: str
-
-
-class ProjectsV2FieldPropConfigurationType(TypedDict):
-    """ProjectsV2FieldPropConfiguration
-
-    Configuration for iteration fields.
-    """
-
-    start_day: NotRequired[int]
-    duration: NotRequired[int]
-    iterations: NotRequired[list[ProjectsV2IterationSettingsType]]
-
-
-class ProjectsV2IterationSettingsType(TypedDict):
-    """Projects v2 Iteration Setting
-
-    An iteration setting for an iteration field
-    """
-
-    id: str
-    start_date: date
-    duration: int
-    title: ProjectsV2IterationSettingsPropTitleType
-    completed: bool
-
-
-class ProjectsV2IterationSettingsPropTitleType(TypedDict):
-    """ProjectsV2IterationSettingsPropTitle
-
-    The iteration title, in raw text and HTML formats.
-    """
-
-    raw: str
-    html: str
+OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
+"""
 
 
 __all__ = (
-    "ProjectsV2FieldPropConfigurationType",
-    "ProjectsV2FieldType",
-    "ProjectsV2IterationSettingsPropTitleType",
-    "ProjectsV2IterationSettingsType",
-    "ProjectsV2SingleSelectOptionsPropDescriptionType",
-    "ProjectsV2SingleSelectOptionsPropNameType",
-    "ProjectsV2SingleSelectOptionsType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantType",
 )

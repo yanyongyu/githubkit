@@ -9,46 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingPremiumRequestUsageReportOrgType(TypedDict):
-    """BillingPremiumRequestUsageReportOrg"""
+class GetAllBudgetsType(TypedDict):
+    """GetAllBudgets"""
 
-    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriodType
-    organization: str
-    user: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType]
+    budgets: list[BudgetType]
 
 
-class BillingPremiumRequestUsageReportOrgPropTimePeriodType(TypedDict):
-    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
+class BudgetType(TypedDict):
+    """Budget"""
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: str
+    budget_entity_name: NotRequired[str]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingType
 
 
-class BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType(TypedDict):
-    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
+class BudgetPropBudgetAlertingType(TypedDict):
+    """BudgetPropBudgetAlerting"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "BillingPremiumRequestUsageReportOrgPropTimePeriodType",
-    "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType",
-    "BillingPremiumRequestUsageReportOrgType",
+    "BudgetPropBudgetAlertingType",
+    "BudgetType",
+    "GetAllBudgetsType",
 )

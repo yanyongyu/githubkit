@@ -17,22 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0192 import RepositoryRuleCopilotCodeReviewPropParameters
+from .group_0192 import RepositoryRuleCodeScanningPropParameters
 
 
-class RepositoryRuleCopilotCodeReview(GitHubModel):
-    """copilot_code_review
+class RepositoryRuleCodeScanning(GitHubModel):
+    """code_scanning
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review.
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    type: Literal["copilot_code_review"] = Field()
-    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["code_scanning"] = Field()
+    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleCopilotCodeReview)
+model_rebuild(RepositoryRuleCodeScanning)
 
-__all__ = ("RepositoryRuleCopilotCodeReview",)
+__all__ = ("RepositoryRuleCodeScanning",)

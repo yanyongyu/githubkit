@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0530 import EnterpriseWebhooksType
-from .group_0531 import SimpleInstallationType
-from .group_0532 import OrganizationSimpleWebhooksType
-from .group_0533 import RepositoryWebhooksType
-from .group_0545 import DiscussionType
-from .group_0546 import WebhooksCommentType
+from .group_0534 import EnterpriseWebhooksType
+from .group_0535 import SimpleInstallationType
+from .group_0536 import OrganizationSimpleWebhooksType
+from .group_0537 import RepositoryWebhooksType
+from .group_0549 import DiscussionType
 
 
-class WebhookDiscussionCommentEditedType(TypedDict):
-    """discussion_comment edited event"""
+class WebhookDiscussionCategoryChangedType(TypedDict):
+    """discussion category changed event"""
 
-    action: Literal["edited"]
-    changes: WebhookDiscussionCommentEditedPropChangesType
-    comment: WebhooksCommentType
+    action: Literal["category_changed"]
+    changes: WebhookDiscussionCategoryChangedPropChangesType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -35,20 +34,36 @@ class WebhookDiscussionCommentEditedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionCommentEditedPropChangesType(TypedDict):
-    """WebhookDiscussionCommentEditedPropChanges"""
+class WebhookDiscussionCategoryChangedPropChangesType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChanges"""
 
-    body: WebhookDiscussionCommentEditedPropChangesPropBodyType
+    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryType
 
 
-class WebhookDiscussionCommentEditedPropChangesPropBodyType(TypedDict):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
 
-    from_: str
+    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
+
+    created_at: datetime
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
+    name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
 
 
 __all__ = (
-    "WebhookDiscussionCommentEditedPropChangesPropBodyType",
-    "WebhookDiscussionCommentEditedPropChangesType",
-    "WebhookDiscussionCommentEditedType",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryType",
+    "WebhookDiscussionCategoryChangedPropChangesType",
+    "WebhookDiscussionCategoryChangedType",
 )

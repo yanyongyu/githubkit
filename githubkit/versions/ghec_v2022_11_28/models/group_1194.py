@@ -12,10 +12,10 @@ from __future__ import annotations
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsColumnIdMovesPostResponse201(GitHubModel):
-    """ProjectsColumnsColumnIdMovesPostResponse201"""
+class ProjectsColumnsCardsCardIdMovesPostResponse201(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse201"""
 
 
-model_rebuild(ProjectsColumnsColumnIdMovesPostResponse201)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse201)
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostResponse201",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostResponse201",)

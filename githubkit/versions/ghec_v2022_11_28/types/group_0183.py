@@ -9,15 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class PackagesBillingUsageType(TypedDict):
-    """PackagesBillingUsage"""
+class UpdateBudgetType(TypedDict):
+    """UpdateBudget"""
 
-    total_gigabytes_bandwidth_used: int
-    total_paid_gigabytes_bandwidth_used: int
-    included_gigabytes_bandwidth: int
+    message: str
+    budget: UpdateBudgetPropBudgetType
 
 
-__all__ = ("PackagesBillingUsageType",)
+class UpdateBudgetPropBudgetType(TypedDict):
+    """UpdateBudgetPropBudget"""
+
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_amount: NotRequired[float]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_alerting: NotRequired[UpdateBudgetPropBudgetPropBudgetAlertingType]
+
+
+class UpdateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
+
+
+__all__ = (
+    "UpdateBudgetPropBudgetPropBudgetAlertingType",
+    "UpdateBudgetPropBudgetType",
+    "UpdateBudgetType",
+)

@@ -19,17 +19,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0448 import EnterpriseWebhooks
-from .group_0449 import SimpleInstallation
-from .group_0450 import OrganizationSimpleWebhooks
-from .group_0451 import RepositoryWebhooks
+from .group_0450 import EnterpriseWebhooks
+from .group_0451 import SimpleInstallation
+from .group_0452 import OrganizationSimpleWebhooks
+from .group_0453 import RepositoryWebhooks
 
 
-class WebhookCheckSuiteRerequested(GitHubModel):
-    """check_suite rerequested event"""
+class WebhookCheckSuiteCompleted(GitHubModel):
+    """check_suite completed event"""
 
-    action: Literal["rerequested"] = Field()
-    check_suite: WebhookCheckSuiteRerequestedPropCheckSuite = Field(
+    action: Literal["completed"] = Field()
+    check_suite: WebhookCheckSuiteCompletedPropCheckSuite = Field(
         description="The [check_suite](https://docs.github.com/rest/checks/suites#get-a-check-suite)."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
@@ -54,14 +54,14 @@ class WebhookCheckSuiteRerequested(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuite(GitHubModel):
-    """WebhookCheckSuiteRerequestedPropCheckSuite
+class WebhookCheckSuiteCompletedPropCheckSuite(GitHubModel):
+    """WebhookCheckSuiteCompletedPropCheckSuite
 
     The [check_suite](https://docs.github.com/rest/checks/suites#get-a-check-suite).
     """
 
     after: Union[str, None] = Field()
-    app: WebhookCheckSuiteRerequestedPropCheckSuitePropApp = Field(
+    app: WebhookCheckSuiteCompletedPropCheckSuitePropApp = Field(
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
     )
@@ -77,15 +77,17 @@ class WebhookCheckSuiteRerequestedPropCheckSuite(GitHubModel):
             "timed_out",
             "action_required",
             "stale",
+            "skipped",
+            "startup_failure",
         ],
     ] = Field(
-        description="The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed."
+        description="The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has `completed`."
     )
     created_at: datetime = Field()
     head_branch: Union[str, None] = Field(
         description="The head branch name the changes are on."
     )
-    head_commit: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommit = Field(
+    head_commit: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommit = Field(
         title="SimpleCommit"
     )
     head_sha: str = Field(
@@ -95,22 +97,22 @@ class WebhookCheckSuiteRerequestedPropCheckSuite(GitHubModel):
     latest_check_runs_count: int = Field()
     node_id: str = Field()
     pull_requests: list[
-        WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItems
+        WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItems
     ] = Field(
         description="An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty."
     )
     rerequestable: Missing[bool] = Field(default=UNSET)
     runs_rerequestable: Missing[bool] = Field(default=UNSET)
-    status: Union[None, Literal["requested", "in_progress", "completed", "queued"]] = (
-        Field(
-            description="The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`."
-        )
+    status: Union[
+        None, Literal["requested", "in_progress", "completed", "queued", "pending"]
+    ] = Field(
+        description="The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`."
     )
     updated_at: datetime = Field()
     url: str = Field(description="URL that points to the check suite API resource.")
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropApp(GitHubModel):
+class WebhookCheckSuiteCompletedPropCheckSuitePropApp(GitHubModel):
     """App
 
     GitHub apps are a new way to extend GitHub. They can be installed directly on
@@ -128,15 +130,15 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropApp(GitHubModel):
     html_url: str = Field()
     id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
     client_id: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The Client ID for the GitHub app"
+        default=UNSET, description="The client ID of the GitHub app"
     )
     name: str = Field(description="The name of the GitHub app")
     node_id: str = Field()
-    owner: Union[WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwner, None] = (
+    owner: Union[WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwner, None] = (
         Field(title="User")
     )
     permissions: Missing[
-        WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions
+        WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions
     ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
     slug: Missing[str] = Field(
         default=UNSET, description="The slug name of the GitHub app"
@@ -144,7 +146,7 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropApp(GitHubModel):
     updated_at: Union[datetime, None] = Field()
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwner(GitHubModel):
+class WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwner(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -171,8 +173,8 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwner(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions(GitHubModel):
-    """WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions
+class WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions(GitHubModel):
+    """WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions
 
     The set of permissions for the GitHub app
     """
@@ -222,14 +224,14 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions(GitHubMod
     workflows: Missing[Literal["read", "write"]] = Field(default=UNSET)
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommit(GitHubModel):
+class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommit(GitHubModel):
     """SimpleCommit"""
 
-    author: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthor = Field(
+    author: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthor = Field(
         title="Committer",
         description="Metaproperties for Git author/committer information.",
     )
-    committer: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitter = (
+    committer: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitter = (
         Field(
             title="Committer",
             description="Metaproperties for Git author/committer information.",
@@ -241,7 +243,7 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommit(GitHubModel):
     tree_id: str = Field()
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthor(GitHubModel):
+class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthor(GitHubModel):
     """Committer
 
     Metaproperties for Git author/committer information.
@@ -253,9 +255,7 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthor(GitHubM
     username: Missing[str] = Field(default=UNSET)
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitter(
-    GitHubModel
-):
+class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitter(GitHubModel):
     """Committer
 
     Metaproperties for Git author/committer information.
@@ -267,13 +267,13 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitter(
     username: Missing[str] = Field(default=UNSET)
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItems(GitHubModel):
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItems(GitHubModel):
     """Check Run Pull Request"""
 
-    base: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase = (
+    base: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase = (
         Field()
     )
-    head: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead = (
+    head: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead = (
         Field()
     )
     id: int = Field()
@@ -281,19 +281,19 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItems(GitHubMode
     url: str = Field()
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase(
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase(
     GitHubModel
 ):
-    """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase"""
+    """WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase"""
 
     ref: str = Field()
-    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo = Field(
+    repo: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepo = Field(
         title="Repo Ref"
     )
     sha: str = Field()
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo(
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepo(
     GitHubModel
 ):
     """Repo Ref"""
@@ -303,19 +303,19 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePro
     url: str = Field()
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead(
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead(
     GitHubModel
 ):
-    """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead"""
+    """WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead"""
 
     ref: str = Field()
-    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo = Field(
+    repo: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo = Field(
         title="Repo Ref"
     )
     sha: str = Field()
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo(
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo(
     GitHubModel
 ):
     """Repo Ref"""
@@ -325,36 +325,36 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPro
     url: str = Field()
 
 
-model_rebuild(WebhookCheckSuiteRerequested)
-model_rebuild(WebhookCheckSuiteRerequestedPropCheckSuite)
-model_rebuild(WebhookCheckSuiteRerequestedPropCheckSuitePropApp)
-model_rebuild(WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwner)
-model_rebuild(WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions)
-model_rebuild(WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommit)
-model_rebuild(WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthor)
-model_rebuild(WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitter)
-model_rebuild(WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItems)
-model_rebuild(WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase)
+model_rebuild(WebhookCheckSuiteCompleted)
+model_rebuild(WebhookCheckSuiteCompletedPropCheckSuite)
+model_rebuild(WebhookCheckSuiteCompletedPropCheckSuitePropApp)
+model_rebuild(WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwner)
+model_rebuild(WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions)
+model_rebuild(WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommit)
+model_rebuild(WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthor)
+model_rebuild(WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitter)
+model_rebuild(WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItems)
+model_rebuild(WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase)
 model_rebuild(
-    WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo
+    WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepo
 )
-model_rebuild(WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead)
+model_rebuild(WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead)
 model_rebuild(
-    WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo
+    WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo
 )
 
 __all__ = (
-    "WebhookCheckSuiteRerequested",
-    "WebhookCheckSuiteRerequestedPropCheckSuite",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropApp",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwner",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommit",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthor",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitter",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItems",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo",
+    "WebhookCheckSuiteCompleted",
+    "WebhookCheckSuiteCompletedPropCheckSuite",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropApp",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwner",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommit",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthor",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitter",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItems",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepo",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo",
 )

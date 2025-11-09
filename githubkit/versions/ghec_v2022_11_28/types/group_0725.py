@@ -13,53 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0530 import EnterpriseWebhooksType
-from .group_0531 import SimpleInstallationType
-from .group_0532 import OrganizationSimpleWebhooksType
-from .group_0533 import RepositoryWebhooksType
-from .group_0547 import WebhooksLabelType
-from .group_0726 import WebhookIssuesEditedPropIssueType
+from .group_0534 import EnterpriseWebhooksType
+from .group_0535 import SimpleInstallationType
+from .group_0536 import OrganizationSimpleWebhooksType
+from .group_0537 import RepositoryWebhooksType
+from .group_0726 import WebhookIssuesDeletedPropIssueType
 
 
-class WebhookIssuesEditedType(TypedDict):
-    """issues edited event"""
+class WebhookIssuesDeletedType(TypedDict):
+    """issues deleted event"""
 
-    action: Literal["edited"]
-    changes: WebhookIssuesEditedPropChangesType
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesEditedPropIssueType
-    label: NotRequired[WebhooksLabelType]
+    issue: WebhookIssuesDeletedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesEditedPropChangesType(TypedDict):
-    """WebhookIssuesEditedPropChanges
-
-    The changes to the issue.
-    """
-
-    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyType]
-    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleType]
-
-
-class WebhookIssuesEditedPropChangesPropBodyType(TypedDict):
-    """WebhookIssuesEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookIssuesEditedPropChangesPropTitleType(TypedDict):
-    """WebhookIssuesEditedPropChangesPropTitle"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookIssuesEditedPropChangesPropBodyType",
-    "WebhookIssuesEditedPropChangesPropTitleType",
-    "WebhookIssuesEditedPropChangesType",
-    "WebhookIssuesEditedType",
-)
+__all__ = ("WebhookIssuesDeletedType",)

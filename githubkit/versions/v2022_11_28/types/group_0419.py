@@ -11,18 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0418 import TrafficType
 
+class TopicType(TypedDict):
+    """Topic
 
-class CloneTrafficType(TypedDict):
-    """Clone Traffic
-
-    Clone Traffic
+    A topic aggregates entities that are related to a subject.
     """
 
-    count: int
-    uniques: int
-    clones: list[TrafficType]
+    names: list[str]
 
 
-__all__ = ("CloneTrafficType",)
+__all__ = ("TopicType",)

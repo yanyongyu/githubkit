@@ -9,17 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0064 import BypassResponseType
 
 
-class RepositoryFineGrainedPermissionType(TypedDict):
-    """Repository Fine-Grained Permission
+class SecretScanningDismissalRequestType(TypedDict):
+    """Secret scanning alert dismissal request
 
-    A fine-grained permission that protects repository resources.
+    A dismissal request made by a user asking to close a secret scanning alert in
+    this repository.
     """
 
-    name: str
-    description: str
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[SecretScanningDismissalRequestPropRepositoryType]
+    organization: NotRequired[SecretScanningDismissalRequestPropOrganizationType]
+    requester: NotRequired[SecretScanningDismissalRequestPropRequesterType]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[SecretScanningDismissalRequestPropDataItemsType], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[
+        Literal["pending", "denied", "approved", "cancelled", "expired"]
+    ]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[datetime]
+    created_at: NotRequired[datetime]
+    responses: NotRequired[Union[list[BypassResponseType], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-__all__ = ("RepositoryFineGrainedPermissionType",)
+class SecretScanningDismissalRequestPropRepositoryType(TypedDict):
+    """SecretScanningDismissalRequestPropRepository
+
+    The repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class SecretScanningDismissalRequestPropOrganizationType(TypedDict):
+    """SecretScanningDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class SecretScanningDismissalRequestPropRequesterType(TypedDict):
+    """SecretScanningDismissalRequestPropRequester
+
+    The user who requested the dismissal.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class SecretScanningDismissalRequestPropDataItemsType(TypedDict):
+    """SecretScanningDismissalRequestPropDataItems"""
+
+    secret_type: NotRequired[str]
+    alert_number: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+
+
+__all__ = (
+    "SecretScanningDismissalRequestPropDataItemsType",
+    "SecretScanningDismissalRequestPropOrganizationType",
+    "SecretScanningDismissalRequestPropRepositoryType",
+    "SecretScanningDismissalRequestPropRequesterType",
+    "SecretScanningDismissalRequestType",
+)

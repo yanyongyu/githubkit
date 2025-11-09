@@ -9,28 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0327 import (
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType,
-    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
-)
+from .group_0003 import SimpleUserType
+from .group_0325 import DiffEntryType
+from .group_0327 import CommitPropCommitType
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsType(TypedDict):
-    """ProtectedBranchPropRequiredPullRequestReviews"""
+class CommitType(TypedDict):
+    """Commit
+
+    Commit
+    """
 
     url: str
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType
-    ]
+    sha: str
+    node_id: str
+    html_url: str
+    comments_url: str
+    commit: CommitPropCommitType
+    author: Union[SimpleUserType, EmptyObjectType, None]
+    committer: Union[SimpleUserType, EmptyObjectType, None]
+    parents: list[CommitPropParentsItemsType]
+    stats: NotRequired[CommitPropStatsType]
+    files: NotRequired[list[DiffEntryType]]
 
 
-__all__ = ("ProtectedBranchPropRequiredPullRequestReviewsType",)
+class EmptyObjectType(TypedDict):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
+class CommitPropParentsItemsType(TypedDict):
+    """CommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: NotRequired[str]
+
+
+class CommitPropStatsType(TypedDict):
+    """CommitPropStats"""
+
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
+
+
+__all__ = (
+    "CommitPropParentsItemsType",
+    "CommitPropStatsType",
+    "CommitType",
+    "EmptyObjectType",
+)

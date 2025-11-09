@@ -13,23 +13,17 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0530 import EnterpriseWebhooksType
-from .group_0531 import SimpleInstallationType
-from .group_0532 import OrganizationSimpleWebhooksType
-from .group_0533 import RepositoryWebhooksType
-from .group_0561 import WebhooksMembershipType
+from .group_0098 import OrganizationCustomPropertyType
+from .group_0534 import EnterpriseWebhooksType
 
 
-class WebhookOrganizationDeletedType(TypedDict):
-    """organization deleted event"""
+class WebhookOrganizationCustomPropertyCreatedType(TypedDict):
+    """organization custom property created event"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    membership: NotRequired[WebhooksMembershipType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    action: Literal["created"]
+    definition: OrganizationCustomPropertyType
+    enterprise: EnterpriseWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookOrganizationDeletedType",)
+__all__ = ("WebhookOrganizationCustomPropertyCreatedType",)

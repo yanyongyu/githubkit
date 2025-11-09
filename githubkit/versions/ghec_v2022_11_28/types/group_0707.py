@@ -9,30 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
-from .group_0193 import IssueType
-from .group_0531 import SimpleInstallationType
-from .group_0532 import OrganizationSimpleWebhooksType
-from .group_0533 import RepositoryWebhooksType
+from .group_0702 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType,
+)
 
 
-class WebhookIssueDependenciesBlockingAddedType(TypedDict):
-    """blocking issue added event"""
+class WebhookIssueCommentEditedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssueCommentEditedPropIssueMergedMilestone"""
 
-    action: Literal["blocking_added"]
-    blocked_issue_id: float
-    blocked_issue: IssueType
-    blocked_issue_repo: RepositoryType
-    blocking_issue_id: float
-    blocking_issue: IssueType
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType, None
+    ]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
+    url: str
 
 
-__all__ = ("WebhookIssueDependenciesBlockingAddedType",)
+__all__ = ("WebhookIssueCommentEditedPropIssueMergedMilestoneType",)

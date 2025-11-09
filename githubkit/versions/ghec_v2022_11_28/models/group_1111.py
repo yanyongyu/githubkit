@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,24 +19,45 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesAccessPutBody(GitHubModel):
-    """OrgsOrgCodespacesAccessPutBody"""
+class OrgsOrgCampaignsCampaignNumberPatchBody(GitHubModel):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
 
-    visibility: Literal[
-        "disabled",
-        "selected_members",
-        "all_members",
-        "all_members_and_outside_collaborators",
-    ] = Field(
-        description="Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization."
-    )
-    selected_usernames: Missing[list[str]] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
+    name: Missing[str] = Field(
+        min_length=1,
+        max_length=50,
         default=UNSET,
-        description="The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.",
+        description="The name of the campaign",
+    )
+    description: Missing[str] = Field(
+        min_length=1,
+        max_length=255,
+        default=UNSET,
+        description="A description for the campaign",
+    )
+    managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
+    )
+    team_managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The slugs of the teams to set as the campaign managers.",
+    )
+    ends_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The end date and time of the campaign, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+    )
+    contact_link: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contact link of the campaign. Must be a URI."
+    )
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET,
+        title="Campaign state",
+        description="Indicates whether a campaign is open or closed",
     )
 
 
-model_rebuild(OrgsOrgCodespacesAccessPutBody)
+model_rebuild(OrgsOrgCampaignsCampaignNumberPatchBody)
 
-__all__ = ("OrgsOrgCodespacesAccessPutBody",)
+__all__ = ("OrgsOrgCampaignsCampaignNumberPatchBody",)

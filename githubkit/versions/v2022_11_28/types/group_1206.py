@@ -13,8 +13,8 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
     state: Literal["open", "resolved"]
     resolution: NotRequired[
@@ -23,4 +23,4 @@ class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType(TypedDict):
     resolution_comment: NotRequired[Union[str, None]]
 
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type",)

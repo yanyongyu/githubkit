@@ -9,26 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ProjectsColumnsCardsCardIdPatchBody(GitHubModel):
-    """ProjectsColumnsCardsCardIdPatchBody"""
+class OrgsOrgTeamsTeamSlugExternalGroupsPatchBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
 
-    note: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The project card's note"
-    )
-    archived: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the card is archived"
-    )
+    group_id: int = Field(description="External Group Id")
 
 
-model_rebuild(ProjectsColumnsCardsCardIdPatchBody)
+model_rebuild(OrgsOrgTeamsTeamSlugExternalGroupsPatchBody)
 
-__all__ = ("ProjectsColumnsCardsCardIdPatchBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBody",)

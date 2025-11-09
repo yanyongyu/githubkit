@@ -9,32 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageReportType(TypedDict):
-    """BillingUsageReport"""
+class GetBudgetType(TypedDict):
+    """GetBudget"""
 
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
+    id: str
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
+    budget_entity_name: str
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_product_sku: str
+    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_alerting: GetBudgetPropBudgetAlertingType
 
 
-class BillingUsageReportPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
+class GetBudgetPropBudgetAlertingType(TypedDict):
+    """GetBudgetPropBudgetAlerting"""
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "BillingUsageReportPropUsageItemsItemsType",
-    "BillingUsageReportType",
+    "GetBudgetPropBudgetAlertingType",
+    "GetBudgetType",
 )

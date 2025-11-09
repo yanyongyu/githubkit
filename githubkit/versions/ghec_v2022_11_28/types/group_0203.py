@@ -9,29 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0003 import SimpleUserType
 
 
-class LicenseType(TypedDict):
-    """License
+class GistHistoryType(TypedDict):
+    """Gist History
 
-    License
+    Gist History
     """
 
-    key: str
-    name: str
-    spdx_id: Union[str, None]
-    url: Union[str, None]
+    user: NotRequired[Union[None, SimpleUserType]]
+    version: NotRequired[str]
+    committed_at: NotRequired[datetime]
+    change_status: NotRequired[GistHistoryPropChangeStatusType]
+    url: NotRequired[str]
+
+
+class GistHistoryPropChangeStatusType(TypedDict):
+    """GistHistoryPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
+
+    Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
     node_id: str
+    git_pull_url: str
+    git_push_url: str
     html_url: str
-    description: str
-    implementation: str
-    permissions: list[str]
-    conditions: list[str]
-    limitations: list[str]
-    body: str
-    featured: bool
+    files: GistSimplePropForkOfPropFilesType
+    public: bool
+    created_at: datetime
+    updated_at: datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserType]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserType]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-__all__ = ("LicenseType",)
+GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
+
+
+__all__ = (
+    "GistHistoryPropChangeStatusType",
+    "GistHistoryType",
+    "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfType",
+)

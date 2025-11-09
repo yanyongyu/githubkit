@@ -9,14 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoProjectsPostBodyType(TypedDict):
-    """ReposOwnerRepoProjectsPostBody"""
+class ReposOwnerRepoPagesPostBodyPropSourceType(TypedDict):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-    name: str
-    body: NotRequired[str]
+    The source branch and directory used to publish your Pages site.
+    """
+
+    branch: str
+    path: NotRequired[Literal["/", "/docs"]]
 
 
-__all__ = ("ReposOwnerRepoProjectsPostBodyType",)
+__all__ = ("ReposOwnerRepoPagesPostBodyPropSourceType",)

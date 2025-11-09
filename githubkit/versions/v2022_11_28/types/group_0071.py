@@ -9,19 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsHostedRunnerMachineSpecType(TypedDict):
-    """Github-owned VM details.
+class BillingUsageSummaryReportOrgType(TypedDict):
+    """BillingUsageSummaryReportOrg"""
 
-    Provides details of a particular machine spec.
-    """
+    time_period: BillingUsageSummaryReportOrgPropTimePeriodType
+    organization: str
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsType]
 
-    id: str
-    cpu_cores: int
-    memory_gb: int
-    storage_gb: int
+
+class BillingUsageSummaryReportOrgPropTimePeriodType(TypedDict):
+    """BillingUsageSummaryReportOrgPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-__all__ = ("ActionsHostedRunnerMachineSpecType",)
+class BillingUsageSummaryReportOrgPropUsageItemsItemsType(TypedDict):
+    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+__all__ = (
+    "BillingUsageSummaryReportOrgPropTimePeriodType",
+    "BillingUsageSummaryReportOrgPropUsageItemsItemsType",
+    "BillingUsageSummaryReportOrgType",
+)

@@ -9,15 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class SelectedActionsType(TypedDict):
-    """SelectedActions"""
+class ActionsForkPrContributorApprovalType(TypedDict):
+    """ActionsForkPrContributorApproval"""
 
-    github_owned_allowed: NotRequired[bool]
-    verified_allowed: NotRequired[bool]
-    patterns_allowed: NotRequired[list[str]]
+    approval_policy: Literal[
+        "first_time_contributors_new_to_github",
+        "first_time_contributors",
+        "all_external_contributors",
+    ]
 
 
-__all__ = ("SelectedActionsType",)
+__all__ = ("ActionsForkPrContributorApprovalType",)

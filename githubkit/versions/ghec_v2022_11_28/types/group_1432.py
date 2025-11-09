@@ -13,70 +13,40 @@ from typing import Any
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
+class UsersUsernameAttestationsBulkListPostResponse200Type(TypedDict):
+    """UsersUsernameAttestationsBulkListPostResponse200"""
 
-    attestations: NotRequired[
-        list[
-            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
-        ]
+    attestations_subject_digests: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
+    ]
+    page_info: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType
     ]
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
-    TypedDict
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
+    str, Any
+]
+"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
 
-    bundle: NotRequired[
-        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType
-    ]
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
+Mapping of subject digest to bundles.
+"""
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType(
-    TypedDict
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
-    dle
+class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
+    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
 
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    Information about the current page.
     """
 
-    media_type: NotRequired[str]
-    verification_material: NotRequired[
-        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType
-    ]
-    dsse_envelope: NotRequired[
-        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType
-    ]
-
-
-UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
-dlePropVerificationMaterial
-"""
-
-
-UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
-dlePropDsseEnvelope
-"""
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
+    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
+    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType",
+    "UsersUsernameAttestationsBulkListPostResponse200Type",
 )

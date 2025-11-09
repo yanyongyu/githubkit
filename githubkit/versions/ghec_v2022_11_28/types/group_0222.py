@@ -9,23 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class CodespaceMachineType(TypedDict):
-    """Codespace machine
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    A description of the machine powering a codespace.
+    Actions OIDC Subject customization
     """
 
-    name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
+    include_claim_keys: list[str]
 
 
-__all__ = ("CodespaceMachineType",)
+__all__ = ("OidcCustomSubType",)

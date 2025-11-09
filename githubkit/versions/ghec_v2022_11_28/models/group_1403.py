@@ -12,17 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0223 import Codespace
-
-
-class UserCodespacesGetResponse200(GitHubModel):
-    """UserCodespacesGetResponse200"""
-
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(UserCodespacesGetResponse200)
+class TeamsTeamIdProjectsProjectIdPutResponse403(GitHubModel):
+    """TeamsTeamIdProjectsProjectIdPutResponse403"""
 
-__all__ = ("UserCodespacesGetResponse200",)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(TeamsTeamIdProjectsProjectIdPutResponse403)
+
+__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403",)

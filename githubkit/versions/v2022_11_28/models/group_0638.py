@@ -18,18 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0448 import EnterpriseWebhooks
-from .group_0449 import SimpleInstallation
-from .group_0450 import OrganizationSimpleWebhooks
-from .group_0451 import RepositoryWebhooks
-from .group_0463 import WebhooksLabel
-from .group_0639 import WebhookIssuesLabeledPropIssue
+from .group_0450 import EnterpriseWebhooks
+from .group_0451 import SimpleInstallation
+from .group_0452 import OrganizationSimpleWebhooks
+from .group_0453 import RepositoryWebhooks
+from .group_0465 import WebhooksLabel
+from .group_0639 import WebhookIssuesEditedPropIssue
 
 
-class WebhookIssuesLabeled(GitHubModel):
-    """issues labeled event"""
+class WebhookIssuesEdited(GitHubModel):
+    """issues edited event"""
 
-    action: Literal["labeled"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookIssuesEditedPropChanges = Field(
+        description="The changes to the issue."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,7 +43,7 @@ class WebhookIssuesLabeled(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesLabeledPropIssue = Field(
+    issue: WebhookIssuesEditedPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
     )
@@ -57,6 +60,36 @@ class WebhookIssuesLabeled(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesLabeled)
+class WebhookIssuesEditedPropChanges(GitHubModel):
+    """WebhookIssuesEditedPropChanges
 
-__all__ = ("WebhookIssuesLabeled",)
+    The changes to the issue.
+    """
+
+    body: Missing[WebhookIssuesEditedPropChangesPropBody] = Field(default=UNSET)
+    title: Missing[WebhookIssuesEditedPropChangesPropTitle] = Field(default=UNSET)
+
+
+class WebhookIssuesEditedPropChangesPropBody(GitHubModel):
+    """WebhookIssuesEditedPropChangesPropBody"""
+
+    from_: str = Field(alias="from", description="The previous version of the body.")
+
+
+class WebhookIssuesEditedPropChangesPropTitle(GitHubModel):
+    """WebhookIssuesEditedPropChangesPropTitle"""
+
+    from_: str = Field(alias="from", description="The previous version of the title.")
+
+
+model_rebuild(WebhookIssuesEdited)
+model_rebuild(WebhookIssuesEditedPropChanges)
+model_rebuild(WebhookIssuesEditedPropChangesPropBody)
+model_rebuild(WebhookIssuesEditedPropChangesPropTitle)
+
+__all__ = (
+    "WebhookIssuesEdited",
+    "WebhookIssuesEditedPropChanges",
+    "WebhookIssuesEditedPropChangesPropBody",
+    "WebhookIssuesEditedPropChangesPropTitle",
+)

@@ -9,18 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPrivateRegistriesPublicKeyGetResponse200(GitHubModel):
-    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
-
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
+class OrgsOrgOutsideCollaboratorsUsernamePutResponse202(GitHubModel):
+    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
 
 
-model_rebuild(OrgsOrgPrivateRegistriesPublicKeyGetResponse200)
+model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutResponse202)
 
-__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202",)

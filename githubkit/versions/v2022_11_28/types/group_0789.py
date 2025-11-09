@@ -9,20 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0448 import EnterpriseWebhooksType
-from .group_0449 import SimpleInstallationType
-from .group_0450 import OrganizationSimpleWebhooksType
-from .group_0451 import RepositoryWebhooksType
+from .group_0450 import EnterpriseWebhooksType
+from .group_0451 import SimpleInstallationType
+from .group_0452 import OrganizationSimpleWebhooksType
+from .group_0453 import RepositoryWebhooksType
 
 
-class WebhookRepositoryPrivatizedType(TypedDict):
-    """repository privatized event"""
+class WebhookRepositoryEditedType(TypedDict):
+    """repository edited event"""
 
-    action: Literal["privatized"]
+    action: Literal["edited"]
+    changes: WebhookRepositoryEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -30,4 +31,44 @@ class WebhookRepositoryPrivatizedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookRepositoryPrivatizedType",)
+class WebhookRepositoryEditedPropChangesType(TypedDict):
+    """WebhookRepositoryEditedPropChanges"""
+
+    default_branch: NotRequired[WebhookRepositoryEditedPropChangesPropDefaultBranchType]
+    description: NotRequired[WebhookRepositoryEditedPropChangesPropDescriptionType]
+    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageType]
+    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsType]
+
+
+class WebhookRepositoryEditedPropChangesPropDefaultBranchType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
+
+    from_: str
+
+
+class WebhookRepositoryEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropDescription"""
+
+    from_: Union[str, None]
+
+
+class WebhookRepositoryEditedPropChangesPropHomepageType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropHomepage"""
+
+    from_: Union[str, None]
+
+
+class WebhookRepositoryEditedPropChangesPropTopicsType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropTopics"""
+
+    from_: NotRequired[Union[list[str], None]]
+
+
+__all__ = (
+    "WebhookRepositoryEditedPropChangesPropDefaultBranchType",
+    "WebhookRepositoryEditedPropChangesPropDescriptionType",
+    "WebhookRepositoryEditedPropChangesPropHomepageType",
+    "WebhookRepositoryEditedPropChangesPropTopicsType",
+    "WebhookRepositoryEditedPropChangesType",
+    "WebhookRepositoryEditedType",
+)

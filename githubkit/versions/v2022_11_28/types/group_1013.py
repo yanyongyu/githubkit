@@ -9,15 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsPostBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
+class OrgsOrgSettingsNetworkConfigurationsPostBodyType(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
 
-    title: str
-    body: str
-    private: NotRequired[bool]
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",)
+__all__ = ("OrgsOrgSettingsNetworkConfigurationsPostBodyType",)

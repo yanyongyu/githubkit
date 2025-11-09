@@ -11,11 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
-
-    attestation_ids: list[int]
+from .group_0214 import MinimalRepositoryType
 
 
-__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",)
+class OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",)

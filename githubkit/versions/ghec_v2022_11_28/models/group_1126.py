@@ -12,17 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0082 import CopilotSeatDetails
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
+    total_seats: Missing[int] = Field(
+        default=UNSET,
+        description="Total number of Copilot seats for the organization currently being billed.",
+    )
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
-    seats_cancelled: int = Field()
 
+model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteResponse200)
-
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200",)

@@ -11,14 +11,16 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0044 import OrganizationSimpleType
+from .group_0031 import ActionsHostedRunnerMachineSpecType
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
 
-    total_count: float
-    organizations: list[OrganizationSimpleType]
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecType]
 
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type",)
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type",)

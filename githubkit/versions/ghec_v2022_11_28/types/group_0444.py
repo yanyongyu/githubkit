@@ -9,33 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType
+from .group_0080 import TeamType
 
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
+class PullRequestReviewRequestType(TypedDict):
+    """Pull Request Review Request
 
-    Data related to a release.
+    Pull Request Review Request
     """
 
-    url: str
-    browser_download_url: str
-    id: int
-    node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: datetime
-    updated_at: datetime
-    uploader: Union[None, SimpleUserType]
+    users: list[SimpleUserType]
+    teams: list[TeamType]
 
 
-__all__ = ("ReleaseAssetType",)
+__all__ = ("PullRequestReviewRequestType",)

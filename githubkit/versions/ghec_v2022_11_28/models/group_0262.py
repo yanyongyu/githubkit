@@ -9,149 +9,100 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class ProjectsV2Field(GitHubModel):
-    """Projects v2 Field
 
-    A field inside a projects v2 project
+class OrganizationProgrammaticAccessGrant(GitHubModel):
+    """Organization Programmatic Access Grant
+
+    Minimal representation of an organization programmatic access grant for
+    enumerations
     """
 
-    id: int = Field(description="The unique identifier of the field.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the field."
+    id: int = Field(
+        description="Unique identifier of the fine-grained personal access token grant. The `pat_id` used to get details about an approved fine-grained personal access token."
     )
-    project_url: str = Field(
-        description="The API URL of the project that contains the field."
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    repository_selection: Literal["none", "all", "subset"] = Field(
+        description="Type of repository selection requested."
     )
-    name: str = Field(description="The name of the field.")
-    data_type: Literal[
-        "assignees",
-        "linked_pull_requests",
-        "reviewers",
-        "labels",
-        "milestone",
-        "repository",
-        "title",
-        "text",
-        "single_select",
-        "number",
-        "date",
-        "iteration",
-        "issue_type",
-        "parent_issue",
-        "sub_issues_progress",
-    ] = Field(description="The field's data type.")
-    options: Missing[list[ProjectsV2SingleSelectOptions]] = Field(
-        default=UNSET, description="The options available for single select fields."
+    repositories_url: str = Field(
+        description="URL to the list of repositories the fine-grained personal access token can access. Only follow when `repository_selection` is `subset`."
     )
-    configuration: Missing[ProjectsV2FieldPropConfiguration] = Field(
-        default=UNSET, description="Configuration for iteration fields."
+    permissions: OrganizationProgrammaticAccessGrantPropPermissions = Field(
+        description="Permissions requested, categorized by type of permission."
     )
-    created_at: datetime = Field(description="The time when the field was created.")
-    updated_at: datetime = Field(
-        description="The time when the field was last updated."
+    access_granted_at: str = Field(
+        description="Date and time when the fine-grained personal access token was approved to access the organization."
+    )
+    token_id: int = Field(
+        description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
+    )
+    token_name: str = Field(
+        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
+    )
+    token_expired: bool = Field(
+        description="Whether the associated fine-grained personal access token has expired."
+    )
+    token_expires_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token expires."
+    )
+    token_last_used_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token was last used for authentication."
     )
 
 
-class ProjectsV2SingleSelectOptions(GitHubModel):
-    """Projects v2 Single Select Option
+class OrganizationProgrammaticAccessGrantPropPermissions(GitHubModel):
+    """OrganizationProgrammaticAccessGrantPropPermissions
 
-    An option for a single select field
+    Permissions requested, categorized by type of permission.
     """
 
-    id: str = Field(description="The unique identifier of the option.")
-    name: ProjectsV2SingleSelectOptionsPropName = Field(
-        description="The display name of the option, in raw text and HTML formats."
+    organization: Missing[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[OrganizationProgrammaticAccessGrantPropPermissionsPropOther] = Field(
+        default=UNSET
     )
-    description: ProjectsV2SingleSelectOptionsPropDescription = Field(
-        description="The description of the option, in raw text and HTML formats."
-    )
-    color: str = Field(description="The color associated with the option.")
 
 
-class ProjectsV2SingleSelectOptionsPropName(GitHubModel):
-    """ProjectsV2SingleSelectOptionsPropName
-
-    The display name of the option, in raw text and HTML formats.
-    """
-
-    raw: str = Field()
-    html: str = Field()
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization(
+    ExtraGitHubModel
+):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
 
 
-class ProjectsV2SingleSelectOptionsPropDescription(GitHubModel):
-    """ProjectsV2SingleSelectOptionsPropDescription
-
-    The description of the option, in raw text and HTML formats.
-    """
-
-    raw: str = Field()
-    html: str = Field()
+class OrganizationProgrammaticAccessGrantPropPermissionsPropRepository(
+    ExtraGitHubModel
+):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
 
 
-class ProjectsV2FieldPropConfiguration(GitHubModel):
-    """ProjectsV2FieldPropConfiguration
-
-    Configuration for iteration fields.
-    """
-
-    start_day: Missing[int] = Field(
-        default=UNSET, description="The day of the week when the iteration starts."
-    )
-    duration: Missing[int] = Field(
-        default=UNSET, description="The duration of the iteration in days."
-    )
-    iterations: Missing[list[ProjectsV2IterationSettings]] = Field(default=UNSET)
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOther(ExtraGitHubModel):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
 
 
-class ProjectsV2IterationSettings(GitHubModel):
-    """Projects v2 Iteration Setting
-
-    An iteration setting for an iteration field
-    """
-
-    id: str = Field(description="The unique identifier of the iteration setting.")
-    start_date: date = Field(description="The start date of the iteration.")
-    duration: int = Field(description="The duration of the iteration in days.")
-    title: ProjectsV2IterationSettingsPropTitle = Field(
-        description="The iteration title, in raw text and HTML formats."
-    )
-    completed: bool = Field(description="Whether the iteration has been completed.")
-
-
-class ProjectsV2IterationSettingsPropTitle(GitHubModel):
-    """ProjectsV2IterationSettingsPropTitle
-
-    The iteration title, in raw text and HTML formats.
-    """
-
-    raw: str = Field()
-    html: str = Field()
-
-
-model_rebuild(ProjectsV2Field)
-model_rebuild(ProjectsV2SingleSelectOptions)
-model_rebuild(ProjectsV2SingleSelectOptionsPropName)
-model_rebuild(ProjectsV2SingleSelectOptionsPropDescription)
-model_rebuild(ProjectsV2FieldPropConfiguration)
-model_rebuild(ProjectsV2IterationSettings)
-model_rebuild(ProjectsV2IterationSettingsPropTitle)
+model_rebuild(OrganizationProgrammaticAccessGrant)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissions)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropRepository)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOther)
 
 __all__ = (
-    "ProjectsV2Field",
-    "ProjectsV2FieldPropConfiguration",
-    "ProjectsV2IterationSettings",
-    "ProjectsV2IterationSettingsPropTitle",
-    "ProjectsV2SingleSelectOptions",
-    "ProjectsV2SingleSelectOptionsPropDescription",
-    "ProjectsV2SingleSelectOptionsPropName",
+    "OrganizationProgrammaticAccessGrant",
+    "OrganizationProgrammaticAccessGrantPropPermissions",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
 )

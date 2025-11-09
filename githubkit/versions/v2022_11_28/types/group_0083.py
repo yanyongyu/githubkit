@@ -9,15 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class SelfHostedRunnersSettingsType(TypedDict):
-    """SelfHostedRunnersSettings"""
+class ActionsForkPrWorkflowsPrivateReposType(TypedDict):
+    """ActionsForkPrWorkflowsPrivateRepos"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: bool
+    send_secrets_and_variables: bool
+    require_approval_for_fork_pr_workflows: bool
 
 
-__all__ = ("SelfHostedRunnersSettingsType",)
+__all__ = ("ActionsForkPrWorkflowsPrivateReposType",)

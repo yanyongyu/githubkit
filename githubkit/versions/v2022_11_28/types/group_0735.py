@@ -9,23 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0448 import EnterpriseWebhooksType
-from .group_0449 import SimpleInstallationType
-from .group_0450 import OrganizationSimpleWebhooksType
-from .group_0451 import RepositoryWebhooksType
+from .group_0129 import ProjectsV2StatusUpdateType
+from .group_0451 import SimpleInstallationType
+from .group_0452 import OrganizationSimpleWebhooksType
 
 
-class WebhookPublicType(TypedDict):
-    """public event"""
+class WebhookProjectsV2StatusUpdateDeletedType(TypedDict):
+    """Projects v2 Status Update Deleted Event"""
 
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_status_update: ProjectsV2StatusUpdateType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookPublicType",)
+__all__ = ("WebhookProjectsV2StatusUpdateDeletedType",)

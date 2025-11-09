@@ -9,82 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0214 import MinimalRepository
 
 
-class BillingUsageSummaryReportOrg(GitHubModel):
-    """BillingUsageSummaryReportOrg"""
+class Thread(GitHubModel):
+    """Thread
 
-    time_period: BillingUsageSummaryReportOrgPropTimePeriod = Field(alias="timePeriod")
-    organization: str = Field(description="The unique identifier of the organization.")
-    repository: Missing[str] = Field(
-        default=UNSET, description="The name of the repository for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    sku: Missing[str] = Field(
-        default=UNSET, description="The SKU for the usage report."
-    )
-    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItems] = Field(
-        alias="usageItems"
-    )
+    Thread
+    """
 
-
-class BillingUsageSummaryReportOrgPropTimePeriod(GitHubModel):
-    """BillingUsageSummaryReportOrgPropTimePeriod"""
-
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
+    id: str = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
-    )
+    subject: ThreadPropSubject = Field()
+    reason: str = Field()
+    unread: bool = Field()
+    updated_at: str = Field()
+    last_read_at: Union[str, None] = Field()
+    url: str = Field()
+    subscription_url: str = Field()
 
 
-class BillingUsageSummaryReportOrgPropUsageItemsItems(GitHubModel):
-    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
+class ThreadPropSubject(GitHubModel):
+    """ThreadPropSubject"""
 
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
-    )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
+    title: str = Field()
+    url: str = Field()
+    latest_comment_url: str = Field()
+    type: str = Field()
 
 
-model_rebuild(BillingUsageSummaryReportOrg)
-model_rebuild(BillingUsageSummaryReportOrgPropTimePeriod)
-model_rebuild(BillingUsageSummaryReportOrgPropUsageItemsItems)
+model_rebuild(Thread)
+model_rebuild(ThreadPropSubject)
 
 __all__ = (
-    "BillingUsageSummaryReportOrg",
-    "BillingUsageSummaryReportOrgPropTimePeriod",
-    "BillingUsageSummaryReportOrgPropUsageItemsItems",
+    "Thread",
+    "ThreadPropSubject",
 )

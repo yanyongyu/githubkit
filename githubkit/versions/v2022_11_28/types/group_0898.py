@@ -9,35 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersPostBodyType(TypedDict):
-    """OrgsOrgActionsHostedRunnersPostBody"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
 
-    name: str
-    image: OrgsOrgActionsHostedRunnersPostBodyPropImageType
-    size: str
-    runner_group_id: int
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    image_gen: NotRequired[bool]
+    message: NotRequired[str]
+    budget: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType
+    ]
 
 
-class OrgsOrgActionsHostedRunnersPostBodyPropImageType(TypedDict):
-    """OrgsOrgActionsHostedRunnersPostBodyPropImage
-
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
-    """
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
 
     id: NotRequired[str]
-    source: NotRequired[Literal["github", "partner", "custom"]]
-    version: NotRequired[Union[str, None]]
+    budget_amount: NotRequired[float]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType
+    ]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
+    etAlerting
+    """
+
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersPostBodyPropImageType",
-    "OrgsOrgActionsHostedRunnersPostBodyType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type",
 )

@@ -9,32 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamSimpleType(TypedDict):
-    """Team Simple
+class RunnerApplicationType(TypedDict):
+    """Runner Application
 
-    Groups of organization members that gives permissions on specified repositories.
+    Runner Application
     """
 
-    id: int
-    node_id: str
-    url: str
-    members_url: str
-    name: str
-    description: Union[str, None]
-    permission: str
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    html_url: str
-    repositories_url: str
-    slug: str
-    ldap_dn: NotRequired[str]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
-__all__ = ("TeamSimpleType",)
+__all__ = ("RunnerApplicationType",)

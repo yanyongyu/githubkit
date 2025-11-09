@@ -9,30 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleCodeScanningPropParametersType(TypedDict):
-    """RepositoryRuleCodeScanningPropParameters"""
+class RepositoryRuleWorkflowsPropParametersType(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
 
-    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
+    do_not_enforce_on_create: NotRequired[bool]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
 
 
-class RepositoryRuleParamsCodeScanningToolType(TypedDict):
-    """CodeScanningTool
+class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
+    """WorkflowFileReference
 
-    A tool that must provide code scanning results for this rule to pass.
+    A workflow that must run for this rule to pass
     """
 
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
-    ]
-    tool: str
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleCodeScanningPropParametersType",
-    "RepositoryRuleParamsCodeScanningToolType",
+    "RepositoryRuleParamsWorkflowFileReferenceType",
+    "RepositoryRuleWorkflowsPropParametersType",
 )

@@ -17,32 +17,32 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0143 import RepositoryRulesetBypassActor
-from .group_0144 import RepositoryRulesetConditions
-from .group_0155 import (
+from .group_0145 import RepositoryRulesetBypassActor
+from .group_0146 import RepositoryRulesetConditions
+from .group_0157 import (
     RepositoryRuleCreation,
     RepositoryRuleDeletion,
     RepositoryRuleNonFastForward,
     RepositoryRuleRequiredSignatures,
 )
-from .group_0156 import RepositoryRuleUpdate
-from .group_0158 import RepositoryRuleRequiredLinearHistory
-from .group_0159 import RepositoryRuleMergeQueue
-from .group_0161 import RepositoryRuleRequiredDeployments
-from .group_0164 import RepositoryRulePullRequest
-from .group_0166 import RepositoryRuleRequiredStatusChecks
-from .group_0168 import RepositoryRuleCommitMessagePattern
-from .group_0170 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0172 import RepositoryRuleCommitterEmailPattern
-from .group_0174 import RepositoryRuleBranchNamePattern
-from .group_0176 import RepositoryRuleTagNamePattern
-from .group_0178 import RepositoryRuleFilePathRestriction
-from .group_0180 import RepositoryRuleMaxFilePathLength
-from .group_0182 import RepositoryRuleFileExtensionRestriction
-from .group_0184 import RepositoryRuleMaxFileSize
-from .group_0187 import RepositoryRuleWorkflows
-from .group_0189 import RepositoryRuleCodeScanning
-from .group_0191 import RepositoryRuleCopilotCodeReview
+from .group_0158 import RepositoryRuleUpdate
+from .group_0160 import RepositoryRuleRequiredLinearHistory
+from .group_0161 import RepositoryRuleMergeQueue
+from .group_0163 import RepositoryRuleRequiredDeployments
+from .group_0166 import RepositoryRulePullRequest
+from .group_0168 import RepositoryRuleRequiredStatusChecks
+from .group_0170 import RepositoryRuleCommitMessagePattern
+from .group_0172 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0174 import RepositoryRuleCommitterEmailPattern
+from .group_0176 import RepositoryRuleBranchNamePattern
+from .group_0178 import RepositoryRuleTagNamePattern
+from .group_0180 import RepositoryRuleFilePathRestriction
+from .group_0182 import RepositoryRuleMaxFilePathLength
+from .group_0184 import RepositoryRuleFileExtensionRestriction
+from .group_0186 import RepositoryRuleMaxFileSize
+from .group_0189 import RepositoryRuleWorkflows
+from .group_0191 import RepositoryRuleCodeScanning
+from .group_0193 import RepositoryRuleCopilotCodeReview
 
 
 class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):

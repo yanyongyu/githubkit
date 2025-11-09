@@ -9,37 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0044 import OrganizationSimpleType
+
+class ApiInsightsUserStatsItemsType(TypedDict):
+    """ApiInsightsUserStatsItems"""
+
+    actor_type: NotRequired[str]
+    actor_name: NotRequired[str]
+    actor_id: NotRequired[int]
+    integration_id: NotRequired[Union[int, None]]
+    oauth_application_id: NotRequired[Union[int, None]]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
-class OrgMembershipType(TypedDict):
-    """Org Membership
-
-    Org Membership
-    """
-
-    url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleType
-    user: Union[None, SimpleUserType]
-    permissions: NotRequired[OrgMembershipPropPermissionsType]
-
-
-class OrgMembershipPropPermissionsType(TypedDict):
-    """OrgMembershipPropPermissions"""
-
-    can_create_repository: bool
-
-
-__all__ = (
-    "OrgMembershipPropPermissionsType",
-    "OrgMembershipType",
-)
+__all__ = ("ApiInsightsUserStatsItemsType",)

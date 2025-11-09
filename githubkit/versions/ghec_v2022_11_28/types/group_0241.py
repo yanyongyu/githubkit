@@ -9,15 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ApiInsightsTimeStatsItemsType(TypedDict):
-    """ApiInsightsTimeStatsItems"""
+class RepositoryFineGrainedPermissionType(TypedDict):
+    """Repository Fine-Grained Permission
 
-    timestamp: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    A fine-grained permission that protects repository resources.
+    """
+
+    name: str
+    description: str
 
 
-__all__ = ("ApiInsightsTimeStatsItemsType",)
+__all__ = ("RepositoryFineGrainedPermissionType",)

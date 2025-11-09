@@ -34,6 +34,7 @@ if TYPE_CHECKING:
         ProjectsV2ItemWithContent,
     )
     from ..types import (
+        OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType,
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType,
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType,
         OrgsOrgProjectsV2ProjectNumberItemsPostBodyType,
@@ -218,6 +219,160 @@ class ProjectsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ProjectsV2,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    @overload
+    def create_draft_item_for_org(
+        self,
+        org: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+
+    @overload
+    def create_draft_item_for_org(
+        self,
+        org: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        title: str,
+        body: Missing[str] = UNSET,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+
+    def create_draft_item_for_org(
+        self,
+        org: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]:
+        """projects/create-draft-item-for-org
+
+        POST /orgs/{org}/projectsV2/{project_number}/drafts
+
+        Create draft issue item for the specified organization owned project.
+
+        See also: https://docs.github.com/rest/projects/drafts#create-draft-item-for-organization-owned-project
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgProjectsV2ProjectNumberDraftsPostBody,
+            ProjectsV2ItemSimple,
+        )
+
+        url = f"/orgs/{org}/projectsV2/{project_number}/drafts"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgProjectsV2ProjectNumberDraftsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ProjectsV2ItemSimple,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_draft_item_for_org(
+        self,
+        org: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+
+    @overload
+    async def async_create_draft_item_for_org(
+        self,
+        org: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        title: str,
+        body: Missing[str] = UNSET,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+
+    async def async_create_draft_item_for_org(
+        self,
+        org: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]:
+        """projects/create-draft-item-for-org
+
+        POST /orgs/{org}/projectsV2/{project_number}/drafts
+
+        Create draft issue item for the specified organization owned project.
+
+        See also: https://docs.github.com/rest/projects/drafts#create-draft-item-for-organization-owned-project
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgProjectsV2ProjectNumberDraftsPostBody,
+            ProjectsV2ItemSimple,
+        )
+
+        url = f"/orgs/{org}/projectsV2/{project_number}/drafts"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgProjectsV2ProjectNumberDraftsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ProjectsV2ItemSimple,
             error_models={
                 "403": BasicError,
                 "401": BasicError,

@@ -13,23 +13,26 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0530 import EnterpriseWebhooksType
-from .group_0531 import SimpleInstallationType
-from .group_0532 import OrganizationSimpleWebhooksType
-from .group_0533 import RepositoryWebhooksType
-from .group_0711 import WebhookIssuesClosedPropIssueType
+from .group_0020 import RepositoryType
+from .group_0198 import IssueType
+from .group_0535 import SimpleInstallationType
+from .group_0536 import OrganizationSimpleWebhooksType
+from .group_0537 import RepositoryWebhooksType
 
 
-class WebhookIssuesClosedType(TypedDict):
-    """issues closed event"""
+class WebhookIssueDependenciesBlockedByRemovedType(TypedDict):
+    """blocked by issue removed event"""
 
-    action: Literal["closed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["blocked_by_removed"]
+    blocked_issue_id: float
+    blocked_issue: IssueType
+    blocking_issue_id: float
+    blocking_issue: IssueType
+    blocking_issue_repo: RepositoryType
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesClosedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    organization: OrganizationSimpleWebhooksType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesClosedType",)
+__all__ = ("WebhookIssueDependenciesBlockedByRemovedType",)

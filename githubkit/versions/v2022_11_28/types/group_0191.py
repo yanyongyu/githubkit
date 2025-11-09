@@ -12,18 +12,19 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0192 import RepositoryRuleCopilotCodeReviewPropParametersType
+from .group_0192 import RepositoryRuleCodeScanningPropParametersType
 
 
-class RepositoryRuleCopilotCodeReviewType(TypedDict):
-    """copilot_code_review
+class RepositoryRuleCodeScanningType(TypedDict):
+    """code_scanning
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review.
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
 
 
-__all__ = ("RepositoryRuleCopilotCodeReviewType",)
+__all__ = ("RepositoryRuleCodeScanningType",)

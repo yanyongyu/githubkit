@@ -9,15 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ProjectsColumnsCardsCardIdDeleteResponse403Type(TypedDict):
-    """ProjectsColumnsCardsCardIdDeleteResponse403"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[list[str]]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403Type",)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType",)

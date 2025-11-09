@@ -18,23 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0448 import EnterpriseWebhooks
-from .group_0449 import SimpleInstallation
-from .group_0450 import OrganizationSimpleWebhooks
-from .group_0451 import RepositoryWebhooks
-from .group_0494 import WebhooksSponsorship
-from .group_0495 import WebhooksChanges8
+from .group_0450 import EnterpriseWebhooks
+from .group_0451 import SimpleInstallation
+from .group_0452 import OrganizationSimpleWebhooks
+from .group_0453 import RepositoryWebhooks
+from .group_0496 import WebhooksSponsorship
 
 
-class WebhookSponsorshipPendingTierChange(GitHubModel):
-    """sponsorship pending_tier_change event"""
+class WebhookSponsorshipEdited(GitHubModel):
+    """sponsorship edited event"""
 
-    action: Literal["pending_tier_change"] = Field()
-    changes: WebhooksChanges8 = Field()
-    effective_date: Missing[str] = Field(
-        default=UNSET,
-        description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
-    )
+    action: Literal["edited"] = Field()
+    changes: WebhookSponsorshipEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -59,6 +54,29 @@ class WebhookSponsorshipPendingTierChange(GitHubModel):
     sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookSponsorshipPendingTierChange)
+class WebhookSponsorshipEditedPropChanges(GitHubModel):
+    """WebhookSponsorshipEditedPropChanges"""
 
-__all__ = ("WebhookSponsorshipPendingTierChange",)
+    privacy_level: Missing[WebhookSponsorshipEditedPropChangesPropPrivacyLevel] = Field(
+        default=UNSET
+    )
+
+
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevel(GitHubModel):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+
+    from_: str = Field(
+        alias="from",
+        description="The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy.",
+    )
+
+
+model_rebuild(WebhookSponsorshipEdited)
+model_rebuild(WebhookSponsorshipEditedPropChanges)
+model_rebuild(WebhookSponsorshipEditedPropChangesPropPrivacyLevel)
+
+__all__ = (
+    "WebhookSponsorshipEdited",
+    "WebhookSponsorshipEditedPropChanges",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevel",
+)

@@ -19,28 +19,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0195 import ReactionRollup
 
 
-class TimelineReviewedEvent(GitHubModel):
-    """Timeline Reviewed Event
+class TimelineCommentEvent(GitHubModel):
+    """Timeline Comment Event
 
-    Timeline Reviewed Event
+    Timeline Comment Event
     """
 
-    event: Literal["reviewed"] = Field()
-    id: int = Field(description="Unique identifier of the review")
+    event: Literal["commented"] = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    id: int = Field(description="Unique identifier of the issue comment")
     node_id: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    body: Union[str, None] = Field(description="The text of the review.")
-    state: str = Field()
+    url: str = Field(description="URL for the issue comment")
+    body: Missing[str] = Field(
+        default=UNSET, description="Contents of the issue comment"
+    )
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
     html_url: str = Field()
-    pull_request_url: str = Field()
-    links: TimelineReviewedEventPropLinks = Field(alias="_links")
-    submitted_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    commit_id: str = Field(description="A commit SHA for the review.")
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    issue_url: str = Field()
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -54,35 +57,12 @@ class TimelineReviewedEvent(GitHubModel):
         title="author_association",
         description="How the author is associated with the repository.",
     )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class TimelineReviewedEventPropLinks(GitHubModel):
-    """TimelineReviewedEventPropLinks"""
+model_rebuild(TimelineCommentEvent)
 
-    html: TimelineReviewedEventPropLinksPropHtml = Field()
-    pull_request: TimelineReviewedEventPropLinksPropPullRequest = Field()
-
-
-class TimelineReviewedEventPropLinksPropHtml(GitHubModel):
-    """TimelineReviewedEventPropLinksPropHtml"""
-
-    href: str = Field()
-
-
-class TimelineReviewedEventPropLinksPropPullRequest(GitHubModel):
-    """TimelineReviewedEventPropLinksPropPullRequest"""
-
-    href: str = Field()
-
-
-model_rebuild(TimelineReviewedEvent)
-model_rebuild(TimelineReviewedEventPropLinks)
-model_rebuild(TimelineReviewedEventPropLinksPropHtml)
-model_rebuild(TimelineReviewedEventPropLinksPropPullRequest)
-
-__all__ = (
-    "TimelineReviewedEvent",
-    "TimelineReviewedEventPropLinks",
-    "TimelineReviewedEventPropLinksPropHtml",
-    "TimelineReviewedEventPropLinksPropPullRequest",
-)
+__all__ = ("TimelineCommentEvent",)

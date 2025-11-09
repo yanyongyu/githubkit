@@ -12,17 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ProjectsColumnsColumnIdMovesPostBody(GitHubModel):
-    """ProjectsColumnsColumnIdMovesPostBody"""
+class ProjectsColumnsCardsCardIdMovesPostBody(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostBody"""
 
     position: str = Field(
-        pattern="^(?:first|last|after:\\d+)$",
-        description="The position of the column in a project. Can be one of: `first`, `last`, or `after:<column_id>` to place after the specified column.",
+        pattern="^(?:top|bottom|after:\\d+)$",
+        description="The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place after the specified card.",
+    )
+    column_id: Missing[int] = Field(
+        default=UNSET,
+        description="The unique identifier of the column the card should be moved to",
     )
 
 
-model_rebuild(ProjectsColumnsColumnIdMovesPostBody)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostBody)
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostBody",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostBody",)

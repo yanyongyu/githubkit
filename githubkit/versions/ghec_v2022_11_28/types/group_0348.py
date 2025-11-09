@@ -9,36 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0345 import CodeScanningVariantAnalysisRepositoryType
 
-class CodeScanningDefaultSetupUpdateType(TypedDict):
-    """CodeScanningDefaultSetupUpdate
 
-    Configuration for code scanning default setup.
-    """
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
-            ]
-        ]
+    repository: CodeScanningVariantAnalysisRepositoryType
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
     ]
+    result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
+    failure_message: NotRequired[str]
 
 
-__all__ = ("CodeScanningDefaultSetupUpdateType",)
+__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",)

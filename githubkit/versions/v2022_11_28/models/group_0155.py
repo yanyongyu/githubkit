@@ -9,57 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0147 import RepositoryRulesetConditionsPropRefName
+from .group_0151 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
 
-class RepositoryRuleCreation(GitHubModel):
-    """creation
+class OrgRulesetConditionsOneof1(GitHubModel):
+    """repository_id_and_ref_name
 
-    Only allow users with bypass permission to create matching refs.
+    Conditions to target repositories by id and refs by name
     """
 
-    type: Literal["creation"] = Field()
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field()
+    )
 
 
-class RepositoryRuleDeletion(GitHubModel):
-    """deletion
+model_rebuild(OrgRulesetConditionsOneof1)
 
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"] = Field()
-
-
-class RepositoryRuleRequiredSignatures(GitHubModel):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"] = Field()
-
-
-class RepositoryRuleNonFastForward(GitHubModel):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"] = Field()
-
-
-model_rebuild(RepositoryRuleCreation)
-model_rebuild(RepositoryRuleDeletion)
-model_rebuild(RepositoryRuleRequiredSignatures)
-model_rebuild(RepositoryRuleNonFastForward)
-
-__all__ = (
-    "RepositoryRuleCreation",
-    "RepositoryRuleDeletion",
-    "RepositoryRuleNonFastForward",
-    "RepositoryRuleRequiredSignatures",
-)
+__all__ = ("OrgRulesetConditionsOneof1",)

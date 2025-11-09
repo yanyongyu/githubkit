@@ -9,25 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PackagesBillingUsage(GitHubModel):
-    """PackagesBillingUsage"""
+class UpdateBudget(GitHubModel):
+    """UpdateBudget"""
 
-    total_gigabytes_bandwidth_used: int = Field(
-        description="Sum of the free and paid storage space (GB) for GitHuub Packages."
+    message: str = Field(
+        description="A message indicating the result of the update operation"
     )
-    total_paid_gigabytes_bandwidth_used: int = Field(
-        description="Total paid storage space (GB) for GitHuub Packages."
+    budget: UpdateBudgetPropBudget = Field()
+
+
+class UpdateBudgetPropBudget(GitHubModel):
+    """UpdateBudgetPropBudget"""
+
+    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
+    budget_scope: Missing[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ] = Field(default=UNSET, description="The type of scope for the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
     )
-    included_gigabytes_bandwidth: int = Field(
-        description="Free storage space (GB) for GitHub Packages."
+    budget_amount: Missing[float] = Field(
+        default=UNSET, description="The budget amount in dollars"
+    )
+    prevent_further_usage: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to prevent additional spending once the budget is exceeded",
+    )
+    budget_product_sku: Missing[str] = Field(
+        default=UNSET, description="A single product or sku to apply the budget to."
+    )
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
+        default=UNSET, description="The type of pricing for the budget"
+    )
+    budget_alerting: Missing[UpdateBudgetPropBudgetPropBudgetAlerting] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(PackagesBillingUsage)
+class UpdateBudgetPropBudgetPropBudgetAlerting(GitHubModel):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
 
-__all__ = ("PackagesBillingUsage",)
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
+    )
+
+
+model_rebuild(UpdateBudget)
+model_rebuild(UpdateBudgetPropBudget)
+model_rebuild(UpdateBudgetPropBudgetPropBudgetAlerting)
+
+__all__ = (
+    "UpdateBudget",
+    "UpdateBudgetPropBudget",
+    "UpdateBudgetPropBudgetPropBudgetAlerting",
+)

@@ -9,24 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCreateIssueTypeType(TypedDict):
-    """OrganizationCreateIssueType"""
+class ApiInsightsSummaryStatsType(TypedDict):
+    """Summary Stats
 
-    name: str
-    is_enabled: bool
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
+    API Insights usage summary stats for an organization
+    """
+
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
 
 
-__all__ = ("OrganizationCreateIssueTypeType",)
+__all__ = ("ApiInsightsSummaryStatsType",)

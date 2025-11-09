@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,46 +18,47 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgMigrationsPostBody(GitHubModel):
-    """OrgsOrgMigrationsPostBody"""
+class OrgsOrgHooksPostBody(GitHubModel):
+    """OrgsOrgHooksPostBody"""
 
-    repositories: list[str] = Field(
-        description="A list of arrays indicating which repositories should be migrated."
+    name: str = Field(description='Must be passed as "web".')
+    config: OrgsOrgHooksPostBodyPropConfig = Field(
+        description="Key/value pairs to provide settings for this webhook."
     )
-    lock_repositories: Missing[bool] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET,
-        description="Indicates whether repositories should be locked (to prevent manipulation) while migrating data.",
+        description='Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for. Set to `["*"]` to receive all possible events.',
     )
-    exclude_metadata: Missing[bool] = Field(
+    active: Missing[bool] = Field(
         default=UNSET,
-        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
-    )
-    exclude_git_data: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether the repository git data should be excluded from the migration.",
-    )
-    exclude_attachments: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).",
-    )
-    exclude_releases: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether releases should be excluded from the migration (to reduce migration archive file size).",
-    )
-    exclude_owner_projects: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether projects owned by the organization or users should be excluded. from the migration.",
-    )
-    org_metadata_only: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
-    )
-    exclude: Missing[list[Literal["repositories"]]] = Field(
-        default=UNSET,
-        description="Exclude related items from being returned in the response in order to improve performance of the request.",
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
     )
 
 
-model_rebuild(OrgsOrgMigrationsPostBody)
+class OrgsOrgHooksPostBodyPropConfig(GitHubModel):
+    """OrgsOrgHooksPostBodyPropConfig
 
-__all__ = ("OrgsOrgMigrationsPostBody",)
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str = Field(description="The URL to which the payloads will be delivered.")
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    )
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
+    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
+    username: Missing[str] = Field(default=UNSET)
+    password: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgHooksPostBody)
+model_rebuild(OrgsOrgHooksPostBodyPropConfig)
+
+__all__ = (
+    "OrgsOrgHooksPostBody",
+    "OrgsOrgHooksPostBodyPropConfig",
+)

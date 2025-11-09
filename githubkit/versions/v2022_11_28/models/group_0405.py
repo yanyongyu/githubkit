@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,70 +17,69 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0203 import (
+    SecretScanningLocationCommit,
+    SecretScanningLocationDiscussionComment,
+    SecretScanningLocationDiscussionTitle,
+    SecretScanningLocationIssueBody,
+    SecretScanningLocationPullRequestBody,
+    SecretScanningLocationPullRequestReview,
+    SecretScanningLocationWikiCommit,
+)
+from .group_0204 import (
+    SecretScanningLocationIssueComment,
+    SecretScanningLocationIssueTitle,
+    SecretScanningLocationPullRequestReviewComment,
+    SecretScanningLocationPullRequestTitle,
+)
+from .group_0205 import (
+    SecretScanningLocationDiscussionBody,
+    SecretScanningLocationPullRequestComment,
+)
 
-class SecretScanningScanHistory(GitHubModel):
-    """SecretScanningScanHistory"""
 
-    incremental_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
-    pattern_update_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
-    backfill_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
-    custom_pattern_backfill_scans: Missing[
-        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItems]
+class SecretScanningLocation(GitHubModel):
+    """SecretScanningLocation"""
+
+    type: Missing[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.",
+    )
+    details: Missing[
+        Union[
+            SecretScanningLocationCommit,
+            SecretScanningLocationWikiCommit,
+            SecretScanningLocationIssueTitle,
+            SecretScanningLocationIssueBody,
+            SecretScanningLocationIssueComment,
+            SecretScanningLocationDiscussionTitle,
+            SecretScanningLocationDiscussionBody,
+            SecretScanningLocationDiscussionComment,
+            SecretScanningLocationPullRequestTitle,
+            SecretScanningLocationPullRequestBody,
+            SecretScanningLocationPullRequestComment,
+            SecretScanningLocationPullRequestReview,
+            SecretScanningLocationPullRequestReviewComment,
+        ]
     ] = Field(default=UNSET)
 
 
-class SecretScanningScan(GitHubModel):
-    """SecretScanningScan
+model_rebuild(SecretScanningLocation)
 
-    Information on a single scan performed by secret scanning on the repository
-    """
-
-    type: Missing[str] = Field(default=UNSET, description="The type of scan")
-    status: Missing[str] = Field(
-        default=UNSET,
-        description='The state of the scan. Either "completed", "running", or "pending"',
-    )
-    completed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the scan was completed. Empty if the scan is running",
-    )
-    started_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the scan was started. Empty if the scan is pending",
-    )
-
-
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItems(GitHubModel):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
-
-    type: Missing[str] = Field(default=UNSET, description="The type of scan")
-    status: Missing[str] = Field(
-        default=UNSET,
-        description='The state of the scan. Either "completed", "running", or "pending"',
-    )
-    completed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the scan was completed. Empty if the scan is running",
-    )
-    started_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the scan was started. Empty if the scan is pending",
-    )
-    pattern_name: Missing[str] = Field(
-        default=UNSET, description="Name of the custom pattern for custom pattern scans"
-    )
-    pattern_scope: Missing[str] = Field(
-        default=UNSET,
-        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
-    )
-
-
-model_rebuild(SecretScanningScanHistory)
-model_rebuild(SecretScanningScan)
-model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItems)
-
-__all__ = (
-    "SecretScanningScan",
-    "SecretScanningScanHistory",
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItems",
-)
+__all__ = ("SecretScanningLocation",)

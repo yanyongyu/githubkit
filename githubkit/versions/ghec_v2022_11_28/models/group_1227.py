@@ -16,12 +16,13 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoAttestationsPostResponse201(GitHubModel):
-    """ReposOwnerRepoAttestationsPostResponse201"""
+class ReposOwnerRepoActionsVariablesNamePatchBody(GitHubModel):
+    """ReposOwnerRepoActionsVariablesNamePatchBody"""
 
-    id: Missing[int] = Field(default=UNSET, description="The ID of the attestation.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
+    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
 
 
-model_rebuild(ReposOwnerRepoAttestationsPostResponse201)
+model_rebuild(ReposOwnerRepoActionsVariablesNamePatchBody)
 
-__all__ = ("ReposOwnerRepoAttestationsPostResponse201",)
+__all__ = ("ReposOwnerRepoActionsVariablesNamePatchBody",)

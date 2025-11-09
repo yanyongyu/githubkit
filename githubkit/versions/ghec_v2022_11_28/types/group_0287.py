@@ -10,31 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType
 
 
-class ProjectCardType(TypedDict):
-    """Project Card
+class ReactionType(TypedDict):
+    """Reaction
 
-    Project cards represent a scope of work.
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    url: str
     id: int
     node_id: str
-    note: Union[str, None]
-    creator: Union[None, SimpleUserType]
+    user: Union[None, SimpleUserType]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
     created_at: datetime
-    updated_at: datetime
-    archived: NotRequired[bool]
-    column_name: NotRequired[str]
-    project_id: NotRequired[str]
-    column_url: str
-    content_url: NotRequired[str]
-    project_url: str
 
 
-__all__ = ("ProjectCardType",)
+__all__ = ("ReactionType",)

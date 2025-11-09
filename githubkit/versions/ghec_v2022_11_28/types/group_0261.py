@@ -9,37 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0260 import ProjectsV2StatusUpdateType
 
 
-class ProjectsV2Type(TypedDict):
-    """Projects v2 Project
+class OrganizationProgrammaticAccessGrantRequestType(TypedDict):
+    """Simple Organization Programmatic Access Grant Request
 
-    A projects v2 project
+    Minimal representation of an organization programmatic access grant request for
+    enumerations
     """
 
-    id: float
-    node_id: str
+    id: int
+    reason: Union[str, None]
     owner: SimpleUserType
-    creator: SimpleUserType
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[datetime, None]
-    created_at: datetime
-    updated_at: datetime
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[datetime, None]
-    deleted_by: Union[None, SimpleUserType]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[Union[None, ProjectsV2StatusUpdateType]]
-    is_template: NotRequired[bool]
+    repository_selection: Literal["none", "all", "subset"]
+    repositories_url: str
+    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissionsType
+    created_at: str
+    token_id: int
+    token_name: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
 
 
-__all__ = ("ProjectsV2Type",)
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsType(TypedDict):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType
+    ]
+    repository: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType
+    ]
+    other: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType
+    ]
+
+
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
+"""
+
+
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
+"""
+
+
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType: TypeAlias = (
+    dict[str, Any]
+)
+"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
+"""
+
+
+__all__ = (
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantRequestType",
+)

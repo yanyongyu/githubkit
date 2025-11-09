@@ -9,20 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType
+from .group_0198 import IssueType
+from .group_0268 import PullRequestSimpleType
+from .group_0271 import ProjectsV2DraftIssueType
 
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
+class ProjectsV2ItemSimpleType(TypedDict):
+    """Projects v2 Item
 
-    Code of Conduct Simple
+    An item belonging to a project
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    id: float
+    node_id: NotRequired[str]
+    content: NotRequired[
+        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
+    ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    archived_at: Union[datetime, None]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
 
 
-__all__ = ("CodeOfConductSimpleType",)
+__all__ = ("ProjectsV2ItemSimpleType",)

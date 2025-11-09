@@ -14,15 +14,33 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsArtifactAndLogRetentionResponse(GitHubModel):
-    """ActionsArtifactAndLogRetentionResponse"""
+class ActionsHostedRunnerLimits(GitHubModel):
+    """ActionsHostedRunnerLimits"""
 
-    days: int = Field(description="The number of days artifacts and logs are retained")
-    maximum_allowed_days: int = Field(
-        description="The maximum number of days that can be configured"
+    public_ips: ActionsHostedRunnerLimitsPropPublicIps = Field(
+        title="Static public IP Limits for GitHub-hosted Hosted Runners.",
+        description="Provides details of static public IP limits for GitHub-hosted Hosted Runners",
     )
 
 
-model_rebuild(ActionsArtifactAndLogRetentionResponse)
+class ActionsHostedRunnerLimitsPropPublicIps(GitHubModel):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
 
-__all__ = ("ActionsArtifactAndLogRetentionResponse",)
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    """
+
+    maximum: int = Field(
+        description="The maximum number of static public IP addresses that can be used for Hosted Runners."
+    )
+    current_usage: int = Field(
+        description="The current number of static public IP addresses in use by Hosted Runners."
+    )
+
+
+model_rebuild(ActionsHostedRunnerLimits)
+model_rebuild(ActionsHostedRunnerLimitsPropPublicIps)
+
+__all__ = (
+    "ActionsHostedRunnerLimits",
+    "ActionsHostedRunnerLimitsPropPublicIps",
+)

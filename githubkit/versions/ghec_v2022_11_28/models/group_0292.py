@@ -9,34 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0290 import RateLimit
 
 
-class RateLimitOverviewPropResources(GitHubModel):
-    """RateLimitOverviewPropResources"""
+class ProjectColumn(GitHubModel):
+    """Project Column
 
-    core: RateLimit = Field(title="Rate Limit")
-    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    search: RateLimit = Field(title="Rate Limit")
-    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_upload: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    actions_runner_registration: Missing[RateLimit] = Field(
-        default=UNSET, title="Rate Limit"
-    )
-    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    Project columns contain cards of work.
+    """
+
+    url: str = Field()
+    project_url: str = Field()
+    cards_url: str = Field()
+    id: int = Field(description="The unique identifier of the project column")
+    node_id: str = Field()
+    name: str = Field(description="Name of the project column")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(RateLimitOverviewPropResources)
+model_rebuild(ProjectColumn)
 
-__all__ = ("RateLimitOverviewPropResources",)
+__all__ = ("ProjectColumn",)

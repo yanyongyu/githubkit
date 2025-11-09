@@ -254,12 +254,6 @@ class RestNamespace:
         return PrivateRegistriesClient(self._github)
 
     @cached_property
-    def projects_classic(self) -> "ProjectsClassicClient":
-        from .projects_classic import ProjectsClassicClient
-
-        return ProjectsClassicClient(self._github)
-
-    @cached_property
     def projects(self) -> "ProjectsClient":
         from .projects import ProjectsClient
 
@@ -294,6 +288,12 @@ class RestNamespace:
         from .reactions import ReactionsClient
 
         return ReactionsClient(self._github)
+
+    @cached_property
+    def projects_classic(self) -> "ProjectsClassicClient":
+        from .projects_classic import ProjectsClassicClient
+
+        return ProjectsClassicClient(self._github)
 
     @cached_property
     def rate_limit(self) -> "RateLimitClient":

@@ -9,35 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetAllCostCentersType(TypedDict):
-    """GetAllCostCenters"""
+class GetAllBudgetsType(TypedDict):
+    """GetAllBudgets"""
 
-    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
+    budgets: list[BudgetType]
 
 
-class GetAllCostCentersPropCostCentersItemsType(TypedDict):
-    """GetAllCostCentersPropCostCentersItems"""
+class BudgetType(TypedDict):
+    """Budget"""
 
     id: str
-    name: str
-    state: NotRequired[Literal["active", "deleted"]]
-    azure_subscription: NotRequired[Union[str, None]]
-    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
+    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: str
+    budget_entity_name: NotRequired[str]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingType
 
 
-class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
-    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+class BudgetPropBudgetAlertingType(TypedDict):
+    """BudgetPropBudgetAlerting"""
 
-    type: str
-    name: str
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
-    "GetAllCostCentersPropCostCentersItemsType",
-    "GetAllCostCentersType",
+    "BudgetPropBudgetAlertingType",
+    "BudgetType",
+    "GetAllBudgetsType",
 )

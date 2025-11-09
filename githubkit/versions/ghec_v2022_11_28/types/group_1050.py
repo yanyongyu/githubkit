@@ -11,16 +11,15 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrganizationsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBody
-
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+from .group_0020 import RepositoryType
 
 
-__all__ = ("OrganizationsOrgDependabotRepositoryAccessPatchBodyType",)
+class InstallationRepositoriesGetResponse200Type(TypedDict):
+    """InstallationRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[RepositoryType]
+    repository_selection: NotRequired[str]
+
+
+__all__ = ("InstallationRepositoriesGetResponse200Type",)

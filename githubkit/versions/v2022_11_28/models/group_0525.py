@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,20 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0448 import EnterpriseWebhooks
-from .group_0449 import SimpleInstallation
-from .group_0450 import OrganizationSimpleWebhooks
-from .group_0451 import RepositoryWebhooks
+from .group_0450 import EnterpriseWebhooks
+from .group_0451 import SimpleInstallation
+from .group_0452 import OrganizationSimpleWebhooks
+from .group_0453 import RepositoryWebhooks
+from .group_0526 import WebhookCodeScanningAlertReopenedByUserPropAlert
 
 
-class WebhookCommitCommentCreated(GitHubModel):
-    """commit_comment created event"""
+class WebhookCodeScanningAlertReopenedByUser(GitHubModel):
+    """code_scanning_alert reopened_by_user event"""
 
-    action: Literal["created"] = Field(
-        description="The action performed. Can be `created`."
+    action: Literal["reopened_by_user"] = Field()
+    alert: WebhookCodeScanningAlertReopenedByUserPropAlert = Field(
+        description="The code scanning alert involved in the event."
     )
-    comment: WebhookCommitCommentCreatedPropComment = Field(
-        description="The [commit comment](${externalDocsUpapp/api/description/components/schemas/webhooks/issue-comment-created.yamlrl}/rest/commits/comments#get-a-commit-comment) resource."
+    commit_oid: str = Field(
+        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -48,6 +50,9 @@ class WebhookCommitCommentCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    ref: str = Field(
+        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -55,104 +60,6 @@ class WebhookCommitCommentCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookCommitCommentCreatedPropComment(GitHubModel):
-    """WebhookCommitCommentCreatedPropComment
+model_rebuild(WebhookCodeScanningAlertReopenedByUser)
 
-    The [commit
-    comment](${externalDocsUpapp/api/description/components/schemas/webhooks/issue-
-    comment-created.yamlrl}/rest/commits/comments#get-a-commit-comment) resource.
-    """
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
-    )
-    body: str = Field(description="The text of the comment.")
-    commit_id: str = Field(
-        description="The SHA of the commit to which the comment applies."
-    )
-    created_at: str = Field()
-    html_url: str = Field()
-    id: int = Field(description="The ID of the commit comment.")
-    line: Union[int, None] = Field(
-        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment"
-    )
-    node_id: str = Field(description="The node ID of the commit comment.")
-    path: Union[str, None] = Field(
-        description="The relative path of the file to which the comment applies."
-    )
-    position: Union[int, None] = Field(
-        description="The line index in the diff to which the comment applies."
-    )
-    reactions: Missing[WebhookCommitCommentCreatedPropCommentPropReactions] = Field(
-        default=UNSET, title="Reactions"
-    )
-    updated_at: str = Field()
-    url: str = Field()
-    user: Union[WebhookCommitCommentCreatedPropCommentPropUser, None] = Field(
-        title="User"
-    )
-
-
-class WebhookCommitCommentCreatedPropCommentPropReactions(GitHubModel):
-    """Reactions"""
-
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
-
-
-class WebhookCommitCommentCreatedPropCommentPropUser(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookCommitCommentCreated)
-model_rebuild(WebhookCommitCommentCreatedPropComment)
-model_rebuild(WebhookCommitCommentCreatedPropCommentPropReactions)
-model_rebuild(WebhookCommitCommentCreatedPropCommentPropUser)
-
-__all__ = (
-    "WebhookCommitCommentCreated",
-    "WebhookCommitCommentCreatedPropComment",
-    "WebhookCommitCommentCreatedPropCommentPropReactions",
-    "WebhookCommitCommentCreatedPropCommentPropUser",
-)
+__all__ = ("WebhookCodeScanningAlertReopenedByUser",)

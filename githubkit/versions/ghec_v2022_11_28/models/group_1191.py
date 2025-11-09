@@ -12,19 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ProjectsColumnsColumnIdCardsPostBodyOneof1(GitHubModel):
-    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
+class ProjectsColumnsCardsCardIdDeleteResponse403(GitHubModel):
+    """ProjectsColumnsCardsCardIdDeleteResponse403"""
 
-    content_id: int = Field(
-        description="The unique identifier of the content associated with the card"
-    )
-    content_type: str = Field(
-        description="The piece of content associated with the card"
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[list[str]] = Field(default=UNSET)
 
 
-model_rebuild(ProjectsColumnsColumnIdCardsPostBodyOneof1)
+model_rebuild(ProjectsColumnsCardsCardIdDeleteResponse403)
 
-__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof1",)
+__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403",)

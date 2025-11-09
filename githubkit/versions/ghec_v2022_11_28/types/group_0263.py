@@ -10,45 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from .group_0003 import SimpleUserType
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsV2ItemWithContentType(TypedDict):
-    """Projects v2 Item
+class OrgPrivateRegistryConfigurationWithSelectedRepositoriesType(TypedDict):
+    """Organization private registry
 
-    An item belonging to a project
+    Private registry configuration for an organization
     """
 
-    id: float
-    node_id: NotRequired[str]
-    project_url: NotRequired[str]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    content: NotRequired[Union[ProjectsV2ItemWithContentPropContentType, None]]
-    creator: NotRequired[SimpleUserType]
+    name: str
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ]
+    url: NotRequired[str]
+    username: NotRequired[str]
+    replaces_base: NotRequired[bool]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
     created_at: datetime
     updated_at: datetime
-    archived_at: Union[datetime, None]
-    item_url: NotRequired[Union[str, None]]
-    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsType]]
 
 
-ProjectsV2ItemWithContentPropContentType: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropContent
-
-The content of the item, which varies by content type.
-"""
-
-
-ProjectsV2ItemWithContentPropFieldsItemsType: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropFieldsItems
-"""
-
-
-__all__ = (
-    "ProjectsV2ItemWithContentPropContentType",
-    "ProjectsV2ItemWithContentPropFieldsItemsType",
-    "ProjectsV2ItemWithContentType",
-)
+__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",)

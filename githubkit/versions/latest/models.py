@@ -279,6 +279,10 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import (
         BranchWithProtectionPropLinks as BranchWithProtectionPropLinks,
     )
+    from githubkit.versions.v2022_11_28.models import Budget as Budget
+    from githubkit.versions.v2022_11_28.models import (
+        BudgetPropBudgetAlerting as BudgetPropBudgetAlerting,
+    )
     from githubkit.versions.v2022_11_28.models import CampaignSummary as CampaignSummary
     from githubkit.versions.v2022_11_28.models import (
         CampaignSummaryPropAlertStats as CampaignSummaryPropAlertStats,
@@ -651,6 +655,7 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import (
         CvssSeveritiesPropCvssV4 as CvssSeveritiesPropCvssV4,
     )
+    from githubkit.versions.v2022_11_28.models import DeleteBudget as DeleteBudget
     from githubkit.versions.v2022_11_28.models import (
         DemilestonedIssueEvent as DemilestonedIssueEvent,
     )
@@ -877,6 +882,11 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         FullRepositoryPropPermissions as FullRepositoryPropPermissions,
+    )
+    from githubkit.versions.v2022_11_28.models import GetAllBudgets as GetAllBudgets
+    from githubkit.versions.v2022_11_28.models import GetBudget as GetBudget
+    from githubkit.versions.v2022_11_28.models import (
+        GetBudgetPropBudgetAlerting as GetBudgetPropBudgetAlerting,
     )
     from githubkit.versions.v2022_11_28.models import GistComment as GistComment
     from githubkit.versions.v2022_11_28.models import GistCommit as GistCommit
@@ -1244,6 +1254,21 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrganizationsOrgOrgPropertiesValuesPatchBody as OrganizationsOrgOrgPropertiesValuesPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200 as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrganizationUpdateIssueType as OrganizationUpdateIssueType,
@@ -1632,7 +1657,7 @@ if TYPE_CHECKING:
         OrgsOrgPrivateRegistriesSecretNamePatchBody as OrgsOrgPrivateRegistriesSecretNamePatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        OrgsOrgProjectsPostBody as OrgsOrgProjectsPostBody,
+        OrgsOrgProjectsV2ProjectNumberDraftsPostBody as OrgsOrgProjectsV2ProjectNumberDraftsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody as OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody,
@@ -1836,7 +1861,6 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import (
         PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage as PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage,
     )
-    from githubkit.versions.v2022_11_28.models import Project as Project
     from githubkit.versions.v2022_11_28.models import (
         ProjectCollaboratorPermission as ProjectCollaboratorPermission,
     )
@@ -1852,15 +1876,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ProjectsProjectIdCollaboratorsUsernamePutBody as ProjectsProjectIdCollaboratorsUsernamePutBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsProjectIdDeleteResponse403 as ProjectsProjectIdDeleteResponse403,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsProjectIdPatchBody as ProjectsProjectIdPatchBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsProjectIdPatchResponse403 as ProjectsProjectIdPatchResponse403,
     )
     from githubkit.versions.v2022_11_28.models import ProjectsV2 as ProjectsV2
     from githubkit.versions.v2022_11_28.models import (
@@ -3029,9 +3044,6 @@ if TYPE_CHECKING:
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200 as ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoProjectsPostBody as ReposOwnerRepoProjectsPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPropertiesValuesPatchBody as ReposOwnerRepoPropertiesValuesPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3116,7 +3128,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoRulesetsRulesetIdPutBody as ReposOwnerRepoRulesetsRulesetIdPutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody,
+        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0 as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody as ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
@@ -3603,9 +3615,6 @@ if TYPE_CHECKING:
         UserMigrationsPostBody as UserMigrationsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import UserPatchBody as UserPatchBody
-    from githubkit.versions.v2022_11_28.models import (
-        UserProjectsPostBody as UserProjectsPostBody,
-    )
     from githubkit.versions.v2022_11_28.models import (
         UserReposPostBody as UserReposPostBody,
     )
@@ -10064,6 +10073,12 @@ else:
             "ThreadSubscription",
             "DependabotRepositoryAccessDetails",
             "CustomPropertyValue",
+            "GetAllBudgets",
+            "Budget",
+            "BudgetPropBudgetAlerting",
+            "GetBudget",
+            "GetBudgetPropBudgetAlerting",
+            "DeleteBudget",
             "BillingPremiumRequestUsageReportOrg",
             "BillingPremiumRequestUsageReportOrgPropTimePeriod",
             "BillingPremiumRequestUsageReportOrgPropUsageItemsItems",
@@ -10171,9 +10186,17 @@ else:
             "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
             "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
             "OrgPrivateRegistryConfigurationWithSelectedRepositories",
-            "Project",
             "ProjectsV2StatusUpdate",
             "ProjectsV2",
+            "Link",
+            "AutoMerge",
+            "PullRequestSimple",
+            "PullRequestSimplePropLabelsItems",
+            "PullRequestSimplePropHead",
+            "PullRequestSimplePropBase",
+            "PullRequestSimplePropLinks",
+            "ProjectsV2DraftIssue",
+            "ProjectsV2ItemSimple",
             "ProjectsV2Field",
             "ProjectsV2SingleSelectOptions",
             "ProjectsV2SingleSelectOptionsPropName",
@@ -10184,15 +10207,6 @@ else:
             "ProjectsV2ItemWithContent",
             "ProjectsV2ItemWithContentPropContent",
             "ProjectsV2ItemWithContentPropFieldsItems",
-            "Link",
-            "AutoMerge",
-            "PullRequestSimple",
-            "PullRequestSimplePropLabelsItems",
-            "PullRequestSimplePropHead",
-            "PullRequestSimplePropBase",
-            "PullRequestSimplePropLinks",
-            "ProjectsV2DraftIssue",
-            "ProjectsV2ItemSimple",
             "CustomProperty",
             "CustomPropertySetPayload",
             "OrgRepoCustomPropertyValues",
@@ -12906,6 +12920,11 @@ else:
             "OrganizationsOrgDependabotRepositoryAccessPatchBody",
             "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody",
             "OrganizationsOrgOrgPropertiesValuesPatchBody",
+            "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody",
+            "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
+            "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200",
+            "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget",
+            "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting",
             "OrgsOrgPatchBody",
             "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
             "ActionsCacheUsageByRepository",
@@ -13032,7 +13051,7 @@ else:
             "OrgsOrgPrivateRegistriesPostBody",
             "OrgsOrgPrivateRegistriesPublicKeyGetResponse200",
             "OrgsOrgPrivateRegistriesSecretNamePatchBody",
-            "OrgsOrgProjectsPostBody",
+            "OrgsOrgProjectsV2ProjectNumberDraftsPostBody",
             "OrgsOrgProjectsV2ProjectNumberItemsPostBody",
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody",
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
@@ -13069,9 +13088,6 @@ else:
             "ProjectsColumnsColumnIdPatchBody",
             "ProjectsColumnsColumnIdMovesPostBody",
             "ProjectsColumnsColumnIdMovesPostResponse201",
-            "ProjectsProjectIdDeleteResponse403",
-            "ProjectsProjectIdPatchBody",
-            "ProjectsProjectIdPatchResponse403",
             "ProjectsProjectIdCollaboratorsUsernamePutBody",
             "ReposOwnerRepoDeleteResponse403",
             "ReposOwnerRepoPatchBody",
@@ -13273,7 +13289,6 @@ else:
             "ReposOwnerRepoPagesPostBodyAnyof1",
             "ReposOwnerRepoPagesDeploymentsPostBody",
             "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",
-            "ReposOwnerRepoProjectsPostBody",
             "ReposOwnerRepoPropertiesValuesPatchBody",
             "ReposOwnerRepoPullsPostBody",
             "ReposOwnerRepoPullsCommentsCommentIdPatchBody",
@@ -13302,7 +13317,7 @@ else:
             "ReposOwnerRepoReleasesReleaseIdReactionsPostBody",
             "ReposOwnerRepoRulesetsPostBody",
             "ReposOwnerRepoRulesetsRulesetIdPutBody",
-            "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody",
+            "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0",
             "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",
             "ReposOwnerRepoStatusesShaPostBody",
             "ReposOwnerRepoSubscriptionPutBody",
@@ -13344,7 +13359,6 @@ else:
             "UserKeysPostBody",
             "UserMembershipsOrgsOrgPatchBody",
             "UserMigrationsPostBody",
-            "UserProjectsPostBody",
             "UserReposPostBody",
             "UserSocialAccountsPostBody",
             "UserSocialAccountsDeleteBody",

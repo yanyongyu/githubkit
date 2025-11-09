@@ -13,23 +13,53 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0530 import EnterpriseWebhooksType
-from .group_0531 import SimpleInstallationType
-from .group_0532 import OrganizationSimpleWebhooksType
-from .group_0533 import RepositoryWebhooksType
-from .group_0730 import WebhookIssuesLockedPropIssueType
+from .group_0534 import EnterpriseWebhooksType
+from .group_0535 import SimpleInstallationType
+from .group_0536 import OrganizationSimpleWebhooksType
+from .group_0537 import RepositoryWebhooksType
+from .group_0551 import WebhooksLabelType
+from .group_0730 import WebhookIssuesEditedPropIssueType
 
 
-class WebhookIssuesLockedType(TypedDict):
-    """issues locked event"""
+class WebhookIssuesEditedType(TypedDict):
+    """issues edited event"""
 
-    action: Literal["locked"]
+    action: Literal["edited"]
+    changes: WebhookIssuesEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesLockedPropIssueType
+    issue: WebhookIssuesEditedPropIssueType
+    label: NotRequired[WebhooksLabelType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesLockedType",)
+class WebhookIssuesEditedPropChangesType(TypedDict):
+    """WebhookIssuesEditedPropChanges
+
+    The changes to the issue.
+    """
+
+    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyType]
+    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleType]
+
+
+class WebhookIssuesEditedPropChangesPropBodyType(TypedDict):
+    """WebhookIssuesEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookIssuesEditedPropChangesPropTitleType(TypedDict):
+    """WebhookIssuesEditedPropChangesPropTitle"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookIssuesEditedPropChangesPropBodyType",
+    "WebhookIssuesEditedPropChangesPropTitleType",
+    "WebhookIssuesEditedPropChangesType",
+    "WebhookIssuesEditedType",
+)

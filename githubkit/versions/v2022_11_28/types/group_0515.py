@@ -13,18 +13,18 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0448 import EnterpriseWebhooksType
-from .group_0449 import SimpleInstallationType
-from .group_0450 import OrganizationSimpleWebhooksType
-from .group_0451 import RepositoryWebhooksType
-from .group_0516 import WebhookCodeScanningAlertClosedByUserPropAlertType
+from .group_0450 import EnterpriseWebhooksType
+from .group_0451 import SimpleInstallationType
+from .group_0452 import OrganizationSimpleWebhooksType
+from .group_0453 import RepositoryWebhooksType
+from .group_0516 import WebhookCodeScanningAlertAppearedInBranchPropAlertType
 
 
-class WebhookCodeScanningAlertClosedByUserType(TypedDict):
-    """code_scanning_alert closed_by_user event"""
+class WebhookCodeScanningAlertAppearedInBranchType(TypedDict):
+    """code_scanning_alert appeared_in_branch event"""
 
-    action: Literal["closed_by_user"]
-    alert: WebhookCodeScanningAlertClosedByUserPropAlertType
+    action: Literal["appeared_in_branch"]
+    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertType
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -34,4 +34,4 @@ class WebhookCodeScanningAlertClosedByUserType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookCodeScanningAlertClosedByUserType",)
+__all__ = ("WebhookCodeScanningAlertAppearedInBranchType",)

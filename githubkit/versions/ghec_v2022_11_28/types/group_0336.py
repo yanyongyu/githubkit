@@ -11,15 +11,36 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0214 import MinimalRepositoryType
 
-class CodeScanningAutofixCommitsType(TypedDict):
-    """CodeScanningAutofixCommits
 
-    Commit an autofix for a code scanning alert
+class CheckSuitePreferenceType(TypedDict):
+    """Check Suite Preference
+
+    Check suite configuration preferences for a repository.
     """
 
-    target_ref: NotRequired[str]
-    message: NotRequired[str]
+    preferences: CheckSuitePreferencePropPreferencesType
+    repository: MinimalRepositoryType
 
 
-__all__ = ("CodeScanningAutofixCommitsType",)
+class CheckSuitePreferencePropPreferencesType(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
+        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    ]
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
+
+
+__all__ = (
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+    "CheckSuitePreferencePropPreferencesType",
+    "CheckSuitePreferenceType",
+)

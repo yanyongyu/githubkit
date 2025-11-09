@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0098 import CodespaceMachineType
+from .group_0101 import CodespaceMachineType
 
 
 class UserCodespacesCodespaceNameMachinesGetResponse200Type(TypedDict):

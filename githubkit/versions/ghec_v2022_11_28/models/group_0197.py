@@ -9,57 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class IssueFieldValue(GitHubModel):
+    """Issue Field Value
 
-class BaseGist(GitHubModel):
-    """Base Gist
-
-    Base Gist
+    A value assigned to an issue field
     """
 
-    url: str = Field()
-    forks_url: str = Field()
-    commits_url: str = Field()
-    id: str = Field()
+    issue_field_id: int = Field(description="Unique identifier for the issue field.")
     node_id: str = Field()
-    git_pull_url: str = Field()
-    git_push_url: str = Field()
-    html_url: str = Field()
-    files: BaseGistPropFiles = Field()
-    public: bool = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    description: Union[str, None] = Field()
-    comments: int = Field()
-    comments_enabled: Missing[bool] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
-    comments_url: str = Field()
-    owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    data_type: Literal["text", "single_select", "number", "date"] = Field(
+        description="The data type of the issue field"
     )
-    truncated: Missing[bool] = Field(default=UNSET)
-    forks: Missing[list[Any]] = Field(default=UNSET)
-    history: Missing[list[Any]] = Field(default=UNSET)
+    value: Union[str, float, int, None] = Field(
+        description="The value of the issue field"
+    )
+    single_select_option: Missing[
+        Union[IssueFieldValuePropSingleSelectOption, None]
+    ] = Field(
+        default=UNSET,
+        description="Details about the selected option (only present for single_select fields)",
+    )
 
 
-class BaseGistPropFiles(ExtraGitHubModel):
-    """BaseGistPropFiles"""
+class IssueFieldValuePropSingleSelectOption(GitHubModel):
+    """IssueFieldValuePropSingleSelectOption
+
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int = Field(description="Unique identifier for the option.")
+    name: str = Field(description="The name of the option")
+    color: str = Field(description="The color of the option")
 
 
-model_rebuild(BaseGist)
-model_rebuild(BaseGistPropFiles)
+model_rebuild(IssueFieldValue)
+model_rebuild(IssueFieldValuePropSingleSelectOption)
 
 __all__ = (
-    "BaseGist",
-    "BaseGistPropFiles",
+    "IssueFieldValue",
+    "IssueFieldValuePropSingleSelectOption",
 )

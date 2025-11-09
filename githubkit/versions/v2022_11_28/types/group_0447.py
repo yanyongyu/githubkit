@@ -12,30 +12,30 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageSummaryReportUserType(TypedDict):
-    """BillingUsageSummaryReportUser"""
+class BillingPremiumRequestUsageReportUserType(TypedDict):
+    """BillingPremiumRequestUsageReportUser"""
 
-    time_period: BillingUsageSummaryReportUserPropTimePeriodType
+    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodType
     user: str
-    repository: NotRequired[str]
     product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsType]
+    model: NotRequired[str]
+    usage_items: list[BillingPremiumRequestUsageReportUserPropUsageItemsItemsType]
 
 
-class BillingUsageSummaryReportUserPropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportUserPropTimePeriod"""
+class BillingPremiumRequestUsageReportUserPropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
 
     year: int
     month: NotRequired[int]
     day: NotRequired[int]
 
 
-class BillingUsageSummaryReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportUserPropUsageItemsItems"""
+class BillingPremiumRequestUsageReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
 
     product: str
     sku: str
+    model: str
     unit_type: str
     price_per_unit: float
     gross_quantity: float
@@ -47,7 +47,7 @@ class BillingUsageSummaryReportUserPropUsageItemsItemsType(TypedDict):
 
 
 __all__ = (
-    "BillingUsageSummaryReportUserPropTimePeriodType",
-    "BillingUsageSummaryReportUserPropUsageItemsItemsType",
-    "BillingUsageSummaryReportUserType",
+    "BillingPremiumRequestUsageReportUserPropTimePeriodType",
+    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportUserType",
 )

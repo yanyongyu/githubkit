@@ -9,45 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class BillingPremiumRequestUsageReportUserType(TypedDict):
-    """BillingPremiumRequestUsageReportUser"""
+class HovercardType(TypedDict):
+    """Hovercard
 
-    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodType
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingPremiumRequestUsageReportUserPropUsageItemsItemsType]
+    Hovercard
+    """
 
-
-class BillingPremiumRequestUsageReportUserPropTimePeriodType(TypedDict):
-    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    contexts: list[HovercardPropContextsItemsType]
 
 
-class BillingPremiumRequestUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
+class HovercardPropContextsItemsType(TypedDict):
+    """HovercardPropContextsItems"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    message: str
+    octicon: str
 
 
 __all__ = (
-    "BillingPremiumRequestUsageReportUserPropTimePeriodType",
-    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsType",
-    "BillingPremiumRequestUsageReportUserType",
+    "HovercardPropContextsItemsType",
+    "HovercardType",
 )

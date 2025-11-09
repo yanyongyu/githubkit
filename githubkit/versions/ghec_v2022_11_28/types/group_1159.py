@@ -12,74 +12,36 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0105 import RepositoryRulesetBypassActorType
-from .group_0124 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
-from .group_0125 import RepositoryRuleUpdateType
-from .group_0127 import RepositoryRuleRequiredLinearHistoryType
-from .group_0128 import RepositoryRuleRequiredDeploymentsType
-from .group_0131 import RepositoryRulePullRequestType
-from .group_0133 import RepositoryRuleRequiredStatusChecksType
-from .group_0135 import RepositoryRuleCommitMessagePatternType
-from .group_0137 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0139 import RepositoryRuleCommitterEmailPatternType
-from .group_0141 import RepositoryRuleBranchNamePatternType
-from .group_0143 import RepositoryRuleTagNamePatternType
-from .group_0145 import RepositoryRuleFilePathRestrictionType
-from .group_0147 import RepositoryRuleMaxFilePathLengthType
-from .group_0149 import RepositoryRuleFileExtensionRestrictionType
-from .group_0151 import RepositoryRuleMaxFileSizeType
-from .group_0154 import RepositoryRuleWorkflowsType
-from .group_0156 import RepositoryRuleCodeScanningType
-from .group_0160 import OrgRulesetConditionsOneof0Type
-from .group_0161 import OrgRulesetConditionsOneof1Type
-from .group_0162 import OrgRulesetConditionsOneof2Type
 
+class OrgsOrgPrivateRegistriesSecretNamePatchBodyType(TypedDict):
+    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
 
-class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
-
-    name: NotRequired[str]
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[
-        Union[
-            OrgRulesetConditionsOneof0Type,
-            OrgRulesetConditionsOneof1Type,
-            OrgRulesetConditionsOneof2Type,
+    registry_type: NotRequired[
+        Literal[
+            "maven_repository",
+            "nuget_feed",
+            "goproxy_server",
+            "npm_registry",
+            "rubygems_server",
+            "cargo_registry",
+            "composer_repository",
+            "docker_registry",
+            "git_source",
+            "helm_registry",
+            "hex_organization",
+            "hex_repository",
+            "pub_repository",
+            "python_index",
+            "terraform_registry",
         ]
     ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-__all__ = ("OrgsOrgRulesetsRulesetIdPutBodyType",)
+__all__ = ("OrgsOrgPrivateRegistriesSecretNamePatchBodyType",)

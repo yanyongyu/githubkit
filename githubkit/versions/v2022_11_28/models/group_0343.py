@@ -14,29 +14,42 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
+from .group_0095 import Team
 
 
-class LockedIssueEvent(GitHubModel):
-    """Locked Issue Event
+class ReviewRequestRemovedIssueEvent(GitHubModel):
+    """Review Request Removed Issue Event
 
-    Locked Issue Event
+    Review Request Removed Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["locked"] = Field()
+    event: Literal["review_request_removed"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    lock_reason: Union[str, None] = Field()
+    review_requester: SimpleUser = Field(
+        title="Simple User", description="A GitHub user."
+    )
+    requested_team: Missing[Team] = Field(
+        default=UNSET,
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
+    requested_reviewer: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(LockedIssueEvent)
+model_rebuild(ReviewRequestRemovedIssueEvent)
 
-__all__ = ("LockedIssueEvent",)
+__all__ = ("ReviewRequestRemovedIssueEvent",)

@@ -9,28 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
 from .group_0018 import InstallationType
-from .group_0448 import EnterpriseWebhooksType
-from .group_0450 import OrganizationSimpleWebhooksType
-from .group_0451 import RepositoryWebhooksType
-from .group_0464 import WebhooksRepositoriesItemsType
+from .group_0450 import EnterpriseWebhooksType
+from .group_0452 import OrganizationSimpleWebhooksType
+from .group_0453 import RepositoryWebhooksType
+from .group_0461 import WebhooksUserType
+from .group_0467 import WebhooksRepositoriesAddedItemsType
 
 
-class WebhookInstallationSuspendType(TypedDict):
-    """installation suspend event"""
+class WebhookInstallationRepositoriesAddedType(TypedDict):
+    """installation_repositories added event"""
 
-    action: Literal["suspend"]
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
+    repositories_added: list[WebhooksRepositoriesAddedItemsType]
+    repositories_removed: list[
+        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType
+    ]
     repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhooksUserType, None]
     sender: SimpleUserType
 
 
-__all__ = ("WebhookInstallationSuspendType",)
+class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType(TypedDict):
+    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
+
+    full_name: NotRequired[str]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    private: NotRequired[bool]
+
+
+__all__ = (
+    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType",
+    "WebhookInstallationRepositoriesAddedType",
+)

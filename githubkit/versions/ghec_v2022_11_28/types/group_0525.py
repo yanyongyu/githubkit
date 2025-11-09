@@ -9,26 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0209 import MarketplaceListingPlanType
 
 
-class HovercardType(TypedDict):
-    """Hovercard
+class UserMarketplacePurchaseType(TypedDict):
+    """User Marketplace Purchase
 
-    Hovercard
+    User Marketplace Purchase
     """
 
-    contexts: list[HovercardPropContextsItemsType]
+    billing_cycle: str
+    next_billing_date: Union[datetime, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    account: MarketplaceAccountType
+    plan: MarketplaceListingPlanType
 
 
-class HovercardPropContextsItemsType(TypedDict):
-    """HovercardPropContextsItems"""
+class MarketplaceAccountType(TypedDict):
+    """Marketplace Account"""
 
-    message: str
-    octicon: str
+    url: str
+    id: int
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "HovercardPropContextsItemsType",
-    "HovercardType",
+    "MarketplaceAccountType",
+    "UserMarketplacePurchaseType",
 )

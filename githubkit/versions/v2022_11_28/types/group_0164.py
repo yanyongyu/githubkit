@@ -9,21 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0165 import RepositoryRulePullRequestPropParametersType
+from typing_extensions import TypedDict
 
 
-class RepositoryRulePullRequestType(TypedDict):
-    """pull_request
+class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
-    """
-
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+    required_deployment_environments: list[str]
 
 
-__all__ = ("RepositoryRulePullRequestType",)
+__all__ = ("RepositoryRuleRequiredDeploymentsPropParametersType",)

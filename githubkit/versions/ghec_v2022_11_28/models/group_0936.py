@@ -19,16 +19,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0530 import EnterpriseWebhooks
-from .group_0531 import SimpleInstallation
-from .group_0532 import OrganizationSimpleWebhooks
-from .group_0580 import WebhooksTeam1
+from .group_0534 import EnterpriseWebhooks
+from .group_0535 import SimpleInstallation
+from .group_0536 import OrganizationSimpleWebhooks
+from .group_0584 import WebhooksTeam1
 
 
-class WebhookTeamRemovedFromRepository(GitHubModel):
-    """team removed_from_repository event"""
+class WebhookTeamAddedToRepository(GitHubModel):
+    """team added_to_repository event"""
 
-    action: Literal["removed_from_repository"] = Field()
+    action: Literal["added_to_repository"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,17 +43,19 @@ class WebhookTeamRemovedFromRepository(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[WebhookTeamRemovedFromRepositoryPropRepository] = Field(
+    repository: Missing[WebhookTeamAddedToRepositoryPropRepository] = Field(
         default=UNSET, title="Repository", description="A git repository"
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
     team: WebhooksTeam1 = Field(
         title="Team",
         description="Groups of organization members that gives permissions on specified repositories.",
     )
 
 
-class WebhookTeamRemovedFromRepositoryPropRepository(GitHubModel):
+class WebhookTeamAddedToRepositoryPropRepository(GitHubModel):
     """Repository
 
     A git repository
@@ -91,7 +93,7 @@ class WebhookTeamRemovedFromRepositoryPropRepository(GitHubModel):
     contributors_url: str = Field()
     created_at: Union[int, datetime] = Field()
     custom_properties: Missing[
-        WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties
+        WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties
     ] = Field(
         default=UNSET,
         description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
@@ -138,7 +140,7 @@ class WebhookTeamRemovedFromRepositoryPropRepository(GitHubModel):
     labels_url: str = Field()
     language: Union[str, None] = Field()
     languages_url: str = Field()
-    license_: Union[WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense, None] = (
+    license_: Union[WebhookTeamAddedToRepositoryPropRepositoryPropLicense, None] = (
         Field(alias="license", title="License")
     )
     master_branch: Missing[str] = Field(default=UNSET)
@@ -151,12 +153,12 @@ class WebhookTeamRemovedFromRepositoryPropRepository(GitHubModel):
     open_issues: int = Field()
     open_issues_count: int = Field()
     organization: Missing[str] = Field(default=UNSET)
-    owner: Union[WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner, None] = Field(
+    owner: Union[WebhookTeamAddedToRepositoryPropRepositoryPropOwner, None] = Field(
         title="User"
     )
-    permissions: Missing[
-        WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions
-    ] = Field(default=UNSET)
+    permissions: Missing[WebhookTeamAddedToRepositoryPropRepositoryPropPermissions] = (
+        Field(default=UNSET)
+    )
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
     pulls_url: str = Field()
@@ -183,10 +185,8 @@ class WebhookTeamRemovedFromRepositoryPropRepository(GitHubModel):
     watchers_count: int = Field()
 
 
-class WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties(
-    ExtraGitHubModel
-):
-    """WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties
+class WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties(ExtraGitHubModel):
+    """WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties
 
     The custom properties that were defined for the repository. The keys are the
     custom property names, and the values are the corresponding custom property
@@ -194,7 +194,7 @@ class WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties(
     """
 
 
-class WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense(GitHubModel):
+class WebhookTeamAddedToRepositoryPropRepositoryPropLicense(GitHubModel):
     """License"""
 
     key: str = Field()
@@ -204,7 +204,7 @@ class WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense(GitHubModel):
     url: Union[str, None] = Field()
 
 
-class WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner(GitHubModel):
+class WebhookTeamAddedToRepositoryPropRepositoryPropOwner(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -231,8 +231,8 @@ class WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions(GitHubModel):
-    """WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions"""
+class WebhookTeamAddedToRepositoryPropRepositoryPropPermissions(GitHubModel):
+    """WebhookTeamAddedToRepositoryPropRepositoryPropPermissions"""
 
     admin: bool = Field()
     maintain: Missing[bool] = Field(default=UNSET)
@@ -241,18 +241,18 @@ class WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions(GitHubModel)
     triage: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(WebhookTeamRemovedFromRepository)
-model_rebuild(WebhookTeamRemovedFromRepositoryPropRepository)
-model_rebuild(WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties)
-model_rebuild(WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense)
-model_rebuild(WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner)
-model_rebuild(WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions)
+model_rebuild(WebhookTeamAddedToRepository)
+model_rebuild(WebhookTeamAddedToRepositoryPropRepository)
+model_rebuild(WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties)
+model_rebuild(WebhookTeamAddedToRepositoryPropRepositoryPropLicense)
+model_rebuild(WebhookTeamAddedToRepositoryPropRepositoryPropOwner)
+model_rebuild(WebhookTeamAddedToRepositoryPropRepositoryPropPermissions)
 
 __all__ = (
-    "WebhookTeamRemovedFromRepository",
-    "WebhookTeamRemovedFromRepositoryPropRepository",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions",
+    "WebhookTeamAddedToRepository",
+    "WebhookTeamAddedToRepositoryPropRepository",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropLicense",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropOwner",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropPermissions",
 )

@@ -9,17 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0103 import CustomPropertyType
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
+class EnterprisesEnterprisePropertiesSchemaPatchBodyType(TypedDict):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    pattern_config_version: NotRequired[str]
+    properties: list[CustomPropertyType]
 
 
-__all__ = (
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type",
-)
+__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBodyType",)

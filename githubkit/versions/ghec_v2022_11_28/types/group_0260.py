@@ -9,31 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
-from typing import Literal, Union
+from datetime import datetime
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
 
+class PackageVersionType(TypedDict):
+    """Package Version
 
-class ProjectsV2StatusUpdateType(TypedDict):
-    """Projects v2 Status Update
-
-    An status update belonging to a project
+    A version of a software package
     """
 
-    id: float
-    node_id: str
-    project_node_id: NotRequired[str]
-    creator: NotRequired[SimpleUserType]
+    id: int
+    name: str
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
     created_at: datetime
     updated_at: datetime
-    status: NotRequired[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ]
-    start_date: NotRequired[date]
-    target_date: NotRequired[date]
-    body: NotRequired[Union[str, None]]
+    deleted_at: NotRequired[datetime]
+    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-__all__ = ("ProjectsV2StatusUpdateType",)
+class PackageVersionPropMetadataType(TypedDict):
+    """Package Version Metadata"""
+
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerType]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
+
+
+class PackageVersionPropMetadataPropContainerType(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropDockerType(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
+
+
+__all__ = (
+    "PackageVersionPropMetadataPropContainerType",
+    "PackageVersionPropMetadataPropDockerType",
+    "PackageVersionPropMetadataType",
+    "PackageVersionType",
+)

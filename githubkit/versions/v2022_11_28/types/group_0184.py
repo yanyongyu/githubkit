@@ -12,18 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0185 import RepositoryRuleMaxFileSizePropParametersType
+from .group_0185 import RepositoryRuleFileExtensionRestrictionPropParametersType
 
 
-class RepositoryRuleMaxFileSizeType(TypedDict):
-    """max_file_size
+class RepositoryRuleFileExtensionRestrictionType(TypedDict):
+    """file_extension_restriction
 
-    Prevent commits with individual files that exceed the specified limit from being
+    Prevent commits that include files with specified file extensions from being
     pushed to the commit graph.
     """
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
 
 
-__all__ = ("RepositoryRuleMaxFileSizeType",)
+__all__ = ("RepositoryRuleFileExtensionRestrictionType",)

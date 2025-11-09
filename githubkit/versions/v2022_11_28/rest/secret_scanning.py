@@ -42,7 +42,7 @@ if TYPE_CHECKING:
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType,
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
-        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
+        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
         SecretScanningAlertType,
         SecretScanningLocationType,
@@ -722,7 +722,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
+        data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
 
     @overload
@@ -753,7 +753,7 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[
-            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type
         ] = UNSET,
         **kwargs,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
@@ -772,7 +772,7 @@ class SecretScanningClient:
 
         from ..models import (
             EventsGetResponse503,
-            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
             SecretScanningAlert,
         )
 
@@ -787,7 +787,7 @@ class SecretScanningClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody, json
+                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0, json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -812,7 +812,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
+        data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
 
     @overload
@@ -843,7 +843,7 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[
-            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type
         ] = UNSET,
         **kwargs,
     ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
@@ -862,7 +862,7 @@ class SecretScanningClient:
 
         from ..models import (
             EventsGetResponse503,
-            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
             SecretScanningAlert,
         )
 
@@ -877,7 +877,7 @@ class SecretScanningClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody, json
+                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0, json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

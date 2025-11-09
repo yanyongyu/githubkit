@@ -9,32 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class IssueTypeType(TypedDict):
-    """Issue Type
+class BillingPremiumRequestUsageReportGheType(TypedDict):
+    """BillingPremiumRequestUsageReportGhe"""
 
-    The type of issue.
-    """
+    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodType
+    enterprise: str
+    user: NotRequired[str]
+    organization: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    cost_center: NotRequired[BillingPremiumRequestUsageReportGhePropCostCenterType]
+    usage_items: list[BillingPremiumRequestUsageReportGhePropUsageItemsItemsType]
 
-    id: int
-    node_id: str
+
+class BillingPremiumRequestUsageReportGhePropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportGhePropCostCenterType(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+
+    id: str
     name: str
-    description: Union[str, None]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-    is_enabled: NotRequired[bool]
 
 
-__all__ = ("IssueTypeType",)
+class BillingPremiumRequestUsageReportGhePropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+__all__ = (
+    "BillingPremiumRequestUsageReportGhePropCostCenterType",
+    "BillingPremiumRequestUsageReportGhePropTimePeriodType",
+    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportGheType",
+)

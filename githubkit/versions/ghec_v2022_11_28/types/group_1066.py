@@ -11,11 +11,18 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgActionsPermissionsRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
-
-    selected_repository_ids: list[int]
+from .group_0034 import ActionsHostedRunnerCustomImageVersionType
 
 
-__all__ = ("OrgsOrgActionsPermissionsRepositoriesPutBodyType",)
+class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
+    TypedDict
+):
+    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+
+    total_count: int
+    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
+
+
+__all__ = (
+    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
+)

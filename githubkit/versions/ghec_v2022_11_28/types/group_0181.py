@@ -9,28 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetCostCenterType(TypedDict):
-    """GetCostCenter"""
+class CreateBudgetType(TypedDict):
+    """CreateBudget"""
 
-    id: str
-    name: str
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: list[GetCostCenterPropResourcesItemsType]
+    message: str
+    budget: CreateBudgetPropBudgetType
 
 
-class GetCostCenterPropResourcesItemsType(TypedDict):
-    """GetCostCenterPropResourcesItems"""
+class CreateBudgetPropBudgetType(TypedDict):
+    """CreateBudgetPropBudget"""
 
-    type: str
-    name: str
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_amount: NotRequired[float]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_alerting: NotRequired[CreateBudgetPropBudgetPropBudgetAlertingType]
+
+
+class CreateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
+    """CreateBudgetPropBudgetPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "GetCostCenterPropResourcesItemsType",
-    "GetCostCenterType",
+    "CreateBudgetPropBudgetPropBudgetAlertingType",
+    "CreateBudgetPropBudgetType",
+    "CreateBudgetType",
 )

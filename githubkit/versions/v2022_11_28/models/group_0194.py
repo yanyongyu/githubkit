@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,46 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RuleSuitesItems(GitHubModel):
-    """RuleSuitesItems"""
+class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the rule insight."
-    )
-    actor_id: Missing[int] = Field(
-        default=UNSET, description="The number that identifies the user."
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET, description="The handle for the GitHub user account."
-    )
-    before_sha: Missing[str] = Field(
-        default=UNSET, description="The first commit sha before the push evaluation."
-    )
-    after_sha: Missing[str] = Field(
-        default=UNSET, description="The last commit sha in the push evaluation."
-    )
-    ref: Missing[str] = Field(
-        default=UNSET, description="The ref name that the evaluation ran on."
-    )
-    repository_id: Missing[int] = Field(
+    review_draft_pull_requests: Missing[bool] = Field(
         default=UNSET,
-        description="The ID of the repository associated with the rule evaluation.",
+        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
     )
-    repository_name: Missing[str] = Field(
+    review_on_push: Missing[bool] = Field(
         default=UNSET,
-        description="The name of the repository without the `.git` extension.",
-    )
-    pushed_at: Missing[datetime] = Field(default=UNSET)
-    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` enforcement status.",
-    )
-    evaluation_result: Missing[Literal["pass", "fail", "bypass"]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
+        description="Copilot automatically reviews each new push to the pull request.",
     )
 
 
-model_rebuild(RuleSuitesItems)
+model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
 
-__all__ = ("RuleSuitesItems",)
+__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)

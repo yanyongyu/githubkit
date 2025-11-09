@@ -14,12 +14,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsArtifactAndLogRetention(GitHubModel):
-    """ActionsArtifactAndLogRetention"""
+class OidcCustomSub(GitHubModel):
+    """Actions OIDC Subject customization
 
-    days: int = Field(description="The number of days to retain artifacts and logs")
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
+    )
 
 
-model_rebuild(ActionsArtifactAndLogRetention)
+model_rebuild(OidcCustomSub)
 
-__all__ = ("ActionsArtifactAndLogRetention",)
+__all__ = ("OidcCustomSub",)

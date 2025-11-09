@@ -11,30 +11,29 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0317 import BranchProtectionType
+from .group_0319 import (
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
+)
 
 
-class ShortBranchType(TypedDict):
-    """Short Branch
+class ProtectedBranchPullRequestReviewType(TypedDict):
+    """Protected Branch Pull Request Review
 
-    Short Branch
+    Protected Branch Pull Request Review
     """
 
-    name: str
-    commit: ShortBranchPropCommitType
-    protected: bool
-    protection: NotRequired[BranchProtectionType]
-    protection_url: NotRequired[str]
+    url: NotRequired[str]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
+    ]
+    dismiss_stale_reviews: bool
+    require_code_owner_reviews: bool
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
 
 
-class ShortBranchPropCommitType(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
-    url: str
-
-
-__all__ = (
-    "ShortBranchPropCommitType",
-    "ShortBranchType",
-)
+__all__ = ("ProtectedBranchPullRequestReviewType",)

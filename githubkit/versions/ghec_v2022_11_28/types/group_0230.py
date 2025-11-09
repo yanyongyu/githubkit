@@ -9,104 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAlertDismissalRequestType(TypedDict):
-    """Code scanning alert dismissal request
+class CopilotOrganizationDetailsType(TypedDict):
+    """Copilot Organization Details
 
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[CodeScanningAlertDismissalRequestPropRepositoryType]
-    organization: NotRequired[CodeScanningAlertDismissalRequestPropOrganizationType]
-    requester: NotRequired[CodeScanningAlertDismissalRequestPropRequesterType]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[CodeScanningAlertDismissalRequestPropDataItemsType], None]
+    seat_breakdown: CopilotOrganizationSeatBreakdownType
+    public_code_suggestions: Literal["allow", "block", "unconfigured"]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
     ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[datetime]
-    created_at: NotRequired[datetime]
-    responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
+    plan_type: NotRequired[Literal["business", "enterprise"]]
 
 
-class CodeScanningAlertDismissalRequestPropRepositoryType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRepository
+class CopilotOrganizationSeatBreakdownType(TypedDict):
+    """Copilot Seat Breakdown
 
-    The repository the dismissal request is for.
+    The breakdown of Copilot Business seats for the organization.
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropOrganizationType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropRequesterType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropDataItemsType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    pr_review_thread_id: NotRequired[str]
-
-
-class DismissalRequestResponseType(TypedDict):
-    """Dismissal request response
-
-    A response made by a requester to dismiss the request.
-    """
-
-    id: NotRequired[int]
-    reviewer: NotRequired[DismissalRequestResponsePropReviewerType]
-    message: NotRequired[Union[str, None]]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[datetime]
-
-
-class DismissalRequestResponsePropReviewerType(TypedDict):
-    """DismissalRequestResponsePropReviewer
-
-    The user who reviewed the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
 
 
 __all__ = (
-    "CodeScanningAlertDismissalRequestPropDataItemsType",
-    "CodeScanningAlertDismissalRequestPropOrganizationType",
-    "CodeScanningAlertDismissalRequestPropRepositoryType",
-    "CodeScanningAlertDismissalRequestPropRequesterType",
-    "CodeScanningAlertDismissalRequestType",
-    "DismissalRequestResponsePropReviewerType",
-    "DismissalRequestResponseType",
+    "CopilotOrganizationDetailsType",
+    "CopilotOrganizationSeatBreakdownType",
 )

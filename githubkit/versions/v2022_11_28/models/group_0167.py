@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,40 +18,35 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleRequiredStatusChecksPropParameters(GitHubModel):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
+class RepositoryRulePullRequestPropParameters(GitHubModel):
+    """RepositoryRulePullRequestPropParameters"""
 
-    do_not_enforce_on_create: Missing[bool] = Field(
+    allowed_merge_methods: Missing[list[Literal["merge", "squash", "rebase"]]] = Field(
         default=UNSET,
-        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
+        description="Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled.",
     )
-    required_status_checks: list[RepositoryRuleParamsStatusCheckConfiguration] = Field(
-        description="Status checks that are required."
-    )
-    strict_required_status_checks_policy: bool = Field(
-        description="Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled."
-    )
-
-
-class RepositoryRuleParamsStatusCheckConfiguration(GitHubModel):
-    """StatusCheckConfiguration
-
-    Required status check
-    """
-
-    context: str = Field(
-        description="The status check context name that must be present on the commit."
-    )
-    integration_id: Missing[int] = Field(
+    automatic_copilot_code_review_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="The optional integration ID that this status check must originate from.",
+        description="Request Copilot code review for new pull requests automatically if the author has access to Copilot code review.",
+    )
+    dismiss_stale_reviews_on_push: bool = Field(
+        description="New, reviewable commits pushed will dismiss previous pull request review approvals."
+    )
+    require_code_owner_review: bool = Field(
+        description="Require an approving review in pull requests that modify files that have a designated code owner."
+    )
+    require_last_push_approval: bool = Field(
+        description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
+    )
+    required_approving_review_count: int = Field(
+        le=10.0,
+        description="The number of approving reviews that are required before a pull request can be merged.",
+    )
+    required_review_thread_resolution: bool = Field(
+        description="All conversations on code must be resolved before a pull request can be merged."
     )
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecksPropParameters)
-model_rebuild(RepositoryRuleParamsStatusCheckConfiguration)
+model_rebuild(RepositoryRulePullRequestPropParameters)
 
-__all__ = (
-    "RepositoryRuleParamsStatusCheckConfiguration",
-    "RepositoryRuleRequiredStatusChecksPropParameters",
-)
+__all__ = ("RepositoryRulePullRequestPropParameters",)

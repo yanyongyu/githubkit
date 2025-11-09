@@ -13,18 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0530 import EnterpriseWebhooksType
-from .group_0531 import SimpleInstallationType
-from .group_0532 import OrganizationSimpleWebhooksType
-from .group_0533 import RepositoryWebhooksType
-from .group_0545 import DiscussionType
+from .group_0534 import EnterpriseWebhooksType
+from .group_0535 import SimpleInstallationType
+from .group_0536 import OrganizationSimpleWebhooksType
+from .group_0537 import RepositoryWebhooksType
+from .group_0549 import DiscussionType
+from .group_0550 import WebhooksCommentType
 
 
-class WebhookDiscussionEditedType(TypedDict):
-    """discussion edited event"""
+class WebhookDiscussionCommentDeletedType(TypedDict):
+    """discussion_comment deleted event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookDiscussionEditedPropChangesType]
+    action: Literal["deleted"]
+    comment: WebhooksCommentType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -33,28 +34,4 @@ class WebhookDiscussionEditedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionEditedPropChangesType(TypedDict):
-    """WebhookDiscussionEditedPropChanges"""
-
-    body: NotRequired[WebhookDiscussionEditedPropChangesPropBodyType]
-    title: NotRequired[WebhookDiscussionEditedPropChangesPropTitleType]
-
-
-class WebhookDiscussionEditedPropChangesPropBodyType(TypedDict):
-    """WebhookDiscussionEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookDiscussionEditedPropChangesPropTitleType(TypedDict):
-    """WebhookDiscussionEditedPropChangesPropTitle"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookDiscussionEditedPropChangesPropBodyType",
-    "WebhookDiscussionEditedPropChangesPropTitleType",
-    "WebhookDiscussionEditedPropChangesType",
-    "WebhookDiscussionEditedType",
-)
+__all__ = ("WebhookDiscussionCommentDeletedType",)

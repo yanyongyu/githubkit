@@ -11,12 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0034 import ActionsHostedRunnerCustomImageVersionType
 
-class EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200"""
+
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGe
+    tResponse200
+    """
 
     total_count: int
-    platforms: list[str]
+    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
 
 
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type",)
+__all__ = (
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
+)

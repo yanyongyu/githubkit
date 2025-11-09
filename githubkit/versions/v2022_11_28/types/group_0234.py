@@ -9,47 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class SimpleCommitType(TypedDict):
-    """Simple Commit
+class ActionsWorkflowAccessToRepositoryType(TypedDict):
+    """ActionsWorkflowAccessToRepository"""
 
-    A commit.
-    """
-
-    id: str
-    tree_id: str
-    message: str
-    timestamp: datetime
-    author: Union[SimpleCommitPropAuthorType, None]
-    committer: Union[SimpleCommitPropCommitterType, None]
+    access_level: Literal["none", "user", "organization"]
 
 
-class SimpleCommitPropAuthorType(TypedDict):
-    """SimpleCommitPropAuthor
-
-    Information about the Git author
-    """
-
-    name: str
-    email: str
-
-
-class SimpleCommitPropCommitterType(TypedDict):
-    """SimpleCommitPropCommitter
-
-    Information about the Git committer
-    """
-
-    name: str
-    email: str
-
-
-__all__ = (
-    "SimpleCommitPropAuthorType",
-    "SimpleCommitPropCommitterType",
-    "SimpleCommitType",
-)
+__all__ = ("ActionsWorkflowAccessToRepositoryType",)

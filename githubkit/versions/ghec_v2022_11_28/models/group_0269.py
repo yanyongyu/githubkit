@@ -9,37 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-class ProjectsV2DraftIssue(GitHubModel):
-    """Draft Issue
+class PullRequestSimplePropHead(GitHubModel):
+    """PullRequestSimplePropHead"""
 
-    A draft issue in a project
-    """
-
-    id: float = Field(description="The ID of the draft issue")
-    node_id: str = Field(description="The node ID of the draft issue")
-    title: str = Field(description="The title of the draft issue")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The body content of the draft issue"
-    )
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[None, Repository] = Field()
+    sha: str = Field()
     user: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field(description="The time the draft issue was created")
-    updated_at: datetime = Field(
-        description="The time the draft issue was last updated"
-    )
 
 
-model_rebuild(ProjectsV2DraftIssue)
+class PullRequestSimplePropBase(GitHubModel):
+    """PullRequestSimplePropBase"""
 
-__all__ = ("ProjectsV2DraftIssue",)
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: Union[None, SimpleUser] = Field()
+
+
+model_rebuild(PullRequestSimplePropHead)
+model_rebuild(PullRequestSimplePropBase)
+
+__all__ = (
+    "PullRequestSimplePropBase",
+    "PullRequestSimplePropHead",
+)

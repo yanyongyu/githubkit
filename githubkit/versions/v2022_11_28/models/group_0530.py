@@ -18,20 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0138 import CustomProperty
-from .group_0448 import EnterpriseWebhooks
-from .group_0449 import SimpleInstallation
-from .group_0450 import OrganizationSimpleWebhooks
+from .group_0450 import EnterpriseWebhooks
+from .group_0451 import SimpleInstallation
+from .group_0452 import OrganizationSimpleWebhooks
 
 
-class WebhookCustomPropertyUpdated(GitHubModel):
-    """custom property updated event"""
+class WebhookCustomPropertyDeleted(GitHubModel):
+    """custom property deleted event"""
 
-    action: Literal["updated"] = Field()
-    definition: CustomProperty = Field(
-        title="Organization Custom Property",
-        description="Custom property defined on an organization",
-    )
+    action: Literal["deleted"] = Field()
+    definition: WebhookCustomPropertyDeletedPropDefinition = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -52,6 +48,16 @@ class WebhookCustomPropertyUpdated(GitHubModel):
     )
 
 
-model_rebuild(WebhookCustomPropertyUpdated)
+class WebhookCustomPropertyDeletedPropDefinition(GitHubModel):
+    """WebhookCustomPropertyDeletedPropDefinition"""
 
-__all__ = ("WebhookCustomPropertyUpdated",)
+    property_name: str = Field(description="The name of the property that was deleted.")
+
+
+model_rebuild(WebhookCustomPropertyDeleted)
+model_rebuild(WebhookCustomPropertyDeletedPropDefinition)
+
+__all__ = (
+    "WebhookCustomPropertyDeleted",
+    "WebhookCustomPropertyDeletedPropDefinition",
+)

@@ -9,32 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
+from .group_0032 import SimpleRepositoryType
+from .group_0203 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationWikiCommitType,
+)
+from .group_0204 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestTitleType,
+)
+from .group_0205 import (
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationPullRequestCommentType,
+)
 
 
-class RepositoryAdvisoryCreditType(TypedDict):
-    """RepositoryAdvisoryCredit
+class OrganizationSecretScanningAlertType(TypedDict):
+    """OrganizationSecretScanningAlert"""
 
-    A credit given to a user for a repository security advisory.
-    """
-
-    user: SimpleUserType
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
+    number: NotRequired[int]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[Union[None, datetime]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    locations_url: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ]
-    state: Literal["accepted", "declined", "pending"]
+    resolved_at: NotRequired[Union[datetime, None]]
+    resolved_by: NotRequired[Union[None, SimpleUserType]]
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    secret: NotRequired[str]
+    repository: NotRequired[SimpleRepositoryType]
+    push_protection_bypassed: NotRequired[Union[bool, None]]
+    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypassed_at: NotRequired[Union[datetime, None]]
+    push_protection_bypass_request_reviewer: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    publicly_leaked: NotRequired[Union[bool, None]]
+    multi_repo: NotRequired[Union[bool, None]]
+    is_base64_encoded: NotRequired[Union[bool, None]]
+    first_location_detected: NotRequired[
+        Union[
+            None,
+            SecretScanningLocationCommitType,
+            SecretScanningLocationWikiCommitType,
+            SecretScanningLocationIssueTitleType,
+            SecretScanningLocationIssueBodyType,
+            SecretScanningLocationIssueCommentType,
+            SecretScanningLocationDiscussionTitleType,
+            SecretScanningLocationDiscussionBodyType,
+            SecretScanningLocationDiscussionCommentType,
+            SecretScanningLocationPullRequestTitleType,
+            SecretScanningLocationPullRequestBodyType,
+            SecretScanningLocationPullRequestCommentType,
+            SecretScanningLocationPullRequestReviewType,
+            SecretScanningLocationPullRequestReviewCommentType,
+        ]
+    ]
+    has_more_locations: NotRequired[bool]
+    assigned_to: NotRequired[Union[None, SimpleUserType]]
 
 
-__all__ = ("RepositoryAdvisoryCreditType",)
+__all__ = ("OrganizationSecretScanningAlertType",)

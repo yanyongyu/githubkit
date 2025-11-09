@@ -13,16 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0048 import RunnerLabel
+from .group_0049 import Runner
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
 
-    total_count: int = Field()
-    labels: list[RunnerLabel] = Field()
+    runner: Runner = Field(
+        title="Self hosted runners", description="A self hosted runner"
+    )
+    encoded_jit_config: str = Field(
+        description="The base64 encoded runner configuration."
+    )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200)
+model_rebuild(EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201",)

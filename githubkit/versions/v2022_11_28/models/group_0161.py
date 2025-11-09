@@ -17,22 +17,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0162 import RepositoryRuleRequiredDeploymentsPropParameters
+from .group_0162 import RepositoryRuleMergeQueuePropParameters
 
 
-class RepositoryRuleRequiredDeployments(GitHubModel):
-    """required_deployments
+class RepositoryRuleMergeQueue(GitHubModel):
+    """merge_queue
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["required_deployments"] = Field()
-    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["merge_queue"] = Field()
+    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleRequiredDeployments)
+model_rebuild(RepositoryRuleMergeQueue)
 
-__all__ = ("RepositoryRuleRequiredDeployments",)
+__all__ = ("RepositoryRuleMergeQueue",)

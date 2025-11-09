@@ -9,32 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
-
-
-class NetworkConfigurationType(TypedDict):
-    """Hosted compute network configuration
-
-    A hosted compute network configuration.
-    """
-
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    created_on: Union[datetime, None]
+    pattern_config_version: NotRequired[str]
 
 
-__all__ = (
-    "NetworkConfigurationType",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
-)
+__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",)

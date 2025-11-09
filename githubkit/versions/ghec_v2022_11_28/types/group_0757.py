@@ -13,18 +13,18 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0530 import EnterpriseWebhooksType
-from .group_0531 import SimpleInstallationType
-from .group_0532 import OrganizationSimpleWebhooksType
-from .group_0533 import RepositoryWebhooksType
-from .group_0556 import WebhooksMarketplacePurchaseType
-from .group_0557 import WebhooksPreviousMarketplacePurchaseType
+from .group_0534 import EnterpriseWebhooksType
+from .group_0535 import SimpleInstallationType
+from .group_0536 import OrganizationSimpleWebhooksType
+from .group_0537 import RepositoryWebhooksType
+from .group_0560 import WebhooksMarketplacePurchaseType
+from .group_0561 import WebhooksPreviousMarketplacePurchaseType
 
 
-class WebhookMarketplacePurchasePurchasedType(TypedDict):
-    """marketplace_purchase purchased event"""
+class WebhookMarketplacePurchaseCancelledType(TypedDict):
+    """marketplace_purchase cancelled event"""
 
-    action: Literal["purchased"]
+    action: Literal["cancelled"]
     effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -35,4 +35,4 @@ class WebhookMarketplacePurchasePurchasedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookMarketplacePurchasePurchasedType",)
+__all__ = ("WebhookMarketplacePurchaseCancelledType",)

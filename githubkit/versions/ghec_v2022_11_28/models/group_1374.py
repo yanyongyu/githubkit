@@ -16,26 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoReleasesGenerateNotesPostBody(GitHubModel):
-    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-    tag_name: str = Field(
-        description="The tag name for the release. This can be an existing tag or a new one."
-    )
-    target_commitish: Missing[str] = Field(
+    expected_head_sha: Missing[str] = Field(
         default=UNSET,
-        description="Specifies the commitish value that will be the target for the release's tag. Required if the supplied tag_name does not reference an existing tag. Ignored if the tag_name already exists.",
-    )
-    previous_tag_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the previous tag to use as the starting point for the release notes. Use to manually specify the range for the set of changes considered as part this release.",
-    )
-    configuration_file_path: Missing[str] = Field(
-        default=UNSET,
-        description="Specifies a path to a file in the repository containing configuration settings used for generating the release notes. If unspecified, the configuration file located in the repository at '.github/release.yml' or '.github/release.yaml' will be used. If that is not present, the default configuration will be used.",
+        description="The expected SHA of the pull request's HEAD ref. This is the most recent commit on the pull request's branch. If the expected SHA does not match the pull request's HEAD, you will receive a `422 Unprocessable Entity` status. You can use the \"[List commits](https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-commits)\" endpoint to find the most recent commit SHA. Default: SHA of the pull request's current HEAD ref.",
     )
 
 
-model_rebuild(ReposOwnerRepoReleasesGenerateNotesPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutBody)
 
-__all__ = ("ReposOwnerRepoReleasesGenerateNotesPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBody",)

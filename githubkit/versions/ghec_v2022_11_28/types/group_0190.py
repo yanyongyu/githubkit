@@ -12,19 +12,12 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReactionRollupType(TypedDict):
-    """Reaction Rollup"""
+class CombinedBillingUsageType(TypedDict):
+    """CombinedBillingUsage"""
 
-    url: str
-    total_count: int
-    plus_one: int
-    minus_one: int
-    laugh: int
-    confused: int
-    heart: int
-    hooray: int
-    eyes: int
-    rocket: int
+    days_left_in_billing_cycle: int
+    estimated_paid_storage_for_month: int
+    estimated_storage_for_month: int
 
 
-__all__ = ("ReactionRollupType",)
+__all__ = ("CombinedBillingUsageType",)

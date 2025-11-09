@@ -11,14 +11,16 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0048 import RunnerLabelType
+from .group_0049 import RunnerType
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
 
-    total_count: int
-    labels: list[RunnerLabelType]
+    runner: RunnerType
+    encoded_jit_config: str
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type",)

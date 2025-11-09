@@ -12,29 +12,25 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
-    TypedDict
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
     total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
+    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
 
 
-class ActionsHostedRunnerCustomImageVersionType(TypedDict):
-    """GitHub-hosted runner custom image version details.
+class ActionsCacheUsageByRepositoryType(TypedDict):
+    """Actions Cache Usage by repository
 
-    Provides details of a hosted runner custom image version
+    GitHub Actions Cache Usage by repository.
     """
 
-    version: str
-    state: str
-    size_gb: int
-    created_on: str
-    state_details: str
+    full_name: str
+    active_caches_size_in_bytes: int
+    active_caches_count: int
 
 
 __all__ = (
-    "ActionsHostedRunnerCustomImageVersionType",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
+    "ActionsCacheUsageByRepositoryType",
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
 )

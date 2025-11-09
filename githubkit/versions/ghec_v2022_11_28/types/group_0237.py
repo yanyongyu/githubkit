@@ -10,38 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType
+from .group_0214 import MinimalRepositoryType
 
-class OrgHookType(TypedDict):
-    """Org Hook
 
-    Org Hook
+class PackageType(TypedDict):
+    """Package
+
+    A software package
     """
 
     id: int
-    url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
     name: str
-    events: list[str]
-    active: bool
-    config: OrgHookPropConfigType
-    updated_at: datetime
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserType]]
+    repository: NotRequired[Union[None, MinimalRepositoryType]]
     created_at: datetime
-    type: str
+    updated_at: datetime
 
 
-class OrgHookPropConfigType(TypedDict):
-    """OrgHookPropConfig"""
-
-    url: NotRequired[str]
-    insecure_ssl: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-
-
-__all__ = (
-    "OrgHookPropConfigType",
-    "OrgHookType",
-)
+__all__ = ("PackageType",)

@@ -9,18 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ContentSubmoduleType(TypedDict):
-    """Submodule Content
+class ContentTreeType(TypedDict):
+    """Content Tree
 
-    An object describing a submodule
+    Content Tree
     """
 
-    type: Literal["submodule"]
-    submodule_git_url: str
+    type: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    content: NotRequired[str]
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    entries: NotRequired[list[ContentTreePropEntriesItemsType]]
+    encoding: NotRequired[str]
+    links: ContentTreePropLinksType
+
+
+class ContentTreePropLinksType(TypedDict):
+    """ContentTreePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentTreePropEntriesItemsType(TypedDict):
+    """ContentTreePropEntriesItems"""
+
+    type: str
     size: int
     name: str
     path: str
@@ -29,11 +54,11 @@ class ContentSubmoduleType(TypedDict):
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentSubmodulePropLinksType
+    links: ContentTreePropEntriesItemsPropLinksType
 
 
-class ContentSubmodulePropLinksType(TypedDict):
-    """ContentSubmodulePropLinks"""
+class ContentTreePropEntriesItemsPropLinksType(TypedDict):
+    """ContentTreePropEntriesItemsPropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
@@ -41,6 +66,8 @@ class ContentSubmodulePropLinksType(TypedDict):
 
 
 __all__ = (
-    "ContentSubmodulePropLinksType",
-    "ContentSubmoduleType",
+    "ContentTreePropEntriesItemsPropLinksType",
+    "ContentTreePropEntriesItemsType",
+    "ContentTreePropLinksType",
+    "ContentTreeType",
 )

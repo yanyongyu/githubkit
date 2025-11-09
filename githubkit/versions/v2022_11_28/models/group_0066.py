@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,78 +18,55 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingPremiumRequestUsageReportOrg(GitHubModel):
-    """BillingPremiumRequestUsageReportOrg"""
+class GetAllBudgets(GitHubModel):
+    """GetAllBudgets"""
 
-    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriod = Field(
-        alias="timePeriod"
-    )
-    organization: str = Field(description="The unique identifier of the organization.")
-    user: Missing[str] = Field(
-        default=UNSET, description="The name of the user for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model for the usage report."
-    )
-    usage_items: list[BillingPremiumRequestUsageReportOrgPropUsageItemsItems] = Field(
-        alias="usageItems"
+    budgets: list[Budget] = Field(
+        description="Array of budget objects for the enterprise"
     )
 
 
-class BillingPremiumRequestUsageReportOrgPropTimePeriod(GitHubModel):
-    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
+class Budget(GitHubModel):
+    """Budget"""
 
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
+    id: str = Field(description="The unique identifier for the budget")
+    budget_type: Literal["SkuPricing", "ProductPricing"] = Field(
+        description="The type of pricing for the budget"
     )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
+    budget_amount: int = Field(
+        description="The budget amount limit in whole dollars. For license-based products, this represents the number of licenses."
     )
+    prevent_further_usage: bool = Field(
+        description="The type of limit enforcement for the budget"
+    )
+    budget_scope: str = Field(
+        description="The scope of the budget (enterprise, organization, repository, cost center)"
+    )
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the entity for the budget (enterprise does not require a name).",
+    )
+    budget_product_sku: str = Field(
+        description="A single product or sku to apply the budget to."
+    )
+    budget_alerting: BudgetPropBudgetAlerting = Field()
 
 
-class BillingPremiumRequestUsageReportOrgPropUsageItemsItems(GitHubModel):
-    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
+class BudgetPropBudgetAlerting(GitHubModel):
+    """BudgetPropBudgetAlerting"""
 
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    model: str = Field(description="Model name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
-    )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
+    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
+    alert_recipients: list[str] = Field(
+        description="Array of user login names who will receive alerts"
     )
 
 
-model_rebuild(BillingPremiumRequestUsageReportOrg)
-model_rebuild(BillingPremiumRequestUsageReportOrgPropTimePeriod)
-model_rebuild(BillingPremiumRequestUsageReportOrgPropUsageItemsItems)
+model_rebuild(GetAllBudgets)
+model_rebuild(Budget)
+model_rebuild(BudgetPropBudgetAlerting)
 
 __all__ = (
-    "BillingPremiumRequestUsageReportOrg",
-    "BillingPremiumRequestUsageReportOrgPropTimePeriod",
-    "BillingPremiumRequestUsageReportOrgPropUsageItemsItems",
+    "Budget",
+    "BudgetPropBudgetAlerting",
+    "GetAllBudgets",
 )

@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserGpgKeysPostBodyType(TypedDict):
-    """UserGpgKeysPostBody"""
+class UserCodespacesCodespaceNamePublishPostBodyType(TypedDict):
+    """UserCodespacesCodespaceNamePublishPostBody"""
 
     name: NotRequired[str]
-    armored_public_key: str
+    private: NotRequired[bool]
 
 
-__all__ = ("UserGpgKeysPostBodyType",)
+__all__ = ("UserCodespacesCodespaceNamePublishPostBodyType",)

@@ -9,18 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ImmutableReleasesOrganizationSettingsType(TypedDict):
-    """Check immutable releases organization settings
+class PackagesBillingUsageType(TypedDict):
+    """PackagesBillingUsage"""
 
-    Check immutable releases settings for an organization.
-    """
-
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    total_gigabytes_bandwidth_used: int
+    total_paid_gigabytes_bandwidth_used: int
+    included_gigabytes_bandwidth: int
 
 
-__all__ = ("ImmutableReleasesOrganizationSettingsType",)
+__all__ = ("PackagesBillingUsageType",)

@@ -9,53 +9,100 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 
 
-class ProjectsV2StatusUpdate(GitHubModel):
-    """Projects v2 Status Update
+class OrganizationProgrammaticAccessGrant(GitHubModel):
+    """Organization Programmatic Access Grant
 
-    An status update belonging to a project
+    Minimal representation of an organization programmatic access grant for
+    enumerations
     """
 
-    id: float = Field(description="The unique identifier of the status update.")
-    node_id: str = Field(description="The node ID of the status update.")
-    project_node_id: Missing[str] = Field(
-        default=UNSET,
-        description="The node ID of the project that this status update belongs to.",
+    id: int = Field(
+        description="Unique identifier of the fine-grained personal access token grant. The `pat_id` used to get details about an approved fine-grained personal access token."
     )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    repository_selection: Literal["none", "all", "subset"] = Field(
+        description="Type of repository selection requested."
     )
-    created_at: datetime = Field(
-        description="The time when the status update was created."
+    repositories_url: str = Field(
+        description="URL to the list of repositories the fine-grained personal access token can access. Only follow when `repository_selection` is `subset`."
     )
-    updated_at: datetime = Field(
-        description="The time when the status update was last updated."
+    permissions: OrganizationProgrammaticAccessGrantPropPermissions = Field(
+        description="Permissions requested, categorized by type of permission."
     )
-    status: Missing[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ] = Field(default=UNSET, description="The current status.")
-    start_date: Missing[date] = Field(
-        default=UNSET, description="The start date of the period covered by the update."
+    access_granted_at: str = Field(
+        description="Date and time when the fine-grained personal access token was approved to access the organization."
     )
-    target_date: Missing[date] = Field(
-        default=UNSET, description="The target date associated with the update."
+    token_id: int = Field(
+        description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
     )
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the status update"
+    token_name: str = Field(
+        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
+    )
+    token_expired: bool = Field(
+        description="Whether the associated fine-grained personal access token has expired."
+    )
+    token_expires_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token expires."
+    )
+    token_last_used_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token was last used for authentication."
     )
 
 
-model_rebuild(ProjectsV2StatusUpdate)
+class OrganizationProgrammaticAccessGrantPropPermissions(GitHubModel):
+    """OrganizationProgrammaticAccessGrantPropPermissions
 
-__all__ = ("ProjectsV2StatusUpdate",)
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: Missing[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[OrganizationProgrammaticAccessGrantPropPermissionsPropOther] = Field(
+        default=UNSET
+    )
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization(
+    ExtraGitHubModel
+):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropRepository(
+    ExtraGitHubModel
+):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOther(ExtraGitHubModel):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
+
+
+model_rebuild(OrganizationProgrammaticAccessGrant)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissions)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropRepository)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOther)
+
+__all__ = (
+    "OrganizationProgrammaticAccessGrant",
+    "OrganizationProgrammaticAccessGrantPropPermissions",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
+)

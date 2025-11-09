@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,43 +18,66 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0700 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-)
+
+class WebhookIssueCommentEditedPropIssueAllof0PropAssignee(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
-    """App
+class WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems(GitHubModel):
+    """Label"""
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
-
-    created_at: Union[datetime, None] = Field()
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field()
     description: Union[str, None] = Field()
-    events: Missing[list[str]] = Field(
-        default=UNSET, description="The list of events for the GitHub app"
-    )
-    external_url: Union[str, None] = Field()
-    html_url: str = Field()
-    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
-    name: str = Field(description="The name of the GitHub app")
+    id: int = Field()
+    name: str = Field(description="The name of the label.")
     node_id: str = Field()
-    owner: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
-    ] = Field(title="User")
-    permissions: Missing[
-        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
-    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
-    slug: Missing[str] = Field(
-        default=UNSET, description="The slug name of the GitHub app"
-    )
-    updated_at: Union[datetime, None] = Field()
+    url: str = Field(description="URL for the label")
 
 
-model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp)
+class WebhookIssueCommentEditedPropIssueAllof0PropPullRequest(GitHubModel):
+    """WebhookIssueCommentEditedPropIssueAllof0PropPullRequest"""
 
-__all__ = ("WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp",)
+    diff_url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    patch_url: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropAssignee)
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems)
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropPullRequest)
+
+__all__ = (
+    "WebhookIssueCommentEditedPropIssueAllof0PropAssignee",
+    "WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems",
+    "WebhookIssueCommentEditedPropIssueAllof0PropPullRequest",
+)

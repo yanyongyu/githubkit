@@ -9,26 +9,92 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0105 import RepositoryRulesetBypassActor
+from .group_0110 import RepositoryRulesetConditions
+from .group_0124 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0125 import RepositoryRuleUpdate
+from .group_0127 import RepositoryRuleRequiredLinearHistory
+from .group_0128 import RepositoryRuleRequiredDeployments
+from .group_0131 import RepositoryRulePullRequest
+from .group_0133 import RepositoryRuleRequiredStatusChecks
+from .group_0135 import RepositoryRuleCommitMessagePattern
+from .group_0137 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0139 import RepositoryRuleCommitterEmailPattern
+from .group_0141 import RepositoryRuleBranchNamePattern
+from .group_0143 import RepositoryRuleTagNamePattern
+from .group_0145 import RepositoryRuleFilePathRestriction
+from .group_0147 import RepositoryRuleMaxFilePathLength
+from .group_0149 import RepositoryRuleFileExtensionRestriction
+from .group_0151 import RepositoryRuleMaxFileSize
+from .group_0154 import RepositoryRuleWorkflows
+from .group_0156 import RepositoryRuleCodeScanning
+from .group_0163 import RepositoryRuleMergeQueue
+from .group_0165 import RepositoryRuleCopilotCodeReview
 
-class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
-    """ReposOwnerRepoSubscriptionPutBody"""
 
-    subscribed: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications should be received from this repository.",
+class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    ignored: Missing[bool] = Field(
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
         default=UNSET,
-        description="Determines if all notifications should be blocked from this repository.",
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
     )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[RepositoryRulesetConditions] = Field(
+        default=UNSET,
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoSubscriptionPutBody)
+model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
 
-__all__ = ("ReposOwnerRepoSubscriptionPutBody",)
+__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)

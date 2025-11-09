@@ -20,25 +20,25 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 from .group_0020 import Repository
 from .group_0045 import Issue
-from .group_0449 import SimpleInstallation
-from .group_0450 import OrganizationSimpleWebhooks
-from .group_0451 import RepositoryWebhooks
+from .group_0451 import SimpleInstallation
+from .group_0452 import OrganizationSimpleWebhooks
+from .group_0453 import RepositoryWebhooks
 
 
-class WebhookSubIssuesSubIssueRemoved(GitHubModel):
-    """sub-issue removed event"""
+class WebhookSubIssuesParentIssueRemoved(GitHubModel):
+    """parent issue removed event"""
 
-    action: Literal["sub_issue_removed"] = Field()
-    sub_issue_id: float = Field(description="The ID of the sub-issue.")
-    sub_issue: Issue = Field(
+    action: Literal["parent_issue_removed"] = Field()
+    parent_issue_id: float = Field(description="The ID of the parent issue.")
+    parent_issue: Issue = Field(
         title="Issue",
         description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
-    sub_issue_repo: Repository = Field(
+    parent_issue_repo: Repository = Field(
         title="Repository", description="A repository on GitHub."
     )
-    parent_issue_id: float = Field(description="The ID of the parent issue.")
-    parent_issue: Issue = Field(
+    sub_issue_id: float = Field(description="The ID of the sub-issue.")
+    sub_issue: Issue = Field(
         title="Issue",
         description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
@@ -62,6 +62,6 @@ class WebhookSubIssuesSubIssueRemoved(GitHubModel):
     )
 
 
-model_rebuild(WebhookSubIssuesSubIssueRemoved)
+model_rebuild(WebhookSubIssuesParentIssueRemoved)
 
-__all__ = ("WebhookSubIssuesSubIssueRemoved",)
+__all__ = ("WebhookSubIssuesParentIssueRemoved",)

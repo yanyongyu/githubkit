@@ -11,14 +11,31 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0071 import ActionsHostedRunnerMachineSpecType
 
-
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
     total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecType]
+    images: list[ActionsHostedRunnerCustomImageType]
 
 
-__all__ = ("OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",)
+class ActionsHostedRunnerCustomImageType(TypedDict):
+    """GitHub-hosted runner custom image details
+
+    Provides details of a custom runner image
+    """
+
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
+
+
+__all__ = (
+    "ActionsHostedRunnerCustomImageType",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
+)

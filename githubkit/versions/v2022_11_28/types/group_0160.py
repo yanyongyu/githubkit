@@ -13,16 +13,13 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleMergeQueuePropParametersType(TypedDict):
-    """RepositoryRuleMergeQueuePropParameters"""
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
 
-    check_response_timeout_minutes: int
-    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
-    max_entries_to_build: int
-    max_entries_to_merge: int
-    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
-    min_entries_to_merge: int
-    min_entries_to_merge_wait_minutes: int
+    Prevent merge commits from being pushed to matching refs.
+    """
+
+    type: Literal["required_linear_history"]
 
 
-__all__ = ("RepositoryRuleMergeQueuePropParametersType",)
+__all__ = ("RepositoryRuleRequiredLinearHistoryType",)

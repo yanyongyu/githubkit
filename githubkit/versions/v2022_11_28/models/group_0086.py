@@ -18,22 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RunnerLabel(GitHubModel):
-    """Self hosted runner label
+class SelfHostedRunnersSettings(GitHubModel):
+    """SelfHostedRunnersSettings"""
 
-    A label for a self hosted runner
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="Unique identifier of the label."
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
     )
-    name: str = Field(description="Name of the label.")
-    type: Missing[Literal["read-only", "custom"]] = Field(
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
+        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
     )
 
 
-model_rebuild(RunnerLabel)
+model_rebuild(SelfHostedRunnersSettings)
 
-__all__ = ("RunnerLabel",)
+__all__ = ("SelfHostedRunnersSettings",)

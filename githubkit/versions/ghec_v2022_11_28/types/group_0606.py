@@ -13,18 +13,18 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0530 import EnterpriseWebhooksType
-from .group_0531 import SimpleInstallationType
-from .group_0532 import OrganizationSimpleWebhooksType
-from .group_0533 import RepositoryWebhooksType
-from .group_0607 import WebhookCodeScanningAlertCreatedPropAlertType
+from .group_0534 import EnterpriseWebhooksType
+from .group_0535 import SimpleInstallationType
+from .group_0536 import OrganizationSimpleWebhooksType
+from .group_0537 import RepositoryWebhooksType
+from .group_0607 import WebhookCodeScanningAlertAppearedInBranchPropAlertType
 
 
-class WebhookCodeScanningAlertCreatedType(TypedDict):
-    """code_scanning_alert created event"""
+class WebhookCodeScanningAlertAppearedInBranchType(TypedDict):
+    """code_scanning_alert appeared_in_branch event"""
 
-    action: Literal["created"]
-    alert: WebhookCodeScanningAlertCreatedPropAlertType
+    action: Literal["appeared_in_branch"]
+    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertType
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -34,4 +34,4 @@ class WebhookCodeScanningAlertCreatedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookCodeScanningAlertCreatedType",)
+__all__ = ("WebhookCodeScanningAlertAppearedInBranchType",)

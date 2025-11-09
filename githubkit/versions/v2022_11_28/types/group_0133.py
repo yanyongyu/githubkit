@@ -15,7 +15,7 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
 from .group_0040 import MilestoneType
-from .group_0092 import TeamType
+from .group_0095 import TeamType
 from .group_0132 import AutoMergeType
 from .group_0134 import PullRequestSimplePropBaseType, PullRequestSimplePropHeadType
 from .group_0135 import PullRequestSimplePropLinksType

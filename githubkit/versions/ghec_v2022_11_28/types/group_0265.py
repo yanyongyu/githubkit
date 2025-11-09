@@ -9,22 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
+from .group_0264 import ProjectsV2StatusUpdateType
 
 
-class AutoMergeType(TypedDict):
-    """Auto merge
+class ProjectsV2Type(TypedDict):
+    """Projects v2 Project
 
-    The status of auto merging a pull request.
+    A projects v2 project
     """
 
-    enabled_by: SimpleUserType
-    merge_method: Literal["merge", "squash", "rebase"]
-    commit_title: Union[str, None]
-    commit_message: Union[str, None]
+    id: float
+    node_id: str
+    owner: SimpleUserType
+    creator: SimpleUserType
+    title: str
+    description: Union[str, None]
+    public: bool
+    closed_at: Union[datetime, None]
+    created_at: datetime
+    updated_at: datetime
+    number: int
+    short_description: Union[str, None]
+    deleted_at: Union[datetime, None]
+    deleted_by: Union[None, SimpleUserType]
+    state: NotRequired[Literal["open", "closed"]]
+    latest_status_update: NotRequired[Union[None, ProjectsV2StatusUpdateType]]
+    is_template: NotRequired[bool]
 
 
-__all__ = ("AutoMergeType",)
+__all__ = ("ProjectsV2Type",)

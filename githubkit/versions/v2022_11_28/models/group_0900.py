@@ -14,34 +14,34 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
-    GitHubModel
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
     total_count: int = Field()
-    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
+    repository_cache_usages: list[ActionsCacheUsageByRepository] = Field()
 
 
-class ActionsHostedRunnerCustomImageVersion(GitHubModel):
-    """GitHub-hosted runner custom image version details.
+class ActionsCacheUsageByRepository(GitHubModel):
+    """Actions Cache Usage by repository
 
-    Provides details of a hosted runner custom image version
+    GitHub Actions Cache Usage by repository.
     """
 
-    version: str = Field(description="The version of image.")
-    state: str = Field(description="The state of image version.")
-    size_gb: int = Field(description="Image version size in GB.")
-    created_on: str = Field(description="The creation date time of the image version.")
-    state_details: str = Field(description="The image version status details.")
+    full_name: str = Field(
+        description="The repository owner and name for the cache usage being shown."
+    )
+    active_caches_size_in_bytes: int = Field(
+        description="The sum of the size in bytes of all the active cache items in the repository."
+    )
+    active_caches_count: int = Field(
+        description="The number of active caches in the repository."
+    )
 
 
-model_rebuild(
-    OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
-)
-model_rebuild(ActionsHostedRunnerCustomImageVersion)
+model_rebuild(OrgsOrgActionsCacheUsageByRepositoryGetResponse200)
+model_rebuild(ActionsCacheUsageByRepository)
 
 __all__ = (
-    "ActionsHostedRunnerCustomImageVersion",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
+    "ActionsCacheUsageByRepository",
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
 )

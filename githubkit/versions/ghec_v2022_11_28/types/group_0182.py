@@ -10,16 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class DeleteCostCenterType(TypedDict):
-    """DeleteCostCenter"""
+class GetBudgetType(TypedDict):
+    """GetBudget"""
 
-    message: str
     id: str
-    name: str
-    cost_center_state: Literal["CostCenterArchived"]
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
+    budget_entity_name: str
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_product_sku: str
+    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_alerting: GetBudgetPropBudgetAlertingType
 
 
-__all__ = ("DeleteCostCenterType",)
+class GetBudgetPropBudgetAlertingType(TypedDict):
+    """GetBudgetPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
+
+
+__all__ = (
+    "GetBudgetPropBudgetAlertingType",
+    "GetBudgetType",
+)

@@ -9,29 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType
-from .group_0448 import EnterpriseWebhooksType
-from .group_0449 import SimpleInstallationType
-from .group_0450 import OrganizationSimpleWebhooksType
-from .group_0451 import RepositoryWebhooksType
-from .group_0459 import WebhooksUserType
-from .group_0468 import WebhooksIssueType
+from .group_0020 import RepositoryType
+from .group_0045 import IssueType
+from .group_0451 import SimpleInstallationType
+from .group_0452 import OrganizationSimpleWebhooksType
+from .group_0453 import RepositoryWebhooksType
 
 
-class WebhookIssuesAssignedType(TypedDict):
-    """issues assigned event"""
+class WebhookIssueDependenciesBlockingAddedType(TypedDict):
+    """blocking issue added event"""
 
-    action: Literal["assigned"]
-    assignee: NotRequired[Union[WebhooksUserType, None]]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["blocking_added"]
+    blocked_issue_id: float
+    blocked_issue: IssueType
+    blocked_issue_repo: RepositoryType
+    blocking_issue_id: float
+    blocking_issue: IssueType
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    organization: OrganizationSimpleWebhooksType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesAssignedType",)
+__all__ = ("WebhookIssueDependenciesBlockingAddedType",)

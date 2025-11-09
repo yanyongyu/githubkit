@@ -18,16 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0448 import EnterpriseWebhooks
-from .group_0449 import SimpleInstallation
-from .group_0450 import OrganizationSimpleWebhooks
-from .group_0451 import RepositoryWebhooks
+from .group_0450 import EnterpriseWebhooks
+from .group_0451 import SimpleInstallation
+from .group_0452 import OrganizationSimpleWebhooks
+from .group_0453 import RepositoryWebhooks
 
 
-class WebhookRepositoryPublicized(GitHubModel):
-    """repository publicized event"""
+class WebhookRepositoryImport(GitHubModel):
+    """repository_import event"""
 
-    action: Literal["publicized"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -48,8 +47,9 @@ class WebhookRepositoryPublicized(GitHubModel):
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    status: Literal["success", "cancelled", "failure"] = Field()
 
 
-model_rebuild(WebhookRepositoryPublicized)
+model_rebuild(WebhookRepositoryImport)
 
-__all__ = ("WebhookRepositoryPublicized",)
+__all__ = ("WebhookRepositoryImport",)

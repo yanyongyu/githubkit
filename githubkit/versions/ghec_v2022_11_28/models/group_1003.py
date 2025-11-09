@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,42 +17,141 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0074 import CodeScanningDefaultSetupOptions
 
-class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody(GitHubModel):
-    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
 
-    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
+
+    name: Missing[str] = Field(
         default=UNSET,
-        description='Whether GitHub Advanced Security is automatically enabled for new repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security)."',
+        description="The name of the code security configuration. Must be unique across the enterprise.",
     )
-    advanced_security_enabled_new_user_namespace_repos: Missing[bool] = Field(
+    description: Missing[str] = Field(
+        max_length=255,
         default=UNSET,
-        description='Whether GitHub Advanced Security is automatically enabled for new user namespace repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security)."',
+        description="A description of the code security configuration",
     )
-    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether Dependabot alerts are automatically enabled for new repositories. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."',
-    )
-    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether secret scanning is automatically enabled for new repositories. For more information, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/about-secret-scanning)."',
-    )
-    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether secret scanning push protection is automatically enabled for new repositories. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
-    )
-    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description='The URL that will be displayed to contributors who are blocked from pushing a secret. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/protecting-pushes-with-secret-scanning)."\nTo disable this functionality, set this field to `null`.',
-    )
-    secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
-        Union[bool, None]
+    advanced_security: Missing[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
     ] = Field(
         default=UNSET,
-        description="Whether secret scanning of non-provider patterns is enabled for new repositories under this enterprise.",
+        description="The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features.\n\n> [!WARNING]\n> `code_security` and `secret_protection` are deprecated values for this field. Prefer the individual `code_security` and `secret_protection` fields to set the status of these features.\n",
+    )
+    code_security: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET,
+        description="The enablement status of GitHub Code Security features.",
+    )
+    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependency Graph"
+    )
+    dependency_graph_autosubmit_action: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of Automatic dependency submission",
+    )
+    dependency_graph_autosubmit_action_options: Missing[
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+    ] = Field(
+        default=UNSET, description="Feature options for Automatic dependency submission"
+    )
+    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependabot alerts"
+    )
+    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of Dependabot security updates",
+        )
+    )
+    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of code scanning default setup",
+        )
+    )
+    code_scanning_default_setup_options: Missing[
+        Union[CodeScanningDefaultSetupOptions, None]
+    ] = Field(
+        default=UNSET, description="Feature options for code scanning default setup"
+    )
+    code_scanning_delegated_alert_dismissal: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of code scanning delegated alert dismissal",
+    )
+    secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET,
+        description="The enablement status of GitHub Secret Protection features.",
+    )
+    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of secret scanning"
+    )
+    secret_scanning_push_protection: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning push protection",
+    )
+    secret_scanning_validity_checks: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning validity checks",
+    )
+    secret_scanning_non_provider_patterns: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning non-provider patterns",
+    )
+    secret_scanning_generic_secrets: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET, description="The enablement status of Copilot secret scanning"
+    )
+    secret_scanning_delegated_alert_dismissal: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning delegated alert dismissal",
+    )
+    private_vulnerability_reporting: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of private vulnerability reporting",
+    )
+    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
+        default=UNSET, description="The enforcement status for a security configuration"
     )
 
 
-model_rebuild(EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody)
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
+    dencyGraphAutosubmitActionOptions
 
-__all__ = ("EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody",)
+    Feature options for Automatic dependency submission
+    """
+
+    labeled_runners: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
+    )
+
+
+model_rebuild(EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+)
+
+__all__ = (
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
+)

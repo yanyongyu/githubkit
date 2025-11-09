@@ -13,96 +13,50 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0094 import TeamSimple
 
 
-class OrganizationProgrammaticAccessGrant(GitHubModel):
-    """Organization Programmatic Access Grant
+class UserRoleAssignment(GitHubModel):
+    """A Role Assignment for a User
 
-    Minimal representation of an organization programmatic access grant for
-    enumerations
+    The Relationship a User has with a role.
     """
 
-    id: int = Field(
-        description="Unique identifier of the fine-grained personal access token grant. The `pat_id` used to get details about an approved fine-grained personal access token."
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+        default=UNSET,
+        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
     )
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    repository_selection: Literal["none", "all", "subset"] = Field(
-        description="Type of repository selection requested."
+    inherited_from: Missing[list[TeamSimple]] = Field(
+        default=UNSET, description="Team the user has gotten the role through"
     )
-    repositories_url: str = Field(
-        description="URL to the list of repositories the fine-grained personal access token can access. Only follow when `repository_selection` is `subset`."
-    )
-    permissions: OrganizationProgrammaticAccessGrantPropPermissions = Field(
-        description="Permissions requested, categorized by type of permission."
-    )
-    access_granted_at: str = Field(
-        description="Date and time when the fine-grained personal access token was approved to access the organization."
-    )
-    token_id: int = Field(
-        description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
-    )
-    token_name: str = Field(
-        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
-    )
-    token_expired: bool = Field(
-        description="Whether the associated fine-grained personal access token has expired."
-    )
-    token_expires_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token expires."
-    )
-    token_last_used_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token was last used for authentication."
-    )
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class OrganizationProgrammaticAccessGrantPropPermissions(GitHubModel):
-    """OrganizationProgrammaticAccessGrantPropPermissions
+model_rebuild(UserRoleAssignment)
 
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: Missing[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
-    ] = Field(default=UNSET)
-    other: Missing[OrganizationProgrammaticAccessGrantPropPermissionsPropOther] = Field(
-        default=UNSET
-    )
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropRepository(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOther(ExtraGitHubModel):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
-
-
-model_rebuild(OrganizationProgrammaticAccessGrant)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissions)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropRepository)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOther)
-
-__all__ = (
-    "OrganizationProgrammaticAccessGrant",
-    "OrganizationProgrammaticAccessGrantPropPermissions",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
-)
+__all__ = ("UserRoleAssignment",)

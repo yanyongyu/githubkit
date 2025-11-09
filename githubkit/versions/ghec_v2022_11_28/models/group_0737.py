@@ -18,17 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0530 import EnterpriseWebhooks
-from .group_0531 import SimpleInstallation
-from .group_0532 import OrganizationSimpleWebhooks
-from .group_0533 import RepositoryWebhooks
-from .group_0554 import WebhooksIssue2
+from .group_0534 import EnterpriseWebhooks
+from .group_0535 import SimpleInstallation
+from .group_0536 import OrganizationSimpleWebhooks
+from .group_0537 import RepositoryWebhooks
+from .group_0738 import WebhookIssuesOpenedPropChanges
+from .group_0740 import WebhookIssuesOpenedPropIssue
 
 
-class WebhookIssuesPinned(GitHubModel):
-    """issues pinned event"""
+class WebhookIssuesOpened(GitHubModel):
+    """issues opened event"""
 
-    action: Literal["pinned"] = Field()
+    action: Literal["opened"] = Field()
+    changes: Missing[WebhookIssuesOpenedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +41,7 @@ class WebhookIssuesPinned(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhooksIssue2 = Field(
+    issue: WebhookIssuesOpenedPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
     )
@@ -55,6 +57,6 @@ class WebhookIssuesPinned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesPinned)
+model_rebuild(WebhookIssuesOpened)
 
-__all__ = ("WebhookIssuesPinned",)
+__all__ = ("WebhookIssuesOpened",)
