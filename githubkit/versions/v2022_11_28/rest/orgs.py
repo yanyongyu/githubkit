@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
@@ -9224,6 +9225,7 @@ class OrgsClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_security_manager_teams(
         self,
         org: str,
@@ -9255,6 +9257,7 @@ class OrgsClient:
             response_model=list[TeamSimple],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_security_manager_teams(
         self,
         org: str,
@@ -9286,6 +9289,7 @@ class OrgsClient:
             response_model=list[TeamSimple],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_security_manager_team(
         self,
         org: str,
@@ -9315,6 +9319,7 @@ class OrgsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_security_manager_team(
         self,
         org: str,
@@ -9344,6 +9349,7 @@ class OrgsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def remove_security_manager_team(
         self,
         org: str,
@@ -9373,6 +9379,7 @@ class OrgsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_remove_security_manager_team(
         self,
         org: str,
@@ -9941,6 +9948,7 @@ class OrgsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -9961,6 +9969,7 @@ class OrgsClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -9981,6 +9990,7 @@ class OrgsClient:
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -10041,6 +10051,7 @@ class OrgsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -10061,6 +10072,7 @@ class OrgsClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,
@@ -10081,6 +10093,7 @@ class OrgsClient:
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_enable_or_disable_security_product_on_all_org_repos(
         self,
         org: str,

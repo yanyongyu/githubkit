@@ -113,3 +113,9 @@ error_models={
 },
 {% endif %}
 {% endmacro %}
+
+{% macro build_request_deprecated_decorator(endpoint) %}
+{% if endpoint.deprecated -%}
+@deprecated("Deprecated API endpoint. See the docstring for more details.")
+{% endif %}
+{% endmacro%}

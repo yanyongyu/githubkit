@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
@@ -2379,6 +2380,7 @@ class ReactionsClient:
             stream=stream,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_for_team_discussion_comment_legacy(
         self,
         team_id: int,
@@ -2430,6 +2432,7 @@ class ReactionsClient:
             response_model=list[Reaction],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_for_team_discussion_comment_legacy(
         self,
         team_id: int,
@@ -2482,6 +2485,7 @@ class ReactionsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_for_team_discussion_comment_legacy(
         self,
         team_id: int,
@@ -2494,6 +2498,7 @@ class ReactionsClient:
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_for_team_discussion_comment_legacy(
         self,
         team_id: int,
@@ -2508,6 +2513,7 @@ class ReactionsClient:
         ],
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_for_team_discussion_comment_legacy(
         self,
         team_id: int,
@@ -2568,6 +2574,7 @@ class ReactionsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_for_team_discussion_comment_legacy(
         self,
         team_id: int,
@@ -2580,6 +2587,7 @@ class ReactionsClient:
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_for_team_discussion_comment_legacy(
         self,
         team_id: int,
@@ -2594,6 +2602,7 @@ class ReactionsClient:
         ],
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_for_team_discussion_comment_legacy(
         self,
         team_id: int,
@@ -2653,6 +2662,7 @@ class ReactionsClient:
             response_model=Reaction,
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_for_team_discussion_legacy(
         self,
         team_id: int,
@@ -2703,6 +2713,7 @@ class ReactionsClient:
             response_model=list[Reaction],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_for_team_discussion_legacy(
         self,
         team_id: int,
@@ -2754,6 +2765,7 @@ class ReactionsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_for_team_discussion_legacy(
         self,
         team_id: int,
@@ -2765,6 +2777,7 @@ class ReactionsClient:
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_for_team_discussion_legacy(
         self,
         team_id: int,
@@ -2778,6 +2791,7 @@ class ReactionsClient:
         ],
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_for_team_discussion_legacy(
         self,
         team_id: int,
@@ -2836,6 +2850,7 @@ class ReactionsClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_for_team_discussion_legacy(
         self,
         team_id: int,
@@ -2847,6 +2862,7 @@ class ReactionsClient:
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_for_team_discussion_legacy(
         self,
         team_id: int,
@@ -2860,6 +2876,7 @@ class ReactionsClient:
         ],
     ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_for_team_discussion_legacy(
         self,
         team_id: int,

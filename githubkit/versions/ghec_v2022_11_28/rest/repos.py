@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
@@ -21593,6 +21594,7 @@ class ReposClient:
             response_model=list[Tag],
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_tag_protection(
         self,
         owner: str,
@@ -21633,6 +21635,7 @@ class ReposClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_tag_protection(
         self,
         owner: str,
@@ -21674,6 +21677,7 @@ class ReposClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_tag_protection(
         self,
         owner: str,
@@ -21685,6 +21689,7 @@ class ReposClient:
     ) -> Response[TagProtection, TagProtectionTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_tag_protection(
         self,
         owner: str,
@@ -21696,6 +21701,7 @@ class ReposClient:
         pattern: str,
     ) -> Response[TagProtection, TagProtectionTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def create_tag_protection(
         self,
         owner: str,
@@ -21752,6 +21758,7 @@ class ReposClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_tag_protection(
         self,
         owner: str,
@@ -21763,6 +21770,7 @@ class ReposClient:
     ) -> Response[TagProtection, TagProtectionTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_tag_protection(
         self,
         owner: str,
@@ -21774,6 +21782,7 @@ class ReposClient:
         pattern: str,
     ) -> Response[TagProtection, TagProtectionTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_create_tag_protection(
         self,
         owner: str,
@@ -21829,6 +21838,7 @@ class ReposClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def delete_tag_protection(
         self,
         owner: str,
@@ -21868,6 +21878,7 @@ class ReposClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_delete_tag_protection(
         self,
         owner: str,

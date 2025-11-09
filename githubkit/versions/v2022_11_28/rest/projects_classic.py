@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
+from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
@@ -59,6 +60,7 @@ class ProjectsClassicClient:
             "Do not use this client after the client has been collected."
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_column(
         self,
         column_id: int,
@@ -96,6 +98,7 @@ class ProjectsClassicClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_column(
         self,
         column_id: int,
@@ -133,6 +136,7 @@ class ProjectsClassicClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def delete_column(
         self,
         column_id: int,
@@ -168,6 +172,7 @@ class ProjectsClassicClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_delete_column(
         self,
         column_id: int,
@@ -204,6 +209,7 @@ class ProjectsClassicClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_column(
         self,
         column_id: int,
@@ -214,6 +220,7 @@ class ProjectsClassicClient:
     ) -> Response[ProjectColumn, ProjectColumnTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_column(
         self,
         column_id: int,
@@ -224,6 +231,7 @@ class ProjectsClassicClient:
         name: str,
     ) -> Response[ProjectColumn, ProjectColumnTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def update_column(
         self,
         column_id: int,
@@ -273,6 +281,7 @@ class ProjectsClassicClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_column(
         self,
         column_id: int,
@@ -283,6 +292,7 @@ class ProjectsClassicClient:
     ) -> Response[ProjectColumn, ProjectColumnTypeForResponse]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_column(
         self,
         column_id: int,
@@ -293,6 +303,7 @@ class ProjectsClassicClient:
         name: str,
     ) -> Response[ProjectColumn, ProjectColumnTypeForResponse]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_update_column(
         self,
         column_id: int,
@@ -342,6 +353,7 @@ class ProjectsClassicClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def move_column(
         self,
         column_id: int,
@@ -355,6 +367,7 @@ class ProjectsClassicClient:
     ]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def move_column(
         self,
         column_id: int,
@@ -368,6 +381,7 @@ class ProjectsClassicClient:
         ProjectsColumnsColumnIdMovesPostResponse201TypeForResponse,
     ]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def move_column(
         self,
         column_id: int,
@@ -426,6 +440,7 @@ class ProjectsClassicClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_move_column(
         self,
         column_id: int,
@@ -439,6 +454,7 @@ class ProjectsClassicClient:
     ]: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_move_column(
         self,
         column_id: int,
@@ -452,6 +468,7 @@ class ProjectsClassicClient:
         ProjectsColumnsColumnIdMovesPostResponse201TypeForResponse,
     ]: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_move_column(
         self,
         column_id: int,
@@ -509,6 +526,7 @@ class ProjectsClassicClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_collaborators(
         self,
         project_id: int,
@@ -557,6 +575,7 @@ class ProjectsClassicClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_collaborators(
         self,
         project_id: int,
@@ -606,6 +625,7 @@ class ProjectsClassicClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_collaborator(
         self,
         project_id: int,
@@ -619,6 +639,7 @@ class ProjectsClassicClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_collaborator(
         self,
         project_id: int,
@@ -630,6 +651,7 @@ class ProjectsClassicClient:
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def add_collaborator(
         self,
         project_id: int,
@@ -691,6 +713,7 @@ class ProjectsClassicClient:
         )
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_collaborator(
         self,
         project_id: int,
@@ -704,6 +727,7 @@ class ProjectsClassicClient:
     ) -> Response: ...
 
     @overload
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_collaborator(
         self,
         project_id: int,
@@ -715,6 +739,7 @@ class ProjectsClassicClient:
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_add_collaborator(
         self,
         project_id: int,
@@ -775,6 +800,7 @@ class ProjectsClassicClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def remove_collaborator(
         self,
         project_id: int,
@@ -813,6 +839,7 @@ class ProjectsClassicClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_remove_collaborator(
         self,
         project_id: int,
@@ -851,6 +878,7 @@ class ProjectsClassicClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_permission_for_user(
         self,
         project_id: int,
@@ -892,6 +920,7 @@ class ProjectsClassicClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_permission_for_user(
         self,
         project_id: int,
