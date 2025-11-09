@@ -23,4 +23,17 @@ class ActionsForkPrContributorApprovalType(TypedDict):
     ]
 
 
-__all__ = ("ActionsForkPrContributorApprovalType",)
+class ActionsForkPrContributorApprovalTypeForResponse(TypedDict):
+    """ActionsForkPrContributorApproval"""
+
+    approval_policy: Literal[
+        "first_time_contributors_new_to_github",
+        "first_time_contributors",
+        "all_external_contributors",
+    ]
+
+
+__all__ = (
+    "ActionsForkPrContributorApprovalType",
+    "ActionsForkPrContributorApprovalTypeForResponse",
+)

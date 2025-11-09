@@ -11,7 +11,10 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0031 import ActionsHostedRunnerMachineSpecType
+from .group_0031 import (
+    ActionsHostedRunnerMachineSpecType,
+    ActionsHostedRunnerMachineSpecTypeForResponse,
+)
 
 
 class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type(
@@ -23,4 +26,16 @@ class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type(
     machine_specs: list[ActionsHostedRunnerMachineSpecType]
 
 
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type",)
+class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
+
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
+
+
+__all__ = (
+    "EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
+)

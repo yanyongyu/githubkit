@@ -12,12 +12,15 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0450 import EnterpriseWebhooksType
-from .group_0451 import SimpleInstallationType
-from .group_0452 import OrganizationSimpleWebhooksType
-from .group_0453 import RepositoryWebhooksType
-from .group_0465 import WebhooksLabelType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0450 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0451 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0452 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0453 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0465 import WebhooksLabelType, WebhooksLabelTypeForResponse
 
 
 class WebhookLabelEditedType(TypedDict):
@@ -33,6 +36,19 @@ class WebhookLabelEditedType(TypedDict):
     sender: SimpleUserType
 
 
+class WebhookLabelEditedTypeForResponse(TypedDict):
+    """label edited event"""
+
+    action: Literal["edited"]
+    changes: NotRequired[WebhookLabelEditedPropChangesTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    label: WebhooksLabelTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
 class WebhookLabelEditedPropChangesType(TypedDict):
     """WebhookLabelEditedPropChanges
 
@@ -44,7 +60,26 @@ class WebhookLabelEditedPropChangesType(TypedDict):
     name: NotRequired[WebhookLabelEditedPropChangesPropNameType]
 
 
+class WebhookLabelEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookLabelEditedPropChanges
+
+    The changes to the label if the action was `edited`.
+    """
+
+    color: NotRequired[WebhookLabelEditedPropChangesPropColorTypeForResponse]
+    description: NotRequired[
+        WebhookLabelEditedPropChangesPropDescriptionTypeForResponse
+    ]
+    name: NotRequired[WebhookLabelEditedPropChangesPropNameTypeForResponse]
+
+
 class WebhookLabelEditedPropChangesPropColorType(TypedDict):
+    """WebhookLabelEditedPropChangesPropColor"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropColorTypeForResponse(TypedDict):
     """WebhookLabelEditedPropChangesPropColor"""
 
     from_: str
@@ -56,7 +91,19 @@ class WebhookLabelEditedPropChangesPropDescriptionType(TypedDict):
     from_: str
 
 
+class WebhookLabelEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
+    """WebhookLabelEditedPropChangesPropDescription"""
+
+    from_: str
+
+
 class WebhookLabelEditedPropChangesPropNameType(TypedDict):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropNameTypeForResponse(TypedDict):
     """WebhookLabelEditedPropChangesPropName"""
 
     from_: str
@@ -64,8 +111,13 @@ class WebhookLabelEditedPropChangesPropNameType(TypedDict):
 
 __all__ = (
     "WebhookLabelEditedPropChangesPropColorType",
+    "WebhookLabelEditedPropChangesPropColorTypeForResponse",
     "WebhookLabelEditedPropChangesPropDescriptionType",
+    "WebhookLabelEditedPropChangesPropDescriptionTypeForResponse",
     "WebhookLabelEditedPropChangesPropNameType",
+    "WebhookLabelEditedPropChangesPropNameTypeForResponse",
     "WebhookLabelEditedPropChangesType",
+    "WebhookLabelEditedPropChangesTypeForResponse",
     "WebhookLabelEditedType",
+    "WebhookLabelEditedTypeForResponse",
 )

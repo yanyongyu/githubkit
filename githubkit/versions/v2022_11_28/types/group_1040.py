@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0090 import RunnerType
+from .group_0090 import RunnerType, RunnerTypeForResponse
 
 
 class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
@@ -21,4 +21,14 @@ class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
     runners: list[RunnerType]
 
 
-__all__ = ("ReposOwnerRepoActionsRunnersGetResponse200Type",)
+class ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunnersGetResponse200"""
+
+    total_count: int
+    runners: list[RunnerTypeForResponse]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsRunnersGetResponse200Type",
+    "ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse",
+)

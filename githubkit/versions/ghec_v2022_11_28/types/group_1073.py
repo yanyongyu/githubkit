@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0020 import RepositoryType
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
 class OrgsOrgActionsPermissionsRepositoriesGetResponse200Type(TypedDict):
@@ -21,4 +21,14 @@ class OrgsOrgActionsPermissionsRepositoriesGetResponse200Type(TypedDict):
     repositories: list[RepositoryType]
 
 
-__all__ = ("OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",)
+class OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
+
+    total_count: float
+    repositories: list[RepositoryTypeForResponse]
+
+
+__all__ = (
+    "OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",
+    "OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse",
+)

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0101 import CustomPropertyValueType
+from .group_0101 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
 class OrganizationsOrgOrgPropertiesValuesPatchBodyType(TypedDict):
@@ -20,4 +20,13 @@ class OrganizationsOrgOrgPropertiesValuesPatchBodyType(TypedDict):
     properties: list[CustomPropertyValueType]
 
 
-__all__ = ("OrganizationsOrgOrgPropertiesValuesPatchBodyType",)
+class OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
+
+    properties: list[CustomPropertyValueTypeForResponse]
+
+
+__all__ = (
+    "OrganizationsOrgOrgPropertiesValuesPatchBodyType",
+    "OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse",
+)

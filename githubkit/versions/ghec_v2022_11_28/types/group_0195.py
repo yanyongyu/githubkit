@@ -27,4 +27,22 @@ class ReactionRollupType(TypedDict):
     rocket: int
 
 
-__all__ = ("ReactionRollupType",)
+class ReactionRollupTypeForResponse(TypedDict):
+    """Reaction Rollup"""
+
+    url: str
+    total_count: int
+    plus_one: int
+    minus_one: int
+    laugh: int
+    confused: int
+    heart: int
+    hooray: int
+    eyes: int
+    rocket: int
+
+
+__all__ = (
+    "ReactionRollupType",
+    "ReactionRollupTypeForResponse",
+)

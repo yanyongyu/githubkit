@@ -21,7 +21,30 @@ class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPrope
     exclude: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
 
 
+class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
+
+    include: NotRequired[
+        list[EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse]
+    ]
+    exclude: NotRequired[
+        list[EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse]
+    ]
+
+
 class EnterpriseRulesetConditionsOrganizationPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a organization property
+    """
+
+    name: str
+    property_values: list[str]
+
+
+class EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse(TypedDict):
     """Repository ruleset property targeting definition
 
     Parameters for a targeting a organization property
@@ -33,5 +56,7 @@ class EnterpriseRulesetConditionsOrganizationPropertySpecType(TypedDict):
 
 __all__ = (
     "EnterpriseRulesetConditionsOrganizationPropertySpecType",
+    "EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse",
     "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse",
 )

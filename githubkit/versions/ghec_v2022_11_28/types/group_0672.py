@@ -12,12 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0018 import InstallationType
-from .group_0534 import EnterpriseWebhooksType
-from .group_0536 import OrganizationSimpleWebhooksType
-from .group_0537 import RepositoryWebhooksType
-from .group_0552 import WebhooksRepositoriesItemsType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0018 import InstallationType, InstallationTypeForResponse
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0552 import (
+    WebhooksRepositoriesItemsType,
+    WebhooksRepositoriesItemsTypeForResponse,
+)
 
 
 class WebhookInstallationSuspendType(TypedDict):
@@ -33,4 +39,20 @@ class WebhookInstallationSuspendType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookInstallationSuspendType",)
+class WebhookInstallationSuspendTypeForResponse(TypedDict):
+    """installation suspend event"""
+
+    action: Literal["suspend"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: InstallationTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    requester: NotRequired[None]
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookInstallationSuspendType",
+    "WebhookInstallationSuspendTypeForResponse",
+)

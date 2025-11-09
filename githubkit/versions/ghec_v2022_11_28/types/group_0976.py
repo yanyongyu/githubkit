@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0044 import OrganizationSimpleType
+from .group_0044 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
 
 class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type(TypedDict):
@@ -21,4 +21,16 @@ class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type(Typ
     organizations: list[OrganizationSimpleType]
 
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type",)
+class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+
+    total_count: float
+    organizations: list[OrganizationSimpleTypeForResponse]
+
+
+__all__ = (
+    "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type",
+    "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse",
+)

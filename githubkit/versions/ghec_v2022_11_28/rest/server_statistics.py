@@ -23,7 +23,7 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import ServerStatisticsItems
-    from ..types import ServerStatisticsItemsType
+    from ..types import ServerStatisticsItemsTypeForResponse
 
 
 class ServerStatisticsClient:
@@ -49,7 +49,9 @@ class ServerStatisticsClient:
         date_end: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ServerStatisticsItems], list[ServerStatisticsItemsType]]:
+    ) -> Response[
+        list[ServerStatisticsItems], list[ServerStatisticsItemsTypeForResponse]
+    ]:
         """enterprise-admin/get-server-statistics
 
         GET /enterprise-installation/{enterprise_or_org}/server-statistics
@@ -93,7 +95,9 @@ class ServerStatisticsClient:
         date_end: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ServerStatisticsItems], list[ServerStatisticsItemsType]]:
+    ) -> Response[
+        list[ServerStatisticsItems], list[ServerStatisticsItemsTypeForResponse]
+    ]:
         """enterprise-admin/get-server-statistics
 
         GET /enterprise-installation/{enterprise_or_org}/server-statistics

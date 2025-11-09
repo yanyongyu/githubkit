@@ -24,4 +24,19 @@ class ActionsHostedRunnerMachineSpecType(TypedDict):
     storage_gb: int
 
 
-__all__ = ("ActionsHostedRunnerMachineSpecType",)
+class ActionsHostedRunnerMachineSpecTypeForResponse(TypedDict):
+    """Github-owned VM details.
+
+    Provides details of a particular machine spec.
+    """
+
+    id: str
+    cpu_cores: int
+    memory_gb: int
+    storage_gb: int
+
+
+__all__ = (
+    "ActionsHostedRunnerMachineSpecType",
+    "ActionsHostedRunnerMachineSpecTypeForResponse",
+)

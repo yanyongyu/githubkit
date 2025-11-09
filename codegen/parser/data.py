@@ -86,7 +86,7 @@ class RequestBodyData:
             required=self.required,
             schema_data=self.body_schema,
         )
-        return prop.get_param_defination()
+        return prop.get_param_definition()
 
     def get_endpoint_definition(self) -> str:
         prop = Property(
@@ -95,7 +95,7 @@ class RequestBodyData:
             required=not bool(self.allowed_models),
             schema_data=self.body_schema,
         )
-        return prop.get_param_defination()
+        return prop.get_param_definition()
 
 
 @dataclass(kw_only=True)

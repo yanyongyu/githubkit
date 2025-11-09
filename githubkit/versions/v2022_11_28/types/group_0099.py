@@ -34,7 +34,41 @@ class CodeScanningAlertInstanceType(TypedDict):
     ]
 
 
+class CodeScanningAlertInstanceTypeForResponse(TypedDict):
+    """CodeScanningAlertInstance"""
+
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[None, Literal["open", "dismissed", "fixed"]]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageTypeForResponse]
+    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
+    ]
+
+
 class CodeScanningAlertLocationType(TypedDict):
+    """CodeScanningAlertLocation
+
+    Describe a region within a file for the alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+class CodeScanningAlertLocationTypeForResponse(TypedDict):
     """CodeScanningAlertLocation
 
     Describe a region within a file for the alert.
@@ -53,8 +87,17 @@ class CodeScanningAlertInstancePropMessageType(TypedDict):
     text: NotRequired[str]
 
 
+class CodeScanningAlertInstancePropMessageTypeForResponse(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
+
+    text: NotRequired[str]
+
+
 __all__ = (
     "CodeScanningAlertInstancePropMessageType",
+    "CodeScanningAlertInstancePropMessageTypeForResponse",
     "CodeScanningAlertInstanceType",
+    "CodeScanningAlertInstanceTypeForResponse",
     "CodeScanningAlertLocationType",
+    "CodeScanningAlertLocationTypeForResponse",
 )

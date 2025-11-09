@@ -18,4 +18,13 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType(TypedDict):
     body: str
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType",)
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
+
+    body: str
+
+
+__all__ = (
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyTypeForResponse",
+)

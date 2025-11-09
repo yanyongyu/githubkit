@@ -135,40 +135,41 @@ if TYPE_CHECKING:
         WebhookConfig,
     )
     from ..types import (
-        ActivityType,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
-        AutolinkType,
-        BranchProtectionType,
-        BranchRestrictionPolicyType,
-        BranchShortType,
-        BranchWithProtectionType,
-        CheckAutomatedSecurityFixesType,
-        CheckImmutableReleasesType,
-        CloneTrafficType,
-        CodeownersErrorsType,
-        CollaboratorType,
-        CombinedCommitStatusType,
-        CommitActivityType,
-        CommitCommentType,
-        CommitComparisonType,
-        CommitType,
-        CommunityProfileType,
-        ContentDirectoryItemsType,
-        ContentFileType,
-        ContentSubmoduleType,
-        ContentSymlinkType,
-        ContentTrafficType,
-        ContributorActivityType,
-        ContributorType,
+        ActivityTypeForResponse,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
+        AutolinkTypeForResponse,
+        BranchProtectionTypeForResponse,
+        BranchRestrictionPolicyTypeForResponse,
+        BranchShortTypeForResponse,
+        BranchWithProtectionTypeForResponse,
+        CheckAutomatedSecurityFixesTypeForResponse,
+        CheckImmutableReleasesTypeForResponse,
+        CloneTrafficTypeForResponse,
+        CodeownersErrorsTypeForResponse,
+        CollaboratorTypeForResponse,
+        CombinedCommitStatusTypeForResponse,
+        CommitActivityTypeForResponse,
+        CommitCommentTypeForResponse,
+        CommitComparisonTypeForResponse,
+        CommitTypeForResponse,
+        CommunityProfileTypeForResponse,
+        ContentDirectoryItemsTypeForResponse,
+        ContentFileTypeForResponse,
+        ContentSubmoduleTypeForResponse,
+        ContentSymlinkTypeForResponse,
+        ContentTrafficTypeForResponse,
+        ContributorActivityTypeForResponse,
+        ContributorTypeForResponse,
         CustomPropertyValueType,
-        DeployKeyType,
+        CustomPropertyValueTypeForResponse,
+        DeployKeyTypeForResponse,
         DeploymentBranchPolicyNamePatternType,
         DeploymentBranchPolicyNamePatternWithTypeType,
         DeploymentBranchPolicySettingsType,
-        DeploymentBranchPolicyType,
-        DeploymentProtectionRuleType,
-        DeploymentStatusType,
-        DeploymentType,
+        DeploymentBranchPolicyTypeForResponse,
+        DeploymentProtectionRuleTypeForResponse,
+        DeploymentStatusTypeForResponse,
+        DeploymentTypeForResponse,
         EnterpriseRulesetConditionsOneof0Type,
         EnterpriseRulesetConditionsOneof1Type,
         EnterpriseRulesetConditionsOneof2Type,
@@ -177,16 +178,16 @@ if TYPE_CHECKING:
         EnterpriseRulesetConditionsOneof5Type,
         EnterprisesEnterpriseRulesetsPostBodyType,
         EnterprisesEnterpriseRulesetsRulesetIdPutBodyType,
-        EnvironmentType,
-        FileCommitType,
-        FullRepositoryType,
-        HookDeliveryItemType,
-        HookDeliveryType,
-        HookType,
-        IntegrationType,
-        LanguageType,
-        MergedUpstreamType,
-        MinimalRepositoryType,
+        EnvironmentTypeForResponse,
+        FileCommitTypeForResponse,
+        FullRepositoryTypeForResponse,
+        HookDeliveryItemTypeForResponse,
+        HookDeliveryTypeForResponse,
+        HookTypeForResponse,
+        IntegrationTypeForResponse,
+        LanguageTypeForResponse,
+        MergedUpstreamTypeForResponse,
+        MinimalRepositoryTypeForResponse,
         OrgRulesetConditionsOneof0Type,
         OrgRulesetConditionsOneof1Type,
         OrgRulesetConditionsOneof2Type,
@@ -194,24 +195,24 @@ if TYPE_CHECKING:
         OrgsOrgReposPostBodyType,
         OrgsOrgRulesetsPostBodyType,
         OrgsOrgRulesetsRulesetIdPutBodyType,
-        PageBuildStatusType,
-        PageBuildType,
-        PageDeploymentType,
-        PagesDeploymentStatusType,
-        PagesHealthCheckType,
-        PageType,
-        ParticipationStatsType,
-        ProtectedBranchAdminEnforcedType,
-        ProtectedBranchPullRequestReviewType,
-        ProtectedBranchType,
-        PullRequestSimpleType,
-        PushRuleBypassRequestType,
-        ReferrerTrafficType,
-        ReleaseAssetType,
-        ReleaseNotesContentType,
-        ReleaseType,
-        RepositoryCollaboratorPermissionType,
-        RepositoryInvitationType,
+        PageBuildStatusTypeForResponse,
+        PageBuildTypeForResponse,
+        PageDeploymentTypeForResponse,
+        PagesDeploymentStatusTypeForResponse,
+        PagesHealthCheckTypeForResponse,
+        PageTypeForResponse,
+        ParticipationStatsTypeForResponse,
+        ProtectedBranchAdminEnforcedTypeForResponse,
+        ProtectedBranchPullRequestReviewTypeForResponse,
+        ProtectedBranchTypeForResponse,
+        PullRequestSimpleTypeForResponse,
+        PushRuleBypassRequestTypeForResponse,
+        ReferrerTrafficTypeForResponse,
+        ReleaseAssetTypeForResponse,
+        ReleaseNotesContentTypeForResponse,
+        ReleaseTypeForResponse,
+        RepositoryCollaboratorPermissionTypeForResponse,
+        RepositoryInvitationTypeForResponse,
         RepositoryRuleBranchNamePatternType,
         RepositoryRuleCodeScanningType,
         RepositoryRuleCommitAuthorEmailPatternType,
@@ -220,28 +221,28 @@ if TYPE_CHECKING:
         RepositoryRuleCopilotCodeReviewType,
         RepositoryRuleCreationType,
         RepositoryRuleDeletionType,
-        RepositoryRuleDetailedOneof0Type,
-        RepositoryRuleDetailedOneof1Type,
-        RepositoryRuleDetailedOneof2Type,
-        RepositoryRuleDetailedOneof3Type,
-        RepositoryRuleDetailedOneof4Type,
-        RepositoryRuleDetailedOneof5Type,
-        RepositoryRuleDetailedOneof6Type,
-        RepositoryRuleDetailedOneof7Type,
-        RepositoryRuleDetailedOneof8Type,
-        RepositoryRuleDetailedOneof9Type,
-        RepositoryRuleDetailedOneof10Type,
-        RepositoryRuleDetailedOneof11Type,
-        RepositoryRuleDetailedOneof12Type,
-        RepositoryRuleDetailedOneof13Type,
-        RepositoryRuleDetailedOneof14Type,
-        RepositoryRuleDetailedOneof15Type,
-        RepositoryRuleDetailedOneof16Type,
-        RepositoryRuleDetailedOneof17Type,
-        RepositoryRuleDetailedOneof18Type,
-        RepositoryRuleDetailedOneof19Type,
-        RepositoryRuleDetailedOneof20Type,
-        RepositoryRuleDetailedOneof21Type,
+        RepositoryRuleDetailedOneof0TypeForResponse,
+        RepositoryRuleDetailedOneof1TypeForResponse,
+        RepositoryRuleDetailedOneof2TypeForResponse,
+        RepositoryRuleDetailedOneof3TypeForResponse,
+        RepositoryRuleDetailedOneof4TypeForResponse,
+        RepositoryRuleDetailedOneof5TypeForResponse,
+        RepositoryRuleDetailedOneof6TypeForResponse,
+        RepositoryRuleDetailedOneof7TypeForResponse,
+        RepositoryRuleDetailedOneof8TypeForResponse,
+        RepositoryRuleDetailedOneof9TypeForResponse,
+        RepositoryRuleDetailedOneof10TypeForResponse,
+        RepositoryRuleDetailedOneof11TypeForResponse,
+        RepositoryRuleDetailedOneof12TypeForResponse,
+        RepositoryRuleDetailedOneof13TypeForResponse,
+        RepositoryRuleDetailedOneof14TypeForResponse,
+        RepositoryRuleDetailedOneof15TypeForResponse,
+        RepositoryRuleDetailedOneof16TypeForResponse,
+        RepositoryRuleDetailedOneof17TypeForResponse,
+        RepositoryRuleDetailedOneof18TypeForResponse,
+        RepositoryRuleDetailedOneof19TypeForResponse,
+        RepositoryRuleDetailedOneof20TypeForResponse,
+        RepositoryRuleDetailedOneof21TypeForResponse,
         RepositoryRuleFileExtensionRestrictionType,
         RepositoryRuleFilePathRestrictionType,
         RepositoryRuleMaxFilePathLengthType,
@@ -255,15 +256,15 @@ if TYPE_CHECKING:
         RepositoryRuleRequiredStatusChecksType,
         RepositoryRulesetBypassActorType,
         RepositoryRulesetConditionsType,
-        RepositoryRulesetType,
+        RepositoryRulesetTypeForResponse,
         RepositoryRuleTagNamePatternType,
         RepositoryRuleUpdateType,
         RepositoryRuleWorkflowsType,
-        RepositoryType,
+        RepositoryTypeForResponse,
         ReposOwnerRepoAttestationsPostBodyPropBundleType,
         ReposOwnerRepoAttestationsPostBodyType,
-        ReposOwnerRepoAttestationsPostResponse201Type,
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type,
+        ReposOwnerRepoAttestationsPostResponse201TypeForResponse,
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse,
         ReposOwnerRepoAutolinksPostBodyType,
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
@@ -301,13 +302,13 @@ if TYPE_CHECKING:
         ReposOwnerRepoDeploymentsPostBodyType,
         ReposOwnerRepoDispatchesPostBodyPropClientPayloadType,
         ReposOwnerRepoDispatchesPostBodyType,
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type,
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type,
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
         ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType,
         ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType,
-        ReposOwnerRepoEnvironmentsGetResponse200Type,
+        ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse,
         ReposOwnerRepoForksPostBodyType,
         ReposOwnerRepoHooksHookIdConfigPatchBodyType,
         ReposOwnerRepoHooksHookIdPatchBodyType,
@@ -329,7 +330,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType,
         ReposOwnerRepoPatchBodyType,
-        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type,
+        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse,
         ReposOwnerRepoPropertiesValuesPatchBodyType,
         ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType,
         ReposOwnerRepoReleasesGenerateNotesPostBodyType,
@@ -342,21 +343,22 @@ if TYPE_CHECKING:
         ReposOwnerRepoTopicsPutBodyType,
         ReposOwnerRepoTransferPostBodyType,
         ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
-        RulesetVersionType,
-        RulesetVersionWithStateType,
-        RuleSuitesItemsType,
-        RuleSuiteType,
-        ShortBranchType,
-        SimpleUserType,
-        StatusCheckPolicyType,
-        StatusType,
-        TagProtectionType,
-        TagType,
-        TeamType,
-        TopicType,
+        RulesetVersionTypeForResponse,
+        RulesetVersionWithStateTypeForResponse,
+        RuleSuitesItemsTypeForResponse,
+        RuleSuiteTypeForResponse,
+        ShortBranchTypeForResponse,
+        SimpleUserTypeForResponse,
+        StatusCheckPolicyTypeForResponse,
+        StatusTypeForResponse,
+        TagProtectionTypeForResponse,
+        TagTypeForResponse,
+        TeamTypeForResponse,
+        TopicTypeForResponse,
         UserReposPostBodyType,
-        ViewTrafficType,
+        ViewTrafficTypeForResponse,
         WebhookConfigType,
+        WebhookConfigTypeForResponse,
     )
 
 
@@ -383,7 +385,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseRulesetsPostBodyType,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     @overload
     def create_enterprise_ruleset(
@@ -433,7 +435,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     def create_enterprise_ruleset(
         self,
@@ -443,7 +445,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseRulesetsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/create-enterprise-ruleset
 
         POST /enterprises/{enterprise}/rulesets
@@ -493,7 +495,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseRulesetsPostBodyType,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     @overload
     async def async_create_enterprise_ruleset(
@@ -543,7 +545,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     async def async_create_enterprise_ruleset(
         self,
@@ -553,7 +555,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseRulesetsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/create-enterprise-ruleset
 
         POST /enterprises/{enterprise}/rulesets
@@ -602,7 +604,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/get-enterprise-ruleset
 
         GET /enterprises/{enterprise}/rulesets/{ruleset_id}
@@ -640,7 +642,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/get-enterprise-ruleset
 
         GET /enterprises/{enterprise}/rulesets/{ruleset_id}
@@ -680,7 +682,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseRulesetsRulesetIdPutBodyType] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     @overload
     def update_enterprise_ruleset(
@@ -731,7 +733,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     def update_enterprise_ruleset(
         self,
@@ -742,7 +744,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/update-enterprise-ruleset
 
         PUT /enterprises/{enterprise}/rulesets/{ruleset_id}
@@ -795,7 +797,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseRulesetsRulesetIdPutBodyType] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     @overload
     async def async_update_enterprise_ruleset(
@@ -846,7 +848,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     async def async_update_enterprise_ruleset(
         self,
@@ -857,7 +859,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/update-enterprise-ruleset
 
         PUT /enterprises/{enterprise}/rulesets/{ruleset_id}
@@ -982,7 +984,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-for-org
 
         GET /orgs/{org}/repos
@@ -1031,7 +1033,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-for-org
 
         GET /orgs/{org}/repos
@@ -1075,7 +1077,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgReposPostBodyType,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     @overload
     def create_in_org(
@@ -1116,7 +1118,7 @@ class ReposClient:
         custom_properties: Missing[
             OrgsOrgReposPostBodyPropCustomPropertiesType
         ] = UNSET,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     def create_in_org(
         self,
@@ -1126,7 +1128,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository, FullRepositoryType]:
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """repos/create-in-org
 
         POST /orgs/{org}/repos
@@ -1179,7 +1181,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgReposPostBodyType,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     @overload
     async def async_create_in_org(
@@ -1220,7 +1222,7 @@ class ReposClient:
         custom_properties: Missing[
             OrgsOrgReposPostBodyPropCustomPropertiesType
         ] = UNSET,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     async def async_create_in_org(
         self,
@@ -1230,7 +1232,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository, FullRepositoryType]:
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """repos/create-in-org
 
         POST /orgs/{org}/repos
@@ -1284,7 +1286,7 @@ class ReposClient:
         targets: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
+    ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetTypeForResponse]]:
         """repos/get-org-rulesets
 
         GET /orgs/{org}/rulesets
@@ -1328,7 +1330,7 @@ class ReposClient:
         targets: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
+    ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetTypeForResponse]]:
         """repos/get-org-rulesets
 
         GET /orgs/{org}/rulesets
@@ -1371,7 +1373,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgRulesetsPostBodyType,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     @overload
     def create_org_ruleset(
@@ -1418,7 +1420,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     def create_org_ruleset(
         self,
@@ -1428,7 +1430,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/create-org-ruleset
 
         POST /orgs/{org}/rulesets
@@ -1474,7 +1476,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgRulesetsPostBodyType,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     @overload
     async def async_create_org_ruleset(
@@ -1521,7 +1523,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     async def async_create_org_ruleset(
         self,
@@ -1531,7 +1533,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/create-org-ruleset
 
         POST /orgs/{org}/rulesets
@@ -1582,7 +1584,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
+    ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsTypeForResponse]]:
         """repos/get-org-rule-suites
 
         GET /orgs/{org}/rulesets/rule-suites
@@ -1635,7 +1637,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
+    ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsTypeForResponse]]:
         """repos/get-org-rule-suites
 
         GET /orgs/{org}/rulesets/rule-suites
@@ -1682,7 +1684,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RuleSuite, RuleSuiteType]:
+    ) -> Response[RuleSuite, RuleSuiteTypeForResponse]:
         """repos/get-org-rule-suite
 
         GET /orgs/{org}/rulesets/rule-suites/{rule_suite_id}
@@ -1718,7 +1720,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RuleSuite, RuleSuiteType]:
+    ) -> Response[RuleSuite, RuleSuiteTypeForResponse]:
         """repos/get-org-rule-suite
 
         GET /orgs/{org}/rulesets/rule-suites/{rule_suite_id}
@@ -1754,7 +1756,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/get-org-ruleset
 
         GET /orgs/{org}/rulesets/{ruleset_id}
@@ -1792,7 +1794,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/get-org-ruleset
 
         GET /orgs/{org}/rulesets/{ruleset_id}
@@ -1832,7 +1834,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     @overload
     def update_org_ruleset(
@@ -1880,7 +1882,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     def update_org_ruleset(
         self,
@@ -1891,7 +1893,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/update-org-ruleset
 
         PUT /orgs/{org}/rulesets/{ruleset_id}
@@ -1942,7 +1944,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     @overload
     async def async_update_org_ruleset(
@@ -1990,7 +1992,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     async def async_update_org_ruleset(
         self,
@@ -2001,7 +2003,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/update-org-ruleset
 
         PUT /orgs/{org}/rulesets/{ruleset_id}
@@ -2118,7 +2120,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[FullRepository, FullRepositoryType]:
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """repos/get
 
         GET /repos/{owner}/{repo}
@@ -2157,7 +2159,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[FullRepository, FullRepositoryType]:
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """repos/get
 
         GET /repos/{owner}/{repo}
@@ -2278,7 +2280,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     @overload
     def update(
@@ -2320,7 +2322,7 @@ class ReposClient:
         archived: Missing[bool] = UNSET,
         allow_forking: Missing[bool] = UNSET,
         web_commit_signoff_required: Missing[bool] = UNSET,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     def update(
         self,
@@ -2331,7 +2333,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository, FullRepositoryType]:
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """repos/update
 
         PATCH /repos/{owner}/{repo}
@@ -2384,7 +2386,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     @overload
     async def async_update(
@@ -2426,7 +2428,7 @@ class ReposClient:
         archived: Missing[bool] = UNSET,
         allow_forking: Missing[bool] = UNSET,
         web_commit_signoff_required: Missing[bool] = UNSET,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     async def async_update(
         self,
@@ -2437,7 +2439,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository, FullRepositoryType]:
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """repos/update
 
         PATCH /repos/{owner}/{repo}
@@ -2507,7 +2509,7 @@ class ReposClient:
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Activity], list[ActivityType]]:
+    ) -> Response[list[Activity], list[ActivityTypeForResponse]]:
         """repos/list-activities
 
         GET /repos/{owner}/{repo}/activity
@@ -2575,7 +2577,7 @@ class ReposClient:
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Activity], list[ActivityType]]:
+    ) -> Response[list[Activity], list[ActivityTypeForResponse]]:
         """repos/list-activities
 
         GET /repos/{owner}/{repo}/activity
@@ -2628,7 +2630,7 @@ class ReposClient:
         data: ReposOwnerRepoAttestationsPostBodyType,
     ) -> Response[
         ReposOwnerRepoAttestationsPostResponse201,
-        ReposOwnerRepoAttestationsPostResponse201Type,
+        ReposOwnerRepoAttestationsPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -2643,7 +2645,7 @@ class ReposClient:
         bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType,
     ) -> Response[
         ReposOwnerRepoAttestationsPostResponse201,
-        ReposOwnerRepoAttestationsPostResponse201Type,
+        ReposOwnerRepoAttestationsPostResponse201TypeForResponse,
     ]: ...
 
     def create_attestation(
@@ -2657,7 +2659,7 @@ class ReposClient:
         **kwargs,
     ) -> Response[
         ReposOwnerRepoAttestationsPostResponse201,
-        ReposOwnerRepoAttestationsPostResponse201Type,
+        ReposOwnerRepoAttestationsPostResponse201TypeForResponse,
     ]:
         """repos/create-attestation
 
@@ -2716,7 +2718,7 @@ class ReposClient:
         data: ReposOwnerRepoAttestationsPostBodyType,
     ) -> Response[
         ReposOwnerRepoAttestationsPostResponse201,
-        ReposOwnerRepoAttestationsPostResponse201Type,
+        ReposOwnerRepoAttestationsPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -2731,7 +2733,7 @@ class ReposClient:
         bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType,
     ) -> Response[
         ReposOwnerRepoAttestationsPostResponse201,
-        ReposOwnerRepoAttestationsPostResponse201Type,
+        ReposOwnerRepoAttestationsPostResponse201TypeForResponse,
     ]: ...
 
     async def async_create_attestation(
@@ -2745,7 +2747,7 @@ class ReposClient:
         **kwargs,
     ) -> Response[
         ReposOwnerRepoAttestationsPostResponse201,
-        ReposOwnerRepoAttestationsPostResponse201Type,
+        ReposOwnerRepoAttestationsPostResponse201TypeForResponse,
     ]:
         """repos/create-attestation
 
@@ -2807,7 +2809,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type,
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse,
     ]:
         """repos/list-attestations
 
@@ -2858,7 +2860,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
-        ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type,
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse,
     ]:
         """repos/list-attestations
 
@@ -2902,7 +2904,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Autolink], list[AutolinkType]]:
+    ) -> Response[list[Autolink], list[AutolinkTypeForResponse]]:
         """repos/list-autolinks
 
         GET /repos/{owner}/{repo}/autolinks
@@ -2935,7 +2937,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Autolink], list[AutolinkType]]:
+    ) -> Response[list[Autolink], list[AutolinkTypeForResponse]]:
         """repos/list-autolinks
 
         GET /repos/{owner}/{repo}/autolinks
@@ -2970,7 +2972,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoAutolinksPostBodyType,
-    ) -> Response[Autolink, AutolinkType]: ...
+    ) -> Response[Autolink, AutolinkTypeForResponse]: ...
 
     @overload
     def create_autolink(
@@ -2984,7 +2986,7 @@ class ReposClient:
         key_prefix: str,
         url_template: str,
         is_alphanumeric: Missing[bool] = UNSET,
-    ) -> Response[Autolink, AutolinkType]: ...
+    ) -> Response[Autolink, AutolinkTypeForResponse]: ...
 
     def create_autolink(
         self,
@@ -2995,7 +2997,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Autolink, AutolinkType]:
+    ) -> Response[Autolink, AutolinkTypeForResponse]:
         """repos/create-autolink
 
         POST /repos/{owner}/{repo}/autolinks
@@ -3041,7 +3043,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoAutolinksPostBodyType,
-    ) -> Response[Autolink, AutolinkType]: ...
+    ) -> Response[Autolink, AutolinkTypeForResponse]: ...
 
     @overload
     async def async_create_autolink(
@@ -3055,7 +3057,7 @@ class ReposClient:
         key_prefix: str,
         url_template: str,
         is_alphanumeric: Missing[bool] = UNSET,
-    ) -> Response[Autolink, AutolinkType]: ...
+    ) -> Response[Autolink, AutolinkTypeForResponse]: ...
 
     async def async_create_autolink(
         self,
@@ -3066,7 +3068,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Autolink, AutolinkType]:
+    ) -> Response[Autolink, AutolinkTypeForResponse]:
         """repos/create-autolink
 
         POST /repos/{owner}/{repo}/autolinks
@@ -3111,7 +3113,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Autolink, AutolinkType]:
+    ) -> Response[Autolink, AutolinkTypeForResponse]:
         """repos/get-autolink
 
         GET /repos/{owner}/{repo}/autolinks/{autolink_id}
@@ -3148,7 +3150,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Autolink, AutolinkType]:
+    ) -> Response[Autolink, AutolinkTypeForResponse]:
         """repos/get-autolink
 
         GET /repos/{owner}/{repo}/autolinks/{autolink_id}
@@ -3256,7 +3258,9 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CheckAutomatedSecurityFixes, CheckAutomatedSecurityFixesType]:
+    ) -> Response[
+        CheckAutomatedSecurityFixes, CheckAutomatedSecurityFixesTypeForResponse
+    ]:
         """repos/check-automated-security-fixes
 
         GET /repos/{owner}/{repo}/automated-security-fixes
@@ -3288,7 +3292,9 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CheckAutomatedSecurityFixes, CheckAutomatedSecurityFixesType]:
+    ) -> Response[
+        CheckAutomatedSecurityFixes, CheckAutomatedSecurityFixesTypeForResponse
+    ]:
         """repos/check-automated-security-fixes
 
         GET /repos/{owner}/{repo}/automated-security-fixes
@@ -3435,7 +3441,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ShortBranch], list[ShortBranchType]]:
+    ) -> Response[list[ShortBranch], list[ShortBranchTypeForResponse]]:
         """repos/list-branches
 
         GET /repos/{owner}/{repo}/branches
@@ -3477,7 +3483,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ShortBranch], list[ShortBranchType]]:
+    ) -> Response[list[ShortBranch], list[ShortBranchTypeForResponse]]:
         """repos/list-branches
 
         GET /repos/{owner}/{repo}/branches
@@ -3517,7 +3523,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BranchWithProtection, BranchWithProtectionType]:
+    ) -> Response[BranchWithProtection, BranchWithProtectionTypeForResponse]:
         """repos/get-branch
 
         GET /repos/{owner}/{repo}/branches/{branch}
@@ -3550,7 +3556,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BranchWithProtection, BranchWithProtectionType]:
+    ) -> Response[BranchWithProtection, BranchWithProtectionTypeForResponse]:
         """repos/get-branch
 
         GET /repos/{owner}/{repo}/branches/{branch}
@@ -3583,7 +3589,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BranchProtection, BranchProtectionType]:
+    ) -> Response[BranchProtection, BranchProtectionTypeForResponse]:
         """repos/get-branch-protection
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection
@@ -3618,7 +3624,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BranchProtection, BranchProtectionType]:
+    ) -> Response[BranchProtection, BranchProtectionTypeForResponse]:
         """repos/get-branch-protection
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection
@@ -3655,7 +3661,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
-    ) -> Response[ProtectedBranch, ProtectedBranchType]: ...
+    ) -> Response[ProtectedBranch, ProtectedBranchTypeForResponse]: ...
 
     @overload
     def update_branch_protection(
@@ -3686,7 +3692,7 @@ class ReposClient:
         required_conversation_resolution: Missing[bool] = UNSET,
         lock_branch: Missing[bool] = UNSET,
         allow_fork_syncing: Missing[bool] = UNSET,
-    ) -> Response[ProtectedBranch, ProtectedBranchType]: ...
+    ) -> Response[ProtectedBranch, ProtectedBranchTypeForResponse]: ...
 
     def update_branch_protection(
         self,
@@ -3698,7 +3704,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProtectedBranch, ProtectedBranchType]:
+    ) -> Response[ProtectedBranch, ProtectedBranchTypeForResponse]:
         """repos/update-branch-protection
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection
@@ -3762,7 +3768,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
-    ) -> Response[ProtectedBranch, ProtectedBranchType]: ...
+    ) -> Response[ProtectedBranch, ProtectedBranchTypeForResponse]: ...
 
     @overload
     async def async_update_branch_protection(
@@ -3793,7 +3799,7 @@ class ReposClient:
         required_conversation_resolution: Missing[bool] = UNSET,
         lock_branch: Missing[bool] = UNSET,
         allow_fork_syncing: Missing[bool] = UNSET,
-    ) -> Response[ProtectedBranch, ProtectedBranchType]: ...
+    ) -> Response[ProtectedBranch, ProtectedBranchTypeForResponse]: ...
 
     async def async_update_branch_protection(
         self,
@@ -3805,7 +3811,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProtectedBranch, ProtectedBranchType]:
+    ) -> Response[ProtectedBranch, ProtectedBranchTypeForResponse]:
         """repos/update-branch-protection
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection
@@ -3935,7 +3941,9 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
+    ) -> Response[
+        ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
+    ]:
         """repos/get-admin-branch-protection
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
@@ -3967,7 +3975,9 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
+    ) -> Response[
+        ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
+    ]:
         """repos/get-admin-branch-protection
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
@@ -3999,7 +4009,9 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
+    ) -> Response[
+        ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
+    ]:
         """repos/set-admin-branch-protection
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
@@ -4033,7 +4045,9 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
+    ) -> Response[
+        ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
+    ]:
         """repos/set-admin-branch-protection
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
@@ -4140,7 +4154,8 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+        ProtectedBranchPullRequestReview,
+        ProtectedBranchPullRequestReviewTypeForResponse,
     ]:
         """repos/get-pull-request-review-protection
 
@@ -4174,7 +4189,8 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+        ProtectedBranchPullRequestReview,
+        ProtectedBranchPullRequestReviewTypeForResponse,
     ]:
         """repos/get-pull-request-review-protection
 
@@ -4280,7 +4296,8 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
     ) -> Response[
-        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+        ProtectedBranchPullRequestReview,
+        ProtectedBranchPullRequestReviewTypeForResponse,
     ]: ...
 
     @overload
@@ -4304,7 +4321,8 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
         ] = UNSET,
     ) -> Response[
-        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+        ProtectedBranchPullRequestReview,
+        ProtectedBranchPullRequestReviewTypeForResponse,
     ]: ...
 
     def update_pull_request_review_protection(
@@ -4320,7 +4338,8 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[
-        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+        ProtectedBranchPullRequestReview,
+        ProtectedBranchPullRequestReviewTypeForResponse,
     ]:
         """repos/update-pull-request-review-protection
 
@@ -4383,7 +4402,8 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
     ) -> Response[
-        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+        ProtectedBranchPullRequestReview,
+        ProtectedBranchPullRequestReviewTypeForResponse,
     ]: ...
 
     @overload
@@ -4407,7 +4427,8 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
         ] = UNSET,
     ) -> Response[
-        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+        ProtectedBranchPullRequestReview,
+        ProtectedBranchPullRequestReviewTypeForResponse,
     ]: ...
 
     async def async_update_pull_request_review_protection(
@@ -4423,7 +4444,8 @@ class ReposClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[
-        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+        ProtectedBranchPullRequestReview,
+        ProtectedBranchPullRequestReviewTypeForResponse,
     ]:
         """repos/update-pull-request-review-protection
 
@@ -4481,7 +4503,9 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
+    ) -> Response[
+        ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
+    ]:
         """repos/get-commit-signature-protection
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
@@ -4521,7 +4545,9 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
+    ) -> Response[
+        ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
+    ]:
         """repos/get-commit-signature-protection
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
@@ -4561,7 +4587,9 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
+    ) -> Response[
+        ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
+    ]:
         """repos/create-commit-signature-protection
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
@@ -4598,7 +4626,9 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
+    ) -> Response[
+        ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedTypeForResponse
+    ]:
         """repos/create-commit-signature-protection
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
@@ -4707,7 +4737,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]:
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyTypeForResponse]:
         """repos/get-status-checks-protection
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
@@ -4744,7 +4774,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]:
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyTypeForResponse]:
         """repos/get-status-checks-protection
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
@@ -4847,7 +4877,7 @@ class ReposClient:
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
-    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]: ...
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyTypeForResponse]: ...
 
     @overload
     def update_status_check_protection(
@@ -4866,7 +4896,7 @@ class ReposClient:
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
             ]
         ] = UNSET,
-    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]: ...
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyTypeForResponse]: ...
 
     def update_status_check_protection(
         self,
@@ -4880,7 +4910,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]:
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyTypeForResponse]:
         """repos/update-status-check-protection
 
         PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
@@ -4942,7 +4972,7 @@ class ReposClient:
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
-    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]: ...
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyTypeForResponse]: ...
 
     @overload
     async def async_update_status_check_protection(
@@ -4961,7 +4991,7 @@ class ReposClient:
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
             ]
         ] = UNSET,
-    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]: ...
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyTypeForResponse]: ...
 
     async def async_update_status_check_protection(
         self,
@@ -4975,7 +5005,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]:
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyTypeForResponse]:
         """repos/update-status-check-protection
 
         PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
@@ -5675,7 +5705,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BranchRestrictionPolicy, BranchRestrictionPolicyType]:
+    ) -> Response[BranchRestrictionPolicy, BranchRestrictionPolicyTypeForResponse]:
         """repos/get-access-restrictions
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
@@ -5715,7 +5745,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BranchRestrictionPolicy, BranchRestrictionPolicyType]:
+    ) -> Response[BranchRestrictionPolicy, BranchRestrictionPolicyTypeForResponse]:
         """repos/get-access-restrictions
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
@@ -5817,7 +5847,9 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
+    ]:
         """repos/get-apps-with-access-to-protected-branch
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
@@ -5856,7 +5888,9 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
+    ]:
         """repos/get-apps-with-access-to-protected-branch
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
@@ -5898,7 +5932,7 @@ class ReposClient:
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
     ) -> Response[
-        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
     ]: ...
 
     @overload
@@ -5913,7 +5947,7 @@ class ReposClient:
         stream: bool = False,
         apps: list[str],
     ) -> Response[
-        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
     ]: ...
 
     def set_app_access_restrictions(
@@ -5928,7 +5962,9 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
+    ]:
         """repos/set-app-access-restrictions
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
@@ -5986,7 +6022,7 @@ class ReposClient:
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
     ) -> Response[
-        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
     ]: ...
 
     @overload
@@ -6001,7 +6037,7 @@ class ReposClient:
         stream: bool = False,
         apps: list[str],
     ) -> Response[
-        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
     ]: ...
 
     async def async_set_app_access_restrictions(
@@ -6016,7 +6052,9 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
+    ]:
         """repos/set-app-access-restrictions
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
@@ -6074,7 +6112,7 @@ class ReposClient:
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
     ) -> Response[
-        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
     ]: ...
 
     @overload
@@ -6089,7 +6127,7 @@ class ReposClient:
         stream: bool = False,
         apps: list[str],
     ) -> Response[
-        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
     ]: ...
 
     def add_app_access_restrictions(
@@ -6104,7 +6142,9 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
+    ]:
         """repos/add-app-access-restrictions
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
@@ -6162,7 +6202,7 @@ class ReposClient:
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
     ) -> Response[
-        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
     ]: ...
 
     @overload
@@ -6177,7 +6217,7 @@ class ReposClient:
         stream: bool = False,
         apps: list[str],
     ) -> Response[
-        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
     ]: ...
 
     async def async_add_app_access_restrictions(
@@ -6192,7 +6232,9 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
+    ]:
         """repos/add-app-access-restrictions
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
@@ -6250,7 +6292,7 @@ class ReposClient:
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
     ) -> Response[
-        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
     ]: ...
 
     @overload
@@ -6265,7 +6307,7 @@ class ReposClient:
         stream: bool = False,
         apps: list[str],
     ) -> Response[
-        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
     ]: ...
 
     def remove_app_access_restrictions(
@@ -6280,7 +6322,9 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
+    ]:
         """repos/remove-app-access-restrictions
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
@@ -6338,7 +6382,7 @@ class ReposClient:
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
     ) -> Response[
-        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
     ]: ...
 
     @overload
@@ -6353,7 +6397,7 @@ class ReposClient:
         stream: bool = False,
         apps: list[str],
     ) -> Response[
-        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
     ]: ...
 
     async def async_remove_app_access_restrictions(
@@ -6368,7 +6412,9 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationTypeForResponse, None]]
+    ]:
         """repos/remove-app-access-restrictions
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
@@ -6423,7 +6469,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """repos/get-teams-with-access-to-protected-branch
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
@@ -6460,7 +6506,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """repos/get-teams-with-access-to-protected-branch
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
@@ -6504,7 +6550,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[Team], list[TeamType]]: ...
+    ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
 
     @overload
     def set_team_access_restrictions(
@@ -6517,7 +6563,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         teams: list[str],
-    ) -> Response[list[Team], list[TeamType]]: ...
+    ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
 
     def set_team_access_restrictions(
         self,
@@ -6534,7 +6580,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """repos/set-team-access-restrictions
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
@@ -6600,7 +6646,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[Team], list[TeamType]]: ...
+    ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
 
     @overload
     async def async_set_team_access_restrictions(
@@ -6613,7 +6659,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         teams: list[str],
-    ) -> Response[list[Team], list[TeamType]]: ...
+    ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
 
     async def async_set_team_access_restrictions(
         self,
@@ -6630,7 +6676,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """repos/set-team-access-restrictions
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
@@ -6696,7 +6742,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[Team], list[TeamType]]: ...
+    ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
 
     @overload
     def add_team_access_restrictions(
@@ -6709,7 +6755,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         teams: list[str],
-    ) -> Response[list[Team], list[TeamType]]: ...
+    ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
 
     def add_team_access_restrictions(
         self,
@@ -6726,7 +6772,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """repos/add-team-access-restrictions
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
@@ -6792,7 +6838,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[Team], list[TeamType]]: ...
+    ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
 
     @overload
     async def async_add_team_access_restrictions(
@@ -6805,7 +6851,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         teams: list[str],
-    ) -> Response[list[Team], list[TeamType]]: ...
+    ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
 
     async def async_add_team_access_restrictions(
         self,
@@ -6822,7 +6868,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """repos/add-team-access-restrictions
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
@@ -6888,7 +6934,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[Team], list[TeamType]]: ...
+    ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
 
     @overload
     def remove_team_access_restrictions(
@@ -6901,7 +6947,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         teams: list[str],
-    ) -> Response[list[Team], list[TeamType]]: ...
+    ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
 
     def remove_team_access_restrictions(
         self,
@@ -6918,7 +6964,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """repos/remove-team-access-restrictions
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
@@ -6984,7 +7030,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[Team], list[TeamType]]: ...
+    ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
 
     @overload
     async def async_remove_team_access_restrictions(
@@ -6997,7 +7043,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         teams: list[str],
-    ) -> Response[list[Team], list[TeamType]]: ...
+    ) -> Response[list[Team], list[TeamTypeForResponse]]: ...
 
     async def async_remove_team_access_restrictions(
         self,
@@ -7014,7 +7060,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """repos/remove-team-access-restrictions
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
@@ -7073,7 +7119,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """repos/get-users-with-access-to-protected-branch
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
@@ -7110,7 +7156,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """repos/get-users-with-access-to-protected-branch
 
         GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
@@ -7149,7 +7195,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     @overload
     def set_user_access_restrictions(
@@ -7162,7 +7208,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         users: list[str],
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     def set_user_access_restrictions(
         self,
@@ -7176,7 +7222,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """repos/set-user-access-restrictions
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
@@ -7235,7 +7281,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     @overload
     async def async_set_user_access_restrictions(
@@ -7248,7 +7294,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         users: list[str],
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     async def async_set_user_access_restrictions(
         self,
@@ -7262,7 +7308,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """repos/set-user-access-restrictions
 
         PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
@@ -7321,7 +7367,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     @overload
     def add_user_access_restrictions(
@@ -7334,7 +7380,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         users: list[str],
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     def add_user_access_restrictions(
         self,
@@ -7348,7 +7394,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """repos/add-user-access-restrictions
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
@@ -7407,7 +7453,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     @overload
     async def async_add_user_access_restrictions(
@@ -7420,7 +7466,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         users: list[str],
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     async def async_add_user_access_restrictions(
         self,
@@ -7434,7 +7480,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """repos/add-user-access-restrictions
 
         POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
@@ -7493,7 +7539,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     @overload
     def remove_user_access_restrictions(
@@ -7506,7 +7552,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         users: list[str],
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     def remove_user_access_restrictions(
         self,
@@ -7520,7 +7566,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """repos/remove-user-access-restrictions
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
@@ -7579,7 +7625,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     @overload
     async def async_remove_user_access_restrictions(
@@ -7592,7 +7638,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         users: list[str],
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     async def async_remove_user_access_restrictions(
         self,
@@ -7606,7 +7652,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """repos/remove-user-access-restrictions
 
         DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
@@ -7665,7 +7711,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
-    ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
+    ) -> Response[BranchWithProtection, BranchWithProtectionTypeForResponse]: ...
 
     @overload
     def rename_branch(
@@ -7678,7 +7724,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         new_name: str,
-    ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
+    ) -> Response[BranchWithProtection, BranchWithProtectionTypeForResponse]: ...
 
     def rename_branch(
         self,
@@ -7690,7 +7736,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[BranchWithProtection, BranchWithProtectionType]:
+    ) -> Response[BranchWithProtection, BranchWithProtectionTypeForResponse]:
         """repos/rename-branch
 
         POST /repos/{owner}/{repo}/branches/{branch}/rename
@@ -7753,7 +7799,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
-    ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
+    ) -> Response[BranchWithProtection, BranchWithProtectionTypeForResponse]: ...
 
     @overload
     async def async_rename_branch(
@@ -7766,7 +7812,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         new_name: str,
-    ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
+    ) -> Response[BranchWithProtection, BranchWithProtectionTypeForResponse]: ...
 
     async def async_rename_branch(
         self,
@@ -7778,7 +7824,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[BranchWithProtection, BranchWithProtectionType]:
+    ) -> Response[BranchWithProtection, BranchWithProtectionTypeForResponse]:
         """repos/rename-branch
 
         POST /repos/{owner}/{repo}/branches/{branch}/rename
@@ -7855,7 +7901,9 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
+    ) -> Response[
+        list[PushRuleBypassRequest], list[PushRuleBypassRequestTypeForResponse]
+    ]:
         """repos/list-repo-push-bypass-requests
 
         GET /repos/{owner}/{repo}/bypass-requests/push-rules
@@ -7917,7 +7965,9 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
+    ) -> Response[
+        list[PushRuleBypassRequest], list[PushRuleBypassRequestTypeForResponse]
+    ]:
         """repos/list-repo-push-bypass-requests
 
         GET /repos/{owner}/{repo}/bypass-requests/push-rules
@@ -7963,7 +8013,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PushRuleBypassRequest, PushRuleBypassRequestType]:
+    ) -> Response[PushRuleBypassRequest, PushRuleBypassRequestTypeForResponse]:
         """repos/get-repo-push-bypass-request
 
         GET /repos/{owner}/{repo}/bypass-requests/push-rules/{bypass_request_number}
@@ -8001,7 +8051,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PushRuleBypassRequest, PushRuleBypassRequestType]:
+    ) -> Response[PushRuleBypassRequest, PushRuleBypassRequestTypeForResponse]:
         """repos/get-repo-push-bypass-request
 
         GET /repos/{owner}/{repo}/bypass-requests/push-rules/{bypass_request_number}
@@ -8039,7 +8089,7 @@ class ReposClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeownersErrors, CodeownersErrorsType]:
+    ) -> Response[CodeownersErrors, CodeownersErrorsTypeForResponse]:
         """repos/codeowners-errors
 
         GET /repos/{owner}/{repo}/codeowners/errors
@@ -8081,7 +8131,7 @@ class ReposClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeownersErrors, CodeownersErrorsType]:
+    ) -> Response[CodeownersErrors, CodeownersErrorsTypeForResponse]:
         """repos/codeowners-errors
 
         GET /repos/{owner}/{repo}/codeowners/errors
@@ -8128,7 +8178,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Collaborator], list[CollaboratorType]]:
+    ) -> Response[list[Collaborator], list[CollaboratorTypeForResponse]]:
         """repos/list-collaborators
 
         GET /repos/{owner}/{repo}/collaborators
@@ -8183,7 +8233,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Collaborator], list[CollaboratorType]]:
+    ) -> Response[list[Collaborator], list[CollaboratorTypeForResponse]]:
         """repos/list-collaborators
 
         GET /repos/{owner}/{repo}/collaborators
@@ -8307,7 +8357,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
-    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
 
     @overload
     def add_collaborator(
@@ -8320,7 +8370,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         permission: Missing[str] = UNSET,
-    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
 
     def add_collaborator(
         self,
@@ -8332,7 +8382,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
+    ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]:
         """repos/add-collaborator
 
         PUT /repos/{owner}/{repo}/collaborators/{username}
@@ -8411,7 +8461,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
-    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
 
     @overload
     async def async_add_collaborator(
@@ -8424,7 +8474,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         permission: Missing[str] = UNSET,
-    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
 
     async def async_add_collaborator(
         self,
@@ -8436,7 +8486,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
+    ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]:
         """repos/add-collaborator
 
         PUT /repos/{owner}/{repo}/collaborators/{username}
@@ -8626,7 +8676,8 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        RepositoryCollaboratorPermission, RepositoryCollaboratorPermissionType
+        RepositoryCollaboratorPermission,
+        RepositoryCollaboratorPermissionTypeForResponse,
     ]:
         """repos/get-collaborator-permission-level
 
@@ -8671,7 +8722,8 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        RepositoryCollaboratorPermission, RepositoryCollaboratorPermissionType
+        RepositoryCollaboratorPermission,
+        RepositoryCollaboratorPermissionTypeForResponse,
     ]:
         """repos/get-collaborator-permission-level
 
@@ -8716,7 +8768,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CommitComment], list[CommitCommentType]]:
+    ) -> Response[list[CommitComment], list[CommitCommentTypeForResponse]]:
         """repos/list-commit-comments-for-repo
 
         GET /repos/{owner}/{repo}/comments
@@ -8762,7 +8814,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CommitComment], list[CommitCommentType]]:
+    ) -> Response[list[CommitComment], list[CommitCommentTypeForResponse]]:
         """repos/list-commit-comments-for-repo
 
         GET /repos/{owner}/{repo}/comments
@@ -8807,7 +8859,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CommitComment, CommitCommentType]:
+    ) -> Response[CommitComment, CommitCommentTypeForResponse]:
         """repos/get-commit-comment
 
         GET /repos/{owner}/{repo}/comments/{comment_id}
@@ -8849,7 +8901,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CommitComment, CommitCommentType]:
+    ) -> Response[CommitComment, CommitCommentTypeForResponse]:
         """repos/get-commit-comment
 
         GET /repos/{owner}/{repo}/comments/{comment_id}
@@ -8957,7 +9009,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
-    ) -> Response[CommitComment, CommitCommentType]: ...
+    ) -> Response[CommitComment, CommitCommentTypeForResponse]: ...
 
     @overload
     def update_commit_comment(
@@ -8970,7 +9022,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[CommitComment, CommitCommentType]: ...
+    ) -> Response[CommitComment, CommitCommentTypeForResponse]: ...
 
     def update_commit_comment(
         self,
@@ -8982,7 +9034,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CommitComment, CommitCommentType]:
+    ) -> Response[CommitComment, CommitCommentTypeForResponse]:
         """repos/update-commit-comment
 
         PATCH /repos/{owner}/{repo}/comments/{comment_id}
@@ -9040,7 +9092,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
-    ) -> Response[CommitComment, CommitCommentType]: ...
+    ) -> Response[CommitComment, CommitCommentTypeForResponse]: ...
 
     @overload
     async def async_update_commit_comment(
@@ -9053,7 +9105,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[CommitComment, CommitCommentType]: ...
+    ) -> Response[CommitComment, CommitCommentTypeForResponse]: ...
 
     async def async_update_commit_comment(
         self,
@@ -9065,7 +9117,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CommitComment, CommitCommentType]:
+    ) -> Response[CommitComment, CommitCommentTypeForResponse]:
         """repos/update-commit-comment
 
         PATCH /repos/{owner}/{repo}/comments/{comment_id}
@@ -9128,7 +9180,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Commit], list[CommitType]]:
+    ) -> Response[list[Commit], list[CommitTypeForResponse]]:
         """repos/list-commits
 
         GET /repos/{owner}/{repo}/commits
@@ -9213,7 +9265,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Commit], list[CommitType]]:
+    ) -> Response[list[Commit], list[CommitTypeForResponse]]:
         """repos/list-commits
 
         GET /repos/{owner}/{repo}/commits
@@ -9291,7 +9343,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[BranchShort], list[BranchShortType]]:
+    ) -> Response[list[BranchShort], list[BranchShortTypeForResponse]]:
         """repos/list-branches-for-head-commit
 
         GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
@@ -9329,7 +9381,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[BranchShort], list[BranchShortType]]:
+    ) -> Response[list[BranchShort], list[BranchShortTypeForResponse]]:
         """repos/list-branches-for-head-commit
 
         GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
@@ -9369,7 +9421,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CommitComment], list[CommitCommentType]]:
+    ) -> Response[list[CommitComment], list[CommitCommentTypeForResponse]]:
         """repos/list-comments-for-commit
 
         GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
@@ -9416,7 +9468,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CommitComment], list[CommitCommentType]]:
+    ) -> Response[list[CommitComment], list[CommitCommentTypeForResponse]]:
         """repos/list-comments-for-commit
 
         GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
@@ -9463,7 +9515,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
-    ) -> Response[CommitComment, CommitCommentType]: ...
+    ) -> Response[CommitComment, CommitCommentTypeForResponse]: ...
 
     @overload
     def create_commit_comment(
@@ -9479,7 +9531,7 @@ class ReposClient:
         path: Missing[str] = UNSET,
         position: Missing[int] = UNSET,
         line: Missing[int] = UNSET,
-    ) -> Response[CommitComment, CommitCommentType]: ...
+    ) -> Response[CommitComment, CommitCommentTypeForResponse]: ...
 
     def create_commit_comment(
         self,
@@ -9491,7 +9543,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CommitComment, CommitCommentType]:
+    ) -> Response[CommitComment, CommitCommentTypeForResponse]:
         """repos/create-commit-comment
 
         POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
@@ -9555,7 +9607,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
-    ) -> Response[CommitComment, CommitCommentType]: ...
+    ) -> Response[CommitComment, CommitCommentTypeForResponse]: ...
 
     @overload
     async def async_create_commit_comment(
@@ -9571,7 +9623,7 @@ class ReposClient:
         path: Missing[str] = UNSET,
         position: Missing[int] = UNSET,
         line: Missing[int] = UNSET,
-    ) -> Response[CommitComment, CommitCommentType]: ...
+    ) -> Response[CommitComment, CommitCommentTypeForResponse]: ...
 
     async def async_create_commit_comment(
         self,
@@ -9583,7 +9635,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CommitComment, CommitCommentType]:
+    ) -> Response[CommitComment, CommitCommentTypeForResponse]:
         """repos/create-commit-comment
 
         POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
@@ -9647,7 +9699,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
+    ) -> Response[list[PullRequestSimple], list[PullRequestSimpleTypeForResponse]]:
         """repos/list-pull-requests-associated-with-commit
 
         GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
@@ -9692,7 +9744,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
+    ) -> Response[list[PullRequestSimple], list[PullRequestSimpleTypeForResponse]]:
         """repos/list-pull-requests-associated-with-commit
 
         GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
@@ -9737,7 +9789,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Commit, CommitType]:
+    ) -> Response[Commit, CommitTypeForResponse]:
         """repos/get-commit
 
         GET /repos/{owner}/{repo}/commits/{ref}
@@ -9828,7 +9880,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Commit, CommitType]:
+    ) -> Response[Commit, CommitTypeForResponse]:
         """repos/get-commit
 
         GET /repos/{owner}/{repo}/commits/{ref}
@@ -9919,7 +9971,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CombinedCommitStatus, CombinedCommitStatusType]:
+    ) -> Response[CombinedCommitStatus, CombinedCommitStatusTypeForResponse]:
         """repos/get-combined-status-for-ref
 
         GET /repos/{owner}/{repo}/commits/{ref}/status
@@ -9969,7 +10021,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CombinedCommitStatus, CombinedCommitStatusType]:
+    ) -> Response[CombinedCommitStatus, CombinedCommitStatusTypeForResponse]:
         """repos/get-combined-status-for-ref
 
         GET /repos/{owner}/{repo}/commits/{ref}/status
@@ -10019,7 +10071,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Status], list[StatusType]]:
+    ) -> Response[list[Status], list[StatusTypeForResponse]]:
         """repos/list-commit-statuses-for-ref
 
         GET /repos/{owner}/{repo}/commits/{ref}/statuses
@@ -10061,7 +10113,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Status], list[StatusType]]:
+    ) -> Response[list[Status], list[StatusTypeForResponse]]:
         """repos/list-commit-statuses-for-ref
 
         GET /repos/{owner}/{repo}/commits/{ref}/statuses
@@ -10100,7 +10152,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CommunityProfile, CommunityProfileType]:
+    ) -> Response[CommunityProfile, CommunityProfileTypeForResponse]:
         r"""repos/get-community-profile-metrics
 
         GET /repos/{owner}/{repo}/community/profile
@@ -10141,7 +10193,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CommunityProfile, CommunityProfileType]:
+    ) -> Response[CommunityProfile, CommunityProfileTypeForResponse]:
         r"""repos/get-community-profile-metrics
 
         GET /repos/{owner}/{repo}/community/profile
@@ -10185,7 +10237,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CommitComparison, CommitComparisonType]:
+    ) -> Response[CommitComparison, CommitComparisonTypeForResponse]:
         """repos/compare-commits
 
         GET /repos/{owner}/{repo}/compare/{basehead}
@@ -10284,7 +10336,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CommitComparison, CommitComparisonType]:
+    ) -> Response[CommitComparison, CommitComparisonTypeForResponse]:
         """repos/compare-commits
 
         GET /repos/{owner}/{repo}/compare/{basehead}
@@ -10387,10 +10439,10 @@ class ReposClient:
             list[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
         ],
         Union[
-            list[ContentDirectoryItemsType],
-            ContentFileType,
-            ContentSymlinkType,
-            ContentSubmoduleType,
+            list[ContentDirectoryItemsTypeForResponse],
+            ContentFileTypeForResponse,
+            ContentSymlinkTypeForResponse,
+            ContentSubmoduleTypeForResponse,
         ],
     ]:
         """repos/get-content
@@ -10476,10 +10528,10 @@ class ReposClient:
             list[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
         ],
         Union[
-            list[ContentDirectoryItemsType],
-            ContentFileType,
-            ContentSymlinkType,
-            ContentSubmoduleType,
+            list[ContentDirectoryItemsTypeForResponse],
+            ContentFileTypeForResponse,
+            ContentSymlinkTypeForResponse,
+            ContentSubmoduleTypeForResponse,
         ],
     ]:
         """repos/get-content
@@ -10561,7 +10613,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoContentsPathPutBodyType,
-    ) -> Response[FileCommit, FileCommitType]: ...
+    ) -> Response[FileCommit, FileCommitTypeForResponse]: ...
 
     @overload
     def create_or_update_file_contents(
@@ -10579,7 +10631,7 @@ class ReposClient:
         branch: Missing[str] = UNSET,
         committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitterType] = UNSET,
         author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthorType] = UNSET,
-    ) -> Response[FileCommit, FileCommitType]: ...
+    ) -> Response[FileCommit, FileCommitTypeForResponse]: ...
 
     def create_or_update_file_contents(
         self,
@@ -10591,7 +10643,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FileCommit, FileCommitType]:
+    ) -> Response[FileCommit, FileCommitTypeForResponse]:
         """repos/create-or-update-file-contents
 
         PUT /repos/{owner}/{repo}/contents/{path}
@@ -10653,7 +10705,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoContentsPathPutBodyType,
-    ) -> Response[FileCommit, FileCommitType]: ...
+    ) -> Response[FileCommit, FileCommitTypeForResponse]: ...
 
     @overload
     async def async_create_or_update_file_contents(
@@ -10671,7 +10723,7 @@ class ReposClient:
         branch: Missing[str] = UNSET,
         committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitterType] = UNSET,
         author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthorType] = UNSET,
-    ) -> Response[FileCommit, FileCommitType]: ...
+    ) -> Response[FileCommit, FileCommitTypeForResponse]: ...
 
     async def async_create_or_update_file_contents(
         self,
@@ -10683,7 +10735,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FileCommit, FileCommitType]:
+    ) -> Response[FileCommit, FileCommitTypeForResponse]:
         """repos/create-or-update-file-contents
 
         PUT /repos/{owner}/{repo}/contents/{path}
@@ -10745,7 +10797,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoContentsPathDeleteBodyType,
-    ) -> Response[FileCommit, FileCommitType]: ...
+    ) -> Response[FileCommit, FileCommitTypeForResponse]: ...
 
     @overload
     def delete_file(
@@ -10764,7 +10816,7 @@ class ReposClient:
             ReposOwnerRepoContentsPathDeleteBodyPropCommitterType
         ] = UNSET,
         author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType] = UNSET,
-    ) -> Response[FileCommit, FileCommitType]: ...
+    ) -> Response[FileCommit, FileCommitTypeForResponse]: ...
 
     def delete_file(
         self,
@@ -10776,7 +10828,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FileCommit, FileCommitType]:
+    ) -> Response[FileCommit, FileCommitTypeForResponse]:
         """repos/delete-file
 
         DELETE /repos/{owner}/{repo}/contents/{path}
@@ -10841,7 +10893,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoContentsPathDeleteBodyType,
-    ) -> Response[FileCommit, FileCommitType]: ...
+    ) -> Response[FileCommit, FileCommitTypeForResponse]: ...
 
     @overload
     async def async_delete_file(
@@ -10860,7 +10912,7 @@ class ReposClient:
             ReposOwnerRepoContentsPathDeleteBodyPropCommitterType
         ] = UNSET,
         author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType] = UNSET,
-    ) -> Response[FileCommit, FileCommitType]: ...
+    ) -> Response[FileCommit, FileCommitTypeForResponse]: ...
 
     async def async_delete_file(
         self,
@@ -10872,7 +10924,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FileCommit, FileCommitType]:
+    ) -> Response[FileCommit, FileCommitTypeForResponse]:
         """repos/delete-file
 
         DELETE /repos/{owner}/{repo}/contents/{path}
@@ -10937,7 +10989,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Contributor], list[ContributorType]]:
+    ) -> Response[list[Contributor], list[ContributorTypeForResponse]]:
         """repos/list-contributors
 
         GET /repos/{owner}/{repo}/contributors
@@ -10984,7 +11036,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Contributor], list[ContributorType]]:
+    ) -> Response[list[Contributor], list[ContributorTypeForResponse]]:
         """repos/list-contributors
 
         GET /repos/{owner}/{repo}/contributors
@@ -11034,7 +11086,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Deployment], list[DeploymentType]]:
+    ) -> Response[list[Deployment], list[DeploymentTypeForResponse]]:
         """repos/list-deployments
 
         GET /repos/{owner}/{repo}/deployments
@@ -11081,7 +11133,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Deployment], list[DeploymentType]]:
+    ) -> Response[list[Deployment], list[DeploymentTypeForResponse]]:
         """repos/list-deployments
 
         GET /repos/{owner}/{repo}/deployments
@@ -11124,7 +11176,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoDeploymentsPostBodyType,
-    ) -> Response[Deployment, DeploymentType]: ...
+    ) -> Response[Deployment, DeploymentTypeForResponse]: ...
 
     @overload
     def create_deployment(
@@ -11146,7 +11198,7 @@ class ReposClient:
         description: Missing[Union[str, None]] = UNSET,
         transient_environment: Missing[bool] = UNSET,
         production_environment: Missing[bool] = UNSET,
-    ) -> Response[Deployment, DeploymentType]: ...
+    ) -> Response[Deployment, DeploymentTypeForResponse]: ...
 
     def create_deployment(
         self,
@@ -11157,7 +11209,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Deployment, DeploymentType]:
+    ) -> Response[Deployment, DeploymentTypeForResponse]:
         """repos/create-deployment
 
         POST /repos/{owner}/{repo}/deployments
@@ -11254,7 +11306,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoDeploymentsPostBodyType,
-    ) -> Response[Deployment, DeploymentType]: ...
+    ) -> Response[Deployment, DeploymentTypeForResponse]: ...
 
     @overload
     async def async_create_deployment(
@@ -11276,7 +11328,7 @@ class ReposClient:
         description: Missing[Union[str, None]] = UNSET,
         transient_environment: Missing[bool] = UNSET,
         production_environment: Missing[bool] = UNSET,
-    ) -> Response[Deployment, DeploymentType]: ...
+    ) -> Response[Deployment, DeploymentTypeForResponse]: ...
 
     async def async_create_deployment(
         self,
@@ -11287,7 +11339,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Deployment, DeploymentType]:
+    ) -> Response[Deployment, DeploymentTypeForResponse]:
         """repos/create-deployment
 
         POST /repos/{owner}/{repo}/deployments
@@ -11383,7 +11435,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Deployment, DeploymentType]:
+    ) -> Response[Deployment, DeploymentTypeForResponse]:
         """repos/get-deployment
 
         GET /repos/{owner}/{repo}/deployments/{deployment_id}
@@ -11416,7 +11468,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Deployment, DeploymentType]:
+    ) -> Response[Deployment, DeploymentTypeForResponse]:
         """repos/get-deployment
 
         GET /repos/{owner}/{repo}/deployments/{deployment_id}
@@ -11539,7 +11591,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[DeploymentStatus], list[DeploymentStatusType]]:
+    ) -> Response[list[DeploymentStatus], list[DeploymentStatusTypeForResponse]]:
         """repos/list-deployment-statuses
 
         GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
@@ -11582,7 +11634,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[DeploymentStatus], list[DeploymentStatusType]]:
+    ) -> Response[list[DeploymentStatus], list[DeploymentStatusTypeForResponse]]:
         """repos/list-deployment-statuses
 
         GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
@@ -11625,7 +11677,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
-    ) -> Response[DeploymentStatus, DeploymentStatusType]: ...
+    ) -> Response[DeploymentStatus, DeploymentStatusTypeForResponse]: ...
 
     @overload
     def create_deployment_status(
@@ -11652,7 +11704,7 @@ class ReposClient:
         environment: Missing[str] = UNSET,
         environment_url: Missing[str] = UNSET,
         auto_inactive: Missing[bool] = UNSET,
-    ) -> Response[DeploymentStatus, DeploymentStatusType]: ...
+    ) -> Response[DeploymentStatus, DeploymentStatusTypeForResponse]: ...
 
     def create_deployment_status(
         self,
@@ -11666,7 +11718,7 @@ class ReposClient:
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentStatus, DeploymentStatusType]:
+    ) -> Response[DeploymentStatus, DeploymentStatusTypeForResponse]:
         """repos/create-deployment-status
 
         POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
@@ -11721,7 +11773,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
-    ) -> Response[DeploymentStatus, DeploymentStatusType]: ...
+    ) -> Response[DeploymentStatus, DeploymentStatusTypeForResponse]: ...
 
     @overload
     async def async_create_deployment_status(
@@ -11748,7 +11800,7 @@ class ReposClient:
         environment: Missing[str] = UNSET,
         environment_url: Missing[str] = UNSET,
         auto_inactive: Missing[bool] = UNSET,
-    ) -> Response[DeploymentStatus, DeploymentStatusType]: ...
+    ) -> Response[DeploymentStatus, DeploymentStatusTypeForResponse]: ...
 
     async def async_create_deployment_status(
         self,
@@ -11762,7 +11814,7 @@ class ReposClient:
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentStatus, DeploymentStatusType]:
+    ) -> Response[DeploymentStatus, DeploymentStatusTypeForResponse]:
         """repos/create-deployment-status
 
         POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
@@ -11816,7 +11868,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DeploymentStatus, DeploymentStatusType]:
+    ) -> Response[DeploymentStatus, DeploymentStatusTypeForResponse]:
         """repos/get-deployment-status
 
         GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
@@ -11852,7 +11904,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DeploymentStatus, DeploymentStatusType]:
+    ) -> Response[DeploymentStatus, DeploymentStatusTypeForResponse]:
         """repos/get-deployment-status
 
         GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
@@ -12054,7 +12106,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsGetResponse200,
-        ReposOwnerRepoEnvironmentsGetResponse200Type,
+        ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse,
     ]:
         """repos/get-all-environments
 
@@ -12100,7 +12152,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsGetResponse200,
-        ReposOwnerRepoEnvironmentsGetResponse200Type,
+        ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse,
     ]:
         """repos/get-all-environments
 
@@ -12143,7 +12195,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Environment, EnvironmentType]:
+    ) -> Response[Environment, EnvironmentTypeForResponse]:
         """repos/get-environment
 
         GET /repos/{owner}/{repo}/environments/{environment_name}
@@ -12180,7 +12232,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Environment, EnvironmentType]:
+    ) -> Response[Environment, EnvironmentTypeForResponse]:
         """repos/get-environment
 
         GET /repos/{owner}/{repo}/environments/{environment_name}
@@ -12221,7 +12273,7 @@ class ReposClient:
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
-    ) -> Response[Environment, EnvironmentType]: ...
+    ) -> Response[Environment, EnvironmentTypeForResponse]: ...
 
     @overload
     def create_or_update_environment(
@@ -12246,7 +12298,7 @@ class ReposClient:
         deployment_branch_policy: Missing[
             Union[DeploymentBranchPolicySettingsType, None]
         ] = UNSET,
-    ) -> Response[Environment, EnvironmentType]: ...
+    ) -> Response[Environment, EnvironmentTypeForResponse]: ...
 
     def create_or_update_environment(
         self,
@@ -12260,7 +12312,7 @@ class ReposClient:
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Environment, EnvironmentType]:
+    ) -> Response[Environment, EnvironmentTypeForResponse]:
         """repos/create-or-update-environment
 
         PUT /repos/{owner}/{repo}/environments/{environment_name}
@@ -12325,7 +12377,7 @@ class ReposClient:
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
-    ) -> Response[Environment, EnvironmentType]: ...
+    ) -> Response[Environment, EnvironmentTypeForResponse]: ...
 
     @overload
     async def async_create_or_update_environment(
@@ -12350,7 +12402,7 @@ class ReposClient:
         deployment_branch_policy: Missing[
             Union[DeploymentBranchPolicySettingsType, None]
         ] = UNSET,
-    ) -> Response[Environment, EnvironmentType]: ...
+    ) -> Response[Environment, EnvironmentTypeForResponse]: ...
 
     async def async_create_or_update_environment(
         self,
@@ -12364,7 +12416,7 @@ class ReposClient:
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Environment, EnvironmentType]:
+    ) -> Response[Environment, EnvironmentTypeForResponse]:
         """repos/create-or-update-environment
 
         PUT /repos/{owner}/{repo}/environments/{environment_name}
@@ -12487,7 +12539,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse,
     ]:
         """repos/list-deployment-branch-policies
 
@@ -12536,7 +12588,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse,
     ]:
         """repos/list-deployment-branch-policies
 
@@ -12583,7 +12635,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: DeploymentBranchPolicyNamePatternWithTypeType,
-    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]: ...
 
     @overload
     def create_deployment_branch_policy(
@@ -12597,7 +12649,7 @@ class ReposClient:
         stream: bool = False,
         name: str,
         type: Missing[Literal["branch", "tag"]] = UNSET,
-    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]: ...
 
     def create_deployment_branch_policy(
         self,
@@ -12609,7 +12661,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]:
         """repos/create-deployment-branch-policy
 
         POST /repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies
@@ -12659,7 +12711,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: DeploymentBranchPolicyNamePatternWithTypeType,
-    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]: ...
 
     @overload
     async def async_create_deployment_branch_policy(
@@ -12673,7 +12725,7 @@ class ReposClient:
         stream: bool = False,
         name: str,
         type: Missing[Literal["branch", "tag"]] = UNSET,
-    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]: ...
 
     async def async_create_deployment_branch_policy(
         self,
@@ -12685,7 +12737,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]:
         """repos/create-deployment-branch-policy
 
         POST /repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies
@@ -12734,7 +12786,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]:
         """repos/get-deployment-branch-policy
 
         GET /repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}
@@ -12771,7 +12823,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]:
         """repos/get-deployment-branch-policy
 
         GET /repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}
@@ -12810,7 +12862,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: DeploymentBranchPolicyNamePatternType,
-    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]: ...
 
     @overload
     def update_deployment_branch_policy(
@@ -12824,7 +12876,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         name: str,
-    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]: ...
 
     def update_deployment_branch_policy(
         self,
@@ -12837,7 +12889,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]:
         """repos/update-deployment-branch-policy
 
         PUT /repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}
@@ -12884,7 +12936,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: DeploymentBranchPolicyNamePatternType,
-    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]: ...
 
     @overload
     async def async_update_deployment_branch_policy(
@@ -12898,7 +12950,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         name: str,
-    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]: ...
 
     async def async_update_deployment_branch_policy(
         self,
@@ -12911,7 +12963,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyTypeForResponse]:
         """repos/update-deployment-branch-policy
 
         PUT /repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}
@@ -13021,7 +13073,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse,
     ]:
         """repos/get-all-deployment-protection-rules
 
@@ -13062,7 +13114,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse,
     ]:
         """repos/get-all-deployment-protection-rules
 
@@ -13103,7 +13155,9 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
-    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
+    ) -> Response[
+        DeploymentProtectionRule, DeploymentProtectionRuleTypeForResponse
+    ]: ...
 
     @overload
     def create_deployment_protection_rule(
@@ -13116,7 +13170,9 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         integration_id: Missing[int] = UNSET,
-    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
+    ) -> Response[
+        DeploymentProtectionRule, DeploymentProtectionRuleTypeForResponse
+    ]: ...
 
     def create_deployment_protection_rule(
         self,
@@ -13130,7 +13186,7 @@ class ReposClient:
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]:
+    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleTypeForResponse]:
         """repos/create-deployment-protection-rule
 
         POST /repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules
@@ -13186,7 +13242,9 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
-    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
+    ) -> Response[
+        DeploymentProtectionRule, DeploymentProtectionRuleTypeForResponse
+    ]: ...
 
     @overload
     async def async_create_deployment_protection_rule(
@@ -13199,7 +13257,9 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         integration_id: Missing[int] = UNSET,
-    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
+    ) -> Response[
+        DeploymentProtectionRule, DeploymentProtectionRuleTypeForResponse
+    ]: ...
 
     async def async_create_deployment_protection_rule(
         self,
@@ -13213,7 +13273,7 @@ class ReposClient:
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]:
+    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleTypeForResponse]:
         """repos/create-deployment-protection-rule
 
         POST /repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules
@@ -13271,7 +13331,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse,
     ]:
         """repos/list-custom-deployment-rule-integrations
 
@@ -13324,7 +13384,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse,
     ]:
         """repos/list-custom-deployment-rule-integrations
 
@@ -13374,7 +13434,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]:
+    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleTypeForResponse]:
         """repos/get-custom-deployment-protection-rule
 
         GET /repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}
@@ -13411,7 +13471,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]:
+    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleTypeForResponse]:
         """repos/get-custom-deployment-protection-rule
 
         GET /repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}
@@ -13517,7 +13577,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-forks
 
         GET /repos/{owner}/{repo}/forks
@@ -13559,7 +13619,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-forks
 
         GET /repos/{owner}/{repo}/forks
@@ -13600,7 +13660,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     @overload
     def create_fork(
@@ -13614,7 +13674,7 @@ class ReposClient:
         organization: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
         default_branch_only: Missing[bool] = UNSET,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     def create_fork(
         self,
@@ -13625,7 +13685,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository, FullRepositoryType]:
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """repos/create-fork
 
         POST /repos/{owner}/{repo}/forks
@@ -13687,7 +13747,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     @overload
     async def async_create_fork(
@@ -13701,7 +13761,7 @@ class ReposClient:
         organization: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
         default_branch_only: Missing[bool] = UNSET,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     async def async_create_fork(
         self,
@@ -13712,7 +13772,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository, FullRepositoryType]:
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """repos/create-fork
 
         POST /repos/{owner}/{repo}/forks
@@ -13774,7 +13834,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Hook], list[HookType]]:
+    ) -> Response[list[Hook], list[HookTypeForResponse]]:
         """repos/list-webhooks
 
         GET /repos/{owner}/{repo}/hooks
@@ -13816,7 +13876,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Hook], list[HookType]]:
+    ) -> Response[list[Hook], list[HookTypeForResponse]]:
         """repos/list-webhooks
 
         GET /repos/{owner}/{repo}/hooks
@@ -13858,7 +13918,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
-    ) -> Response[Hook, HookType]: ...
+    ) -> Response[Hook, HookTypeForResponse]: ...
 
     @overload
     def create_webhook(
@@ -13873,7 +13933,7 @@ class ReposClient:
         config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[Hook, HookType]: ...
+    ) -> Response[Hook, HookTypeForResponse]: ...
 
     def create_webhook(
         self,
@@ -13884,7 +13944,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[Hook, HookType]:
+    ) -> Response[Hook, HookTypeForResponse]:
         """repos/create-webhook
 
         POST /repos/{owner}/{repo}/hooks
@@ -13940,7 +14000,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
-    ) -> Response[Hook, HookType]: ...
+    ) -> Response[Hook, HookTypeForResponse]: ...
 
     @overload
     async def async_create_webhook(
@@ -13955,7 +14015,7 @@ class ReposClient:
         config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[Hook, HookType]: ...
+    ) -> Response[Hook, HookTypeForResponse]: ...
 
     async def async_create_webhook(
         self,
@@ -13966,7 +14026,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[Hook, HookType]:
+    ) -> Response[Hook, HookTypeForResponse]:
         """repos/create-webhook
 
         POST /repos/{owner}/{repo}/hooks
@@ -14021,7 +14081,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Hook, HookType]:
+    ) -> Response[Hook, HookTypeForResponse]:
         """repos/get-webhook
 
         GET /repos/{owner}/{repo}/hooks/{hook_id}
@@ -14056,7 +14116,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Hook, HookType]:
+    ) -> Response[Hook, HookTypeForResponse]:
         """repos/get-webhook
 
         GET /repos/{owner}/{repo}/hooks/{hook_id}
@@ -14165,7 +14225,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoHooksHookIdPatchBodyType,
-    ) -> Response[Hook, HookType]: ...
+    ) -> Response[Hook, HookTypeForResponse]: ...
 
     @overload
     def update_webhook(
@@ -14182,7 +14242,7 @@ class ReposClient:
         add_events: Missing[list[str]] = UNSET,
         remove_events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[Hook, HookType]: ...
+    ) -> Response[Hook, HookTypeForResponse]: ...
 
     def update_webhook(
         self,
@@ -14194,7 +14254,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Hook, HookType]:
+    ) -> Response[Hook, HookTypeForResponse]:
         """repos/update-webhook
 
         PATCH /repos/{owner}/{repo}/hooks/{hook_id}
@@ -14247,7 +14307,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoHooksHookIdPatchBodyType,
-    ) -> Response[Hook, HookType]: ...
+    ) -> Response[Hook, HookTypeForResponse]: ...
 
     @overload
     async def async_update_webhook(
@@ -14264,7 +14324,7 @@ class ReposClient:
         add_events: Missing[list[str]] = UNSET,
         remove_events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[Hook, HookType]: ...
+    ) -> Response[Hook, HookTypeForResponse]: ...
 
     async def async_update_webhook(
         self,
@@ -14276,7 +14336,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Hook, HookType]:
+    ) -> Response[Hook, HookTypeForResponse]:
         """repos/update-webhook
 
         PATCH /repos/{owner}/{repo}/hooks/{hook_id}
@@ -14327,7 +14387,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """repos/get-webhook-config-for-repo
 
         GET /repos/{owner}/{repo}/hooks/{hook_id}/config
@@ -14361,7 +14421,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """repos/get-webhook-config-for-repo
 
         GET /repos/{owner}/{repo}/hooks/{hook_id}/config
@@ -14397,7 +14457,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     @overload
     def update_webhook_config_for_repo(
@@ -14413,7 +14473,7 @@ class ReposClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     def update_webhook_config_for_repo(
         self,
@@ -14425,7 +14485,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """repos/update-webhook-config-for-repo
 
         PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
@@ -14471,7 +14531,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     @overload
     async def async_update_webhook_config_for_repo(
@@ -14487,7 +14547,7 @@ class ReposClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     async def async_update_webhook_config_for_repo(
         self,
@@ -14499,7 +14559,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """repos/update-webhook-config-for-repo
 
         PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
@@ -14545,7 +14605,7 @@ class ReposClient:
         cursor: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """repos/list-webhook-deliveries
 
         GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries
@@ -14589,7 +14649,7 @@ class ReposClient:
         cursor: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """repos/list-webhook-deliveries
 
         GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries
@@ -14632,7 +14692,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[HookDelivery, HookDeliveryType]:
+    ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """repos/get-webhook-delivery
 
         GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
@@ -14669,7 +14729,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[HookDelivery, HookDeliveryType]:
+    ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """repos/get-webhook-delivery
 
         GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
@@ -14708,7 +14768,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """repos/redeliver-webhook-delivery
 
@@ -14752,7 +14812,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """repos/redeliver-webhook-delivery
 
@@ -14934,7 +14994,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CheckImmutableReleases, CheckImmutableReleasesType]:
+    ) -> Response[CheckImmutableReleases, CheckImmutableReleasesTypeForResponse]:
         """repos/check-immutable-releases
 
         GET /repos/{owner}/{repo}/immutable-releases
@@ -14967,7 +15027,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CheckImmutableReleases, CheckImmutableReleasesType]:
+    ) -> Response[CheckImmutableReleases, CheckImmutableReleasesTypeForResponse]:
         """repos/check-immutable-releases
 
         GET /repos/{owner}/{repo}/immutable-releases
@@ -15134,7 +15194,9 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
+    ) -> Response[
+        list[RepositoryInvitation], list[RepositoryInvitationTypeForResponse]
+    ]:
         """repos/list-invitations
 
         GET /repos/{owner}/{repo}/invitations
@@ -15173,7 +15235,9 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
+    ) -> Response[
+        list[RepositoryInvitation], list[RepositoryInvitationTypeForResponse]
+    ]:
         """repos/list-invitations
 
         GET /repos/{owner}/{repo}/invitations
@@ -15267,7 +15331,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
-    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
 
     @overload
     def update_invitation(
@@ -15282,7 +15346,7 @@ class ReposClient:
         permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
-    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
 
     def update_invitation(
         self,
@@ -15294,7 +15358,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
+    ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]:
         """repos/update-invitation
 
         PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
@@ -15341,7 +15405,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
-    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
 
     @overload
     async def async_update_invitation(
@@ -15356,7 +15420,7 @@ class ReposClient:
         permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
-    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
 
     async def async_update_invitation(
         self,
@@ -15368,7 +15432,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
+    ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]:
         """repos/update-invitation
 
         PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
@@ -15414,7 +15478,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[DeployKey], list[DeployKeyType]]:
+    ) -> Response[list[DeployKey], list[DeployKeyTypeForResponse]]:
         """repos/list-deploy-keys
 
         GET /repos/{owner}/{repo}/keys
@@ -15451,7 +15515,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[DeployKey], list[DeployKeyType]]:
+    ) -> Response[list[DeployKey], list[DeployKeyTypeForResponse]]:
         """repos/list-deploy-keys
 
         GET /repos/{owner}/{repo}/keys
@@ -15488,7 +15552,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoKeysPostBodyType,
-    ) -> Response[DeployKey, DeployKeyType]: ...
+    ) -> Response[DeployKey, DeployKeyTypeForResponse]: ...
 
     @overload
     def create_deploy_key(
@@ -15502,7 +15566,7 @@ class ReposClient:
         title: Missing[str] = UNSET,
         key: str,
         read_only: Missing[bool] = UNSET,
-    ) -> Response[DeployKey, DeployKeyType]: ...
+    ) -> Response[DeployKey, DeployKeyTypeForResponse]: ...
 
     def create_deploy_key(
         self,
@@ -15513,7 +15577,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[DeployKey, DeployKeyType]:
+    ) -> Response[DeployKey, DeployKeyTypeForResponse]:
         """repos/create-deploy-key
 
         POST /repos/{owner}/{repo}/keys
@@ -15559,7 +15623,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoKeysPostBodyType,
-    ) -> Response[DeployKey, DeployKeyType]: ...
+    ) -> Response[DeployKey, DeployKeyTypeForResponse]: ...
 
     @overload
     async def async_create_deploy_key(
@@ -15573,7 +15637,7 @@ class ReposClient:
         title: Missing[str] = UNSET,
         key: str,
         read_only: Missing[bool] = UNSET,
-    ) -> Response[DeployKey, DeployKeyType]: ...
+    ) -> Response[DeployKey, DeployKeyTypeForResponse]: ...
 
     async def async_create_deploy_key(
         self,
@@ -15584,7 +15648,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[DeployKey, DeployKeyType]:
+    ) -> Response[DeployKey, DeployKeyTypeForResponse]:
         """repos/create-deploy-key
 
         POST /repos/{owner}/{repo}/keys
@@ -15629,7 +15693,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DeployKey, DeployKeyType]:
+    ) -> Response[DeployKey, DeployKeyTypeForResponse]:
         """repos/get-deploy-key
 
         GET /repos/{owner}/{repo}/keys/{key_id}
@@ -15662,7 +15726,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DeployKey, DeployKeyType]:
+    ) -> Response[DeployKey, DeployKeyTypeForResponse]:
         """repos/get-deploy-key
 
         GET /repos/{owner}/{repo}/keys/{key_id}
@@ -15752,7 +15816,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Language, LanguageType]:
+    ) -> Response[Language, LanguageTypeForResponse]:
         """repos/list-languages
 
         GET /repos/{owner}/{repo}/languages
@@ -15783,7 +15847,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Language, LanguageType]:
+    ) -> Response[Language, LanguageTypeForResponse]:
         """repos/list-languages
 
         GET /repos/{owner}/{repo}/languages
@@ -15816,7 +15880,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """repos/enable-lfs-for-repo
 
@@ -15853,7 +15917,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """repos/enable-lfs-for-repo
 
@@ -15950,7 +16014,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoMergeUpstreamPostBodyType,
-    ) -> Response[MergedUpstream, MergedUpstreamType]: ...
+    ) -> Response[MergedUpstream, MergedUpstreamTypeForResponse]: ...
 
     @overload
     def merge_upstream(
@@ -15962,7 +16026,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         branch: str,
-    ) -> Response[MergedUpstream, MergedUpstreamType]: ...
+    ) -> Response[MergedUpstream, MergedUpstreamTypeForResponse]: ...
 
     def merge_upstream(
         self,
@@ -15973,7 +16037,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[MergedUpstream, MergedUpstreamType]:
+    ) -> Response[MergedUpstream, MergedUpstreamTypeForResponse]:
         """repos/merge-upstream
 
         POST /repos/{owner}/{repo}/merge-upstream
@@ -16017,7 +16081,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoMergeUpstreamPostBodyType,
-    ) -> Response[MergedUpstream, MergedUpstreamType]: ...
+    ) -> Response[MergedUpstream, MergedUpstreamTypeForResponse]: ...
 
     @overload
     async def async_merge_upstream(
@@ -16029,7 +16093,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         branch: str,
-    ) -> Response[MergedUpstream, MergedUpstreamType]: ...
+    ) -> Response[MergedUpstream, MergedUpstreamTypeForResponse]: ...
 
     async def async_merge_upstream(
         self,
@@ -16040,7 +16104,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[MergedUpstream, MergedUpstreamType]:
+    ) -> Response[MergedUpstream, MergedUpstreamTypeForResponse]:
         """repos/merge-upstream
 
         POST /repos/{owner}/{repo}/merge-upstream
@@ -16084,7 +16148,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoMergesPostBodyType,
-    ) -> Response[Commit, CommitType]: ...
+    ) -> Response[Commit, CommitTypeForResponse]: ...
 
     @overload
     def merge(
@@ -16098,7 +16162,7 @@ class ReposClient:
         base: str,
         head: str,
         commit_message: Missing[str] = UNSET,
-    ) -> Response[Commit, CommitType]: ...
+    ) -> Response[Commit, CommitTypeForResponse]: ...
 
     def merge(
         self,
@@ -16109,7 +16173,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Commit, CommitType]:
+    ) -> Response[Commit, CommitTypeForResponse]:
         """repos/merge
 
         POST /repos/{owner}/{repo}/merges
@@ -16159,7 +16223,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoMergesPostBodyType,
-    ) -> Response[Commit, CommitType]: ...
+    ) -> Response[Commit, CommitTypeForResponse]: ...
 
     @overload
     async def async_merge(
@@ -16173,7 +16237,7 @@ class ReposClient:
         base: str,
         head: str,
         commit_message: Missing[str] = UNSET,
-    ) -> Response[Commit, CommitType]: ...
+    ) -> Response[Commit, CommitTypeForResponse]: ...
 
     async def async_merge(
         self,
@@ -16184,7 +16248,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Commit, CommitType]:
+    ) -> Response[Commit, CommitTypeForResponse]:
         """repos/merge
 
         POST /repos/{owner}/{repo}/merges
@@ -16232,7 +16296,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Page, PageType]:
+    ) -> Response[Page, PageTypeForResponse]:
         """repos/get-pages
 
         GET /repos/{owner}/{repo}/pages
@@ -16268,7 +16332,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Page, PageType]:
+    ) -> Response[Page, PageTypeForResponse]:
         """repos/get-pages
 
         GET /repos/{owner}/{repo}/pages
@@ -16707,7 +16771,7 @@ class ReposClient:
             ReposOwnerRepoPagesPostBodyAnyof1Type,
             None,
         ],
-    ) -> Response[Page, PageType]: ...
+    ) -> Response[Page, PageTypeForResponse]: ...
 
     @overload
     def create_pages_site(
@@ -16720,7 +16784,7 @@ class ReposClient:
         stream: bool = False,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
-    ) -> Response[Page, PageType]: ...
+    ) -> Response[Page, PageTypeForResponse]: ...
 
     @overload
     def create_pages_site(
@@ -16733,7 +16797,7 @@ class ReposClient:
         stream: bool = False,
         build_type: Literal["legacy", "workflow"],
         source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
-    ) -> Response[Page, PageType]: ...
+    ) -> Response[Page, PageTypeForResponse]: ...
 
     def create_pages_site(
         self,
@@ -16751,7 +16815,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Page, PageType]:
+    ) -> Response[Page, PageTypeForResponse]:
         """repos/create-pages-site
 
         POST /repos/{owner}/{repo}/pages
@@ -16823,7 +16887,7 @@ class ReposClient:
             ReposOwnerRepoPagesPostBodyAnyof1Type,
             None,
         ],
-    ) -> Response[Page, PageType]: ...
+    ) -> Response[Page, PageTypeForResponse]: ...
 
     @overload
     async def async_create_pages_site(
@@ -16836,7 +16900,7 @@ class ReposClient:
         stream: bool = False,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
-    ) -> Response[Page, PageType]: ...
+    ) -> Response[Page, PageTypeForResponse]: ...
 
     @overload
     async def async_create_pages_site(
@@ -16849,7 +16913,7 @@ class ReposClient:
         stream: bool = False,
         build_type: Literal["legacy", "workflow"],
         source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
-    ) -> Response[Page, PageType]: ...
+    ) -> Response[Page, PageTypeForResponse]: ...
 
     async def async_create_pages_site(
         self,
@@ -16867,7 +16931,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Page, PageType]:
+    ) -> Response[Page, PageTypeForResponse]:
         """repos/create-pages-site
 
         POST /repos/{owner}/{repo}/pages
@@ -17012,7 +17076,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PageBuild], list[PageBuildType]]:
+    ) -> Response[list[PageBuild], list[PageBuildTypeForResponse]]:
         """repos/list-pages-builds
 
         GET /repos/{owner}/{repo}/pages/builds
@@ -17053,7 +17117,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PageBuild], list[PageBuildType]]:
+    ) -> Response[list[PageBuild], list[PageBuildTypeForResponse]]:
         """repos/list-pages-builds
 
         GET /repos/{owner}/{repo}/pages/builds
@@ -17092,7 +17156,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PageBuildStatus, PageBuildStatusType]:
+    ) -> Response[PageBuildStatus, PageBuildStatusTypeForResponse]:
         """repos/request-pages-build
 
         POST /repos/{owner}/{repo}/pages/builds
@@ -17125,7 +17189,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PageBuildStatus, PageBuildStatusType]:
+    ) -> Response[PageBuildStatus, PageBuildStatusTypeForResponse]:
         """repos/request-pages-build
 
         POST /repos/{owner}/{repo}/pages/builds
@@ -17158,7 +17222,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PageBuild, PageBuildType]:
+    ) -> Response[PageBuild, PageBuildTypeForResponse]:
         """repos/get-latest-pages-build
 
         GET /repos/{owner}/{repo}/pages/builds/latest
@@ -17191,7 +17255,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PageBuild, PageBuildType]:
+    ) -> Response[PageBuild, PageBuildTypeForResponse]:
         """repos/get-latest-pages-build
 
         GET /repos/{owner}/{repo}/pages/builds/latest
@@ -17225,7 +17289,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PageBuild, PageBuildType]:
+    ) -> Response[PageBuild, PageBuildTypeForResponse]:
         """repos/get-pages-build
 
         GET /repos/{owner}/{repo}/pages/builds/{build_id}
@@ -17259,7 +17323,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PageBuild, PageBuildType]:
+    ) -> Response[PageBuild, PageBuildTypeForResponse]:
         """repos/get-pages-build
 
         GET /repos/{owner}/{repo}/pages/builds/{build_id}
@@ -17294,7 +17358,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPagesDeploymentsPostBodyType,
-    ) -> Response[PageDeployment, PageDeploymentType]: ...
+    ) -> Response[PageDeployment, PageDeploymentTypeForResponse]: ...
 
     @overload
     def create_pages_deployment(
@@ -17310,7 +17374,7 @@ class ReposClient:
         environment: Missing[str] = UNSET,
         pages_build_version: str = "GITHUB_SHA",
         oidc_token: str,
-    ) -> Response[PageDeployment, PageDeploymentType]: ...
+    ) -> Response[PageDeployment, PageDeploymentTypeForResponse]: ...
 
     def create_pages_deployment(
         self,
@@ -17321,7 +17385,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPagesDeploymentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PageDeployment, PageDeploymentType]:
+    ) -> Response[PageDeployment, PageDeploymentTypeForResponse]:
         """repos/create-pages-deployment
 
         POST /repos/{owner}/{repo}/pages/deployments
@@ -17376,7 +17440,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPagesDeploymentsPostBodyType,
-    ) -> Response[PageDeployment, PageDeploymentType]: ...
+    ) -> Response[PageDeployment, PageDeploymentTypeForResponse]: ...
 
     @overload
     async def async_create_pages_deployment(
@@ -17392,7 +17456,7 @@ class ReposClient:
         environment: Missing[str] = UNSET,
         pages_build_version: str = "GITHUB_SHA",
         oidc_token: str,
-    ) -> Response[PageDeployment, PageDeploymentType]: ...
+    ) -> Response[PageDeployment, PageDeploymentTypeForResponse]: ...
 
     async def async_create_pages_deployment(
         self,
@@ -17403,7 +17467,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoPagesDeploymentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PageDeployment, PageDeploymentType]:
+    ) -> Response[PageDeployment, PageDeploymentTypeForResponse]:
         """repos/create-pages-deployment
 
         POST /repos/{owner}/{repo}/pages/deployments
@@ -17457,7 +17521,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PagesDeploymentStatus, PagesDeploymentStatusType]:
+    ) -> Response[PagesDeploymentStatus, PagesDeploymentStatusTypeForResponse]:
         """repos/get-pages-deployment
 
         GET /repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}
@@ -17494,7 +17558,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PagesDeploymentStatus, PagesDeploymentStatusType]:
+    ) -> Response[PagesDeploymentStatus, PagesDeploymentStatusTypeForResponse]:
         """repos/get-pages-deployment
 
         GET /repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}
@@ -17602,7 +17666,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PagesHealthCheck, PagesHealthCheckType]:
+    ) -> Response[PagesHealthCheck, PagesHealthCheckTypeForResponse]:
         """repos/get-pages-health-check
 
         GET /repos/{owner}/{repo}/pages/health
@@ -17642,7 +17706,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PagesHealthCheck, PagesHealthCheckType]:
+    ) -> Response[PagesHealthCheck, PagesHealthCheckTypeForResponse]:
         """repos/get-pages-health-check
 
         GET /repos/{owner}/{repo}/pages/health
@@ -17684,7 +17748,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
-        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type,
+        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse,
     ]:
         """repos/check-private-vulnerability-reporting
 
@@ -17724,7 +17788,7 @@ class ReposClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
-        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type,
+        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse,
     ]:
         """repos/check-private-vulnerability-reporting
 
@@ -17894,7 +17958,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueType]]:
+    ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueTypeForResponse]]:
         """repos/custom-properties-for-repos-get-repository-values
 
         GET /repos/{owner}/{repo}/properties/values
@@ -17930,7 +17994,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueType]]:
+    ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueTypeForResponse]]:
         """repos/custom-properties-for-repos-get-repository-values
 
         GET /repos/{owner}/{repo}/properties/values
@@ -18121,7 +18185,7 @@ class ReposClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ContentFile, ContentFileType]:
+    ) -> Response[ContentFile, ContentFileTypeForResponse]:
         """repos/get-readme
 
         GET /repos/{owner}/{repo}/readme
@@ -18167,7 +18231,7 @@ class ReposClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ContentFile, ContentFileType]:
+    ) -> Response[ContentFile, ContentFileTypeForResponse]:
         """repos/get-readme
 
         GET /repos/{owner}/{repo}/readme
@@ -18214,7 +18278,7 @@ class ReposClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ContentFile, ContentFileType]:
+    ) -> Response[ContentFile, ContentFileTypeForResponse]:
         """repos/get-readme-in-directory
 
         GET /repos/{owner}/{repo}/readme/{dir}
@@ -18261,7 +18325,7 @@ class ReposClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ContentFile, ContentFileType]:
+    ) -> Response[ContentFile, ContentFileTypeForResponse]:
         """repos/get-readme-in-directory
 
         GET /repos/{owner}/{repo}/readme/{dir}
@@ -18308,7 +18372,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Release], list[ReleaseType]]:
+    ) -> Response[list[Release], list[ReleaseTypeForResponse]]:
         """repos/list-releases
 
         GET /repos/{owner}/{repo}/releases
@@ -18352,7 +18416,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Release], list[ReleaseType]]:
+    ) -> Response[list[Release], list[ReleaseTypeForResponse]]:
         """repos/list-releases
 
         GET /repos/{owner}/{repo}/releases
@@ -18396,7 +18460,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoReleasesPostBodyType,
-    ) -> Response[Release, ReleaseType]: ...
+    ) -> Response[Release, ReleaseTypeForResponse]: ...
 
     @overload
     def create_release(
@@ -18416,7 +18480,7 @@ class ReposClient:
         discussion_category_name: Missing[str] = UNSET,
         generate_release_notes: Missing[bool] = UNSET,
         make_latest: Missing[Literal["true", "false", "legacy"]] = UNSET,
-    ) -> Response[Release, ReleaseType]: ...
+    ) -> Response[Release, ReleaseTypeForResponse]: ...
 
     def create_release(
         self,
@@ -18427,7 +18491,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Release, ReleaseType]:
+    ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/create-release
 
         POST /repos/{owner}/{repo}/releases
@@ -18481,7 +18545,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoReleasesPostBodyType,
-    ) -> Response[Release, ReleaseType]: ...
+    ) -> Response[Release, ReleaseTypeForResponse]: ...
 
     @overload
     async def async_create_release(
@@ -18501,7 +18565,7 @@ class ReposClient:
         discussion_category_name: Missing[str] = UNSET,
         generate_release_notes: Missing[bool] = UNSET,
         make_latest: Missing[Literal["true", "false", "legacy"]] = UNSET,
-    ) -> Response[Release, ReleaseType]: ...
+    ) -> Response[Release, ReleaseTypeForResponse]: ...
 
     async def async_create_release(
         self,
@@ -18512,7 +18576,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Release, ReleaseType]:
+    ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/create-release
 
         POST /repos/{owner}/{repo}/releases
@@ -18565,7 +18629,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ReleaseAsset, ReleaseAssetType]:
+    ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]:
         """repos/get-release-asset
 
         GET /repos/{owner}/{repo}/releases/assets/{asset_id}
@@ -18606,7 +18670,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ReleaseAsset, ReleaseAssetType]:
+    ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]:
         """repos/get-release-asset
 
         GET /repos/{owner}/{repo}/releases/assets/{asset_id}
@@ -18703,7 +18767,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
-    ) -> Response[ReleaseAsset, ReleaseAssetType]: ...
+    ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]: ...
 
     @overload
     def update_release_asset(
@@ -18718,7 +18782,7 @@ class ReposClient:
         name: Missing[str] = UNSET,
         label: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
-    ) -> Response[ReleaseAsset, ReleaseAssetType]: ...
+    ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]: ...
 
     def update_release_asset(
         self,
@@ -18730,7 +18794,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ReleaseAsset, ReleaseAssetType]:
+    ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]:
         """repos/update-release-asset
 
         PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
@@ -18776,7 +18840,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
-    ) -> Response[ReleaseAsset, ReleaseAssetType]: ...
+    ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]: ...
 
     @overload
     async def async_update_release_asset(
@@ -18791,7 +18855,7 @@ class ReposClient:
         name: Missing[str] = UNSET,
         label: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
-    ) -> Response[ReleaseAsset, ReleaseAssetType]: ...
+    ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]: ...
 
     async def async_update_release_asset(
         self,
@@ -18803,7 +18867,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ReleaseAsset, ReleaseAssetType]:
+    ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]:
         """repos/update-release-asset
 
         PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
@@ -18848,7 +18912,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
-    ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]: ...
+    ) -> Response[ReleaseNotesContent, ReleaseNotesContentTypeForResponse]: ...
 
     @overload
     def generate_release_notes(
@@ -18863,7 +18927,7 @@ class ReposClient:
         target_commitish: Missing[str] = UNSET,
         previous_tag_name: Missing[str] = UNSET,
         configuration_file_path: Missing[str] = UNSET,
-    ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]: ...
+    ) -> Response[ReleaseNotesContent, ReleaseNotesContentTypeForResponse]: ...
 
     def generate_release_notes(
         self,
@@ -18874,7 +18938,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]:
+    ) -> Response[ReleaseNotesContent, ReleaseNotesContentTypeForResponse]:
         """repos/generate-release-notes
 
         POST /repos/{owner}/{repo}/releases/generate-notes
@@ -18926,7 +18990,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
-    ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]: ...
+    ) -> Response[ReleaseNotesContent, ReleaseNotesContentTypeForResponse]: ...
 
     @overload
     async def async_generate_release_notes(
@@ -18941,7 +19005,7 @@ class ReposClient:
         target_commitish: Missing[str] = UNSET,
         previous_tag_name: Missing[str] = UNSET,
         configuration_file_path: Missing[str] = UNSET,
-    ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]: ...
+    ) -> Response[ReleaseNotesContent, ReleaseNotesContentTypeForResponse]: ...
 
     async def async_generate_release_notes(
         self,
@@ -18952,7 +19016,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]:
+    ) -> Response[ReleaseNotesContent, ReleaseNotesContentTypeForResponse]:
         """repos/generate-release-notes
 
         POST /repos/{owner}/{repo}/releases/generate-notes
@@ -19002,7 +19066,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Release, ReleaseType]:
+    ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/get-latest-release
 
         GET /repos/{owner}/{repo}/releases/latest
@@ -19035,7 +19099,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Release, ReleaseType]:
+    ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/get-latest-release
 
         GET /repos/{owner}/{repo}/releases/latest
@@ -19069,7 +19133,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Release, ReleaseType]:
+    ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/get-release-by-tag
 
         GET /repos/{owner}/{repo}/releases/tags/{tag}
@@ -19104,7 +19168,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Release, ReleaseType]:
+    ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/get-release-by-tag
 
         GET /repos/{owner}/{repo}/releases/tags/{tag}
@@ -19139,7 +19203,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Release, ReleaseType]:
+    ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/get-release
 
         GET /repos/{owner}/{repo}/releases/{release_id}
@@ -19175,7 +19239,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Release, ReleaseType]:
+    ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/get-release
 
         GET /repos/{owner}/{repo}/releases/{release_id}
@@ -19271,7 +19335,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
-    ) -> Response[Release, ReleaseType]: ...
+    ) -> Response[Release, ReleaseTypeForResponse]: ...
 
     @overload
     def update_release(
@@ -19291,7 +19355,7 @@ class ReposClient:
         prerelease: Missing[bool] = UNSET,
         make_latest: Missing[Literal["true", "false", "legacy"]] = UNSET,
         discussion_category_name: Missing[str] = UNSET,
-    ) -> Response[Release, ReleaseType]: ...
+    ) -> Response[Release, ReleaseTypeForResponse]: ...
 
     def update_release(
         self,
@@ -19303,7 +19367,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Release, ReleaseType]:
+    ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/update-release
 
         PATCH /repos/{owner}/{repo}/releases/{release_id}
@@ -19354,7 +19418,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
-    ) -> Response[Release, ReleaseType]: ...
+    ) -> Response[Release, ReleaseTypeForResponse]: ...
 
     @overload
     async def async_update_release(
@@ -19374,7 +19438,7 @@ class ReposClient:
         prerelease: Missing[bool] = UNSET,
         make_latest: Missing[Literal["true", "false", "legacy"]] = UNSET,
         discussion_category_name: Missing[str] = UNSET,
-    ) -> Response[Release, ReleaseType]: ...
+    ) -> Response[Release, ReleaseTypeForResponse]: ...
 
     async def async_update_release(
         self,
@@ -19386,7 +19450,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Release, ReleaseType]:
+    ) -> Response[Release, ReleaseTypeForResponse]:
         """repos/update-release
 
         PATCH /repos/{owner}/{repo}/releases/{release_id}
@@ -19437,7 +19501,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ReleaseAsset], list[ReleaseAssetType]]:
+    ) -> Response[list[ReleaseAsset], list[ReleaseAssetTypeForResponse]]:
         """repos/list-release-assets
 
         GET /repos/{owner}/{repo}/releases/{release_id}/assets
@@ -19475,7 +19539,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ReleaseAsset], list[ReleaseAssetType]]:
+    ) -> Response[list[ReleaseAsset], list[ReleaseAssetTypeForResponse]]:
         """repos/list-release-assets
 
         GET /repos/{owner}/{repo}/releases/{release_id}/assets
@@ -19514,7 +19578,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: FileTypes,
-    ) -> Response[ReleaseAsset, ReleaseAssetType]:
+    ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]:
         """repos/upload-release-asset
 
         POST /repos/{owner}/{repo}/releases/{release_id}/assets
@@ -19581,7 +19645,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: FileTypes,
-    ) -> Response[ReleaseAsset, ReleaseAssetType]:
+    ) -> Response[ReleaseAsset, ReleaseAssetTypeForResponse]:
         """repos/upload-release-asset
 
         POST /repos/{owner}/{repo}/releases/{release_id}/assets
@@ -19676,28 +19740,28 @@ class ReposClient:
         ],
         list[
             Union[
-                RepositoryRuleDetailedOneof0Type,
-                RepositoryRuleDetailedOneof1Type,
-                RepositoryRuleDetailedOneof2Type,
-                RepositoryRuleDetailedOneof3Type,
-                RepositoryRuleDetailedOneof4Type,
-                RepositoryRuleDetailedOneof5Type,
-                RepositoryRuleDetailedOneof6Type,
-                RepositoryRuleDetailedOneof7Type,
-                RepositoryRuleDetailedOneof8Type,
-                RepositoryRuleDetailedOneof9Type,
-                RepositoryRuleDetailedOneof10Type,
-                RepositoryRuleDetailedOneof11Type,
-                RepositoryRuleDetailedOneof12Type,
-                RepositoryRuleDetailedOneof13Type,
-                RepositoryRuleDetailedOneof14Type,
-                RepositoryRuleDetailedOneof15Type,
-                RepositoryRuleDetailedOneof16Type,
-                RepositoryRuleDetailedOneof17Type,
-                RepositoryRuleDetailedOneof18Type,
-                RepositoryRuleDetailedOneof19Type,
-                RepositoryRuleDetailedOneof20Type,
-                RepositoryRuleDetailedOneof21Type,
+                RepositoryRuleDetailedOneof0TypeForResponse,
+                RepositoryRuleDetailedOneof1TypeForResponse,
+                RepositoryRuleDetailedOneof2TypeForResponse,
+                RepositoryRuleDetailedOneof3TypeForResponse,
+                RepositoryRuleDetailedOneof4TypeForResponse,
+                RepositoryRuleDetailedOneof5TypeForResponse,
+                RepositoryRuleDetailedOneof6TypeForResponse,
+                RepositoryRuleDetailedOneof7TypeForResponse,
+                RepositoryRuleDetailedOneof8TypeForResponse,
+                RepositoryRuleDetailedOneof9TypeForResponse,
+                RepositoryRuleDetailedOneof10TypeForResponse,
+                RepositoryRuleDetailedOneof11TypeForResponse,
+                RepositoryRuleDetailedOneof12TypeForResponse,
+                RepositoryRuleDetailedOneof13TypeForResponse,
+                RepositoryRuleDetailedOneof14TypeForResponse,
+                RepositoryRuleDetailedOneof15TypeForResponse,
+                RepositoryRuleDetailedOneof16TypeForResponse,
+                RepositoryRuleDetailedOneof17TypeForResponse,
+                RepositoryRuleDetailedOneof18TypeForResponse,
+                RepositoryRuleDetailedOneof19TypeForResponse,
+                RepositoryRuleDetailedOneof20TypeForResponse,
+                RepositoryRuleDetailedOneof21TypeForResponse,
             ]
         ],
     ]:
@@ -19822,28 +19886,28 @@ class ReposClient:
         ],
         list[
             Union[
-                RepositoryRuleDetailedOneof0Type,
-                RepositoryRuleDetailedOneof1Type,
-                RepositoryRuleDetailedOneof2Type,
-                RepositoryRuleDetailedOneof3Type,
-                RepositoryRuleDetailedOneof4Type,
-                RepositoryRuleDetailedOneof5Type,
-                RepositoryRuleDetailedOneof6Type,
-                RepositoryRuleDetailedOneof7Type,
-                RepositoryRuleDetailedOneof8Type,
-                RepositoryRuleDetailedOneof9Type,
-                RepositoryRuleDetailedOneof10Type,
-                RepositoryRuleDetailedOneof11Type,
-                RepositoryRuleDetailedOneof12Type,
-                RepositoryRuleDetailedOneof13Type,
-                RepositoryRuleDetailedOneof14Type,
-                RepositoryRuleDetailedOneof15Type,
-                RepositoryRuleDetailedOneof16Type,
-                RepositoryRuleDetailedOneof17Type,
-                RepositoryRuleDetailedOneof18Type,
-                RepositoryRuleDetailedOneof19Type,
-                RepositoryRuleDetailedOneof20Type,
-                RepositoryRuleDetailedOneof21Type,
+                RepositoryRuleDetailedOneof0TypeForResponse,
+                RepositoryRuleDetailedOneof1TypeForResponse,
+                RepositoryRuleDetailedOneof2TypeForResponse,
+                RepositoryRuleDetailedOneof3TypeForResponse,
+                RepositoryRuleDetailedOneof4TypeForResponse,
+                RepositoryRuleDetailedOneof5TypeForResponse,
+                RepositoryRuleDetailedOneof6TypeForResponse,
+                RepositoryRuleDetailedOneof7TypeForResponse,
+                RepositoryRuleDetailedOneof8TypeForResponse,
+                RepositoryRuleDetailedOneof9TypeForResponse,
+                RepositoryRuleDetailedOneof10TypeForResponse,
+                RepositoryRuleDetailedOneof11TypeForResponse,
+                RepositoryRuleDetailedOneof12TypeForResponse,
+                RepositoryRuleDetailedOneof13TypeForResponse,
+                RepositoryRuleDetailedOneof14TypeForResponse,
+                RepositoryRuleDetailedOneof15TypeForResponse,
+                RepositoryRuleDetailedOneof16TypeForResponse,
+                RepositoryRuleDetailedOneof17TypeForResponse,
+                RepositoryRuleDetailedOneof18TypeForResponse,
+                RepositoryRuleDetailedOneof19TypeForResponse,
+                RepositoryRuleDetailedOneof20TypeForResponse,
+                RepositoryRuleDetailedOneof21TypeForResponse,
             ]
         ],
     ]:
@@ -19940,7 +20004,7 @@ class ReposClient:
         targets: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
+    ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetTypeForResponse]]:
         """repos/get-repo-rulesets
 
         GET /repos/{owner}/{repo}/rulesets
@@ -19987,7 +20051,7 @@ class ReposClient:
         targets: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
+    ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetTypeForResponse]]:
         """repos/get-repo-rulesets
 
         GET /repos/{owner}/{repo}/rulesets
@@ -20032,7 +20096,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoRulesetsPostBodyType,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     @overload
     def create_repo_ruleset(
@@ -20076,7 +20140,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     def create_repo_ruleset(
         self,
@@ -20087,7 +20151,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/create-repo-ruleset
 
         POST /repos/{owner}/{repo}/rulesets
@@ -20138,7 +20202,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoRulesetsPostBodyType,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     @overload
     async def async_create_repo_ruleset(
@@ -20182,7 +20246,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     async def async_create_repo_ruleset(
         self,
@@ -20193,7 +20257,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/create-repo-ruleset
 
         POST /repos/{owner}/{repo}/rulesets
@@ -20248,7 +20312,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
+    ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsTypeForResponse]]:
         """repos/get-repo-rule-suites
 
         GET /repos/{owner}/{repo}/rulesets/rule-suites
@@ -20300,7 +20364,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
+    ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsTypeForResponse]]:
         """repos/get-repo-rule-suites
 
         GET /repos/{owner}/{repo}/rulesets/rule-suites
@@ -20347,7 +20411,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RuleSuite, RuleSuiteType]:
+    ) -> Response[RuleSuite, RuleSuiteTypeForResponse]:
         """repos/get-repo-rule-suite
 
         GET /repos/{owner}/{repo}/rulesets/rule-suites/{rule_suite_id}
@@ -20384,7 +20448,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RuleSuite, RuleSuiteType]:
+    ) -> Response[RuleSuite, RuleSuiteTypeForResponse]:
         """repos/get-repo-rule-suite
 
         GET /repos/{owner}/{repo}/rulesets/rule-suites/{rule_suite_id}
@@ -20422,7 +20486,7 @@ class ReposClient:
         includes_parents: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/get-repo-ruleset
 
         GET /repos/{owner}/{repo}/rulesets/{ruleset_id}
@@ -20467,7 +20531,7 @@ class ReposClient:
         includes_parents: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/get-repo-ruleset
 
         GET /repos/{owner}/{repo}/rulesets/{ruleset_id}
@@ -20513,7 +20577,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     @overload
     def update_repo_ruleset(
@@ -20558,7 +20622,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     def update_repo_ruleset(
         self,
@@ -20570,7 +20634,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/update-repo-ruleset
 
         PUT /repos/{owner}/{repo}/rulesets/{ruleset_id}
@@ -20622,7 +20686,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     @overload
     async def async_update_repo_ruleset(
@@ -20667,7 +20731,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]: ...
 
     async def async_update_repo_ruleset(
         self,
@@ -20679,7 +20743,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetTypeForResponse]:
         """repos/update-repo-ruleset
 
         PUT /repos/{owner}/{repo}/rulesets/{ruleset_id}
@@ -20801,7 +20865,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
+    ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """repos/get-repo-ruleset-history
 
         GET /repos/{owner}/{repo}/rulesets/{ruleset_id}/history
@@ -20845,7 +20909,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
+    ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """repos/get-repo-ruleset-history
 
         GET /repos/{owner}/{repo}/rulesets/{ruleset_id}/history
@@ -20888,7 +20952,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
+    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """repos/get-repo-ruleset-version
 
         GET /repos/{owner}/{repo}/rulesets/{ruleset_id}/history/{version_id}
@@ -20925,7 +20989,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
+    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """repos/get-repo-ruleset-version
 
         GET /repos/{owner}/{repo}/rulesets/{ruleset_id}/history/{version_id}
@@ -21026,7 +21090,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CommitActivity], list[CommitActivityType]]:
+    ) -> Response[list[CommitActivity], list[CommitActivityTypeForResponse]]:
         """repos/get-commit-activity-stats
 
         GET /repos/{owner}/{repo}/stats/commit_activity
@@ -21057,7 +21121,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CommitActivity], list[CommitActivityType]]:
+    ) -> Response[list[CommitActivity], list[CommitActivityTypeForResponse]]:
         """repos/get-commit-activity-stats
 
         GET /repos/{owner}/{repo}/stats/commit_activity
@@ -21088,7 +21152,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ContributorActivity], list[ContributorActivityType]]:
+    ) -> Response[list[ContributorActivity], list[ContributorActivityTypeForResponse]]:
         """repos/get-contributors-stats
 
         GET /repos/{owner}/{repo}/stats/contributors
@@ -21128,7 +21192,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ContributorActivity], list[ContributorActivityType]]:
+    ) -> Response[list[ContributorActivity], list[ContributorActivityTypeForResponse]]:
         """repos/get-contributors-stats
 
         GET /repos/{owner}/{repo}/stats/contributors
@@ -21168,7 +21232,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ParticipationStats, ParticipationStatsType]:
+    ) -> Response[ParticipationStats, ParticipationStatsTypeForResponse]:
         """repos/get-participation-stats
 
         GET /repos/{owner}/{repo}/stats/participation
@@ -21206,7 +21270,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ParticipationStats, ParticipationStatsType]:
+    ) -> Response[ParticipationStats, ParticipationStatsTypeForResponse]:
         """repos/get-participation-stats
 
         GET /repos/{owner}/{repo}/stats/participation
@@ -21317,7 +21381,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoStatusesShaPostBodyType,
-    ) -> Response[Status, StatusType]: ...
+    ) -> Response[Status, StatusTypeForResponse]: ...
 
     @overload
     def create_commit_status(
@@ -21333,7 +21397,7 @@ class ReposClient:
         target_url: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         context: Missing[str] = UNSET,
-    ) -> Response[Status, StatusType]: ...
+    ) -> Response[Status, StatusTypeForResponse]: ...
 
     def create_commit_status(
         self,
@@ -21345,7 +21409,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Status, StatusType]:
+    ) -> Response[Status, StatusTypeForResponse]:
         """repos/create-commit-status
 
         POST /repos/{owner}/{repo}/statuses/{sha}
@@ -21391,7 +21455,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoStatusesShaPostBodyType,
-    ) -> Response[Status, StatusType]: ...
+    ) -> Response[Status, StatusTypeForResponse]: ...
 
     @overload
     async def async_create_commit_status(
@@ -21407,7 +21471,7 @@ class ReposClient:
         target_url: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         context: Missing[str] = UNSET,
-    ) -> Response[Status, StatusType]: ...
+    ) -> Response[Status, StatusTypeForResponse]: ...
 
     async def async_create_commit_status(
         self,
@@ -21419,7 +21483,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Status, StatusType]:
+    ) -> Response[Status, StatusTypeForResponse]:
         """repos/create-commit-status
 
         POST /repos/{owner}/{repo}/statuses/{sha}
@@ -21464,7 +21528,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Tag], list[TagType]]:
+    ) -> Response[list[Tag], list[TagTypeForResponse]]:
         """repos/list-tags
 
         GET /repos/{owner}/{repo}/tags
@@ -21501,7 +21565,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Tag], list[TagType]]:
+    ) -> Response[list[Tag], list[TagTypeForResponse]]:
         """repos/list-tags
 
         GET /repos/{owner}/{repo}/tags
@@ -21536,7 +21600,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TagProtection], list[TagProtectionType]]:
+    ) -> Response[list[TagProtection], list[TagProtectionTypeForResponse]]:
         """DEPRECATED repos/list-tag-protection
 
         GET /repos/{owner}/{repo}/tags/protection
@@ -21576,7 +21640,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TagProtection], list[TagProtectionType]]:
+    ) -> Response[list[TagProtection], list[TagProtectionTypeForResponse]]:
         """DEPRECATED repos/list-tag-protection
 
         GET /repos/{owner}/{repo}/tags/protection
@@ -21618,7 +21682,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoTagsProtectionPostBodyType,
-    ) -> Response[TagProtection, TagProtectionType]: ...
+    ) -> Response[TagProtection, TagProtectionTypeForResponse]: ...
 
     @overload
     def create_tag_protection(
@@ -21630,7 +21694,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         pattern: str,
-    ) -> Response[TagProtection, TagProtectionType]: ...
+    ) -> Response[TagProtection, TagProtectionTypeForResponse]: ...
 
     def create_tag_protection(
         self,
@@ -21641,7 +21705,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TagProtection, TagProtectionType]:
+    ) -> Response[TagProtection, TagProtectionTypeForResponse]:
         """DEPRECATED repos/create-tag-protection
 
         POST /repos/{owner}/{repo}/tags/protection
@@ -21696,7 +21760,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoTagsProtectionPostBodyType,
-    ) -> Response[TagProtection, TagProtectionType]: ...
+    ) -> Response[TagProtection, TagProtectionTypeForResponse]: ...
 
     @overload
     async def async_create_tag_protection(
@@ -21708,7 +21772,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         pattern: str,
-    ) -> Response[TagProtection, TagProtectionType]: ...
+    ) -> Response[TagProtection, TagProtectionTypeForResponse]: ...
 
     async def async_create_tag_protection(
         self,
@@ -21719,7 +21783,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TagProtection, TagProtectionType]:
+    ) -> Response[TagProtection, TagProtectionTypeForResponse]:
         """DEPRECATED repos/create-tag-protection
 
         POST /repos/{owner}/{repo}/tags/protection
@@ -21920,7 +21984,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """repos/list-teams
 
         GET /repos/{owner}/{repo}/teams
@@ -21966,7 +22030,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """repos/list-teams
 
         GET /repos/{owner}/{repo}/teams
@@ -22012,7 +22076,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Topic, TopicType]:
+    ) -> Response[Topic, TopicTypeForResponse]:
         """repos/get-all-topics
 
         GET /repos/{owner}/{repo}/topics
@@ -22052,7 +22116,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Topic, TopicType]:
+    ) -> Response[Topic, TopicTypeForResponse]:
         """repos/get-all-topics
 
         GET /repos/{owner}/{repo}/topics
@@ -22092,7 +22156,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoTopicsPutBodyType,
-    ) -> Response[Topic, TopicType]: ...
+    ) -> Response[Topic, TopicTypeForResponse]: ...
 
     @overload
     def replace_all_topics(
@@ -22104,7 +22168,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         names: list[str],
-    ) -> Response[Topic, TopicType]: ...
+    ) -> Response[Topic, TopicTypeForResponse]: ...
 
     def replace_all_topics(
         self,
@@ -22115,7 +22179,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Topic, TopicType]:
+    ) -> Response[Topic, TopicTypeForResponse]:
         """repos/replace-all-topics
 
         PUT /repos/{owner}/{repo}/topics
@@ -22165,7 +22229,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoTopicsPutBodyType,
-    ) -> Response[Topic, TopicType]: ...
+    ) -> Response[Topic, TopicTypeForResponse]: ...
 
     @overload
     async def async_replace_all_topics(
@@ -22177,7 +22241,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         names: list[str],
-    ) -> Response[Topic, TopicType]: ...
+    ) -> Response[Topic, TopicTypeForResponse]: ...
 
     async def async_replace_all_topics(
         self,
@@ -22188,7 +22252,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Topic, TopicType]:
+    ) -> Response[Topic, TopicTypeForResponse]:
         """repos/replace-all-topics
 
         PUT /repos/{owner}/{repo}/topics
@@ -22237,7 +22301,7 @@ class ReposClient:
         per: Missing[Literal["day", "week"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CloneTraffic, CloneTrafficType]:
+    ) -> Response[CloneTraffic, CloneTrafficTypeForResponse]:
         """repos/get-clones
 
         GET /repos/{owner}/{repo}/traffic/clones
@@ -22277,7 +22341,7 @@ class ReposClient:
         per: Missing[Literal["day", "week"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CloneTraffic, CloneTrafficType]:
+    ) -> Response[CloneTraffic, CloneTrafficTypeForResponse]:
         """repos/get-clones
 
         GET /repos/{owner}/{repo}/traffic/clones
@@ -22316,7 +22380,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ContentTraffic], list[ContentTrafficType]]:
+    ) -> Response[list[ContentTraffic], list[ContentTrafficTypeForResponse]]:
         """repos/get-top-paths
 
         GET /repos/{owner}/{repo}/traffic/popular/paths
@@ -22350,7 +22414,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ContentTraffic], list[ContentTrafficType]]:
+    ) -> Response[list[ContentTraffic], list[ContentTrafficTypeForResponse]]:
         """repos/get-top-paths
 
         GET /repos/{owner}/{repo}/traffic/popular/paths
@@ -22384,7 +22448,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ReferrerTraffic], list[ReferrerTrafficType]]:
+    ) -> Response[list[ReferrerTraffic], list[ReferrerTrafficTypeForResponse]]:
         """repos/get-top-referrers
 
         GET /repos/{owner}/{repo}/traffic/popular/referrers
@@ -22418,7 +22482,7 @@ class ReposClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ReferrerTraffic], list[ReferrerTrafficType]]:
+    ) -> Response[list[ReferrerTraffic], list[ReferrerTrafficTypeForResponse]]:
         """repos/get-top-referrers
 
         GET /repos/{owner}/{repo}/traffic/popular/referrers
@@ -22453,7 +22517,7 @@ class ReposClient:
         per: Missing[Literal["day", "week"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ViewTraffic, ViewTrafficType]:
+    ) -> Response[ViewTraffic, ViewTrafficTypeForResponse]:
         """repos/get-views
 
         GET /repos/{owner}/{repo}/traffic/views
@@ -22493,7 +22557,7 @@ class ReposClient:
         per: Missing[Literal["day", "week"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ViewTraffic, ViewTrafficType]:
+    ) -> Response[ViewTraffic, ViewTrafficTypeForResponse]:
         """repos/get-views
 
         GET /repos/{owner}/{repo}/traffic/views
@@ -22534,7 +22598,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoTransferPostBodyType,
-    ) -> Response[MinimalRepository, MinimalRepositoryType]: ...
+    ) -> Response[MinimalRepository, MinimalRepositoryTypeForResponse]: ...
 
     @overload
     def transfer(
@@ -22548,7 +22612,7 @@ class ReposClient:
         new_owner: str,
         new_name: Missing[str] = UNSET,
         team_ids: Missing[list[int]] = UNSET,
-    ) -> Response[MinimalRepository, MinimalRepositoryType]: ...
+    ) -> Response[MinimalRepository, MinimalRepositoryTypeForResponse]: ...
 
     def transfer(
         self,
@@ -22559,7 +22623,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[MinimalRepository, MinimalRepositoryType]:
+    ) -> Response[MinimalRepository, MinimalRepositoryTypeForResponse]:
         """repos/transfer
 
         POST /repos/{owner}/{repo}/transfer
@@ -22602,7 +22666,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoTransferPostBodyType,
-    ) -> Response[MinimalRepository, MinimalRepositoryType]: ...
+    ) -> Response[MinimalRepository, MinimalRepositoryTypeForResponse]: ...
 
     @overload
     async def async_transfer(
@@ -22616,7 +22680,7 @@ class ReposClient:
         new_owner: str,
         new_name: Missing[str] = UNSET,
         team_ids: Missing[list[int]] = UNSET,
-    ) -> Response[MinimalRepository, MinimalRepositoryType]: ...
+    ) -> Response[MinimalRepository, MinimalRepositoryTypeForResponse]: ...
 
     async def async_transfer(
         self,
@@ -22627,7 +22691,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[MinimalRepository, MinimalRepositoryType]:
+    ) -> Response[MinimalRepository, MinimalRepositoryTypeForResponse]:
         """repos/transfer
 
         POST /repos/{owner}/{repo}/transfer
@@ -22912,7 +22976,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     @overload
     def create_using_template(
@@ -22928,7 +22992,7 @@ class ReposClient:
         description: Missing[str] = UNSET,
         include_all_branches: Missing[bool] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     def create_using_template(
         self,
@@ -22939,7 +23003,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository, FullRepositoryType]:
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """repos/create-using-template
 
         POST /repos/{template_owner}/{template_repo}/generate
@@ -22989,7 +23053,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     @overload
     async def async_create_using_template(
@@ -23005,7 +23069,7 @@ class ReposClient:
         description: Missing[str] = UNSET,
         include_all_branches: Missing[bool] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     async def async_create_using_template(
         self,
@@ -23016,7 +23080,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository, FullRepositoryType]:
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """repos/create-using-template
 
         POST /repos/{template_owner}/{template_repo}/generate
@@ -23063,7 +23127,7 @@ class ReposClient:
         since: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-public
 
         GET /repositories
@@ -23105,7 +23169,7 @@ class ReposClient:
         since: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-public
 
         GET /repositories
@@ -23155,7 +23219,7 @@ class ReposClient:
         before: Missing[datetime] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Repository], list[RepositoryType]]:
+    ) -> Response[list[Repository], list[RepositoryTypeForResponse]]:
         """repos/list-for-authenticated-user
 
         GET /user/repos
@@ -23213,7 +23277,7 @@ class ReposClient:
         before: Missing[datetime] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Repository], list[RepositoryType]]:
+    ) -> Response[list[Repository], list[RepositoryTypeForResponse]]:
         """repos/list-for-authenticated-user
 
         GET /user/repos
@@ -23264,7 +23328,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserReposPostBodyType,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     @overload
     def create_for_authenticated_user(
@@ -23300,7 +23364,7 @@ class ReposClient:
         merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
         has_downloads: Missing[bool] = UNSET,
         is_template: Missing[bool] = UNSET,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     def create_for_authenticated_user(
         self,
@@ -23309,7 +23373,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository, FullRepositoryType]:
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """repos/create-for-authenticated-user
 
         POST /user/repos
@@ -23364,7 +23428,7 @@ class ReposClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserReposPostBodyType,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     @overload
     async def async_create_for_authenticated_user(
@@ -23400,7 +23464,7 @@ class ReposClient:
         merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
         has_downloads: Missing[bool] = UNSET,
         is_template: Missing[bool] = UNSET,
-    ) -> Response[FullRepository, FullRepositoryType]: ...
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]: ...
 
     async def async_create_for_authenticated_user(
         self,
@@ -23409,7 +23473,7 @@ class ReposClient:
         stream: bool = False,
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository, FullRepositoryType]:
+    ) -> Response[FullRepository, FullRepositoryTypeForResponse]:
         """repos/create-for-authenticated-user
 
         POST /user/repos
@@ -23464,7 +23528,9 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
+    ) -> Response[
+        list[RepositoryInvitation], list[RepositoryInvitationTypeForResponse]
+    ]:
         """repos/list-invitations-for-authenticated-user
 
         GET /user/repository_invitations
@@ -23506,7 +23572,9 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
+    ) -> Response[
+        list[RepositoryInvitation], list[RepositoryInvitationTypeForResponse]
+    ]:
         """repos/list-invitations-for-authenticated-user
 
         GET /user/repository_invitations
@@ -23680,7 +23748,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-for-user
 
         GET /users/{username}/repos
@@ -23724,7 +23792,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """repos/list-for-user
 
         GET /users/{username}/repos

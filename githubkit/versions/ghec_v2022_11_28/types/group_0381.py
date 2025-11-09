@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0379 import MetadataType
+from .group_0379 import MetadataType, MetadataTypeForResponse
 
 
 class ManifestType(TypedDict):
@@ -24,7 +24,22 @@ class ManifestType(TypedDict):
     resolved: NotRequired[ManifestPropResolvedType]
 
 
+class ManifestTypeForResponse(TypedDict):
+    """Manifest"""
+
+    name: str
+    file: NotRequired[ManifestPropFileTypeForResponse]
+    metadata: NotRequired[MetadataTypeForResponse]
+    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
+
+
 class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+class ManifestPropFileTypeForResponse(TypedDict):
     """ManifestPropFile"""
 
     source_location: NotRequired[str]
@@ -37,8 +52,18 @@ A collection of resolved package dependencies.
 """
 
 
+ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
+
+
 __all__ = (
     "ManifestPropFileType",
+    "ManifestPropFileTypeForResponse",
     "ManifestPropResolvedType",
+    "ManifestPropResolvedTypeForResponse",
     "ManifestType",
+    "ManifestTypeForResponse",
 )

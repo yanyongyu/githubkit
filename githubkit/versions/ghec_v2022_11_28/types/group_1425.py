@@ -19,4 +19,13 @@ class UserMembershipsOrgsOrgPatchBodyType(TypedDict):
     state: Literal["active"]
 
 
-__all__ = ("UserMembershipsOrgsOrgPatchBodyType",)
+class UserMembershipsOrgsOrgPatchBodyTypeForResponse(TypedDict):
+    """UserMembershipsOrgsOrgPatchBody"""
+
+    state: Literal["active"]
+
+
+__all__ = (
+    "UserMembershipsOrgsOrgPatchBodyType",
+    "UserMembershipsOrgsOrgPatchBodyTypeForResponse",
+)

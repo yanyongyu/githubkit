@@ -19,4 +19,14 @@ class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType(TypedDict):
     replace_parent: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType",)
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
+
+    sub_issue_id: int
+    replace_parent: NotRequired[bool]
+
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyTypeForResponse",
+)

@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0072 import CodeSecurityConfigurationType
+from .group_0072 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
+)
 
 
 class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
@@ -22,4 +25,14 @@ class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
     configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-__all__ = ("CodeSecurityDefaultConfigurationsItemsType",)
+class CodeSecurityDefaultConfigurationsItemsTypeForResponse(TypedDict):
+    """CodeSecurityDefaultConfigurationsItems"""
+
+    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+
+
+__all__ = (
+    "CodeSecurityDefaultConfigurationsItemsType",
+    "CodeSecurityDefaultConfigurationsItemsTypeForResponse",
+)

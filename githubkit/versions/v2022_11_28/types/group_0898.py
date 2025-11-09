@@ -22,6 +22,17 @@ class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type(TypedDi
     ]
 
 
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
+
+    message: NotRequired[str]
+    budget: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse
+    ]
+
+
 class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType(
     TypedDict
 ):
@@ -32,6 +43,25 @@ class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTy
     prevent_further_usage: NotRequired[bool]
     budget_alerting: NotRequired[
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType
+    ]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
+
+    id: NotRequired[str]
+    budget_amount: NotRequired[float]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse
     ]
     budget_scope: NotRequired[
         Literal["enterprise", "organization", "repository", "cost_center"]
@@ -52,8 +82,22 @@ class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPr
     alert_recipients: list[str]
 
 
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
+    etAlerting
+    """
+
+    will_alert: bool
+    alert_recipients: list[str]
+
+
 __all__ = (
     "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse",
     "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse",
     "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse",
 )

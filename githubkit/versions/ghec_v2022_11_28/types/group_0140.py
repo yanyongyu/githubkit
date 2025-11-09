@@ -22,4 +22,16 @@ class RepositoryRuleCommitterEmailPatternPropParametersType(TypedDict):
     pattern: str
 
 
-__all__ = ("RepositoryRuleCommitterEmailPatternPropParametersType",)
+class RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCommitterEmailPatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
+
+
+__all__ = (
+    "RepositoryRuleCommitterEmailPatternPropParametersType",
+    "RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse",
+)

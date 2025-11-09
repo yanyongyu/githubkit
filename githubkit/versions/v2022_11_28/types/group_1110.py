@@ -21,4 +21,16 @@ class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type(TypedDict):
     message: str
 
 
-__all__ = ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type",)
+class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse(TypedDict):
+    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
+
+    id: int
+    created_at: str
+    result: str
+    message: str
+
+
+__all__ = (
+    "ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type",
+    "ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse",
+)

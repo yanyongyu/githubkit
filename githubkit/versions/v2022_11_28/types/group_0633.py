@@ -15,7 +15,9 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0628 import (
     WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
     WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
 )
 
 
@@ -40,4 +42,29 @@ class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType(TypedDict):
     updated_at: Union[datetime, None]
 
 
-__all__ = ("WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType",)
+class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
+
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
+
+
+__all__ = (
+    "WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType",
+    "WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppTypeForResponse",
+)

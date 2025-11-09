@@ -19,4 +19,16 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type(TypedDic
     team_reviewers: list[str]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type",)
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
+
+    reviewers: NotRequired[list[str]]
+    team_reviewers: list[str]
+
+
+__all__ = (
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1TypeForResponse",
+)

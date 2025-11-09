@@ -25,4 +25,19 @@ class CodeOfConductSimpleType(TypedDict):
     html_url: Union[str, None]
 
 
-__all__ = ("CodeOfConductSimpleType",)
+class CodeOfConductSimpleTypeForResponse(TypedDict):
+    """Code Of Conduct Simple
+
+    Code of Conduct Simple
+    """
+
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
+
+
+__all__ = (
+    "CodeOfConductSimpleType",
+    "CodeOfConductSimpleTypeForResponse",
+)

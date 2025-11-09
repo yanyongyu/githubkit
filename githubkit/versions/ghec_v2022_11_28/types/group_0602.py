@@ -21,4 +21,16 @@ class WebhookCheckRunRerequestedFormEncodedType(TypedDict):
     payload: str
 
 
-__all__ = ("WebhookCheckRunRerequestedFormEncodedType",)
+class WebhookCheckRunRerequestedFormEncodedTypeForResponse(TypedDict):
+    """Check Run Re-Requested Event
+
+    The check_run.rerequested webhook encoded with URL encoding
+    """
+
+    payload: str
+
+
+__all__ = (
+    "WebhookCheckRunRerequestedFormEncodedType",
+    "WebhookCheckRunRerequestedFormEncodedTypeForResponse",
+)

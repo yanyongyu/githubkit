@@ -22,7 +22,28 @@ class CodeownersErrorsType(TypedDict):
     errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
+class CodeownersErrorsTypeForResponse(TypedDict):
+    """CODEOWNERS errors
+
+    A list of errors found in a repo's CODEOWNERS file
+    """
+
+    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
+
+
 class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
+
+
+class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
     """CodeownersErrorsPropErrorsItems"""
 
     line: int
@@ -36,5 +57,7 @@ class CodeownersErrorsPropErrorsItemsType(TypedDict):
 
 __all__ = (
     "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsPropErrorsItemsTypeForResponse",
     "CodeownersErrorsType",
+    "CodeownersErrorsTypeForResponse",
 )

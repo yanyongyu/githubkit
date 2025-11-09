@@ -37,4 +37,31 @@ class TeamSimpleType(TypedDict):
     enterprise_id: NotRequired[int]
 
 
-__all__ = ("TeamSimpleType",)
+class TeamSimpleTypeForResponse(TypedDict):
+    """Team Simple
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int
+    node_id: str
+    url: str
+    members_url: str
+    name: str
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+
+
+__all__ = (
+    "TeamSimpleType",
+    "TeamSimpleTypeForResponse",
+)

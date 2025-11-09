@@ -22,4 +22,17 @@ class AuditLogStreamKeyType(TypedDict):
     key: str
 
 
-__all__ = ("AuditLogStreamKeyType",)
+class AuditLogStreamKeyTypeForResponse(TypedDict):
+    """stream-key
+
+    Audit Log Streaming Public Key
+    """
+
+    key_id: str
+    key: str
+
+
+__all__ = (
+    "AuditLogStreamKeyType",
+    "AuditLogStreamKeyTypeForResponse",
+)

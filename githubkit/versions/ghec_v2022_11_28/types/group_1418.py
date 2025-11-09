@@ -22,4 +22,17 @@ class UserEmailsPostBodyOneof0Type(TypedDict):
     emails: list[str]
 
 
-__all__ = ("UserEmailsPostBodyOneof0Type",)
+class UserEmailsPostBodyOneof0TypeForResponse(TypedDict):
+    """UserEmailsPostBodyOneof0
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str]
+
+
+__all__ = (
+    "UserEmailsPostBodyOneof0Type",
+    "UserEmailsPostBodyOneof0TypeForResponse",
+)

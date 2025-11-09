@@ -19,4 +19,14 @@ class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType(TypedDict):
     name: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType",)
+class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
+
+    email: NotRequired[str]
+    name: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType",
+    "ReposOwnerRepoImportAuthorsAuthorIdPatchBodyTypeForResponse",
+)

@@ -33,10 +33,10 @@ if TYPE_CHECKING:
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
     )
     from ..types import (
-        DependencyGraphDiffItemsType,
-        DependencyGraphSpdxSbomType,
+        DependencyGraphDiffItemsTypeForResponse,
+        DependencyGraphSpdxSbomTypeForResponse,
         MetadataType,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
         SnapshotPropDetectorType,
         SnapshotPropJobType,
         SnapshotPropManifestsType,
@@ -68,7 +68,9 @@ class DependencyGraphClient:
         name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsType]]:
+    ) -> Response[
+        list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsTypeForResponse]
+    ]:
         """dependency-graph/diff-range
 
         GET /repos/{owner}/{repo}/dependency-graph/compare/{basehead}
@@ -110,7 +112,9 @@ class DependencyGraphClient:
         name: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsType]]:
+    ) -> Response[
+        list[DependencyGraphDiffItems], list[DependencyGraphDiffItemsTypeForResponse]
+    ]:
         """dependency-graph/diff-range
 
         GET /repos/{owner}/{repo}/dependency-graph/compare/{basehead}
@@ -150,7 +154,7 @@ class DependencyGraphClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomType]:
+    ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomTypeForResponse]:
         """dependency-graph/export-sbom
 
         GET /repos/{owner}/{repo}/dependency-graph/sbom
@@ -185,7 +189,7 @@ class DependencyGraphClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomType]:
+    ) -> Response[DependencyGraphSpdxSbom, DependencyGraphSpdxSbomTypeForResponse]:
         """dependency-graph/export-sbom
 
         GET /repos/{owner}/{repo}/dependency-graph/sbom
@@ -224,7 +228,7 @@ class DependencyGraphClient:
         data: SnapshotType,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -246,7 +250,7 @@ class DependencyGraphClient:
         scanned: datetime,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
     ]: ...
 
     def create_repository_snapshot(
@@ -260,7 +264,7 @@ class DependencyGraphClient:
         **kwargs,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
     ]:
         """dependency-graph/create-repository-snapshot
 
@@ -313,7 +317,7 @@ class DependencyGraphClient:
         data: SnapshotType,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -335,7 +339,7 @@ class DependencyGraphClient:
         scanned: datetime,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
     ]: ...
 
     async def async_create_repository_snapshot(
@@ -349,7 +353,7 @@ class DependencyGraphClient:
         **kwargs,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
-        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
+        ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
     ]:
         """dependency-graph/create-repository-snapshot
 

@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0166 import RepositoryRuleCopilotCodeReviewPropParametersType
+from .group_0166 import (
+    RepositoryRuleCopilotCodeReviewPropParametersType,
+    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
+)
 
 
 class RepositoryRuleCopilotCodeReviewType(TypedDict):
@@ -26,4 +29,20 @@ class RepositoryRuleCopilotCodeReviewType(TypedDict):
     parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
 
 
-__all__ = ("RepositoryRuleCopilotCodeReviewType",)
+class RepositoryRuleCopilotCodeReviewTypeForResponse(TypedDict):
+    """copilot_code_review
+
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review.
+    """
+
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[
+        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
+    ]
+
+
+__all__ = (
+    "RepositoryRuleCopilotCodeReviewType",
+    "RepositoryRuleCopilotCodeReviewTypeForResponse",
+)

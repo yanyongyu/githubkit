@@ -19,4 +19,14 @@ class ActionsArtifactAndLogRetentionResponseType(TypedDict):
     maximum_allowed_days: int
 
 
-__all__ = ("ActionsArtifactAndLogRetentionResponseType",)
+class ActionsArtifactAndLogRetentionResponseTypeForResponse(TypedDict):
+    """ActionsArtifactAndLogRetentionResponse"""
+
+    days: int
+    maximum_allowed_days: int
+
+
+__all__ = (
+    "ActionsArtifactAndLogRetentionResponseType",
+    "ActionsArtifactAndLogRetentionResponseTypeForResponse",
+)

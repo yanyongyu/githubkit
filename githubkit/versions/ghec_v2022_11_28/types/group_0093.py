@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0081 import EnterpriseTeamType
+from .group_0081 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
 
 
 class EnterpriseUserRoleAssignmentAllof1Type(TypedDict):
@@ -22,4 +22,14 @@ class EnterpriseUserRoleAssignmentAllof1Type(TypedDict):
     inherited_from: NotRequired[list[EnterpriseTeamType]]
 
 
-__all__ = ("EnterpriseUserRoleAssignmentAllof1Type",)
+class EnterpriseUserRoleAssignmentAllof1TypeForResponse(TypedDict):
+    """EnterpriseUserRoleAssignmentAllof1"""
+
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[EnterpriseTeamTypeForResponse]]
+
+
+__all__ = (
+    "EnterpriseUserRoleAssignmentAllof1Type",
+    "EnterpriseUserRoleAssignmentAllof1TypeForResponse",
+)

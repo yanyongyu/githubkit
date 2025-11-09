@@ -11,12 +11,17 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0111 import RepositoryRulesetConditionsPropRefNameType
+from .group_0111 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
 from .group_0113 import (
     RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
 )
 from .group_0117 import (
     EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
 )
 
 
@@ -33,4 +38,18 @@ class EnterpriseRulesetConditionsOneof5Type(TypedDict):
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-__all__ = ("EnterpriseRulesetConditionsOneof5Type",)
+class EnterpriseRulesetConditionsOneof5TypeForResponse(TypedDict):
+    """organization_property_and_repository_property
+
+    Conditions to target organizations by property and repositories by property
+    """
+
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+
+
+__all__ = (
+    "EnterpriseRulesetConditionsOneof5Type",
+    "EnterpriseRulesetConditionsOneof5TypeForResponse",
+)

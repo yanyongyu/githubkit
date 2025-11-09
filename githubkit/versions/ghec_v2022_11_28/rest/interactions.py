@@ -34,11 +34,11 @@ if TYPE_CHECKING:
         UserInteractionLimitsGetResponse200Anyof1,
     )
     from ..types import (
-        InteractionLimitResponseType,
+        InteractionLimitResponseTypeForResponse,
         InteractionLimitType,
-        OrgsOrgInteractionLimitsGetResponse200Anyof1Type,
-        ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type,
-        UserInteractionLimitsGetResponse200Anyof1Type,
+        OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse,
+        ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse,
+        UserInteractionLimitsGetResponse200Anyof1TypeForResponse,
     )
 
 
@@ -66,8 +66,8 @@ class InteractionsClient:
     ) -> Response[
         Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1],
         Union[
-            InteractionLimitResponseType,
-            OrgsOrgInteractionLimitsGetResponse200Anyof1Type,
+            InteractionLimitResponseTypeForResponse,
+            OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse,
         ],
     ]:
         """interactions/get-restrictions-for-org
@@ -109,8 +109,8 @@ class InteractionsClient:
     ) -> Response[
         Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1],
         Union[
-            InteractionLimitResponseType,
-            OrgsOrgInteractionLimitsGetResponse200Anyof1Type,
+            InteractionLimitResponseTypeForResponse,
+            OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse,
         ],
     ]:
         """interactions/get-restrictions-for-org
@@ -151,7 +151,9 @@ class InteractionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: InteractionLimitType,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
+    ) -> Response[
+        InteractionLimitResponse, InteractionLimitResponseTypeForResponse
+    ]: ...
 
     @overload
     def set_restrictions_for_org(
@@ -165,7 +167,9 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
+    ) -> Response[
+        InteractionLimitResponse, InteractionLimitResponseTypeForResponse
+    ]: ...
 
     def set_restrictions_for_org(
         self,
@@ -175,7 +179,7 @@ class InteractionsClient:
         stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseTypeForResponse]:
         """interactions/set-restrictions-for-org
 
         PUT /orgs/{org}/interaction-limits
@@ -220,7 +224,9 @@ class InteractionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: InteractionLimitType,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
+    ) -> Response[
+        InteractionLimitResponse, InteractionLimitResponseTypeForResponse
+    ]: ...
 
     @overload
     async def async_set_restrictions_for_org(
@@ -234,7 +240,9 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
+    ) -> Response[
+        InteractionLimitResponse, InteractionLimitResponseTypeForResponse
+    ]: ...
 
     async def async_set_restrictions_for_org(
         self,
@@ -244,7 +252,7 @@ class InteractionsClient:
         stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseTypeForResponse]:
         """interactions/set-restrictions-for-org
 
         PUT /orgs/{org}/interaction-limits
@@ -348,8 +356,8 @@ class InteractionsClient:
             ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
         ],
         Union[
-            InteractionLimitResponseType,
-            ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type,
+            InteractionLimitResponseTypeForResponse,
+            ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse,
         ],
     ]:
         """interactions/get-restrictions-for-repo
@@ -396,8 +404,8 @@ class InteractionsClient:
             ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
         ],
         Union[
-            InteractionLimitResponseType,
-            ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type,
+            InteractionLimitResponseTypeForResponse,
+            ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse,
         ],
     ]:
         """interactions/get-restrictions-for-repo
@@ -440,7 +448,9 @@ class InteractionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: InteractionLimitType,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
+    ) -> Response[
+        InteractionLimitResponse, InteractionLimitResponseTypeForResponse
+    ]: ...
 
     @overload
     def set_restrictions_for_repo(
@@ -455,7 +465,9 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
+    ) -> Response[
+        InteractionLimitResponse, InteractionLimitResponseTypeForResponse
+    ]: ...
 
     def set_restrictions_for_repo(
         self,
@@ -466,7 +478,7 @@ class InteractionsClient:
         stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseTypeForResponse]:
         """interactions/set-restrictions-for-repo
 
         PUT /repos/{owner}/{repo}/interaction-limits
@@ -510,7 +522,9 @@ class InteractionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: InteractionLimitType,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
+    ) -> Response[
+        InteractionLimitResponse, InteractionLimitResponseTypeForResponse
+    ]: ...
 
     @overload
     async def async_set_restrictions_for_repo(
@@ -525,7 +539,9 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
+    ) -> Response[
+        InteractionLimitResponse, InteractionLimitResponseTypeForResponse
+    ]: ...
 
     async def async_set_restrictions_for_repo(
         self,
@@ -536,7 +552,7 @@ class InteractionsClient:
         stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseTypeForResponse]:
         """interactions/set-restrictions-for-repo
 
         PUT /repos/{owner}/{repo}/interaction-limits
@@ -637,7 +653,8 @@ class InteractionsClient:
     ) -> Response[
         Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1],
         Union[
-            InteractionLimitResponseType, UserInteractionLimitsGetResponse200Anyof1Type
+            InteractionLimitResponseTypeForResponse,
+            UserInteractionLimitsGetResponse200Anyof1TypeForResponse,
         ],
     ]:
         """interactions/get-restrictions-for-authenticated-user
@@ -678,7 +695,8 @@ class InteractionsClient:
     ) -> Response[
         Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1],
         Union[
-            InteractionLimitResponseType, UserInteractionLimitsGetResponse200Anyof1Type
+            InteractionLimitResponseTypeForResponse,
+            UserInteractionLimitsGetResponse200Anyof1TypeForResponse,
         ],
     ]:
         """interactions/get-restrictions-for-authenticated-user
@@ -718,7 +736,9 @@ class InteractionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: InteractionLimitType,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
+    ) -> Response[
+        InteractionLimitResponse, InteractionLimitResponseTypeForResponse
+    ]: ...
 
     @overload
     def set_restrictions_for_authenticated_user(
@@ -731,7 +751,9 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
+    ) -> Response[
+        InteractionLimitResponse, InteractionLimitResponseTypeForResponse
+    ]: ...
 
     def set_restrictions_for_authenticated_user(
         self,
@@ -740,7 +762,7 @@ class InteractionsClient:
         stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseTypeForResponse]:
         """interactions/set-restrictions-for-authenticated-user
 
         PUT /user/interaction-limits
@@ -784,7 +806,9 @@ class InteractionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: InteractionLimitType,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
+    ) -> Response[
+        InteractionLimitResponse, InteractionLimitResponseTypeForResponse
+    ]: ...
 
     @overload
     async def async_set_restrictions_for_authenticated_user(
@@ -797,7 +821,9 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
+    ) -> Response[
+        InteractionLimitResponse, InteractionLimitResponseTypeForResponse
+    ]: ...
 
     async def async_set_restrictions_for_authenticated_user(
         self,
@@ -806,7 +832,7 @@ class InteractionsClient:
         stream: bool = False,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
-    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseTypeForResponse]:
         """interactions/set-restrictions-for-authenticated-user
 
         PUT /user/interaction-limits

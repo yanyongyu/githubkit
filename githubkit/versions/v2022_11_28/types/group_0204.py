@@ -22,6 +22,16 @@ class SecretScanningLocationIssueTitleType(TypedDict):
     issue_title_url: str
 
 
+class SecretScanningLocationIssueTitleTypeForResponse(TypedDict):
+    """SecretScanningLocationIssueTitle
+
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
+    """
+
+    issue_title_url: str
+
+
 class SecretScanningLocationIssueCommentType(TypedDict):
     """SecretScanningLocationIssueComment
 
@@ -32,7 +42,27 @@ class SecretScanningLocationIssueCommentType(TypedDict):
     issue_comment_url: str
 
 
+class SecretScanningLocationIssueCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationIssueComment
+
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str
+
+
 class SecretScanningLocationPullRequestTitleType(TypedDict):
+    """SecretScanningLocationPullRequestTitle
+
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str
+
+
+class SecretScanningLocationPullRequestTitleTypeForResponse(TypedDict):
     """SecretScanningLocationPullRequestTitle
 
     Represents a 'pull_request_title' secret scanning location type. This location
@@ -53,9 +83,24 @@ class SecretScanningLocationPullRequestReviewCommentType(TypedDict):
     pull_request_review_comment_url: str
 
 
+class SecretScanningLocationPullRequestReviewCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str
+
+
 __all__ = (
     "SecretScanningLocationIssueCommentType",
+    "SecretScanningLocationIssueCommentTypeForResponse",
     "SecretScanningLocationIssueTitleType",
+    "SecretScanningLocationIssueTitleTypeForResponse",
     "SecretScanningLocationPullRequestReviewCommentType",
+    "SecretScanningLocationPullRequestReviewCommentTypeForResponse",
     "SecretScanningLocationPullRequestTitleType",
+    "SecretScanningLocationPullRequestTitleTypeForResponse",
 )

@@ -18,4 +18,13 @@ class ReposOwnerRepoActionsJobsJobIdRerunPostBodyType(TypedDict):
     enable_debug_logging: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",)
+class ReposOwnerRepoActionsJobsJobIdRerunPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
+
+    enable_debug_logging: NotRequired[bool]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",
+    "ReposOwnerRepoActionsJobsJobIdRerunPostBodyTypeForResponse",
+)

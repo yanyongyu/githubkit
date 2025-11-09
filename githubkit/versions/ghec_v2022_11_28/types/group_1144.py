@@ -16,4 +16,11 @@ class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
     """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
-__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1Type",)
+class OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+
+
+__all__ = (
+    "OrgsOrgInteractionLimitsGetResponse200Anyof1Type",
+    "OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse",
+)

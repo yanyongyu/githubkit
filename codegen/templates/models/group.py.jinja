@@ -25,7 +25,7 @@ class {{ model.class_name }}({{ "ExtraGitHubModel" if model.allow_extra else "Gi
     {{ build_model_docstring(model) | indent(4) }}
 
     {% for prop in model.properties %}
-    {{ prop.get_model_defination() }}
+    {{ prop.get_model_definition() }}
     {% endfor %}
 
 {% endfor %}

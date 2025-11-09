@@ -13,11 +13,20 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0070 import SimpleRepositoryType
-from .group_0087 import DependabotAlertSecurityVulnerabilityType
-from .group_0088 import DependabotAlertSecurityAdvisoryType
-from .group_0090 import DependabotAlertWithRepositoryPropDependencyType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0070 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0087 import (
+    DependabotAlertSecurityVulnerabilityType,
+    DependabotAlertSecurityVulnerabilityTypeForResponse,
+)
+from .group_0088 import (
+    DependabotAlertSecurityAdvisoryType,
+    DependabotAlertSecurityAdvisoryTypeForResponse,
+)
+from .group_0090 import (
+    DependabotAlertWithRepositoryPropDependencyType,
+    DependabotAlertWithRepositoryPropDependencyTypeForResponse,
+)
 
 
 class DependabotAlertWithRepositoryType(TypedDict):
@@ -49,4 +58,36 @@ class DependabotAlertWithRepositoryType(TypedDict):
     repository: SimpleRepositoryType
 
 
-__all__ = ("DependabotAlertWithRepositoryType",)
+class DependabotAlertWithRepositoryTypeForResponse(TypedDict):
+    """DependabotAlertWithRepository
+
+    A Dependabot alert.
+    """
+
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertWithRepositoryPropDependencyTypeForResponse
+    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
+    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
+    url: str
+    html_url: str
+    created_at: str
+    updated_at: str
+    dismissed_at: Union[str, None]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[str, None]
+    auto_dismissed_at: NotRequired[Union[str, None]]
+    repository: SimpleRepositoryTypeForResponse
+
+
+__all__ = (
+    "DependabotAlertWithRepositoryType",
+    "DependabotAlertWithRepositoryTypeForResponse",
+)

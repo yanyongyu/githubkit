@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0325 import DiffEntryType
-from .group_0326 import CommitType
+from .group_0325 import DiffEntryType, DiffEntryTypeForResponse
+from .group_0326 import CommitType, CommitTypeForResponse
 
 
 class CommitComparisonType(TypedDict):
@@ -37,4 +37,28 @@ class CommitComparisonType(TypedDict):
     files: NotRequired[list[DiffEntryType]]
 
 
-__all__ = ("CommitComparisonType",)
+class CommitComparisonTypeForResponse(TypedDict):
+    """Commit Comparison
+
+    Commit Comparison
+    """
+
+    url: str
+    html_url: str
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitTypeForResponse
+    merge_base_commit: CommitTypeForResponse
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: list[CommitTypeForResponse]
+    files: NotRequired[list[DiffEntryTypeForResponse]]
+
+
+__all__ = (
+    "CommitComparisonType",
+    "CommitComparisonTypeForResponse",
+)

@@ -18,4 +18,13 @@ class ProjectsColumnsColumnIdMovesPostBodyType(TypedDict):
     position: str
 
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostBodyType",)
+class ProjectsColumnsColumnIdMovesPostBodyTypeForResponse(TypedDict):
+    """ProjectsColumnsColumnIdMovesPostBody"""
+
+    position: str
+
+
+__all__ = (
+    "ProjectsColumnsColumnIdMovesPostBodyType",
+    "ProjectsColumnsColumnIdMovesPostBodyTypeForResponse",
+)

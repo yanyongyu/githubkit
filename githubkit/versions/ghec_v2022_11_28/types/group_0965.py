@@ -17,4 +17,12 @@ EmojisGetResponse200Type: TypeAlias = dict[str, Any]
 """
 
 
-__all__ = ("EmojisGetResponse200Type",)
+EmojisGetResponse200TypeForResponse: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
+
+
+__all__ = (
+    "EmojisGetResponse200Type",
+    "EmojisGetResponse200TypeForResponse",
+)

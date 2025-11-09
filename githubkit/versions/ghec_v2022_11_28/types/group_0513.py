@@ -13,15 +13,23 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0020 import RepositoryType
-from .group_0193 import MilestoneType
-from .group_0194 import IssueTypeType
-from .group_0195 import ReactionRollupType
-from .group_0196 import IssueDependenciesSummaryType, SubIssuesSummaryType
-from .group_0197 import IssueFieldValueType
-from .group_0509 import SearchResultTextMatchesItemsType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0193 import MilestoneType, MilestoneTypeForResponse
+from .group_0194 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0195 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0196 import (
+    IssueDependenciesSummaryType,
+    IssueDependenciesSummaryTypeForResponse,
+    SubIssuesSummaryType,
+    SubIssuesSummaryTypeForResponse,
+)
+from .group_0197 import IssueFieldValueType, IssueFieldValueTypeForResponse
+from .group_0509 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
 class IssueSearchResultItemType(TypedDict):
@@ -80,7 +88,75 @@ class IssueSearchResultItemType(TypedDict):
     reactions: NotRequired[ReactionRollupType]
 
 
+class IssueSearchResultItemTypeForResponse(TypedDict):
+    """Issue Search Result Item
+
+    Issue Search Result Item
+    """
+
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
+    id: int
+    node_id: str
+    number: int
+    title: str
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
+    user: Union[None, SimpleUserTypeForResponse]
+    labels: list[IssueSearchResultItemPropLabelsItemsTypeForResponse]
+    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
+    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    assignee: Union[None, SimpleUserTypeForResponse]
+    milestone: Union[None, MilestoneTypeForResponse]
+    comments: int
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    pull_request: NotRequired[IssueSearchResultItemPropPullRequestTypeForResponse]
+    body: NotRequired[str]
+    score: float
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    draft: NotRequired[bool]
+    repository: NotRequired[RepositoryTypeForResponse]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+
+
 class IssueSearchResultItemPropLabelsItemsType(TypedDict):
+    """IssueSearchResultItemPropLabelsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    default: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+
+
+class IssueSearchResultItemPropLabelsItemsTypeForResponse(TypedDict):
     """IssueSearchResultItemPropLabelsItems"""
 
     id: NotRequired[int]
@@ -102,6 +178,16 @@ class IssueSearchResultItemPropPullRequestType(TypedDict):
     url: Union[str, None]
 
 
+class IssueSearchResultItemPropPullRequestTypeForResponse(TypedDict):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: NotRequired[Union[str, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
 class SearchIssuesGetResponse200Type(TypedDict):
     """SearchIssuesGetResponse200"""
 
@@ -110,9 +196,21 @@ class SearchIssuesGetResponse200Type(TypedDict):
     items: list[IssueSearchResultItemType]
 
 
+class SearchIssuesGetResponse200TypeForResponse(TypedDict):
+    """SearchIssuesGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[IssueSearchResultItemTypeForResponse]
+
+
 __all__ = (
     "IssueSearchResultItemPropLabelsItemsType",
+    "IssueSearchResultItemPropLabelsItemsTypeForResponse",
     "IssueSearchResultItemPropPullRequestType",
+    "IssueSearchResultItemPropPullRequestTypeForResponse",
     "IssueSearchResultItemType",
+    "IssueSearchResultItemTypeForResponse",
     "SearchIssuesGetResponse200Type",
+    "SearchIssuesGetResponse200TypeForResponse",
 )

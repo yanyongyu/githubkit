@@ -22,4 +22,17 @@ class RulesetVersionPropActorType(TypedDict):
     type: NotRequired[str]
 
 
-__all__ = ("RulesetVersionPropActorType",)
+class RulesetVersionPropActorTypeForResponse(TypedDict):
+    """RulesetVersionPropActor
+
+    The actor who updated the ruleset
+    """
+
+    id: NotRequired[int]
+    type: NotRequired[str]
+
+
+__all__ = (
+    "RulesetVersionPropActorType",
+    "RulesetVersionPropActorTypeForResponse",
+)

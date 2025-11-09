@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class StargazerType(TypedDict):
@@ -26,4 +26,17 @@ class StargazerType(TypedDict):
     user: Union[None, SimpleUserType]
 
 
-__all__ = ("StargazerType",)
+class StargazerTypeForResponse(TypedDict):
+    """Stargazer
+
+    Stargazer
+    """
+
+    starred_at: str
+    user: Union[None, SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "StargazerType",
+    "StargazerTypeForResponse",
+)

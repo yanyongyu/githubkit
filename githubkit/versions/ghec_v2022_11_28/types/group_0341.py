@@ -19,4 +19,14 @@ class CodeScanningAutofixCommitsResponseType(TypedDict):
     sha: NotRequired[str]
 
 
-__all__ = ("CodeScanningAutofixCommitsResponseType",)
+class CodeScanningAutofixCommitsResponseTypeForResponse(TypedDict):
+    """CodeScanningAutofixCommitsResponse"""
+
+    target_ref: NotRequired[str]
+    sha: NotRequired[str]
+
+
+__all__ = (
+    "CodeScanningAutofixCommitsResponseType",
+    "CodeScanningAutofixCommitsResponseTypeForResponse",
+)

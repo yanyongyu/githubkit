@@ -19,4 +19,14 @@ class ReposOwnerRepoPullsPullNumberMergePutResponse405Type(TypedDict):
     documentation_url: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse405Type",)
+class ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoPullsPullNumberMergePutResponse405Type",
+    "ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse",
+)

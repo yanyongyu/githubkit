@@ -23,4 +23,17 @@ class ImmutableReleasesOrganizationSettingsType(TypedDict):
     selected_repositories_url: NotRequired[str]
 
 
-__all__ = ("ImmutableReleasesOrganizationSettingsType",)
+class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
+    """Check immutable releases organization settings
+
+    Check immutable releases settings for an organization.
+    """
+
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
+
+
+__all__ = (
+    "ImmutableReleasesOrganizationSettingsType",
+    "ImmutableReleasesOrganizationSettingsTypeForResponse",
+)

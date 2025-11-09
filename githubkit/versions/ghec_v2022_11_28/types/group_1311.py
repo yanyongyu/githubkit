@@ -23,4 +23,17 @@ class ReposOwnerRepoImportPutBodyType(TypedDict):
     tfvc_project: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoImportPutBodyType",)
+class ReposOwnerRepoImportPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportPutBody"""
+
+    vcs_url: str
+    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    tfvc_project: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoImportPutBodyType",
+    "ReposOwnerRepoImportPutBodyTypeForResponse",
+)

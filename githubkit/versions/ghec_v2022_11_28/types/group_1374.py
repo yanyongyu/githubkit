@@ -18,4 +18,13 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType(TypedDict):
     expected_head_sha: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",)
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
+
+    expected_head_sha: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse",
+)

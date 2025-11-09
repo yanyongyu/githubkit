@@ -11,8 +11,11 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0496 import MetaType
-from .group_0506 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
+from .group_0496 import MetaType, MetaTypeForResponse
+from .group_0506 import (
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
+)
 
 
 class ScimEnterpriseUserResponseAllof1Type(TypedDict):
@@ -23,4 +26,17 @@ class ScimEnterpriseUserResponseAllof1Type(TypedDict):
     meta: MetaType
 
 
-__all__ = ("ScimEnterpriseUserResponseAllof1Type",)
+class ScimEnterpriseUserResponseAllof1TypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
+
+    id: str
+    groups: NotRequired[
+        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
+    ]
+    meta: MetaTypeForResponse
+
+
+__all__ = (
+    "ScimEnterpriseUserResponseAllof1Type",
+    "ScimEnterpriseUserResponseAllof1TypeForResponse",
+)

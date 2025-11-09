@@ -23,4 +23,17 @@ class ReposOwnerRepoPullsPullNumberPatchBodyType(TypedDict):
     maintainer_can_modify: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberPatchBodyType",)
+class ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
+
+    title: NotRequired[str]
+    body: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
+
+
+__all__ = (
+    "ReposOwnerRepoPullsPullNumberPatchBodyType",
+    "ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse",
+)

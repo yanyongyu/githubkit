@@ -23,4 +23,16 @@ class ReposOwnerRepoMilestonesPostBodyType(TypedDict):
     due_on: NotRequired[datetime]
 
 
-__all__ = ("ReposOwnerRepoMilestonesPostBodyType",)
+class ReposOwnerRepoMilestonesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoMilestonesPostBody"""
+
+    title: str
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoMilestonesPostBodyType",
+    "ReposOwnerRepoMilestonesPostBodyTypeForResponse",
+)

@@ -20,4 +20,15 @@ class ReposOwnerRepoLabelsNamePatchBodyType(TypedDict):
     description: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoLabelsNamePatchBodyType",)
+class ReposOwnerRepoLabelsNamePatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoLabelsNamePatchBody"""
+
+    new_name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoLabelsNamePatchBodyType",
+    "ReposOwnerRepoLabelsNamePatchBodyTypeForResponse",
+)

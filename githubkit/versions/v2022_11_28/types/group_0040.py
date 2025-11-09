@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class MilestoneType(TypedDict):
@@ -40,4 +40,31 @@ class MilestoneType(TypedDict):
     due_on: Union[datetime, None]
 
 
-__all__ = ("MilestoneType",)
+class MilestoneTypeForResponse(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
+
+    url: str
+    html_url: str
+    labels_url: str
+    id: int
+    node_id: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[None, SimpleUserTypeForResponse]
+    open_issues: int
+    closed_issues: int
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    due_on: Union[str, None]
+
+
+__all__ = (
+    "MilestoneType",
+    "MilestoneTypeForResponse",
+)

@@ -52,7 +52,7 @@ if TYPE_CHECKING:
     {{ import_ }}
     {% endfor %}
     {# response json types #}
-    {% for import_ in endpoint.success_response.response_schema.get_param_imports() %}
+    {% for import_ in endpoint.success_response.response_schema.get_response_imports() %}
     {{ import_ }}
     {% endfor %}
     {% endif %}

@@ -20,6 +20,13 @@ class CreateBudgetType(TypedDict):
     budget: CreateBudgetPropBudgetType
 
 
+class CreateBudgetTypeForResponse(TypedDict):
+    """CreateBudget"""
+
+    message: str
+    budget: CreateBudgetPropBudgetTypeForResponse
+
+
 class CreateBudgetPropBudgetType(TypedDict):
     """CreateBudgetPropBudget"""
 
@@ -35,7 +42,31 @@ class CreateBudgetPropBudgetType(TypedDict):
     budget_alerting: NotRequired[CreateBudgetPropBudgetPropBudgetAlertingType]
 
 
+class CreateBudgetPropBudgetTypeForResponse(TypedDict):
+    """CreateBudgetPropBudget"""
+
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_amount: NotRequired[float]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_alerting: NotRequired[
+        CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse
+    ]
+
+
 class CreateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
+    """CreateBudgetPropBudgetPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
+
+
+class CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
     """CreateBudgetPropBudgetPropBudgetAlerting"""
 
     will_alert: NotRequired[bool]
@@ -44,6 +75,9 @@ class CreateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
 
 __all__ = (
     "CreateBudgetPropBudgetPropBudgetAlertingType",
+    "CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
     "CreateBudgetPropBudgetType",
+    "CreateBudgetPropBudgetTypeForResponse",
     "CreateBudgetType",
+    "CreateBudgetTypeForResponse",
 )

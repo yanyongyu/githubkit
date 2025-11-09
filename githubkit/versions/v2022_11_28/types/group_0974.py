@@ -21,4 +21,16 @@ class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
     seats_cancelled: int
 
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",)
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
+
+
+__all__ = (
+    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
+)

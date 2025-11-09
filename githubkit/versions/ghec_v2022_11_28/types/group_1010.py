@@ -24,6 +24,19 @@ class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201T
     seats_created: int
 
 
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201
+
+    The total number of seats created for the members of the specified enterprise
+    team(s).
+    """
+
+    seats_created: int
+
+
 __all__ = (
     "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse",
 )

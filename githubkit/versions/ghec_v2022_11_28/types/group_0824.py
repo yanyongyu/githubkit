@@ -12,10 +12,13 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0535 import SimpleInstallationType
-from .group_0536 import OrganizationSimpleWebhooksType
-from .group_0571 import ProjectsV2ItemType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0571 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
 class WebhookProjectsV2ItemDeletedType(TypedDict):
@@ -28,4 +31,17 @@ class WebhookProjectsV2ItemDeletedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookProjectsV2ItemDeletedType",)
+class WebhookProjectsV2ItemDeletedTypeForResponse(TypedDict):
+    """Projects v2 Item Deleted Event"""
+
+    action: Literal["deleted"]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookProjectsV2ItemDeletedType",
+    "WebhookProjectsV2ItemDeletedTypeForResponse",
+)

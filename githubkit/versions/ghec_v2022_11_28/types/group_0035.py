@@ -26,4 +26,20 @@ class ActionsHostedRunnerCuratedImageType(TypedDict):
     source: Literal["github", "partner", "custom"]
 
 
-__all__ = ("ActionsHostedRunnerCuratedImageType",)
+class ActionsHostedRunnerCuratedImageTypeForResponse(TypedDict):
+    """GitHub-hosted runner image details.
+
+    Provides details of a hosted runner image
+    """
+
+    id: str
+    platform: str
+    size_gb: int
+    display_name: str
+    source: Literal["github", "partner", "custom"]
+
+
+__all__ = (
+    "ActionsHostedRunnerCuratedImageType",
+    "ActionsHostedRunnerCuratedImageTypeForResponse",
+)

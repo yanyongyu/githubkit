@@ -31,7 +31,7 @@ if TYPE_CHECKING:
     from ..types import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
-        ReactionType,
+        ReactionTypeForResponse,
         ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
         ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
         ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
@@ -73,7 +73,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-team-discussion-comment-in-org
 
         GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -125,7 +125,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-team-discussion-comment-in-org
 
         GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -172,7 +172,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     def create_for_team_discussion_comment_in_org(
@@ -188,7 +188,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     def create_for_team_discussion_comment_in_org(
         self,
@@ -203,7 +203,7 @@ class ReactionsClient:
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-team-discussion-comment-in-org
 
         POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -261,7 +261,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     async def async_create_for_team_discussion_comment_in_org(
@@ -277,7 +277,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     async def async_create_for_team_discussion_comment_in_org(
         self,
@@ -292,7 +292,7 @@ class ReactionsClient:
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-team-discussion-comment-in-org
 
         POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -426,7 +426,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-team-discussion-in-org
 
         GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
@@ -477,7 +477,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-team-discussion-in-org
 
         GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
@@ -523,7 +523,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     def create_for_team_discussion_in_org(
@@ -538,7 +538,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     def create_for_team_discussion_in_org(
         self,
@@ -552,7 +552,7 @@ class ReactionsClient:
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-team-discussion-in-org
 
         POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
@@ -608,7 +608,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     async def async_create_for_team_discussion_in_org(
@@ -623,7 +623,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     async def async_create_for_team_discussion_in_org(
         self,
@@ -637,7 +637,7 @@ class ReactionsClient:
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-team-discussion-in-org
 
         POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
@@ -768,7 +768,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-commit-comment
 
         GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
@@ -817,7 +817,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-commit-comment
 
         GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
@@ -861,7 +861,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     def create_for_commit_comment(
@@ -876,7 +876,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     def create_for_commit_comment(
         self,
@@ -888,7 +888,7 @@ class ReactionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-commit-comment
 
         POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
@@ -941,7 +941,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     async def async_create_for_commit_comment(
@@ -956,7 +956,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     async def async_create_for_commit_comment(
         self,
@@ -968,7 +968,7 @@ class ReactionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-commit-comment
 
         POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
@@ -1092,7 +1092,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-issue-comment
 
         GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
@@ -1141,7 +1141,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-issue-comment
 
         GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
@@ -1185,7 +1185,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     def create_for_issue_comment(
@@ -1200,7 +1200,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     def create_for_issue_comment(
         self,
@@ -1214,7 +1214,7 @@ class ReactionsClient:
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-issue-comment
 
         POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
@@ -1267,7 +1267,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     async def async_create_for_issue_comment(
@@ -1282,7 +1282,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     async def async_create_for_issue_comment(
         self,
@@ -1296,7 +1296,7 @@ class ReactionsClient:
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-issue-comment
 
         POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
@@ -1420,7 +1420,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-issue
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
@@ -1470,7 +1470,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-issue
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
@@ -1515,7 +1515,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     def create_for_issue(
@@ -1530,7 +1530,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     def create_for_issue(
         self,
@@ -1542,7 +1542,7 @@ class ReactionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-issue
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
@@ -1595,7 +1595,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     async def async_create_for_issue(
@@ -1610,7 +1610,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     async def async_create_for_issue(
         self,
@@ -1622,7 +1622,7 @@ class ReactionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-issue
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
@@ -1746,7 +1746,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-pull-request-review-comment
 
         GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
@@ -1795,7 +1795,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-pull-request-review-comment
 
         GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
@@ -1839,7 +1839,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     def create_for_pull_request_review_comment(
@@ -1854,7 +1854,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     def create_for_pull_request_review_comment(
         self,
@@ -1868,7 +1868,7 @@ class ReactionsClient:
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-pull-request-review-comment
 
         POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
@@ -1921,7 +1921,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     async def async_create_for_pull_request_review_comment(
@@ -1936,7 +1936,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     async def async_create_for_pull_request_review_comment(
         self,
@@ -1950,7 +1950,7 @@ class ReactionsClient:
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-pull-request-review-comment
 
         POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
@@ -2076,7 +2076,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-release
 
         GET /repos/{owner}/{repo}/releases/{release_id}/reactions
@@ -2123,7 +2123,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """reactions/list-for-release
 
         GET /repos/{owner}/{repo}/releases/{release_id}/reactions
@@ -2167,7 +2167,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     def create_for_release(
@@ -2180,7 +2180,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     def create_for_release(
         self,
@@ -2192,7 +2192,7 @@ class ReactionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-release
 
         POST /repos/{owner}/{repo}/releases/{release_id}/reactions
@@ -2245,7 +2245,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     async def async_create_for_release(
@@ -2258,7 +2258,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     async def async_create_for_release(
         self,
@@ -2270,7 +2270,7 @@ class ReactionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """reactions/create-for-release
 
         POST /repos/{owner}/{repo}/releases/{release_id}/reactions
@@ -2394,7 +2394,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """DEPRECATED reactions/list-for-team-discussion-comment-legacy
 
         GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -2445,7 +2445,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """DEPRECATED reactions/list-for-team-discussion-comment-legacy
 
         GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -2491,7 +2491,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     def create_for_team_discussion_comment_legacy(
@@ -2506,7 +2506,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     def create_for_team_discussion_comment_legacy(
         self,
@@ -2520,7 +2520,7 @@ class ReactionsClient:
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """DEPRECATED reactions/create-for-team-discussion-comment-legacy
 
         POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -2577,7 +2577,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     async def async_create_for_team_discussion_comment_legacy(
@@ -2592,7 +2592,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     async def async_create_for_team_discussion_comment_legacy(
         self,
@@ -2606,7 +2606,7 @@ class ReactionsClient:
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """DEPRECATED reactions/create-for-team-discussion-comment-legacy
 
         POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
@@ -2667,7 +2667,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """DEPRECATED reactions/list-for-team-discussion-legacy
 
         GET /teams/{team_id}/discussions/{discussion_number}/reactions
@@ -2717,7 +2717,7 @@ class ReactionsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Reaction], list[ReactionType]]:
+    ) -> Response[list[Reaction], list[ReactionTypeForResponse]]:
         """DEPRECATED reactions/list-for-team-discussion-legacy
 
         GET /teams/{team_id}/discussions/{discussion_number}/reactions
@@ -2762,7 +2762,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     def create_for_team_discussion_legacy(
@@ -2776,7 +2776,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     def create_for_team_discussion_legacy(
         self,
@@ -2789,7 +2789,7 @@ class ReactionsClient:
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """DEPRECATED reactions/create-for-team-discussion-legacy
 
         POST /teams/{team_id}/discussions/{discussion_number}/reactions
@@ -2844,7 +2844,7 @@ class ReactionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     @overload
     async def async_create_for_team_discussion_legacy(
@@ -2858,7 +2858,7 @@ class ReactionsClient:
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
-    ) -> Response[Reaction, ReactionType]: ...
+    ) -> Response[Reaction, ReactionTypeForResponse]: ...
 
     async def async_create_for_team_discussion_legacy(
         self,
@@ -2871,7 +2871,7 @@ class ReactionsClient:
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Reaction, ReactionType]:
+    ) -> Response[Reaction, ReactionTypeForResponse]:
         """DEPRECATED reactions/create-for-team-discussion-legacy
 
         POST /teams/{team_id}/discussions/{discussion_number}/reactions

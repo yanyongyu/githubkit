@@ -16,4 +16,11 @@ class AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type(TypedDict):
     """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-__all__ = ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type",)
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse(TypedDict):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
+
+
+__all__ = (
+    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type",
+    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse",
+)

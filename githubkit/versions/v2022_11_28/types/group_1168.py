@@ -23,4 +23,17 @@ class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
     path: Literal["/", "/docs"]
 
 
-__all__ = ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",)
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str
+    path: Literal["/", "/docs"]
+
+
+__all__ = (
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse",
+)

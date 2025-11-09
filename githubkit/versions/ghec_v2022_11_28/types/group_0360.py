@@ -24,6 +24,17 @@ class RepositoryCollaboratorPermissionType(TypedDict):
     user: Union[None, CollaboratorType]
 
 
+class RepositoryCollaboratorPermissionTypeForResponse(TypedDict):
+    """Repository Collaborator Permission
+
+    Repository Collaborator Permission
+    """
+
+    permission: str
+    role_name: str
+    user: Union[None, CollaboratorTypeForResponse]
+
+
 class CollaboratorType(TypedDict):
     """Collaborator
 
@@ -55,7 +66,48 @@ class CollaboratorType(TypedDict):
     user_view_type: NotRequired[str]
 
 
+class CollaboratorTypeForResponse(TypedDict):
+    """Collaborator
+
+    Collaborator
+    """
+
+    login: str
+    id: int
+    email: NotRequired[Union[str, None]]
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    permissions: NotRequired[CollaboratorPropPermissionsTypeForResponse]
+    role_name: str
+    user_view_type: NotRequired[str]
+
+
 class CollaboratorPropPermissionsType(TypedDict):
+    """CollaboratorPropPermissions"""
+
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+    admin: bool
+
+
+class CollaboratorPropPermissionsTypeForResponse(TypedDict):
     """CollaboratorPropPermissions"""
 
     pull: bool
@@ -67,6 +119,9 @@ class CollaboratorPropPermissionsType(TypedDict):
 
 __all__ = (
     "CollaboratorPropPermissionsType",
+    "CollaboratorPropPermissionsTypeForResponse",
     "CollaboratorType",
+    "CollaboratorTypeForResponse",
     "RepositoryCollaboratorPermissionType",
+    "RepositoryCollaboratorPermissionTypeForResponse",
 )

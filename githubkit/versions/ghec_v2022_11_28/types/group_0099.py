@@ -21,4 +21,15 @@ class OrganizationCustomPropertyAllof1Type(TypedDict):
     ]
 
 
-__all__ = ("OrganizationCustomPropertyAllof1Type",)
+class OrganizationCustomPropertyAllof1TypeForResponse(TypedDict):
+    """OrganizationCustomPropertyAllof1"""
+
+    values_editable_by: NotRequired[
+        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+    ]
+
+
+__all__ = (
+    "OrganizationCustomPropertyAllof1Type",
+    "OrganizationCustomPropertyAllof1TypeForResponse",
+)

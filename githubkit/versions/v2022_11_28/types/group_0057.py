@@ -14,7 +14,9 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0058 import (
     MarketplacePurchasePropMarketplacePendingChangeType,
+    MarketplacePurchasePropMarketplacePendingChangeTypeForResponse,
     MarketplacePurchasePropMarketplacePurchaseType,
+    MarketplacePurchasePropMarketplacePurchaseTypeForResponse,
 )
 
 
@@ -36,4 +38,25 @@ class MarketplacePurchaseType(TypedDict):
     marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
 
 
-__all__ = ("MarketplacePurchaseType",)
+class MarketplacePurchaseTypeForResponse(TypedDict):
+    """Marketplace Purchase
+
+    Marketplace Purchase
+    """
+
+    url: str
+    type: str
+    id: int
+    login: str
+    organization_billing_email: NotRequired[str]
+    email: NotRequired[Union[str, None]]
+    marketplace_pending_change: NotRequired[
+        Union[MarketplacePurchasePropMarketplacePendingChangeTypeForResponse, None]
+    ]
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseTypeForResponse
+
+
+__all__ = (
+    "MarketplacePurchaseType",
+    "MarketplacePurchaseTypeForResponse",
+)

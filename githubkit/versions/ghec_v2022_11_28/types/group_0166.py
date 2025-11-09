@@ -19,4 +19,14 @@ class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
     review_on_push: NotRequired[bool]
 
 
-__all__ = ("RepositoryRuleCopilotCodeReviewPropParametersType",)
+class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
+
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
+
+
+__all__ = (
+    "RepositoryRuleCopilotCodeReviewPropParametersType",
+    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
+)

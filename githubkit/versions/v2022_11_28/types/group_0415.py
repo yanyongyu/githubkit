@@ -19,4 +19,14 @@ class ParticipationStatsType(TypedDict):
     owner: list[int]
 
 
-__all__ = ("ParticipationStatsType",)
+class ParticipationStatsTypeForResponse(TypedDict):
+    """Participation Stats"""
+
+    all_: list[int]
+    owner: list[int]
+
+
+__all__ = (
+    "ParticipationStatsType",
+    "ParticipationStatsTypeForResponse",
+)

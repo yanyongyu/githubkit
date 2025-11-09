@@ -20,4 +20,14 @@ class ActionsSetDefaultWorkflowPermissionsType(TypedDict):
     can_approve_pull_request_reviews: NotRequired[bool]
 
 
-__all__ = ("ActionsSetDefaultWorkflowPermissionsType",)
+class ActionsSetDefaultWorkflowPermissionsTypeForResponse(TypedDict):
+    """ActionsSetDefaultWorkflowPermissions"""
+
+    default_workflow_permissions: NotRequired[Literal["read", "write"]]
+    can_approve_pull_request_reviews: NotRequired[bool]
+
+
+__all__ = (
+    "ActionsSetDefaultWorkflowPermissionsType",
+    "ActionsSetDefaultWorkflowPermissionsTypeForResponse",
+)

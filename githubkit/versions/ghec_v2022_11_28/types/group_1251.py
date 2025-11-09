@@ -22,6 +22,16 @@ class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType
     message: str
 
 
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody"""
+
+    status: Literal["approve", "reject"]
+    message: str
+
+
 __all__ = (
     "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType",
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyTypeForResponse",
 )

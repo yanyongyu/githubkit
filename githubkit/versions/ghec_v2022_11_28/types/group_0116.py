@@ -13,6 +13,7 @@ from typing_extensions import TypedDict
 
 from .group_0117 import (
     EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
 )
 
 
@@ -25,4 +26,16 @@ class EnterpriseRulesetConditionsOrganizationPropertyTargetType(TypedDict):
     organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
 
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationPropertyTargetType",)
+class EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for organization properties
+
+    Parameters for a organization property condition
+    """
+
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
+
+
+__all__ = (
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetType",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse",
+)

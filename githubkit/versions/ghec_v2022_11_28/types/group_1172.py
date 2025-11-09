@@ -18,4 +18,13 @@ class OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType(TypedDict):
     selected_repository_ids: list[int]
 
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType",)
+class OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
+
+    selected_repository_ids: list[int]
+
+
+__all__ = (
+    "OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyTypeForResponse",
+)

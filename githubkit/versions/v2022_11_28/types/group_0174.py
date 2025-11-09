@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0175 import RepositoryRuleCommitterEmailPatternPropParametersType
+from .group_0175 import (
+    RepositoryRuleCommitterEmailPatternPropParametersType,
+    RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse,
+)
 
 
 class RepositoryRuleCommitterEmailPatternType(TypedDict):
@@ -25,4 +28,19 @@ class RepositoryRuleCommitterEmailPatternType(TypedDict):
     parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleCommitterEmailPatternType",)
+class RepositoryRuleCommitterEmailPatternTypeForResponse(TypedDict):
+    """committer_email_pattern
+
+    Parameters to be used for the committer_email_pattern rule
+    """
+
+    type: Literal["committer_email_pattern"]
+    parameters: NotRequired[
+        RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse
+    ]
+
+
+__all__ = (
+    "RepositoryRuleCommitterEmailPatternType",
+    "RepositoryRuleCommitterEmailPatternTypeForResponse",
+)

@@ -12,13 +12,22 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0534 import EnterpriseWebhooksType
-from .group_0535 import SimpleInstallationType
-from .group_0536 import OrganizationSimpleWebhooksType
-from .group_0537 import RepositoryWebhooksType
-from .group_0738 import WebhookIssuesOpenedPropChangesType
-from .group_0740 import WebhookIssuesOpenedPropIssueType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0738 import (
+    WebhookIssuesOpenedPropChangesType,
+    WebhookIssuesOpenedPropChangesTypeForResponse,
+)
+from .group_0740 import (
+    WebhookIssuesOpenedPropIssueType,
+    WebhookIssuesOpenedPropIssueTypeForResponse,
+)
 
 
 class WebhookIssuesOpenedType(TypedDict):
@@ -34,4 +43,20 @@ class WebhookIssuesOpenedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesOpenedType",)
+class WebhookIssuesOpenedTypeForResponse(TypedDict):
+    """issues opened event"""
+
+    action: Literal["opened"]
+    changes: NotRequired[WebhookIssuesOpenedPropChangesTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhookIssuesOpenedPropIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookIssuesOpenedType",
+    "WebhookIssuesOpenedTypeForResponse",
+)

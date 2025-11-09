@@ -12,12 +12,15 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0450 import EnterpriseWebhooksType
-from .group_0451 import SimpleInstallationType
-from .group_0452 import OrganizationSimpleWebhooksType
-from .group_0453 import RepositoryWebhooksType
-from .group_0496 import WebhooksSponsorshipType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0450 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0451 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0452 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0453 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0496 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
 
 class WebhookSponsorshipPendingCancellationType(TypedDict):
@@ -33,4 +36,20 @@ class WebhookSponsorshipPendingCancellationType(TypedDict):
     sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookSponsorshipPendingCancellationType",)
+class WebhookSponsorshipPendingCancellationTypeForResponse(TypedDict):
+    """sponsorship pending_cancellation event"""
+
+    action: Literal["pending_cancellation"]
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
+
+
+__all__ = (
+    "WebhookSponsorshipPendingCancellationType",
+    "WebhookSponsorshipPendingCancellationTypeForResponse",
+)

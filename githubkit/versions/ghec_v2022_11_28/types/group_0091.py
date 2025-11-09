@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0008 import EnterpriseType
+from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
 
 
 class EnterpriseRoleType(TypedDict):
@@ -32,6 +32,22 @@ class EnterpriseRoleType(TypedDict):
     updated_at: datetime
 
 
+class EnterpriseRoleTypeForResponse(TypedDict):
+    """Enterprise Role
+
+    Enterprise custom roles
+    """
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    source: NotRequired[Union[None, Literal["Enterprise", "Predefined"]]]
+    permissions: list[str]
+    enterprise: Union[None, EnterpriseTypeForResponse]
+    created_at: str
+    updated_at: str
+
+
 class EnterprisesEnterpriseEnterpriseRolesGetResponse200Type(TypedDict):
     """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
 
@@ -39,7 +55,16 @@ class EnterprisesEnterpriseEnterpriseRolesGetResponse200Type(TypedDict):
     roles: NotRequired[list[EnterpriseRoleType]]
 
 
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[EnterpriseRoleTypeForResponse]]
+
+
 __all__ = (
     "EnterpriseRoleType",
+    "EnterpriseRoleTypeForResponse",
     "EnterprisesEnterpriseEnterpriseRolesGetResponse200Type",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse",
 )

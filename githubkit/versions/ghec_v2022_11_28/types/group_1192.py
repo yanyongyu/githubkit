@@ -20,4 +20,14 @@ class ProjectsColumnsCardsCardIdPatchBodyType(TypedDict):
     archived: NotRequired[bool]
 
 
-__all__ = ("ProjectsColumnsCardsCardIdPatchBodyType",)
+class ProjectsColumnsCardsCardIdPatchBodyTypeForResponse(TypedDict):
+    """ProjectsColumnsCardsCardIdPatchBody"""
+
+    note: NotRequired[Union[str, None]]
+    archived: NotRequired[bool]
+
+
+__all__ = (
+    "ProjectsColumnsCardsCardIdPatchBodyType",
+    "ProjectsColumnsCardsCardIdPatchBodyTypeForResponse",
+)

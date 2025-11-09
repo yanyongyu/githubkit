@@ -24,4 +24,18 @@ class CopilotUsageMetrics1DayReportType(TypedDict):
     report_day: date
 
 
-__all__ = ("CopilotUsageMetrics1DayReportType",)
+class CopilotUsageMetrics1DayReportTypeForResponse(TypedDict):
+    """Copilot Metrics 1 Day Report
+
+    Links to download the Copilot usage metrics report for an enterprise for a
+    specific day.
+    """
+
+    download_links: list[str]
+    report_day: str
+
+
+__all__ = (
+    "CopilotUsageMetrics1DayReportType",
+    "CopilotUsageMetrics1DayReportTypeForResponse",
+)

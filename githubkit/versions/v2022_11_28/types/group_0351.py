@@ -13,8 +13,11 @@ from datetime import datetime
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0352 import TimelineCrossReferencedEventPropSourceType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0352 import (
+    TimelineCrossReferencedEventPropSourceType,
+    TimelineCrossReferencedEventPropSourceTypeForResponse,
+)
 
 
 class TimelineCrossReferencedEventType(TypedDict):
@@ -30,4 +33,20 @@ class TimelineCrossReferencedEventType(TypedDict):
     source: TimelineCrossReferencedEventPropSourceType
 
 
-__all__ = ("TimelineCrossReferencedEventType",)
+class TimelineCrossReferencedEventTypeForResponse(TypedDict):
+    """Timeline Cross Referenced Event
+
+    Timeline Cross Referenced Event
+    """
+
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    source: TimelineCrossReferencedEventPropSourceTypeForResponse
+
+
+__all__ = (
+    "TimelineCrossReferencedEventType",
+    "TimelineCrossReferencedEventTypeForResponse",
+)

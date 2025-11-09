@@ -27,7 +27,29 @@ class GroupResponseType(TypedDict):
     members: NotRequired[list[GroupResponsePropMembersItemsType]]
 
 
+class GroupResponseTypeForResponse(TypedDict):
+    """GroupResponse"""
+
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[GroupResponsePropMembersItemsTypeForResponse]]
+
+
 class GroupResponsePropMembersItemsType(TypedDict):
+    """GroupResponsePropMembersItems"""
+
+    value: str
+    ref: str
+    display: NotRequired[str]
+
+
+class GroupResponsePropMembersItemsTypeForResponse(TypedDict):
     """GroupResponsePropMembersItems"""
 
     value: str
@@ -37,5 +59,7 @@ class GroupResponsePropMembersItemsType(TypedDict):
 
 __all__ = (
     "GroupResponsePropMembersItemsType",
+    "GroupResponsePropMembersItemsTypeForResponse",
     "GroupResponseType",
+    "GroupResponseTypeForResponse",
 )

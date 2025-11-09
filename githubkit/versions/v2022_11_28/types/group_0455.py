@@ -13,9 +13,9 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType
-from .group_0061 import MinimalRepositoryType
-from .group_0235 import PullRequestMinimalType
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0061 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0235 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
 
 
 class SimpleCheckSuiteType(TypedDict):
@@ -57,4 +57,46 @@ class SimpleCheckSuiteType(TypedDict):
     url: NotRequired[str]
 
 
-__all__ = ("SimpleCheckSuiteType",)
+class SimpleCheckSuiteTypeForResponse(TypedDict):
+    """SimpleCheckSuite
+
+    A suite of checks performed on the code of a given code change
+    """
+
+    after: NotRequired[Union[str, None]]
+    app: NotRequired[Union[IntegrationTypeForResponse, None]]
+    before: NotRequired[Union[str, None]]
+    conclusion: NotRequired[
+        Union[
+            None,
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+        ]
+    ]
+    created_at: NotRequired[str]
+    head_branch: NotRequired[Union[str, None]]
+    head_sha: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    pull_requests: NotRequired[list[PullRequestMinimalTypeForResponse]]
+    repository: NotRequired[MinimalRepositoryTypeForResponse]
+    status: NotRequired[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "SimpleCheckSuiteType",
+    "SimpleCheckSuiteTypeForResponse",
+)

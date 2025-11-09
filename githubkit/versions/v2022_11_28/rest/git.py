@@ -29,11 +29,11 @@ if TYPE_CHECKING:
 
     from ..models import Blob, GitCommit, GitRef, GitTag, GitTree, ShortBlob
     from ..types import (
-        BlobType,
-        GitCommitType,
-        GitRefType,
-        GitTagType,
-        GitTreeType,
+        BlobTypeForResponse,
+        GitCommitTypeForResponse,
+        GitRefTypeForResponse,
+        GitTagTypeForResponse,
+        GitTreeTypeForResponse,
         ReposOwnerRepoGitBlobsPostBodyType,
         ReposOwnerRepoGitCommitsPostBodyPropAuthorType,
         ReposOwnerRepoGitCommitsPostBodyPropCommitterType,
@@ -44,7 +44,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoGitTagsPostBodyType,
         ReposOwnerRepoGitTreesPostBodyPropTreeItemsType,
         ReposOwnerRepoGitTreesPostBodyType,
-        ShortBlobType,
+        ShortBlobTypeForResponse,
     )
 
 
@@ -72,7 +72,7 @@ class GitClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoGitBlobsPostBodyType,
-    ) -> Response[ShortBlob, ShortBlobType]: ...
+    ) -> Response[ShortBlob, ShortBlobTypeForResponse]: ...
 
     @overload
     def create_blob(
@@ -85,7 +85,7 @@ class GitClient:
         stream: bool = False,
         content: str,
         encoding: Missing[str] = UNSET,
-    ) -> Response[ShortBlob, ShortBlobType]: ...
+    ) -> Response[ShortBlob, ShortBlobTypeForResponse]: ...
 
     def create_blob(
         self,
@@ -96,7 +96,7 @@ class GitClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ShortBlob, ShortBlobType]:
+    ) -> Response[ShortBlob, ShortBlobTypeForResponse]:
         """git/create-blob
 
         POST /repos/{owner}/{repo}/git/blobs
@@ -151,7 +151,7 @@ class GitClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoGitBlobsPostBodyType,
-    ) -> Response[ShortBlob, ShortBlobType]: ...
+    ) -> Response[ShortBlob, ShortBlobTypeForResponse]: ...
 
     @overload
     async def async_create_blob(
@@ -164,7 +164,7 @@ class GitClient:
         stream: bool = False,
         content: str,
         encoding: Missing[str] = UNSET,
-    ) -> Response[ShortBlob, ShortBlobType]: ...
+    ) -> Response[ShortBlob, ShortBlobTypeForResponse]: ...
 
     async def async_create_blob(
         self,
@@ -175,7 +175,7 @@ class GitClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ShortBlob, ShortBlobType]:
+    ) -> Response[ShortBlob, ShortBlobTypeForResponse]:
         """git/create-blob
 
         POST /repos/{owner}/{repo}/git/blobs
@@ -229,7 +229,7 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Blob, BlobType]:
+    ) -> Response[Blob, BlobTypeForResponse]:
         """git/get-blob
 
         GET /repos/{owner}/{repo}/git/blobs/{file_sha}
@@ -274,7 +274,7 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Blob, BlobType]:
+    ) -> Response[Blob, BlobTypeForResponse]:
         """git/get-blob
 
         GET /repos/{owner}/{repo}/git/blobs/{file_sha}
@@ -320,7 +320,7 @@ class GitClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoGitCommitsPostBodyType,
-    ) -> Response[GitCommit, GitCommitType]: ...
+    ) -> Response[GitCommit, GitCommitTypeForResponse]: ...
 
     @overload
     def create_commit(
@@ -337,7 +337,7 @@ class GitClient:
         author: Missing[ReposOwnerRepoGitCommitsPostBodyPropAuthorType] = UNSET,
         committer: Missing[ReposOwnerRepoGitCommitsPostBodyPropCommitterType] = UNSET,
         signature: Missing[str] = UNSET,
-    ) -> Response[GitCommit, GitCommitType]: ...
+    ) -> Response[GitCommit, GitCommitTypeForResponse]: ...
 
     def create_commit(
         self,
@@ -348,7 +348,7 @@ class GitClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitCommit, GitCommitType]:
+    ) -> Response[GitCommit, GitCommitTypeForResponse]:
         """git/create-commit
 
         POST /repos/{owner}/{repo}/git/commits
@@ -431,7 +431,7 @@ class GitClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoGitCommitsPostBodyType,
-    ) -> Response[GitCommit, GitCommitType]: ...
+    ) -> Response[GitCommit, GitCommitTypeForResponse]: ...
 
     @overload
     async def async_create_commit(
@@ -448,7 +448,7 @@ class GitClient:
         author: Missing[ReposOwnerRepoGitCommitsPostBodyPropAuthorType] = UNSET,
         committer: Missing[ReposOwnerRepoGitCommitsPostBodyPropCommitterType] = UNSET,
         signature: Missing[str] = UNSET,
-    ) -> Response[GitCommit, GitCommitType]: ...
+    ) -> Response[GitCommit, GitCommitTypeForResponse]: ...
 
     async def async_create_commit(
         self,
@@ -459,7 +459,7 @@ class GitClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitCommit, GitCommitType]:
+    ) -> Response[GitCommit, GitCommitTypeForResponse]:
         """git/create-commit
 
         POST /repos/{owner}/{repo}/git/commits
@@ -541,7 +541,7 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GitCommit, GitCommitType]:
+    ) -> Response[GitCommit, GitCommitTypeForResponse]:
         """git/get-commit
 
         GET /repos/{owner}/{repo}/git/commits/{commit_sha}
@@ -609,7 +609,7 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GitCommit, GitCommitType]:
+    ) -> Response[GitCommit, GitCommitTypeForResponse]:
         """git/get-commit
 
         GET /repos/{owner}/{repo}/git/commits/{commit_sha}
@@ -677,7 +677,7 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[GitRef], list[GitRefType]]:
+    ) -> Response[list[GitRef], list[GitRefTypeForResponse]]:
         """git/list-matching-refs
 
         GET /repos/{owner}/{repo}/git/matching-refs/{ref}
@@ -719,7 +719,7 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[GitRef], list[GitRefType]]:
+    ) -> Response[list[GitRef], list[GitRefTypeForResponse]]:
         """git/list-matching-refs
 
         GET /repos/{owner}/{repo}/git/matching-refs/{ref}
@@ -761,7 +761,7 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GitRef, GitRefType]:
+    ) -> Response[GitRef, GitRefTypeForResponse]:
         """git/get-ref
 
         GET /repos/{owner}/{repo}/git/ref/{ref}
@@ -800,7 +800,7 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GitRef, GitRefType]:
+    ) -> Response[GitRef, GitRefTypeForResponse]:
         """git/get-ref
 
         GET /repos/{owner}/{repo}/git/ref/{ref}
@@ -840,7 +840,7 @@ class GitClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoGitRefsPostBodyType,
-    ) -> Response[GitRef, GitRefType]: ...
+    ) -> Response[GitRef, GitRefTypeForResponse]: ...
 
     @overload
     def create_ref(
@@ -853,7 +853,7 @@ class GitClient:
         stream: bool = False,
         ref: str,
         sha: str,
-    ) -> Response[GitRef, GitRefType]: ...
+    ) -> Response[GitRef, GitRefTypeForResponse]: ...
 
     def create_ref(
         self,
@@ -864,7 +864,7 @@ class GitClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitRef, GitRefType]:
+    ) -> Response[GitRef, GitRefTypeForResponse]:
         """git/create-ref
 
         POST /repos/{owner}/{repo}/git/refs
@@ -916,7 +916,7 @@ class GitClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoGitRefsPostBodyType,
-    ) -> Response[GitRef, GitRefType]: ...
+    ) -> Response[GitRef, GitRefTypeForResponse]: ...
 
     @overload
     async def async_create_ref(
@@ -929,7 +929,7 @@ class GitClient:
         stream: bool = False,
         ref: str,
         sha: str,
-    ) -> Response[GitRef, GitRefType]: ...
+    ) -> Response[GitRef, GitRefTypeForResponse]: ...
 
     async def async_create_ref(
         self,
@@ -940,7 +940,7 @@ class GitClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitRef, GitRefType]:
+    ) -> Response[GitRef, GitRefTypeForResponse]:
         """git/create-ref
 
         POST /repos/{owner}/{repo}/git/refs
@@ -1061,7 +1061,7 @@ class GitClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoGitRefsRefPatchBodyType,
-    ) -> Response[GitRef, GitRefType]: ...
+    ) -> Response[GitRef, GitRefTypeForResponse]: ...
 
     @overload
     def update_ref(
@@ -1075,7 +1075,7 @@ class GitClient:
         stream: bool = False,
         sha: str,
         force: Missing[bool] = UNSET,
-    ) -> Response[GitRef, GitRefType]: ...
+    ) -> Response[GitRef, GitRefTypeForResponse]: ...
 
     def update_ref(
         self,
@@ -1087,7 +1087,7 @@ class GitClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitRef, GitRefType]:
+    ) -> Response[GitRef, GitRefTypeForResponse]:
         """git/update-ref
 
         PATCH /repos/{owner}/{repo}/git/refs/{ref}
@@ -1140,7 +1140,7 @@ class GitClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoGitRefsRefPatchBodyType,
-    ) -> Response[GitRef, GitRefType]: ...
+    ) -> Response[GitRef, GitRefTypeForResponse]: ...
 
     @overload
     async def async_update_ref(
@@ -1154,7 +1154,7 @@ class GitClient:
         stream: bool = False,
         sha: str,
         force: Missing[bool] = UNSET,
-    ) -> Response[GitRef, GitRefType]: ...
+    ) -> Response[GitRef, GitRefTypeForResponse]: ...
 
     async def async_update_ref(
         self,
@@ -1166,7 +1166,7 @@ class GitClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitRef, GitRefType]:
+    ) -> Response[GitRef, GitRefTypeForResponse]:
         """git/update-ref
 
         PATCH /repos/{owner}/{repo}/git/refs/{ref}
@@ -1218,7 +1218,7 @@ class GitClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoGitTagsPostBodyType,
-    ) -> Response[GitTag, GitTagType]: ...
+    ) -> Response[GitTag, GitTagTypeForResponse]: ...
 
     @overload
     def create_tag(
@@ -1234,7 +1234,7 @@ class GitClient:
         object_: str,
         type: Literal["commit", "tree", "blob"],
         tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTaggerType] = UNSET,
-    ) -> Response[GitTag, GitTagType]: ...
+    ) -> Response[GitTag, GitTagTypeForResponse]: ...
 
     def create_tag(
         self,
@@ -1245,7 +1245,7 @@ class GitClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitTag, GitTagType]:
+    ) -> Response[GitTag, GitTagTypeForResponse]:
         """git/create-tag
 
         POST /repos/{owner}/{repo}/git/tags
@@ -1327,7 +1327,7 @@ class GitClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoGitTagsPostBodyType,
-    ) -> Response[GitTag, GitTagType]: ...
+    ) -> Response[GitTag, GitTagTypeForResponse]: ...
 
     @overload
     async def async_create_tag(
@@ -1343,7 +1343,7 @@ class GitClient:
         object_: str,
         type: Literal["commit", "tree", "blob"],
         tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTaggerType] = UNSET,
-    ) -> Response[GitTag, GitTagType]: ...
+    ) -> Response[GitTag, GitTagTypeForResponse]: ...
 
     async def async_create_tag(
         self,
@@ -1354,7 +1354,7 @@ class GitClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitTag, GitTagType]:
+    ) -> Response[GitTag, GitTagTypeForResponse]:
         """git/create-tag
 
         POST /repos/{owner}/{repo}/git/tags
@@ -1435,7 +1435,7 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GitTag, GitTagType]:
+    ) -> Response[GitTag, GitTagTypeForResponse]:
         """git/get-tag
 
         GET /repos/{owner}/{repo}/git/tags/{tag_sha}
@@ -1499,7 +1499,7 @@ class GitClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GitTag, GitTagType]:
+    ) -> Response[GitTag, GitTagTypeForResponse]:
         """git/get-tag
 
         GET /repos/{owner}/{repo}/git/tags/{tag_sha}
@@ -1564,7 +1564,7 @@ class GitClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoGitTreesPostBodyType,
-    ) -> Response[GitTree, GitTreeType]: ...
+    ) -> Response[GitTree, GitTreeTypeForResponse]: ...
 
     @overload
     def create_tree(
@@ -1577,7 +1577,7 @@ class GitClient:
         stream: bool = False,
         tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Missing[str] = UNSET,
-    ) -> Response[GitTree, GitTreeType]: ...
+    ) -> Response[GitTree, GitTreeTypeForResponse]: ...
 
     def create_tree(
         self,
@@ -1588,7 +1588,7 @@ class GitClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitTree, GitTreeType]:
+    ) -> Response[GitTree, GitTreeTypeForResponse]:
         """git/create-tree
 
         POST /repos/{owner}/{repo}/git/trees
@@ -1646,7 +1646,7 @@ class GitClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoGitTreesPostBodyType,
-    ) -> Response[GitTree, GitTreeType]: ...
+    ) -> Response[GitTree, GitTreeTypeForResponse]: ...
 
     @overload
     async def async_create_tree(
@@ -1659,7 +1659,7 @@ class GitClient:
         stream: bool = False,
         tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Missing[str] = UNSET,
-    ) -> Response[GitTree, GitTreeType]: ...
+    ) -> Response[GitTree, GitTreeTypeForResponse]: ...
 
     async def async_create_tree(
         self,
@@ -1670,7 +1670,7 @@ class GitClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitTree, GitTreeType]:
+    ) -> Response[GitTree, GitTreeTypeForResponse]:
         """git/create-tree
 
         POST /repos/{owner}/{repo}/git/trees
@@ -1728,7 +1728,7 @@ class GitClient:
         recursive: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GitTree, GitTreeType]:
+    ) -> Response[GitTree, GitTreeTypeForResponse]:
         """git/get-tree
 
         GET /repos/{owner}/{repo}/git/trees/{tree_sha}
@@ -1776,7 +1776,7 @@ class GitClient:
         recursive: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GitTree, GitTreeType]:
+    ) -> Response[GitTree, GitTreeTypeForResponse]:
         """git/get-tree
 
         GET /repos/{owner}/{repo}/git/trees/{tree_sha}

@@ -19,4 +19,13 @@ class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType(TypedDict):
     content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
-__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",)
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
+
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
+
+
+__all__ = (
+    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",
+    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse",
+)

@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0017 import AppPermissionsType
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
 class EnterpriseOrganizationInstallationType(TypedDict):
@@ -33,4 +33,24 @@ class EnterpriseOrganizationInstallationType(TypedDict):
     updated_at: datetime
 
 
-__all__ = ("EnterpriseOrganizationInstallationType",)
+class EnterpriseOrganizationInstallationTypeForResponse(TypedDict):
+    """Enterprise Organization Installation
+
+    A GitHub App Installation on an enterprise-owned organization
+    """
+
+    id: int
+    app_slug: NotRequired[str]
+    client_id: str
+    repository_selection: Literal["all", "selected"]
+    repositories_url: str
+    permissions: AppPermissionsTypeForResponse
+    events: NotRequired[list[str]]
+    created_at: str
+    updated_at: str
+
+
+__all__ = (
+    "EnterpriseOrganizationInstallationType",
+    "EnterpriseOrganizationInstallationTypeForResponse",
+)

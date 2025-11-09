@@ -13,13 +13,21 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0079 import TeamSimpleType
-from .group_0193 import MilestoneType
-from .group_0267 import AutoMergeType
-from .group_0440 import PullRequestPropLabelsItemsType
-from .group_0441 import PullRequestPropBaseType, PullRequestPropHeadType
-from .group_0442 import PullRequestPropLinksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0079 import TeamSimpleType, TeamSimpleTypeForResponse
+from .group_0193 import MilestoneType, MilestoneTypeForResponse
+from .group_0267 import AutoMergeType, AutoMergeTypeForResponse
+from .group_0440 import (
+    PullRequestPropLabelsItemsType,
+    PullRequestPropLabelsItemsTypeForResponse,
+)
+from .group_0441 import (
+    PullRequestPropBaseType,
+    PullRequestPropBaseTypeForResponse,
+    PullRequestPropHeadType,
+    PullRequestPropHeadTypeForResponse,
+)
+from .group_0442 import PullRequestPropLinksType, PullRequestPropLinksTypeForResponse
 
 
 class PullRequestType(TypedDict):
@@ -90,4 +98,75 @@ class PullRequestType(TypedDict):
     changed_files: int
 
 
-__all__ = ("PullRequestType",)
+class PullRequestTypeForResponse(TypedDict):
+    """Pull Request
+
+    Pull requests let you tell others about changes you've pushed to a repository on
+    GitHub. Once a pull request is sent, interested parties can review the set of
+    changes, discuss potential modifications, and even push follow-up commits if
+    necessary.
+    """
+
+    url: str
+    id: int
+    node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: Literal["open", "closed"]
+    locked: bool
+    title: str
+    user: SimpleUserTypeForResponse
+    body: Union[str, None]
+    labels: list[PullRequestPropLabelsItemsTypeForResponse]
+    milestone: Union[None, MilestoneTypeForResponse]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    merged_at: Union[str, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[None, SimpleUserTypeForResponse]
+    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
+    requested_reviewers: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
+    requested_teams: NotRequired[Union[list[TeamSimpleTypeForResponse], None]]
+    head: PullRequestPropHeadTypeForResponse
+    base: PullRequestPropBaseTypeForResponse
+    links: PullRequestPropLinksTypeForResponse
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeTypeForResponse, None]
+    draft: NotRequired[bool]
+    merged: bool
+    mergeable: Union[bool, None]
+    rebaseable: NotRequired[Union[bool, None]]
+    mergeable_state: str
+    merged_by: Union[None, SimpleUserTypeForResponse]
+    comments: int
+    review_comments: int
+    maintainer_can_modify: bool
+    commits: int
+    additions: int
+    deletions: int
+    changed_files: int
+
+
+__all__ = (
+    "PullRequestType",
+    "PullRequestTypeForResponse",
+)

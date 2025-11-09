@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0042 import ReactionRollupType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0042 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
 class PullRequestReviewCommentType(TypedDict):
@@ -64,6 +64,53 @@ class PullRequestReviewCommentType(TypedDict):
     body_text: NotRequired[str]
 
 
+class PullRequestReviewCommentTypeForResponse(TypedDict):
+    """Pull Request Review Comment
+
+    Pull Request Review Comments are comments on a portion of the Pull Request's
+    diff.
+    """
+
+    url: str
+    pull_request_review_id: Union[int, None]
+    id: int
+    node_id: str
+    diff_hunk: str
+    path: str
+    position: NotRequired[int]
+    original_position: NotRequired[int]
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: SimpleUserTypeForResponse
+    body: str
+    created_at: str
+    updated_at: str
+    html_url: str
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    links: PullRequestReviewCommentPropLinksTypeForResponse
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+
+
 class PullRequestReviewCommentPropLinksType(TypedDict):
     """PullRequestReviewCommentPropLinks"""
 
@@ -72,7 +119,21 @@ class PullRequestReviewCommentPropLinksType(TypedDict):
     pull_request: PullRequestReviewCommentPropLinksPropPullRequestType
 
 
+class PullRequestReviewCommentPropLinksTypeForResponse(TypedDict):
+    """PullRequestReviewCommentPropLinks"""
+
+    self_: PullRequestReviewCommentPropLinksPropSelfTypeForResponse
+    html: PullRequestReviewCommentPropLinksPropHtmlTypeForResponse
+    pull_request: PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse
+
+
 class PullRequestReviewCommentPropLinksPropSelfType(TypedDict):
+    """PullRequestReviewCommentPropLinksPropSelf"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropSelfTypeForResponse(TypedDict):
     """PullRequestReviewCommentPropLinksPropSelf"""
 
     href: str
@@ -84,7 +145,19 @@ class PullRequestReviewCommentPropLinksPropHtmlType(TypedDict):
     href: str
 
 
+class PullRequestReviewCommentPropLinksPropHtmlTypeForResponse(TypedDict):
+    """PullRequestReviewCommentPropLinksPropHtml"""
+
+    href: str
+
+
 class PullRequestReviewCommentPropLinksPropPullRequestType(TypedDict):
+    """PullRequestReviewCommentPropLinksPropPullRequest"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse(TypedDict):
     """PullRequestReviewCommentPropLinksPropPullRequest"""
 
     href: str
@@ -101,11 +174,28 @@ class TimelineLineCommentedEventType(TypedDict):
     comments: NotRequired[list[PullRequestReviewCommentType]]
 
 
+class TimelineLineCommentedEventTypeForResponse(TypedDict):
+    """Timeline Line Commented Event
+
+    Timeline Line Commented Event
+    """
+
+    event: NotRequired[Literal["line_commented"]]
+    node_id: NotRequired[str]
+    comments: NotRequired[list[PullRequestReviewCommentTypeForResponse]]
+
+
 __all__ = (
     "PullRequestReviewCommentPropLinksPropHtmlType",
+    "PullRequestReviewCommentPropLinksPropHtmlTypeForResponse",
     "PullRequestReviewCommentPropLinksPropPullRequestType",
+    "PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse",
     "PullRequestReviewCommentPropLinksPropSelfType",
+    "PullRequestReviewCommentPropLinksPropSelfTypeForResponse",
     "PullRequestReviewCommentPropLinksType",
+    "PullRequestReviewCommentPropLinksTypeForResponse",
     "PullRequestReviewCommentType",
+    "PullRequestReviewCommentTypeForResponse",
     "TimelineLineCommentedEventType",
+    "TimelineLineCommentedEventTypeForResponse",
 )

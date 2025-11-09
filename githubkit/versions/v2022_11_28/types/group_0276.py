@@ -11,7 +11,10 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0275 import CodeScanningVariantAnalysisRepositoryType
+from .group_0275 import (
+    CodeScanningVariantAnalysisRepositoryType,
+    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+)
 
 
 class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
@@ -21,4 +24,14 @@ class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
     repositories: list[CodeScanningVariantAnalysisRepositoryType]
 
 
-__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroupType",)
+class CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+
+    repository_count: int
+    repositories: list[CodeScanningVariantAnalysisRepositoryTypeForResponse]
+
+
+__all__ = (
+    "CodeScanningVariantAnalysisSkippedRepoGroupType",
+    "CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse",
+)

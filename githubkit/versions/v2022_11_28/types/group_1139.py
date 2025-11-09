@@ -19,4 +19,13 @@ class ReposOwnerRepoInvitationsInvitationIdPatchBodyType(TypedDict):
     permissions: NotRequired[Literal["read", "write", "maintain", "triage", "admin"]]
 
 
-__all__ = ("ReposOwnerRepoInvitationsInvitationIdPatchBodyType",)
+class ReposOwnerRepoInvitationsInvitationIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
+
+    permissions: NotRequired[Literal["read", "write", "maintain", "triage", "admin"]]
+
+
+__all__ = (
+    "ReposOwnerRepoInvitationsInvitationIdPatchBodyType",
+    "ReposOwnerRepoInvitationsInvitationIdPatchBodyTypeForResponse",
+)

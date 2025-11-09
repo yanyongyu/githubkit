@@ -24,4 +24,19 @@ class PorterLargeFileType(TypedDict):
     size: int
 
 
-__all__ = ("PorterLargeFileType",)
+class PorterLargeFileTypeForResponse(TypedDict):
+    """Porter Large File
+
+    Porter Large File
+    """
+
+    ref_name: str
+    path: str
+    oid: str
+    size: int
+
+
+__all__ = (
+    "PorterLargeFileType",
+    "PorterLargeFileTypeForResponse",
+)

@@ -28,4 +28,22 @@ class BlobType(TypedDict):
     highlighted_content: NotRequired[str]
 
 
-__all__ = ("BlobType",)
+class BlobTypeForResponse(TypedDict):
+    """Blob
+
+    Blob
+    """
+
+    content: str
+    encoding: str
+    url: str
+    sha: str
+    size: Union[int, None]
+    node_id: str
+    highlighted_content: NotRequired[str]
+
+
+__all__ = (
+    "BlobType",
+    "BlobTypeForResponse",
+)

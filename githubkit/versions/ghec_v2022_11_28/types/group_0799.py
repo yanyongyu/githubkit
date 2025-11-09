@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0398 import HookResponseType
+from .group_0398 import HookResponseType, HookResponseTypeForResponse
 
 
 class WebhookPingPropHookType(TypedDict):
@@ -38,7 +38,38 @@ class WebhookPingPropHookType(TypedDict):
     url: NotRequired[str]
 
 
+class WebhookPingPropHookTypeForResponse(TypedDict):
+    """Webhook
+
+    The webhook that is being pinged
+    """
+
+    active: bool
+    app_id: NotRequired[int]
+    config: WebhookPingPropHookPropConfigTypeForResponse
+    created_at: str
+    deliveries_url: NotRequired[str]
+    events: list[str]
+    id: int
+    last_response: NotRequired[HookResponseTypeForResponse]
+    name: Literal["web"]
+    ping_url: NotRequired[str]
+    test_url: NotRequired[str]
+    type: str
+    updated_at: str
+    url: NotRequired[str]
+
+
 class WebhookPingPropHookPropConfigType(TypedDict):
+    """WebhookPingPropHookPropConfig"""
+
+    content_type: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    secret: NotRequired[str]
+    url: NotRequired[str]
+
+
+class WebhookPingPropHookPropConfigTypeForResponse(TypedDict):
     """WebhookPingPropHookPropConfig"""
 
     content_type: NotRequired[str]
@@ -49,5 +80,7 @@ class WebhookPingPropHookPropConfigType(TypedDict):
 
 __all__ = (
     "WebhookPingPropHookPropConfigType",
+    "WebhookPingPropHookPropConfigTypeForResponse",
     "WebhookPingPropHookType",
+    "WebhookPingPropHookTypeForResponse",
 )

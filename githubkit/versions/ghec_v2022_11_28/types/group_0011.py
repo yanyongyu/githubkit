@@ -25,4 +25,19 @@ class WebhookConfigType(TypedDict):
     insecure_ssl: NotRequired[Union[str, float]]
 
 
-__all__ = ("WebhookConfigType",)
+class WebhookConfigTypeForResponse(TypedDict):
+    """Webhook Configuration
+
+    Configuration object of the webhook
+    """
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+
+
+__all__ = (
+    "WebhookConfigType",
+    "WebhookConfigTypeForResponse",
+)

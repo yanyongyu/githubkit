@@ -20,4 +20,15 @@ class SelectedActionsType(TypedDict):
     patterns_allowed: NotRequired[list[str]]
 
 
-__all__ = ("SelectedActionsType",)
+class SelectedActionsTypeForResponse(TypedDict):
+    """SelectedActions"""
+
+    github_owned_allowed: NotRequired[bool]
+    verified_allowed: NotRequired[bool]
+    patterns_allowed: NotRequired[list[str]]
+
+
+__all__ = (
+    "SelectedActionsType",
+    "SelectedActionsTypeForResponse",
+)

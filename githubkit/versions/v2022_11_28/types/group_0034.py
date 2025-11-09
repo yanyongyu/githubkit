@@ -22,4 +22,17 @@ class DependabotAlertPackageType(TypedDict):
     name: str
 
 
-__all__ = ("DependabotAlertPackageType",)
+class DependabotAlertPackageTypeForResponse(TypedDict):
+    """DependabotAlertPackage
+
+    Details for the vulnerable package.
+    """
+
+    ecosystem: str
+    name: str
+
+
+__all__ = (
+    "DependabotAlertPackageType",
+    "DependabotAlertPackageTypeForResponse",
+)

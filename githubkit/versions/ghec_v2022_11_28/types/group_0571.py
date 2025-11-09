@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class ProjectsV2ItemType(TypedDict):
@@ -33,4 +33,24 @@ class ProjectsV2ItemType(TypedDict):
     archived_at: Union[datetime, None]
 
 
-__all__ = ("ProjectsV2ItemType",)
+class ProjectsV2ItemTypeForResponse(TypedDict):
+    """Projects v2 Item
+
+    An item belonging to a project
+    """
+
+    id: float
+    node_id: NotRequired[str]
+    project_node_id: NotRequired[str]
+    content_node_id: str
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    archived_at: Union[str, None]
+
+
+__all__ = (
+    "ProjectsV2ItemType",
+    "ProjectsV2ItemTypeForResponse",
+)

@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0126 import RepositoryRuleUpdatePropParametersType
+from .group_0126 import (
+    RepositoryRuleUpdatePropParametersType,
+    RepositoryRuleUpdatePropParametersTypeForResponse,
+)
 
 
 class RepositoryRuleUpdateType(TypedDict):
@@ -25,4 +28,17 @@ class RepositoryRuleUpdateType(TypedDict):
     parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
 
 
-__all__ = ("RepositoryRuleUpdateType",)
+class RepositoryRuleUpdateTypeForResponse(TypedDict):
+    """update
+
+    Only allow users with bypass permission to update matching refs.
+    """
+
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
+
+
+__all__ = (
+    "RepositoryRuleUpdateType",
+    "RepositoryRuleUpdateTypeForResponse",
+)

@@ -20,7 +20,22 @@ class PatchSchemaType(TypedDict):
     schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
 
 
+class PatchSchemaTypeForResponse(TypedDict):
+    """PatchSchema"""
+
+    operations: list[PatchSchemaPropOperationsItemsTypeForResponse]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
+
+
 class PatchSchemaPropOperationsItemsType(TypedDict):
+    """PatchSchemaPropOperationsItems"""
+
+    op: Literal["add", "replace", "remove"]
+    path: NotRequired[str]
+    value: NotRequired[str]
+
+
+class PatchSchemaPropOperationsItemsTypeForResponse(TypedDict):
     """PatchSchemaPropOperationsItems"""
 
     op: Literal["add", "replace", "remove"]
@@ -30,5 +45,7 @@ class PatchSchemaPropOperationsItemsType(TypedDict):
 
 __all__ = (
     "PatchSchemaPropOperationsItemsType",
+    "PatchSchemaPropOperationsItemsTypeForResponse",
     "PatchSchemaType",
+    "PatchSchemaTypeForResponse",
 )

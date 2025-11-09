@@ -24,4 +24,18 @@ class TeamMembershipType(TypedDict):
     state: Literal["active", "pending"]
 
 
-__all__ = ("TeamMembershipType",)
+class TeamMembershipTypeForResponse(TypedDict):
+    """Team Membership
+
+    Team Membership
+    """
+
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
+
+
+__all__ = (
+    "TeamMembershipType",
+    "TeamMembershipTypeForResponse",
+)

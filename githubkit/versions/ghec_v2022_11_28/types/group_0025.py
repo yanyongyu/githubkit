@@ -13,7 +13,10 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0024 import SimpleClassroomRepositoryType
+from .group_0024 import (
+    SimpleClassroomRepositoryType,
+    SimpleClassroomRepositoryTypeForResponse,
+)
 
 
 class ClassroomAssignmentType(TypedDict):
@@ -43,6 +46,33 @@ class ClassroomAssignmentType(TypedDict):
     classroom: ClassroomType
 
 
+class ClassroomAssignmentTypeForResponse(TypedDict):
+    """Classroom Assignment
+
+    A GitHub Classroom assignment
+    """
+
+    id: int
+    public_repo: bool
+    title: str
+    type: Literal["individual", "group"]
+    invite_link: str
+    invitations_enabled: bool
+    slug: str
+    students_are_repo_admins: bool
+    feedback_pull_requests_enabled: bool
+    max_teams: Union[int, None]
+    max_members: Union[int, None]
+    editor: str
+    accepted: int
+    submitted: int
+    passing: int
+    language: str
+    deadline: Union[str, None]
+    starter_code_repository: SimpleClassroomRepositoryTypeForResponse
+    classroom: ClassroomTypeForResponse
+
+
 class ClassroomType(TypedDict):
     """Classroom
 
@@ -53,6 +83,19 @@ class ClassroomType(TypedDict):
     name: str
     archived: bool
     organization: SimpleClassroomOrganizationType
+    url: str
+
+
+class ClassroomTypeForResponse(TypedDict):
+    """Classroom
+
+    A GitHub Classroom classroom
+    """
+
+    id: int
+    name: str
+    archived: bool
+    organization: SimpleClassroomOrganizationTypeForResponse
     url: str
 
 
@@ -70,8 +113,25 @@ class SimpleClassroomOrganizationType(TypedDict):
     avatar_url: str
 
 
+class SimpleClassroomOrganizationTypeForResponse(TypedDict):
+    """Organization Simple for Classroom
+
+    A GitHub organization.
+    """
+
+    id: int
+    login: str
+    node_id: str
+    html_url: str
+    name: Union[str, None]
+    avatar_url: str
+
+
 __all__ = (
     "ClassroomAssignmentType",
+    "ClassroomAssignmentTypeForResponse",
     "ClassroomType",
+    "ClassroomTypeForResponse",
     "SimpleClassroomOrganizationType",
+    "SimpleClassroomOrganizationTypeForResponse",
 )

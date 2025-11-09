@@ -22,4 +22,17 @@ class ReleaseNotesContentType(TypedDict):
     body: str
 
 
-__all__ = ("ReleaseNotesContentType",)
+class ReleaseNotesContentTypeForResponse(TypedDict):
+    """Generated Release Notes Content
+
+    Generated name and body describing a release
+    """
+
+    name: str
+    body: str
+
+
+__all__ = (
+    "ReleaseNotesContentType",
+    "ReleaseNotesContentTypeForResponse",
+)

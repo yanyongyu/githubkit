@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class PageBuildType(TypedDict):
@@ -32,7 +32,29 @@ class PageBuildType(TypedDict):
     updated_at: datetime
 
 
+class PageBuildTypeForResponse(TypedDict):
+    """Page Build
+
+    Page Build
+    """
+
+    url: str
+    status: str
+    error: PageBuildPropErrorTypeForResponse
+    pusher: Union[None, SimpleUserTypeForResponse]
+    commit: str
+    duration: int
+    created_at: str
+    updated_at: str
+
+
 class PageBuildPropErrorType(TypedDict):
+    """PageBuildPropError"""
+
+    message: Union[str, None]
+
+
+class PageBuildPropErrorTypeForResponse(TypedDict):
     """PageBuildPropError"""
 
     message: Union[str, None]
@@ -40,5 +62,7 @@ class PageBuildPropErrorType(TypedDict):
 
 __all__ = (
     "PageBuildPropErrorType",
+    "PageBuildPropErrorTypeForResponse",
     "PageBuildType",
+    "PageBuildTypeForResponse",
 )

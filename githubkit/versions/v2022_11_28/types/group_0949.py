@@ -19,4 +19,14 @@ class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType(TypedDict):
     alert_numbers: list[int]
 
 
-__all__ = ("OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType",)
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse(TypedDict):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+
+    repository_id: int
+    alert_numbers: list[int]
+
+
+__all__ = (
+    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType",
+    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse",
+)

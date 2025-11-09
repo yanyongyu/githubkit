@@ -24,4 +24,18 @@ class RunnerLabelType(TypedDict):
     type: NotRequired[Literal["read-only", "custom"]]
 
 
-__all__ = ("RunnerLabelType",)
+class RunnerLabelTypeForResponse(TypedDict):
+    """Self hosted runner label
+
+    A label for a self hosted runner
+    """
+
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
+
+
+__all__ = (
+    "RunnerLabelType",
+    "RunnerLabelTypeForResponse",
+)

@@ -19,4 +19,14 @@ class CodeScanningSarifsReceiptType(TypedDict):
     url: NotRequired[str]
 
 
-__all__ = ("CodeScanningSarifsReceiptType",)
+class CodeScanningSarifsReceiptTypeForResponse(TypedDict):
+    """CodeScanningSarifsReceipt"""
+
+    id: NotRequired[str]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "CodeScanningSarifsReceiptType",
+    "CodeScanningSarifsReceiptTypeForResponse",
+)

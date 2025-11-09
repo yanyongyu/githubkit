@@ -23,12 +23,33 @@ class GetLicenseSyncStatusType(TypedDict):
     ]
 
 
+class GetLicenseSyncStatusTypeForResponse(TypedDict):
+    """License Sync Status
+
+    Information about the status of a license sync job for an enterprise.
+    """
+
+    server_instances: NotRequired[
+        list[GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse]
+    ]
+
+
 class GetLicenseSyncStatusPropServerInstancesItemsType(TypedDict):
     """GetLicenseSyncStatusPropServerInstancesItems"""
 
     server_id: NotRequired[str]
     hostname: NotRequired[str]
     last_sync: NotRequired[GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
+
+    server_id: NotRequired[str]
+    hostname: NotRequired[str]
+    last_sync: NotRequired[
+        GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse
+    ]
 
 
 class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType(TypedDict):
@@ -39,8 +60,21 @@ class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType(TypedDict):
     error: NotRequired[str]
 
 
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse(
+    TypedDict
+):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: NotRequired[str]
+    status: NotRequired[str]
+    error: NotRequired[str]
+
+
 __all__ = (
     "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse",
     "GetLicenseSyncStatusPropServerInstancesItemsType",
+    "GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse",
     "GetLicenseSyncStatusType",
+    "GetLicenseSyncStatusTypeForResponse",
 )

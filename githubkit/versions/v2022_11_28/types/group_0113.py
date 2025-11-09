@@ -22,4 +22,17 @@ class ApiInsightsSummaryStatsType(TypedDict):
     rate_limited_request_count: NotRequired[int]
 
 
-__all__ = ("ApiInsightsSummaryStatsType",)
+class ApiInsightsSummaryStatsTypeForResponse(TypedDict):
+    """Summary Stats
+
+    API Insights usage summary stats for an organization
+    """
+
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+
+
+__all__ = (
+    "ApiInsightsSummaryStatsType",
+    "ApiInsightsSummaryStatsTypeForResponse",
+)

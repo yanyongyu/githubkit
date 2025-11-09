@@ -18,4 +18,13 @@ class ReposOwnerRepoTagsProtectionPostBodyType(TypedDict):
     pattern: str
 
 
-__all__ = ("ReposOwnerRepoTagsProtectionPostBodyType",)
+class ReposOwnerRepoTagsProtectionPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoTagsProtectionPostBody"""
+
+    pattern: str
+
+
+__all__ = (
+    "ReposOwnerRepoTagsProtectionPostBodyType",
+    "ReposOwnerRepoTagsProtectionPostBodyTypeForResponse",
+)

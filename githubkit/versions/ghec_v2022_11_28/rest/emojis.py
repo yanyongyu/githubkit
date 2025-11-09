@@ -20,7 +20,7 @@ if TYPE_CHECKING:
     from githubkit.response import Response
 
     from ..models import EmojisGetResponse200
-    from ..types import EmojisGetResponse200Type
+    from ..types import EmojisGetResponse200TypeForResponse
 
 
 class EmojisClient:
@@ -43,7 +43,7 @@ class EmojisClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EmojisGetResponse200, EmojisGetResponse200Type]:
+    ) -> Response[EmojisGetResponse200, EmojisGetResponse200TypeForResponse]:
         """emojis/get
 
         GET /emojis
@@ -72,7 +72,7 @@ class EmojisClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EmojisGetResponse200, EmojisGetResponse200Type]:
+    ) -> Response[EmojisGetResponse200, EmojisGetResponse200TypeForResponse]:
         """emojis/get
 
         GET /emojis

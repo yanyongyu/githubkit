@@ -25,4 +25,19 @@ class MetaType(TypedDict):
     location: NotRequired[str]
 
 
-__all__ = ("MetaType",)
+class MetaTypeForResponse(TypedDict):
+    """Meta
+
+    The metadata associated with the creation/updates to the user.
+    """
+
+    resource_type: Literal["User", "Group"]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
+
+
+__all__ = (
+    "MetaType",
+    "MetaTypeForResponse",
+)

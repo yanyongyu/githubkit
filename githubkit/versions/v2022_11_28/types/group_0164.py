@@ -18,4 +18,13 @@ class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
     required_deployment_environments: list[str]
 
 
-__all__ = ("RepositoryRuleRequiredDeploymentsPropParametersType",)
+class RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
+
+    required_deployment_environments: list[str]
+
+
+__all__ = (
+    "RepositoryRuleRequiredDeploymentsPropParametersType",
+    "RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse",
+)

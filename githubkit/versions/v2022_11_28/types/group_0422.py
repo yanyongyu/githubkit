@@ -24,4 +24,19 @@ class ContentTrafficType(TypedDict):
     uniques: int
 
 
-__all__ = ("ContentTrafficType",)
+class ContentTrafficTypeForResponse(TypedDict):
+    """Content Traffic
+
+    Content Traffic
+    """
+
+    path: str
+    title: str
+    count: int
+    uniques: int
+
+
+__all__ = (
+    "ContentTrafficType",
+    "ContentTrafficTypeForResponse",
+)

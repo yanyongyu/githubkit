@@ -20,4 +20,15 @@ class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType(
     body: str
 
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType",)
+class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyTypeForResponse(
+    TypedDict
+):
+    """TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
+
+    body: str
+
+
+__all__ = (
+    "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType",
+    "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyTypeForResponse",
+)

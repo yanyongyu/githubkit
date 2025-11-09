@@ -19,4 +19,14 @@ class OrgsOrgAttestationsBulkListPostBodyType(TypedDict):
     predicate_type: NotRequired[str]
 
 
-__all__ = ("OrgsOrgAttestationsBulkListPostBodyType",)
+class OrgsOrgAttestationsBulkListPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostBody"""
+
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
+
+
+__all__ = (
+    "OrgsOrgAttestationsBulkListPostBodyType",
+    "OrgsOrgAttestationsBulkListPostBodyTypeForResponse",
+)

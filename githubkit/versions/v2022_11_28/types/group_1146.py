@@ -18,4 +18,13 @@ class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType(TypedDict):
     body: str
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType",)
+class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
+
+    body: str
+
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyTypeForResponse",
+)

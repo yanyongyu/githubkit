@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0017 import AppPermissionsType
-from .group_0020 import RepositoryType
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
 class InstallationTokenType(TypedDict):
@@ -32,4 +32,23 @@ class InstallationTokenType(TypedDict):
     single_file_paths: NotRequired[list[str]]
 
 
-__all__ = ("InstallationTokenType",)
+class InstallationTokenTypeForResponse(TypedDict):
+    """Installation Token
+
+    Authentication token for a GitHub App installed on a user, org, or enterprise.
+    """
+
+    token: str
+    expires_at: str
+    permissions: NotRequired[AppPermissionsTypeForResponse]
+    repository_selection: NotRequired[Literal["all", "selected"]]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
+    single_file: NotRequired[str]
+    has_multiple_single_files: NotRequired[bool]
+    single_file_paths: NotRequired[list[str]]
+
+
+__all__ = (
+    "InstallationTokenType",
+    "InstallationTokenTypeForResponse",
+)

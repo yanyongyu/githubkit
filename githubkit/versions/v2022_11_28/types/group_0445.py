@@ -21,7 +21,23 @@ class HovercardType(TypedDict):
     contexts: list[HovercardPropContextsItemsType]
 
 
+class HovercardTypeForResponse(TypedDict):
+    """Hovercard
+
+    Hovercard
+    """
+
+    contexts: list[HovercardPropContextsItemsTypeForResponse]
+
+
 class HovercardPropContextsItemsType(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
+
+
+class HovercardPropContextsItemsTypeForResponse(TypedDict):
     """HovercardPropContextsItems"""
 
     message: str
@@ -30,5 +46,7 @@ class HovercardPropContextsItemsType(TypedDict):
 
 __all__ = (
     "HovercardPropContextsItemsType",
+    "HovercardPropContextsItemsTypeForResponse",
     "HovercardType",
+    "HovercardTypeForResponse",
 )

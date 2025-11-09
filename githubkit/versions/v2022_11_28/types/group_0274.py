@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class CodeScanningCodeqlDatabaseType(TypedDict):
@@ -34,4 +34,25 @@ class CodeScanningCodeqlDatabaseType(TypedDict):
     commit_oid: NotRequired[Union[str, None]]
 
 
-__all__ = ("CodeScanningCodeqlDatabaseType",)
+class CodeScanningCodeqlDatabaseTypeForResponse(TypedDict):
+    """CodeQL Database
+
+    A CodeQL database.
+    """
+
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserTypeForResponse
+    content_type: str
+    size: int
+    created_at: str
+    updated_at: str
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "CodeScanningCodeqlDatabaseType",
+    "CodeScanningCodeqlDatabaseTypeForResponse",
+)

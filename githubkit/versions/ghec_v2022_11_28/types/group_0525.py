@@ -13,7 +13,10 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0209 import MarketplaceListingPlanType
+from .group_0209 import (
+    MarketplaceListingPlanType,
+    MarketplaceListingPlanTypeForResponse,
+)
 
 
 class UserMarketplacePurchaseType(TypedDict):
@@ -32,7 +35,35 @@ class UserMarketplacePurchaseType(TypedDict):
     plan: MarketplaceListingPlanType
 
 
+class UserMarketplacePurchaseTypeForResponse(TypedDict):
+    """User Marketplace Purchase
+
+    User Marketplace Purchase
+    """
+
+    billing_cycle: str
+    next_billing_date: Union[str, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[str, None]
+    updated_at: Union[str, None]
+    account: MarketplaceAccountTypeForResponse
+    plan: MarketplaceListingPlanTypeForResponse
+
+
 class MarketplaceAccountType(TypedDict):
+    """Marketplace Account"""
+
+    url: str
+    id: int
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
+
+
+class MarketplaceAccountTypeForResponse(TypedDict):
     """Marketplace Account"""
 
     url: str
@@ -46,5 +77,7 @@ class MarketplaceAccountType(TypedDict):
 
 __all__ = (
     "MarketplaceAccountType",
+    "MarketplaceAccountTypeForResponse",
     "UserMarketplacePurchaseType",
+    "UserMarketplacePurchaseTypeForResponse",
 )

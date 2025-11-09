@@ -81,4 +81,75 @@ class AppPermissionsType(TypedDict):
     ]
 
 
-__all__ = ("AppPermissionsType",)
+class AppPermissionsTypeForResponse(TypedDict):
+    """App Permissions
+
+    The permissions granted to the user access token.
+
+    Examples:
+        {'contents': 'read', 'issues': 'read', 'deployments': 'write', 'single_file':
+    'read'}
+    """
+
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    codespaces: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    dependabot_secrets: NotRequired[Literal["read", "write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_custom_properties: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write", "admin"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["write"]]
+    custom_properties_for_organizations: NotRequired[Literal["read", "write"]]
+    members: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_custom_roles: NotRequired[Literal["read", "write"]]
+    organization_custom_org_roles: NotRequired[Literal["read", "write"]]
+    organization_custom_properties: NotRequired[Literal["read", "write", "admin"]]
+    organization_copilot_seat_management: NotRequired[Literal["write", "read"]]
+    organization_announcement_banners: NotRequired[Literal["read", "write"]]
+    organization_events: NotRequired[Literal["read"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_personal_access_tokens: NotRequired[Literal["read", "write"]]
+    organization_personal_access_token_requests: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read"]]
+    organization_projects: NotRequired[Literal["read", "write", "admin"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    team_discussions: NotRequired[Literal["read", "write"]]
+    email_addresses: NotRequired[Literal["read", "write"]]
+    followers: NotRequired[Literal["read", "write"]]
+    git_ssh_keys: NotRequired[Literal["read", "write"]]
+    gpg_keys: NotRequired[Literal["read", "write"]]
+    interaction_limits: NotRequired[Literal["read", "write"]]
+    profile: NotRequired[Literal["write"]]
+    starring: NotRequired[Literal["read", "write"]]
+    enterprise_custom_properties_for_organizations: NotRequired[
+        Literal["read", "write", "admin"]
+    ]
+    enterprise_organization_installations: NotRequired[Literal["read", "write"]]
+    enterprise_organization_installation_repositories: NotRequired[
+        Literal["read", "write"]
+    ]
+
+
+__all__ = (
+    "AppPermissionsType",
+    "AppPermissionsTypeForResponse",
+)

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0237 import WorkflowRunType
+from .group_0237 import WorkflowRunType, WorkflowRunTypeForResponse
 
 
 class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):
@@ -21,4 +21,14 @@ class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):
     workflow_runs: list[WorkflowRunType]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsGetResponse200Type",)
+class ReposOwnerRepoActionsRunsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunsGetResponse200"""
+
+    total_count: int
+    workflow_runs: list[WorkflowRunTypeForResponse]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsRunsGetResponse200Type",
+    "ReposOwnerRepoActionsRunsGetResponse200TypeForResponse",
+)

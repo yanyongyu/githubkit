@@ -19,4 +19,13 @@ class TeamsTeamIdReposOwnerRepoPutBodyType(TypedDict):
     permission: NotRequired[Literal["pull", "push", "admin"]]
 
 
-__all__ = ("TeamsTeamIdReposOwnerRepoPutBodyType",)
+class TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdReposOwnerRepoPutBody"""
+
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+
+
+__all__ = (
+    "TeamsTeamIdReposOwnerRepoPutBodyType",
+    "TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse",
+)

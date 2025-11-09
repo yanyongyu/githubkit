@@ -22,4 +22,16 @@ class RepositoryRuleCommitMessagePatternPropParametersType(TypedDict):
     pattern: str
 
 
-__all__ = ("RepositoryRuleCommitMessagePatternPropParametersType",)
+class RepositoryRuleCommitMessagePatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCommitMessagePatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
+
+
+__all__ = (
+    "RepositoryRuleCommitMessagePatternPropParametersType",
+    "RepositoryRuleCommitMessagePatternPropParametersTypeForResponse",
+)

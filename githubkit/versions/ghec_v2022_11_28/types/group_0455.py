@@ -22,4 +22,16 @@ class RepositoryRuleDetailedOneof3Type(TypedDict):
     ruleset_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleDetailedOneof3Type",)
+class RepositoryRuleDetailedOneof3TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof3"""
+
+    type: Literal["required_linear_history"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+__all__ = (
+    "RepositoryRuleDetailedOneof3Type",
+    "RepositoryRuleDetailedOneof3TypeForResponse",
+)

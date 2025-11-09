@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0275 import CodeScanningVariantAnalysisRepositoryType
+from .group_0275 import (
+    CodeScanningVariantAnalysisRepositoryType,
+    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+)
 
 
 class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
@@ -27,4 +30,19 @@ class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
     failure_message: NotRequired[str]
 
 
-__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",)
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+
+    repository: CodeScanningVariantAnalysisRepositoryTypeForResponse
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
+    failure_message: NotRequired[str]
+
+
+__all__ = (
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
+)

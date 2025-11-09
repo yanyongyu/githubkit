@@ -19,4 +19,14 @@ class UserGpgKeysPostBodyType(TypedDict):
     armored_public_key: str
 
 
-__all__ = ("UserGpgKeysPostBodyType",)
+class UserGpgKeysPostBodyTypeForResponse(TypedDict):
+    """UserGpgKeysPostBody"""
+
+    name: NotRequired[str]
+    armored_public_key: str
+
+
+__all__ = (
+    "UserGpgKeysPostBodyType",
+    "UserGpgKeysPostBodyTypeForResponse",
+)

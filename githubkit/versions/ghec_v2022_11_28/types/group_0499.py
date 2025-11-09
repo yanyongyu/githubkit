@@ -22,7 +22,23 @@ class GroupType(TypedDict):
     members: NotRequired[list[GroupPropMembersItemsType]]
 
 
+class GroupTypeForResponse(TypedDict):
+    """Group"""
+
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
+    external_id: str
+    display_name: str
+    members: NotRequired[list[GroupPropMembersItemsTypeForResponse]]
+
+
 class GroupPropMembersItemsType(TypedDict):
+    """GroupPropMembersItems"""
+
+    value: str
+    display_name: str
+
+
+class GroupPropMembersItemsTypeForResponse(TypedDict):
     """GroupPropMembersItems"""
 
     value: str
@@ -31,5 +47,7 @@ class GroupPropMembersItemsType(TypedDict):
 
 __all__ = (
     "GroupPropMembersItemsType",
+    "GroupPropMembersItemsTypeForResponse",
     "GroupType",
+    "GroupTypeForResponse",
 )

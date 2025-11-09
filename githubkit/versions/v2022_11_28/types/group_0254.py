@@ -23,4 +23,17 @@ class VerificationType(TypedDict):
     verified_at: NotRequired[Union[str, None]]
 
 
-__all__ = ("VerificationType",)
+class VerificationTypeForResponse(TypedDict):
+    """Verification"""
+
+    verified: bool
+    reason: str
+    payload: Union[str, None]
+    signature: Union[str, None]
+    verified_at: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "VerificationType",
+    "VerificationTypeForResponse",
+)

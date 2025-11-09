@@ -32,4 +32,25 @@ class EnterpriseType(TypedDict):
     avatar_url: str
 
 
-__all__ = ("EnterpriseType",)
+class EnterpriseTypeForResponse(TypedDict):
+    """Enterprise
+
+    An enterprise on GitHub.
+    """
+
+    description: NotRequired[Union[str, None]]
+    html_url: str
+    website_url: NotRequired[Union[str, None]]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    avatar_url: str
+
+
+__all__ = (
+    "EnterpriseType",
+    "EnterpriseTypeForResponse",
+)

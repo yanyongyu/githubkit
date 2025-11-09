@@ -22,7 +22,31 @@ class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyT
     exclude: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
 
 
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+
+    include: NotRequired[
+        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
+    ]
+    exclude: NotRequired[
+        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
+    ]
+
+
 class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a repository property
+    """
+
+    name: str
+    property_values: list[str]
+    source: NotRequired[Literal["custom", "system"]]
+
+
+class RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse(TypedDict):
     """Repository ruleset property targeting definition
 
     Parameters for a targeting a repository property
@@ -35,5 +59,7 @@ class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
 
 __all__ = (
     "RepositoryRulesetConditionsRepositoryPropertySpecType",
+    "RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse",
     "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse",
 )

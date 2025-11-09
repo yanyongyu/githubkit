@@ -21,7 +21,26 @@ class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
     ]
 
 
+class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
+
+    fields: list[
+        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
+    ]
+
+
 class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(
+    TypedDict
+):
+    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+
+    id: int
+    value: Union[str, float, None]
+
+
+class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
     TypedDict
 ):
     """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
@@ -32,5 +51,7 @@ class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTyp
 
 __all__ = (
     "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
+    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
     "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType",
+    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
 )

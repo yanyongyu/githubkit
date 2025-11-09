@@ -25,7 +25,34 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyType(TypedDict):
     emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType]
 
 
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
+
+    schemas: NotRequired[list[str]]
+    display_name: NotRequired[str]
+    external_id: NotRequired[str]
+    groups: NotRequired[list[str]]
+    active: NotRequired[bool]
+    user_name: str
+    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse
+    emails: list[
+        ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse
+    ]
+
+
 class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse(TypedDict):
     """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
 
     Examples:
@@ -45,8 +72,21 @@ class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType(TypedDict)
     primary: NotRequired[bool]
 
 
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
+
+    type: NotRequired[str]
+    value: str
+    primary: NotRequired[bool]
+
+
 __all__ = (
     "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse",
     "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse",
     "ScimV2OrganizationsOrgUsersScimUserIdPutBodyType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyTypeForResponse",
 )

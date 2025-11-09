@@ -36,7 +36,36 @@ class PageType(TypedDict):
     https_enforced: NotRequired[bool]
 
 
+class PageTypeForResponse(TypedDict):
+    """GitHub Pages
+
+    The configuration for GitHub Pages for a repository.
+    """
+
+    url: str
+    status: Union[None, Literal["built", "building", "errored"]]
+    cname: Union[str, None]
+    protected_domain_state: NotRequired[
+        Union[None, Literal["pending", "verified", "unverified"]]
+    ]
+    pending_domain_unverified_at: NotRequired[Union[str, None]]
+    custom_404: bool
+    html_url: NotRequired[str]
+    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
+    source: NotRequired[PagesSourceHashTypeForResponse]
+    public: bool
+    https_certificate: NotRequired[PagesHttpsCertificateTypeForResponse]
+    https_enforced: NotRequired[bool]
+
+
 class PagesSourceHashType(TypedDict):
+    """Pages Source Hash"""
+
+    branch: str
+    path: str
+
+
+class PagesSourceHashTypeForResponse(TypedDict):
     """Pages Source Hash"""
 
     branch: str
@@ -65,8 +94,33 @@ class PagesHttpsCertificateType(TypedDict):
     expires_at: NotRequired[date]
 
 
+class PagesHttpsCertificateTypeForResponse(TypedDict):
+    """Pages Https Certificate"""
+
+    state: Literal[
+        "new",
+        "authorization_created",
+        "authorization_pending",
+        "authorized",
+        "authorization_revoked",
+        "issued",
+        "uploaded",
+        "approved",
+        "errored",
+        "bad_authz",
+        "destroy_pending",
+        "dns_changed",
+    ]
+    description: str
+    domains: list[str]
+    expires_at: NotRequired[str]
+
+
 __all__ = (
     "PageType",
+    "PageTypeForResponse",
     "PagesHttpsCertificateType",
+    "PagesHttpsCertificateTypeForResponse",
     "PagesSourceHashType",
+    "PagesSourceHashTypeForResponse",
 )

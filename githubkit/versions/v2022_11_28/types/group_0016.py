@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0008 import EnterpriseType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
 
 
 class IntegrationInstallationRequestType(TypedDict):
@@ -30,4 +30,20 @@ class IntegrationInstallationRequestType(TypedDict):
     created_at: datetime
 
 
-__all__ = ("IntegrationInstallationRequestType",)
+class IntegrationInstallationRequestTypeForResponse(TypedDict):
+    """Integration Installation Request
+
+    Request to install an integration on a target
+    """
+
+    id: int
+    node_id: NotRequired[str]
+    account: Union[SimpleUserTypeForResponse, EnterpriseTypeForResponse]
+    requester: SimpleUserTypeForResponse
+    created_at: str
+
+
+__all__ = (
+    "IntegrationInstallationRequestType",
+    "IntegrationInstallationRequestTypeForResponse",
+)

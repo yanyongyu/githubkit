@@ -18,4 +18,15 @@ class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType(TypedDict
     issue_id: int
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType",)
+class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
+
+    issue_id: int
+
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyTypeForResponse",
+)

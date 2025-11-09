@@ -33,6 +33,25 @@ class PackageVersionType(TypedDict):
     metadata: NotRequired[PackageVersionPropMetadataType]
 
 
+class PackageVersionTypeForResponse(TypedDict):
+    """Package Version
+
+    A version of a software package
+    """
+
+    id: int
+    name: str
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
+    created_at: str
+    updated_at: str
+    deleted_at: NotRequired[str]
+    metadata: NotRequired[PackageVersionPropMetadataTypeForResponse]
+
+
 class PackageVersionPropMetadataType(TypedDict):
     """Package Version Metadata"""
 
@@ -41,7 +60,21 @@ class PackageVersionPropMetadataType(TypedDict):
     docker: NotRequired[PackageVersionPropMetadataPropDockerType]
 
 
+class PackageVersionPropMetadataTypeForResponse(TypedDict):
+    """Package Version Metadata"""
+
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerTypeForResponse]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerTypeForResponse]
+
+
 class PackageVersionPropMetadataPropContainerType(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropContainerTypeForResponse(TypedDict):
     """Container Metadata"""
 
     tags: list[str]
@@ -53,9 +86,19 @@ class PackageVersionPropMetadataPropDockerType(TypedDict):
     tag: NotRequired[list[str]]
 
 
+class PackageVersionPropMetadataPropDockerTypeForResponse(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
+
+
 __all__ = (
     "PackageVersionPropMetadataPropContainerType",
+    "PackageVersionPropMetadataPropContainerTypeForResponse",
     "PackageVersionPropMetadataPropDockerType",
+    "PackageVersionPropMetadataPropDockerTypeForResponse",
     "PackageVersionPropMetadataType",
+    "PackageVersionPropMetadataTypeForResponse",
     "PackageVersionType",
+    "PackageVersionTypeForResponse",
 )

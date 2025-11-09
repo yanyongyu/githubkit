@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0082 import CopilotSeatDetailsType
+from .group_0082 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
 
 class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
@@ -21,4 +21,14 @@ class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
     seats: NotRequired[list[CopilotSeatDetailsType]]
 
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",)
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+
+
+__all__ = (
+    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",
+    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse",
+)

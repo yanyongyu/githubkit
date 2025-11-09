@@ -22,4 +22,16 @@ class OrgsOrgInvitationsPostBodyType(TypedDict):
     team_ids: NotRequired[list[int]]
 
 
-__all__ = ("OrgsOrgInvitationsPostBodyType",)
+class OrgsOrgInvitationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgInvitationsPostBody"""
+
+    invitee_id: NotRequired[int]
+    email: NotRequired[str]
+    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
+    team_ids: NotRequired[list[int]]
+
+
+__all__ = (
+    "OrgsOrgInvitationsPostBodyType",
+    "OrgsOrgInvitationsPostBodyTypeForResponse",
+)

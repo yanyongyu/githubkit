@@ -21,4 +21,16 @@ class ActionsForkPrWorkflowsPrivateReposRequestType(TypedDict):
     require_approval_for_fork_pr_workflows: NotRequired[bool]
 
 
-__all__ = ("ActionsForkPrWorkflowsPrivateReposRequestType",)
+class ActionsForkPrWorkflowsPrivateReposRequestTypeForResponse(TypedDict):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
+
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: NotRequired[bool]
+    send_secrets_and_variables: NotRequired[bool]
+    require_approval_for_fork_pr_workflows: NotRequired[bool]
+
+
+__all__ = (
+    "ActionsForkPrWorkflowsPrivateReposRequestType",
+    "ActionsForkPrWorkflowsPrivateReposRequestTypeForResponse",
+)

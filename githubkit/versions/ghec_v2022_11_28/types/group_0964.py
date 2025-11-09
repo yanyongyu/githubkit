@@ -18,4 +18,13 @@ class CredentialsRevokePostBodyType(TypedDict):
     credentials: list[str]
 
 
-__all__ = ("CredentialsRevokePostBodyType",)
+class CredentialsRevokePostBodyTypeForResponse(TypedDict):
+    """CredentialsRevokePostBody"""
+
+    credentials: list[str]
+
+
+__all__ = (
+    "CredentialsRevokePostBodyType",
+    "CredentialsRevokePostBodyTypeForResponse",
+)

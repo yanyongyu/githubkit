@@ -18,4 +18,13 @@ class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
     ignored: NotRequired[bool]
 
 
-__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBodyType",)
+class NotificationsThreadsThreadIdSubscriptionPutBodyTypeForResponse(TypedDict):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
+
+    ignored: NotRequired[bool]
+
+
+__all__ = (
+    "NotificationsThreadsThreadIdSubscriptionPutBodyType",
+    "NotificationsThreadsThreadIdSubscriptionPutBodyTypeForResponse",
+)

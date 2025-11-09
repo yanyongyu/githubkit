@@ -28,4 +28,22 @@ class CustomPropertyBaseType(TypedDict):
     allowed_values: NotRequired[Union[list[str], None]]
 
 
-__all__ = ("CustomPropertyBaseType",)
+class CustomPropertyBaseTypeForResponse(TypedDict):
+    """CustomPropertyBase"""
+
+    property_name: NotRequired[str]
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: NotRequired[
+        Literal["string", "single_select", "multi_select", "true_false"]
+    ]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+
+
+__all__ = (
+    "CustomPropertyBaseType",
+    "CustomPropertyBaseTypeForResponse",
+)

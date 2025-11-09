@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class EnvironmentApprovalsType(TypedDict):
@@ -25,6 +25,18 @@ class EnvironmentApprovalsType(TypedDict):
     environments: list[EnvironmentApprovalsPropEnvironmentsItemsType]
     state: Literal["approved", "rejected", "pending"]
     user: SimpleUserType
+    comment: str
+
+
+class EnvironmentApprovalsTypeForResponse(TypedDict):
+    """Environment Approval
+
+    An entry in the reviews log for environment deployments
+    """
+
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserTypeForResponse
     comment: str
 
 
@@ -40,7 +52,21 @@ class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
     updated_at: NotRequired[datetime]
 
 
+class EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+
+
 __all__ = (
     "EnvironmentApprovalsPropEnvironmentsItemsType",
+    "EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse",
     "EnvironmentApprovalsType",
+    "EnvironmentApprovalsTypeForResponse",
 )

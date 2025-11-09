@@ -22,4 +22,16 @@ class RepositoryRuleRequiredLinearHistoryType(TypedDict):
     type: Literal["required_linear_history"]
 
 
-__all__ = ("RepositoryRuleRequiredLinearHistoryType",)
+class RepositoryRuleRequiredLinearHistoryTypeForResponse(TypedDict):
+    """required_linear_history
+
+    Prevent merge commits from being pushed to matching refs.
+    """
+
+    type: Literal["required_linear_history"]
+
+
+__all__ = (
+    "RepositoryRuleRequiredLinearHistoryType",
+    "RepositoryRuleRequiredLinearHistoryTypeForResponse",
+)

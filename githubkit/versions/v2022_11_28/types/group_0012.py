@@ -34,4 +34,27 @@ class HookDeliveryItemType(TypedDict):
     throttled_at: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("HookDeliveryItemType",)
+class HookDeliveryItemTypeForResponse(TypedDict):
+    """Simple webhook delivery
+
+    Delivery made by a webhook, without request and response information.
+    """
+
+    id: int
+    guid: str
+    delivered_at: str
+    redelivery: bool
+    duration: float
+    status: str
+    status_code: int
+    event: str
+    action: Union[str, None]
+    installation_id: Union[int, None]
+    repository_id: Union[int, None]
+    throttled_at: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "HookDeliveryItemType",
+    "HookDeliveryItemTypeForResponse",
+)

@@ -18,4 +18,15 @@ class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType(Typ
     selected_enterprise_teams: list[str]
 
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType",)
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody"""
+
+    selected_enterprise_teams: list[str]
+
+
+__all__ = (
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyTypeForResponse",
+)

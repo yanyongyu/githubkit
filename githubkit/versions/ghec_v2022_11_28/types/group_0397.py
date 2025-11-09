@@ -24,7 +24,30 @@ class GitTreeType(TypedDict):
     tree: list[GitTreePropTreeItemsType]
 
 
+class GitTreeTypeForResponse(TypedDict):
+    """Git Tree
+
+    The hierarchy between files in a Git repository.
+    """
+
+    sha: str
+    url: NotRequired[str]
+    truncated: bool
+    tree: list[GitTreePropTreeItemsTypeForResponse]
+
+
 class GitTreePropTreeItemsType(TypedDict):
+    """GitTreePropTreeItems"""
+
+    path: str
+    mode: str
+    type: str
+    sha: str
+    size: NotRequired[int]
+    url: NotRequired[str]
+
+
+class GitTreePropTreeItemsTypeForResponse(TypedDict):
     """GitTreePropTreeItems"""
 
     path: str
@@ -37,5 +60,7 @@ class GitTreePropTreeItemsType(TypedDict):
 
 __all__ = (
     "GitTreePropTreeItemsType",
+    "GitTreePropTreeItemsTypeForResponse",
     "GitTreeType",
+    "GitTreeTypeForResponse",
 )

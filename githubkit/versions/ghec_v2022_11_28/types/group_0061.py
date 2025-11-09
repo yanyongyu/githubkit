@@ -26,7 +26,33 @@ class AmazonS3OidcConfigType(TypedDict):
     arn_role: str
 
 
+class AmazonS3OidcConfigTypeForResponse(TypedDict):
+    """AmazonS3OIDCConfig
+
+    Amazon S3 OIDC Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["oidc"]
+    arn_role: str
+
+
 class SplunkConfigType(TypedDict):
+    """SplunkConfig
+
+    Splunk Config for Audit Log Stream Configuration
+    """
+
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    ssl_verify: bool
+
+
+class SplunkConfigTypeForResponse(TypedDict):
     """SplunkConfig
 
     Splunk Config for Audit Log Stream Configuration
@@ -41,5 +67,7 @@ class SplunkConfigType(TypedDict):
 
 __all__ = (
     "AmazonS3OidcConfigType",
+    "AmazonS3OidcConfigTypeForResponse",
     "SplunkConfigType",
+    "SplunkConfigTypeForResponse",
 )

@@ -28,4 +28,22 @@ class CodespaceMachineType(TypedDict):
     prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
 
 
-__all__ = ("CodespaceMachineType",)
+class CodespaceMachineTypeForResponse(TypedDict):
+    """Codespace machine
+
+    A description of the machine powering a codespace.
+    """
+
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
+
+
+__all__ = (
+    "CodespaceMachineType",
+    "CodespaceMachineTypeForResponse",
+)

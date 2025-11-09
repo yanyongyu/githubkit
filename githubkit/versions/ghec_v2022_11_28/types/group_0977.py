@@ -18,4 +18,15 @@ class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType(TypedDict)
     selected_organization_ids: list[int]
 
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType",)
+class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
+
+    selected_organization_ids: list[int]
+
+
+__all__ = (
+    "EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType",
+    "EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyTypeForResponse",
+)

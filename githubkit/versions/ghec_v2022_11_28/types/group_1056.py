@@ -23,4 +23,18 @@ class OrganizationsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
     repository_ids_to_remove: NotRequired[list[int]]
 
 
-__all__ = ("OrganizationsOrgDependabotRepositoryAccessPatchBodyType",)
+class OrganizationsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
+    """OrganizationsOrgDependabotRepositoryAccessPatchBody
+
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
+
+
+__all__ = (
+    "OrganizationsOrgDependabotRepositoryAccessPatchBodyType",
+    "OrganizationsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
+)

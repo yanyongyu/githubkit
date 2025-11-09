@@ -12,11 +12,14 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0101 import CustomPropertyValueType
-from .group_0534 import EnterpriseWebhooksType
-from .group_0535 import SimpleInstallationType
-from .group_0536 import OrganizationSimpleWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0101 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
 
 
 class WebhookOrganizationCustomPropertyValuesUpdatedType(TypedDict):
@@ -31,4 +34,19 @@ class WebhookOrganizationCustomPropertyValuesUpdatedType(TypedDict):
     old_property_values: list[CustomPropertyValueType]
 
 
-__all__ = ("WebhookOrganizationCustomPropertyValuesUpdatedType",)
+class WebhookOrganizationCustomPropertyValuesUpdatedTypeForResponse(TypedDict):
+    """Custom property values updated event"""
+
+    action: Literal["updated"]
+    enterprise: EnterpriseWebhooksTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+    new_property_values: list[CustomPropertyValueTypeForResponse]
+    old_property_values: list[CustomPropertyValueTypeForResponse]
+
+
+__all__ = (
+    "WebhookOrganizationCustomPropertyValuesUpdatedType",
+    "WebhookOrganizationCustomPropertyValuesUpdatedTypeForResponse",
+)

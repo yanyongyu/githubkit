@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0420 import TrafficType
+from .group_0420 import TrafficType, TrafficTypeForResponse
 
 
 class CloneTrafficType(TypedDict):
@@ -25,4 +25,18 @@ class CloneTrafficType(TypedDict):
     clones: list[TrafficType]
 
 
-__all__ = ("CloneTrafficType",)
+class CloneTrafficTypeForResponse(TypedDict):
+    """Clone Traffic
+
+    Clone Traffic
+    """
+
+    count: int
+    uniques: int
+    clones: list[TrafficTypeForResponse]
+
+
+__all__ = (
+    "CloneTrafficType",
+    "CloneTrafficTypeForResponse",
+)

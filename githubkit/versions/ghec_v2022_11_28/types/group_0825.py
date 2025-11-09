@@ -12,10 +12,13 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0535 import SimpleInstallationType
-from .group_0536 import OrganizationSimpleWebhooksType
-from .group_0571 import ProjectsV2ItemType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0571 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
 class WebhookProjectsV2ItemEditedType(TypedDict):
@@ -34,10 +37,34 @@ class WebhookProjectsV2ItemEditedType(TypedDict):
     sender: SimpleUserType
 
 
+class WebhookProjectsV2ItemEditedTypeForResponse(TypedDict):
+    """Projects v2 Item Edited Event"""
+
+    action: Literal["edited"]
+    changes: NotRequired[
+        Union[
+            WebhookProjectsV2ItemEditedPropChangesOneof0TypeForResponse,
+            WebhookProjectsV2ItemEditedPropChangesOneof1TypeForResponse,
+        ]
+    ]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
 class WebhookProjectsV2ItemEditedPropChangesOneof0Type(TypedDict):
     """WebhookProjectsV2ItemEditedPropChangesOneof0"""
 
     field_value: WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType
+
+
+class WebhookProjectsV2ItemEditedPropChangesOneof0TypeForResponse(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof0"""
+
+    field_value: (
+        WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueTypeForResponse
+    )
 
 
 class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType(TypedDict):
@@ -67,7 +94,48 @@ class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType(TypedDict):
     ]
 
 
+class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueTypeForResponse(
+    TypedDict
+):
+    """WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue"""
+
+    field_node_id: NotRequired[str]
+    field_type: NotRequired[str]
+    field_name: NotRequired[str]
+    project_number: NotRequired[int]
+    from_: NotRequired[
+        Union[
+            str,
+            int,
+            ProjectsV2SingleSelectOptionTypeForResponse,
+            ProjectsV2IterationSettingTypeForResponse,
+            None,
+        ]
+    ]
+    to: NotRequired[
+        Union[
+            str,
+            int,
+            ProjectsV2SingleSelectOptionTypeForResponse,
+            ProjectsV2IterationSettingTypeForResponse,
+            None,
+        ]
+    ]
+
+
 class ProjectsV2SingleSelectOptionType(TypedDict):
+    """Projects v2 Single Select Option
+
+    An option for a single select field
+    """
+
+    id: str
+    name: str
+    color: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+
+
+class ProjectsV2SingleSelectOptionTypeForResponse(TypedDict):
     """Projects v2 Single Select Option
 
     An option for a single select field
@@ -93,10 +161,30 @@ class ProjectsV2IterationSettingType(TypedDict):
     completed: NotRequired[bool]
 
 
+class ProjectsV2IterationSettingTypeForResponse(TypedDict):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str
+    title: str
+    title_html: NotRequired[str]
+    duration: NotRequired[Union[float, None]]
+    start_date: NotRequired[Union[str, None]]
+    completed: NotRequired[bool]
+
+
 class WebhookProjectsV2ItemEditedPropChangesOneof1Type(TypedDict):
     """WebhookProjectsV2ItemEditedPropChangesOneof1"""
 
     body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType
+
+
+class WebhookProjectsV2ItemEditedPropChangesOneof1TypeForResponse(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof1"""
+
+    body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyTypeForResponse
 
 
 class WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType(TypedDict):
@@ -106,12 +194,26 @@ class WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType(TypedDict):
     to: NotRequired[Union[str, None]]
 
 
+class WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyTypeForResponse(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof1PropBody"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
 __all__ = (
     "ProjectsV2IterationSettingType",
+    "ProjectsV2IterationSettingTypeForResponse",
     "ProjectsV2SingleSelectOptionType",
+    "ProjectsV2SingleSelectOptionTypeForResponse",
     "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType",
+    "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueTypeForResponse",
     "WebhookProjectsV2ItemEditedPropChangesOneof0Type",
+    "WebhookProjectsV2ItemEditedPropChangesOneof0TypeForResponse",
     "WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType",
+    "WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyTypeForResponse",
     "WebhookProjectsV2ItemEditedPropChangesOneof1Type",
+    "WebhookProjectsV2ItemEditedPropChangesOneof1TypeForResponse",
     "WebhookProjectsV2ItemEditedType",
+    "WebhookProjectsV2ItemEditedTypeForResponse",
 )

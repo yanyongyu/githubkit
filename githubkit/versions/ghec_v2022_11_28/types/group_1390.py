@@ -22,4 +22,17 @@ class ReposTemplateOwnerTemplateRepoGeneratePostBodyType(TypedDict):
     private: NotRequired[bool]
 
 
-__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBodyType",)
+class ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse(TypedDict):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
+
+    owner: NotRequired[str]
+    name: str
+    description: NotRequired[str]
+    include_all_branches: NotRequired[bool]
+    private: NotRequired[bool]
+
+
+__all__ = (
+    "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",
+    "ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse",
+)

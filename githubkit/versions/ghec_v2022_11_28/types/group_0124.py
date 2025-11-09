@@ -22,7 +22,25 @@ class RepositoryRuleCreationType(TypedDict):
     type: Literal["creation"]
 
 
+class RepositoryRuleCreationTypeForResponse(TypedDict):
+    """creation
+
+    Only allow users with bypass permission to create matching refs.
+    """
+
+    type: Literal["creation"]
+
+
 class RepositoryRuleDeletionType(TypedDict):
+    """deletion
+
+    Only allow users with bypass permissions to delete matching refs.
+    """
+
+    type: Literal["deletion"]
+
+
+class RepositoryRuleDeletionTypeForResponse(TypedDict):
     """deletion
 
     Only allow users with bypass permissions to delete matching refs.
@@ -40,7 +58,25 @@ class RepositoryRuleRequiredSignaturesType(TypedDict):
     type: Literal["required_signatures"]
 
 
+class RepositoryRuleRequiredSignaturesTypeForResponse(TypedDict):
+    """required_signatures
+
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"]
+
+
 class RepositoryRuleNonFastForwardType(TypedDict):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"]
+
+
+class RepositoryRuleNonFastForwardTypeForResponse(TypedDict):
     """non_fast_forward
 
     Prevent users with push access from force pushing to refs.
@@ -51,7 +87,11 @@ class RepositoryRuleNonFastForwardType(TypedDict):
 
 __all__ = (
     "RepositoryRuleCreationType",
+    "RepositoryRuleCreationTypeForResponse",
     "RepositoryRuleDeletionType",
+    "RepositoryRuleDeletionTypeForResponse",
     "RepositoryRuleNonFastForwardType",
+    "RepositoryRuleNonFastForwardTypeForResponse",
     "RepositoryRuleRequiredSignaturesType",
+    "RepositoryRuleRequiredSignaturesTypeForResponse",
 )

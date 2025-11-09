@@ -19,4 +19,13 @@ class TeamsTeamIdProjectsProjectIdPutBodyType(TypedDict):
     permission: NotRequired[Literal["read", "write", "admin"]]
 
 
-__all__ = ("TeamsTeamIdProjectsProjectIdPutBodyType",)
+class TeamsTeamIdProjectsProjectIdPutBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdProjectsProjectIdPutBody"""
+
+    permission: NotRequired[Literal["read", "write", "admin"]]
+
+
+__all__ = (
+    "TeamsTeamIdProjectsProjectIdPutBodyType",
+    "TeamsTeamIdProjectsProjectIdPutBodyTypeForResponse",
+)

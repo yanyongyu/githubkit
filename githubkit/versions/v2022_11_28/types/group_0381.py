@@ -25,4 +25,19 @@ class RepositoryRuleRulesetInfoType(TypedDict):
     ruleset_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleRulesetInfoType",)
+class RepositoryRuleRulesetInfoTypeForResponse(TypedDict):
+    """repository ruleset data for rule
+
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
+
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+__all__ = (
+    "RepositoryRuleRulesetInfoType",
+    "RepositoryRuleRulesetInfoTypeForResponse",
+)

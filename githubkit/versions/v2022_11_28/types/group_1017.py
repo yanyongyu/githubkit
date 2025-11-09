@@ -20,4 +20,15 @@ class OrgsOrgTeamsTeamSlugDiscussionsPostBodyType(TypedDict):
     private: NotRequired[bool]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",)
+class OrgsOrgTeamsTeamSlugDiscussionsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
+
+    title: str
+    body: str
+    private: NotRequired[bool]
+
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",
+    "OrgsOrgTeamsTeamSlugDiscussionsPostBodyTypeForResponse",
+)

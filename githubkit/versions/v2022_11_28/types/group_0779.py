@@ -13,11 +13,14 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0450 import EnterpriseWebhooksType
-from .group_0451 import SimpleInstallationType
-from .group_0452 import OrganizationSimpleWebhooksType
-from .group_0453 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0450 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0451 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0452 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0453 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
 class WebhookReleasePrereleasedType(TypedDict):
@@ -30,6 +33,18 @@ class WebhookReleasePrereleasedType(TypedDict):
     release: WebhookReleasePrereleasedPropReleaseType
     repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
+
+
+class WebhookReleasePrereleasedTypeForResponse(TypedDict):
+    """release prereleased event"""
+
+    action: Literal["prereleased"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    release: WebhookReleasePrereleasedPropReleaseTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 class WebhookReleasePrereleasedPropReleaseType(TypedDict):
@@ -63,6 +78,41 @@ class WebhookReleasePrereleasedPropReleaseType(TypedDict):
     zipball_url: Union[str, None]
 
 
+class WebhookReleasePrereleasedPropReleaseTypeForResponse(TypedDict):
+    """Release
+
+    The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
+    object.
+    """
+
+    assets: list[
+        Union[WebhookReleasePrereleasedPropReleasePropAssetsItemsTypeForResponse, None]
+    ]
+    assets_url: str
+    author: Union[WebhookReleasePrereleasedPropReleasePropAuthorTypeForResponse, None]
+    body: Union[str, None]
+    created_at: Union[str, None]
+    discussion_url: NotRequired[str]
+    draft: bool
+    html_url: str
+    id: int
+    immutable: bool
+    name: Union[str, None]
+    node_id: str
+    prerelease: Literal[True]
+    published_at: Union[str, None]
+    reactions: NotRequired[
+        WebhookReleasePrereleasedPropReleasePropReactionsTypeForResponse
+    ]
+    tag_name: str
+    tarball_url: Union[str, None]
+    target_commitish: str
+    upload_url: str
+    updated_at: Union[str, None]
+    url: str
+    zipball_url: Union[str, None]
+
+
 class WebhookReleasePrereleasedPropReleasePropAssetsItemsType(TypedDict):
     """Release Asset
 
@@ -87,7 +137,62 @@ class WebhookReleasePrereleasedPropReleasePropAssetsItemsType(TypedDict):
     url: str
 
 
+class WebhookReleasePrereleasedPropReleasePropAssetsItemsTypeForResponse(TypedDict):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    browser_download_url: str
+    content_type: str
+    created_at: str
+    download_count: int
+    id: int
+    label: Union[str, None]
+    name: str
+    node_id: str
+    size: int
+    digest: Union[str, None]
+    state: Literal["uploaded"]
+    updated_at: str
+    uploader: NotRequired[
+        Union[
+            WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploaderTypeForResponse,
+            None,
+        ]
+    ]
+    url: str
+
+
 class WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploaderTypeForResponse(
+    TypedDict
+):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -140,7 +245,49 @@ class WebhookReleasePrereleasedPropReleasePropAuthorType(TypedDict):
     user_view_type: NotRequired[str]
 
 
+class WebhookReleasePrereleasedPropReleasePropAuthorTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
 class WebhookReleasePrereleasedPropReleasePropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookReleasePrereleasedPropReleasePropReactionsTypeForResponse(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -157,9 +304,15 @@ class WebhookReleasePrereleasedPropReleasePropReactionsType(TypedDict):
 
 __all__ = (
     "WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploaderType",
+    "WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploaderTypeForResponse",
     "WebhookReleasePrereleasedPropReleasePropAssetsItemsType",
+    "WebhookReleasePrereleasedPropReleasePropAssetsItemsTypeForResponse",
     "WebhookReleasePrereleasedPropReleasePropAuthorType",
+    "WebhookReleasePrereleasedPropReleasePropAuthorTypeForResponse",
     "WebhookReleasePrereleasedPropReleasePropReactionsType",
+    "WebhookReleasePrereleasedPropReleasePropReactionsTypeForResponse",
     "WebhookReleasePrereleasedPropReleaseType",
+    "WebhookReleasePrereleasedPropReleaseTypeForResponse",
     "WebhookReleasePrereleasedType",
+    "WebhookReleasePrereleasedTypeForResponse",
 )

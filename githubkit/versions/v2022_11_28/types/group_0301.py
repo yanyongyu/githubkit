@@ -32,7 +32,34 @@ class ContentSubmoduleType(TypedDict):
     links: ContentSubmodulePropLinksType
 
 
+class ContentSubmoduleTypeForResponse(TypedDict):
+    """Submodule Content
+
+    An object describing a submodule
+    """
+
+    type: Literal["submodule"]
+    submodule_git_url: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSubmodulePropLinksTypeForResponse
+
+
 class ContentSubmodulePropLinksType(TypedDict):
+    """ContentSubmodulePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentSubmodulePropLinksTypeForResponse(TypedDict):
     """ContentSubmodulePropLinks"""
 
     git: Union[str, None]
@@ -42,5 +69,7 @@ class ContentSubmodulePropLinksType(TypedDict):
 
 __all__ = (
     "ContentSubmodulePropLinksType",
+    "ContentSubmodulePropLinksTypeForResponse",
     "ContentSubmoduleType",
+    "ContentSubmoduleTypeForResponse",
 )

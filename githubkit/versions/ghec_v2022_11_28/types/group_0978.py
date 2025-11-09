@@ -20,6 +20,15 @@ class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type
     disable_self_hosted_runners_for_all_orgs: bool
 
 
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
+
+    disable_self_hosted_runners_for_all_orgs: bool
+
+
 __all__ = (
     "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse",
 )

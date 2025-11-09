@@ -32,7 +32,35 @@ class OrgHookType(TypedDict):
     type: str
 
 
+class OrgHookTypeForResponse(TypedDict):
+    """Org Hook
+
+    Org Hook
+    """
+
+    id: int
+    url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    name: str
+    events: list[str]
+    active: bool
+    config: OrgHookPropConfigTypeForResponse
+    updated_at: str
+    created_at: str
+    type: str
+
+
 class OrgHookPropConfigType(TypedDict):
+    """OrgHookPropConfig"""
+
+    url: NotRequired[str]
+    insecure_ssl: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+
+
+class OrgHookPropConfigTypeForResponse(TypedDict):
     """OrgHookPropConfig"""
 
     url: NotRequired[str]
@@ -43,5 +71,7 @@ class OrgHookPropConfigType(TypedDict):
 
 __all__ = (
     "OrgHookPropConfigType",
+    "OrgHookPropConfigTypeForResponse",
     "OrgHookType",
+    "OrgHookTypeForResponse",
 )

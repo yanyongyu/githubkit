@@ -18,4 +18,13 @@ class ReposOwnerRepoTopicsPutBodyType(TypedDict):
     names: list[str]
 
 
-__all__ = ("ReposOwnerRepoTopicsPutBodyType",)
+class ReposOwnerRepoTopicsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoTopicsPutBody"""
+
+    names: list[str]
+
+
+__all__ = (
+    "ReposOwnerRepoTopicsPutBodyType",
+    "ReposOwnerRepoTopicsPutBodyTypeForResponse",
+)

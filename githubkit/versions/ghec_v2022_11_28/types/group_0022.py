@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0017 import AppPermissionsType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
 class ScopedInstallationType(TypedDict):
@@ -28,4 +28,19 @@ class ScopedInstallationType(TypedDict):
     account: SimpleUserType
 
 
-__all__ = ("ScopedInstallationType",)
+class ScopedInstallationTypeForResponse(TypedDict):
+    """Scoped Installation"""
+
+    permissions: AppPermissionsTypeForResponse
+    repository_selection: Literal["all", "selected"]
+    single_file_name: Union[str, None]
+    has_multiple_single_files: NotRequired[bool]
+    single_file_paths: NotRequired[list[str]]
+    repositories_url: str
+    account: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "ScopedInstallationType",
+    "ScopedInstallationTypeForResponse",
+)

@@ -22,4 +22,17 @@ class SocialAccountType(TypedDict):
     url: str
 
 
-__all__ = ("SocialAccountType",)
+class SocialAccountTypeForResponse(TypedDict):
+    """Social account
+
+    Social media account
+    """
+
+    provider: str
+    url: str
+
+
+__all__ = (
+    "SocialAccountType",
+    "SocialAccountTypeForResponse",
+)

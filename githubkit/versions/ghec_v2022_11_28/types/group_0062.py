@@ -23,4 +23,18 @@ class GoogleCloudConfigType(TypedDict):
     encrypted_json_credentials: str
 
 
-__all__ = ("GoogleCloudConfigType",)
+class GoogleCloudConfigTypeForResponse(TypedDict):
+    """GoogleCloudConfig
+
+    Google Cloud Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    key_id: str
+    encrypted_json_credentials: str
+
+
+__all__ = (
+    "GoogleCloudConfigType",
+    "GoogleCloudConfigTypeForResponse",
+)

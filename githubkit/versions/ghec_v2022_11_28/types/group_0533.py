@@ -23,7 +23,26 @@ class BillingUsageSummaryReportUserType(TypedDict):
     usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsType]
 
 
+class BillingUsageSummaryReportUserTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportUser"""
+
+    time_period: BillingUsageSummaryReportUserPropTimePeriodTypeForResponse
+    user: str
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse]
+
+
 class BillingUsageSummaryReportUserPropTimePeriodType(TypedDict):
+    """BillingUsageSummaryReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingUsageSummaryReportUserPropTimePeriodTypeForResponse(TypedDict):
     """BillingUsageSummaryReportUserPropTimePeriod"""
 
     year: int
@@ -46,8 +65,26 @@ class BillingUsageSummaryReportUserPropUsageItemsItemsType(TypedDict):
     net_amount: float
 
 
+class BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
 __all__ = (
     "BillingUsageSummaryReportUserPropTimePeriodType",
+    "BillingUsageSummaryReportUserPropTimePeriodTypeForResponse",
     "BillingUsageSummaryReportUserPropUsageItemsItemsType",
+    "BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse",
     "BillingUsageSummaryReportUserType",
+    "BillingUsageSummaryReportUserTypeForResponse",
 )

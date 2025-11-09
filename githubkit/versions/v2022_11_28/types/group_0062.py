@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0061 import MinimalRepositoryType
+from .group_0061 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
 class ThreadType(TypedDict):
@@ -32,7 +32,33 @@ class ThreadType(TypedDict):
     subscription_url: str
 
 
+class ThreadTypeForResponse(TypedDict):
+    """Thread
+
+    Thread
+    """
+
+    id: str
+    repository: MinimalRepositoryTypeForResponse
+    subject: ThreadPropSubjectTypeForResponse
+    reason: str
+    unread: bool
+    updated_at: str
+    last_read_at: Union[str, None]
+    url: str
+    subscription_url: str
+
+
 class ThreadPropSubjectType(TypedDict):
+    """ThreadPropSubject"""
+
+    title: str
+    url: str
+    latest_comment_url: str
+    type: str
+
+
+class ThreadPropSubjectTypeForResponse(TypedDict):
     """ThreadPropSubject"""
 
     title: str
@@ -43,5 +69,7 @@ class ThreadPropSubjectType(TypedDict):
 
 __all__ = (
     "ThreadPropSubjectType",
+    "ThreadPropSubjectTypeForResponse",
     "ThreadType",
+    "ThreadTypeForResponse",
 )

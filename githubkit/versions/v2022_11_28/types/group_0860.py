@@ -22,4 +22,16 @@ class AppManifestsCodeConversionsPostResponse201Allof1Type(TypedDict):
     pem: str
 
 
-__all__ = ("AppManifestsCodeConversionsPostResponse201Allof1Type",)
+class AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
+
+    client_id: str
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
+
+
+__all__ = (
+    "AppManifestsCodeConversionsPostResponse201Allof1Type",
+    "AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse",
+)

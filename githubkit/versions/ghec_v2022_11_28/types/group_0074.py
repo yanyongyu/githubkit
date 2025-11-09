@@ -23,4 +23,17 @@ class CodeScanningDefaultSetupOptionsType(TypedDict):
     runner_label: NotRequired[Union[str, None]]
 
 
-__all__ = ("CodeScanningDefaultSetupOptionsType",)
+class CodeScanningDefaultSetupOptionsTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
+    runner_label: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "CodeScanningDefaultSetupOptionsType",
+    "CodeScanningDefaultSetupOptionsTypeForResponse",
+)

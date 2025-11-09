@@ -22,4 +22,16 @@ class CodeScanningOptionsType(TypedDict):
     allow_advanced: NotRequired[Union[bool, None]]
 
 
-__all__ = ("CodeScanningOptionsType",)
+class CodeScanningOptionsTypeForResponse(TypedDict):
+    """CodeScanningOptions
+
+    Security Configuration feature options for code scanning
+    """
+
+    allow_advanced: NotRequired[Union[bool, None]]
+
+
+__all__ = (
+    "CodeScanningOptionsType",
+    "CodeScanningOptionsTypeForResponse",
+)

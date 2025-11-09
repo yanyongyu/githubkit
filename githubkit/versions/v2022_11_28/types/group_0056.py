@@ -34,4 +34,28 @@ class MarketplaceListingPlanType(TypedDict):
     bullets: list[str]
 
 
-__all__ = ("MarketplaceListingPlanType",)
+class MarketplaceListingPlanTypeForResponse(TypedDict):
+    """Marketplace Listing Plan
+
+    Marketplace Listing Plan
+    """
+
+    url: str
+    accounts_url: str
+    id: int
+    number: int
+    name: str
+    description: str
+    monthly_price_in_cents: int
+    yearly_price_in_cents: int
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    has_free_trial: bool
+    unit_name: Union[str, None]
+    state: str
+    bullets: list[str]
+
+
+__all__ = (
+    "MarketplaceListingPlanType",
+    "MarketplaceListingPlanTypeForResponse",
+)

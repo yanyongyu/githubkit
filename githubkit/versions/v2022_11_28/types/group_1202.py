@@ -26,4 +26,20 @@ class ReposOwnerRepoReleasesReleaseIdPatchBodyType(TypedDict):
     discussion_category_name: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBodyType",)
+class ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+
+    tag_name: NotRequired[str]
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    discussion_category_name: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoReleasesReleaseIdPatchBodyType",
+    "ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse",
+)

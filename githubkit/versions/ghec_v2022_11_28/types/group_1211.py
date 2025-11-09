@@ -21,4 +21,15 @@ class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
     sha_pinning_required: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoActionsPermissionsPutBodyType",)
+class ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
+
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsPermissionsPutBodyType",
+    "ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse",
+)

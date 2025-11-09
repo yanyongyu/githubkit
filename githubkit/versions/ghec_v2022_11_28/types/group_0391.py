@@ -11,7 +11,10 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0390 import CustomDeploymentRuleAppType
+from .group_0390 import (
+    CustomDeploymentRuleAppType,
+    CustomDeploymentRuleAppTypeForResponse,
+)
 
 
 class DeploymentProtectionRuleType(TypedDict):
@@ -24,6 +27,18 @@ class DeploymentProtectionRuleType(TypedDict):
     node_id: str
     enabled: bool
     app: CustomDeploymentRuleAppType
+
+
+class DeploymentProtectionRuleTypeForResponse(TypedDict):
+    """Deployment protection rule
+
+    Deployment protection rule
+    """
+
+    id: int
+    node_id: str
+    enabled: bool
+    app: CustomDeploymentRuleAppTypeForResponse
 
 
 class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
@@ -39,7 +54,24 @@ class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetRespo
     custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
 
 
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[
+        list[DeploymentProtectionRuleTypeForResponse]
+    ]
+
+
 __all__ = (
     "DeploymentProtectionRuleType",
+    "DeploymentProtectionRuleTypeForResponse",
     "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse",
 )

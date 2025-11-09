@@ -25,4 +25,18 @@ class AnnouncementBannerType(TypedDict):
     user_dismissible: Union[bool, None]
 
 
-__all__ = ("AnnouncementBannerType",)
+class AnnouncementBannerTypeForResponse(TypedDict):
+    """Announcement Banner
+
+    Announcement at either the repository, organization, or enterprise level
+    """
+
+    announcement: Union[str, None]
+    expires_at: Union[str, None]
+    user_dismissible: Union[bool, None]
+
+
+__all__ = (
+    "AnnouncementBannerType",
+    "AnnouncementBannerTypeForResponse",
+)

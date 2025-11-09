@@ -19,4 +19,15 @@ class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDic
     default_level: Literal["public", "internal"]
 
 
-__all__ = ("OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",)
+class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+
+    default_level: Literal["public", "internal"]
+
+
+__all__ = (
+    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
+    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
+)

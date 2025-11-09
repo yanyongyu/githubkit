@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0321 import BranchProtectionType
+from .group_0321 import BranchProtectionType, BranchProtectionTypeForResponse
 
 
 class ShortBranchType(TypedDict):
@@ -27,7 +27,27 @@ class ShortBranchType(TypedDict):
     protection_url: NotRequired[str]
 
 
+class ShortBranchTypeForResponse(TypedDict):
+    """Short Branch
+
+    Short Branch
+    """
+
+    name: str
+    commit: ShortBranchPropCommitTypeForResponse
+    protected: bool
+    protection: NotRequired[BranchProtectionTypeForResponse]
+    protection_url: NotRequired[str]
+
+
 class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
+
+    sha: str
+    url: str
+
+
+class ShortBranchPropCommitTypeForResponse(TypedDict):
     """ShortBranchPropCommit"""
 
     sha: str
@@ -36,5 +56,7 @@ class ShortBranchPropCommitType(TypedDict):
 
 __all__ = (
     "ShortBranchPropCommitType",
+    "ShortBranchPropCommitTypeForResponse",
     "ShortBranchType",
+    "ShortBranchTypeForResponse",
 )

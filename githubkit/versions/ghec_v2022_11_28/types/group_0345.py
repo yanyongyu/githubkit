@@ -28,4 +28,21 @@ class CodeScanningVariantAnalysisRepositoryType(TypedDict):
     updated_at: Union[datetime, None]
 
 
-__all__ = ("CodeScanningVariantAnalysisRepositoryType",)
+class CodeScanningVariantAnalysisRepositoryTypeForResponse(TypedDict):
+    """Repository Identifier
+
+    Repository Identifier
+    """
+
+    id: int
+    name: str
+    full_name: str
+    private: bool
+    stargazers_count: int
+    updated_at: Union[str, None]
+
+
+__all__ = (
+    "CodeScanningVariantAnalysisRepositoryType",
+    "CodeScanningVariantAnalysisRepositoryTypeForResponse",
+)

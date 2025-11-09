@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class ProjectCardType(TypedDict):
@@ -37,4 +37,28 @@ class ProjectCardType(TypedDict):
     project_url: str
 
 
-__all__ = ("ProjectCardType",)
+class ProjectCardTypeForResponse(TypedDict):
+    """Project Card
+
+    Project cards represent a scope of work.
+    """
+
+    url: str
+    id: int
+    node_id: str
+    note: Union[str, None]
+    creator: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    archived: NotRequired[bool]
+    column_name: NotRequired[str]
+    project_id: NotRequired[str]
+    column_url: str
+    content_url: NotRequired[str]
+    project_url: str
+
+
+__all__ = (
+    "ProjectCardType",
+    "ProjectCardTypeForResponse",
+)

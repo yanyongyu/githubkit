@@ -20,4 +20,15 @@ class ApiInsightsTimeStatsItemsType(TypedDict):
     rate_limited_request_count: NotRequired[int]
 
 
-__all__ = ("ApiInsightsTimeStatsItemsType",)
+class ApiInsightsTimeStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsTimeStatsItems"""
+
+    timestamp: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+
+
+__all__ = (
+    "ApiInsightsTimeStatsItemsType",
+    "ApiInsightsTimeStatsItemsTypeForResponse",
+)

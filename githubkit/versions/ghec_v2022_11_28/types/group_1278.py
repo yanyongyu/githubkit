@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0333 import CheckRunType
+from .group_0333 import CheckRunType, CheckRunTypeForResponse
 
 
 class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
@@ -21,4 +21,14 @@ class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
     check_runs: list[CheckRunType]
 
 
-__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",)
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+
+    total_count: int
+    check_runs: list[CheckRunTypeForResponse]
+
+
+__all__ = (
+    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",
+    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse",
+)

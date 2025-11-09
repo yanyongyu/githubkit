@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0095 import TeamType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0095 import TeamType, TeamTypeForResponse
 
 
 class PullRequestReviewRequestType(TypedDict):
@@ -25,4 +25,17 @@ class PullRequestReviewRequestType(TypedDict):
     teams: list[TeamType]
 
 
-__all__ = ("PullRequestReviewRequestType",)
+class PullRequestReviewRequestTypeForResponse(TypedDict):
+    """Pull Request Review Request
+
+    Pull Request Review Request
+    """
+
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
+
+
+__all__ = (
+    "PullRequestReviewRequestType",
+    "PullRequestReviewRequestTypeForResponse",
+)

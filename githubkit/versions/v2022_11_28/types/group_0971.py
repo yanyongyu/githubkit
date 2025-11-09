@@ -18,4 +18,13 @@ class OrgsOrgCopilotBillingSelectedUsersPostBodyType(TypedDict):
     selected_usernames: list[str]
 
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostBodyType",)
+class OrgsOrgCopilotBillingSelectedUsersPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
+
+    selected_usernames: list[str]
+
+
+__all__ = (
+    "OrgsOrgCopilotBillingSelectedUsersPostBodyType",
+    "OrgsOrgCopilotBillingSelectedUsersPostBodyTypeForResponse",
+)

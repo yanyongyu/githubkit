@@ -21,4 +21,16 @@ class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
     work_folder: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",)
+class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",
+    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
+)

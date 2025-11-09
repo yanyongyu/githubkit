@@ -18,4 +18,13 @@ class RepositoryRuleFileExtensionRestrictionPropParametersType(TypedDict):
     restricted_file_extensions: list[str]
 
 
-__all__ = ("RepositoryRuleFileExtensionRestrictionPropParametersType",)
+class RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+
+    restricted_file_extensions: list[str]
+
+
+__all__ = (
+    "RepositoryRuleFileExtensionRestrictionPropParametersType",
+    "RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse",
+)

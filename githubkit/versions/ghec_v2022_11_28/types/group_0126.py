@@ -18,4 +18,13 @@ class RepositoryRuleUpdatePropParametersType(TypedDict):
     update_allows_fetch_and_merge: bool
 
 
-__all__ = ("RepositoryRuleUpdatePropParametersType",)
+class RepositoryRuleUpdatePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleUpdatePropParameters"""
+
+    update_allows_fetch_and_merge: bool
+
+
+__all__ = (
+    "RepositoryRuleUpdatePropParametersType",
+    "RepositoryRuleUpdatePropParametersTypeForResponse",
+)

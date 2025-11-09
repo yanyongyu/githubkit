@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0095 import TeamType
+from .group_0095 import TeamType, TeamTypeForResponse
 
 
 class BranchRestrictionPolicyType(TypedDict):
@@ -29,7 +29,46 @@ class BranchRestrictionPolicyType(TypedDict):
     apps: list[BranchRestrictionPolicyPropAppsItemsType]
 
 
+class BranchRestrictionPolicyTypeForResponse(TypedDict):
+    """Branch Restriction Policy
+
+    Branch Restriction Policy
+    """
+
+    url: str
+    users_url: str
+    teams_url: str
+    apps_url: str
+    users: list[BranchRestrictionPolicyPropUsersItemsTypeForResponse]
+    teams: list[TeamTypeForResponse]
+    apps: list[BranchRestrictionPolicyPropAppsItemsTypeForResponse]
+
+
 class BranchRestrictionPolicyPropUsersItemsType(TypedDict):
+    """BranchRestrictionPolicyPropUsersItems"""
+
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: NotRequired[str]
+    site_admin: NotRequired[bool]
+    user_view_type: NotRequired[str]
+
+
+class BranchRestrictionPolicyPropUsersItemsTypeForResponse(TypedDict):
     """BranchRestrictionPolicyPropUsersItems"""
 
     login: NotRequired[str]
@@ -71,7 +110,56 @@ class BranchRestrictionPolicyPropAppsItemsType(TypedDict):
     events: NotRequired[list[str]]
 
 
+class BranchRestrictionPolicyPropAppsItemsTypeForResponse(TypedDict):
+    """BranchRestrictionPolicyPropAppsItems"""
+
+    id: NotRequired[int]
+    slug: NotRequired[str]
+    node_id: NotRequired[str]
+    owner: NotRequired[BranchRestrictionPolicyPropAppsItemsPropOwnerTypeForResponse]
+    name: NotRequired[str]
+    client_id: NotRequired[str]
+    description: NotRequired[str]
+    external_url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    permissions: NotRequired[
+        BranchRestrictionPolicyPropAppsItemsPropPermissionsTypeForResponse
+    ]
+    events: NotRequired[list[str]]
+
+
 class BranchRestrictionPolicyPropAppsItemsPropOwnerType(TypedDict):
+    """BranchRestrictionPolicyPropAppsItemsPropOwner"""
+
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    hooks_url: NotRequired[str]
+    issues_url: NotRequired[str]
+    members_url: NotRequired[str]
+    public_members_url: NotRequired[str]
+    avatar_url: NotRequired[str]
+    description: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: NotRequired[str]
+    site_admin: NotRequired[bool]
+    user_view_type: NotRequired[str]
+
+
+class BranchRestrictionPolicyPropAppsItemsPropOwnerTypeForResponse(TypedDict):
     """BranchRestrictionPolicyPropAppsItemsPropOwner"""
 
     login: NotRequired[str]
@@ -109,10 +197,24 @@ class BranchRestrictionPolicyPropAppsItemsPropPermissionsType(TypedDict):
     single_file: NotRequired[str]
 
 
+class BranchRestrictionPolicyPropAppsItemsPropPermissionsTypeForResponse(TypedDict):
+    """BranchRestrictionPolicyPropAppsItemsPropPermissions"""
+
+    metadata: NotRequired[str]
+    contents: NotRequired[str]
+    issues: NotRequired[str]
+    single_file: NotRequired[str]
+
+
 __all__ = (
     "BranchRestrictionPolicyPropAppsItemsPropOwnerType",
+    "BranchRestrictionPolicyPropAppsItemsPropOwnerTypeForResponse",
     "BranchRestrictionPolicyPropAppsItemsPropPermissionsType",
+    "BranchRestrictionPolicyPropAppsItemsPropPermissionsTypeForResponse",
     "BranchRestrictionPolicyPropAppsItemsType",
+    "BranchRestrictionPolicyPropAppsItemsTypeForResponse",
     "BranchRestrictionPolicyPropUsersItemsType",
+    "BranchRestrictionPolicyPropUsersItemsTypeForResponse",
     "BranchRestrictionPolicyType",
+    "BranchRestrictionPolicyTypeForResponse",
 )

@@ -18,4 +18,15 @@ class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType(TypedD
     disable_self_hosted_runners_for_all_orgs: bool
 
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType",)
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
+
+    disable_self_hosted_runners_for_all_orgs: bool
+
+
+__all__ = (
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
+)

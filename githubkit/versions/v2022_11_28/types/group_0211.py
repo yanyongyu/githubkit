@@ -20,4 +20,15 @@ class PackagesBillingUsageType(TypedDict):
     included_gigabytes_bandwidth: int
 
 
-__all__ = ("PackagesBillingUsageType",)
+class PackagesBillingUsageTypeForResponse(TypedDict):
+    """PackagesBillingUsage"""
+
+    total_gigabytes_bandwidth_used: int
+    total_paid_gigabytes_bandwidth_used: int
+    included_gigabytes_bandwidth: int
+
+
+__all__ = (
+    "PackagesBillingUsageType",
+    "PackagesBillingUsageTypeForResponse",
+)

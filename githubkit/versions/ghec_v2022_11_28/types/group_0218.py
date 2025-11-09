@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0070 import SimpleRepositoryType
+from .group_0070 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
 class DependabotRepositoryAccessDetailsType(TypedDict):
@@ -26,4 +26,20 @@ class DependabotRepositoryAccessDetailsType(TypedDict):
     accessible_repositories: NotRequired[list[Union[None, SimpleRepositoryType]]]
 
 
-__all__ = ("DependabotRepositoryAccessDetailsType",)
+class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
+    """Dependabot Repository Access Details
+
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
+
+    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
+    accessible_repositories: NotRequired[
+        list[Union[None, SimpleRepositoryTypeForResponse]]
+    ]
+
+
+__all__ = (
+    "DependabotRepositoryAccessDetailsType",
+    "DependabotRepositoryAccessDetailsTypeForResponse",
+)

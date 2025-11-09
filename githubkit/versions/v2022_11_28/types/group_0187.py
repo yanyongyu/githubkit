@@ -18,4 +18,13 @@ class RepositoryRuleMaxFileSizePropParametersType(TypedDict):
     max_file_size: int
 
 
-__all__ = ("RepositoryRuleMaxFileSizePropParametersType",)
+class RepositoryRuleMaxFileSizePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleMaxFileSizePropParameters"""
+
+    max_file_size: int
+
+
+__all__ = (
+    "RepositoryRuleMaxFileSizePropParametersType",
+    "RepositoryRuleMaxFileSizePropParametersTypeForResponse",
+)

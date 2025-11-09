@@ -25,6 +25,19 @@ class BillingUsageSummaryReportGheType(TypedDict):
     usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsType]
 
 
+class BillingUsageSummaryReportGheTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhe"""
+
+    time_period: BillingUsageSummaryReportGhePropTimePeriodTypeForResponse
+    enterprise: str
+    organization: NotRequired[str]
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterTypeForResponse]
+    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse]
+
+
 class BillingUsageSummaryReportGhePropTimePeriodType(TypedDict):
     """BillingUsageSummaryReportGhePropTimePeriod"""
 
@@ -33,7 +46,22 @@ class BillingUsageSummaryReportGhePropTimePeriodType(TypedDict):
     day: NotRequired[int]
 
 
+class BillingUsageSummaryReportGhePropTimePeriodTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
 class BillingUsageSummaryReportGhePropCostCenterType(TypedDict):
+    """BillingUsageSummaryReportGhePropCostCenter"""
+
+    id: str
+    name: str
+
+
+class BillingUsageSummaryReportGhePropCostCenterTypeForResponse(TypedDict):
     """BillingUsageSummaryReportGhePropCostCenter"""
 
     id: str
@@ -55,9 +83,28 @@ class BillingUsageSummaryReportGhePropUsageItemsItemsType(TypedDict):
     net_amount: float
 
 
+class BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhePropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
 __all__ = (
     "BillingUsageSummaryReportGhePropCostCenterType",
+    "BillingUsageSummaryReportGhePropCostCenterTypeForResponse",
     "BillingUsageSummaryReportGhePropTimePeriodType",
+    "BillingUsageSummaryReportGhePropTimePeriodTypeForResponse",
     "BillingUsageSummaryReportGhePropUsageItemsItemsType",
+    "BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse",
     "BillingUsageSummaryReportGheType",
+    "BillingUsageSummaryReportGheTypeForResponse",
 )

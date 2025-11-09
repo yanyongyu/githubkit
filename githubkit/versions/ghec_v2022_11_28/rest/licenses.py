@@ -23,7 +23,11 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import License, LicenseContent, LicenseSimple
-    from ..types import LicenseContentType, LicenseSimpleType, LicenseType
+    from ..types import (
+        LicenseContentTypeForResponse,
+        LicenseSimpleTypeForResponse,
+        LicenseTypeForResponse,
+    )
 
 
 class LicensesClient:
@@ -49,7 +53,7 @@ class LicensesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[LicenseSimple], list[LicenseSimpleType]]:
+    ) -> Response[list[LicenseSimple], list[LicenseSimpleTypeForResponse]]:
         """licenses/get-all-commonly-used
 
         GET /licenses
@@ -88,7 +92,7 @@ class LicensesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[LicenseSimple], list[LicenseSimpleType]]:
+    ) -> Response[list[LicenseSimple], list[LicenseSimpleTypeForResponse]]:
         """licenses/get-all-commonly-used
 
         GET /licenses
@@ -125,7 +129,7 @@ class LicensesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[License, LicenseType]:
+    ) -> Response[License, LicenseTypeForResponse]:
         """licenses/get
 
         GET /licenses/{license}
@@ -159,7 +163,7 @@ class LicensesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[License, LicenseType]:
+    ) -> Response[License, LicenseTypeForResponse]:
         """licenses/get
 
         GET /licenses/{license}
@@ -195,7 +199,7 @@ class LicensesClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[LicenseContent, LicenseContentType]:
+    ) -> Response[LicenseContent, LicenseContentTypeForResponse]:
         """licenses/get-for-repo
 
         GET /repos/{owner}/{repo}/license
@@ -240,7 +244,7 @@ class LicensesClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[LicenseContent, LicenseContentType]:
+    ) -> Response[LicenseContent, LicenseContentTypeForResponse]:
         """licenses/get-for-repo
 
         GET /repos/{owner}/{repo}/license

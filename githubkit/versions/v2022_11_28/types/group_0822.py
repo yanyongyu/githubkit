@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0060 import SecurityAndAnalysisType
+from .group_0060 import SecurityAndAnalysisType, SecurityAndAnalysisTypeForResponse
 
 
 class WebhookSecurityAndAnalysisPropChangesPropFromType(TypedDict):
@@ -21,4 +21,13 @@ class WebhookSecurityAndAnalysisPropChangesPropFromType(TypedDict):
     security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
 
 
-__all__ = ("WebhookSecurityAndAnalysisPropChangesPropFromType",)
+class WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse(TypedDict):
+    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
+
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisTypeForResponse, None]]
+
+
+__all__ = (
+    "WebhookSecurityAndAnalysisPropChangesPropFromType",
+    "WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse",
+)

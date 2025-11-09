@@ -23,4 +23,18 @@ class ValidationErrorSimpleType(TypedDict):
     errors: NotRequired[list[str]]
 
 
-__all__ = ("ValidationErrorSimpleType",)
+class ValidationErrorSimpleTypeForResponse(TypedDict):
+    """Validation Error Simple
+
+    Validation Error Simple
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[list[str]]
+
+
+__all__ = (
+    "ValidationErrorSimpleType",
+    "ValidationErrorSimpleTypeForResponse",
+)

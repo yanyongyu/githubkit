@@ -22,4 +22,16 @@ class RepositoryRuleTagNamePatternPropParametersType(TypedDict):
     pattern: str
 
 
-__all__ = ("RepositoryRuleTagNamePatternPropParametersType",)
+class RepositoryRuleTagNamePatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleTagNamePatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
+
+
+__all__ = (
+    "RepositoryRuleTagNamePatternPropParametersType",
+    "RepositoryRuleTagNamePatternPropParametersTypeForResponse",
+)

@@ -18,4 +18,13 @@ class ReposOwnerRepoMergeUpstreamPostBodyType(TypedDict):
     branch: str
 
 
-__all__ = ("ReposOwnerRepoMergeUpstreamPostBodyType",)
+class ReposOwnerRepoMergeUpstreamPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoMergeUpstreamPostBody"""
+
+    branch: str
+
+
+__all__ = (
+    "ReposOwnerRepoMergeUpstreamPostBodyType",
+    "ReposOwnerRepoMergeUpstreamPostBodyTypeForResponse",
+)

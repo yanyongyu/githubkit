@@ -37,18 +37,18 @@ if TYPE_CHECKING:
         SecretScanningScanHistory,
     )
     from ..types import (
-        OrganizationSecretScanningAlertType,
+        OrganizationSecretScanningAlertTypeForResponse,
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType,
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType,
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
-        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
-        SecretScanningAlertType,
-        SecretScanningLocationType,
-        SecretScanningPatternConfigurationType,
-        SecretScanningPushProtectionBypassType,
-        SecretScanningScanHistoryType,
+        SecretScanningAlertTypeForResponse,
+        SecretScanningLocationTypeForResponse,
+        SecretScanningPatternConfigurationTypeForResponse,
+        SecretScanningPushProtectionBypassTypeForResponse,
+        SecretScanningScanHistoryTypeForResponse,
     )
 
 
@@ -87,7 +87,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
+        list[OrganizationSecretScanningAlert],
+        list[OrganizationSecretScanningAlertTypeForResponse],
     ]:
         """secret-scanning/list-alerts-for-org
 
@@ -161,7 +162,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[OrganizationSecretScanningAlert], list[OrganizationSecretScanningAlertType]
+        list[OrganizationSecretScanningAlert],
+        list[OrganizationSecretScanningAlertTypeForResponse],
     ]:
         """secret-scanning/list-alerts-for-org
 
@@ -222,7 +224,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        SecretScanningPatternConfiguration, SecretScanningPatternConfigurationType
+        SecretScanningPatternConfiguration,
+        SecretScanningPatternConfigurationTypeForResponse,
     ]:
         """secret-scanning/list-org-pattern-configs
 
@@ -260,7 +263,8 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        SecretScanningPatternConfiguration, SecretScanningPatternConfigurationType
+        SecretScanningPatternConfiguration,
+        SecretScanningPatternConfigurationTypeForResponse,
     ]:
         """secret-scanning/list-org-pattern-configs
 
@@ -301,7 +305,7 @@ class SecretScanningClient:
         data: OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
     ) -> Response[
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
-        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -325,7 +329,7 @@ class SecretScanningClient:
         ] = UNSET,
     ) -> Response[
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
-        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]: ...
 
     def update_org_pattern_configs(
@@ -338,7 +342,7 @@ class SecretScanningClient:
         **kwargs,
     ) -> Response[
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
-        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]:
         """secret-scanning/update-org-pattern-configs
 
@@ -399,7 +403,7 @@ class SecretScanningClient:
         data: OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
     ) -> Response[
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
-        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -423,7 +427,7 @@ class SecretScanningClient:
         ] = UNSET,
     ) -> Response[
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
-        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]: ...
 
     async def async_update_org_pattern_configs(
@@ -436,7 +440,7 @@ class SecretScanningClient:
         **kwargs,
     ) -> Response[
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
-        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type,
+        OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
     ]:
         """secret-scanning/update-org-pattern-configs
 
@@ -507,7 +511,7 @@ class SecretScanningClient:
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
+    ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertTypeForResponse]]:
         """secret-scanning/list-alerts-for-repo
 
         GET /repos/{owner}/{repo}/secret-scanning/alerts
@@ -575,7 +579,7 @@ class SecretScanningClient:
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertType]]:
+    ) -> Response[list[SecretScanningAlert], list[SecretScanningAlertTypeForResponse]]:
         """secret-scanning/list-alerts-for-repo
 
         GET /repos/{owner}/{repo}/secret-scanning/alerts
@@ -632,7 +636,7 @@ class SecretScanningClient:
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
         """secret-scanning/get-alert
 
         GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
@@ -677,7 +681,7 @@ class SecretScanningClient:
         hide_secret: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
         """secret-scanning/get-alert
 
         GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
@@ -723,7 +727,7 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     @overload
     def update_alert(
@@ -742,7 +746,7 @@ class SecretScanningClient:
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     def update_alert(
         self,
@@ -756,7 +760,7 @@ class SecretScanningClient:
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type
         ] = UNSET,
         **kwargs,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
         """secret-scanning/update-alert
 
         PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
@@ -813,7 +817,7 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     @overload
     async def async_update_alert(
@@ -832,7 +836,7 @@ class SecretScanningClient:
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]: ...
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     async def async_update_alert(
         self,
@@ -846,7 +850,7 @@ class SecretScanningClient:
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type
         ] = UNSET,
         **kwargs,
-    ) -> Response[SecretScanningAlert, SecretScanningAlertType]:
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
         """secret-scanning/update-alert
 
         PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
@@ -903,7 +907,9 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
+    ) -> Response[
+        list[SecretScanningLocation], list[SecretScanningLocationTypeForResponse]
+    ]:
         """secret-scanning/list-locations-for-alert
 
         GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations
@@ -950,7 +956,9 @@ class SecretScanningClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SecretScanningLocation], list[SecretScanningLocationType]]:
+    ) -> Response[
+        list[SecretScanningLocation], list[SecretScanningLocationTypeForResponse]
+    ]:
         """secret-scanning/list-locations-for-alert
 
         GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations
@@ -997,7 +1005,8 @@ class SecretScanningClient:
         stream: bool = False,
         data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     ) -> Response[
-        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+        SecretScanningPushProtectionBypass,
+        SecretScanningPushProtectionBypassTypeForResponse,
     ]: ...
 
     @overload
@@ -1012,7 +1021,8 @@ class SecretScanningClient:
         reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
         placeholder_id: str,
     ) -> Response[
-        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+        SecretScanningPushProtectionBypass,
+        SecretScanningPushProtectionBypassTypeForResponse,
     ]: ...
 
     def create_push_protection_bypass(
@@ -1027,7 +1037,8 @@ class SecretScanningClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[
-        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+        SecretScanningPushProtectionBypass,
+        SecretScanningPushProtectionBypassTypeForResponse,
     ]:
         """secret-scanning/create-push-protection-bypass
 
@@ -1085,7 +1096,8 @@ class SecretScanningClient:
         stream: bool = False,
         data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     ) -> Response[
-        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+        SecretScanningPushProtectionBypass,
+        SecretScanningPushProtectionBypassTypeForResponse,
     ]: ...
 
     @overload
@@ -1100,7 +1112,8 @@ class SecretScanningClient:
         reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
         placeholder_id: str,
     ) -> Response[
-        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+        SecretScanningPushProtectionBypass,
+        SecretScanningPushProtectionBypassTypeForResponse,
     ]: ...
 
     async def async_create_push_protection_bypass(
@@ -1115,7 +1128,8 @@ class SecretScanningClient:
         ] = UNSET,
         **kwargs,
     ) -> Response[
-        SecretScanningPushProtectionBypass, SecretScanningPushProtectionBypassType
+        SecretScanningPushProtectionBypass,
+        SecretScanningPushProtectionBypassTypeForResponse,
     ]:
         """secret-scanning/create-push-protection-bypass
 
@@ -1170,7 +1184,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryType]:
+    ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryTypeForResponse]:
         """secret-scanning/get-scan-history
 
         GET /repos/{owner}/{repo}/secret-scanning/scan-history
@@ -1209,7 +1223,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryType]:
+    ) -> Response[SecretScanningScanHistory, SecretScanningScanHistoryTypeForResponse]:
         """secret-scanning/get-scan-history
 
         GET /repos/{owner}/{repo}/secret-scanning/scan-history

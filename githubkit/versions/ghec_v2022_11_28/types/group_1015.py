@@ -21,4 +21,18 @@ class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type(TypedD
     seats_created: int
 
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type",)
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
+
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
+
+
+__all__ = (
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse",
+)

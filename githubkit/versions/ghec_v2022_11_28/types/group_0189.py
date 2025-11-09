@@ -25,6 +25,23 @@ class BillingPremiumRequestUsageReportGheType(TypedDict):
     usage_items: list[BillingPremiumRequestUsageReportGhePropUsageItemsItemsType]
 
 
+class BillingPremiumRequestUsageReportGheTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhe"""
+
+    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse
+    enterprise: str
+    user: NotRequired[str]
+    organization: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    cost_center: NotRequired[
+        BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse
+    ]
+    usage_items: list[
+        BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse
+    ]
+
+
 class BillingPremiumRequestUsageReportGhePropTimePeriodType(TypedDict):
     """BillingPremiumRequestUsageReportGhePropTimePeriod"""
 
@@ -33,7 +50,22 @@ class BillingPremiumRequestUsageReportGhePropTimePeriodType(TypedDict):
     day: NotRequired[int]
 
 
+class BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
 class BillingPremiumRequestUsageReportGhePropCostCenterType(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+
+    id: str
+    name: str
+
+
+class BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse(TypedDict):
     """BillingPremiumRequestUsageReportGhePropCostCenter"""
 
     id: str
@@ -56,9 +88,29 @@ class BillingPremiumRequestUsageReportGhePropUsageItemsItemsType(TypedDict):
     net_amount: float
 
 
+class BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
 __all__ = (
     "BillingPremiumRequestUsageReportGhePropCostCenterType",
+    "BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse",
     "BillingPremiumRequestUsageReportGhePropTimePeriodType",
+    "BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse",
     "BillingPremiumRequestUsageReportGhePropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse",
     "BillingPremiumRequestUsageReportGheType",
+    "BillingPremiumRequestUsageReportGheTypeForResponse",
 )

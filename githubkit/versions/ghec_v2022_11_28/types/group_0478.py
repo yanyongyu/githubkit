@@ -19,4 +19,16 @@ class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(Typ
     pattern_scope: NotRequired[str]
 
 
-__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",)
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
+
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
+
+
+__all__ = (
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse",
+)

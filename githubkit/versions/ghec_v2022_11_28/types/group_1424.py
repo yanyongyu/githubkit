@@ -19,4 +19,14 @@ class UserKeysPostBodyType(TypedDict):
     key: str
 
 
-__all__ = ("UserKeysPostBodyType",)
+class UserKeysPostBodyTypeForResponse(TypedDict):
+    """UserKeysPostBody"""
+
+    title: NotRequired[str]
+    key: str
+
+
+__all__ = (
+    "UserKeysPostBodyType",
+    "UserKeysPostBodyTypeForResponse",
+)

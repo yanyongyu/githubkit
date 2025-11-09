@@ -18,4 +18,13 @@ class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType(TypedDict):
     body: str
 
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType",)
+class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody"""
+
+    body: str
+
+
+__all__ = (
+    "TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType",
+    "TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyTypeForResponse",
+)

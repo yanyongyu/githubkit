@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class ReleaseAssetType(TypedDict):
@@ -38,4 +38,29 @@ class ReleaseAssetType(TypedDict):
     uploader: Union[None, SimpleUserType]
 
 
-__all__ = ("ReleaseAssetType",)
+class ReleaseAssetTypeForResponse(TypedDict):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    url: str
+    browser_download_url: str
+    id: int
+    node_id: str
+    name: str
+    label: Union[str, None]
+    state: Literal["uploaded", "open"]
+    content_type: str
+    size: int
+    digest: Union[str, None]
+    download_count: int
+    created_at: str
+    updated_at: str
+    uploader: Union[None, SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "ReleaseAssetType",
+    "ReleaseAssetTypeForResponse",
+)

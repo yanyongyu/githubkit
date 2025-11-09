@@ -25,7 +25,7 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import ApiOverview, Root
-    from ..types import ApiOverviewType, RootType
+    from ..types import ApiOverviewTypeForResponse, RootTypeForResponse
 
 
 class MetaClient:
@@ -48,7 +48,7 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Root, RootType]:
+    ) -> Response[Root, RootTypeForResponse]:
         """meta/root
 
         GET /
@@ -77,7 +77,7 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Root, RootType]:
+    ) -> Response[Root, RootTypeForResponse]:
         """meta/root
 
         GET /
@@ -106,7 +106,7 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiOverview, ApiOverviewType]:
+    ) -> Response[ApiOverview, ApiOverviewTypeForResponse]:
         """meta/get
 
         GET /meta
@@ -142,7 +142,7 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiOverview, ApiOverviewType]:
+    ) -> Response[ApiOverview, ApiOverviewTypeForResponse]:
         """meta/get
 
         GET /meta
@@ -244,7 +244,7 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[date], list[date]]:
+    ) -> Response[list[date], list[str]]:
         """meta/get-all-versions
 
         GET /versions
@@ -278,7 +278,7 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[date], list[date]]:
+    ) -> Response[list[date], list[str]]:
         """meta/get-all-versions
 
         GET /versions

@@ -12,12 +12,15 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0534 import EnterpriseWebhooksType
-from .group_0535 import SimpleInstallationType
-from .group_0536 import OrganizationSimpleWebhooksType
-from .group_0537 import RepositoryWebhooksType
-from .group_0577 import WebhooksReleaseType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0577 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
 
 
 class WebhookReleaseEditedType(TypedDict):
@@ -33,6 +36,19 @@ class WebhookReleaseEditedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
+class WebhookReleaseEditedTypeForResponse(TypedDict):
+    """release edited event"""
+
+    action: Literal["edited"]
+    changes: WebhookReleaseEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    release: WebhooksReleaseTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
 class WebhookReleaseEditedPropChangesType(TypedDict):
     """WebhookReleaseEditedPropChanges"""
 
@@ -42,7 +58,24 @@ class WebhookReleaseEditedPropChangesType(TypedDict):
     make_latest: NotRequired[WebhookReleaseEditedPropChangesPropMakeLatestType]
 
 
+class WebhookReleaseEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChanges"""
+
+    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyTypeForResponse]
+    name: NotRequired[WebhookReleaseEditedPropChangesPropNameTypeForResponse]
+    tag_name: NotRequired[WebhookReleaseEditedPropChangesPropTagNameTypeForResponse]
+    make_latest: NotRequired[
+        WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse
+    ]
+
+
 class WebhookReleaseEditedPropChangesPropBodyType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropBodyTypeForResponse(TypedDict):
     """WebhookReleaseEditedPropChangesPropBody"""
 
     from_: str
@@ -54,7 +87,19 @@ class WebhookReleaseEditedPropChangesPropNameType(TypedDict):
     from_: str
 
 
+class WebhookReleaseEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropName"""
+
+    from_: str
+
+
 class WebhookReleaseEditedPropChangesPropTagNameType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropTagName"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropTagNameTypeForResponse(TypedDict):
     """WebhookReleaseEditedPropChangesPropTagName"""
 
     from_: str
@@ -66,11 +111,23 @@ class WebhookReleaseEditedPropChangesPropMakeLatestType(TypedDict):
     to: bool
 
 
+class WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+
+    to: bool
+
+
 __all__ = (
     "WebhookReleaseEditedPropChangesPropBodyType",
+    "WebhookReleaseEditedPropChangesPropBodyTypeForResponse",
     "WebhookReleaseEditedPropChangesPropMakeLatestType",
+    "WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse",
     "WebhookReleaseEditedPropChangesPropNameType",
+    "WebhookReleaseEditedPropChangesPropNameTypeForResponse",
     "WebhookReleaseEditedPropChangesPropTagNameType",
+    "WebhookReleaseEditedPropChangesPropTagNameTypeForResponse",
     "WebhookReleaseEditedPropChangesType",
+    "WebhookReleaseEditedPropChangesTypeForResponse",
     "WebhookReleaseEditedType",
+    "WebhookReleaseEditedTypeForResponse",
 )

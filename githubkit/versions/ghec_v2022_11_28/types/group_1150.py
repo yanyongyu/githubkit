@@ -16,4 +16,11 @@ class OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type(TypedDict):
     """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
 
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",)
+class OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+
+
+__all__ = (
+    "OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",
+    "OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse",
+)

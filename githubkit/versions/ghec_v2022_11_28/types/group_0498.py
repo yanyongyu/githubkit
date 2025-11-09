@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0496 import MetaType
+from .group_0496 import MetaType, MetaTypeForResponse
 
 
 class ScimEnterpriseGroupResponseAllof1Type(TypedDict):
@@ -22,7 +22,25 @@ class ScimEnterpriseGroupResponseAllof1Type(TypedDict):
     meta: NotRequired[MetaType]
 
 
+class ScimEnterpriseGroupResponseAllof1TypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1"""
+
+    id: NotRequired[str]
+    members: NotRequired[
+        list[ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse]
+    ]
+    meta: NotRequired[MetaTypeForResponse]
+
+
 class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse(TypedDict):
     """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
 
     value: NotRequired[str]
@@ -32,5 +50,7 @@ class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
 
 __all__ = (
     "ScimEnterpriseGroupResponseAllof1PropMembersItemsType",
+    "ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse",
     "ScimEnterpriseGroupResponseAllof1Type",
+    "ScimEnterpriseGroupResponseAllof1TypeForResponse",
 )

@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1345 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type
+from .group_1345 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
 class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
@@ -30,4 +33,22 @@ class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
     public: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof2Type",)
+class ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
+
+    cname: Union[str, None]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
+    ]
+    public: NotRequired[bool]
+
+
+__all__ = (
+    "ReposOwnerRepoPagesPutBodyAnyof2Type",
+    "ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse",
+)

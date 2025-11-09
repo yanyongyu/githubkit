@@ -20,6 +20,15 @@ class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyT
     selected_organization_ids: list[int]
 
 
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
+
+    selected_organization_ids: list[int]
+
+
 __all__ = (
     "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyTypeForResponse",
 )

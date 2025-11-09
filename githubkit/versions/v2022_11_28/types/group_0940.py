@@ -27,4 +27,21 @@ class OrgsOrgArtifactsMetadataStorageRecordPostBodyType(TypedDict):
     github_repository: NotRequired[str]
 
 
-__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBodyType",)
+class OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+
+    name: str
+    digest: str
+    version: NotRequired[str]
+    artifact_url: NotRequired[str]
+    path: NotRequired[str]
+    registry_url: str
+    repository: NotRequired[str]
+    status: NotRequired[Literal["active", "eol", "deleted"]]
+    github_repository: NotRequired[str]
+
+
+__all__ = (
+    "OrgsOrgArtifactsMetadataStorageRecordPostBodyType",
+    "OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse",
+)

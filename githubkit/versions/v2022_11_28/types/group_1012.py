@@ -21,6 +21,13 @@ class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
     network_configurations: list[NetworkConfigurationType]
 
 
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+
+    total_count: int
+    network_configurations: list[NetworkConfigurationTypeForResponse]
+
+
 class NetworkConfigurationType(TypedDict):
     """Hosted compute network configuration
 
@@ -34,7 +41,22 @@ class NetworkConfigurationType(TypedDict):
     created_on: Union[datetime, None]
 
 
+class NetworkConfigurationTypeForResponse(TypedDict):
+    """Hosted compute network configuration
+
+    A hosted compute network configuration.
+    """
+
+    id: str
+    name: str
+    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
+    network_settings_ids: NotRequired[list[str]]
+    created_on: Union[str, None]
+
+
 __all__ = (
     "NetworkConfigurationType",
+    "NetworkConfigurationTypeForResponse",
     "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
+    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
 )

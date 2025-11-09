@@ -19,4 +19,14 @@ class UserSshSigningKeysPostBodyType(TypedDict):
     key: str
 
 
-__all__ = ("UserSshSigningKeysPostBodyType",)
+class UserSshSigningKeysPostBodyTypeForResponse(TypedDict):
+    """UserSshSigningKeysPostBody"""
+
+    title: NotRequired[str]
+    key: str
+
+
+__all__ = (
+    "UserSshSigningKeysPostBodyType",
+    "UserSshSigningKeysPostBodyTypeForResponse",
+)

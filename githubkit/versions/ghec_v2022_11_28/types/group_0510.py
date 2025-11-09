@@ -13,8 +13,11 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0214 import MinimalRepositoryType
-from .group_0509 import SearchResultTextMatchesItemsType
+from .group_0214 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0509 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
 class CodeSearchResultItemType(TypedDict):
@@ -38,6 +41,27 @@ class CodeSearchResultItemType(TypedDict):
     text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
+class CodeSearchResultItemTypeForResponse(TypedDict):
+    """Code Search Result Item
+
+    Code Search Result Item
+    """
+
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryTypeForResponse
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[str]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
 class SearchCodeGetResponse200Type(TypedDict):
     """SearchCodeGetResponse200"""
 
@@ -46,7 +70,17 @@ class SearchCodeGetResponse200Type(TypedDict):
     items: list[CodeSearchResultItemType]
 
 
+class SearchCodeGetResponse200TypeForResponse(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemTypeForResponse]
+
+
 __all__ = (
     "CodeSearchResultItemType",
+    "CodeSearchResultItemTypeForResponse",
     "SearchCodeGetResponse200Type",
+    "SearchCodeGetResponse200TypeForResponse",
 )

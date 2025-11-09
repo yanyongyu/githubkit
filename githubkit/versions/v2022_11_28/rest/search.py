@@ -34,13 +34,13 @@ if TYPE_CHECKING:
         SearchUsersGetResponse200,
     )
     from ..types import (
-        SearchCodeGetResponse200Type,
-        SearchCommitsGetResponse200Type,
-        SearchIssuesGetResponse200Type,
-        SearchLabelsGetResponse200Type,
-        SearchRepositoriesGetResponse200Type,
-        SearchTopicsGetResponse200Type,
-        SearchUsersGetResponse200Type,
+        SearchCodeGetResponse200TypeForResponse,
+        SearchCommitsGetResponse200TypeForResponse,
+        SearchIssuesGetResponse200TypeForResponse,
+        SearchLabelsGetResponse200TypeForResponse,
+        SearchRepositoriesGetResponse200TypeForResponse,
+        SearchTopicsGetResponse200TypeForResponse,
+        SearchUsersGetResponse200TypeForResponse,
     )
 
 
@@ -69,7 +69,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200Type]:
+    ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200TypeForResponse]:
         """search/code
 
         GET /search/code
@@ -141,7 +141,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200Type]:
+    ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200TypeForResponse]:
         """search/code
 
         GET /search/code
@@ -213,7 +213,9 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchCommitsGetResponse200, SearchCommitsGetResponse200Type]:
+    ) -> Response[
+        SearchCommitsGetResponse200, SearchCommitsGetResponse200TypeForResponse
+    ]:
         """search/commits
 
         GET /search/commits
@@ -263,7 +265,9 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchCommitsGetResponse200, SearchCommitsGetResponse200Type]:
+    ) -> Response[
+        SearchCommitsGetResponse200, SearchCommitsGetResponse200TypeForResponse
+    ]:
         """search/commits
 
         GET /search/commits
@@ -328,7 +332,9 @@ class SearchClient:
         advanced_search: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
+    ) -> Response[
+        SearchIssuesGetResponse200, SearchIssuesGetResponse200TypeForResponse
+    ]:
         """search/issues-and-pull-requests
 
         GET /search/issues
@@ -409,7 +415,9 @@ class SearchClient:
         advanced_search: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
+    ) -> Response[
+        SearchIssuesGetResponse200, SearchIssuesGetResponse200TypeForResponse
+    ]:
         """search/issues-and-pull-requests
 
         GET /search/issues
@@ -476,7 +484,9 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchLabelsGetResponse200, SearchLabelsGetResponse200Type]:
+    ) -> Response[
+        SearchLabelsGetResponse200, SearchLabelsGetResponse200TypeForResponse
+    ]:
         """search/labels
 
         GET /search/labels
@@ -534,7 +544,9 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchLabelsGetResponse200, SearchLabelsGetResponse200Type]:
+    ) -> Response[
+        SearchLabelsGetResponse200, SearchLabelsGetResponse200TypeForResponse
+    ]:
         """search/labels
 
         GET /search/labels
@@ -594,7 +606,8 @@ class SearchClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        SearchRepositoriesGetResponse200, SearchRepositoriesGetResponse200Type
+        SearchRepositoriesGetResponse200,
+        SearchRepositoriesGetResponse200TypeForResponse,
     ]:
         """search/repos
 
@@ -657,7 +670,8 @@ class SearchClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        SearchRepositoriesGetResponse200, SearchRepositoriesGetResponse200Type
+        SearchRepositoriesGetResponse200,
+        SearchRepositoriesGetResponse200TypeForResponse,
     ]:
         """search/repos
 
@@ -715,7 +729,9 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchTopicsGetResponse200, SearchTopicsGetResponse200Type]:
+    ) -> Response[
+        SearchTopicsGetResponse200, SearchTopicsGetResponse200TypeForResponse
+    ]:
         r"""search/topics
 
         GET /search/topics
@@ -762,7 +778,9 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchTopicsGetResponse200, SearchTopicsGetResponse200Type]:
+    ) -> Response[
+        SearchTopicsGetResponse200, SearchTopicsGetResponse200TypeForResponse
+    ]:
         r"""search/topics
 
         GET /search/topics
@@ -811,7 +829,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200Type]:
+    ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200TypeForResponse]:
         """search/users
 
         GET /search/users
@@ -872,7 +890,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200Type]:
+    ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200TypeForResponse]:
         """search/users
 
         GET /search/users

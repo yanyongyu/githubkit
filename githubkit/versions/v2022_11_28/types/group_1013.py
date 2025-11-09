@@ -21,4 +21,15 @@ class OrgsOrgSettingsNetworkConfigurationsPostBodyType(TypedDict):
     network_settings_ids: list[str]
 
 
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsPostBodyType",)
+class OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
+
+
+__all__ = (
+    "OrgsOrgSettingsNetworkConfigurationsPostBodyType",
+    "OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse",
+)

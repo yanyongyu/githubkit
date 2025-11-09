@@ -11,9 +11,13 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0111 import RepositoryRulesetConditionsPropRefNameType
+from .group_0111 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
 from .group_0159 import (
     RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
 )
 
 
@@ -27,4 +31,19 @@ class OrgRulesetConditionsOneof1Type(TypedDict):
     repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
 
 
-__all__ = ("OrgRulesetConditionsOneof1Type",)
+class OrgRulesetConditionsOneof1TypeForResponse(TypedDict):
+    """repository_id_and_ref_name
+
+    Conditions to target repositories by id and refs by name
+    """
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_id: (
+        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
+    )
+
+
+__all__ = (
+    "OrgRulesetConditionsOneof1Type",
+    "OrgRulesetConditionsOneof1TypeForResponse",
+)

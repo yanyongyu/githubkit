@@ -22,4 +22,17 @@ class ShortBlobType(TypedDict):
     sha: str
 
 
-__all__ = ("ShortBlobType",)
+class ShortBlobTypeForResponse(TypedDict):
+    """Short Blob
+
+    Short Blob
+    """
+
+    url: str
+    sha: str
+
+
+__all__ = (
+    "ShortBlobType",
+    "ShortBlobTypeForResponse",
+)

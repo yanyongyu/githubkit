@@ -29,4 +29,23 @@ class OrganizationCreateIssueTypeType(TypedDict):
     ]
 
 
-__all__ = ("OrganizationCreateIssueTypeType",)
+class OrganizationCreateIssueTypeTypeForResponse(TypedDict):
+    """OrganizationCreateIssueType"""
+
+    name: str
+    is_enabled: bool
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+
+
+__all__ = (
+    "OrganizationCreateIssueTypeType",
+    "OrganizationCreateIssueTypeTypeForResponse",
+)

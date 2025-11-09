@@ -18,4 +18,13 @@ class UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
     subject_digests: list[str]
 
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type",)
+class UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse(TypedDict):
+    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+
+    subject_digests: list[str]
+
+
+__all__ = (
+    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type",
+    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse",
+)

@@ -21,4 +21,15 @@ class TrafficType(TypedDict):
     count: int
 
 
-__all__ = ("TrafficType",)
+class TrafficTypeForResponse(TypedDict):
+    """Traffic"""
+
+    timestamp: str
+    uniques: int
+    count: int
+
+
+__all__ = (
+    "TrafficType",
+    "TrafficTypeForResponse",
+)

@@ -13,8 +13,12 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0109 import (
     RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
 )
-from .group_0111 import RepositoryRulesetConditionsPropRefNameType
+from .group_0111 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
 
 
 class OrgRulesetConditionsOneof0Type(TypedDict):
@@ -29,4 +33,19 @@ class OrgRulesetConditionsOneof0Type(TypedDict):
     )
 
 
-__all__ = ("OrgRulesetConditionsOneof0Type",)
+class OrgRulesetConditionsOneof0TypeForResponse(TypedDict):
+    """repository_name_and_ref_name
+
+    Conditions to target repositories by name and refs by name
+    """
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
+
+
+__all__ = (
+    "OrgRulesetConditionsOneof0Type",
+    "OrgRulesetConditionsOneof0TypeForResponse",
+)

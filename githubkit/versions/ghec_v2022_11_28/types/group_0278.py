@@ -30,4 +30,23 @@ class RuleSuitesItemsType(TypedDict):
     evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
 
 
-__all__ = ("RuleSuitesItemsType",)
+class RuleSuitesItemsTypeForResponse(TypedDict):
+    """RuleSuitesItems"""
+
+    id: NotRequired[int]
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[str]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
+
+
+__all__ = (
+    "RuleSuitesItemsType",
+    "RuleSuitesItemsTypeForResponse",
+)

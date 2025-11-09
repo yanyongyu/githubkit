@@ -54,40 +54,40 @@ if TYPE_CHECKING:
         UpdateBudget,
     )
     from ..types import (
-        ActionsBillingUsageType,
-        AdvancedSecurityActiveCommittersType,
-        BillingPremiumRequestUsageReportGheType,
-        BillingPremiumRequestUsageReportOrgType,
-        BillingPremiumRequestUsageReportUserType,
-        BillingUsageReportType,
-        BillingUsageReportUserType,
-        BillingUsageSummaryReportGheType,
-        BillingUsageSummaryReportOrgType,
-        BillingUsageSummaryReportUserType,
-        CombinedBillingUsageType,
-        CreateBudgetType,
-        DeleteBudgetType,
-        DeleteCostCenterType,
+        ActionsBillingUsageTypeForResponse,
+        AdvancedSecurityActiveCommittersTypeForResponse,
+        BillingPremiumRequestUsageReportGheTypeForResponse,
+        BillingPremiumRequestUsageReportOrgTypeForResponse,
+        BillingPremiumRequestUsageReportUserTypeForResponse,
+        BillingUsageReportTypeForResponse,
+        BillingUsageReportUserTypeForResponse,
+        BillingUsageSummaryReportGheTypeForResponse,
+        BillingUsageSummaryReportOrgTypeForResponse,
+        BillingUsageSummaryReportUserTypeForResponse,
+        CombinedBillingUsageTypeForResponse,
+        CreateBudgetTypeForResponse,
+        DeleteBudgetTypeForResponse,
+        DeleteCostCenterTypeForResponse,
         EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType,
         EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType,
         EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType,
         EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse,
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse,
         EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType,
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type,
-        GetAllBudgetsType,
-        GetAllCostCentersType,
-        GetBudgetType,
-        GetCostCenterType,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse,
+        GetAllBudgetsTypeForResponse,
+        GetAllCostCentersTypeForResponse,
+        GetBudgetTypeForResponse,
+        GetCostCenterTypeForResponse,
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType,
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type,
-        PackagesBillingUsageType,
-        UpdateBudgetType,
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
+        PackagesBillingUsageTypeForResponse,
+        UpdateBudgetTypeForResponse,
     )
 
 
@@ -112,7 +112,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
+    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
         """billing/get-github-actions-billing-ghe
 
         GET /enterprises/{enterprise}/settings/billing/actions
@@ -149,7 +149,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
+    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
         """billing/get-github-actions-billing-ghe
 
         GET /enterprises/{enterprise}/settings/billing/actions
@@ -192,7 +192,8 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
+        AdvancedSecurityActiveCommitters,
+        AdvancedSecurityActiveCommittersTypeForResponse,
     ]:
         """billing/get-github-advanced-security-billing-ghe
 
@@ -240,7 +241,8 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
+        AdvancedSecurityActiveCommitters,
+        AdvancedSecurityActiveCommittersTypeForResponse,
     ]:
         """billing/get-github-advanced-security-billing-ghe
 
@@ -282,7 +284,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetAllBudgets, GetAllBudgetsType]:
+    ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
         """billing/get-all-budgets
 
         GET /enterprises/{enterprise}/settings/billing/budgets
@@ -319,7 +321,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetAllBudgets, GetAllBudgetsType]:
+    ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
         """billing/get-all-budgets
 
         GET /enterprises/{enterprise}/settings/billing/budgets
@@ -358,7 +360,7 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType,
-    ) -> Response[CreateBudget, CreateBudgetType]: ...
+    ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
 
     @overload
     def create_budget(
@@ -377,7 +379,7 @@ class BillingClient:
         budget_entity_name: Missing[str] = UNSET,
         budget_type: Literal["ProductPricing", "SkuPricing"],
         budget_product_sku: Missing[str] = UNSET,
-    ) -> Response[CreateBudget, CreateBudgetType]: ...
+    ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
 
     def create_budget(
         self,
@@ -387,7 +389,7 @@ class BillingClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CreateBudget, CreateBudgetType]:
+    ) -> Response[CreateBudget, CreateBudgetTypeForResponse]:
         """billing/create-budget
 
         POST /enterprises/{enterprise}/settings/billing/budgets
@@ -447,7 +449,7 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType,
-    ) -> Response[CreateBudget, CreateBudgetType]: ...
+    ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
 
     @overload
     async def async_create_budget(
@@ -466,7 +468,7 @@ class BillingClient:
         budget_entity_name: Missing[str] = UNSET,
         budget_type: Literal["ProductPricing", "SkuPricing"],
         budget_product_sku: Missing[str] = UNSET,
-    ) -> Response[CreateBudget, CreateBudgetType]: ...
+    ) -> Response[CreateBudget, CreateBudgetTypeForResponse]: ...
 
     async def async_create_budget(
         self,
@@ -476,7 +478,7 @@ class BillingClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CreateBudget, CreateBudgetType]:
+    ) -> Response[CreateBudget, CreateBudgetTypeForResponse]:
         """billing/create-budget
 
         POST /enterprises/{enterprise}/settings/billing/budgets
@@ -535,7 +537,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetBudget, GetBudgetType]:
+    ) -> Response[GetBudget, GetBudgetTypeForResponse]:
         """billing/get-budget
 
         GET /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
@@ -580,7 +582,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetBudget, GetBudgetType]:
+    ) -> Response[GetBudget, GetBudgetTypeForResponse]:
         """billing/get-budget
 
         GET /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
@@ -625,7 +627,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DeleteBudget, DeleteBudgetType]:
+    ) -> Response[DeleteBudget, DeleteBudgetTypeForResponse]:
         """billing/delete-budget
 
         DELETE /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
@@ -670,7 +672,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DeleteBudget, DeleteBudgetType]:
+    ) -> Response[DeleteBudget, DeleteBudgetTypeForResponse]:
         """billing/delete-budget
 
         DELETE /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
@@ -717,7 +719,7 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType,
-    ) -> Response[UpdateBudget, UpdateBudgetType]: ...
+    ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     @overload
     def update_budget(
@@ -739,7 +741,7 @@ class BillingClient:
         budget_entity_name: Missing[str] = UNSET,
         budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
-    ) -> Response[UpdateBudget, UpdateBudgetType]: ...
+    ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     def update_budget(
         self,
@@ -752,7 +754,7 @@ class BillingClient:
             EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[UpdateBudget, UpdateBudgetType]:
+    ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]:
         """billing/update-budget
 
         PATCH /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
@@ -814,7 +816,7 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType,
-    ) -> Response[UpdateBudget, UpdateBudgetType]: ...
+    ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     @overload
     async def async_update_budget(
@@ -836,7 +838,7 @@ class BillingClient:
         budget_entity_name: Missing[str] = UNSET,
         budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
         budget_product_sku: Missing[str] = UNSET,
-    ) -> Response[UpdateBudget, UpdateBudgetType]: ...
+    ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
     async def async_update_budget(
         self,
@@ -849,7 +851,7 @@ class BillingClient:
             EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[UpdateBudget, UpdateBudgetType]:
+    ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]:
         """billing/update-budget
 
         PATCH /enterprises/{enterprise}/settings/billing/budgets/{budget_id}
@@ -909,7 +911,7 @@ class BillingClient:
         state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetAllCostCenters, GetAllCostCentersType]:
+    ) -> Response[GetAllCostCenters, GetAllCostCentersTypeForResponse]:
         """billing/get-all-cost-centers
 
         GET /enterprises/{enterprise}/settings/billing/cost-centers
@@ -955,7 +957,7 @@ class BillingClient:
         state: Missing[Literal["active", "deleted"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetAllCostCenters, GetAllCostCentersType]:
+    ) -> Response[GetAllCostCenters, GetAllCostCentersTypeForResponse]:
         """billing/get-all-cost-centers
 
         GET /enterprises/{enterprise}/settings/billing/cost-centers
@@ -1004,7 +1006,7 @@ class BillingClient:
         data: EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1018,7 +1020,7 @@ class BillingClient:
         name: str,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse,
     ]: ...
 
     def create_cost_center(
@@ -1033,7 +1035,7 @@ class BillingClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse,
     ]:
         """billing/create-cost-center
 
@@ -1084,7 +1086,7 @@ class BillingClient:
         data: EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1098,7 +1100,7 @@ class BillingClient:
         name: str,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse,
     ]: ...
 
     async def async_create_cost_center(
@@ -1113,7 +1115,7 @@ class BillingClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse,
     ]:
         """billing/create-cost-center
 
@@ -1161,7 +1163,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetCostCenter, GetCostCenterType]:
+    ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]:
         """billing/get-cost-center
 
         GET /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
@@ -1204,7 +1206,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetCostCenter, GetCostCenterType]:
+    ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]:
         """billing/get-cost-center
 
         GET /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
@@ -1247,7 +1249,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DeleteCostCenter, DeleteCostCenterType]:
+    ) -> Response[DeleteCostCenter, DeleteCostCenterTypeForResponse]:
         """billing/delete-cost-center
 
         DELETE /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
@@ -1291,7 +1293,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DeleteCostCenter, DeleteCostCenterType]:
+    ) -> Response[DeleteCostCenter, DeleteCostCenterTypeForResponse]:
         """billing/delete-cost-center
 
         DELETE /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
@@ -1337,7 +1339,7 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType,
-    ) -> Response[GetCostCenter, GetCostCenterType]: ...
+    ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]: ...
 
     @overload
     def update_cost_center(
@@ -1349,7 +1351,7 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         name: str,
-    ) -> Response[GetCostCenter, GetCostCenterType]: ...
+    ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]: ...
 
     def update_cost_center(
         self,
@@ -1362,7 +1364,7 @@ class BillingClient:
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[GetCostCenter, GetCostCenterType]:
+    ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]:
         """billing/update-cost-center
 
         PATCH /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
@@ -1423,7 +1425,7 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType,
-    ) -> Response[GetCostCenter, GetCostCenterType]: ...
+    ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]: ...
 
     @overload
     async def async_update_cost_center(
@@ -1435,7 +1437,7 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         name: str,
-    ) -> Response[GetCostCenter, GetCostCenterType]: ...
+    ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]: ...
 
     async def async_update_cost_center(
         self,
@@ -1448,7 +1450,7 @@ class BillingClient:
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[GetCostCenter, GetCostCenterType]:
+    ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]:
         """billing/update-cost-center
 
         PATCH /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
@@ -1511,7 +1513,7 @@ class BillingClient:
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1528,7 +1530,7 @@ class BillingClient:
         repositories: Missing[list[str]] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse,
     ]: ...
 
     def add_resource_to_cost_center(
@@ -1544,7 +1546,7 @@ class BillingClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse,
     ]:
         """billing/add-resource-to-cost-center
 
@@ -1607,7 +1609,7 @@ class BillingClient:
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1624,7 +1626,7 @@ class BillingClient:
         repositories: Missing[list[str]] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse,
     ]: ...
 
     async def async_add_resource_to_cost_center(
@@ -1640,7 +1642,7 @@ class BillingClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse,
     ]:
         """billing/add-resource-to-cost-center
 
@@ -1703,7 +1705,7 @@ class BillingClient:
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1720,7 +1722,7 @@ class BillingClient:
         repositories: Missing[list[str]] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse,
     ]: ...
 
     def remove_resource_from_cost_center(
@@ -1736,7 +1738,7 @@ class BillingClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse,
     ]:
         """billing/remove-resource-from-cost-center
 
@@ -1798,7 +1800,7 @@ class BillingClient:
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1815,7 +1817,7 @@ class BillingClient:
         repositories: Missing[list[str]] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse,
     ]: ...
 
     async def async_remove_resource_from_cost_center(
@@ -1831,7 +1833,7 @@ class BillingClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
-        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse,
     ]:
         """billing/remove-resource-from-cost-center
 
@@ -1888,7 +1890,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
+    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
         """billing/get-github-packages-billing-ghe
 
         GET /enterprises/{enterprise}/settings/billing/packages
@@ -1925,7 +1927,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
+    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
         """billing/get-github-packages-billing-ghe
 
         GET /enterprises/{enterprise}/settings/billing/packages
@@ -1971,7 +1973,8 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        BillingPremiumRequestUsageReportGhe, BillingPremiumRequestUsageReportGheType
+        BillingPremiumRequestUsageReportGhe,
+        BillingPremiumRequestUsageReportGheTypeForResponse,
     ]:
         """billing/get-github-billing-premium-request-usage-report-ghe
 
@@ -2036,7 +2039,8 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        BillingPremiumRequestUsageReportGhe, BillingPremiumRequestUsageReportGheType
+        BillingPremiumRequestUsageReportGhe,
+        BillingPremiumRequestUsageReportGheTypeForResponse,
     ]:
         """billing/get-github-billing-premium-request-usage-report-ghe
 
@@ -2092,7 +2096,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
+    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
         """billing/get-shared-storage-billing-ghe
 
         GET /enterprises/{enterprise}/settings/billing/shared-storage
@@ -2129,7 +2133,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
+    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
         """billing/get-shared-storage-billing-ghe
 
         GET /enterprises/{enterprise}/settings/billing/shared-storage
@@ -2170,7 +2174,7 @@ class BillingClient:
         cost_center_id: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BillingUsageReport, BillingUsageReportType]:
+    ) -> Response[BillingUsageReport, BillingUsageReportTypeForResponse]:
         """billing/get-github-billing-usage-report-ghe
 
         GET /enterprises/{enterprise}/settings/billing/usage
@@ -2224,7 +2228,7 @@ class BillingClient:
         cost_center_id: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BillingUsageReport, BillingUsageReportType]:
+    ) -> Response[BillingUsageReport, BillingUsageReportTypeForResponse]:
         """billing/get-github-billing-usage-report-ghe
 
         GET /enterprises/{enterprise}/settings/billing/usage
@@ -2282,7 +2286,9 @@ class BillingClient:
         cost_center_id: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BillingUsageSummaryReportGhe, BillingUsageSummaryReportGheType]:
+    ) -> Response[
+        BillingUsageSummaryReportGhe, BillingUsageSummaryReportGheTypeForResponse
+    ]:
         """billing/get-github-billing-usage-summary-report-ghe
 
         GET /enterprises/{enterprise}/settings/billing/usage/summary
@@ -2347,7 +2353,9 @@ class BillingClient:
         cost_center_id: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BillingUsageSummaryReportGhe, BillingUsageSummaryReportGheType]:
+    ) -> Response[
+        BillingUsageSummaryReportGhe, BillingUsageSummaryReportGheTypeForResponse
+    ]:
         """billing/get-github-billing-usage-summary-report-ghe
 
         GET /enterprises/{enterprise}/settings/billing/usage/summary
@@ -2404,7 +2412,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetAllBudgets, GetAllBudgetsType]:
+    ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
         """billing/get-all-budgets-org
 
         GET /organizations/{org}/settings/billing/budgets
@@ -2442,7 +2450,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetAllBudgets, GetAllBudgetsType]:
+    ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
         """billing/get-all-budgets-org
 
         GET /organizations/{org}/settings/billing/budgets
@@ -2481,7 +2489,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetBudget, GetBudgetType]:
+    ) -> Response[GetBudget, GetBudgetTypeForResponse]:
         """billing/get-budget-org
 
         GET /organizations/{org}/settings/billing/budgets/{budget_id}
@@ -2526,7 +2534,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetBudget, GetBudgetType]:
+    ) -> Response[GetBudget, GetBudgetTypeForResponse]:
         """billing/get-budget-org
 
         GET /organizations/{org}/settings/billing/budgets/{budget_id}
@@ -2571,7 +2579,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DeleteBudget, DeleteBudgetType]:
+    ) -> Response[DeleteBudget, DeleteBudgetTypeForResponse]:
         """billing/delete-budget-org
 
         DELETE /organizations/{org}/settings/billing/budgets/{budget_id}
@@ -2616,7 +2624,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DeleteBudget, DeleteBudgetType]:
+    ) -> Response[DeleteBudget, DeleteBudgetTypeForResponse]:
         """billing/delete-budget-org
 
         DELETE /organizations/{org}/settings/billing/budgets/{budget_id}
@@ -2665,7 +2673,7 @@ class BillingClient:
         data: OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType,
     ) -> Response[
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type,
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -2690,7 +2698,7 @@ class BillingClient:
         budget_product_sku: Missing[str] = UNSET,
     ) -> Response[
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type,
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
     ]: ...
 
     def update_budget_org(
@@ -2706,7 +2714,7 @@ class BillingClient:
         **kwargs,
     ) -> Response[
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type,
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
     ]:
         """billing/update-budget-org
 
@@ -2770,7 +2778,7 @@ class BillingClient:
         data: OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType,
     ) -> Response[
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type,
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -2795,7 +2803,7 @@ class BillingClient:
         budget_product_sku: Missing[str] = UNSET,
     ) -> Response[
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type,
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
     ]: ...
 
     async def async_update_budget_org(
@@ -2811,7 +2819,7 @@ class BillingClient:
         **kwargs,
     ) -> Response[
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type,
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
     ]:
         """billing/update-budget-org
 
@@ -2877,7 +2885,8 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        BillingPremiumRequestUsageReportOrg, BillingPremiumRequestUsageReportOrgType
+        BillingPremiumRequestUsageReportOrg,
+        BillingPremiumRequestUsageReportOrgTypeForResponse,
     ]:
         """billing/get-github-billing-premium-request-usage-report-org
 
@@ -2938,7 +2947,8 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        BillingPremiumRequestUsageReportOrg, BillingPremiumRequestUsageReportOrgType
+        BillingPremiumRequestUsageReportOrg,
+        BillingPremiumRequestUsageReportOrgTypeForResponse,
     ]:
         """billing/get-github-billing-premium-request-usage-report-org
 
@@ -2995,7 +3005,7 @@ class BillingClient:
         day: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BillingUsageReport, BillingUsageReportType]:
+    ) -> Response[BillingUsageReport, BillingUsageReportTypeForResponse]:
         """billing/get-github-billing-usage-report-org
 
         GET /organizations/{org}/settings/billing/usage
@@ -3047,7 +3057,7 @@ class BillingClient:
         day: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BillingUsageReport, BillingUsageReportType]:
+    ) -> Response[BillingUsageReport, BillingUsageReportTypeForResponse]:
         """billing/get-github-billing-usage-report-org
 
         GET /organizations/{org}/settings/billing/usage
@@ -3102,7 +3112,9 @@ class BillingClient:
         sku: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BillingUsageSummaryReportOrg, BillingUsageSummaryReportOrgType]:
+    ) -> Response[
+        BillingUsageSummaryReportOrg, BillingUsageSummaryReportOrgTypeForResponse
+    ]:
         """billing/get-github-billing-usage-summary-report-org
 
         GET /organizations/{org}/settings/billing/usage/summary
@@ -3163,7 +3175,9 @@ class BillingClient:
         sku: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BillingUsageSummaryReportOrg, BillingUsageSummaryReportOrgType]:
+    ) -> Response[
+        BillingUsageSummaryReportOrg, BillingUsageSummaryReportOrgTypeForResponse
+    ]:
         """billing/get-github-billing-usage-summary-report-org
 
         GET /organizations/{org}/settings/billing/usage/summary
@@ -3218,7 +3232,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
+    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
         """billing/get-github-actions-billing-org
 
         GET /orgs/{org}/settings/billing/actions
@@ -3252,7 +3266,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
+    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
         """billing/get-github-actions-billing-org
 
         GET /orgs/{org}/settings/billing/actions
@@ -3292,7 +3306,8 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
+        AdvancedSecurityActiveCommitters,
+        AdvancedSecurityActiveCommittersTypeForResponse,
     ]:
         """billing/get-github-advanced-security-billing-org
 
@@ -3342,7 +3357,8 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        AdvancedSecurityActiveCommitters, AdvancedSecurityActiveCommittersType
+        AdvancedSecurityActiveCommitters,
+        AdvancedSecurityActiveCommittersTypeForResponse,
     ]:
         """billing/get-github-advanced-security-billing-org
 
@@ -3386,7 +3402,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
+    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
         """billing/get-github-packages-billing-org
 
         GET /orgs/{org}/settings/billing/packages
@@ -3420,7 +3436,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
+    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
         """billing/get-github-packages-billing-org
 
         GET /orgs/{org}/settings/billing/packages
@@ -3454,7 +3470,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
+    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
         """billing/get-shared-storage-billing-org
 
         GET /orgs/{org}/settings/billing/shared-storage
@@ -3488,7 +3504,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
+    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
         """billing/get-shared-storage-billing-org
 
         GET /orgs/{org}/settings/billing/shared-storage
@@ -3522,7 +3538,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
+    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
         """billing/get-github-actions-billing-user
 
         GET /users/{username}/settings/billing/actions
@@ -3556,7 +3572,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageType]:
+    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
         """billing/get-github-actions-billing-user
 
         GET /users/{username}/settings/billing/actions
@@ -3590,7 +3606,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
+    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
         """billing/get-github-packages-billing-user
 
         GET /users/{username}/settings/billing/packages
@@ -3624,7 +3640,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageType]:
+    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
         """billing/get-github-packages-billing-user
 
         GET /users/{username}/settings/billing/packages
@@ -3664,7 +3680,8 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        BillingPremiumRequestUsageReportUser, BillingPremiumRequestUsageReportUserType
+        BillingPremiumRequestUsageReportUser,
+        BillingPremiumRequestUsageReportUserTypeForResponse,
     ]:
         """billing/get-github-billing-premium-request-usage-report-user
 
@@ -3723,7 +3740,8 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        BillingPremiumRequestUsageReportUser, BillingPremiumRequestUsageReportUserType
+        BillingPremiumRequestUsageReportUser,
+        BillingPremiumRequestUsageReportUserTypeForResponse,
     ]:
         """billing/get-github-billing-premium-request-usage-report-user
 
@@ -3776,7 +3794,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
+    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
         """billing/get-shared-storage-billing-user
 
         GET /users/{username}/settings/billing/shared-storage
@@ -3810,7 +3828,7 @@ class BillingClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageType]:
+    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
         """billing/get-shared-storage-billing-user
 
         GET /users/{username}/settings/billing/shared-storage
@@ -3847,7 +3865,7 @@ class BillingClient:
         day: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BillingUsageReportUser, BillingUsageReportUserType]:
+    ) -> Response[BillingUsageReportUser, BillingUsageReportUserTypeForResponse]:
         """billing/get-github-billing-usage-report-user
 
         GET /users/{username}/settings/billing/usage
@@ -3899,7 +3917,7 @@ class BillingClient:
         day: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BillingUsageReportUser, BillingUsageReportUserType]:
+    ) -> Response[BillingUsageReportUser, BillingUsageReportUserTypeForResponse]:
         """billing/get-github-billing-usage-report-user
 
         GET /users/{username}/settings/billing/usage
@@ -3954,7 +3972,9 @@ class BillingClient:
         sku: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BillingUsageSummaryReportUser, BillingUsageSummaryReportUserType]:
+    ) -> Response[
+        BillingUsageSummaryReportUser, BillingUsageSummaryReportUserTypeForResponse
+    ]:
         """billing/get-github-billing-usage-summary-report-user
 
         GET /users/{username}/settings/billing/usage/summary
@@ -4016,7 +4036,9 @@ class BillingClient:
         sku: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[BillingUsageSummaryReportUser, BillingUsageSummaryReportUserType]:
+    ) -> Response[
+        BillingUsageSummaryReportUser, BillingUsageSummaryReportUserTypeForResponse
+    ]:
         """billing/get-github-billing-usage-summary-report-user
 
         GET /users/{username}/settings/billing/usage/summary

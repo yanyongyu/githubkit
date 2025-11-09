@@ -22,4 +22,17 @@ class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
     reason: NotRequired[str]
 
 
-__all__ = ("RepositoryRuleParamsRestrictedCommitsType",)
+class RepositoryRuleParamsRestrictedCommitsTypeForResponse(TypedDict):
+    """RestrictedCommits
+
+    Restricted commit
+    """
+
+    oid: str
+    reason: NotRequired[str]
+
+
+__all__ = (
+    "RepositoryRuleParamsRestrictedCommitsType",
+    "RepositoryRuleParamsRestrictedCommitsTypeForResponse",
+)

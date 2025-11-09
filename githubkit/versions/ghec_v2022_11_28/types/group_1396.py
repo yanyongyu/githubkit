@@ -19,4 +19,14 @@ class TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType(TypedDict):
     body: NotRequired[str]
 
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType",)
+class TeamsTeamIdDiscussionsDiscussionNumberPatchBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
+
+    title: NotRequired[str]
+    body: NotRequired[str]
+
+
+__all__ = (
+    "TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType",
+    "TeamsTeamIdDiscussionsDiscussionNumberPatchBodyTypeForResponse",
+)

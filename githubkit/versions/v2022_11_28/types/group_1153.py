@@ -18,4 +18,15 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType(TypedDict):
     name: str
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType",)
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items"""
+
+    name: str
+
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsTypeForResponse",
+)

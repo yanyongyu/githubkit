@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0095 import TeamType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0095 import TeamType, TeamTypeForResponse
 
 
 class CampaignSummaryType(TypedDict):
@@ -38,7 +38,36 @@ class CampaignSummaryType(TypedDict):
     alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
 
 
+class CampaignSummaryTypeForResponse(TypedDict):
+    """Campaign summary
+
+    The campaign metadata and alert stats.
+    """
+
+    number: int
+    created_at: str
+    updated_at: str
+    name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserTypeForResponse]
+    team_managers: NotRequired[list[TeamTypeForResponse]]
+    published_at: NotRequired[str]
+    ends_at: str
+    closed_at: NotRequired[Union[str, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsTypeForResponse]
+
+
 class CampaignSummaryPropAlertStatsType(TypedDict):
+    """CampaignSummaryPropAlertStats"""
+
+    open_count: int
+    closed_count: int
+    in_progress_count: int
+
+
+class CampaignSummaryPropAlertStatsTypeForResponse(TypedDict):
     """CampaignSummaryPropAlertStats"""
 
     open_count: int
@@ -48,5 +77,7 @@ class CampaignSummaryPropAlertStatsType(TypedDict):
 
 __all__ = (
     "CampaignSummaryPropAlertStatsType",
+    "CampaignSummaryPropAlertStatsTypeForResponse",
     "CampaignSummaryType",
+    "CampaignSummaryTypeForResponse",
 )

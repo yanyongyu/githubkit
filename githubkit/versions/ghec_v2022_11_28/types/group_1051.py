@@ -21,4 +21,15 @@ class MarkdownPostBodyType(TypedDict):
     context: NotRequired[str]
 
 
-__all__ = ("MarkdownPostBodyType",)
+class MarkdownPostBodyTypeForResponse(TypedDict):
+    """MarkdownPostBody"""
+
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
+
+
+__all__ = (
+    "MarkdownPostBodyType",
+    "MarkdownPostBodyTypeForResponse",
+)

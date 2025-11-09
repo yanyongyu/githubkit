@@ -23,4 +23,17 @@ class CodeScanningAnalysisDeletionType(TypedDict):
     confirm_delete_url: Union[str, None]
 
 
-__all__ = ("CodeScanningAnalysisDeletionType",)
+class CodeScanningAnalysisDeletionTypeForResponse(TypedDict):
+    """Analysis deletion
+
+    Successful deletion of a code scanning analysis
+    """
+
+    next_analysis_url: Union[str, None]
+    confirm_delete_url: Union[str, None]
+
+
+__all__ = (
+    "CodeScanningAnalysisDeletionType",
+    "CodeScanningAnalysisDeletionTypeForResponse",
+)

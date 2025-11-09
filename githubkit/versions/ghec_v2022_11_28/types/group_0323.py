@@ -24,4 +24,18 @@ class GitUserType(TypedDict):
     date: NotRequired[datetime]
 
 
-__all__ = ("GitUserType",)
+class GitUserTypeForResponse(TypedDict):
+    """Git User
+
+    Metaproperties for Git author/committer information.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[str]
+
+
+__all__ = (
+    "GitUserType",
+    "GitUserTypeForResponse",
+)

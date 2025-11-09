@@ -19,4 +19,13 @@ class ReposOwnerRepoNotificationsPutBodyType(TypedDict):
     last_read_at: NotRequired[datetime]
 
 
-__all__ = ("ReposOwnerRepoNotificationsPutBodyType",)
+class ReposOwnerRepoNotificationsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoNotificationsPutBody"""
+
+    last_read_at: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoNotificationsPutBodyType",
+    "ReposOwnerRepoNotificationsPutBodyTypeForResponse",
+)

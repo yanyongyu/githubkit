@@ -31,6 +31,25 @@ class FeedType(TypedDict):
     links: FeedPropLinksType
 
 
+class FeedTypeForResponse(TypedDict):
+    """Feed
+
+    Feed
+    """
+
+    timeline_url: str
+    user_url: str
+    current_user_public_url: NotRequired[str]
+    current_user_url: NotRequired[str]
+    current_user_actor_url: NotRequired[str]
+    current_user_organization_url: NotRequired[str]
+    current_user_organization_urls: NotRequired[list[str]]
+    security_advisories_url: NotRequired[str]
+    repository_discussions_url: NotRequired[str]
+    repository_discussions_category_url: NotRequired[str]
+    links: FeedPropLinksTypeForResponse
+
+
 class FeedPropLinksType(TypedDict):
     """FeedPropLinks"""
 
@@ -46,7 +65,32 @@ class FeedPropLinksType(TypedDict):
     repository_discussions_category: NotRequired[LinkWithTypeType]
 
 
+class FeedPropLinksTypeForResponse(TypedDict):
+    """FeedPropLinks"""
+
+    timeline: LinkWithTypeTypeForResponse
+    user: LinkWithTypeTypeForResponse
+    security_advisories: NotRequired[LinkWithTypeTypeForResponse]
+    current_user: NotRequired[LinkWithTypeTypeForResponse]
+    current_user_public: NotRequired[LinkWithTypeTypeForResponse]
+    current_user_actor: NotRequired[LinkWithTypeTypeForResponse]
+    current_user_organization: NotRequired[LinkWithTypeTypeForResponse]
+    current_user_organizations: NotRequired[list[LinkWithTypeTypeForResponse]]
+    repository_discussions: NotRequired[LinkWithTypeTypeForResponse]
+    repository_discussions_category: NotRequired[LinkWithTypeTypeForResponse]
+
+
 class LinkWithTypeType(TypedDict):
+    """Link With Type
+
+    Hypermedia Link with Type
+    """
+
+    href: str
+    type: str
+
+
+class LinkWithTypeTypeForResponse(TypedDict):
     """Link With Type
 
     Hypermedia Link with Type
@@ -58,6 +102,9 @@ class LinkWithTypeType(TypedDict):
 
 __all__ = (
     "FeedPropLinksType",
+    "FeedPropLinksTypeForResponse",
     "FeedType",
+    "FeedTypeForResponse",
     "LinkWithTypeType",
+    "LinkWithTypeTypeForResponse",
 )

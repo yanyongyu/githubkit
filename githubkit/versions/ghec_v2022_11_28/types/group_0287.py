@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class ReactionType(TypedDict):
@@ -32,4 +32,23 @@ class ReactionType(TypedDict):
     created_at: datetime
 
 
-__all__ = ("ReactionType",)
+class ReactionTypeForResponse(TypedDict):
+    """Reaction
+
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
+    """
+
+    id: int
+    node_id: str
+    user: Union[None, SimpleUserTypeForResponse]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: str
+
+
+__all__ = (
+    "ReactionType",
+    "ReactionTypeForResponse",
+)

@@ -28,4 +28,21 @@ class RepositorySubscriptionType(TypedDict):
     repository_url: str
 
 
-__all__ = ("RepositorySubscriptionType",)
+class RepositorySubscriptionTypeForResponse(TypedDict):
+    """Repository Invitation
+
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: str
+    url: str
+    repository_url: str
+
+
+__all__ = (
+    "RepositorySubscriptionType",
+    "RepositorySubscriptionTypeForResponse",
+)

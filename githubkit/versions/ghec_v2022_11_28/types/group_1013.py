@@ -20,6 +20,15 @@ class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse20
     message: NotRequired[str]
 
 
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
+
+    message: NotRequired[str]
+
+
 __all__ = (
     "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202TypeForResponse",
 )

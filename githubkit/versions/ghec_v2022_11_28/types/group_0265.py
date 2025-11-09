@@ -13,8 +13,11 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0264 import ProjectsV2StatusUpdateType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0264 import (
+    ProjectsV2StatusUpdateType,
+    ProjectsV2StatusUpdateTypeForResponse,
+)
 
 
 class ProjectsV2Type(TypedDict):
@@ -42,4 +45,34 @@ class ProjectsV2Type(TypedDict):
     is_template: NotRequired[bool]
 
 
-__all__ = ("ProjectsV2Type",)
+class ProjectsV2TypeForResponse(TypedDict):
+    """Projects v2 Project
+
+    A projects v2 project
+    """
+
+    id: float
+    node_id: str
+    owner: SimpleUserTypeForResponse
+    creator: SimpleUserTypeForResponse
+    title: str
+    description: Union[str, None]
+    public: bool
+    closed_at: Union[str, None]
+    created_at: str
+    updated_at: str
+    number: int
+    short_description: Union[str, None]
+    deleted_at: Union[str, None]
+    deleted_by: Union[None, SimpleUserTypeForResponse]
+    state: NotRequired[Literal["open", "closed"]]
+    latest_status_update: NotRequired[
+        Union[None, ProjectsV2StatusUpdateTypeForResponse]
+    ]
+    is_template: NotRequired[bool]
+
+
+__all__ = (
+    "ProjectsV2Type",
+    "ProjectsV2TypeForResponse",
+)

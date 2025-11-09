@@ -32,7 +32,34 @@ class ContentSymlinkType(TypedDict):
     links: ContentSymlinkPropLinksType
 
 
+class ContentSymlinkTypeForResponse(TypedDict):
+    """Symlink Content
+
+    An object describing a symlink
+    """
+
+    type: Literal["symlink"]
+    target: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksTypeForResponse
+
+
 class ContentSymlinkPropLinksType(TypedDict):
+    """ContentSymlinkPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentSymlinkPropLinksTypeForResponse(TypedDict):
     """ContentSymlinkPropLinks"""
 
     git: Union[str, None]
@@ -42,5 +69,7 @@ class ContentSymlinkPropLinksType(TypedDict):
 
 __all__ = (
     "ContentSymlinkPropLinksType",
+    "ContentSymlinkPropLinksTypeForResponse",
     "ContentSymlinkType",
+    "ContentSymlinkTypeForResponse",
 )

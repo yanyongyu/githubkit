@@ -21,6 +21,13 @@ class UserCodespacesSecretsGetResponse200Type(TypedDict):
     secrets: list[CodespacesSecretType]
 
 
+class UserCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """UserCodespacesSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[CodespacesSecretTypeForResponse]
+
+
 class CodespacesSecretType(TypedDict):
     """Codespaces Secret
 
@@ -34,7 +41,22 @@ class CodespacesSecretType(TypedDict):
     selected_repositories_url: str
 
 
+class CodespacesSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: str
+
+
 __all__ = (
     "CodespacesSecretType",
+    "CodespacesSecretTypeForResponse",
     "UserCodespacesSecretsGetResponse200Type",
+    "UserCodespacesSecretsGetResponse200TypeForResponse",
 )

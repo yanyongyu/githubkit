@@ -19,4 +19,14 @@ class RulesetVersionWithStateAllof1PropStateType(TypedDict):
     """
 
 
-__all__ = ("RulesetVersionWithStateAllof1PropStateType",)
+class RulesetVersionWithStateAllof1PropStateTypeForResponse(TypedDict):
+    """RulesetVersionWithStateAllof1PropState
+
+    The state of the ruleset version
+    """
+
+
+__all__ = (
+    "RulesetVersionWithStateAllof1PropStateType",
+    "RulesetVersionWithStateAllof1PropStateTypeForResponse",
+)

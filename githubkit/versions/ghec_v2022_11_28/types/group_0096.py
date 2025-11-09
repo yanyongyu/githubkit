@@ -25,4 +25,20 @@ class NetworkSettingsType(TypedDict):
     region: str
 
 
-__all__ = ("NetworkSettingsType",)
+class NetworkSettingsTypeForResponse(TypedDict):
+    """Hosted compute network settings resource
+
+    A hosted compute network settings resource.
+    """
+
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
+
+
+__all__ = (
+    "NetworkSettingsType",
+    "NetworkSettingsTypeForResponse",
+)

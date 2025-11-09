@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0324 import VerificationType
+from .group_0324 import VerificationType, VerificationTypeForResponse
 
 
 class GitTagType(TypedDict):
@@ -30,7 +30,31 @@ class GitTagType(TypedDict):
     verification: NotRequired[VerificationType]
 
 
+class GitTagTypeForResponse(TypedDict):
+    """Git Tag
+
+    Metadata for a Git tag
+    """
+
+    node_id: str
+    tag: str
+    sha: str
+    url: str
+    message: str
+    tagger: GitTagPropTaggerTypeForResponse
+    object_: GitTagPropObjectTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
+
+
 class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropTaggerTypeForResponse(TypedDict):
     """GitTagPropTagger"""
 
     date: str
@@ -46,8 +70,19 @@ class GitTagPropObjectType(TypedDict):
     url: str
 
 
+class GitTagPropObjectTypeForResponse(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
+
+
 __all__ = (
     "GitTagPropObjectType",
+    "GitTagPropObjectTypeForResponse",
     "GitTagPropTaggerType",
+    "GitTagPropTaggerTypeForResponse",
     "GitTagType",
+    "GitTagTypeForResponse",
 )

@@ -21,4 +21,15 @@ class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
     reason: NotRequired[Union[str, None]]
 
 
-__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBodyType",)
+class OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
+
+    pat_request_ids: NotRequired[list[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "OrgsOrgPersonalAccessTokenRequestsPostBodyType",
+    "OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse",
+)

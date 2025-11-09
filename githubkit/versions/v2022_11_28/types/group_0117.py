@@ -25,4 +25,19 @@ class InteractionLimitType(TypedDict):
     ]
 
 
-__all__ = ("InteractionLimitType",)
+class InteractionLimitTypeForResponse(TypedDict):
+    """Interaction Restrictions
+
+    Limit interactions to a specific type of user for a specified duration
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ]
+
+
+__all__ = (
+    "InteractionLimitType",
+    "InteractionLimitTypeForResponse",
+)

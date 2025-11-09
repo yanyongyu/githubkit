@@ -13,7 +13,10 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0949 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType
+from .group_0949 import (
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse,
+)
 
 
 class OrgsOrgCampaignsPostBodyOneof0Type(TypedDict):
@@ -31,4 +34,22 @@ class OrgsOrgCampaignsPostBodyOneof0Type(TypedDict):
     generate_issues: NotRequired[bool]
 
 
-__all__ = ("OrgsOrgCampaignsPostBodyOneof0Type",)
+class OrgsOrgCampaignsPostBodyOneof0TypeForResponse(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof0"""
+
+    name: str
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: str
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: Union[
+        list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse], None
+    ]
+    generate_issues: NotRequired[bool]
+
+
+__all__ = (
+    "OrgsOrgCampaignsPostBodyOneof0Type",
+    "OrgsOrgCampaignsPostBodyOneof0TypeForResponse",
+)

@@ -26,7 +26,29 @@ class BypassResponseType(TypedDict):
     created_at: NotRequired[datetime]
 
 
+class BypassResponseTypeForResponse(TypedDict):
+    """Bypass response
+
+    A response made by a delegated bypasser to a bypass request.
+    """
+
+    id: NotRequired[int]
+    reviewer: NotRequired[BypassResponsePropReviewerTypeForResponse]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[str]
+
+
 class BypassResponsePropReviewerType(TypedDict):
+    """BypassResponsePropReviewer
+
+    The user who reviewed the bypass request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class BypassResponsePropReviewerTypeForResponse(TypedDict):
     """BypassResponsePropReviewer
 
     The user who reviewed the bypass request.
@@ -38,5 +60,7 @@ class BypassResponsePropReviewerType(TypedDict):
 
 __all__ = (
     "BypassResponsePropReviewerType",
+    "BypassResponsePropReviewerTypeForResponse",
     "BypassResponseType",
+    "BypassResponseTypeForResponse",
 )

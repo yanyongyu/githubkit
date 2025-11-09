@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class WebhookCodeScanningAlertCreatedPropAlertType(TypedDict):
@@ -43,6 +43,36 @@ class WebhookCodeScanningAlertCreatedPropAlertType(TypedDict):
     assignees: NotRequired[list[SimpleUserType]]
 
 
+class WebhookCodeScanningAlertCreatedPropAlertTypeForResponse(TypedDict):
+    """WebhookCodeScanningAlertCreatedPropAlert
+
+    The code scanning alert involved in the event.
+    """
+
+    created_at: Union[str, None]
+    dismissed_at: None
+    dismissed_by: None
+    dismissed_comment: NotRequired[Union[str, None]]
+    dismissed_reason: None
+    fixed_at: NotRequired[None]
+    html_url: str
+    instances_url: NotRequired[str]
+    most_recent_instance: NotRequired[
+        Union[
+            WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceTypeForResponse,
+            None,
+        ]
+    ]
+    number: int
+    rule: WebhookCodeScanningAlertCreatedPropAlertPropRuleTypeForResponse
+    state: Union[None, Literal["open", "dismissed"]]
+    tool: Union[WebhookCodeScanningAlertCreatedPropAlertPropToolTypeForResponse, None]
+    updated_at: NotRequired[Union[str, None]]
+    url: str
+    dismissal_approved_by: NotRequired[None]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+
+
 class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceType(TypedDict):
     """Alert Instance"""
 
@@ -61,6 +91,26 @@ class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceType(TypedDi
     state: Literal["open", "dismissed", "fixed"]
 
 
+class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceTypeForResponse(
+    TypedDict
+):
+    """Alert Instance"""
+
+    analysis_key: str
+    category: NotRequired[str]
+    classifications: NotRequired[list[str]]
+    commit_sha: NotRequired[str]
+    environment: str
+    location: NotRequired[
+        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationTypeForResponse
+    ]
+    message: NotRequired[
+        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageTypeForResponse
+    ]
+    ref: str
+    state: Literal["open", "dismissed", "fixed"]
+
+
 class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationType(
     TypedDict
 ):
@@ -73,7 +123,27 @@ class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation
     start_line: NotRequired[int]
 
 
+class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationTypeForResponse(
+    TypedDict
+):
+    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation"""
+
+    end_column: NotRequired[int]
+    end_line: NotRequired[int]
+    path: NotRequired[str]
+    start_column: NotRequired[int]
+    start_line: NotRequired[int]
+
+
 class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType(
+    TypedDict
+):
+    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage"""
+
+    text: NotRequired[str]
+
+
+class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageTypeForResponse(
     TypedDict
 ):
     """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage"""
@@ -94,7 +164,28 @@ class WebhookCodeScanningAlertCreatedPropAlertPropRuleType(TypedDict):
     tags: NotRequired[Union[list[str], None]]
 
 
+class WebhookCodeScanningAlertCreatedPropAlertPropRuleTypeForResponse(TypedDict):
+    """WebhookCodeScanningAlertCreatedPropAlertPropRule"""
+
+    description: str
+    full_description: NotRequired[str]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
+    id: str
+    name: NotRequired[str]
+    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    tags: NotRequired[Union[list[str], None]]
+
+
 class WebhookCodeScanningAlertCreatedPropAlertPropToolType(TypedDict):
+    """WebhookCodeScanningAlertCreatedPropAlertPropTool"""
+
+    guid: NotRequired[Union[str, None]]
+    name: str
+    version: Union[str, None]
+
+
+class WebhookCodeScanningAlertCreatedPropAlertPropToolTypeForResponse(TypedDict):
     """WebhookCodeScanningAlertCreatedPropAlertPropTool"""
 
     guid: NotRequired[Union[str, None]]
@@ -104,9 +195,15 @@ class WebhookCodeScanningAlertCreatedPropAlertPropToolType(TypedDict):
 
 __all__ = (
     "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationType",
+    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationTypeForResponse",
     "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType",
+    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageTypeForResponse",
     "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceType",
+    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceTypeForResponse",
     "WebhookCodeScanningAlertCreatedPropAlertPropRuleType",
+    "WebhookCodeScanningAlertCreatedPropAlertPropRuleTypeForResponse",
     "WebhookCodeScanningAlertCreatedPropAlertPropToolType",
+    "WebhookCodeScanningAlertCreatedPropAlertPropToolTypeForResponse",
     "WebhookCodeScanningAlertCreatedPropAlertType",
+    "WebhookCodeScanningAlertCreatedPropAlertTypeForResponse",
 )

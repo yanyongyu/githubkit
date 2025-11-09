@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0089 import RunnerLabelType
+from .group_0089 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
 class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
@@ -21,4 +21,14 @@ class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
     labels: list[RunnerLabelType]
 
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type",)
+class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
+
+    total_count: int
+    labels: list[RunnerLabelTypeForResponse]
+
+
+__all__ = (
+    "OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type",
+    "OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse",
+)

@@ -18,4 +18,13 @@ class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
     selected_repository_ids: list[int]
 
 
-__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBodyType",)
+class UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+
+    selected_repository_ids: list[int]
+
+
+__all__ = (
+    "UserCodespacesSecretsSecretNameRepositoriesPutBodyType",
+    "UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse",
+)

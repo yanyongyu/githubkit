@@ -13,13 +13,22 @@ class SchemaData:
     _type_string: ClassVar[str] = "Any"
 
     def get_type_string(self, include_constraints: bool = True) -> str:
-        """Get schema typing string in any place"""
+        """Get schema typing string in any place.
+
+        Args:
+            include_constraints (bool):
+                whether to include field constraints by Annotated.
+        """
         if include_constraints and (args := self._get_field_args()):
             return f"Annotated[{self._type_string}, {self._get_field_string(args)}]"
         return self._type_string
 
     def get_param_type_string(self) -> str:
-        """Get type string used by client codegen"""
+        """Get type string used by client request codegen"""
+        return self._type_string
+
+    def get_response_type_string(self) -> str:
+        """Get type string used by client response codegen"""
         return self._type_string
 
     def get_model_imports(self) -> set[str]:
@@ -40,7 +49,11 @@ class SchemaData:
         return set()
 
     def get_using_imports(self) -> set[str]:
-        """Get schema needed imports for client request codegen"""
+        """Get schema needed imports for client request body codegen"""
+        return set()
+
+    def get_response_imports(self) -> set[str]:
+        """Get schema needed imports for client response codegen"""
         return set()
 
     def _get_field_string(self, args: dict[str, str]) -> str:
@@ -66,7 +79,7 @@ class Property:
     required: bool
     schema_data: SchemaData
 
-    def get_type_string(self, include_constraints: bool = True) -> str:
+    def get_type_string(self, include_constraints: bool = False) -> str:
         """Get schema typing string in any place"""
         type_string = self.schema_data.get_type_string(
             include_constraints=include_constraints
@@ -78,8 +91,12 @@ class Property:
         type_string = self.schema_data.get_param_type_string()
         return type_string if self.required else f"Missing[{type_string}]"
 
-    def get_model_defination(self) -> str:
-        """Get defination used by model codegen"""
+    def get_response_type_string(self) -> str:
+        type_string = self.schema_data.get_response_type_string()
+        return type_string if self.required else f"Missing[{type_string}]"
+
+    def get_model_definition(self) -> str:
+        """Get definition used by model codegen"""
         # extract the outermost type constraints to the field
         type_ = self.get_type_string(include_constraints=False)
         args = self.schema_data._get_field_args()
@@ -87,15 +104,22 @@ class Property:
         default = self._get_field_string(args)
         return f"{self.prop_name}: {type_} = {default}"
 
-    def get_type_defination(self) -> str:
-        """Get defination used by types codegen"""
+    def get_type_definition(self) -> str:
+        """Get definition used by types codegen"""
         type_ = self.schema_data.get_param_type_string()
         return (
             f"{self.prop_name}: {type_ if self.required else f'NotRequired[{type_}]'}"
         )
 
-    def get_param_defination(self) -> str:
-        """Get defination used by client codegen"""
+    def get_response_type_definition(self) -> str:
+        """Get definition usede by response types codegen"""
+        type_ = self.schema_data.get_response_type_string()
+        return (
+            f"{self.prop_name}: {type_ if self.required else f'NotRequired[{type_}]'}"
+        )
+
+    def get_param_definition(self) -> str:
+        """Get definition used by client codegen"""
         type_ = self.get_param_type_string()
         return (
             (
@@ -174,6 +198,12 @@ class AnySchema(SchemaData):
     @override
     def get_using_imports(self) -> set[str]:
         imports = super().get_using_imports()
+        imports.add("from typing import Any")
+        return imports
+
+    @override
+    def get_response_imports(self) -> set[str]:
+        imports = super().get_response_imports()
         imports.add("from typing import Any")
         return imports
 
@@ -265,6 +295,12 @@ class DateTimeSchema(SchemaData):
     _type_string: ClassVar[str] = "datetime"
 
     @override
+    def get_response_type_string(self) -> str:
+        # datetime field is ISO string in response
+        # https://github.com/yanyongyu/githubkit/issues/246
+        return "str"
+
+    @override
     def get_model_imports(self) -> set[str]:
         imports = super().get_model_imports()
         imports.add("from datetime import datetime")
@@ -285,6 +321,12 @@ class DateTimeSchema(SchemaData):
     @override
     def get_using_imports(self) -> set[str]:
         imports = super().get_using_imports()
+        imports.add("from datetime import datetime")
+        return imports
+
+    @override
+    def get_response_imports(self) -> set[str]:
+        imports = super().get_response_imports()
         imports.add("from datetime import datetime")
         return imports
 
@@ -294,6 +336,12 @@ class DateSchema(SchemaData):
     _type_string: ClassVar[str] = "date"
 
     @override
+    def get_response_type_string(self) -> str:
+        # date field is ISO string in response
+        # https://github.com/yanyongyu/githubkit/issues/246
+        return "str"
+
+    @override
     def get_model_imports(self) -> set[str]:
         imports = super().get_model_imports()
         imports.add("from datetime import date")
@@ -314,6 +362,12 @@ class DateSchema(SchemaData):
     @override
     def get_using_imports(self) -> set[str]:
         imports = super().get_using_imports()
+        imports.add("from datetime import date")
+        return imports
+
+    @override
+    def get_response_imports(self) -> set[str]:
+        imports = super().get_response_imports()
         imports.add("from datetime import date")
         return imports
 
@@ -346,6 +400,12 @@ class FileSchema(SchemaData):
         imports.add("from githubkit.typing import FileTypes")
         return imports
 
+    @override
+    def get_response_imports(self) -> set[str]:
+        imports = super().get_response_imports()
+        imports.add("from githubkit.typing import FileTypes")
+        return imports
+
 
 @dataclass(kw_only=True)
 class ListSchema(SchemaData):
@@ -365,6 +425,10 @@ class ListSchema(SchemaData):
     @override
     def get_param_type_string(self) -> str:
         return f"list[{self.item_schema.get_param_type_string()}]"
+
+    @override
+    def get_response_type_string(self) -> str:
+        return f"list[{self.item_schema.get_response_type_string()}]"
 
     @override
     def get_model_imports(self) -> set[str]:
@@ -390,6 +454,13 @@ class ListSchema(SchemaData):
         imports = super().get_using_imports()
         imports.add("from githubkit.compat import PYDANTIC_V2")
         imports.update(self.item_schema.get_using_imports())
+        return imports
+
+    @override
+    def get_response_imports(self) -> set[str]:
+        imports = super().get_response_imports()
+        imports.add("from githubkit.compat import PYDANTIC_V2")
+        imports.update(self.item_schema.get_response_imports())
         return imports
 
     @override
@@ -434,6 +505,10 @@ class UniqueListSchema(SchemaData):
         return f"UniqueList[{self.item_schema.get_param_type_string()}]"
 
     @override
+    def get_response_type_string(self) -> str:
+        return f"UniqueList[{self.item_schema.get_response_type_string()}]"
+
+    @override
     def get_model_imports(self) -> set[str]:
         imports = super().get_model_imports()
         imports.add("from githubkit.typing import UniqueList")
@@ -460,6 +535,13 @@ class UniqueListSchema(SchemaData):
         # imports = super().get_using_imports()
         imports = {"from githubkit.typing import UniqueList"}
         imports.update(self.item_schema.get_using_imports())
+        return imports
+
+    @override
+    def get_response_imports(self) -> set[str]:
+        # imports = super().get_response_imports()
+        imports = {"from githubkit.typing import UniqueList"}
+        imports.update(self.item_schema.get_response_imports())
         return imports
 
     @override
@@ -512,6 +594,10 @@ class EnumSchema(SchemaData):
         return f"Literal[{', '.join(repr(value) for value in self.values)}]"
 
     @override
+    def get_response_type_string(self) -> str:
+        return self.get_param_type_string()
+
+    @override
     def get_model_imports(self) -> set[str]:
         imports = super().get_model_imports()
         imports.add("from typing import Literal")
@@ -535,6 +621,12 @@ class EnumSchema(SchemaData):
         imports.add("from typing import Literal")
         return imports
 
+    @override
+    def get_response_imports(self) -> set[str]:
+        imports = super().get_response_imports()
+        imports.add("from typing import Literal")
+        return imports
+
 
 @dataclass(kw_only=True)
 class ModelSchema(SchemaData):
@@ -552,7 +644,45 @@ class ModelSchema(SchemaData):
 
     @override
     def get_param_type_string(self) -> str:
+        """Get type string used by model type class name and client request codegen.
+
+        Example:
+
+            ```python
+            class ModelType(TypedDict):
+                ...
+
+            class Client:
+                def create_xxx(
+                    *,
+                    data: ModelType,
+                ) -> Response[Model, ModelResponseType]:
+                    ...
+            ```
+        """
         return f"{self.class_name}Type"
+
+    @override
+    def get_response_type_string(self) -> str:
+        """Get type string used by model resposne type class name
+        and client response codegen.
+
+        Example:
+
+            ```python
+            class ModelResponseType(TypedDict):
+                ...
+
+            class Client:
+                def create_xxx(
+                    *,
+                    data: ModelType,
+                ) -> Response[Model, ModelResponseType]:
+                    ...
+            ```
+        """
+        # `XXXResponseType` has name conflicts in definition
+        return f"{self.class_name}TypeForResponse"
 
     @override
     def get_model_imports(self) -> set[str]:
@@ -582,6 +712,10 @@ class ModelSchema(SchemaData):
     @override
     def get_using_imports(self) -> set[str]:
         return {f"from ..models import {self.class_name}"}
+
+    @override
+    def get_response_imports(self) -> set[str]:
+        return {f"from ..types import {self.get_response_type_string()}"}
 
     @override
     def get_model_dependencies(self) -> list["ModelSchema"]:
@@ -625,6 +759,15 @@ class UnionSchema(SchemaData):
         return f"Union[{types}]"
 
     @override
+    def get_response_type_string(self) -> str:
+        if len(self.schemas) == 0:
+            return "Any"
+        elif len(self.schemas) == 1:
+            return self.schemas[0].get_response_type_string()
+        types = ", ".join(schema.get_response_type_string() for schema in self.schemas)
+        return f"Union[{types}]"
+
+    @override
     def get_model_imports(self) -> set[str]:
         imports = super().get_model_imports()
         imports.add("from typing import Union")
@@ -656,6 +799,15 @@ class UnionSchema(SchemaData):
             imports.update(schema.get_using_imports())
         return imports
 
+    @override
+    def get_response_imports(self) -> set[str]:
+        imports = super().get_response_imports()
+        imports.add("from typing import Union")
+        for schema in self.schemas:
+            imports.update(schema.get_response_imports())
+        return imports
+
+    @override
     def _get_field_args(self) -> dict[str, str]:
         args = super()._get_field_args()
         if self.discriminator:

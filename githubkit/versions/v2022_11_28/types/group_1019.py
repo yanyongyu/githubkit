@@ -18,4 +18,15 @@ class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType(TypedD
     body: str
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType",)
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody"""
+
+    body: str
+
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType",
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyTypeForResponse",
+)

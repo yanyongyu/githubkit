@@ -12,9 +12,12 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0098 import OrganizationCustomPropertyType
-from .group_0534 import EnterpriseWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0098 import (
+    OrganizationCustomPropertyType,
+    OrganizationCustomPropertyTypeForResponse,
+)
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
 
 
 class WebhookOrganizationCustomPropertyCreatedType(TypedDict):
@@ -26,4 +29,16 @@ class WebhookOrganizationCustomPropertyCreatedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookOrganizationCustomPropertyCreatedType",)
+class WebhookOrganizationCustomPropertyCreatedTypeForResponse(TypedDict):
+    """organization custom property created event"""
+
+    action: Literal["created"]
+    definition: OrganizationCustomPropertyTypeForResponse
+    enterprise: EnterpriseWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "WebhookOrganizationCustomPropertyCreatedType",
+    "WebhookOrganizationCustomPropertyCreatedTypeForResponse",
+)

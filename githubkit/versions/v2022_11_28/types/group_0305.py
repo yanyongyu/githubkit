@@ -13,10 +13,19 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0035 import DependabotAlertSecurityVulnerabilityType
-from .group_0036 import DependabotAlertSecurityAdvisoryType
-from .group_0306 import DependabotAlertPropDependencyType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0035 import (
+    DependabotAlertSecurityVulnerabilityType,
+    DependabotAlertSecurityVulnerabilityTypeForResponse,
+)
+from .group_0036 import (
+    DependabotAlertSecurityAdvisoryType,
+    DependabotAlertSecurityAdvisoryTypeForResponse,
+)
+from .group_0306 import (
+    DependabotAlertPropDependencyType,
+    DependabotAlertPropDependencyTypeForResponse,
+)
 
 
 class DependabotAlertType(TypedDict):
@@ -47,4 +56,35 @@ class DependabotAlertType(TypedDict):
     auto_dismissed_at: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("DependabotAlertType",)
+class DependabotAlertTypeForResponse(TypedDict):
+    """DependabotAlert
+
+    A Dependabot alert.
+    """
+
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyTypeForResponse
+    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
+    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
+    url: str
+    html_url: str
+    created_at: str
+    updated_at: str
+    dismissed_at: Union[str, None]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[str, None]
+    auto_dismissed_at: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "DependabotAlertType",
+    "DependabotAlertTypeForResponse",
+)

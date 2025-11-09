@@ -21,4 +21,16 @@ class WebhookPingFormEncodedType(TypedDict):
     payload: str
 
 
-__all__ = ("WebhookPingFormEncodedType",)
+class WebhookPingFormEncodedTypeForResponse(TypedDict):
+    """WebhookPingFormEncoded
+
+    The webhooks ping payload encoded with URL encoding.
+    """
+
+    payload: str
+
+
+__all__ = (
+    "WebhookPingFormEncodedType",
+    "WebhookPingFormEncodedTypeForResponse",
+)

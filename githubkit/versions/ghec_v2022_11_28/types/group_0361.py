@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0195 import ReactionRollupType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0195 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
 class CommitCommentType(TypedDict):
@@ -48,6 +48,37 @@ class CommitCommentType(TypedDict):
     reactions: NotRequired[ReactionRollupType]
 
 
+class CommitCommentTypeForResponse(TypedDict):
+    """Commit Comment
+
+    Commit Comment
+    """
+
+    html_url: str
+    url: str
+    id: int
+    node_id: str
+    body: str
+    path: Union[str, None]
+    position: Union[int, None]
+    line: Union[int, None]
+    commit_id: str
+    user: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+
+
 class TimelineCommitCommentedEventType(TypedDict):
     """Timeline Commit Commented Event
 
@@ -60,7 +91,21 @@ class TimelineCommitCommentedEventType(TypedDict):
     comments: NotRequired[list[CommitCommentType]]
 
 
+class TimelineCommitCommentedEventTypeForResponse(TypedDict):
+    """Timeline Commit Commented Event
+
+    Timeline Commit Commented Event
+    """
+
+    event: NotRequired[Literal["commit_commented"]]
+    node_id: NotRequired[str]
+    commit_id: NotRequired[str]
+    comments: NotRequired[list[CommitCommentTypeForResponse]]
+
+
 __all__ = (
     "CommitCommentType",
+    "CommitCommentTypeForResponse",
     "TimelineCommitCommentedEventType",
+    "TimelineCommitCommentedEventTypeForResponse",
 )

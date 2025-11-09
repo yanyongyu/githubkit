@@ -25,4 +25,19 @@ class PageDeploymentType(TypedDict):
     preview_url: NotRequired[str]
 
 
-__all__ = ("PageDeploymentType",)
+class PageDeploymentTypeForResponse(TypedDict):
+    """GitHub Pages
+
+    The GitHub Pages deployment status.
+    """
+
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
+
+
+__all__ = (
+    "PageDeploymentType",
+    "PageDeploymentTypeForResponse",
+)

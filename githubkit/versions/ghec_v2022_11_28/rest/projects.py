@@ -38,10 +38,10 @@ if TYPE_CHECKING:
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType,
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType,
         OrgsOrgProjectsV2ProjectNumberItemsPostBodyType,
-        ProjectsV2FieldType,
-        ProjectsV2ItemSimpleType,
-        ProjectsV2ItemWithContentType,
-        ProjectsV2Type,
+        ProjectsV2FieldTypeForResponse,
+        ProjectsV2ItemSimpleTypeForResponse,
+        ProjectsV2ItemWithContentTypeForResponse,
+        ProjectsV2TypeForResponse,
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType,
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType,
         UsersUsernameProjectsV2ProjectNumberItemsPostBodyType,
@@ -73,7 +73,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ProjectsV2], list[ProjectsV2Type]]:
+    ) -> Response[list[ProjectsV2], list[ProjectsV2TypeForResponse]]:
         """projects/list-for-org
 
         GET /orgs/{org}/projectsV2
@@ -119,7 +119,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ProjectsV2], list[ProjectsV2Type]]:
+    ) -> Response[list[ProjectsV2], list[ProjectsV2TypeForResponse]]:
         """projects/list-for-org
 
         GET /orgs/{org}/projectsV2
@@ -162,7 +162,7 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectsV2, ProjectsV2Type]:
+    ) -> Response[ProjectsV2, ProjectsV2TypeForResponse]:
         """projects/get-for-org
 
         GET /orgs/{org}/projectsV2/{project_number}
@@ -197,7 +197,7 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectsV2, ProjectsV2Type]:
+    ) -> Response[ProjectsV2, ProjectsV2TypeForResponse]:
         """projects/get-for-org
 
         GET /orgs/{org}/projectsV2/{project_number}
@@ -234,7 +234,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     @overload
     def create_draft_item_for_org(
@@ -247,7 +247,7 @@ class ProjectsClient:
         stream: bool = False,
         title: str,
         body: Missing[str] = UNSET,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     def create_draft_item_for_org(
         self,
@@ -258,7 +258,7 @@ class ProjectsClient:
         stream: bool = False,
         data: Missing[OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]:
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]:
         """projects/create-draft-item-for-org
 
         POST /orgs/{org}/projectsV2/{project_number}/drafts
@@ -311,7 +311,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     @overload
     async def async_create_draft_item_for_org(
@@ -324,7 +324,7 @@ class ProjectsClient:
         stream: bool = False,
         title: str,
         body: Missing[str] = UNSET,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     async def async_create_draft_item_for_org(
         self,
@@ -335,7 +335,7 @@ class ProjectsClient:
         stream: bool = False,
         data: Missing[OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]:
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]:
         """projects/create-draft-item-for-org
 
         POST /orgs/{org}/projectsV2/{project_number}/drafts
@@ -389,7 +389,7 @@ class ProjectsClient:
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ProjectsV2Field], list[ProjectsV2FieldType]]:
+    ) -> Response[list[ProjectsV2Field], list[ProjectsV2FieldTypeForResponse]]:
         """projects/list-fields-for-org
 
         GET /orgs/{org}/projectsV2/{project_number}/fields
@@ -434,7 +434,7 @@ class ProjectsClient:
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ProjectsV2Field], list[ProjectsV2FieldType]]:
+    ) -> Response[list[ProjectsV2Field], list[ProjectsV2FieldTypeForResponse]]:
         """projects/list-fields-for-org
 
         GET /orgs/{org}/projectsV2/{project_number}/fields
@@ -477,7 +477,7 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectsV2Field, ProjectsV2FieldType]:
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]:
         """projects/get-field-for-org
 
         GET /orgs/{org}/projectsV2/{project_number}/fields/{field_id}
@@ -513,7 +513,7 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectsV2Field, ProjectsV2FieldType]:
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]:
         """projects/get-field-for-org
 
         GET /orgs/{org}/projectsV2/{project_number}/fields/{field_id}
@@ -553,7 +553,9 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentType]]:
+    ) -> Response[
+        list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
+    ]:
         """projects/list-items-for-org
 
         GET /orgs/{org}/projectsV2/{project_number}/items
@@ -602,7 +604,9 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentType]]:
+    ) -> Response[
+        list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
+    ]:
         """projects/list-items-for-org
 
         GET /orgs/{org}/projectsV2/{project_number}/items
@@ -648,7 +652,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgProjectsV2ProjectNumberItemsPostBodyType,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     @overload
     def add_item_for_org(
@@ -661,7 +665,7 @@ class ProjectsClient:
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: int,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     def add_item_for_org(
         self,
@@ -672,7 +676,7 @@ class ProjectsClient:
         stream: bool = False,
         data: Missing[OrgsOrgProjectsV2ProjectNumberItemsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]:
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]:
         """projects/add-item-for-org
 
         POST /orgs/{org}/projectsV2/{project_number}/items
@@ -725,7 +729,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgProjectsV2ProjectNumberItemsPostBodyType,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     @overload
     async def async_add_item_for_org(
@@ -738,7 +742,7 @@ class ProjectsClient:
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: int,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     async def async_add_item_for_org(
         self,
@@ -749,7 +753,7 @@ class ProjectsClient:
         stream: bool = False,
         data: Missing[OrgsOrgProjectsV2ProjectNumberItemsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]:
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]:
         """projects/add-item-for-org
 
         POST /orgs/{org}/projectsV2/{project_number}/items
@@ -802,7 +806,7 @@ class ProjectsClient:
         fields: Missing[Union[str, list[str]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]:
+    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse]:
         """projects/get-org-item
 
         GET /orgs/{org}/projectsV2/{project_number}/items/{item_id}
@@ -844,7 +848,7 @@ class ProjectsClient:
         fields: Missing[Union[str, list[str]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]:
+    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse]:
         """projects/get-org-item
 
         GET /orgs/{org}/projectsV2/{project_number}/items/{item_id}
@@ -957,7 +961,9 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType,
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]: ...
+    ) -> Response[
+        ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse
+    ]: ...
 
     @overload
     def update_item_for_org(
@@ -972,7 +978,9 @@ class ProjectsClient:
         fields: list[
             OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
         ],
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]: ...
+    ) -> Response[
+        ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse
+    ]: ...
 
     def update_item_for_org(
         self,
@@ -984,7 +992,7 @@ class ProjectsClient:
         stream: bool = False,
         data: Missing[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]:
+    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse]:
         """projects/update-item-for-org
 
         PATCH /orgs/{org}/projectsV2/{project_number}/items/{item_id}
@@ -1041,7 +1049,9 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType,
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]: ...
+    ) -> Response[
+        ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse
+    ]: ...
 
     @overload
     async def async_update_item_for_org(
@@ -1056,7 +1066,9 @@ class ProjectsClient:
         fields: list[
             OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
         ],
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]: ...
+    ) -> Response[
+        ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse
+    ]: ...
 
     async def async_update_item_for_org(
         self,
@@ -1068,7 +1080,7 @@ class ProjectsClient:
         stream: bool = False,
         data: Missing[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]:
+    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse]:
         """projects/update-item-for-org
 
         PATCH /orgs/{org}/projectsV2/{project_number}/items/{item_id}
@@ -1125,7 +1137,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ProjectsV2], list[ProjectsV2Type]]:
+    ) -> Response[list[ProjectsV2], list[ProjectsV2TypeForResponse]]:
         """projects/list-for-user
 
         GET /users/{username}/projectsV2
@@ -1171,7 +1183,7 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ProjectsV2], list[ProjectsV2Type]]:
+    ) -> Response[list[ProjectsV2], list[ProjectsV2TypeForResponse]]:
         """projects/list-for-user
 
         GET /users/{username}/projectsV2
@@ -1214,7 +1226,7 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectsV2, ProjectsV2Type]:
+    ) -> Response[ProjectsV2, ProjectsV2TypeForResponse]:
         """projects/get-for-user
 
         GET /users/{username}/projectsV2/{project_number}
@@ -1249,7 +1261,7 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectsV2, ProjectsV2Type]:
+    ) -> Response[ProjectsV2, ProjectsV2TypeForResponse]:
         """projects/get-for-user
 
         GET /users/{username}/projectsV2/{project_number}
@@ -1287,7 +1299,7 @@ class ProjectsClient:
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ProjectsV2Field], list[ProjectsV2FieldType]]:
+    ) -> Response[list[ProjectsV2Field], list[ProjectsV2FieldTypeForResponse]]:
         """projects/list-fields-for-user
 
         GET /users/{username}/projectsV2/{project_number}/fields
@@ -1332,7 +1344,7 @@ class ProjectsClient:
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ProjectsV2Field], list[ProjectsV2FieldType]]:
+    ) -> Response[list[ProjectsV2Field], list[ProjectsV2FieldTypeForResponse]]:
         """projects/list-fields-for-user
 
         GET /users/{username}/projectsV2/{project_number}/fields
@@ -1375,7 +1387,7 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectsV2Field, ProjectsV2FieldType]:
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]:
         """projects/get-field-for-user
 
         GET /users/{username}/projectsV2/{project_number}/fields/{field_id}
@@ -1411,7 +1423,7 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectsV2Field, ProjectsV2FieldType]:
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]:
         """projects/get-field-for-user
 
         GET /users/{username}/projectsV2/{project_number}/fields/{field_id}
@@ -1451,7 +1463,9 @@ class ProjectsClient:
         fields: Missing[Union[str, list[str]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentType]]:
+    ) -> Response[
+        list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
+    ]:
         """projects/list-items-for-user
 
         GET /users/{username}/projectsV2/{project_number}/items
@@ -1500,7 +1514,9 @@ class ProjectsClient:
         fields: Missing[Union[str, list[str]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentType]]:
+    ) -> Response[
+        list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
+    ]:
         """projects/list-items-for-user
 
         GET /users/{username}/projectsV2/{project_number}/items
@@ -1546,7 +1562,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UsersUsernameProjectsV2ProjectNumberItemsPostBodyType,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     @overload
     def add_item_for_user(
@@ -1559,7 +1575,7 @@ class ProjectsClient:
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: int,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     def add_item_for_user(
         self,
@@ -1570,7 +1586,7 @@ class ProjectsClient:
         stream: bool = False,
         data: Missing[UsersUsernameProjectsV2ProjectNumberItemsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]:
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]:
         """projects/add-item-for-user
 
         POST /users/{username}/projectsV2/{project_number}/items
@@ -1623,7 +1639,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UsersUsernameProjectsV2ProjectNumberItemsPostBodyType,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     @overload
     async def async_add_item_for_user(
@@ -1636,7 +1652,7 @@ class ProjectsClient:
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: int,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]: ...
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     async def async_add_item_for_user(
         self,
@@ -1647,7 +1663,7 @@ class ProjectsClient:
         stream: bool = False,
         data: Missing[UsersUsernameProjectsV2ProjectNumberItemsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleType]:
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]:
         """projects/add-item-for-user
 
         POST /users/{username}/projectsV2/{project_number}/items
@@ -1700,7 +1716,7 @@ class ProjectsClient:
         fields: Missing[Union[str, list[str]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]:
+    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse]:
         """projects/get-user-item
 
         GET /users/{username}/projectsV2/{project_number}/items/{item_id}
@@ -1742,7 +1758,7 @@ class ProjectsClient:
         fields: Missing[Union[str, list[str]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]:
+    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse]:
         """projects/get-user-item
 
         GET /users/{username}/projectsV2/{project_number}/items/{item_id}
@@ -1855,7 +1871,9 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType,
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]: ...
+    ) -> Response[
+        ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse
+    ]: ...
 
     @overload
     def update_item_for_user(
@@ -1870,7 +1888,9 @@ class ProjectsClient:
         fields: list[
             UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
         ],
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]: ...
+    ) -> Response[
+        ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse
+    ]: ...
 
     def update_item_for_user(
         self,
@@ -1884,7 +1904,7 @@ class ProjectsClient:
             UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]:
+    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse]:
         """projects/update-item-for-user
 
         PATCH /users/{username}/projectsV2/{project_number}/items/{item_id}
@@ -1941,7 +1961,9 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType,
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]: ...
+    ) -> Response[
+        ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse
+    ]: ...
 
     @overload
     async def async_update_item_for_user(
@@ -1956,7 +1978,9 @@ class ProjectsClient:
         fields: list[
             UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
         ],
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]: ...
+    ) -> Response[
+        ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse
+    ]: ...
 
     async def async_update_item_for_user(
         self,
@@ -1970,7 +1994,7 @@ class ProjectsClient:
             UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentType]:
+    ) -> Response[ProjectsV2ItemWithContent, ProjectsV2ItemWithContentTypeForResponse]:
         """projects/update-item-for-user
 
         PATCH /users/{username}/projectsV2/{project_number}/items/{item_id}

@@ -22,4 +22,16 @@ class DeleteCostCenterType(TypedDict):
     cost_center_state: Literal["CostCenterArchived"]
 
 
-__all__ = ("DeleteCostCenterType",)
+class DeleteCostCenterTypeForResponse(TypedDict):
+    """DeleteCostCenter"""
+
+    message: str
+    id: str
+    name: str
+    cost_center_state: Literal["CostCenterArchived"]
+
+
+__all__ = (
+    "DeleteCostCenterType",
+    "DeleteCostCenterTypeForResponse",
+)

@@ -12,12 +12,15 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0534 import EnterpriseWebhooksType
-from .group_0535 import SimpleInstallationType
-from .group_0536 import OrganizationSimpleWebhooksType
-from .group_0537 import RepositoryWebhooksType
-from .group_0547 import WebhooksUserType
-from .group_0562 import WebhooksTeamType
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0547 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0562 import WebhooksTeamType, WebhooksTeamTypeForResponse
 
 
 class WebhookMembershipAddedType(TypedDict):
@@ -32,6 +35,20 @@ class WebhookMembershipAddedType(TypedDict):
     scope: Literal["team"]
     sender: Union[WebhookMembershipAddedPropSenderType, None]
     team: WebhooksTeamType
+
+
+class WebhookMembershipAddedTypeForResponse(TypedDict):
+    """membership added event"""
+
+    action: Literal["added"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    member: Union[WebhooksUserTypeForResponse, None]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    scope: Literal["team"]
+    sender: Union[WebhookMembershipAddedPropSenderTypeForResponse, None]
+    team: WebhooksTeamTypeForResponse
 
 
 class WebhookMembershipAddedPropSenderType(TypedDict):
@@ -61,7 +78,36 @@ class WebhookMembershipAddedPropSenderType(TypedDict):
     user_view_type: NotRequired[str]
 
 
+class WebhookMembershipAddedPropSenderTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
 __all__ = (
     "WebhookMembershipAddedPropSenderType",
+    "WebhookMembershipAddedPropSenderTypeForResponse",
     "WebhookMembershipAddedType",
+    "WebhookMembershipAddedTypeForResponse",
 )

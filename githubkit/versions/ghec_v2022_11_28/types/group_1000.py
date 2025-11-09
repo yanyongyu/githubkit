@@ -18,4 +18,15 @@ class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
     errors: NotRequired[list[str]]
 
 
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",)
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+
+    errors: NotRequired[list[str]]
+
+
+__all__ = (
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse",
+)

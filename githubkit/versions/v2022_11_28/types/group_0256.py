@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0255 import DiffEntryType
-from .group_0257 import CommitPropCommitType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0255 import DiffEntryType, DiffEntryTypeForResponse
+from .group_0257 import CommitPropCommitType, CommitPropCommitTypeForResponse
 
 
 class CommitType(TypedDict):
@@ -36,6 +36,25 @@ class CommitType(TypedDict):
     files: NotRequired[list[DiffEntryType]]
 
 
+class CommitTypeForResponse(TypedDict):
+    """Commit
+
+    Commit
+    """
+
+    url: str
+    sha: str
+    node_id: str
+    html_url: str
+    comments_url: str
+    commit: CommitPropCommitTypeForResponse
+    author: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
+    committer: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
+    parents: list[CommitPropParentsItemsTypeForResponse]
+    stats: NotRequired[CommitPropStatsTypeForResponse]
+    files: NotRequired[list[DiffEntryTypeForResponse]]
+
+
 class EmptyObjectType(TypedDict):
     """Empty Object
 
@@ -43,7 +62,22 @@ class EmptyObjectType(TypedDict):
     """
 
 
+class EmptyObjectTypeForResponse(TypedDict):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
 class CommitPropParentsItemsType(TypedDict):
+    """CommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: NotRequired[str]
+
+
+class CommitPropParentsItemsTypeForResponse(TypedDict):
     """CommitPropParentsItems"""
 
     sha: str
@@ -59,9 +93,21 @@ class CommitPropStatsType(TypedDict):
     total: NotRequired[int]
 
 
+class CommitPropStatsTypeForResponse(TypedDict):
+    """CommitPropStats"""
+
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
+
+
 __all__ = (
     "CommitPropParentsItemsType",
+    "CommitPropParentsItemsTypeForResponse",
     "CommitPropStatsType",
+    "CommitPropStatsTypeForResponse",
     "CommitType",
+    "CommitTypeForResponse",
     "EmptyObjectType",
+    "EmptyObjectTypeForResponse",
 )

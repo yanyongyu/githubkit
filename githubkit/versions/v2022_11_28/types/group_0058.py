@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0056 import MarketplaceListingPlanType
+from .group_0056 import (
+    MarketplaceListingPlanType,
+    MarketplaceListingPlanTypeForResponse,
+)
 
 
 class MarketplacePurchasePropMarketplacePendingChangeType(TypedDict):
@@ -23,6 +26,16 @@ class MarketplacePurchasePropMarketplacePendingChangeType(TypedDict):
     unit_count: NotRequired[Union[int, None]]
     id: NotRequired[int]
     plan: NotRequired[MarketplaceListingPlanType]
+
+
+class MarketplacePurchasePropMarketplacePendingChangeTypeForResponse(TypedDict):
+    """MarketplacePurchasePropMarketplacePendingChange"""
+
+    is_installed: NotRequired[bool]
+    effective_date: NotRequired[str]
+    unit_count: NotRequired[Union[int, None]]
+    id: NotRequired[int]
+    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
 
 
 class MarketplacePurchasePropMarketplacePurchaseType(TypedDict):
@@ -38,7 +51,22 @@ class MarketplacePurchasePropMarketplacePurchaseType(TypedDict):
     plan: NotRequired[MarketplaceListingPlanType]
 
 
+class MarketplacePurchasePropMarketplacePurchaseTypeForResponse(TypedDict):
+    """MarketplacePurchasePropMarketplacePurchase"""
+
+    billing_cycle: NotRequired[str]
+    next_billing_date: NotRequired[Union[str, None]]
+    is_installed: NotRequired[bool]
+    unit_count: NotRequired[Union[int, None]]
+    on_free_trial: NotRequired[bool]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
+
+
 __all__ = (
     "MarketplacePurchasePropMarketplacePendingChangeType",
+    "MarketplacePurchasePropMarketplacePendingChangeTypeForResponse",
     "MarketplacePurchasePropMarketplacePurchaseType",
+    "MarketplacePurchasePropMarketplacePurchaseTypeForResponse",
 )

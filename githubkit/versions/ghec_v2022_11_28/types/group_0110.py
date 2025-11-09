@@ -11,7 +11,10 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0111 import RepositoryRulesetConditionsPropRefNameType
+from .group_0111 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
 
 
 class RepositoryRulesetConditionsType(TypedDict):
@@ -23,4 +26,16 @@ class RepositoryRulesetConditionsType(TypedDict):
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-__all__ = ("RepositoryRulesetConditionsType",)
+class RepositoryRulesetConditionsTypeForResponse(TypedDict):
+    """Repository ruleset conditions for ref names
+
+    Parameters for a repository ruleset ref name condition
+    """
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+
+
+__all__ = (
+    "RepositoryRulesetConditionsType",
+    "RepositoryRulesetConditionsTypeForResponse",
+)

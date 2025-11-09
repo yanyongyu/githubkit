@@ -18,4 +18,13 @@ class OrgsOrgCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
     selected_usernames: list[str]
 
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteBodyType",)
+class OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
+
+    selected_usernames: list[str]
+
+
+__all__ = (
+    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyType",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
+)

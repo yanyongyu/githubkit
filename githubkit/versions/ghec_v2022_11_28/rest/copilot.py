@@ -46,30 +46,30 @@ if TYPE_CHECKING:
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
     )
     from ..types import (
-        CopilotOrganizationDetailsType,
-        CopilotSeatDetailsType,
-        CopilotUsageMetrics1DayReportType,
-        CopilotUsageMetrics28DayReportType,
-        CopilotUsageMetricsDayType,
-        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
+        CopilotOrganizationDetailsTypeForResponse,
+        CopilotSeatDetailsTypeForResponse,
+        CopilotUsageMetrics1DayReportTypeForResponse,
+        CopilotUsageMetrics28DayReportTypeForResponse,
+        CopilotUsageMetricsDayTypeForResponse,
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse,
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType,
-        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse,
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType,
-        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse,
         EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType,
-        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
         EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType,
-        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type,
-        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type,
-        OrgsOrgCopilotBillingSeatsGetResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
+        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse,
+        OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse,
         OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
         OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse,
         OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
         OrgsOrgCopilotBillingSelectedUsersPostBodyType,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     )
 
 
@@ -98,7 +98,7 @@ class CopilotClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
-        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse,
     ]:
         """copilot/list-copilot-seats-for-enterprise
 
@@ -162,7 +162,7 @@ class CopilotClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
-        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse,
     ]:
         """copilot/list-copilot-seats-for-enterprise
 
@@ -226,7 +226,7 @@ class CopilotClient:
         data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
-        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -240,7 +240,7 @@ class CopilotClient:
         selected_enterprise_teams: list[str],
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
-        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse,
     ]: ...
 
     def add_copilot_seats_for_enterprise_teams(
@@ -255,7 +255,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
-        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse,
     ]:
         """copilot/add-copilot-seats-for-enterprise-teams
 
@@ -321,7 +321,7 @@ class CopilotClient:
         data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
-        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -335,7 +335,7 @@ class CopilotClient:
         selected_enterprise_teams: list[str],
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
-        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse,
     ]: ...
 
     async def async_add_copilot_seats_for_enterprise_teams(
@@ -350,7 +350,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
-        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse,
     ]:
         """copilot/add-copilot-seats-for-enterprise-teams
 
@@ -416,7 +416,7 @@ class CopilotClient:
         data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
-        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -430,7 +430,7 @@ class CopilotClient:
         selected_enterprise_teams: list[str],
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
-        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse,
     ]: ...
 
     def cancel_copilot_seats_for_enterprise_teams(
@@ -445,7 +445,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
-        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse,
     ]:
         """copilot/cancel-copilot-seats-for-enterprise-teams
 
@@ -513,7 +513,7 @@ class CopilotClient:
         data: EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBodyType,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
-        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -527,7 +527,7 @@ class CopilotClient:
         selected_enterprise_teams: list[str],
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
-        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse,
     ]: ...
 
     async def async_cancel_copilot_seats_for_enterprise_teams(
@@ -542,7 +542,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200,
-        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse,
     ]:
         """copilot/cancel-copilot-seats-for-enterprise-teams
 
@@ -610,7 +610,7 @@ class CopilotClient:
         data: EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
-        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -624,7 +624,7 @@ class CopilotClient:
         selected_usernames: list[str],
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
-        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]: ...
 
     def add_copilot_seats_for_enterprise_users(
@@ -639,7 +639,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
-        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]:
         """copilot/add-copilot-seats-for-enterprise-users
 
@@ -706,7 +706,7 @@ class CopilotClient:
         data: EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
-        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -720,7 +720,7 @@ class CopilotClient:
         selected_usernames: list[str],
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
-        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]: ...
 
     async def async_add_copilot_seats_for_enterprise_users(
@@ -735,7 +735,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
-        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]:
         """copilot/add-copilot-seats-for-enterprise-users
 
@@ -802,7 +802,7 @@ class CopilotClient:
         data: EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
-        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -816,7 +816,7 @@ class CopilotClient:
         selected_usernames: list[str],
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
-        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]: ...
 
     def cancel_copilot_seats_for_enterprise_users(
@@ -831,7 +831,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
-        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]:
         """copilot/cancel-copilot-seats-for-enterprise-users
 
@@ -898,7 +898,7 @@ class CopilotClient:
         data: EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
-        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -912,7 +912,7 @@ class CopilotClient:
         selected_usernames: list[str],
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
-        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]: ...
 
     async def async_cancel_copilot_seats_for_enterprise_users(
@@ -927,7 +927,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
-        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type,
+        EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]:
         """copilot/cancel-copilot-seats-for-enterprise-users
 
@@ -994,7 +994,9 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-enterprise
 
         GET /enterprises/{enterprise}/copilot/metrics
@@ -1051,7 +1053,9 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-enterprise
 
         GET /enterprises/{enterprise}/copilot/metrics
@@ -1105,7 +1109,9 @@ class CopilotClient:
         day: date,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportType]:
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
         """copilot/copilot-enterprise-one-day-usage-metrics
 
         GET /enterprises/{enterprise}/copilot/metrics/reports/enterprise-1-day
@@ -1152,7 +1158,9 @@ class CopilotClient:
         day: date,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportType]:
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
         """copilot/copilot-enterprise-one-day-usage-metrics
 
         GET /enterprises/{enterprise}/copilot/metrics/reports/enterprise-1-day
@@ -1198,7 +1206,9 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportType]:
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
         """copilot/copilot-enterprise-usage-metrics
 
         GET /enterprises/{enterprise}/copilot/metrics/reports/enterprise-28-day/latest
@@ -1239,7 +1249,9 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportType]:
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
         """copilot/copilot-enterprise-usage-metrics
 
         GET /enterprises/{enterprise}/copilot/metrics/reports/enterprise-28-day/latest
@@ -1281,7 +1293,9 @@ class CopilotClient:
         day: date,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportType]:
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
         """copilot/copilot-users-one-day-usage-metrics
 
         GET /enterprises/{enterprise}/copilot/metrics/reports/users-1-day
@@ -1328,7 +1342,9 @@ class CopilotClient:
         day: date,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportType]:
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
         """copilot/copilot-users-one-day-usage-metrics
 
         GET /enterprises/{enterprise}/copilot/metrics/reports/users-1-day
@@ -1374,7 +1390,9 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportType]:
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
         """copilot/copilot-users-usage-metrics
 
         GET /enterprises/{enterprise}/copilot/metrics/reports/users-28-day/latest
@@ -1415,7 +1433,9 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportType]:
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
         """copilot/copilot-users-usage-metrics
 
         GET /enterprises/{enterprise}/copilot/metrics/reports/users-28-day/latest
@@ -1459,7 +1479,7 @@ class CopilotClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
-        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type,
+        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse,
     ]:
         """copilot/get-copilot-seat-details-for-enterprise-user
 
@@ -1511,7 +1531,7 @@ class CopilotClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
-        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type,
+        EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse,
     ]:
         """copilot/get-copilot-seat-details-for-enterprise-user
 
@@ -1565,7 +1585,9 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-enterprise-team
 
         GET /enterprises/{enterprise}/team/{team_slug}/copilot/metrics
@@ -1629,7 +1651,9 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-enterprise-team
 
         GET /enterprises/{enterprise}/team/{team_slug}/copilot/metrics
@@ -1688,7 +1712,9 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotOrganizationDetails, CopilotOrganizationDetailsType]:
+    ) -> Response[
+        CopilotOrganizationDetails, CopilotOrganizationDetailsTypeForResponse
+    ]:
         """copilot/get-copilot-organization-details
 
         GET /orgs/{org}/copilot/billing
@@ -1733,7 +1759,9 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotOrganizationDetails, CopilotOrganizationDetailsType]:
+    ) -> Response[
+        CopilotOrganizationDetails, CopilotOrganizationDetailsTypeForResponse
+    ]:
         """copilot/get-copilot-organization-details
 
         GET /orgs/{org}/copilot/billing
@@ -1782,7 +1810,7 @@ class CopilotClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotBillingSeatsGetResponse200,
-        OrgsOrgCopilotBillingSeatsGetResponse200Type,
+        OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse,
     ]:
         """copilot/list-copilot-seats
 
@@ -1838,7 +1866,7 @@ class CopilotClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgCopilotBillingSeatsGetResponse200,
-        OrgsOrgCopilotBillingSeatsGetResponse200Type,
+        OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse,
     ]:
         """copilot/list-copilot-seats
 
@@ -1894,7 +1922,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -1908,7 +1936,7 @@ class CopilotClient:
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse,
     ]: ...
 
     def add_copilot_seats_for_teams(
@@ -1921,7 +1949,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse,
     ]:
         """copilot/add-copilot-seats-for-teams
 
@@ -1990,7 +2018,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -2004,7 +2032,7 @@ class CopilotClient:
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse,
     ]: ...
 
     async def async_add_copilot_seats_for_teams(
@@ -2017,7 +2045,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-        OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse,
     ]:
         """copilot/add-copilot-seats-for-teams
 
@@ -2086,7 +2114,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -2100,7 +2128,7 @@ class CopilotClient:
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
     ]: ...
 
     def cancel_copilot_seat_assignment_for_teams(
@@ -2113,7 +2141,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
     ]:
         """copilot/cancel-copilot-seat-assignment-for-teams
 
@@ -2181,7 +2209,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -2195,7 +2223,7 @@ class CopilotClient:
         selected_teams: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
     ]: ...
 
     async def async_cancel_copilot_seat_assignment_for_teams(
@@ -2208,7 +2236,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
     ]:
         """copilot/cancel-copilot-seat-assignment-for-teams
 
@@ -2276,7 +2304,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -2290,7 +2318,7 @@ class CopilotClient:
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]: ...
 
     def add_copilot_seats_for_users(
@@ -2303,7 +2331,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]:
         """copilot/add-copilot-seats-for-users
 
@@ -2372,7 +2400,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -2386,7 +2414,7 @@ class CopilotClient:
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]: ...
 
     async def async_add_copilot_seats_for_users(
@@ -2399,7 +2427,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-        OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+        OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
     ]:
         """copilot/add-copilot-seats-for-users
 
@@ -2468,7 +2496,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -2482,7 +2510,7 @@ class CopilotClient:
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]: ...
 
     def cancel_copilot_seat_assignment_for_users(
@@ -2495,7 +2523,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]:
         """copilot/cancel-copilot-seat-assignment-for-users
 
@@ -2563,7 +2591,7 @@ class CopilotClient:
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -2577,7 +2605,7 @@ class CopilotClient:
         selected_usernames: list[str],
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]: ...
 
     async def async_cancel_copilot_seat_assignment_for_users(
@@ -2590,7 +2618,7 @@ class CopilotClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
-        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
+        OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
     ]:
         """copilot/cancel-copilot-seat-assignment-for-users
 
@@ -2658,7 +2686,9 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-organization
 
         GET /orgs/{org}/copilot/metrics
@@ -2718,7 +2748,9 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-organization
 
         GET /orgs/{org}/copilot/metrics
@@ -2775,7 +2807,7 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotSeatDetails, CopilotSeatDetailsType]:
+    ) -> Response[CopilotSeatDetails, CopilotSeatDetailsTypeForResponse]:
         """copilot/get-copilot-seat-details-for-user
 
         GET /orgs/{org}/members/{username}/copilot
@@ -2822,7 +2854,7 @@ class CopilotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CopilotSeatDetails, CopilotSeatDetailsType]:
+    ) -> Response[CopilotSeatDetails, CopilotSeatDetailsTypeForResponse]:
         """copilot/get-copilot-seat-details-for-user
 
         GET /orgs/{org}/members/{username}/copilot
@@ -2873,7 +2905,9 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-team
 
         GET /orgs/{org}/team/{team_slug}/copilot/metrics
@@ -2934,7 +2968,9 @@ class CopilotClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayType]]:
+    ) -> Response[
+        list[CopilotUsageMetricsDay], list[CopilotUsageMetricsDayTypeForResponse]
+    ]:
         """copilot/copilot-metrics-for-team
 
         GET /orgs/{org}/team/{team_slug}/copilot/metrics

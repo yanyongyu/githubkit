@@ -23,4 +23,18 @@ class UserSocialAccountsDeleteBodyType(TypedDict):
     account_urls: list[str]
 
 
-__all__ = ("UserSocialAccountsDeleteBodyType",)
+class UserSocialAccountsDeleteBodyTypeForResponse(TypedDict):
+    """UserSocialAccountsDeleteBody
+
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str]
+
+
+__all__ = (
+    "UserSocialAccountsDeleteBodyType",
+    "UserSocialAccountsDeleteBodyTypeForResponse",
+)

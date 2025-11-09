@@ -70,52 +70,54 @@ if TYPE_CHECKING:
         WebhookConfig,
     )
     from ..types import (
-        ApiInsightsRouteStatsItemsType,
-        ApiInsightsSubjectStatsItemsType,
-        ApiInsightsSummaryStatsType,
-        ApiInsightsTimeStatsItemsType,
-        ApiInsightsUserStatsItemsType,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        ApiInsightsRouteStatsItemsTypeForResponse,
+        ApiInsightsSubjectStatsItemsTypeForResponse,
+        ApiInsightsSummaryStatsTypeForResponse,
+        ApiInsightsTimeStatsItemsTypeForResponse,
+        ApiInsightsUserStatsItemsTypeForResponse,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
         CustomPropertySetPayloadType,
         CustomPropertyType,
+        CustomPropertyTypeForResponse,
         CustomPropertyValueType,
-        HookDeliveryItemType,
-        HookDeliveryType,
-        ImmutableReleasesOrganizationSettingsType,
-        IssueTypeType,
-        MinimalRepositoryType,
+        CustomPropertyValueTypeForResponse,
+        HookDeliveryItemTypeForResponse,
+        HookDeliveryTypeForResponse,
+        ImmutableReleasesOrganizationSettingsTypeForResponse,
+        IssueTypeTypeForResponse,
+        MinimalRepositoryTypeForResponse,
         OrganizationCreateIssueTypeType,
-        OrganizationFullType,
-        OrganizationInvitationType,
-        OrganizationProgrammaticAccessGrantRequestType,
-        OrganizationProgrammaticAccessGrantType,
-        OrganizationRoleType,
-        OrganizationSimpleType,
+        OrganizationFullTypeForResponse,
+        OrganizationInvitationTypeForResponse,
+        OrganizationProgrammaticAccessGrantRequestTypeForResponse,
+        OrganizationProgrammaticAccessGrantTypeForResponse,
+        OrganizationRoleTypeForResponse,
+        OrganizationSimpleTypeForResponse,
         OrganizationsOrgOrgPropertiesValuesPatchBodyType,
         OrganizationUpdateIssueTypeType,
-        OrgHookType,
-        OrgMembershipType,
-        OrgRepoCustomPropertyValuesType,
+        OrgHookTypeForResponse,
+        OrgMembershipTypeForResponse,
+        OrgRepoCustomPropertyValuesTypeForResponse,
         OrgsOrgArtifactsMetadataStorageRecordPostBodyType,
-        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
-        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse,
         OrgsOrgAttestationsBulkListPostBodyType,
-        OrgsOrgAttestationsBulkListPostResponse200Type,
+        OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
         OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type,
         OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type,
-        OrgsOrgAttestationsRepositoriesGetResponse200ItemsType,
-        OrgsOrgAttestationsSubjectDigestGetResponse200Type,
+        OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse,
+        OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse,
         OrgsOrgHooksHookIdConfigPatchBodyType,
         OrgsOrgHooksHookIdPatchBodyPropConfigType,
         OrgsOrgHooksHookIdPatchBodyType,
         OrgsOrgHooksPostBodyPropConfigType,
         OrgsOrgHooksPostBodyType,
-        OrgsOrgInstallationsGetResponse200Type,
+        OrgsOrgInstallationsGetResponse200TypeForResponse,
         OrgsOrgInvitationsPostBodyType,
         OrgsOrgMembershipsUsernamePutBodyType,
-        OrgsOrgOrganizationRolesGetResponse200Type,
+        OrgsOrgOrganizationRolesGetResponse200TypeForResponse,
         OrgsOrgOutsideCollaboratorsUsernamePutBodyType,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse,
         OrgsOrgPatchBodyType,
         OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
         OrgsOrgPersonalAccessTokenRequestsPostBodyType,
@@ -125,17 +127,17 @@ if TYPE_CHECKING:
         OrgsOrgPropertiesValuesPatchBodyType,
         OrgsOrgSecurityProductEnablementPostBodyType,
         OrgsOrgSettingsImmutableReleasesPutBodyType,
-        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type,
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse,
         OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType,
-        RulesetVersionType,
-        RulesetVersionWithStateType,
-        SimpleUserType,
-        TeamRoleAssignmentType,
-        TeamSimpleType,
-        TeamType,
+        RulesetVersionTypeForResponse,
+        RulesetVersionWithStateTypeForResponse,
+        SimpleUserTypeForResponse,
+        TeamRoleAssignmentTypeForResponse,
+        TeamSimpleTypeForResponse,
+        TeamTypeForResponse,
         UserMembershipsOrgsOrgPatchBodyType,
-        UserRoleAssignmentType,
-        WebhookConfigType,
+        UserRoleAssignmentTypeForResponse,
+        WebhookConfigTypeForResponse,
     )
 
 
@@ -161,7 +163,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list
 
         GET /organizations
@@ -201,7 +203,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list
 
         GET /organizations
@@ -240,7 +242,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueType]]:
+    ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueTypeForResponse]]:
         """orgs/custom-properties-for-orgs-get-organization-values
 
         GET /organizations/{org}/org-properties/values
@@ -281,7 +283,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueType]]:
+    ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueTypeForResponse]]:
         """orgs/custom-properties-for-orgs-get-organization-values
 
         GET /organizations/{org}/org-properties/values
@@ -484,7 +486,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationFull, OrganizationFullType]:
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]:
         """orgs/get
 
         GET /orgs/{org}
@@ -525,7 +527,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationFull, OrganizationFullType]:
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]:
         """orgs/get
 
         GET /orgs/{org}
@@ -568,7 +570,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/delete
 
@@ -614,7 +616,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/delete
 
@@ -660,7 +662,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
-    ) -> Response[OrganizationFull, OrganizationFullType]: ...
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]: ...
 
     @overload
     def update(
@@ -706,7 +708,7 @@ class OrgsClient:
         secret_scanning_push_protection_custom_link_enabled: Missing[bool] = UNSET,
         secret_scanning_push_protection_custom_link: Missing[str] = UNSET,
         deploy_keys_enabled_for_repositories: Missing[bool] = UNSET,
-    ) -> Response[OrganizationFull, OrganizationFullType]: ...
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]: ...
 
     def update(
         self,
@@ -716,7 +718,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationFull, OrganizationFullType]:
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]:
         """orgs/update
 
         PATCH /orgs/{org}
@@ -780,7 +782,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
-    ) -> Response[OrganizationFull, OrganizationFullType]: ...
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]: ...
 
     @overload
     async def async_update(
@@ -826,7 +828,7 @@ class OrgsClient:
         secret_scanning_push_protection_custom_link_enabled: Missing[bool] = UNSET,
         secret_scanning_push_protection_custom_link: Missing[str] = UNSET,
         deploy_keys_enabled_for_repositories: Missing[bool] = UNSET,
-    ) -> Response[OrganizationFull, OrganizationFullType]: ...
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]: ...
 
     async def async_update(
         self,
@@ -836,7 +838,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationFull, OrganizationFullType]:
+    ) -> Response[OrganizationFull, OrganizationFullTypeForResponse]:
         """orgs/update
 
         PATCH /orgs/{org}
@@ -902,7 +904,7 @@ class OrgsClient:
         data: OrgsOrgArtifactsMetadataStorageRecordPostBodyType,
     ) -> Response[
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
-        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -924,7 +926,7 @@ class OrgsClient:
         github_repository: Missing[str] = UNSET,
     ) -> Response[
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
-        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
     ]: ...
 
     def create_artifact_storage_record(
@@ -937,7 +939,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
-        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
     ]:
         """orgs/create-artifact-storage-record
 
@@ -989,7 +991,7 @@ class OrgsClient:
         data: OrgsOrgArtifactsMetadataStorageRecordPostBodyType,
     ) -> Response[
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
-        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1011,7 +1013,7 @@ class OrgsClient:
         github_repository: Missing[str] = UNSET,
     ) -> Response[
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
-        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
     ]: ...
 
     async def async_create_artifact_storage_record(
@@ -1024,7 +1026,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
-        OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+        OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
     ]:
         """orgs/create-artifact-storage-record
 
@@ -1075,7 +1077,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
-        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type,
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse,
     ]:
         """orgs/list-artifact-storage-records
 
@@ -1113,7 +1115,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
-        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type,
+        OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse,
     ]:
         """orgs/list-artifact-storage-records
 
@@ -1155,7 +1157,7 @@ class OrgsClient:
         data: OrgsOrgAttestationsBulkListPostBodyType,
     ) -> Response[
         OrgsOrgAttestationsBulkListPostResponse200,
-        OrgsOrgAttestationsBulkListPostResponse200Type,
+        OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1173,7 +1175,7 @@ class OrgsClient:
         predicate_type: Missing[str] = UNSET,
     ) -> Response[
         OrgsOrgAttestationsBulkListPostResponse200,
-        OrgsOrgAttestationsBulkListPostResponse200Type,
+        OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
     ]: ...
 
     def list_attestations_bulk(
@@ -1189,7 +1191,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         OrgsOrgAttestationsBulkListPostResponse200,
-        OrgsOrgAttestationsBulkListPostResponse200Type,
+        OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
     ]:
         """orgs/list-attestations-bulk
 
@@ -1251,7 +1253,7 @@ class OrgsClient:
         data: OrgsOrgAttestationsBulkListPostBodyType,
     ) -> Response[
         OrgsOrgAttestationsBulkListPostResponse200,
-        OrgsOrgAttestationsBulkListPostResponse200Type,
+        OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1269,7 +1271,7 @@ class OrgsClient:
         predicate_type: Missing[str] = UNSET,
     ) -> Response[
         OrgsOrgAttestationsBulkListPostResponse200,
-        OrgsOrgAttestationsBulkListPostResponse200Type,
+        OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
     ]: ...
 
     async def async_list_attestations_bulk(
@@ -1285,7 +1287,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         OrgsOrgAttestationsBulkListPostResponse200,
-        OrgsOrgAttestationsBulkListPostResponse200Type,
+        OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
     ]:
         """orgs/list-attestations-bulk
 
@@ -1604,7 +1606,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         list[OrgsOrgAttestationsRepositoriesGetResponse200Items],
-        list[OrgsOrgAttestationsRepositoriesGetResponse200ItemsType],
+        list[OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse],
     ]:
         """orgs/list-attestation-repositories
 
@@ -1650,7 +1652,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         list[OrgsOrgAttestationsRepositoriesGetResponse200Items],
-        list[OrgsOrgAttestationsRepositoriesGetResponse200ItemsType],
+        list[OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse],
     ]:
         """orgs/list-attestation-repositories
 
@@ -1765,7 +1767,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgAttestationsSubjectDigestGetResponse200,
-        OrgsOrgAttestationsSubjectDigestGetResponse200Type,
+        OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse,
     ]:
         """orgs/list-attestations
 
@@ -1815,7 +1817,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgAttestationsSubjectDigestGetResponse200,
-        OrgsOrgAttestationsSubjectDigestGetResponse200Type,
+        OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse,
     ]:
         """orgs/list-attestations
 
@@ -1860,7 +1862,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-blocked-users
 
         GET /orgs/{org}/blocks
@@ -1898,7 +1900,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-blocked-users
 
         GET /orgs/{org}/blocks
@@ -2124,7 +2126,9 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """orgs/list-failed-invitations
 
         GET /orgs/{org}/failed_invitations
@@ -2165,7 +2169,9 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """orgs/list-failed-invitations
 
         GET /orgs/{org}/failed_invitations
@@ -2206,7 +2212,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrgHook], list[OrgHookType]]:
+    ) -> Response[list[OrgHook], list[OrgHookTypeForResponse]]:
         """orgs/list-webhooks
 
         GET /orgs/{org}/hooks
@@ -2252,7 +2258,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrgHook], list[OrgHookType]]:
+    ) -> Response[list[OrgHook], list[OrgHookTypeForResponse]]:
         """orgs/list-webhooks
 
         GET /orgs/{org}/hooks
@@ -2298,7 +2304,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgHooksPostBodyType,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     @overload
     def create_webhook(
@@ -2312,7 +2318,7 @@ class OrgsClient:
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     def create_webhook(
         self,
@@ -2322,7 +2328,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgHook, OrgHookType]:
+    ) -> Response[OrgHook, OrgHookTypeForResponse]:
         """orgs/create-webhook
 
         POST /orgs/{org}/hooks
@@ -2373,7 +2379,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgHooksPostBodyType,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     @overload
     async def async_create_webhook(
@@ -2387,7 +2393,7 @@ class OrgsClient:
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     async def async_create_webhook(
         self,
@@ -2397,7 +2403,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgHook, OrgHookType]:
+    ) -> Response[OrgHook, OrgHookTypeForResponse]:
         """orgs/create-webhook
 
         POST /orgs/{org}/hooks
@@ -2447,7 +2453,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgHook, OrgHookType]:
+    ) -> Response[OrgHook, OrgHookTypeForResponse]:
         """orgs/get-webhook
 
         GET /orgs/{org}/hooks/{hook_id}
@@ -2487,7 +2493,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgHook, OrgHookType]:
+    ) -> Response[OrgHook, OrgHookTypeForResponse]:
         """orgs/get-webhook
 
         GET /orgs/{org}/hooks/{hook_id}
@@ -2605,7 +2611,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     @overload
     def update_webhook(
@@ -2620,7 +2626,7 @@ class OrgsClient:
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     def update_webhook(
         self,
@@ -2631,7 +2637,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgHook, OrgHookType]:
+    ) -> Response[OrgHook, OrgHookTypeForResponse]:
         """orgs/update-webhook
 
         PATCH /orgs/{org}/hooks/{hook_id}
@@ -2692,7 +2698,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     @overload
     async def async_update_webhook(
@@ -2707,7 +2713,7 @@ class OrgsClient:
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[OrgHook, OrgHookType]: ...
+    ) -> Response[OrgHook, OrgHookTypeForResponse]: ...
 
     async def async_update_webhook(
         self,
@@ -2718,7 +2724,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgHook, OrgHookType]:
+    ) -> Response[OrgHook, OrgHookTypeForResponse]:
         """orgs/update-webhook
 
         PATCH /orgs/{org}/hooks/{hook_id}
@@ -2777,7 +2783,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """orgs/get-webhook-config-for-org
 
         GET /orgs/{org}/hooks/{hook_id}/config
@@ -2813,7 +2819,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """orgs/get-webhook-config-for-org
 
         GET /orgs/{org}/hooks/{hook_id}/config
@@ -2851,7 +2857,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     @overload
     def update_webhook_config_for_org(
@@ -2866,7 +2872,7 @@ class OrgsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     def update_webhook_config_for_org(
         self,
@@ -2877,7 +2883,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """orgs/update-webhook-config-for-org
 
         PATCH /orgs/{org}/hooks/{hook_id}/config
@@ -2925,7 +2931,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     @overload
     async def async_update_webhook_config_for_org(
@@ -2940,7 +2946,7 @@ class OrgsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     async def async_update_webhook_config_for_org(
         self,
@@ -2951,7 +2957,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """orgs/update-webhook-config-for-org
 
         PATCH /orgs/{org}/hooks/{hook_id}/config
@@ -2999,7 +3005,7 @@ class OrgsClient:
         cursor: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """orgs/list-webhook-deliveries
 
         GET /orgs/{org}/hooks/{hook_id}/deliveries
@@ -3047,7 +3053,7 @@ class OrgsClient:
         cursor: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """orgs/list-webhook-deliveries
 
         GET /orgs/{org}/hooks/{hook_id}/deliveries
@@ -3094,7 +3100,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[HookDelivery, HookDeliveryType]:
+    ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """orgs/get-webhook-delivery
 
         GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
@@ -3135,7 +3141,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[HookDelivery, HookDeliveryType]:
+    ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """orgs/get-webhook-delivery
 
         GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
@@ -3178,7 +3184,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/redeliver-webhook-delivery
 
@@ -3226,7 +3232,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/redeliver-webhook-delivery
 
@@ -3375,7 +3381,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[ApiInsightsRouteStatsItems], list[ApiInsightsRouteStatsItemsType]
+        list[ApiInsightsRouteStatsItems],
+        list[ApiInsightsRouteStatsItemsTypeForResponse],
     ]:
         """api-insights/get-route-stats-by-actor
 
@@ -3444,7 +3451,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[ApiInsightsRouteStatsItems], list[ApiInsightsRouteStatsItemsType]
+        list[ApiInsightsRouteStatsItems],
+        list[ApiInsightsRouteStatsItemsTypeForResponse],
     ]:
         """api-insights/get-route-stats-by-actor
 
@@ -3504,7 +3512,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[ApiInsightsSubjectStatsItems], list[ApiInsightsSubjectStatsItemsType]
+        list[ApiInsightsSubjectStatsItems],
+        list[ApiInsightsSubjectStatsItemsTypeForResponse],
     ]:
         """api-insights/get-subject-stats
 
@@ -3564,7 +3573,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[ApiInsightsSubjectStatsItems], list[ApiInsightsSubjectStatsItemsType]
+        list[ApiInsightsSubjectStatsItems],
+        list[ApiInsightsSubjectStatsItemsTypeForResponse],
     ]:
         """api-insights/get-subject-stats
 
@@ -3608,7 +3618,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats
 
         GET /orgs/{org}/insights/api/summary-stats
@@ -3646,7 +3656,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats
 
         GET /orgs/{org}/insights/api/summary-stats
@@ -3685,7 +3695,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats-by-user
 
         GET /orgs/{org}/insights/api/summary-stats/users/{user_id}
@@ -3724,7 +3734,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats-by-user
 
         GET /orgs/{org}/insights/api/summary-stats/users/{user_id}
@@ -3770,7 +3780,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats-by-actor
 
         GET /orgs/{org}/insights/api/summary-stats/{actor_type}/{actor_id}
@@ -3816,7 +3826,7 @@ class OrgsClient:
         max_timestamp: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsType]:
+    ) -> Response[ApiInsightsSummaryStats, ApiInsightsSummaryStatsTypeForResponse]:
         """api-insights/get-summary-stats-by-actor
 
         GET /orgs/{org}/insights/api/summary-stats/{actor_type}/{actor_id}
@@ -3855,7 +3865,9 @@ class OrgsClient:
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-time-stats
 
         GET /orgs/{org}/insights/api/time-stats
@@ -3895,7 +3907,9 @@ class OrgsClient:
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-time-stats
 
         GET /orgs/{org}/insights/api/time-stats
@@ -3936,7 +3950,9 @@ class OrgsClient:
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-time-stats-by-user
 
         GET /orgs/{org}/insights/api/time-stats/users/{user_id}
@@ -3977,7 +3993,9 @@ class OrgsClient:
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-time-stats-by-user
 
         GET /orgs/{org}/insights/api/time-stats/users/{user_id}
@@ -4025,7 +4043,9 @@ class OrgsClient:
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-time-stats-by-actor
 
         GET /orgs/{org}/insights/api/time-stats/{actor_type}/{actor_id}
@@ -4073,7 +4093,9 @@ class OrgsClient:
         timestamp_increment: str,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsTimeStatsItems], list[ApiInsightsTimeStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-time-stats-by-actor
 
         GET /orgs/{org}/insights/api/time-stats/{actor_type}/{actor_id}
@@ -4128,7 +4150,9 @@ class OrgsClient:
         actor_name_substring: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-user-stats
 
         GET /orgs/{org}/insights/api/user-stats/{user_id}
@@ -4187,7 +4211,9 @@ class OrgsClient:
         actor_name_substring: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsType]]:
+    ) -> Response[
+        list[ApiInsightsUserStatsItems], list[ApiInsightsUserStatsItemsTypeForResponse]
+    ]:
         """api-insights/get-user-stats
 
         GET /orgs/{org}/insights/api/user-stats/{user_id}
@@ -4231,7 +4257,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        OrgsOrgInstallationsGetResponse200, OrgsOrgInstallationsGetResponse200Type
+        OrgsOrgInstallationsGetResponse200,
+        OrgsOrgInstallationsGetResponse200TypeForResponse,
     ]:
         """orgs/list-app-installations
 
@@ -4276,7 +4303,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        OrgsOrgInstallationsGetResponse200, OrgsOrgInstallationsGetResponse200Type
+        OrgsOrgInstallationsGetResponse200,
+        OrgsOrgInstallationsGetResponse200TypeForResponse,
     ]:
         """orgs/list-app-installations
 
@@ -4326,7 +4354,9 @@ class OrgsClient:
         invitation_source: Missing[Literal["all", "member", "scim"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """orgs/list-pending-invitations
 
         GET /orgs/{org}/invitations
@@ -4378,7 +4408,9 @@ class OrgsClient:
         invitation_source: Missing[Literal["all", "member", "scim"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """orgs/list-pending-invitations
 
         GET /orgs/{org}/invitations
@@ -4424,7 +4456,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
-    ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
+    ) -> Response[OrganizationInvitation, OrganizationInvitationTypeForResponse]: ...
 
     @overload
     def create_invitation(
@@ -4440,7 +4472,7 @@ class OrgsClient:
             Literal["admin", "direct_member", "billing_manager", "reinstate"]
         ] = UNSET,
         team_ids: Missing[list[int]] = UNSET,
-    ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
+    ) -> Response[OrganizationInvitation, OrganizationInvitationTypeForResponse]: ...
 
     def create_invitation(
         self,
@@ -4450,7 +4482,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationInvitation, OrganizationInvitationType]:
+    ) -> Response[OrganizationInvitation, OrganizationInvitationTypeForResponse]:
         """orgs/create-invitation
 
         POST /orgs/{org}/invitations
@@ -4504,7 +4536,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
-    ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
+    ) -> Response[OrganizationInvitation, OrganizationInvitationTypeForResponse]: ...
 
     @overload
     async def async_create_invitation(
@@ -4520,7 +4552,7 @@ class OrgsClient:
             Literal["admin", "direct_member", "billing_manager", "reinstate"]
         ] = UNSET,
         team_ids: Missing[list[int]] = UNSET,
-    ) -> Response[OrganizationInvitation, OrganizationInvitationType]: ...
+    ) -> Response[OrganizationInvitation, OrganizationInvitationTypeForResponse]: ...
 
     async def async_create_invitation(
         self,
@@ -4530,7 +4562,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationInvitation, OrganizationInvitationType]:
+    ) -> Response[OrganizationInvitation, OrganizationInvitationTypeForResponse]:
         """orgs/create-invitation
 
         POST /orgs/{org}/invitations
@@ -4657,7 +4689,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """orgs/list-invitation-teams
 
         GET /orgs/{org}/invitations/{invitation_id}/teams
@@ -4699,7 +4731,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """orgs/list-invitation-teams
 
         GET /orgs/{org}/invitations/{invitation_id}/teams
@@ -4738,7 +4770,9 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Union[IssueType, None]], list[Union[IssueTypeType, None]]]:
+    ) -> Response[
+        list[Union[IssueType, None]], list[Union[IssueTypeTypeForResponse, None]]
+    ]:
         """orgs/list-issue-types
 
         GET /orgs/{org}/issue-types
@@ -4773,7 +4807,9 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Union[IssueType, None]], list[Union[IssueTypeType, None]]]:
+    ) -> Response[
+        list[Union[IssueType, None]], list[Union[IssueTypeTypeForResponse, None]]
+    ]:
         """orgs/list-issue-types
 
         GET /orgs/{org}/issue-types
@@ -4810,7 +4846,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrganizationCreateIssueTypeType,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     @overload
     def create_issue_type(
@@ -4831,7 +4867,7 @@ class OrgsClient:
                 ],
             ]
         ] = UNSET,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     def create_issue_type(
         self,
@@ -4841,7 +4877,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrganizationCreateIssueTypeType] = UNSET,
         **kwargs,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
         """orgs/create-issue-type
 
         POST /orgs/{org}/issue-types
@@ -4899,7 +4935,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrganizationCreateIssueTypeType,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     @overload
     async def async_create_issue_type(
@@ -4920,7 +4956,7 @@ class OrgsClient:
                 ],
             ]
         ] = UNSET,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     async def async_create_issue_type(
         self,
@@ -4930,7 +4966,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrganizationCreateIssueTypeType] = UNSET,
         **kwargs,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
         """orgs/create-issue-type
 
         POST /orgs/{org}/issue-types
@@ -4989,7 +5025,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrganizationUpdateIssueTypeType,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     @overload
     def update_issue_type(
@@ -5011,7 +5047,7 @@ class OrgsClient:
                 ],
             ]
         ] = UNSET,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     def update_issue_type(
         self,
@@ -5022,7 +5058,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrganizationUpdateIssueTypeType] = UNSET,
         **kwargs,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
         """orgs/update-issue-type
 
         PUT /orgs/{org}/issue-types/{issue_type_id}
@@ -5081,7 +5117,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrganizationUpdateIssueTypeType,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     @overload
     async def async_update_issue_type(
@@ -5103,7 +5139,7 @@ class OrgsClient:
                 ],
             ]
         ] = UNSET,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]: ...
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     async def async_update_issue_type(
         self,
@@ -5114,7 +5150,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrganizationUpdateIssueTypeType] = UNSET,
         **kwargs,
-    ) -> Response[Union[IssueType, None], Union[IssueTypeType, None]]:
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
         """orgs/update-issue-type
 
         PUT /orgs/{org}/issue-types/{issue_type_id}
@@ -5252,7 +5288,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-members
 
         GET /orgs/{org}/members
@@ -5297,7 +5333,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-members
 
         GET /orgs/{org}/members
@@ -5469,7 +5505,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/get-membership-for-user
 
         GET /orgs/{org}/memberships/{username}
@@ -5504,7 +5540,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/get-membership-for-user
 
         GET /orgs/{org}/memberships/{username}
@@ -5541,7 +5577,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     @overload
     def set_membership_for_user(
@@ -5553,7 +5589,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         role: Missing[Literal["admin", "member"]] = UNSET,
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     def set_membership_for_user(
         self,
@@ -5564,7 +5600,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/set-membership-for-user
 
         PUT /orgs/{org}/memberships/{username}
@@ -5624,7 +5660,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     @overload
     async def async_set_membership_for_user(
@@ -5636,7 +5672,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         role: Missing[Literal["admin", "member"]] = UNSET,
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     async def async_set_membership_for_user(
         self,
@@ -5647,7 +5683,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/set-membership-for-user
 
         PUT /orgs/{org}/memberships/{username}
@@ -5784,7 +5820,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgOrganizationRolesGetResponse200,
-        OrgsOrgOrganizationRolesGetResponse200Type,
+        OrgsOrgOrganizationRolesGetResponse200TypeForResponse,
     ]:
         """orgs/list-org-roles
 
@@ -5832,7 +5868,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgOrganizationRolesGetResponse200,
-        OrgsOrgOrganizationRolesGetResponse200Type,
+        OrgsOrgOrganizationRolesGetResponse200TypeForResponse,
     ]:
         """orgs/list-org-roles
 
@@ -6275,7 +6311,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationRole, OrganizationRoleType]:
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]:
         """orgs/get-org-role
 
         GET /orgs/{org}/organization-roles/{role_id}
@@ -6317,7 +6353,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationRole, OrganizationRoleType]:
+    ) -> Response[OrganizationRole, OrganizationRoleTypeForResponse]:
         """orgs/get-org-role
 
         GET /orgs/{org}/organization-roles/{role_id}
@@ -6361,7 +6397,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentType]]:
+    ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentTypeForResponse]]:
         """orgs/list-org-role-teams
 
         GET /orgs/{org}/organization-roles/{role_id}/teams
@@ -6405,7 +6441,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentType]]:
+    ) -> Response[list[TeamRoleAssignment], list[TeamRoleAssignmentTypeForResponse]]:
         """orgs/list-org-role-teams
 
         GET /orgs/{org}/organization-roles/{role_id}/teams
@@ -6449,7 +6485,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentType]]:
+    ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentTypeForResponse]]:
         """orgs/list-org-role-users
 
         GET /orgs/{org}/organization-roles/{role_id}/users
@@ -6493,7 +6529,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentType]]:
+    ) -> Response[list[UserRoleAssignment], list[UserRoleAssignmentTypeForResponse]]:
         """orgs/list-org-role-users
 
         GET /orgs/{org}/organization-roles/{role_id}/users
@@ -6537,7 +6573,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-outside-collaborators
 
         GET /orgs/{org}/outside_collaborators
@@ -6577,7 +6613,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-outside-collaborators
 
         GET /orgs/{org}/outside_collaborators
@@ -6619,7 +6655,7 @@ class OrgsClient:
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -6634,7 +6670,7 @@ class OrgsClient:
         async_: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse,
     ]: ...
 
     def convert_member_to_outside_collaborator(
@@ -6648,7 +6684,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse,
     ]:
         """orgs/convert-member-to-outside-collaborator
 
@@ -6703,7 +6739,7 @@ class OrgsClient:
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -6718,7 +6754,7 @@ class OrgsClient:
         async_: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse,
     ]: ...
 
     async def async_convert_member_to_outside_collaborator(
@@ -6732,7 +6768,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse,
     ]:
         """orgs/convert-member-to-outside-collaborator
 
@@ -6860,7 +6896,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrantRequest],
-        list[OrganizationProgrammaticAccessGrantRequestType],
+        list[OrganizationProgrammaticAccessGrantRequestTypeForResponse],
     ]:
         """orgs/list-pat-grant-requests
 
@@ -6929,7 +6965,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrantRequest],
-        list[OrganizationProgrammaticAccessGrantRequestType],
+        list[OrganizationProgrammaticAccessGrantRequestTypeForResponse],
     ]:
         """orgs/list-pat-grant-requests
 
@@ -6990,7 +7026,7 @@ class OrgsClient:
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -7006,7 +7042,7 @@ class OrgsClient:
         reason: Missing[Union[str, None]] = UNSET,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     def review_pat_grant_requests_in_bulk(
@@ -7019,7 +7055,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/review-pat-grant-requests-in-bulk
 
@@ -7079,7 +7115,7 @@ class OrgsClient:
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -7095,7 +7131,7 @@ class OrgsClient:
         reason: Missing[Union[str, None]] = UNSET,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     async def async_review_pat_grant_requests_in_bulk(
@@ -7108,7 +7144,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/review-pat-grant-requests-in-bulk
 
@@ -7331,7 +7367,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """orgs/list-pat-grant-request-repositories
 
         GET /orgs/{org}/personal-access-token-requests/{pat_request_id}/repositories
@@ -7379,7 +7415,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """orgs/list-pat-grant-request-repositories
 
         GET /orgs/{org}/personal-access-token-requests/{pat_request_id}/repositories
@@ -7436,7 +7472,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrant],
-        list[OrganizationProgrammaticAccessGrantType],
+        list[OrganizationProgrammaticAccessGrantTypeForResponse],
     ]:
         """orgs/list-pat-grants
 
@@ -7505,7 +7541,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         list[OrganizationProgrammaticAccessGrant],
-        list[OrganizationProgrammaticAccessGrantType],
+        list[OrganizationProgrammaticAccessGrantTypeForResponse],
     ]:
         """orgs/list-pat-grants
 
@@ -7566,7 +7602,7 @@ class OrgsClient:
         data: OrgsOrgPersonalAccessTokensPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -7581,7 +7617,7 @@ class OrgsClient:
         pat_ids: list[int],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     def update_pat_accesses(
@@ -7594,7 +7630,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/update-pat-accesses
 
@@ -7652,7 +7688,7 @@ class OrgsClient:
         data: OrgsOrgPersonalAccessTokensPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -7667,7 +7703,7 @@ class OrgsClient:
         pat_ids: list[int],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     async def async_update_pat_accesses(
@@ -7680,7 +7716,7 @@ class OrgsClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """orgs/update-pat-accesses
 
@@ -7891,7 +7927,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """orgs/list-pat-grant-repositories
 
         GET /orgs/{org}/personal-access-tokens/{pat_id}/repositories
@@ -7937,7 +7973,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """orgs/list-pat-grant-repositories
 
         GET /orgs/{org}/personal-access-tokens/{pat_id}/repositories
@@ -7980,7 +8016,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
         """orgs/custom-properties-for-repos-get-organization-definitions
 
         GET /orgs/{org}/properties/schema
@@ -8015,7 +8051,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
         """orgs/custom-properties-for-repos-get-organization-definitions
 
         GET /orgs/{org}/properties/schema
@@ -8052,7 +8088,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
     @overload
     def custom_properties_for_repos_create_or_update_organization_definitions(
@@ -8063,7 +8099,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         properties: list[CustomPropertyType],
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
     def custom_properties_for_repos_create_or_update_organization_definitions(
         self,
@@ -8073,7 +8109,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
         """orgs/custom-properties-for-repos-create-or-update-organization-definitions
 
         PATCH /orgs/{org}/properties/schema
@@ -8131,7 +8167,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
     @overload
     async def async_custom_properties_for_repos_create_or_update_organization_definitions(
@@ -8142,7 +8178,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         properties: list[CustomPropertyType],
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
     async def async_custom_properties_for_repos_create_or_update_organization_definitions(
         self,
@@ -8152,7 +8188,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
         """orgs/custom-properties-for-repos-create-or-update-organization-definitions
 
         PATCH /orgs/{org}/properties/schema
@@ -8209,7 +8245,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CustomProperty, CustomPropertyType]:
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """orgs/custom-properties-for-repos-get-organization-definition
 
         GET /orgs/{org}/properties/schema/{custom_property_name}
@@ -8245,7 +8281,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CustomProperty, CustomPropertyType]:
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """orgs/custom-properties-for-repos-get-organization-definition
 
         GET /orgs/{org}/properties/schema/{custom_property_name}
@@ -8283,7 +8319,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: CustomPropertySetPayloadType,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
     @overload
     def custom_properties_for_repos_create_or_update_organization_definition(
@@ -8302,7 +8338,7 @@ class OrgsClient:
         values_editable_by: Missing[
             Union[None, Literal["org_actors", "org_and_repo_actors"]]
         ] = UNSET,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
     def custom_properties_for_repos_create_or_update_organization_definition(
         self,
@@ -8313,7 +8349,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
-    ) -> Response[CustomProperty, CustomPropertyType]:
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """orgs/custom-properties-for-repos-create-or-update-organization-definition
 
         PUT /orgs/{org}/properties/schema/{custom_property_name}
@@ -8364,7 +8400,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: CustomPropertySetPayloadType,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
     @overload
     async def async_custom_properties_for_repos_create_or_update_organization_definition(
@@ -8383,7 +8419,7 @@ class OrgsClient:
         values_editable_by: Missing[
             Union[None, Literal["org_actors", "org_and_repo_actors"]]
         ] = UNSET,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
     async def async_custom_properties_for_repos_create_or_update_organization_definition(
         self,
@@ -8394,7 +8430,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
-    ) -> Response[CustomProperty, CustomPropertyType]:
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """orgs/custom-properties-for-repos-create-or-update-organization-definition
 
         PUT /orgs/{org}/properties/schema/{custom_property_name}
@@ -8522,7 +8558,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[OrgRepoCustomPropertyValues], list[OrgRepoCustomPropertyValuesType]
+        list[OrgRepoCustomPropertyValues],
+        list[OrgRepoCustomPropertyValuesTypeForResponse],
     ]:
         """orgs/custom-properties-for-repos-get-organization-values
 
@@ -8569,7 +8606,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[OrgRepoCustomPropertyValues], list[OrgRepoCustomPropertyValuesType]
+        list[OrgRepoCustomPropertyValues],
+        list[OrgRepoCustomPropertyValuesTypeForResponse],
     ]:
         """orgs/custom-properties-for-repos-get-organization-values
 
@@ -8776,7 +8814,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-public-members
 
         GET /orgs/{org}/public_members
@@ -8814,7 +8852,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """orgs/list-public-members
 
         GET /orgs/{org}/public_members
@@ -9037,7 +9075,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
+    ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """orgs/get-org-ruleset-history
 
         GET /orgs/{org}/rulesets/{ruleset_id}/history
@@ -9080,7 +9118,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
+    ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """orgs/get-org-ruleset-history
 
         GET /orgs/{org}/rulesets/{ruleset_id}/history
@@ -9122,7 +9160,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
+    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """orgs/get-org-ruleset-version
 
         GET /orgs/{org}/rulesets/{ruleset_id}/history/{version_id}
@@ -9158,7 +9196,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
+    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """orgs/get-org-ruleset-version
 
         GET /orgs/{org}/rulesets/{ruleset_id}/history/{version_id}
@@ -9192,7 +9230,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamSimple], list[TeamSimpleType]]:
+    ) -> Response[list[TeamSimple], list[TeamSimpleTypeForResponse]]:
         """DEPRECATED orgs/list-security-manager-teams
 
         GET /orgs/{org}/security-managers
@@ -9223,7 +9261,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamSimple], list[TeamSimpleType]]:
+    ) -> Response[list[TeamSimple], list[TeamSimpleTypeForResponse]]:
         """DEPRECATED orgs/list-security-manager-teams
 
         GET /orgs/{org}/security-managers
@@ -9371,7 +9409,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ImmutableReleasesOrganizationSettings, ImmutableReleasesOrganizationSettingsType
+        ImmutableReleasesOrganizationSettings,
+        ImmutableReleasesOrganizationSettingsTypeForResponse,
     ]:
         """orgs/get-immutable-releases-settings
 
@@ -9405,7 +9444,8 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ImmutableReleasesOrganizationSettings, ImmutableReleasesOrganizationSettingsType
+        ImmutableReleasesOrganizationSettings,
+        ImmutableReleasesOrganizationSettingsTypeForResponse,
     ]:
         """orgs/get-immutable-releases-settings
 
@@ -9572,7 +9612,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
-        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type,
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse,
     ]:
         """orgs/get-immutable-releases-settings-repositories
 
@@ -9615,7 +9655,7 @@ class OrgsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
-        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type,
+        OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse,
     ]:
         """orgs/get-immutable-releases-settings-repositories
 
@@ -10108,7 +10148,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrgMembership], list[OrgMembershipType]]:
+    ) -> Response[list[OrgMembership], list[OrgMembershipTypeForResponse]]:
         """orgs/list-memberships-for-authenticated-user
 
         GET /user/memberships/orgs
@@ -10152,7 +10192,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrgMembership], list[OrgMembershipType]]:
+    ) -> Response[list[OrgMembership], list[OrgMembershipTypeForResponse]]:
         """orgs/list-memberships-for-authenticated-user
 
         GET /user/memberships/orgs
@@ -10194,7 +10234,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/get-membership-for-authenticated-user
 
         GET /user/memberships/orgs/{org}
@@ -10228,7 +10268,7 @@ class OrgsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/get-membership-for-authenticated-user
 
         GET /user/memberships/orgs/{org}
@@ -10264,7 +10304,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserMembershipsOrgsOrgPatchBodyType,
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     @overload
     def update_membership_for_authenticated_user(
@@ -10275,7 +10315,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         state: Literal["active"],
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     def update_membership_for_authenticated_user(
         self,
@@ -10285,7 +10325,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/update-membership-for-authenticated-user
 
         PATCH /user/memberships/orgs/{org}
@@ -10337,7 +10377,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserMembershipsOrgsOrgPatchBodyType,
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     @overload
     async def async_update_membership_for_authenticated_user(
@@ -10348,7 +10388,7 @@ class OrgsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         state: Literal["active"],
-    ) -> Response[OrgMembership, OrgMembershipType]: ...
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]: ...
 
     async def async_update_membership_for_authenticated_user(
         self,
@@ -10358,7 +10398,7 @@ class OrgsClient:
         stream: bool = False,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgMembership, OrgMembershipType]:
+    ) -> Response[OrgMembership, OrgMembershipTypeForResponse]:
         """orgs/update-membership-for-authenticated-user
 
         PATCH /user/memberships/orgs/{org}
@@ -10409,7 +10449,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list-for-authenticated-user
 
         GET /user/orgs
@@ -10455,7 +10495,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list-for-authenticated-user
 
         GET /user/orgs
@@ -10502,7 +10542,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list-for-user
 
         GET /users/{username}/orgs
@@ -10542,7 +10582,7 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """orgs/list-for-user
 
         GET /users/{username}/orgs

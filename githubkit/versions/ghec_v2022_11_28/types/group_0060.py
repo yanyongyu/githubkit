@@ -24,6 +24,17 @@ class AzureBlobConfigType(TypedDict):
     container: str
 
 
+class AzureBlobConfigTypeForResponse(TypedDict):
+    """AzureBlobConfig
+
+    Azure Blob Config for audit log streaming configuration.
+    """
+
+    key_id: str
+    encrypted_sas_url: str
+    container: str
+
+
 class AzureHubConfigType(TypedDict):
     """AzureHubConfig
 
@@ -35,7 +46,32 @@ class AzureHubConfigType(TypedDict):
     key_id: str
 
 
+class AzureHubConfigTypeForResponse(TypedDict):
+    """AzureHubConfig
+
+    Azure Event Hubs Config for audit log streaming configuration.
+    """
+
+    name: str
+    encrypted_connstring: str
+    key_id: str
+
+
 class AmazonS3AccessKeysConfigType(TypedDict):
+    """AmazonS3AccessKeysConfig
+
+    Amazon S3 Access Keys Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["access_keys"]
+    encrypted_secret_key: str
+    encrypted_access_key_id: str
+
+
+class AmazonS3AccessKeysConfigTypeForResponse(TypedDict):
     """AmazonS3AccessKeysConfig
 
     Amazon S3 Access Keys Config for audit log streaming configuration.
@@ -63,7 +99,32 @@ class HecConfigType(TypedDict):
     ssl_verify: bool
 
 
+class HecConfigTypeForResponse(TypedDict):
+    """HecConfig
+
+    Hec Config for Audit Log Stream Configuration
+    """
+
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    path: str
+    ssl_verify: bool
+
+
 class DatadogConfigType(TypedDict):
+    """DatadogConfig
+
+    Datadog Config for audit log streaming configuration.
+    """
+
+    encrypted_token: str
+    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"]
+    key_id: str
+
+
+class DatadogConfigTypeForResponse(TypedDict):
     """DatadogConfig
 
     Datadog Config for audit log streaming configuration.
@@ -76,8 +137,13 @@ class DatadogConfigType(TypedDict):
 
 __all__ = (
     "AmazonS3AccessKeysConfigType",
+    "AmazonS3AccessKeysConfigTypeForResponse",
     "AzureBlobConfigType",
+    "AzureBlobConfigTypeForResponse",
     "AzureHubConfigType",
+    "AzureHubConfigTypeForResponse",
     "DatadogConfigType",
+    "DatadogConfigTypeForResponse",
     "HecConfigType",
+    "HecConfigTypeForResponse",
 )

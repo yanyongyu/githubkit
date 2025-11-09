@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0214 import MinimalRepositoryType
+from .group_0214 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
 class CombinedCommitStatusType(TypedDict):
@@ -27,6 +27,21 @@ class CombinedCommitStatusType(TypedDict):
     sha: str
     total_count: int
     repository: MinimalRepositoryType
+    commit_url: str
+    url: str
+
+
+class CombinedCommitStatusTypeForResponse(TypedDict):
+    """Combined Commit Status
+
+    Combined Commit Status
+    """
+
+    state: str
+    statuses: list[SimpleCommitStatusTypeForResponse]
+    sha: str
+    total_count: int
+    repository: MinimalRepositoryTypeForResponse
     commit_url: str
     url: str
 
@@ -47,7 +62,25 @@ class SimpleCommitStatusType(TypedDict):
     updated_at: datetime
 
 
+class SimpleCommitStatusTypeForResponse(TypedDict):
+    """Simple Commit Status"""
+
+    description: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: str
+    updated_at: str
+
+
 __all__ = (
     "CombinedCommitStatusType",
+    "CombinedCommitStatusTypeForResponse",
     "SimpleCommitStatusType",
+    "SimpleCommitStatusTypeForResponse",
 )

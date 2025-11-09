@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class WebhookGithubAppAuthorizationRevokedType(TypedDict):
@@ -22,4 +22,14 @@ class WebhookGithubAppAuthorizationRevokedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookGithubAppAuthorizationRevokedType",)
+class WebhookGithubAppAuthorizationRevokedTypeForResponse(TypedDict):
+    """github_app_authorization revoked event"""
+
+    action: Literal["revoked"]
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookGithubAppAuthorizationRevokedType",
+    "WebhookGithubAppAuthorizationRevokedTypeForResponse",
+)

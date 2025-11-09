@@ -20,6 +20,13 @@ class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
     secrets: list[RepoCodespacesSecretType]
 
 
+class ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[RepoCodespacesSecretTypeForResponse]
+
+
 class RepoCodespacesSecretType(TypedDict):
     """Codespaces Secret
 
@@ -31,7 +38,20 @@ class RepoCodespacesSecretType(TypedDict):
     updated_at: datetime
 
 
+class RepoCodespacesSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
+
+    Set repository secrets for GitHub Codespaces.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
+
+
 __all__ = (
     "RepoCodespacesSecretType",
+    "RepoCodespacesSecretTypeForResponse",
     "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse",
 )

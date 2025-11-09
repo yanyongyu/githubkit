@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
 class MilestonedIssueEventType(TypedDict):
@@ -34,7 +34,31 @@ class MilestonedIssueEventType(TypedDict):
     milestone: MilestonedIssueEventPropMilestoneType
 
 
+class MilestonedIssueEventTypeForResponse(TypedDict):
+    """Milestoned Issue Event
+
+    Milestoned Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["milestoned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    milestone: MilestonedIssueEventPropMilestoneTypeForResponse
+
+
 class MilestonedIssueEventPropMilestoneType(TypedDict):
+    """MilestonedIssueEventPropMilestone"""
+
+    title: str
+
+
+class MilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
     """MilestonedIssueEventPropMilestone"""
 
     title: str
@@ -42,5 +66,7 @@ class MilestonedIssueEventPropMilestoneType(TypedDict):
 
 __all__ = (
     "MilestonedIssueEventPropMilestoneType",
+    "MilestonedIssueEventPropMilestoneTypeForResponse",
     "MilestonedIssueEventType",
+    "MilestonedIssueEventTypeForResponse",
 )

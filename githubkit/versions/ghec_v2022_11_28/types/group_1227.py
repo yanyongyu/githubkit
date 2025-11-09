@@ -19,4 +19,14 @@ class ReposOwnerRepoActionsVariablesNamePatchBodyType(TypedDict):
     value: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoActionsVariablesNamePatchBodyType",)
+class ReposOwnerRepoActionsVariablesNamePatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsVariablesNamePatchBody"""
+
+    name: NotRequired[str]
+    value: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsVariablesNamePatchBodyType",
+    "ReposOwnerRepoActionsVariablesNamePatchBodyTypeForResponse",
+)

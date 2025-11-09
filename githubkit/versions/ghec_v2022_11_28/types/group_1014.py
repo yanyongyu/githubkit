@@ -18,4 +18,15 @@ class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType(TypedDict):
     selected_usernames: list[str]
 
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType",)
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
+
+    selected_usernames: list[str]
+
+
+__all__ = (
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyTypeForResponse",
+)

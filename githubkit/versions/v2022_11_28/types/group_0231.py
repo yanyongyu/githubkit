@@ -24,4 +24,18 @@ class ActionsSecretType(TypedDict):
     updated_at: datetime
 
 
-__all__ = ("ActionsSecretType",)
+class ActionsSecretTypeForResponse(TypedDict):
+    """Actions Secret
+
+    Set secrets for GitHub Actions.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
+
+
+__all__ = (
+    "ActionsSecretType",
+    "ActionsSecretTypeForResponse",
+)

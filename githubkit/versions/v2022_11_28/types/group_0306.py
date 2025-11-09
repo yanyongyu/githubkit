@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0034 import DependabotAlertPackageType
+from .group_0034 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
 
 class DependabotAlertPropDependencyType(TypedDict):
@@ -27,4 +30,19 @@ class DependabotAlertPropDependencyType(TypedDict):
     relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
 
 
-__all__ = ("DependabotAlertPropDependencyType",)
+class DependabotAlertPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertPropDependency
+
+    Details for the vulnerable dependency.
+    """
+
+    package: NotRequired[DependabotAlertPackageTypeForResponse]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
+
+
+__all__ = (
+    "DependabotAlertPropDependencyType",
+    "DependabotAlertPropDependencyTypeForResponse",
+)

@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0321 import BranchProtectionType
-from .group_0326 import CommitType
+from .group_0321 import BranchProtectionType, BranchProtectionTypeForResponse
+from .group_0326 import CommitType, CommitTypeForResponse
 
 
 class BranchWithProtectionType(TypedDict):
@@ -31,7 +31,30 @@ class BranchWithProtectionType(TypedDict):
     required_approving_review_count: NotRequired[int]
 
 
+class BranchWithProtectionTypeForResponse(TypedDict):
+    """Branch With Protection
+
+    Branch With Protection
+    """
+
+    name: str
+    commit: CommitTypeForResponse
+    links: BranchWithProtectionPropLinksTypeForResponse
+    protected: bool
+    protection: BranchProtectionTypeForResponse
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
+
+
 class BranchWithProtectionPropLinksType(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
+
+
+class BranchWithProtectionPropLinksTypeForResponse(TypedDict):
     """BranchWithProtectionPropLinks"""
 
     html: str
@@ -40,5 +63,7 @@ class BranchWithProtectionPropLinksType(TypedDict):
 
 __all__ = (
     "BranchWithProtectionPropLinksType",
+    "BranchWithProtectionPropLinksTypeForResponse",
     "BranchWithProtectionType",
+    "BranchWithProtectionTypeForResponse",
 )

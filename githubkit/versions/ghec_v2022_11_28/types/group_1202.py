@@ -16,4 +16,11 @@ class ProjectsColumnsColumnIdMovesPostResponse201Type(TypedDict):
     """ProjectsColumnsColumnIdMovesPostResponse201"""
 
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostResponse201Type",)
+class ProjectsColumnsColumnIdMovesPostResponse201TypeForResponse(TypedDict):
+    """ProjectsColumnsColumnIdMovesPostResponse201"""
+
+
+__all__ = (
+    "ProjectsColumnsColumnIdMovesPostResponse201Type",
+    "ProjectsColumnsColumnIdMovesPostResponse201TypeForResponse",
+)

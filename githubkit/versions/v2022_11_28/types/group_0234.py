@@ -19,4 +19,13 @@ class ActionsWorkflowAccessToRepositoryType(TypedDict):
     access_level: Literal["none", "user", "organization"]
 
 
-__all__ = ("ActionsWorkflowAccessToRepositoryType",)
+class ActionsWorkflowAccessToRepositoryTypeForResponse(TypedDict):
+    """ActionsWorkflowAccessToRepository"""
+
+    access_level: Literal["none", "user", "organization"]
+
+
+__all__ = (
+    "ActionsWorkflowAccessToRepositoryType",
+    "ActionsWorkflowAccessToRepositoryTypeForResponse",
+)

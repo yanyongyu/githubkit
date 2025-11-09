@@ -13,12 +13,15 @@ from datetime import datetime
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0450 import EnterpriseWebhooksType
-from .group_0451 import SimpleInstallationType
-from .group_0452 import OrganizationSimpleWebhooksType
-from .group_0453 import RepositoryWebhooksType
-from .group_0463 import DiscussionType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0450 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0451 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0452 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0453 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0463 import DiscussionType, DiscussionTypeForResponse
 
 
 class WebhookDiscussionCategoryChangedType(TypedDict):
@@ -34,16 +37,43 @@ class WebhookDiscussionCategoryChangedType(TypedDict):
     sender: SimpleUserType
 
 
+class WebhookDiscussionCategoryChangedTypeForResponse(TypedDict):
+    """discussion category changed event"""
+
+    action: Literal["category_changed"]
+    changes: WebhookDiscussionCategoryChangedPropChangesTypeForResponse
+    discussion: DiscussionTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
 class WebhookDiscussionCategoryChangedPropChangesType(TypedDict):
     """WebhookDiscussionCategoryChangedPropChanges"""
 
     category: WebhookDiscussionCategoryChangedPropChangesPropCategoryType
 
 
+class WebhookDiscussionCategoryChangedPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChanges"""
+
+    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse
+
+
 class WebhookDiscussionCategoryChangedPropChangesPropCategoryType(TypedDict):
     """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
 
     from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
+
+    from_: (
+        WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse
+    )
 
 
 class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType(TypedDict):
@@ -61,9 +91,30 @@ class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType(TypedD
     updated_at: str
 
 
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse(
+    TypedDict
+):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
+
+    created_at: str
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
+    name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
+
+
 __all__ = (
     "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse",
     "WebhookDiscussionCategoryChangedPropChangesPropCategoryType",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse",
     "WebhookDiscussionCategoryChangedPropChangesType",
+    "WebhookDiscussionCategoryChangedPropChangesTypeForResponse",
     "WebhookDiscussionCategoryChangedType",
+    "WebhookDiscussionCategoryChangedTypeForResponse",
 )

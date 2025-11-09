@@ -13,10 +13,16 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0032 import SimpleRepositoryType
-from .group_0278 import CodeScanningVariantAnalysisPropScannedRepositoriesItemsType
-from .group_0279 import CodeScanningVariantAnalysisPropSkippedRepositoriesType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0278 import (
+    CodeScanningVariantAnalysisPropScannedRepositoriesItemsType,
+    CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse,
+)
+from .group_0279 import (
+    CodeScanningVariantAnalysisPropSkippedRepositoriesType,
+    CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse,
+)
 
 
 class CodeScanningVariantAnalysisType(TypedDict):
@@ -48,4 +54,36 @@ class CodeScanningVariantAnalysisType(TypedDict):
     ]
 
 
-__all__ = ("CodeScanningVariantAnalysisType",)
+class CodeScanningVariantAnalysisTypeForResponse(TypedDict):
+    """Variant Analysis
+
+    A run of a CodeQL query against one or more repositories.
+    """
+
+    id: int
+    controller_repo: SimpleRepositoryTypeForResponse
+    actor: SimpleUserTypeForResponse
+    query_language: Literal[
+        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "rust", "swift"
+    ]
+    query_pack_url: str
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
+    actions_workflow_run_id: NotRequired[int]
+    failure_reason: NotRequired[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ]
+    scanned_repositories: NotRequired[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse]
+    ]
+    skipped_repositories: NotRequired[
+        CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse
+    ]
+
+
+__all__ = (
+    "CodeScanningVariantAnalysisType",
+    "CodeScanningVariantAnalysisTypeForResponse",
+)

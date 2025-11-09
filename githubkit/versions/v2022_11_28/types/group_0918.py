@@ -24,4 +24,18 @@ class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
     network_configuration_id: NotRequired[Union[str, None]]
 
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType",)
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+
+    name: str
+    visibility: NotRequired[Literal["selected", "all", "private"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse",
+)

@@ -20,4 +20,16 @@ class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType(TypedDict):
     placeholder_id: str
 
 
-__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",)
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
+    placeholder_id: str
+
+
+__all__ = (
+    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
+    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse",
+)

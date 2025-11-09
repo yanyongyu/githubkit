@@ -29,7 +29,31 @@ class ContentDirectoryItemsType(TypedDict):
     links: ContentDirectoryItemsPropLinksType
 
 
+class ContentDirectoryItemsTypeForResponse(TypedDict):
+    """ContentDirectoryItems"""
+
+    type: Literal["dir", "file", "submodule", "symlink"]
+    size: int
+    name: str
+    path: str
+    content: NotRequired[str]
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentDirectoryItemsPropLinksTypeForResponse
+
+
 class ContentDirectoryItemsPropLinksType(TypedDict):
+    """ContentDirectoryItemsPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentDirectoryItemsPropLinksTypeForResponse(TypedDict):
     """ContentDirectoryItemsPropLinks"""
 
     git: Union[str, None]
@@ -39,5 +63,7 @@ class ContentDirectoryItemsPropLinksType(TypedDict):
 
 __all__ = (
     "ContentDirectoryItemsPropLinksType",
+    "ContentDirectoryItemsPropLinksTypeForResponse",
     "ContentDirectoryItemsType",
+    "ContentDirectoryItemsTypeForResponse",
 )

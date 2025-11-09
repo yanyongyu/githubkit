@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0323 import GitUserType
-from .group_0324 import VerificationType
+from .group_0323 import GitUserType, GitUserTypeForResponse
+from .group_0324 import VerificationType, VerificationTypeForResponse
 
 
 class CommitPropCommitType(TypedDict):
@@ -28,7 +28,26 @@ class CommitPropCommitType(TypedDict):
     verification: NotRequired[VerificationType]
 
 
+class CommitPropCommitTypeForResponse(TypedDict):
+    """CommitPropCommit"""
+
+    url: str
+    author: Union[None, GitUserTypeForResponse]
+    committer: Union[None, GitUserTypeForResponse]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
+
+
 class CommitPropCommitPropTreeType(TypedDict):
+    """CommitPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class CommitPropCommitPropTreeTypeForResponse(TypedDict):
     """CommitPropCommitPropTree"""
 
     sha: str
@@ -37,5 +56,7 @@ class CommitPropCommitPropTreeType(TypedDict):
 
 __all__ = (
     "CommitPropCommitPropTreeType",
+    "CommitPropCommitPropTreeTypeForResponse",
     "CommitPropCommitType",
+    "CommitPropCommitTypeForResponse",
 )

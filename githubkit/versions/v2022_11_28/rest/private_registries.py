@@ -34,11 +34,11 @@ if TYPE_CHECKING:
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200,
     )
     from ..types import (
-        OrgPrivateRegistryConfigurationType,
-        OrgPrivateRegistryConfigurationWithSelectedRepositoriesType,
-        OrgsOrgPrivateRegistriesGetResponse200Type,
+        OrgPrivateRegistryConfigurationTypeForResponse,
+        OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse,
+        OrgsOrgPrivateRegistriesGetResponse200TypeForResponse,
         OrgsOrgPrivateRegistriesPostBodyType,
-        OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type,
+        OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse,
         OrgsOrgPrivateRegistriesSecretNamePatchBodyType,
     )
 
@@ -68,7 +68,7 @@ class PrivateRegistriesClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgPrivateRegistriesGetResponse200,
-        OrgsOrgPrivateRegistriesGetResponse200Type,
+        OrgsOrgPrivateRegistriesGetResponse200TypeForResponse,
     ]:
         """private-registries/list-org-private-registries
 
@@ -117,7 +117,7 @@ class PrivateRegistriesClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgPrivateRegistriesGetResponse200,
-        OrgsOrgPrivateRegistriesGetResponse200Type,
+        OrgsOrgPrivateRegistriesGetResponse200TypeForResponse,
     ]:
         """private-registries/list-org-private-registries
 
@@ -166,7 +166,7 @@ class PrivateRegistriesClient:
         data: OrgsOrgPrivateRegistriesPostBodyType,
     ) -> Response[
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
-        OrgPrivateRegistryConfigurationWithSelectedRepositoriesType,
+        OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse,
     ]: ...
 
     @overload
@@ -203,7 +203,7 @@ class PrivateRegistriesClient:
         selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response[
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
-        OrgPrivateRegistryConfigurationWithSelectedRepositoriesType,
+        OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse,
     ]: ...
 
     def create_org_private_registry(
@@ -216,7 +216,7 @@ class PrivateRegistriesClient:
         **kwargs,
     ) -> Response[
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
-        OrgPrivateRegistryConfigurationWithSelectedRepositoriesType,
+        OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse,
     ]:
         """private-registries/create-org-private-registry
 
@@ -273,7 +273,7 @@ class PrivateRegistriesClient:
         data: OrgsOrgPrivateRegistriesPostBodyType,
     ) -> Response[
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
-        OrgPrivateRegistryConfigurationWithSelectedRepositoriesType,
+        OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse,
     ]: ...
 
     @overload
@@ -310,7 +310,7 @@ class PrivateRegistriesClient:
         selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response[
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
-        OrgPrivateRegistryConfigurationWithSelectedRepositoriesType,
+        OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse,
     ]: ...
 
     async def async_create_org_private_registry(
@@ -323,7 +323,7 @@ class PrivateRegistriesClient:
         **kwargs,
     ) -> Response[
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
-        OrgPrivateRegistryConfigurationWithSelectedRepositoriesType,
+        OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse,
     ]:
         """private-registries/create-org-private-registry
 
@@ -378,7 +378,7 @@ class PrivateRegistriesClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200,
-        OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type,
+        OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse,
     ]:
         """private-registries/get-org-public-key
 
@@ -417,7 +417,7 @@ class PrivateRegistriesClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200,
-        OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type,
+        OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse,
     ]:
         """private-registries/get-org-public-key
 
@@ -455,7 +455,9 @@ class PrivateRegistriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgPrivateRegistryConfiguration, OrgPrivateRegistryConfigurationType]:
+    ) -> Response[
+        OrgPrivateRegistryConfiguration, OrgPrivateRegistryConfigurationTypeForResponse
+    ]:
         """private-registries/get-org-private-registry
 
         GET /orgs/{org}/private-registries/{secret_name}
@@ -492,7 +494,9 @@ class PrivateRegistriesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrgPrivateRegistryConfiguration, OrgPrivateRegistryConfigurationType]:
+    ) -> Response[
+        OrgPrivateRegistryConfiguration, OrgPrivateRegistryConfigurationTypeForResponse
+    ]:
         """private-registries/get-org-private-registry
 
         GET /orgs/{org}/private-registries/{secret_name}

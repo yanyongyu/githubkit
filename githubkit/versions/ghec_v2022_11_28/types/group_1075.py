@@ -19,4 +19,13 @@ class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
     enabled_repositories: Literal["all", "selected", "none"]
 
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",)
+class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
+
+    enabled_repositories: Literal["all", "selected", "none"]
+
+
+__all__ = (
+    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
+)

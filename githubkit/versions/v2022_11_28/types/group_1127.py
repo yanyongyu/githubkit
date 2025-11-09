@@ -19,4 +19,14 @@ class ReposOwnerRepoGitRefsPostBodyType(TypedDict):
     sha: str
 
 
-__all__ = ("ReposOwnerRepoGitRefsPostBodyType",)
+class ReposOwnerRepoGitRefsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitRefsPostBody"""
+
+    ref: str
+    sha: str
+
+
+__all__ = (
+    "ReposOwnerRepoGitRefsPostBodyType",
+    "ReposOwnerRepoGitRefsPostBodyTypeForResponse",
+)

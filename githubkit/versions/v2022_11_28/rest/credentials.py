@@ -25,7 +25,7 @@ if TYPE_CHECKING:
 
     from ..models import AppHookDeliveriesDeliveryIdAttemptsPostResponse202
     from ..types import (
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
         CredentialsRevokePostBodyType,
     )
 
@@ -54,7 +54,7 @@ class CredentialsClient:
         data: CredentialsRevokePostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -67,7 +67,7 @@ class CredentialsClient:
         credentials: list[str],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     def revoke(
@@ -79,7 +79,7 @@ class CredentialsClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """credentials/revoke
 
@@ -144,7 +144,7 @@ class CredentialsClient:
         data: CredentialsRevokePostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -157,7 +157,7 @@ class CredentialsClient:
         credentials: list[str],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     async def async_revoke(
@@ -169,7 +169,7 @@ class CredentialsClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """credentials/revoke
 

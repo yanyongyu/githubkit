@@ -23,7 +23,26 @@ class SearchResultTextMatchesItemsType(TypedDict):
     matches: NotRequired[list[SearchResultTextMatchesItemsPropMatchesItemsType]]
 
 
+class SearchResultTextMatchesItemsTypeForResponse(TypedDict):
+    """SearchResultTextMatchesItems"""
+
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[
+        list[SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse]
+    ]
+
+
 class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
+
+    text: NotRequired[str]
+    indices: NotRequired[list[int]]
+
+
+class SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse(TypedDict):
     """SearchResultTextMatchesItemsPropMatchesItems"""
 
     text: NotRequired[str]
@@ -32,5 +51,7 @@ class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
 
 __all__ = (
     "SearchResultTextMatchesItemsPropMatchesItemsType",
+    "SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse",
     "SearchResultTextMatchesItemsType",
+    "SearchResultTextMatchesItemsTypeForResponse",
 )

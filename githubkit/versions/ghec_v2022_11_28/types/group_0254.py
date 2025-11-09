@@ -22,4 +22,17 @@ class OrganizationFineGrainedPermissionType(TypedDict):
     description: str
 
 
-__all__ = ("OrganizationFineGrainedPermissionType",)
+class OrganizationFineGrainedPermissionTypeForResponse(TypedDict):
+    """Organization Fine-Grained Permission
+
+    A fine-grained permission that protects organization resources.
+    """
+
+    name: str
+    description: str
+
+
+__all__ = (
+    "OrganizationFineGrainedPermissionType",
+    "OrganizationFineGrainedPermissionTypeForResponse",
+)

@@ -21,4 +21,16 @@ class LinkType(TypedDict):
     href: str
 
 
-__all__ = ("LinkType",)
+class LinkTypeForResponse(TypedDict):
+    """Link
+
+    Hypermedia Link
+    """
+
+    href: str
+
+
+__all__ = (
+    "LinkType",
+    "LinkTypeForResponse",
+)

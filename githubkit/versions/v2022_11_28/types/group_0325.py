@@ -24,7 +24,27 @@ class GitRefType(TypedDict):
     object_: GitRefPropObjectType
 
 
+class GitRefTypeForResponse(TypedDict):
+    """Git Reference
+
+    Git references within a repository
+    """
+
+    ref: str
+    node_id: str
+    url: str
+    object_: GitRefPropObjectTypeForResponse
+
+
 class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
+
+    type: str
+    sha: str
+    url: str
+
+
+class GitRefPropObjectTypeForResponse(TypedDict):
     """GitRefPropObject"""
 
     type: str
@@ -34,5 +54,7 @@ class GitRefPropObjectType(TypedDict):
 
 __all__ = (
     "GitRefPropObjectType",
+    "GitRefPropObjectTypeForResponse",
     "GitRefType",
+    "GitRefTypeForResponse",
 )

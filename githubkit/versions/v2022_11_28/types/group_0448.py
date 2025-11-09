@@ -18,7 +18,30 @@ class BillingUsageReportUserType(TypedDict):
     usage_items: NotRequired[list[BillingUsageReportUserPropUsageItemsItemsType]]
 
 
+class BillingUsageReportUserTypeForResponse(TypedDict):
+    """BillingUsageReportUser"""
+
+    usage_items: NotRequired[
+        list[BillingUsageReportUserPropUsageItemsItemsTypeForResponse]
+    ]
+
+
 class BillingUsageReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingUsageReportUserPropUsageItemsItems"""
+
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    repository_name: NotRequired[str]
+
+
+class BillingUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
     """BillingUsageReportUserPropUsageItemsItems"""
 
     date: str
@@ -35,5 +58,7 @@ class BillingUsageReportUserPropUsageItemsItemsType(TypedDict):
 
 __all__ = (
     "BillingUsageReportUserPropUsageItemsItemsType",
+    "BillingUsageReportUserPropUsageItemsItemsTypeForResponse",
     "BillingUsageReportUserType",
+    "BillingUsageReportUserTypeForResponse",
 )

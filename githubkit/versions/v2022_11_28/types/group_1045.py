@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0227 import ArtifactType
+from .group_0227 import ArtifactType, ArtifactTypeForResponse
 
 
 class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type(TypedDict):
@@ -21,4 +21,14 @@ class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type(TypedDict):
     artifacts: list[ArtifactType]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type",)
+class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
+
+    total_count: int
+    artifacts: list[ArtifactTypeForResponse]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type",
+    "ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200TypeForResponse",
+)

@@ -19,4 +19,13 @@ class UserEmailVisibilityPatchBodyType(TypedDict):
     visibility: Literal["public", "private"]
 
 
-__all__ = ("UserEmailVisibilityPatchBodyType",)
+class UserEmailVisibilityPatchBodyTypeForResponse(TypedDict):
+    """UserEmailVisibilityPatchBody"""
+
+    visibility: Literal["public", "private"]
+
+
+__all__ = (
+    "UserEmailVisibilityPatchBodyType",
+    "UserEmailVisibilityPatchBodyTypeForResponse",
+)

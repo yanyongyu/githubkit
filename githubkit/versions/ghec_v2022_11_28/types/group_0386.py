@@ -11,7 +11,10 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0387 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType
+from .group_0387 import (
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
+)
 
 
 class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
@@ -26,4 +29,19 @@ class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
     ]
 
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1Type",)
+class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
+
+    id: int
+    node_id: str
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
+    ]
+
+
+__all__ = (
+    "EnvironmentPropProtectionRulesItemsAnyof1Type",
+    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
+)

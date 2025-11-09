@@ -22,4 +22,16 @@ class ReposOwnerRepoPullsPullNumberMergePutBodyType(TypedDict):
     merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutBodyType",)
+class ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
+
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+
+
+__all__ = (
+    "ReposOwnerRepoPullsPullNumberMergePutBodyType",
+    "ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse",
+)

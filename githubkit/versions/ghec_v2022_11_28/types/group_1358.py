@@ -18,4 +18,13 @@ class ReposOwnerRepoPullsCommentsCommentIdPatchBodyType(TypedDict):
     body: str
 
 
-__all__ = ("ReposOwnerRepoPullsCommentsCommentIdPatchBodyType",)
+class ReposOwnerRepoPullsCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
+
+    body: str
+
+
+__all__ = (
+    "ReposOwnerRepoPullsCommentsCommentIdPatchBodyType",
+    "ReposOwnerRepoPullsCommentsCommentIdPatchBodyTypeForResponse",
+)

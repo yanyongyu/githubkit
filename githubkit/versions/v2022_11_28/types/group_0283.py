@@ -24,4 +24,19 @@ class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
     run_url: NotRequired[str]
 
 
-__all__ = ("CodeScanningDefaultSetupUpdateResponseType",)
+class CodeScanningDefaultSetupUpdateResponseTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupUpdateResponse
+
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
+    """
+
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
+
+
+__all__ = (
+    "CodeScanningDefaultSetupUpdateResponseType",
+    "CodeScanningDefaultSetupUpdateResponseTypeForResponse",
+)

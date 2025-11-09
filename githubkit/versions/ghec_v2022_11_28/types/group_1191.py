@@ -20,4 +20,15 @@ class ProjectsColumnsCardsCardIdDeleteResponse403Type(TypedDict):
     errors: NotRequired[list[str]]
 
 
-__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403Type",)
+class ProjectsColumnsCardsCardIdDeleteResponse403TypeForResponse(TypedDict):
+    """ProjectsColumnsCardsCardIdDeleteResponse403"""
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[list[str]]
+
+
+__all__ = (
+    "ProjectsColumnsCardsCardIdDeleteResponse403Type",
+    "ProjectsColumnsCardsCardIdDeleteResponse403TypeForResponse",
+)

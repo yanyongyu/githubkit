@@ -18,4 +18,13 @@ class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
     attestation_ids: list[int]
 
 
-__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",)
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+
+    attestation_ids: list[int]
+
+
+__all__ = (
+    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",
+    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse",
+)

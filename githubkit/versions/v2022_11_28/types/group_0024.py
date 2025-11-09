@@ -26,4 +26,21 @@ class SimpleClassroomRepositoryType(TypedDict):
     default_branch: str
 
 
-__all__ = ("SimpleClassroomRepositoryType",)
+class SimpleClassroomRepositoryTypeForResponse(TypedDict):
+    """Simple Classroom Repository
+
+    A GitHub repository view for Classroom
+    """
+
+    id: int
+    full_name: str
+    html_url: str
+    node_id: str
+    private: bool
+    default_branch: str
+
+
+__all__ = (
+    "SimpleClassroomRepositoryType",
+    "SimpleClassroomRepositoryTypeForResponse",
+)

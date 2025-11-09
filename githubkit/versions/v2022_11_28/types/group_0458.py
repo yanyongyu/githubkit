@@ -28,4 +28,22 @@ class WebhooksWorkflowType(TypedDict):
     url: str
 
 
-__all__ = ("WebhooksWorkflowType",)
+class WebhooksWorkflowTypeForResponse(TypedDict):
+    """Workflow"""
+
+    badge_url: str
+    created_at: str
+    html_url: str
+    id: int
+    name: str
+    node_id: str
+    path: str
+    state: str
+    updated_at: str
+    url: str
+
+
+__all__ = (
+    "WebhooksWorkflowType",
+    "WebhooksWorkflowTypeForResponse",
+)

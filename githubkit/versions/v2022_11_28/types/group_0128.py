@@ -47,4 +47,40 @@ class OrgPrivateRegistryConfigurationWithSelectedRepositoriesType(TypedDict):
     updated_at: datetime
 
 
-__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",)
+class OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse(TypedDict):
+    """Organization private registry
+
+    Private registry configuration for an organization
+    """
+
+    name: str
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ]
+    url: NotRequired[str]
+    username: NotRequired[str]
+    replaces_base: NotRequired[bool]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
+    created_at: str
+    updated_at: str
+
+
+__all__ = (
+    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",
+    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse",
+)

@@ -22,6 +22,16 @@ class PullRequestMinimalType(TypedDict):
     base: PullRequestMinimalPropBaseType
 
 
+class PullRequestMinimalTypeForResponse(TypedDict):
+    """Pull Request Minimal"""
+
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadTypeForResponse
+    base: PullRequestMinimalPropBaseTypeForResponse
+
+
 class PullRequestMinimalPropHeadType(TypedDict):
     """PullRequestMinimalPropHead"""
 
@@ -30,7 +40,23 @@ class PullRequestMinimalPropHeadType(TypedDict):
     repo: PullRequestMinimalPropHeadPropRepoType
 
 
+class PullRequestMinimalPropHeadTypeForResponse(TypedDict):
+    """PullRequestMinimalPropHead"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropHeadPropRepoTypeForResponse
+
+
 class PullRequestMinimalPropHeadPropRepoType(TypedDict):
+    """PullRequestMinimalPropHeadPropRepo"""
+
+    id: int
+    url: str
+    name: str
+
+
+class PullRequestMinimalPropHeadPropRepoTypeForResponse(TypedDict):
     """PullRequestMinimalPropHeadPropRepo"""
 
     id: int
@@ -46,7 +72,23 @@ class PullRequestMinimalPropBaseType(TypedDict):
     repo: PullRequestMinimalPropBasePropRepoType
 
 
+class PullRequestMinimalPropBaseTypeForResponse(TypedDict):
+    """PullRequestMinimalPropBase"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropBasePropRepoTypeForResponse
+
+
 class PullRequestMinimalPropBasePropRepoType(TypedDict):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int
+    url: str
+    name: str
+
+
+class PullRequestMinimalPropBasePropRepoTypeForResponse(TypedDict):
     """PullRequestMinimalPropBasePropRepo"""
 
     id: int
@@ -56,8 +98,13 @@ class PullRequestMinimalPropBasePropRepoType(TypedDict):
 
 __all__ = (
     "PullRequestMinimalPropBasePropRepoType",
+    "PullRequestMinimalPropBasePropRepoTypeForResponse",
     "PullRequestMinimalPropBaseType",
+    "PullRequestMinimalPropBaseTypeForResponse",
     "PullRequestMinimalPropHeadPropRepoType",
+    "PullRequestMinimalPropHeadPropRepoTypeForResponse",
     "PullRequestMinimalPropHeadType",
+    "PullRequestMinimalPropHeadTypeForResponse",
     "PullRequestMinimalType",
+    "PullRequestMinimalTypeForResponse",
 )

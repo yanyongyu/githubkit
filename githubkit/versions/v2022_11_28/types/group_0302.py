@@ -23,6 +23,16 @@ class FileCommitType(TypedDict):
     commit: FileCommitPropCommitType
 
 
+class FileCommitTypeForResponse(TypedDict):
+    """File Commit
+
+    File Commit
+    """
+
+    content: Union[FileCommitPropContentTypeForResponse, None]
+    commit: FileCommitPropCommitTypeForResponse
+
+
 class FileCommitPropContentType(TypedDict):
     """FileCommitPropContent"""
 
@@ -38,7 +48,30 @@ class FileCommitPropContentType(TypedDict):
     links: NotRequired[FileCommitPropContentPropLinksType]
 
 
+class FileCommitPropContentTypeForResponse(TypedDict):
+    """FileCommitPropContent"""
+
+    name: NotRequired[str]
+    path: NotRequired[str]
+    sha: NotRequired[str]
+    size: NotRequired[int]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    git_url: NotRequired[str]
+    download_url: NotRequired[str]
+    type: NotRequired[str]
+    links: NotRequired[FileCommitPropContentPropLinksTypeForResponse]
+
+
 class FileCommitPropContentPropLinksType(TypedDict):
+    """FileCommitPropContentPropLinks"""
+
+    self_: NotRequired[str]
+    git: NotRequired[str]
+    html: NotRequired[str]
+
+
+class FileCommitPropContentPropLinksTypeForResponse(TypedDict):
     """FileCommitPropContentPropLinks"""
 
     self_: NotRequired[str]
@@ -61,7 +94,30 @@ class FileCommitPropCommitType(TypedDict):
     verification: NotRequired[FileCommitPropCommitPropVerificationType]
 
 
+class FileCommitPropCommitTypeForResponse(TypedDict):
+    """FileCommitPropCommit"""
+
+    sha: NotRequired[str]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    author: NotRequired[FileCommitPropCommitPropAuthorTypeForResponse]
+    committer: NotRequired[FileCommitPropCommitPropCommitterTypeForResponse]
+    message: NotRequired[str]
+    tree: NotRequired[FileCommitPropCommitPropTreeTypeForResponse]
+    parents: NotRequired[list[FileCommitPropCommitPropParentsItemsTypeForResponse]]
+    verification: NotRequired[FileCommitPropCommitPropVerificationTypeForResponse]
+
+
 class FileCommitPropCommitPropAuthorType(TypedDict):
+    """FileCommitPropCommitPropAuthor"""
+
+    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class FileCommitPropCommitPropAuthorTypeForResponse(TypedDict):
     """FileCommitPropCommitPropAuthor"""
 
     date: NotRequired[str]
@@ -77,6 +133,14 @@ class FileCommitPropCommitPropCommitterType(TypedDict):
     email: NotRequired[str]
 
 
+class FileCommitPropCommitPropCommitterTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropCommitter"""
+
+    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
 class FileCommitPropCommitPropTreeType(TypedDict):
     """FileCommitPropCommitPropTree"""
 
@@ -84,7 +148,22 @@ class FileCommitPropCommitPropTreeType(TypedDict):
     sha: NotRequired[str]
 
 
+class FileCommitPropCommitPropTreeTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropTree"""
+
+    url: NotRequired[str]
+    sha: NotRequired[str]
+
+
 class FileCommitPropCommitPropParentsItemsType(TypedDict):
+    """FileCommitPropCommitPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class FileCommitPropCommitPropParentsItemsTypeForResponse(TypedDict):
     """FileCommitPropCommitPropParentsItems"""
 
     url: NotRequired[str]
@@ -102,14 +181,33 @@ class FileCommitPropCommitPropVerificationType(TypedDict):
     verified_at: NotRequired[Union[str, None]]
 
 
+class FileCommitPropCommitPropVerificationTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropVerification"""
+
+    verified: NotRequired[bool]
+    reason: NotRequired[str]
+    signature: NotRequired[Union[str, None]]
+    payload: NotRequired[Union[str, None]]
+    verified_at: NotRequired[Union[str, None]]
+
+
 __all__ = (
     "FileCommitPropCommitPropAuthorType",
+    "FileCommitPropCommitPropAuthorTypeForResponse",
     "FileCommitPropCommitPropCommitterType",
+    "FileCommitPropCommitPropCommitterTypeForResponse",
     "FileCommitPropCommitPropParentsItemsType",
+    "FileCommitPropCommitPropParentsItemsTypeForResponse",
     "FileCommitPropCommitPropTreeType",
+    "FileCommitPropCommitPropTreeTypeForResponse",
     "FileCommitPropCommitPropVerificationType",
+    "FileCommitPropCommitPropVerificationTypeForResponse",
     "FileCommitPropCommitType",
+    "FileCommitPropCommitTypeForResponse",
     "FileCommitPropContentPropLinksType",
+    "FileCommitPropContentPropLinksTypeForResponse",
     "FileCommitPropContentType",
+    "FileCommitPropContentTypeForResponse",
     "FileCommitType",
+    "FileCommitTypeForResponse",
 )

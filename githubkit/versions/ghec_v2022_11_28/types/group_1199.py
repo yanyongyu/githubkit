@@ -19,4 +19,14 @@ class ProjectsColumnsColumnIdCardsPostBodyOneof1Type(TypedDict):
     content_type: str
 
 
-__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof1Type",)
+class ProjectsColumnsColumnIdCardsPostBodyOneof1TypeForResponse(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
+
+    content_id: int
+    content_type: str
+
+
+__all__ = (
+    "ProjectsColumnsColumnIdCardsPostBodyOneof1Type",
+    "ProjectsColumnsColumnIdCardsPostBodyOneof1TypeForResponse",
+)

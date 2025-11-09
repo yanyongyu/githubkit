@@ -27,4 +27,21 @@ class ScimErrorType(TypedDict):
     schemas: NotRequired[list[str]]
 
 
-__all__ = ("ScimErrorType",)
+class ScimErrorTypeForResponse(TypedDict):
+    """Scim Error
+
+    Scim Error
+    """
+
+    message: NotRequired[Union[str, None]]
+    documentation_url: NotRequired[Union[str, None]]
+    detail: NotRequired[Union[str, None]]
+    status: NotRequired[int]
+    scim_type: NotRequired[Union[str, None]]
+    schemas: NotRequired[list[str]]
+
+
+__all__ = (
+    "ScimErrorType",
+    "ScimErrorTypeForResponse",
+)

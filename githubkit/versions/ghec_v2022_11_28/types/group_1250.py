@@ -18,4 +18,13 @@ class ReposOwnerRepoBranchesBranchRenamePostBodyType(TypedDict):
     new_name: str
 
 
-__all__ = ("ReposOwnerRepoBranchesBranchRenamePostBodyType",)
+class ReposOwnerRepoBranchesBranchRenamePostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoBranchesBranchRenamePostBody"""
+
+    new_name: str
+
+
+__all__ = (
+    "ReposOwnerRepoBranchesBranchRenamePostBodyType",
+    "ReposOwnerRepoBranchesBranchRenamePostBodyTypeForResponse",
+)

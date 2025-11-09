@@ -19,4 +19,14 @@ class ReposOwnerRepoActionsVariablesPostBodyType(TypedDict):
     value: str
 
 
-__all__ = ("ReposOwnerRepoActionsVariablesPostBodyType",)
+class ReposOwnerRepoActionsVariablesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsVariablesPostBody"""
+
+    name: str
+    value: str
+
+
+__all__ = (
+    "ReposOwnerRepoActionsVariablesPostBodyType",
+    "ReposOwnerRepoActionsVariablesPostBodyTypeForResponse",
+)
