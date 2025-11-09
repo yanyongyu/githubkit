@@ -12,10 +12,16 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0264 import ProjectsV2StatusUpdateType
-from .group_0535 import SimpleInstallationType
-from .group_0536 import OrganizationSimpleWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0264 import (
+    ProjectsV2StatusUpdateType,
+    ProjectsV2StatusUpdateTypeForResponse,
+)
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
 
 
 class WebhookProjectsV2StatusUpdateCreatedType(TypedDict):
@@ -28,4 +34,17 @@ class WebhookProjectsV2StatusUpdateCreatedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookProjectsV2StatusUpdateCreatedType",)
+class WebhookProjectsV2StatusUpdateCreatedTypeForResponse(TypedDict):
+    """Projects v2 Status Update Created Event"""
+
+    action: Literal["created"]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_status_update: ProjectsV2StatusUpdateTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookProjectsV2StatusUpdateCreatedType",
+    "WebhookProjectsV2StatusUpdateCreatedTypeForResponse",
+)

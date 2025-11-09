@@ -13,9 +13,9 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0042 import ReactionRollupType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0042 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
 class TimelineCommentEventType(TypedDict):
@@ -51,4 +51,40 @@ class TimelineCommentEventType(TypedDict):
     reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = ("TimelineCommentEventType",)
+class TimelineCommentEventTypeForResponse(TypedDict):
+    """Timeline Comment Event
+
+    Timeline Comment Event
+    """
+
+    event: Literal["commented"]
+    actor: SimpleUserTypeForResponse
+    id: int
+    node_id: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+
+
+__all__ = (
+    "TimelineCommentEventType",
+    "TimelineCommentEventTypeForResponse",
+)

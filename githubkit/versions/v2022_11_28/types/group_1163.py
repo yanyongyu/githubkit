@@ -20,4 +20,15 @@ class ReposOwnerRepoMergesPostBodyType(TypedDict):
     commit_message: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoMergesPostBodyType",)
+class ReposOwnerRepoMergesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoMergesPostBody"""
+
+    base: str
+    head: str
+    commit_message: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoMergesPostBodyType",
+    "ReposOwnerRepoMergesPostBodyTypeForResponse",
+)

@@ -22,4 +22,17 @@ class DependabotPublicKeyType(TypedDict):
     key: str
 
 
-__all__ = ("DependabotPublicKeyType",)
+class DependabotPublicKeyTypeForResponse(TypedDict):
+    """DependabotPublicKey
+
+    The public key used for setting Dependabot Secrets.
+    """
+
+    key_id: str
+    key: str
+
+
+__all__ = (
+    "DependabotPublicKeyType",
+    "DependabotPublicKeyTypeForResponse",
+)

@@ -37,23 +37,23 @@ if TYPE_CHECKING:
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
     )
     from ..types import (
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
         CodeScanningDefaultSetupOptionsType,
         CodeScanningOptionsType,
-        CodeSecurityConfigurationForRepositoryType,
-        CodeSecurityConfigurationRepositoriesType,
-        CodeSecurityConfigurationType,
-        CodeSecurityDefaultConfigurationsItemsType,
+        CodeSecurityConfigurationForRepositoryTypeForResponse,
+        CodeSecurityConfigurationRepositoriesTypeForResponse,
+        CodeSecurityConfigurationTypeForResponse,
+        CodeSecurityDefaultConfigurationsItemsTypeForResponse,
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
-        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse,
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType,
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType,
         EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType,
         EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
@@ -88,7 +88,9 @@ class CodeSecurityClient:
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
+    ) -> Response[
+        list[CodeSecurityConfiguration], list[CodeSecurityConfigurationTypeForResponse]
+    ]:
         """code-security/get-configurations-for-enterprise
 
         GET /enterprises/{enterprise}/code-security/configurations
@@ -136,7 +138,9 @@ class CodeSecurityClient:
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
+    ) -> Response[
+        list[CodeSecurityConfiguration], list[CodeSecurityConfigurationTypeForResponse]
+    ]:
         """code-security/get-configurations-for-enterprise
 
         GET /enterprises/{enterprise}/code-security/configurations
@@ -183,7 +187,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     @overload
     def create_configuration_for_enterprise(
@@ -241,7 +247,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     def create_configuration_for_enterprise(
         self,
@@ -253,7 +261,7 @@ class CodeSecurityClient:
             EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/create-configuration-for-enterprise
 
         POST /enterprises/{enterprise}/code-security/configurations
@@ -310,7 +318,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     @overload
     async def async_create_configuration_for_enterprise(
@@ -368,7 +378,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     async def async_create_configuration_for_enterprise(
         self,
@@ -380,7 +392,7 @@ class CodeSecurityClient:
             EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/create-configuration-for-enterprise
 
         POST /enterprises/{enterprise}/code-security/configurations
@@ -437,7 +449,7 @@ class CodeSecurityClient:
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
-        list[CodeSecurityDefaultConfigurationsItemsType],
+        list[CodeSecurityDefaultConfigurationsItemsTypeForResponse],
     ]:
         """code-security/get-default-configurations-for-enterprise
 
@@ -474,7 +486,7 @@ class CodeSecurityClient:
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
-        list[CodeSecurityDefaultConfigurationsItemsType],
+        list[CodeSecurityDefaultConfigurationsItemsTypeForResponse],
     ]:
         """code-security/get-default-configurations-for-enterprise
 
@@ -510,7 +522,7 @@ class CodeSecurityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/get-single-configuration-for-enterprise
 
         GET /enterprises/{enterprise}/code-security/configurations/{configuration_id}
@@ -551,7 +563,7 @@ class CodeSecurityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/get-single-configuration-for-enterprise
 
         GET /enterprises/{enterprise}/code-security/configurations/{configuration_id}
@@ -682,7 +694,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     @overload
     def update_enterprise_configuration(
@@ -740,7 +754,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     def update_enterprise_configuration(
         self,
@@ -753,7 +769,7 @@ class CodeSecurityClient:
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/update-enterprise-configuration
 
         PATCH /enterprises/{enterprise}/code-security/configurations/{configuration_id}
@@ -814,7 +830,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     @overload
     async def async_update_enterprise_configuration(
@@ -872,7 +890,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     async def async_update_enterprise_configuration(
         self,
@@ -885,7 +905,7 @@ class CodeSecurityClient:
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/update-enterprise-configuration
 
         PATCH /enterprises/{enterprise}/code-security/configurations/{configuration_id}
@@ -948,7 +968,7 @@ class CodeSecurityClient:
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -963,7 +983,7 @@ class CodeSecurityClient:
         scope: Literal["all", "all_without_configurations"],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     def attach_enterprise_configuration(
@@ -979,7 +999,7 @@ class CodeSecurityClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """code-security/attach-enterprise-configuration
 
@@ -1043,7 +1063,7 @@ class CodeSecurityClient:
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -1058,7 +1078,7 @@ class CodeSecurityClient:
         scope: Literal["all", "all_without_configurations"],
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     async def async_attach_enterprise_configuration(
@@ -1074,7 +1094,7 @@ class CodeSecurityClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """code-security/attach-enterprise-configuration
 
@@ -1138,7 +1158,7 @@ class CodeSecurityClient:
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
-        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1155,7 +1175,7 @@ class CodeSecurityClient:
         ] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
-        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse,
     ]: ...
 
     def set_configuration_as_default_for_enterprise(
@@ -1171,7 +1191,7 @@ class CodeSecurityClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
-        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse,
     ]:
         """code-security/set-configuration-as-default-for-enterprise
 
@@ -1234,7 +1254,7 @@ class CodeSecurityClient:
         data: EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
-        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -1251,7 +1271,7 @@ class CodeSecurityClient:
         ] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
-        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse,
     ]: ...
 
     async def async_set_configuration_as_default_for_enterprise(
@@ -1267,7 +1287,7 @@ class CodeSecurityClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
-        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse,
     ]:
         """code-security/set-configuration-as-default-for-enterprise
 
@@ -1332,7 +1352,7 @@ class CodeSecurityClient:
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
-        list[CodeSecurityConfigurationRepositoriesType],
+        list[CodeSecurityConfigurationRepositoriesTypeForResponse],
     ]:
         """code-security/get-repositories-for-enterprise-configuration
 
@@ -1386,7 +1406,7 @@ class CodeSecurityClient:
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
-        list[CodeSecurityConfigurationRepositoriesType],
+        list[CodeSecurityConfigurationRepositoriesTypeForResponse],
     ]:
         """code-security/get-repositories-for-enterprise-configuration
 
@@ -1437,7 +1457,9 @@ class CodeSecurityClient:
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
+    ) -> Response[
+        list[CodeSecurityConfiguration], list[CodeSecurityConfigurationTypeForResponse]
+    ]:
         """code-security/get-configurations-for-org
 
         GET /orgs/{org}/code-security/configurations
@@ -1487,7 +1509,9 @@ class CodeSecurityClient:
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CodeSecurityConfiguration], list[CodeSecurityConfigurationType]]:
+    ) -> Response[
+        list[CodeSecurityConfiguration], list[CodeSecurityConfigurationTypeForResponse]
+    ]:
         """code-security/get-configurations-for-org
 
         GET /orgs/{org}/code-security/configurations
@@ -1535,7 +1559,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsPostBodyType,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     @overload
     def create_configuration(
@@ -1599,7 +1625,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     def create_configuration(
         self,
@@ -1609,7 +1637,7 @@ class CodeSecurityClient:
         stream: bool = False,
         data: Missing[OrgsOrgCodeSecurityConfigurationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/create-configuration
 
         POST /orgs/{org}/code-security/configurations
@@ -1658,7 +1686,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsPostBodyType,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     @overload
     async def async_create_configuration(
@@ -1722,7 +1752,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     async def async_create_configuration(
         self,
@@ -1732,7 +1764,7 @@ class CodeSecurityClient:
         stream: bool = False,
         data: Missing[OrgsOrgCodeSecurityConfigurationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/create-configuration
 
         POST /orgs/{org}/code-security/configurations
@@ -1781,7 +1813,7 @@ class CodeSecurityClient:
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
-        list[CodeSecurityDefaultConfigurationsItemsType],
+        list[CodeSecurityDefaultConfigurationsItemsTypeForResponse],
     ]:
         """code-security/get-default-configurations
 
@@ -1822,7 +1854,7 @@ class CodeSecurityClient:
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityDefaultConfigurationsItems],
-        list[CodeSecurityDefaultConfigurationsItemsType],
+        list[CodeSecurityDefaultConfigurationsItemsTypeForResponse],
     ]:
         """code-security/get-default-configurations
 
@@ -2018,7 +2050,7 @@ class CodeSecurityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/get-configuration
 
         GET /orgs/{org}/code-security/configurations/{configuration_id}
@@ -2057,7 +2089,7 @@ class CodeSecurityClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/get-configuration
 
         GET /orgs/{org}/code-security/configurations/{configuration_id}
@@ -2182,7 +2214,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     @overload
     def update_configuration(
@@ -2246,7 +2280,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     def update_configuration(
         self,
@@ -2259,7 +2295,7 @@ class CodeSecurityClient:
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/update-configuration
 
         PATCH /orgs/{org}/code-security/configurations/{configuration_id}
@@ -2311,7 +2347,9 @@ class CodeSecurityClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     @overload
     async def async_update_configuration(
@@ -2375,7 +2413,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]: ...
+    ) -> Response[
+        CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
+    ]: ...
 
     async def async_update_configuration(
         self,
@@ -2388,7 +2428,7 @@ class CodeSecurityClient:
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationType]:
+    ) -> Response[CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse]:
         """code-security/update-configuration
 
         PATCH /orgs/{org}/code-security/configurations/{configuration_id}
@@ -2442,7 +2482,7 @@ class CodeSecurityClient:
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -2464,7 +2504,7 @@ class CodeSecurityClient:
         selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     def attach_configuration(
@@ -2480,7 +2520,7 @@ class CodeSecurityClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """code-security/attach-configuration
 
@@ -2537,7 +2577,7 @@ class CodeSecurityClient:
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     @overload
@@ -2559,7 +2599,7 @@ class CodeSecurityClient:
         selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]: ...
 
     async def async_attach_configuration(
@@ -2575,7 +2615,7 @@ class CodeSecurityClient:
         **kwargs,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """code-security/attach-configuration
 
@@ -2632,7 +2672,7 @@ class CodeSecurityClient:
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -2649,7 +2689,7 @@ class CodeSecurityClient:
         ] = UNSET,
     ) -> Response[
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse,
     ]: ...
 
     def set_configuration_as_default(
@@ -2665,7 +2705,7 @@ class CodeSecurityClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse,
     ]:
         """code-security/set-configuration-as-default
 
@@ -2727,7 +2767,7 @@ class CodeSecurityClient:
         data: OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     ) -> Response[
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -2744,7 +2784,7 @@ class CodeSecurityClient:
         ] = UNSET,
     ) -> Response[
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse,
     ]: ...
 
     async def async_set_configuration_as_default(
@@ -2760,7 +2800,7 @@ class CodeSecurityClient:
         **kwargs,
     ) -> Response[
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse,
     ]:
         """code-security/set-configuration-as-default
 
@@ -2824,7 +2864,7 @@ class CodeSecurityClient:
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
-        list[CodeSecurityConfigurationRepositoriesType],
+        list[CodeSecurityConfigurationRepositoriesTypeForResponse],
     ]:
         """code-security/get-repositories-for-configuration
 
@@ -2880,7 +2920,7 @@ class CodeSecurityClient:
         stream: bool = False,
     ) -> Response[
         list[CodeSecurityConfigurationRepositories],
-        list[CodeSecurityConfigurationRepositoriesType],
+        list[CodeSecurityConfigurationRepositoriesTypeForResponse],
     ]:
         """code-security/get-repositories-for-configuration
 
@@ -2932,7 +2972,7 @@ class CodeSecurityClient:
         stream: bool = False,
     ) -> Response[
         CodeSecurityConfigurationForRepository,
-        CodeSecurityConfigurationForRepositoryType,
+        CodeSecurityConfigurationForRepositoryTypeForResponse,
     ]:
         """code-security/get-configuration-for-repository
 
@@ -2974,7 +3014,7 @@ class CodeSecurityClient:
         stream: bool = False,
     ) -> Response[
         CodeSecurityConfigurationForRepository,
-        CodeSecurityConfigurationForRepositoryType,
+        CodeSecurityConfigurationForRepositoryTypeForResponse,
     ]:
         """code-security/get-configuration-for-repository
 

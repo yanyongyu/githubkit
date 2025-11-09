@@ -22,4 +22,16 @@ class ReposOwnerRepoImportPatchBodyType(TypedDict):
     tfvc_project: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoImportPatchBodyType",)
+class ReposOwnerRepoImportPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportPatchBody"""
+
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
+    tfvc_project: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoImportPatchBodyType",
+    "ReposOwnerRepoImportPatchBodyTypeForResponse",
+)

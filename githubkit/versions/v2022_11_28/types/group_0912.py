@@ -18,4 +18,13 @@ class OrgsOrgActionsPermissionsRepositoriesPutBodyType(TypedDict):
     selected_repository_ids: list[int]
 
 
-__all__ = ("OrgsOrgActionsPermissionsRepositoriesPutBodyType",)
+class OrgsOrgActionsPermissionsRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
+
+    selected_repository_ids: list[int]
+
+
+__all__ = (
+    "OrgsOrgActionsPermissionsRepositoriesPutBodyType",
+    "OrgsOrgActionsPermissionsRepositoriesPutBodyTypeForResponse",
+)

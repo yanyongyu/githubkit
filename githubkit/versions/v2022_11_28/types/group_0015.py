@@ -37,6 +37,29 @@ class HookDeliveryType(TypedDict):
     response: HookDeliveryPropResponseType
 
 
+class HookDeliveryTypeForResponse(TypedDict):
+    """Webhook delivery
+
+    Delivery made by a webhook.
+    """
+
+    id: int
+    guid: str
+    delivered_at: str
+    redelivery: bool
+    duration: float
+    status: str
+    status_code: int
+    event: str
+    action: Union[str, None]
+    installation_id: Union[int, None]
+    repository_id: Union[int, None]
+    throttled_at: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    request: HookDeliveryPropRequestTypeForResponse
+    response: HookDeliveryPropResponseTypeForResponse
+
+
 class HookDeliveryPropRequestType(TypedDict):
     """HookDeliveryPropRequest"""
 
@@ -44,7 +67,21 @@ class HookDeliveryPropRequestType(TypedDict):
     payload: Union[HookDeliveryPropRequestPropPayloadType, None]
 
 
+class HookDeliveryPropRequestTypeForResponse(TypedDict):
+    """HookDeliveryPropRequest"""
+
+    headers: Union[HookDeliveryPropRequestPropHeadersTypeForResponse, None]
+    payload: Union[HookDeliveryPropRequestPropPayloadTypeForResponse, None]
+
+
 HookDeliveryPropRequestPropHeadersType: TypeAlias = dict[str, Any]
+"""HookDeliveryPropRequestPropHeaders
+
+The request headers sent with the webhook delivery.
+"""
+
+
+HookDeliveryPropRequestPropHeadersTypeForResponse: TypeAlias = dict[str, Any]
 """HookDeliveryPropRequestPropHeaders
 
 The request headers sent with the webhook delivery.
@@ -58,10 +95,24 @@ The webhook payload.
 """
 
 
+HookDeliveryPropRequestPropPayloadTypeForResponse: TypeAlias = dict[str, Any]
+"""HookDeliveryPropRequestPropPayload
+
+The webhook payload.
+"""
+
+
 class HookDeliveryPropResponseType(TypedDict):
     """HookDeliveryPropResponse"""
 
     headers: Union[HookDeliveryPropResponsePropHeadersType, None]
+    payload: Union[str, None]
+
+
+class HookDeliveryPropResponseTypeForResponse(TypedDict):
+    """HookDeliveryPropResponse"""
+
+    headers: Union[HookDeliveryPropResponsePropHeadersTypeForResponse, None]
     payload: Union[str, None]
 
 
@@ -72,11 +123,24 @@ The response headers received when the delivery was made.
 """
 
 
+HookDeliveryPropResponsePropHeadersTypeForResponse: TypeAlias = dict[str, Any]
+"""HookDeliveryPropResponsePropHeaders
+
+The response headers received when the delivery was made.
+"""
+
+
 __all__ = (
     "HookDeliveryPropRequestPropHeadersType",
+    "HookDeliveryPropRequestPropHeadersTypeForResponse",
     "HookDeliveryPropRequestPropPayloadType",
+    "HookDeliveryPropRequestPropPayloadTypeForResponse",
     "HookDeliveryPropRequestType",
+    "HookDeliveryPropRequestTypeForResponse",
     "HookDeliveryPropResponsePropHeadersType",
+    "HookDeliveryPropResponsePropHeadersTypeForResponse",
     "HookDeliveryPropResponseType",
+    "HookDeliveryPropResponseTypeForResponse",
     "HookDeliveryType",
+    "HookDeliveryTypeForResponse",
 )

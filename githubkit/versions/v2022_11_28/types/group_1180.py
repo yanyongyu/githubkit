@@ -25,4 +25,20 @@ class ReposOwnerRepoPullsPostBodyType(TypedDict):
     issue: NotRequired[int]
 
 
-__all__ = ("ReposOwnerRepoPullsPostBodyType",)
+class ReposOwnerRepoPullsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPostBody"""
+
+    title: NotRequired[str]
+    head: str
+    head_repo: NotRequired[str]
+    base: str
+    body: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
+    draft: NotRequired[bool]
+    issue: NotRequired[int]
+
+
+__all__ = (
+    "ReposOwnerRepoPullsPostBodyType",
+    "ReposOwnerRepoPullsPostBodyTypeForResponse",
+)

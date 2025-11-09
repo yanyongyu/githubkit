@@ -19,4 +19,14 @@ class TeamsTeamIdProjectsProjectIdPutResponse403Type(TypedDict):
     documentation_url: NotRequired[str]
 
 
-__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403Type",)
+class TeamsTeamIdProjectsProjectIdPutResponse403TypeForResponse(TypedDict):
+    """TeamsTeamIdProjectsProjectIdPutResponse403"""
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+
+
+__all__ = (
+    "TeamsTeamIdProjectsProjectIdPutResponse403Type",
+    "TeamsTeamIdProjectsProjectIdPutResponse403TypeForResponse",
+)

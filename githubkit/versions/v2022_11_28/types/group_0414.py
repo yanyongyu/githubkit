@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class ContributorActivityType(TypedDict):
@@ -26,7 +26,27 @@ class ContributorActivityType(TypedDict):
     weeks: list[ContributorActivityPropWeeksItemsType]
 
 
+class ContributorActivityTypeForResponse(TypedDict):
+    """Contributor Activity
+
+    Contributor Activity
+    """
+
+    author: Union[None, SimpleUserTypeForResponse]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsTypeForResponse]
+
+
 class ContributorActivityPropWeeksItemsType(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
+
+
+class ContributorActivityPropWeeksItemsTypeForResponse(TypedDict):
     """ContributorActivityPropWeeksItems"""
 
     w: NotRequired[int]
@@ -37,5 +57,7 @@ class ContributorActivityPropWeeksItemsType(TypedDict):
 
 __all__ = (
     "ContributorActivityPropWeeksItemsType",
+    "ContributorActivityPropWeeksItemsTypeForResponse",
     "ContributorActivityType",
+    "ContributorActivityTypeForResponse",
 )

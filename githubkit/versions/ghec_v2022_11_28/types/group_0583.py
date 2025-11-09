@@ -18,10 +18,22 @@ class WebhooksChanges8Type(TypedDict):
     tier: WebhooksChanges8PropTierType
 
 
+class WebhooksChanges8TypeForResponse(TypedDict):
+    """WebhooksChanges8"""
+
+    tier: WebhooksChanges8PropTierTypeForResponse
+
+
 class WebhooksChanges8PropTierType(TypedDict):
     """WebhooksChanges8PropTier"""
 
     from_: WebhooksChanges8PropTierPropFromType
+
+
+class WebhooksChanges8PropTierTypeForResponse(TypedDict):
+    """WebhooksChanges8PropTier"""
+
+    from_: WebhooksChanges8PropTierPropFromTypeForResponse
 
 
 class WebhooksChanges8PropTierPropFromType(TypedDict):
@@ -43,8 +55,30 @@ class WebhooksChanges8PropTierPropFromType(TypedDict):
     node_id: str
 
 
+class WebhooksChanges8PropTierPropFromTypeForResponse(TypedDict):
+    """Sponsorship Tier
+
+    The `tier_changed` and `pending_tier_change` will include the original tier
+    before the change or pending change. For more information, see the pending tier
+    change payload.
+    """
+
+    created_at: str
+    description: str
+    is_custom_ammount: NotRequired[bool]
+    is_custom_amount: NotRequired[bool]
+    is_one_time: bool
+    monthly_price_in_cents: int
+    monthly_price_in_dollars: int
+    name: str
+    node_id: str
+
+
 __all__ = (
     "WebhooksChanges8PropTierPropFromType",
+    "WebhooksChanges8PropTierPropFromTypeForResponse",
     "WebhooksChanges8PropTierType",
+    "WebhooksChanges8PropTierTypeForResponse",
     "WebhooksChanges8Type",
+    "WebhooksChanges8TypeForResponse",
 )

@@ -25,4 +25,19 @@ class WebhooksLabelType(TypedDict):
     url: str
 
 
-__all__ = ("WebhooksLabelType",)
+class WebhooksLabelTypeForResponse(TypedDict):
+    """Label"""
+
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
+
+
+__all__ = (
+    "WebhooksLabelType",
+    "WebhooksLabelTypeForResponse",
+)

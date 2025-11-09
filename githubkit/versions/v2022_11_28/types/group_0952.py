@@ -26,4 +26,19 @@ class OrgsOrgCampaignsCampaignNumberPatchBodyType(TypedDict):
     state: NotRequired[Literal["open", "closed"]]
 
 
-__all__ = ("OrgsOrgCampaignsCampaignNumberPatchBodyType",)
+class OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: NotRequired[str]
+    contact_link: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
+
+
+__all__ = (
+    "OrgsOrgCampaignsCampaignNumberPatchBodyType",
+    "OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse",
+)

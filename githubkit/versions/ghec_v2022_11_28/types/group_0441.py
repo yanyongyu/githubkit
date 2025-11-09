@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
 class PullRequestPropHeadType(TypedDict):
@@ -26,6 +26,16 @@ class PullRequestPropHeadType(TypedDict):
     user: Union[None, SimpleUserType]
 
 
+class PullRequestPropHeadTypeForResponse(TypedDict):
+    """PullRequestPropHead"""
+
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryTypeForResponse]
+    sha: str
+    user: Union[None, SimpleUserTypeForResponse]
+
+
 class PullRequestPropBaseType(TypedDict):
     """PullRequestPropBase"""
 
@@ -36,7 +46,19 @@ class PullRequestPropBaseType(TypedDict):
     user: SimpleUserType
 
 
+class PullRequestPropBaseTypeForResponse(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryTypeForResponse
+    sha: str
+    user: SimpleUserTypeForResponse
+
+
 __all__ = (
     "PullRequestPropBaseType",
+    "PullRequestPropBaseTypeForResponse",
     "PullRequestPropHeadType",
+    "PullRequestPropHeadTypeForResponse",
 )

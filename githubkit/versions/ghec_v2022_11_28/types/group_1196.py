@@ -23,7 +23,29 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503Type(TypedDict):
     ]
 
 
+class ProjectsColumnsCardsCardIdMovesPostResponse503TypeForResponse(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[
+        list[
+            ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsTypeForResponse
+        ]
+    ]
+
+
 class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
+
+
+class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsTypeForResponse(
+    TypedDict
+):
     """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
 
     code: NotRequired[str]
@@ -32,5 +54,7 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType(TypedDic
 
 __all__ = (
     "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsTypeForResponse",
     "ProjectsColumnsCardsCardIdMovesPostResponse503Type",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503TypeForResponse",
 )

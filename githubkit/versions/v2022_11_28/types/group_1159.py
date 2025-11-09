@@ -20,4 +20,15 @@ class ReposOwnerRepoKeysPostBodyType(TypedDict):
     read_only: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoKeysPostBodyType",)
+class ReposOwnerRepoKeysPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoKeysPostBody"""
+
+    title: NotRequired[str]
+    key: str
+    read_only: NotRequired[bool]
+
+
+__all__ = (
+    "ReposOwnerRepoKeysPostBodyType",
+    "ReposOwnerRepoKeysPostBodyTypeForResponse",
+)

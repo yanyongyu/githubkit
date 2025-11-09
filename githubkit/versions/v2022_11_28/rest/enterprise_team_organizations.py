@@ -29,7 +29,7 @@ if TYPE_CHECKING:
     from ..types import (
         EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType,
         EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType,
-        OrganizationSimpleType,
+        OrganizationSimpleTypeForResponse,
     )
 
 
@@ -57,7 +57,7 @@ class EnterpriseTeamOrganizationsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """enterprise-team-organizations/get-assignments
 
         GET /enterprises/{enterprise}/teams/{enterprise-team}/organizations
@@ -96,7 +96,7 @@ class EnterpriseTeamOrganizationsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """enterprise-team-organizations/get-assignments
 
         GET /enterprises/{enterprise}/teams/{enterprise-team}/organizations
@@ -135,7 +135,9 @@ class EnterpriseTeamOrganizationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]: ...
+    ) -> Response[
+        list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]
+    ]: ...
 
     @overload
     def bulk_add(
@@ -147,7 +149,9 @@ class EnterpriseTeamOrganizationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         organization_slugs: list[str],
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]: ...
+    ) -> Response[
+        list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]
+    ]: ...
 
     def bulk_add(
         self,
@@ -160,7 +164,7 @@ class EnterpriseTeamOrganizationsClient:
             EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """enterprise-team-organizations/bulk-add
 
         POST /enterprises/{enterprise}/teams/{enterprise-team}/organizations/add
@@ -208,7 +212,9 @@ class EnterpriseTeamOrganizationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]: ...
+    ) -> Response[
+        list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]
+    ]: ...
 
     @overload
     async def async_bulk_add(
@@ -220,7 +226,9 @@ class EnterpriseTeamOrganizationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         organization_slugs: list[str],
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]: ...
+    ) -> Response[
+        list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]
+    ]: ...
 
     async def async_bulk_add(
         self,
@@ -233,7 +241,7 @@ class EnterpriseTeamOrganizationsClient:
             EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleType]]:
+    ) -> Response[list[OrganizationSimple], list[OrganizationSimpleTypeForResponse]]:
         """enterprise-team-organizations/bulk-add
 
         POST /enterprises/{enterprise}/teams/{enterprise-team}/organizations/add
@@ -424,7 +432,7 @@ class EnterpriseTeamOrganizationsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationSimple, OrganizationSimpleType]:
+    ) -> Response[OrganizationSimple, OrganizationSimpleTypeForResponse]:
         """enterprise-team-organizations/get-assignment
 
         GET /enterprises/{enterprise}/teams/{enterprise-team}/organizations/{org}
@@ -457,7 +465,7 @@ class EnterpriseTeamOrganizationsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationSimple, OrganizationSimpleType]:
+    ) -> Response[OrganizationSimple, OrganizationSimpleTypeForResponse]:
         """enterprise-team-organizations/get-assignment
 
         GET /enterprises/{enterprise}/teams/{enterprise-team}/organizations/{org}
@@ -490,7 +498,7 @@ class EnterpriseTeamOrganizationsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationSimple, OrganizationSimpleType]:
+    ) -> Response[OrganizationSimple, OrganizationSimpleTypeForResponse]:
         """enterprise-team-organizations/add
 
         PUT /enterprises/{enterprise}/teams/{enterprise-team}/organizations/{org}
@@ -522,7 +530,7 @@ class EnterpriseTeamOrganizationsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationSimple, OrganizationSimpleType]:
+    ) -> Response[OrganizationSimple, OrganizationSimpleTypeForResponse]:
         """enterprise-team-organizations/add
 
         PUT /enterprises/{enterprise}/teams/{enterprise-team}/organizations/{org}

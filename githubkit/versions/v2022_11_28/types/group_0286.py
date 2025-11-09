@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0028 import CodeSecurityConfigurationType
+from .group_0028 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
+)
 
 
 class CodeSecurityConfigurationForRepositoryType(TypedDict):
@@ -36,4 +39,28 @@ class CodeSecurityConfigurationForRepositoryType(TypedDict):
     configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-__all__ = ("CodeSecurityConfigurationForRepositoryType",)
+class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
+    """CodeSecurityConfigurationForRepository
+
+    Code security configuration associated with a repository and attachment status
+    """
+
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+
+
+__all__ = (
+    "CodeSecurityConfigurationForRepositoryType",
+    "CodeSecurityConfigurationForRepositoryTypeForResponse",
+)

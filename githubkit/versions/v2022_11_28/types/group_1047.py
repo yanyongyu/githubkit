@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0229 import JobType
+from .group_0229 import JobType, JobTypeForResponse
 
 
 class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
@@ -21,4 +21,14 @@ class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
     jobs: list[JobType]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",)
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
+
+    total_count: int
+    jobs: list[JobTypeForResponse]
+
+
+__all__ = (
+    "ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",
+    "ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse",
+)

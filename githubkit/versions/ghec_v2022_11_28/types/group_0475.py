@@ -14,22 +14,35 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0173 import (
     SecretScanningLocationCommitType,
+    SecretScanningLocationCommitTypeForResponse,
     SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionCommentTypeForResponse,
     SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationDiscussionTitleTypeForResponse,
     SecretScanningLocationIssueBodyType,
+    SecretScanningLocationIssueBodyTypeForResponse,
     SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestBodyTypeForResponse,
     SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationPullRequestReviewTypeForResponse,
     SecretScanningLocationWikiCommitType,
+    SecretScanningLocationWikiCommitTypeForResponse,
 )
 from .group_0174 import (
     SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueCommentTypeForResponse,
     SecretScanningLocationIssueTitleType,
+    SecretScanningLocationIssueTitleTypeForResponse,
     SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
     SecretScanningLocationPullRequestTitleType,
+    SecretScanningLocationPullRequestTitleTypeForResponse,
 )
 from .group_0175 import (
     SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationDiscussionBodyTypeForResponse,
     SecretScanningLocationPullRequestCommentType,
+    SecretScanningLocationPullRequestCommentTypeForResponse,
 )
 
 
@@ -72,4 +85,46 @@ class SecretScanningLocationType(TypedDict):
     ]
 
 
-__all__ = ("SecretScanningLocationType",)
+class SecretScanningLocationTypeForResponse(TypedDict):
+    """SecretScanningLocation"""
+
+    type: NotRequired[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
+    ]
+    details: NotRequired[
+        Union[
+            SecretScanningLocationCommitTypeForResponse,
+            SecretScanningLocationWikiCommitTypeForResponse,
+            SecretScanningLocationIssueTitleTypeForResponse,
+            SecretScanningLocationIssueBodyTypeForResponse,
+            SecretScanningLocationIssueCommentTypeForResponse,
+            SecretScanningLocationDiscussionTitleTypeForResponse,
+            SecretScanningLocationDiscussionBodyTypeForResponse,
+            SecretScanningLocationDiscussionCommentTypeForResponse,
+            SecretScanningLocationPullRequestTitleTypeForResponse,
+            SecretScanningLocationPullRequestBodyTypeForResponse,
+            SecretScanningLocationPullRequestCommentTypeForResponse,
+            SecretScanningLocationPullRequestReviewTypeForResponse,
+            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+        ]
+    ]
+
+
+__all__ = (
+    "SecretScanningLocationType",
+    "SecretScanningLocationTypeForResponse",
+)

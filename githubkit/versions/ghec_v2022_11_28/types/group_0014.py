@@ -24,7 +24,29 @@ class ValidationErrorType(TypedDict):
     errors: NotRequired[list[ValidationErrorPropErrorsItemsType]]
 
 
+class ValidationErrorTypeForResponse(TypedDict):
+    """Validation Error
+
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[list[ValidationErrorPropErrorsItemsTypeForResponse]]
+
+
 class ValidationErrorPropErrorsItemsType(TypedDict):
+    """ValidationErrorPropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[str], None]]
+
+
+class ValidationErrorPropErrorsItemsTypeForResponse(TypedDict):
     """ValidationErrorPropErrorsItems"""
 
     resource: NotRequired[str]
@@ -37,5 +59,7 @@ class ValidationErrorPropErrorsItemsType(TypedDict):
 
 __all__ = (
     "ValidationErrorPropErrorsItemsType",
+    "ValidationErrorPropErrorsItemsTypeForResponse",
     "ValidationErrorType",
+    "ValidationErrorTypeForResponse",
 )

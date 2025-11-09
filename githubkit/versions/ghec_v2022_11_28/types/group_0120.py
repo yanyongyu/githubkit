@@ -13,10 +13,15 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0109 import (
     RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
 )
-from .group_0111 import RepositoryRulesetConditionsPropRefNameType
+from .group_0111 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
 from .group_0115 import (
     EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
 )
 
 
@@ -35,4 +40,22 @@ class EnterpriseRulesetConditionsOneof2Type(TypedDict):
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-__all__ = ("EnterpriseRulesetConditionsOneof2Type",)
+class EnterpriseRulesetConditionsOneof2TypeForResponse(TypedDict):
+    """organization_id_and_repository_name
+
+    Conditions to target organizations by id and all repositories
+    """
+
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
+    )
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+
+
+__all__ = (
+    "EnterpriseRulesetConditionsOneof2Type",
+    "EnterpriseRulesetConditionsOneof2TypeForResponse",
+)

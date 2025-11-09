@@ -12,13 +12,19 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0534 import EnterpriseWebhooksType
-from .group_0535 import SimpleInstallationType
-from .group_0536 import OrganizationSimpleWebhooksType
-from .group_0537 import RepositoryWebhooksType
-from .group_0551 import WebhooksLabelType
-from .group_0730 import WebhookIssuesEditedPropIssueType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0551 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0730 import (
+    WebhookIssuesEditedPropIssueType,
+    WebhookIssuesEditedPropIssueTypeForResponse,
+)
 
 
 class WebhookIssuesEditedType(TypedDict):
@@ -35,6 +41,20 @@ class WebhookIssuesEditedType(TypedDict):
     sender: SimpleUserType
 
 
+class WebhookIssuesEditedTypeForResponse(TypedDict):
+    """issues edited event"""
+
+    action: Literal["edited"]
+    changes: WebhookIssuesEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhookIssuesEditedPropIssueTypeForResponse
+    label: NotRequired[WebhooksLabelTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
 class WebhookIssuesEditedPropChangesType(TypedDict):
     """WebhookIssuesEditedPropChanges
 
@@ -45,7 +65,23 @@ class WebhookIssuesEditedPropChangesType(TypedDict):
     title: NotRequired[WebhookIssuesEditedPropChangesPropTitleType]
 
 
+class WebhookIssuesEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookIssuesEditedPropChanges
+
+    The changes to the issue.
+    """
+
+    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyTypeForResponse]
+    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleTypeForResponse]
+
+
 class WebhookIssuesEditedPropChangesPropBodyType(TypedDict):
+    """WebhookIssuesEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookIssuesEditedPropChangesPropBodyTypeForResponse(TypedDict):
     """WebhookIssuesEditedPropChangesPropBody"""
 
     from_: str
@@ -57,9 +93,19 @@ class WebhookIssuesEditedPropChangesPropTitleType(TypedDict):
     from_: str
 
 
+class WebhookIssuesEditedPropChangesPropTitleTypeForResponse(TypedDict):
+    """WebhookIssuesEditedPropChangesPropTitle"""
+
+    from_: str
+
+
 __all__ = (
     "WebhookIssuesEditedPropChangesPropBodyType",
+    "WebhookIssuesEditedPropChangesPropBodyTypeForResponse",
     "WebhookIssuesEditedPropChangesPropTitleType",
+    "WebhookIssuesEditedPropChangesPropTitleTypeForResponse",
     "WebhookIssuesEditedPropChangesType",
+    "WebhookIssuesEditedPropChangesTypeForResponse",
     "WebhookIssuesEditedType",
+    "WebhookIssuesEditedTypeForResponse",
 )

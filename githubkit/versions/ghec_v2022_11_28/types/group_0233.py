@@ -22,4 +22,16 @@ class OrganizationCustomRepositoryRoleUpdateSchemaType(TypedDict):
     permissions: NotRequired[list[str]]
 
 
-__all__ = ("OrganizationCustomRepositoryRoleUpdateSchemaType",)
+class OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse(TypedDict):
+    """OrganizationCustomRepositoryRoleUpdateSchema"""
+
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
+    permissions: NotRequired[list[str]]
+
+
+__all__ = (
+    "OrganizationCustomRepositoryRoleUpdateSchemaType",
+    "OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse",
+)

@@ -20,6 +20,15 @@ class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Ty
     pattern_config_version: NotRequired[str]
 
 
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
+
+    pattern_config_version: NotRequired[str]
+
+
 __all__ = (
     "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
 )

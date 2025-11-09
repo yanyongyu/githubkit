@@ -22,4 +22,17 @@ class CheckImmutableReleasesType(TypedDict):
     enforced_by_owner: bool
 
 
-__all__ = ("CheckImmutableReleasesType",)
+class CheckImmutableReleasesTypeForResponse(TypedDict):
+    """Check immutable releases
+
+    Check immutable releases
+    """
+
+    enabled: bool
+    enforced_by_owner: bool
+
+
+__all__ = (
+    "CheckImmutableReleasesType",
+    "CheckImmutableReleasesTypeForResponse",
+)

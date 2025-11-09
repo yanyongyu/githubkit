@@ -24,4 +24,18 @@ class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType(TypedDict):
     create_request: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType",)
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody"""
+
+    state: Literal["open", "dismissed"]
+    dismissed_reason: NotRequired[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    create_request: NotRequired[bool]
+
+
+__all__ = (
+    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType",
+    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyTypeForResponse",
+)

@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0195 import ReactionRollupType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0195 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
 class TeamDiscussionCommentType(TypedDict):
@@ -38,4 +38,28 @@ class TeamDiscussionCommentType(TypedDict):
     reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = ("TeamDiscussionCommentType",)
+class TeamDiscussionCommentTypeForResponse(TypedDict):
+    """Team Discussion Comment
+
+    A reply to a discussion within a team.
+    """
+
+    author: Union[None, SimpleUserTypeForResponse]
+    body: str
+    body_html: str
+    body_version: str
+    created_at: str
+    last_edited_at: Union[str, None]
+    discussion_url: str
+    html_url: str
+    node_id: str
+    number: int
+    updated_at: str
+    url: str
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+
+
+__all__ = (
+    "TeamDiscussionCommentType",
+    "TeamDiscussionCommentTypeForResponse",
+)

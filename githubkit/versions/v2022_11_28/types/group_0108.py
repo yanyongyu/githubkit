@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0061 import MinimalRepositoryType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0061 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
 class PackageType(TypedDict):
@@ -36,4 +36,26 @@ class PackageType(TypedDict):
     updated_at: datetime
 
 
-__all__ = ("PackageType",)
+class PackageTypeForResponse(TypedDict):
+    """Package
+
+    A software package
+    """
+
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    repository: NotRequired[Union[None, MinimalRepositoryTypeForResponse]]
+    created_at: str
+    updated_at: str
+
+
+__all__ = (
+    "PackageType",
+    "PackageTypeForResponse",
+)

@@ -23,4 +23,18 @@ class ReferrerTrafficType(TypedDict):
     uniques: int
 
 
-__all__ = ("ReferrerTrafficType",)
+class ReferrerTrafficTypeForResponse(TypedDict):
+    """Referrer Traffic
+
+    Referrer Traffic
+    """
+
+    referrer: str
+    count: int
+    uniques: int
+
+
+__all__ = (
+    "ReferrerTrafficType",
+    "ReferrerTrafficTypeForResponse",
+)

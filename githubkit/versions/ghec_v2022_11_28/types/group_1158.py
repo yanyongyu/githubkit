@@ -19,4 +19,14 @@ class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
     key: str
 
 
-__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",)
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
+
+    key_id: str
+    key: str
+
+
+__all__ = (
+    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",
+    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse",
+)

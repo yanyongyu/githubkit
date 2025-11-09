@@ -18,4 +18,13 @@ class RepositoryRuleMaxFilePathLengthPropParametersType(TypedDict):
     max_file_path_length: int
 
 
-__all__ = ("RepositoryRuleMaxFilePathLengthPropParametersType",)
+class RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
+
+    max_file_path_length: int
+
+
+__all__ = (
+    "RepositoryRuleMaxFilePathLengthPropParametersType",
+    "RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse",
+)

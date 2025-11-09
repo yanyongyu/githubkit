@@ -19,4 +19,13 @@ class OrgsOrgPersonalAccessTokensPatIdPostBodyType(TypedDict):
     action: Literal["revoke"]
 
 
-__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBodyType",)
+class OrgsOrgPersonalAccessTokensPatIdPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
+
+    action: Literal["revoke"]
+
+
+__all__ = (
+    "OrgsOrgPersonalAccessTokensPatIdPostBodyType",
+    "OrgsOrgPersonalAccessTokensPatIdPostBodyTypeForResponse",
+)

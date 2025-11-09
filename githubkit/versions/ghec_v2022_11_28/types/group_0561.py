@@ -25,7 +25,29 @@ class WebhooksPreviousMarketplacePurchaseType(TypedDict):
     unit_count: int
 
 
+class WebhooksPreviousMarketplacePurchaseTypeForResponse(TypedDict):
+    """Marketplace Purchase"""
+
+    account: WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse
+    billing_cycle: str
+    free_trial_ends_on: None
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse
+    unit_count: int
+
+
 class WebhooksPreviousMarketplacePurchasePropAccountType(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropAccount"""
+
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
+
+
+class WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse(TypedDict):
     """WebhooksPreviousMarketplacePurchasePropAccount"""
 
     id: int
@@ -49,8 +71,25 @@ class WebhooksPreviousMarketplacePurchasePropPlanType(TypedDict):
     yearly_price_in_cents: int
 
 
+class WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropPlan"""
+
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
+
+
 __all__ = (
     "WebhooksPreviousMarketplacePurchasePropAccountType",
+    "WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse",
     "WebhooksPreviousMarketplacePurchasePropPlanType",
+    "WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse",
     "WebhooksPreviousMarketplacePurchaseType",
+    "WebhooksPreviousMarketplacePurchaseTypeForResponse",
 )

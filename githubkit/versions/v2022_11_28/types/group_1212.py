@@ -20,4 +20,15 @@ class ReposOwnerRepoTransferPostBodyType(TypedDict):
     team_ids: NotRequired[list[int]]
 
 
-__all__ = ("ReposOwnerRepoTransferPostBodyType",)
+class ReposOwnerRepoTransferPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoTransferPostBody"""
+
+    new_owner: str
+    new_name: NotRequired[str]
+    team_ids: NotRequired[list[int]]
+
+
+__all__ = (
+    "ReposOwnerRepoTransferPostBodyType",
+    "ReposOwnerRepoTransferPostBodyTypeForResponse",
+)

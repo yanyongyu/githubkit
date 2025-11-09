@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
 class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type(
@@ -23,4 +23,16 @@ class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type(
     repositories: NotRequired[list[RepositoryType]]
 
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",)
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+
+    total_count: NotRequired[int]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
+
+
+__all__ = (
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse",
+)

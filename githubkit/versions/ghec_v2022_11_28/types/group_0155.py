@@ -19,7 +19,26 @@ class RepositoryRuleWorkflowsPropParametersType(TypedDict):
     workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
 
 
+class RepositoryRuleWorkflowsPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
+
+    do_not_enforce_on_create: NotRequired[bool]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceTypeForResponse]
+
+
 class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
+    """
+
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
+
+
+class RepositoryRuleParamsWorkflowFileReferenceTypeForResponse(TypedDict):
     """WorkflowFileReference
 
     A workflow that must run for this rule to pass
@@ -33,5 +52,7 @@ class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
 
 __all__ = (
     "RepositoryRuleParamsWorkflowFileReferenceType",
+    "RepositoryRuleParamsWorkflowFileReferenceTypeForResponse",
     "RepositoryRuleWorkflowsPropParametersType",
+    "RepositoryRuleWorkflowsPropParametersTypeForResponse",
 )

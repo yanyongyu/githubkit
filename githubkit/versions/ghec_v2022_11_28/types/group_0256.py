@@ -22,4 +22,16 @@ class OrganizationCustomOrganizationRoleCreateSchemaType(TypedDict):
     base_role: NotRequired[Literal["read", "triage", "write", "maintain", "admin"]]
 
 
-__all__ = ("OrganizationCustomOrganizationRoleCreateSchemaType",)
+class OrganizationCustomOrganizationRoleCreateSchemaTypeForResponse(TypedDict):
+    """OrganizationCustomOrganizationRoleCreateSchema"""
+
+    name: str
+    description: NotRequired[str]
+    permissions: list[str]
+    base_role: NotRequired[Literal["read", "triage", "write", "maintain", "admin"]]
+
+
+__all__ = (
+    "OrganizationCustomOrganizationRoleCreateSchemaType",
+    "OrganizationCustomOrganizationRoleCreateSchemaTypeForResponse",
+)

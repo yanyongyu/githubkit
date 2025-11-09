@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0190 import RepositoryRuleWorkflowsPropParametersType
+from .group_0190 import (
+    RepositoryRuleWorkflowsPropParametersType,
+    RepositoryRuleWorkflowsPropParametersTypeForResponse,
+)
 
 
 class RepositoryRuleWorkflowsType(TypedDict):
@@ -26,4 +29,18 @@ class RepositoryRuleWorkflowsType(TypedDict):
     parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
 
 
-__all__ = ("RepositoryRuleWorkflowsType",)
+class RepositoryRuleWorkflowsTypeForResponse(TypedDict):
+    """workflows
+
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
+    """
+
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
+
+
+__all__ = (
+    "RepositoryRuleWorkflowsType",
+    "RepositoryRuleWorkflowsTypeForResponse",
+)

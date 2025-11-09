@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0323 import GitUserType
-from .group_0324 import VerificationType
+from .group_0323 import GitUserType, GitUserTypeForResponse
+from .group_0324 import VerificationType, VerificationTypeForResponse
 
 
 class CommitSearchResultItemPropCommitType(TypedDict):
@@ -29,12 +29,32 @@ class CommitSearchResultItemPropCommitType(TypedDict):
     verification: NotRequired[VerificationType]
 
 
+class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommit"""
+
+    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
+    committer: Union[None, GitUserTypeForResponse]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
+    url: str
+    verification: NotRequired[VerificationTypeForResponse]
+
+
 class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
     """CommitSearchResultItemPropCommitPropAuthor"""
 
     name: str
     email: str
     date: datetime
+
+
+class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
+    name: str
+    email: str
+    date: str
 
 
 class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
@@ -44,8 +64,18 @@ class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
     url: str
 
 
+class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
 __all__ = (
     "CommitSearchResultItemPropCommitPropAuthorType",
+    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
     "CommitSearchResultItemPropCommitPropTreeType",
+    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
     "CommitSearchResultItemPropCommitType",
+    "CommitSearchResultItemPropCommitTypeForResponse",
 )

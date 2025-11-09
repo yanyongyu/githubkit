@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0537 import RepositoryWebhooksType
-from .group_0549 import DiscussionType
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0549 import DiscussionType, DiscussionTypeForResponse
 
 
 class WebhookDiscussionTransferredPropChangesType(TypedDict):
@@ -22,4 +22,14 @@ class WebhookDiscussionTransferredPropChangesType(TypedDict):
     new_repository: RepositoryWebhooksType
 
 
-__all__ = ("WebhookDiscussionTransferredPropChangesType",)
+class WebhookDiscussionTransferredPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionTransferredPropChanges"""
+
+    new_discussion: DiscussionTypeForResponse
+    new_repository: RepositoryWebhooksTypeForResponse
+
+
+__all__ = (
+    "WebhookDiscussionTransferredPropChangesType",
+    "WebhookDiscussionTransferredPropChangesTypeForResponse",
+)

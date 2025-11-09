@@ -22,4 +22,17 @@ class OidcCustomSubRepoType(TypedDict):
     include_claim_keys: NotRequired[list[str]]
 
 
-__all__ = ("OidcCustomSubRepoType",)
+class OidcCustomSubRepoTypeForResponse(TypedDict):
+    """Actions OIDC subject customization for a repository
+
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
+
+
+__all__ = (
+    "OidcCustomSubRepoType",
+    "OidcCustomSubRepoTypeForResponse",
+)

@@ -18,4 +18,13 @@ class ActionsOidcCustomIssuerPolicyForEnterpriseType(TypedDict):
     include_enterprise_slug: NotRequired[bool]
 
 
-__all__ = ("ActionsOidcCustomIssuerPolicyForEnterpriseType",)
+class ActionsOidcCustomIssuerPolicyForEnterpriseTypeForResponse(TypedDict):
+    """ActionsOidcCustomIssuerPolicyForEnterprise"""
+
+    include_enterprise_slug: NotRequired[bool]
+
+
+__all__ = (
+    "ActionsOidcCustomIssuerPolicyForEnterpriseType",
+    "ActionsOidcCustomIssuerPolicyForEnterpriseTypeForResponse",
+)

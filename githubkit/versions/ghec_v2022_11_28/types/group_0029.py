@@ -23,4 +23,18 @@ class EnterpriseAccessRestrictionsType(TypedDict):
     header_value: str
 
 
-__all__ = ("EnterpriseAccessRestrictionsType",)
+class EnterpriseAccessRestrictionsTypeForResponse(TypedDict):
+    """Enterprise Access Restrictions
+
+    Information about the enterprise access restrictions proxy header.
+    """
+
+    message: str
+    header_name: str
+    header_value: str
+
+
+__all__ = (
+    "EnterpriseAccessRestrictionsType",
+    "EnterpriseAccessRestrictionsTypeForResponse",
+)

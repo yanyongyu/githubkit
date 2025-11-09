@@ -20,4 +20,14 @@ class UsersUsernameProjectsV2ProjectNumberItemsPostBodyType(TypedDict):
     id: int
 
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyType",)
+class UsersUsernameProjectsV2ProjectNumberItemsPostBodyTypeForResponse(TypedDict):
+    """UsersUsernameProjectsV2ProjectNumberItemsPostBody"""
+
+    type: Literal["Issue", "PullRequest"]
+    id: int
+
+
+__all__ = (
+    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyType",
+    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyTypeForResponse",
+)

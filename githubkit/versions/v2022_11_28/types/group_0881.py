@@ -23,4 +23,17 @@ class EnterprisesEnterpriseTeamsTeamSlugPatchBodyType(TypedDict):
     group_id: NotRequired[Union[str, None]]
 
 
-__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",)
+class EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+
+    name: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",
+    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse",
+)

@@ -27,4 +27,20 @@ class AutolinkType(TypedDict):
     updated_at: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("AutolinkType",)
+class AutolinkTypeForResponse(TypedDict):
+    """Autolink reference
+
+    An autolink reference.
+    """
+
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "AutolinkType",
+    "AutolinkTypeForResponse",
+)

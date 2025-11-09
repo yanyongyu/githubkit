@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0134 import RepositoryRuleRequiredStatusChecksPropParametersType
+from .group_0134 import (
+    RepositoryRuleRequiredStatusChecksPropParametersType,
+    RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse,
+)
 
 
 class RepositoryRuleRequiredStatusChecksType(TypedDict):
@@ -26,4 +29,20 @@ class RepositoryRuleRequiredStatusChecksType(TypedDict):
     parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
 
 
-__all__ = ("RepositoryRuleRequiredStatusChecksType",)
+class RepositoryRuleRequiredStatusChecksTypeForResponse(TypedDict):
+    """required_status_checks
+
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
+    """
+
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[
+        RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse
+    ]
+
+
+__all__ = (
+    "RepositoryRuleRequiredStatusChecksType",
+    "RepositoryRuleRequiredStatusChecksTypeForResponse",
+)

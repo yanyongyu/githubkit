@@ -40,8 +40,8 @@ if TYPE_CHECKING:
         TeamRepository,
     )
     from ..types import (
-        MinimalRepositoryType,
-        OrganizationInvitationType,
+        MinimalRepositoryTypeForResponse,
+        OrganizationInvitationTypeForResponse,
         OrgsOrgTeamsPostBodyType,
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
@@ -51,13 +51,13 @@ if TYPE_CHECKING:
         OrgsOrgTeamsTeamSlugPatchBodyType,
         OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType,
         OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType,
-        SimpleUserType,
-        TeamDiscussionCommentType,
-        TeamDiscussionType,
-        TeamFullType,
-        TeamMembershipType,
-        TeamProjectType,
-        TeamRepositoryType,
+        SimpleUserTypeForResponse,
+        TeamDiscussionCommentTypeForResponse,
+        TeamDiscussionTypeForResponse,
+        TeamFullTypeForResponse,
+        TeamMembershipTypeForResponse,
+        TeamProjectTypeForResponse,
+        TeamRepositoryTypeForResponse,
         TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
         TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
         TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType,
@@ -66,7 +66,7 @@ if TYPE_CHECKING:
         TeamsTeamIdPatchBodyType,
         TeamsTeamIdProjectsProjectIdPutBodyType,
         TeamsTeamIdReposOwnerRepoPutBodyType,
-        TeamType,
+        TeamTypeForResponse,
     )
 
 
@@ -93,7 +93,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """teams/list
 
         GET /orgs/{org}/teams
@@ -134,7 +134,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """teams/list
 
         GET /orgs/{org}/teams
@@ -175,7 +175,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsPostBodyType,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @overload
     def create(
@@ -195,7 +195,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push"]] = UNSET,
         parent_team_id: Missing[int] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     def create(
         self,
@@ -205,7 +205,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """teams/create
 
         POST /orgs/{org}/teams
@@ -253,7 +253,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsPostBodyType,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @overload
     async def async_create(
@@ -273,7 +273,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push"]] = UNSET,
         parent_team_id: Missing[int] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     async def async_create(
         self,
@@ -283,7 +283,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """teams/create
 
         POST /orgs/{org}/teams
@@ -330,7 +330,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """teams/get-by-name
 
         GET /orgs/{org}/teams/{team_slug}
@@ -367,7 +367,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """teams/get-by-name
 
         GET /orgs/{org}/teams/{team_slug}
@@ -472,7 +472,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @overload
     def update_in_org(
@@ -491,7 +491,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     def update_in_org(
         self,
@@ -502,7 +502,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """teams/update-in-org
 
         PATCH /orgs/{org}/teams/{team_slug}
@@ -558,7 +558,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @overload
     async def async_update_in_org(
@@ -577,7 +577,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     async def async_update_in_org(
         self,
@@ -588,7 +588,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """teams/update-in-org
 
         PATCH /orgs/{org}/teams/{team_slug}
@@ -646,7 +646,7 @@ class TeamsClient:
         pinned: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
+    ) -> Response[list[TeamDiscussion], list[TeamDiscussionTypeForResponse]]:
         """teams/list-discussions-in-org
 
         GET /orgs/{org}/teams/{team_slug}/discussions
@@ -694,7 +694,7 @@ class TeamsClient:
         pinned: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
+    ) -> Response[list[TeamDiscussion], list[TeamDiscussionTypeForResponse]]:
         """teams/list-discussions-in-org
 
         GET /orgs/{org}/teams/{team_slug}/discussions
@@ -740,7 +740,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     @overload
     def create_discussion_in_org(
@@ -754,7 +754,7 @@ class TeamsClient:
         title: str,
         body: str,
         private: Missing[bool] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     def create_discussion_in_org(
         self,
@@ -765,7 +765,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]:
         """teams/create-discussion-in-org
 
         POST /orgs/{org}/teams/{team_slug}/discussions
@@ -815,7 +815,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     @overload
     async def async_create_discussion_in_org(
@@ -829,7 +829,7 @@ class TeamsClient:
         title: str,
         body: str,
         private: Missing[bool] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     async def async_create_discussion_in_org(
         self,
@@ -840,7 +840,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]:
         """teams/create-discussion-in-org
 
         POST /orgs/{org}/teams/{team_slug}/discussions
@@ -889,7 +889,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]:
         """teams/get-discussion-in-org
 
         GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
@@ -926,7 +926,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]:
         """teams/get-discussion-in-org
 
         GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
@@ -1035,7 +1035,7 @@ class TeamsClient:
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     @overload
     def update_discussion_in_org(
@@ -1049,7 +1049,7 @@ class TeamsClient:
         stream: bool = False,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     def update_discussion_in_org(
         self,
@@ -1063,7 +1063,7 @@ class TeamsClient:
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]:
         """teams/update-discussion-in-org
 
         PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
@@ -1119,7 +1119,7 @@ class TeamsClient:
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     @overload
     async def async_update_discussion_in_org(
@@ -1133,7 +1133,7 @@ class TeamsClient:
         stream: bool = False,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     async def async_update_discussion_in_org(
         self,
@@ -1147,7 +1147,7 @@ class TeamsClient:
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]:
         """teams/update-discussion-in-org
 
         PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
@@ -1202,7 +1202,9 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
+    ) -> Response[
+        list[TeamDiscussionComment], list[TeamDiscussionCommentTypeForResponse]
+    ]:
         """teams/list-discussion-comments-in-org
 
         GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
@@ -1249,7 +1251,9 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
+    ) -> Response[
+        list[TeamDiscussionComment], list[TeamDiscussionCommentTypeForResponse]
+    ]:
         """teams/list-discussion-comments-in-org
 
         GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
@@ -1295,7 +1299,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     @overload
     def create_discussion_comment_in_org(
@@ -1308,7 +1312,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     def create_discussion_comment_in_org(
         self,
@@ -1322,7 +1326,7 @@ class TeamsClient:
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]:
         """teams/create-discussion-comment-in-org
 
         POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
@@ -1378,7 +1382,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     @overload
     async def async_create_discussion_comment_in_org(
@@ -1391,7 +1395,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     async def async_create_discussion_comment_in_org(
         self,
@@ -1405,7 +1409,7 @@ class TeamsClient:
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]:
         """teams/create-discussion-comment-in-org
 
         POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
@@ -1460,7 +1464,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]:
         """teams/get-discussion-comment-in-org
 
         GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
@@ -1498,7 +1502,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]:
         """teams/get-discussion-comment-in-org
 
         GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
@@ -1608,7 +1612,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     @overload
     def update_discussion_comment_in_org(
@@ -1622,7 +1626,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     def update_discussion_comment_in_org(
         self,
@@ -1637,7 +1641,7 @@ class TeamsClient:
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]:
         """teams/update-discussion-comment-in-org
 
         PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
@@ -1693,7 +1697,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     @overload
     async def async_update_discussion_comment_in_org(
@@ -1707,7 +1711,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     async def async_update_discussion_comment_in_org(
         self,
@@ -1722,7 +1726,7 @@ class TeamsClient:
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]:
         """teams/update-discussion-comment-in-org
 
         PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
@@ -1776,7 +1780,9 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """teams/list-pending-invitations-in-org
 
         GET /orgs/{org}/teams/{team_slug}/invitations
@@ -1818,7 +1824,9 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """teams/list-pending-invitations-in-org
 
         GET /orgs/{org}/teams/{team_slug}/invitations
@@ -1861,7 +1869,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """teams/list-members-in-org
 
         GET /orgs/{org}/teams/{team_slug}/members
@@ -1904,7 +1912,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """teams/list-members-in-org
 
         GET /orgs/{org}/teams/{team_slug}/members
@@ -1945,7 +1953,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """teams/get-membership-for-user-in-org
 
         GET /orgs/{org}/teams/{team_slug}/memberships/{username}
@@ -1988,7 +1996,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """teams/get-membership-for-user-in-org
 
         GET /orgs/{org}/teams/{team_slug}/memberships/{username}
@@ -2033,7 +2041,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     @overload
     def add_or_update_membership_for_user_in_org(
@@ -2046,7 +2054,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     def add_or_update_membership_for_user_in_org(
         self,
@@ -2058,7 +2066,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """teams/add-or-update-membership-for-user-in-org
 
         PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
@@ -2120,7 +2128,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     @overload
     async def async_add_or_update_membership_for_user_in_org(
@@ -2133,7 +2141,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     async def async_add_or_update_membership_for_user_in_org(
         self,
@@ -2145,7 +2153,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """teams/add-or-update-membership-for-user-in-org
 
         PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
@@ -2282,7 +2290,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamProject], list[TeamProjectType]]:
+    ) -> Response[list[TeamProject], list[TeamProjectTypeForResponse]]:
         """DEPRECATED teams/list-projects-in-org
 
         GET /orgs/{org}/teams/{team_slug}/projects
@@ -2323,7 +2331,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamProject], list[TeamProjectType]]:
+    ) -> Response[list[TeamProject], list[TeamProjectTypeForResponse]]:
         """DEPRECATED teams/list-projects-in-org
 
         GET /orgs/{org}/teams/{team_slug}/projects
@@ -2363,7 +2371,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamProject, TeamProjectType]:
+    ) -> Response[TeamProject, TeamProjectTypeForResponse]:
         """DEPRECATED teams/check-permissions-for-project-in-org
 
         GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
@@ -2398,7 +2406,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamProject, TeamProjectType]:
+    ) -> Response[TeamProject, TeamProjectTypeForResponse]:
         """DEPRECATED teams/check-permissions-for-project-in-org
 
         GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
@@ -2664,7 +2672,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """teams/list-repos-in-org
 
         GET /orgs/{org}/teams/{team_slug}/repos
@@ -2706,7 +2714,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """teams/list-repos-in-org
 
         GET /orgs/{org}/teams/{team_slug}/repos
@@ -2748,7 +2756,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamRepository, TeamRepositoryType]:
+    ) -> Response[TeamRepository, TeamRepositoryTypeForResponse]:
         """teams/check-permissions-for-repo-in-org
 
         GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
@@ -2791,7 +2799,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamRepository, TeamRepositoryType]:
+    ) -> Response[TeamRepository, TeamRepositoryTypeForResponse]:
         """teams/check-permissions-for-repo-in-org
 
         GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
@@ -3052,7 +3060,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """teams/list-child-in-org
 
         GET /orgs/{org}/teams/{team_slug}/teams
@@ -3094,7 +3102,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """teams/list-child-in-org
 
         GET /orgs/{org}/teams/{team_slug}/teams
@@ -3133,7 +3141,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """DEPRECATED teams/get-legacy
 
         GET /teams/{team_id}
@@ -3167,7 +3175,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """DEPRECATED teams/get-legacy
 
         GET /teams/{team_id}
@@ -3279,7 +3287,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdPatchBodyType,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @overload
     def update_legacy(
@@ -3297,7 +3305,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     def update_legacy(
         self,
@@ -3307,7 +3315,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[TeamsTeamIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """DEPRECATED teams/update-legacy
 
         PATCH /teams/{team_id}
@@ -3360,7 +3368,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdPatchBodyType,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     @overload
     async def async_update_legacy(
@@ -3378,7 +3386,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
-    ) -> Response[TeamFull, TeamFullType]: ...
+    ) -> Response[TeamFull, TeamFullTypeForResponse]: ...
 
     async def async_update_legacy(
         self,
@@ -3388,7 +3396,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[TeamsTeamIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamFull, TeamFullType]:
+    ) -> Response[TeamFull, TeamFullTypeForResponse]:
         """DEPRECATED teams/update-legacy
 
         PATCH /teams/{team_id}
@@ -3442,7 +3450,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
+    ) -> Response[list[TeamDiscussion], list[TeamDiscussionTypeForResponse]]:
         """DEPRECATED teams/list-discussions-legacy
 
         GET /teams/{team_id}/discussions
@@ -3487,7 +3495,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamDiscussion], list[TeamDiscussionType]]:
+    ) -> Response[list[TeamDiscussion], list[TeamDiscussionTypeForResponse]]:
         """DEPRECATED teams/list-discussions-legacy
 
         GET /teams/{team_id}/discussions
@@ -3531,7 +3539,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdDiscussionsPostBodyType,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     @overload
     def create_discussion_legacy(
@@ -3544,7 +3552,7 @@ class TeamsClient:
         title: str,
         body: str,
         private: Missing[bool] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     def create_discussion_legacy(
         self,
@@ -3554,7 +3562,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[TeamsTeamIdDiscussionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]:
         """DEPRECATED teams/create-discussion-legacy
 
         POST /teams/{team_id}/discussions
@@ -3603,7 +3611,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdDiscussionsPostBodyType,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     @overload
     async def async_create_discussion_legacy(
@@ -3616,7 +3624,7 @@ class TeamsClient:
         title: str,
         body: str,
         private: Missing[bool] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     async def async_create_discussion_legacy(
         self,
@@ -3626,7 +3634,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[TeamsTeamIdDiscussionsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]:
         """DEPRECATED teams/create-discussion-legacy
 
         POST /teams/{team_id}/discussions
@@ -3674,7 +3682,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]:
         """DEPRECATED teams/get-discussion-legacy
 
         GET /teams/{team_id}/discussions/{discussion_number}
@@ -3710,7 +3718,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]:
         """DEPRECATED teams/get-discussion-legacy
 
         GET /teams/{team_id}/discussions/{discussion_number}
@@ -3814,7 +3822,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     @overload
     def update_discussion_legacy(
@@ -3827,7 +3835,7 @@ class TeamsClient:
         stream: bool = False,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     def update_discussion_legacy(
         self,
@@ -3838,7 +3846,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]:
         """DEPRECATED teams/update-discussion-legacy
 
         PATCH /teams/{team_id}/discussions/{discussion_number}
@@ -3891,7 +3899,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     @overload
     async def async_update_discussion_legacy(
@@ -3904,7 +3912,7 @@ class TeamsClient:
         stream: bool = False,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]: ...
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]: ...
 
     async def async_update_discussion_legacy(
         self,
@@ -3915,7 +3923,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussion, TeamDiscussionType]:
+    ) -> Response[TeamDiscussion, TeamDiscussionTypeForResponse]:
         """DEPRECATED teams/update-discussion-legacy
 
         PATCH /teams/{team_id}/discussions/{discussion_number}
@@ -3969,7 +3977,9 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
+    ) -> Response[
+        list[TeamDiscussionComment], list[TeamDiscussionCommentTypeForResponse]
+    ]:
         """DEPRECATED teams/list-discussion-comments-legacy
 
         GET /teams/{team_id}/discussions/{discussion_number}/comments
@@ -4015,7 +4025,9 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamDiscussionComment], list[TeamDiscussionCommentType]]:
+    ) -> Response[
+        list[TeamDiscussionComment], list[TeamDiscussionCommentTypeForResponse]
+    ]:
         """DEPRECATED teams/list-discussion-comments-legacy
 
         GET /teams/{team_id}/discussions/{discussion_number}/comments
@@ -4060,7 +4072,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     @overload
     def create_discussion_comment_legacy(
@@ -4072,7 +4084,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     def create_discussion_comment_legacy(
         self,
@@ -4085,7 +4097,7 @@ class TeamsClient:
             TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]:
         """DEPRECATED teams/create-discussion-comment-legacy
 
         POST /teams/{team_id}/discussions/{discussion_number}/comments
@@ -4140,7 +4152,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     @overload
     async def async_create_discussion_comment_legacy(
@@ -4152,7 +4164,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     async def async_create_discussion_comment_legacy(
         self,
@@ -4165,7 +4177,7 @@ class TeamsClient:
             TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]:
         """DEPRECATED teams/create-discussion-comment-legacy
 
         POST /teams/{team_id}/discussions/{discussion_number}/comments
@@ -4219,7 +4231,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]:
         """DEPRECATED teams/get-discussion-comment-legacy
 
         GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
@@ -4256,7 +4268,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]:
         """DEPRECATED teams/get-discussion-comment-legacy
 
         GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
@@ -4363,7 +4375,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     @overload
     def update_discussion_comment_legacy(
@@ -4376,7 +4388,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     def update_discussion_comment_legacy(
         self,
@@ -4390,7 +4402,7 @@ class TeamsClient:
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]:
         """DEPRECATED teams/update-discussion-comment-legacy
 
         PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
@@ -4445,7 +4457,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     @overload
     async def async_update_discussion_comment_legacy(
@@ -4458,7 +4470,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]: ...
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]: ...
 
     async def async_update_discussion_comment_legacy(
         self,
@@ -4472,7 +4484,7 @@ class TeamsClient:
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentType]:
+    ) -> Response[TeamDiscussionComment, TeamDiscussionCommentTypeForResponse]:
         """DEPRECATED teams/update-discussion-comment-legacy
 
         PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
@@ -4525,7 +4537,9 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """DEPRECATED teams/list-pending-invitations-legacy
 
         GET /teams/{team_id}/invitations
@@ -4566,7 +4580,9 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[OrganizationInvitation], list[OrganizationInvitationType]]:
+    ) -> Response[
+        list[OrganizationInvitation], list[OrganizationInvitationTypeForResponse]
+    ]:
         """DEPRECATED teams/list-pending-invitations-legacy
 
         GET /teams/{team_id}/invitations
@@ -4608,7 +4624,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """DEPRECATED teams/list-members-legacy
 
         GET /teams/{team_id}/members
@@ -4654,7 +4670,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """DEPRECATED teams/list-members-legacy
 
         GET /teams/{team_id}/members
@@ -4928,7 +4944,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """DEPRECATED teams/get-membership-for-user-legacy
 
         GET /teams/{team_id}/memberships/{username}
@@ -4972,7 +4988,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """DEPRECATED teams/get-membership-for-user-legacy
 
         GET /teams/{team_id}/memberships/{username}
@@ -5018,7 +5034,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     @overload
     def add_or_update_membership_for_user_legacy(
@@ -5030,7 +5046,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     def add_or_update_membership_for_user_legacy(
         self,
@@ -5041,7 +5057,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """DEPRECATED teams/add-or-update-membership-for-user-legacy
 
         PUT /teams/{team_id}/memberships/{username}
@@ -5103,7 +5119,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     @overload
     async def async_add_or_update_membership_for_user_legacy(
@@ -5115,7 +5131,7 @@ class TeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
-    ) -> Response[TeamMembership, TeamMembershipType]: ...
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]: ...
 
     async def async_add_or_update_membership_for_user_legacy(
         self,
@@ -5126,7 +5142,7 @@ class TeamsClient:
         stream: bool = False,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TeamMembership, TeamMembershipType]:
+    ) -> Response[TeamMembership, TeamMembershipTypeForResponse]:
         """DEPRECATED teams/add-or-update-membership-for-user-legacy
 
         PUT /teams/{team_id}/memberships/{username}
@@ -5261,7 +5277,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamProject], list[TeamProjectType]]:
+    ) -> Response[list[TeamProject], list[TeamProjectTypeForResponse]]:
         """DEPRECATED teams/list-projects-legacy
 
         GET /teams/{team_id}/projects
@@ -5304,7 +5320,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamProject], list[TeamProjectType]]:
+    ) -> Response[list[TeamProject], list[TeamProjectTypeForResponse]]:
         """DEPRECATED teams/list-projects-legacy
 
         GET /teams/{team_id}/projects
@@ -5346,7 +5362,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamProject, TeamProjectType]:
+    ) -> Response[TeamProject, TeamProjectTypeForResponse]:
         """DEPRECATED teams/check-permissions-for-project-legacy
 
         GET /teams/{team_id}/projects/{project_id}
@@ -5380,7 +5396,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamProject, TeamProjectType]:
+    ) -> Response[TeamProject, TeamProjectTypeForResponse]:
         """DEPRECATED teams/check-permissions-for-project-legacy
 
         GET /teams/{team_id}/projects/{project_id}
@@ -5641,7 +5657,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """DEPRECATED teams/list-repos-legacy
 
         GET /teams/{team_id}/repos
@@ -5683,7 +5699,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """DEPRECATED teams/list-repos-legacy
 
         GET /teams/{team_id}/repos
@@ -5725,7 +5741,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamRepository, TeamRepositoryType]:
+    ) -> Response[TeamRepository, TeamRepositoryTypeForResponse]:
         """DEPRECATED teams/check-permissions-for-repo-legacy
 
         GET /teams/{team_id}/repos/{owner}/{repo}
@@ -5764,7 +5780,7 @@ class TeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[TeamRepository, TeamRepositoryType]:
+    ) -> Response[TeamRepository, TeamRepositoryTypeForResponse]:
         """DEPRECATED teams/check-permissions-for-repo-legacy
 
         GET /teams/{team_id}/repos/{owner}/{repo}
@@ -6029,7 +6045,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """DEPRECATED teams/list-child-legacy
 
         GET /teams/{team_id}/teams
@@ -6073,7 +6089,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Team], list[TeamType]]:
+    ) -> Response[list[Team], list[TeamTypeForResponse]]:
         """DEPRECATED teams/list-child-legacy
 
         GET /teams/{team_id}/teams
@@ -6116,7 +6132,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamFull], list[TeamFullType]]:
+    ) -> Response[list[TeamFull], list[TeamFullTypeForResponse]]:
         """teams/list-for-authenticated-user
 
         GET /user/teams
@@ -6162,7 +6178,7 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[TeamFull], list[TeamFullType]]:
+    ) -> Response[list[TeamFull], list[TeamFullTypeForResponse]]:
         """teams/list-for-authenticated-user
 
         GET /user/teams

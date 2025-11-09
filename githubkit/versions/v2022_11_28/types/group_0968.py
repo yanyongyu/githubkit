@@ -21,4 +21,16 @@ class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
     seats_created: int
 
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",)
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
+
+    The total number of seats created for members of the specified team(s).
+    """
+
+    seats_created: int
+
+
+__all__ = (
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse",
+)

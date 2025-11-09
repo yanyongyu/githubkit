@@ -36,19 +36,19 @@ if TYPE_CHECKING:
         SimpleUser,
     )
     from ..types import (
-        ProjectCardType,
-        ProjectCollaboratorPermissionType,
-        ProjectColumnType,
+        ProjectCardTypeForResponse,
+        ProjectCollaboratorPermissionTypeForResponse,
+        ProjectColumnTypeForResponse,
         ProjectsColumnsCardsCardIdMovesPostBodyType,
-        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
+        ProjectsColumnsCardsCardIdMovesPostResponse201TypeForResponse,
         ProjectsColumnsCardsCardIdPatchBodyType,
         ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
         ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
         ProjectsColumnsColumnIdMovesPostBodyType,
-        ProjectsColumnsColumnIdMovesPostResponse201Type,
+        ProjectsColumnsColumnIdMovesPostResponse201TypeForResponse,
         ProjectsColumnsColumnIdPatchBodyType,
         ProjectsProjectIdCollaboratorsUsernamePutBodyType,
-        SimpleUserType,
+        SimpleUserTypeForResponse,
     )
 
 
@@ -73,7 +73,7 @@ class ProjectsClassicClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectCard, ProjectCardType]:
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]:
         """DEPRECATED projects-classic/get-card
 
         GET /projects/columns/cards/{card_id}
@@ -110,7 +110,7 @@ class ProjectsClassicClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectCard, ProjectCardType]:
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]:
         """DEPRECATED projects-classic/get-card
 
         GET /projects/columns/cards/{card_id}
@@ -221,7 +221,7 @@ class ProjectsClassicClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
-    ) -> Response[ProjectCard, ProjectCardType]: ...
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]: ...
 
     @overload
     def update_card(
@@ -233,7 +233,7 @@ class ProjectsClassicClient:
         stream: bool = False,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
-    ) -> Response[ProjectCard, ProjectCardType]: ...
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]: ...
 
     def update_card(
         self,
@@ -243,7 +243,7 @@ class ProjectsClassicClient:
         stream: bool = False,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectCard, ProjectCardType]:
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]:
         """DEPRECATED projects-classic/update-card
 
         PATCH /projects/columns/cards/{card_id}
@@ -298,7 +298,7 @@ class ProjectsClassicClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
-    ) -> Response[ProjectCard, ProjectCardType]: ...
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]: ...
 
     @overload
     async def async_update_card(
@@ -310,7 +310,7 @@ class ProjectsClassicClient:
         stream: bool = False,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
-    ) -> Response[ProjectCard, ProjectCardType]: ...
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]: ...
 
     async def async_update_card(
         self,
@@ -320,7 +320,7 @@ class ProjectsClassicClient:
         stream: bool = False,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectCard, ProjectCardType]:
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]:
         """DEPRECATED projects-classic/update-card
 
         PATCH /projects/columns/cards/{card_id}
@@ -377,7 +377,7 @@ class ProjectsClassicClient:
         data: ProjectsColumnsCardsCardIdMovesPostBodyType,
     ) -> Response[
         ProjectsColumnsCardsCardIdMovesPostResponse201,
-        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
+        ProjectsColumnsCardsCardIdMovesPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -392,7 +392,7 @@ class ProjectsClassicClient:
         column_id: Missing[int] = UNSET,
     ) -> Response[
         ProjectsColumnsCardsCardIdMovesPostResponse201,
-        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
+        ProjectsColumnsCardsCardIdMovesPostResponse201TypeForResponse,
     ]: ...
 
     def move_card(
@@ -405,7 +405,7 @@ class ProjectsClassicClient:
         **kwargs,
     ) -> Response[
         ProjectsColumnsCardsCardIdMovesPostResponse201,
-        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
+        ProjectsColumnsCardsCardIdMovesPostResponse201TypeForResponse,
     ]:
         """DEPRECATED projects-classic/move-card
 
@@ -465,7 +465,7 @@ class ProjectsClassicClient:
         data: ProjectsColumnsCardsCardIdMovesPostBodyType,
     ) -> Response[
         ProjectsColumnsCardsCardIdMovesPostResponse201,
-        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
+        ProjectsColumnsCardsCardIdMovesPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -480,7 +480,7 @@ class ProjectsClassicClient:
         column_id: Missing[int] = UNSET,
     ) -> Response[
         ProjectsColumnsCardsCardIdMovesPostResponse201,
-        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
+        ProjectsColumnsCardsCardIdMovesPostResponse201TypeForResponse,
     ]: ...
 
     async def async_move_card(
@@ -493,7 +493,7 @@ class ProjectsClassicClient:
         **kwargs,
     ) -> Response[
         ProjectsColumnsCardsCardIdMovesPostResponse201,
-        ProjectsColumnsCardsCardIdMovesPostResponse201Type,
+        ProjectsColumnsCardsCardIdMovesPostResponse201TypeForResponse,
     ]:
         """DEPRECATED projects-classic/move-card
 
@@ -549,7 +549,7 @@ class ProjectsClassicClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectColumn, ProjectColumnType]:
+    ) -> Response[ProjectColumn, ProjectColumnTypeForResponse]:
         """DEPRECATED projects-classic/get-column
 
         GET /projects/columns/{column_id}
@@ -586,7 +586,7 @@ class ProjectsClassicClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectColumn, ProjectColumnType]:
+    ) -> Response[ProjectColumn, ProjectColumnTypeForResponse]:
         """DEPRECATED projects-classic/get-column
 
         GET /projects/columns/{column_id}
@@ -695,7 +695,7 @@ class ProjectsClassicClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ProjectsColumnsColumnIdPatchBodyType,
-    ) -> Response[ProjectColumn, ProjectColumnType]: ...
+    ) -> Response[ProjectColumn, ProjectColumnTypeForResponse]: ...
 
     @overload
     def update_column(
@@ -706,7 +706,7 @@ class ProjectsClassicClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         name: str,
-    ) -> Response[ProjectColumn, ProjectColumnType]: ...
+    ) -> Response[ProjectColumn, ProjectColumnTypeForResponse]: ...
 
     def update_column(
         self,
@@ -716,7 +716,7 @@ class ProjectsClassicClient:
         stream: bool = False,
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectColumn, ProjectColumnType]:
+    ) -> Response[ProjectColumn, ProjectColumnTypeForResponse]:
         """DEPRECATED projects-classic/update-column
 
         PATCH /projects/columns/{column_id}
@@ -764,7 +764,7 @@ class ProjectsClassicClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ProjectsColumnsColumnIdPatchBodyType,
-    ) -> Response[ProjectColumn, ProjectColumnType]: ...
+    ) -> Response[ProjectColumn, ProjectColumnTypeForResponse]: ...
 
     @overload
     async def async_update_column(
@@ -775,7 +775,7 @@ class ProjectsClassicClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         name: str,
-    ) -> Response[ProjectColumn, ProjectColumnType]: ...
+    ) -> Response[ProjectColumn, ProjectColumnTypeForResponse]: ...
 
     async def async_update_column(
         self,
@@ -785,7 +785,7 @@ class ProjectsClassicClient:
         stream: bool = False,
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProjectColumn, ProjectColumnType]:
+    ) -> Response[ProjectColumn, ProjectColumnTypeForResponse]:
         """DEPRECATED projects-classic/update-column
 
         PATCH /projects/columns/{column_id}
@@ -834,7 +834,7 @@ class ProjectsClassicClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ProjectCard], list[ProjectCardType]]:
+    ) -> Response[list[ProjectCard], list[ProjectCardTypeForResponse]]:
         """DEPRECATED projects-classic/list-cards
 
         GET /projects/columns/{column_id}/cards
@@ -880,7 +880,7 @@ class ProjectsClassicClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[ProjectCard], list[ProjectCardType]]:
+    ) -> Response[list[ProjectCard], list[ProjectCardTypeForResponse]]:
         """DEPRECATED projects-classic/list-cards
 
         GET /projects/columns/{column_id}/cards
@@ -928,7 +928,7 @@ class ProjectsClassicClient:
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
         ],
-    ) -> Response[ProjectCard, ProjectCardType]: ...
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]: ...
 
     @overload
     def create_card(
@@ -939,7 +939,7 @@ class ProjectsClassicClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         note: Union[str, None],
-    ) -> Response[ProjectCard, ProjectCardType]: ...
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]: ...
 
     @overload
     def create_card(
@@ -951,7 +951,7 @@ class ProjectsClassicClient:
         stream: bool = False,
         content_id: int,
         content_type: str,
-    ) -> Response[ProjectCard, ProjectCardType]: ...
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]: ...
 
     def create_card(
         self,
@@ -966,7 +966,7 @@ class ProjectsClassicClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[ProjectCard, ProjectCardType]:
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]:
         """DEPRECATED projects-classic/create-card
 
         POST /projects/columns/{column_id}/cards
@@ -1035,7 +1035,7 @@ class ProjectsClassicClient:
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
         ],
-    ) -> Response[ProjectCard, ProjectCardType]: ...
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]: ...
 
     @overload
     async def async_create_card(
@@ -1046,7 +1046,7 @@ class ProjectsClassicClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         note: Union[str, None],
-    ) -> Response[ProjectCard, ProjectCardType]: ...
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]: ...
 
     @overload
     async def async_create_card(
@@ -1058,7 +1058,7 @@ class ProjectsClassicClient:
         stream: bool = False,
         content_id: int,
         content_type: str,
-    ) -> Response[ProjectCard, ProjectCardType]: ...
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]: ...
 
     async def async_create_card(
         self,
@@ -1073,7 +1073,7 @@ class ProjectsClassicClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[ProjectCard, ProjectCardType]:
+    ) -> Response[ProjectCard, ProjectCardTypeForResponse]:
         """DEPRECATED projects-classic/create-card
 
         POST /projects/columns/{column_id}/cards
@@ -1141,7 +1141,7 @@ class ProjectsClassicClient:
         data: ProjectsColumnsColumnIdMovesPostBodyType,
     ) -> Response[
         ProjectsColumnsColumnIdMovesPostResponse201,
-        ProjectsColumnsColumnIdMovesPostResponse201Type,
+        ProjectsColumnsColumnIdMovesPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -1155,7 +1155,7 @@ class ProjectsClassicClient:
         position: str,
     ) -> Response[
         ProjectsColumnsColumnIdMovesPostResponse201,
-        ProjectsColumnsColumnIdMovesPostResponse201Type,
+        ProjectsColumnsColumnIdMovesPostResponse201TypeForResponse,
     ]: ...
 
     def move_column(
@@ -1168,7 +1168,7 @@ class ProjectsClassicClient:
         **kwargs,
     ) -> Response[
         ProjectsColumnsColumnIdMovesPostResponse201,
-        ProjectsColumnsColumnIdMovesPostResponse201Type,
+        ProjectsColumnsColumnIdMovesPostResponse201TypeForResponse,
     ]:
         """DEPRECATED projects-classic/move-column
 
@@ -1225,7 +1225,7 @@ class ProjectsClassicClient:
         data: ProjectsColumnsColumnIdMovesPostBodyType,
     ) -> Response[
         ProjectsColumnsColumnIdMovesPostResponse201,
-        ProjectsColumnsColumnIdMovesPostResponse201Type,
+        ProjectsColumnsColumnIdMovesPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -1239,7 +1239,7 @@ class ProjectsClassicClient:
         position: str,
     ) -> Response[
         ProjectsColumnsColumnIdMovesPostResponse201,
-        ProjectsColumnsColumnIdMovesPostResponse201Type,
+        ProjectsColumnsColumnIdMovesPostResponse201TypeForResponse,
     ]: ...
 
     async def async_move_column(
@@ -1252,7 +1252,7 @@ class ProjectsClassicClient:
         **kwargs,
     ) -> Response[
         ProjectsColumnsColumnIdMovesPostResponse201,
-        ProjectsColumnsColumnIdMovesPostResponse201Type,
+        ProjectsColumnsColumnIdMovesPostResponse201TypeForResponse,
     ]:
         """DEPRECATED projects-classic/move-column
 
@@ -1308,7 +1308,7 @@ class ProjectsClassicClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """DEPRECATED projects-classic/list-collaborators
 
         GET /projects/{project_id}/collaborators
@@ -1356,7 +1356,7 @@ class ProjectsClassicClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """DEPRECATED projects-classic/list-collaborators
 
         GET /projects/{project_id}/collaborators
@@ -1648,7 +1648,9 @@ class ProjectsClassicClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectCollaboratorPermission, ProjectCollaboratorPermissionType]:
+    ) -> Response[
+        ProjectCollaboratorPermission, ProjectCollaboratorPermissionTypeForResponse
+    ]:
         """DEPRECATED projects-classic/get-permission-for-user
 
         GET /projects/{project_id}/collaborators/{username}/permission
@@ -1687,7 +1689,9 @@ class ProjectsClassicClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ProjectCollaboratorPermission, ProjectCollaboratorPermissionType]:
+    ) -> Response[
+        ProjectCollaboratorPermission, ProjectCollaboratorPermissionTypeForResponse
+    ]:
         """DEPRECATED projects-classic/get-permission-for-user
 
         GET /projects/{project_id}/collaborators/{username}/permission

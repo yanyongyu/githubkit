@@ -25,6 +25,19 @@ class SecretScanningScanHistoryType(TypedDict):
     ]
 
 
+class SecretScanningScanHistoryTypeForResponse(TypedDict):
+    """SecretScanningScanHistory"""
+
+    incremental_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    pattern_update_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    backfill_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    custom_pattern_backfill_scans: NotRequired[
+        list[
+            SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse
+        ]
+    ]
+
+
 class SecretScanningScanType(TypedDict):
     """SecretScanningScan
 
@@ -35,6 +48,18 @@ class SecretScanningScanType(TypedDict):
     status: NotRequired[str]
     completed_at: NotRequired[Union[datetime, None]]
     started_at: NotRequired[Union[datetime, None]]
+
+
+class SecretScanningScanTypeForResponse(TypedDict):
+    """SecretScanningScan
+
+    Information on a single scan performed by secret scanning on the repository
+    """
+
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    started_at: NotRequired[Union[str, None]]
 
 
 class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType(TypedDict):
@@ -48,8 +73,24 @@ class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType(TypedDict
     pattern_scope: NotRequired[str]
 
 
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse(
+    TypedDict
+):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
+
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    started_at: NotRequired[Union[str, None]]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
+
+
 __all__ = (
     "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse",
     "SecretScanningScanHistoryType",
+    "SecretScanningScanHistoryTypeForResponse",
     "SecretScanningScanType",
+    "SecretScanningScanTypeForResponse",
 )

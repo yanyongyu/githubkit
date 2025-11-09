@@ -28,4 +28,21 @@ class WebhooksProjectColumnType(TypedDict):
     url: str
 
 
-__all__ = ("WebhooksProjectColumnType",)
+class WebhooksProjectColumnTypeForResponse(TypedDict):
+    """Project Column"""
+
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: str
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: str
+    url: str
+
+
+__all__ = (
+    "WebhooksProjectColumnType",
+    "WebhooksProjectColumnTypeForResponse",
+)

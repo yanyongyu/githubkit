@@ -20,4 +20,15 @@ class ReposOwnerRepoAutolinksPostBodyType(TypedDict):
     is_alphanumeric: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoAutolinksPostBodyType",)
+class ReposOwnerRepoAutolinksPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoAutolinksPostBody"""
+
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: NotRequired[bool]
+
+
+__all__ = (
+    "ReposOwnerRepoAutolinksPostBodyType",
+    "ReposOwnerRepoAutolinksPostBodyTypeForResponse",
+)

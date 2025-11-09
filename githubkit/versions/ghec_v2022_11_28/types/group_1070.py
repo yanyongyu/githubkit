@@ -19,4 +19,14 @@ class OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type(TypedDict):
     platforms: list[str]
 
 
-__all__ = ("OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type",)
+class OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+
+    total_count: int
+    platforms: list[str]
+
+
+__all__ = (
+    "OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse",
+)

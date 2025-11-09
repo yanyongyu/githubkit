@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0089 import RunnerLabelType
+from .group_0089 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
 class RunnerType(TypedDict):
@@ -30,4 +30,23 @@ class RunnerType(TypedDict):
     ephemeral: NotRequired[bool]
 
 
-__all__ = ("RunnerType",)
+class RunnerTypeForResponse(TypedDict):
+    """Self hosted runners
+
+    A self hosted runner
+    """
+
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelTypeForResponse]
+    ephemeral: NotRequired[bool]
+
+
+__all__ = (
+    "RunnerType",
+    "RunnerTypeForResponse",
+)

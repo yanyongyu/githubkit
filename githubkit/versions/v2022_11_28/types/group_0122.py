@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class OrganizationRoleType(TypedDict):
@@ -37,6 +37,27 @@ class OrganizationRoleType(TypedDict):
     updated_at: datetime
 
 
+class OrganizationRoleTypeForResponse(TypedDict):
+    """Organization Role
+
+    Organization roles
+    """
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    ]
+    source: NotRequired[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+    ]
+    permissions: list[str]
+    organization: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+
+
 class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
     """OrgsOrgOrganizationRolesGetResponse200"""
 
@@ -44,7 +65,16 @@ class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
     roles: NotRequired[list[OrganizationRoleType]]
 
 
+class OrgsOrgOrganizationRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleTypeForResponse]]
+
+
 __all__ = (
     "OrganizationRoleType",
+    "OrganizationRoleTypeForResponse",
     "OrgsOrgOrganizationRolesGetResponse200Type",
+    "OrgsOrgOrganizationRolesGetResponse200TypeForResponse",
 )

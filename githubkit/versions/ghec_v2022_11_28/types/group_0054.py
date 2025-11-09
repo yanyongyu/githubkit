@@ -23,4 +23,18 @@ class InstallableOrganizationType(TypedDict):
     accessible_repositories_url: NotRequired[str]
 
 
-__all__ = ("InstallableOrganizationType",)
+class InstallableOrganizationTypeForResponse(TypedDict):
+    """Installable Organization
+
+    A GitHub organization on which a GitHub App can be installed.
+    """
+
+    id: int
+    login: str
+    accessible_repositories_url: NotRequired[str]
+
+
+__all__ = (
+    "InstallableOrganizationType",
+    "InstallableOrganizationTypeForResponse",
+)

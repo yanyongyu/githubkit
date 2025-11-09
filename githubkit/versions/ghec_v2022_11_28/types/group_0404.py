@@ -13,10 +13,10 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0080 import TeamType
-from .group_0198 import IssueType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0080 import TeamType, TeamTypeForResponse
+from .group_0198 import IssueType, IssueTypeForResponse
 
 
 class IssueEventType(TypedDict):
@@ -60,7 +60,58 @@ class IssueEventType(TypedDict):
     performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
+class IssueEventTypeForResponse(TypedDict):
+    """Issue Event
+
+    Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: Union[None, SimpleUserTypeForResponse]
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    issue: NotRequired[Union[None, IssueTypeForResponse]]
+    label: NotRequired[IssueEventLabelTypeForResponse]
+    assignee: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    assigner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    review_requester: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    requested_reviewer: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    requested_team: NotRequired[TeamTypeForResponse]
+    dismissed_review: NotRequired[IssueEventDismissedReviewTypeForResponse]
+    milestone: NotRequired[IssueEventMilestoneTypeForResponse]
+    project_card: NotRequired[IssueEventProjectCardTypeForResponse]
+    rename: NotRequired[IssueEventRenameTypeForResponse]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    lock_reason: NotRequired[Union[str, None]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+
+
 class IssueEventLabelType(TypedDict):
+    """Issue Event Label
+
+    Issue Event Label
+    """
+
+    name: Union[str, None]
+    color: Union[str, None]
+
+
+class IssueEventLabelTypeForResponse(TypedDict):
     """Issue Event Label
 
     Issue Event Label
@@ -79,6 +130,15 @@ class IssueEventDismissedReviewType(TypedDict):
     dismissal_commit_id: NotRequired[Union[str, None]]
 
 
+class IssueEventDismissedReviewTypeForResponse(TypedDict):
+    """Issue Event Dismissed Review"""
+
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[Union[str, None]]
+
+
 class IssueEventMilestoneType(TypedDict):
     """Issue Event Milestone
 
@@ -88,7 +148,30 @@ class IssueEventMilestoneType(TypedDict):
     title: str
 
 
+class IssueEventMilestoneTypeForResponse(TypedDict):
+    """Issue Event Milestone
+
+    Issue Event Milestone
+    """
+
+    title: str
+
+
 class IssueEventProjectCardType(TypedDict):
+    """Issue Event Project Card
+
+    Issue Event Project Card
+    """
+
+    url: str
+    id: int
+    project_url: str
+    project_id: int
+    column_name: str
+    previous_column_name: NotRequired[str]
+
+
+class IssueEventProjectCardTypeForResponse(TypedDict):
     """Issue Event Project Card
 
     Issue Event Project Card
@@ -112,11 +195,27 @@ class IssueEventRenameType(TypedDict):
     to: str
 
 
+class IssueEventRenameTypeForResponse(TypedDict):
+    """Issue Event Rename
+
+    Issue Event Rename
+    """
+
+    from_: str
+    to: str
+
+
 __all__ = (
     "IssueEventDismissedReviewType",
+    "IssueEventDismissedReviewTypeForResponse",
     "IssueEventLabelType",
+    "IssueEventLabelTypeForResponse",
     "IssueEventMilestoneType",
+    "IssueEventMilestoneTypeForResponse",
     "IssueEventProjectCardType",
+    "IssueEventProjectCardTypeForResponse",
     "IssueEventRenameType",
+    "IssueEventRenameTypeForResponse",
     "IssueEventType",
+    "IssueEventTypeForResponse",
 )

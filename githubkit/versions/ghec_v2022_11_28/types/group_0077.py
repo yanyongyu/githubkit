@@ -28,4 +28,22 @@ class EnterpriseSecurityAnalysisSettingsType(TypedDict):
     secret_scanning_validity_checks_enabled: NotRequired[bool]
 
 
-__all__ = ("EnterpriseSecurityAnalysisSettingsType",)
+class EnterpriseSecurityAnalysisSettingsTypeForResponse(TypedDict):
+    """Enterprise Security Analysis Settings"""
+
+    advanced_security_enabled_for_new_repositories: bool
+    advanced_security_enabled_for_new_user_namespace_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: bool
+    secret_scanning_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        bool
+    ]
+    secret_scanning_validity_checks_enabled: NotRequired[bool]
+
+
+__all__ = (
+    "EnterpriseSecurityAnalysisSettingsType",
+    "EnterpriseSecurityAnalysisSettingsTypeForResponse",
+)

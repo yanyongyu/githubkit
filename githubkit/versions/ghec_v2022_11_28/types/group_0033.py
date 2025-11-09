@@ -28,4 +28,23 @@ class ActionsHostedRunnerCustomImageType(TypedDict):
     state: str
 
 
-__all__ = ("ActionsHostedRunnerCustomImageType",)
+class ActionsHostedRunnerCustomImageTypeForResponse(TypedDict):
+    """GitHub-hosted runner custom image details
+
+    Provides details of a custom runner image
+    """
+
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
+
+
+__all__ = (
+    "ActionsHostedRunnerCustomImageType",
+    "ActionsHostedRunnerCustomImageTypeForResponse",
+)

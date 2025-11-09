@@ -26,7 +26,27 @@ class GetBudgetType(TypedDict):
     budget_alerting: GetBudgetPropBudgetAlertingType
 
 
+class GetBudgetTypeForResponse(TypedDict):
+    """GetBudget"""
+
+    id: str
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
+    budget_entity_name: str
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_product_sku: str
+    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
+
+
 class GetBudgetPropBudgetAlertingType(TypedDict):
+    """GetBudgetPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
+
+
+class GetBudgetPropBudgetAlertingTypeForResponse(TypedDict):
     """GetBudgetPropBudgetAlerting"""
 
     will_alert: NotRequired[bool]
@@ -35,5 +55,7 @@ class GetBudgetPropBudgetAlertingType(TypedDict):
 
 __all__ = (
     "GetBudgetPropBudgetAlertingType",
+    "GetBudgetPropBudgetAlertingTypeForResponse",
     "GetBudgetType",
+    "GetBudgetTypeForResponse",
 )

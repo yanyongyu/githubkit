@@ -18,4 +18,13 @@ class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType(TypedDict):
     name: str
 
 
-__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType",)
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
+
+    name: str
+
+
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse",
+)

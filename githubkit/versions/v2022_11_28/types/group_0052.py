@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class GistCommentType(TypedDict):
@@ -41,4 +41,32 @@ class GistCommentType(TypedDict):
     ]
 
 
-__all__ = ("GistCommentType",)
+class GistCommentTypeForResponse(TypedDict):
+    """Gist Comment
+
+    A comment made to a gist.
+    """
+
+    id: int
+    node_id: str
+    url: str
+    body: str
+    user: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+
+
+__all__ = (
+    "GistCommentType",
+    "GistCommentTypeForResponse",
+)

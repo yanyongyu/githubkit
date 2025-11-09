@@ -32,6 +32,24 @@ class GitCommitType(TypedDict):
     html_url: str
 
 
+class GitCommitTypeForResponse(TypedDict):
+    """Git Commit
+
+    Low-level Git commit operations within a repository
+    """
+
+    sha: str
+    node_id: str
+    url: str
+    author: GitCommitPropAuthorTypeForResponse
+    committer: GitCommitPropCommitterTypeForResponse
+    message: str
+    tree: GitCommitPropTreeTypeForResponse
+    parents: list[GitCommitPropParentsItemsTypeForResponse]
+    verification: GitCommitPropVerificationTypeForResponse
+    html_url: str
+
+
 class GitCommitPropAuthorType(TypedDict):
     """GitCommitPropAuthor
 
@@ -39,6 +57,17 @@ class GitCommitPropAuthorType(TypedDict):
     """
 
     date: datetime
+    email: str
+    name: str
+
+
+class GitCommitPropAuthorTypeForResponse(TypedDict):
+    """GitCommitPropAuthor
+
+    Identifying information for the git-user
+    """
+
+    date: str
     email: str
     name: str
 
@@ -54,6 +83,17 @@ class GitCommitPropCommitterType(TypedDict):
     name: str
 
 
+class GitCommitPropCommitterTypeForResponse(TypedDict):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: str
+    email: str
+    name: str
+
+
 class GitCommitPropTreeType(TypedDict):
     """GitCommitPropTree"""
 
@@ -61,7 +101,22 @@ class GitCommitPropTreeType(TypedDict):
     url: str
 
 
+class GitCommitPropTreeTypeForResponse(TypedDict):
+    """GitCommitPropTree"""
+
+    sha: str
+    url: str
+
+
 class GitCommitPropParentsItemsType(TypedDict):
+    """GitCommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class GitCommitPropParentsItemsTypeForResponse(TypedDict):
     """GitCommitPropParentsItems"""
 
     sha: str
@@ -79,11 +134,27 @@ class GitCommitPropVerificationType(TypedDict):
     verified_at: Union[str, None]
 
 
+class GitCommitPropVerificationTypeForResponse(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
+
+
 __all__ = (
     "GitCommitPropAuthorType",
+    "GitCommitPropAuthorTypeForResponse",
     "GitCommitPropCommitterType",
+    "GitCommitPropCommitterTypeForResponse",
     "GitCommitPropParentsItemsType",
+    "GitCommitPropParentsItemsTypeForResponse",
     "GitCommitPropTreeType",
+    "GitCommitPropTreeTypeForResponse",
     "GitCommitPropVerificationType",
+    "GitCommitPropVerificationTypeForResponse",
     "GitCommitType",
+    "GitCommitTypeForResponse",
 )

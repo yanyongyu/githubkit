@@ -21,7 +21,22 @@ class WebhooksChangesType(TypedDict):
     body: NotRequired[WebhooksChangesPropBodyType]
 
 
+class WebhooksChangesTypeForResponse(TypedDict):
+    """WebhooksChanges
+
+    The changes to the comment.
+    """
+
+    body: NotRequired[WebhooksChangesPropBodyTypeForResponse]
+
+
 class WebhooksChangesPropBodyType(TypedDict):
+    """WebhooksChangesPropBody"""
+
+    from_: str
+
+
+class WebhooksChangesPropBodyTypeForResponse(TypedDict):
     """WebhooksChangesPropBody"""
 
     from_: str
@@ -29,5 +44,7 @@ class WebhooksChangesPropBodyType(TypedDict):
 
 __all__ = (
     "WebhooksChangesPropBodyType",
+    "WebhooksChangesPropBodyTypeForResponse",
     "WebhooksChangesType",
+    "WebhooksChangesTypeForResponse",
 )

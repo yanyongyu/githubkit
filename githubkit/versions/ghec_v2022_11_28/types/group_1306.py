@@ -24,6 +24,16 @@ class ReposOwnerRepoGitTagsPostBodyType(TypedDict):
     tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerType]
 
 
+class ReposOwnerRepoGitTagsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTagsPostBody"""
+
+    tag: str
+    message: str
+    object_: str
+    type: Literal["commit", "tree", "blob"]
+    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse]
+
+
 class ReposOwnerRepoGitTagsPostBodyPropTaggerType(TypedDict):
     """ReposOwnerRepoGitTagsPostBodyPropTagger
 
@@ -35,7 +45,20 @@ class ReposOwnerRepoGitTagsPostBodyPropTaggerType(TypedDict):
     date: NotRequired[datetime]
 
 
+class ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
+
+    An object with information about the individual creating the tag.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
+
+
 __all__ = (
     "ReposOwnerRepoGitTagsPostBodyPropTaggerType",
+    "ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse",
     "ReposOwnerRepoGitTagsPostBodyType",
+    "ReposOwnerRepoGitTagsPostBodyTypeForResponse",
 )

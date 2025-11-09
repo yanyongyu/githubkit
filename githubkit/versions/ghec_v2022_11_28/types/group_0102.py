@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0101 import CustomPropertyValueType
+from .group_0101 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
 class CustomPropertiesForOrgsGetEnterprisePropertyValuesType(TypedDict):
@@ -25,4 +25,18 @@ class CustomPropertiesForOrgsGetEnterprisePropertyValuesType(TypedDict):
     properties: list[CustomPropertyValueType]
 
 
-__all__ = ("CustomPropertiesForOrgsGetEnterprisePropertyValuesType",)
+class CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse(TypedDict):
+    """Enterprise Organization Custom Property Values
+
+    List of custom property values for an organization
+    """
+
+    organization_id: int
+    organization_login: str
+    properties: list[CustomPropertyValueTypeForResponse]
+
+
+__all__ = (
+    "CustomPropertiesForOrgsGetEnterprisePropertyValuesType",
+    "CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse",
+)

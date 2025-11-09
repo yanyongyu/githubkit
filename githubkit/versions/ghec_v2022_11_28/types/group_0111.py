@@ -19,4 +19,14 @@ class RepositoryRulesetConditionsPropRefNameType(TypedDict):
     exclude: NotRequired[list[str]]
 
 
-__all__ = ("RepositoryRulesetConditionsPropRefNameType",)
+class RepositoryRulesetConditionsPropRefNameTypeForResponse(TypedDict):
+    """RepositoryRulesetConditionsPropRefName"""
+
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
+
+
+__all__ = (
+    "RepositoryRulesetConditionsPropRefNameType",
+    "RepositoryRulesetConditionsPropRefNameTypeForResponse",
+)

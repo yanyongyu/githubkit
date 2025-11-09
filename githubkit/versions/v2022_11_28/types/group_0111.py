@@ -24,4 +24,18 @@ class ApiInsightsRouteStatsItemsType(TypedDict):
     last_request_timestamp: NotRequired[str]
 
 
-__all__ = ("ApiInsightsRouteStatsItemsType",)
+class ApiInsightsRouteStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsRouteStatsItems"""
+
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
+
+
+__all__ = (
+    "ApiInsightsRouteStatsItemsType",
+    "ApiInsightsRouteStatsItemsTypeForResponse",
+)

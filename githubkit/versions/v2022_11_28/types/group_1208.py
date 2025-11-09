@@ -22,4 +22,16 @@ class ReposOwnerRepoStatusesShaPostBodyType(TypedDict):
     context: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoStatusesShaPostBodyType",)
+class ReposOwnerRepoStatusesShaPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoStatusesShaPostBody"""
+
+    state: Literal["error", "failure", "pending", "success"]
+    target_url: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    context: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoStatusesShaPostBodyType",
+    "ReposOwnerRepoStatusesShaPostBodyTypeForResponse",
+)

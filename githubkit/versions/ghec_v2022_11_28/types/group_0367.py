@@ -34,7 +34,36 @@ class ContentTreeType(TypedDict):
     links: ContentTreePropLinksType
 
 
+class ContentTreeTypeForResponse(TypedDict):
+    """Content Tree
+
+    Content Tree
+    """
+
+    type: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    content: NotRequired[str]
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    entries: NotRequired[list[ContentTreePropEntriesItemsTypeForResponse]]
+    encoding: NotRequired[str]
+    links: ContentTreePropLinksTypeForResponse
+
+
 class ContentTreePropLinksType(TypedDict):
+    """ContentTreePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentTreePropLinksTypeForResponse(TypedDict):
     """ContentTreePropLinks"""
 
     git: Union[str, None]
@@ -57,7 +86,30 @@ class ContentTreePropEntriesItemsType(TypedDict):
     links: ContentTreePropEntriesItemsPropLinksType
 
 
+class ContentTreePropEntriesItemsTypeForResponse(TypedDict):
+    """ContentTreePropEntriesItems"""
+
+    type: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentTreePropEntriesItemsPropLinksTypeForResponse
+
+
 class ContentTreePropEntriesItemsPropLinksType(TypedDict):
+    """ContentTreePropEntriesItemsPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentTreePropEntriesItemsPropLinksTypeForResponse(TypedDict):
     """ContentTreePropEntriesItemsPropLinks"""
 
     git: Union[str, None]
@@ -67,7 +119,11 @@ class ContentTreePropEntriesItemsPropLinksType(TypedDict):
 
 __all__ = (
     "ContentTreePropEntriesItemsPropLinksType",
+    "ContentTreePropEntriesItemsPropLinksTypeForResponse",
     "ContentTreePropEntriesItemsType",
+    "ContentTreePropEntriesItemsTypeForResponse",
     "ContentTreePropLinksType",
+    "ContentTreePropLinksTypeForResponse",
     "ContentTreeType",
+    "ContentTreeTypeForResponse",
 )

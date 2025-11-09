@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0490 import TrafficType
+from .group_0490 import TrafficType, TrafficTypeForResponse
 
 
 class ViewTrafficType(TypedDict):
@@ -25,4 +25,18 @@ class ViewTrafficType(TypedDict):
     views: list[TrafficType]
 
 
-__all__ = ("ViewTrafficType",)
+class ViewTrafficTypeForResponse(TypedDict):
+    """View Traffic
+
+    View Traffic
+    """
+
+    count: int
+    uniques: int
+    views: list[TrafficTypeForResponse]
+
+
+__all__ = (
+    "ViewTrafficType",
+    "ViewTrafficTypeForResponse",
+)

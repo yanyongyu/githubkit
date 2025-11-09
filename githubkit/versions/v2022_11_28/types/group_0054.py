@@ -22,4 +22,17 @@ class GitignoreTemplateType(TypedDict):
     source: str
 
 
-__all__ = ("GitignoreTemplateType",)
+class GitignoreTemplateTypeForResponse(TypedDict):
+    """Gitignore Template
+
+    Gitignore Template
+    """
+
+    name: str
+    source: str
+
+
+__all__ = (
+    "GitignoreTemplateType",
+    "GitignoreTemplateTypeForResponse",
+)

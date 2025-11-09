@@ -24,7 +24,11 @@ if TYPE_CHECKING:
     from githubkit.response import Response
 
     from ..models import EmptyObject, OidcCustomSub
-    from ..types import EmptyObjectType, OidcCustomSubType
+    from ..types import (
+        EmptyObjectTypeForResponse,
+        OidcCustomSubType,
+        OidcCustomSubTypeForResponse,
+    )
 
 
 class OidcClient:
@@ -48,7 +52,7 @@ class OidcClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OidcCustomSub, OidcCustomSubType]:
+    ) -> Response[OidcCustomSub, OidcCustomSubTypeForResponse]:
         """oidc/get-oidc-custom-sub-template-for-org
 
         GET /orgs/{org}/actions/oidc/customization/sub
@@ -80,7 +84,7 @@ class OidcClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OidcCustomSub, OidcCustomSubType]:
+    ) -> Response[OidcCustomSub, OidcCustomSubTypeForResponse]:
         """oidc/get-oidc-custom-sub-template-for-org
 
         GET /orgs/{org}/actions/oidc/customization/sub
@@ -114,7 +118,7 @@ class OidcClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OidcCustomSubType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def update_oidc_custom_sub_template_for_org(
@@ -125,7 +129,7 @@ class OidcClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         include_claim_keys: list[str],
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def update_oidc_custom_sub_template_for_org(
         self,
@@ -135,7 +139,7 @@ class OidcClient:
         stream: bool = False,
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """oidc/update-oidc-custom-sub-template-for-org
 
         PUT /orgs/{org}/actions/oidc/customization/sub
@@ -183,7 +187,7 @@ class OidcClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OidcCustomSubType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_update_oidc_custom_sub_template_for_org(
@@ -194,7 +198,7 @@ class OidcClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         include_claim_keys: list[str],
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_update_oidc_custom_sub_template_for_org(
         self,
@@ -204,7 +208,7 @@ class OidcClient:
         stream: bool = False,
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """oidc/update-oidc-custom-sub-template-for-org
 
         PUT /orgs/{org}/actions/oidc/customization/sub

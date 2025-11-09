@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0162 import RepositoryRuleMergeQueuePropParametersType
+from .group_0162 import (
+    RepositoryRuleMergeQueuePropParametersType,
+    RepositoryRuleMergeQueuePropParametersTypeForResponse,
+)
 
 
 class RepositoryRuleMergeQueueType(TypedDict):
@@ -25,4 +28,17 @@ class RepositoryRuleMergeQueueType(TypedDict):
     parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-__all__ = ("RepositoryRuleMergeQueueType",)
+class RepositoryRuleMergeQueueTypeForResponse(TypedDict):
+    """merge_queue
+
+    Merges must be performed via a merge queue.
+    """
+
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
+
+
+__all__ = (
+    "RepositoryRuleMergeQueueType",
+    "RepositoryRuleMergeQueueTypeForResponse",
+)

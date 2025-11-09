@@ -22,4 +22,16 @@ class OrgsOrgActionsVariablesPostBodyType(TypedDict):
     selected_repository_ids: NotRequired[list[int]]
 
 
-__all__ = ("OrgsOrgActionsVariablesPostBodyType",)
+class OrgsOrgActionsVariablesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsVariablesPostBody"""
+
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
+
+
+__all__ = (
+    "OrgsOrgActionsVariablesPostBodyType",
+    "OrgsOrgActionsVariablesPostBodyTypeForResponse",
+)

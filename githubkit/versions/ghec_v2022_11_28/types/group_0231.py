@@ -34,4 +34,27 @@ class CredentialAuthorizationType(TypedDict):
     authorized_credential_expires_at: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("CredentialAuthorizationType",)
+class CredentialAuthorizationTypeForResponse(TypedDict):
+    """Credential Authorization
+
+    Credential Authorization
+    """
+
+    login: str
+    credential_id: int
+    credential_type: str
+    token_last_eight: NotRequired[str]
+    credential_authorized_at: str
+    scopes: NotRequired[list[str]]
+    fingerprint: NotRequired[str]
+    credential_accessed_at: Union[str, None]
+    authorized_credential_id: Union[int, None]
+    authorized_credential_title: NotRequired[Union[str, None]]
+    authorized_credential_note: NotRequired[Union[str, None]]
+    authorized_credential_expires_at: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "CredentialAuthorizationType",
+    "CredentialAuthorizationTypeForResponse",
+)

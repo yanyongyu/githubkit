@@ -12,13 +12,19 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0018 import InstallationType
-from .group_0450 import EnterpriseWebhooksType
-from .group_0452 import OrganizationSimpleWebhooksType
-from .group_0453 import RepositoryWebhooksType
-from .group_0461 import WebhooksUserType
-from .group_0466 import WebhooksRepositoriesItemsType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0018 import InstallationType, InstallationTypeForResponse
+from .group_0450 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0452 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0453 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0461 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0466 import (
+    WebhooksRepositoriesItemsType,
+    WebhooksRepositoriesItemsTypeForResponse,
+)
 
 
 class WebhookInstallationCreatedType(TypedDict):
@@ -34,4 +40,20 @@ class WebhookInstallationCreatedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookInstallationCreatedType",)
+class WebhookInstallationCreatedTypeForResponse(TypedDict):
+    """installation created event"""
+
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: InstallationTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    requester: NotRequired[Union[WebhooksUserTypeForResponse, None]]
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookInstallationCreatedType",
+    "WebhookInstallationCreatedTypeForResponse",
+)

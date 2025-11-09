@@ -22,4 +22,17 @@ class CodeScanningAutofixCommitsType(TypedDict):
     message: NotRequired[str]
 
 
-__all__ = ("CodeScanningAutofixCommitsType",)
+class CodeScanningAutofixCommitsTypeForResponse(TypedDict):
+    """CodeScanningAutofixCommits
+
+    Commit an autofix for a code scanning alert
+    """
+
+    target_ref: NotRequired[str]
+    message: NotRequired[str]
+
+
+__all__ = (
+    "CodeScanningAutofixCommitsType",
+    "CodeScanningAutofixCommitsTypeForResponse",
+)

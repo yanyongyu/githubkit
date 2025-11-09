@@ -20,4 +20,15 @@ with scalar values.
 """
 
 
-__all__ = ("MetadataType",)
+MetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""metadata
+
+User-defined metadata to store domain-specific information limited to 8 keys
+with scalar values.
+"""
+
+
+__all__ = (
+    "MetadataType",
+    "MetadataTypeForResponse",
+)

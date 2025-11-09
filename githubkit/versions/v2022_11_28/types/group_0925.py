@@ -21,4 +21,16 @@ class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
     work_folder: NotRequired[str]
 
 
-__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",)
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
+
+
+__all__ = (
+    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
+)

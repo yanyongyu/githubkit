@@ -20,4 +20,16 @@ class ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType(TypedD
     message: str
 
 
-__all__ = ("ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType",)
+class ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody"""
+
+    status: Literal["approve", "deny"]
+    message: str
+
+
+__all__ = (
+    "ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType",
+    "ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyTypeForResponse",
+)

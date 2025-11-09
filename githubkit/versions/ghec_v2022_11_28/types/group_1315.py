@@ -16,4 +16,11 @@ class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type(TypedDict):
     """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
-__all__ = ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type",)
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
+
+
+__all__ = (
+    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type",
+    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse",
+)

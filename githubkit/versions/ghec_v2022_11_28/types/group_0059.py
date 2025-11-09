@@ -26,4 +26,19 @@ class GetAuditLogStreamConfigsItemsType(TypedDict):
     paused_at: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("GetAuditLogStreamConfigsItemsType",)
+class GetAuditLogStreamConfigsItemsTypeForResponse(TypedDict):
+    """GetAuditLogStreamConfigsItems"""
+
+    id: NotRequired[int]
+    stream_type: NotRequired[str]
+    stream_details: NotRequired[str]
+    enabled: NotRequired[bool]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    paused_at: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "GetAuditLogStreamConfigsItemsType",
+    "GetAuditLogStreamConfigsItemsTypeForResponse",
+)

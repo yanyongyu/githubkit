@@ -32,4 +32,25 @@ class DeployKeyType(TypedDict):
     enabled: NotRequired[bool]
 
 
-__all__ = ("DeployKeyType",)
+class DeployKeyTypeForResponse(TypedDict):
+    """Deploy Key
+
+    An SSH key granting access to a single repository.
+    """
+
+    id: int
+    key: str
+    url: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[str, None]]
+    enabled: NotRequired[bool]
+
+
+__all__ = (
+    "DeployKeyType",
+    "DeployKeyTypeForResponse",
+)

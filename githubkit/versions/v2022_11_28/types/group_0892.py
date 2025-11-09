@@ -18,4 +18,13 @@ class NotificationsPutResponse202Type(TypedDict):
     message: NotRequired[str]
 
 
-__all__ = ("NotificationsPutResponse202Type",)
+class NotificationsPutResponse202TypeForResponse(TypedDict):
+    """NotificationsPutResponse202"""
+
+    message: NotRequired[str]
+
+
+__all__ = (
+    "NotificationsPutResponse202Type",
+    "NotificationsPutResponse202TypeForResponse",
+)

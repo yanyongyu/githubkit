@@ -25,4 +25,20 @@ class TagProtectionType(TypedDict):
     pattern: str
 
 
-__all__ = ("TagProtectionType",)
+class TagProtectionTypeForResponse(TypedDict):
+    """Tag protection
+
+    Tag protection
+    """
+
+    id: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    enabled: NotRequired[bool]
+    pattern: str
+
+
+__all__ = (
+    "TagProtectionType",
+    "TagProtectionTypeForResponse",
+)

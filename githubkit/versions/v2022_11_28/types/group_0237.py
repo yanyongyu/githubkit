@@ -13,10 +13,10 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0061 import MinimalRepositoryType
-from .group_0235 import PullRequestMinimalType
-from .group_0236 import SimpleCommitType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0061 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0235 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0236 import SimpleCommitType, SimpleCommitTypeForResponse
 
 
 class WorkflowRunType(TypedDict):
@@ -63,7 +63,64 @@ class WorkflowRunType(TypedDict):
     display_title: str
 
 
+class WorkflowRunTypeForResponse(TypedDict):
+    """Workflow Run
+
+    An invocation of a workflow
+    """
+
+    id: int
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    check_suite_id: NotRequired[int]
+    check_suite_node_id: NotRequired[str]
+    head_branch: Union[str, None]
+    head_sha: str
+    path: str
+    run_number: int
+    run_attempt: NotRequired[int]
+    referenced_workflows: NotRequired[
+        Union[list[ReferencedWorkflowTypeForResponse], None]
+    ]
+    event: str
+    status: Union[str, None]
+    conclusion: Union[str, None]
+    workflow_id: int
+    url: str
+    html_url: str
+    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
+    created_at: str
+    updated_at: str
+    actor: NotRequired[SimpleUserTypeForResponse]
+    triggering_actor: NotRequired[SimpleUserTypeForResponse]
+    run_started_at: NotRequired[str]
+    jobs_url: str
+    logs_url: str
+    check_suite_url: str
+    artifacts_url: str
+    cancel_url: str
+    rerun_url: str
+    previous_attempt_url: NotRequired[Union[str, None]]
+    workflow_url: str
+    head_commit: Union[None, SimpleCommitTypeForResponse]
+    repository: MinimalRepositoryTypeForResponse
+    head_repository: MinimalRepositoryTypeForResponse
+    head_repository_id: NotRequired[int]
+    display_title: str
+
+
 class ReferencedWorkflowType(TypedDict):
+    """Referenced workflow
+
+    A workflow referenced/reused by the initial caller workflow
+    """
+
+    path: str
+    sha: str
+    ref: NotRequired[str]
+
+
+class ReferencedWorkflowTypeForResponse(TypedDict):
     """Referenced workflow
 
     A workflow referenced/reused by the initial caller workflow
@@ -76,5 +133,7 @@ class ReferencedWorkflowType(TypedDict):
 
 __all__ = (
     "ReferencedWorkflowType",
+    "ReferencedWorkflowTypeForResponse",
     "WorkflowRunType",
+    "WorkflowRunTypeForResponse",
 )

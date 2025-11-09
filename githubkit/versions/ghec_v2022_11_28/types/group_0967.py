@@ -25,7 +25,33 @@ class EnterprisesEnterpriseActionsHostedRunnersPostBodyType(TypedDict):
     image_gen: NotRequired[bool]
 
 
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
+
+    name: str
+    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
+
+
 class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
+
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse(
+    TypedDict
+):
     """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
 
     The image of runner. To list all available images, use `GET /actions/hosted-
@@ -39,5 +65,7 @@ class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType(TypedDict):
 
 __all__ = (
     "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse",
     "EnterprisesEnterpriseActionsHostedRunnersPostBodyType",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyTypeForResponse",
 )

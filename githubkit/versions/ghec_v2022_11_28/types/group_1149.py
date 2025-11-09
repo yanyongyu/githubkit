@@ -18,4 +18,13 @@ class OrgsOrgOutsideCollaboratorsUsernamePutBodyType(TypedDict):
     async_: NotRequired[bool]
 
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBodyType",)
+class OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+
+    async_: NotRequired[bool]
+
+
+__all__ = (
+    "OrgsOrgOutsideCollaboratorsUsernamePutBodyType",
+    "OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse",
+)

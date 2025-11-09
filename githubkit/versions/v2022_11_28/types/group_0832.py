@@ -26,4 +26,19 @@ class WebhookStatusPropCommitPropCommitPropAuthorAllof0Type(TypedDict):
     username: NotRequired[str]
 
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof0Type",)
+class WebhookStatusPropCommitPropCommitPropAuthorAllof0TypeForResponse(TypedDict):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[str]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
+
+
+__all__ = (
+    "WebhookStatusPropCommitPropCommitPropAuthorAllof0Type",
+    "WebhookStatusPropCommitPropCommitPropAuthorAllof0TypeForResponse",
+)

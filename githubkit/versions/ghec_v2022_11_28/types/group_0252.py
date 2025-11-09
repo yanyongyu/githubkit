@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0044 import OrganizationSimpleType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0044 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
 
 class OrgMembershipType(TypedDict):
@@ -33,7 +33,30 @@ class OrgMembershipType(TypedDict):
     permissions: NotRequired[OrgMembershipPropPermissionsType]
 
 
+class OrgMembershipTypeForResponse(TypedDict):
+    """Org Membership
+
+    Org Membership
+    """
+
+    url: str
+    state: Literal["active", "pending"]
+    role: Literal["admin", "member", "billing_manager"]
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    organization_url: str
+    organization: OrganizationSimpleTypeForResponse
+    user: Union[None, SimpleUserTypeForResponse]
+    permissions: NotRequired[OrgMembershipPropPermissionsTypeForResponse]
+
+
 class OrgMembershipPropPermissionsType(TypedDict):
+    """OrgMembershipPropPermissions"""
+
+    can_create_repository: bool
+
+
+class OrgMembershipPropPermissionsTypeForResponse(TypedDict):
     """OrgMembershipPropPermissions"""
 
     can_create_repository: bool
@@ -41,5 +64,7 @@ class OrgMembershipPropPermissionsType(TypedDict):
 
 __all__ = (
     "OrgMembershipPropPermissionsType",
+    "OrgMembershipPropPermissionsTypeForResponse",
     "OrgMembershipType",
+    "OrgMembershipTypeForResponse",
 )

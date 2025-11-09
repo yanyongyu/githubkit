@@ -18,4 +18,13 @@ class ReposOwnerRepoCollaboratorsUsernamePutBodyType(TypedDict):
     permission: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBodyType",)
+class ReposOwnerRepoCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
+
+    permission: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoCollaboratorsUsernamePutBodyType",
+    "ReposOwnerRepoCollaboratorsUsernamePutBodyTypeForResponse",
+)

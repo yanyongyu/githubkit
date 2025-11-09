@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1351 import ReposOwnerRepoPagesPostBodyPropSourceType
+from .group_1351 import (
+    ReposOwnerRepoPagesPostBodyPropSourceType,
+    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
+)
 
 
 class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
@@ -22,4 +25,14 @@ class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
     source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
 
 
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof1Type",)
+class ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
+
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse]
+
+
+__all__ = (
+    "ReposOwnerRepoPagesPostBodyAnyof1Type",
+    "ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse",
+)

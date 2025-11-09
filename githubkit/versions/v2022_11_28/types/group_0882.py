@@ -20,4 +20,15 @@ class EventsGetResponse503Type(TypedDict):
     documentation_url: NotRequired[str]
 
 
-__all__ = ("EventsGetResponse503Type",)
+class EventsGetResponse503TypeForResponse(TypedDict):
+    """EventsGetResponse503"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+
+
+__all__ = (
+    "EventsGetResponse503Type",
+    "EventsGetResponse503TypeForResponse",
+)

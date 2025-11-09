@@ -21,4 +21,15 @@ class CodeScanningSarifsStatusType(TypedDict):
     errors: NotRequired[Union[list[str], None]]
 
 
-__all__ = ("CodeScanningSarifsStatusType",)
+class CodeScanningSarifsStatusTypeForResponse(TypedDict):
+    """CodeScanningSarifsStatus"""
+
+    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
+    analyses_url: NotRequired[Union[str, None]]
+    errors: NotRequired[Union[list[str], None]]
+
+
+__all__ = (
+    "CodeScanningSarifsStatusType",
+    "CodeScanningSarifsStatusTypeForResponse",
+)

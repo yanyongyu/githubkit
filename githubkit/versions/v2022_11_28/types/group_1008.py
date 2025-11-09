@@ -18,4 +18,15 @@ class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
     pattern_config_version: NotRequired[str]
 
 
-__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",)
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+
+    pattern_config_version: NotRequired[str]
+
+
+__all__ = (
+    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
+)

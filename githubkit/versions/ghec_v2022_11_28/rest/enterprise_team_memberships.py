@@ -29,7 +29,7 @@ if TYPE_CHECKING:
     from ..types import (
         EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType,
         EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType,
-        SimpleUserType,
+        SimpleUserTypeForResponse,
     )
 
 
@@ -57,7 +57,7 @@ class EnterpriseTeamMembershipsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """enterprise-team-memberships/list
 
         GET /enterprises/{enterprise}/teams/{enterprise-team}/memberships
@@ -96,7 +96,7 @@ class EnterpriseTeamMembershipsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """enterprise-team-memberships/list
 
         GET /enterprises/{enterprise}/teams/{enterprise-team}/memberships
@@ -135,7 +135,7 @@ class EnterpriseTeamMembershipsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     @overload
     def bulk_add(
@@ -147,7 +147,7 @@ class EnterpriseTeamMembershipsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         usernames: list[str],
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     def bulk_add(
         self,
@@ -160,7 +160,7 @@ class EnterpriseTeamMembershipsClient:
             EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """enterprise-team-memberships/bulk-add
 
         POST /enterprises/{enterprise}/teams/{enterprise-team}/memberships/add
@@ -208,7 +208,7 @@ class EnterpriseTeamMembershipsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     @overload
     async def async_bulk_add(
@@ -220,7 +220,7 @@ class EnterpriseTeamMembershipsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         usernames: list[str],
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     async def async_bulk_add(
         self,
@@ -233,7 +233,7 @@ class EnterpriseTeamMembershipsClient:
             EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """enterprise-team-memberships/bulk-add
 
         POST /enterprises/{enterprise}/teams/{enterprise-team}/memberships/add
@@ -281,7 +281,7 @@ class EnterpriseTeamMembershipsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     @overload
     def bulk_remove(
@@ -293,7 +293,7 @@ class EnterpriseTeamMembershipsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         usernames: list[str],
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     def bulk_remove(
         self,
@@ -306,7 +306,7 @@ class EnterpriseTeamMembershipsClient:
             EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """enterprise-team-memberships/bulk-remove
 
         POST /enterprises/{enterprise}/teams/{enterprise-team}/memberships/remove
@@ -354,7 +354,7 @@ class EnterpriseTeamMembershipsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     @overload
     async def async_bulk_remove(
@@ -366,7 +366,7 @@ class EnterpriseTeamMembershipsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         usernames: list[str],
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]: ...
 
     async def async_bulk_remove(
         self,
@@ -379,7 +379,7 @@ class EnterpriseTeamMembershipsClient:
             EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """enterprise-team-memberships/bulk-remove
 
         POST /enterprises/{enterprise}/teams/{enterprise-team}/memberships/remove
@@ -426,7 +426,7 @@ class EnterpriseTeamMembershipsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SimpleUser, SimpleUserType]:
+    ) -> Response[SimpleUser, SimpleUserTypeForResponse]:
         """enterprise-team-memberships/get
 
         GET /enterprises/{enterprise}/teams/{enterprise-team}/memberships/{username}
@@ -460,7 +460,7 @@ class EnterpriseTeamMembershipsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SimpleUser, SimpleUserType]:
+    ) -> Response[SimpleUser, SimpleUserTypeForResponse]:
         """enterprise-team-memberships/get
 
         GET /enterprises/{enterprise}/teams/{enterprise-team}/memberships/{username}
@@ -494,7 +494,7 @@ class EnterpriseTeamMembershipsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SimpleUser, SimpleUserType]:
+    ) -> Response[SimpleUser, SimpleUserTypeForResponse]:
         """enterprise-team-memberships/add
 
         PUT /enterprises/{enterprise}/teams/{enterprise-team}/memberships/{username}
@@ -528,7 +528,7 @@ class EnterpriseTeamMembershipsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SimpleUser, SimpleUserType]:
+    ) -> Response[SimpleUser, SimpleUserTypeForResponse]:
         """enterprise-team-memberships/add
 
         PUT /enterprises/{enterprise}/teams/{enterprise-team}/memberships/{username}

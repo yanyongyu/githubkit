@@ -20,4 +20,15 @@ class EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type(TypedDict):
     documentation_url: NotRequired[str]
 
 
-__all__ = ("EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type",)
+class EnterprisesEnterpriseCodeScanningAlertsGetResponse503TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+
+
+__all__ = (
+    "EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type",
+    "EnterprisesEnterpriseCodeScanningAlertsGetResponse503TypeForResponse",
+)

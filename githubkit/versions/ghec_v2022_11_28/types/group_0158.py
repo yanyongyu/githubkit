@@ -13,6 +13,7 @@ from typing_extensions import TypedDict
 
 from .group_0159 import (
     RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
 )
 
 
@@ -25,4 +26,18 @@ class RepositoryRulesetConditionsRepositoryIdTargetType(TypedDict):
     repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
 
 
-__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetType",)
+class RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for repository IDs
+
+    Parameters for a repository ID condition
+    """
+
+    repository_id: (
+        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
+    )
+
+
+__all__ = (
+    "RepositoryRulesetConditionsRepositoryIdTargetType",
+    "RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse",
+)

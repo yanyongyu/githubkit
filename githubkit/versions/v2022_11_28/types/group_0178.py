@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0179 import RepositoryRuleTagNamePatternPropParametersType
+from .group_0179 import (
+    RepositoryRuleTagNamePatternPropParametersType,
+    RepositoryRuleTagNamePatternPropParametersTypeForResponse,
+)
 
 
 class RepositoryRuleTagNamePatternType(TypedDict):
@@ -25,4 +28,17 @@ class RepositoryRuleTagNamePatternType(TypedDict):
     parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleTagNamePatternType",)
+class RepositoryRuleTagNamePatternTypeForResponse(TypedDict):
+    """tag_name_pattern
+
+    Parameters to be used for the tag_name_pattern rule
+    """
+
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersTypeForResponse]
+
+
+__all__ = (
+    "RepositoryRuleTagNamePatternType",
+    "RepositoryRuleTagNamePatternTypeForResponse",
+)

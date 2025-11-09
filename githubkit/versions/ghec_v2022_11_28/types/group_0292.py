@@ -29,4 +29,23 @@ class ProjectColumnType(TypedDict):
     updated_at: datetime
 
 
-__all__ = ("ProjectColumnType",)
+class ProjectColumnTypeForResponse(TypedDict):
+    """Project Column
+
+    Project columns contain cards of work.
+    """
+
+    url: str
+    project_url: str
+    cards_url: str
+    id: int
+    node_id: str
+    name: str
+    created_at: str
+    updated_at: str
+
+
+__all__ = (
+    "ProjectColumnType",
+    "ProjectColumnTypeForResponse",
+)

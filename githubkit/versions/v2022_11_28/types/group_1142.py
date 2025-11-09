@@ -21,4 +21,15 @@ class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType(TypedDict):
     ]
 
 
-__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType",)
+class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
+
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+
+
+__all__ = (
+    "ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType",
+    "ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyTypeForResponse",
+)

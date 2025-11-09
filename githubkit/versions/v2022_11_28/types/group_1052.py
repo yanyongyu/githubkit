@@ -19,4 +19,14 @@ class ReposOwnerRepoActionsSecretsSecretNamePutBodyType(TypedDict):
     key_id: str
 
 
-__all__ = ("ReposOwnerRepoActionsSecretsSecretNamePutBodyType",)
+class ReposOwnerRepoActionsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
+
+    encrypted_value: str
+    key_id: str
+
+
+__all__ = (
+    "ReposOwnerRepoActionsSecretsSecretNamePutBodyType",
+    "ReposOwnerRepoActionsSecretsSecretNamePutBodyTypeForResponse",
+)

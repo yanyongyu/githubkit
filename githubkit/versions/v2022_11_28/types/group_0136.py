@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class ProjectsV2DraftIssueType(TypedDict):
@@ -31,4 +31,22 @@ class ProjectsV2DraftIssueType(TypedDict):
     updated_at: datetime
 
 
-__all__ = ("ProjectsV2DraftIssueType",)
+class ProjectsV2DraftIssueTypeForResponse(TypedDict):
+    """Draft Issue
+
+    A draft issue in a project
+    """
+
+    id: float
+    node_id: str
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+
+
+__all__ = (
+    "ProjectsV2DraftIssueType",
+    "ProjectsV2DraftIssueTypeForResponse",
+)

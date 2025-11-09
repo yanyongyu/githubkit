@@ -21,4 +21,16 @@ class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
     accepted: bool
 
 
-__all__ = ("CodespacesPermissionsCheckForDevcontainerType",)
+class CodespacesPermissionsCheckForDevcontainerTypeForResponse(TypedDict):
+    """Codespaces Permissions Check
+
+    Permission check result for a given devcontainer config.
+    """
+
+    accepted: bool
+
+
+__all__ = (
+    "CodespacesPermissionsCheckForDevcontainerType",
+    "CodespacesPermissionsCheckForDevcontainerTypeForResponse",
+)

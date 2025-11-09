@@ -20,4 +20,15 @@ class TeamsTeamIdDiscussionsPostBodyType(TypedDict):
     private: NotRequired[bool]
 
 
-__all__ = ("TeamsTeamIdDiscussionsPostBodyType",)
+class TeamsTeamIdDiscussionsPostBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdDiscussionsPostBody"""
+
+    title: str
+    body: str
+    private: NotRequired[bool]
+
+
+__all__ = (
+    "TeamsTeamIdDiscussionsPostBodyType",
+    "TeamsTeamIdDiscussionsPostBodyTypeForResponse",
+)

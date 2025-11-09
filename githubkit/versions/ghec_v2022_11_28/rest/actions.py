@@ -109,131 +109,134 @@ if TYPE_CHECKING:
         WorkflowUsage,
     )
     from ..types import (
-        ActionsArtifactAndLogRetentionResponseType,
+        ActionsArtifactAndLogRetentionResponseTypeForResponse,
         ActionsArtifactAndLogRetentionType,
-        ActionsCacheListType,
-        ActionsCacheUsageByRepositoryType,
-        ActionsCacheUsageOrgEnterpriseType,
+        ActionsCacheListTypeForResponse,
+        ActionsCacheUsageByRepositoryTypeForResponse,
+        ActionsCacheUsageOrgEnterpriseTypeForResponse,
         ActionsForkPrContributorApprovalType,
+        ActionsForkPrContributorApprovalTypeForResponse,
         ActionsForkPrWorkflowsPrivateReposRequestType,
-        ActionsForkPrWorkflowsPrivateReposType,
-        ActionsGetDefaultWorkflowPermissionsType,
-        ActionsHostedRunnerCustomImageType,
-        ActionsHostedRunnerCustomImageVersionType,
-        ActionsHostedRunnerLimitsType,
-        ActionsHostedRunnerType,
+        ActionsForkPrWorkflowsPrivateReposTypeForResponse,
+        ActionsGetDefaultWorkflowPermissionsTypeForResponse,
+        ActionsHostedRunnerCustomImageTypeForResponse,
+        ActionsHostedRunnerCustomImageVersionTypeForResponse,
+        ActionsHostedRunnerLimitsTypeForResponse,
+        ActionsHostedRunnerTypeForResponse,
         ActionsOidcCustomIssuerPolicyForEnterpriseType,
-        ActionsOrganizationPermissionsType,
-        ActionsPublicKeyType,
-        ActionsRepositoryPermissionsType,
-        ActionsSecretType,
+        ActionsOrganizationPermissionsTypeForResponse,
+        ActionsPublicKeyTypeForResponse,
+        ActionsRepositoryPermissionsTypeForResponse,
+        ActionsSecretTypeForResponse,
         ActionsSetDefaultWorkflowPermissionsType,
-        ActionsVariableType,
+        ActionsVariableTypeForResponse,
         ActionsWorkflowAccessToRepositoryType,
-        ArtifactType,
-        AuthenticationTokenType,
-        DeploymentType,
-        EmptyObjectType,
-        EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type,
+        ActionsWorkflowAccessToRepositoryTypeForResponse,
+        ArtifactTypeForResponse,
+        AuthenticationTokenTypeForResponse,
+        DeploymentTypeForResponse,
+        EmptyObjectTypeForResponse,
+        EnterprisesEnterpriseActionsHostedRunnersGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType,
-        EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200Type,
-        EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type,
-        EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
-        EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type,
-        EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type,
-        EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200TypeForResponse,
+        EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse,
+        EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse,
+        EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse,
+        EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse,
+        EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType,
         EnterprisesEnterpriseActionsHostedRunnersPostBodyType,
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
-        EnvironmentApprovalsType,
-        JobType,
-        OidcCustomSubRepoType,
-        OrganizationActionsSecretType,
-        OrganizationActionsVariableType,
-        OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
-        OrgsOrgActionsHostedRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
+        EnvironmentApprovalsTypeForResponse,
+        JobTypeForResponse,
+        OidcCustomSubRepoTypeForResponse,
+        OrganizationActionsSecretTypeForResponse,
+        OrganizationActionsVariableTypeForResponse,
+        OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse,
+        OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse,
         OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType,
-        OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type,
-        OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type,
-        OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
-        OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type,
-        OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type,
-        OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type,
+        OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse,
+        OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse,
+        OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse,
+        OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse,
+        OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse,
+        OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse,
         OrgsOrgActionsHostedRunnersPostBodyPropImageType,
         OrgsOrgActionsHostedRunnersPostBodyType,
         OrgsOrgActionsPermissionsPutBodyType,
-        OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
+        OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse,
         OrgsOrgActionsPermissionsRepositoriesPutBodyType,
         OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType,
-        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type,
+        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse,
         OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType,
-        OrgsOrgActionsRunnerGroupsGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse,
         OrgsOrgActionsRunnerGroupsPostBodyType,
-        OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
-        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
-        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
         OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
-        OrgsOrgActionsRunnersGetResponse200Type,
+        OrgsOrgActionsRunnersGetResponse200TypeForResponse,
         OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
         OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
-        OrgsOrgActionsSecretsGetResponse200Type,
+        OrgsOrgActionsSecretsGetResponse200TypeForResponse,
         OrgsOrgActionsSecretsSecretNamePutBodyType,
-        OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
         OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
-        OrgsOrgActionsVariablesGetResponse200Type,
+        OrgsOrgActionsVariablesGetResponse200TypeForResponse,
         OrgsOrgActionsVariablesNamePatchBodyType,
-        OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type,
+        OrgsOrgActionsVariablesNameRepositoriesGetResponse200TypeForResponse,
         OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
         OrgsOrgActionsVariablesPostBodyType,
-        PendingDeploymentType,
-        ReposOwnerRepoActionsArtifactsGetResponse200Type,
+        PendingDeploymentTypeForResponse,
+        ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse,
         ReposOwnerRepoActionsJobsJobIdRerunPostBodyType,
         ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
-        ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type,
-        ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type,
+        ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse,
+        ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse,
         ReposOwnerRepoActionsPermissionsPutBodyType,
         ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
-        ReposOwnerRepoActionsRunnersGetResponse200Type,
+        ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse,
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
-        ReposOwnerRepoActionsRunsGetResponse200Type,
-        ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type,
-        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type,
-        ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type,
+        ReposOwnerRepoActionsRunsGetResponse200TypeForResponse,
+        ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200TypeForResponse,
+        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200TypeForResponse,
+        ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse,
         ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
         ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType,
         ReposOwnerRepoActionsRunsRunIdRerunPostBodyType,
-        ReposOwnerRepoActionsSecretsGetResponse200Type,
+        ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse,
         ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
-        ReposOwnerRepoActionsVariablesGetResponse200Type,
+        ReposOwnerRepoActionsVariablesGetResponse200TypeForResponse,
         ReposOwnerRepoActionsVariablesNamePatchBodyType,
         ReposOwnerRepoActionsVariablesPostBodyType,
-        ReposOwnerRepoActionsWorkflowsGetResponse200Type,
+        ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse,
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
-        ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type,
-        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
+        ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse,
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse,
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
-        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse,
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
         ReviewCustomGatesCommentRequiredType,
         ReviewCustomGatesStateRequiredType,
-        RunnerApplicationType,
-        RunnerGroupsOrgType,
-        RunnerType,
+        RunnerApplicationTypeForResponse,
+        RunnerGroupsOrgTypeForResponse,
+        RunnerTypeForResponse,
         SelectedActionsType,
-        SelfHostedRunnersSettingsType,
-        WorkflowRunType,
-        WorkflowRunUsageType,
-        WorkflowType,
-        WorkflowUsageType,
+        SelectedActionsTypeForResponse,
+        SelfHostedRunnersSettingsTypeForResponse,
+        WorkflowRunTypeForResponse,
+        WorkflowRunUsageTypeForResponse,
+        WorkflowTypeForResponse,
+        WorkflowUsageTypeForResponse,
     )
 
 
@@ -258,7 +261,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseType]:
+    ) -> Response[
+        ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseTypeForResponse
+    ]:
         """actions/get-actions-cache-usage-for-enterprise
 
         GET /enterprises/{enterprise}/actions/cache/usage
@@ -291,7 +296,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseType]:
+    ) -> Response[
+        ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseTypeForResponse
+    ]:
         """actions/get-actions-cache-usage-for-enterprise
 
         GET /enterprises/{enterprise}/actions/cache/usage
@@ -328,7 +335,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsHostedRunnersGetResponse200,
-        EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersGetResponse200TypeForResponse,
     ]:
         """actions/list-hosted-runners-for-enterprise
 
@@ -371,7 +378,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsHostedRunnersGetResponse200,
-        EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersGetResponse200TypeForResponse,
     ]:
         """actions/list-hosted-runners-for-enterprise
 
@@ -412,7 +419,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsHostedRunnersPostBodyType,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     @overload
     def create_hosted_runner_for_enterprise(
@@ -429,7 +436,7 @@ class ActionsClient:
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
         image_gen: Missing[bool] = UNSET,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     def create_hosted_runner_for_enterprise(
         self,
@@ -439,7 +446,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseActionsHostedRunnersPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/create-hosted-runner-for-enterprise
 
         POST /enterprises/{enterprise}/actions/hosted-runners
@@ -487,7 +494,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsHostedRunnersPostBodyType,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     @overload
     async def async_create_hosted_runner_for_enterprise(
@@ -504,7 +511,7 @@ class ActionsClient:
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
         image_gen: Missing[bool] = UNSET,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     async def async_create_hosted_runner_for_enterprise(
         self,
@@ -514,7 +521,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseActionsHostedRunnersPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/create-hosted-runner-for-enterprise
 
         POST /enterprises/{enterprise}/actions/hosted-runners
@@ -562,7 +569,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200,
-        EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200TypeForResponse,
     ]:
         """actions/list-custom-images-for-enterprise
 
@@ -599,7 +606,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200,
-        EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200TypeForResponse,
     ]:
         """actions/list-custom-images-for-enterprise
 
@@ -635,7 +642,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunnerCustomImage, ActionsHostedRunnerCustomImageType]:
+    ) -> Response[
+        ActionsHostedRunnerCustomImage, ActionsHostedRunnerCustomImageTypeForResponse
+    ]:
         """actions/get-custom-image-for-enterprise
 
         GET /enterprises/{enterprise}/actions/hosted-runners/images/custom/{image_definition_id}
@@ -668,7 +677,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunnerCustomImage, ActionsHostedRunnerCustomImageType]:
+    ) -> Response[
+        ActionsHostedRunnerCustomImage, ActionsHostedRunnerCustomImageTypeForResponse
+    ]:
         """actions/get-custom-image-for-enterprise
 
         GET /enterprises/{enterprise}/actions/hosted-runners/images/custom/{image_definition_id}
@@ -763,7 +774,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200,
-        EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse,
     ]:
         """actions/list-custom-image-versions-for-enterprise
 
@@ -801,7 +812,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200,
-        EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse,
     ]:
         """actions/list-custom-image-versions-for-enterprise
 
@@ -839,7 +850,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsHostedRunnerCustomImageVersion, ActionsHostedRunnerCustomImageVersionType
+        ActionsHostedRunnerCustomImageVersion,
+        ActionsHostedRunnerCustomImageVersionTypeForResponse,
     ]:
         """actions/get-custom-image-version-for-enterprise
 
@@ -875,7 +887,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsHostedRunnerCustomImageVersion, ActionsHostedRunnerCustomImageVersionType
+        ActionsHostedRunnerCustomImageVersion,
+        ActionsHostedRunnerCustomImageVersionTypeForResponse,
     ]:
         """actions/get-custom-image-version-for-enterprise
 
@@ -972,7 +985,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200,
-        EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-github-owned-images-for-enterprise
 
@@ -1007,7 +1020,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200,
-        EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-github-owned-images-for-enterprise
 
@@ -1042,7 +1055,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200,
-        EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-partner-images-for-enterprise
 
@@ -1077,7 +1090,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200,
-        EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-partner-images-for-enterprise
 
@@ -1110,7 +1123,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsType]:
+    ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsTypeForResponse]:
         """actions/get-hosted-runners-limits-for-enterprise
 
         GET /enterprises/{enterprise}/actions/hosted-runners/limits
@@ -1140,7 +1153,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsType]:
+    ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsTypeForResponse]:
         """actions/get-hosted-runners-limits-for-enterprise
 
         GET /enterprises/{enterprise}/actions/hosted-runners/limits
@@ -1172,7 +1185,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200,
-        EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-machine-specs-for-enterprise
 
@@ -1207,7 +1220,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200,
-        EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-machine-specs-for-enterprise
 
@@ -1242,7 +1255,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200,
-        EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-platforms-for-enterprise
 
@@ -1277,7 +1290,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200,
-        EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type,
+        EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-platforms-for-enterprise
 
@@ -1311,7 +1324,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/get-hosted-runner-for-enterprise
 
         GET /enterprises/{enterprise}/actions/hosted-runners/{hosted_runner_id}
@@ -1344,7 +1357,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/get-hosted-runner-for-enterprise
 
         GET /enterprises/{enterprise}/actions/hosted-runners/{hosted_runner_id}
@@ -1377,7 +1390,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/delete-hosted-runner-for-enterprise
 
         DELETE /enterprises/{enterprise}/actions/hosted-runners/{hosted_runner_id}
@@ -1408,7 +1421,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/delete-hosted-runner-for-enterprise
 
         DELETE /enterprises/{enterprise}/actions/hosted-runners/{hosted_runner_id}
@@ -1441,7 +1454,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     @overload
     def update_hosted_runner_for_enterprise(
@@ -1457,7 +1470,7 @@ class ActionsClient:
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
         image_version: Missing[Union[str, None]] = UNSET,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     def update_hosted_runner_for_enterprise(
         self,
@@ -1470,7 +1483,7 @@ class ActionsClient:
             EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/update-hosted-runner-for-enterprise
 
         PATCH /enterprises/{enterprise}/actions/hosted-runners/{hosted_runner_id}
@@ -1519,7 +1532,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     @overload
     async def async_update_hosted_runner_for_enterprise(
@@ -1535,7 +1548,7 @@ class ActionsClient:
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
         image_version: Missing[Union[str, None]] = UNSET,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     async def async_update_hosted_runner_for_enterprise(
         self,
@@ -1548,7 +1561,7 @@ class ActionsClient:
             EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/update-hosted-runner-for-enterprise
 
         PATCH /enterprises/{enterprise}/actions/hosted-runners/{hosted_runner_id}
@@ -1727,7 +1740,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
+        ActionsGetDefaultWorkflowPermissions,
+        ActionsGetDefaultWorkflowPermissionsTypeForResponse,
     ]:
         """actions/get-github-actions-default-workflow-permissions-enterprise
 
@@ -1763,7 +1777,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
+        ActionsGetDefaultWorkflowPermissions,
+        ActionsGetDefaultWorkflowPermissionsTypeForResponse,
     ]:
         """actions/get-github-actions-default-workflow-permissions-enterprise
 
@@ -1936,7 +1951,7 @@ class ActionsClient:
         data: EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -1953,7 +1968,7 @@ class ActionsClient:
         work_folder: Missing[str] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]: ...
 
     def generate_runner_jitconfig_for_enterprise(
@@ -1968,7 +1983,7 @@ class ActionsClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]:
         """actions/generate-runner-jitconfig-for-enterprise
 
@@ -2027,7 +2042,7 @@ class ActionsClient:
         data: EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -2044,7 +2059,7 @@ class ActionsClient:
         work_folder: Missing[str] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]: ...
 
     async def async_generate_runner_jitconfig_for_enterprise(
@@ -2059,7 +2074,7 @@ class ActionsClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]:
         """actions/generate-runner-jitconfig-for-enterprise
 
@@ -2114,7 +2129,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseType]:
+    ) -> Response[
+        ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseTypeForResponse
+    ]:
         """actions/get-actions-cache-usage-for-org
 
         GET /orgs/{org}/actions/cache/usage
@@ -2147,7 +2164,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseType]:
+    ) -> Response[
+        ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseTypeForResponse
+    ]:
         """actions/get-actions-cache-usage-for-org
 
         GET /orgs/{org}/actions/cache/usage
@@ -2184,7 +2203,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
-        OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
+        OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse,
     ]:
         """actions/get-actions-cache-usage-by-repo-for-org
 
@@ -2228,7 +2247,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
-        OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
+        OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse,
     ]:
         """actions/get-actions-cache-usage-by-repo-for-org
 
@@ -2272,7 +2291,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersGetResponse200,
-        OrgsOrgActionsHostedRunnersGetResponse200Type,
+        OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse,
     ]:
         """actions/list-hosted-runners-for-org
 
@@ -2315,7 +2334,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersGetResponse200,
-        OrgsOrgActionsHostedRunnersGetResponse200Type,
+        OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse,
     ]:
         """actions/list-hosted-runners-for-org
 
@@ -2356,7 +2375,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgActionsHostedRunnersPostBodyType,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     @overload
     def create_hosted_runner_for_org(
@@ -2373,7 +2392,7 @@ class ActionsClient:
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
         image_gen: Missing[bool] = UNSET,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     def create_hosted_runner_for_org(
         self,
@@ -2383,7 +2402,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[OrgsOrgActionsHostedRunnersPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/create-hosted-runner-for-org
 
         POST /orgs/{org}/actions/hosted-runners
@@ -2426,7 +2445,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgActionsHostedRunnersPostBodyType,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     @overload
     async def async_create_hosted_runner_for_org(
@@ -2443,7 +2462,7 @@ class ActionsClient:
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
         image_gen: Missing[bool] = UNSET,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     async def async_create_hosted_runner_for_org(
         self,
@@ -2453,7 +2472,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[OrgsOrgActionsHostedRunnersPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/create-hosted-runner-for-org
 
         POST /orgs/{org}/actions/hosted-runners
@@ -2496,7 +2515,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersImagesCustomGetResponse200,
-        OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type,
+        OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse,
     ]:
         """actions/list-custom-images-for-org
 
@@ -2531,7 +2550,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersImagesCustomGetResponse200,
-        OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type,
+        OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse,
     ]:
         """actions/list-custom-images-for-org
 
@@ -2565,7 +2584,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunnerCustomImage, ActionsHostedRunnerCustomImageType]:
+    ) -> Response[
+        ActionsHostedRunnerCustomImage, ActionsHostedRunnerCustomImageTypeForResponse
+    ]:
         """actions/get-custom-image-for-org
 
         GET /orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}
@@ -2598,7 +2619,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunnerCustomImage, ActionsHostedRunnerCustomImageType]:
+    ) -> Response[
+        ActionsHostedRunnerCustomImage, ActionsHostedRunnerCustomImageTypeForResponse
+    ]:
         """actions/get-custom-image-for-org
 
         GET /orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}
@@ -2693,7 +2716,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200,
-        OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type,
+        OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse,
     ]:
         """actions/list-custom-image-versions-for-org
 
@@ -2731,7 +2754,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200,
-        OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type,
+        OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse,
     ]:
         """actions/list-custom-image-versions-for-org
 
@@ -2769,7 +2792,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsHostedRunnerCustomImageVersion, ActionsHostedRunnerCustomImageVersionType
+        ActionsHostedRunnerCustomImageVersion,
+        ActionsHostedRunnerCustomImageVersionTypeForResponse,
     ]:
         """actions/get-custom-image-version-for-org
 
@@ -2805,7 +2829,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsHostedRunnerCustomImageVersion, ActionsHostedRunnerCustomImageVersionType
+        ActionsHostedRunnerCustomImageVersion,
+        ActionsHostedRunnerCustomImageVersionTypeForResponse,
     ]:
         """actions/get-custom-image-version-for-org
 
@@ -2902,7 +2927,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
-        OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
+        OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-github-owned-images-for-org
 
@@ -2935,7 +2960,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
-        OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type,
+        OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-github-owned-images-for-org
 
@@ -2968,7 +2993,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
-        OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type,
+        OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-partner-images-for-org
 
@@ -3001,7 +3026,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
-        OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type,
+        OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-partner-images-for-org
 
@@ -3032,7 +3057,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsType]:
+    ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsTypeForResponse]:
         """actions/get-hosted-runners-limits-for-org
 
         GET /orgs/{org}/actions/hosted-runners/limits
@@ -3062,7 +3087,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsType]:
+    ) -> Response[ActionsHostedRunnerLimits, ActionsHostedRunnerLimitsTypeForResponse]:
         """actions/get-hosted-runners-limits-for-org
 
         GET /orgs/{org}/actions/hosted-runners/limits
@@ -3094,7 +3119,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
-        OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type,
+        OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-machine-specs-for-org
 
@@ -3127,7 +3152,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
-        OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type,
+        OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-machine-specs-for-org
 
@@ -3160,7 +3185,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
-        OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type,
+        OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-platforms-for-org
 
@@ -3193,7 +3218,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
-        OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type,
+        OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse,
     ]:
         """actions/get-hosted-runners-platforms-for-org
 
@@ -3225,7 +3250,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/get-hosted-runner-for-org
 
         GET /orgs/{org}/actions/hosted-runners/{hosted_runner_id}
@@ -3258,7 +3283,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/get-hosted-runner-for-org
 
         GET /orgs/{org}/actions/hosted-runners/{hosted_runner_id}
@@ -3291,7 +3316,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/delete-hosted-runner-for-org
 
         DELETE /orgs/{org}/actions/hosted-runners/{hosted_runner_id}
@@ -3322,7 +3347,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/delete-hosted-runner-for-org
 
         DELETE /orgs/{org}/actions/hosted-runners/{hosted_runner_id}
@@ -3355,7 +3380,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     @overload
     def update_hosted_runner_for_org(
@@ -3371,7 +3396,7 @@ class ActionsClient:
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
         image_version: Missing[Union[str, None]] = UNSET,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     def update_hosted_runner_for_org(
         self,
@@ -3382,7 +3407,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/update-hosted-runner-for-org
 
         PATCH /orgs/{org}/actions/hosted-runners/{hosted_runner_id}
@@ -3431,7 +3456,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     @overload
     async def async_update_hosted_runner_for_org(
@@ -3447,7 +3472,7 @@ class ActionsClient:
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
         image_version: Missing[Union[str, None]] = UNSET,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]: ...
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
     async def async_update_hosted_runner_for_org(
         self,
@@ -3458,7 +3483,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerType]:
+    ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]:
         """actions/update-hosted-runner-for-org
 
         PATCH /orgs/{org}/actions/hosted-runners/{hosted_runner_id}
@@ -3504,7 +3529,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsOrganizationPermissions, ActionsOrganizationPermissionsType]:
+    ) -> Response[
+        ActionsOrganizationPermissions, ActionsOrganizationPermissionsTypeForResponse
+    ]:
         """actions/get-github-actions-permissions-organization
 
         GET /orgs/{org}/actions/permissions
@@ -3536,7 +3563,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsOrganizationPermissions, ActionsOrganizationPermissionsType]:
+    ) -> Response[
+        ActionsOrganizationPermissions, ActionsOrganizationPermissionsTypeForResponse
+    ]:
         """actions/get-github-actions-permissions-organization
 
         GET /orgs/{org}/actions/permissions
@@ -3706,7 +3735,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ActionsArtifactAndLogRetentionResponse,
-        ActionsArtifactAndLogRetentionResponseType,
+        ActionsArtifactAndLogRetentionResponseTypeForResponse,
     ]:
         """actions/get-artifact-and-log-retention-settings-organization
 
@@ -3745,7 +3774,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ActionsArtifactAndLogRetentionResponse,
-        ActionsArtifactAndLogRetentionResponseType,
+        ActionsArtifactAndLogRetentionResponseTypeForResponse,
     ]:
         """actions/get-artifact-and-log-retention-settings-organization
 
@@ -3923,7 +3952,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrContributorApproval, ActionsForkPrContributorApprovalType
+        ActionsForkPrContributorApproval,
+        ActionsForkPrContributorApprovalTypeForResponse,
     ]:
         """actions/get-fork-pr-contributor-approval-permissions-organization
 
@@ -3960,7 +3990,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrContributorApproval, ActionsForkPrContributorApprovalType
+        ActionsForkPrContributorApproval,
+        ActionsForkPrContributorApprovalTypeForResponse,
     ]:
         """actions/get-fork-pr-contributor-approval-permissions-organization
 
@@ -4149,7 +4180,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrWorkflowsPrivateRepos, ActionsForkPrWorkflowsPrivateReposType
+        ActionsForkPrWorkflowsPrivateRepos,
+        ActionsForkPrWorkflowsPrivateReposTypeForResponse,
     ]:
         """actions/get-private-repo-fork-pr-workflows-settings-organization
 
@@ -4185,7 +4217,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrWorkflowsPrivateRepos, ActionsForkPrWorkflowsPrivateReposType
+        ActionsForkPrWorkflowsPrivateRepos,
+        ActionsForkPrWorkflowsPrivateReposTypeForResponse,
     ]:
         """actions/get-private-repo-fork-pr-workflows-settings-organization
 
@@ -4372,7 +4405,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsPermissionsRepositoriesGetResponse200,
-        OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
+        OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse,
     ]:
         """actions/list-selected-repositories-enabled-github-actions-organization
 
@@ -4415,7 +4448,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsPermissionsRepositoriesGetResponse200,
-        OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
+        OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse,
     ]:
         """actions/list-selected-repositories-enabled-github-actions-organization
 
@@ -4708,7 +4741,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SelectedActions, SelectedActionsType]:
+    ) -> Response[SelectedActions, SelectedActionsTypeForResponse]:
         """actions/get-allowed-actions-organization
 
         GET /orgs/{org}/actions/permissions/selected-actions
@@ -4740,7 +4773,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SelectedActions, SelectedActionsType]:
+    ) -> Response[SelectedActions, SelectedActionsTypeForResponse]:
         """actions/get-allowed-actions-organization
 
         GET /orgs/{org}/actions/permissions/selected-actions
@@ -4912,7 +4945,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SelfHostedRunnersSettings, SelfHostedRunnersSettingsType]:
+    ) -> Response[SelfHostedRunnersSettings, SelfHostedRunnersSettingsTypeForResponse]:
         """actions/get-self-hosted-runners-permissions-organization
 
         GET /orgs/{org}/actions/permissions/self-hosted-runners
@@ -4948,7 +4981,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SelfHostedRunnersSettings, SelfHostedRunnersSettingsType]:
+    ) -> Response[SelfHostedRunnersSettings, SelfHostedRunnersSettingsTypeForResponse]:
         """actions/get-self-hosted-runners-permissions-organization
 
         GET /orgs/{org}/actions/permissions/self-hosted-runners
@@ -5140,7 +5173,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200,
-        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type,
+        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse,
     ]:
         """actions/list-selected-repositories-self-hosted-runners-organization
 
@@ -5190,7 +5223,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200,
-        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type,
+        OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse,
     ]:
         """actions/list-selected-repositories-self-hosted-runners-organization
 
@@ -5543,7 +5576,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
+        ActionsGetDefaultWorkflowPermissions,
+        ActionsGetDefaultWorkflowPermissionsTypeForResponse,
     ]:
         """actions/get-github-actions-default-workflow-permissions-organization
 
@@ -5579,7 +5613,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
+        ActionsGetDefaultWorkflowPermissions,
+        ActionsGetDefaultWorkflowPermissionsTypeForResponse,
     ]:
         """actions/get-github-actions-default-workflow-permissions-organization
 
@@ -5755,7 +5790,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsGetResponse200,
-        OrgsOrgActionsRunnerGroupsGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse,
     ]:
         """actions/list-self-hosted-runner-groups-for-org
 
@@ -5800,7 +5835,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsGetResponse200,
-        OrgsOrgActionsRunnerGroupsGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse,
     ]:
         """actions/list-self-hosted-runner-groups-for-org
 
@@ -5842,7 +5877,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgActionsRunnerGroupsPostBodyType,
-    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgTypeForResponse]: ...
 
     @overload
     def create_self_hosted_runner_group_for_org(
@@ -5860,7 +5895,7 @@ class ActionsClient:
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
         network_configuration_id: Missing[str] = UNSET,
-    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgTypeForResponse]: ...
 
     def create_self_hosted_runner_group_for_org(
         self,
@@ -5870,7 +5905,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgTypeForResponse]:
         """actions/create-self-hosted-runner-group-for-org
 
         POST /orgs/{org}/actions/runner-groups
@@ -5914,7 +5949,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgActionsRunnerGroupsPostBodyType,
-    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgTypeForResponse]: ...
 
     @overload
     async def async_create_self_hosted_runner_group_for_org(
@@ -5932,7 +5967,7 @@ class ActionsClient:
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
         network_configuration_id: Missing[str] = UNSET,
-    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgTypeForResponse]: ...
 
     async def async_create_self_hosted_runner_group_for_org(
         self,
@@ -5942,7 +5977,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgTypeForResponse]:
         """actions/create-self-hosted-runner-group-for-org
 
         POST /orgs/{org}/actions/runner-groups
@@ -5985,7 +6020,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgTypeForResponse]:
         """actions/get-self-hosted-runner-group-for-org
 
         GET /orgs/{org}/actions/runner-groups/{runner_group_id}
@@ -6018,7 +6053,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgTypeForResponse]:
         """actions/get-self-hosted-runner-group-for-org
 
         GET /orgs/{org}/actions/runner-groups/{runner_group_id}
@@ -6113,7 +6148,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
-    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgTypeForResponse]: ...
 
     @overload
     def update_self_hosted_runner_group_for_org(
@@ -6130,7 +6165,7 @@ class ActionsClient:
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
         network_configuration_id: Missing[Union[str, None]] = UNSET,
-    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgTypeForResponse]: ...
 
     def update_self_hosted_runner_group_for_org(
         self,
@@ -6141,7 +6176,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgTypeForResponse]:
         """actions/update-self-hosted-runner-group-for-org
 
         PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
@@ -6191,7 +6226,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
-    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgTypeForResponse]: ...
 
     @overload
     async def async_update_self_hosted_runner_group_for_org(
@@ -6208,7 +6243,7 @@ class ActionsClient:
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
         network_configuration_id: Missing[Union[str, None]] = UNSET,
-    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgTypeForResponse]: ...
 
     async def async_update_self_hosted_runner_group_for_org(
         self,
@@ -6219,7 +6254,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgTypeForResponse]:
         """actions/update-self-hosted-runner-group-for-org
 
         PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
@@ -6271,7 +6306,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
-        OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse,
     ]:
         """actions/list-github-hosted-runners-in-group-for-org
 
@@ -6317,7 +6352,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
-        OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse,
     ]:
         """actions/list-github-hosted-runners-in-group-for-org
 
@@ -6363,7 +6398,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
-        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse,
     ]:
         """actions/list-repo-access-to-self-hosted-runner-group-in-org
 
@@ -6409,7 +6444,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
-        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse,
     ]:
         """actions/list-repo-access-to-self-hosted-runner-group-in-org
 
@@ -6721,7 +6756,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
-        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse,
     ]:
         """actions/list-self-hosted-runners-in-group-for-org
 
@@ -6767,7 +6802,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
-        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse,
     ]:
         """actions/list-self-hosted-runners-in-group-for-org
 
@@ -7078,7 +7113,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        OrgsOrgActionsRunnersGetResponse200, OrgsOrgActionsRunnersGetResponse200Type
+        OrgsOrgActionsRunnersGetResponse200,
+        OrgsOrgActionsRunnersGetResponse200TypeForResponse,
     ]:
         """actions/list-self-hosted-runners-for-org
 
@@ -7124,7 +7160,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        OrgsOrgActionsRunnersGetResponse200, OrgsOrgActionsRunnersGetResponse200Type
+        OrgsOrgActionsRunnersGetResponse200,
+        OrgsOrgActionsRunnersGetResponse200TypeForResponse,
     ]:
         """actions/list-self-hosted-runners-for-org
 
@@ -7166,7 +7203,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
+    ) -> Response[list[RunnerApplication], list[RunnerApplicationTypeForResponse]]:
         """actions/list-runner-applications-for-org
 
         GET /orgs/{org}/actions/runners/downloads
@@ -7200,7 +7237,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
+    ) -> Response[list[RunnerApplication], list[RunnerApplicationTypeForResponse]]:
         """actions/list-runner-applications-for-org
 
         GET /orgs/{org}/actions/runners/downloads
@@ -7238,7 +7275,7 @@ class ActionsClient:
         data: OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -7255,7 +7292,7 @@ class ActionsClient:
         work_folder: Missing[str] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]: ...
 
     def generate_runner_jitconfig_for_org(
@@ -7268,7 +7305,7 @@ class ActionsClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]:
         """actions/generate-runner-jitconfig-for-org
 
@@ -7329,7 +7366,7 @@ class ActionsClient:
         data: OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -7346,7 +7383,7 @@ class ActionsClient:
         work_folder: Missing[str] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]: ...
 
     async def async_generate_runner_jitconfig_for_org(
@@ -7359,7 +7396,7 @@ class ActionsClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]:
         """actions/generate-runner-jitconfig-for-org
 
@@ -7416,7 +7453,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """actions/create-registration-token-for-org
 
         POST /orgs/{org}/actions/runners/registration-token
@@ -7456,7 +7493,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """actions/create-registration-token-for-org
 
         POST /orgs/{org}/actions/runners/registration-token
@@ -7496,7 +7533,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """actions/create-remove-token-for-org
 
         POST /orgs/{org}/actions/runners/remove-token
@@ -7536,7 +7573,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """actions/create-remove-token-for-org
 
         POST /orgs/{org}/actions/runners/remove-token
@@ -7577,7 +7614,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Runner, RunnerType]:
+    ) -> Response[Runner, RunnerTypeForResponse]:
         """actions/get-self-hosted-runner-for-org
 
         GET /orgs/{org}/actions/runners/{runner_id}
@@ -7612,7 +7649,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Runner, RunnerType]:
+    ) -> Response[Runner, RunnerTypeForResponse]:
         """actions/get-self-hosted-runner-for-org
 
         GET /orgs/{org}/actions/runners/{runner_id}
@@ -7723,7 +7760,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/list-labels-for-self-hosted-runner-for-org
 
@@ -7767,7 +7804,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/list-labels-for-self-hosted-runner-for-org
 
@@ -7813,7 +7850,7 @@ class ActionsClient:
         data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -7828,7 +7865,7 @@ class ActionsClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     def set_custom_labels_for_self_hosted_runner_for_org(
@@ -7842,7 +7879,7 @@ class ActionsClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/set-custom-labels-for-self-hosted-runner-for-org
 
@@ -7904,7 +7941,7 @@ class ActionsClient:
         data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -7919,7 +7956,7 @@ class ActionsClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     async def async_set_custom_labels_for_self_hosted_runner_for_org(
@@ -7933,7 +7970,7 @@ class ActionsClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/set-custom-labels-for-self-hosted-runner-for-org
 
@@ -7995,7 +8032,7 @@ class ActionsClient:
         data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -8010,7 +8047,7 @@ class ActionsClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     def add_custom_labels_to_self_hosted_runner_for_org(
@@ -8024,7 +8061,7 @@ class ActionsClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/add-custom-labels-to-self-hosted-runner-for-org
 
@@ -8085,7 +8122,7 @@ class ActionsClient:
         data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -8100,7 +8137,7 @@ class ActionsClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     async def async_add_custom_labels_to_self_hosted_runner_for_org(
@@ -8114,7 +8151,7 @@ class ActionsClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/add-custom-labels-to-self-hosted-runner-for-org
 
@@ -8173,7 +8210,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse,
     ]:
         """actions/remove-all-custom-labels-from-self-hosted-runner-for-org
 
@@ -8218,7 +8255,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse,
     ]:
         """actions/remove-all-custom-labels-from-self-hosted-runner-for-org
 
@@ -8264,7 +8301,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/remove-custom-label-from-self-hosted-runner-for-org
 
@@ -8315,7 +8352,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/remove-custom-label-from-self-hosted-runner-for-org
 
@@ -8365,7 +8402,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        OrgsOrgActionsSecretsGetResponse200, OrgsOrgActionsSecretsGetResponse200Type
+        OrgsOrgActionsSecretsGetResponse200,
+        OrgsOrgActionsSecretsGetResponse200TypeForResponse,
     ]:
         """actions/list-org-secrets
 
@@ -8410,7 +8448,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        OrgsOrgActionsSecretsGetResponse200, OrgsOrgActionsSecretsGetResponse200Type
+        OrgsOrgActionsSecretsGetResponse200,
+        OrgsOrgActionsSecretsGetResponse200TypeForResponse,
     ]:
         """actions/list-org-secrets
 
@@ -8452,7 +8491,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
+    ) -> Response[ActionsPublicKey, ActionsPublicKeyTypeForResponse]:
         """actions/get-org-public-key
 
         GET /orgs/{org}/actions/secrets/public-key
@@ -8487,7 +8526,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
+    ) -> Response[ActionsPublicKey, ActionsPublicKeyTypeForResponse]:
         """actions/get-org-public-key
 
         GET /orgs/{org}/actions/secrets/public-key
@@ -8523,7 +8562,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationActionsSecret, OrganizationActionsSecretType]:
+    ) -> Response[OrganizationActionsSecret, OrganizationActionsSecretTypeForResponse]:
         """actions/get-org-secret
 
         GET /orgs/{org}/actions/secrets/{secret_name}
@@ -8558,7 +8597,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationActionsSecret, OrganizationActionsSecretType]:
+    ) -> Response[OrganizationActionsSecret, OrganizationActionsSecretTypeForResponse]:
         """actions/get-org-secret
 
         GET /orgs/{org}/actions/secrets/{secret_name}
@@ -8595,7 +8634,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgActionsSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def create_or_update_org_secret(
@@ -8610,7 +8649,7 @@ class ActionsClient:
         key_id: str,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def create_or_update_org_secret(
         self,
@@ -8621,7 +8660,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/create-or-update-org-secret
 
         PUT /orgs/{org}/actions/secrets/{secret_name}
@@ -8669,7 +8708,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgActionsSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_create_or_update_org_secret(
@@ -8684,7 +8723,7 @@ class ActionsClient:
         key_id: str,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_create_or_update_org_secret(
         self,
@@ -8695,7 +8734,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/create-or-update-org-secret
 
         PUT /orgs/{org}/actions/secrets/{secret_name}
@@ -8809,7 +8848,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
-        OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
     ]:
         """actions/list-selected-repos-for-org-secret
 
@@ -8856,7 +8895,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
-        OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
     ]:
         """actions/list-selected-repos-for-org-secret
 
@@ -9191,7 +9230,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        OrgsOrgActionsVariablesGetResponse200, OrgsOrgActionsVariablesGetResponse200Type
+        OrgsOrgActionsVariablesGetResponse200,
+        OrgsOrgActionsVariablesGetResponse200TypeForResponse,
     ]:
         """actions/list-org-variables
 
@@ -9235,7 +9275,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        OrgsOrgActionsVariablesGetResponse200, OrgsOrgActionsVariablesGetResponse200Type
+        OrgsOrgActionsVariablesGetResponse200,
+        OrgsOrgActionsVariablesGetResponse200TypeForResponse,
     ]:
         """actions/list-org-variables
 
@@ -9278,7 +9319,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgActionsVariablesPostBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def create_org_variable(
@@ -9292,7 +9333,7 @@ class ActionsClient:
         value: str,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def create_org_variable(
         self,
@@ -9302,7 +9343,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/create-org-variable
 
         POST /orgs/{org}/actions/variables
@@ -9348,7 +9389,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgActionsVariablesPostBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_create_org_variable(
@@ -9362,7 +9403,7 @@ class ActionsClient:
         value: str,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_create_org_variable(
         self,
@@ -9372,7 +9413,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/create-org-variable
 
         POST /orgs/{org}/actions/variables
@@ -9417,7 +9458,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationActionsVariable, OrganizationActionsVariableType]:
+    ) -> Response[
+        OrganizationActionsVariable, OrganizationActionsVariableTypeForResponse
+    ]:
         """actions/get-org-variable
 
         GET /orgs/{org}/actions/variables/{name}
@@ -9452,7 +9495,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationActionsVariable, OrganizationActionsVariableType]:
+    ) -> Response[
+        OrganizationActionsVariable, OrganizationActionsVariableTypeForResponse
+    ]:
         """actions/get-org-variable
 
         GET /orgs/{org}/actions/variables/{name}
@@ -9697,7 +9742,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
-        OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type,
+        OrgsOrgActionsVariablesNameRepositoriesGetResponse200TypeForResponse,
     ]:
         """actions/list-selected-repos-for-org-variable
 
@@ -9745,7 +9790,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
-        OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type,
+        OrgsOrgActionsVariablesNameRepositoriesGetResponse200TypeForResponse,
     ]:
         """actions/list-selected-repos-for-org-variable
 
@@ -10084,7 +10129,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsArtifactsGetResponse200,
-        ReposOwnerRepoActionsArtifactsGetResponse200Type,
+        ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse,
     ]:
         """actions/list-artifacts-for-repo
 
@@ -10132,7 +10177,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsArtifactsGetResponse200,
-        ReposOwnerRepoActionsArtifactsGetResponse200Type,
+        ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse,
     ]:
         """actions/list-artifacts-for-repo
 
@@ -10176,7 +10221,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Artifact, ArtifactType]:
+    ) -> Response[Artifact, ArtifactTypeForResponse]:
         """actions/get-artifact
 
         GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
@@ -10212,7 +10257,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Artifact, ArtifactType]:
+    ) -> Response[Artifact, ArtifactTypeForResponse]:
         """actions/get-artifact
 
         GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
@@ -10383,7 +10428,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsCacheUsageByRepository, ActionsCacheUsageByRepositoryType]:
+    ) -> Response[
+        ActionsCacheUsageByRepository, ActionsCacheUsageByRepositoryTypeForResponse
+    ]:
         """actions/get-actions-cache-usage
 
         GET /repos/{owner}/{repo}/actions/cache/usage
@@ -10419,7 +10466,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsCacheUsageByRepository, ActionsCacheUsageByRepositoryType]:
+    ) -> Response[
+        ActionsCacheUsageByRepository, ActionsCacheUsageByRepositoryTypeForResponse
+    ]:
         """actions/get-actions-cache-usage
 
         GET /repos/{owner}/{repo}/actions/cache/usage
@@ -10463,7 +10512,7 @@ class ActionsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsCacheList, ActionsCacheListType]:
+    ) -> Response[ActionsCacheList, ActionsCacheListTypeForResponse]:
         """actions/get-actions-cache-list
 
         GET /repos/{owner}/{repo}/actions/caches
@@ -10514,7 +10563,7 @@ class ActionsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsCacheList, ActionsCacheListType]:
+    ) -> Response[ActionsCacheList, ActionsCacheListTypeForResponse]:
         """actions/get-actions-cache-list
 
         GET /repos/{owner}/{repo}/actions/caches
@@ -10559,7 +10608,7 @@ class ActionsClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsCacheList, ActionsCacheListType]:
+    ) -> Response[ActionsCacheList, ActionsCacheListTypeForResponse]:
         """actions/delete-actions-cache-by-key
 
         DELETE /repos/{owner}/{repo}/actions/caches
@@ -10600,7 +10649,7 @@ class ActionsClient:
         ref: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsCacheList, ActionsCacheListType]:
+    ) -> Response[ActionsCacheList, ActionsCacheListTypeForResponse]:
         """actions/delete-actions-cache-by-key
 
         DELETE /repos/{owner}/{repo}/actions/caches
@@ -10702,7 +10751,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Job, JobType]:
+    ) -> Response[Job, JobTypeForResponse]:
         """actions/get-job-for-workflow-run
 
         GET /repos/{owner}/{repo}/actions/jobs/{job_id}
@@ -10738,7 +10787,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Job, JobType]:
+    ) -> Response[Job, JobTypeForResponse]:
         """actions/get-job-for-workflow-run
 
         GET /repos/{owner}/{repo}/actions/jobs/{job_id}
@@ -10846,7 +10895,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def re_run_job_for_workflow_run(
@@ -10859,7 +10908,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def re_run_job_for_workflow_run(
         self,
@@ -10873,7 +10922,7 @@ class ActionsClient:
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/re-run-job-for-workflow-run
 
         POST /repos/{owner}/{repo}/actions/jobs/{job_id}/rerun
@@ -10932,7 +10981,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_re_run_job_for_workflow_run(
@@ -10945,7 +10994,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_re_run_job_for_workflow_run(
         self,
@@ -10959,7 +11008,7 @@ class ActionsClient:
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/re-run-job-for-workflow-run
 
         POST /repos/{owner}/{repo}/actions/jobs/{job_id}/rerun
@@ -11013,7 +11062,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OidcCustomSubRepo, OidcCustomSubRepoType]:
+    ) -> Response[OidcCustomSubRepo, OidcCustomSubRepoTypeForResponse]:
         """actions/get-custom-oidc-sub-claim-for-repo
 
         GET /repos/{owner}/{repo}/actions/oidc/customization/sub
@@ -11050,7 +11099,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OidcCustomSubRepo, OidcCustomSubRepoType]:
+    ) -> Response[OidcCustomSubRepo, OidcCustomSubRepoTypeForResponse]:
         """actions/get-custom-oidc-sub-claim-for-repo
 
         GET /repos/{owner}/{repo}/actions/oidc/customization/sub
@@ -11089,7 +11138,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def set_custom_oidc_sub_claim_for_repo(
@@ -11102,7 +11151,7 @@ class ActionsClient:
         stream: bool = False,
         use_default: bool,
         include_claim_keys: Missing[list[str]] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def set_custom_oidc_sub_claim_for_repo(
         self,
@@ -11113,7 +11162,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/set-custom-oidc-sub-claim-for-repo
 
         PUT /repos/{owner}/{repo}/actions/oidc/customization/sub
@@ -11170,7 +11219,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_set_custom_oidc_sub_claim_for_repo(
@@ -11183,7 +11232,7 @@ class ActionsClient:
         stream: bool = False,
         use_default: bool,
         include_claim_keys: Missing[list[str]] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_set_custom_oidc_sub_claim_for_repo(
         self,
@@ -11194,7 +11243,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/set-custom-oidc-sub-claim-for-repo
 
         PUT /repos/{owner}/{repo}/actions/oidc/customization/sub
@@ -11253,7 +11302,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
-        ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type,
+        ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse,
     ]:
         """actions/list-repo-organization-secrets
 
@@ -11300,7 +11349,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
-        ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type,
+        ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse,
     ]:
         """actions/list-repo-organization-secrets
 
@@ -11347,7 +11396,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
-        ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type,
+        ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse,
     ]:
         """actions/list-repo-organization-variables
 
@@ -11393,7 +11442,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
-        ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type,
+        ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse,
     ]:
         """actions/list-repo-organization-variables
 
@@ -11435,7 +11484,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsRepositoryPermissions, ActionsRepositoryPermissionsType]:
+    ) -> Response[
+        ActionsRepositoryPermissions, ActionsRepositoryPermissionsTypeForResponse
+    ]:
         """actions/get-github-actions-permissions-repository
 
         GET /repos/{owner}/{repo}/actions/permissions
@@ -11468,7 +11519,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsRepositoryPermissions, ActionsRepositoryPermissionsType]:
+    ) -> Response[
+        ActionsRepositoryPermissions, ActionsRepositoryPermissionsTypeForResponse
+    ]:
         """actions/get-github-actions-permissions-repository
 
         GET /repos/{owner}/{repo}/actions/permissions
@@ -11644,7 +11697,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsWorkflowAccessToRepository, ActionsWorkflowAccessToRepositoryType
+        ActionsWorkflowAccessToRepository,
+        ActionsWorkflowAccessToRepositoryTypeForResponse,
     ]:
         """actions/get-workflow-access-to-repository
 
@@ -11682,7 +11736,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsWorkflowAccessToRepository, ActionsWorkflowAccessToRepositoryType
+        ActionsWorkflowAccessToRepository,
+        ActionsWorkflowAccessToRepositoryTypeForResponse,
     ]:
         """actions/get-workflow-access-to-repository
 
@@ -11861,7 +11916,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ActionsArtifactAndLogRetentionResponse,
-        ActionsArtifactAndLogRetentionResponseType,
+        ActionsArtifactAndLogRetentionResponseTypeForResponse,
     ]:
         """actions/get-artifact-and-log-retention-settings-repository
 
@@ -11900,7 +11955,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ActionsArtifactAndLogRetentionResponse,
-        ActionsArtifactAndLogRetentionResponseType,
+        ActionsArtifactAndLogRetentionResponseTypeForResponse,
     ]:
         """actions/get-artifact-and-log-retention-settings-repository
 
@@ -12080,7 +12135,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrContributorApproval, ActionsForkPrContributorApprovalType
+        ActionsForkPrContributorApproval,
+        ActionsForkPrContributorApprovalTypeForResponse,
     ]:
         """actions/get-fork-pr-contributor-approval-permissions-repository
 
@@ -12118,7 +12174,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrContributorApproval, ActionsForkPrContributorApprovalType
+        ActionsForkPrContributorApproval,
+        ActionsForkPrContributorApprovalTypeForResponse,
     ]:
         """actions/get-fork-pr-contributor-approval-permissions-repository
 
@@ -12314,7 +12371,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrWorkflowsPrivateRepos, ActionsForkPrWorkflowsPrivateReposType
+        ActionsForkPrWorkflowsPrivateRepos,
+        ActionsForkPrWorkflowsPrivateReposTypeForResponse,
     ]:
         """actions/get-private-repo-fork-pr-workflows-settings-repository
 
@@ -12355,7 +12413,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrWorkflowsPrivateRepos, ActionsForkPrWorkflowsPrivateReposType
+        ActionsForkPrWorkflowsPrivateRepos,
+        ActionsForkPrWorkflowsPrivateReposTypeForResponse,
     ]:
         """actions/get-private-repo-fork-pr-workflows-settings-repository
 
@@ -12555,7 +12614,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SelectedActions, SelectedActionsType]:
+    ) -> Response[SelectedActions, SelectedActionsTypeForResponse]:
         """actions/get-allowed-actions-repository
 
         GET /repos/{owner}/{repo}/actions/permissions/selected-actions
@@ -12588,7 +12647,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SelectedActions, SelectedActionsType]:
+    ) -> Response[SelectedActions, SelectedActionsTypeForResponse]:
         """actions/get-allowed-actions-repository
 
         GET /repos/{owner}/{repo}/actions/permissions/selected-actions
@@ -12768,7 +12827,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
+        ActionsGetDefaultWorkflowPermissions,
+        ActionsGetDefaultWorkflowPermissionsTypeForResponse,
     ]:
         """actions/get-github-actions-default-workflow-permissions-repository
 
@@ -12805,7 +12865,8 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
+        ActionsGetDefaultWorkflowPermissions,
+        ActionsGetDefaultWorkflowPermissionsTypeForResponse,
     ]:
         """actions/get-github-actions-default-workflow-permissions-repository
 
@@ -12988,7 +13049,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunnersGetResponse200,
-        ReposOwnerRepoActionsRunnersGetResponse200Type,
+        ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse,
     ]:
         """actions/list-self-hosted-runners-for-repo
 
@@ -13036,7 +13097,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunnersGetResponse200,
-        ReposOwnerRepoActionsRunnersGetResponse200Type,
+        ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse,
     ]:
         """actions/list-self-hosted-runners-for-repo
 
@@ -13079,7 +13140,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
+    ) -> Response[list[RunnerApplication], list[RunnerApplicationTypeForResponse]]:
         """actions/list-runner-applications-for-repo
 
         GET /repos/{owner}/{repo}/actions/runners/downloads
@@ -13114,7 +13175,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
+    ) -> Response[list[RunnerApplication], list[RunnerApplicationTypeForResponse]]:
         """actions/list-runner-applications-for-repo
 
         GET /repos/{owner}/{repo}/actions/runners/downloads
@@ -13153,7 +13214,7 @@ class ActionsClient:
         data: ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -13171,7 +13232,7 @@ class ActionsClient:
         work_folder: Missing[str] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]: ...
 
     def generate_runner_jitconfig_for_repo(
@@ -13187,7 +13248,7 @@ class ActionsClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]:
         """actions/generate-runner-jitconfig-for-repo
 
@@ -13249,7 +13310,7 @@ class ActionsClient:
         data: ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]: ...
 
     @overload
@@ -13267,7 +13328,7 @@ class ActionsClient:
         work_folder: Missing[str] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]: ...
 
     async def async_generate_runner_jitconfig_for_repo(
@@ -13283,7 +13344,7 @@ class ActionsClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
     ]:
         """actions/generate-runner-jitconfig-for-repo
 
@@ -13341,7 +13402,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """actions/create-registration-token-for-repo
 
         POST /repos/{owner}/{repo}/actions/runners/registration-token
@@ -13382,7 +13443,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """actions/create-registration-token-for-repo
 
         POST /repos/{owner}/{repo}/actions/runners/registration-token
@@ -13423,7 +13484,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """actions/create-remove-token-for-repo
 
         POST /repos/{owner}/{repo}/actions/runners/remove-token
@@ -13464,7 +13525,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """actions/create-remove-token-for-repo
 
         POST /repos/{owner}/{repo}/actions/runners/remove-token
@@ -13506,7 +13567,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Runner, RunnerType]:
+    ) -> Response[Runner, RunnerTypeForResponse]:
         """actions/get-self-hosted-runner-for-repo
 
         GET /repos/{owner}/{repo}/actions/runners/{runner_id}
@@ -13542,7 +13603,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Runner, RunnerType]:
+    ) -> Response[Runner, RunnerTypeForResponse]:
         """actions/get-self-hosted-runner-for-repo
 
         GET /repos/{owner}/{repo}/actions/runners/{runner_id}
@@ -13656,7 +13717,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/list-labels-for-self-hosted-runner-for-repo
 
@@ -13701,7 +13762,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/list-labels-for-self-hosted-runner-for-repo
 
@@ -13748,7 +13809,7 @@ class ActionsClient:
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -13764,7 +13825,7 @@ class ActionsClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     def set_custom_labels_for_self_hosted_runner_for_repo(
@@ -13779,7 +13840,7 @@ class ActionsClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/set-custom-labels-for-self-hosted-runner-for-repo
 
@@ -13842,7 +13903,7 @@ class ActionsClient:
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -13858,7 +13919,7 @@ class ActionsClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     async def async_set_custom_labels_for_self_hosted_runner_for_repo(
@@ -13873,7 +13934,7 @@ class ActionsClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/set-custom-labels-for-self-hosted-runner-for-repo
 
@@ -13936,7 +13997,7 @@ class ActionsClient:
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -13952,7 +14013,7 @@ class ActionsClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     def add_custom_labels_to_self_hosted_runner_for_repo(
@@ -13967,7 +14028,7 @@ class ActionsClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/add-custom-labels-to-self-hosted-runner-for-repo
 
@@ -14029,7 +14090,7 @@ class ActionsClient:
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -14045,7 +14106,7 @@ class ActionsClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     async def async_add_custom_labels_to_self_hosted_runner_for_repo(
@@ -14060,7 +14121,7 @@ class ActionsClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/add-custom-labels-to-self-hosted-runner-for-repo
 
@@ -14120,7 +14181,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse,
     ]:
         """actions/remove-all-custom-labels-from-self-hosted-runner-for-repo
 
@@ -14166,7 +14227,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse,
     ]:
         """actions/remove-all-custom-labels-from-self-hosted-runner-for-repo
 
@@ -14213,7 +14274,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/remove-custom-label-from-self-hosted-runner-for-repo
 
@@ -14265,7 +14326,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """actions/remove-custom-label-from-self-hosted-runner-for-repo
 
@@ -14342,7 +14403,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsGetResponse200,
-        ReposOwnerRepoActionsRunsGetResponse200Type,
+        ReposOwnerRepoActionsRunsGetResponse200TypeForResponse,
     ]:
         """actions/list-workflow-runs-for-repo
 
@@ -14423,7 +14484,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsGetResponse200,
-        ReposOwnerRepoActionsRunsGetResponse200Type,
+        ReposOwnerRepoActionsRunsGetResponse200TypeForResponse,
     ]:
         """actions/list-workflow-runs-for-repo
 
@@ -14477,7 +14538,7 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WorkflowRun, WorkflowRunType]:
+    ) -> Response[WorkflowRun, WorkflowRunTypeForResponse]:
         """actions/get-workflow-run
 
         GET /repos/{owner}/{repo}/actions/runs/{run_id}
@@ -14519,7 +14580,7 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WorkflowRun, WorkflowRunType]:
+    ) -> Response[WorkflowRun, WorkflowRunTypeForResponse]:
         """actions/get-workflow-run
 
         GET /repos/{owner}/{repo}/actions/runs/{run_id}
@@ -14626,7 +14687,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[EnvironmentApprovals], list[EnvironmentApprovalsType]]:
+    ) -> Response[
+        list[EnvironmentApprovals], list[EnvironmentApprovalsTypeForResponse]
+    ]:
         """actions/get-reviews-for-run
 
         GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
@@ -14660,7 +14723,9 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[EnvironmentApprovals], list[EnvironmentApprovalsType]]:
+    ) -> Response[
+        list[EnvironmentApprovals], list[EnvironmentApprovalsTypeForResponse]
+    ]:
         """actions/get-reviews-for-run
 
         GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
@@ -14694,7 +14759,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/approve-workflow-run
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
@@ -14732,7 +14797,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/approve-workflow-run
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
@@ -14775,7 +14840,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
-        ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type,
+        ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200TypeForResponse,
     ]:
         """actions/list-workflow-run-artifacts
 
@@ -14824,7 +14889,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
-        ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type,
+        ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200TypeForResponse,
     ]:
         """actions/list-workflow-run-artifacts
 
@@ -14870,7 +14935,7 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WorkflowRun, WorkflowRunType]:
+    ) -> Response[WorkflowRun, WorkflowRunTypeForResponse]:
         """actions/get-workflow-run-attempt
 
         GET /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}
@@ -14913,7 +14978,7 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WorkflowRun, WorkflowRunType]:
+    ) -> Response[WorkflowRun, WorkflowRunTypeForResponse]:
         """actions/get-workflow-run-attempt
 
         GET /repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}
@@ -14959,7 +15024,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
-        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type,
+        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200TypeForResponse,
     ]:
         """actions/list-jobs-for-workflow-run-attempt
 
@@ -15014,7 +15079,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
-        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type,
+        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200TypeForResponse,
     ]:
         """actions/list-jobs-for-workflow-run-attempt
 
@@ -15134,7 +15199,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/cancel-workflow-run
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
@@ -15171,7 +15236,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/cancel-workflow-run
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
@@ -15414,7 +15479,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/force-cancel-workflow-run
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/force-cancel
@@ -15452,7 +15517,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/force-cancel-workflow-run
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/force-cancel
@@ -15495,7 +15560,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
-        ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type,
+        ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse,
     ]:
         """actions/list-jobs-for-workflow-run
 
@@ -15545,7 +15610,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
-        ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type,
+        ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse,
     ]:
         """actions/list-jobs-for-workflow-run
 
@@ -15732,7 +15797,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PendingDeployment], list[PendingDeploymentType]]:
+    ) -> Response[list[PendingDeployment], list[PendingDeploymentTypeForResponse]]:
         """actions/get-pending-deployments-for-run
 
         GET /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
@@ -15768,7 +15833,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PendingDeployment], list[PendingDeploymentType]]:
+    ) -> Response[list[PendingDeployment], list[PendingDeploymentTypeForResponse]]:
         """actions/get-pending-deployments-for-run
 
         GET /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
@@ -15806,7 +15871,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
-    ) -> Response[list[Deployment], list[DeploymentType]]: ...
+    ) -> Response[list[Deployment], list[DeploymentTypeForResponse]]: ...
 
     @overload
     def review_pending_deployments_for_run(
@@ -15821,7 +15886,7 @@ class ActionsClient:
         environment_ids: list[int],
         state: Literal["approved", "rejected"],
         comment: str,
-    ) -> Response[list[Deployment], list[DeploymentType]]: ...
+    ) -> Response[list[Deployment], list[DeploymentTypeForResponse]]: ...
 
     def review_pending_deployments_for_run(
         self,
@@ -15835,7 +15900,7 @@ class ActionsClient:
             ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Deployment], list[DeploymentType]]:
+    ) -> Response[list[Deployment], list[DeploymentTypeForResponse]]:
         """actions/review-pending-deployments-for-run
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
@@ -15888,7 +15953,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
-    ) -> Response[list[Deployment], list[DeploymentType]]: ...
+    ) -> Response[list[Deployment], list[DeploymentTypeForResponse]]: ...
 
     @overload
     async def async_review_pending_deployments_for_run(
@@ -15903,7 +15968,7 @@ class ActionsClient:
         environment_ids: list[int],
         state: Literal["approved", "rejected"],
         comment: str,
-    ) -> Response[list[Deployment], list[DeploymentType]]: ...
+    ) -> Response[list[Deployment], list[DeploymentTypeForResponse]]: ...
 
     async def async_review_pending_deployments_for_run(
         self,
@@ -15917,7 +15982,7 @@ class ActionsClient:
             ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Deployment], list[DeploymentType]]:
+    ) -> Response[list[Deployment], list[DeploymentTypeForResponse]]:
         """actions/review-pending-deployments-for-run
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
@@ -15972,7 +16037,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def re_run_workflow(
@@ -15985,7 +16050,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def re_run_workflow(
         self,
@@ -15999,7 +16064,7 @@ class ActionsClient:
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/re-run-workflow
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
@@ -16051,7 +16116,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_re_run_workflow(
@@ -16064,7 +16129,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_re_run_workflow(
         self,
@@ -16078,7 +16143,7 @@ class ActionsClient:
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/re-run-workflow
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
@@ -16130,7 +16195,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def re_run_workflow_failed_jobs(
@@ -16143,7 +16208,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def re_run_workflow_failed_jobs(
         self,
@@ -16157,7 +16222,7 @@ class ActionsClient:
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/re-run-workflow-failed-jobs
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs
@@ -16212,7 +16277,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_re_run_workflow_failed_jobs(
@@ -16225,7 +16290,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_re_run_workflow_failed_jobs(
         self,
@@ -16239,7 +16304,7 @@ class ActionsClient:
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/re-run-workflow-failed-jobs
 
         POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs
@@ -16290,7 +16355,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WorkflowRunUsage, WorkflowRunUsageType]:
+    ) -> Response[WorkflowRunUsage, WorkflowRunUsageTypeForResponse]:
         """actions/get-workflow-run-usage
 
         GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
@@ -16329,7 +16394,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WorkflowRunUsage, WorkflowRunUsageType]:
+    ) -> Response[WorkflowRunUsage, WorkflowRunUsageTypeForResponse]:
         """actions/get-workflow-run-usage
 
         GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
@@ -16371,7 +16436,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsSecretsGetResponse200,
-        ReposOwnerRepoActionsSecretsGetResponse200Type,
+        ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse,
     ]:
         """actions/list-repo-secrets
 
@@ -16418,7 +16483,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsSecretsGetResponse200,
-        ReposOwnerRepoActionsSecretsGetResponse200Type,
+        ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse,
     ]:
         """actions/list-repo-secrets
 
@@ -16461,7 +16526,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
+    ) -> Response[ActionsPublicKey, ActionsPublicKeyTypeForResponse]:
         """actions/get-repo-public-key
 
         GET /repos/{owner}/{repo}/actions/secrets/public-key
@@ -16497,7 +16562,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
+    ) -> Response[ActionsPublicKey, ActionsPublicKeyTypeForResponse]:
         """actions/get-repo-public-key
 
         GET /repos/{owner}/{repo}/actions/secrets/public-key
@@ -16534,7 +16599,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsSecret, ActionsSecretType]:
+    ) -> Response[ActionsSecret, ActionsSecretTypeForResponse]:
         """actions/get-repo-secret
 
         GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
@@ -16570,7 +16635,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsSecret, ActionsSecretType]:
+    ) -> Response[ActionsSecret, ActionsSecretTypeForResponse]:
         """actions/get-repo-secret
 
         GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
@@ -16608,7 +16673,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def create_or_update_repo_secret(
@@ -16622,7 +16687,7 @@ class ActionsClient:
         stream: bool = False,
         encrypted_value: str,
         key_id: str,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def create_or_update_repo_secret(
         self,
@@ -16634,7 +16699,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/create-or-update-repo-secret
 
         PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
@@ -16685,7 +16750,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_create_or_update_repo_secret(
@@ -16699,7 +16764,7 @@ class ActionsClient:
         stream: bool = False,
         encrypted_value: str,
         key_id: str,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_create_or_update_repo_secret(
         self,
@@ -16711,7 +16776,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/create-or-update-repo-secret
 
         PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
@@ -16829,7 +16894,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsVariablesGetResponse200,
-        ReposOwnerRepoActionsVariablesGetResponse200Type,
+        ReposOwnerRepoActionsVariablesGetResponse200TypeForResponse,
     ]:
         """actions/list-repo-variables
 
@@ -16875,7 +16940,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsVariablesGetResponse200,
-        ReposOwnerRepoActionsVariablesGetResponse200Type,
+        ReposOwnerRepoActionsVariablesGetResponse200TypeForResponse,
     ]:
         """actions/list-repo-variables
 
@@ -16919,7 +16984,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoActionsVariablesPostBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def create_repo_variable(
@@ -16932,7 +16997,7 @@ class ActionsClient:
         stream: bool = False,
         name: str,
         value: str,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def create_repo_variable(
         self,
@@ -16943,7 +17008,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/create-repo-variable
 
         POST /repos/{owner}/{repo}/actions/variables
@@ -16990,7 +17055,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoActionsVariablesPostBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_create_repo_variable(
@@ -17003,7 +17068,7 @@ class ActionsClient:
         stream: bool = False,
         name: str,
         value: str,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_create_repo_variable(
         self,
@@ -17014,7 +17079,7 @@ class ActionsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/create-repo-variable
 
         POST /repos/{owner}/{repo}/actions/variables
@@ -17060,7 +17125,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsVariable, ActionsVariableType]:
+    ) -> Response[ActionsVariable, ActionsVariableTypeForResponse]:
         """actions/get-repo-variable
 
         GET /repos/{owner}/{repo}/actions/variables/{name}
@@ -17096,7 +17161,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsVariable, ActionsVariableType]:
+    ) -> Response[ActionsVariable, ActionsVariableTypeForResponse]:
         """actions/get-repo-variable
 
         GET /repos/{owner}/{repo}/actions/variables/{name}
@@ -17349,7 +17414,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsGetResponse200,
-        ReposOwnerRepoActionsWorkflowsGetResponse200Type,
+        ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse,
     ]:
         """actions/list-repo-workflows
 
@@ -17395,7 +17460,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsGetResponse200,
-        ReposOwnerRepoActionsWorkflowsGetResponse200Type,
+        ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse,
     ]:
         """actions/list-repo-workflows
 
@@ -17438,7 +17503,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Workflow, WorkflowType]:
+    ) -> Response[Workflow, WorkflowTypeForResponse]:
         """actions/get-workflow
 
         GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}
@@ -17475,7 +17540,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Workflow, WorkflowType]:
+    ) -> Response[Workflow, WorkflowTypeForResponse]:
         """actions/get-workflow
 
         GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}
@@ -17823,7 +17888,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
-        ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type,
+        ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse,
     ]:
         """actions/list-workflow-runs
 
@@ -17905,7 +17970,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
-        ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type,
+        ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse,
     ]:
         """actions/list-workflow-runs
 
@@ -17958,7 +18023,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WorkflowUsage, WorkflowUsageType]:
+    ) -> Response[WorkflowUsage, WorkflowUsageTypeForResponse]:
         """actions/get-workflow-usage
 
         GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing
@@ -17999,7 +18064,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WorkflowUsage, WorkflowUsageType]:
+    ) -> Response[WorkflowUsage, WorkflowUsageTypeForResponse]:
         """actions/get-workflow-usage
 
         GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing
@@ -18044,7 +18109,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
-        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse,
     ]:
         """actions/list-environment-secrets
 
@@ -18094,7 +18159,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
-        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse,
     ]:
         """actions/list-environment-secrets
 
@@ -18140,7 +18205,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
+    ) -> Response[ActionsPublicKey, ActionsPublicKeyTypeForResponse]:
         """actions/get-environment-public-key
 
         GET /repos/{owner}/{repo}/environments/{environment_name}/secrets/public-key
@@ -18179,7 +18244,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
+    ) -> Response[ActionsPublicKey, ActionsPublicKeyTypeForResponse]:
         """actions/get-environment-public-key
 
         GET /repos/{owner}/{repo}/environments/{environment_name}/secrets/public-key
@@ -18219,7 +18284,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsSecret, ActionsSecretType]:
+    ) -> Response[ActionsSecret, ActionsSecretTypeForResponse]:
         """actions/get-environment-secret
 
         GET /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}
@@ -18256,7 +18321,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsSecret, ActionsSecretType]:
+    ) -> Response[ActionsSecret, ActionsSecretTypeForResponse]:
         """actions/get-environment-secret
 
         GET /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}
@@ -18295,7 +18360,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def create_or_update_environment_secret(
@@ -18310,7 +18375,7 @@ class ActionsClient:
         stream: bool = False,
         encrypted_value: str,
         key_id: str,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def create_or_update_environment_secret(
         self,
@@ -18325,7 +18390,7 @@ class ActionsClient:
             ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/create-or-update-environment-secret
 
         PUT /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}
@@ -18380,7 +18445,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_create_or_update_environment_secret(
@@ -18395,7 +18460,7 @@ class ActionsClient:
         stream: bool = False,
         encrypted_value: str,
         key_id: str,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_create_or_update_environment_secret(
         self,
@@ -18410,7 +18475,7 @@ class ActionsClient:
             ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/create-or-update-environment-secret
 
         PUT /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}
@@ -18534,7 +18599,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
-        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse,
     ]:
         """actions/list-environment-variables
 
@@ -18583,7 +18648,7 @@ class ActionsClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
-        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse,
     ]:
         """actions/list-environment-variables
 
@@ -18630,7 +18695,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def create_environment_variable(
@@ -18644,7 +18709,7 @@ class ActionsClient:
         stream: bool = False,
         name: str,
         value: str,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def create_environment_variable(
         self,
@@ -18658,7 +18723,7 @@ class ActionsClient:
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/create-environment-variable
 
         POST /repos/{owner}/{repo}/environments/{environment_name}/variables
@@ -18711,7 +18776,7 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_create_environment_variable(
@@ -18725,7 +18790,7 @@ class ActionsClient:
         stream: bool = False,
         name: str,
         value: str,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_create_environment_variable(
         self,
@@ -18739,7 +18804,7 @@ class ActionsClient:
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """actions/create-environment-variable
 
         POST /repos/{owner}/{repo}/environments/{environment_name}/variables
@@ -18791,7 +18856,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsVariable, ActionsVariableType]:
+    ) -> Response[ActionsVariable, ActionsVariableTypeForResponse]:
         """actions/get-environment-variable
 
         GET /repos/{owner}/{repo}/environments/{environment_name}/variables/{name}
@@ -18828,7 +18893,7 @@ class ActionsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsVariable, ActionsVariableType]:
+    ) -> Response[ActionsVariable, ActionsVariableTypeForResponse]:
         """actions/get-environment-variable
 
         GET /repos/{owner}/{repo}/environments/{environment_name}/variables/{name}

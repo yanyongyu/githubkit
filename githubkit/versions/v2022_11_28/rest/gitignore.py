@@ -20,7 +20,7 @@ if TYPE_CHECKING:
     from githubkit.response import Response
 
     from ..models import GitignoreTemplate
-    from ..types import GitignoreTemplateType
+    from ..types import GitignoreTemplateTypeForResponse
 
 
 class GitignoreClient:
@@ -98,7 +98,7 @@ class GitignoreClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GitignoreTemplate, GitignoreTemplateType]:
+    ) -> Response[GitignoreTemplate, GitignoreTemplateTypeForResponse]:
         """gitignore/get-template
 
         GET /gitignore/templates/{name}
@@ -132,7 +132,7 @@ class GitignoreClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GitignoreTemplate, GitignoreTemplateType]:
+    ) -> Response[GitignoreTemplate, GitignoreTemplateTypeForResponse]:
         """gitignore/get-template
 
         GET /gitignore/templates/{name}

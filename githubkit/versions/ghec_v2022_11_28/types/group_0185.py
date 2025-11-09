@@ -19,6 +19,14 @@ class GetAllCostCentersType(TypedDict):
     cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
 
 
+class GetAllCostCentersTypeForResponse(TypedDict):
+    """GetAllCostCenters"""
+
+    cost_centers: NotRequired[
+        list[GetAllCostCentersPropCostCentersItemsTypeForResponse]
+    ]
+
+
 class GetAllCostCentersPropCostCentersItemsType(TypedDict):
     """GetAllCostCentersPropCostCentersItems"""
 
@@ -29,7 +37,26 @@ class GetAllCostCentersPropCostCentersItemsType(TypedDict):
     resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
 
 
+class GetAllCostCentersPropCostCentersItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
+
+    id: str
+    name: str
+    state: NotRequired[Literal["active", "deleted"]]
+    azure_subscription: NotRequired[Union[str, None]]
+    resources: list[
+        GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse
+    ]
+
+
 class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse(TypedDict):
     """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
 
     type: str
@@ -38,6 +65,9 @@ class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
 
 __all__ = (
     "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse",
     "GetAllCostCentersPropCostCentersItemsType",
+    "GetAllCostCentersPropCostCentersItemsTypeForResponse",
     "GetAllCostCentersType",
+    "GetAllCostCentersTypeForResponse",
 )

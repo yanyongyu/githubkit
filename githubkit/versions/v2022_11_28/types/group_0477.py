@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0236 import SimpleCommitType
+from .group_0236 import SimpleCommitType, SimpleCommitTypeForResponse
 
 
 class MergeGroupType(TypedDict):
@@ -27,4 +27,20 @@ class MergeGroupType(TypedDict):
     head_commit: SimpleCommitType
 
 
-__all__ = ("MergeGroupType",)
+class MergeGroupTypeForResponse(TypedDict):
+    """Merge Group
+
+    A group of pull requests that the merge queue has grouped together to be merged.
+    """
+
+    head_sha: str
+    head_ref: str
+    base_sha: str
+    base_ref: str
+    head_commit: SimpleCommitTypeForResponse
+
+
+__all__ = (
+    "MergeGroupType",
+    "MergeGroupTypeForResponse",
+)

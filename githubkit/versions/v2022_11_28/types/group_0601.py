@@ -15,6 +15,7 @@ from typing_extensions import TypedDict
 
 from .group_0600 import (
     WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
 )
 
 
@@ -44,4 +45,34 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneType(TypedDict):
     url: str
 
 
-__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneType",)
+class WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+        None,
+    ]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
+
+
+__all__ = (
+    "WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneTypeForResponse",
+)

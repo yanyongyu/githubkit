@@ -18,4 +18,13 @@ class ApplicationsClientIdTokenPostBodyType(TypedDict):
     access_token: str
 
 
-__all__ = ("ApplicationsClientIdTokenPostBodyType",)
+class ApplicationsClientIdTokenPostBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdTokenPostBody"""
+
+    access_token: str
+
+
+__all__ = (
+    "ApplicationsClientIdTokenPostBodyType",
+    "ApplicationsClientIdTokenPostBodyTypeForResponse",
+)

@@ -19,4 +19,14 @@ class UserCodespacesCodespaceNamePublishPostBodyType(TypedDict):
     private: NotRequired[bool]
 
 
-__all__ = ("UserCodespacesCodespaceNamePublishPostBodyType",)
+class UserCodespacesCodespaceNamePublishPostBodyTypeForResponse(TypedDict):
+    """UserCodespacesCodespaceNamePublishPostBody"""
+
+    name: NotRequired[str]
+    private: NotRequired[bool]
+
+
+__all__ = (
+    "UserCodespacesCodespaceNamePublishPostBodyType",
+    "UserCodespacesCodespaceNamePublishPostBodyTypeForResponse",
+)

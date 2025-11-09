@@ -21,4 +21,15 @@ class OrgsOrgActionsPermissionsPutBodyType(TypedDict):
     sha_pinning_required: NotRequired[bool]
 
 
-__all__ = ("OrgsOrgActionsPermissionsPutBodyType",)
+class OrgsOrgActionsPermissionsPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsPutBody"""
+
+    enabled_repositories: Literal["all", "none", "selected"]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
+
+
+__all__ = (
+    "OrgsOrgActionsPermissionsPutBodyType",
+    "OrgsOrgActionsPermissionsPutBodyTypeForResponse",
+)

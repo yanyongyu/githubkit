@@ -21,6 +21,13 @@ class OrgsOrgPrivateRegistriesGetResponse200Type(TypedDict):
     configurations: list[OrgPrivateRegistryConfigurationType]
 
 
+class OrgsOrgPrivateRegistriesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
+
+    total_count: int
+    configurations: list[OrgPrivateRegistryConfigurationTypeForResponse]
+
+
 class OrgPrivateRegistryConfigurationType(TypedDict):
     """Organization private registry
 
@@ -53,7 +60,41 @@ class OrgPrivateRegistryConfigurationType(TypedDict):
     updated_at: datetime
 
 
+class OrgPrivateRegistryConfigurationTypeForResponse(TypedDict):
+    """Organization private registry
+
+    Private registry configuration for an organization
+    """
+
+    name: str
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ]
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    visibility: Literal["all", "private", "selected"]
+    created_at: str
+    updated_at: str
+
+
 __all__ = (
     "OrgPrivateRegistryConfigurationType",
+    "OrgPrivateRegistryConfigurationTypeForResponse",
     "OrgsOrgPrivateRegistriesGetResponse200Type",
+    "OrgsOrgPrivateRegistriesGetResponse200TypeForResponse",
 )

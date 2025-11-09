@@ -23,4 +23,17 @@ class ReposOwnerRepoPagesPostBodyPropSourceType(TypedDict):
     path: NotRequired[Literal["/", "/docs"]]
 
 
-__all__ = ("ReposOwnerRepoPagesPostBodyPropSourceType",)
+class ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPostBodyPropSource
+
+    The source branch and directory used to publish your Pages site.
+    """
+
+    branch: str
+    path: NotRequired[Literal["/", "/docs"]]
+
+
+__all__ = (
+    "ReposOwnerRepoPagesPostBodyPropSourceType",
+    "ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse",
+)

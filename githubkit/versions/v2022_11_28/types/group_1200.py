@@ -20,4 +20,15 @@ class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType(TypedDict):
     state: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType",)
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
+
+    name: NotRequired[str]
+    label: NotRequired[str]
+    state: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType",
+    "ReposOwnerRepoReleasesAssetsAssetIdPatchBodyTypeForResponse",
+)

@@ -21,4 +21,15 @@ class CodeScanningAnalysisToolType(TypedDict):
     guid: NotRequired[Union[str, None]]
 
 
-__all__ = ("CodeScanningAnalysisToolType",)
+class CodeScanningAnalysisToolTypeForResponse(TypedDict):
+    """CodeScanningAnalysisTool"""
+
+    name: NotRequired[str]
+    version: NotRequired[Union[str, None]]
+    guid: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "CodeScanningAnalysisToolType",
+    "CodeScanningAnalysisToolTypeForResponse",
+)

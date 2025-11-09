@@ -12,12 +12,15 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
-from .group_0198 import IssueType
-from .group_0535 import SimpleInstallationType
-from .group_0536 import OrganizationSimpleWebhooksType
-from .group_0537 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0198 import IssueType, IssueTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
 class WebhookIssueDependenciesBlockedByRemovedType(TypedDict):
@@ -35,4 +38,22 @@ class WebhookIssueDependenciesBlockedByRemovedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssueDependenciesBlockedByRemovedType",)
+class WebhookIssueDependenciesBlockedByRemovedTypeForResponse(TypedDict):
+    """blocked by issue removed event"""
+
+    action: Literal["blocked_by_removed"]
+    blocked_issue_id: float
+    blocked_issue: IssueTypeForResponse
+    blocking_issue_id: float
+    blocking_issue: IssueTypeForResponse
+    blocking_issue_repo: RepositoryTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookIssueDependenciesBlockedByRemovedType",
+    "WebhookIssueDependenciesBlockedByRemovedTypeForResponse",
+)

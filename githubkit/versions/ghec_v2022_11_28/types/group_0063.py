@@ -29,4 +29,22 @@ class GetAuditLogStreamConfigType(TypedDict):
     paused_at: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("GetAuditLogStreamConfigType",)
+class GetAuditLogStreamConfigTypeForResponse(TypedDict):
+    """Get an audit log streaming configuration
+
+    Get an audit log streaming configuration for an enterprise.
+    """
+
+    id: int
+    stream_type: str
+    stream_details: str
+    enabled: bool
+    created_at: str
+    updated_at: str
+    paused_at: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "GetAuditLogStreamConfigType",
+    "GetAuditLogStreamConfigTypeForResponse",
+)

@@ -31,7 +31,7 @@ if TYPE_CHECKING:
     from ..types import (
         EnterprisesEnterpriseTeamsPostBodyType,
         EnterprisesEnterpriseTeamsTeamSlugPatchBodyType,
-        EnterpriseTeamType,
+        EnterpriseTeamTypeForResponse,
     )
 
 
@@ -58,7 +58,7 @@ class EnterpriseTeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamType]]:
+    ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamTypeForResponse]]:
         """enterprise-teams/list
 
         GET /enterprises/{enterprise}/teams
@@ -99,7 +99,7 @@ class EnterpriseTeamsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamType]]:
+    ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamTypeForResponse]]:
         """enterprise-teams/list
 
         GET /enterprises/{enterprise}/teams
@@ -140,7 +140,7 @@ class EnterpriseTeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsPostBodyType,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamType]: ...
+    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
 
     @overload
     def create(
@@ -157,7 +157,7 @@ class EnterpriseTeamsClient:
             Literal["disabled", "selected", "all"]
         ] = UNSET,
         group_id: Missing[Union[str, None]] = UNSET,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamType]: ...
+    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
 
     def create(
         self,
@@ -167,7 +167,7 @@ class EnterpriseTeamsClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseTeamsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamType]:
+    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]:
         """enterprise-teams/create
 
         POST /enterprises/{enterprise}/teams
@@ -209,7 +209,7 @@ class EnterpriseTeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsPostBodyType,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamType]: ...
+    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
 
     @overload
     async def async_create(
@@ -226,7 +226,7 @@ class EnterpriseTeamsClient:
             Literal["disabled", "selected", "all"]
         ] = UNSET,
         group_id: Missing[Union[str, None]] = UNSET,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamType]: ...
+    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
 
     async def async_create(
         self,
@@ -236,7 +236,7 @@ class EnterpriseTeamsClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseTeamsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamType]:
+    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]:
         """enterprise-teams/create
 
         POST /enterprises/{enterprise}/teams
@@ -277,7 +277,7 @@ class EnterpriseTeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamType]:
+    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]:
         """enterprise-teams/get
 
         GET /enterprises/{enterprise}/teams/{team_slug}
@@ -311,7 +311,7 @@ class EnterpriseTeamsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamType]:
+    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]:
         """enterprise-teams/get
 
         GET /enterprises/{enterprise}/teams/{team_slug}
@@ -417,7 +417,7 @@ class EnterpriseTeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsTeamSlugPatchBodyType,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamType]: ...
+    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
 
     @overload
     def update(
@@ -435,7 +435,7 @@ class EnterpriseTeamsClient:
             Literal["disabled", "selected", "all"]
         ] = UNSET,
         group_id: Missing[Union[str, None]] = UNSET,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamType]: ...
+    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
 
     def update(
         self,
@@ -446,7 +446,7 @@ class EnterpriseTeamsClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamType]:
+    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]:
         """enterprise-teams/update
 
         PATCH /enterprises/{enterprise}/teams/{team_slug}
@@ -498,7 +498,7 @@ class EnterpriseTeamsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseTeamsTeamSlugPatchBodyType,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamType]: ...
+    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
 
     @overload
     async def async_update(
@@ -516,7 +516,7 @@ class EnterpriseTeamsClient:
             Literal["disabled", "selected", "all"]
         ] = UNSET,
         group_id: Missing[Union[str, None]] = UNSET,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamType]: ...
+    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]: ...
 
     async def async_update(
         self,
@@ -527,7 +527,7 @@ class EnterpriseTeamsClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EnterpriseTeam, EnterpriseTeamType]:
+    ) -> Response[EnterpriseTeam, EnterpriseTeamTypeForResponse]:
         """enterprise-teams/update
 
         PATCH /enterprises/{enterprise}/teams/{team_slug}

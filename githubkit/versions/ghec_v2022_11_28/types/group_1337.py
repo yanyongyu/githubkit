@@ -20,4 +20,15 @@ class ReposOwnerRepoLabelsPostBodyType(TypedDict):
     description: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoLabelsPostBodyType",)
+class ReposOwnerRepoLabelsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoLabelsPostBody"""
+
+    name: str
+    color: NotRequired[str]
+    description: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoLabelsPostBodyType",
+    "ReposOwnerRepoLabelsPostBodyTypeForResponse",
+)

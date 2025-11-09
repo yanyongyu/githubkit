@@ -19,4 +19,14 @@ class ReposOwnerRepoDeleteResponse403Type(TypedDict):
     documentation_url: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoDeleteResponse403Type",)
+class ReposOwnerRepoDeleteResponse403TypeForResponse(TypedDict):
+    """ReposOwnerRepoDeleteResponse403"""
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoDeleteResponse403Type",
+    "ReposOwnerRepoDeleteResponse403TypeForResponse",
+)

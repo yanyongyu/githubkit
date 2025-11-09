@@ -30,4 +30,24 @@ class OrganizationCustomPropertyPayloadType(TypedDict):
     ]
 
 
-__all__ = ("OrganizationCustomPropertyPayloadType",)
+class OrganizationCustomPropertyPayloadTypeForResponse(TypedDict):
+    """Organization Custom Property Payload
+
+    Payload for creating or updating an organization custom property definition on
+    an enterprise.
+    """
+
+    value_type: Literal["string", "single_select", "multi_select", "true_false"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+    ]
+
+
+__all__ = (
+    "OrganizationCustomPropertyPayloadType",
+    "OrganizationCustomPropertyPayloadTypeForResponse",
+)

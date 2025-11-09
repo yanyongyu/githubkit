@@ -39,7 +39,49 @@ class CodeScanningAlertDismissalRequestType(TypedDict):
     html_url: NotRequired[str]
 
 
+class CodeScanningAlertDismissalRequestTypeForResponse(TypedDict):
+    """Code scanning alert dismissal request
+
+    Alert dismisal request made by a user asking to dismiss a code scanning alert.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[
+        CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse
+    ]
+    organization: NotRequired[
+        CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse
+    ]
+    requester: NotRequired[
+        CodeScanningAlertDismissalRequestPropRequesterTypeForResponse
+    ]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[str]
+    created_at: NotRequired[str]
+    responses: NotRequired[Union[list[DismissalRequestResponseTypeForResponse], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+
+
 class CodeScanningAlertDismissalRequestPropRepositoryType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRepository
+
+    The repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
     """CodeScanningAlertDismissalRequestPropRepository
 
     The repository the dismissal request is for.
@@ -60,6 +102,16 @@ class CodeScanningAlertDismissalRequestPropOrganizationType(TypedDict):
     name: NotRequired[str]
 
 
+class CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
+    """CodeScanningAlertDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
 class CodeScanningAlertDismissalRequestPropRequesterType(TypedDict):
     """CodeScanningAlertDismissalRequestPropRequester
 
@@ -70,7 +122,25 @@ class CodeScanningAlertDismissalRequestPropRequesterType(TypedDict):
     actor_name: NotRequired[str]
 
 
+class CodeScanningAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRequester
+
+    The user who requested the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
 class CodeScanningAlertDismissalRequestPropDataItemsType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropDataItems"""
+
+    reason: NotRequired[str]
+    alert_number: NotRequired[str]
+    pr_review_thread_id: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
     """CodeScanningAlertDismissalRequestPropDataItems"""
 
     reason: NotRequired[str]
@@ -91,7 +161,30 @@ class DismissalRequestResponseType(TypedDict):
     created_at: NotRequired[datetime]
 
 
+class DismissalRequestResponseTypeForResponse(TypedDict):
+    """Dismissal request response
+
+    A response made by a requester to dismiss the request.
+    """
+
+    id: NotRequired[int]
+    reviewer: NotRequired[DismissalRequestResponsePropReviewerTypeForResponse]
+    message: NotRequired[Union[str, None]]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[str]
+
+
 class DismissalRequestResponsePropReviewerType(TypedDict):
+    """DismissalRequestResponsePropReviewer
+
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class DismissalRequestResponsePropReviewerTypeForResponse(TypedDict):
     """DismissalRequestResponsePropReviewer
 
     The user who reviewed the dismissal request.
@@ -103,10 +196,17 @@ class DismissalRequestResponsePropReviewerType(TypedDict):
 
 __all__ = (
     "CodeScanningAlertDismissalRequestPropDataItemsType",
+    "CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse",
     "CodeScanningAlertDismissalRequestPropOrganizationType",
+    "CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse",
     "CodeScanningAlertDismissalRequestPropRepositoryType",
+    "CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse",
     "CodeScanningAlertDismissalRequestPropRequesterType",
+    "CodeScanningAlertDismissalRequestPropRequesterTypeForResponse",
     "CodeScanningAlertDismissalRequestType",
+    "CodeScanningAlertDismissalRequestTypeForResponse",
     "DismissalRequestResponsePropReviewerType",
+    "DismissalRequestResponsePropReviewerTypeForResponse",
     "DismissalRequestResponseType",
+    "DismissalRequestResponseTypeForResponse",
 )

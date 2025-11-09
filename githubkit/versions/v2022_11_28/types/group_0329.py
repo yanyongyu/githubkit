@@ -12,8 +12,8 @@ from __future__ import annotations
 from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0011 import WebhookConfigType
-from .group_0328 import HookResponseType
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
+from .group_0328 import HookResponseType, HookResponseTypeForResponse
 
 
 class HookType(TypedDict):
@@ -37,4 +37,28 @@ class HookType(TypedDict):
     last_response: HookResponseType
 
 
-__all__ = ("HookType",)
+class HookTypeForResponse(TypedDict):
+    """Webhook
+
+    Webhooks for repositories.
+    """
+
+    type: str
+    id: int
+    name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigTypeForResponse
+    updated_at: str
+    created_at: str
+    url: str
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseTypeForResponse
+
+
+__all__ = (
+    "HookType",
+    "HookTypeForResponse",
+)

@@ -22,7 +22,26 @@ class GroupMappingType(TypedDict):
     groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
 
 
+class GroupMappingTypeForResponse(TypedDict):
+    """GroupMapping
+
+    External Groups to be mapped to a team for membership
+    """
+
+    groups: NotRequired[list[GroupMappingPropGroupsItemsTypeForResponse]]
+
+
 class GroupMappingPropGroupsItemsType(TypedDict):
+    """GroupMappingPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
+
+
+class GroupMappingPropGroupsItemsTypeForResponse(TypedDict):
     """GroupMappingPropGroupsItems"""
 
     group_id: str
@@ -34,5 +53,7 @@ class GroupMappingPropGroupsItemsType(TypedDict):
 
 __all__ = (
     "GroupMappingPropGroupsItemsType",
+    "GroupMappingPropGroupsItemsTypeForResponse",
     "GroupMappingType",
+    "GroupMappingTypeForResponse",
 )

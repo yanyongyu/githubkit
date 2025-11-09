@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0049 import RunnerType
+from .group_0049 import RunnerType, RunnerTypeForResponse
 
 
 class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
@@ -21,4 +21,14 @@ class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
     runners: NotRequired[list[RunnerType]]
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200Type",)
+class EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
+
+    total_count: NotRequired[float]
+    runners: NotRequired[list[RunnerTypeForResponse]]
+
+
+__all__ = (
+    "EnterprisesEnterpriseActionsRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse",
+)

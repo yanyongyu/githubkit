@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0019 import LicenseSimpleType
-from .group_0276 import CodeOfConductSimpleType
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0276 import CodeOfConductSimpleType, CodeOfConductSimpleTypeForResponse
 
 
 class CommunityProfilePropFilesType(TypedDict):
@@ -29,7 +29,26 @@ class CommunityProfilePropFilesType(TypedDict):
     pull_request_template: Union[None, CommunityHealthFileType]
 
 
+class CommunityProfilePropFilesTypeForResponse(TypedDict):
+    """CommunityProfilePropFiles"""
+
+    code_of_conduct: Union[None, CodeOfConductSimpleTypeForResponse]
+    code_of_conduct_file: Union[None, CommunityHealthFileTypeForResponse]
+    license_: Union[None, LicenseSimpleTypeForResponse]
+    contributing: Union[None, CommunityHealthFileTypeForResponse]
+    readme: Union[None, CommunityHealthFileTypeForResponse]
+    issue_template: Union[None, CommunityHealthFileTypeForResponse]
+    pull_request_template: Union[None, CommunityHealthFileTypeForResponse]
+
+
 class CommunityHealthFileType(TypedDict):
+    """Community Health File"""
+
+    url: str
+    html_url: str
+
+
+class CommunityHealthFileTypeForResponse(TypedDict):
     """Community Health File"""
 
     url: str
@@ -50,8 +69,25 @@ class CommunityProfileType(TypedDict):
     content_reports_enabled: NotRequired[bool]
 
 
+class CommunityProfileTypeForResponse(TypedDict):
+    """Community Profile
+
+    Community Profile
+    """
+
+    health_percentage: int
+    description: Union[str, None]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesTypeForResponse
+    updated_at: Union[str, None]
+    content_reports_enabled: NotRequired[bool]
+
+
 __all__ = (
     "CommunityHealthFileType",
+    "CommunityHealthFileTypeForResponse",
     "CommunityProfilePropFilesType",
+    "CommunityProfilePropFilesTypeForResponse",
     "CommunityProfileType",
+    "CommunityProfileTypeForResponse",
 )

@@ -22,4 +22,16 @@ class ActionsVariableType(TypedDict):
     updated_at: datetime
 
 
-__all__ = ("ActionsVariableType",)
+class ActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable"""
+
+    name: str
+    value: str
+    created_at: str
+    updated_at: str
+
+
+__all__ = (
+    "ActionsVariableType",
+    "ActionsVariableTypeForResponse",
+)

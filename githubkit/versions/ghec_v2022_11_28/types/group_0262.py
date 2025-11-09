@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class OrganizationProgrammaticAccessGrantType(TypedDict):
@@ -27,6 +27,26 @@ class OrganizationProgrammaticAccessGrantType(TypedDict):
     repository_selection: Literal["none", "all", "subset"]
     repositories_url: str
     permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
+    access_granted_at: str
+    token_id: int
+    token_name: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
+
+
+class OrganizationProgrammaticAccessGrantTypeForResponse(TypedDict):
+    """Organization Programmatic Access Grant
+
+    Minimal representation of an organization programmatic access grant for
+    enumerations
+    """
+
+    id: int
+    owner: SimpleUserTypeForResponse
+    repository_selection: Literal["none", "all", "subset"]
+    repositories_url: str
+    permissions: OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse
     access_granted_at: str
     token_id: int
     token_name: str
@@ -50,6 +70,23 @@ class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
     other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
 
 
+class OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse
+    ]
+    repository: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse
+    ]
+    other: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse
+    ]
+
+
 OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType: TypeAlias = (
     dict[str, Any]
 )
@@ -57,7 +94,21 @@ OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType: TypeAlia
 """
 
 
+OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+"""
+
+
 OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
+"""
+
+
+OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse: TypeAlias = dict[
     str, Any
 ]
 """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
@@ -71,10 +122,22 @@ OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType: TypeAlias = dic
 """
 
 
+OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
+"""
+
+
 __all__ = (
     "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse",
     "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse",
     "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse",
     "OrganizationProgrammaticAccessGrantPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse",
     "OrganizationProgrammaticAccessGrantType",
+    "OrganizationProgrammaticAccessGrantTypeForResponse",
 )

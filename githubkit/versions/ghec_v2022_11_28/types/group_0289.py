@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class TeamProjectType(TypedDict):
@@ -39,7 +39,39 @@ class TeamProjectType(TypedDict):
     permissions: TeamProjectPropPermissionsType
 
 
+class TeamProjectTypeForResponse(TypedDict):
+    """Team Project
+
+    A team's access to a project.
+    """
+
+    owner_url: str
+    url: str
+    html_url: str
+    columns_url: str
+    id: int
+    node_id: str
+    name: str
+    body: Union[str, None]
+    number: int
+    state: str
+    creator: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
+    organization_permission: NotRequired[str]
+    private: NotRequired[bool]
+    permissions: TeamProjectPropPermissionsTypeForResponse
+
+
 class TeamProjectPropPermissionsType(TypedDict):
+    """TeamProjectPropPermissions"""
+
+    read: bool
+    write: bool
+    admin: bool
+
+
+class TeamProjectPropPermissionsTypeForResponse(TypedDict):
     """TeamProjectPropPermissions"""
 
     read: bool
@@ -49,5 +81,7 @@ class TeamProjectPropPermissionsType(TypedDict):
 
 __all__ = (
     "TeamProjectPropPermissionsType",
+    "TeamProjectPropPermissionsTypeForResponse",
     "TeamProjectType",
+    "TeamProjectTypeForResponse",
 )

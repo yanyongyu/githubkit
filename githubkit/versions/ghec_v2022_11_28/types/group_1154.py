@@ -20,4 +20,14 @@ class OrgsOrgPersonalAccessTokensPostBodyType(TypedDict):
     pat_ids: list[int]
 
 
-__all__ = ("OrgsOrgPersonalAccessTokensPostBodyType",)
+class OrgsOrgPersonalAccessTokensPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPersonalAccessTokensPostBody"""
+
+    action: Literal["revoke"]
+    pat_ids: list[int]
+
+
+__all__ = (
+    "OrgsOrgPersonalAccessTokensPostBodyType",
+    "OrgsOrgPersonalAccessTokensPostBodyTypeForResponse",
+)

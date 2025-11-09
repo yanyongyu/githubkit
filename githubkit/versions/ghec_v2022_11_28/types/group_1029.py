@@ -27,7 +27,28 @@ class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType(TypedDict):
     budget_product_sku: NotRequired[str]
 
 
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
+    budget_entity_name: NotRequired[str]
+    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_product_sku: NotRequired[str]
+
+
 class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
+
+
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
     TypedDict
 ):
     """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
@@ -38,5 +59,7 @@ class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType(
 
 __all__ = (
     "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
     "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse",
 )

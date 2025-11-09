@@ -26,4 +26,20 @@ class UserPatchBodyType(TypedDict):
     bio: NotRequired[str]
 
 
-__all__ = ("UserPatchBodyType",)
+class UserPatchBodyTypeForResponse(TypedDict):
+    """UserPatchBody"""
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+    blog: NotRequired[str]
+    twitter_username: NotRequired[Union[str, None]]
+    company: NotRequired[str]
+    location: NotRequired[str]
+    hireable: NotRequired[bool]
+    bio: NotRequired[str]
+
+
+__all__ = (
+    "UserPatchBodyType",
+    "UserPatchBodyTypeForResponse",
+)

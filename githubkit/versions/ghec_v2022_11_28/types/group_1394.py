@@ -26,4 +26,20 @@ class TeamsTeamIdPatchBodyType(TypedDict):
     parent_team_id: NotRequired[Union[int, None]]
 
 
-__all__ = ("TeamsTeamIdPatchBodyType",)
+class TeamsTeamIdPatchBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdPatchBody"""
+
+    name: str
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
+
+
+__all__ = (
+    "TeamsTeamIdPatchBodyType",
+    "TeamsTeamIdPatchBodyTypeForResponse",
+)

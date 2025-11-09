@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class PersonalAccessTokenRequestType(TypedDict):
@@ -37,7 +37,43 @@ class PersonalAccessTokenRequestType(TypedDict):
     token_last_used_at: Union[str, None]
 
 
+class PersonalAccessTokenRequestTypeForResponse(TypedDict):
+    """Personal Access Token Request
+
+    Details of a Personal Access Token Request.
+    """
+
+    id: int
+    owner: SimpleUserTypeForResponse
+    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse
+    permissions_upgraded: (
+        PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse
+    )
+    permissions_result: PersonalAccessTokenRequestPropPermissionsResultTypeForResponse
+    repository_selection: Literal["none", "all", "subset"]
+    repository_count: Union[int, None]
+    repositories: Union[
+        list[PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse], None
+    ]
+    created_at: str
+    token_id: int
+    token_name: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
+
+
 class PersonalAccessTokenRequestPropRepositoriesItemsType(TypedDict):
+    """PersonalAccessTokenRequestPropRepositoriesItems"""
+
+    full_name: str
+    id: int
+    name: str
+    node_id: str
+    private: bool
+
+
+class PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse(TypedDict):
     """PersonalAccessTokenRequestPropRepositoriesItems"""
 
     full_name: str
@@ -62,7 +98,31 @@ class PersonalAccessTokenRequestPropPermissionsAddedType(TypedDict):
     other: NotRequired[PersonalAccessTokenRequestPropPermissionsAddedPropOtherType]
 
 
+class PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsAdded
+
+    New requested permissions, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse
+    ]
+    other: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse
+    ]
+
+
 PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse: TypeAlias = dict[
     str, Any
 ]
 """PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
@@ -76,7 +136,21 @@ PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType: TypeAlias = di
 """
 
 
+PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropRepository
+"""
+
+
 PersonalAccessTokenRequestPropPermissionsAddedPropOtherType: TypeAlias = dict[str, Any]
+"""PersonalAccessTokenRequestPropPermissionsAddedPropOther
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse: TypeAlias = (
+    dict[str, Any]
+)
 """PersonalAccessTokenRequestPropPermissionsAddedPropOther
 """
 
@@ -97,7 +171,32 @@ class PersonalAccessTokenRequestPropPermissionsUpgradedType(TypedDict):
     other: NotRequired[PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType]
 
 
+class PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsUpgraded
+
+    Requested permissions that elevate access for a previously approved request for
+    access, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse
+    ]
+    other: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse
+    ]
+
+
 PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse: TypeAlias = dict[
     str, Any
 ]
 """PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
@@ -111,9 +210,23 @@ PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType: TypeAlias =
 """
 
 
+PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
+"""
+
+
 PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType: TypeAlias = dict[
     str, Any
 ]
+"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse: TypeAlias = (
+    dict[str, Any]
+)
 """PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
 """
 
@@ -134,7 +247,32 @@ class PersonalAccessTokenRequestPropPermissionsResultType(TypedDict):
     other: NotRequired[PersonalAccessTokenRequestPropPermissionsResultPropOtherType]
 
 
+class PersonalAccessTokenRequestPropPermissionsResultTypeForResponse(TypedDict):
+    """PersonalAccessTokenRequestPropPermissionsResult
+
+    Permissions requested, categorized by type of permission. This field
+    incorporates `permissions_added` and `permissions_upgraded`.
+    """
+
+    organization: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse
+    ]
+    repository: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse
+    ]
+    other: NotRequired[
+        PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse
+    ]
+
+
 PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsResultPropOrganization
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse: TypeAlias = dict[
     str, Any
 ]
 """PersonalAccessTokenRequestPropPermissionsResultPropOrganization
@@ -148,24 +286,52 @@ PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType: TypeAlias = d
 """
 
 
+PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""PersonalAccessTokenRequestPropPermissionsResultPropRepository
+"""
+
+
 PersonalAccessTokenRequestPropPermissionsResultPropOtherType: TypeAlias = dict[str, Any]
+"""PersonalAccessTokenRequestPropPermissionsResultPropOther
+"""
+
+
+PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse: TypeAlias = (
+    dict[str, Any]
+)
 """PersonalAccessTokenRequestPropPermissionsResultPropOther
 """
 
 
 __all__ = (
     "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse",
     "PersonalAccessTokenRequestPropPermissionsAddedPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse",
     "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse",
     "PersonalAccessTokenRequestPropPermissionsAddedType",
+    "PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse",
     "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse",
     "PersonalAccessTokenRequestPropPermissionsResultPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse",
     "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse",
     "PersonalAccessTokenRequestPropPermissionsResultType",
+    "PersonalAccessTokenRequestPropPermissionsResultTypeForResponse",
     "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse",
     "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse",
     "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse",
     "PersonalAccessTokenRequestPropPermissionsUpgradedType",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse",
     "PersonalAccessTokenRequestPropRepositoriesItemsType",
+    "PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse",
     "PersonalAccessTokenRequestType",
+    "PersonalAccessTokenRequestTypeForResponse",
 )

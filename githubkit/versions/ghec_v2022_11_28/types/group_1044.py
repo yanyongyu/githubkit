@@ -21,7 +21,25 @@ class GistsPostBodyType(TypedDict):
     public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
+class GistsPostBodyTypeForResponse(TypedDict):
+    """GistsPostBody"""
+
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesTypeForResponse
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
+
+
 GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
+
+Names and content for the files that make up the gist
+
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
+
+
+GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
 """GistsPostBodyPropFiles
 
 Names and content for the files that make up the gist
@@ -33,5 +51,7 @@ Examples:
 
 __all__ = (
     "GistsPostBodyPropFilesType",
+    "GistsPostBodyPropFilesTypeForResponse",
     "GistsPostBodyType",
+    "GistsPostBodyTypeForResponse",
 )

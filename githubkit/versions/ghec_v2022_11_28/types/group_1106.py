@@ -19,4 +19,14 @@ class OrgsOrgAttestationsRepositoriesGetResponse200ItemsType(TypedDict):
     name: NotRequired[str]
 
 
-__all__ = ("OrgsOrgAttestationsRepositoriesGetResponse200ItemsType",)
+class OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+__all__ = (
+    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsType",
+    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse",
+)

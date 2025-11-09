@@ -18,4 +18,13 @@ class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType(TypedDict):
     assignees: NotRequired[list[str]]
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",)
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
+
+    assignees: NotRequired[list[str]]
+
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse",
+)

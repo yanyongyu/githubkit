@@ -21,4 +21,15 @@ class UserCodespacesSecretsSecretNamePutBodyType(TypedDict):
     selected_repository_ids: NotRequired[list[Union[int, str]]]
 
 
-__all__ = ("UserCodespacesSecretsSecretNamePutBodyType",)
+class UserCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """UserCodespacesSecretsSecretNamePutBody"""
+
+    encrypted_value: NotRequired[str]
+    key_id: str
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
+
+
+__all__ = (
+    "UserCodespacesSecretsSecretNamePutBodyType",
+    "UserCodespacesSecretsSecretNamePutBodyTypeForResponse",
+)

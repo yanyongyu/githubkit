@@ -21,7 +21,24 @@ class UserNameResponseType(TypedDict):
     middle_name: NotRequired[str]
 
 
+class UserNameResponseTypeForResponse(TypedDict):
+    """UserNameResponse"""
+
+    formatted: NotRequired[str]
+    family_name: NotRequired[str]
+    given_name: NotRequired[str]
+    middle_name: NotRequired[str]
+
+
 class UserEmailsResponseItemsType(TypedDict):
+    """UserEmailsResponseItems"""
+
+    value: str
+    type: NotRequired[str]
+    primary: NotRequired[bool]
+
+
+class UserEmailsResponseItemsTypeForResponse(TypedDict):
     """UserEmailsResponseItems"""
 
     value: str
@@ -31,5 +48,7 @@ class UserEmailsResponseItemsType(TypedDict):
 
 __all__ = (
     "UserEmailsResponseItemsType",
+    "UserEmailsResponseItemsTypeForResponse",
     "UserNameResponseType",
+    "UserNameResponseTypeForResponse",
 )

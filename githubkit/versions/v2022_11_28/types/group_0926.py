@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0090 import RunnerType
+from .group_0090 import RunnerType, RunnerTypeForResponse
 
 
 class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type(TypedDict):
@@ -21,4 +21,14 @@ class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type(TypedDict):
     encoded_jit_config: str
 
 
-__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",)
+class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+
+    runner: RunnerTypeForResponse
+    encoded_jit_config: str
+
+
+__all__ = (
+    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
+)

@@ -18,4 +18,13 @@ class ReposOwnerRepoCheckSuitesPostBodyType(TypedDict):
     head_sha: str
 
 
-__all__ = ("ReposOwnerRepoCheckSuitesPostBodyType",)
+class ReposOwnerRepoCheckSuitesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckSuitesPostBody"""
+
+    head_sha: str
+
+
+__all__ = (
+    "ReposOwnerRepoCheckSuitesPostBodyType",
+    "ReposOwnerRepoCheckSuitesPostBodyTypeForResponse",
+)

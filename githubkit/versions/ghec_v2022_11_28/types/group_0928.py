@@ -20,4 +20,15 @@ class WebhookStatusPropCommitPropCommitPropAuthorAllof1Type(TypedDict):
     name: NotRequired[str]
 
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof1Type",)
+class WebhookStatusPropCommitPropCommitPropAuthorAllof1TypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
+
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
+
+
+__all__ = (
+    "WebhookStatusPropCommitPropCommitPropAuthorAllof1Type",
+    "WebhookStatusPropCommitPropCommitPropAuthorAllof1TypeForResponse",
+)

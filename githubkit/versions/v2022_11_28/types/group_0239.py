@@ -19,4 +19,14 @@ class ReviewCustomGatesCommentRequiredType(TypedDict):
     comment: str
 
 
-__all__ = ("ReviewCustomGatesCommentRequiredType",)
+class ReviewCustomGatesCommentRequiredTypeForResponse(TypedDict):
+    """ReviewCustomGatesCommentRequired"""
+
+    environment_name: str
+    comment: str
+
+
+__all__ = (
+    "ReviewCustomGatesCommentRequiredType",
+    "ReviewCustomGatesCommentRequiredTypeForResponse",
+)

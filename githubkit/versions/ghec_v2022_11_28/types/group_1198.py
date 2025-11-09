@@ -19,4 +19,13 @@ class ProjectsColumnsColumnIdCardsPostBodyOneof0Type(TypedDict):
     note: Union[str, None]
 
 
-__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof0Type",)
+class ProjectsColumnsColumnIdCardsPostBodyOneof0TypeForResponse(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof0"""
+
+    note: Union[str, None]
+
+
+__all__ = (
+    "ProjectsColumnsColumnIdCardsPostBodyOneof0Type",
+    "ProjectsColumnsColumnIdCardsPostBodyOneof0TypeForResponse",
+)

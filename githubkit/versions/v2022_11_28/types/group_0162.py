@@ -25,4 +25,19 @@ class RepositoryRuleMergeQueuePropParametersType(TypedDict):
     min_entries_to_merge_wait_minutes: int
 
 
-__all__ = ("RepositoryRuleMergeQueuePropParametersType",)
+class RepositoryRuleMergeQueuePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
+
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
+
+
+__all__ = (
+    "RepositoryRuleMergeQueuePropParametersType",
+    "RepositoryRuleMergeQueuePropParametersTypeForResponse",
+)

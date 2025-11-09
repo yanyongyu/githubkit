@@ -23,4 +23,18 @@ class CommitActivityType(TypedDict):
     week: int
 
 
-__all__ = ("CommitActivityType",)
+class CommitActivityTypeForResponse(TypedDict):
+    """Commit Activity
+
+    Commit Activity
+    """
+
+    days: list[int]
+    total: int
+    week: int
+
+
+__all__ = (
+    "CommitActivityType",
+    "CommitActivityTypeForResponse",
+)

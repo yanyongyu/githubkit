@@ -25,4 +25,19 @@ class PullRequestPropLabelsItemsType(TypedDict):
     default: bool
 
 
-__all__ = ("PullRequestPropLabelsItemsType",)
+class PullRequestPropLabelsItemsTypeForResponse(TypedDict):
+    """PullRequestPropLabelsItems"""
+
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+
+
+__all__ = (
+    "PullRequestPropLabelsItemsType",
+    "PullRequestPropLabelsItemsTypeForResponse",
+)

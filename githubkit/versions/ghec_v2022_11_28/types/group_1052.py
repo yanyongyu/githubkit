@@ -20,4 +20,14 @@ class NotificationsPutBodyType(TypedDict):
     read: NotRequired[bool]
 
 
-__all__ = ("NotificationsPutBodyType",)
+class NotificationsPutBodyTypeForResponse(TypedDict):
+    """NotificationsPutBody"""
+
+    last_read_at: NotRequired[str]
+    read: NotRequired[bool]
+
+
+__all__ = (
+    "NotificationsPutBodyType",
+    "NotificationsPutBodyTypeForResponse",
+)

@@ -21,6 +21,13 @@ class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
     workflows: list[WorkflowType]
 
 
+class ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
+
+    total_count: int
+    workflows: list[WorkflowTypeForResponse]
+
+
 class WorkflowType(TypedDict):
     """Workflow
 
@@ -42,7 +49,30 @@ class WorkflowType(TypedDict):
     deleted_at: NotRequired[datetime]
 
 
+class WorkflowTypeForResponse(TypedDict):
+    """Workflow
+
+    A GitHub Actions workflow
+    """
+
+    id: int
+    node_id: str
+    name: str
+    path: str
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    ]
+    created_at: str
+    updated_at: str
+    url: str
+    html_url: str
+    badge_url: str
+    deleted_at: NotRequired[str]
+
+
 __all__ = (
     "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse",
     "WorkflowType",
+    "WorkflowTypeForResponse",
 )

@@ -18,7 +18,23 @@ class ActionsHostedRunnerLimitsType(TypedDict):
     public_ips: ActionsHostedRunnerLimitsPropPublicIpsType
 
 
+class ActionsHostedRunnerLimitsTypeForResponse(TypedDict):
+    """ActionsHostedRunnerLimits"""
+
+    public_ips: ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse
+
+
 class ActionsHostedRunnerLimitsPropPublicIpsType(TypedDict):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
+
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    """
+
+    maximum: int
+    current_usage: int
+
+
+class ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse(TypedDict):
     """Static public IP Limits for GitHub-hosted Hosted Runners.
 
     Provides details of static public IP limits for GitHub-hosted Hosted Runners
@@ -30,5 +46,7 @@ class ActionsHostedRunnerLimitsPropPublicIpsType(TypedDict):
 
 __all__ = (
     "ActionsHostedRunnerLimitsPropPublicIpsType",
+    "ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse",
     "ActionsHostedRunnerLimitsType",
+    "ActionsHostedRunnerLimitsTypeForResponse",
 )

@@ -18,4 +18,13 @@ class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType(TypedDict):
     selected_repository_ids: NotRequired[list[int]]
 
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",)
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+
+    selected_repository_ids: NotRequired[list[int]]
+
+
+__all__ = (
+    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",
+    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse",
+)

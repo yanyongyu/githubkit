@@ -21,4 +21,15 @@ class ReviewCustomGatesStateRequiredType(TypedDict):
     comment: NotRequired[str]
 
 
-__all__ = ("ReviewCustomGatesStateRequiredType",)
+class ReviewCustomGatesStateRequiredTypeForResponse(TypedDict):
+    """ReviewCustomGatesStateRequired"""
+
+    environment_name: str
+    state: Literal["approved", "rejected"]
+    comment: NotRequired[str]
+
+
+__all__ = (
+    "ReviewCustomGatesStateRequiredType",
+    "ReviewCustomGatesStateRequiredTypeForResponse",
+)

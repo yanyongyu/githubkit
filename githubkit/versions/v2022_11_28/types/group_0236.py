@@ -28,7 +28,31 @@ class SimpleCommitType(TypedDict):
     committer: Union[SimpleCommitPropCommitterType, None]
 
 
+class SimpleCommitTypeForResponse(TypedDict):
+    """Simple Commit
+
+    A commit.
+    """
+
+    id: str
+    tree_id: str
+    message: str
+    timestamp: str
+    author: Union[SimpleCommitPropAuthorTypeForResponse, None]
+    committer: Union[SimpleCommitPropCommitterTypeForResponse, None]
+
+
 class SimpleCommitPropAuthorType(TypedDict):
+    """SimpleCommitPropAuthor
+
+    Information about the Git author
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropAuthorTypeForResponse(TypedDict):
     """SimpleCommitPropAuthor
 
     Information about the Git author
@@ -48,8 +72,21 @@ class SimpleCommitPropCommitterType(TypedDict):
     email: str
 
 
+class SimpleCommitPropCommitterTypeForResponse(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
+
+
 __all__ = (
     "SimpleCommitPropAuthorType",
+    "SimpleCommitPropAuthorTypeForResponse",
     "SimpleCommitPropCommitterType",
+    "SimpleCommitPropCommitterTypeForResponse",
     "SimpleCommitType",
+    "SimpleCommitTypeForResponse",
 )

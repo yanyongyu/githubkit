@@ -18,4 +18,13 @@ class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType(TypedDict):
     sub_issue_id: int
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType",)
+class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
+
+    sub_issue_id: int
+
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType",
+    "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyTypeForResponse",
+)

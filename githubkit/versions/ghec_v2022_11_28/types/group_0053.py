@@ -25,4 +25,18 @@ class AnnouncementType(TypedDict):
     user_dismissible: NotRequired[Union[bool, None]]
 
 
-__all__ = ("AnnouncementType",)
+class AnnouncementTypeForResponse(TypedDict):
+    """Enterprise Announcement
+
+    Enterprise global announcement
+    """
+
+    announcement: Union[str, None]
+    expires_at: NotRequired[Union[str, None]]
+    user_dismissible: NotRequired[Union[bool, None]]
+
+
+__all__ = (
+    "AnnouncementType",
+    "AnnouncementTypeForResponse",
+)

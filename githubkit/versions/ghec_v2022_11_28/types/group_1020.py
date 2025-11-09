@@ -21,4 +21,15 @@ class EnterprisesEnterpriseNetworkConfigurationsPostBodyType(TypedDict):
     network_settings_ids: list[str]
 
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsPostBodyType",)
+class EnterprisesEnterpriseNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
+
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
+
+
+__all__ = (
+    "EnterprisesEnterpriseNetworkConfigurationsPostBodyType",
+    "EnterprisesEnterpriseNetworkConfigurationsPostBodyTypeForResponse",
+)

@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
 class AuthenticationTokenType(TypedDict):
@@ -30,7 +30,29 @@ class AuthenticationTokenType(TypedDict):
     repository_selection: NotRequired[Literal["all", "selected"]]
 
 
+class AuthenticationTokenTypeForResponse(TypedDict):
+    """Authentication Token
+
+    Authentication Token
+    """
+
+    token: str
+    expires_at: str
+    permissions: NotRequired[AuthenticationTokenPropPermissionsTypeForResponse]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
+
+
 class AuthenticationTokenPropPermissionsType(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+class AuthenticationTokenPropPermissionsTypeForResponse(TypedDict):
     """AuthenticationTokenPropPermissions
 
     Examples:
@@ -40,5 +62,7 @@ class AuthenticationTokenPropPermissionsType(TypedDict):
 
 __all__ = (
     "AuthenticationTokenPropPermissionsType",
+    "AuthenticationTokenPropPermissionsTypeForResponse",
     "AuthenticationTokenType",
+    "AuthenticationTokenTypeForResponse",
 )

@@ -19,4 +19,14 @@ Language
 """
 
 
-__all__ = ("LanguageType",)
+LanguageTypeForResponse: TypeAlias = dict[str, Any]
+"""Language
+
+Language
+"""
+
+
+__all__ = (
+    "LanguageType",
+    "LanguageTypeForResponse",
+)

@@ -12,12 +12,15 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0534 import EnterpriseWebhooksType
-from .group_0535 import SimpleInstallationType
-from .group_0536 import OrganizationSimpleWebhooksType
-from .group_0537 import RepositoryWebhooksType
-from .group_0538 import WebhooksRuleType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0538 import WebhooksRuleType, WebhooksRuleTypeForResponse
 
 
 class WebhookBranchProtectionRuleEditedType(TypedDict):
@@ -31,6 +34,19 @@ class WebhookBranchProtectionRuleEditedType(TypedDict):
     repository: RepositoryWebhooksType
     rule: WebhooksRuleType
     sender: SimpleUserType
+
+
+class WebhookBranchProtectionRuleEditedTypeForResponse(TypedDict):
+    """branch protection rule edited event"""
+
+    action: Literal["edited"]
+    changes: NotRequired[WebhookBranchProtectionRuleEditedPropChangesTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    rule: WebhooksRuleTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 class WebhookBranchProtectionRuleEditedPropChangesType(TypedDict):
@@ -74,13 +90,70 @@ class WebhookBranchProtectionRuleEditedPropChangesType(TypedDict):
     ]
 
 
+class WebhookBranchProtectionRuleEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookBranchProtectionRuleEditedPropChanges
+
+    If the action was `edited`, the changes to the rule.
+    """
+
+    admin_enforced: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedTypeForResponse
+    ]
+    authorized_actor_names: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesTypeForResponse
+    ]
+    authorized_actors_only: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyTypeForResponse
+    ]
+    authorized_dismissal_actors_only: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyTypeForResponse
+    ]
+    linear_history_requirement_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelTypeForResponse
+    ]
+    lock_branch_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelTypeForResponse
+    ]
+    lock_allows_fork_sync: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncTypeForResponse
+    ]
+    pull_request_reviews_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelTypeForResponse
+    ]
+    require_last_push_approval: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalTypeForResponse
+    ]
+    required_status_checks: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksTypeForResponse
+    ]
+    required_status_checks_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelTypeForResponse
+    ]
+
+
 class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType(TypedDict):
     """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
 
     from_: Union[bool, None]
 
 
+class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
+
+    from_: Union[bool, None]
+
+
 class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
+
+    from_: list[str]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesTypeForResponse(
     TypedDict
 ):
     """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
@@ -96,7 +169,23 @@ class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType(
     from_: Union[bool, None]
 
 
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
+
+    from_: Union[bool, None]
+
+
 class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyTypeForResponse(
     TypedDict
 ):
     """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
@@ -114,7 +203,25 @@ class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEn
     from_: Literal["off", "non_admins", "everyone"]
 
 
+class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
+    entLevel
+    """
+
+    from_: Literal["off", "non_admins", "everyone"]
+
+
 class WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel"""
+
+    from_: Literal["off", "non_admins", "everyone"]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelTypeForResponse(
     TypedDict
 ):
     """WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel"""
@@ -128,7 +235,25 @@ class WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType(Typ
     from_: Union[bool, None]
 
 
+class WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync"""
+
+    from_: Union[bool, None]
+
+
 class WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLev
+    el
+    """
+
+    from_: Literal["off", "non_admins", "everyone"]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelTypeForResponse(
     TypedDict
 ):
     """WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLev
@@ -146,7 +271,23 @@ class WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalTyp
     from_: Union[bool, None]
 
 
+class WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval"""
+
+    from_: Union[bool, None]
+
+
 class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
+
+    from_: list[str]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksTypeForResponse(
     TypedDict
 ):
     """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
@@ -164,18 +305,41 @@ class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforc
     from_: Literal["off", "non_admins", "everyone"]
 
 
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
+    evel
+    """
+
+    from_: Literal["off", "non_admins", "everyone"]
+
+
 __all__ = (
     "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedTypeForResponse",
     "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesTypeForResponse",
     "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyTypeForResponse",
     "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyTypeForResponse",
     "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelTypeForResponse",
     "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncTypeForResponse",
     "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelTypeForResponse",
     "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelTypeForResponse",
     "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalTypeForResponse",
     "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelTypeForResponse",
     "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksTypeForResponse",
     "WebhookBranchProtectionRuleEditedPropChangesType",
+    "WebhookBranchProtectionRuleEditedPropChangesTypeForResponse",
     "WebhookBranchProtectionRuleEditedType",
+    "WebhookBranchProtectionRuleEditedTypeForResponse",
 )

@@ -19,4 +19,13 @@ class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType(TypedDict):
     role: NotRequired[Literal["member", "maintainer"]]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",)
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+
+    role: NotRequired[Literal["member", "maintainer"]]
+
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",
+    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse",
+)

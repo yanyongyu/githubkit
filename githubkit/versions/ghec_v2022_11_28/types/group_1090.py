@@ -21,6 +21,13 @@ class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
     secrets: list[OrganizationActionsSecretType]
 
 
+class OrgsOrgActionsSecretsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[OrganizationActionsSecretTypeForResponse]
+
+
 class OrganizationActionsSecretType(TypedDict):
     """Actions Secret for an Organization
 
@@ -34,7 +41,22 @@ class OrganizationActionsSecretType(TypedDict):
     selected_repositories_url: NotRequired[str]
 
 
+class OrganizationActionsSecretTypeForResponse(TypedDict):
+    """Actions Secret for an Organization
+
+    Secrets for GitHub Actions for an organization.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
+
+
 __all__ = (
     "OrganizationActionsSecretType",
+    "OrganizationActionsSecretTypeForResponse",
     "OrgsOrgActionsSecretsGetResponse200Type",
+    "OrgsOrgActionsSecretsGetResponse200TypeForResponse",
 )

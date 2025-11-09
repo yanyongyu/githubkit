@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0227 import CodespaceMachineType
+from .group_0227 import CodespaceMachineType, CodespaceMachineTypeForResponse
 
 
 class ReposOwnerRepoCodespacesMachinesGetResponse200Type(TypedDict):
@@ -21,4 +21,14 @@ class ReposOwnerRepoCodespacesMachinesGetResponse200Type(TypedDict):
     machines: list[CodespaceMachineType]
 
 
-__all__ = ("ReposOwnerRepoCodespacesMachinesGetResponse200Type",)
+class ReposOwnerRepoCodespacesMachinesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
+
+    total_count: int
+    machines: list[CodespaceMachineTypeForResponse]
+
+
+__all__ = (
+    "ReposOwnerRepoCodespacesMachinesGetResponse200Type",
+    "ReposOwnerRepoCodespacesMachinesGetResponse200TypeForResponse",
+)

@@ -25,7 +25,27 @@ class ExternalGroupType(TypedDict):
     members: list[ExternalGroupPropMembersItemsType]
 
 
+class ExternalGroupTypeForResponse(TypedDict):
+    """ExternalGroup
+
+    Information about an external group's usage and its members
+    """
+
+    group_id: int
+    group_name: str
+    updated_at: NotRequired[str]
+    teams: list[ExternalGroupPropTeamsItemsTypeForResponse]
+    members: list[ExternalGroupPropMembersItemsTypeForResponse]
+
+
 class ExternalGroupPropTeamsItemsType(TypedDict):
+    """ExternalGroupPropTeamsItems"""
+
+    team_id: int
+    team_name: str
+
+
+class ExternalGroupPropTeamsItemsTypeForResponse(TypedDict):
     """ExternalGroupPropTeamsItems"""
 
     team_id: int
@@ -41,8 +61,20 @@ class ExternalGroupPropMembersItemsType(TypedDict):
     member_email: str
 
 
+class ExternalGroupPropMembersItemsTypeForResponse(TypedDict):
+    """ExternalGroupPropMembersItems"""
+
+    member_id: int
+    member_login: str
+    member_name: str
+    member_email: str
+
+
 __all__ = (
     "ExternalGroupPropMembersItemsType",
+    "ExternalGroupPropMembersItemsTypeForResponse",
     "ExternalGroupPropTeamsItemsType",
+    "ExternalGroupPropTeamsItemsTypeForResponse",
     "ExternalGroupType",
+    "ExternalGroupTypeForResponse",
 )

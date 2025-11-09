@@ -28,4 +28,21 @@ class ExemptionResponseType(TypedDict):
     created_at: NotRequired[datetime]
 
 
-__all__ = ("ExemptionResponseType",)
+class ExemptionResponseTypeForResponse(TypedDict):
+    """Exemption response
+
+    A response to an exemption request by a delegated bypasser.
+    """
+
+    id: NotRequired[int]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+
+
+__all__ = (
+    "ExemptionResponseType",
+    "ExemptionResponseTypeForResponse",
+)

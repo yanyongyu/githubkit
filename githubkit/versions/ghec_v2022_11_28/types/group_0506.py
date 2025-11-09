@@ -20,4 +20,15 @@ class ScimEnterpriseUserResponseAllof1PropGroupsItemsType(TypedDict):
     display: NotRequired[str]
 
 
-__all__ = ("ScimEnterpriseUserResponseAllof1PropGroupsItemsType",)
+class ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
+
+
+__all__ = (
+    "ScimEnterpriseUserResponseAllof1PropGroupsItemsType",
+    "ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse",
+)

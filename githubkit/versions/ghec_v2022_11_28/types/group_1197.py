@@ -18,4 +18,13 @@ class ProjectsColumnsColumnIdPatchBodyType(TypedDict):
     name: str
 
 
-__all__ = ("ProjectsColumnsColumnIdPatchBodyType",)
+class ProjectsColumnsColumnIdPatchBodyTypeForResponse(TypedDict):
+    """ProjectsColumnsColumnIdPatchBody"""
+
+    name: str
+
+
+__all__ = (
+    "ProjectsColumnsColumnIdPatchBodyType",
+    "ProjectsColumnsColumnIdPatchBodyTypeForResponse",
+)

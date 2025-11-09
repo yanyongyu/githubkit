@@ -24,4 +24,19 @@ class CustomDeploymentRuleAppType(TypedDict):
     node_id: str
 
 
-__all__ = ("CustomDeploymentRuleAppType",)
+class CustomDeploymentRuleAppTypeForResponse(TypedDict):
+    """Custom deployment protection rule app
+
+    A GitHub App that is providing a custom deployment protection rule.
+    """
+
+    id: int
+    slug: str
+    integration_url: str
+    node_id: str
+
+
+__all__ = (
+    "CustomDeploymentRuleAppType",
+    "CustomDeploymentRuleAppTypeForResponse",
+)

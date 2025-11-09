@@ -18,4 +18,13 @@ class OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType(TypedDict):
     selected_usernames: list[str]
 
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType",)
+class OrgsOrgCodespacesAccessSelectedUsersDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
+
+    selected_usernames: list[str]
+
+
+__all__ = (
+    "OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType",
+    "OrgsOrgCodespacesAccessSelectedUsersDeleteBodyTypeForResponse",
+)

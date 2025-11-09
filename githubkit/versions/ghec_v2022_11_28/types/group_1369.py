@@ -19,4 +19,16 @@ class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType(TypedDict):
     team_reviewers: NotRequired[list[str]]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType",)
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
+
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
+
+
+__all__ = (
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyTypeForResponse",
+)

@@ -25,7 +25,29 @@ class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
     reviewer: RepositoryRuleParamsReviewerType
 
 
+class RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse(TypedDict):
+    """RequiredReviewerConfiguration
+
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
+    """
+
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer: RepositoryRuleParamsReviewerTypeForResponse
+
+
 class RepositoryRuleParamsReviewerType(TypedDict):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int
+    type: Literal["Team"]
+
+
+class RepositoryRuleParamsReviewerTypeForResponse(TypedDict):
     """Reviewer
 
     A required reviewing team
@@ -37,5 +59,7 @@ class RepositoryRuleParamsReviewerType(TypedDict):
 
 __all__ = (
     "RepositoryRuleParamsRequiredReviewerConfigurationType",
+    "RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse",
     "RepositoryRuleParamsReviewerType",
+    "RepositoryRuleParamsReviewerTypeForResponse",
 )

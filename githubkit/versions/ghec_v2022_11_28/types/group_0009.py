@@ -28,4 +28,23 @@ class IntegrationPropPermissionsType(TypedDict):
     deployments: NotRequired[str]
 
 
-__all__ = ("IntegrationPropPermissionsType",)
+class IntegrationPropPermissionsTypeForResponse(TypedDict):
+    """IntegrationPropPermissions
+
+    The set of permissions for the GitHub app
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+    issues: NotRequired[str]
+    checks: NotRequired[str]
+    metadata: NotRequired[str]
+    contents: NotRequired[str]
+    deployments: NotRequired[str]
+
+
+__all__ = (
+    "IntegrationPropPermissionsType",
+    "IntegrationPropPermissionsTypeForResponse",
+)

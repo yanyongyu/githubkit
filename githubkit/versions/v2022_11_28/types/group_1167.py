@@ -19,4 +19,14 @@ class ReposOwnerRepoNotificationsPutResponse202Type(TypedDict):
     url: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoNotificationsPutResponse202Type",)
+class ReposOwnerRepoNotificationsPutResponse202TypeForResponse(TypedDict):
+    """ReposOwnerRepoNotificationsPutResponse202"""
+
+    message: NotRequired[str]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoNotificationsPutResponse202Type",
+    "ReposOwnerRepoNotificationsPutResponse202TypeForResponse",
+)

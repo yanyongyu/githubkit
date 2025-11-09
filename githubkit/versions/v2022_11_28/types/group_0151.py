@@ -18,4 +18,15 @@ class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType(TypedDic
     repository_ids: NotRequired[list[int]]
 
 
-__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",)
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
+
+    repository_ids: NotRequired[list[int]]
+
+
+__all__ = (
+    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",
+    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse",
+)

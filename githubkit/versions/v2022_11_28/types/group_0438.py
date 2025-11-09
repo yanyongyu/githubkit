@@ -25,4 +25,19 @@ class EmailType(TypedDict):
     visibility: Union[str, None]
 
 
-__all__ = ("EmailType",)
+class EmailTypeForResponse(TypedDict):
+    """Email
+
+    Email
+    """
+
+    email: str
+    primary: bool
+    verified: bool
+    visibility: Union[str, None]
+
+
+__all__ = (
+    "EmailType",
+    "EmailTypeForResponse",
+)

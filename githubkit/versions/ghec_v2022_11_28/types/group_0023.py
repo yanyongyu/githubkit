@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0022 import ScopedInstallationType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0022 import ScopedInstallationType, ScopedInstallationTypeForResponse
 
 
 class AuthorizationType(TypedDict):
@@ -40,7 +40,38 @@ class AuthorizationType(TypedDict):
     expires_at: Union[datetime, None]
 
 
+class AuthorizationTypeForResponse(TypedDict):
+    """Authorization
+
+    The authorization for an OAuth app, GitHub App, or a Personal Access Token.
+    """
+
+    id: int
+    url: str
+    scopes: Union[list[str], None]
+    token: str
+    token_last_eight: Union[str, None]
+    hashed_token: Union[str, None]
+    app: AuthorizationPropAppTypeForResponse
+    note: Union[str, None]
+    note_url: Union[str, None]
+    updated_at: str
+    created_at: str
+    fingerprint: Union[str, None]
+    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    installation: NotRequired[Union[None, ScopedInstallationTypeForResponse]]
+    expires_at: Union[str, None]
+
+
 class AuthorizationPropAppType(TypedDict):
+    """AuthorizationPropApp"""
+
+    client_id: str
+    name: str
+    url: str
+
+
+class AuthorizationPropAppTypeForResponse(TypedDict):
     """AuthorizationPropApp"""
 
     client_id: str
@@ -50,5 +81,7 @@ class AuthorizationPropAppType(TypedDict):
 
 __all__ = (
     "AuthorizationPropAppType",
+    "AuthorizationPropAppTypeForResponse",
     "AuthorizationType",
+    "AuthorizationTypeForResponse",
 )

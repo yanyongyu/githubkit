@@ -20,7 +20,24 @@ class SubIssuesSummaryType(TypedDict):
     percent_completed: int
 
 
+class SubIssuesSummaryTypeForResponse(TypedDict):
+    """Sub-issues Summary"""
+
+    total: int
+    completed: int
+    percent_completed: int
+
+
 class IssueDependenciesSummaryType(TypedDict):
+    """Issue Dependencies Summary"""
+
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
+
+
+class IssueDependenciesSummaryTypeForResponse(TypedDict):
     """Issue Dependencies Summary"""
 
     blocked_by: int
@@ -31,5 +48,7 @@ class IssueDependenciesSummaryType(TypedDict):
 
 __all__ = (
     "IssueDependenciesSummaryType",
+    "IssueDependenciesSummaryTypeForResponse",
     "SubIssuesSummaryType",
+    "SubIssuesSummaryTypeForResponse",
 )

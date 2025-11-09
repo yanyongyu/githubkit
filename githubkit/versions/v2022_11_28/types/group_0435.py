@@ -22,4 +22,17 @@ class CodespacesUserPublicKeyType(TypedDict):
     key: str
 
 
-__all__ = ("CodespacesUserPublicKeyType",)
+class CodespacesUserPublicKeyTypeForResponse(TypedDict):
+    """CodespacesUserPublicKey
+
+    The public key used for setting user Codespaces' Secrets.
+    """
+
+    key_id: str
+    key: str
+
+
+__all__ = (
+    "CodespacesUserPublicKeyType",
+    "CodespacesUserPublicKeyTypeForResponse",
+)

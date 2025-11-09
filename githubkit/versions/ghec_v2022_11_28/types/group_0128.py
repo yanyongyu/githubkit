@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0129 import RepositoryRuleRequiredDeploymentsPropParametersType
+from .group_0129 import (
+    RepositoryRuleRequiredDeploymentsPropParametersType,
+    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
+)
 
 
 class RepositoryRuleRequiredDeploymentsType(TypedDict):
@@ -26,4 +29,20 @@ class RepositoryRuleRequiredDeploymentsType(TypedDict):
     parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
 
 
-__all__ = ("RepositoryRuleRequiredDeploymentsType",)
+class RepositoryRuleRequiredDeploymentsTypeForResponse(TypedDict):
+    """required_deployments
+
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
+    """
+
+    type: Literal["required_deployments"]
+    parameters: NotRequired[
+        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
+    ]
+
+
+__all__ = (
+    "RepositoryRuleRequiredDeploymentsType",
+    "RepositoryRuleRequiredDeploymentsTypeForResponse",
+)

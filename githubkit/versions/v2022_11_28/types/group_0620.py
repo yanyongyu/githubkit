@@ -12,12 +12,15 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0020 import RepositoryType
-from .group_0045 import IssueType
-from .group_0451 import SimpleInstallationType
-from .group_0452 import OrganizationSimpleWebhooksType
-from .group_0453 import RepositoryWebhooksType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0045 import IssueType, IssueTypeForResponse
+from .group_0451 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0452 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0453 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
 class WebhookIssueDependenciesBlockingAddedType(TypedDict):
@@ -35,4 +38,22 @@ class WebhookIssueDependenciesBlockingAddedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssueDependenciesBlockingAddedType",)
+class WebhookIssueDependenciesBlockingAddedTypeForResponse(TypedDict):
+    """blocking issue added event"""
+
+    action: Literal["blocking_added"]
+    blocked_issue_id: float
+    blocked_issue: IssueTypeForResponse
+    blocked_issue_repo: RepositoryTypeForResponse
+    blocking_issue_id: float
+    blocking_issue: IssueTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookIssueDependenciesBlockingAddedType",
+    "WebhookIssueDependenciesBlockingAddedTypeForResponse",
+)

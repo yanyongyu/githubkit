@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0198 import IssueType
+from .group_0198 import IssueType, IssueTypeForResponse
 
 
 class TimelineCrossReferencedEventPropSourceType(TypedDict):
@@ -21,4 +21,14 @@ class TimelineCrossReferencedEventPropSourceType(TypedDict):
     issue: NotRequired[IssueType]
 
 
-__all__ = ("TimelineCrossReferencedEventPropSourceType",)
+class TimelineCrossReferencedEventPropSourceTypeForResponse(TypedDict):
+    """TimelineCrossReferencedEventPropSource"""
+
+    type: NotRequired[str]
+    issue: NotRequired[IssueTypeForResponse]
+
+
+__all__ = (
+    "TimelineCrossReferencedEventPropSourceType",
+    "TimelineCrossReferencedEventPropSourceTypeForResponse",
+)

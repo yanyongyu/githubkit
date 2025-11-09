@@ -22,4 +22,16 @@ class OrgsOrgCodespacesSecretsSecretNamePutBodyType(TypedDict):
     selected_repository_ids: NotRequired[list[int]]
 
 
-__all__ = ("OrgsOrgCodespacesSecretsSecretNamePutBodyType",)
+class OrgsOrgCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
+
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
+
+
+__all__ = (
+    "OrgsOrgCodespacesSecretsSecretNamePutBodyType",
+    "OrgsOrgCodespacesSecretsSecretNamePutBodyTypeForResponse",
+)

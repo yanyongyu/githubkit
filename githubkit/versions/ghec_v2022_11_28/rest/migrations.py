@@ -35,12 +35,12 @@ if TYPE_CHECKING:
         PorterLargeFile,
     )
     from ..types import (
-        ImportType,
-        MigrationType,
-        MinimalRepositoryType,
+        ImportTypeForResponse,
+        MigrationTypeForResponse,
+        MinimalRepositoryTypeForResponse,
         OrgsOrgMigrationsPostBodyType,
-        PorterAuthorType,
-        PorterLargeFileType,
+        PorterAuthorTypeForResponse,
+        PorterLargeFileTypeForResponse,
         ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType,
         ReposOwnerRepoImportLfsPatchBodyType,
         ReposOwnerRepoImportPatchBodyType,
@@ -73,7 +73,7 @@ class MigrationsClient:
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Migration], list[MigrationType]]:
+    ) -> Response[list[Migration], list[MigrationTypeForResponse]]:
         """migrations/list-for-org
 
         GET /orgs/{org}/migrations
@@ -115,7 +115,7 @@ class MigrationsClient:
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Migration], list[MigrationType]]:
+    ) -> Response[list[Migration], list[MigrationTypeForResponse]]:
         """migrations/list-for-org
 
         GET /orgs/{org}/migrations
@@ -156,7 +156,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgMigrationsPostBodyType,
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     @overload
     def start_for_org(
@@ -175,7 +175,7 @@ class MigrationsClient:
         exclude_owner_projects: Missing[bool] = UNSET,
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     def start_for_org(
         self,
@@ -185,7 +185,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/start-for-org
 
         POST /orgs/{org}/migrations
@@ -236,7 +236,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgMigrationsPostBodyType,
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     @overload
     async def async_start_for_org(
@@ -255,7 +255,7 @@ class MigrationsClient:
         exclude_owner_projects: Missing[bool] = UNSET,
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     async def async_start_for_org(
         self,
@@ -265,7 +265,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/start-for-org
 
         POST /orgs/{org}/migrations
@@ -316,7 +316,7 @@ class MigrationsClient:
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/get-status-for-org
 
         GET /orgs/{org}/migrations/{migration_id}
@@ -363,7 +363,7 @@ class MigrationsClient:
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/get-status-for-org
 
         GET /orgs/{org}/migrations/{migration_id}
@@ -611,7 +611,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """migrations/list-repos-for-org
 
         GET /orgs/{org}/migrations/{migration_id}/repositories
@@ -653,7 +653,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """migrations/list-repos-for-org
 
         GET /orgs/{org}/migrations/{migration_id}/repositories
@@ -693,7 +693,7 @@ class MigrationsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/get-import-status
 
         GET /repos/{owner}/{repo}/import
@@ -764,7 +764,7 @@ class MigrationsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/get-import-status
 
         GET /repos/{owner}/{repo}/import
@@ -837,7 +837,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoImportPutBodyType,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
     def start_import(
@@ -853,7 +853,7 @@ class MigrationsClient:
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     def start_import(
         self,
@@ -864,7 +864,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/start-import
 
         PUT /repos/{owner}/{repo}/import
@@ -922,7 +922,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoImportPutBodyType,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
     async def async_start_import(
@@ -938,7 +938,7 @@ class MigrationsClient:
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     async def async_start_import(
         self,
@@ -949,7 +949,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/start-import
 
         PUT /repos/{owner}/{repo}/import
@@ -1079,7 +1079,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
     def update_import(
@@ -1094,7 +1094,7 @@ class MigrationsClient:
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     def update_import(
         self,
@@ -1105,7 +1105,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/update-import
 
         PATCH /repos/{owner}/{repo}/import
@@ -1163,7 +1163,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
     async def async_update_import(
@@ -1178,7 +1178,7 @@ class MigrationsClient:
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     async def async_update_import(
         self,
@@ -1189,7 +1189,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/update-import
 
         PATCH /repos/{owner}/{repo}/import
@@ -1246,7 +1246,7 @@ class MigrationsClient:
         since: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PorterAuthor], list[PorterAuthorType]]:
+    ) -> Response[list[PorterAuthor], list[PorterAuthorTypeForResponse]]:
         """DEPRECATED migrations/get-commit-authors
 
         GET /repos/{owner}/{repo}/import/authors
@@ -1292,7 +1292,7 @@ class MigrationsClient:
         since: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PorterAuthor], list[PorterAuthorType]]:
+    ) -> Response[list[PorterAuthor], list[PorterAuthorTypeForResponse]]:
         """DEPRECATED migrations/get-commit-authors
 
         GET /repos/{owner}/{repo}/import/authors
@@ -1340,7 +1340,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
-    ) -> Response[PorterAuthor, PorterAuthorType]: ...
+    ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]: ...
 
     @overload
     def map_commit_author(
@@ -1354,7 +1354,7 @@ class MigrationsClient:
         stream: bool = False,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[PorterAuthor, PorterAuthorType]: ...
+    ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]: ...
 
     def map_commit_author(
         self,
@@ -1366,7 +1366,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PorterAuthor, PorterAuthorType]:
+    ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]:
         """DEPRECATED migrations/map-commit-author
 
         PATCH /repos/{owner}/{repo}/import/authors/{author_id}
@@ -1426,7 +1426,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
-    ) -> Response[PorterAuthor, PorterAuthorType]: ...
+    ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]: ...
 
     @overload
     async def async_map_commit_author(
@@ -1440,7 +1440,7 @@ class MigrationsClient:
         stream: bool = False,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[PorterAuthor, PorterAuthorType]: ...
+    ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]: ...
 
     async def async_map_commit_author(
         self,
@@ -1452,7 +1452,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PorterAuthor, PorterAuthorType]:
+    ) -> Response[PorterAuthor, PorterAuthorTypeForResponse]:
         """DEPRECATED migrations/map-commit-author
 
         PATCH /repos/{owner}/{repo}/import/authors/{author_id}
@@ -1509,7 +1509,7 @@ class MigrationsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PorterLargeFile], list[PorterLargeFileType]]:
+    ) -> Response[list[PorterLargeFile], list[PorterLargeFileTypeForResponse]]:
         """DEPRECATED migrations/get-large-files
 
         GET /repos/{owner}/{repo}/import/large_files
@@ -1546,7 +1546,7 @@ class MigrationsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PorterLargeFile], list[PorterLargeFileType]]:
+    ) -> Response[list[PorterLargeFile], list[PorterLargeFileTypeForResponse]]:
         """DEPRECATED migrations/get-large-files
 
         GET /repos/{owner}/{repo}/import/large_files
@@ -1585,7 +1585,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoImportLfsPatchBodyType,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
     def set_lfs_preference(
@@ -1597,7 +1597,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         use_lfs: Literal["opt_in", "opt_out"],
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     def set_lfs_preference(
         self,
@@ -1608,7 +1608,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/set-lfs-preference
 
         PATCH /repos/{owner}/{repo}/import/lfs
@@ -1667,7 +1667,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoImportLfsPatchBodyType,
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     @overload
     async def async_set_lfs_preference(
@@ -1679,7 +1679,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         use_lfs: Literal["opt_in", "opt_out"],
-    ) -> Response[Import, ImportType]: ...
+    ) -> Response[Import, ImportTypeForResponse]: ...
 
     async def async_set_lfs_preference(
         self,
@@ -1690,7 +1690,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Import, ImportType]:
+    ) -> Response[Import, ImportTypeForResponse]:
         """DEPRECATED migrations/set-lfs-preference
 
         PATCH /repos/{owner}/{repo}/import/lfs
@@ -1747,7 +1747,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Migration], list[MigrationType]]:
+    ) -> Response[list[Migration], list[MigrationTypeForResponse]]:
         """migrations/list-for-authenticated-user
 
         GET /user/migrations
@@ -1788,7 +1788,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Migration], list[MigrationType]]:
+    ) -> Response[list[Migration], list[MigrationTypeForResponse]]:
         """migrations/list-for-authenticated-user
 
         GET /user/migrations
@@ -1829,7 +1829,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserMigrationsPostBodyType,
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     @overload
     def start_for_authenticated_user(
@@ -1847,7 +1847,7 @@ class MigrationsClient:
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         repositories: list[str],
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     def start_for_authenticated_user(
         self,
@@ -1856,7 +1856,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[UserMigrationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/start-for-authenticated-user
 
         POST /user/migrations
@@ -1907,7 +1907,7 @@ class MigrationsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserMigrationsPostBodyType,
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     @overload
     async def async_start_for_authenticated_user(
@@ -1925,7 +1925,7 @@ class MigrationsClient:
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         repositories: list[str],
-    ) -> Response[Migration, MigrationType]: ...
+    ) -> Response[Migration, MigrationTypeForResponse]: ...
 
     async def async_start_for_authenticated_user(
         self,
@@ -1934,7 +1934,7 @@ class MigrationsClient:
         stream: bool = False,
         data: Missing[UserMigrationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/start-for-authenticated-user
 
         POST /user/migrations
@@ -1985,7 +1985,7 @@ class MigrationsClient:
         exclude: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/get-status-for-authenticated-user
 
         GET /user/migrations/{migration_id}
@@ -2033,7 +2033,7 @@ class MigrationsClient:
         exclude: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Migration, MigrationType]:
+    ) -> Response[Migration, MigrationTypeForResponse]:
         """migrations/get-status-for-authenticated-user
 
         GET /user/migrations/{migration_id}
@@ -2326,7 +2326,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """migrations/list-repos-for-authenticated-user
 
         GET /user/migrations/{migration_id}/repositories
@@ -2367,7 +2367,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryTypeForResponse]]:
         """migrations/list-repos-for-authenticated-user
 
         GET /user/migrations/{migration_id}/repositories

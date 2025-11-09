@@ -13,7 +13,9 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0331 import (
     ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType,
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse,
     ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
+    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse,
 )
 
 
@@ -33,4 +35,23 @@ class ProtectedBranchPropRequiredPullRequestReviewsType(TypedDict):
     ]
 
 
-__all__ = ("ProtectedBranchPropRequiredPullRequestReviewsType",)
+class ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse(TypedDict):
+    """ProtectedBranchPropRequiredPullRequestReviews"""
+
+    url: str
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse
+    ]
+
+
+__all__ = (
+    "ProtectedBranchPropRequiredPullRequestReviewsType",
+    "ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse",
+)

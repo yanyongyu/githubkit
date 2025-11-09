@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class ActivityType(TypedDict):
@@ -39,4 +39,30 @@ class ActivityType(TypedDict):
     actor: Union[None, SimpleUserType]
 
 
-__all__ = ("ActivityType",)
+class ActivityTypeForResponse(TypedDict):
+    """Activity
+
+    Activity
+    """
+
+    id: int
+    node_id: str
+    before: str
+    after: str
+    ref: str
+    timestamp: str
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
+    ]
+    actor: Union[None, SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "ActivityType",
+    "ActivityTypeForResponse",
+)

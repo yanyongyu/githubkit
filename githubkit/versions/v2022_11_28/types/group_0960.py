@@ -25,4 +25,19 @@ class OrgsOrgCodespacesAccessPutBodyType(TypedDict):
     selected_usernames: NotRequired[list[str]]
 
 
-__all__ = ("OrgsOrgCodespacesAccessPutBodyType",)
+class OrgsOrgCodespacesAccessPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodespacesAccessPutBody"""
+
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
+    ]
+    selected_usernames: NotRequired[list[str]]
+
+
+__all__ = (
+    "OrgsOrgCodespacesAccessPutBodyType",
+    "OrgsOrgCodespacesAccessPutBodyTypeForResponse",
+)

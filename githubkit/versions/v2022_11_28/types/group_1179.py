@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0065 import CustomPropertyValueType
+from .group_0065 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
 class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
@@ -20,4 +20,13 @@ class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
     properties: list[CustomPropertyValueType]
 
 
-__all__ = ("ReposOwnerRepoPropertiesValuesPatchBodyType",)
+class ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
+
+    properties: list[CustomPropertyValueTypeForResponse]
+
+
+__all__ = (
+    "ReposOwnerRepoPropertiesValuesPatchBodyType",
+    "ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse",
+)

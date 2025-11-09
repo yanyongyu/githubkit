@@ -18,4 +18,13 @@ class ReposOwnerRepoAttestationsPostResponse201Type(TypedDict):
     id: NotRequired[int]
 
 
-__all__ = ("ReposOwnerRepoAttestationsPostResponse201Type",)
+class ReposOwnerRepoAttestationsPostResponse201TypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsPostResponse201"""
+
+    id: NotRequired[int]
+
+
+__all__ = (
+    "ReposOwnerRepoAttestationsPostResponse201Type",
+    "ReposOwnerRepoAttestationsPostResponse201TypeForResponse",
+)

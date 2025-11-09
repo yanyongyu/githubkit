@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0198 import IssueType
-from .group_0199 import IssueCommentType
+from .group_0198 import IssueType, IssueTypeForResponse
+from .group_0199 import IssueCommentType, IssueCommentTypeForResponse
 
 
 class EventPropPayloadType(TypedDict):
@@ -26,7 +26,27 @@ class EventPropPayloadType(TypedDict):
     pages: NotRequired[list[EventPropPayloadPropPagesItemsType]]
 
 
+class EventPropPayloadTypeForResponse(TypedDict):
+    """EventPropPayload"""
+
+    action: NotRequired[str]
+    issue: NotRequired[IssueTypeForResponse]
+    comment: NotRequired[IssueCommentTypeForResponse]
+    pages: NotRequired[list[EventPropPayloadPropPagesItemsTypeForResponse]]
+
+
 class EventPropPayloadPropPagesItemsType(TypedDict):
+    """EventPropPayloadPropPagesItems"""
+
+    page_name: NotRequired[str]
+    title: NotRequired[str]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class EventPropPayloadPropPagesItemsTypeForResponse(TypedDict):
     """EventPropPayloadPropPagesItems"""
 
     page_name: NotRequired[str]
@@ -53,7 +73,37 @@ class EventType(TypedDict):
     created_at: Union[datetime, None]
 
 
+class EventTypeForResponse(TypedDict):
+    """Event
+
+    Event
+    """
+
+    id: str
+    type: Union[str, None]
+    actor: ActorTypeForResponse
+    repo: EventPropRepoTypeForResponse
+    org: NotRequired[ActorTypeForResponse]
+    payload: EventPropPayloadTypeForResponse
+    public: bool
+    created_at: Union[str, None]
+
+
 class ActorType(TypedDict):
+    """Actor
+
+    Actor
+    """
+
+    id: int
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
+    url: str
+    avatar_url: str
+
+
+class ActorTypeForResponse(TypedDict):
     """Actor
 
     Actor
@@ -75,10 +125,23 @@ class EventPropRepoType(TypedDict):
     url: str
 
 
+class EventPropRepoTypeForResponse(TypedDict):
+    """EventPropRepo"""
+
+    id: int
+    name: str
+    url: str
+
+
 __all__ = (
     "ActorType",
+    "ActorTypeForResponse",
     "EventPropPayloadPropPagesItemsType",
+    "EventPropPayloadPropPagesItemsTypeForResponse",
     "EventPropPayloadType",
+    "EventPropPayloadTypeForResponse",
     "EventPropRepoType",
+    "EventPropRepoTypeForResponse",
     "EventType",
+    "EventTypeForResponse",
 )

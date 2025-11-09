@@ -23,4 +23,18 @@ class SecurityAdvisoryEpssType(TypedDict):
     percentile: NotRequired[float]
 
 
-__all__ = ("SecurityAdvisoryEpssType",)
+class SecurityAdvisoryEpssTypeForResponse(TypedDict):
+    """SecurityAdvisoryEpss
+
+    The EPSS scores as calculated by the [Exploit Prediction Scoring
+    System](https://www.first.org/epss).
+    """
+
+    percentage: NotRequired[float]
+    percentile: NotRequired[float]
+
+
+__all__ = (
+    "SecurityAdvisoryEpssType",
+    "SecurityAdvisoryEpssTypeForResponse",
+)

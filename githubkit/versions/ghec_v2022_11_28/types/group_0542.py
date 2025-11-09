@@ -13,10 +13,10 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType
-from .group_0305 import PullRequestMinimalType
-from .group_0332 import DeploymentSimpleType
-from .group_0541 import SimpleCheckSuiteType
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0305 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0332 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
+from .group_0541 import SimpleCheckSuiteType, SimpleCheckSuiteTypeForResponse
 
 
 class CheckRunWithSimpleCheckSuiteType(TypedDict):
@@ -59,7 +59,57 @@ class CheckRunWithSimpleCheckSuiteType(TypedDict):
     url: str
 
 
+class CheckRunWithSimpleCheckSuiteTypeForResponse(TypedDict):
+    """CheckRun
+
+    A check performed on the code of a given code change
+    """
+
+    app: Union[IntegrationTypeForResponse, None]
+    check_suite: SimpleCheckSuiteTypeForResponse
+    completed_at: Union[str, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    deployment: NotRequired[DeploymentSimpleTypeForResponse]
+    details_url: str
+    external_id: str
+    head_sha: str
+    html_url: str
+    id: int
+    name: str
+    node_id: str
+    output: CheckRunWithSimpleCheckSuitePropOutputTypeForResponse
+    pull_requests: list[PullRequestMinimalTypeForResponse]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed", "pending"]
+    url: str
+
+
 class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
+
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
+
+
+class CheckRunWithSimpleCheckSuitePropOutputTypeForResponse(TypedDict):
     """CheckRunWithSimpleCheckSuitePropOutput"""
 
     annotations_count: int
@@ -71,5 +121,7 @@ class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
 
 __all__ = (
     "CheckRunWithSimpleCheckSuitePropOutputType",
+    "CheckRunWithSimpleCheckSuitePropOutputTypeForResponse",
     "CheckRunWithSimpleCheckSuiteType",
+    "CheckRunWithSimpleCheckSuiteTypeForResponse",
 )

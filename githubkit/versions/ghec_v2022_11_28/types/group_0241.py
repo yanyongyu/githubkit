@@ -22,4 +22,17 @@ class RepositoryFineGrainedPermissionType(TypedDict):
     description: str
 
 
-__all__ = ("RepositoryFineGrainedPermissionType",)
+class RepositoryFineGrainedPermissionTypeForResponse(TypedDict):
+    """Repository Fine-Grained Permission
+
+    A fine-grained permission that protects repository resources.
+    """
+
+    name: str
+    description: str
+
+
+__all__ = (
+    "RepositoryFineGrainedPermissionType",
+    "RepositoryFineGrainedPermissionTypeForResponse",
+)

@@ -22,4 +22,16 @@ class OrgsOrgActionsVariablesNamePatchBodyType(TypedDict):
     selected_repository_ids: NotRequired[list[int]]
 
 
-__all__ = ("OrgsOrgActionsVariablesNamePatchBodyType",)
+class OrgsOrgActionsVariablesNamePatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsVariablesNamePatchBody"""
+
+    name: NotRequired[str]
+    value: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[list[int]]
+
+
+__all__ = (
+    "OrgsOrgActionsVariablesNamePatchBodyType",
+    "OrgsOrgActionsVariablesNamePatchBodyTypeForResponse",
+)

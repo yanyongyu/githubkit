@@ -35,7 +35,37 @@ class ContentFileType(TypedDict):
     submodule_git_url: NotRequired[str]
 
 
+class ContentFileTypeForResponse(TypedDict):
+    """Content File
+
+    Content File
+    """
+
+    type: Literal["file"]
+    encoding: str
+    size: int
+    name: str
+    path: str
+    content: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksTypeForResponse
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
+
+
 class ContentFilePropLinksType(TypedDict):
+    """ContentFilePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentFilePropLinksTypeForResponse(TypedDict):
     """ContentFilePropLinks"""
 
     git: Union[str, None]
@@ -45,5 +75,7 @@ class ContentFilePropLinksType(TypedDict):
 
 __all__ = (
     "ContentFilePropLinksType",
+    "ContentFilePropLinksTypeForResponse",
     "ContentFileType",
+    "ContentFileTypeForResponse",
 )

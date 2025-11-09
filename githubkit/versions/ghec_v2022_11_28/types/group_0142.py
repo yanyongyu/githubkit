@@ -22,4 +22,16 @@ class RepositoryRuleBranchNamePatternPropParametersType(TypedDict):
     pattern: str
 
 
-__all__ = ("RepositoryRuleBranchNamePatternPropParametersType",)
+class RepositoryRuleBranchNamePatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleBranchNamePatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
+
+
+__all__ = (
+    "RepositoryRuleBranchNamePatternPropParametersType",
+    "RepositoryRuleBranchNamePatternPropParametersTypeForResponse",
+)

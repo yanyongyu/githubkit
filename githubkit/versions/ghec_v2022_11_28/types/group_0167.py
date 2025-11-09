@@ -13,35 +13,105 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0105 import RepositoryRulesetBypassActorType
-from .group_0110 import RepositoryRulesetConditionsType
+from .group_0105 import (
+    RepositoryRulesetBypassActorType,
+    RepositoryRulesetBypassActorTypeForResponse,
+)
+from .group_0110 import (
+    RepositoryRulesetConditionsType,
+    RepositoryRulesetConditionsTypeForResponse,
+)
 from .group_0124 import (
     RepositoryRuleCreationType,
+    RepositoryRuleCreationTypeForResponse,
     RepositoryRuleDeletionType,
+    RepositoryRuleDeletionTypeForResponse,
     RepositoryRuleNonFastForwardType,
+    RepositoryRuleNonFastForwardTypeForResponse,
     RepositoryRuleRequiredSignaturesType,
+    RepositoryRuleRequiredSignaturesTypeForResponse,
 )
-from .group_0125 import RepositoryRuleUpdateType
-from .group_0127 import RepositoryRuleRequiredLinearHistoryType
-from .group_0128 import RepositoryRuleRequiredDeploymentsType
-from .group_0131 import RepositoryRulePullRequestType
-from .group_0133 import RepositoryRuleRequiredStatusChecksType
-from .group_0135 import RepositoryRuleCommitMessagePatternType
-from .group_0137 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0139 import RepositoryRuleCommitterEmailPatternType
-from .group_0141 import RepositoryRuleBranchNamePatternType
-from .group_0143 import RepositoryRuleTagNamePatternType
-from .group_0145 import RepositoryRuleFilePathRestrictionType
-from .group_0147 import RepositoryRuleMaxFilePathLengthType
-from .group_0149 import RepositoryRuleFileExtensionRestrictionType
-from .group_0151 import RepositoryRuleMaxFileSizeType
-from .group_0154 import RepositoryRuleWorkflowsType
-from .group_0156 import RepositoryRuleCodeScanningType
-from .group_0160 import OrgRulesetConditionsOneof0Type
-from .group_0161 import OrgRulesetConditionsOneof1Type
-from .group_0162 import OrgRulesetConditionsOneof2Type
-from .group_0163 import RepositoryRuleMergeQueueType
-from .group_0165 import RepositoryRuleCopilotCodeReviewType
+from .group_0125 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
+from .group_0127 import (
+    RepositoryRuleRequiredLinearHistoryType,
+    RepositoryRuleRequiredLinearHistoryTypeForResponse,
+)
+from .group_0128 import (
+    RepositoryRuleRequiredDeploymentsType,
+    RepositoryRuleRequiredDeploymentsTypeForResponse,
+)
+from .group_0131 import (
+    RepositoryRulePullRequestType,
+    RepositoryRulePullRequestTypeForResponse,
+)
+from .group_0133 import (
+    RepositoryRuleRequiredStatusChecksType,
+    RepositoryRuleRequiredStatusChecksTypeForResponse,
+)
+from .group_0135 import (
+    RepositoryRuleCommitMessagePatternType,
+    RepositoryRuleCommitMessagePatternTypeForResponse,
+)
+from .group_0137 import (
+    RepositoryRuleCommitAuthorEmailPatternType,
+    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+)
+from .group_0139 import (
+    RepositoryRuleCommitterEmailPatternType,
+    RepositoryRuleCommitterEmailPatternTypeForResponse,
+)
+from .group_0141 import (
+    RepositoryRuleBranchNamePatternType,
+    RepositoryRuleBranchNamePatternTypeForResponse,
+)
+from .group_0143 import (
+    RepositoryRuleTagNamePatternType,
+    RepositoryRuleTagNamePatternTypeForResponse,
+)
+from .group_0145 import (
+    RepositoryRuleFilePathRestrictionType,
+    RepositoryRuleFilePathRestrictionTypeForResponse,
+)
+from .group_0147 import (
+    RepositoryRuleMaxFilePathLengthType,
+    RepositoryRuleMaxFilePathLengthTypeForResponse,
+)
+from .group_0149 import (
+    RepositoryRuleFileExtensionRestrictionType,
+    RepositoryRuleFileExtensionRestrictionTypeForResponse,
+)
+from .group_0151 import (
+    RepositoryRuleMaxFileSizeType,
+    RepositoryRuleMaxFileSizeTypeForResponse,
+)
+from .group_0154 import (
+    RepositoryRuleWorkflowsType,
+    RepositoryRuleWorkflowsTypeForResponse,
+)
+from .group_0156 import (
+    RepositoryRuleCodeScanningType,
+    RepositoryRuleCodeScanningTypeForResponse,
+)
+from .group_0160 import (
+    OrgRulesetConditionsOneof0Type,
+    OrgRulesetConditionsOneof0TypeForResponse,
+)
+from .group_0161 import (
+    OrgRulesetConditionsOneof1Type,
+    OrgRulesetConditionsOneof1TypeForResponse,
+)
+from .group_0162 import (
+    OrgRulesetConditionsOneof2Type,
+    OrgRulesetConditionsOneof2TypeForResponse,
+)
+from .group_0163 import (
+    RepositoryRuleMergeQueueType,
+    RepositoryRuleMergeQueueTypeForResponse,
+)
+from .group_0165 import (
+    RepositoryRuleCopilotCodeReviewType,
+    RepositoryRuleCopilotCodeReviewTypeForResponse,
+)
 
 
 class RepositoryRulesetType(TypedDict):
@@ -103,6 +173,65 @@ class RepositoryRulesetType(TypedDict):
     updated_at: NotRequired[datetime]
 
 
+class RepositoryRulesetTypeForResponse(TypedDict):
+    """Repository ruleset
+
+    A set of rules to apply when specified conditions are met.
+    """
+
+    id: int
+    name: str
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    source_type: NotRequired[Literal["Repository", "Organization", "Enterprise"]]
+    source: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
+    current_user_can_bypass: NotRequired[
+        Literal["always", "pull_requests_only", "never", "exempt"]
+    ]
+    node_id: NotRequired[str]
+    links: NotRequired[RepositoryRulesetPropLinksTypeForResponse]
+    conditions: NotRequired[
+        Union[
+            RepositoryRulesetConditionsTypeForResponse,
+            OrgRulesetConditionsOneof0TypeForResponse,
+            OrgRulesetConditionsOneof1TypeForResponse,
+            OrgRulesetConditionsOneof2TypeForResponse,
+            None,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationTypeForResponse,
+                RepositoryRuleUpdateTypeForResponse,
+                RepositoryRuleDeletionTypeForResponse,
+                RepositoryRuleRequiredLinearHistoryTypeForResponse,
+                RepositoryRuleMergeQueueTypeForResponse,
+                RepositoryRuleRequiredDeploymentsTypeForResponse,
+                RepositoryRuleRequiredSignaturesTypeForResponse,
+                RepositoryRulePullRequestTypeForResponse,
+                RepositoryRuleRequiredStatusChecksTypeForResponse,
+                RepositoryRuleNonFastForwardTypeForResponse,
+                RepositoryRuleCommitMessagePatternTypeForResponse,
+                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+                RepositoryRuleCommitterEmailPatternTypeForResponse,
+                RepositoryRuleBranchNamePatternTypeForResponse,
+                RepositoryRuleTagNamePatternTypeForResponse,
+                RepositoryRuleFilePathRestrictionTypeForResponse,
+                RepositoryRuleMaxFilePathLengthTypeForResponse,
+                RepositoryRuleFileExtensionRestrictionTypeForResponse,
+                RepositoryRuleMaxFileSizeTypeForResponse,
+                RepositoryRuleWorkflowsTypeForResponse,
+                RepositoryRuleCodeScanningTypeForResponse,
+                RepositoryRuleCopilotCodeReviewTypeForResponse,
+            ]
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+
+
 class RepositoryRulesetPropLinksType(TypedDict):
     """RepositoryRulesetPropLinks"""
 
@@ -110,7 +239,20 @@ class RepositoryRulesetPropLinksType(TypedDict):
     html: NotRequired[Union[RepositoryRulesetPropLinksPropHtmlType, None]]
 
 
+class RepositoryRulesetPropLinksTypeForResponse(TypedDict):
+    """RepositoryRulesetPropLinks"""
+
+    self_: NotRequired[RepositoryRulesetPropLinksPropSelfTypeForResponse]
+    html: NotRequired[Union[RepositoryRulesetPropLinksPropHtmlTypeForResponse, None]]
+
+
 class RepositoryRulesetPropLinksPropSelfType(TypedDict):
+    """RepositoryRulesetPropLinksPropSelf"""
+
+    href: NotRequired[str]
+
+
+class RepositoryRulesetPropLinksPropSelfTypeForResponse(TypedDict):
     """RepositoryRulesetPropLinksPropSelf"""
 
     href: NotRequired[str]
@@ -122,9 +264,19 @@ class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
     href: NotRequired[str]
 
 
+class RepositoryRulesetPropLinksPropHtmlTypeForResponse(TypedDict):
+    """RepositoryRulesetPropLinksPropHtml"""
+
+    href: NotRequired[str]
+
+
 __all__ = (
     "RepositoryRulesetPropLinksPropHtmlType",
+    "RepositoryRulesetPropLinksPropHtmlTypeForResponse",
     "RepositoryRulesetPropLinksPropSelfType",
+    "RepositoryRulesetPropLinksPropSelfTypeForResponse",
     "RepositoryRulesetPropLinksType",
+    "RepositoryRulesetPropLinksTypeForResponse",
     "RepositoryRulesetType",
+    "RepositoryRulesetTypeForResponse",
 )

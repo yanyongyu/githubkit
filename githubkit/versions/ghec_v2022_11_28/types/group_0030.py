@@ -19,4 +19,14 @@ class ActionsCacheUsageOrgEnterpriseType(TypedDict):
     total_active_caches_size_in_bytes: int
 
 
-__all__ = ("ActionsCacheUsageOrgEnterpriseType",)
+class ActionsCacheUsageOrgEnterpriseTypeForResponse(TypedDict):
+    """ActionsCacheUsageOrgEnterprise"""
+
+    total_active_caches_count: int
+    total_active_caches_size_in_bytes: int
+
+
+__all__ = (
+    "ActionsCacheUsageOrgEnterpriseType",
+    "ActionsCacheUsageOrgEnterpriseTypeForResponse",
+)

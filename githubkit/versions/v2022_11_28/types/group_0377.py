@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0131 import LinkType
+from .group_0131 import LinkType, LinkTypeForResponse
 
 
 class ReviewCommentPropLinksType(TypedDict):
@@ -22,4 +22,15 @@ class ReviewCommentPropLinksType(TypedDict):
     pull_request: LinkType
 
 
-__all__ = ("ReviewCommentPropLinksType",)
+class ReviewCommentPropLinksTypeForResponse(TypedDict):
+    """ReviewCommentPropLinks"""
+
+    self_: LinkTypeForResponse
+    html: LinkTypeForResponse
+    pull_request: LinkTypeForResponse
+
+
+__all__ = (
+    "ReviewCommentPropLinksType",
+    "ReviewCommentPropLinksTypeForResponse",
+)

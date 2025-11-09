@@ -40,21 +40,21 @@ if TYPE_CHECKING:
         ReposOwnerRepoDependabotSecretsGetResponse200,
     )
     from ..types import (
-        DependabotAlertType,
-        DependabotAlertWithRepositoryType,
-        DependabotPublicKeyType,
-        DependabotRepositoryAccessDetailsType,
-        DependabotSecretType,
-        EmptyObjectType,
-        OrganizationDependabotSecretType,
+        DependabotAlertTypeForResponse,
+        DependabotAlertWithRepositoryTypeForResponse,
+        DependabotPublicKeyTypeForResponse,
+        DependabotRepositoryAccessDetailsTypeForResponse,
+        DependabotSecretTypeForResponse,
+        EmptyObjectTypeForResponse,
+        OrganizationDependabotSecretTypeForResponse,
         OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
         OrganizationsOrgDependabotRepositoryAccessPatchBodyType,
-        OrgsOrgDependabotSecretsGetResponse200Type,
+        OrgsOrgDependabotSecretsGetResponse200TypeForResponse,
         OrgsOrgDependabotSecretsSecretNamePutBodyType,
-        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
         OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
         ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
-        ReposOwnerRepoDependabotSecretsGetResponse200Type,
+        ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse,
         ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
     )
 
@@ -93,7 +93,8 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
+        list[DependabotAlertWithRepository],
+        list[DependabotAlertWithRepositoryTypeForResponse],
     ]:
         """dependabot/list-alerts-for-enterprise
 
@@ -168,7 +169,8 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
+        list[DependabotAlertWithRepository],
+        list[DependabotAlertWithRepositoryTypeForResponse],
     ]:
         """dependabot/list-alerts-for-enterprise
 
@@ -233,7 +235,8 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        DependabotRepositoryAccessDetails, DependabotRepositoryAccessDetailsType
+        DependabotRepositoryAccessDetails,
+        DependabotRepositoryAccessDetailsTypeForResponse,
     ]:
         """dependabot/repository-access-for-org
 
@@ -280,7 +283,8 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        DependabotRepositoryAccessDetails, DependabotRepositoryAccessDetailsType
+        DependabotRepositoryAccessDetails,
+        DependabotRepositoryAccessDetailsTypeForResponse,
     ]:
         """dependabot/repository-access-for-org
 
@@ -666,7 +670,8 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
+        list[DependabotAlertWithRepository],
+        list[DependabotAlertWithRepositoryTypeForResponse],
     ]:
         """dependabot/list-alerts-for-org
 
@@ -746,7 +751,8 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[DependabotAlertWithRepository], list[DependabotAlertWithRepositoryType]
+        list[DependabotAlertWithRepository],
+        list[DependabotAlertWithRepositoryTypeForResponse],
     ]:
         """dependabot/list-alerts-for-org
 
@@ -814,7 +820,7 @@ class DependabotClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsGetResponse200,
-        OrgsOrgDependabotSecretsGetResponse200Type,
+        OrgsOrgDependabotSecretsGetResponse200TypeForResponse,
     ]:
         """dependabot/list-org-secrets
 
@@ -858,7 +864,7 @@ class DependabotClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsGetResponse200,
-        OrgsOrgDependabotSecretsGetResponse200Type,
+        OrgsOrgDependabotSecretsGetResponse200TypeForResponse,
     ]:
         """dependabot/list-org-secrets
 
@@ -898,7 +904,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
+    ) -> Response[DependabotPublicKey, DependabotPublicKeyTypeForResponse]:
         """dependabot/get-org-public-key
 
         GET /orgs/{org}/dependabot/secrets/public-key
@@ -931,7 +937,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
+    ) -> Response[DependabotPublicKey, DependabotPublicKeyTypeForResponse]:
         """dependabot/get-org-public-key
 
         GET /orgs/{org}/dependabot/secrets/public-key
@@ -965,7 +971,9 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationDependabotSecret, OrganizationDependabotSecretType]:
+    ) -> Response[
+        OrganizationDependabotSecret, OrganizationDependabotSecretTypeForResponse
+    ]:
         """dependabot/get-org-secret
 
         GET /orgs/{org}/dependabot/secrets/{secret_name}
@@ -998,7 +1006,9 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationDependabotSecret, OrganizationDependabotSecretType]:
+    ) -> Response[
+        OrganizationDependabotSecret, OrganizationDependabotSecretTypeForResponse
+    ]:
         """dependabot/get-org-secret
 
         GET /orgs/{org}/dependabot/secrets/{secret_name}
@@ -1033,7 +1043,7 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def create_or_update_org_secret(
@@ -1048,7 +1058,7 @@ class DependabotClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[Union[int, str]]] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def create_or_update_org_secret(
         self,
@@ -1059,7 +1069,7 @@ class DependabotClient:
         stream: bool = False,
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """dependabot/create-or-update-org-secret
 
         PUT /orgs/{org}/dependabot/secrets/{secret_name}
@@ -1105,7 +1115,7 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_create_or_update_org_secret(
@@ -1120,7 +1130,7 @@ class DependabotClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[Union[int, str]]] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_create_or_update_org_secret(
         self,
@@ -1131,7 +1141,7 @@ class DependabotClient:
         stream: bool = False,
         data: Missing[OrgsOrgDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """dependabot/create-or-update-org-secret
 
         PUT /orgs/{org}/dependabot/secrets/{secret_name}
@@ -1239,7 +1249,7 @@ class DependabotClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
-        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
     ]:
         """dependabot/list-selected-repos-for-org-secret
 
@@ -1286,7 +1296,7 @@ class DependabotClient:
         stream: bool = False,
     ) -> Response[
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
-        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
     ]:
         """dependabot/list-selected-repos-for-org-secret
 
@@ -1632,7 +1642,7 @@ class DependabotClient:
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
+    ) -> Response[list[DependabotAlert], list[DependabotAlertTypeForResponse]]:
         """dependabot/list-alerts-for-repo
 
         GET /repos/{owner}/{repo}/dependabot/alerts
@@ -1699,7 +1709,7 @@ class DependabotClient:
         after: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[DependabotAlert], list[DependabotAlertType]]:
+    ) -> Response[list[DependabotAlert], list[DependabotAlertTypeForResponse]]:
         """dependabot/list-alerts-for-repo
 
         GET /repos/{owner}/{repo}/dependabot/alerts
@@ -1754,7 +1764,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotAlert, DependabotAlertType]:
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]:
         """dependabot/get-alert
 
         GET /repos/{owner}/{repo}/dependabot/alerts/{alert_number}
@@ -1790,7 +1800,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotAlert, DependabotAlertType]:
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]:
         """dependabot/get-alert
 
         GET /repos/{owner}/{repo}/dependabot/alerts/{alert_number}
@@ -1828,7 +1838,7 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
-    ) -> Response[DependabotAlert, DependabotAlertType]: ...
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     @overload
     def update_alert(
@@ -1851,7 +1861,7 @@ class DependabotClient:
             ]
         ] = UNSET,
         dismissed_comment: Missing[str] = UNSET,
-    ) -> Response[DependabotAlert, DependabotAlertType]: ...
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     def update_alert(
         self,
@@ -1863,7 +1873,7 @@ class DependabotClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[DependabotAlert, DependabotAlertType]:
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]:
         """dependabot/update-alert
 
         PATCH /repos/{owner}/{repo}/dependabot/alerts/{alert_number}
@@ -1923,7 +1933,7 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
-    ) -> Response[DependabotAlert, DependabotAlertType]: ...
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     @overload
     async def async_update_alert(
@@ -1946,7 +1956,7 @@ class DependabotClient:
             ]
         ] = UNSET,
         dismissed_comment: Missing[str] = UNSET,
-    ) -> Response[DependabotAlert, DependabotAlertType]: ...
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     async def async_update_alert(
         self,
@@ -1958,7 +1968,7 @@ class DependabotClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[DependabotAlert, DependabotAlertType]:
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]:
         """dependabot/update-alert
 
         PATCH /repos/{owner}/{repo}/dependabot/alerts/{alert_number}
@@ -2019,7 +2029,7 @@ class DependabotClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoDependabotSecretsGetResponse200,
-        ReposOwnerRepoDependabotSecretsGetResponse200Type,
+        ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse,
     ]:
         """dependabot/list-repo-secrets
 
@@ -2064,7 +2074,7 @@ class DependabotClient:
         stream: bool = False,
     ) -> Response[
         ReposOwnerRepoDependabotSecretsGetResponse200,
-        ReposOwnerRepoDependabotSecretsGetResponse200Type,
+        ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse,
     ]:
         """dependabot/list-repo-secrets
 
@@ -2105,7 +2115,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
+    ) -> Response[DependabotPublicKey, DependabotPublicKeyTypeForResponse]:
         """dependabot/get-repo-public-key
 
         GET /repos/{owner}/{repo}/dependabot/secrets/public-key
@@ -2140,7 +2150,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotPublicKey, DependabotPublicKeyType]:
+    ) -> Response[DependabotPublicKey, DependabotPublicKeyTypeForResponse]:
         """dependabot/get-repo-public-key
 
         GET /repos/{owner}/{repo}/dependabot/secrets/public-key
@@ -2176,7 +2186,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotSecret, DependabotSecretType]:
+    ) -> Response[DependabotSecret, DependabotSecretTypeForResponse]:
         """dependabot/get-repo-secret
 
         GET /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
@@ -2210,7 +2220,7 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[DependabotSecret, DependabotSecretType]:
+    ) -> Response[DependabotSecret, DependabotSecretTypeForResponse]:
         """dependabot/get-repo-secret
 
         GET /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
@@ -2246,7 +2256,7 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def create_or_update_repo_secret(
@@ -2260,7 +2270,7 @@ class DependabotClient:
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def create_or_update_repo_secret(
         self,
@@ -2272,7 +2282,7 @@ class DependabotClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """dependabot/create-or-update-repo-secret
 
         PUT /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
@@ -2324,7 +2334,7 @@ class DependabotClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_create_or_update_repo_secret(
@@ -2338,7 +2348,7 @@ class DependabotClient:
         stream: bool = False,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_create_or_update_repo_secret(
         self,
@@ -2350,7 +2360,7 @@ class DependabotClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoDependabotSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """dependabot/create-or-update-repo-secret
 
         PUT /repos/{owner}/{repo}/dependabot/secrets/{secret_name}

@@ -25,4 +25,19 @@ class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType(TypedDict):
     dismissed_comment: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType",)
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBody"""
+
+    state: Literal["dismissed", "open"]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyTypeForResponse",
+)

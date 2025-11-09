@@ -61,21 +61,21 @@ if TYPE_CHECKING:
         UnlabeledIssueEvent,
     )
     from ..types import (
-        AddedToProjectIssueEventType,
-        AssignedIssueEventType,
-        ConvertedNoteToIssueIssueEventType,
-        DemilestonedIssueEventType,
-        IssueCommentType,
-        IssueEventType,
-        IssueType,
-        LabeledIssueEventType,
-        LabelType,
-        LockedIssueEventType,
-        MilestonedIssueEventType,
-        MilestoneType,
-        MovedColumnInProjectIssueEventType,
-        RemovedFromProjectIssueEventType,
-        RenamedIssueEventType,
+        AddedToProjectIssueEventTypeForResponse,
+        AssignedIssueEventTypeForResponse,
+        ConvertedNoteToIssueIssueEventTypeForResponse,
+        DemilestonedIssueEventTypeForResponse,
+        IssueCommentTypeForResponse,
+        IssueEventTypeForResponse,
+        IssueTypeForResponse,
+        LabeledIssueEventTypeForResponse,
+        LabelTypeForResponse,
+        LockedIssueEventTypeForResponse,
+        MilestonedIssueEventTypeForResponse,
+        MilestoneTypeForResponse,
+        MovedColumnInProjectIssueEventTypeForResponse,
+        RemovedFromProjectIssueEventTypeForResponse,
+        RenamedIssueEventTypeForResponse,
         ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
         ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType,
         ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType,
@@ -101,21 +101,21 @@ if TYPE_CHECKING:
         ReposOwnerRepoLabelsPostBodyType,
         ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType,
         ReposOwnerRepoMilestonesPostBodyType,
-        ReviewDismissedIssueEventType,
-        ReviewRequestedIssueEventType,
-        ReviewRequestRemovedIssueEventType,
-        SimpleUserType,
-        StateChangeIssueEventType,
-        TimelineAssignedIssueEventType,
-        TimelineCommentEventType,
-        TimelineCommitCommentedEventType,
-        TimelineCommittedEventType,
-        TimelineCrossReferencedEventType,
-        TimelineLineCommentedEventType,
-        TimelineReviewedEventType,
-        TimelineUnassignedIssueEventType,
-        UnassignedIssueEventType,
-        UnlabeledIssueEventType,
+        ReviewDismissedIssueEventTypeForResponse,
+        ReviewRequestedIssueEventTypeForResponse,
+        ReviewRequestRemovedIssueEventTypeForResponse,
+        SimpleUserTypeForResponse,
+        StateChangeIssueEventTypeForResponse,
+        TimelineAssignedIssueEventTypeForResponse,
+        TimelineCommentEventTypeForResponse,
+        TimelineCommitCommentedEventTypeForResponse,
+        TimelineCommittedEventTypeForResponse,
+        TimelineCrossReferencedEventTypeForResponse,
+        TimelineLineCommentedEventTypeForResponse,
+        TimelineReviewedEventTypeForResponse,
+        TimelineUnassignedIssueEventTypeForResponse,
+        UnassignedIssueEventTypeForResponse,
+        UnlabeledIssueEventTypeForResponse,
     )
 
 
@@ -153,7 +153,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list
 
         GET /issues
@@ -228,7 +228,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list
 
         GET /issues
@@ -301,7 +301,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-org
 
         GET /orgs/{org}/issues
@@ -368,7 +368,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-org
 
         GET /orgs/{org}/issues
@@ -427,7 +427,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """issues/list-assignees
 
         GET /repos/{owner}/{repo}/assignees
@@ -469,7 +469,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserTypeForResponse]]:
         """issues/list-assignees
 
         GET /repos/{owner}/{repo}/assignees
@@ -597,7 +597,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-repo
 
         GET /repos/{owner}/{repo}/issues
@@ -670,7 +670,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-repo
 
         GET /repos/{owner}/{repo}/issues
@@ -733,7 +733,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesPostBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def create(
@@ -753,7 +753,7 @@ class IssuesClient:
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
         type: Missing[Union[str, None]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def create(
         self,
@@ -764,7 +764,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/create
 
         POST /repos/{owner}/{repo}/issues
@@ -831,7 +831,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesPostBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_create(
@@ -851,7 +851,7 @@ class IssuesClient:
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
         type: Missing[Union[str, None]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_create(
         self,
@@ -862,7 +862,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/create
 
         POST /repos/{owner}/{repo}/issues
@@ -932,7 +932,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[IssueComment], list[IssueCommentType]]:
+    ) -> Response[list[IssueComment], list[IssueCommentTypeForResponse]]:
         """issues/list-comments-for-repo
 
         GET /repos/{owner}/{repo}/issues/comments
@@ -990,7 +990,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[IssueComment], list[IssueCommentType]]:
+    ) -> Response[list[IssueComment], list[IssueCommentTypeForResponse]]:
         """issues/list-comments-for-repo
 
         GET /repos/{owner}/{repo}/issues/comments
@@ -1044,7 +1044,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[IssueComment, IssueCommentType]:
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/get-comment
 
         GET /repos/{owner}/{repo}/issues/comments/{comment_id}
@@ -1086,7 +1086,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[IssueComment, IssueCommentType]:
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/get-comment
 
         GET /repos/{owner}/{repo}/issues/comments/{comment_id}
@@ -1188,7 +1188,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     @overload
     def update_comment(
@@ -1201,7 +1201,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     def update_comment(
         self,
@@ -1213,7 +1213,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[IssueComment, IssueCommentType]:
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/update-comment
 
         PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
@@ -1273,7 +1273,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     @overload
     async def async_update_comment(
@@ -1286,7 +1286,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     async def async_update_comment(
         self,
@@ -1298,7 +1298,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[IssueComment, IssueCommentType]:
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/update-comment
 
         PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
@@ -1357,7 +1357,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[IssueEvent], list[IssueEventType]]:
+    ) -> Response[list[IssueEvent], list[IssueEventTypeForResponse]]:
         """issues/list-events-for-repo
 
         GET /repos/{owner}/{repo}/issues/events
@@ -1399,7 +1399,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[IssueEvent], list[IssueEventType]]:
+    ) -> Response[list[IssueEvent], list[IssueEventTypeForResponse]]:
         """issues/list-events-for-repo
 
         GET /repos/{owner}/{repo}/issues/events
@@ -1440,7 +1440,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[IssueEvent, IssueEventType]:
+    ) -> Response[IssueEvent, IssueEventTypeForResponse]:
         """issues/get-event
 
         GET /repos/{owner}/{repo}/issues/events/{event_id}
@@ -1477,7 +1477,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[IssueEvent, IssueEventType]:
+    ) -> Response[IssueEvent, IssueEventTypeForResponse]:
         """issues/get-event
 
         GET /repos/{owner}/{repo}/issues/events/{event_id}
@@ -1514,7 +1514,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/get
 
         GET /repos/{owner}/{repo}/issues/{issue_number}
@@ -1565,7 +1565,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/get
 
         GET /repos/{owner}/{repo}/issues/{issue_number}
@@ -1618,7 +1618,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def update(
@@ -1648,7 +1648,7 @@ class IssuesClient:
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
         type: Missing[Union[str, None]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def update(
         self,
@@ -1660,7 +1660,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/update
 
         PATCH /repos/{owner}/{repo}/issues/{issue_number}
@@ -1724,7 +1724,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_update(
@@ -1754,7 +1754,7 @@ class IssuesClient:
         ] = UNSET,
         assignees: Missing[list[str]] = UNSET,
         type: Missing[Union[str, None]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_update(
         self,
@@ -1766,7 +1766,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/update
 
         PATCH /repos/{owner}/{repo}/issues/{issue_number}
@@ -1830,7 +1830,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def add_assignees(
@@ -1843,7 +1843,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def add_assignees(
         self,
@@ -1855,7 +1855,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/add-assignees
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
@@ -1901,7 +1901,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_add_assignees(
@@ -1914,7 +1914,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_add_assignees(
         self,
@@ -1926,7 +1926,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/add-assignees
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
@@ -1972,7 +1972,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def remove_assignees(
@@ -1985,7 +1985,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def remove_assignees(
         self,
@@ -1997,7 +1997,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/remove-assignees
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
@@ -2043,7 +2043,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_remove_assignees(
@@ -2056,7 +2056,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         assignees: Missing[list[str]] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_remove_assignees(
         self,
@@ -2068,7 +2068,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/remove-assignees
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
@@ -2193,7 +2193,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[IssueComment], list[IssueCommentType]]:
+    ) -> Response[list[IssueComment], list[IssueCommentTypeForResponse]]:
         """issues/list-comments
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/comments
@@ -2248,7 +2248,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[IssueComment], list[IssueCommentType]]:
+    ) -> Response[list[IssueComment], list[IssueCommentTypeForResponse]]:
         """issues/list-comments
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/comments
@@ -2302,7 +2302,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     @overload
     def create_comment(
@@ -2315,7 +2315,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     def create_comment(
         self,
@@ -2327,7 +2327,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[IssueComment, IssueCommentType]:
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/create-comment
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/comments
@@ -2396,7 +2396,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     @overload
     async def async_create_comment(
@@ -2409,7 +2409,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         body: str,
-    ) -> Response[IssueComment, IssueCommentType]: ...
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]: ...
 
     async def async_create_comment(
         self,
@@ -2421,7 +2421,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[IssueComment, IssueCommentType]:
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
         """issues/create-comment
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/comments
@@ -2490,7 +2490,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-dependencies-blocked-by
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by
@@ -2541,7 +2541,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-dependencies-blocked-by
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by
@@ -2592,7 +2592,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def add_blocked_by_dependency(
@@ -2605,7 +2605,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         issue_id: int,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def add_blocked_by_dependency(
         self,
@@ -2619,7 +2619,7 @@ class IssuesClient:
             ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/add-blocked-by-dependency
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by
@@ -2687,7 +2687,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_add_blocked_by_dependency(
@@ -2700,7 +2700,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         issue_id: int,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_add_blocked_by_dependency(
         self,
@@ -2714,7 +2714,7 @@ class IssuesClient:
             ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/add-blocked-by-dependency
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by
@@ -2781,7 +2781,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/remove-dependency-blocked-by
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by/{issue_id}
@@ -2831,7 +2831,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/remove-dependency-blocked-by
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocked_by/{issue_id}
@@ -2882,7 +2882,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-dependencies-blocking
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocking
@@ -2933,7 +2933,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-dependencies-blocking
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/dependencies/blocking
@@ -3006,21 +3006,21 @@ class IssuesClient:
         ],
         list[
             Union[
-                LabeledIssueEventType,
-                UnlabeledIssueEventType,
-                AssignedIssueEventType,
-                UnassignedIssueEventType,
-                MilestonedIssueEventType,
-                DemilestonedIssueEventType,
-                RenamedIssueEventType,
-                ReviewRequestedIssueEventType,
-                ReviewRequestRemovedIssueEventType,
-                ReviewDismissedIssueEventType,
-                LockedIssueEventType,
-                AddedToProjectIssueEventType,
-                MovedColumnInProjectIssueEventType,
-                RemovedFromProjectIssueEventType,
-                ConvertedNoteToIssueIssueEventType,
+                LabeledIssueEventTypeForResponse,
+                UnlabeledIssueEventTypeForResponse,
+                AssignedIssueEventTypeForResponse,
+                UnassignedIssueEventTypeForResponse,
+                MilestonedIssueEventTypeForResponse,
+                DemilestonedIssueEventTypeForResponse,
+                RenamedIssueEventTypeForResponse,
+                ReviewRequestedIssueEventTypeForResponse,
+                ReviewRequestRemovedIssueEventTypeForResponse,
+                ReviewDismissedIssueEventTypeForResponse,
+                LockedIssueEventTypeForResponse,
+                AddedToProjectIssueEventTypeForResponse,
+                MovedColumnInProjectIssueEventTypeForResponse,
+                RemovedFromProjectIssueEventTypeForResponse,
+                ConvertedNoteToIssueIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -3125,21 +3125,21 @@ class IssuesClient:
         ],
         list[
             Union[
-                LabeledIssueEventType,
-                UnlabeledIssueEventType,
-                AssignedIssueEventType,
-                UnassignedIssueEventType,
-                MilestonedIssueEventType,
-                DemilestonedIssueEventType,
-                RenamedIssueEventType,
-                ReviewRequestedIssueEventType,
-                ReviewRequestRemovedIssueEventType,
-                ReviewDismissedIssueEventType,
-                LockedIssueEventType,
-                AddedToProjectIssueEventType,
-                MovedColumnInProjectIssueEventType,
-                RemovedFromProjectIssueEventType,
-                ConvertedNoteToIssueIssueEventType,
+                LabeledIssueEventTypeForResponse,
+                UnlabeledIssueEventTypeForResponse,
+                AssignedIssueEventTypeForResponse,
+                UnassignedIssueEventTypeForResponse,
+                MilestonedIssueEventTypeForResponse,
+                DemilestonedIssueEventTypeForResponse,
+                RenamedIssueEventTypeForResponse,
+                ReviewRequestedIssueEventTypeForResponse,
+                ReviewRequestRemovedIssueEventTypeForResponse,
+                ReviewDismissedIssueEventTypeForResponse,
+                LockedIssueEventTypeForResponse,
+                AddedToProjectIssueEventTypeForResponse,
+                MovedColumnInProjectIssueEventTypeForResponse,
+                RemovedFromProjectIssueEventTypeForResponse,
+                ConvertedNoteToIssueIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -3222,7 +3222,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-on-issue
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/labels
@@ -3266,7 +3266,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-on-issue
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/labels
@@ -3318,7 +3318,7 @@ class IssuesClient:
                 str,
             ]
         ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     @overload
     def set_labels(
@@ -3331,7 +3331,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         labels: Missing[list[str]] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     @overload
     def set_labels(
@@ -3346,7 +3346,7 @@ class IssuesClient:
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     def set_labels(
         self,
@@ -3366,7 +3366,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/set-labels
 
         PUT /repos/{owner}/{repo}/issues/{issue_number}/labels
@@ -3446,7 +3446,7 @@ class IssuesClient:
                 str,
             ]
         ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     @overload
     async def async_set_labels(
@@ -3459,7 +3459,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         labels: Missing[list[str]] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     @overload
     async def async_set_labels(
@@ -3474,7 +3474,7 @@ class IssuesClient:
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     async def async_set_labels(
         self,
@@ -3494,7 +3494,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/set-labels
 
         PUT /repos/{owner}/{repo}/issues/{issue_number}/labels
@@ -3574,7 +3574,7 @@ class IssuesClient:
                 str,
             ]
         ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     @overload
     def add_labels(
@@ -3587,7 +3587,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         labels: Missing[list[str]] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     @overload
     def add_labels(
@@ -3602,7 +3602,7 @@ class IssuesClient:
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     def add_labels(
         self,
@@ -3622,7 +3622,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/add-labels
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/labels
@@ -3702,7 +3702,7 @@ class IssuesClient:
                 str,
             ]
         ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     @overload
     async def async_add_labels(
@@ -3715,7 +3715,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         labels: Missing[list[str]] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     @overload
     async def async_add_labels(
@@ -3730,7 +3730,7 @@ class IssuesClient:
         labels: Missing[
             list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[list[Label], list[LabelType]]: ...
+    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
     async def async_add_labels(
         self,
@@ -3750,7 +3750,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/add-labels
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/labels
@@ -3891,7 +3891,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/remove-label
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
@@ -3928,7 +3928,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/remove-label
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
@@ -4214,7 +4214,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/get-parent
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/parent
@@ -4257,7 +4257,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/get-parent
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/parent
@@ -4302,7 +4302,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def remove_sub_issue(
@@ -4315,7 +4315,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         sub_issue_id: int,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def remove_sub_issue(
         self,
@@ -4327,7 +4327,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/remove-sub-issue
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/sub_issue
@@ -4389,7 +4389,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_remove_sub_issue(
@@ -4402,7 +4402,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         sub_issue_id: int,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_remove_sub_issue(
         self,
@@ -4414,7 +4414,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/remove-sub-issue
 
         DELETE /repos/{owner}/{repo}/issues/{issue_number}/sub_issue
@@ -4476,7 +4476,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-sub-issues
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/sub_issues
@@ -4527,7 +4527,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-sub-issues
 
         GET /repos/{owner}/{repo}/issues/{issue_number}/sub_issues
@@ -4578,7 +4578,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def add_sub_issue(
@@ -4592,7 +4592,7 @@ class IssuesClient:
         stream: bool = False,
         sub_issue_id: int,
         replace_parent: Missing[bool] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def add_sub_issue(
         self,
@@ -4604,7 +4604,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/add-sub-issue
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/sub_issues
@@ -4672,7 +4672,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_add_sub_issue(
@@ -4686,7 +4686,7 @@ class IssuesClient:
         stream: bool = False,
         sub_issue_id: int,
         replace_parent: Missing[bool] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_add_sub_issue(
         self,
@@ -4698,7 +4698,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/add-sub-issue
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/sub_issues
@@ -4766,7 +4766,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     def reprioritize_sub_issue(
@@ -4781,7 +4781,7 @@ class IssuesClient:
         sub_issue_id: int,
         after_id: Missing[int] = UNSET,
         before_id: Missing[int] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     def reprioritize_sub_issue(
         self,
@@ -4795,7 +4795,7 @@ class IssuesClient:
             ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/reprioritize-sub-issue
 
         PATCH /repos/{owner}/{repo}/issues/{issue_number}/sub_issues/priority
@@ -4853,7 +4853,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     @overload
     async def async_reprioritize_sub_issue(
@@ -4868,7 +4868,7 @@ class IssuesClient:
         sub_issue_id: int,
         after_id: Missing[int] = UNSET,
         before_id: Missing[int] = UNSET,
-    ) -> Response[Issue, IssueType]: ...
+    ) -> Response[Issue, IssueTypeForResponse]: ...
 
     async def async_reprioritize_sub_issue(
         self,
@@ -4882,7 +4882,7 @@ class IssuesClient:
             ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Issue, IssueType]:
+    ) -> Response[Issue, IssueTypeForResponse]:
         """issues/reprioritize-sub-issue
 
         PATCH /repos/{owner}/{repo}/issues/{issue_number}/sub_issues/priority
@@ -4969,28 +4969,28 @@ class IssuesClient:
         ],
         list[
             Union[
-                LabeledIssueEventType,
-                UnlabeledIssueEventType,
-                MilestonedIssueEventType,
-                DemilestonedIssueEventType,
-                RenamedIssueEventType,
-                ReviewRequestedIssueEventType,
-                ReviewRequestRemovedIssueEventType,
-                ReviewDismissedIssueEventType,
-                LockedIssueEventType,
-                AddedToProjectIssueEventType,
-                MovedColumnInProjectIssueEventType,
-                RemovedFromProjectIssueEventType,
-                ConvertedNoteToIssueIssueEventType,
-                TimelineCommentEventType,
-                TimelineCrossReferencedEventType,
-                TimelineCommittedEventType,
-                TimelineReviewedEventType,
-                TimelineLineCommentedEventType,
-                TimelineCommitCommentedEventType,
-                TimelineAssignedIssueEventType,
-                TimelineUnassignedIssueEventType,
-                StateChangeIssueEventType,
+                LabeledIssueEventTypeForResponse,
+                UnlabeledIssueEventTypeForResponse,
+                MilestonedIssueEventTypeForResponse,
+                DemilestonedIssueEventTypeForResponse,
+                RenamedIssueEventTypeForResponse,
+                ReviewRequestedIssueEventTypeForResponse,
+                ReviewRequestRemovedIssueEventTypeForResponse,
+                ReviewDismissedIssueEventTypeForResponse,
+                LockedIssueEventTypeForResponse,
+                AddedToProjectIssueEventTypeForResponse,
+                MovedColumnInProjectIssueEventTypeForResponse,
+                RemovedFromProjectIssueEventTypeForResponse,
+                ConvertedNoteToIssueIssueEventTypeForResponse,
+                TimelineCommentEventTypeForResponse,
+                TimelineCrossReferencedEventTypeForResponse,
+                TimelineCommittedEventTypeForResponse,
+                TimelineReviewedEventTypeForResponse,
+                TimelineLineCommentedEventTypeForResponse,
+                TimelineCommitCommentedEventTypeForResponse,
+                TimelineAssignedIssueEventTypeForResponse,
+                TimelineUnassignedIssueEventTypeForResponse,
+                StateChangeIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -5117,28 +5117,28 @@ class IssuesClient:
         ],
         list[
             Union[
-                LabeledIssueEventType,
-                UnlabeledIssueEventType,
-                MilestonedIssueEventType,
-                DemilestonedIssueEventType,
-                RenamedIssueEventType,
-                ReviewRequestedIssueEventType,
-                ReviewRequestRemovedIssueEventType,
-                ReviewDismissedIssueEventType,
-                LockedIssueEventType,
-                AddedToProjectIssueEventType,
-                MovedColumnInProjectIssueEventType,
-                RemovedFromProjectIssueEventType,
-                ConvertedNoteToIssueIssueEventType,
-                TimelineCommentEventType,
-                TimelineCrossReferencedEventType,
-                TimelineCommittedEventType,
-                TimelineReviewedEventType,
-                TimelineLineCommentedEventType,
-                TimelineCommitCommentedEventType,
-                TimelineAssignedIssueEventType,
-                TimelineUnassignedIssueEventType,
-                StateChangeIssueEventType,
+                LabeledIssueEventTypeForResponse,
+                UnlabeledIssueEventTypeForResponse,
+                MilestonedIssueEventTypeForResponse,
+                DemilestonedIssueEventTypeForResponse,
+                RenamedIssueEventTypeForResponse,
+                ReviewRequestedIssueEventTypeForResponse,
+                ReviewRequestRemovedIssueEventTypeForResponse,
+                ReviewDismissedIssueEventTypeForResponse,
+                LockedIssueEventTypeForResponse,
+                AddedToProjectIssueEventTypeForResponse,
+                MovedColumnInProjectIssueEventTypeForResponse,
+                RemovedFromProjectIssueEventTypeForResponse,
+                ConvertedNoteToIssueIssueEventTypeForResponse,
+                TimelineCommentEventTypeForResponse,
+                TimelineCrossReferencedEventTypeForResponse,
+                TimelineCommittedEventTypeForResponse,
+                TimelineReviewedEventTypeForResponse,
+                TimelineLineCommentedEventTypeForResponse,
+                TimelineCommitCommentedEventTypeForResponse,
+                TimelineAssignedIssueEventTypeForResponse,
+                TimelineUnassignedIssueEventTypeForResponse,
+                StateChangeIssueEventTypeForResponse,
             ]
         ],
     ]:
@@ -5235,7 +5235,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-for-repo
 
         GET /repos/{owner}/{repo}/labels
@@ -5277,7 +5277,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-for-repo
 
         GET /repos/{owner}/{repo}/labels
@@ -5319,7 +5319,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoLabelsPostBodyType,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     @overload
     def create_label(
@@ -5333,7 +5333,7 @@ class IssuesClient:
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     def create_label(
         self,
@@ -5344,7 +5344,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Label, LabelType]:
+    ) -> Response[Label, LabelTypeForResponse]:
         """issues/create-label
 
         POST /repos/{owner}/{repo}/labels
@@ -5396,7 +5396,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoLabelsPostBodyType,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     @overload
     async def async_create_label(
@@ -5410,7 +5410,7 @@ class IssuesClient:
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     async def async_create_label(
         self,
@@ -5421,7 +5421,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Label, LabelType]:
+    ) -> Response[Label, LabelTypeForResponse]:
         """issues/create-label
 
         POST /repos/{owner}/{repo}/labels
@@ -5472,7 +5472,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Label, LabelType]:
+    ) -> Response[Label, LabelTypeForResponse]:
         """issues/get-label
 
         GET /repos/{owner}/{repo}/labels/{name}
@@ -5507,7 +5507,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Label, LabelType]:
+    ) -> Response[Label, LabelTypeForResponse]:
         """issues/get-label
 
         GET /repos/{owner}/{repo}/labels/{name}
@@ -5602,7 +5602,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     @overload
     def update_label(
@@ -5617,7 +5617,7 @@ class IssuesClient:
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     def update_label(
         self,
@@ -5629,7 +5629,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Label, LabelType]:
+    ) -> Response[Label, LabelTypeForResponse]:
         """issues/update-label
 
         PATCH /repos/{owner}/{repo}/labels/{name}
@@ -5673,7 +5673,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     @overload
     async def async_update_label(
@@ -5688,7 +5688,7 @@ class IssuesClient:
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label, LabelType]: ...
+    ) -> Response[Label, LabelTypeForResponse]: ...
 
     async def async_update_label(
         self,
@@ -5700,7 +5700,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Label, LabelType]:
+    ) -> Response[Label, LabelTypeForResponse]:
         """issues/update-label
 
         PATCH /repos/{owner}/{repo}/labels/{name}
@@ -5746,7 +5746,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Milestone], list[MilestoneType]]:
+    ) -> Response[list[Milestone], list[MilestoneTypeForResponse]]:
         """issues/list-milestones
 
         GET /repos/{owner}/{repo}/milestones
@@ -5794,7 +5794,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Milestone], list[MilestoneType]]:
+    ) -> Response[list[Milestone], list[MilestoneTypeForResponse]]:
         """issues/list-milestones
 
         GET /repos/{owner}/{repo}/milestones
@@ -5839,7 +5839,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoMilestonesPostBodyType,
-    ) -> Response[Milestone, MilestoneType]: ...
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     @overload
     def create_milestone(
@@ -5854,7 +5854,7 @@ class IssuesClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
         due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone, MilestoneType]: ...
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     def create_milestone(
         self,
@@ -5865,7 +5865,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Milestone, MilestoneType]:
+    ) -> Response[Milestone, MilestoneTypeForResponse]:
         """issues/create-milestone
 
         POST /repos/{owner}/{repo}/milestones
@@ -5917,7 +5917,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoMilestonesPostBodyType,
-    ) -> Response[Milestone, MilestoneType]: ...
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     @overload
     async def async_create_milestone(
@@ -5932,7 +5932,7 @@ class IssuesClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
         due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone, MilestoneType]: ...
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     async def async_create_milestone(
         self,
@@ -5943,7 +5943,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Milestone, MilestoneType]:
+    ) -> Response[Milestone, MilestoneTypeForResponse]:
         """issues/create-milestone
 
         POST /repos/{owner}/{repo}/milestones
@@ -5994,7 +5994,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Milestone, MilestoneType]:
+    ) -> Response[Milestone, MilestoneTypeForResponse]:
         """issues/get-milestone
 
         GET /repos/{owner}/{repo}/milestones/{milestone_number}
@@ -6029,7 +6029,7 @@ class IssuesClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Milestone, MilestoneType]:
+    ) -> Response[Milestone, MilestoneTypeForResponse]:
         """issues/get-milestone
 
         GET /repos/{owner}/{repo}/milestones/{milestone_number}
@@ -6134,7 +6134,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
-    ) -> Response[Milestone, MilestoneType]: ...
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     @overload
     def update_milestone(
@@ -6150,7 +6150,7 @@ class IssuesClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
         due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone, MilestoneType]: ...
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     def update_milestone(
         self,
@@ -6162,7 +6162,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Milestone, MilestoneType]:
+    ) -> Response[Milestone, MilestoneTypeForResponse]:
         """issues/update-milestone
 
         PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
@@ -6206,7 +6206,7 @@ class IssuesClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
-    ) -> Response[Milestone, MilestoneType]: ...
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     @overload
     async def async_update_milestone(
@@ -6222,7 +6222,7 @@ class IssuesClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
         due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone, MilestoneType]: ...
+    ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     async def async_update_milestone(
         self,
@@ -6234,7 +6234,7 @@ class IssuesClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Milestone, MilestoneType]:
+    ) -> Response[Milestone, MilestoneTypeForResponse]:
         """issues/update-milestone
 
         PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
@@ -6278,7 +6278,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-for-milestone
 
         GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
@@ -6318,7 +6318,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Label], list[LabelType]]:
+    ) -> Response[list[Label], list[LabelTypeForResponse]]:
         """issues/list-labels-for-milestone
 
         GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
@@ -6363,7 +6363,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-authenticated-user
 
         GET /user/issues
@@ -6427,7 +6427,7 @@ class IssuesClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Issue], list[IssueType]]:
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
         """issues/list-for-authenticated-user
 
         GET /user/issues

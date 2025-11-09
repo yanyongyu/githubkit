@@ -19,4 +19,14 @@ class DeleteBudgetType(TypedDict):
     id: str
 
 
-__all__ = ("DeleteBudgetType",)
+class DeleteBudgetTypeForResponse(TypedDict):
+    """DeleteBudget"""
+
+    message: str
+    id: str
+
+
+__all__ = (
+    "DeleteBudgetType",
+    "DeleteBudgetTypeForResponse",
+)

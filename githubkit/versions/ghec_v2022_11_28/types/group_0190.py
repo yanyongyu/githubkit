@@ -20,4 +20,15 @@ class CombinedBillingUsageType(TypedDict):
     estimated_storage_for_month: int
 
 
-__all__ = ("CombinedBillingUsageType",)
+class CombinedBillingUsageTypeForResponse(TypedDict):
+    """CombinedBillingUsage"""
+
+    days_left_in_billing_cycle: int
+    estimated_paid_storage_for_month: int
+    estimated_storage_for_month: int
+
+
+__all__ = (
+    "CombinedBillingUsageType",
+    "CombinedBillingUsageTypeForResponse",
+)

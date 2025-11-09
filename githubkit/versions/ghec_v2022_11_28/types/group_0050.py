@@ -26,4 +26,21 @@ class RunnerApplicationType(TypedDict):
     sha256_checksum: NotRequired[str]
 
 
-__all__ = ("RunnerApplicationType",)
+class RunnerApplicationTypeForResponse(TypedDict):
+    """Runner Application
+
+    Runner Application
+    """
+
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
+
+
+__all__ = (
+    "RunnerApplicationType",
+    "RunnerApplicationTypeForResponse",
+)

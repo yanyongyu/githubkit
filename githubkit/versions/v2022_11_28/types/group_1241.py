@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
 class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
@@ -22,4 +22,17 @@ class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
     repositories: list[RepositoryType]
 
 
-__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200Type",)
+class UserInstallationsInstallationIdRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+
+    total_count: int
+    repository_selection: NotRequired[str]
+    repositories: list[RepositoryTypeForResponse]
+
+
+__all__ = (
+    "UserInstallationsInstallationIdRepositoriesGetResponse200Type",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200TypeForResponse",
+)

@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0150 import RepositoryRuleFileExtensionRestrictionPropParametersType
+from .group_0150 import (
+    RepositoryRuleFileExtensionRestrictionPropParametersType,
+    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
+)
 
 
 class RepositoryRuleFileExtensionRestrictionType(TypedDict):
@@ -26,4 +29,20 @@ class RepositoryRuleFileExtensionRestrictionType(TypedDict):
     parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
 
 
-__all__ = ("RepositoryRuleFileExtensionRestrictionType",)
+class RepositoryRuleFileExtensionRestrictionTypeForResponse(TypedDict):
+    """file_extension_restriction
+
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
+    """
+
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[
+        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
+    ]
+
+
+__all__ = (
+    "RepositoryRuleFileExtensionRestrictionType",
+    "RepositoryRuleFileExtensionRestrictionTypeForResponse",
+)

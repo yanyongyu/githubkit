@@ -23,6 +23,16 @@ class ActionsCacheListType(TypedDict):
     actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
 
 
+class ActionsCacheListTypeForResponse(TypedDict):
+    """Repository actions caches
+
+    Repository actions caches
+    """
+
+    total_count: int
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsTypeForResponse]
+
+
 class ActionsCacheListPropActionsCachesItemsType(TypedDict):
     """ActionsCacheListPropActionsCachesItems"""
 
@@ -35,7 +45,21 @@ class ActionsCacheListPropActionsCachesItemsType(TypedDict):
     size_in_bytes: NotRequired[int]
 
 
+class ActionsCacheListPropActionsCachesItemsTypeForResponse(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
+
+    id: NotRequired[int]
+    ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[str]
+    created_at: NotRequired[str]
+    size_in_bytes: NotRequired[int]
+
+
 __all__ = (
     "ActionsCacheListPropActionsCachesItemsType",
+    "ActionsCacheListPropActionsCachesItemsTypeForResponse",
     "ActionsCacheListType",
+    "ActionsCacheListTypeForResponse",
 )

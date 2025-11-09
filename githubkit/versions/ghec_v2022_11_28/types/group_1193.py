@@ -19,4 +19,14 @@ class ProjectsColumnsCardsCardIdMovesPostBodyType(TypedDict):
     column_id: NotRequired[int]
 
 
-__all__ = ("ProjectsColumnsCardsCardIdMovesPostBodyType",)
+class ProjectsColumnsCardsCardIdMovesPostBodyTypeForResponse(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostBody"""
+
+    position: str
+    column_id: NotRequired[int]
+
+
+__all__ = (
+    "ProjectsColumnsCardsCardIdMovesPostBodyType",
+    "ProjectsColumnsCardsCardIdMovesPostBodyTypeForResponse",
+)

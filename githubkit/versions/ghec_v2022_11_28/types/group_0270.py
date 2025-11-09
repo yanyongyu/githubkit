@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0266 import LinkType
+from .group_0266 import LinkType, LinkTypeForResponse
 
 
 class PullRequestSimplePropLinksType(TypedDict):
@@ -27,4 +27,20 @@ class PullRequestSimplePropLinksType(TypedDict):
     self_: LinkType
 
 
-__all__ = ("PullRequestSimplePropLinksType",)
+class PullRequestSimplePropLinksTypeForResponse(TypedDict):
+    """PullRequestSimplePropLinks"""
+
+    comments: LinkTypeForResponse
+    commits: LinkTypeForResponse
+    statuses: LinkTypeForResponse
+    html: LinkTypeForResponse
+    issue: LinkTypeForResponse
+    review_comments: LinkTypeForResponse
+    review_comment: LinkTypeForResponse
+    self_: LinkTypeForResponse
+
+
+__all__ = (
+    "PullRequestSimplePropLinksType",
+    "PullRequestSimplePropLinksTypeForResponse",
+)

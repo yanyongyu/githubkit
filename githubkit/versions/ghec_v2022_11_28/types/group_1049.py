@@ -16,4 +16,11 @@ class GistsGistIdStarGetResponse404Type(TypedDict):
     """GistsGistIdStarGetResponse404"""
 
 
-__all__ = ("GistsGistIdStarGetResponse404Type",)
+class GistsGistIdStarGetResponse404TypeForResponse(TypedDict):
+    """GistsGistIdStarGetResponse404"""
+
+
+__all__ = (
+    "GistsGistIdStarGetResponse404Type",
+    "GistsGistIdStarGetResponse404TypeForResponse",
+)

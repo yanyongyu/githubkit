@@ -27,8 +27,8 @@ if TYPE_CHECKING:
 
     from ..models import ScimUser, ScimUserList
     from ..types import (
-        ScimUserListType,
-        ScimUserType,
+        ScimUserListTypeForResponse,
+        ScimUserTypeForResponse,
         ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType,
         ScimV2OrganizationsOrgUsersPostBodyPropNameType,
         ScimV2OrganizationsOrgUsersPostBodyType,
@@ -64,7 +64,7 @@ class ScimClient:
         filter_: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimUserList, ScimUserListType]:
+    ) -> Response[ScimUserList, ScimUserListTypeForResponse]:
         """scim/list-provisioned-identities
 
         GET /scim/v2/organizations/{org}/Users
@@ -114,7 +114,7 @@ class ScimClient:
         filter_: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimUserList, ScimUserListType]:
+    ) -> Response[ScimUserList, ScimUserListTypeForResponse]:
         """scim/list-provisioned-identities
 
         GET /scim/v2/organizations/{org}/Users
@@ -163,7 +163,7 @@ class ScimClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ScimV2OrganizationsOrgUsersPostBodyType,
-    ) -> Response[ScimUser, ScimUserType]: ...
+    ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
 
     @overload
     def provision_and_invite_user(
@@ -181,7 +181,7 @@ class ScimClient:
         external_id: Missing[str] = UNSET,
         groups: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[ScimUser, ScimUserType]: ...
+    ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
 
     def provision_and_invite_user(
         self,
@@ -191,7 +191,7 @@ class ScimClient:
         stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ScimUser, ScimUserType]:
+    ) -> Response[ScimUser, ScimUserTypeForResponse]:
         """scim/provision-and-invite-user
 
         POST /scim/v2/organizations/{org}/Users
@@ -240,7 +240,7 @@ class ScimClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ScimV2OrganizationsOrgUsersPostBodyType,
-    ) -> Response[ScimUser, ScimUserType]: ...
+    ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
 
     @overload
     async def async_provision_and_invite_user(
@@ -258,7 +258,7 @@ class ScimClient:
         external_id: Missing[str] = UNSET,
         groups: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[ScimUser, ScimUserType]: ...
+    ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
 
     async def async_provision_and_invite_user(
         self,
@@ -268,7 +268,7 @@ class ScimClient:
         stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ScimUser, ScimUserType]:
+    ) -> Response[ScimUser, ScimUserTypeForResponse]:
         """scim/provision-and-invite-user
 
         POST /scim/v2/organizations/{org}/Users
@@ -316,7 +316,7 @@ class ScimClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimUser, ScimUserType]:
+    ) -> Response[ScimUser, ScimUserTypeForResponse]:
         """scim/get-provisioning-information-for-user
 
         GET /scim/v2/organizations/{org}/Users/{scim_user_id}
@@ -351,7 +351,7 @@ class ScimClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimUser, ScimUserType]:
+    ) -> Response[ScimUser, ScimUserTypeForResponse]:
         """scim/get-provisioning-information-for-user
 
         GET /scim/v2/organizations/{org}/Users/{scim_user_id}
@@ -388,7 +388,7 @@ class ScimClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
-    ) -> Response[ScimUser, ScimUserType]: ...
+    ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
 
     @overload
     def set_information_for_provisioned_user(
@@ -407,7 +407,7 @@ class ScimClient:
         user_name: str,
         name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
         emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType],
-    ) -> Response[ScimUser, ScimUserType]: ...
+    ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
 
     def set_information_for_provisioned_user(
         self,
@@ -418,7 +418,7 @@ class ScimClient:
         stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ScimUser, ScimUserType]:
+    ) -> Response[ScimUser, ScimUserTypeForResponse]:
         """scim/set-information-for-provisioned-user
 
         PUT /scim/v2/organizations/{org}/Users/{scim_user_id}
@@ -476,7 +476,7 @@ class ScimClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
-    ) -> Response[ScimUser, ScimUserType]: ...
+    ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
 
     @overload
     async def async_set_information_for_provisioned_user(
@@ -495,7 +495,7 @@ class ScimClient:
         user_name: str,
         name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
         emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType],
-    ) -> Response[ScimUser, ScimUserType]: ...
+    ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
 
     async def async_set_information_for_provisioned_user(
         self,
@@ -506,7 +506,7 @@ class ScimClient:
         stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ScimUser, ScimUserType]:
+    ) -> Response[ScimUser, ScimUserTypeForResponse]:
         """scim/set-information-for-provisioned-user
 
         PUT /scim/v2/organizations/{org}/Users/{scim_user_id}
@@ -632,7 +632,7 @@ class ScimClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
-    ) -> Response[ScimUser, ScimUserType]: ...
+    ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
 
     @overload
     def update_attribute_for_user(
@@ -647,7 +647,7 @@ class ScimClient:
         operations: list[
             ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
-    ) -> Response[ScimUser, ScimUserType]: ...
+    ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
 
     def update_attribute_for_user(
         self,
@@ -658,7 +658,7 @@ class ScimClient:
         stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ScimUser, ScimUserType]:
+    ) -> Response[ScimUser, ScimUserTypeForResponse]:
         """scim/update-attribute-for-user
 
         PATCH /scim/v2/organizations/{org}/Users/{scim_user_id}
@@ -730,7 +730,7 @@ class ScimClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
-    ) -> Response[ScimUser, ScimUserType]: ...
+    ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
 
     @overload
     async def async_update_attribute_for_user(
@@ -745,7 +745,7 @@ class ScimClient:
         operations: list[
             ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
-    ) -> Response[ScimUser, ScimUserType]: ...
+    ) -> Response[ScimUser, ScimUserTypeForResponse]: ...
 
     async def async_update_attribute_for_user(
         self,
@@ -756,7 +756,7 @@ class ScimClient:
         stream: bool = False,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ScimUser, ScimUserType]:
+    ) -> Response[ScimUser, ScimUserTypeForResponse]:
         """scim/update-attribute-for-user
 
         PATCH /scim/v2/organizations/{org}/Users/{scim_user_id}

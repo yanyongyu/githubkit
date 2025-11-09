@@ -20,7 +20,7 @@ if TYPE_CHECKING:
     from githubkit.response import Response
 
     from ..models import CodeOfConduct
-    from ..types import CodeOfConductType
+    from ..types import CodeOfConductTypeForResponse
 
 
 class CodesOfConductClient:
@@ -43,7 +43,7 @@ class CodesOfConductClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CodeOfConduct], list[CodeOfConductType]]:
+    ) -> Response[list[CodeOfConduct], list[CodeOfConductTypeForResponse]]:
         """codes-of-conduct/get-all-codes-of-conduct
 
         GET /codes_of_conduct
@@ -72,7 +72,7 @@ class CodesOfConductClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CodeOfConduct], list[CodeOfConductType]]:
+    ) -> Response[list[CodeOfConduct], list[CodeOfConductTypeForResponse]]:
         """codes-of-conduct/get-all-codes-of-conduct
 
         GET /codes_of_conduct
@@ -102,7 +102,7 @@ class CodesOfConductClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeOfConduct, CodeOfConductType]:
+    ) -> Response[CodeOfConduct, CodeOfConductTypeForResponse]:
         """codes-of-conduct/get-conduct-code
 
         GET /codes_of_conduct/{key}
@@ -135,7 +135,7 @@ class CodesOfConductClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeOfConduct, CodeOfConductType]:
+    ) -> Response[CodeOfConduct, CodeOfConductTypeForResponse]:
         """codes-of-conduct/get-conduct-code
 
         GET /codes_of_conduct/{key}

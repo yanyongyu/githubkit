@@ -32,4 +32,26 @@ class WebhooksDeployKeyType(TypedDict):
     enabled: NotRequired[bool]
 
 
-__all__ = ("WebhooksDeployKeyType",)
+class WebhooksDeployKeyTypeForResponse(TypedDict):
+    """WebhooksDeployKey
+
+    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
+    deploy-key) resource.
+    """
+
+    added_by: NotRequired[Union[str, None]]
+    created_at: str
+    id: int
+    key: str
+    last_used: NotRequired[Union[str, None]]
+    read_only: bool
+    title: str
+    url: str
+    verified: bool
+    enabled: NotRequired[bool]
+
+
+__all__ = (
+    "WebhooksDeployKeyType",
+    "WebhooksDeployKeyTypeForResponse",
+)

@@ -46,23 +46,23 @@ if TYPE_CHECKING:
         EmptyObject,
     )
     from ..types import (
-        CodeScanningAlertInstanceType,
-        CodeScanningAlertItemsType,
-        CodeScanningAlertType,
-        CodeScanningAnalysisDeletionType,
-        CodeScanningAnalysisType,
-        CodeScanningAutofixCommitsResponseType,
+        CodeScanningAlertInstanceTypeForResponse,
+        CodeScanningAlertItemsTypeForResponse,
+        CodeScanningAlertTypeForResponse,
+        CodeScanningAnalysisDeletionTypeForResponse,
+        CodeScanningAnalysisTypeForResponse,
+        CodeScanningAutofixCommitsResponseTypeForResponse,
         CodeScanningAutofixCommitsType,
-        CodeScanningAutofixType,
-        CodeScanningCodeqlDatabaseType,
-        CodeScanningDefaultSetupType,
+        CodeScanningAutofixTypeForResponse,
+        CodeScanningCodeqlDatabaseTypeForResponse,
+        CodeScanningDefaultSetupTypeForResponse,
         CodeScanningDefaultSetupUpdateType,
-        CodeScanningOrganizationAlertItemsType,
-        CodeScanningSarifsReceiptType,
-        CodeScanningSarifsStatusType,
-        CodeScanningVariantAnalysisRepoTaskType,
-        CodeScanningVariantAnalysisType,
-        EmptyObjectType,
+        CodeScanningOrganizationAlertItemsTypeForResponse,
+        CodeScanningSarifsReceiptTypeForResponse,
+        CodeScanningSarifsStatusTypeForResponse,
+        CodeScanningVariantAnalysisRepoTaskTypeForResponse,
+        CodeScanningVariantAnalysisTypeForResponse,
+        EmptyObjectTypeForResponse,
         ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
@@ -106,7 +106,7 @@ class CodeScanningClient:
         stream: bool = False,
     ) -> Response[
         list[CodeScanningOrganizationAlertItems],
-        list[CodeScanningOrganizationAlertItemsType],
+        list[CodeScanningOrganizationAlertItemsTypeForResponse],
     ]:
         """code-scanning/list-alerts-for-org
 
@@ -177,7 +177,7 @@ class CodeScanningClient:
         stream: bool = False,
     ) -> Response[
         list[CodeScanningOrganizationAlertItems],
-        list[CodeScanningOrganizationAlertItemsType],
+        list[CodeScanningOrganizationAlertItemsTypeForResponse],
     ]:
         """code-scanning/list-alerts-for-org
 
@@ -249,7 +249,9 @@ class CodeScanningClient:
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CodeScanningAlertItems], list[CodeScanningAlertItemsType]]:
+    ) -> Response[
+        list[CodeScanningAlertItems], list[CodeScanningAlertItemsTypeForResponse]
+    ]:
         """code-scanning/list-alerts-for-repo
 
         GET /repos/{owner}/{repo}/code-scanning/alerts
@@ -321,7 +323,9 @@ class CodeScanningClient:
         ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CodeScanningAlertItems], list[CodeScanningAlertItemsType]]:
+    ) -> Response[
+        list[CodeScanningAlertItems], list[CodeScanningAlertItemsTypeForResponse]
+    ]:
         """code-scanning/list-alerts-for-repo
 
         GET /repos/{owner}/{repo}/code-scanning/alerts
@@ -380,7 +384,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
+    ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]:
         """code-scanning/get-alert
 
         GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
@@ -419,7 +423,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
+    ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]:
         """code-scanning/get-alert
 
         GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
@@ -460,7 +464,7 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
-    ) -> Response[CodeScanningAlert, CodeScanningAlertType]: ...
+    ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]: ...
 
     @overload
     def update_alert(
@@ -478,7 +482,7 @@ class CodeScanningClient:
         ] = UNSET,
         dismissed_comment: Missing[Union[str, None]] = UNSET,
         create_request: Missing[bool] = UNSET,
-    ) -> Response[CodeScanningAlert, CodeScanningAlertType]: ...
+    ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]: ...
 
     def update_alert(
         self,
@@ -490,7 +494,7 @@ class CodeScanningClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
+    ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]:
         """code-scanning/update-alert
 
         PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
@@ -548,7 +552,7 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
-    ) -> Response[CodeScanningAlert, CodeScanningAlertType]: ...
+    ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]: ...
 
     @overload
     async def async_update_alert(
@@ -566,7 +570,7 @@ class CodeScanningClient:
         ] = UNSET,
         dismissed_comment: Missing[Union[str, None]] = UNSET,
         create_request: Missing[bool] = UNSET,
-    ) -> Response[CodeScanningAlert, CodeScanningAlertType]: ...
+    ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]: ...
 
     async def async_update_alert(
         self,
@@ -578,7 +582,7 @@ class CodeScanningClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
+    ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]:
         """code-scanning/update-alert
 
         PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
@@ -634,7 +638,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
+    ) -> Response[CodeScanningAutofix, CodeScanningAutofixTypeForResponse]:
         """code-scanning/get-autofix
 
         GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix
@@ -674,7 +678,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
+    ) -> Response[CodeScanningAutofix, CodeScanningAutofixTypeForResponse]:
         """code-scanning/get-autofix
 
         GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix
@@ -714,7 +718,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
+    ) -> Response[CodeScanningAutofix, CodeScanningAutofixTypeForResponse]:
         """code-scanning/create-autofix
 
         POST /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix
@@ -758,7 +762,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningAutofix, CodeScanningAutofixType]:
+    ) -> Response[CodeScanningAutofix, CodeScanningAutofixTypeForResponse]:
         """code-scanning/create-autofix
 
         POST /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/autofix
@@ -805,7 +809,8 @@ class CodeScanningClient:
         stream: bool = False,
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
     ) -> Response[
-        CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
+        CodeScanningAutofixCommitsResponse,
+        CodeScanningAutofixCommitsResponseTypeForResponse,
     ]: ...
 
     @overload
@@ -821,7 +826,8 @@ class CodeScanningClient:
         target_ref: Missing[str] = UNSET,
         message: Missing[str] = UNSET,
     ) -> Response[
-        CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
+        CodeScanningAutofixCommitsResponse,
+        CodeScanningAutofixCommitsResponseTypeForResponse,
     ]: ...
 
     def commit_autofix(
@@ -835,7 +841,8 @@ class CodeScanningClient:
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
         **kwargs,
     ) -> Response[
-        CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
+        CodeScanningAutofixCommitsResponse,
+        CodeScanningAutofixCommitsResponseTypeForResponse,
     ]:
         """code-scanning/commit-autofix
 
@@ -900,7 +907,8 @@ class CodeScanningClient:
         stream: bool = False,
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
     ) -> Response[
-        CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
+        CodeScanningAutofixCommitsResponse,
+        CodeScanningAutofixCommitsResponseTypeForResponse,
     ]: ...
 
     @overload
@@ -916,7 +924,8 @@ class CodeScanningClient:
         target_ref: Missing[str] = UNSET,
         message: Missing[str] = UNSET,
     ) -> Response[
-        CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
+        CodeScanningAutofixCommitsResponse,
+        CodeScanningAutofixCommitsResponseTypeForResponse,
     ]: ...
 
     async def async_commit_autofix(
@@ -930,7 +939,8 @@ class CodeScanningClient:
         data: Missing[Union[CodeScanningAutofixCommitsType, None]] = UNSET,
         **kwargs,
     ) -> Response[
-        CodeScanningAutofixCommitsResponse, CodeScanningAutofixCommitsResponseType
+        CodeScanningAutofixCommitsResponse,
+        CodeScanningAutofixCommitsResponseTypeForResponse,
     ]:
         """code-scanning/commit-autofix
 
@@ -996,7 +1006,9 @@ class CodeScanningClient:
         pr: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CodeScanningAlertInstance], list[CodeScanningAlertInstanceType]]:
+    ) -> Response[
+        list[CodeScanningAlertInstance], list[CodeScanningAlertInstanceTypeForResponse]
+    ]:
         """code-scanning/list-alert-instances
 
         GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
@@ -1047,7 +1059,9 @@ class CodeScanningClient:
         pr: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CodeScanningAlertInstance], list[CodeScanningAlertInstanceType]]:
+    ) -> Response[
+        list[CodeScanningAlertInstance], list[CodeScanningAlertInstanceTypeForResponse]
+    ]:
         """code-scanning/list-alert-instances
 
         GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
@@ -1102,7 +1116,9 @@ class CodeScanningClient:
         sort: Missing[Literal["created"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CodeScanningAnalysis], list[CodeScanningAnalysisType]]:
+    ) -> Response[
+        list[CodeScanningAnalysis], list[CodeScanningAnalysisTypeForResponse]
+    ]:
         """code-scanning/list-recent-analyses
 
         GET /repos/{owner}/{repo}/code-scanning/analyses
@@ -1174,7 +1190,9 @@ class CodeScanningClient:
         sort: Missing[Literal["created"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CodeScanningAnalysis], list[CodeScanningAnalysisType]]:
+    ) -> Response[
+        list[CodeScanningAnalysis], list[CodeScanningAnalysisTypeForResponse]
+    ]:
         """code-scanning/list-recent-analyses
 
         GET /repos/{owner}/{repo}/code-scanning/analyses
@@ -1238,7 +1256,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningAnalysis, CodeScanningAnalysisType]:
+    ) -> Response[CodeScanningAnalysis, CodeScanningAnalysisTypeForResponse]:
         """code-scanning/get-analysis
 
         GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
@@ -1292,7 +1310,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningAnalysis, CodeScanningAnalysisType]:
+    ) -> Response[CodeScanningAnalysis, CodeScanningAnalysisTypeForResponse]:
         """code-scanning/get-analysis
 
         GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
@@ -1347,7 +1365,9 @@ class CodeScanningClient:
         confirm_delete: Missing[Union[str, None]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningAnalysisDeletion, CodeScanningAnalysisDeletionType]:
+    ) -> Response[
+        CodeScanningAnalysisDeletion, CodeScanningAnalysisDeletionTypeForResponse
+    ]:
         """code-scanning/delete-analysis
 
         DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
@@ -1458,7 +1478,9 @@ class CodeScanningClient:
         confirm_delete: Missing[Union[str, None]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningAnalysisDeletion, CodeScanningAnalysisDeletionType]:
+    ) -> Response[
+        CodeScanningAnalysisDeletion, CodeScanningAnalysisDeletionTypeForResponse
+    ]:
         """code-scanning/delete-analysis
 
         DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
@@ -1568,7 +1590,8 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[CodeScanningCodeqlDatabase], list[CodeScanningCodeqlDatabaseType]
+        list[CodeScanningCodeqlDatabase],
+        list[CodeScanningCodeqlDatabaseTypeForResponse],
     ]:
         """code-scanning/list-codeql-databases
 
@@ -1612,7 +1635,8 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[CodeScanningCodeqlDatabase], list[CodeScanningCodeqlDatabaseType]
+        list[CodeScanningCodeqlDatabase],
+        list[CodeScanningCodeqlDatabaseTypeForResponse],
     ]:
         """code-scanning/list-codeql-databases
 
@@ -1656,7 +1680,9 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningCodeqlDatabase, CodeScanningCodeqlDatabaseType]:
+    ) -> Response[
+        CodeScanningCodeqlDatabase, CodeScanningCodeqlDatabaseTypeForResponse
+    ]:
         """code-scanning/get-codeql-database
 
         GET /repos/{owner}/{repo}/code-scanning/codeql/databases/{language}
@@ -1705,7 +1731,9 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningCodeqlDatabase, CodeScanningCodeqlDatabaseType]:
+    ) -> Response[
+        CodeScanningCodeqlDatabase, CodeScanningCodeqlDatabaseTypeForResponse
+    ]:
         """code-scanning/get-codeql-database
 
         GET /repos/{owner}/{repo}/code-scanning/codeql/databases/{language}
@@ -1835,7 +1863,9 @@ class CodeScanningClient:
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
         ],
-    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
+    ) -> Response[
+        CodeScanningVariantAnalysis, CodeScanningVariantAnalysisTypeForResponse
+    ]: ...
 
     @overload
     def create_variant_analysis(
@@ -1861,7 +1891,9 @@ class CodeScanningClient:
         repositories: list[str],
         repository_lists: Missing[list[str]] = UNSET,
         repository_owners: Missing[list[str]] = UNSET,
-    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
+    ) -> Response[
+        CodeScanningVariantAnalysis, CodeScanningVariantAnalysisTypeForResponse
+    ]: ...
 
     @overload
     def create_variant_analysis(
@@ -1887,7 +1919,9 @@ class CodeScanningClient:
         repositories: Missing[list[str]] = UNSET,
         repository_lists: list[str],
         repository_owners: Missing[list[str]] = UNSET,
-    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
+    ) -> Response[
+        CodeScanningVariantAnalysis, CodeScanningVariantAnalysisTypeForResponse
+    ]: ...
 
     @overload
     def create_variant_analysis(
@@ -1913,7 +1947,9 @@ class CodeScanningClient:
         repositories: Missing[list[str]] = UNSET,
         repository_lists: Missing[list[str]] = UNSET,
         repository_owners: list[str],
-    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
+    ) -> Response[
+        CodeScanningVariantAnalysis, CodeScanningVariantAnalysisTypeForResponse
+    ]: ...
 
     def create_variant_analysis(
         self,
@@ -1930,7 +1966,9 @@ class CodeScanningClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]:
+    ) -> Response[
+        CodeScanningVariantAnalysis, CodeScanningVariantAnalysisTypeForResponse
+    ]:
         """code-scanning/create-variant-analysis
 
         POST /repos/{owner}/{repo}/code-scanning/codeql/variant-analyses
@@ -2005,7 +2043,9 @@ class CodeScanningClient:
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
         ],
-    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
+    ) -> Response[
+        CodeScanningVariantAnalysis, CodeScanningVariantAnalysisTypeForResponse
+    ]: ...
 
     @overload
     async def async_create_variant_analysis(
@@ -2031,7 +2071,9 @@ class CodeScanningClient:
         repositories: list[str],
         repository_lists: Missing[list[str]] = UNSET,
         repository_owners: Missing[list[str]] = UNSET,
-    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
+    ) -> Response[
+        CodeScanningVariantAnalysis, CodeScanningVariantAnalysisTypeForResponse
+    ]: ...
 
     @overload
     async def async_create_variant_analysis(
@@ -2057,7 +2099,9 @@ class CodeScanningClient:
         repositories: Missing[list[str]] = UNSET,
         repository_lists: list[str],
         repository_owners: Missing[list[str]] = UNSET,
-    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
+    ) -> Response[
+        CodeScanningVariantAnalysis, CodeScanningVariantAnalysisTypeForResponse
+    ]: ...
 
     @overload
     async def async_create_variant_analysis(
@@ -2083,7 +2127,9 @@ class CodeScanningClient:
         repositories: Missing[list[str]] = UNSET,
         repository_lists: Missing[list[str]] = UNSET,
         repository_owners: list[str],
-    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
+    ) -> Response[
+        CodeScanningVariantAnalysis, CodeScanningVariantAnalysisTypeForResponse
+    ]: ...
 
     async def async_create_variant_analysis(
         self,
@@ -2100,7 +2146,9 @@ class CodeScanningClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]:
+    ) -> Response[
+        CodeScanningVariantAnalysis, CodeScanningVariantAnalysisTypeForResponse
+    ]:
         """code-scanning/create-variant-analysis
 
         POST /repos/{owner}/{repo}/code-scanning/codeql/variant-analyses
@@ -2170,7 +2218,9 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]:
+    ) -> Response[
+        CodeScanningVariantAnalysis, CodeScanningVariantAnalysisTypeForResponse
+    ]:
         """code-scanning/get-variant-analysis
 
         GET /repos/{owner}/{repo}/code-scanning/codeql/variant-analyses/{codeql_variant_analysis_id}
@@ -2212,7 +2262,9 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]:
+    ) -> Response[
+        CodeScanningVariantAnalysis, CodeScanningVariantAnalysisTypeForResponse
+    ]:
         """code-scanning/get-variant-analysis
 
         GET /repos/{owner}/{repo}/code-scanning/codeql/variant-analyses/{codeql_variant_analysis_id}
@@ -2257,7 +2309,8 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        CodeScanningVariantAnalysisRepoTask, CodeScanningVariantAnalysisRepoTaskType
+        CodeScanningVariantAnalysisRepoTask,
+        CodeScanningVariantAnalysisRepoTaskTypeForResponse,
     ]:
         """code-scanning/get-variant-analysis-repo-task
 
@@ -2303,7 +2356,8 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        CodeScanningVariantAnalysisRepoTask, CodeScanningVariantAnalysisRepoTaskType
+        CodeScanningVariantAnalysisRepoTask,
+        CodeScanningVariantAnalysisRepoTaskTypeForResponse,
     ]:
         """code-scanning/get-variant-analysis-repo-task
 
@@ -2345,7 +2399,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningDefaultSetup, CodeScanningDefaultSetupType]:
+    ) -> Response[CodeScanningDefaultSetup, CodeScanningDefaultSetupTypeForResponse]:
         """code-scanning/get-default-setup
 
         GET /repos/{owner}/{repo}/code-scanning/default-setup
@@ -2383,7 +2437,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningDefaultSetup, CodeScanningDefaultSetupType]:
+    ) -> Response[CodeScanningDefaultSetup, CodeScanningDefaultSetupTypeForResponse]:
         """code-scanning/get-default-setup
 
         GET /repos/{owner}/{repo}/code-scanning/default-setup
@@ -2423,7 +2477,7 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: CodeScanningDefaultSetupUpdateType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     def update_default_setup(
@@ -2454,7 +2508,7 @@ class CodeScanningClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def update_default_setup(
         self,
@@ -2465,7 +2519,7 @@ class CodeScanningClient:
         stream: bool = False,
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """code-scanning/update-default-setup
 
         PATCH /repos/{owner}/{repo}/code-scanning/default-setup
@@ -2522,7 +2576,7 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: CodeScanningDefaultSetupUpdateType,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
     async def async_update_default_setup(
@@ -2553,7 +2607,7 @@ class CodeScanningClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[EmptyObject, EmptyObjectType]: ...
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_update_default_setup(
         self,
@@ -2564,7 +2618,7 @@ class CodeScanningClient:
         stream: bool = False,
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject, EmptyObjectType]:
+    ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """code-scanning/update-default-setup
 
         PATCH /repos/{owner}/{repo}/code-scanning/default-setup
@@ -2621,7 +2675,9 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
-    ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]: ...
+    ) -> Response[
+        CodeScanningSarifsReceipt, CodeScanningSarifsReceiptTypeForResponse
+    ]: ...
 
     @overload
     def upload_sarif(
@@ -2639,7 +2695,9 @@ class CodeScanningClient:
         started_at: Missing[datetime] = UNSET,
         tool_name: Missing[str] = UNSET,
         validate_: Missing[bool] = UNSET,
-    ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]: ...
+    ) -> Response[
+        CodeScanningSarifsReceipt, CodeScanningSarifsReceiptTypeForResponse
+    ]: ...
 
     def upload_sarif(
         self,
@@ -2650,7 +2708,7 @@ class CodeScanningClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]:
+    ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptTypeForResponse]:
         """code-scanning/upload-sarif
 
         POST /repos/{owner}/{repo}/code-scanning/sarifs
@@ -2736,7 +2794,9 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
-    ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]: ...
+    ) -> Response[
+        CodeScanningSarifsReceipt, CodeScanningSarifsReceiptTypeForResponse
+    ]: ...
 
     @overload
     async def async_upload_sarif(
@@ -2754,7 +2814,9 @@ class CodeScanningClient:
         started_at: Missing[datetime] = UNSET,
         tool_name: Missing[str] = UNSET,
         validate_: Missing[bool] = UNSET,
-    ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]: ...
+    ) -> Response[
+        CodeScanningSarifsReceipt, CodeScanningSarifsReceiptTypeForResponse
+    ]: ...
 
     async def async_upload_sarif(
         self,
@@ -2765,7 +2827,7 @@ class CodeScanningClient:
         stream: bool = False,
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]:
+    ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptTypeForResponse]:
         """code-scanning/upload-sarif
 
         POST /repos/{owner}/{repo}/code-scanning/sarifs
@@ -2850,7 +2912,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningSarifsStatus, CodeScanningSarifsStatusType]:
+    ) -> Response[CodeScanningSarifsStatus, CodeScanningSarifsStatusTypeForResponse]:
         """code-scanning/get-sarif
 
         GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
@@ -2887,7 +2949,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CodeScanningSarifsStatus, CodeScanningSarifsStatusType]:
+    ) -> Response[CodeScanningSarifsStatus, CodeScanningSarifsStatusTypeForResponse]:
         """code-scanning/get-sarif
 
         GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}

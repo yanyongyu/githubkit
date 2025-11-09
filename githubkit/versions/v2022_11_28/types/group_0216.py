@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0042 import ReactionRollupType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0042 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
 class TeamDiscussionType(TypedDict):
@@ -44,4 +44,34 @@ class TeamDiscussionType(TypedDict):
     reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = ("TeamDiscussionType",)
+class TeamDiscussionTypeForResponse(TypedDict):
+    """Team Discussion
+
+    A team discussion is a persistent record of a free-form conversation within a
+    team.
+    """
+
+    author: Union[None, SimpleUserTypeForResponse]
+    body: str
+    body_html: str
+    body_version: str
+    comments_count: int
+    comments_url: str
+    created_at: str
+    last_edited_at: Union[str, None]
+    html_url: str
+    node_id: str
+    number: int
+    pinned: bool
+    private: bool
+    team_url: str
+    title: str
+    updated_at: str
+    url: str
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+
+
+__all__ = (
+    "TeamDiscussionType",
+    "TeamDiscussionTypeForResponse",
+)

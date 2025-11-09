@@ -19,7 +19,26 @@ class RepositoryRuleCodeScanningPropParametersType(TypedDict):
     code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
 
 
+class RepositoryRuleCodeScanningPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
+
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolTypeForResponse]
+
+
 class RepositoryRuleParamsCodeScanningToolType(TypedDict):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
+    """
+
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ]
+    tool: str
+
+
+class RepositoryRuleParamsCodeScanningToolTypeForResponse(TypedDict):
     """CodeScanningTool
 
     A tool that must provide code scanning results for this rule to pass.
@@ -34,5 +53,7 @@ class RepositoryRuleParamsCodeScanningToolType(TypedDict):
 
 __all__ = (
     "RepositoryRuleCodeScanningPropParametersType",
+    "RepositoryRuleCodeScanningPropParametersTypeForResponse",
     "RepositoryRuleParamsCodeScanningToolType",
+    "RepositoryRuleParamsCodeScanningToolTypeForResponse",
 )

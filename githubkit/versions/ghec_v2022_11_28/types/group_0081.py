@@ -35,4 +35,28 @@ class EnterpriseTeamType(TypedDict):
     updated_at: datetime
 
 
-__all__ = ("EnterpriseTeamType",)
+class EnterpriseTeamTypeForResponse(TypedDict):
+    """Enterprise Team
+
+    Group of enterprise owners and/or members
+    """
+
+    id: int
+    name: str
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    created_at: str
+    updated_at: str
+
+
+__all__ = (
+    "EnterpriseTeamType",
+    "EnterpriseTeamTypeForResponse",
+)

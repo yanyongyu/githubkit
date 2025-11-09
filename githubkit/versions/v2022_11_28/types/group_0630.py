@@ -24,4 +24,17 @@ class WebhookIssuesClosedPropIssueAllof0PropPullRequestType(TypedDict):
     url: NotRequired[str]
 
 
-__all__ = ("WebhookIssuesClosedPropIssueAllof0PropPullRequestType",)
+class WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[str, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "WebhookIssuesClosedPropIssueAllof0PropPullRequestType",
+    "WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse",
+)

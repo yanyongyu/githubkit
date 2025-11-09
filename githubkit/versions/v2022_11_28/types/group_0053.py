@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class GistCommitType(TypedDict):
@@ -29,7 +29,28 @@ class GistCommitType(TypedDict):
     committed_at: datetime
 
 
+class GistCommitTypeForResponse(TypedDict):
+    """Gist Commit
+
+    Gist Commit
+    """
+
+    url: str
+    version: str
+    user: Union[None, SimpleUserTypeForResponse]
+    change_status: GistCommitPropChangeStatusTypeForResponse
+    committed_at: str
+
+
 class GistCommitPropChangeStatusType(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistCommitPropChangeStatusTypeForResponse(TypedDict):
     """GistCommitPropChangeStatus"""
 
     total: NotRequired[int]
@@ -39,5 +60,7 @@ class GistCommitPropChangeStatusType(TypedDict):
 
 __all__ = (
     "GistCommitPropChangeStatusType",
+    "GistCommitPropChangeStatusTypeForResponse",
     "GistCommitType",
+    "GistCommitTypeForResponse",
 )

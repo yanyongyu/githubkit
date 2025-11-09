@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0064 import BypassResponseType
+from .group_0064 import BypassResponseType, BypassResponseTypeForResponse
 
 
 class SecretScanningBypassRequestType(TypedDict):
@@ -44,7 +44,50 @@ class SecretScanningBypassRequestType(TypedDict):
     html_url: NotRequired[str]
 
 
+class SecretScanningBypassRequestTypeForResponse(TypedDict):
+    """Secret scanning bypass request
+
+    A bypass request made by a user asking to be exempted from push protection in
+    this repository.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[SecretScanningBypassRequestPropRepositoryTypeForResponse]
+    organization: NotRequired[
+        SecretScanningBypassRequestPropOrganizationTypeForResponse
+    ]
+    requester: NotRequired[SecretScanningBypassRequestPropRequesterTypeForResponse]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[SecretScanningBypassRequestPropDataItemsTypeForResponse], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[
+        Literal[
+            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+        ]
+    ]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[str]
+    created_at: NotRequired[str]
+    responses: NotRequired[Union[list[BypassResponseTypeForResponse], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+
+
 class SecretScanningBypassRequestPropRepositoryType(TypedDict):
+    """SecretScanningBypassRequestPropRepository
+
+    The repository the bypass request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class SecretScanningBypassRequestPropRepositoryTypeForResponse(TypedDict):
     """SecretScanningBypassRequestPropRepository
 
     The repository the bypass request is for.
@@ -65,7 +108,27 @@ class SecretScanningBypassRequestPropOrganizationType(TypedDict):
     name: NotRequired[str]
 
 
+class SecretScanningBypassRequestPropOrganizationTypeForResponse(TypedDict):
+    """SecretScanningBypassRequestPropOrganization
+
+    The organization associated with the repository the bypass request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
 class SecretScanningBypassRequestPropRequesterType(TypedDict):
+    """SecretScanningBypassRequestPropRequester
+
+    The user who requested the bypass.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class SecretScanningBypassRequestPropRequesterTypeForResponse(TypedDict):
     """SecretScanningBypassRequestPropRequester
 
     The user who requested the bypass.
@@ -84,10 +147,24 @@ class SecretScanningBypassRequestPropDataItemsType(TypedDict):
     branch: NotRequired[str]
 
 
+class SecretScanningBypassRequestPropDataItemsTypeForResponse(TypedDict):
+    """SecretScanningBypassRequestPropDataItems"""
+
+    secret_type: NotRequired[str]
+    bypass_reason: NotRequired[Literal["used_in_tests", "false_positive", "fix_later"]]
+    path: NotRequired[str]
+    branch: NotRequired[str]
+
+
 __all__ = (
     "SecretScanningBypassRequestPropDataItemsType",
+    "SecretScanningBypassRequestPropDataItemsTypeForResponse",
     "SecretScanningBypassRequestPropOrganizationType",
+    "SecretScanningBypassRequestPropOrganizationTypeForResponse",
     "SecretScanningBypassRequestPropRepositoryType",
+    "SecretScanningBypassRequestPropRepositoryTypeForResponse",
     "SecretScanningBypassRequestPropRequesterType",
+    "SecretScanningBypassRequestPropRequesterTypeForResponse",
     "SecretScanningBypassRequestType",
+    "SecretScanningBypassRequestTypeForResponse",
 )

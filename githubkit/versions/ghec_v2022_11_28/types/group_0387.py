@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0080 import TeamType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0080 import TeamType, TeamTypeForResponse
 
 
 class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict):
@@ -23,4 +23,16 @@ class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict)
     reviewer: NotRequired[Union[SimpleUserType, TeamType]]
 
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",)
+class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse(
+    TypedDict
+):
+    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
+
+
+__all__ = (
+    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",
+    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse",
+)

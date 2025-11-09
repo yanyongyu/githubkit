@@ -22,4 +22,16 @@ class OrgsOrgHooksHookIdConfigPatchBodyType(TypedDict):
     insecure_ssl: NotRequired[Union[str, float]]
 
 
-__all__ = ("OrgsOrgHooksHookIdConfigPatchBodyType",)
+class OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgHooksHookIdConfigPatchBody"""
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+
+
+__all__ = (
+    "OrgsOrgHooksHookIdConfigPatchBodyType",
+    "OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse",
+)

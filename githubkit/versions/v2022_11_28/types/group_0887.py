@@ -18,4 +18,13 @@ class GistsGistIdCommentsCommentIdPatchBodyType(TypedDict):
     body: str
 
 
-__all__ = ("GistsGistIdCommentsCommentIdPatchBodyType",)
+class GistsGistIdCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
+    """GistsGistIdCommentsCommentIdPatchBody"""
+
+    body: str
+
+
+__all__ = (
+    "GistsGistIdCommentsCommentIdPatchBodyType",
+    "GistsGistIdCommentsCommentIdPatchBodyTypeForResponse",
+)

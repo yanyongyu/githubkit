@@ -20,4 +20,17 @@ class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType(Type
     protected: NotRequired[bool]
 
 
-__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",)
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
+
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
+    protected: NotRequired[bool]
+
+
+__all__ = (
+    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
+    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse",
+)

@@ -25,4 +25,18 @@ class InteractionLimitResponseType(TypedDict):
     expires_at: datetime
 
 
-__all__ = ("InteractionLimitResponseType",)
+class InteractionLimitResponseTypeForResponse(TypedDict):
+    """Interaction Limits
+
+    Interaction limit settings.
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: str
+
+
+__all__ = (
+    "InteractionLimitResponseType",
+    "InteractionLimitResponseTypeForResponse",
+)

@@ -13,9 +13,12 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0001 import CvssSeveritiesType
-from .group_0002 import SecurityAdvisoryEpssType
-from .group_0087 import DependabotAlertSecurityVulnerabilityType
+from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
+from .group_0002 import SecurityAdvisoryEpssType, SecurityAdvisoryEpssTypeForResponse
+from .group_0087 import (
+    DependabotAlertSecurityVulnerabilityType,
+    DependabotAlertSecurityVulnerabilityTypeForResponse,
+)
 
 
 class DependabotAlertSecurityAdvisoryType(TypedDict):
@@ -41,7 +44,42 @@ class DependabotAlertSecurityAdvisoryType(TypedDict):
     withdrawn_at: Union[datetime, None]
 
 
+class DependabotAlertSecurityAdvisoryTypeForResponse(TypedDict):
+    """DependabotAlertSecurityAdvisory
+
+    Details for the GitHub Security Advisory.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
+    summary: str
+    description: str
+    vulnerabilities: list[DependabotAlertSecurityVulnerabilityTypeForResponse]
+    severity: Literal["low", "medium", "high", "critical"]
+    cvss: DependabotAlertSecurityAdvisoryPropCvssTypeForResponse
+    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
+    epss: NotRequired[Union[SecurityAdvisoryEpssTypeForResponse, None]]
+    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse]
+    identifiers: list[
+        DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse
+    ]
+    references: list[DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse]
+    published_at: str
+    updated_at: str
+    withdrawn_at: Union[str, None]
+
+
 class DependabotAlertSecurityAdvisoryPropCvssType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropCvss
+
+    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    """
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class DependabotAlertSecurityAdvisoryPropCvssTypeForResponse(TypedDict):
     """DependabotAlertSecurityAdvisoryPropCvss
 
     Details for the advisory pertaining to the Common Vulnerability Scoring System.
@@ -61,7 +99,27 @@ class DependabotAlertSecurityAdvisoryPropCwesItemsType(TypedDict):
     name: str
 
 
+class DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str
+    name: str
+
+
 class DependabotAlertSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
     """DependabotAlertSecurityAdvisoryPropIdentifiersItems
 
     An advisory identifier.
@@ -80,10 +138,24 @@ class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
     url: str
 
 
+class DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str
+
+
 __all__ = (
     "DependabotAlertSecurityAdvisoryPropCvssType",
+    "DependabotAlertSecurityAdvisoryPropCvssTypeForResponse",
     "DependabotAlertSecurityAdvisoryPropCwesItemsType",
+    "DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse",
     "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
     "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
+    "DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse",
     "DependabotAlertSecurityAdvisoryType",
+    "DependabotAlertSecurityAdvisoryTypeForResponse",
 )

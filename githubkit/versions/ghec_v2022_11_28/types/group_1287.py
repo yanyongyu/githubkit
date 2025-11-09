@@ -27,4 +27,21 @@ class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType(TypedDict):
     auto_inactive: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType",)
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
+
+    state: Literal[
+        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
+    ]
+    target_url: NotRequired[str]
+    log_url: NotRequired[str]
+    description: NotRequired[str]
+    environment: NotRequired[str]
+    environment_url: NotRequired[str]
+    auto_inactive: NotRequired[bool]
+
+
+__all__ = (
+    "ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType",
+    "ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyTypeForResponse",
+)

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0065 import CustomPropertyValueType
+from .group_0065 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
 class OrgRepoCustomPropertyValuesType(TypedDict):
@@ -26,4 +26,19 @@ class OrgRepoCustomPropertyValuesType(TypedDict):
     properties: list[CustomPropertyValueType]
 
 
-__all__ = ("OrgRepoCustomPropertyValuesType",)
+class OrgRepoCustomPropertyValuesTypeForResponse(TypedDict):
+    """Organization Repository Custom Property Values
+
+    List of custom property values for a repository
+    """
+
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueTypeForResponse]
+
+
+__all__ = (
+    "OrgRepoCustomPropertyValuesType",
+    "OrgRepoCustomPropertyValuesTypeForResponse",
+)

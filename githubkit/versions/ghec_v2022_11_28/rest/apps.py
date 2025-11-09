@@ -50,37 +50,37 @@ if TYPE_CHECKING:
         WebhookConfig,
     )
     from ..types import (
-        AccessibleRepositoryType,
+        AccessibleRepositoryTypeForResponse,
         AppHookConfigPatchBodyType,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
         AppInstallationsInstallationIdAccessTokensPostBodyType,
         ApplicationsClientIdGrantDeleteBodyType,
         ApplicationsClientIdTokenDeleteBodyType,
         ApplicationsClientIdTokenPatchBodyType,
         ApplicationsClientIdTokenPostBodyType,
         ApplicationsClientIdTokenScopedPostBodyType,
-        AppManifestsCodeConversionsPostResponse201Type,
+        AppManifestsCodeConversionsPostResponse201TypeForResponse,
         AppPermissionsType,
-        AuthorizationType,
-        EnterpriseOrganizationInstallationType,
+        AuthorizationTypeForResponse,
+        EnterpriseOrganizationInstallationTypeForResponse,
         EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType,
         EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType,
         EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType,
         EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType,
-        HookDeliveryItemType,
-        HookDeliveryType,
-        InstallableOrganizationType,
-        InstallationRepositoriesGetResponse200Type,
-        InstallationTokenType,
-        InstallationType,
-        IntegrationInstallationRequestType,
-        IntegrationType,
-        MarketplaceListingPlanType,
-        MarketplacePurchaseType,
-        UserInstallationsGetResponse200Type,
-        UserInstallationsInstallationIdRepositoriesGetResponse200Type,
-        UserMarketplacePurchaseType,
-        WebhookConfigType,
+        HookDeliveryItemTypeForResponse,
+        HookDeliveryTypeForResponse,
+        InstallableOrganizationTypeForResponse,
+        InstallationRepositoriesGetResponse200TypeForResponse,
+        InstallationTokenTypeForResponse,
+        InstallationTypeForResponse,
+        IntegrationInstallationRequestTypeForResponse,
+        IntegrationTypeForResponse,
+        MarketplaceListingPlanTypeForResponse,
+        MarketplacePurchaseTypeForResponse,
+        UserInstallationsGetResponse200TypeForResponse,
+        UserInstallationsInstallationIdRepositoriesGetResponse200TypeForResponse,
+        UserMarketplacePurchaseTypeForResponse,
+        WebhookConfigTypeForResponse,
     )
 
 
@@ -104,7 +104,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
+    ) -> Response[Union[Integration, None], Union[IntegrationTypeForResponse, None]]:
         """apps/get-authenticated
 
         GET /app
@@ -137,7 +137,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
+    ) -> Response[Union[Integration, None], Union[IntegrationTypeForResponse, None]]:
         """apps/get-authenticated
 
         GET /app
@@ -173,7 +173,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         AppManifestsCodeConversionsPostResponse201,
-        AppManifestsCodeConversionsPostResponse201Type,
+        AppManifestsCodeConversionsPostResponse201TypeForResponse,
     ]:
         """apps/create-from-manifest
 
@@ -214,7 +214,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         AppManifestsCodeConversionsPostResponse201,
-        AppManifestsCodeConversionsPostResponse201Type,
+        AppManifestsCodeConversionsPostResponse201TypeForResponse,
     ]:
         """apps/create-from-manifest
 
@@ -252,7 +252,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """apps/get-webhook-config-for-app
 
         GET /app/hook/config
@@ -283,7 +283,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """apps/get-webhook-config-for-app
 
         GET /app/hook/config
@@ -316,7 +316,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: AppHookConfigPatchBodyType,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     @overload
     def update_webhook_config_for_app(
@@ -329,7 +329,7 @@ class AppsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     def update_webhook_config_for_app(
         self,
@@ -338,7 +338,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """apps/update-webhook-config-for-app
 
         PATCH /app/hook/config
@@ -381,7 +381,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: AppHookConfigPatchBodyType,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     @overload
     async def async_update_webhook_config_for_app(
@@ -394,7 +394,7 @@ class AppsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig, WebhookConfigType]: ...
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]: ...
 
     async def async_update_webhook_config_for_app(
         self,
@@ -403,7 +403,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig, WebhookConfigType]:
+    ) -> Response[WebhookConfig, WebhookConfigTypeForResponse]:
         """apps/update-webhook-config-for-app
 
         PATCH /app/hook/config
@@ -446,7 +446,7 @@ class AppsClient:
         cursor: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """apps/list-webhook-deliveries
 
         GET /app/hook/deliveries
@@ -489,7 +489,7 @@ class AppsClient:
         cursor: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
         """apps/list-webhook-deliveries
 
         GET /app/hook/deliveries
@@ -531,7 +531,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[HookDelivery, HookDeliveryType]:
+    ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """apps/get-webhook-delivery
 
         GET /app/hook/deliveries/{delivery_id}
@@ -567,7 +567,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[HookDelivery, HookDeliveryType]:
+    ) -> Response[HookDelivery, HookDeliveryTypeForResponse]:
         """apps/get-webhook-delivery
 
         GET /app/hook/deliveries/{delivery_id}
@@ -605,7 +605,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """apps/redeliver-webhook-delivery
 
@@ -648,7 +648,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
     ]:
         """apps/redeliver-webhook-delivery
 
@@ -691,7 +691,8 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[IntegrationInstallationRequest], list[IntegrationInstallationRequestType]
+        list[IntegrationInstallationRequest],
+        list[IntegrationInstallationRequestTypeForResponse],
     ]:
         """apps/list-installation-requests-for-authenticated-app
 
@@ -733,7 +734,8 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[IntegrationInstallationRequest], list[IntegrationInstallationRequestType]
+        list[IntegrationInstallationRequest],
+        list[IntegrationInstallationRequestTypeForResponse],
     ]:
         """apps/list-installation-requests-for-authenticated-app
 
@@ -776,7 +778,7 @@ class AppsClient:
         outdated: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Installation], list[InstallationType]]:
+    ) -> Response[list[Installation], list[InstallationTypeForResponse]]:
         """apps/list-installations
 
         GET /app/installations
@@ -819,7 +821,7 @@ class AppsClient:
         outdated: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[Installation], list[InstallationType]]:
+    ) -> Response[list[Installation], list[InstallationTypeForResponse]]:
         """apps/list-installations
 
         GET /app/installations
@@ -859,7 +861,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-installation
 
         GET /app/installations/{installation_id}
@@ -894,7 +896,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-installation
 
         GET /app/installations/{installation_id}
@@ -999,7 +1001,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
-    ) -> Response[InstallationToken, InstallationTokenType]: ...
+    ) -> Response[InstallationToken, InstallationTokenTypeForResponse]: ...
 
     @overload
     def create_installation_access_token(
@@ -1012,7 +1014,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[InstallationToken, InstallationTokenType]: ...
+    ) -> Response[InstallationToken, InstallationTokenTypeForResponse]: ...
 
     def create_installation_access_token(
         self,
@@ -1022,7 +1024,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[InstallationToken, InstallationTokenType]:
+    ) -> Response[InstallationToken, InstallationTokenTypeForResponse]:
         """apps/create-installation-access-token
 
         POST /app/installations/{installation_id}/access_tokens
@@ -1085,7 +1087,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
-    ) -> Response[InstallationToken, InstallationTokenType]: ...
+    ) -> Response[InstallationToken, InstallationTokenTypeForResponse]: ...
 
     @overload
     async def async_create_installation_access_token(
@@ -1098,7 +1100,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[InstallationToken, InstallationTokenType]: ...
+    ) -> Response[InstallationToken, InstallationTokenTypeForResponse]: ...
 
     async def async_create_installation_access_token(
         self,
@@ -1108,7 +1110,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[InstallationToken, InstallationTokenType]:
+    ) -> Response[InstallationToken, InstallationTokenTypeForResponse]:
         """apps/create-installation-access-token
 
         POST /app/installations/{installation_id}/access_tokens
@@ -1439,7 +1441,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenPostBodyType,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     @overload
     def check_token(
@@ -1450,7 +1452,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         access_token: str,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     def check_token(
         self,
@@ -1460,7 +1462,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization, AuthorizationType]:
+    ) -> Response[Authorization, AuthorizationTypeForResponse]:
         """apps/check-token
 
         POST /applications/{client_id}/token
@@ -1511,7 +1513,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenPostBodyType,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     @overload
     async def async_check_token(
@@ -1522,7 +1524,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         access_token: str,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     async def async_check_token(
         self,
@@ -1532,7 +1534,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization, AuthorizationType]:
+    ) -> Response[Authorization, AuthorizationTypeForResponse]:
         """apps/check-token
 
         POST /applications/{client_id}/token
@@ -1713,7 +1715,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenPatchBodyType,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     @overload
     def reset_token(
@@ -1724,7 +1726,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         access_token: str,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     def reset_token(
         self,
@@ -1734,7 +1736,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization, AuthorizationType]:
+    ) -> Response[Authorization, AuthorizationTypeForResponse]:
         """apps/reset-token
 
         PATCH /applications/{client_id}/token
@@ -1783,7 +1785,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenPatchBodyType,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     @overload
     async def async_reset_token(
@@ -1794,7 +1796,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         access_token: str,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     async def async_reset_token(
         self,
@@ -1804,7 +1806,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization, AuthorizationType]:
+    ) -> Response[Authorization, AuthorizationTypeForResponse]:
         """apps/reset-token
 
         PATCH /applications/{client_id}/token
@@ -1853,7 +1855,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenScopedPostBodyType,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     @overload
     def scope_token(
@@ -1869,7 +1871,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     def scope_token(
         self,
@@ -1879,7 +1881,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization, AuthorizationType]:
+    ) -> Response[Authorization, AuthorizationTypeForResponse]:
         """apps/scope-token
 
         POST /applications/{client_id}/token/scoped
@@ -1936,7 +1938,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ApplicationsClientIdTokenScopedPostBodyType,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     @overload
     async def async_scope_token(
@@ -1952,7 +1954,7 @@ class AppsClient:
         repositories: Missing[list[str]] = UNSET,
         repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[Authorization, AuthorizationType]: ...
+    ) -> Response[Authorization, AuthorizationTypeForResponse]: ...
 
     async def async_scope_token(
         self,
@@ -1962,7 +1964,7 @@ class AppsClient:
         stream: bool = False,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Authorization, AuthorizationType]:
+    ) -> Response[Authorization, AuthorizationTypeForResponse]:
         """apps/scope-token
 
         POST /applications/{client_id}/token/scoped
@@ -2017,7 +2019,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
+    ) -> Response[Union[Integration, None], Union[IntegrationTypeForResponse, None]]:
         """apps/get-by-slug
 
         GET /apps/{app_slug}
@@ -2054,7 +2056,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Union[Integration, None], Union[IntegrationType, None]]:
+    ) -> Response[Union[Integration, None], Union[IntegrationTypeForResponse, None]]:
         """apps/get-by-slug
 
         GET /apps/{app_slug}
@@ -2093,7 +2095,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[InstallableOrganization], list[InstallableOrganizationType]]:
+    ) -> Response[
+        list[InstallableOrganization], list[InstallableOrganizationTypeForResponse]
+    ]:
         """enterprise-apps/installable-organizations
 
         GET /enterprises/{enterprise}/apps/installable_organizations
@@ -2133,7 +2137,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[InstallableOrganization], list[InstallableOrganizationType]]:
+    ) -> Response[
+        list[InstallableOrganization], list[InstallableOrganizationTypeForResponse]
+    ]:
         """enterprise-apps/installable-organizations
 
         GET /enterprises/{enterprise}/apps/installable_organizations
@@ -2174,7 +2180,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]:
         """enterprise-apps/installable-organization-accessible-repositories
 
         GET /enterprises/{enterprise}/apps/installable_organizations/{org}/accessible_repositories
@@ -2215,7 +2223,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]:
         """enterprise-apps/installable-organization-accessible-repositories
 
         GET /enterprises/{enterprise}/apps/installable_organizations/{org}/accessible_repositories
@@ -2258,7 +2268,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         list[EnterpriseOrganizationInstallation],
-        list[EnterpriseOrganizationInstallationType],
+        list[EnterpriseOrganizationInstallationTypeForResponse],
     ]:
         """enterprise-apps/organization-installations
 
@@ -2302,7 +2312,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         list[EnterpriseOrganizationInstallation],
-        list[EnterpriseOrganizationInstallationType],
+        list[EnterpriseOrganizationInstallationTypeForResponse],
     ]:
         """enterprise-apps/organization-installations
 
@@ -2344,7 +2354,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType,
-    ) -> Response[Installation, InstallationType]: ...
+    ) -> Response[Installation, InstallationTypeForResponse]: ...
 
     @overload
     def create_installation(
@@ -2358,7 +2368,7 @@ class AppsClient:
         client_id: str,
         repository_selection: Literal["all", "selected", "none"],
         repositories: Missing[list[str]] = UNSET,
-    ) -> Response[Installation, InstallationType]: ...
+    ) -> Response[Installation, InstallationTypeForResponse]: ...
 
     def create_installation(
         self,
@@ -2371,7 +2381,7 @@ class AppsClient:
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """enterprise-apps/create-installation
 
         POST /enterprises/{enterprise}/apps/organizations/{org}/installations
@@ -2424,7 +2434,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType,
-    ) -> Response[Installation, InstallationType]: ...
+    ) -> Response[Installation, InstallationTypeForResponse]: ...
 
     @overload
     async def async_create_installation(
@@ -2438,7 +2448,7 @@ class AppsClient:
         client_id: str,
         repository_selection: Literal["all", "selected", "none"],
         repositories: Missing[list[str]] = UNSET,
-    ) -> Response[Installation, InstallationType]: ...
+    ) -> Response[Installation, InstallationTypeForResponse]: ...
 
     async def async_create_installation(
         self,
@@ -2451,7 +2461,7 @@ class AppsClient:
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """enterprise-apps/create-installation
 
         POST /enterprises/{enterprise}/apps/organizations/{org}/installations
@@ -2579,7 +2589,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]:
         """enterprise-apps/organization-installation-repositories
 
         GET /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories
@@ -2621,7 +2633,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]:
         """enterprise-apps/organization-installation-repositories
 
         GET /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories
@@ -2663,7 +2677,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType,
-    ) -> Response[Installation, InstallationType]: ...
+    ) -> Response[Installation, InstallationTypeForResponse]: ...
 
     @overload
     def change_installation_repository_access_selection(
@@ -2677,7 +2691,7 @@ class AppsClient:
         stream: bool = False,
         repository_selection: Literal["all", "selected"],
         repositories: Missing[list[str]] = UNSET,
-    ) -> Response[Installation, InstallationType]: ...
+    ) -> Response[Installation, InstallationTypeForResponse]: ...
 
     def change_installation_repository_access_selection(
         self,
@@ -2691,7 +2705,7 @@ class AppsClient:
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """enterprise-apps/change-installation-repository-access-selection
 
         PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories
@@ -2743,7 +2757,7 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType,
-    ) -> Response[Installation, InstallationType]: ...
+    ) -> Response[Installation, InstallationTypeForResponse]: ...
 
     @overload
     async def async_change_installation_repository_access_selection(
@@ -2757,7 +2771,7 @@ class AppsClient:
         stream: bool = False,
         repository_selection: Literal["all", "selected"],
         repositories: Missing[list[str]] = UNSET,
-    ) -> Response[Installation, InstallationType]: ...
+    ) -> Response[Installation, InstallationTypeForResponse]: ...
 
     async def async_change_installation_repository_access_selection(
         self,
@@ -2771,7 +2785,7 @@ class AppsClient:
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """enterprise-apps/change-installation-repository-access-selection
 
         PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories
@@ -2823,7 +2837,9 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType,
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]: ...
 
     @overload
     def grant_repository_access_to_installation(
@@ -2836,7 +2852,9 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         repositories: list[str],
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]: ...
 
     def grant_repository_access_to_installation(
         self,
@@ -2850,7 +2868,9 @@ class AppsClient:
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]:
         """enterprise-apps/grant-repository-access-to-installation
 
         PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/add
@@ -2902,7 +2922,9 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType,
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]: ...
 
     @overload
     async def async_grant_repository_access_to_installation(
@@ -2915,7 +2937,9 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         repositories: list[str],
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]: ...
 
     async def async_grant_repository_access_to_installation(
         self,
@@ -2929,7 +2953,9 @@ class AppsClient:
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]:
         """enterprise-apps/grant-repository-access-to-installation
 
         PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/add
@@ -2981,7 +3007,9 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType,
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]: ...
 
     @overload
     def remove_repository_access_to_installation(
@@ -2994,7 +3022,9 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         repositories: list[str],
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]: ...
 
     def remove_repository_access_to_installation(
         self,
@@ -3008,7 +3038,9 @@ class AppsClient:
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]:
         """enterprise-apps/remove-repository-access-to-installation
 
         PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/remove
@@ -3064,7 +3096,9 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType,
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]: ...
 
     @overload
     async def async_remove_repository_access_to_installation(
@@ -3077,7 +3111,9 @@ class AppsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         repositories: list[str],
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]: ...
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]: ...
 
     async def async_remove_repository_access_to_installation(
         self,
@@ -3091,7 +3127,9 @@ class AppsClient:
             EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[AccessibleRepository], list[AccessibleRepositoryType]]:
+    ) -> Response[
+        list[AccessibleRepository], list[AccessibleRepositoryTypeForResponse]
+    ]:
         """enterprise-apps/remove-repository-access-to-installation
 
         PATCH /enterprises/{enterprise}/apps/organizations/{org}/installations/{installation_id}/repositories/remove
@@ -3146,7 +3184,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         InstallationRepositoriesGetResponse200,
-        InstallationRepositoriesGetResponse200Type,
+        InstallationRepositoriesGetResponse200TypeForResponse,
     ]:
         """apps/list-repos-accessible-to-installation
 
@@ -3190,7 +3228,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         InstallationRepositoriesGetResponse200,
-        InstallationRepositoriesGetResponse200Type,
+        InstallationRepositoriesGetResponse200TypeForResponse,
     ]:
         """apps/list-repos-accessible-to-installation
 
@@ -3287,7 +3325,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
+    ) -> Response[MarketplacePurchase, MarketplacePurchaseTypeForResponse]:
         """apps/get-subscription-plan-for-account
 
         GET /marketplace_listing/accounts/{account_id}
@@ -3323,7 +3361,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
+    ) -> Response[MarketplacePurchase, MarketplacePurchaseTypeForResponse]:
         """apps/get-subscription-plan-for-account
 
         GET /marketplace_listing/accounts/{account_id}
@@ -3360,7 +3398,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
+    ) -> Response[
+        list[MarketplaceListingPlan], list[MarketplaceListingPlanTypeForResponse]
+    ]:
         """apps/list-plans
 
         GET /marketplace_listing/plans
@@ -3403,7 +3443,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
+    ) -> Response[
+        list[MarketplaceListingPlan], list[MarketplaceListingPlanTypeForResponse]
+    ]:
         """apps/list-plans
 
         GET /marketplace_listing/plans
@@ -3449,7 +3491,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
+    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseTypeForResponse]]:
         """apps/list-accounts-for-plan
 
         GET /marketplace_listing/plans/{plan_id}/accounts
@@ -3498,7 +3540,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
+    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseTypeForResponse]]:
         """apps/list-accounts-for-plan
 
         GET /marketplace_listing/plans/{plan_id}/accounts
@@ -3543,7 +3585,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
+    ) -> Response[MarketplacePurchase, MarketplacePurchaseTypeForResponse]:
         """apps/get-subscription-plan-for-account-stubbed
 
         GET /marketplace_listing/stubbed/accounts/{account_id}
@@ -3578,7 +3620,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[MarketplacePurchase, MarketplacePurchaseType]:
+    ) -> Response[MarketplacePurchase, MarketplacePurchaseTypeForResponse]:
         """apps/get-subscription-plan-for-account-stubbed
 
         GET /marketplace_listing/stubbed/accounts/{account_id}
@@ -3614,7 +3656,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
+    ) -> Response[
+        list[MarketplaceListingPlan], list[MarketplaceListingPlanTypeForResponse]
+    ]:
         """apps/list-plans-stubbed
 
         GET /marketplace_listing/stubbed/plans
@@ -3656,7 +3700,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplaceListingPlan], list[MarketplaceListingPlanType]]:
+    ) -> Response[
+        list[MarketplaceListingPlan], list[MarketplaceListingPlanTypeForResponse]
+    ]:
         """apps/list-plans-stubbed
 
         GET /marketplace_listing/stubbed/plans
@@ -3701,7 +3747,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
+    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseTypeForResponse]]:
         """apps/list-accounts-for-plan-stubbed
 
         GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
@@ -3748,7 +3794,7 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseType]]:
+    ) -> Response[list[MarketplacePurchase], list[MarketplacePurchaseTypeForResponse]]:
         """apps/list-accounts-for-plan-stubbed
 
         GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
@@ -3791,7 +3837,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-org-installation
 
         GET /orgs/{org}/installation
@@ -3823,7 +3869,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-org-installation
 
         GET /orgs/{org}/installation
@@ -3856,7 +3902,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-repo-installation
 
         GET /repos/{owner}/{repo}/installation
@@ -3892,7 +3938,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-repo-installation
 
         GET /repos/{owner}/{repo}/installation
@@ -3928,7 +3974,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[UserInstallationsGetResponse200, UserInstallationsGetResponse200Type]:
+    ) -> Response[
+        UserInstallationsGetResponse200, UserInstallationsGetResponse200TypeForResponse
+    ]:
         """apps/list-installations-for-authenticated-user
 
         GET /user/installations
@@ -3973,7 +4021,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[UserInstallationsGetResponse200, UserInstallationsGetResponse200Type]:
+    ) -> Response[
+        UserInstallationsGetResponse200, UserInstallationsGetResponse200TypeForResponse
+    ]:
         """apps/list-installations-for-authenticated-user
 
         GET /user/installations
@@ -4021,7 +4071,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         UserInstallationsInstallationIdRepositoriesGetResponse200,
-        UserInstallationsInstallationIdRepositoriesGetResponse200Type,
+        UserInstallationsInstallationIdRepositoriesGetResponse200TypeForResponse,
     ]:
         """apps/list-installation-repos-for-authenticated-user
 
@@ -4073,7 +4123,7 @@ class AppsClient:
         stream: bool = False,
     ) -> Response[
         UserInstallationsInstallationIdRepositoriesGetResponse200,
-        UserInstallationsInstallationIdRepositoriesGetResponse200Type,
+        UserInstallationsInstallationIdRepositoriesGetResponse200TypeForResponse,
     ]:
         """apps/list-installation-repos-for-authenticated-user
 
@@ -4266,7 +4316,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
+    ) -> Response[
+        list[UserMarketplacePurchase], list[UserMarketplacePurchaseTypeForResponse]
+    ]:
         """apps/list-subscriptions-for-authenticated-user
 
         GET /user/marketplace_purchases
@@ -4307,7 +4359,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
+    ) -> Response[
+        list[UserMarketplacePurchase], list[UserMarketplacePurchaseTypeForResponse]
+    ]:
         """apps/list-subscriptions-for-authenticated-user
 
         GET /user/marketplace_purchases
@@ -4348,7 +4402,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
+    ) -> Response[
+        list[UserMarketplacePurchase], list[UserMarketplacePurchaseTypeForResponse]
+    ]:
         """apps/list-subscriptions-for-authenticated-user-stubbed
 
         GET /user/marketplace_purchases/stubbed
@@ -4388,7 +4444,9 @@ class AppsClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[UserMarketplacePurchase], list[UserMarketplacePurchaseType]]:
+    ) -> Response[
+        list[UserMarketplacePurchase], list[UserMarketplacePurchaseTypeForResponse]
+    ]:
         """apps/list-subscriptions-for-authenticated-user-stubbed
 
         GET /user/marketplace_purchases/stubbed
@@ -4427,7 +4485,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-user-installation
 
         GET /users/{username}/installation
@@ -4459,7 +4517,7 @@ class AppsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Installation, InstallationType]:
+    ) -> Response[Installation, InstallationTypeForResponse]:
         """apps/get-user-installation
 
         GET /users/{username}/installation

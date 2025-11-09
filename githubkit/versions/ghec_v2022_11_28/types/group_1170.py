@@ -20,4 +20,14 @@ class OrgsOrgSettingsImmutableReleasesPutBodyType(TypedDict):
     selected_repository_ids: NotRequired[list[int]]
 
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesPutBodyType",)
+class OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesPutBody"""
+
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
+
+
+__all__ = (
+    "OrgsOrgSettingsImmutableReleasesPutBodyType",
+    "OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse",
+)

@@ -34,4 +34,28 @@ class LicenseType(TypedDict):
     featured: bool
 
 
-__all__ = ("LicenseType",)
+class LicenseTypeForResponse(TypedDict):
+    """License
+
+    License
+    """
+
+    key: str
+    name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
+
+
+__all__ = (
+    "LicenseType",
+    "LicenseTypeForResponse",
+)

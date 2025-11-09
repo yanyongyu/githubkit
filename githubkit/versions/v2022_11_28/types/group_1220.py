@@ -21,4 +21,15 @@ class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType(TypedDict):
     ]
 
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType",)
+class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody"""
+
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+
+
+__all__ = (
+    "TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType",
+    "TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyTypeForResponse",
+)

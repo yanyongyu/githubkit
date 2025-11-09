@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0214 import MinimalRepositoryType
+from .group_0214 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
 class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
@@ -21,4 +21,16 @@ class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
     repositories: list[MinimalRepositoryType]
 
 
-__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type",)
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
+
+
+__all__ = (
+    "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type",
+    "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+)

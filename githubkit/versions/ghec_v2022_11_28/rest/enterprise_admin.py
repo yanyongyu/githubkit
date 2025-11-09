@@ -74,83 +74,87 @@ if TYPE_CHECKING:
         SelectedActions,
     )
     from ..types import (
-        ActionsArtifactAndLogRetentionResponseType,
+        ActionsArtifactAndLogRetentionResponseTypeForResponse,
         ActionsArtifactAndLogRetentionType,
-        ActionsEnterprisePermissionsType,
+        ActionsEnterprisePermissionsTypeForResponse,
         ActionsForkPrContributorApprovalType,
+        ActionsForkPrContributorApprovalTypeForResponse,
         ActionsForkPrWorkflowsPrivateReposRequestType,
-        ActionsForkPrWorkflowsPrivateReposType,
+        ActionsForkPrWorkflowsPrivateReposTypeForResponse,
         AmazonS3AccessKeysConfigType,
         AmazonS3OidcConfigType,
-        AnnouncementBannerType,
+        AnnouncementBannerTypeForResponse,
         AnnouncementType,
-        AuditLogEventType,
-        AuditLogStreamKeyType,
-        AuthenticationTokenType,
+        AuditLogEventTypeForResponse,
+        AuditLogStreamKeyTypeForResponse,
+        AuthenticationTokenTypeForResponse,
         AzureBlobConfigType,
         AzureHubConfigType,
-        CustomPropertiesForOrgsGetEnterprisePropertyValuesType,
+        CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse,
         CustomPropertySetPayloadType,
         CustomPropertyType,
+        CustomPropertyTypeForResponse,
         CustomPropertyValueType,
         DatadogConfigType,
-        EnterpriseAccessRestrictionsType,
-        EnterpriseRoleType,
-        EnterpriseSecurityAnalysisSettingsType,
-        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type,
+        EnterpriseAccessRestrictionsTypeForResponse,
+        EnterpriseRoleTypeForResponse,
+        EnterpriseSecurityAnalysisSettingsTypeForResponse,
+        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
         EnterprisesEnterpriseActionsPermissionsPutBodyType,
-        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType,
-        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
-        EnterprisesEnterpriseActionsRunnersGetResponse200Type,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
         EnterprisesEnterpriseAuditLogStreamsPostBodyType,
         EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
         EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
-        EnterprisesEnterpriseEnterpriseRolesGetResponse200Type,
-        EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type,
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse,
+        EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse,
         EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
         EnterprisesEnterpriseNetworkConfigurationsPostBodyType,
         EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType,
         EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType,
         EnterprisesEnterprisePropertiesSchemaPatchBodyType,
-        EnterpriseTeamType,
-        EnterpriseUserRoleAssignmentType,
-        GetAuditLogStreamConfigsItemsType,
-        GetAuditLogStreamConfigType,
-        GetConsumedLicensesType,
-        GetLicenseSyncStatusType,
+        EnterpriseTeamTypeForResponse,
+        EnterpriseUserRoleAssignmentTypeForResponse,
+        GetAuditLogStreamConfigsItemsTypeForResponse,
+        GetAuditLogStreamConfigTypeForResponse,
+        GetConsumedLicensesTypeForResponse,
+        GetLicenseSyncStatusTypeForResponse,
         GoogleCloudConfigType,
         GroupPropMembersItemsType,
         GroupType,
         HecConfigType,
-        NetworkConfigurationType,
-        NetworkSettingsType,
+        NetworkConfigurationTypeForResponse,
+        NetworkSettingsTypeForResponse,
         OrganizationCustomPropertyPayloadType,
         OrganizationCustomPropertyType,
+        OrganizationCustomPropertyTypeForResponse,
         PatchSchemaPropOperationsItemsType,
         PatchSchemaType,
-        PushRuleBypassRequestType,
-        RulesetVersionType,
-        RulesetVersionWithStateType,
-        RunnerApplicationType,
-        RunnerGroupsEnterpriseType,
-        RunnerType,
-        ScimEnterpriseGroupListType,
-        ScimEnterpriseGroupResponseType,
-        ScimEnterpriseUserListType,
-        ScimEnterpriseUserResponseType,
+        PushRuleBypassRequestTypeForResponse,
+        RulesetVersionTypeForResponse,
+        RulesetVersionWithStateTypeForResponse,
+        RunnerApplicationTypeForResponse,
+        RunnerGroupsEnterpriseTypeForResponse,
+        RunnerTypeForResponse,
+        ScimEnterpriseGroupListTypeForResponse,
+        ScimEnterpriseGroupResponseTypeForResponse,
+        ScimEnterpriseUserListTypeForResponse,
+        ScimEnterpriseUserResponseTypeForResponse,
         SelectedActionsType,
+        SelectedActionsTypeForResponse,
         SplunkConfigType,
         UserEmailsItemsType,
         UserNameType,
@@ -180,7 +184,9 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsType]:
+    ) -> Response[
+        EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsTypeForResponse
+    ]:
         """enterprise-admin/disable-access-restrictions
 
         POST /enterprises/{enterprise}/access-restrictions/disable
@@ -215,7 +221,9 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsType]:
+    ) -> Response[
+        EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsTypeForResponse
+    ]:
         """enterprise-admin/disable-access-restrictions
 
         POST /enterprises/{enterprise}/access-restrictions/disable
@@ -250,7 +258,9 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsType]:
+    ) -> Response[
+        EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsTypeForResponse
+    ]:
         """enterprise-admin/enable-access-restrictions
 
         POST /enterprises/{enterprise}/access-restrictions/enable
@@ -285,7 +295,9 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsType]:
+    ) -> Response[
+        EnterpriseAccessRestrictions, EnterpriseAccessRestrictionsTypeForResponse
+    ]:
         """enterprise-admin/enable-access-restrictions
 
         POST /enterprises/{enterprise}/access-restrictions/enable
@@ -320,7 +332,9 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsEnterprisePermissions, ActionsEnterprisePermissionsType]:
+    ) -> Response[
+        ActionsEnterprisePermissions, ActionsEnterprisePermissionsTypeForResponse
+    ]:
         """enterprise-admin/get-github-actions-permissions-enterprise
 
         GET /enterprises/{enterprise}/actions/permissions
@@ -352,7 +366,9 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ActionsEnterprisePermissions, ActionsEnterprisePermissionsType]:
+    ) -> Response[
+        ActionsEnterprisePermissions, ActionsEnterprisePermissionsTypeForResponse
+    ]:
         """enterprise-admin/get-github-actions-permissions-enterprise
 
         GET /enterprises/{enterprise}/actions/permissions
@@ -522,7 +538,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         ActionsArtifactAndLogRetentionResponse,
-        ActionsArtifactAndLogRetentionResponseType,
+        ActionsArtifactAndLogRetentionResponseTypeForResponse,
     ]:
         """enterprise-admin/get-artifact-and-log-retention-settings
 
@@ -560,7 +576,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         ActionsArtifactAndLogRetentionResponse,
-        ActionsArtifactAndLogRetentionResponseType,
+        ActionsArtifactAndLogRetentionResponseTypeForResponse,
     ]:
         """enterprise-admin/get-artifact-and-log-retention-settings
 
@@ -733,7 +749,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrContributorApproval, ActionsForkPrContributorApprovalType
+        ActionsForkPrContributorApproval,
+        ActionsForkPrContributorApprovalTypeForResponse,
     ]:
         """enterprise-admin/get-fork-pr-contributor-approval-permissions
 
@@ -768,7 +785,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrContributorApproval, ActionsForkPrContributorApprovalType
+        ActionsForkPrContributorApproval,
+        ActionsForkPrContributorApprovalTypeForResponse,
     ]:
         """enterprise-admin/get-fork-pr-contributor-approval-permissions
 
@@ -951,7 +969,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrWorkflowsPrivateRepos, ActionsForkPrWorkflowsPrivateReposType
+        ActionsForkPrWorkflowsPrivateRepos,
+        ActionsForkPrWorkflowsPrivateReposTypeForResponse,
     ]:
         """enterprise-admin/get-private-repo-fork-pr-workflows-settings
 
@@ -986,7 +1005,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        ActionsForkPrWorkflowsPrivateRepos, ActionsForkPrWorkflowsPrivateReposType
+        ActionsForkPrWorkflowsPrivateRepos,
+        ActionsForkPrWorkflowsPrivateReposTypeForResponse,
     ]:
         """enterprise-admin/get-private-repo-fork-pr-workflows-settings
 
@@ -1170,7 +1190,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
-        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type,
+        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise
 
@@ -1215,7 +1235,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200,
-        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type,
+        EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise
 
@@ -1512,7 +1532,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SelectedActions, SelectedActionsType]:
+    ) -> Response[SelectedActions, SelectedActionsTypeForResponse]:
         """enterprise-admin/get-allowed-actions-enterprise
 
         GET /enterprises/{enterprise}/actions/permissions/selected-actions
@@ -1544,7 +1564,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[SelectedActions, SelectedActionsType]:
+    ) -> Response[SelectedActions, SelectedActionsTypeForResponse]:
         """enterprise-admin/get-allowed-actions-enterprise
 
         GET /enterprises/{enterprise}/actions/permissions/selected-actions
@@ -1710,7 +1730,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
-        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/get-self-hosted-runners-permissions
 
@@ -1749,7 +1769,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200,
-        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/get-self-hosted-runners-permissions
 
@@ -1939,7 +1959,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-self-hosted-runner-groups-for-enterprise
 
@@ -1984,7 +2004,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsGetResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-self-hosted-runner-groups-for-enterprise
 
@@ -2026,7 +2046,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     @overload
     def create_self_hosted_runner_group_for_enterprise(
@@ -2044,7 +2064,7 @@ class EnterpriseAdminClient:
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
         network_configuration_id: Missing[str] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     def create_self_hosted_runner_group_for_enterprise(
         self,
@@ -2054,7 +2074,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]:
         """enterprise-admin/create-self-hosted-runner-group-for-enterprise
 
         POST /enterprises/{enterprise}/actions/runner-groups
@@ -2103,7 +2123,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     @overload
     async def async_create_self_hosted_runner_group_for_enterprise(
@@ -2121,7 +2141,7 @@ class EnterpriseAdminClient:
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
         network_configuration_id: Missing[str] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     async def async_create_self_hosted_runner_group_for_enterprise(
         self,
@@ -2131,7 +2151,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]:
         """enterprise-admin/create-self-hosted-runner-group-for-enterprise
 
         POST /enterprises/{enterprise}/actions/runner-groups
@@ -2179,7 +2199,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]:
         """enterprise-admin/get-self-hosted-runner-group-for-enterprise
 
         GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
@@ -2212,7 +2232,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]:
         """enterprise-admin/get-self-hosted-runner-group-for-enterprise
 
         GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
@@ -2309,7 +2329,7 @@ class EnterpriseAdminClient:
         data: Missing[
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
         ] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     @overload
     def update_self_hosted_runner_group_for_enterprise(
@@ -2326,7 +2346,7 @@ class EnterpriseAdminClient:
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
         network_configuration_id: Missing[Union[str, None]] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     def update_self_hosted_runner_group_for_enterprise(
         self,
@@ -2339,7 +2359,7 @@ class EnterpriseAdminClient:
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]:
         """enterprise-admin/update-self-hosted-runner-group-for-enterprise
 
         PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
@@ -2391,7 +2411,7 @@ class EnterpriseAdminClient:
         data: Missing[
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
         ] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     @overload
     async def async_update_self_hosted_runner_group_for_enterprise(
@@ -2408,7 +2428,7 @@ class EnterpriseAdminClient:
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
         network_configuration_id: Missing[Union[str, None]] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]: ...
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]: ...
 
     async def async_update_self_hosted_runner_group_for_enterprise(
         self,
@@ -2421,7 +2441,7 @@ class EnterpriseAdminClient:
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseType]:
+    ) -> Response[RunnerGroupsEnterprise, RunnerGroupsEnterpriseTypeForResponse]:
         """enterprise-admin/update-self-hosted-runner-group-for-enterprise
 
         PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
@@ -2473,7 +2493,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise
 
@@ -2519,7 +2539,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise
 
@@ -2837,7 +2857,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-self-hosted-runners-in-group-for-enterprise
 
@@ -2885,7 +2905,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
-        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-self-hosted-runners-in-group-for-enterprise
 
@@ -3209,7 +3229,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGetResponse200,
-        EnterprisesEnterpriseActionsRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-self-hosted-runners-for-enterprise
 
@@ -3254,7 +3274,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGetResponse200,
-        EnterprisesEnterpriseActionsRunnersGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-self-hosted-runners-for-enterprise
 
@@ -3294,7 +3314,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
+    ) -> Response[list[RunnerApplication], list[RunnerApplicationTypeForResponse]]:
         """enterprise-admin/list-runner-applications-for-enterprise
 
         GET /enterprises/{enterprise}/actions/runners/downloads
@@ -3326,7 +3346,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
+    ) -> Response[list[RunnerApplication], list[RunnerApplicationTypeForResponse]]:
         """enterprise-admin/list-runner-applications-for-enterprise
 
         GET /enterprises/{enterprise}/actions/runners/downloads
@@ -3358,7 +3378,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """enterprise-admin/create-registration-token-for-enterprise
 
         POST /enterprises/{enterprise}/actions/runners/registration-token
@@ -3398,7 +3418,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """enterprise-admin/create-registration-token-for-enterprise
 
         POST /enterprises/{enterprise}/actions/runners/registration-token
@@ -3438,7 +3458,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """enterprise-admin/create-remove-token-for-enterprise
 
         POST /enterprises/{enterprise}/actions/runners/remove-token
@@ -3479,7 +3499,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenTypeForResponse]:
         """enterprise-admin/create-remove-token-for-enterprise
 
         POST /enterprises/{enterprise}/actions/runners/remove-token
@@ -3521,7 +3541,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Runner, RunnerType]:
+    ) -> Response[Runner, RunnerTypeForResponse]:
         """enterprise-admin/get-self-hosted-runner-for-enterprise
 
         GET /enterprises/{enterprise}/actions/runners/{runner_id}
@@ -3554,7 +3574,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[Runner, RunnerType]:
+    ) -> Response[Runner, RunnerTypeForResponse]:
         """enterprise-admin/get-self-hosted-runner-for-enterprise
 
         GET /enterprises/{enterprise}/actions/runners/{runner_id}
@@ -3659,7 +3679,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-labels-for-self-hosted-runner-for-enterprise
 
@@ -3701,7 +3721,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-labels-for-self-hosted-runner-for-enterprise
 
@@ -3745,7 +3765,7 @@ class EnterpriseAdminClient:
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -3760,7 +3780,7 @@ class EnterpriseAdminClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     def set_custom_labels_for_self_hosted_runner_for_enterprise(
@@ -3776,7 +3796,7 @@ class EnterpriseAdminClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/set-custom-labels-for-self-hosted-runner-for-enterprise
 
@@ -3836,7 +3856,7 @@ class EnterpriseAdminClient:
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -3851,7 +3871,7 @@ class EnterpriseAdminClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     async def async_set_custom_labels_for_self_hosted_runner_for_enterprise(
@@ -3867,7 +3887,7 @@ class EnterpriseAdminClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/set-custom-labels-for-self-hosted-runner-for-enterprise
 
@@ -3927,7 +3947,7 @@ class EnterpriseAdminClient:
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -3942,7 +3962,7 @@ class EnterpriseAdminClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     def add_custom_labels_to_self_hosted_runner_for_enterprise(
@@ -3958,7 +3978,7 @@ class EnterpriseAdminClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/add-custom-labels-to-self-hosted-runner-for-enterprise
 
@@ -4017,7 +4037,7 @@ class EnterpriseAdminClient:
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     @overload
@@ -4032,7 +4052,7 @@ class EnterpriseAdminClient:
         labels: list[str],
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]: ...
 
     async def async_add_custom_labels_to_self_hosted_runner_for_enterprise(
@@ -4048,7 +4068,7 @@ class EnterpriseAdminClient:
         **kwargs,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/add-custom-labels-to-self-hosted-runner-for-enterprise
 
@@ -4105,7 +4125,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse,
     ]:
         """enterprise-admin/remove-all-custom-labels-from-self-hosted-runner-for-enterprise
 
@@ -4150,7 +4170,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse,
     ]:
         """enterprise-admin/remove-all-custom-labels-from-self-hosted-runner-for-enterprise
 
@@ -4196,7 +4216,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/remove-custom-label-from-self-hosted-runner-for-enterprise
 
@@ -4245,7 +4265,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
-        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/remove-custom-label-from-self-hosted-runner-for-enterprise
 
@@ -4290,7 +4310,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]:
         """announcement-banners/get-announcement-banner-for-enterprise
 
         GET /enterprises/{enterprise}/announcement
@@ -4320,7 +4340,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]:
         """announcement-banners/get-announcement-banner-for-enterprise
 
         GET /enterprises/{enterprise}/announcement
@@ -4406,7 +4426,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: AnnouncementType,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]: ...
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
 
     @overload
     def set_announcement_banner_for_enterprise(
@@ -4419,7 +4439,7 @@ class EnterpriseAdminClient:
         announcement: Union[str, None],
         expires_at: Missing[Union[datetime, None]] = UNSET,
         user_dismissible: Missing[Union[bool, None]] = UNSET,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]: ...
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
 
     def set_announcement_banner_for_enterprise(
         self,
@@ -4429,7 +4449,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[AnnouncementType] = UNSET,
         **kwargs,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]:
         """announcement-banners/set-announcement-banner-for-enterprise
 
         PATCH /enterprises/{enterprise}/announcement
@@ -4471,7 +4491,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: AnnouncementType,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]: ...
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
 
     @overload
     async def async_set_announcement_banner_for_enterprise(
@@ -4484,7 +4504,7 @@ class EnterpriseAdminClient:
         announcement: Union[str, None],
         expires_at: Missing[Union[datetime, None]] = UNSET,
         user_dismissible: Missing[Union[bool, None]] = UNSET,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]: ...
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
 
     async def async_set_announcement_banner_for_enterprise(
         self,
@@ -4494,7 +4514,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[AnnouncementType] = UNSET,
         **kwargs,
-    ) -> Response[AnnouncementBanner, AnnouncementBannerType]:
+    ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]:
         """announcement-banners/set-announcement-banner-for-enterprise
 
         PATCH /enterprises/{enterprise}/announcement
@@ -4541,7 +4561,7 @@ class EnterpriseAdminClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[AuditLogEvent], list[AuditLogEventType]]:
+    ) -> Response[list[AuditLogEvent], list[AuditLogEventTypeForResponse]]:
         """enterprise-admin/get-audit-log
 
         GET /enterprises/{enterprise}/audit-log
@@ -4595,7 +4615,7 @@ class EnterpriseAdminClient:
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[AuditLogEvent], list[AuditLogEventType]]:
+    ) -> Response[list[AuditLogEvent], list[AuditLogEventTypeForResponse]]:
         """enterprise-admin/get-audit-log
 
         GET /enterprises/{enterprise}/audit-log
@@ -4642,7 +4662,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuditLogStreamKey, AuditLogStreamKeyType]:
+    ) -> Response[AuditLogStreamKey, AuditLogStreamKeyTypeForResponse]:
         """enterprise-admin/get-audit-log-stream-key
 
         GET /enterprises/{enterprise}/audit-log/stream-key
@@ -4674,7 +4694,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[AuditLogStreamKey, AuditLogStreamKeyType]:
+    ) -> Response[AuditLogStreamKey, AuditLogStreamKeyTypeForResponse]:
         """enterprise-admin/get-audit-log-stream-key
 
         GET /enterprises/{enterprise}/audit-log/stream-key
@@ -4707,7 +4727,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[GetAuditLogStreamConfigsItems], list[GetAuditLogStreamConfigsItemsType]
+        list[GetAuditLogStreamConfigsItems],
+        list[GetAuditLogStreamConfigsItemsTypeForResponse],
     ]:
         """enterprise-admin/get-audit-log-streams
 
@@ -4742,7 +4763,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[GetAuditLogStreamConfigsItems], list[GetAuditLogStreamConfigsItemsType]
+        list[GetAuditLogStreamConfigsItems],
+        list[GetAuditLogStreamConfigsItemsTypeForResponse],
     ]:
         """enterprise-admin/get-audit-log-streams
 
@@ -4778,7 +4800,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAuditLogStreamsPostBodyType,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     @overload
     def create_audit_log_stream(
@@ -4808,7 +4830,7 @@ class EnterpriseAdminClient:
             GoogleCloudConfigType,
             DatadogConfigType,
         ],
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     def create_audit_log_stream(
         self,
@@ -4818,7 +4840,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseAuditLogStreamsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]:
         """enterprise-admin/create-audit-log-stream
 
         POST /enterprises/{enterprise}/audit-log/streams
@@ -4867,7 +4889,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAuditLogStreamsPostBodyType,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     @overload
     async def async_create_audit_log_stream(
@@ -4897,7 +4919,7 @@ class EnterpriseAdminClient:
             GoogleCloudConfigType,
             DatadogConfigType,
         ],
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     async def async_create_audit_log_stream(
         self,
@@ -4907,7 +4929,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseAuditLogStreamsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]:
         """enterprise-admin/create-audit-log-stream
 
         POST /enterprises/{enterprise}/audit-log/streams
@@ -4955,7 +4977,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]:
         """enterprise-admin/get-one-audit-log-stream
 
         GET /enterprises/{enterprise}/audit-log/streams/{stream_id}
@@ -4988,7 +5010,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]:
         """enterprise-admin/get-one-audit-log-stream
 
         GET /enterprises/{enterprise}/audit-log/streams/{stream_id}
@@ -5023,7 +5045,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     @overload
     def update_audit_log_stream(
@@ -5054,7 +5076,7 @@ class EnterpriseAdminClient:
             GoogleCloudConfigType,
             DatadogConfigType,
         ],
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     def update_audit_log_stream(
         self,
@@ -5065,7 +5087,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]:
         """enterprise-admin/update-audit-log-stream
 
         PUT /enterprises/{enterprise}/audit-log/streams/{stream_id}
@@ -5119,7 +5141,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     @overload
     async def async_update_audit_log_stream(
@@ -5150,7 +5172,7 @@ class EnterpriseAdminClient:
             GoogleCloudConfigType,
             DatadogConfigType,
         ],
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]: ...
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
     async def async_update_audit_log_stream(
         self,
@@ -5161,7 +5183,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigType]:
+    ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]:
         """enterprise-admin/update-audit-log-stream
 
         PUT /enterprises/{enterprise}/audit-log/streams/{stream_id}
@@ -5290,7 +5312,9 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
+    ) -> Response[
+        list[PushRuleBypassRequest], list[PushRuleBypassRequestTypeForResponse]
+    ]:
         """enterprise-admin/list-push-bypass-requests
 
         GET /enterprises/{enterprise}/bypass-requests/push-rules
@@ -5353,7 +5377,9 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[PushRuleBypassRequest], list[PushRuleBypassRequestType]]:
+    ) -> Response[
+        list[PushRuleBypassRequest], list[PushRuleBypassRequestTypeForResponse]
+    ]:
         """enterprise-admin/list-push-bypass-requests
 
         GET /enterprises/{enterprise}/bypass-requests/push-rules
@@ -5399,7 +5425,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        EnterpriseSecurityAnalysisSettings, EnterpriseSecurityAnalysisSettingsType
+        EnterpriseSecurityAnalysisSettings,
+        EnterpriseSecurityAnalysisSettingsTypeForResponse,
     ]:
         """DEPRECATED secret-scanning/get-security-analysis-settings-for-enterprise
 
@@ -5441,7 +5468,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        EnterpriseSecurityAnalysisSettings, EnterpriseSecurityAnalysisSettingsType
+        EnterpriseSecurityAnalysisSettings,
+        EnterpriseSecurityAnalysisSettingsTypeForResponse,
     ]:
         """DEPRECATED secret-scanning/get-security-analysis-settings-for-enterprise
 
@@ -5666,7 +5694,7 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetConsumedLicenses, GetConsumedLicensesType]:
+    ) -> Response[GetConsumedLicenses, GetConsumedLicensesTypeForResponse]:
         """enterprise-admin/get-consumed-licenses
 
         GET /enterprises/{enterprise}/consumed-licenses
@@ -5708,7 +5736,7 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetConsumedLicenses, GetConsumedLicensesType]:
+    ) -> Response[GetConsumedLicenses, GetConsumedLicensesTypeForResponse]:
         """enterprise-admin/get-consumed-licenses
 
         GET /enterprises/{enterprise}/consumed-licenses
@@ -5750,7 +5778,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseEnterpriseRolesGetResponse200,
-        EnterprisesEnterpriseEnterpriseRolesGetResponse200Type,
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-enterprise-roles
 
@@ -5797,7 +5825,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseEnterpriseRolesGetResponse200,
-        EnterprisesEnterpriseEnterpriseRolesGetResponse200Type,
+        EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse,
     ]:
         """enterprise-admin/list-enterprise-roles
 
@@ -6343,7 +6371,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EnterpriseRole, EnterpriseRoleType]:
+    ) -> Response[EnterpriseRole, EnterpriseRoleTypeForResponse]:
         """enterprise-admin/get-enterprise-role
 
         GET /enterprises/{enterprise}/enterprise-roles/{role_id}
@@ -6385,7 +6413,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[EnterpriseRole, EnterpriseRoleType]:
+    ) -> Response[EnterpriseRole, EnterpriseRoleTypeForResponse]:
         """enterprise-admin/get-enterprise-role
 
         GET /enterprises/{enterprise}/enterprise-roles/{role_id}
@@ -6429,7 +6457,7 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamType]]:
+    ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamTypeForResponse]]:
         """enterprise-admin/list-enterprise-role-teams
 
         GET /enterprises/{enterprise}/enterprise-roles/{role_id}/teams
@@ -6479,7 +6507,7 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamType]]:
+    ) -> Response[list[EnterpriseTeam], list[EnterpriseTeamTypeForResponse]]:
         """enterprise-admin/list-enterprise-role-teams
 
         GET /enterprises/{enterprise}/enterprise-roles/{role_id}/teams
@@ -6530,7 +6558,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[EnterpriseUserRoleAssignment], list[EnterpriseUserRoleAssignmentType]
+        list[EnterpriseUserRoleAssignment],
+        list[EnterpriseUserRoleAssignmentTypeForResponse],
     ]:
         """enterprise-admin/list-enterprise-role-users
 
@@ -6582,7 +6611,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[EnterpriseUserRoleAssignment], list[EnterpriseUserRoleAssignmentType]
+        list[EnterpriseUserRoleAssignment],
+        list[EnterpriseUserRoleAssignmentTypeForResponse],
     ]:
         """enterprise-admin/list-enterprise-role-users
 
@@ -6630,7 +6660,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetLicenseSyncStatus, GetLicenseSyncStatusType]:
+    ) -> Response[GetLicenseSyncStatus, GetLicenseSyncStatusTypeForResponse]:
         """enterprise-admin/get-license-sync-status
 
         GET /enterprises/{enterprise}/license-sync-status
@@ -6664,7 +6694,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[GetLicenseSyncStatus, GetLicenseSyncStatusType]:
+    ) -> Response[GetLicenseSyncStatus, GetLicenseSyncStatusTypeForResponse]:
         """enterprise-admin/get-license-sync-status
 
         GET /enterprises/{enterprise}/license-sync-status
@@ -6702,7 +6732,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
-        EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type,
+        EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse,
     ]:
         """hosted-compute/list-network-configurations-for-enterprise
 
@@ -6743,7 +6773,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
-        EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type,
+        EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse,
     ]:
         """hosted-compute/list-network-configurations-for-enterprise
 
@@ -6782,7 +6812,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseNetworkConfigurationsPostBodyType,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     @overload
     def create_network_configuration_for_enterprise(
@@ -6795,7 +6825,7 @@ class EnterpriseAdminClient:
         name: str,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: list[str],
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     def create_network_configuration_for_enterprise(
         self,
@@ -6805,7 +6835,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseNetworkConfigurationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/create-network-configuration-for-enterprise
 
         POST /enterprises/{enterprise}/network-configurations
@@ -6852,7 +6882,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseNetworkConfigurationsPostBodyType,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     @overload
     async def async_create_network_configuration_for_enterprise(
@@ -6865,7 +6895,7 @@ class EnterpriseAdminClient:
         name: str,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: list[str],
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     async def async_create_network_configuration_for_enterprise(
         self,
@@ -6875,7 +6905,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterpriseNetworkConfigurationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/create-network-configuration-for-enterprise
 
         POST /enterprises/{enterprise}/network-configurations
@@ -6921,7 +6951,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/get-network-configuration-for-enterprise
 
         GET /enterprises/{enterprise}/network-configurations/{network_configuration_id}
@@ -6952,7 +6982,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/get-network-configuration-for-enterprise
 
         GET /enterprises/{enterprise}/network-configurations/{network_configuration_id}
@@ -7041,7 +7071,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     @overload
     def update_network_configuration_for_enterprise(
@@ -7055,7 +7085,7 @@ class EnterpriseAdminClient:
         name: Missing[str] = UNSET,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: Missing[list[str]] = UNSET,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     def update_network_configuration_for_enterprise(
         self,
@@ -7068,7 +7098,7 @@ class EnterpriseAdminClient:
             EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/update-network-configuration-for-enterprise
 
         PATCH /enterprises/{enterprise}/network-configurations/{network_configuration_id}
@@ -7117,7 +7147,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     @overload
     async def async_update_network_configuration_for_enterprise(
@@ -7131,7 +7161,7 @@ class EnterpriseAdminClient:
         name: Missing[str] = UNSET,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: Missing[list[str]] = UNSET,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]: ...
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     async def async_update_network_configuration_for_enterprise(
         self,
@@ -7144,7 +7174,7 @@ class EnterpriseAdminClient:
             EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[NetworkConfiguration, NetworkConfigurationType]:
+    ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]:
         """hosted-compute/update-network-configuration-for-enterprise
 
         PATCH /enterprises/{enterprise}/network-configurations/{network_configuration_id}
@@ -7191,7 +7221,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[NetworkSettings, NetworkSettingsType]:
+    ) -> Response[NetworkSettings, NetworkSettingsTypeForResponse]:
         """hosted-compute/get-network-settings-for-enterprise
 
         GET /enterprises/{enterprise}/network-settings/{network_settings_id}
@@ -7222,7 +7252,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[NetworkSettings, NetworkSettingsType]:
+    ) -> Response[NetworkSettings, NetworkSettingsTypeForResponse]:
         """hosted-compute/get-network-settings-for-enterprise
 
         GET /enterprises/{enterprise}/network-settings/{network_settings_id}
@@ -7253,7 +7283,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
     ]:
         """enterprise-admin/custom-properties-for-orgs-get-enterprise-definitions
 
@@ -7294,7 +7325,8 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
     ]:
         """enterprise-admin/custom-properties-for-orgs-get-enterprise-definitions
 
@@ -7337,7 +7369,8 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType,
     ) -> Response[
-        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
     ]: ...
 
     @overload
@@ -7350,7 +7383,8 @@ class EnterpriseAdminClient:
         stream: bool = False,
         properties: list[OrganizationCustomPropertyType],
     ) -> Response[
-        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
     ]: ...
 
     def custom_properties_for_orgs_create_or_update_enterprise_definitions(
@@ -7362,7 +7396,8 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[
-        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
     ]:
         """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-definitions
 
@@ -7426,7 +7461,8 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType,
     ) -> Response[
-        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
     ]: ...
 
     @overload
@@ -7439,7 +7475,8 @@ class EnterpriseAdminClient:
         stream: bool = False,
         properties: list[OrganizationCustomPropertyType],
     ) -> Response[
-        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
     ]: ...
 
     async def async_custom_properties_for_orgs_create_or_update_enterprise_definitions(
@@ -7451,7 +7488,8 @@ class EnterpriseAdminClient:
         data: Missing[EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[
-        list[OrganizationCustomProperty], list[OrganizationCustomPropertyType]
+        list[OrganizationCustomProperty],
+        list[OrganizationCustomPropertyTypeForResponse],
     ]:
         """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-definitions
 
@@ -7513,7 +7551,9 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]:
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]:
         """enterprise-admin/custom-properties-for-orgs-get-enterprise-definition
 
         GET /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
@@ -7553,7 +7593,9 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]:
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]:
         """enterprise-admin/custom-properties-for-orgs-get-enterprise-definition
 
         GET /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
@@ -7595,7 +7637,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrganizationCustomPropertyPayloadType,
-    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]: ...
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]: ...
 
     @overload
     def custom_properties_for_orgs_create_or_update_enterprise_definition(
@@ -7614,7 +7658,9 @@ class EnterpriseAdminClient:
         values_editable_by: Missing[
             Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
         ] = UNSET,
-    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]: ...
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]: ...
 
     def custom_properties_for_orgs_create_or_update_enterprise_definition(
         self,
@@ -7625,7 +7671,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[OrganizationCustomPropertyPayloadType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]:
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]:
         """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-definition
 
         PUT /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
@@ -7683,7 +7731,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrganizationCustomPropertyPayloadType,
-    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]: ...
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]: ...
 
     @overload
     async def async_custom_properties_for_orgs_create_or_update_enterprise_definition(
@@ -7702,7 +7752,9 @@ class EnterpriseAdminClient:
         values_editable_by: Missing[
             Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
         ] = UNSET,
-    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]: ...
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]: ...
 
     async def async_custom_properties_for_orgs_create_or_update_enterprise_definition(
         self,
@@ -7713,7 +7765,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[OrganizationCustomPropertyPayloadType] = UNSET,
         **kwargs,
-    ) -> Response[OrganizationCustomProperty, OrganizationCustomPropertyType]:
+    ) -> Response[
+        OrganizationCustomProperty, OrganizationCustomPropertyTypeForResponse
+    ]:
         """enterprise-admin/custom-properties-for-orgs-create-or-update-enterprise-definition
 
         PUT /enterprises/{enterprise}/org-properties/schema/{custom_property_name}
@@ -7852,7 +7906,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         list[CustomPropertiesForOrgsGetEnterprisePropertyValues],
-        list[CustomPropertiesForOrgsGetEnterprisePropertyValuesType],
+        list[CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse],
     ]:
         """enterprise-admin/custom-properties-for-orgs-get-enterprise-values
 
@@ -7905,7 +7959,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
     ) -> Response[
         list[CustomPropertiesForOrgsGetEnterprisePropertyValues],
-        list[CustomPropertiesForOrgsGetEnterprisePropertyValuesType],
+        list[CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse],
     ]:
         """enterprise-admin/custom-properties-for-orgs-get-enterprise-values
 
@@ -8116,7 +8170,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
         """enterprise-admin/custom-properties-for-repos-get-enterprise-definitions
 
         GET /enterprises/{enterprise}/properties/schema
@@ -8151,7 +8205,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
         """enterprise-admin/custom-properties-for-repos-get-enterprise-definitions
 
         GET /enterprises/{enterprise}/properties/schema
@@ -8188,7 +8242,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterprisePropertiesSchemaPatchBodyType,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
     @overload
     def custom_properties_for_repos_create_or_update_enterprise_definitions(
@@ -8199,7 +8253,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         properties: list[CustomPropertyType],
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
     def custom_properties_for_repos_create_or_update_enterprise_definitions(
         self,
@@ -8209,7 +8263,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterprisePropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
         """enterprise-admin/custom-properties-for-repos-create-or-update-enterprise-definitions
 
         PATCH /enterprises/{enterprise}/properties/schema
@@ -8267,7 +8321,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterprisePropertiesSchemaPatchBodyType,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
     @overload
     async def async_custom_properties_for_repos_create_or_update_enterprise_definitions(
@@ -8278,7 +8332,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         properties: list[CustomPropertyType],
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]: ...
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
     async def async_custom_properties_for_repos_create_or_update_enterprise_definitions(
         self,
@@ -8288,7 +8342,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[EnterprisesEnterprisePropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[list[CustomProperty], list[CustomPropertyType]]:
+    ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]:
         """enterprise-admin/custom-properties-for-repos-create-or-update-enterprise-definitions
 
         PATCH /enterprises/{enterprise}/properties/schema
@@ -8346,7 +8400,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CustomProperty, CustomPropertyType]:
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """enterprise-admin/custom-properties-for-repos-promote-definition-to-enterprise
 
         PUT /enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote
@@ -8384,7 +8438,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CustomProperty, CustomPropertyType]:
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """enterprise-admin/custom-properties-for-repos-promote-definition-to-enterprise
 
         PUT /enterprises/{enterprise}/properties/schema/organizations/{org}/{custom_property_name}/promote
@@ -8421,7 +8475,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CustomProperty, CustomPropertyType]:
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """enterprise-admin/custom-properties-for-repos-get-enterprise-definition
 
         GET /enterprises/{enterprise}/properties/schema/{custom_property_name}
@@ -8457,7 +8511,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CustomProperty, CustomPropertyType]:
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """enterprise-admin/custom-properties-for-repos-get-enterprise-definition
 
         GET /enterprises/{enterprise}/properties/schema/{custom_property_name}
@@ -8495,7 +8549,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: CustomPropertySetPayloadType,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
     @overload
     def custom_properties_for_repos_create_or_update_enterprise_definition(
@@ -8514,7 +8568,7 @@ class EnterpriseAdminClient:
         values_editable_by: Missing[
             Union[None, Literal["org_actors", "org_and_repo_actors"]]
         ] = UNSET,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
     def custom_properties_for_repos_create_or_update_enterprise_definition(
         self,
@@ -8525,7 +8579,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
-    ) -> Response[CustomProperty, CustomPropertyType]:
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """enterprise-admin/custom-properties-for-repos-create-or-update-enterprise-definition
 
         PUT /enterprises/{enterprise}/properties/schema/{custom_property_name}
@@ -8574,7 +8628,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: CustomPropertySetPayloadType,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
     @overload
     async def async_custom_properties_for_repos_create_or_update_enterprise_definition(
@@ -8593,7 +8647,7 @@ class EnterpriseAdminClient:
         values_editable_by: Missing[
             Union[None, Literal["org_actors", "org_and_repo_actors"]]
         ] = UNSET,
-    ) -> Response[CustomProperty, CustomPropertyType]: ...
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
     async def async_custom_properties_for_repos_create_or_update_enterprise_definition(
         self,
@@ -8604,7 +8658,7 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[CustomPropertySetPayloadType] = UNSET,
         **kwargs,
-    ) -> Response[CustomProperty, CustomPropertyType]:
+    ) -> Response[CustomProperty, CustomPropertyTypeForResponse]:
         """enterprise-admin/custom-properties-for-repos-create-or-update-enterprise-definition
 
         PUT /enterprises/{enterprise}/properties/schema/{custom_property_name}
@@ -8725,7 +8779,7 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
+    ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """enterprise-admin/get-enterprise-ruleset-history
 
         GET /enterprises/{enterprise}/rulesets/{ruleset_id}/history
@@ -8768,7 +8822,7 @@ class EnterpriseAdminClient:
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[RulesetVersion], list[RulesetVersionType]]:
+    ) -> Response[list[RulesetVersion], list[RulesetVersionTypeForResponse]]:
         """enterprise-admin/get-enterprise-ruleset-history
 
         GET /enterprises/{enterprise}/rulesets/{ruleset_id}/history
@@ -8810,7 +8864,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
+    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """enterprise-admin/get-enterprise-ruleset-version
 
         GET /enterprises/{enterprise}/rulesets/{ruleset_id}/history/{version_id}
@@ -8846,7 +8900,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateType]:
+    ) -> Response[RulesetVersionWithState, RulesetVersionWithStateTypeForResponse]:
         """enterprise-admin/get-enterprise-ruleset-version
 
         GET /enterprises/{enterprise}/rulesets/{ruleset_id}/history/{version_id}
@@ -8980,7 +9034,7 @@ class EnterpriseAdminClient:
         count: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListType]:
+    ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListTypeForResponse]:
         """enterprise-admin/list-provisioned-groups-enterprise
 
         GET /scim/v2/enterprises/{enterprise}/Groups
@@ -9029,7 +9083,7 @@ class EnterpriseAdminClient:
         count: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListType]:
+    ) -> Response[ScimEnterpriseGroupList, ScimEnterpriseGroupListTypeForResponse]:
         """enterprise-admin/list-provisioned-groups-enterprise
 
         GET /scim/v2/enterprises/{enterprise}/Groups
@@ -9076,7 +9130,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: GroupType,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     @overload
     def provision_enterprise_group(
@@ -9090,7 +9146,9 @@ class EnterpriseAdminClient:
         external_id: str,
         display_name: str,
         members: Missing[list[GroupPropMembersItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     def provision_enterprise_group(
         self,
@@ -9100,7 +9158,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[GroupType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]:
         """enterprise-admin/provision-enterprise-group
 
         POST /scim/v2/enterprises/{enterprise}/Groups
@@ -9149,7 +9209,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: GroupType,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     @overload
     async def async_provision_enterprise_group(
@@ -9163,7 +9225,9 @@ class EnterpriseAdminClient:
         external_id: str,
         display_name: str,
         members: Missing[list[GroupPropMembersItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     async def async_provision_enterprise_group(
         self,
@@ -9173,7 +9237,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[GroupType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]:
         """enterprise-admin/provision-enterprise-group
 
         POST /scim/v2/enterprises/{enterprise}/Groups
@@ -9222,7 +9288,9 @@ class EnterpriseAdminClient:
         excluded_attributes: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]:
         """enterprise-admin/get-provisioning-information-for-enterprise-group
 
         GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
@@ -9265,7 +9333,9 @@ class EnterpriseAdminClient:
         excluded_attributes: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]:
         """enterprise-admin/get-provisioning-information-for-enterprise-group
 
         GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
@@ -9309,7 +9379,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: GroupType,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     @overload
     def set_information_for_provisioned_enterprise_group(
@@ -9324,7 +9396,9 @@ class EnterpriseAdminClient:
         external_id: str,
         display_name: str,
         members: Missing[list[GroupPropMembersItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     def set_information_for_provisioned_enterprise_group(
         self,
@@ -9335,7 +9409,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[GroupType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]:
         """enterprise-admin/set-information-for-provisioned-enterprise-group
 
         PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
@@ -9386,7 +9462,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: GroupType,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     @overload
     async def async_set_information_for_provisioned_enterprise_group(
@@ -9401,7 +9479,9 @@ class EnterpriseAdminClient:
         external_id: str,
         display_name: str,
         members: Missing[list[GroupPropMembersItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]: ...
 
     async def async_set_information_for_provisioned_enterprise_group(
         self,
@@ -9412,7 +9492,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[GroupType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseType]:
+    ) -> Response[
+        ScimEnterpriseGroupResponse, ScimEnterpriseGroupResponseTypeForResponse
+    ]:
         """enterprise-admin/set-information-for-provisioned-enterprise-group
 
         PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
@@ -9693,7 +9775,7 @@ class EnterpriseAdminClient:
         count: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListType]:
+    ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListTypeForResponse]:
         """enterprise-admin/list-provisioned-identities-enterprise
 
         GET /scim/v2/enterprises/{enterprise}/Users
@@ -9740,7 +9822,7 @@ class EnterpriseAdminClient:
         count: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListType]:
+    ) -> Response[ScimEnterpriseUserList, ScimEnterpriseUserListTypeForResponse]:
         """enterprise-admin/list-provisioned-identities-enterprise
 
         GET /scim/v2/enterprises/{enterprise}/Users
@@ -9786,7 +9868,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserType,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     @overload
     def provision_enterprise_user(
@@ -9804,7 +9888,9 @@ class EnterpriseAdminClient:
         display_name: str,
         emails: list[UserEmailsItemsType],
         roles: Missing[list[UserRoleItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     def provision_enterprise_user(
         self,
@@ -9814,7 +9900,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[UserType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/provision-enterprise-user
 
         POST /scim/v2/enterprises/{enterprise}/Users
@@ -9863,7 +9951,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserType,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     @overload
     async def async_provision_enterprise_user(
@@ -9881,7 +9971,9 @@ class EnterpriseAdminClient:
         display_name: str,
         emails: list[UserEmailsItemsType],
         roles: Missing[list[UserRoleItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     async def async_provision_enterprise_user(
         self,
@@ -9891,7 +9983,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[UserType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/provision-enterprise-user
 
         POST /scim/v2/enterprises/{enterprise}/Users
@@ -9939,7 +10033,9 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/get-provisioning-information-for-enterprise-user
 
         GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -9976,7 +10072,9 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/get-provisioning-information-for-enterprise-user
 
         GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -10015,7 +10113,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserType,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     @overload
     def set_information_for_provisioned_enterprise_user(
@@ -10034,7 +10134,9 @@ class EnterpriseAdminClient:
         display_name: str,
         emails: list[UserEmailsItemsType],
         roles: Missing[list[UserRoleItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     def set_information_for_provisioned_enterprise_user(
         self,
@@ -10045,7 +10147,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[UserType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/set-information-for-provisioned-enterprise-user
 
         PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -10099,7 +10203,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: UserType,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     @overload
     async def async_set_information_for_provisioned_enterprise_user(
@@ -10118,7 +10224,9 @@ class EnterpriseAdminClient:
         display_name: str,
         emails: list[UserEmailsItemsType],
         roles: Missing[list[UserRoleItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     async def async_set_information_for_provisioned_enterprise_user(
         self,
@@ -10129,7 +10237,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[UserType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/set-information-for-provisioned-enterprise-user
 
         PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -10255,7 +10365,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: PatchSchemaType,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     @overload
     def update_attribute_for_enterprise_user(
@@ -10268,7 +10380,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         operations: list[PatchSchemaPropOperationsItemsType],
         schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]],
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     def update_attribute_for_enterprise_user(
         self,
@@ -10279,7 +10393,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[PatchSchemaType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/update-attribute-for-enterprise-user
 
         PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
@@ -10351,7 +10467,9 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: PatchSchemaType,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     @overload
     async def async_update_attribute_for_enterprise_user(
@@ -10364,7 +10482,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         operations: list[PatchSchemaPropOperationsItemsType],
         schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]],
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]: ...
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]: ...
 
     async def async_update_attribute_for_enterprise_user(
         self,
@@ -10375,7 +10495,9 @@ class EnterpriseAdminClient:
         stream: bool = False,
         data: Missing[PatchSchemaType] = UNSET,
         **kwargs,
-    ) -> Response[ScimEnterpriseUserResponse, ScimEnterpriseUserResponseType]:
+    ) -> Response[
+        ScimEnterpriseUserResponse, ScimEnterpriseUserResponseTypeForResponse
+    ]:
         """enterprise-admin/update-attribute-for-enterprise-user
 
         PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}

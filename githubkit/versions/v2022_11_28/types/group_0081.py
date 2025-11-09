@@ -18,4 +18,13 @@ class ActionsArtifactAndLogRetentionType(TypedDict):
     days: int
 
 
-__all__ = ("ActionsArtifactAndLogRetentionType",)
+class ActionsArtifactAndLogRetentionTypeForResponse(TypedDict):
+    """ActionsArtifactAndLogRetention"""
+
+    days: int
+
+
+__all__ = (
+    "ActionsArtifactAndLogRetentionType",
+    "ActionsArtifactAndLogRetentionTypeForResponse",
+)

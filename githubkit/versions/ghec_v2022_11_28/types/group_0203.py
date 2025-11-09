@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Any, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class GistHistoryType(TypedDict):
@@ -29,7 +29,28 @@ class GistHistoryType(TypedDict):
     url: NotRequired[str]
 
 
+class GistHistoryTypeForResponse(TypedDict):
+    """Gist History
+
+    Gist History
+    """
+
+    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    version: NotRequired[str]
+    committed_at: NotRequired[str]
+    change_status: NotRequired[GistHistoryPropChangeStatusTypeForResponse]
+    url: NotRequired[str]
+
+
 class GistHistoryPropChangeStatusType(TypedDict):
+    """GistHistoryPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistHistoryPropChangeStatusTypeForResponse(TypedDict):
     """GistHistoryPropChangeStatus"""
 
     total: NotRequired[int]
@@ -66,14 +87,52 @@ class GistSimplePropForkOfType(TypedDict):
     history: NotRequired[list[Any]]
 
 
+class GistSimplePropForkOfTypeForResponse(TypedDict):
+    """Gist
+
+    Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserTypeForResponse]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
 GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
+
+
+GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
 """GistSimplePropForkOfPropFiles
 """
 
 
 __all__ = (
     "GistHistoryPropChangeStatusType",
+    "GistHistoryPropChangeStatusTypeForResponse",
     "GistHistoryType",
+    "GistHistoryTypeForResponse",
     "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfPropFilesTypeForResponse",
     "GistSimplePropForkOfType",
+    "GistSimplePropForkOfTypeForResponse",
 )

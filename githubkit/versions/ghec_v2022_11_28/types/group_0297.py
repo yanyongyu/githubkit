@@ -34,7 +34,37 @@ class ArtifactType(TypedDict):
     workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
 
 
+class ArtifactTypeForResponse(TypedDict):
+    """Artifact
+
+    An artifact
+    """
+
+    id: int
+    node_id: str
+    name: str
+    size_in_bytes: int
+    url: str
+    archive_download_url: str
+    expired: bool
+    created_at: Union[str, None]
+    expires_at: Union[str, None]
+    updated_at: Union[str, None]
+    digest: NotRequired[Union[str, None]]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunTypeForResponse, None]]
+
+
 class ArtifactPropWorkflowRunType(TypedDict):
+    """ArtifactPropWorkflowRun"""
+
+    id: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
+
+
+class ArtifactPropWorkflowRunTypeForResponse(TypedDict):
     """ArtifactPropWorkflowRun"""
 
     id: NotRequired[int]
@@ -46,5 +76,7 @@ class ArtifactPropWorkflowRunType(TypedDict):
 
 __all__ = (
     "ArtifactPropWorkflowRunType",
+    "ArtifactPropWorkflowRunTypeForResponse",
     "ArtifactType",
+    "ArtifactTypeForResponse",
 )

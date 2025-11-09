@@ -18,4 +18,15 @@ class EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType(Type
     organization_ids: NotRequired[list[int]]
 
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType",)
+class EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId"""
+
+    organization_ids: NotRequired[list[int]]
+
+
+__all__ = (
+    "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType",
+    "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse",
+)

@@ -19,6 +19,12 @@ class GetAllBudgetsType(TypedDict):
     budgets: list[BudgetType]
 
 
+class GetAllBudgetsTypeForResponse(TypedDict):
+    """GetAllBudgets"""
+
+    budgets: list[BudgetTypeForResponse]
+
+
 class BudgetType(TypedDict):
     """Budget"""
 
@@ -32,7 +38,27 @@ class BudgetType(TypedDict):
     budget_alerting: BudgetPropBudgetAlertingType
 
 
+class BudgetTypeForResponse(TypedDict):
+    """Budget"""
+
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: str
+    budget_entity_name: NotRequired[str]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
+
+
 class BudgetPropBudgetAlertingType(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
+
+
+class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
     """BudgetPropBudgetAlerting"""
 
     will_alert: bool
@@ -41,6 +67,9 @@ class BudgetPropBudgetAlertingType(TypedDict):
 
 __all__ = (
     "BudgetPropBudgetAlertingType",
+    "BudgetPropBudgetAlertingTypeForResponse",
     "BudgetType",
+    "BudgetTypeForResponse",
     "GetAllBudgetsType",
+    "GetAllBudgetsTypeForResponse",
 )

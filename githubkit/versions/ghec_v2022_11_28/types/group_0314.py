@@ -21,6 +21,15 @@ class WorkflowUsageType(TypedDict):
     billable: WorkflowUsagePropBillableType
 
 
+class WorkflowUsageTypeForResponse(TypedDict):
+    """Workflow Usage
+
+    Workflow Usage
+    """
+
+    billable: WorkflowUsagePropBillableTypeForResponse
+
+
 class WorkflowUsagePropBillableType(TypedDict):
     """WorkflowUsagePropBillable"""
 
@@ -29,7 +38,21 @@ class WorkflowUsagePropBillableType(TypedDict):
     windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
 
 
+class WorkflowUsagePropBillableTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuTypeForResponse]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosTypeForResponse]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsTypeForResponse]
+
+
 class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropUbuntuTypeForResponse(TypedDict):
     """WorkflowUsagePropBillablePropUbuntu"""
 
     total_ms: NotRequired[int]
@@ -41,7 +64,19 @@ class WorkflowUsagePropBillablePropMacosType(TypedDict):
     total_ms: NotRequired[int]
 
 
+class WorkflowUsagePropBillablePropMacosTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: NotRequired[int]
+
+
 class WorkflowUsagePropBillablePropWindowsType(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropWindowsTypeForResponse(TypedDict):
     """WorkflowUsagePropBillablePropWindows"""
 
     total_ms: NotRequired[int]
@@ -49,8 +84,13 @@ class WorkflowUsagePropBillablePropWindowsType(TypedDict):
 
 __all__ = (
     "WorkflowUsagePropBillablePropMacosType",
+    "WorkflowUsagePropBillablePropMacosTypeForResponse",
     "WorkflowUsagePropBillablePropUbuntuType",
+    "WorkflowUsagePropBillablePropUbuntuTypeForResponse",
     "WorkflowUsagePropBillablePropWindowsType",
+    "WorkflowUsagePropBillablePropWindowsTypeForResponse",
     "WorkflowUsagePropBillableType",
+    "WorkflowUsagePropBillableTypeForResponse",
     "WorkflowUsageType",
+    "WorkflowUsageTypeForResponse",
 )

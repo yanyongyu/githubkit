@@ -23,4 +23,17 @@ class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
     image_version: NotRequired[Union[str, None]]
 
 
-__all__ = ("OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",)
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+
+    name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_version: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",
+    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
+)

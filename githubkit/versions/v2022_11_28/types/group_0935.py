@@ -21,6 +21,13 @@ class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
     variables: list[OrganizationActionsVariableType]
 
 
+class OrgsOrgActionsVariablesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[OrganizationActionsVariableTypeForResponse]
+
+
 class OrganizationActionsVariableType(TypedDict):
     """Actions Variable for an Organization
 
@@ -35,7 +42,23 @@ class OrganizationActionsVariableType(TypedDict):
     selected_repositories_url: NotRequired[str]
 
 
+class OrganizationActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable for an Organization
+
+    Organization variable for GitHub Actions.
+    """
+
+    name: str
+    value: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
+
+
 __all__ = (
     "OrganizationActionsVariableType",
+    "OrganizationActionsVariableTypeForResponse",
     "OrgsOrgActionsVariablesGetResponse200Type",
+    "OrgsOrgActionsVariablesGetResponse200TypeForResponse",
 )

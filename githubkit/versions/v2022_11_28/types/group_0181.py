@@ -18,4 +18,13 @@ class RepositoryRuleFilePathRestrictionPropParametersType(TypedDict):
     restricted_file_paths: list[str]
 
 
-__all__ = ("RepositoryRuleFilePathRestrictionPropParametersType",)
+class RepositoryRuleFilePathRestrictionPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleFilePathRestrictionPropParameters"""
+
+    restricted_file_paths: list[str]
+
+
+__all__ = (
+    "RepositoryRuleFilePathRestrictionPropParametersType",
+    "RepositoryRuleFilePathRestrictionPropParametersTypeForResponse",
+)

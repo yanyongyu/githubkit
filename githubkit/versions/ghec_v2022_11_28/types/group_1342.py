@@ -23,4 +23,16 @@ class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType(TypedDict):
     due_on: NotRequired[datetime]
 
 
-__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType",)
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
+
+    title: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType",
+    "ReposOwnerRepoMilestonesMilestoneNumberPatchBodyTypeForResponse",
+)

@@ -12,13 +12,16 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0534 import EnterpriseWebhooksType
-from .group_0535 import SimpleInstallationType
-from .group_0536 import OrganizationSimpleWebhooksType
-from .group_0537 import RepositoryWebhooksType
-from .group_0547 import WebhooksUserType
-from .group_0556 import WebhooksIssueType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0547 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0556 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
 class WebhookIssuesAssignedType(TypedDict):
@@ -34,4 +37,20 @@ class WebhookIssuesAssignedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookIssuesAssignedType",)
+class WebhookIssuesAssignedTypeForResponse(TypedDict):
+    """issues assigned event"""
+
+    action: Literal["assigned"]
+    assignee: NotRequired[Union[WebhooksUserTypeForResponse, None]]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhooksIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+__all__ = (
+    "WebhookIssuesAssignedType",
+    "WebhookIssuesAssignedTypeForResponse",
+)

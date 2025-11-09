@@ -30,7 +30,7 @@ if TYPE_CHECKING:
 
     from ..models import CampaignSummary
     from ..types import (
-        CampaignSummaryType,
+        CampaignSummaryTypeForResponse,
         OrgsOrgCampaignsCampaignNumberPatchBodyType,
         OrgsOrgCampaignsPostBodyOneof0Type,
         OrgsOrgCampaignsPostBodyOneof1Type,
@@ -64,7 +64,7 @@ class CampaignsClient:
         sort: Missing[Literal["created", "updated", "ends_at", "published"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CampaignSummary], list[CampaignSummaryType]]:
+    ) -> Response[list[CampaignSummary], list[CampaignSummaryTypeForResponse]]:
         """campaigns/list-org-campaigns
 
         GET /orgs/{org}/campaigns
@@ -116,7 +116,7 @@ class CampaignsClient:
         sort: Missing[Literal["created", "updated", "ends_at", "published"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[CampaignSummary], list[CampaignSummaryType]]:
+    ) -> Response[list[CampaignSummary], list[CampaignSummaryTypeForResponse]]:
         """campaigns/list-org-campaigns
 
         GET /orgs/{org}/campaigns
@@ -167,7 +167,7 @@ class CampaignsClient:
         data: Union[
             OrgsOrgCampaignsPostBodyOneof0Type, OrgsOrgCampaignsPostBodyOneof1Type
         ],
-    ) -> Response[CampaignSummary, CampaignSummaryType]: ...
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]: ...
 
     @overload
     def create_campaign(
@@ -187,7 +187,7 @@ class CampaignsClient:
             list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None
         ],
         generate_issues: Missing[bool] = UNSET,
-    ) -> Response[CampaignSummary, CampaignSummaryType]: ...
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]: ...
 
     @overload
     def create_campaign(
@@ -207,7 +207,7 @@ class CampaignsClient:
             Union[list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None]
         ] = UNSET,
         generate_issues: Missing[bool] = UNSET,
-    ) -> Response[CampaignSummary, CampaignSummaryType]: ...
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]: ...
 
     def create_campaign(
         self,
@@ -221,7 +221,7 @@ class CampaignsClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[CampaignSummary, CampaignSummaryType]:
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]:
         """campaigns/create-campaign
 
         POST /orgs/{org}/campaigns
@@ -289,7 +289,7 @@ class CampaignsClient:
         data: Union[
             OrgsOrgCampaignsPostBodyOneof0Type, OrgsOrgCampaignsPostBodyOneof1Type
         ],
-    ) -> Response[CampaignSummary, CampaignSummaryType]: ...
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]: ...
 
     @overload
     async def async_create_campaign(
@@ -309,7 +309,7 @@ class CampaignsClient:
             list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None
         ],
         generate_issues: Missing[bool] = UNSET,
-    ) -> Response[CampaignSummary, CampaignSummaryType]: ...
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]: ...
 
     @overload
     async def async_create_campaign(
@@ -329,7 +329,7 @@ class CampaignsClient:
             Union[list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None]
         ] = UNSET,
         generate_issues: Missing[bool] = UNSET,
-    ) -> Response[CampaignSummary, CampaignSummaryType]: ...
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]: ...
 
     async def async_create_campaign(
         self,
@@ -343,7 +343,7 @@ class CampaignsClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[CampaignSummary, CampaignSummaryType]:
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]:
         """campaigns/create-campaign
 
         POST /orgs/{org}/campaigns
@@ -408,7 +408,7 @@ class CampaignsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CampaignSummary, CampaignSummaryType]:
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]:
         """campaigns/get-campaign-summary
 
         GET /orgs/{org}/campaigns/{campaign_number}
@@ -448,7 +448,7 @@ class CampaignsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[CampaignSummary, CampaignSummaryType]:
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]:
         """campaigns/get-campaign-summary
 
         GET /orgs/{org}/campaigns/{campaign_number}
@@ -566,7 +566,7 @@ class CampaignsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgCampaignsCampaignNumberPatchBodyType,
-    ) -> Response[CampaignSummary, CampaignSummaryType]: ...
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]: ...
 
     @overload
     def update_campaign(
@@ -584,7 +584,7 @@ class CampaignsClient:
         ends_at: Missing[datetime] = UNSET,
         contact_link: Missing[Union[str, None]] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
-    ) -> Response[CampaignSummary, CampaignSummaryType]: ...
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]: ...
 
     def update_campaign(
         self,
@@ -595,7 +595,7 @@ class CampaignsClient:
         stream: bool = False,
         data: Missing[OrgsOrgCampaignsCampaignNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CampaignSummary, CampaignSummaryType]:
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]:
         """campaigns/update-campaign
 
         PATCH /orgs/{org}/campaigns/{campaign_number}
@@ -653,7 +653,7 @@ class CampaignsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: OrgsOrgCampaignsCampaignNumberPatchBodyType,
-    ) -> Response[CampaignSummary, CampaignSummaryType]: ...
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]: ...
 
     @overload
     async def async_update_campaign(
@@ -671,7 +671,7 @@ class CampaignsClient:
         ends_at: Missing[datetime] = UNSET,
         contact_link: Missing[Union[str, None]] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
-    ) -> Response[CampaignSummary, CampaignSummaryType]: ...
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]: ...
 
     async def async_update_campaign(
         self,
@@ -682,7 +682,7 @@ class CampaignsClient:
         stream: bool = False,
         data: Missing[OrgsOrgCampaignsCampaignNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CampaignSummary, CampaignSummaryType]:
+    ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]:
         """campaigns/update-campaign
 
         PATCH /orgs/{org}/campaigns/{campaign_number}

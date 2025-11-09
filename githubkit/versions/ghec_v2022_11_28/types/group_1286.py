@@ -18,4 +18,13 @@ class ReposOwnerRepoDeploymentsPostResponse202Type(TypedDict):
     message: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoDeploymentsPostResponse202Type",)
+class ReposOwnerRepoDeploymentsPostResponse202TypeForResponse(TypedDict):
+    """ReposOwnerRepoDeploymentsPostResponse202"""
+
+    message: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoDeploymentsPostResponse202Type",
+    "ReposOwnerRepoDeploymentsPostResponse202TypeForResponse",
+)

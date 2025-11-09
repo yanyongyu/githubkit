@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class OrganizationCustomRepositoryRoleType(TypedDict):
@@ -32,4 +32,23 @@ class OrganizationCustomRepositoryRoleType(TypedDict):
     updated_at: datetime
 
 
-__all__ = ("OrganizationCustomRepositoryRoleType",)
+class OrganizationCustomRepositoryRoleTypeForResponse(TypedDict):
+    """Organization Custom Repository Role
+
+    Custom repository roles created by organization owners
+    """
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
+    organization: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
+
+
+__all__ = (
+    "OrganizationCustomRepositoryRoleType",
+    "OrganizationCustomRepositoryRoleTypeForResponse",
+)

@@ -24,4 +24,18 @@ class MergedUpstreamType(TypedDict):
     base_branch: NotRequired[str]
 
 
-__all__ = ("MergedUpstreamType",)
+class MergedUpstreamTypeForResponse(TypedDict):
+    """Merged upstream
+
+    Results of a successful merge upstream request
+    """
+
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
+
+
+__all__ = (
+    "MergedUpstreamType",
+    "MergedUpstreamTypeForResponse",
+)

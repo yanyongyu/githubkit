@@ -19,4 +19,14 @@ class ReposOwnerRepoGitRefsRefPatchBodyType(TypedDict):
     force: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoGitRefsRefPatchBodyType",)
+class ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
+
+    sha: str
+    force: NotRequired[bool]
+
+
+__all__ = (
+    "ReposOwnerRepoGitRefsRefPatchBodyType",
+    "ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse",
+)

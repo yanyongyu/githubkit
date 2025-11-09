@@ -27,6 +27,19 @@ class ScimUserListType(TypedDict):
     resources: list[ScimUserType]
 
 
+class ScimUserListTypeForResponse(TypedDict):
+    """SCIM User List
+
+    SCIM User List
+    """
+
+    schemas: list[str]
+    total_results: int
+    items_per_page: int
+    start_index: int
+    resources: list[ScimUserTypeForResponse]
+
+
 class ScimUserType(TypedDict):
     """SCIM /Users
 
@@ -48,7 +61,40 @@ class ScimUserType(TypedDict):
     roles: NotRequired[list[ScimUserPropRolesItemsType]]
 
 
+class ScimUserTypeForResponse(TypedDict):
+    """SCIM /Users
+
+    SCIM /Users provisioning endpoints
+    """
+
+    schemas: list[str]
+    id: str
+    external_id: NotRequired[Union[str, None]]
+    user_name: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    name: NotRequired[ScimUserPropNameTypeForResponse]
+    emails: list[ScimUserPropEmailsItemsTypeForResponse]
+    active: bool
+    meta: ScimUserPropMetaTypeForResponse
+    organization_id: NotRequired[int]
+    operations: NotRequired[list[ScimUserPropOperationsItemsTypeForResponse]]
+    groups: NotRequired[list[ScimUserPropGroupsItemsTypeForResponse]]
+    roles: NotRequired[list[ScimUserPropRolesItemsTypeForResponse]]
+
+
 class ScimUserPropNameType(TypedDict):
+    """ScimUserPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+    formatted: NotRequired[Union[str, None]]
+
+
+class ScimUserPropNameTypeForResponse(TypedDict):
     """ScimUserPropName
 
     Examples:
@@ -68,12 +114,29 @@ class ScimUserPropEmailsItemsType(TypedDict):
     type: NotRequired[str]
 
 
+class ScimUserPropEmailsItemsTypeForResponse(TypedDict):
+    """ScimUserPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
 class ScimUserPropMetaType(TypedDict):
     """ScimUserPropMeta"""
 
     resource_type: NotRequired[str]
     created: NotRequired[datetime]
     last_modified: NotRequired[datetime]
+    location: NotRequired[str]
+
+
+class ScimUserPropMetaTypeForResponse(TypedDict):
+    """ScimUserPropMeta"""
+
+    resource_type: NotRequired[str]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
     location: NotRequired[str]
 
 
@@ -84,7 +147,23 @@ class ScimUserPropGroupsItemsType(TypedDict):
     display: NotRequired[str]
 
 
+class ScimUserPropGroupsItemsTypeForResponse(TypedDict):
+    """ScimUserPropGroupsItems"""
+
+    value: NotRequired[str]
+    display: NotRequired[str]
+
+
 class ScimUserPropRolesItemsType(TypedDict):
+    """ScimUserPropRolesItems"""
+
+    value: NotRequired[str]
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropRolesItemsTypeForResponse(TypedDict):
     """ScimUserPropRolesItems"""
 
     value: NotRequired[str]
@@ -103,18 +182,41 @@ class ScimUserPropOperationsItemsType(TypedDict):
     ]
 
 
+class ScimUserPropOperationsItemsTypeForResponse(TypedDict):
+    """ScimUserPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[str, ScimUserPropOperationsItemsPropValueOneof1TypeForResponse, list[Any]]
+    ]
+
+
 class ScimUserPropOperationsItemsPropValueOneof1Type(TypedDict):
+    """ScimUserPropOperationsItemsPropValueOneof1"""
+
+
+class ScimUserPropOperationsItemsPropValueOneof1TypeForResponse(TypedDict):
     """ScimUserPropOperationsItemsPropValueOneof1"""
 
 
 __all__ = (
     "ScimUserListType",
+    "ScimUserListTypeForResponse",
     "ScimUserPropEmailsItemsType",
+    "ScimUserPropEmailsItemsTypeForResponse",
     "ScimUserPropGroupsItemsType",
+    "ScimUserPropGroupsItemsTypeForResponse",
     "ScimUserPropMetaType",
+    "ScimUserPropMetaTypeForResponse",
     "ScimUserPropNameType",
+    "ScimUserPropNameTypeForResponse",
     "ScimUserPropOperationsItemsPropValueOneof1Type",
+    "ScimUserPropOperationsItemsPropValueOneof1TypeForResponse",
     "ScimUserPropOperationsItemsType",
+    "ScimUserPropOperationsItemsTypeForResponse",
     "ScimUserPropRolesItemsType",
+    "ScimUserPropRolesItemsTypeForResponse",
     "ScimUserType",
+    "ScimUserTypeForResponse",
 )

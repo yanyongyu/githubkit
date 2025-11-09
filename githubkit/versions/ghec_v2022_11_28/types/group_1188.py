@@ -18,4 +18,13 @@ class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
     permission: NotRequired[str]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",)
+class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
+
+    permission: NotRequired[str]
+
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",
+    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse",
+)

@@ -21,7 +21,23 @@ class GistsGistIdGetResponse403Type(TypedDict):
     documentation_url: NotRequired[str]
 
 
+class GistsGistIdGetResponse403TypeForResponse(TypedDict):
+    """GistsGistIdGetResponse403"""
+
+    block: NotRequired[GistsGistIdGetResponse403PropBlockTypeForResponse]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+
+
 class GistsGistIdGetResponse403PropBlockType(TypedDict):
+    """GistsGistIdGetResponse403PropBlock"""
+
+    reason: NotRequired[str]
+    created_at: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
+
+
+class GistsGistIdGetResponse403PropBlockTypeForResponse(TypedDict):
     """GistsGistIdGetResponse403PropBlock"""
 
     reason: NotRequired[str]
@@ -31,5 +47,7 @@ class GistsGistIdGetResponse403PropBlockType(TypedDict):
 
 __all__ = (
     "GistsGistIdGetResponse403PropBlockType",
+    "GistsGistIdGetResponse403PropBlockTypeForResponse",
     "GistsGistIdGetResponse403Type",
+    "GistsGistIdGetResponse403TypeForResponse",
 )

@@ -23,7 +23,25 @@ class BranchShortType(TypedDict):
     protected: bool
 
 
+class BranchShortTypeForResponse(TypedDict):
+    """Branch Short
+
+    Branch Short
+    """
+
+    name: str
+    commit: BranchShortPropCommitTypeForResponse
+    protected: bool
+
+
 class BranchShortPropCommitType(TypedDict):
+    """BranchShortPropCommit"""
+
+    sha: str
+    url: str
+
+
+class BranchShortPropCommitTypeForResponse(TypedDict):
     """BranchShortPropCommit"""
 
     sha: str
@@ -32,5 +50,7 @@ class BranchShortPropCommitType(TypedDict):
 
 __all__ = (
     "BranchShortPropCommitType",
+    "BranchShortPropCommitTypeForResponse",
     "BranchShortType",
+    "BranchShortTypeForResponse",
 )

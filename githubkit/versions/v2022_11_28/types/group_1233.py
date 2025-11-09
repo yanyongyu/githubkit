@@ -20,4 +20,15 @@ class UserCodespacesCodespaceNamePatchBodyType(TypedDict):
     recent_folders: NotRequired[list[str]]
 
 
-__all__ = ("UserCodespacesCodespaceNamePatchBodyType",)
+class UserCodespacesCodespaceNamePatchBodyTypeForResponse(TypedDict):
+    """UserCodespacesCodespaceNamePatchBody"""
+
+    machine: NotRequired[str]
+    display_name: NotRequired[str]
+    recent_folders: NotRequired[list[str]]
+
+
+__all__ = (
+    "UserCodespacesCodespaceNamePatchBodyType",
+    "UserCodespacesCodespaceNamePatchBodyTypeForResponse",
+)

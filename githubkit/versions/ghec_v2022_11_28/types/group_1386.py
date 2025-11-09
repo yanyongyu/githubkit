@@ -19,4 +19,14 @@ class ReposOwnerRepoSubscriptionPutBodyType(TypedDict):
     ignored: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoSubscriptionPutBodyType",)
+class ReposOwnerRepoSubscriptionPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoSubscriptionPutBody"""
+
+    subscribed: NotRequired[bool]
+    ignored: NotRequired[bool]
+
+
+__all__ = (
+    "ReposOwnerRepoSubscriptionPutBodyType",
+    "ReposOwnerRepoSubscriptionPutBodyTypeForResponse",
+)

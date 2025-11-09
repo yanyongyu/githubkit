@@ -12,8 +12,13 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0501 import UserEmailsResponseItemsType, UserNameResponseType
-from .group_0502 import UserRoleItemsType
+from .group_0501 import (
+    UserEmailsResponseItemsType,
+    UserEmailsResponseItemsTypeForResponse,
+    UserNameResponseType,
+    UserNameResponseTypeForResponse,
+)
+from .group_0502 import UserRoleItemsType, UserRoleItemsTypeForResponse
 
 
 class UserResponseType(TypedDict):
@@ -29,4 +34,20 @@ class UserResponseType(TypedDict):
     roles: NotRequired[list[UserRoleItemsType]]
 
 
-__all__ = ("UserResponseType",)
+class UserResponseTypeForResponse(TypedDict):
+    """UserResponse"""
+
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: NotRequired[Union[str, None]]
+    active: bool
+    user_name: NotRequired[str]
+    name: NotRequired[UserNameResponseTypeForResponse]
+    display_name: NotRequired[Union[str, None]]
+    emails: list[UserEmailsResponseItemsTypeForResponse]
+    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
+
+
+__all__ = (
+    "UserResponseType",
+    "UserResponseTypeForResponse",
+)

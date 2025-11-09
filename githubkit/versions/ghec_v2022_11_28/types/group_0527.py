@@ -25,4 +25,19 @@ class SshSigningKeyType(TypedDict):
     created_at: datetime
 
 
-__all__ = ("SshSigningKeyType",)
+class SshSigningKeyTypeForResponse(TypedDict):
+    """SSH Signing Key
+
+    A public SSH key used to sign Git commits
+    """
+
+    key: str
+    id: int
+    title: str
+    created_at: str
+
+
+__all__ = (
+    "SshSigningKeyType",
+    "SshSigningKeyTypeForResponse",
+)

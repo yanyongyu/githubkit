@@ -21,4 +21,16 @@ class OidcCustomSubType(TypedDict):
     include_claim_keys: list[str]
 
 
-__all__ = ("OidcCustomSubType",)
+class OidcCustomSubTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
+
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
+
+
+__all__ = (
+    "OidcCustomSubType",
+    "OidcCustomSubTypeForResponse",
+)

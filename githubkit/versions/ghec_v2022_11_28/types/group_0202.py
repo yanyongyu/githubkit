@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Any, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0003 import SimpleUserType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
 class BaseGistType(TypedDict):
@@ -45,12 +45,48 @@ class BaseGistType(TypedDict):
     history: NotRequired[list[Any]]
 
 
+class BaseGistTypeForResponse(TypedDict):
+    """Base Gist
+
+    Base Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserTypeForResponse]
+    comments_url: str
+    owner: NotRequired[SimpleUserTypeForResponse]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
 BaseGistPropFilesType: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
+
+
+BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
 """BaseGistPropFiles
 """
 
 
 __all__ = (
     "BaseGistPropFilesType",
+    "BaseGistPropFilesTypeForResponse",
     "BaseGistType",
+    "BaseGistTypeForResponse",
 )

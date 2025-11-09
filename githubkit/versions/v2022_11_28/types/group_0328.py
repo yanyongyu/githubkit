@@ -21,4 +21,15 @@ class HookResponseType(TypedDict):
     message: Union[str, None]
 
 
-__all__ = ("HookResponseType",)
+class HookResponseTypeForResponse(TypedDict):
+    """Hook Response"""
+
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
+
+
+__all__ = (
+    "HookResponseType",
+    "HookResponseTypeForResponse",
+)

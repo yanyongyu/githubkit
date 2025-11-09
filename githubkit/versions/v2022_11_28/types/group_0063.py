@@ -29,4 +29,22 @@ class ThreadSubscriptionType(TypedDict):
     repository_url: NotRequired[str]
 
 
-__all__ = ("ThreadSubscriptionType",)
+class ThreadSubscriptionTypeForResponse(TypedDict):
+    """Thread Subscription
+
+    Thread Subscription
+    """
+
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[str, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
+
+
+__all__ = (
+    "ThreadSubscriptionType",
+    "ThreadSubscriptionTypeForResponse",
+)

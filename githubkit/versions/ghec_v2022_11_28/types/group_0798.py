@@ -11,10 +11,13 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0536 import OrganizationSimpleWebhooksType
-from .group_0537 import RepositoryWebhooksType
-from .group_0799 import WebhookPingPropHookType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0536 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0799 import WebhookPingPropHookType, WebhookPingPropHookTypeForResponse
 
 
 class WebhookPingType(TypedDict):
@@ -28,4 +31,18 @@ class WebhookPingType(TypedDict):
     zen: NotRequired[str]
 
 
-__all__ = ("WebhookPingType",)
+class WebhookPingTypeForResponse(TypedDict):
+    """WebhookPing"""
+
+    hook: NotRequired[WebhookPingPropHookTypeForResponse]
+    hook_id: NotRequired[int]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+    zen: NotRequired[str]
+
+
+__all__ = (
+    "WebhookPingType",
+    "WebhookPingTypeForResponse",
+)

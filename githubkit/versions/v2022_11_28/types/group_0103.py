@@ -26,4 +26,21 @@ class CodespacesPublicKeyType(TypedDict):
     created_at: NotRequired[str]
 
 
-__all__ = ("CodespacesPublicKeyType",)
+class CodespacesPublicKeyTypeForResponse(TypedDict):
+    """CodespacesPublicKey
+
+    The public key used for setting Codespaces secrets.
+    """
+
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
+
+
+__all__ = (
+    "CodespacesPublicKeyType",
+    "CodespacesPublicKeyTypeForResponse",
+)

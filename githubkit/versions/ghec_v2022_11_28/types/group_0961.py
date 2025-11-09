@@ -18,4 +18,13 @@ class ApplicationsClientIdTokenDeleteBodyType(TypedDict):
     access_token: str
 
 
-__all__ = ("ApplicationsClientIdTokenDeleteBodyType",)
+class ApplicationsClientIdTokenDeleteBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdTokenDeleteBody"""
+
+    access_token: str
+
+
+__all__ = (
+    "ApplicationsClientIdTokenDeleteBodyType",
+    "ApplicationsClientIdTokenDeleteBodyTypeForResponse",
+)

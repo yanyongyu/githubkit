@@ -22,4 +22,17 @@ class PageBuildStatusType(TypedDict):
     status: str
 
 
-__all__ = ("PageBuildStatusType",)
+class PageBuildStatusTypeForResponse(TypedDict):
+    """Page Build Status
+
+    Page Build Status
+    """
+
+    url: str
+    status: str
+
+
+__all__ = (
+    "PageBuildStatusType",
+    "PageBuildStatusTypeForResponse",
+)

@@ -37,4 +37,30 @@ class IssueTypeType(TypedDict):
     is_enabled: NotRequired[bool]
 
 
-__all__ = ("IssueTypeType",)
+class IssueTypeTypeForResponse(TypedDict):
+    """Issue Type
+
+    The type of issue.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    description: Union[str, None]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    is_enabled: NotRequired[bool]
+
+
+__all__ = (
+    "IssueTypeType",
+    "IssueTypeTypeForResponse",
+)

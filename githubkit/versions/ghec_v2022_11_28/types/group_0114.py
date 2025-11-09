@@ -13,6 +13,7 @@ from typing_extensions import TypedDict
 
 from .group_0115 import (
     EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
 )
 
 
@@ -27,4 +28,18 @@ class EnterpriseRulesetConditionsOrganizationIdTargetType(TypedDict):
     )
 
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationIdTargetType",)
+class EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for organization IDs
+
+    Parameters for an organization ID condition
+    """
+
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
+    )
+
+
+__all__ = (
+    "EnterpriseRulesetConditionsOrganizationIdTargetType",
+    "EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse",
+)

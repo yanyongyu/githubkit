@@ -23,4 +23,18 @@ class PullRequestMergeResultType(TypedDict):
     message: str
 
 
-__all__ = ("PullRequestMergeResultType",)
+class PullRequestMergeResultTypeForResponse(TypedDict):
+    """Pull Request Merge Result
+
+    Pull Request Merge Result
+    """
+
+    sha: str
+    merged: bool
+    message: str
+
+
+__all__ = (
+    "PullRequestMergeResultType",
+    "PullRequestMergeResultTypeForResponse",
+)

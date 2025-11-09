@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0214 import MinimalRepositoryType
+from .group_0214 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
 class CheckSuitePreferenceType(TypedDict):
@@ -24,11 +24,31 @@ class CheckSuitePreferenceType(TypedDict):
     repository: MinimalRepositoryType
 
 
+class CheckSuitePreferenceTypeForResponse(TypedDict):
+    """Check Suite Preference
+
+    Check suite configuration preferences for a repository.
+    """
+
+    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
+    repository: MinimalRepositoryTypeForResponse
+
+
 class CheckSuitePreferencePropPreferencesType(TypedDict):
     """CheckSuitePreferencePropPreferences"""
 
     auto_trigger_checks: NotRequired[
         list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    ]
+
+
+class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
+        list[
+            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
+        ]
     ]
 
 
@@ -39,8 +59,20 @@ class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDic
     setting: bool
 
 
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
+    TypedDict
+):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
+
+
 __all__ = (
     "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
     "CheckSuitePreferencePropPreferencesType",
+    "CheckSuitePreferencePropPreferencesTypeForResponse",
     "CheckSuitePreferenceType",
+    "CheckSuitePreferenceTypeForResponse",
 )

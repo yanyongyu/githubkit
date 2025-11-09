@@ -20,4 +20,14 @@ class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
     type: NotRequired[Literal["branch", "tag"]]
 
 
-__all__ = ("DeploymentBranchPolicyNamePatternWithTypeType",)
+class DeploymentBranchPolicyNamePatternWithTypeTypeForResponse(TypedDict):
+    """Deployment branch and tag policy name pattern"""
+
+    name: str
+    type: NotRequired[Literal["branch", "tag"]]
+
+
+__all__ = (
+    "DeploymentBranchPolicyNamePatternWithTypeType",
+    "DeploymentBranchPolicyNamePatternWithTypeTypeForResponse",
+)

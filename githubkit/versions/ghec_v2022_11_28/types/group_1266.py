@@ -25,4 +25,19 @@ class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
     validate_: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoCodeScanningSarifsPostBodyType",)
+class ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+
+    commit_sha: str
+    ref: str
+    sarif: str
+    checkout_uri: NotRequired[str]
+    started_at: NotRequired[str]
+    tool_name: NotRequired[str]
+    validate_: NotRequired[bool]
+
+
+__all__ = (
+    "ReposOwnerRepoCodeScanningSarifsPostBodyType",
+    "ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse",
+)

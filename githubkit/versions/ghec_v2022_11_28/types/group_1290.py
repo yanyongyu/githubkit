@@ -20,6 +20,15 @@ class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Ty
     dismissal_review_id: NotRequired[int]
 
 
+class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
+
+    dismissal_review_id: NotRequired[int]
+
+
 __all__ = (
     "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type",
+    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse",
 )

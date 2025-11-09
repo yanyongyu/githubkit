@@ -18,4 +18,13 @@ class DeploymentBranchPolicyNamePatternType(TypedDict):
     name: str
 
 
-__all__ = ("DeploymentBranchPolicyNamePatternType",)
+class DeploymentBranchPolicyNamePatternTypeForResponse(TypedDict):
+    """Deployment branch policy name pattern"""
+
+    name: str
+
+
+__all__ = (
+    "DeploymentBranchPolicyNamePatternType",
+    "DeploymentBranchPolicyNamePatternTypeForResponse",
+)

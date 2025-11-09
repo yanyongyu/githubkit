@@ -14,13 +14,23 @@ from typing_extensions import TypedDict
 
 from .group_0060 import (
     AmazonS3AccessKeysConfigType,
+    AmazonS3AccessKeysConfigTypeForResponse,
     AzureBlobConfigType,
+    AzureBlobConfigTypeForResponse,
     AzureHubConfigType,
+    AzureHubConfigTypeForResponse,
     DatadogConfigType,
+    DatadogConfigTypeForResponse,
     HecConfigType,
+    HecConfigTypeForResponse,
 )
-from .group_0061 import AmazonS3OidcConfigType, SplunkConfigType
-from .group_0062 import GoogleCloudConfigType
+from .group_0061 import (
+    AmazonS3OidcConfigType,
+    AmazonS3OidcConfigTypeForResponse,
+    SplunkConfigType,
+    SplunkConfigTypeForResponse,
+)
+from .group_0062 import GoogleCloudConfigType, GoogleCloudConfigTypeForResponse
 
 
 class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType(TypedDict):
@@ -48,4 +58,32 @@ class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType(TypedDict):
     ]
 
 
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType",)
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+
+    enabled: bool
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ]
+    vendor_specific: Union[
+        AzureBlobConfigTypeForResponse,
+        AzureHubConfigTypeForResponse,
+        AmazonS3OidcConfigTypeForResponse,
+        AmazonS3AccessKeysConfigTypeForResponse,
+        SplunkConfigTypeForResponse,
+        HecConfigTypeForResponse,
+        GoogleCloudConfigTypeForResponse,
+        DatadogConfigTypeForResponse,
+    ]
+
+
+__all__ = (
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse",
+)

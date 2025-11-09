@@ -19,4 +19,14 @@ class ReposOwnerRepoGitBlobsPostBodyType(TypedDict):
     encoding: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoGitBlobsPostBodyType",)
+class ReposOwnerRepoGitBlobsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitBlobsPostBody"""
+
+    content: str
+    encoding: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoGitBlobsPostBodyType",
+    "ReposOwnerRepoGitBlobsPostBodyTypeForResponse",
+)

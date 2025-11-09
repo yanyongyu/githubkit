@@ -20,4 +20,14 @@ class SelfHostedRunnersSettingsType(TypedDict):
     selected_repositories_url: NotRequired[str]
 
 
-__all__ = ("SelfHostedRunnersSettingsType",)
+class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
+    """SelfHostedRunnersSettings"""
+
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
+
+
+__all__ = (
+    "SelfHostedRunnersSettingsType",
+    "SelfHostedRunnersSettingsTypeForResponse",
+)

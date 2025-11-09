@@ -25,7 +25,27 @@ class TagType(TypedDict):
     node_id: str
 
 
+class TagTypeForResponse(TypedDict):
+    """Tag
+
+    Tag
+    """
+
+    name: str
+    commit: TagPropCommitTypeForResponse
+    zipball_url: str
+    tarball_url: str
+    node_id: str
+
+
 class TagPropCommitType(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
+
+
+class TagPropCommitTypeForResponse(TypedDict):
     """TagPropCommit"""
 
     sha: str
@@ -34,5 +54,7 @@ class TagPropCommitType(TypedDict):
 
 __all__ = (
     "TagPropCommitType",
+    "TagPropCommitTypeForResponse",
     "TagType",
+    "TagTypeForResponse",
 )

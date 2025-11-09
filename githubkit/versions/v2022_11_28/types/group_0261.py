@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
-from .group_0095 import TeamType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0095 import TeamType, TeamTypeForResponse
 
 
 class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
@@ -30,6 +30,19 @@ class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType
     apps: NotRequired[list[Union[IntegrationType, None]]]
 
 
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+
+    url: str
+    users_url: str
+    teams_url: str
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+
+
 class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
     TypedDict
 ):
@@ -40,7 +53,19 @@ class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowanc
     apps: NotRequired[list[Union[IntegrationType, None]]]
 
 
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+
+
 __all__ = (
     "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse",
     "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse",
 )

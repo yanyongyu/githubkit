@@ -21,4 +21,16 @@ class TopicType(TypedDict):
     names: list[str]
 
 
-__all__ = ("TopicType",)
+class TopicTypeForResponse(TypedDict):
+    """Topic
+
+    A topic aggregates entities that are related to a subject.
+    """
+
+    names: list[str]
+
+
+__all__ = (
+    "TopicType",
+    "TopicTypeForResponse",
+)

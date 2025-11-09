@@ -13,11 +13,20 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0067 import CodeScanningAlertRuleSummaryType
-from .group_0068 import CodeScanningAnalysisToolType
-from .group_0069 import CodeScanningAlertInstanceType
-from .group_0070 import SimpleRepositoryType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0067 import (
+    CodeScanningAlertRuleSummaryType,
+    CodeScanningAlertRuleSummaryTypeForResponse,
+)
+from .group_0068 import (
+    CodeScanningAnalysisToolType,
+    CodeScanningAnalysisToolTypeForResponse,
+)
+from .group_0069 import (
+    CodeScanningAlertInstanceType,
+    CodeScanningAlertInstanceTypeForResponse,
+)
+from .group_0070 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
 class CodeScanningOrganizationAlertItemsType(TypedDict):
@@ -45,4 +54,32 @@ class CodeScanningOrganizationAlertItemsType(TypedDict):
     assignees: NotRequired[list[SimpleUserType]]
 
 
-__all__ = ("CodeScanningOrganizationAlertItemsType",)
+class CodeScanningOrganizationAlertItemsTypeForResponse(TypedDict):
+    """CodeScanningOrganizationAlertItems"""
+
+    number: int
+    created_at: str
+    updated_at: NotRequired[str]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[str, None]]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_at: Union[str, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryTypeForResponse
+    tool: CodeScanningAnalysisToolTypeForResponse
+    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
+    repository: SimpleRepositoryTypeForResponse
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+
+
+__all__ = (
+    "CodeScanningOrganizationAlertItemsType",
+    "CodeScanningOrganizationAlertItemsTypeForResponse",
+)

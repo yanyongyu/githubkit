@@ -22,4 +22,15 @@ class CodeScanningAutofixType(TypedDict):
     started_at: datetime
 
 
-__all__ = ("CodeScanningAutofixType",)
+class CodeScanningAutofixTypeForResponse(TypedDict):
+    """CodeScanningAutofix"""
+
+    status: Literal["pending", "error", "success", "outdated"]
+    description: Union[str, None]
+    started_at: str
+
+
+__all__ = (
+    "CodeScanningAutofixType",
+    "CodeScanningAutofixTypeForResponse",
+)

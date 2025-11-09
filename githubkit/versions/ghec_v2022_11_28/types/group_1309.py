@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0011 import WebhookConfigType
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
 
 
 class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
@@ -24,4 +24,17 @@ class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
     active: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoHooksHookIdPatchBodyType",)
+class ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
+
+    config: NotRequired[WebhookConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    add_events: NotRequired[list[str]]
+    remove_events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+__all__ = (
+    "ReposOwnerRepoHooksHookIdPatchBodyType",
+    "ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse",
+)

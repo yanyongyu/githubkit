@@ -13,10 +13,10 @@ from datetime import date, datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0044 import OrganizationSimpleType
-from .group_0080 import TeamType
-from .group_0081 import EnterpriseTeamType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0044 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
+from .group_0080 import TeamType, TeamTypeForResponse
+from .group_0081 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
 
 
 class CopilotSeatDetailsType(TypedDict):
@@ -38,4 +38,28 @@ class CopilotSeatDetailsType(TypedDict):
     plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
-__all__ = ("CopilotSeatDetailsType",)
+class CopilotSeatDetailsTypeForResponse(TypedDict):
+    """Copilot Business Seat Detail
+
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
+    """
+
+    assignee: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    organization: NotRequired[Union[None, OrganizationSimpleTypeForResponse]]
+    assigning_team: NotRequired[
+        Union[TeamTypeForResponse, EnterpriseTeamTypeForResponse, None]
+    ]
+    pending_cancellation_date: NotRequired[Union[str, None]]
+    last_activity_at: NotRequired[Union[str, None]]
+    last_activity_editor: NotRequired[Union[str, None]]
+    last_authenticated_at: NotRequired[Union[str, None]]
+    created_at: str
+    updated_at: NotRequired[str]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+
+
+__all__ = (
+    "CopilotSeatDetailsType",
+    "CopilotSeatDetailsTypeForResponse",
+)

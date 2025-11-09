@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0018 import InstallationType
+from .group_0018 import InstallationType, InstallationTypeForResponse
 
 
 class UserInstallationsGetResponse200Type(TypedDict):
@@ -21,4 +21,14 @@ class UserInstallationsGetResponse200Type(TypedDict):
     installations: list[InstallationType]
 
 
-__all__ = ("UserInstallationsGetResponse200Type",)
+class UserInstallationsGetResponse200TypeForResponse(TypedDict):
+    """UserInstallationsGetResponse200"""
+
+    total_count: int
+    installations: list[InstallationTypeForResponse]
+
+
+__all__ = (
+    "UserInstallationsGetResponse200Type",
+    "UserInstallationsGetResponse200TypeForResponse",
+)

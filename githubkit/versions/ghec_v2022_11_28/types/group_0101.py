@@ -23,4 +23,17 @@ class CustomPropertyValueType(TypedDict):
     value: Union[str, list[str], None]
 
 
-__all__ = ("CustomPropertyValueType",)
+class CustomPropertyValueTypeForResponse(TypedDict):
+    """Custom Property Value
+
+    Custom property name and associated value
+    """
+
+    property_name: str
+    value: Union[str, list[str], None]
+
+
+__all__ = (
+    "CustomPropertyValueType",
+    "CustomPropertyValueTypeForResponse",
+)

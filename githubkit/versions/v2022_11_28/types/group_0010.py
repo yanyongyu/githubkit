@@ -13,9 +13,12 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0008 import EnterpriseType
-from .group_0009 import IntegrationPropPermissionsType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
+from .group_0009 import (
+    IntegrationPropPermissionsType,
+    IntegrationPropPermissionsTypeForResponse,
+)
 
 
 class IntegrationType(TypedDict):
@@ -43,4 +46,32 @@ class IntegrationType(TypedDict):
     installations_count: NotRequired[int]
 
 
-__all__ = ("IntegrationType",)
+class IntegrationTypeForResponse(TypedDict):
+    """GitHub app
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    id: int
+    slug: NotRequired[str]
+    node_id: str
+    client_id: NotRequired[str]
+    owner: Union[SimpleUserTypeForResponse, EnterpriseTypeForResponse]
+    name: str
+    description: Union[str, None]
+    external_url: str
+    html_url: str
+    created_at: str
+    updated_at: str
+    permissions: IntegrationPropPermissionsTypeForResponse
+    events: list[str]
+    installations_count: NotRequired[int]
+
+
+__all__ = (
+    "IntegrationType",
+    "IntegrationTypeForResponse",
+)

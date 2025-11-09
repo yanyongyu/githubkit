@@ -21,7 +21,24 @@ class ExternalGroupsType(TypedDict):
     groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
 
 
+class ExternalGroupsTypeForResponse(TypedDict):
+    """ExternalGroups
+
+    A list of external groups available to be connected to a team
+    """
+
+    groups: NotRequired[list[ExternalGroupsPropGroupsItemsTypeForResponse]]
+
+
 class ExternalGroupsPropGroupsItemsType(TypedDict):
+    """ExternalGroupsPropGroupsItems"""
+
+    group_id: int
+    group_name: str
+    updated_at: str
+
+
+class ExternalGroupsPropGroupsItemsTypeForResponse(TypedDict):
     """ExternalGroupsPropGroupsItems"""
 
     group_id: int
@@ -31,5 +48,7 @@ class ExternalGroupsPropGroupsItemsType(TypedDict):
 
 __all__ = (
     "ExternalGroupsPropGroupsItemsType",
+    "ExternalGroupsPropGroupsItemsTypeForResponse",
     "ExternalGroupsType",
+    "ExternalGroupsTypeForResponse",
 )

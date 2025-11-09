@@ -23,4 +23,18 @@ class DeploymentBranchPolicySettingsType(TypedDict):
     custom_branch_policies: bool
 
 
-__all__ = ("DeploymentBranchPolicySettingsType",)
+class DeploymentBranchPolicySettingsTypeForResponse(TypedDict):
+    """DeploymentBranchPolicySettings
+
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
+    """
+
+    protected_branches: bool
+    custom_branch_policies: bool
+
+
+__all__ = (
+    "DeploymentBranchPolicySettingsType",
+    "DeploymentBranchPolicySettingsTypeForResponse",
+)

@@ -19,4 +19,13 @@ class ReposOwnerRepoIssuesIssueNumberLockPutBodyType(TypedDict):
     lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLockPutBodyType",)
+class ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+
+    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
+
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberLockPutBodyType",
+    "ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse",
+)

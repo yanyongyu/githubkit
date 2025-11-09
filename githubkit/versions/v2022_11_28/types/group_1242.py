@@ -16,4 +16,11 @@ class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
     """UserInteractionLimitsGetResponse200Anyof1"""
 
 
-__all__ = ("UserInteractionLimitsGetResponse200Anyof1Type",)
+class UserInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """UserInteractionLimitsGetResponse200Anyof1"""
+
+
+__all__ = (
+    "UserInteractionLimitsGetResponse200Anyof1Type",
+    "UserInteractionLimitsGetResponse200Anyof1TypeForResponse",
+)

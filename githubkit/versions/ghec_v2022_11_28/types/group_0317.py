@@ -22,4 +22,17 @@ class CheckAutomatedSecurityFixesType(TypedDict):
     paused: bool
 
 
-__all__ = ("CheckAutomatedSecurityFixesType",)
+class CheckAutomatedSecurityFixesTypeForResponse(TypedDict):
+    """Check Dependabot security updates
+
+    Check Dependabot security updates
+    """
+
+    enabled: bool
+    paused: bool
+
+
+__all__ = (
+    "CheckAutomatedSecurityFixesType",
+    "CheckAutomatedSecurityFixesTypeForResponse",
+)

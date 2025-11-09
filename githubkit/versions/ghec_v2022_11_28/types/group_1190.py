@@ -19,4 +19,13 @@ class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
     query_suite: NotRequired[Literal["default", "extended"]]
 
 
-__all__ = ("OrgsOrgSecurityProductEnablementPostBodyType",)
+class OrgsOrgSecurityProductEnablementPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgSecurityProductEnablementPostBody"""
+
+    query_suite: NotRequired[Literal["default", "extended"]]
+
+
+__all__ = (
+    "OrgsOrgSecurityProductEnablementPostBodyType",
+    "OrgsOrgSecurityProductEnablementPostBodyTypeForResponse",
+)

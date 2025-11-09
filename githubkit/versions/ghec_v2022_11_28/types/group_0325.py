@@ -34,4 +34,28 @@ class DiffEntryType(TypedDict):
     previous_filename: NotRequired[str]
 
 
-__all__ = ("DiffEntryType",)
+class DiffEntryTypeForResponse(TypedDict):
+    """Diff Entry
+
+    Diff Entry
+    """
+
+    sha: Union[str, None]
+    filename: str
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ]
+    additions: int
+    deletions: int
+    changes: int
+    blob_url: Union[str, None]
+    raw_url: Union[str, None]
+    contents_url: str
+    patch: NotRequired[str]
+    previous_filename: NotRequired[str]
+
+
+__all__ = (
+    "DiffEntryType",
+    "DiffEntryTypeForResponse",
+)

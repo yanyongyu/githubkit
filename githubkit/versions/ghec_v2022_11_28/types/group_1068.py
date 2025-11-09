@@ -11,7 +11,10 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0035 import ActionsHostedRunnerCuratedImageType
+from .group_0035 import (
+    ActionsHostedRunnerCuratedImageType,
+    ActionsHostedRunnerCuratedImageTypeForResponse,
+)
 
 
 class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type(TypedDict):
@@ -21,4 +24,14 @@ class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type(TypedDict):
     images: list[ActionsHostedRunnerCuratedImageType]
 
 
-__all__ = ("OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type",)
+class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
+
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
+
+
+__all__ = (
+    "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse",
+)

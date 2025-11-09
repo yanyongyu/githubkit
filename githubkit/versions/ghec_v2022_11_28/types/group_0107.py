@@ -21,4 +21,16 @@ class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType(
     exclude: NotRequired[list[str]]
 
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",)
+class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
+
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
+
+
+__all__ = (
+    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",
+    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse",
+)

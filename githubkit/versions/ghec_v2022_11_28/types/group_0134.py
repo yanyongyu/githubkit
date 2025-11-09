@@ -20,7 +20,27 @@ class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
     strict_required_status_checks_policy: bool
 
 
+class RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
+
+    do_not_enforce_on_create: NotRequired[bool]
+    required_status_checks: list[
+        RepositoryRuleParamsStatusCheckConfigurationTypeForResponse
+    ]
+    strict_required_status_checks_policy: bool
+
+
 class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
+    """StatusCheckConfiguration
+
+    Required status check
+    """
+
+    context: str
+    integration_id: NotRequired[int]
+
+
+class RepositoryRuleParamsStatusCheckConfigurationTypeForResponse(TypedDict):
     """StatusCheckConfiguration
 
     Required status check
@@ -32,5 +52,7 @@ class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
 
 __all__ = (
     "RepositoryRuleParamsStatusCheckConfigurationType",
+    "RepositoryRuleParamsStatusCheckConfigurationTypeForResponse",
     "RepositoryRuleRequiredStatusChecksPropParametersType",
+    "RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse",
 )

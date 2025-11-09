@@ -20,6 +20,12 @@ class WebhooksProjectChangesType(TypedDict):
     archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtType]
 
 
+class WebhooksProjectChangesTypeForResponse(TypedDict):
+    """WebhooksProjectChanges"""
+
+    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtTypeForResponse]
+
+
 class WebhooksProjectChangesPropArchivedAtType(TypedDict):
     """WebhooksProjectChangesPropArchivedAt"""
 
@@ -27,7 +33,16 @@ class WebhooksProjectChangesPropArchivedAtType(TypedDict):
     to: NotRequired[Union[datetime, None]]
 
 
+class WebhooksProjectChangesPropArchivedAtTypeForResponse(TypedDict):
+    """WebhooksProjectChangesPropArchivedAt"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
 __all__ = (
     "WebhooksProjectChangesPropArchivedAtType",
+    "WebhooksProjectChangesPropArchivedAtTypeForResponse",
     "WebhooksProjectChangesType",
+    "WebhooksProjectChangesTypeForResponse",
 )

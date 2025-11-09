@@ -12,8 +12,14 @@ from __future__ import annotations
 from datetime import datetime
 from typing_extensions import TypedDict
 
-from .group_0199 import RulesetVersionPropActorType
-from .group_0202 import RulesetVersionWithStateAllof1PropStateType
+from .group_0199 import (
+    RulesetVersionPropActorType,
+    RulesetVersionPropActorTypeForResponse,
+)
+from .group_0202 import (
+    RulesetVersionWithStateAllof1PropStateType,
+    RulesetVersionWithStateAllof1PropStateTypeForResponse,
+)
 
 
 class RulesetVersionWithStateType(TypedDict):
@@ -25,4 +31,16 @@ class RulesetVersionWithStateType(TypedDict):
     state: RulesetVersionWithStateAllof1PropStateType
 
 
-__all__ = ("RulesetVersionWithStateType",)
+class RulesetVersionWithStateTypeForResponse(TypedDict):
+    """RulesetVersionWithState"""
+
+    version_id: int
+    actor: RulesetVersionPropActorTypeForResponse
+    updated_at: str
+    state: RulesetVersionWithStateAllof1PropStateTypeForResponse
+
+
+__all__ = (
+    "RulesetVersionWithStateType",
+    "RulesetVersionWithStateTypeForResponse",
+)

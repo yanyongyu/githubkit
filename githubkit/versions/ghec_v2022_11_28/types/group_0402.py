@@ -27,4 +27,22 @@ class PorterAuthorType(TypedDict):
     import_url: str
 
 
-__all__ = ("PorterAuthorType",)
+class PorterAuthorTypeForResponse(TypedDict):
+    """Porter Author
+
+    Porter Author
+    """
+
+    id: int
+    remote_id: str
+    remote_name: str
+    email: str
+    name: str
+    url: str
+    import_url: str
+
+
+__all__ = (
+    "PorterAuthorType",
+    "PorterAuthorTypeForResponse",
+)

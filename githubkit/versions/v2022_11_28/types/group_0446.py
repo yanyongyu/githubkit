@@ -26,4 +26,19 @@ class KeySimpleType(TypedDict):
     last_used: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("KeySimpleType",)
+class KeySimpleTypeForResponse(TypedDict):
+    """Key Simple
+
+    Key Simple
+    """
+
+    id: int
+    key: str
+    created_at: NotRequired[str]
+    last_used: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "KeySimpleType",
+    "KeySimpleTypeForResponse",
+)

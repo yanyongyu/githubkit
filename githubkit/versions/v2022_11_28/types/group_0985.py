@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0102 import CodespaceType
+from .group_0102 import CodespaceType, CodespaceTypeForResponse
 
 
 class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
@@ -21,4 +21,14 @@ class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
     codespaces: list[CodespaceType]
 
 
-__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200Type",)
+class OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+
+    total_count: int
+    codespaces: list[CodespaceTypeForResponse]
+
+
+__all__ = (
+    "OrgsOrgMembersUsernameCodespacesGetResponse200Type",
+    "OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse",
+)

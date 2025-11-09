@@ -12,12 +12,15 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0040 import MilestoneType
-from .group_0450 import EnterpriseWebhooksType
-from .group_0452 import OrganizationSimpleWebhooksType
-from .group_0453 import RepositoryWebhooksType
-from .group_0488 import WebhooksPullRequest5Type
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0040 import MilestoneType, MilestoneTypeForResponse
+from .group_0450 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0452 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0453 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0488 import WebhooksPullRequest5Type, WebhooksPullRequest5TypeForResponse
 
 
 class WebhookPullRequestMilestonedType(TypedDict):
@@ -33,4 +36,20 @@ class WebhookPullRequestMilestonedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookPullRequestMilestonedType",)
+class WebhookPullRequestMilestonedTypeForResponse(TypedDict):
+    """pull_request milestoned event"""
+
+    action: Literal["milestoned"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    milestone: NotRequired[MilestoneTypeForResponse]
+    number: int
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pull_request: WebhooksPullRequest5TypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+__all__ = (
+    "WebhookPullRequestMilestonedType",
+    "WebhookPullRequestMilestonedTypeForResponse",
+)

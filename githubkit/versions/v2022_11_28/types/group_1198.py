@@ -19,4 +19,14 @@ class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type(TypedDict):
     url: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",)
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
+
+    message: NotRequired[str]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse",
+)

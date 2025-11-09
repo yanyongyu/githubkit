@@ -13,8 +13,14 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0384 import DeploymentBranchPolicySettingsType
-from .group_0386 import EnvironmentPropProtectionRulesItemsAnyof1Type
+from .group_0384 import (
+    DeploymentBranchPolicySettingsType,
+    DeploymentBranchPolicySettingsTypeForResponse,
+)
+from .group_0386 import (
+    EnvironmentPropProtectionRulesItemsAnyof1Type,
+    EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
+)
 
 
 class EnvironmentType(TypedDict):
@@ -44,7 +50,43 @@ class EnvironmentType(TypedDict):
     ]
 
 
+class EnvironmentTypeForResponse(TypedDict):
+    """Environment
+
+    Details of a deployment environment
+    """
+
+    id: int
+    node_id: str
+    name: str
+    url: str
+    html_url: str
+    created_at: str
+    updated_at: str
+    protection_rules: NotRequired[
+        list[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse,
+                EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
+                EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse,
+            ]
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
+    ]
+
+
 class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
+
+    id: int
+    node_id: str
+    type: str
+    wait_timer: NotRequired[int]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse(TypedDict):
     """EnvironmentPropProtectionRulesItemsAnyof0"""
 
     id: int
@@ -61,6 +103,14 @@ class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
     type: str
 
 
+class EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
+
+    id: int
+    node_id: str
+    type: str
+
+
 class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
     """ReposOwnerRepoEnvironmentsGetResponse200"""
 
@@ -68,9 +118,20 @@ class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
     environments: NotRequired[list[EnvironmentType]]
 
 
+class ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
+
+    total_count: NotRequired[int]
+    environments: NotRequired[list[EnvironmentTypeForResponse]]
+
+
 __all__ = (
     "EnvironmentPropProtectionRulesItemsAnyof0Type",
+    "EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse",
     "EnvironmentPropProtectionRulesItemsAnyof2Type",
+    "EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse",
     "EnvironmentType",
+    "EnvironmentTypeForResponse",
     "ReposOwnerRepoEnvironmentsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse",
 )

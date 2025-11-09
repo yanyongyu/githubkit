@@ -12,8 +12,14 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0318 import ProtectedBranchPullRequestReviewType
-from .group_0320 import BranchRestrictionPolicyType
+from .group_0318 import (
+    ProtectedBranchPullRequestReviewType,
+    ProtectedBranchPullRequestReviewTypeForResponse,
+)
+from .group_0320 import (
+    BranchRestrictionPolicyType,
+    BranchRestrictionPolicyTypeForResponse,
+)
 
 
 class BranchProtectionType(TypedDict):
@@ -42,7 +48,51 @@ class BranchProtectionType(TypedDict):
     allow_fork_syncing: NotRequired[BranchProtectionPropAllowForkSyncingType]
 
 
+class BranchProtectionTypeForResponse(TypedDict):
+    """Branch Protection
+
+    Branch Protection
+    """
+
+    url: NotRequired[str]
+    enabled: NotRequired[bool]
+    required_status_checks: NotRequired[
+        ProtectedBranchRequiredStatusCheckTypeForResponse
+    ]
+    enforce_admins: NotRequired[ProtectedBranchAdminEnforcedTypeForResponse]
+    required_pull_request_reviews: NotRequired[
+        ProtectedBranchPullRequestReviewTypeForResponse
+    ]
+    restrictions: NotRequired[BranchRestrictionPolicyTypeForResponse]
+    required_linear_history: NotRequired[
+        BranchProtectionPropRequiredLinearHistoryTypeForResponse
+    ]
+    allow_force_pushes: NotRequired[BranchProtectionPropAllowForcePushesTypeForResponse]
+    allow_deletions: NotRequired[BranchProtectionPropAllowDeletionsTypeForResponse]
+    block_creations: NotRequired[BranchProtectionPropBlockCreationsTypeForResponse]
+    required_conversation_resolution: NotRequired[
+        BranchProtectionPropRequiredConversationResolutionTypeForResponse
+    ]
+    name: NotRequired[str]
+    protection_url: NotRequired[str]
+    required_signatures: NotRequired[
+        BranchProtectionPropRequiredSignaturesTypeForResponse
+    ]
+    lock_branch: NotRequired[BranchProtectionPropLockBranchTypeForResponse]
+    allow_fork_syncing: NotRequired[BranchProtectionPropAllowForkSyncingTypeForResponse]
+
+
 class ProtectedBranchAdminEnforcedType(TypedDict):
+    """Protected Branch Admin Enforced
+
+    Protected Branch Admin Enforced
+    """
+
+    url: str
+    enabled: bool
+
+
+class ProtectedBranchAdminEnforcedTypeForResponse(TypedDict):
     """Protected Branch Admin Enforced
 
     Protected Branch Admin Enforced
@@ -58,7 +108,19 @@ class BranchProtectionPropRequiredLinearHistoryType(TypedDict):
     enabled: NotRequired[bool]
 
 
+class BranchProtectionPropRequiredLinearHistoryTypeForResponse(TypedDict):
+    """BranchProtectionPropRequiredLinearHistory"""
+
+    enabled: NotRequired[bool]
+
+
 class BranchProtectionPropAllowForcePushesType(TypedDict):
+    """BranchProtectionPropAllowForcePushes"""
+
+    enabled: NotRequired[bool]
+
+
+class BranchProtectionPropAllowForcePushesTypeForResponse(TypedDict):
     """BranchProtectionPropAllowForcePushes"""
 
     enabled: NotRequired[bool]
@@ -70,7 +132,19 @@ class BranchProtectionPropAllowDeletionsType(TypedDict):
     enabled: NotRequired[bool]
 
 
+class BranchProtectionPropAllowDeletionsTypeForResponse(TypedDict):
+    """BranchProtectionPropAllowDeletions"""
+
+    enabled: NotRequired[bool]
+
+
 class BranchProtectionPropBlockCreationsType(TypedDict):
+    """BranchProtectionPropBlockCreations"""
+
+    enabled: NotRequired[bool]
+
+
+class BranchProtectionPropBlockCreationsTypeForResponse(TypedDict):
     """BranchProtectionPropBlockCreations"""
 
     enabled: NotRequired[bool]
@@ -82,7 +156,20 @@ class BranchProtectionPropRequiredConversationResolutionType(TypedDict):
     enabled: NotRequired[bool]
 
 
+class BranchProtectionPropRequiredConversationResolutionTypeForResponse(TypedDict):
+    """BranchProtectionPropRequiredConversationResolution"""
+
+    enabled: NotRequired[bool]
+
+
 class BranchProtectionPropRequiredSignaturesType(TypedDict):
+    """BranchProtectionPropRequiredSignatures"""
+
+    url: str
+    enabled: bool
+
+
+class BranchProtectionPropRequiredSignaturesTypeForResponse(TypedDict):
     """BranchProtectionPropRequiredSignatures"""
 
     url: str
@@ -99,7 +186,27 @@ class BranchProtectionPropLockBranchType(TypedDict):
     enabled: NotRequired[bool]
 
 
+class BranchProtectionPropLockBranchTypeForResponse(TypedDict):
+    """BranchProtectionPropLockBranch
+
+    Whether to set the branch as read-only. If this is true, users will not be able
+    to push to the branch.
+    """
+
+    enabled: NotRequired[bool]
+
+
 class BranchProtectionPropAllowForkSyncingType(TypedDict):
+    """BranchProtectionPropAllowForkSyncing
+
+    Whether users can pull changes from upstream when the branch is locked. Set to
+    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class BranchProtectionPropAllowForkSyncingTypeForResponse(TypedDict):
     """BranchProtectionPropAllowForkSyncing
 
     Whether users can pull changes from upstream when the branch is locked. Set to
@@ -123,7 +230,28 @@ class ProtectedBranchRequiredStatusCheckType(TypedDict):
     strict: NotRequired[bool]
 
 
+class ProtectedBranchRequiredStatusCheckTypeForResponse(TypedDict):
+    """Protected Branch Required Status Check
+
+    Protected Branch Required Status Check
+    """
+
+    url: NotRequired[str]
+    enforcement_level: NotRequired[str]
+    contexts: list[str]
+    checks: list[ProtectedBranchRequiredStatusCheckPropChecksItemsTypeForResponse]
+    contexts_url: NotRequired[str]
+    strict: NotRequired[bool]
+
+
 class ProtectedBranchRequiredStatusCheckPropChecksItemsType(TypedDict):
+    """ProtectedBranchRequiredStatusCheckPropChecksItems"""
+
+    context: str
+    app_id: Union[int, None]
+
+
+class ProtectedBranchRequiredStatusCheckPropChecksItemsTypeForResponse(TypedDict):
     """ProtectedBranchRequiredStatusCheckPropChecksItems"""
 
     context: str
@@ -132,15 +260,27 @@ class ProtectedBranchRequiredStatusCheckPropChecksItemsType(TypedDict):
 
 __all__ = (
     "BranchProtectionPropAllowDeletionsType",
+    "BranchProtectionPropAllowDeletionsTypeForResponse",
     "BranchProtectionPropAllowForcePushesType",
+    "BranchProtectionPropAllowForcePushesTypeForResponse",
     "BranchProtectionPropAllowForkSyncingType",
+    "BranchProtectionPropAllowForkSyncingTypeForResponse",
     "BranchProtectionPropBlockCreationsType",
+    "BranchProtectionPropBlockCreationsTypeForResponse",
     "BranchProtectionPropLockBranchType",
+    "BranchProtectionPropLockBranchTypeForResponse",
     "BranchProtectionPropRequiredConversationResolutionType",
+    "BranchProtectionPropRequiredConversationResolutionTypeForResponse",
     "BranchProtectionPropRequiredLinearHistoryType",
+    "BranchProtectionPropRequiredLinearHistoryTypeForResponse",
     "BranchProtectionPropRequiredSignaturesType",
+    "BranchProtectionPropRequiredSignaturesTypeForResponse",
     "BranchProtectionType",
+    "BranchProtectionTypeForResponse",
     "ProtectedBranchAdminEnforcedType",
+    "ProtectedBranchAdminEnforcedTypeForResponse",
     "ProtectedBranchRequiredStatusCheckPropChecksItemsType",
+    "ProtectedBranchRequiredStatusCheckPropChecksItemsTypeForResponse",
     "ProtectedBranchRequiredStatusCheckType",
+    "ProtectedBranchRequiredStatusCheckTypeForResponse",
 )

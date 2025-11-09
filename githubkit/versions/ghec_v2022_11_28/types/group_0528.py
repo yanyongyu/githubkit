@@ -12,7 +12,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing_extensions import TypedDict
 
-from .group_0020 import RepositoryType
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
 class StarredRepositoryType(TypedDict):
@@ -25,4 +25,17 @@ class StarredRepositoryType(TypedDict):
     repo: RepositoryType
 
 
-__all__ = ("StarredRepositoryType",)
+class StarredRepositoryTypeForResponse(TypedDict):
+    """Starred Repository
+
+    Starred Repository
+    """
+
+    starred_at: str
+    repo: RepositoryTypeForResponse
+
+
+__all__ = (
+    "StarredRepositoryType",
+    "StarredRepositoryTypeForResponse",
+)

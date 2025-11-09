@@ -31,4 +31,25 @@ class CheckAnnotationType(TypedDict):
     blob_href: str
 
 
-__all__ = ("CheckAnnotationType",)
+class CheckAnnotationTypeForResponse(TypedDict):
+    """Check Annotation
+
+    Check Annotation
+    """
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: Union[int, None]
+    end_column: Union[int, None]
+    annotation_level: Union[str, None]
+    title: Union[str, None]
+    message: Union[str, None]
+    raw_details: Union[str, None]
+    blob_href: str
+
+
+__all__ = (
+    "CheckAnnotationType",
+    "CheckAnnotationTypeForResponse",
+)

@@ -31,4 +31,26 @@ class ClassroomAssignmentGradeType(TypedDict):
     group_name: NotRequired[str]
 
 
-__all__ = ("ClassroomAssignmentGradeType",)
+class ClassroomAssignmentGradeTypeForResponse(TypedDict):
+    """Classroom Assignment Grade
+
+    Grade for a student or groups GitHub Classroom assignment
+    """
+
+    assignment_name: str
+    assignment_url: str
+    starter_code_url: str
+    github_username: str
+    roster_identifier: str
+    student_repository_name: str
+    student_repository_url: str
+    submission_timestamp: str
+    points_awarded: int
+    points_available: int
+    group_name: NotRequired[str]
+
+
+__all__ = (
+    "ClassroomAssignmentGradeType",
+    "ClassroomAssignmentGradeTypeForResponse",
+)

@@ -25,4 +25,20 @@ class WebhooksWorkflowJobRunType(TypedDict):
     updated_at: str
 
 
-__all__ = ("WebhooksWorkflowJobRunType",)
+class WebhooksWorkflowJobRunTypeForResponse(TypedDict):
+    """WebhooksWorkflowJobRun"""
+
+    conclusion: None
+    created_at: str
+    environment: str
+    html_url: str
+    id: int
+    name: None
+    status: str
+    updated_at: str
+
+
+__all__ = (
+    "WebhooksWorkflowJobRunType",
+    "WebhooksWorkflowJobRunTypeForResponse",
+)

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0379 import MetadataType
+from .group_0379 import MetadataType, MetadataTypeForResponse
 
 
 class DependencyType(TypedDict):
@@ -25,4 +25,17 @@ class DependencyType(TypedDict):
     dependencies: NotRequired[list[str]]
 
 
-__all__ = ("DependencyType",)
+class DependencyTypeForResponse(TypedDict):
+    """Dependency"""
+
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataTypeForResponse]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
+
+
+__all__ = (
+    "DependencyType",
+    "DependencyTypeForResponse",
+)

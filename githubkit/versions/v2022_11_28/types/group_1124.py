@@ -20,4 +20,15 @@ class ReposOwnerRepoForksPostBodyType(TypedDict):
     default_branch_only: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoForksPostBodyType",)
+class ReposOwnerRepoForksPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoForksPostBody"""
+
+    organization: NotRequired[str]
+    name: NotRequired[str]
+    default_branch_only: NotRequired[bool]
+
+
+__all__ = (
+    "ReposOwnerRepoForksPostBodyType",
+    "ReposOwnerRepoForksPostBodyTypeForResponse",
+)

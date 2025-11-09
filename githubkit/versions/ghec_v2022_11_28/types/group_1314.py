@@ -19,4 +19,13 @@ class ReposOwnerRepoImportLfsPatchBodyType(TypedDict):
     use_lfs: Literal["opt_in", "opt_out"]
 
 
-__all__ = ("ReposOwnerRepoImportLfsPatchBodyType",)
+class ReposOwnerRepoImportLfsPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportLfsPatchBody"""
+
+    use_lfs: Literal["opt_in", "opt_out"]
+
+
+__all__ = (
+    "ReposOwnerRepoImportLfsPatchBodyType",
+    "ReposOwnerRepoImportLfsPatchBodyTypeForResponse",
+)

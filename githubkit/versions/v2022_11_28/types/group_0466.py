@@ -22,4 +22,17 @@ class WebhooksRepositoriesItemsType(TypedDict):
     private: bool
 
 
-__all__ = ("WebhooksRepositoriesItemsType",)
+class WebhooksRepositoriesItemsTypeForResponse(TypedDict):
+    """WebhooksRepositoriesItems"""
+
+    full_name: str
+    id: int
+    name: str
+    node_id: str
+    private: bool
+
+
+__all__ = (
+    "WebhooksRepositoriesItemsType",
+    "WebhooksRepositoriesItemsTypeForResponse",
+)

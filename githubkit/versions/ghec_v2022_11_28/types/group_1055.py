@@ -11,7 +11,10 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0217 import OrganizationCustomRepositoryRoleType
+from .group_0217 import (
+    OrganizationCustomRepositoryRoleType,
+    OrganizationCustomRepositoryRoleTypeForResponse,
+)
 
 
 class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
@@ -21,4 +24,14 @@ class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
     custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
 
 
-__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200Type",)
+class OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse(TypedDict):
+    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
+
+
+__all__ = (
+    "OrganizationsOrganizationIdCustomRolesGetResponse200Type",
+    "OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse",
+)

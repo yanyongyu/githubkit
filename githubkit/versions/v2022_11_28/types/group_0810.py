@@ -18,4 +18,13 @@ class WebhookSecretScanningAlertLocationCreatedFormEncodedType(TypedDict):
     payload: str
 
 
-__all__ = ("WebhookSecretScanningAlertLocationCreatedFormEncodedType",)
+class WebhookSecretScanningAlertLocationCreatedFormEncodedTypeForResponse(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
+
+    payload: str
+
+
+__all__ = (
+    "WebhookSecretScanningAlertLocationCreatedFormEncodedType",
+    "WebhookSecretScanningAlertLocationCreatedFormEncodedTypeForResponse",
+)

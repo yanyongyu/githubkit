@@ -21,4 +21,16 @@ class RateLimitType(TypedDict):
     used: int
 
 
-__all__ = ("RateLimitType",)
+class RateLimitTypeForResponse(TypedDict):
+    """Rate Limit"""
+
+    limit: int
+    remaining: int
+    reset: int
+    used: int
+
+
+__all__ = (
+    "RateLimitType",
+    "RateLimitTypeForResponse",
+)

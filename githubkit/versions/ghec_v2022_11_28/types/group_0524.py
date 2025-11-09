@@ -30,4 +30,23 @@ class KeyType(TypedDict):
     last_used: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("KeyType",)
+class KeyTypeForResponse(TypedDict):
+    """Key
+
+    Key
+    """
+
+    key: str
+    id: int
+    url: str
+    title: str
+    created_at: str
+    verified: bool
+    read_only: bool
+    last_used: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "KeyType",
+    "KeyTypeForResponse",
+)

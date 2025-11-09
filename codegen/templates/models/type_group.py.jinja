@@ -13,24 +13,41 @@ from __future__ import annotations
 {% endfor %}
 
 {% for model in group.model_dependencies %}
-from .{{ group_name(group.get_dependency_by_model(model), groups) }} import {{ model.class_name }}Type
+from .{{ group_name(group.get_dependency_by_model(model), groups) }} import {{ model.get_param_type_string() }}, {{ model.get_response_type_string() }}
 {% endfor %}
 
 {# model #}
 {% for model in group.models %}
 
+{# generate model type #}
 {# if model has no property and allows extra properties #}
 {# we treat it as arbitrary dict #}
 {# TODO: PEP728 TypedDict with extra items #}
 {% if not model.properties and model.allow_extra %}
-{{ model.class_name }}Type: TypeAlias = dict[str, Any]
+{{ model.get_param_type_string() }}: TypeAlias = dict[str, Any]
 {{ build_model_docstring(model) }}
 {% else %}
-class {{ model.class_name }}Type(TypedDict):
+class {{ model.get_param_type_string() }}(TypedDict):
     {{ build_model_docstring(model) | indent(4) }}
 
     {% for prop in model.properties %}
-    {{ prop.get_type_defination() }}
+    {{ prop.get_type_definition() }}
+    {% endfor %}
+{% endif %}
+
+{# generate model type for response #}
+{# if model has no property and allows extra properties #}
+{# we treat it as arbitrary dict #}
+{# TODO: PEP728 TypedDict with extra items #}
+{% if not model.properties and model.allow_extra %}
+{{ model.get_response_type_string() }}: TypeAlias = dict[str, Any]
+{{ build_model_docstring(model) }}
+{% else %}
+class {{ model.get_response_type_string() }}(TypedDict):
+    {{ build_model_docstring(model) | indent(4) }}
+
+    {% for prop in model.properties %}
+    {{ prop.get_response_type_definition() }}
     {% endfor %}
 {% endif %}
 
@@ -38,6 +55,7 @@ class {{ model.class_name }}Type(TypedDict):
 
 __all__ = (
   {% for model in group.models %}
-  "{{ model.class_name }}Type",
+  "{{ model.get_param_type_string() }}",
+  "{{ model.get_response_type_string() }}",
   {% endfor %}
 )

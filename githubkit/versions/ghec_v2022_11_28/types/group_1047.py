@@ -18,4 +18,13 @@ class GistsGistIdCommentsPostBodyType(TypedDict):
     body: str
 
 
-__all__ = ("GistsGistIdCommentsPostBodyType",)
+class GistsGistIdCommentsPostBodyTypeForResponse(TypedDict):
+    """GistsGistIdCommentsPostBody"""
+
+    body: str
+
+
+__all__ = (
+    "GistsGistIdCommentsPostBodyType",
+    "GistsGistIdCommentsPostBodyTypeForResponse",
+)

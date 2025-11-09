@@ -24,6 +24,18 @@ class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdReposi
     repositories: NotRequired[list[str]]
 
 
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    PatchBody
+    """
+
+    repository_selection: Literal["all", "selected"]
+    repositories: NotRequired[list[str]]
+
+
 __all__ = (
     "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyTypeForResponse",
 )

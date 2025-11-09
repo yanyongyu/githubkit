@@ -23,4 +23,18 @@ class AccessibleRepositoryType(TypedDict):
     full_name: str
 
 
-__all__ = ("AccessibleRepositoryType",)
+class AccessibleRepositoryTypeForResponse(TypedDict):
+    """Accessible Repository
+
+    A repository that may be made accessible to a GitHub App.
+    """
+
+    id: int
+    name: str
+    full_name: str
+
+
+__all__ = (
+    "AccessibleRepositoryType",
+    "AccessibleRepositoryTypeForResponse",
+)

@@ -20,4 +20,16 @@ class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType(TypedDic
     event: NotRequired[Literal["DISMISS"]]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType",)
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
+
+    message: str
+    event: NotRequired[Literal["DISMISS"]]
+
+
+__all__ = (
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse",
+)

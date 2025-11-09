@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType
-from .group_0010 import IntegrationType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
 class StateChangeIssueEventType(TypedDict):
@@ -34,4 +34,25 @@ class StateChangeIssueEventType(TypedDict):
     state_reason: NotRequired[Union[str, None]]
 
 
-__all__ = ("StateChangeIssueEventType",)
+class StateChangeIssueEventTypeForResponse(TypedDict):
+    """State Change Issue Event
+
+    State Change Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    state_reason: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "StateChangeIssueEventType",
+    "StateChangeIssueEventTypeForResponse",
+)

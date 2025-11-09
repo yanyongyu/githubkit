@@ -23,4 +23,18 @@ class UserSocialAccountsPostBodyType(TypedDict):
     account_urls: list[str]
 
 
-__all__ = ("UserSocialAccountsPostBodyType",)
+class UserSocialAccountsPostBodyTypeForResponse(TypedDict):
+    """UserSocialAccountsPostBody
+
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str]
+
+
+__all__ = (
+    "UserSocialAccountsPostBodyType",
+    "UserSocialAccountsPostBodyTypeForResponse",
+)

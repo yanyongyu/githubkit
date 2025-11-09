@@ -19,4 +19,14 @@ class OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType(TypedDict):
     body: NotRequired[str]
 
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType",)
+class OrgsOrgProjectsV2ProjectNumberDraftsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
+
+    title: str
+    body: NotRequired[str]
+
+
+__all__ = (
+    "OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType",
+    "OrgsOrgProjectsV2ProjectNumberDraftsPostBodyTypeForResponse",
+)

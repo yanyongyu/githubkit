@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0017 import AppPermissionsType
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
 class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
@@ -22,4 +22,15 @@ class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
     permissions: NotRequired[AppPermissionsType]
 
 
-__all__ = ("AppInstallationsInstallationIdAccessTokensPostBodyType",)
+class AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse(TypedDict):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
+
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsTypeForResponse]
+
+
+__all__ = (
+    "AppInstallationsInstallationIdAccessTokensPostBodyType",
+    "AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse",
+)
