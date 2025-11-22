@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -44,7 +44,7 @@ class WebhookForkPropForkeeType(TypedDict):
     compare_url: str
     contents_url: str
     contributors_url: str
-    created_at: datetime
+    created_at: _dt.datetime
     default_branch: str
     delete_branch_on_merge: NotRequired[bool]
     deployments_url: str
@@ -94,7 +94,7 @@ class WebhookForkPropForkeeType(TypedDict):
     private: bool
     public: NotRequired[bool]
     pulls_url: str
-    pushed_at: datetime
+    pushed_at: _dt.datetime
     releases_url: str
     role_name: NotRequired[Union[str, None]]
     size: int
@@ -110,7 +110,7 @@ class WebhookForkPropForkeeType(TypedDict):
     teams_url: str
     topics: list[str]
     trees_url: str
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
     visibility: Literal["public", "private", "internal"]
     watchers: int

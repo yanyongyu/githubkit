@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -55,10 +55,10 @@ class PullRequestWebhook(GitHubModel):
     labels: list[PullRequestPropLabelsItems] = Field()
     milestone: Union[None, Milestone] = Field()
     active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
-    merged_at: Union[datetime, None] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
     merge_commit_sha: Union[str, None] = Field()
     assignee: Union[None, SimpleUser] = Field()
     assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -39,12 +39,12 @@ class Workflow(GitHubModel):
     state: Literal[
         "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
     ] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     html_url: str = Field()
     badge_url: str = Field()
-    deleted_at: Missing[datetime] = Field(default=UNSET)
+    deleted_at: Missing[_dt.datetime] = Field(default=UNSET)
 
 
 model_rebuild(ReposOwnerRepoActionsWorkflowsGetResponse200)

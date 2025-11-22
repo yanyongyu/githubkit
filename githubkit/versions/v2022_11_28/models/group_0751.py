@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -83,7 +83,7 @@ class WebhookPullRequestReviewCommentCreatedPropComment(GitHubModel):
     commit_id: str = Field(
         description="The SHA of the commit to which the comment applies."
     )
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     diff_hunk: str = Field(
         description="The diff of the line that the comment refers to."
     )
@@ -137,7 +137,7 @@ class WebhookPullRequestReviewCommentCreatedPropComment(GitHubModel):
         default=UNSET,
         description="The level at which the comment is targeted, can be a diff line or a file.",
     )
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the pull request review comment")
     user: Union[WebhookPullRequestReviewCommentCreatedPropCommentPropUser, None] = (
         Field(title="User")
@@ -436,15 +436,15 @@ class WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestone(GitHubM
     A collection of related issues and pull requests.
     """
 
-    closed_at: Union[datetime, None] = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
     closed_issues: int = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     creator: Union[
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestonePropCreator,
         None,
     ] = Field(title="User")
     description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
     html_url: str = Field()
     id: int = Field()
     labels_url: str = Field()
@@ -453,7 +453,7 @@ class WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestone(GitHubM
     open_issues: int = Field()
     state: Literal["open", "closed"] = Field(description="The state of the milestone.")
     title: str = Field(description="The title of the milestone.")
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
 
 
@@ -722,7 +722,7 @@ class WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepo(
     compare_url: str = Field()
     contents_url: str = Field()
     contributors_url: str = Field()
-    created_at: Union[int, datetime] = Field()
+    created_at: Union[int, _dt.datetime] = Field()
     default_branch: str = Field(description="The default branch of the repository.")
     delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,
@@ -800,7 +800,7 @@ class WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepo(
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
     pulls_url: str = Field()
-    pushed_at: Union[int, datetime, None] = Field()
+    pushed_at: Union[int, _dt.datetime, None] = Field()
     releases_url: str = Field()
     role_name: Missing[Union[str, None]] = Field(default=UNSET)
     size: int = Field()
@@ -828,7 +828,7 @@ class WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepo(
     teams_url: str = Field()
     topics: list[str] = Field()
     trees_url: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     use_squash_pr_title_as_default: Missing[bool] = Field(
         default=UNSET,
@@ -950,7 +950,7 @@ class WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepo(
     compare_url: str = Field()
     contents_url: str = Field()
     contributors_url: str = Field()
-    created_at: Union[int, datetime] = Field()
+    created_at: Union[int, _dt.datetime] = Field()
     default_branch: str = Field(description="The default branch of the repository.")
     delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,
@@ -1028,7 +1028,7 @@ class WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepo(
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
     pulls_url: str = Field()
-    pushed_at: Union[int, datetime, None] = Field()
+    pushed_at: Union[int, _dt.datetime, None] = Field()
     releases_url: str = Field()
     role_name: Missing[Union[str, None]] = Field(default=UNSET)
     size: int = Field()
@@ -1056,7 +1056,7 @@ class WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepo(
     teams_url: str = Field()
     topics: list[str] = Field()
     trees_url: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     use_squash_pr_title_as_default: Missing[bool] = Field(
         default=UNSET,

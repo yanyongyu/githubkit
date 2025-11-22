@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -24,7 +24,7 @@ class CodeScanningAutofix(GitHubModel):
         description="The status of an autofix."
     )
     description: Union[str, None] = Field(description="The description of an autofix.")
-    started_at: datetime = Field(
+    started_at: _dt.datetime = Field(
         description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
 

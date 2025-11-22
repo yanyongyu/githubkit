@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
@@ -27,7 +27,7 @@ class ActivityType(TypedDict):
     before: str
     after: str
     ref: str
-    timestamp: datetime
+    timestamp: _dt.datetime
     activity_type: Literal[
         "push",
         "force_push",

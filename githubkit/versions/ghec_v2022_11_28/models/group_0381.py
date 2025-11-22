@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -33,10 +33,10 @@ class Environment(GitHubModel):
     name: str = Field(description="The name of the environment.")
     url: str = Field()
     html_url: str = Field()
-    created_at: datetime = Field(
+    created_at: _dt.datetime = Field(
         description="The time that the environment was created, in ISO 8601 format."
     )
-    updated_at: datetime = Field(
+    updated_at: _dt.datetime = Field(
         description="The time that the environment was last updated, in ISO 8601 format."
     )
     protection_rules: Missing[

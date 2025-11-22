@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -28,8 +28,8 @@ class OrganizationCustomRepositoryRoleType(TypedDict):
     base_role: Literal["read", "triage", "write", "maintain"]
     permissions: list[str]
     organization: SimpleUserType
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
 class OrganizationCustomRepositoryRoleTypeForResponse(TypedDict):

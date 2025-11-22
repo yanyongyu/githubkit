@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -48,15 +48,15 @@ class CodeScanningVariantAnalysis(GitHubModel):
         "swift",
     ] = Field(description="The language targeted by the CodeQL query")
     query_pack_url: str = Field(description="The download url for the query pack.")
-    created_at: Missing[datetime] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="The date and time at which the variant analysis was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
     )
-    updated_at: Missing[datetime] = Field(
+    updated_at: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="The date and time at which the variant analysis was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
     )
-    completed_at: Missing[Union[datetime, None]] = Field(
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The date and time at which the variant analysis was completed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the variant analysis has not yet completed or this information is not available.",
     )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -24,7 +24,7 @@ class WebhooksProject(GitHubModel):
 
     body: Union[str, None] = Field(description="Body of the project")
     columns_url: str = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     creator: Union[WebhooksProjectPropCreator, None] = Field(title="User")
     html_url: str = Field()
     id: int = Field()
@@ -35,7 +35,7 @@ class WebhooksProject(GitHubModel):
     state: Literal["open", "closed"] = Field(
         description="State of the project; either 'open' or 'closed'"
     )
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
 
 

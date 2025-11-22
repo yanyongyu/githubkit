@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -45,7 +45,7 @@ class Discussion(GitHubModel):
     body: str = Field()
     category: DiscussionPropCategory = Field()
     comments: int = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     html_url: str = Field()
     id: int = Field()
     locked: bool = Field()
@@ -63,7 +63,7 @@ class Discussion(GitHubModel):
     ] = Field(description="The reason for the current state")
     timeline_url: Missing[str] = Field(default=UNSET)
     title: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     user: Union[DiscussionPropUser, None] = Field(title="User")
     labels: Missing[list[Label]] = Field(default=UNSET)
 
@@ -120,7 +120,7 @@ class DiscussionPropAnswerChosenBy(GitHubModel):
 class DiscussionPropCategory(GitHubModel):
     """DiscussionPropCategory"""
 
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     description: str = Field()
     emoji: str = Field()
     id: int = Field()

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Any, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
@@ -22,7 +22,7 @@ class HookDeliveryType(TypedDict):
 
     id: int
     guid: str
-    delivered_at: datetime
+    delivered_at: _dt.datetime
     redelivery: bool
     duration: float
     status: str
@@ -31,7 +31,7 @@ class HookDeliveryType(TypedDict):
     action: Union[str, None]
     installation_id: Union[int, None]
     repository_id: Union[int, None]
-    throttled_at: NotRequired[Union[datetime, None]]
+    throttled_at: NotRequired[Union[_dt.datetime, None]]
     url: NotRequired[str]
     request: HookDeliveryPropRequestType
     response: HookDeliveryPropResponseType

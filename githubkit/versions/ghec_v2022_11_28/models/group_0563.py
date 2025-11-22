@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -28,8 +28,8 @@ class WebhooksProjectChanges(GitHubModel):
 class WebhooksProjectChangesPropArchivedAt(GitHubModel):
     """WebhooksProjectChangesPropArchivedAt"""
 
-    from_: Missing[Union[datetime, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[datetime, None]] = Field(default=UNSET)
+    from_: Missing[Union[_dt.datetime, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
 model_rebuild(WebhooksProjectChanges)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -101,9 +101,9 @@ class MinimalRepository(GitHubModel):
     archived: Missing[bool] = Field(default=UNSET)
     disabled: Missing[bool] = Field(default=UNSET)
     visibility: Missing[str] = Field(default=UNSET)
-    pushed_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    created_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    pushed_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    created_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
     permissions: Missing[MinimalRepositoryPropPermissions] = Field(default=UNSET)
     role_name: Missing[str] = Field(default=UNSET)
     temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -52,9 +52,9 @@ class CodespaceWithFullRepository(GitHubModel):
     prebuild: Union[bool, None] = Field(
         description="Whether the codespace was created from a prebuild."
     )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    last_used_at: datetime = Field(
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    last_used_at: _dt.datetime = Field(
         description="Last known time this codespace was started."
     )
     state: Literal[
@@ -119,7 +119,7 @@ class CodespaceWithFullRepository(GitHubModel):
         default=UNSET,
         description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
     )
-    retention_expires_at: Missing[Union[datetime, None]] = Field(
+    retention_expires_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description='When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"',
     )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -37,8 +37,8 @@ class PullRequestReviewCommentType(TypedDict):
     in_reply_to_id: NotRequired[int]
     user: SimpleUserType
     body: str
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     html_url: str
     pull_request_url: str
     author_association: Literal[

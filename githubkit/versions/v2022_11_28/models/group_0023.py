@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -39,12 +39,12 @@ class Authorization(GitHubModel):
     app: AuthorizationPropApp = Field()
     note: Union[str, None] = Field()
     note_url: Union[str, None] = Field()
-    updated_at: datetime = Field()
-    created_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
+    created_at: _dt.datetime = Field()
     fingerprint: Union[str, None] = Field()
     user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
     installation: Missing[Union[None, ScopedInstallation]] = Field(default=UNSET)
-    expires_at: Union[datetime, None] = Field()
+    expires_at: Union[_dt.datetime, None] = Field()
 
 
 class AuthorizationPropApp(GitHubModel):

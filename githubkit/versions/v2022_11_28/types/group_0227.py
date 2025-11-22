@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -43,9 +43,9 @@ class JobType(TypedDict):
             "action_required",
         ],
     ]
-    created_at: datetime
-    started_at: datetime
-    completed_at: Union[datetime, None]
+    created_at: _dt.datetime
+    started_at: _dt.datetime
+    completed_at: Union[_dt.datetime, None]
     name: str
     steps: NotRequired[list[JobPropStepsItemsType]]
     check_run_url: str
@@ -109,8 +109,8 @@ class JobPropStepsItemsType(TypedDict):
     conclusion: Union[str, None]
     name: str
     number: int
-    started_at: NotRequired[Union[datetime, None]]
-    completed_at: NotRequired[Union[datetime, None]]
+    started_at: NotRequired[Union[_dt.datetime, None]]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
 
 
 class JobPropStepsItemsTypeForResponse(TypedDict):

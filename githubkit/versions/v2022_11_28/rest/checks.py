@@ -20,7 +20,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -104,7 +104,7 @@ class ChecksClient:
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
         status: Literal["completed"],
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         conclusion: Literal[
             "action_required",
             "cancelled",
@@ -115,7 +115,7 @@ class ChecksClient:
             "stale",
             "timed_out",
         ],
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
         actions: Missing[
             list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
@@ -138,7 +138,7 @@ class ChecksClient:
         status: Missing[
             Literal["queued", "in_progress", "waiting", "requested", "pending"]
         ] = UNSET,
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         conclusion: Missing[
             Literal[
                 "action_required",
@@ -151,7 +151,7 @@ class ChecksClient:
                 "timed_out",
             ]
         ] = UNSET,
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
         actions: Missing[
             list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
@@ -253,7 +253,7 @@ class ChecksClient:
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
         status: Literal["completed"],
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         conclusion: Literal[
             "action_required",
             "cancelled",
@@ -264,7 +264,7 @@ class ChecksClient:
             "stale",
             "timed_out",
         ],
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
         actions: Missing[
             list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
@@ -287,7 +287,7 @@ class ChecksClient:
         status: Missing[
             Literal["queued", "in_progress", "waiting", "requested", "pending"]
         ] = UNSET,
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         conclusion: Missing[
             Literal[
                 "action_required",
@@ -300,7 +300,7 @@ class ChecksClient:
                 "timed_out",
             ]
         ] = UNSET,
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[ReposOwnerRepoCheckRunsPostBodyPropOutputType] = UNSET,
         actions: Missing[
             list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
@@ -476,7 +476,7 @@ class ChecksClient:
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         status: Missing[Literal["completed"]] = UNSET,
         conclusion: Literal[
             "action_required",
@@ -488,7 +488,7 @@ class ChecksClient:
             "stale",
             "timed_out",
         ],
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
         ] = UNSET,
@@ -510,7 +510,7 @@ class ChecksClient:
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         status: Missing[Literal["queued", "in_progress"]] = UNSET,
         conclusion: Missing[
             Literal[
@@ -524,7 +524,7 @@ class ChecksClient:
                 "timed_out",
             ]
         ] = UNSET,
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
         ] = UNSET,
@@ -627,7 +627,7 @@ class ChecksClient:
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         status: Missing[Literal["completed"]] = UNSET,
         conclusion: Literal[
             "action_required",
@@ -639,7 +639,7 @@ class ChecksClient:
             "stale",
             "timed_out",
         ],
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
         ] = UNSET,
@@ -661,7 +661,7 @@ class ChecksClient:
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         status: Missing[Literal["queued", "in_progress"]] = UNSET,
         conclusion: Missing[
             Literal[
@@ -675,7 +675,7 @@ class ChecksClient:
                 "timed_out",
             ]
         ] = UNSET,
-        completed_at: Missing[datetime] = UNSET,
+        completed_at: Missing[_dt.datetime] = UNSET,
         output: Missing[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType
         ] = UNSET,

@@ -20,7 +20,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
 
     from githubkit import GitHubCore
     from githubkit.response import Response
@@ -247,7 +247,7 @@ class DependencyGraphClient:
         detector: SnapshotPropDetectorType,
         metadata: Missing[MetadataType] = UNSET,
         manifests: Missing[SnapshotPropManifestsType] = UNSET,
-        scanned: datetime,
+        scanned: _dt.datetime,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
@@ -336,7 +336,7 @@ class DependencyGraphClient:
         detector: SnapshotPropDetectorType,
         metadata: Missing[MetadataType] = UNSET,
         manifests: Missing[SnapshotPropManifestsType] = UNSET,
-        scanned: datetime,
+        scanned: _dt.datetime,
     ) -> Response[
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,

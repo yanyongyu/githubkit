@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -37,9 +37,9 @@ class RepoSearchResultItemType(TypedDict):
     description: Union[str, None]
     fork: bool
     url: str
-    created_at: datetime
-    updated_at: datetime
-    pushed_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    pushed_at: _dt.datetime
     homepage: Union[str, None]
     size: int
     stargazers_count: int

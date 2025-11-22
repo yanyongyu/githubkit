@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Any, Union
 
 from pydantic import Field
@@ -29,7 +29,7 @@ class GistHistory(GitHubModel):
 
     user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
     version: Missing[str] = Field(default=UNSET)
-    committed_at: Missing[datetime] = Field(default=UNSET)
+    committed_at: Missing[_dt.datetime] = Field(default=UNSET)
     change_status: Missing[GistHistoryPropChangeStatus] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
 
@@ -58,8 +58,8 @@ class GistSimplePropForkOf(GitHubModel):
     html_url: str = Field()
     files: GistSimplePropForkOfPropFiles = Field()
     public: bool = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     description: Union[str, None] = Field()
     comments: int = Field()
     comments_enabled: Missing[bool] = Field(default=UNSET)

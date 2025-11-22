@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -60,7 +60,7 @@ class CodeScanningDefaultSetup(GitHubModel):
         default=UNSET,
         description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
     )
-    updated_at: Missing[Union[datetime, None]] = Field(
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET, description="Timestamp of latest configuration update."
     )
     schedule: Missing[Union[None, Literal["weekly"]]] = Field(

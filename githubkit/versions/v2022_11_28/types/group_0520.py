@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -23,8 +23,8 @@ class WebhookCodeScanningAlertFixedPropAlertType(TypedDict):
     """
 
     assignees: NotRequired[list[SimpleUserType]]
-    created_at: datetime
-    dismissed_at: Union[datetime, None]
+    created_at: _dt.datetime
+    dismissed_at: Union[_dt.datetime, None]
     dismissed_by: Union[WebhookCodeScanningAlertFixedPropAlertPropDismissedByType, None]
     dismissed_comment: NotRequired[Union[str, None]]
     dismissed_reason: Union[

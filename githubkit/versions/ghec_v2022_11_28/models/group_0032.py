@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -53,7 +53,7 @@ class ActionsHostedRunner(GitHubModel):
         default=UNSET,
         description="The public IP ranges when public IP is enabled for the hosted runners.",
     )
-    last_active_on: Missing[Union[datetime, None]] = Field(
+    last_active_on: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time at which the runner was last used, in ISO 8601 format.",
     )

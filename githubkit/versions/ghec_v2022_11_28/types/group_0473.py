@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -46,8 +46,8 @@ class SecretScanningScanType(TypedDict):
 
     type: NotRequired[str]
     status: NotRequired[str]
-    completed_at: NotRequired[Union[datetime, None]]
-    started_at: NotRequired[Union[datetime, None]]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    started_at: NotRequired[Union[_dt.datetime, None]]
 
 
 class SecretScanningScanTypeForResponse(TypedDict):
@@ -67,8 +67,8 @@ class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType(TypedDict
 
     type: NotRequired[str]
     status: NotRequired[str]
-    completed_at: NotRequired[Union[datetime, None]]
-    started_at: NotRequired[Union[datetime, None]]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    started_at: NotRequired[Union[_dt.datetime, None]]
     pattern_name: NotRequired[str]
     pattern_scope: NotRequired[str]
 

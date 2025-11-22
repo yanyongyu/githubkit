@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -19,7 +19,7 @@ class WebhooksProjectType(TypedDict):
 
     body: Union[str, None]
     columns_url: str
-    created_at: datetime
+    created_at: _dt.datetime
     creator: Union[WebhooksProjectPropCreatorType, None]
     html_url: str
     id: int
@@ -28,7 +28,7 @@ class WebhooksProjectType(TypedDict):
     number: int
     owner_url: str
     state: Literal["open", "closed"]
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
 
 

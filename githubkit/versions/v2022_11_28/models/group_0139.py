@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -56,8 +56,8 @@ class ProjectsV2Field(GitHubModel):
     configuration: Missing[ProjectsV2FieldPropConfiguration] = Field(
         default=UNSET, description="Configuration for iteration fields."
     )
-    created_at: datetime = Field(description="The time when the field was created.")
-    updated_at: datetime = Field(
+    created_at: _dt.datetime = Field(description="The time when the field was created.")
+    updated_at: _dt.datetime = Field(
         description="The time when the field was last updated."
     )
 
@@ -120,7 +120,7 @@ class ProjectsV2IterationSettings(GitHubModel):
     """
 
     id: str = Field(description="The unique identifier of the iteration setting.")
-    start_date: date = Field(description="The start date of the iteration.")
+    start_date: _dt.date = Field(description="The start date of the iteration.")
     duration: int = Field(description="The duration of the iteration in days.")
     title: ProjectsV2IterationSettingsPropTitle = Field(
         description="The iteration title, in raw text and HTML formats."

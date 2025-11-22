@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -43,11 +43,11 @@ class WorkflowRunType(TypedDict):
     url: str
     html_url: str
     pull_requests: Union[list[PullRequestMinimalType], None]
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     actor: NotRequired[SimpleUserType]
     triggering_actor: NotRequired[SimpleUserType]
-    run_started_at: NotRequired[datetime]
+    run_started_at: NotRequired[_dt.datetime]
     jobs_url: str
     logs_url: str
     check_suite_url: str

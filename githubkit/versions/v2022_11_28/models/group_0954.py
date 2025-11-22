@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Annotated, Union
 
 from pydantic import Field
@@ -40,7 +40,7 @@ class OrgsOrgCampaignsPostBodyOneof1(GitHubModel):
         default=UNSET,
         description="The slugs of the teams to set as the campaign managers.",
     )
-    ends_at: datetime = Field(
+    ends_at: _dt.datetime = Field(
         description="The end date and time of the campaign. The date must be in the future."
     )
     contact_link: Missing[Union[str, None]] = Field(

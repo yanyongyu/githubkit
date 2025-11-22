@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Annotated, Literal, Union
 
 from pydantic import Field
@@ -51,19 +51,19 @@ class RepositoryAdvisory(GitHubModel):
     state: Literal["published", "closed", "withdrawn", "draft", "triage"] = Field(
         description="The state of the advisory."
     )
-    created_at: Union[datetime, None] = Field(
+    created_at: Union[_dt.datetime, None] = Field(
         description="The date and time of when the advisory was created, in ISO 8601 format."
     )
-    updated_at: Union[datetime, None] = Field(
+    updated_at: Union[_dt.datetime, None] = Field(
         description="The date and time of when the advisory was last updated, in ISO 8601 format."
     )
-    published_at: Union[datetime, None] = Field(
+    published_at: Union[_dt.datetime, None] = Field(
         description="The date and time of when the advisory was published, in ISO 8601 format."
     )
-    closed_at: Union[datetime, None] = Field(
+    closed_at: Union[_dt.datetime, None] = Field(
         description="The date and time of when the advisory was closed, in ISO 8601 format."
     )
-    withdrawn_at: Union[datetime, None] = Field(
+    withdrawn_at: Union[_dt.datetime, None] = Field(
         description="The date and time of when the advisory was withdrawn, in ISO 8601 format."
     )
     submission: Union[RepositoryAdvisoryPropSubmission, None] = Field()

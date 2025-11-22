@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
@@ -27,7 +27,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type(TypedDict):
     name: NotRequired[str]
     details_url: NotRequired[str]
     external_id: NotRequired[str]
-    started_at: NotRequired[datetime]
+    started_at: NotRequired[_dt.datetime]
     status: NotRequired[Literal["completed"]]
     conclusion: Literal[
         "action_required",
@@ -39,7 +39,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type(TypedDict):
         "stale",
         "timed_out",
     ]
-    completed_at: NotRequired[datetime]
+    completed_at: NotRequired[_dt.datetime]
     output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
     actions: NotRequired[
         list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]

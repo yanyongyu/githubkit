@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -32,8 +32,8 @@ class ProjectCard(GitHubModel):
     node_id: str = Field()
     note: Union[str, None] = Field()
     creator: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     archived: Missing[bool] = Field(
         default=UNSET, description="Whether or not the card is archived"
     )

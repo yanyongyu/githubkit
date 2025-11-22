@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -126,8 +126,8 @@ class ScimUserPropMetaType(TypedDict):
     """ScimUserPropMeta"""
 
     resource_type: NotRequired[str]
-    created: NotRequired[datetime]
-    last_modified: NotRequired[datetime]
+    created: NotRequired[_dt.datetime]
+    last_modified: NotRequired[_dt.datetime]
     location: NotRequired[str]
 
 

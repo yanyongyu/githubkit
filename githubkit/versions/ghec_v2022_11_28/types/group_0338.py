@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0068 import (
@@ -27,7 +27,7 @@ class CodeScanningAnalysisType(TypedDict):
     environment: str
     category: NotRequired[str]
     error: str
-    created_at: datetime
+    created_at: _dt.datetime
     results_count: int
     rules_count: int
     id: int

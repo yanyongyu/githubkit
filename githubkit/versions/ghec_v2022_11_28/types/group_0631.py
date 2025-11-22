@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -122,7 +122,7 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunType(TypedDict):
             "stale",
         ],
     ]
-    created_at: datetime
+    created_at: _dt.datetime
     event: str
     head_branch: str
     head_commit: NotRequired[
@@ -157,12 +157,12 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunType(TypedDict):
     rerun_url: NotRequired[str]
     run_attempt: int
     run_number: int
-    run_started_at: datetime
+    run_started_at: _dt.datetime
     status: Literal["requested", "in_progress", "completed", "queued", "waiting"]
     triggering_actor: Union[
         WebhookDeploymentReviewRejectedPropWorkflowRunPropTriggeringActorType, None
     ]
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
     workflow_id: int
     workflow_url: NotRequired[str]

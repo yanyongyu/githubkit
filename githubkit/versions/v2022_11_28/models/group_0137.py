@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -34,8 +34,8 @@ class ProjectsV2DraftIssue(GitHubModel):
         default=UNSET, description="The body content of the draft issue"
     )
     user: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field(description="The time the draft issue was created")
-    updated_at: datetime = Field(
+    created_at: _dt.datetime = Field(description="The time the draft issue was created")
+    updated_at: _dt.datetime = Field(
         description="The time the draft issue was last updated"
     )
 

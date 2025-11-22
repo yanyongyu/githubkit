@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -36,7 +36,7 @@ class CodeSearchResultItemType(TypedDict):
     score: float
     file_size: NotRequired[int]
     language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[datetime]
+    last_modified_at: NotRequired[_dt.datetime]
     line_numbers: NotRequired[list[str]]
     text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 

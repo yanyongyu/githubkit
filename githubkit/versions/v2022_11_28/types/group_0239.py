@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -39,7 +39,7 @@ class PendingDeploymentType(TypedDict):
 
     environment: PendingDeploymentPropEnvironmentType
     wait_timer: int
-    wait_timer_started_at: Union[datetime, None]
+    wait_timer_started_at: Union[_dt.datetime, None]
     current_user_can_approve: bool
     reviewers: list[PendingDeploymentPropReviewersItemsType]
 

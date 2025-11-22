@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -25,8 +25,8 @@ class WebhooksReleaseType(TypedDict):
     assets_url: str
     author: Union[WebhooksReleasePropAuthorType, None]
     body: Union[str, None]
-    created_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
     discussion_url: NotRequired[str]
     draft: bool
     html_url: str
@@ -35,7 +35,7 @@ class WebhooksReleaseType(TypedDict):
     name: Union[str, None]
     node_id: str
     prerelease: bool
-    published_at: Union[datetime, None]
+    published_at: Union[_dt.datetime, None]
     reactions: NotRequired[WebhooksReleasePropReactionsType]
     tag_name: str
     tarball_url: Union[str, None]
@@ -168,7 +168,7 @@ class WebhooksReleasePropAssetsItemsType(TypedDict):
 
     browser_download_url: str
     content_type: str
-    created_at: datetime
+    created_at: _dt.datetime
     download_count: int
     id: int
     label: Union[str, None]
@@ -177,7 +177,7 @@ class WebhooksReleasePropAssetsItemsType(TypedDict):
     size: int
     digest: Union[str, None]
     state: Literal["uploaded"]
-    updated_at: datetime
+    updated_at: _dt.datetime
     uploader: NotRequired[Union[WebhooksReleasePropAssetsItemsPropUploaderType, None]]
     url: str
 

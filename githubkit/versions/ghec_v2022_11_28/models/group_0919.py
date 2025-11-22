@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -174,7 +174,7 @@ class WebhookStatusPropCommitPropCommit(GitHubModel):
 class WebhookStatusPropCommitPropCommitPropAuthor(GitHubModel):
     """WebhookStatusPropCommitPropCommitPropAuthor"""
 
-    date: datetime = Field()
+    date: _dt.datetime = Field()
     email: str = Field()
     name: str = Field(description="The git author's name.")
     username: Missing[str] = Field(default=UNSET)
@@ -183,7 +183,7 @@ class WebhookStatusPropCommitPropCommitPropAuthor(GitHubModel):
 class WebhookStatusPropCommitPropCommitPropCommitter(GitHubModel):
     """WebhookStatusPropCommitPropCommitPropCommitter"""
 
-    date: datetime = Field()
+    date: _dt.datetime = Field()
     email: str = Field()
     name: str = Field(description="The git author's name.")
     username: Missing[str] = Field(default=UNSET)

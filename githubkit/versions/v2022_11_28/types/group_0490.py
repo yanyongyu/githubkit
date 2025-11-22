@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -25,7 +25,7 @@ class WebhooksRelease1Type(TypedDict):
     assets_url: str
     author: Union[WebhooksRelease1PropAuthorType, None]
     body: Union[str, None]
-    created_at: Union[datetime, None]
+    created_at: Union[_dt.datetime, None]
     discussion_url: NotRequired[str]
     draft: bool
     html_url: str
@@ -34,12 +34,12 @@ class WebhooksRelease1Type(TypedDict):
     name: Union[str, None]
     node_id: str
     prerelease: bool
-    published_at: Union[datetime, None]
+    published_at: Union[_dt.datetime, None]
     reactions: NotRequired[WebhooksRelease1PropReactionsType]
     tag_name: str
     tarball_url: Union[str, None]
     target_commitish: str
-    updated_at: Union[datetime, None]
+    updated_at: Union[_dt.datetime, None]
     upload_url: str
     url: str
     zipball_url: Union[str, None]
@@ -84,7 +84,7 @@ class WebhooksRelease1PropAssetsItemsType(TypedDict):
 
     browser_download_url: str
     content_type: str
-    created_at: datetime
+    created_at: _dt.datetime
     download_count: int
     id: int
     label: Union[str, None]
@@ -93,7 +93,7 @@ class WebhooksRelease1PropAssetsItemsType(TypedDict):
     size: int
     digest: Union[str, None]
     state: Literal["uploaded"]
-    updated_at: datetime
+    updated_at: _dt.datetime
     uploader: NotRequired[Union[WebhooksRelease1PropAssetsItemsPropUploaderType, None]]
     url: str
 

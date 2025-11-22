@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -28,7 +28,7 @@ class RepositoryInvitationType(TypedDict):
     invitee: Union[None, SimpleUserType]
     inviter: Union[None, SimpleUserType]
     permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: datetime
+    created_at: _dt.datetime
     expired: NotRequired[bool]
     url: str
     html_url: str

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -27,7 +27,7 @@ from .group_0712 import (
 class WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp(GitHubModel):
     """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
 
-    created_at: Union[datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
     description: Union[str, None] = Field()
     events: Missing[list[str]] = Field(
         default=UNSET, description="The list of events for the GitHub app"
@@ -46,7 +46,7 @@ class WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp(GitHubModel):
     slug: Missing[str] = Field(
         default=UNSET, description="The slug name of the GitHub app"
     )
-    updated_at: Union[datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
 
 
 model_rebuild(WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp)

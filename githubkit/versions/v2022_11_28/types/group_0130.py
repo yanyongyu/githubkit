@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -26,13 +26,13 @@ class ProjectsV2StatusUpdateType(TypedDict):
     node_id: str
     project_node_id: NotRequired[str]
     creator: NotRequired[SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     status: NotRequired[
         Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
     ]
-    start_date: NotRequired[date]
-    target_date: NotRequired[date]
+    start_date: NotRequired[_dt.date]
+    target_date: NotRequired[_dt.date]
     body: NotRequired[Union[str, None]]
 
 

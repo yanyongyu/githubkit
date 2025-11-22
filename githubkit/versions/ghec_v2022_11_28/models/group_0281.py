@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -37,8 +37,8 @@ class TeamDiscussion(GitHubModel):
     )
     comments_count: int = Field()
     comments_url: str = Field()
-    created_at: datetime = Field()
-    last_edited_at: Union[datetime, None] = Field()
+    created_at: _dt.datetime = Field()
+    last_edited_at: Union[_dt.datetime, None] = Field()
     html_url: str = Field()
     node_id: str = Field()
     number: int = Field(description="The unique sequence number of a team discussion.")
@@ -50,7 +50,7 @@ class TeamDiscussion(GitHubModel):
     )
     team_url: str = Field()
     title: str = Field(description="The title of the discussion.")
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 

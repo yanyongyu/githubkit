@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -29,10 +29,10 @@ class Key(GitHubModel):
     id: int = Field()
     url: str = Field()
     title: str = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     verified: bool = Field()
     read_only: bool = Field()
-    last_used: Missing[Union[datetime, None]] = Field(default=UNSET)
+    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
 model_rebuild(Key)

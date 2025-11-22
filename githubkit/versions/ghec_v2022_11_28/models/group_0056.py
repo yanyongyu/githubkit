@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -39,8 +39,8 @@ class EnterpriseOrganizationInstallation(GitHubModel):
         description="The permissions granted to the user access token.",
     )
     events: Missing[list[str]] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
 model_rebuild(EnterpriseOrganizationInstallation)

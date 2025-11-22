@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Any, Union
 
 from pydantic import Field
@@ -36,8 +36,8 @@ class GpgKey(GitHubModel):
     can_encrypt_comms: bool = Field()
     can_encrypt_storage: bool = Field()
     can_certify: bool = Field()
-    created_at: datetime = Field()
-    expires_at: Union[datetime, None] = Field()
+    created_at: _dt.datetime = Field()
+    expires_at: Union[_dt.datetime, None] = Field()
     revoked: bool = Field()
     raw_key: Union[str, None] = Field()
 

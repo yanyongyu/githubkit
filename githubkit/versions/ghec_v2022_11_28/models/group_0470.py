@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -46,11 +46,11 @@ class SecretScanningAlert(GitHubModel):
     number: Missing[int] = Field(
         default=UNSET, description="The security alert number."
     )
-    created_at: Missing[datetime] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    updated_at: Missing[Union[None, datetime]] = Field(default=UNSET)
+    updated_at: Missing[Union[None, _dt.datetime]] = Field(default=UNSET)
     url: Missing[str] = Field(
         default=UNSET, description="The REST API URL of the alert resource."
     )
@@ -71,7 +71,7 @@ class SecretScanningAlert(GitHubModel):
         default=UNSET,
         description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
     )
-    resolved_at: Missing[Union[datetime, None]] = Field(
+    resolved_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
@@ -94,7 +94,7 @@ class SecretScanningAlert(GitHubModel):
         description="Whether push protection was bypassed for the detected secret.",
     )
     push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
+    push_protection_bypassed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )

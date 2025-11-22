@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -32,9 +32,9 @@ class Artifact(GitHubModel):
     url: str = Field()
     archive_download_url: str = Field()
     expired: bool = Field(description="Whether or not the artifact has expired.")
-    created_at: Union[datetime, None] = Field()
-    expires_at: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+    expires_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
     digest: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="The SHA256 digest of the artifact. This field will only be populated on artifacts uploaded with upload-artifact v4 or newer. For older versions, this field will be null.",

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -36,7 +36,7 @@ class CredentialAuthorization(GitHubModel):
         default=UNSET,
         description="Last eight characters of the credential. Only included in responses with credential_type of personal access token.",
     )
-    credential_authorized_at: datetime = Field(
+    credential_authorized_at: _dt.datetime = Field(
         description="Date when the credential was authorized for use."
     )
     scopes: Missing[list[str]] = Field(
@@ -46,7 +46,7 @@ class CredentialAuthorization(GitHubModel):
         default=UNSET,
         description="Unique string to distinguish the credential. Only included in responses with credential_type of SSH Key.",
     )
-    credential_accessed_at: Union[datetime, None] = Field(
+    credential_accessed_at: Union[_dt.datetime, None] = Field(
         description="Date when the credential was last accessed. May be null if it was never accessed"
     )
     authorized_credential_id: Union[int, None] = Field(
@@ -60,7 +60,7 @@ class CredentialAuthorization(GitHubModel):
         default=UNSET,
         description="The note given to the token. This will only be present when the credential is a token.",
     )
-    authorized_credential_expires_at: Missing[Union[datetime, None]] = Field(
+    authorized_credential_expires_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The expiry for the token. This will only be present when the credential is a token.",
     )

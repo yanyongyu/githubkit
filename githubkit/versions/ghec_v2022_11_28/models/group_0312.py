@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -33,7 +33,7 @@ class Autolink(GitHubModel):
     is_alphanumeric: bool = Field(
         description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
     )
-    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
 model_rebuild(Autolink)

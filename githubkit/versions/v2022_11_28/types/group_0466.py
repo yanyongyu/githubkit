@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -34,14 +34,14 @@ class WebhooksIssueCommentType(TypedDict):
         "OWNER",
     ]
     body: str
-    created_at: datetime
+    created_at: _dt.datetime
     html_url: str
     id: int
     issue_url: str
     node_id: str
     performed_via_github_app: Union[IntegrationType, None]
     reactions: WebhooksIssueCommentPropReactionsType
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
     user: Union[WebhooksIssueCommentPropUserType, None]
 

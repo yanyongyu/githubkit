@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -25,7 +25,7 @@ class CopilotUsageMetricsDay(ExtraGitHubModel):
     Copilot usage metrics for a given day.
     """
 
-    date: date = Field(
+    date: _dt.date = Field(
         description="The date for which the usage metrics are aggregated, in `YYYY-MM-DD` format."
     )
     total_active_users: Missing[int] = Field(

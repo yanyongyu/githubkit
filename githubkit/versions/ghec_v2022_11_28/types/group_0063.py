@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -24,9 +24,9 @@ class GetAuditLogStreamConfigType(TypedDict):
     stream_type: str
     stream_details: str
     enabled: bool
-    created_at: datetime
-    updated_at: datetime
-    paused_at: NotRequired[Union[datetime, None]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    paused_at: NotRequired[Union[_dt.datetime, None]]
 
 
 class GetAuditLogStreamConfigTypeForResponse(TypedDict):

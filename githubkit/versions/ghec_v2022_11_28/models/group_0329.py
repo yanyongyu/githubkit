@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -53,8 +53,8 @@ class CheckRun(GitHubModel):
             "action_required",
         ],
     ] = Field()
-    started_at: Union[datetime, None] = Field()
-    completed_at: Union[datetime, None] = Field()
+    started_at: Union[_dt.datetime, None] = Field()
+    completed_at: Union[_dt.datetime, None] = Field()
     output: CheckRunPropOutput = Field()
     name: str = Field(description="The name of the check.")
     check_suite: Union[CheckRunPropCheckSuite, None] = Field()

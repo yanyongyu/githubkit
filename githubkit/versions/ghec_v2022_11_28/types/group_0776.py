@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -56,9 +56,9 @@ class WebhookOrganizationMemberInvitedPropInvitationType(TypedDict):
     The invitation for the user or email if the action is `member_invited`.
     """
 
-    created_at: datetime
+    created_at: _dt.datetime
     email: Union[str, None]
-    failed_at: Union[datetime, None]
+    failed_at: Union[_dt.datetime, None]
     failed_reason: Union[str, None]
     id: float
     invitation_teams_url: str

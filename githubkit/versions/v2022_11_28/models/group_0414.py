@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -30,7 +30,7 @@ class RepositorySubscription(GitHubModel):
         description="Determines if all notifications should be blocked from this repository."
     )
     reason: Union[str, None] = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     url: str = Field()
     repository_url: str = Field()
 

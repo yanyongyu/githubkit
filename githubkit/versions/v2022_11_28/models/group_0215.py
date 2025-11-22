@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -34,15 +34,15 @@ class TeamDiscussionComment(GitHubModel):
     body_version: str = Field(
         description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
     )
-    created_at: datetime = Field()
-    last_edited_at: Union[datetime, None] = Field()
+    created_at: _dt.datetime = Field()
+    last_edited_at: Union[_dt.datetime, None] = Field()
     discussion_url: str = Field()
     html_url: str = Field()
     node_id: str = Field()
     number: int = Field(
         description="The unique sequence number of a team discussion comment."
     )
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 

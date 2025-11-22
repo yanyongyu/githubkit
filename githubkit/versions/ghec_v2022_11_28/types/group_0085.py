@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
+import datetime as _dt
 from typing_extensions import TypedDict
 
 
@@ -20,8 +20,8 @@ class CopilotUsageMetrics28DayReportType(TypedDict):
     """
 
     download_links: list[str]
-    report_start_day: date
-    report_end_day: date
+    report_start_day: _dt.date
+    report_end_day: _dt.date
 
 
 class CopilotUsageMetrics28DayReportTypeForResponse(TypedDict):

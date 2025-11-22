@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -29,12 +29,12 @@ class CopilotSeatDetailsType(TypedDict):
     assignee: NotRequired[Union[None, SimpleUserType]]
     organization: NotRequired[Union[None, OrganizationSimpleType]]
     assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
-    pending_cancellation_date: NotRequired[Union[date, None]]
-    last_activity_at: NotRequired[Union[datetime, None]]
+    pending_cancellation_date: NotRequired[Union[_dt.date, None]]
+    last_activity_at: NotRequired[Union[_dt.datetime, None]]
     last_activity_editor: NotRequired[Union[str, None]]
-    last_authenticated_at: NotRequired[Union[datetime, None]]
-    created_at: datetime
-    updated_at: NotRequired[datetime]
+    last_authenticated_at: NotRequired[Union[_dt.datetime, None]]
+    created_at: _dt.datetime
+    updated_at: NotRequired[_dt.datetime]
     plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 

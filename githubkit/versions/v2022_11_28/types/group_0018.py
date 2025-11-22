@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -36,14 +36,14 @@ class InstallationType(TypedDict):
     target_type: str
     permissions: AppPermissionsType
     events: list[str]
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     single_file_name: Union[str, None]
     has_multiple_single_files: NotRequired[bool]
     single_file_paths: NotRequired[list[str]]
     app_slug: str
     suspended_by: Union[None, SimpleUserType]
-    suspended_at: Union[datetime, None]
+    suspended_at: Union[_dt.datetime, None]
     contact_email: NotRequired[Union[str, None]]
 
 

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Any, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -31,8 +31,8 @@ class GpgKeyType(TypedDict):
     can_encrypt_comms: bool
     can_encrypt_storage: bool
     can_certify: bool
-    created_at: datetime
-    expires_at: Union[datetime, None]
+    created_at: _dt.datetime
+    expires_at: Union[_dt.datetime, None]
     revoked: bool
     raw_key: Union[str, None]
 

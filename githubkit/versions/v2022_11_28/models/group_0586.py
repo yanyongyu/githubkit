@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -67,7 +67,7 @@ class WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest(GitHubModel):
 
     diff_url: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
-    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
     patch_url: Missing[str] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
 

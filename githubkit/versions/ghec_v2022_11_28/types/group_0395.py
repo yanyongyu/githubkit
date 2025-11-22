@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
@@ -28,8 +28,8 @@ class HookType(TypedDict):
     active: bool
     events: list[str]
     config: WebhookConfigType
-    updated_at: datetime
-    created_at: datetime
+    updated_at: _dt.datetime
+    created_at: _dt.datetime
     url: str
     test_url: str
     ping_url: str

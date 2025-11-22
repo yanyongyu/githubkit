@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -47,11 +47,11 @@ class EnvironmentApprovalsPropEnvironmentsItems(GitHubModel):
     )
     url: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="The time that the environment was created, in ISO 8601 format.",
     )
-    updated_at: Missing[datetime] = Field(
+    updated_at: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="The time that the environment was last updated, in ISO 8601 format.",
     )

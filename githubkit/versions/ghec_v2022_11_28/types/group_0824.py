@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -118,8 +118,8 @@ class WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusTypeForResponse(
 class WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType(TypedDict):
     """WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate"""
 
-    from_: NotRequired[Union[date, None]]
-    to: NotRequired[Union[date, None]]
+    from_: NotRequired[Union[_dt.date, None]]
+    to: NotRequired[Union[_dt.date, None]]
 
 
 class WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateTypeForResponse(
@@ -134,8 +134,8 @@ class WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateTypeForResponse
 class WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType(TypedDict):
     """WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate"""
 
-    from_: NotRequired[Union[date, None]]
-    to: NotRequired[Union[date, None]]
+    from_: NotRequired[Union[_dt.date, None]]
+    to: NotRequired[Union[_dt.date, None]]
 
 
 class WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateTypeForResponse(

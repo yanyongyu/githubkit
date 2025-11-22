@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -29,7 +29,7 @@ class HookDeliveryItem(GitHubModel):
     guid: str = Field(
         description="Unique identifier for the event (shared with all deliveries for all webhooks that subscribe to this event)."
     )
-    delivered_at: datetime = Field(
+    delivered_at: _dt.datetime = Field(
         description="Time when the webhook delivery occurred."
     )
     redelivery: bool = Field(
@@ -50,7 +50,7 @@ class HookDeliveryItem(GitHubModel):
     repository_id: Union[int, None] = Field(
         description="The id of the repository associated with this event."
     )
-    throttled_at: Missing[Union[datetime, None]] = Field(
+    throttled_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET, description="Time when the webhook delivery was throttled."
     )
 

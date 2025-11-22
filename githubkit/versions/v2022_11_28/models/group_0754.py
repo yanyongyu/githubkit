@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -84,8 +84,8 @@ class WebhookPullRequestReviewDismissedPropReview(GitHubModel):
     node_id: str = Field()
     pull_request_url: str = Field()
     state: Literal["dismissed", "approved", "changes_requested"] = Field()
-    submitted_at: datetime = Field()
-    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    submitted_at: _dt.datetime = Field()
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
     user: Union[WebhookPullRequestReviewDismissedPropReviewPropUser, None] = Field(
         title="User"
     )
@@ -352,14 +352,14 @@ class WebhookPullRequestReviewDismissedPropPullRequestPropMilestone(GitHubModel)
     A collection of related issues and pull requests.
     """
 
-    closed_at: Union[datetime, None] = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
     closed_issues: int = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     creator: Union[
         WebhookPullRequestReviewDismissedPropPullRequestPropMilestonePropCreator, None
     ] = Field(title="User")
     description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
     html_url: str = Field()
     id: int = Field()
     labels_url: str = Field()
@@ -368,7 +368,7 @@ class WebhookPullRequestReviewDismissedPropPullRequestPropMilestone(GitHubModel)
     open_issues: int = Field()
     state: Literal["open", "closed"] = Field(description="The state of the milestone.")
     title: str = Field(description="The title of the milestone.")
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
 
 
@@ -623,7 +623,7 @@ class WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepo(GitHubMod
     compare_url: str = Field()
     contents_url: str = Field()
     contributors_url: str = Field()
-    created_at: Union[int, datetime] = Field()
+    created_at: Union[int, _dt.datetime] = Field()
     default_branch: str = Field(description="The default branch of the repository.")
     delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,
@@ -700,7 +700,7 @@ class WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepo(GitHubMod
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
     pulls_url: str = Field()
-    pushed_at: Union[int, datetime, None] = Field()
+    pushed_at: Union[int, _dt.datetime, None] = Field()
     releases_url: str = Field()
     role_name: Missing[Union[str, None]] = Field(default=UNSET)
     size: int = Field()
@@ -728,7 +728,7 @@ class WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepo(GitHubMod
     teams_url: str = Field()
     topics: list[str] = Field()
     trees_url: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     use_squash_pr_title_as_default: Missing[bool] = Field(
         default=UNSET,
@@ -846,7 +846,7 @@ class WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepo(GitHubMod
     compare_url: str = Field()
     contents_url: str = Field()
     contributors_url: str = Field()
-    created_at: Union[int, datetime] = Field()
+    created_at: Union[int, _dt.datetime] = Field()
     default_branch: str = Field(description="The default branch of the repository.")
     delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,
@@ -923,7 +923,7 @@ class WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepo(GitHubMod
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
     pulls_url: str = Field()
-    pushed_at: Union[int, datetime, None] = Field()
+    pushed_at: Union[int, _dt.datetime, None] = Field()
     releases_url: str = Field()
     role_name: Missing[Union[str, None]] = Field(default=UNSET)
     size: int = Field()
@@ -951,7 +951,7 @@ class WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepo(GitHubMod
     teams_url: str = Field()
     topics: list[str] = Field()
     trees_url: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     use_squash_pr_title_as_default: Missing[bool] = Field(
         default=UNSET,

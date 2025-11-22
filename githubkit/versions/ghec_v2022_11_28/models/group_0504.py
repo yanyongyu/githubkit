@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Any, Literal, Union
 
 from pydantic import Field
@@ -99,8 +99,8 @@ class ScimUserPropMeta(GitHubModel):
     """ScimUserPropMeta"""
 
     resource_type: Missing[str] = Field(default=UNSET, alias="resourceType")
-    created: Missing[datetime] = Field(default=UNSET)
-    last_modified: Missing[datetime] = Field(default=UNSET, alias="lastModified")
+    created: Missing[_dt.datetime] = Field(default=UNSET)
+    last_modified: Missing[_dt.datetime] = Field(default=UNSET, alias="lastModified")
     location: Missing[str] = Field(default=UNSET)
 
 

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -63,7 +63,7 @@ class Event(GitHubModel):
     org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
     payload: EventPropPayload = Field()
     public: bool = Field()
-    created_at: Union[datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
 
 
 class Actor(GitHubModel):

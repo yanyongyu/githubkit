@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -57,7 +57,7 @@ class WebhookProjectCardDeletedPropProjectCard(GitHubModel):
     column_id: Union[int, None] = Field()
     column_url: str = Field()
     content_url: Missing[str] = Field(default=UNSET)
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     creator: Union[WebhookProjectCardDeletedPropProjectCardPropCreator, None] = Field(
         title="User"
     )
@@ -65,7 +65,7 @@ class WebhookProjectCardDeletedPropProjectCard(GitHubModel):
     node_id: str = Field()
     note: Union[str, None] = Field()
     project_url: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
 
 

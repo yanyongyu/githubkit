@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -37,7 +37,7 @@ class RepositoryInvitation(GitHubModel):
     permissions: Literal["read", "write", "admin", "triage", "maintain"] = Field(
         description="The permission associated with the invitation."
     )
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     expired: Missing[bool] = Field(
         default=UNSET, description="Whether or not the invitation has expired"
     )

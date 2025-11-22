@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -26,7 +26,7 @@ class PageType(TypedDict):
     protected_domain_state: NotRequired[
         Union[None, Literal["pending", "verified", "unverified"]]
     ]
-    pending_domain_unverified_at: NotRequired[Union[datetime, None]]
+    pending_domain_unverified_at: NotRequired[Union[_dt.datetime, None]]
     custom_404: bool
     html_url: NotRequired[str]
     build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
@@ -91,7 +91,7 @@ class PagesHttpsCertificateType(TypedDict):
     ]
     description: str
     domains: list[str]
-    expires_at: NotRequired[date]
+    expires_at: NotRequired[_dt.date]
 
 
 class PagesHttpsCertificateTypeForResponse(TypedDict):

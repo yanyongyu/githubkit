@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -27,7 +27,7 @@ class CheckRunWithSimpleCheckSuiteType(TypedDict):
 
     app: Union[IntegrationType, None]
     check_suite: SimpleCheckSuiteType
-    completed_at: Union[datetime, None]
+    completed_at: Union[_dt.datetime, None]
     conclusion: Union[
         None,
         Literal[
@@ -54,7 +54,7 @@ class CheckRunWithSimpleCheckSuiteType(TypedDict):
     node_id: str
     output: CheckRunWithSimpleCheckSuitePropOutputType
     pull_requests: list[PullRequestMinimalType]
-    started_at: datetime
+    started_at: _dt.datetime
     status: Literal["queued", "in_progress", "completed", "pending"]
     url: str
 

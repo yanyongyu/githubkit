@@ -17,7 +17,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import date
+    import datetime as _dt
 
     from githubkit import GitHubCore
     from githubkit.response import Response
@@ -244,7 +244,7 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[date], list[str]]:
+    ) -> Response[list[_dt.date], list[str]]:
         """meta/get-all-versions
 
         GET /versions
@@ -254,7 +254,7 @@ class MetaClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-all-api-versions
         """
 
-        from datetime import date
+        import datetime as _dt
 
         from ..models import BasicError
 
@@ -267,7 +267,7 @@ class MetaClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[date],
+            response_model=list[_dt.date],
             error_models={
                 "404": BasicError,
             },
@@ -278,7 +278,7 @@ class MetaClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-    ) -> Response[list[date], list[str]]:
+    ) -> Response[list[_dt.date], list[str]]:
         """meta/get-all-versions
 
         GET /versions
@@ -288,7 +288,7 @@ class MetaClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/meta/meta#get-all-api-versions
         """
 
-        from datetime import date
+        import datetime as _dt
 
         from ..models import BasicError
 
@@ -301,7 +301,7 @@ class MetaClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[date],
+            response_model=list[_dt.date],
             error_models={
                 "404": BasicError,
             },

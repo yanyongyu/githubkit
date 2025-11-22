@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -169,8 +169,8 @@ class RepositoryRulesetType(TypedDict):
             ]
         ]
     ]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
 class RepositoryRulesetTypeForResponse(TypedDict):

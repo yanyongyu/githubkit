@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -85,15 +85,15 @@ class WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus(GitHubModel):
 class WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate(GitHubModel):
     """WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate"""
 
-    from_: Missing[Union[date, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[date, None]] = Field(default=UNSET)
+    from_: Missing[Union[_dt.date, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[_dt.date, None]] = Field(default=UNSET)
 
 
 class WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate(GitHubModel):
     """WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate"""
 
-    from_: Missing[Union[date, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[date, None]] = Field(default=UNSET)
+    from_: Missing[Union[_dt.date, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[_dt.date, None]] = Field(default=UNSET)
 
 
 model_rebuild(WebhookProjectsV2StatusUpdateEdited)

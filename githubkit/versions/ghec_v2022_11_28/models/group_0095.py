@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -35,7 +35,7 @@ class NetworkConfiguration(GitHubModel):
         default=UNSET,
         description="The unique identifier of each network settings in the configuration.",
     )
-    created_on: Union[datetime, None] = Field(
+    created_on: Union[_dt.datetime, None] = Field(
         description="The time at which the network configuration was created, in ISO 8601 format."
     )
 

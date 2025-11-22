@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -58,8 +58,8 @@ class SimpleCommitStatusType(TypedDict):
     required: NotRequired[Union[bool, None]]
     avatar_url: Union[str, None]
     url: str
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
 class SimpleCommitStatusTypeForResponse(TypedDict):

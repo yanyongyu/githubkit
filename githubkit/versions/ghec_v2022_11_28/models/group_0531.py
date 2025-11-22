@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -41,7 +41,7 @@ class WebhooksRule(GitHubModel):
     authorized_actors_only: bool = Field()
     authorized_dismissal_actors_only: bool = Field()
     create_protected: Missing[bool] = Field(default=UNSET)
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     dismiss_stale_reviews_on_push: bool = Field()
     id: int = Field()
     ignore_approvals_from_contributors: bool = Field()
@@ -81,7 +81,7 @@ class WebhooksRule(GitHubModel):
         "off", "non_admins", "everyone"
     ] = Field()
     strict_required_status_checks_policy: bool = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
 model_rebuild(WebhooksRule)

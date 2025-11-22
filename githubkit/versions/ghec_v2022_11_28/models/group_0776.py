@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -62,9 +62,9 @@ class WebhookOrganizationMemberInvitedPropInvitation(GitHubModel):
     The invitation for the user or email if the action is `member_invited`.
     """
 
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     email: Union[str, None] = Field()
-    failed_at: Union[datetime, None] = Field()
+    failed_at: Union[_dt.datetime, None] = Field()
     failed_reason: Union[str, None] = Field()
     id: float = Field()
     invitation_teams_url: str = Field()

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -58,7 +58,7 @@ class TimelineCommittedEventPropAuthorType(TypedDict):
     Identifying information for the git-user
     """
 
-    date: datetime
+    date: _dt.datetime
     email: str
     name: str
 
@@ -80,7 +80,7 @@ class TimelineCommittedEventPropCommitterType(TypedDict):
     Identifying information for the git-user
     """
 
-    date: datetime
+    date: _dt.datetime
     email: str
     name: str
 

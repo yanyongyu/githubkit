@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -61,8 +61,8 @@ class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
         default=UNSET,
         description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
     )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
 model_rebuild(OrgPrivateRegistryConfigurationWithSelectedRepositories)

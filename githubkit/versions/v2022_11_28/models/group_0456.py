@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 
 from pydantic import Field
 
@@ -20,14 +20,14 @@ class WebhooksWorkflow(GitHubModel):
     """Workflow"""
 
     badge_url: str = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     html_url: str = Field()
     id: int = Field()
     name: str = Field()
     node_id: str = Field()
     path: str = Field()
     state: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
 
 

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -35,10 +35,10 @@ class WebhookSecretScanningScanCompleted(GitHubModel):
     source: Literal["git", "issues", "pull-requests", "discussions", "wiki"] = Field(
         description="What type of content was scanned"
     )
-    started_at: datetime = Field(
+    started_at: _dt.datetime = Field(
         description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    completed_at: datetime = Field(
+    completed_at: _dt.datetime = Field(
         description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
     secret_types: Missing[Union[list[str], None]] = Field(

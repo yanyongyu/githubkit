@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -30,7 +30,7 @@ class PullRequestReviewType(TypedDict):
     html_url: str
     pull_request_url: str
     links: PullRequestReviewPropLinksType
-    submitted_at: NotRequired[datetime]
+    submitted_at: NotRequired[_dt.datetime]
     commit_id: Union[str, None]
     body_html: NotRequired[str]
     body_text: NotRequired[str]

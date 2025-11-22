@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -36,19 +36,19 @@ class ProjectsV2StatusUpdate(GitHubModel):
     creator: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
-    created_at: datetime = Field(
+    created_at: _dt.datetime = Field(
         description="The time when the status update was created."
     )
-    updated_at: datetime = Field(
+    updated_at: _dt.datetime = Field(
         description="The time when the status update was last updated."
     )
     status: Missing[
         Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
     ] = Field(default=UNSET, description="The current status.")
-    start_date: Missing[date] = Field(
+    start_date: Missing[_dt.date] = Field(
         default=UNSET, description="The start date of the period covered by the update."
     )
-    target_date: Missing[date] = Field(
+    target_date: Missing[_dt.date] = Field(
         default=UNSET, description="The target date associated with the update."
     )
     body: Missing[Union[str, None]] = Field(

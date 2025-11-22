@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -42,7 +42,7 @@ class CodeScanningDefaultSetupType(TypedDict):
     runner_label: NotRequired[Union[str, None]]
     query_suite: NotRequired[Literal["default", "extended"]]
     threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    updated_at: NotRequired[Union[datetime, None]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
     schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 

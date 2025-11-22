@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -68,8 +68,8 @@ class GistSimplePropForksItems(GitHubModel):
     user: Missing[PublicUser] = Field(
         default=UNSET, title="Public User", description="Public User"
     )
-    created_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
 
 
 class PublicUser(GitHubModel):
@@ -110,8 +110,8 @@ class PublicUser(GitHubModel):
     public_gists: int = Field()
     followers: int = Field()
     following: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     plan: Missing[PublicUserPropPlan] = Field(default=UNSET)
     private_gists: Missing[int] = Field(default=UNSET)
     total_private_repos: Missing[int] = Field(default=UNSET)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -54,8 +54,8 @@ class ExemptionRequestType(TypedDict):
             None,
         ]
     ]
-    expires_at: NotRequired[datetime]
-    created_at: NotRequired[datetime]
+    expires_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
     responses: NotRequired[Union[list[ExemptionResponseType], None]]
     html_url: NotRequired[str]
 

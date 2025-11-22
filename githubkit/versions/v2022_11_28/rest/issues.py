@@ -20,7 +20,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -144,7 +144,7 @@ class IssuesClient:
         labels: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         collab: Missing[bool] = UNSET,
         orgs: Missing[bool] = UNSET,
         owned: Missing[bool] = UNSET,
@@ -219,7 +219,7 @@ class IssuesClient:
         labels: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         collab: Missing[bool] = UNSET,
         orgs: Missing[bool] = UNSET,
         owned: Missing[bool] = UNSET,
@@ -296,7 +296,7 @@ class IssuesClient:
         type: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -363,7 +363,7 @@ class IssuesClient:
         type: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -592,7 +592,7 @@ class IssuesClient:
         labels: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -665,7 +665,7 @@ class IssuesClient:
         labels: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -927,7 +927,7 @@ class IssuesClient:
         *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -985,7 +985,7 @@ class IssuesClient:
         *,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -2188,7 +2188,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -2243,7 +2243,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -5853,7 +5853,7 @@ class IssuesClient:
         title: str,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
-        due_on: Missing[datetime] = UNSET,
+        due_on: Missing[_dt.datetime] = UNSET,
     ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     def create_milestone(
@@ -5931,7 +5931,7 @@ class IssuesClient:
         title: str,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
-        due_on: Missing[datetime] = UNSET,
+        due_on: Missing[_dt.datetime] = UNSET,
     ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     async def async_create_milestone(
@@ -6149,7 +6149,7 @@ class IssuesClient:
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
-        due_on: Missing[datetime] = UNSET,
+        due_on: Missing[_dt.datetime] = UNSET,
     ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     def update_milestone(
@@ -6221,7 +6221,7 @@ class IssuesClient:
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
-        due_on: Missing[datetime] = UNSET,
+        due_on: Missing[_dt.datetime] = UNSET,
     ) -> Response[Milestone, MilestoneTypeForResponse]: ...
 
     async def async_update_milestone(
@@ -6358,7 +6358,7 @@ class IssuesClient:
         labels: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -6422,7 +6422,7 @@ class IssuesClient:
         labels: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated", "comments"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,

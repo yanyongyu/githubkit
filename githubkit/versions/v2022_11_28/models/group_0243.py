@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -32,7 +32,7 @@ class Activity(GitHubModel):
     ref: str = Field(
         description="The full Git reference, formatted as `refs/heads/<branch name>`."
     )
-    timestamp: datetime = Field(description="The time when the activity occurred.")
+    timestamp: _dt.datetime = Field(description="The time when the activity occurred.")
     activity_type: Literal[
         "push",
         "force_push",

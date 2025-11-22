@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -41,8 +41,10 @@ class EnterpriseRole(GitHubModel):
         description="A list of permissions included in this role."
     )
     enterprise: Union[None, Enterprise] = Field()
-    created_at: datetime = Field(description="The date and time the role was created.")
-    updated_at: datetime = Field(
+    created_at: _dt.datetime = Field(
+        description="The date and time the role was created."
+    )
+    updated_at: _dt.datetime = Field(
         description="The date and time the role was last updated."
     )
 

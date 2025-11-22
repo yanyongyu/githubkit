@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -51,7 +51,7 @@ class CommunityProfile(GitHubModel):
     description: Union[str, None] = Field()
     documentation: Union[str, None] = Field()
     files: CommunityProfilePropFiles = Field()
-    updated_at: Union[datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
     content_reports_enabled: Missing[bool] = Field(default=UNSET)
 
 

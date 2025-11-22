@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 
 from pydantic import Field
 
@@ -21,10 +21,10 @@ class ActionsVariable(GitHubModel):
 
     name: str = Field(description="The name of the variable.")
     value: str = Field(description="The value of the variable.")
-    created_at: datetime = Field(
+    created_at: _dt.datetime = Field(
         description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    updated_at: datetime = Field(
+    updated_at: _dt.datetime = Field(
         description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
 

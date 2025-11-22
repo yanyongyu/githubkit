@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -42,7 +42,7 @@ class WebhooksIssueComment(GitHubModel):
         description="How the author is associated with the repository.",
     )
     body: str = Field(description="Contents of the issue comment")
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     html_url: str = Field()
     id: int = Field(description="Unique identifier of the issue comment")
     issue_url: str = Field()
@@ -52,7 +52,7 @@ class WebhooksIssueComment(GitHubModel):
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
     )
     reactions: WebhooksIssueCommentPropReactions = Field(title="Reactions")
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the issue comment")
     user: Union[WebhooksIssueCommentPropUser, None] = Field(title="User")
 

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Any
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
@@ -29,7 +29,7 @@ class SnapshotType(TypedDict):
     detector: SnapshotPropDetectorType
     metadata: NotRequired[MetadataType]
     manifests: NotRequired[SnapshotPropManifestsType]
-    scanned: datetime
+    scanned: _dt.datetime
 
 
 class SnapshotTypeForResponse(TypedDict):

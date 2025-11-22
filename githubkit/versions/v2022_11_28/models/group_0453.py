@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -52,7 +52,7 @@ class SimpleCheckSuite(GitHubModel):
             ],
         ]
     ] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
     head_branch: Missing[Union[str, None]] = Field(default=UNSET)
     head_sha: Missing[str] = Field(
         default=UNSET, description="The SHA of the head commit that is being checked."
@@ -66,7 +66,7 @@ class SimpleCheckSuite(GitHubModel):
     status: Missing[
         Literal["queued", "in_progress", "completed", "pending", "waiting"]
     ] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
 
 

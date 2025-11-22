@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -41,8 +41,8 @@ class EnterpriseWebhooks(GitHubModel):
     node_id: str = Field()
     name: str = Field(description="The name of the enterprise.")
     slug: str = Field(description="The slug url identifier for the enterprise.")
-    created_at: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
     avatar_url: str = Field()
 
 

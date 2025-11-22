@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -29,8 +29,8 @@ class WebhooksProjectChangesTypeForResponse(TypedDict):
 class WebhooksProjectChangesPropArchivedAtType(TypedDict):
     """WebhooksProjectChangesPropArchivedAt"""
 
-    from_: NotRequired[Union[datetime, None]]
-    to: NotRequired[Union[datetime, None]]
+    from_: NotRequired[Union[_dt.datetime, None]]
+    to: NotRequired[Union[_dt.datetime, None]]
 
 
 class WebhooksProjectChangesPropArchivedAtTypeForResponse(TypedDict):

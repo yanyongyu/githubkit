@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -39,18 +39,20 @@ class ProjectsV2(GitHubModel):
     public: bool = Field(
         description="Whether the project is visible to anyone with access to the owner."
     )
-    closed_at: Union[datetime, None] = Field(
+    closed_at: Union[_dt.datetime, None] = Field(
         description="The time when the project was closed."
     )
-    created_at: datetime = Field(description="The time when the project was created.")
-    updated_at: datetime = Field(
+    created_at: _dt.datetime = Field(
+        description="The time when the project was created."
+    )
+    updated_at: _dt.datetime = Field(
         description="The time when the project was last updated."
     )
     number: int = Field(description="The project number.")
     short_description: Union[str, None] = Field(
         description="A concise summary of the project."
     )
-    deleted_at: Union[datetime, None] = Field(
+    deleted_at: Union[_dt.datetime, None] = Field(
         description="The time when the project was deleted."
     )
     deleted_by: Union[None, SimpleUser] = Field()

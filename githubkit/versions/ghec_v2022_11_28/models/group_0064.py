@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -35,7 +35,7 @@ class BypassResponse(GitHubModel):
         default=UNSET,
         description="The response status to the bypass request until dismissed.",
     )
-    created_at: Missing[datetime] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="The date and time the response to the bypass request was created.",
     )

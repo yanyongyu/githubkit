@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
@@ -75,7 +75,7 @@ class WebhookPushPropHeadCommitType(TypedDict):
     message: str
     modified: NotRequired[list[str]]
     removed: NotRequired[list[str]]
-    timestamp: datetime
+    timestamp: _dt.datetime
     tree_id: str
     url: str
 
@@ -102,7 +102,7 @@ class WebhookPushPropHeadCommitPropAuthorType(TypedDict):
     Metaproperties for Git author/committer information.
     """
 
-    date: NotRequired[datetime]
+    date: NotRequired[_dt.datetime]
     email: Union[str, None]
     name: str
     username: NotRequired[str]
@@ -126,7 +126,7 @@ class WebhookPushPropHeadCommitPropCommitterType(TypedDict):
     Metaproperties for Git author/committer information.
     """
 
-    date: NotRequired[datetime]
+    date: NotRequired[_dt.datetime]
     email: Union[str, None]
     name: str
     username: NotRequired[str]
@@ -150,7 +150,7 @@ class WebhookPushPropPusherType(TypedDict):
     Metaproperties for Git author/committer information.
     """
 
-    date: NotRequired[datetime]
+    date: NotRequired[_dt.datetime]
     email: NotRequired[Union[str, None]]
     name: str
     username: NotRequired[str]
@@ -179,7 +179,7 @@ class WebhookPushPropCommitsItemsType(TypedDict):
     message: str
     modified: NotRequired[list[str]]
     removed: NotRequired[list[str]]
-    timestamp: datetime
+    timestamp: _dt.datetime
     tree_id: str
     url: str
 
@@ -206,7 +206,7 @@ class WebhookPushPropCommitsItemsPropAuthorType(TypedDict):
     Metaproperties for Git author/committer information.
     """
 
-    date: NotRequired[datetime]
+    date: NotRequired[_dt.datetime]
     email: Union[str, None]
     name: str
     username: NotRequired[str]
@@ -230,7 +230,7 @@ class WebhookPushPropCommitsItemsPropCommitterType(TypedDict):
     Metaproperties for Git author/committer information.
     """
 
-    date: NotRequired[datetime]
+    date: NotRequired[_dt.datetime]
     email: Union[str, None]
     name: str
     username: NotRequired[str]
@@ -272,7 +272,7 @@ class WebhookPushPropRepositoryType(TypedDict):
     compare_url: str
     contents_url: str
     contributors_url: str
-    created_at: Union[int, datetime]
+    created_at: Union[int, _dt.datetime]
     custom_properties: NotRequired[WebhookPushPropRepositoryPropCustomPropertiesType]
     default_branch: str
     delete_branch_on_merge: NotRequired[bool]
@@ -324,7 +324,7 @@ class WebhookPushPropRepositoryType(TypedDict):
     private: bool
     public: NotRequired[bool]
     pulls_url: str
-    pushed_at: Union[int, datetime, None]
+    pushed_at: Union[int, _dt.datetime, None]
     releases_url: str
     role_name: NotRequired[Union[str, None]]
     size: int
@@ -340,7 +340,7 @@ class WebhookPushPropRepositoryType(TypedDict):
     teams_url: str
     topics: list[str]
     trees_url: str
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
     visibility: Literal["public", "private", "internal"]
     watchers: int

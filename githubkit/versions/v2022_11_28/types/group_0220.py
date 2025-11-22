@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing_extensions import TypedDict
 
 
@@ -25,8 +25,8 @@ class ProjectColumnType(TypedDict):
     id: int
     node_id: str
     name: str
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
 class ProjectColumnTypeForResponse(TypedDict):

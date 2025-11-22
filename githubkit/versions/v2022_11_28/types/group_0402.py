@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -52,8 +52,8 @@ class SecretScanningAlertType(TypedDict):
     """SecretScanningAlert"""
 
     number: NotRequired[int]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[Union[None, datetime]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[Union[None, _dt.datetime]]
     url: NotRequired[str]
     html_url: NotRequired[str]
     locations_url: NotRequired[str]
@@ -61,7 +61,7 @@ class SecretScanningAlertType(TypedDict):
     resolution: NotRequired[
         Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ]
-    resolved_at: NotRequired[Union[datetime, None]]
+    resolved_at: NotRequired[Union[_dt.datetime, None]]
     resolved_by: NotRequired[Union[None, SimpleUserType]]
     resolution_comment: NotRequired[Union[str, None]]
     secret_type: NotRequired[str]
@@ -69,7 +69,7 @@ class SecretScanningAlertType(TypedDict):
     secret: NotRequired[str]
     push_protection_bypassed: NotRequired[Union[bool, None]]
     push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
-    push_protection_bypassed_at: NotRequired[Union[datetime, None]]
+    push_protection_bypassed_at: NotRequired[Union[_dt.datetime, None]]
     push_protection_bypass_request_reviewer: NotRequired[Union[None, SimpleUserType]]
     push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
     push_protection_bypass_request_comment: NotRequired[Union[str, None]]

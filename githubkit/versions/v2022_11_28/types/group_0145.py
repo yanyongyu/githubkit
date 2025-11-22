@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
@@ -96,9 +96,9 @@ class FullRepositoryType(TypedDict):
     archived: bool
     disabled: bool
     visibility: NotRequired[str]
-    pushed_at: datetime
-    created_at: datetime
-    updated_at: datetime
+    pushed_at: _dt.datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     permissions: NotRequired[FullRepositoryPropPermissionsType]
     allow_rebase_merge: NotRequired[bool]
     template_repository: NotRequired[Union[None, RepositoryType]]

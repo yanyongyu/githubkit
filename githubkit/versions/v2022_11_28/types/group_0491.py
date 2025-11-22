@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -29,7 +29,7 @@ class WebhooksAlertType(TypedDict):
     external_identifier: str
     external_reference: Union[str, None]
     fix_reason: NotRequired[str]
-    fixed_at: NotRequired[datetime]
+    fixed_at: NotRequired[_dt.datetime]
     fixed_in: NotRequired[str]
     ghsa_id: str
     id: int

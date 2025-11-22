@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -33,15 +33,15 @@ class CodeScanningOrganizationAlertItemsType(TypedDict):
     """CodeScanningOrganizationAlertItems"""
 
     number: int
-    created_at: datetime
-    updated_at: NotRequired[datetime]
+    created_at: _dt.datetime
+    updated_at: NotRequired[_dt.datetime]
     url: str
     html_url: str
     instances_url: str
     state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[datetime, None]]
+    fixed_at: NotRequired[Union[_dt.datetime, None]]
     dismissed_by: Union[None, SimpleUserType]
-    dismissed_at: Union[datetime, None]
+    dismissed_at: Union[_dt.datetime, None]
     dismissed_reason: Union[
         None, Literal["false positive", "won't fix", "used in tests"]
     ]

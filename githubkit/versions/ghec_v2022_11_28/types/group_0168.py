@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing_extensions import TypedDict
 
 from .group_0169 import (
@@ -26,7 +26,7 @@ class RulesetVersionType(TypedDict):
 
     version_id: int
     actor: RulesetVersionPropActorType
-    updated_at: datetime
+    updated_at: _dt.datetime
 
 
 class RulesetVersionTypeForResponse(TypedDict):

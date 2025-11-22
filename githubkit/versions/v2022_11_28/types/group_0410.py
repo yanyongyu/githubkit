@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import TypedDict
 
@@ -22,7 +22,7 @@ class StargazerType(TypedDict):
     Stargazer
     """
 
-    starred_at: datetime
+    starred_at: _dt.datetime
     user: Union[None, SimpleUserType]
 
 

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
@@ -35,8 +35,8 @@ class OrganizationActionsSecretType(TypedDict):
     """
 
     name: str
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     visibility: Literal["all", "private", "selected"]
     selected_repositories_url: NotRequired[str]
 

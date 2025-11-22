@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -47,8 +47,8 @@ class UserSearchResultItemType(TypedDict):
     public_gists: NotRequired[int]
     followers: NotRequired[int]
     following: NotRequired[int]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
     name: NotRequired[Union[str, None]]
     bio: NotRequired[Union[str, None]]
     email: NotRequired[Union[str, None]]
@@ -58,7 +58,7 @@ class UserSearchResultItemType(TypedDict):
     text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
     blog: NotRequired[Union[str, None]]
     company: NotRequired[Union[str, None]]
-    suspended_at: NotRequired[Union[datetime, None]]
+    suspended_at: NotRequired[Union[_dt.datetime, None]]
     user_view_type: NotRequired[str]
 
 

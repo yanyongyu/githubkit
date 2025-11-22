@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -41,11 +41,11 @@ class SecretScanningScan(GitHubModel):
         default=UNSET,
         description='The state of the scan. Either "completed", "running", or "pending"',
     )
-    completed_at: Missing[Union[datetime, None]] = Field(
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time that the scan was completed. Empty if the scan is running",
     )
-    started_at: Missing[Union[datetime, None]] = Field(
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time that the scan was started. Empty if the scan is pending",
     )
@@ -59,11 +59,11 @@ class SecretScanningScanHistoryPropCustomPatternBackfillScansItems(GitHubModel):
         default=UNSET,
         description='The state of the scan. Either "completed", "running", or "pending"',
     )
-    completed_at: Missing[Union[datetime, None]] = Field(
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time that the scan was completed. Empty if the scan is running",
     )
-    started_at: Missing[Union[datetime, None]] = Field(
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time that the scan was started. Empty if the scan is pending",
     )

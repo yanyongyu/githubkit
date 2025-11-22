@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -39,9 +39,9 @@ class DependabotAlertSecurityAdvisoryType(TypedDict):
     cwes: list[DependabotAlertSecurityAdvisoryPropCwesItemsType]
     identifiers: list[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
     references: list[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
-    published_at: datetime
-    updated_at: datetime
-    withdrawn_at: Union[datetime, None]
+    published_at: _dt.datetime
+    updated_at: _dt.datetime
+    withdrawn_at: Union[_dt.datetime, None]
 
 
 class DependabotAlertSecurityAdvisoryTypeForResponse(TypedDict):

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -29,10 +29,10 @@ class CampaignSummary(GitHubModel):
     """
 
     number: int = Field(description="The number of the newly created campaign")
-    created_at: datetime = Field(
+    created_at: _dt.datetime = Field(
         description="The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    updated_at: datetime = Field(
+    updated_at: _dt.datetime = Field(
         description="The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
     name: Missing[str] = Field(default=UNSET, description="The campaign name")
@@ -41,14 +41,14 @@ class CampaignSummary(GitHubModel):
     team_managers: Missing[list[Team]] = Field(
         default=UNSET, description="The campaign team managers"
     )
-    published_at: Missing[datetime] = Field(
+    published_at: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
     )
-    ends_at: datetime = Field(
+    ends_at: _dt.datetime = Field(
         description="The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    closed_at: Missing[Union[datetime, None]] = Field(
+    closed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.",
     )

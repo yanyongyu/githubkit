@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -24,7 +24,7 @@ from .group_0712 import (
 class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType(TypedDict):
     """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
 
-    created_at: Union[datetime, None]
+    created_at: Union[_dt.datetime, None]
     description: Union[str, None]
     events: NotRequired[list[str]]
     external_url: Union[str, None]
@@ -39,7 +39,7 @@ class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType(TypedDict):
         WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
     ]
     slug: NotRequired[str]
-    updated_at: Union[datetime, None]
+    updated_at: Union[_dt.datetime, None]
 
 
 class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppTypeForResponse(TypedDict):

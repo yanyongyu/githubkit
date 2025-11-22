@@ -21,7 +21,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -7346,8 +7346,8 @@ class OrgsClient:
         owner: Missing[list[str]] = UNSET,
         repository: Missing[str] = UNSET,
         permission: Missing[str] = UNSET,
-        last_used_before: Missing[datetime] = UNSET,
-        last_used_after: Missing[datetime] = UNSET,
+        last_used_before: Missing[_dt.datetime] = UNSET,
+        last_used_after: Missing[_dt.datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
@@ -7415,8 +7415,8 @@ class OrgsClient:
         owner: Missing[list[str]] = UNSET,
         repository: Missing[str] = UNSET,
         permission: Missing[str] = UNSET,
-        last_used_before: Missing[datetime] = UNSET,
-        last_used_after: Missing[datetime] = UNSET,
+        last_used_before: Missing[_dt.datetime] = UNSET,
+        last_used_after: Missing[_dt.datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
@@ -7922,8 +7922,8 @@ class OrgsClient:
         owner: Missing[list[str]] = UNSET,
         repository: Missing[str] = UNSET,
         permission: Missing[str] = UNSET,
-        last_used_before: Missing[datetime] = UNSET,
-        last_used_after: Missing[datetime] = UNSET,
+        last_used_before: Missing[_dt.datetime] = UNSET,
+        last_used_after: Missing[_dt.datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
@@ -7991,8 +7991,8 @@ class OrgsClient:
         owner: Missing[list[str]] = UNSET,
         repository: Missing[str] = UNSET,
         permission: Missing[str] = UNSET,
-        last_used_before: Missing[datetime] = UNSET,
-        last_used_after: Missing[datetime] = UNSET,
+        last_used_before: Missing[_dt.datetime] = UNSET,
+        last_used_after: Missing[_dt.datetime] = UNSET,
         token_id: Missing[list[str]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,

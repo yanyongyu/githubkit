@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -35,7 +35,7 @@ class ActionsHostedRunnerType(TypedDict):
     maximum_runners: NotRequired[int]
     public_ip_enabled: bool
     public_ips: NotRequired[list[PublicIpType]]
-    last_active_on: NotRequired[Union[datetime, None]]
+    last_active_on: NotRequired[Union[_dt.datetime, None]]
     image_gen: NotRequired[bool]
 
 

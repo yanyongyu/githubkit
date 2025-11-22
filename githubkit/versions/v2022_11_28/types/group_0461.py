@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -37,7 +37,7 @@ class DiscussionType(TypedDict):
     body: str
     category: DiscussionPropCategoryType
     comments: int
-    created_at: datetime
+    created_at: _dt.datetime
     html_url: str
     id: int
     locked: bool
@@ -49,7 +49,7 @@ class DiscussionType(TypedDict):
     state_reason: Union[None, Literal["resolved", "outdated", "duplicate", "reopened"]]
     timeline_url: NotRequired[str]
     title: str
-    updated_at: datetime
+    updated_at: _dt.datetime
     user: Union[DiscussionPropUserType, None]
     labels: NotRequired[list[LabelType]]
 
@@ -183,7 +183,7 @@ class DiscussionPropAnswerChosenByTypeForResponse(TypedDict):
 class DiscussionPropCategoryType(TypedDict):
     """DiscussionPropCategory"""
 
-    created_at: datetime
+    created_at: _dt.datetime
     description: str
     emoji: str
     id: int

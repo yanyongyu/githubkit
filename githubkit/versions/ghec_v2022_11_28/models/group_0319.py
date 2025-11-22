@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 
 from pydantic import Field
 
@@ -26,7 +26,7 @@ class GitUser(GitHubModel):
 
     name: Missing[str] = Field(default=UNSET)
     email: Missing[str] = Field(default=UNSET)
-    date: Missing[datetime] = Field(default=UNSET)
+    date: Missing[_dt.datetime] = Field(default=UNSET)
 
 
 model_rebuild(GitUser)

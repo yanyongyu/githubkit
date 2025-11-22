@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -128,9 +128,9 @@ class RepositoryWebhooks(GitHubModel):
         default=UNSET,
         description="The repository visibility: public, private, or internal.",
     )
-    pushed_at: Union[datetime, None] = Field()
-    created_at: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
+    pushed_at: Union[_dt.datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
     allow_rebase_merge: Missing[bool] = Field(
         default=UNSET, description="Whether to allow rebase merges for pull requests."
     )

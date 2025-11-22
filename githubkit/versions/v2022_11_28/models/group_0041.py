@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -39,10 +39,10 @@ class IssueType(GitHubModel):
             ],
         ]
     ] = Field(default=UNSET, description="The color of the issue type.")
-    created_at: Missing[datetime] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET, description="The time the issue type created."
     )
-    updated_at: Missing[datetime] = Field(
+    updated_at: Missing[_dt.datetime] = Field(
         default=UNSET, description="The time the issue type last updated."
     )
     is_enabled: Missing[bool] = Field(

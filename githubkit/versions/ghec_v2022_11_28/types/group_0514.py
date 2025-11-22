@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -52,8 +52,8 @@ class PrivateUserType(TypedDict):
     public_gists: int
     followers: int
     following: int
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     private_gists: int
     total_private_repos: int
     owned_private_repos: int

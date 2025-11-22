@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -37,7 +37,7 @@ class WebhooksAnswer(GitHubModel):
     )
     body: str = Field()
     child_comment_count: int = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     discussion_id: int = Field()
     html_url: str = Field()
     id: int = Field()
@@ -47,7 +47,7 @@ class WebhooksAnswer(GitHubModel):
         default=UNSET, title="Reactions"
     )
     repository_url: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     user: Union[WebhooksAnswerPropUser, None] = Field(title="User")
 
 

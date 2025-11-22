@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -39,9 +39,9 @@ class RepoSearchResultItem(GitHubModel):
     description: Union[str, None] = Field()
     fork: bool = Field()
     url: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    pushed_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    pushed_at: _dt.datetime = Field()
     homepage: Union[str, None] = Field()
     size: int = Field()
     stargazers_count: int = Field()
