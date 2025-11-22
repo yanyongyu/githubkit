@@ -9,7 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
+from githubkit.lazy_module import is_lazy_disabled
+
+if TYPE_CHECKING or is_lazy_disabled():
     from .group_0000 import RootType as RootType
     from .group_0000 import RootTypeForResponse as RootTypeForResponse
     from .group_0001 import CvssSeveritiesPropCvssV3Type as CvssSeveritiesPropCvssV3Type

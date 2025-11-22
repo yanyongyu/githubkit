@@ -9,7 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
+from githubkit.lazy_module import is_lazy_disabled
+
+if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import (
         ActionsArtifactAndLogRetention as ActionsArtifactAndLogRetention,
     )
