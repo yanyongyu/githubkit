@@ -14,31 +14,29 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrganizationSimpleWebhooks(GitHubModel):
-    """Organization Simple
+class WebhooksDeployKey(GitHubModel):
+    """WebhooksDeployKey
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-
+    keys/deploy-keys#get-a-deploy-key) resource.
     """
 
-    login: str = Field()
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: str = Field()
     id: int = Field()
-    node_id: str = Field()
+    key: str = Field()
+    last_used: Missing[Union[str, None]] = Field(default=UNSET)
+    read_only: bool = Field()
+    title: str = Field()
     url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
+    verified: bool = Field()
+    enabled: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationSimpleWebhooks)
+model_rebuild(WebhooksDeployKey)
 
-__all__ = ("OrganizationSimpleWebhooks",)
+__all__ = ("WebhooksDeployKey",)

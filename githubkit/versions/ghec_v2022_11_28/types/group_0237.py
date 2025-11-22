@@ -9,53 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0214 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import TypedDict
 
 
-class PackageType(TypedDict):
-    """Package
+class RepositoryFineGrainedPermissionType(TypedDict):
+    """Repository Fine-Grained Permission
 
-    A software package
+    A fine-grained permission that protects repository resources.
     """
 
-    id: int
     name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserType]]
-    repository: NotRequired[Union[None, MinimalRepositoryType]]
-    created_at: datetime
-    updated_at: datetime
+    description: str
 
 
-class PackageTypeForResponse(TypedDict):
-    """Package
+class RepositoryFineGrainedPermissionTypeForResponse(TypedDict):
+    """Repository Fine-Grained Permission
 
-    A software package
+    A fine-grained permission that protects repository resources.
     """
 
-    id: int
     name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    repository: NotRequired[Union[None, MinimalRepositoryTypeForResponse]]
-    created_at: str
-    updated_at: str
+    description: str
 
 
 __all__ = (
-    "PackageType",
-    "PackageTypeForResponse",
+    "RepositoryFineGrainedPermissionType",
+    "RepositoryFineGrainedPermissionTypeForResponse",
 )

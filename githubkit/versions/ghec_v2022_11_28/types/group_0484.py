@@ -9,55 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class TagProtectionType(TypedDict):
+    """Tag protection
 
-class ContributorActivityType(TypedDict):
-    """Contributor Activity
-
-    Contributor Activity
+    Tag protection
     """
 
-    author: Union[None, SimpleUserType]
-    total: int
-    weeks: list[ContributorActivityPropWeeksItemsType]
+    id: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    enabled: NotRequired[bool]
+    pattern: str
 
 
-class ContributorActivityTypeForResponse(TypedDict):
-    """Contributor Activity
+class TagProtectionTypeForResponse(TypedDict):
+    """Tag protection
 
-    Contributor Activity
+    Tag protection
     """
 
-    author: Union[None, SimpleUserTypeForResponse]
-    total: int
-    weeks: list[ContributorActivityPropWeeksItemsTypeForResponse]
-
-
-class ContributorActivityPropWeeksItemsType(TypedDict):
-    """ContributorActivityPropWeeksItems"""
-
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
-
-
-class ContributorActivityPropWeeksItemsTypeForResponse(TypedDict):
-    """ContributorActivityPropWeeksItems"""
-
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
+    id: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    enabled: NotRequired[bool]
+    pattern: str
 
 
 __all__ = (
-    "ContributorActivityPropWeeksItemsType",
-    "ContributorActivityPropWeeksItemsTypeForResponse",
-    "ContributorActivityType",
-    "ContributorActivityTypeForResponse",
+    "TagProtectionType",
+    "TagProtectionTypeForResponse",
 )

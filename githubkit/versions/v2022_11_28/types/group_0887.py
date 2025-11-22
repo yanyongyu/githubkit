@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class GistsGistIdCommentsCommentIdPatchBodyType(TypedDict):
-    """GistsGistIdCommentsCommentIdPatchBody"""
+class InstallationRepositoriesGetResponse200Type(TypedDict):
+    """InstallationRepositoriesGetResponse200"""
 
-    body: str
+    total_count: int
+    repositories: list[RepositoryType]
+    repository_selection: NotRequired[str]
 
 
-class GistsGistIdCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
-    """GistsGistIdCommentsCommentIdPatchBody"""
+class InstallationRepositoriesGetResponse200TypeForResponse(TypedDict):
+    """InstallationRepositoriesGetResponse200"""
 
-    body: str
+    total_count: int
+    repositories: list[RepositoryTypeForResponse]
+    repository_selection: NotRequired[str]
 
 
 __all__ = (
-    "GistsGistIdCommentsCommentIdPatchBodyType",
-    "GistsGistIdCommentsCommentIdPatchBodyTypeForResponse",
+    "InstallationRepositoriesGetResponse200Type",
+    "InstallationRepositoriesGetResponse200TypeForResponse",
 )

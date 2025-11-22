@@ -9,71 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0080 import Team
 
+class CopilotOrganizationDetails(ExtraGitHubModel):
+    """Copilot Organization Details
 
-class CampaignSummary(GitHubModel):
-    """Campaign summary
-
-    The campaign metadata and alert stats.
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    number: int = Field(description="The number of the newly created campaign")
-    created_at: datetime = Field(
-        description="The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    seat_breakdown: CopilotOrganizationSeatBreakdown = Field(
+        title="Copilot Seat Breakdown",
+        description="The breakdown of Copilot Business seats for the organization.",
     )
-    updated_at: datetime = Field(
-        description="The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    public_code_suggestions: Literal["allow", "block", "unconfigured"] = Field(
+        description="The organization policy for allowing or blocking suggestions matching public code (duplication detection filter)."
     )
-    name: Missing[str] = Field(default=UNSET, description="The campaign name")
-    description: str = Field(description="The campaign description")
-    managers: list[SimpleUser] = Field(description="The campaign managers")
-    team_managers: Missing[list[Team]] = Field(
-        default=UNSET, description="The campaign team managers"
-    )
-    published_at: Missing[datetime] = Field(
+    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        description="The organization policy for allowing or disallowing Copilot Chat in the IDE.",
     )
-    ends_at: datetime = Field(
-        description="The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    closed_at: Missing[Union[datetime, None]] = Field(
+    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.",
+        description="The organization policy for allowing or disallowing Copilot features on GitHub.com.",
     )
-    state: Literal["open", "closed"] = Field(
-        title="Campaign state",
-        description="Indicates whether a campaign is open or closed",
+    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing Copilot in the CLI.",
     )
-    contact_link: Union[str, None] = Field(
-        description="The contact link of the campaign."
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ] = Field(description="The mode of assigning new seats.")
+    plan_type: Missing[Literal["business", "enterprise"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
-    alert_stats: Missing[CampaignSummaryPropAlertStats] = Field(default=UNSET)
 
 
-class CampaignSummaryPropAlertStats(GitHubModel):
-    """CampaignSummaryPropAlertStats"""
+class CopilotOrganizationSeatBreakdown(GitHubModel):
+    """Copilot Seat Breakdown
 
-    open_count: int = Field(description="The number of open alerts")
-    closed_count: int = Field(description="The number of closed alerts")
-    in_progress_count: int = Field(description="The number of in-progress alerts")
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of seats being billed for the organization as of the current billing cycle.",
+    )
+    added_this_cycle: Missing[int] = Field(
+        default=UNSET, description="Seats added during the current billing cycle."
+    )
+    pending_cancellation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
+    )
+    pending_invitation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of users who have been invited to receive a Copilot seat through this organization.",
+    )
+    active_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have used Copilot during the current billing cycle.",
+    )
+    inactive_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have not used Copilot during the current billing cycle.",
+    )
 
 
-model_rebuild(CampaignSummary)
-model_rebuild(CampaignSummaryPropAlertStats)
+model_rebuild(CopilotOrganizationDetails)
+model_rebuild(CopilotOrganizationSeatBreakdown)
 
 __all__ = (
-    "CampaignSummary",
-    "CampaignSummaryPropAlertStats",
+    "CopilotOrganizationDetails",
+    "CopilotOrganizationSeatBreakdown",
 )

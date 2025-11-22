@@ -9,24 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0490 import Traffic
-
-
-class CloneTraffic(GitHubModel):
-    """Clone Traffic
-
-    Clone Traffic
-    """
-
-    count: int = Field()
-    uniques: int = Field()
-    clones: list[Traffic] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(CloneTraffic)
+class GroupResponse(GitHubModel):
+    """GroupResponse"""
 
-__all__ = ("CloneTraffic",)
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    )
+    external_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="A human-readable name for a security group.",
+    )
+    members: Missing[list[GroupResponsePropMembersItems]] = Field(
+        default=UNSET, description="The group members."
+    )
+
+
+class GroupResponsePropMembersItems(GitHubModel):
+    """GroupResponsePropMembersItems"""
+
+    value: str = Field(description="The local unique identifier for the member")
+    ref: str = Field(alias="$ref")
+    display: Missing[str] = Field(
+        default=UNSET, description="The display name associated with the member"
+    )
+
+
+model_rebuild(GroupResponse)
+model_rebuild(GroupResponsePropMembersItems)
+
+__all__ = (
+    "GroupResponse",
+    "GroupResponsePropMembersItems",
+)

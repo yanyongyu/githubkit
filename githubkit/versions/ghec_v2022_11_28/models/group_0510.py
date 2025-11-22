@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 
 from pydantic import Field
@@ -18,47 +17,40 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0214 import MinimalRepository
-from .group_0509 import SearchResultTextMatchesItems
+from .group_0505 import SearchResultTextMatchesItems
 
 
-class CodeSearchResultItem(GitHubModel):
-    """Code Search Result Item
+class LabelSearchResultItem(GitHubModel):
+    """Label Search Result Item
 
-    Code Search Result Item
+    Label Search Result Item
     """
 
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
+    id: int = Field()
+    node_id: str = Field()
     url: str = Field()
-    git_url: str = Field()
-    html_url: str = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
+    name: str = Field()
+    color: str = Field()
+    default: bool = Field()
+    description: Union[str, None] = Field()
     score: float = Field()
-    file_size: Missing[int] = Field(default=UNSET)
-    language: Missing[Union[str, None]] = Field(default=UNSET)
-    last_modified_at: Missing[datetime] = Field(default=UNSET)
-    line_numbers: Missing[list[str]] = Field(default=UNSET)
     text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"
     )
 
 
-class SearchCodeGetResponse200(GitHubModel):
-    """SearchCodeGetResponse200"""
+class SearchLabelsGetResponse200(GitHubModel):
+    """SearchLabelsGetResponse200"""
 
     total_count: int = Field()
     incomplete_results: bool = Field()
-    items: list[CodeSearchResultItem] = Field()
+    items: list[LabelSearchResultItem] = Field()
 
 
-model_rebuild(CodeSearchResultItem)
-model_rebuild(SearchCodeGetResponse200)
+model_rebuild(LabelSearchResultItem)
+model_rebuild(SearchLabelsGetResponse200)
 
 __all__ = (
-    "CodeSearchResultItem",
-    "SearchCodeGetResponse200",
+    "LabelSearchResultItem",
+    "SearchLabelsGetResponse200",
 )

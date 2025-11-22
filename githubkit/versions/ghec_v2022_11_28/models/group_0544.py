@@ -9,28 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksWorkflow(GitHubModel):
-    """Workflow"""
+class WebhooksLabel(GitHubModel):
+    """Label"""
 
-    badge_url: str = Field()
-    created_at: datetime = Field()
-    html_url: str = Field()
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field()
+    description: Union[str, None] = Field()
     id: int = Field()
-    name: str = Field()
+    name: str = Field(description="The name of the label.")
     node_id: str = Field()
-    path: str = Field()
-    state: str = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
+    url: str = Field(description="URL for the label")
 
 
-model_rebuild(WebhooksWorkflow)
+model_rebuild(WebhooksLabel)
 
-__all__ = ("WebhooksWorkflow",)
+__all__ = ("WebhooksLabel",)

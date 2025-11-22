@@ -12,35 +12,86 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0132 import (
-    RepositoryRulePullRequestPropParametersType,
-    RepositoryRulePullRequestPropParametersTypeForResponse,
-)
+
+class RepositoryRulePullRequestPropParametersType(TypedDict):
+    """RepositoryRulePullRequestPropParameters"""
+
+    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
+    automatic_copilot_code_review_enabled: NotRequired[bool]
+    dismiss_stale_reviews_on_push: bool
+    require_code_owner_review: bool
+    require_last_push_approval: bool
+    required_approving_review_count: int
+    required_review_thread_resolution: bool
+    required_reviewers: NotRequired[
+        list[RepositoryRuleParamsRequiredReviewerConfigurationType]
+    ]
 
 
-class RepositoryRulePullRequestType(TypedDict):
-    """pull_request
+class RepositoryRulePullRequestPropParametersTypeForResponse(TypedDict):
+    """RepositoryRulePullRequestPropParameters"""
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
+    automatic_copilot_code_review_enabled: NotRequired[bool]
+    dismiss_stale_reviews_on_push: bool
+    require_code_owner_review: bool
+    require_last_push_approval: bool
+    required_approving_review_count: int
+    required_review_thread_resolution: bool
+    required_reviewers: NotRequired[
+        list[RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse]
+    ]
+
+
+class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
+    """RequiredReviewerConfiguration
+
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer: RepositoryRuleParamsReviewerType
 
 
-class RepositoryRulePullRequestTypeForResponse(TypedDict):
-    """pull_request
+class RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse(TypedDict):
+    """RequiredReviewerConfiguration
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersTypeForResponse]
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer: RepositoryRuleParamsReviewerTypeForResponse
+
+
+class RepositoryRuleParamsReviewerType(TypedDict):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int
+    type: Literal["Team"]
+
+
+class RepositoryRuleParamsReviewerTypeForResponse(TypedDict):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int
+    type: Literal["Team"]
 
 
 __all__ = (
-    "RepositoryRulePullRequestType",
-    "RepositoryRulePullRequestTypeForResponse",
+    "RepositoryRuleParamsRequiredReviewerConfigurationType",
+    "RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse",
+    "RepositoryRuleParamsReviewerType",
+    "RepositoryRuleParamsReviewerTypeForResponse",
+    "RepositoryRulePullRequestPropParametersType",
+    "RepositoryRulePullRequestPropParametersTypeForResponse",
 )

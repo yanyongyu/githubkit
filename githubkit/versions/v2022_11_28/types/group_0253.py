@@ -9,33 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GitUserType(TypedDict):
-    """Git User
+class DiffEntryType(TypedDict):
+    """Diff Entry
 
-    Metaproperties for Git author/committer information.
+    Diff Entry
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[datetime]
+    sha: Union[str, None]
+    filename: str
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ]
+    additions: int
+    deletions: int
+    changes: int
+    blob_url: Union[str, None]
+    raw_url: Union[str, None]
+    contents_url: str
+    patch: NotRequired[str]
+    previous_filename: NotRequired[str]
 
 
-class GitUserTypeForResponse(TypedDict):
-    """Git User
+class DiffEntryTypeForResponse(TypedDict):
+    """Diff Entry
 
-    Metaproperties for Git author/committer information.
+    Diff Entry
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[str]
+    sha: Union[str, None]
+    filename: str
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ]
+    additions: int
+    deletions: int
+    changes: int
+    blob_url: Union[str, None]
+    raw_url: Union[str, None]
+    contents_url: str
+    patch: NotRequired[str]
+    previous_filename: NotRequired[str]
 
 
 __all__ = (
-    "GitUserType",
-    "GitUserTypeForResponse",
+    "DiffEntryType",
+    "DiffEntryTypeForResponse",
 )

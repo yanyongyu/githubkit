@@ -9,52 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0379 import Metadata
+from .group_0380 import DeploymentBranchPolicySettings
+from .group_0382 import EnvironmentPropProtectionRulesItemsAnyof1
 
 
-class Manifest(GitHubModel):
-    """Manifest"""
+class Environment(GitHubModel):
+    """Environment
 
-    name: str = Field(description="The name of the manifest.")
-    file: Missing[ManifestPropFile] = Field(default=UNSET)
-    metadata: Missing[Metadata] = Field(
-        default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
-    )
-    resolved: Missing[ManifestPropResolved] = Field(
-        default=UNSET, description="A collection of resolved package dependencies."
-    )
-
-
-class ManifestPropFile(GitHubModel):
-    """ManifestPropFile"""
-
-    source_location: Missing[str] = Field(
-        default=UNSET,
-        description="The path of the manifest file relative to the root of the Git repository.",
-    )
-
-
-class ManifestPropResolved(ExtraGitHubModel):
-    """ManifestPropResolved
-
-    A collection of resolved package dependencies.
+    Details of a deployment environment
     """
 
+    id: int = Field(description="The id of the environment.")
+    node_id: str = Field()
+    name: str = Field(description="The name of the environment.")
+    url: str = Field()
+    html_url: str = Field()
+    created_at: datetime = Field(
+        description="The time that the environment was created, in ISO 8601 format."
+    )
+    updated_at: datetime = Field(
+        description="The time that the environment was last updated, in ISO 8601 format."
+    )
+    protection_rules: Missing[
+        list[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0,
+                EnvironmentPropProtectionRulesItemsAnyof1,
+                EnvironmentPropProtectionRulesItemsAnyof2,
+            ]
+        ]
+    ] = Field(
+        default=UNSET,
+        description="Built-in deployment protection rules for the environment.",
+    )
+    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
+        Field(
+            default=UNSET,
+            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
+        )
+    )
 
-model_rebuild(Manifest)
-model_rebuild(ManifestPropFile)
-model_rebuild(ManifestPropResolved)
+
+class EnvironmentPropProtectionRulesItemsAnyof0(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
+
+    id: int = Field()
+    node_id: str = Field()
+    type: str = Field()
+    wait_timer: Missing[int] = Field(
+        default=UNSET,
+        description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
+    )
+
+
+class EnvironmentPropProtectionRulesItemsAnyof2(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
+
+    id: int = Field()
+    node_id: str = Field()
+    type: str = Field()
+
+
+class ReposOwnerRepoEnvironmentsGetResponse200(GitHubModel):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
+
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of environments in this repository"
+    )
+    environments: Missing[list[Environment]] = Field(default=UNSET)
+
+
+model_rebuild(Environment)
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof0)
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof2)
+model_rebuild(ReposOwnerRepoEnvironmentsGetResponse200)
 
 __all__ = (
-    "Manifest",
-    "ManifestPropFile",
-    "ManifestPropResolved",
+    "Environment",
+    "EnvironmentPropProtectionRulesItemsAnyof0",
+    "EnvironmentPropProtectionRulesItemsAnyof2",
+    "ReposOwnerRepoEnvironmentsGetResponse200",
 )

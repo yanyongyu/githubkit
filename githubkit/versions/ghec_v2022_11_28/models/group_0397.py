@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,35 +18,66 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GitTree(GitHubModel):
-    """Git Tree
+class Import(GitHubModel):
+    """Import
 
-    The hierarchy between files in a Git repository.
+    A repository import from an external source.
     """
 
-    sha: str = Field()
-    url: Missing[str] = Field(default=UNSET)
-    truncated: bool = Field()
-    tree: list[GitTreePropTreeItems] = Field(
-        description="Objects specifying a tree structure"
-    )
+    vcs: Union[str, None] = Field()
+    use_lfs: Missing[bool] = Field(default=UNSET)
+    vcs_url: str = Field(description="The URL of the originating repository.")
+    svc_root: Missing[str] = Field(default=UNSET)
+    tfvc_project: Missing[str] = Field(default=UNSET)
+    status: Literal[
+        "auth",
+        "error",
+        "none",
+        "detecting",
+        "choose",
+        "auth_failed",
+        "importing",
+        "mapping",
+        "waiting_to_push",
+        "pushing",
+        "complete",
+        "setup",
+        "unknown",
+        "detection_found_multiple",
+        "detection_found_nothing",
+        "detection_needs_auth",
+    ] = Field()
+    status_text: Missing[Union[str, None]] = Field(default=UNSET)
+    failed_step: Missing[Union[str, None]] = Field(default=UNSET)
+    error_message: Missing[Union[str, None]] = Field(default=UNSET)
+    import_percent: Missing[Union[int, None]] = Field(default=UNSET)
+    commit_count: Missing[Union[int, None]] = Field(default=UNSET)
+    push_percent: Missing[Union[int, None]] = Field(default=UNSET)
+    has_large_files: Missing[bool] = Field(default=UNSET)
+    large_files_size: Missing[int] = Field(default=UNSET)
+    large_files_count: Missing[int] = Field(default=UNSET)
+    project_choices: Missing[list[ImportPropProjectChoicesItems]] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    authors_count: Missing[Union[int, None]] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    authors_url: str = Field()
+    repository_url: str = Field()
+    svn_root: Missing[str] = Field(default=UNSET)
 
 
-class GitTreePropTreeItems(GitHubModel):
-    """GitTreePropTreeItems"""
+class ImportPropProjectChoicesItems(GitHubModel):
+    """ImportPropProjectChoicesItems"""
 
-    path: str = Field()
-    mode: str = Field()
-    type: str = Field()
-    sha: str = Field()
-    size: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    vcs: Missing[str] = Field(default=UNSET)
+    tfvc_project: Missing[str] = Field(default=UNSET)
+    human_name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(GitTree)
-model_rebuild(GitTreePropTreeItems)
+model_rebuild(Import)
+model_rebuild(ImportPropProjectChoicesItems)
 
 __all__ = (
-    "GitTree",
-    "GitTreePropTreeItems",
+    "Import",
+    "ImportPropProjectChoicesItems",
 )

@@ -16,44 +16,46 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class AddedToProjectIssueEventType(TypedDict):
-    """Added to Project Issue Event
+class RemovedFromProjectIssueEventType(TypedDict):
+    """Removed from Project Issue Event
 
-    Added to Project Issue Event
+    Removed from Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["added_to_project"]
+    event: Literal["removed_from_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardType]
+    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
 
 
-class AddedToProjectIssueEventTypeForResponse(TypedDict):
-    """Added to Project Issue Event
+class RemovedFromProjectIssueEventTypeForResponse(TypedDict):
+    """Removed from Project Issue Event
 
-    Added to Project Issue Event
+    Removed from Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["added_to_project"]
+    event: Literal["removed_from_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardTypeForResponse]
+    project_card: NotRequired[
+        RemovedFromProjectIssueEventPropProjectCardTypeForResponse
+    ]
 
 
-class AddedToProjectIssueEventPropProjectCardType(TypedDict):
-    """AddedToProjectIssueEventPropProjectCard"""
+class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
+    """RemovedFromProjectIssueEventPropProjectCard"""
 
     id: int
     url: str
@@ -63,8 +65,8 @@ class AddedToProjectIssueEventPropProjectCardType(TypedDict):
     previous_column_name: NotRequired[str]
 
 
-class AddedToProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """AddedToProjectIssueEventPropProjectCard"""
+class RemovedFromProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
+    """RemovedFromProjectIssueEventPropProjectCard"""
 
     id: int
     url: str
@@ -75,8 +77,8 @@ class AddedToProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "AddedToProjectIssueEventPropProjectCardType",
-    "AddedToProjectIssueEventPropProjectCardTypeForResponse",
-    "AddedToProjectIssueEventType",
-    "AddedToProjectIssueEventTypeForResponse",
+    "RemovedFromProjectIssueEventPropProjectCardType",
+    "RemovedFromProjectIssueEventPropProjectCardTypeForResponse",
+    "RemovedFromProjectIssueEventType",
+    "RemovedFromProjectIssueEventTypeForResponse",
 )

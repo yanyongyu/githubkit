@@ -9,41 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class BlobType(TypedDict):
-    """Blob
+class GitTreeType(TypedDict):
+    """Git Tree
 
-    Blob
+    The hierarchy between files in a Git repository.
     """
 
-    content: str
-    encoding: str
-    url: str
     sha: str
-    size: Union[int, None]
-    node_id: str
-    highlighted_content: NotRequired[str]
+    url: NotRequired[str]
+    truncated: bool
+    tree: list[GitTreePropTreeItemsType]
 
 
-class BlobTypeForResponse(TypedDict):
-    """Blob
+class GitTreeTypeForResponse(TypedDict):
+    """Git Tree
 
-    Blob
+    The hierarchy between files in a Git repository.
     """
 
-    content: str
-    encoding: str
-    url: str
     sha: str
-    size: Union[int, None]
-    node_id: str
-    highlighted_content: NotRequired[str]
+    url: NotRequired[str]
+    truncated: bool
+    tree: list[GitTreePropTreeItemsTypeForResponse]
+
+
+class GitTreePropTreeItemsType(TypedDict):
+    """GitTreePropTreeItems"""
+
+    path: str
+    mode: str
+    type: str
+    sha: str
+    size: NotRequired[int]
+    url: NotRequired[str]
+
+
+class GitTreePropTreeItemsTypeForResponse(TypedDict):
+    """GitTreePropTreeItems"""
+
+    path: str
+    mode: str
+    type: str
+    sha: str
+    size: NotRequired[int]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "BlobType",
-    "BlobTypeForResponse",
+    "GitTreePropTreeItemsType",
+    "GitTreePropTreeItemsTypeForResponse",
+    "GitTreeType",
+    "GitTreeTypeForResponse",
 )

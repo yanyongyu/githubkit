@@ -9,72 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1256 import (
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
-)
 
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody"""
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1(ExtraGitHubModel):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
-
-    name: Missing[str] = Field(
-        default=UNSET,
-        description='The name of the check. For example, "code-coverage".',
+    state: Literal["open", "dismissed"] = Field(
+        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`."
     )
-    details_url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL of the integrator's site that has the full details of the check.",
-    )
-    external_id: Missing[str] = Field(
-        default=UNSET, description="A reference for the run on the integrator's system."
-    )
-    started_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    status: Missing[Literal["queued", "in_progress"]] = Field(default=UNSET)
-    conclusion: Missing[
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "success",
-            "skipped",
-            "stale",
-            "timed_out",
-        ]
+    dismissed_reason: Missing[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
     ] = Field(
         default=UNSET,
-        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.",
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
     )
-    completed_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
     )
-    output: Missing[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput] = Field(
+    create_request: Missing[bool] = Field(
         default=UNSET,
-        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
-    )
-    actions: Missing[
-        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
-    ] = Field(
-        max_length=3 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
+        description="If `true`, attempt to create an alert dismissal request.",
     )
 
 
-model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1)
+model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1",)
+__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody",)

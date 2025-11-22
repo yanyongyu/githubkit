@@ -11,20 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ApplicationsClientIdGrantDeleteBodyType(TypedDict):
-    """ApplicationsClientIdGrantDeleteBody"""
-
-    access_token: str
+from .group_0032 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
 
 
-class ApplicationsClientIdGrantDeleteBodyTypeForResponse(TypedDict):
-    """ApplicationsClientIdGrantDeleteBody"""
+class EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersGetResponse200"""
 
-    access_token: str
+    total_count: int
+    runners: list[ActionsHostedRunnerType]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersGetResponse200"""
+
+    total_count: int
+    runners: list[ActionsHostedRunnerTypeForResponse]
 
 
 __all__ = (
-    "ApplicationsClientIdGrantDeleteBodyType",
-    "ApplicationsClientIdGrantDeleteBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersGetResponse200TypeForResponse",
 )

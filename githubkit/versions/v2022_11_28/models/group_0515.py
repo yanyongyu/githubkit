@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0450 import EnterpriseWebhooks
-from .group_0451 import SimpleInstallation
-from .group_0452 import OrganizationSimpleWebhooks
-from .group_0453 import RepositoryWebhooks
-from .group_0516 import WebhookCodeScanningAlertAppearedInBranchPropAlert
+from .group_0448 import EnterpriseWebhooks
+from .group_0449 import SimpleInstallation
+from .group_0450 import OrganizationSimpleWebhooks
+from .group_0451 import RepositoryWebhooks
+from .group_0516 import WebhookCodeScanningAlertClosedByUserPropAlert
 
 
-class WebhookCodeScanningAlertAppearedInBranch(GitHubModel):
-    """code_scanning_alert appeared_in_branch event"""
+class WebhookCodeScanningAlertClosedByUser(GitHubModel):
+    """code_scanning_alert closed_by_user event"""
 
-    action: Literal["appeared_in_branch"] = Field()
-    alert: WebhookCodeScanningAlertAppearedInBranchPropAlert = Field(
+    action: Literal["closed_by_user"] = Field()
+    alert: WebhookCodeScanningAlertClosedByUserPropAlert = Field(
         description="The code scanning alert involved in the event."
     )
     commit_oid: str = Field(
@@ -60,6 +60,6 @@ class WebhookCodeScanningAlertAppearedInBranch(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCodeScanningAlertAppearedInBranch)
+model_rebuild(WebhookCodeScanningAlertClosedByUser)
 
-__all__ = ("WebhookCodeScanningAlertAppearedInBranch",)
+__all__ = ("WebhookCodeScanningAlertClosedByUser",)

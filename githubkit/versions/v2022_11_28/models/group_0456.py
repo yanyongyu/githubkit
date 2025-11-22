@@ -10,85 +10,27 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0010 import Integration
-from .group_0235 import PullRequestMinimal
-from .group_0262 import DeploymentSimple
-from .group_0455 import SimpleCheckSuite
 
 
-class CheckRunWithSimpleCheckSuite(GitHubModel):
-    """CheckRun
+class WebhooksWorkflow(GitHubModel):
+    """Workflow"""
 
-    A check performed on the code of a given code change
-    """
-
-    app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
-    )
-    check_suite: SimpleCheckSuite = Field(
-        description="A suite of checks performed on the code of a given code change"
-    )
-    completed_at: Union[datetime, None] = Field()
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ] = Field()
-    deployment: Missing[DeploymentSimple] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
-    )
-    details_url: str = Field()
-    external_id: str = Field()
-    head_sha: str = Field(description="The SHA of the commit that is being checked.")
+    badge_url: str = Field()
+    created_at: datetime = Field()
     html_url: str = Field()
-    id: int = Field(description="The id of the check.")
-    name: str = Field(description="The name of the check.")
+    id: int = Field()
+    name: str = Field()
     node_id: str = Field()
-    output: CheckRunWithSimpleCheckSuitePropOutput = Field()
-    pull_requests: list[PullRequestMinimal] = Field()
-    started_at: datetime = Field()
-    status: Literal["queued", "in_progress", "completed", "pending"] = Field(
-        description="The phase of the lifecycle that the check is currently in."
-    )
+    path: str = Field()
+    state: str = Field()
+    updated_at: datetime = Field()
     url: str = Field()
 
 
-class CheckRunWithSimpleCheckSuitePropOutput(GitHubModel):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
+model_rebuild(WebhooksWorkflow)
 
-    annotations_count: int = Field()
-    annotations_url: str = Field()
-    summary: Union[str, None] = Field()
-    text: Union[str, None] = Field()
-    title: Union[str, None] = Field()
-
-
-model_rebuild(CheckRunWithSimpleCheckSuite)
-model_rebuild(CheckRunWithSimpleCheckSuitePropOutput)
-
-__all__ = (
-    "CheckRunWithSimpleCheckSuite",
-    "CheckRunWithSimpleCheckSuitePropOutput",
-)
+__all__ = ("WebhooksWorkflow",)

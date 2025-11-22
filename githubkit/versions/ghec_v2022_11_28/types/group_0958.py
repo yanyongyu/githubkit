@@ -9,28 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
 
-from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
-
-
-class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
-    """AppInstallationsInstallationIdAccessTokensPostBody"""
-
-    repositories: NotRequired[list[str]]
-    repository_ids: NotRequired[list[int]]
-    permissions: NotRequired[AppPermissionsType]
+EmojisGetResponse200Type: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
-class AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse(TypedDict):
-    """AppInstallationsInstallationIdAccessTokensPostBody"""
-
-    repositories: NotRequired[list[str]]
-    repository_ids: NotRequired[list[int]]
-    permissions: NotRequired[AppPermissionsTypeForResponse]
+EmojisGetResponse200TypeForResponse: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
 __all__ = (
-    "AppInstallationsInstallationIdAccessTokensPostBodyType",
-    "AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse",
+    "EmojisGetResponse200Type",
+    "EmojisGetResponse200TypeForResponse",
 )

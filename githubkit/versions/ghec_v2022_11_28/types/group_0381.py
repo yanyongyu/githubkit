@@ -9,61 +9,129 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0379 import MetadataType, MetadataTypeForResponse
+from .group_0380 import (
+    DeploymentBranchPolicySettingsType,
+    DeploymentBranchPolicySettingsTypeForResponse,
+)
+from .group_0382 import (
+    EnvironmentPropProtectionRulesItemsAnyof1Type,
+    EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
+)
 
 
-class ManifestType(TypedDict):
-    """Manifest"""
+class EnvironmentType(TypedDict):
+    """Environment
 
+    Details of a deployment environment
+    """
+
+    id: int
+    node_id: str
     name: str
-    file: NotRequired[ManifestPropFileType]
-    metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
+    url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    protection_rules: NotRequired[
+        list[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0Type,
+                EnvironmentPropProtectionRulesItemsAnyof1Type,
+                EnvironmentPropProtectionRulesItemsAnyof2Type,
+            ]
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsType, None]
+    ]
 
 
-class ManifestTypeForResponse(TypedDict):
-    """Manifest"""
+class EnvironmentTypeForResponse(TypedDict):
+    """Environment
 
+    Details of a deployment environment
+    """
+
+    id: int
+    node_id: str
     name: str
-    file: NotRequired[ManifestPropFileTypeForResponse]
-    metadata: NotRequired[MetadataTypeForResponse]
-    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
+    url: str
+    html_url: str
+    created_at: str
+    updated_at: str
+    protection_rules: NotRequired[
+        list[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse,
+                EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
+                EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse,
+            ]
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
+    ]
 
 
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
+class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
 
-    source_location: NotRequired[str]
-
-
-class ManifestPropFileTypeForResponse(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
+    id: int
+    node_id: str
+    type: str
+    wait_timer: NotRequired[int]
 
 
-ManifestPropResolvedType: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
+class EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
 
-A collection of resolved package dependencies.
-"""
+    id: int
+    node_id: str
+    type: str
+    wait_timer: NotRequired[int]
 
 
-ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
+class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
 
-A collection of resolved package dependencies.
-"""
+    id: int
+    node_id: str
+    type: str
+
+
+class EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
+
+    id: int
+    node_id: str
+    type: str
+
+
+class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
+
+    total_count: NotRequired[int]
+    environments: NotRequired[list[EnvironmentType]]
+
+
+class ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
+
+    total_count: NotRequired[int]
+    environments: NotRequired[list[EnvironmentTypeForResponse]]
 
 
 __all__ = (
-    "ManifestPropFileType",
-    "ManifestPropFileTypeForResponse",
-    "ManifestPropResolvedType",
-    "ManifestPropResolvedTypeForResponse",
-    "ManifestType",
-    "ManifestTypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof0Type",
+    "EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof2Type",
+    "EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse",
+    "EnvironmentType",
+    "EnvironmentTypeForResponse",
+    "ReposOwnerRepoEnvironmentsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse",
 )

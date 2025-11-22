@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,21 +16,35 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Blob(GitHubModel):
-    """Blob
+class GitTree(GitHubModel):
+    """Git Tree
 
-    Blob
+    The hierarchy between files in a Git repository.
     """
 
-    content: str = Field()
-    encoding: str = Field()
-    url: str = Field()
     sha: str = Field()
-    size: Union[int, None] = Field()
-    node_id: str = Field()
-    highlighted_content: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    truncated: bool = Field()
+    tree: list[GitTreePropTreeItems] = Field(
+        description="Objects specifying a tree structure"
+    )
 
 
-model_rebuild(Blob)
+class GitTreePropTreeItems(GitHubModel):
+    """GitTreePropTreeItems"""
 
-__all__ = ("Blob",)
+    path: str = Field()
+    mode: str = Field()
+    type: str = Field()
+    sha: str = Field()
+    size: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(GitTree)
+model_rebuild(GitTreePropTreeItems)
+
+__all__ = (
+    "GitTree",
+    "GitTreePropTreeItems",
+)

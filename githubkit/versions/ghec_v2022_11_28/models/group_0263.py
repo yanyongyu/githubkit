@@ -9,62 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
-    """Organization private registry
+class AutoMerge(GitHubModel):
+    """Auto merge
 
-    Private registry configuration for an organization
+    The status of auto merging a pull request.
     """
 
-    name: str = Field(description="The name of the private registry configuration.")
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ] = Field(description="The registry type.")
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL of the private registry."
+    enabled_by: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    merge_method: Literal["merge", "squash", "rebase"] = Field(
+        description="The merge method to use."
     )
-    username: Missing[str] = Field(
-        default=UNSET,
-        description="The username to use when authenticating with the private registry.",
+    commit_title: Union[str, None] = Field(
+        description="Title for the merge commit message."
     )
-    replaces_base: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
+    commit_message: Union[str, None] = Field(
+        description="Commit message for the merge commit."
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
-    )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
 
 
-model_rebuild(OrgPrivateRegistryConfigurationWithSelectedRepositories)
+model_rebuild(AutoMerge)
 
-__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositories",)
+__all__ = ("AutoMerge",)

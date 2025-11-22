@@ -9,29 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectColumn(GitHubModel):
-    """Project Column
+class RateLimit(GitHubModel):
+    """Rate Limit"""
 
-    Project columns contain cards of work.
-    """
-
-    url: str = Field()
-    project_url: str = Field()
-    cards_url: str = Field()
-    id: int = Field(description="The unique identifier of the project column")
-    node_id: str = Field()
-    name: str = Field(description="Name of the project column")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    limit: int = Field()
+    remaining: int = Field()
+    reset: int = Field()
+    used: int = Field()
 
 
-model_rebuild(ProjectColumn)
+model_rebuild(RateLimit)
 
-__all__ = ("ProjectColumn",)
+__all__ = ("RateLimit",)

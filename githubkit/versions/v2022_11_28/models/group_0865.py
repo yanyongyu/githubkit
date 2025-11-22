@@ -14,14 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ApplicationsClientIdTokenPostBody(GitHubModel):
-    """ApplicationsClientIdTokenPostBody"""
+class ApplicationsClientIdTokenPatchBody(GitHubModel):
+    """ApplicationsClientIdTokenPatchBody"""
 
     access_token: str = Field(
         description="The access_token of the OAuth or GitHub application."
     )
 
 
-model_rebuild(ApplicationsClientIdTokenPostBody)
+model_rebuild(ApplicationsClientIdTokenPatchBody)
 
-__all__ = ("ApplicationsClientIdTokenPostBody",)
+__all__ = ("ApplicationsClientIdTokenPatchBody",)

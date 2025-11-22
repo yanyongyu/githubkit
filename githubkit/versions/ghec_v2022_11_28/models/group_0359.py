@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,34 +18,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0214 import MinimalRepository
+from .group_0211 import MinimalRepository
 
 
-class RepositoryInvitation(GitHubModel):
-    """Repository Invitation
+class CombinedCommitStatus(GitHubModel):
+    """Combined Commit Status
 
-    Repository invitations let you manage who you collaborate with.
+    Combined Commit Status
     """
 
-    id: int = Field(description="Unique identifier of the repository invitation.")
+    state: str = Field()
+    statuses: list[SimpleCommitStatus] = Field()
+    sha: str = Field()
+    total_count: int = Field()
     repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository"
     )
-    invitee: Union[None, SimpleUser] = Field()
-    inviter: Union[None, SimpleUser] = Field()
-    permissions: Literal["read", "write", "admin", "triage", "maintain"] = Field(
-        description="The permission associated with the invitation."
-    )
-    created_at: datetime = Field()
-    expired: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the invitation has expired"
-    )
-    url: str = Field(description="URL for the repository invitation")
-    html_url: str = Field()
+    commit_url: str = Field()
+    url: str = Field()
+
+
+class SimpleCommitStatus(GitHubModel):
+    """Simple Commit Status"""
+
+    description: Union[str, None] = Field()
+    id: int = Field()
     node_id: str = Field()
+    state: str = Field()
+    context: str = Field()
+    target_url: Union[str, None] = Field()
+    required: Missing[Union[bool, None]] = Field(default=UNSET)
+    avatar_url: Union[str, None] = Field()
+    url: str = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(RepositoryInvitation)
+model_rebuild(CombinedCommitStatus)
+model_rebuild(SimpleCommitStatus)
 
-__all__ = ("RepositoryInvitation",)
+__all__ = (
+    "CombinedCommitStatus",
+    "SimpleCommitStatus",
+)

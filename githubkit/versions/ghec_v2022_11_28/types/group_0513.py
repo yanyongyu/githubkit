@@ -10,207 +10,120 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0193 import MilestoneType, MilestoneTypeForResponse
-from .group_0194 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0195 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0196 import (
-    IssueDependenciesSummaryType,
-    IssueDependenciesSummaryTypeForResponse,
-    SubIssuesSummaryType,
-    SubIssuesSummaryTypeForResponse,
-)
-from .group_0197 import IssueFieldValueType, IssueFieldValueTypeForResponse
-from .group_0509 import (
+from .group_0505 import (
     SearchResultTextMatchesItemsType,
     SearchResultTextMatchesItemsTypeForResponse,
 )
 
 
-class IssueSearchResultItemType(TypedDict):
-    """Issue Search Result Item
+class UserSearchResultItemType(TypedDict):
+    """User Search Result Item
 
-    Issue Search Result Item
+    User Search Result Item
     """
 
-    url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
-    html_url: str
+    login: str
     id: int
     node_id: str
-    number: int
-    title: str
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    user: Union[None, SimpleUserType]
-    labels: list[IssueSearchResultItemPropLabelsItemsType]
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    issue_field_values: NotRequired[list[IssueFieldValueType]]
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    assignee: Union[None, SimpleUserType]
-    milestone: Union[None, MilestoneType]
-    comments: int
-    created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
+    type: str
+    score: float
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
     text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-    pull_request: NotRequired[IssueSearchResultItemPropPullRequestType]
-    body: NotRequired[str]
-    score: float
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    draft: NotRequired[bool]
-    repository: NotRequired[RepositoryType]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeType, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[datetime, None]]
+    user_view_type: NotRequired[str]
 
 
-class IssueSearchResultItemTypeForResponse(TypedDict):
-    """Issue Search Result Item
+class UserSearchResultItemTypeForResponse(TypedDict):
+    """User Search Result Item
 
-    Issue Search Result Item
+    User Search Result Item
     """
 
-    url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
-    html_url: str
+    login: str
     id: int
     node_id: str
-    number: int
-    title: str
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
-    user: Union[None, SimpleUserTypeForResponse]
-    labels: list[IssueSearchResultItemPropLabelsItemsTypeForResponse]
-    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
-    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    assignee: Union[None, SimpleUserTypeForResponse]
-    milestone: Union[None, MilestoneTypeForResponse]
-    comments: int
-    created_at: str
-    updated_at: str
-    closed_at: Union[str, None]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-    pull_request: NotRequired[IssueSearchResultItemPropPullRequestTypeForResponse]
-    body: NotRequired[str]
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
+    type: str
     score: float
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    draft: NotRequired[bool]
-    repository: NotRequired[RepositoryTypeForResponse]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[str, None]]
+    user_view_type: NotRequired[str]
 
 
-class IssueSearchResultItemPropLabelsItemsType(TypedDict):
-    """IssueSearchResultItemPropLabelsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    default: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-
-
-class IssueSearchResultItemPropLabelsItemsTypeForResponse(TypedDict):
-    """IssueSearchResultItemPropLabelsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    default: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-
-
-class IssueSearchResultItemPropPullRequestType(TypedDict):
-    """IssueSearchResultItemPropPullRequest"""
-
-    merged_at: NotRequired[Union[datetime, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
-
-
-class IssueSearchResultItemPropPullRequestTypeForResponse(TypedDict):
-    """IssueSearchResultItemPropPullRequest"""
-
-    merged_at: NotRequired[Union[str, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
-
-
-class SearchIssuesGetResponse200Type(TypedDict):
-    """SearchIssuesGetResponse200"""
+class SearchUsersGetResponse200Type(TypedDict):
+    """SearchUsersGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: list[IssueSearchResultItemType]
+    items: list[UserSearchResultItemType]
 
 
-class SearchIssuesGetResponse200TypeForResponse(TypedDict):
-    """SearchIssuesGetResponse200"""
+class SearchUsersGetResponse200TypeForResponse(TypedDict):
+    """SearchUsersGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: list[IssueSearchResultItemTypeForResponse]
+    items: list[UserSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "IssueSearchResultItemPropLabelsItemsType",
-    "IssueSearchResultItemPropLabelsItemsTypeForResponse",
-    "IssueSearchResultItemPropPullRequestType",
-    "IssueSearchResultItemPropPullRequestTypeForResponse",
-    "IssueSearchResultItemType",
-    "IssueSearchResultItemTypeForResponse",
-    "SearchIssuesGetResponse200Type",
-    "SearchIssuesGetResponse200TypeForResponse",
+    "SearchUsersGetResponse200Type",
+    "SearchUsersGetResponse200TypeForResponse",
+    "UserSearchResultItemType",
+    "UserSearchResultItemTypeForResponse",
 )

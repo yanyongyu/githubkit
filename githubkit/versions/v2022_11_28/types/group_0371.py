@@ -9,56 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
+class PullRequestMergeResultType(TypedDict):
+    """Pull Request Merge Result
 
-class PullRequestPropHeadType(TypedDict):
-    """PullRequestPropHead"""
+    Pull Request Merge Result
+    """
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
     sha: str
-    user: Union[None, SimpleUserType]
+    merged: bool
+    message: str
 
 
-class PullRequestPropHeadTypeForResponse(TypedDict):
-    """PullRequestPropHead"""
+class PullRequestMergeResultTypeForResponse(TypedDict):
+    """Pull Request Merge Result
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryTypeForResponse]
+    Pull Request Merge Result
+    """
+
     sha: str
-    user: Union[None, SimpleUserTypeForResponse]
-
-
-class PullRequestPropBaseType(TypedDict):
-    """PullRequestPropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
-
-
-class PullRequestPropBaseTypeForResponse(TypedDict):
-    """PullRequestPropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryTypeForResponse
-    sha: str
-    user: SimpleUserTypeForResponse
+    merged: bool
+    message: str
 
 
 __all__ = (
-    "PullRequestPropBaseType",
-    "PullRequestPropBaseTypeForResponse",
-    "PullRequestPropHeadType",
-    "PullRequestPropHeadTypeForResponse",
+    "PullRequestMergeResultType",
+    "PullRequestMergeResultTypeForResponse",
 )

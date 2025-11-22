@@ -9,33 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class MergedUpstreamType(TypedDict):
-    """Merged upstream
+class PageDeploymentType(TypedDict):
+    """GitHub Pages
 
-    Results of a successful merge upstream request
+    The GitHub Pages deployment status.
     """
 
-    message: NotRequired[str]
-    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
-    base_branch: NotRequired[str]
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
 
 
-class MergedUpstreamTypeForResponse(TypedDict):
-    """Merged upstream
+class PageDeploymentTypeForResponse(TypedDict):
+    """GitHub Pages
 
-    Results of a successful merge upstream request
+    The GitHub Pages deployment status.
     """
 
-    message: NotRequired[str]
-    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
-    base_branch: NotRequired[str]
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
 
 
 __all__ = (
-    "MergedUpstreamType",
-    "MergedUpstreamTypeForResponse",
+    "PageDeploymentType",
+    "PageDeploymentTypeForResponse",
 )

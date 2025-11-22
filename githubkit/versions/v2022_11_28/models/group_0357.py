@@ -9,34 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class DeployKey(GitHubModel):
+    """Deploy Key
 
-class TimelineUnassignedIssueEvent(GitHubModel):
-    """Timeline Unassigned Issue Event
-
-    Timeline Unassigned Issue Event
+    An SSH key granting access to a single repository.
     """
 
     id: int = Field()
-    node_id: str = Field()
+    key: str = Field()
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["unassigned"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
+    title: str = Field()
+    verified: bool = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    read_only: bool = Field()
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    last_used: Missing[Union[datetime, None]] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(TimelineUnassignedIssueEvent)
+model_rebuild(DeployKey)
 
-__all__ = ("TimelineUnassignedIssueEvent",)
+__all__ = ("DeployKey",)

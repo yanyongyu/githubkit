@@ -9,29 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsVariableType(TypedDict):
-    """Actions Variable"""
+class ActionsWorkflowAccessToRepositoryType(TypedDict):
+    """ActionsWorkflowAccessToRepository"""
 
-    name: str
-    value: str
-    created_at: datetime
-    updated_at: datetime
+    access_level: Literal["none", "user", "organization"]
 
 
-class ActionsVariableTypeForResponse(TypedDict):
-    """Actions Variable"""
+class ActionsWorkflowAccessToRepositoryTypeForResponse(TypedDict):
+    """ActionsWorkflowAccessToRepository"""
 
-    name: str
-    value: str
-    created_at: str
-    updated_at: str
+    access_level: Literal["none", "user", "organization"]
 
 
 __all__ = (
-    "ActionsVariableType",
-    "ActionsVariableTypeForResponse",
+    "ActionsWorkflowAccessToRepositoryType",
+    "ActionsWorkflowAccessToRepositoryTypeForResponse",
 )

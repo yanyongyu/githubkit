@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,17 +19,16 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0018 import Installation
-from .group_0534 import EnterpriseWebhooks
-from .group_0536 import OrganizationSimpleWebhooks
-from .group_0537 import RepositoryWebhooks
-from .group_0547 import WebhooksUser
-from .group_0552 import WebhooksRepositoriesItems
+from .group_0527 import EnterpriseWebhooks
+from .group_0529 import OrganizationSimpleWebhooks
+from .group_0530 import RepositoryWebhooks
+from .group_0545 import WebhooksRepositoriesItems
 
 
-class WebhookInstallationCreated(GitHubModel):
-    """installation created event"""
+class WebhookInstallationUnsuspend(GitHubModel):
+    """installation unsuspend event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["unsuspend"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,10 +49,10 @@ class WebhookInstallationCreated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    requester: Missing[Union[WebhooksUser, None]] = Field(default=UNSET, title="User")
+    requester: Missing[None] = Field(default=UNSET)
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookInstallationCreated)
+model_rebuild(WebhookInstallationUnsuspend)
 
-__all__ = ("WebhookInstallationCreated",)
+__all__ = ("WebhookInstallationUnsuspend",)

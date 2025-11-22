@@ -12,79 +12,35 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageSummaryReportOrgType(TypedDict):
-    """BillingUsageSummaryReportOrg"""
+class ActionsPublicKeyType(TypedDict):
+    """ActionsPublicKey
 
-    time_period: BillingUsageSummaryReportOrgPropTimePeriodType
-    organization: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsType]
+    The public key used for setting Actions Secrets.
+    """
 
-
-class BillingUsageSummaryReportOrgTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportOrg"""
-
-    time_period: BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse
-    organization: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse]
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-class BillingUsageSummaryReportOrgPropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportOrgPropTimePeriod"""
+class ActionsPublicKeyTypeForResponse(TypedDict):
+    """ActionsPublicKey
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    The public key used for setting Actions Secrets.
+    """
 
-
-class BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportOrgPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingUsageSummaryReportOrgPropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
 __all__ = (
-    "BillingUsageSummaryReportOrgPropTimePeriodType",
-    "BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse",
-    "BillingUsageSummaryReportOrgPropUsageItemsItemsType",
-    "BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse",
-    "BillingUsageSummaryReportOrgType",
-    "BillingUsageSummaryReportOrgTypeForResponse",
+    "ActionsPublicKeyType",
+    "ActionsPublicKeyTypeForResponse",
 )

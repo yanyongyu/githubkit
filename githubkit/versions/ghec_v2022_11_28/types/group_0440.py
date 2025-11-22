@@ -9,35 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-
-class PullRequestPropLabelsItemsType(TypedDict):
-    """PullRequestPropLabelsItems"""
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0080 import TeamType, TeamTypeForResponse
 
 
-class PullRequestPropLabelsItemsTypeForResponse(TypedDict):
-    """PullRequestPropLabelsItems"""
+class PullRequestReviewRequestType(TypedDict):
+    """Pull Request Review Request
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    Pull Request Review Request
+    """
+
+    users: list[SimpleUserType]
+    teams: list[TeamType]
+
+
+class PullRequestReviewRequestTypeForResponse(TypedDict):
+    """Pull Request Review Request
+
+    Pull Request Review Request
+    """
+
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
 
 
 __all__ = (
-    "PullRequestPropLabelsItemsType",
-    "PullRequestPropLabelsItemsTypeForResponse",
+    "PullRequestReviewRequestType",
+    "PullRequestReviewRequestTypeForResponse",
 )

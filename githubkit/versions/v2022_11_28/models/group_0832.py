@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhookStatusPropCommitPropCommitPropAuthorAllof0(GitHubModel):
+class WebhookStatusPropCommitPropCommitPropCommitterAllof0(GitHubModel):
     """Committer
 
     Metaproperties for Git author/committer information.
@@ -31,6 +31,6 @@ class WebhookStatusPropCommitPropCommitPropAuthorAllof0(GitHubModel):
     username: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookStatusPropCommitPropCommitPropAuthorAllof0)
+model_rebuild(WebhookStatusPropCommitPropCommitPropCommitterAllof0)
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof0",)
+__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof0",)

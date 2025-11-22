@@ -9,41 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0290 import RateLimit
+from .group_0292 import RateLimitOverviewPropResources
 
 
-class ProjectCard(GitHubModel):
-    """Project Card
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
 
-    Project cards represent a scope of work.
+    Rate Limit Overview
     """
 
-    url: str = Field()
-    id: int = Field(description="The project card's ID")
-    node_id: str = Field()
-    note: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    archived: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the card is archived"
-    )
-    column_name: Missing[str] = Field(default=UNSET)
-    project_id: Missing[str] = Field(default=UNSET)
-    column_url: str = Field()
-    content_url: Missing[str] = Field(default=UNSET)
-    project_url: str = Field()
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
 
 
-model_rebuild(ProjectCard)
+model_rebuild(RateLimitOverview)
 
-__all__ = ("ProjectCard",)
+__all__ = ("RateLimitOverview",)

@@ -9,33 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0222 import RateLimitType, RateLimitTypeForResponse
+from .group_0224 import (
+    RateLimitOverviewPropResourcesType,
+    RateLimitOverviewPropResourcesTypeForResponse,
+)
 
 
-class ProjectCollaboratorPermissionType(TypedDict):
-    """Project Collaborator Permission
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
 
-    Project Collaborator Permission
+    Rate Limit Overview
     """
 
-    permission: str
-    user: Union[None, SimpleUserType]
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
 
 
-class ProjectCollaboratorPermissionTypeForResponse(TypedDict):
-    """Project Collaborator Permission
+class RateLimitOverviewTypeForResponse(TypedDict):
+    """Rate Limit Overview
 
-    Project Collaborator Permission
+    Rate Limit Overview
     """
 
-    permission: str
-    user: Union[None, SimpleUserTypeForResponse]
+    resources: RateLimitOverviewPropResourcesTypeForResponse
+    rate: RateLimitTypeForResponse
 
 
 __all__ = (
-    "ProjectCollaboratorPermissionType",
-    "ProjectCollaboratorPermissionTypeForResponse",
+    "RateLimitOverviewType",
+    "RateLimitOverviewTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,30 +18,39 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsPostBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
 
-    name: Missing[str] = Field(
+    name: str = Field(description="Name of the runner group.")
+    visibility: Missing[Literal["selected", "all"]] = Field(
         default=UNSET,
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
+        description="Visibility of a runner group. You can select all organizations or select individual organization.",
     )
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
+    selected_organization_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+        description="List of organization IDs that can access the runner group.",
     )
-    enable_static_ip: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
+    runners: Missing[list[int]] = Field(
+        default=UNSET, description="List of runner IDs to add to the runner group."
     )
-    image_version: Missing[Union[str, None]] = Field(
+    allows_public_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+        description="Whether the runner group can be used by `public` repositories.",
+    )
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    )
+    network_configuration_id: Missing[str] = Field(
+        default=UNSET,
+        description="The identifier of a hosted compute network configuration.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsPostBody)
 
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody",)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsPostBody",)

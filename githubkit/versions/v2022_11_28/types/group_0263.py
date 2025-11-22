@@ -14,25 +14,26 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0235 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0262 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
+from .group_0061 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0233 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0234 import SimpleCommitType, SimpleCommitTypeForResponse
 
 
-class CheckRunType(TypedDict):
-    """CheckRun
+class CheckSuiteType(TypedDict):
+    """CheckSuite
 
-    A check performed on the code of a given code change
+    A suite of checks performed on the code of a given code change
     """
 
     id: int
-    head_sha: str
     node_id: str
-    external_id: Union[str, None]
-    url: str
-    html_url: Union[str, None]
-    details_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    head_branch: Union[str, None]
+    head_sha: str
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
     ]
     conclusion: Union[
         None,
@@ -44,33 +45,40 @@ class CheckRunType(TypedDict):
             "skipped",
             "timed_out",
             "action_required",
+            "startup_failure",
+            "stale",
         ],
     ]
-    started_at: Union[datetime, None]
-    completed_at: Union[datetime, None]
-    output: CheckRunPropOutputType
-    name: str
-    check_suite: Union[CheckRunPropCheckSuiteType, None]
+    url: Union[str, None]
+    before: Union[str, None]
+    after: Union[str, None]
+    pull_requests: Union[list[PullRequestMinimalType], None]
     app: Union[None, IntegrationType, None]
-    pull_requests: list[PullRequestMinimalType]
-    deployment: NotRequired[DeploymentSimpleType]
+    repository: MinimalRepositoryType
+    created_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    head_commit: SimpleCommitType
+    latest_check_runs_count: int
+    check_runs_url: str
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
 
 
-class CheckRunTypeForResponse(TypedDict):
-    """CheckRun
+class CheckSuiteTypeForResponse(TypedDict):
+    """CheckSuite
 
-    A check performed on the code of a given code change
+    A suite of checks performed on the code of a given code change
     """
 
     id: int
-    head_sha: str
     node_id: str
-    external_id: Union[str, None]
-    url: str
-    html_url: Union[str, None]
-    details_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    head_branch: Union[str, None]
+    head_sha: str
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
     ]
     conclusion: Union[
         None,
@@ -82,55 +90,42 @@ class CheckRunTypeForResponse(TypedDict):
             "skipped",
             "timed_out",
             "action_required",
+            "startup_failure",
+            "stale",
         ],
     ]
-    started_at: Union[str, None]
-    completed_at: Union[str, None]
-    output: CheckRunPropOutputTypeForResponse
-    name: str
-    check_suite: Union[CheckRunPropCheckSuiteTypeForResponse, None]
+    url: Union[str, None]
+    before: Union[str, None]
+    after: Union[str, None]
+    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
     app: Union[None, IntegrationTypeForResponse, None]
-    pull_requests: list[PullRequestMinimalTypeForResponse]
-    deployment: NotRequired[DeploymentSimpleTypeForResponse]
+    repository: MinimalRepositoryTypeForResponse
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    head_commit: SimpleCommitTypeForResponse
+    latest_check_runs_count: int
+    check_runs_url: str
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
 
 
-class CheckRunPropOutputType(TypedDict):
-    """CheckRunPropOutput"""
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
 
-    title: Union[str, None]
-    summary: Union[str, None]
-    text: Union[str, None]
-    annotations_count: int
-    annotations_url: str
+    total_count: int
+    check_suites: list[CheckSuiteType]
 
 
-class CheckRunPropOutputTypeForResponse(TypedDict):
-    """CheckRunPropOutput"""
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
 
-    title: Union[str, None]
-    summary: Union[str, None]
-    text: Union[str, None]
-    annotations_count: int
-    annotations_url: str
-
-
-class CheckRunPropCheckSuiteType(TypedDict):
-    """CheckRunPropCheckSuite"""
-
-    id: int
-
-
-class CheckRunPropCheckSuiteTypeForResponse(TypedDict):
-    """CheckRunPropCheckSuite"""
-
-    id: int
+    total_count: int
+    check_suites: list[CheckSuiteTypeForResponse]
 
 
 __all__ = (
-    "CheckRunPropCheckSuiteType",
-    "CheckRunPropCheckSuiteTypeForResponse",
-    "CheckRunPropOutputType",
-    "CheckRunPropOutputTypeForResponse",
-    "CheckRunType",
-    "CheckRunTypeForResponse",
+    "CheckSuiteType",
+    "CheckSuiteTypeForResponse",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse",
 )

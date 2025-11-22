@@ -19,34 +19,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodespaceExportDetails(GitHubModel):
-    """Fetches information about an export of a codespace.
+class Key(GitHubModel):
+    """Key
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+    Key
     """
 
-    state: Missing[Union[str, None]] = Field(
-        default=UNSET, description="State of the latest export"
-    )
-    completed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET, description="Completion time of the last export operation"
-    )
-    branch: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Name of the exported branch"
-    )
-    sha: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Git commit SHA of the exported branch"
-    )
-    id: Missing[str] = Field(default=UNSET, description="Id for the export details")
-    export_url: Missing[str] = Field(
-        default=UNSET, description="Url for fetching export details"
-    )
-    html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web url for the exported branch"
-    )
+    key: str = Field()
+    id: int = Field()
+    url: str = Field()
+    title: str = Field()
+    created_at: datetime = Field()
+    verified: bool = Field()
+    read_only: bool = Field()
+    last_used: Missing[Union[datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(CodespaceExportDetails)
+model_rebuild(Key)
 
-__all__ = ("CodespaceExportDetails",)
+__all__ = ("Key",)

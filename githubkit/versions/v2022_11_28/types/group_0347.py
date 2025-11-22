@@ -16,46 +16,46 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class MovedColumnInProjectIssueEventType(TypedDict):
-    """Moved Column in Project Issue Event
+class ConvertedNoteToIssueIssueEventType(TypedDict):
+    """Converted Note to Issue Issue Event
 
-    Moved Column in Project Issue Event
+    Converted Note to Issue Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["moved_columns_in_project"]
+    event: Literal["converted_note_to_issue"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[MovedColumnInProjectIssueEventPropProjectCardType]
+    performed_via_github_app: Union[IntegrationType, None]
+    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
 
 
-class MovedColumnInProjectIssueEventTypeForResponse(TypedDict):
-    """Moved Column in Project Issue Event
+class ConvertedNoteToIssueIssueEventTypeForResponse(TypedDict):
+    """Converted Note to Issue Issue Event
 
-    Moved Column in Project Issue Event
+    Converted Note to Issue Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["moved_columns_in_project"]
+    event: Literal["converted_note_to_issue"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
     project_card: NotRequired[
-        MovedColumnInProjectIssueEventPropProjectCardTypeForResponse
+        ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse
     ]
 
 
-class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
+    """ConvertedNoteToIssueIssueEventPropProjectCard"""
 
     id: int
     url: str
@@ -65,8 +65,8 @@ class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
     previous_column_name: NotRequired[str]
 
 
-class MovedColumnInProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+class ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse(TypedDict):
+    """ConvertedNoteToIssueIssueEventPropProjectCard"""
 
     id: int
     url: str
@@ -77,8 +77,8 @@ class MovedColumnInProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "MovedColumnInProjectIssueEventPropProjectCardType",
-    "MovedColumnInProjectIssueEventPropProjectCardTypeForResponse",
-    "MovedColumnInProjectIssueEventType",
-    "MovedColumnInProjectIssueEventTypeForResponse",
+    "ConvertedNoteToIssueIssueEventPropProjectCardType",
+    "ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse",
+    "ConvertedNoteToIssueIssueEventType",
+    "ConvertedNoteToIssueIssueEventTypeForResponse",
 )

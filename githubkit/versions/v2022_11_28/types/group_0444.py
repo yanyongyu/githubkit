@@ -10,32 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
+class KeySimpleType(TypedDict):
+    """Key Simple
 
-class StarredRepositoryType(TypedDict):
-    """Starred Repository
-
-    Starred Repository
+    Key Simple
     """
 
-    starred_at: datetime
-    repo: RepositoryType
+    id: int
+    key: str
+    created_at: NotRequired[datetime]
+    last_used: NotRequired[Union[datetime, None]]
 
 
-class StarredRepositoryTypeForResponse(TypedDict):
-    """Starred Repository
+class KeySimpleTypeForResponse(TypedDict):
+    """Key Simple
 
-    Starred Repository
+    Key Simple
     """
 
-    starred_at: str
-    repo: RepositoryTypeForResponse
+    id: int
+    key: str
+    created_at: NotRequired[str]
+    last_used: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "StarredRepositoryType",
-    "StarredRepositoryTypeForResponse",
+    "KeySimpleType",
+    "KeySimpleTypeForResponse",
 )

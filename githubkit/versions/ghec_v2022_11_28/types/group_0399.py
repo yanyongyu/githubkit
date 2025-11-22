@@ -9,56 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
-from .group_0398 import HookResponseType, HookResponseTypeForResponse
+from typing_extensions import TypedDict
 
 
-class HookType(TypedDict):
-    """Webhook
+class PorterLargeFileType(TypedDict):
+    """Porter Large File
 
-    Webhooks for repositories.
+    Porter Large File
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: datetime
-    created_at: datetime
-    url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    ref_name: str
+    path: str
+    oid: str
+    size: int
 
 
-class HookTypeForResponse(TypedDict):
-    """Webhook
+class PorterLargeFileTypeForResponse(TypedDict):
+    """Porter Large File
 
-    Webhooks for repositories.
+    Porter Large File
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigTypeForResponse
-    updated_at: str
-    created_at: str
-    url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseTypeForResponse
+    ref_name: str
+    path: str
+    oid: str
+    size: int
 
 
 __all__ = (
-    "HookType",
-    "HookTypeForResponse",
+    "PorterLargeFileType",
+    "PorterLargeFileTypeForResponse",
 )

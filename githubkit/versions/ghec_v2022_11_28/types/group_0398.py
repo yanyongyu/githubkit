@@ -9,27 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class HookResponseType(TypedDict):
-    """Hook Response"""
+class PorterAuthorType(TypedDict):
+    """Porter Author
 
-    code: Union[int, None]
-    status: Union[str, None]
-    message: Union[str, None]
+    Porter Author
+    """
+
+    id: int
+    remote_id: str
+    remote_name: str
+    email: str
+    name: str
+    url: str
+    import_url: str
 
 
-class HookResponseTypeForResponse(TypedDict):
-    """Hook Response"""
+class PorterAuthorTypeForResponse(TypedDict):
+    """Porter Author
 
-    code: Union[int, None]
-    status: Union[str, None]
-    message: Union[str, None]
+    Porter Author
+    """
+
+    id: int
+    remote_id: str
+    remote_name: str
+    email: str
+    name: str
+    url: str
+    import_url: str
 
 
 __all__ = (
-    "HookResponseType",
-    "HookResponseTypeForResponse",
+    "PorterAuthorType",
+    "PorterAuthorTypeForResponse",
 )

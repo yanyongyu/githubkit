@@ -5714,7 +5714,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#list-enterprise-consumed-licenses
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#list-enterprise-consumed-licenses
         """
 
         from ..models import GetConsumedLicenses
@@ -5756,7 +5756,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#list-enterprise-consumed-licenses
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#list-enterprise-consumed-licenses
         """
 
         from ..models import GetConsumedLicenses
@@ -6680,7 +6680,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#get-a-license-sync-status
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#get-a-license-sync-status
         """
 
         from ..models import GetLicenseSyncStatus
@@ -6714,7 +6714,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/license#get-a-license-sync-status
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#get-a-license-sync-status
         """
 
         from ..models import GetLicenseSyncStatus

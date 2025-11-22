@@ -9,30 +9,152 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class ShortBlobType(TypedDict):
-    """Short Blob
+class GitCommitType(TypedDict):
+    """Git Commit
 
-    Short Blob
+    Low-level Git commit operations within a repository
     """
 
-    url: str
     sha: str
+    node_id: str
+    url: str
+    author: GitCommitPropAuthorType
+    committer: GitCommitPropCommitterType
+    message: str
+    tree: GitCommitPropTreeType
+    parents: list[GitCommitPropParentsItemsType]
+    verification: GitCommitPropVerificationType
+    html_url: str
 
 
-class ShortBlobTypeForResponse(TypedDict):
-    """Short Blob
+class GitCommitTypeForResponse(TypedDict):
+    """Git Commit
 
-    Short Blob
+    Low-level Git commit operations within a repository
     """
 
-    url: str
     sha: str
+    node_id: str
+    url: str
+    author: GitCommitPropAuthorTypeForResponse
+    committer: GitCommitPropCommitterTypeForResponse
+    message: str
+    tree: GitCommitPropTreeTypeForResponse
+    parents: list[GitCommitPropParentsItemsTypeForResponse]
+    verification: GitCommitPropVerificationTypeForResponse
+    html_url: str
+
+
+class GitCommitPropAuthorType(TypedDict):
+    """GitCommitPropAuthor
+
+    Identifying information for the git-user
+    """
+
+    date: datetime
+    email: str
+    name: str
+
+
+class GitCommitPropAuthorTypeForResponse(TypedDict):
+    """GitCommitPropAuthor
+
+    Identifying information for the git-user
+    """
+
+    date: str
+    email: str
+    name: str
+
+
+class GitCommitPropCommitterType(TypedDict):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: datetime
+    email: str
+    name: str
+
+
+class GitCommitPropCommitterTypeForResponse(TypedDict):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: str
+    email: str
+    name: str
+
+
+class GitCommitPropTreeType(TypedDict):
+    """GitCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class GitCommitPropTreeTypeForResponse(TypedDict):
+    """GitCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class GitCommitPropParentsItemsType(TypedDict):
+    """GitCommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class GitCommitPropParentsItemsTypeForResponse(TypedDict):
+    """GitCommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class GitCommitPropVerificationType(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
+
+
+class GitCommitPropVerificationTypeForResponse(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
 
 
 __all__ = (
-    "ShortBlobType",
-    "ShortBlobTypeForResponse",
+    "GitCommitPropAuthorType",
+    "GitCommitPropAuthorTypeForResponse",
+    "GitCommitPropCommitterType",
+    "GitCommitPropCommitterTypeForResponse",
+    "GitCommitPropParentsItemsType",
+    "GitCommitPropParentsItemsTypeForResponse",
+    "GitCommitPropTreeType",
+    "GitCommitPropTreeTypeForResponse",
+    "GitCommitPropVerificationType",
+    "GitCommitPropVerificationTypeForResponse",
+    "GitCommitType",
+    "GitCommitTypeForResponse",
 )

@@ -9,18 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse201Type(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse201"""
+class ProjectsColumnsColumnIdCardsPostBodyOneof0Type(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof0"""
+
+    note: Union[str, None]
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse201TypeForResponse(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse201"""
+class ProjectsColumnsColumnIdCardsPostBodyOneof0TypeForResponse(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof0"""
+
+    note: Union[str, None]
 
 
 __all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse201Type",
-    "ProjectsColumnsCardsCardIdMovesPostResponse201TypeForResponse",
+    "ProjectsColumnsColumnIdCardsPostBodyOneof0Type",
+    "ProjectsColumnsColumnIdCardsPostBodyOneof0TypeForResponse",
 )

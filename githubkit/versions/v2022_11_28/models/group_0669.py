@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0450 import EnterpriseWebhooks
-from .group_0451 import SimpleInstallation
-from .group_0452 import OrganizationSimpleWebhooks
-from .group_0453 import RepositoryWebhooks
-from .group_0475 import WebhooksPreviousMarketplacePurchase
+from .group_0448 import EnterpriseWebhooks
+from .group_0449 import SimpleInstallation
+from .group_0450 import OrganizationSimpleWebhooks
+from .group_0451 import RepositoryWebhooks
+from .group_0459 import WebhooksUser
 
 
-class WebhookMarketplacePurchasePendingChangeCancelled(GitHubModel):
-    """marketplace_purchase pending_change_cancelled event"""
+class WebhookMemberAdded(GitHubModel):
+    """member added event"""
 
-    action: Literal["pending_change_cancelled"] = Field()
-    effective_date: str = Field()
+    action: Literal["added"] = Field()
+    changes: Missing[WebhookMemberAddedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,81 +40,63 @@ class WebhookMarketplacePurchasePendingChangeCancelled(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    marketplace_purchase: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase = Field(
-        title="Marketplace Purchase"
-    )
+    member: Union[WebhooksUser, None] = Field(title="User")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    previous_marketplace_purchase: Missing[WebhooksPreviousMarketplacePurchase] = Field(
-        default=UNSET, title="Marketplace Purchase"
-    )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase(
-    GitHubModel
-):
-    """Marketplace Purchase"""
+class WebhookMemberAddedPropChanges(GitHubModel):
+    """WebhookMemberAddedPropChanges"""
 
-    account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: None = Field()
-    next_billing_date: Union[str, None] = Field()
-    on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan = Field()
-    unit_count: int = Field()
+    permission: Missing[WebhookMemberAddedPropChangesPropPermission] = Field(
+        default=UNSET,
+        description="This field is included for legacy purposes; use the `role_name` field instead. The `maintain`\nrole is mapped to `write` and the `triage` role is mapped to `read`. To determine the role\nassigned to the collaborator, use the `role_name` field instead, which will provide the full\nrole name, including custom roles.",
+    )
+    role_name: Missing[WebhookMemberAddedPropChangesPropRoleName] = Field(
+        default=UNSET, description="The role assigned to the collaborator."
+    )
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccount(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccou
-    nt
+class WebhookMemberAddedPropChangesPropPermission(GitHubModel):
+    """WebhookMemberAddedPropChangesPropPermission
+
+    This field is included for legacy purposes; use the `role_name` field instead.
+    The `maintain`
+    role is mapped to `write` and the `triage` role is mapped to `read`. To
+    determine the role
+    assigned to the collaborator, use the `role_name` field instead, which will
+    provide the full
+    role name, including custom roles.
     """
 
-    id: int = Field()
-    login: str = Field()
-    node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
+    to: Literal["write", "admin", "read"] = Field()
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan"""
+class WebhookMemberAddedPropChangesPropRoleName(GitHubModel):
+    """WebhookMemberAddedPropChangesPropRoleName
 
-    bullets: list[str] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
+    The role assigned to the collaborator.
+    """
+
+    to: str = Field()
 
 
-model_rebuild(WebhookMarketplacePurchasePendingChangeCancelled)
-model_rebuild(WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase)
-model_rebuild(
-    WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccount
-)
-model_rebuild(
-    WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan
-)
+model_rebuild(WebhookMemberAdded)
+model_rebuild(WebhookMemberAddedPropChanges)
+model_rebuild(WebhookMemberAddedPropChangesPropPermission)
+model_rebuild(WebhookMemberAddedPropChangesPropRoleName)
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangeCancelled",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccount",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan",
+    "WebhookMemberAdded",
+    "WebhookMemberAddedPropChanges",
+    "WebhookMemberAddedPropChangesPropPermission",
+    "WebhookMemberAddedPropChangesPropRoleName",
 )

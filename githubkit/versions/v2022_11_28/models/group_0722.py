@@ -18,15 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0130 import ProjectsV2
-from .group_0451 import SimpleInstallation
-from .group_0452 import OrganizationSimpleWebhooks
+from .group_0131 import ProjectsV2
+from .group_0449 import SimpleInstallation
+from .group_0450 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ProjectClosed(GitHubModel):
-    """Projects v2 Project Closed Event"""
+class WebhookProjectsV2ProjectDeleted(GitHubModel):
+    """Projects v2 Project Deleted Event"""
 
-    action: Literal["closed"] = Field()
+    action: Literal["deleted"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -42,6 +42,6 @@ class WebhookProjectsV2ProjectClosed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectsV2ProjectClosed)
+model_rebuild(WebhookProjectsV2ProjectDeleted)
 
-__all__ = ("WebhookProjectsV2ProjectClosed",)
+__all__ = ("WebhookProjectsV2ProjectDeleted",)

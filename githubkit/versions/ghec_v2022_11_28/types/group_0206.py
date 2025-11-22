@@ -9,58 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class GistCommitType(TypedDict):
-    """Gist Commit
+class MarketplaceListingPlanType(TypedDict):
+    """Marketplace Listing Plan
 
-    Gist Commit
+    Marketplace Listing Plan
     """
 
     url: str
-    version: str
-    user: Union[None, SimpleUserType]
-    change_status: GistCommitPropChangeStatusType
-    committed_at: datetime
+    accounts_url: str
+    id: int
+    number: int
+    name: str
+    description: str
+    monthly_price_in_cents: int
+    yearly_price_in_cents: int
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    has_free_trial: bool
+    unit_name: Union[str, None]
+    state: str
+    bullets: list[str]
 
 
-class GistCommitTypeForResponse(TypedDict):
-    """Gist Commit
+class MarketplaceListingPlanTypeForResponse(TypedDict):
+    """Marketplace Listing Plan
 
-    Gist Commit
+    Marketplace Listing Plan
     """
 
     url: str
-    version: str
-    user: Union[None, SimpleUserTypeForResponse]
-    change_status: GistCommitPropChangeStatusTypeForResponse
-    committed_at: str
-
-
-class GistCommitPropChangeStatusType(TypedDict):
-    """GistCommitPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-class GistCommitPropChangeStatusTypeForResponse(TypedDict):
-    """GistCommitPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
+    accounts_url: str
+    id: int
+    number: int
+    name: str
+    description: str
+    monthly_price_in_cents: int
+    yearly_price_in_cents: int
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    has_free_trial: bool
+    unit_name: Union[str, None]
+    state: str
+    bullets: list[str]
 
 
 __all__ = (
-    "GistCommitPropChangeStatusType",
-    "GistCommitPropChangeStatusTypeForResponse",
-    "GistCommitType",
-    "GistCommitTypeForResponse",
+    "MarketplaceListingPlanType",
+    "MarketplaceListingPlanTypeForResponse",
 )

@@ -19,30 +19,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_1082 import (
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
+    ReposOwnerRepoCheckRunsPostBodyPropActionsItems,
+    ReposOwnerRepoCheckRunsPostBodyPropOutput,
 )
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0(ExtraGitHubModel):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
+class ReposOwnerRepoCheckRunsPostBodyOneof0(ExtraGitHubModel):
+    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description='The name of the check. For example, "code-coverage".',
+    name: str = Field(
+        description='The name of the check. For example, "code-coverage".'
     )
+    head_sha: str = Field(description="The SHA of the commit.")
     details_url: Missing[str] = Field(
         default=UNSET,
-        description="The URL of the integrator's site that has the full details of the check.",
+        description="The URL of the integrator's site that has the full details of the check. If the integrator does not provide this, then the homepage of the GitHub app is used.",
     )
     external_id: Missing[str] = Field(
         default=UNSET, description="A reference for the run on the integrator's system."
     )
+    status: Literal["completed"] = Field()
     started_at: Missing[datetime] = Field(
         default=UNSET,
-        description="This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    status: Missing[Literal["completed"]] = Field(default=UNSET)
     conclusion: Literal[
         "action_required",
         "cancelled",
@@ -59,19 +59,17 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0(ExtraGitHubModel):
         default=UNSET,
         description="The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    output: Missing[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput] = Field(
+    output: Missing[ReposOwnerRepoCheckRunsPostBodyPropOutput] = Field(
         default=UNSET,
         description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
     )
-    actions: Missing[
-        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
-    ] = Field(
+    actions: Missing[list[ReposOwnerRepoCheckRunsPostBodyPropActionsItems]] = Field(
         max_length=3 if PYDANTIC_V2 else None,
         default=UNSET,
-        description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
+        description='Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
     )
 
 
-model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0)
+model_rebuild(ReposOwnerRepoCheckRunsPostBodyOneof0)
 
-__all__ = ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0",)
+__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof0",)

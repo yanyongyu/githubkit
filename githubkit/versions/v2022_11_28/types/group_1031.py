@@ -9,23 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ProjectsProjectIdCollaboratorsUsernamePutBodyType(TypedDict):
-    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
+class ProjectsColumnsColumnIdPatchBodyType(TypedDict):
+    """ProjectsColumnsColumnIdPatchBody"""
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    name: str
 
 
-class ProjectsProjectIdCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
-    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
+class ProjectsColumnsColumnIdPatchBodyTypeForResponse(TypedDict):
+    """ProjectsColumnsColumnIdPatchBody"""
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    name: str
 
 
 __all__ = (
-    "ProjectsProjectIdCollaboratorsUsernamePutBodyType",
-    "ProjectsProjectIdCollaboratorsUsernamePutBodyTypeForResponse",
+    "ProjectsColumnsColumnIdPatchBodyType",
+    "ProjectsColumnsColumnIdPatchBodyTypeForResponse",
 )

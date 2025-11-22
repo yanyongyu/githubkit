@@ -13,62 +13,178 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0534 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0535 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0536 import (
+from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0529 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0537 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookGollumType(TypedDict):
-    """gollum event"""
+class WebhookInstallationTargetRenamedType(TypedDict):
+    """WebhookInstallationTargetRenamed"""
 
+    account: WebhookInstallationTargetRenamedPropAccountType
+    action: Literal["renamed"]
+    changes: WebhookInstallationTargetRenamedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    installation: SimpleInstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pages: list[WebhookGollumPropPagesItemsType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
+    target_type: str
 
 
-class WebhookGollumTypeForResponse(TypedDict):
-    """gollum event"""
+class WebhookInstallationTargetRenamedTypeForResponse(TypedDict):
+    """WebhookInstallationTargetRenamed"""
 
+    account: WebhookInstallationTargetRenamedPropAccountTypeForResponse
+    action: Literal["renamed"]
+    changes: WebhookInstallationTargetRenamedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    installation: SimpleInstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pages: list[WebhookGollumPropPagesItemsTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+    target_type: str
 
 
-class WebhookGollumPropPagesItemsType(TypedDict):
-    """WebhookGollumPropPagesItems"""
+class WebhookInstallationTargetRenamedPropAccountType(TypedDict):
+    """WebhookInstallationTargetRenamedPropAccount"""
 
-    action: Literal["created", "edited"]
+    archived_at: NotRequired[Union[str, None]]
+    avatar_url: str
+    created_at: NotRequired[str]
+    description: NotRequired[None]
+    events_url: NotRequired[str]
+    followers: NotRequired[int]
+    followers_url: NotRequired[str]
+    following: NotRequired[int]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    has_organization_projects: NotRequired[bool]
+    has_repository_projects: NotRequired[bool]
+    hooks_url: NotRequired[str]
     html_url: str
-    page_name: str
-    sha: str
-    summary: Union[str, None]
-    title: str
+    id: int
+    is_verified: NotRequired[bool]
+    issues_url: NotRequired[str]
+    login: NotRequired[str]
+    members_url: NotRequired[str]
+    name: NotRequired[str]
+    node_id: str
+    organizations_url: NotRequired[str]
+    public_gists: NotRequired[int]
+    public_members_url: NotRequired[str]
+    public_repos: NotRequired[int]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    slug: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    website_url: NotRequired[None]
+    user_view_type: NotRequired[str]
 
 
-class WebhookGollumPropPagesItemsTypeForResponse(TypedDict):
-    """WebhookGollumPropPagesItems"""
+class WebhookInstallationTargetRenamedPropAccountTypeForResponse(TypedDict):
+    """WebhookInstallationTargetRenamedPropAccount"""
 
-    action: Literal["created", "edited"]
+    archived_at: NotRequired[Union[str, None]]
+    avatar_url: str
+    created_at: NotRequired[str]
+    description: NotRequired[None]
+    events_url: NotRequired[str]
+    followers: NotRequired[int]
+    followers_url: NotRequired[str]
+    following: NotRequired[int]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    has_organization_projects: NotRequired[bool]
+    has_repository_projects: NotRequired[bool]
+    hooks_url: NotRequired[str]
     html_url: str
-    page_name: str
-    sha: str
-    summary: Union[str, None]
-    title: str
+    id: int
+    is_verified: NotRequired[bool]
+    issues_url: NotRequired[str]
+    login: NotRequired[str]
+    members_url: NotRequired[str]
+    name: NotRequired[str]
+    node_id: str
+    organizations_url: NotRequired[str]
+    public_gists: NotRequired[int]
+    public_members_url: NotRequired[str]
+    public_repos: NotRequired[int]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    slug: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    website_url: NotRequired[None]
+    user_view_type: NotRequired[str]
+
+
+class WebhookInstallationTargetRenamedPropChangesType(TypedDict):
+    """WebhookInstallationTargetRenamedPropChanges"""
+
+    login: NotRequired[WebhookInstallationTargetRenamedPropChangesPropLoginType]
+    slug: NotRequired[WebhookInstallationTargetRenamedPropChangesPropSlugType]
+
+
+class WebhookInstallationTargetRenamedPropChangesTypeForResponse(TypedDict):
+    """WebhookInstallationTargetRenamedPropChanges"""
+
+    login: NotRequired[
+        WebhookInstallationTargetRenamedPropChangesPropLoginTypeForResponse
+    ]
+    slug: NotRequired[
+        WebhookInstallationTargetRenamedPropChangesPropSlugTypeForResponse
+    ]
+
+
+class WebhookInstallationTargetRenamedPropChangesPropLoginType(TypedDict):
+    """WebhookInstallationTargetRenamedPropChangesPropLogin"""
+
+    from_: str
+
+
+class WebhookInstallationTargetRenamedPropChangesPropLoginTypeForResponse(TypedDict):
+    """WebhookInstallationTargetRenamedPropChangesPropLogin"""
+
+    from_: str
+
+
+class WebhookInstallationTargetRenamedPropChangesPropSlugType(TypedDict):
+    """WebhookInstallationTargetRenamedPropChangesPropSlug"""
+
+    from_: str
+
+
+class WebhookInstallationTargetRenamedPropChangesPropSlugTypeForResponse(TypedDict):
+    """WebhookInstallationTargetRenamedPropChangesPropSlug"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookGollumPropPagesItemsType",
-    "WebhookGollumPropPagesItemsTypeForResponse",
-    "WebhookGollumType",
-    "WebhookGollumTypeForResponse",
+    "WebhookInstallationTargetRenamedPropAccountType",
+    "WebhookInstallationTargetRenamedPropAccountTypeForResponse",
+    "WebhookInstallationTargetRenamedPropChangesPropLoginType",
+    "WebhookInstallationTargetRenamedPropChangesPropLoginTypeForResponse",
+    "WebhookInstallationTargetRenamedPropChangesPropSlugType",
+    "WebhookInstallationTargetRenamedPropChangesPropSlugTypeForResponse",
+    "WebhookInstallationTargetRenamedPropChangesType",
+    "WebhookInstallationTargetRenamedPropChangesTypeForResponse",
+    "WebhookInstallationTargetRenamedType",
+    "WebhookInstallationTargetRenamedTypeForResponse",
 )

@@ -9,28 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0266 import LinkType, LinkTypeForResponse
-
-
-class ReviewCommentPropLinksType(TypedDict):
-    """ReviewCommentPropLinks"""
-
-    self_: LinkType
-    html: LinkType
-    pull_request: LinkType
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReviewCommentPropLinksTypeForResponse(TypedDict):
-    """ReviewCommentPropLinks"""
+class RepositoryRuleRulesetInfoType(TypedDict):
+    """repository ruleset data for rule
 
-    self_: LinkTypeForResponse
-    html: LinkTypeForResponse
-    pull_request: LinkTypeForResponse
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
+
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleRulesetInfoTypeForResponse(TypedDict):
+    """repository ruleset data for rule
+
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
+
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "ReviewCommentPropLinksType",
-    "ReviewCommentPropLinksTypeForResponse",
+    "RepositoryRuleRulesetInfoType",
+    "RepositoryRuleRulesetInfoTypeForResponse",
 )

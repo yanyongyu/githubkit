@@ -10,28 +10,83 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class ActionsVariableType(TypedDict):
-    """Actions Variable"""
+class SimpleCommitType(TypedDict):
+    """Simple Commit
+
+    A commit.
+    """
+
+    id: str
+    tree_id: str
+    message: str
+    timestamp: datetime
+    author: Union[SimpleCommitPropAuthorType, None]
+    committer: Union[SimpleCommitPropCommitterType, None]
+
+
+class SimpleCommitTypeForResponse(TypedDict):
+    """Simple Commit
+
+    A commit.
+    """
+
+    id: str
+    tree_id: str
+    message: str
+    timestamp: str
+    author: Union[SimpleCommitPropAuthorTypeForResponse, None]
+    committer: Union[SimpleCommitPropCommitterTypeForResponse, None]
+
+
+class SimpleCommitPropAuthorType(TypedDict):
+    """SimpleCommitPropAuthor
+
+    Information about the Git author
+    """
 
     name: str
-    value: str
-    created_at: datetime
-    updated_at: datetime
+    email: str
 
 
-class ActionsVariableTypeForResponse(TypedDict):
-    """Actions Variable"""
+class SimpleCommitPropAuthorTypeForResponse(TypedDict):
+    """SimpleCommitPropAuthor
+
+    Information about the Git author
+    """
 
     name: str
-    value: str
-    created_at: str
-    updated_at: str
+    email: str
+
+
+class SimpleCommitPropCommitterType(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterTypeForResponse(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
 
 
 __all__ = (
-    "ActionsVariableType",
-    "ActionsVariableTypeForResponse",
+    "SimpleCommitPropAuthorType",
+    "SimpleCommitPropAuthorTypeForResponse",
+    "SimpleCommitPropCommitterType",
+    "SimpleCommitPropCommitterTypeForResponse",
+    "SimpleCommitType",
+    "SimpleCommitTypeForResponse",
 )

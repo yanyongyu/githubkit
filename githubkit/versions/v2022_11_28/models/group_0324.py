@@ -9,95 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0252 import Verification
 
 
-class GitCommit(GitHubModel):
-    """Git Commit
+class GitTag(GitHubModel):
+    """Git Tag
 
-    Low-level Git commit operations within a repository
+    Metadata for a Git tag
     """
 
-    sha: str = Field(description="SHA for the commit")
     node_id: str = Field()
-    url: str = Field()
-    author: GitCommitPropAuthor = Field(
-        description="Identifying information for the git-user"
-    )
-    committer: GitCommitPropCommitter = Field(
-        description="Identifying information for the git-user"
-    )
-    message: str = Field(description="Message describing the purpose of the commit")
-    tree: GitCommitPropTree = Field()
-    parents: list[GitCommitPropParentsItems] = Field()
-    verification: GitCommitPropVerification = Field()
-    html_url: str = Field()
+    tag: str = Field(description="Name of the tag")
+    sha: str = Field()
+    url: str = Field(description="URL for the tag")
+    message: str = Field(description="Message describing the purpose of the tag")
+    tagger: GitTagPropTagger = Field()
+    object_: GitTagPropObject = Field(alias="object")
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-class GitCommitPropAuthor(GitHubModel):
-    """GitCommitPropAuthor
+class GitTagPropTagger(GitHubModel):
+    """GitTagPropTagger"""
 
-    Identifying information for the git-user
-    """
-
-    date: datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
+    date: str = Field()
+    email: str = Field()
+    name: str = Field()
 
 
-class GitCommitPropCommitter(GitHubModel):
-    """GitCommitPropCommitter
+class GitTagPropObject(GitHubModel):
+    """GitTagPropObject"""
 
-    Identifying information for the git-user
-    """
-
-    date: datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class GitCommitPropTree(GitHubModel):
-    """GitCommitPropTree"""
-
-    sha: str = Field(description="SHA for the commit")
+    sha: str = Field()
+    type: str = Field()
     url: str = Field()
 
 
-class GitCommitPropParentsItems(GitHubModel):
-    """GitCommitPropParentsItems"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-    html_url: str = Field()
-
-
-class GitCommitPropVerification(GitHubModel):
-    """GitCommitPropVerification"""
-
-    verified: bool = Field()
-    reason: str = Field()
-    signature: Union[str, None] = Field()
-    payload: Union[str, None] = Field()
-    verified_at: Union[str, None] = Field()
-
-
-model_rebuild(GitCommit)
-model_rebuild(GitCommitPropAuthor)
-model_rebuild(GitCommitPropCommitter)
-model_rebuild(GitCommitPropTree)
-model_rebuild(GitCommitPropParentsItems)
-model_rebuild(GitCommitPropVerification)
+model_rebuild(GitTag)
+model_rebuild(GitTagPropTagger)
+model_rebuild(GitTagPropObject)
 
 __all__ = (
-    "GitCommit",
-    "GitCommitPropAuthor",
-    "GitCommitPropCommitter",
-    "GitCommitPropParentsItems",
-    "GitCommitPropTree",
-    "GitCommitPropVerification",
+    "GitTag",
+    "GitTagPropObject",
+    "GitTagPropTagger",
 )

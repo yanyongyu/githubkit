@@ -9,38 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0450 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0451 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0452 import (
+from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0450 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0453 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0463 import DiscussionType, DiscussionTypeForResponse
+from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0568 import WebhookForkPropForkeeType, WebhookForkPropForkeeTypeForResponse
 
 
-class WebhookDiscussionUnlockedType(TypedDict):
-    """discussion unlocked event"""
+class WebhookForkType(TypedDict):
+    """fork event
 
-    action: Literal["unlocked"]
-    discussion: DiscussionType
+    A user forks a repository.
+    """
+
     enterprise: NotRequired[EnterpriseWebhooksType]
+    forkee: WebhookForkPropForkeeType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDiscussionUnlockedTypeForResponse(TypedDict):
-    """discussion unlocked event"""
+class WebhookForkTypeForResponse(TypedDict):
+    """fork event
 
-    action: Literal["unlocked"]
-    discussion: DiscussionTypeForResponse
+    A user forks a repository.
+    """
+
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    forkee: WebhookForkPropForkeeTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
@@ -48,6 +51,6 @@ class WebhookDiscussionUnlockedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionUnlockedType",
-    "WebhookDiscussionUnlockedTypeForResponse",
+    "WebhookForkType",
+    "WebhookForkTypeForResponse",
 )

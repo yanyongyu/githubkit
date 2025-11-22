@@ -9,78 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositoriesType(TypedDict):
-    """Organization private registry
+class AutoMergeType(TypedDict):
+    """Auto merge
 
-    Private registry configuration for an organization
+    The status of auto merging a pull request.
     """
 
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    url: NotRequired[str]
-    username: NotRequired[str]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
-    created_at: datetime
-    updated_at: datetime
+    enabled_by: SimpleUserType
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse(TypedDict):
-    """Organization private registry
+class AutoMergeTypeForResponse(TypedDict):
+    """Auto merge
 
-    Private registry configuration for an organization
+    The status of auto merging a pull request.
     """
 
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    url: NotRequired[str]
-    username: NotRequired[str]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
-    created_at: str
-    updated_at: str
+    enabled_by: SimpleUserTypeForResponse
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
 __all__ = (
-    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",
-    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse",
+    "AutoMergeType",
+    "AutoMergeTypeForResponse",
 )

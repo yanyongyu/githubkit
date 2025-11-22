@@ -9,33 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 
 
-class AutoMerge(GitHubModel):
-    """Auto merge
+class ProjectsV2DraftIssue(GitHubModel):
+    """Draft Issue
 
-    The status of auto merging a pull request.
+    A draft issue in a project
     """
 
-    enabled_by: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    merge_method: Literal["merge", "squash", "rebase"] = Field(
-        description="The merge method to use."
+    id: float = Field(description="The ID of the draft issue")
+    node_id: str = Field(description="The node ID of the draft issue")
+    title: str = Field(description="The title of the draft issue")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The body content of the draft issue"
     )
-    commit_title: Union[str, None] = Field(
-        description="Title for the merge commit message."
-    )
-    commit_message: Union[str, None] = Field(
-        description="Commit message for the merge commit."
+    user: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field(description="The time the draft issue was created")
+    updated_at: datetime = Field(
+        description="The time the draft issue was last updated"
     )
 
 
-model_rebuild(AutoMerge)
+model_rebuild(ProjectsV2DraftIssue)
 
-__all__ = ("AutoMerge",)
+__all__ = ("ProjectsV2DraftIssue",)

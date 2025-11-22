@@ -15,38 +15,38 @@ from typing_extensions import NotRequired, TypedDict
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0020 import RepositoryType, RepositoryTypeForResponse
 from .group_0045 import IssueType, IssueTypeForResponse
-from .group_0451 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0452 import (
+from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0450 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0453 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssueDependenciesBlockedByRemovedType(TypedDict):
-    """blocked by issue removed event"""
+class WebhookIssueDependenciesBlockingRemovedType(TypedDict):
+    """blocking issue removed event"""
 
-    action: Literal["blocked_by_removed"]
+    action: Literal["blocking_removed"]
     blocked_issue_id: float
     blocked_issue: IssueType
+    blocked_issue_repo: RepositoryType
     blocking_issue_id: float
     blocking_issue: IssueType
-    blocking_issue_repo: RepositoryType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssueDependenciesBlockedByRemovedTypeForResponse(TypedDict):
-    """blocked by issue removed event"""
+class WebhookIssueDependenciesBlockingRemovedTypeForResponse(TypedDict):
+    """blocking issue removed event"""
 
-    action: Literal["blocked_by_removed"]
+    action: Literal["blocking_removed"]
     blocked_issue_id: float
     blocked_issue: IssueTypeForResponse
+    blocked_issue_repo: RepositoryTypeForResponse
     blocking_issue_id: float
     blocking_issue: IssueTypeForResponse
-    blocking_issue_repo: RepositoryTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
@@ -54,6 +54,6 @@ class WebhookIssueDependenciesBlockedByRemovedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookIssueDependenciesBlockedByRemovedType",
-    "WebhookIssueDependenciesBlockedByRemovedTypeForResponse",
+    "WebhookIssueDependenciesBlockingRemovedType",
+    "WebhookIssueDependenciesBlockingRemovedTypeForResponse",
 )

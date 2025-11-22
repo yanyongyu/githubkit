@@ -9,33 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0379 import MetadataType, MetadataTypeForResponse
+from typing_extensions import TypedDict
 
 
-class DependencyType(TypedDict):
-    """Dependency"""
+class DeploymentBranchPolicySettingsType(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataType]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
+    """
+
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
-class DependencyTypeForResponse(TypedDict):
-    """Dependency"""
+class DeploymentBranchPolicySettingsTypeForResponse(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataTypeForResponse]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
+    """
+
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
 __all__ = (
-    "DependencyType",
-    "DependencyTypeForResponse",
+    "DeploymentBranchPolicySettingsType",
+    "DeploymentBranchPolicySettingsTypeForResponse",
 )

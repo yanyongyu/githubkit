@@ -10,25 +10,60 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Any
-from typing_extensions import TypeAlias
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-MetadataType: TypeAlias = dict[str, Any]
-"""metadata
+from .group_0307 import MetadataType, MetadataTypeForResponse
 
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
+
+class ManifestType(TypedDict):
+    """Manifest"""
+
+    name: str
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
+
+
+class ManifestTypeForResponse(TypedDict):
+    """Manifest"""
+
+    name: str
+    file: NotRequired[ManifestPropFileTypeForResponse]
+    metadata: NotRequired[MetadataTypeForResponse]
+    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
+
+
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+class ManifestPropFileTypeForResponse(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+ManifestPropResolvedType: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
 """
 
 
-MetadataTypeForResponse: TypeAlias = dict[str, Any]
-"""metadata
+ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
 
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
+A collection of resolved package dependencies.
 """
 
 
 __all__ = (
-    "MetadataType",
-    "MetadataTypeForResponse",
+    "ManifestPropFileType",
+    "ManifestPropFileTypeForResponse",
+    "ManifestPropResolvedType",
+    "ManifestPropResolvedTypeForResponse",
+    "ManifestType",
+    "ManifestTypeForResponse",
 )

@@ -13,19 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
+class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
+    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    query_suite: NotRequired[Literal["default", "extended"]]
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
+class OrgsOrgSecurityProductEnablementPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    query_suite: NotRequired[Literal["default", "extended"]]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType",
-    "OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyTypeForResponse",
+    "OrgsOrgSecurityProductEnablementPostBodyType",
+    "OrgsOrgSecurityProductEnablementPostBodyTypeForResponse",
 )

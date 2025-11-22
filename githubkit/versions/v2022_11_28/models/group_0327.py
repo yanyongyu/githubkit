@@ -9,42 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0011 import WebhookConfig
+from .group_0326 import HookResponse
 
-class GitTree(GitHubModel):
-    """Git Tree
 
-    The hierarchy between files in a Git repository.
+class Hook(GitHubModel):
+    """Webhook
+
+    Webhooks for repositories.
     """
 
-    sha: str = Field()
-    url: Missing[str] = Field(default=UNSET)
-    truncated: bool = Field()
-    tree: list[GitTreePropTreeItems] = Field(
-        description="Objects specifying a tree structure"
-    )
-
-
-class GitTreePropTreeItems(GitHubModel):
-    """GitTreePropTreeItems"""
-
-    path: str = Field()
-    mode: str = Field()
     type: str = Field()
-    sha: str = Field()
-    size: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    id: int = Field(description="Unique identifier of the webhook.")
+    name: str = Field(
+        description="The name of a valid service, use 'web' for a webhook."
+    )
+    active: bool = Field(
+        description="Determines whether the hook is actually triggered on pushes."
+    )
+    events: list[str] = Field(
+        description="Determines what events the hook is triggered for. Default: ['push']."
+    )
+    config: WebhookConfig = Field(
+        title="Webhook Configuration", description="Configuration object of the webhook"
+    )
+    updated_at: datetime = Field()
+    created_at: datetime = Field()
+    url: str = Field()
+    test_url: str = Field()
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    last_response: HookResponse = Field(title="Hook Response")
 
 
-model_rebuild(GitTree)
-model_rebuild(GitTreePropTreeItems)
+model_rebuild(Hook)
 
-__all__ = (
-    "GitTree",
-    "GitTreePropTreeItems",
-)
+__all__ = ("Hook",)

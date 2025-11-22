@@ -10,124 +10,65 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class ImportType(TypedDict):
-    """Import
+class LabeledIssueEventType(TypedDict):
+    """Labeled Issue Event
 
-    A repository import from an external source.
+    Labeled Issue Event
     """
 
-    vcs: Union[str, None]
-    use_lfs: NotRequired[bool]
-    vcs_url: str
-    svc_root: NotRequired[str]
-    tfvc_project: NotRequired[str]
-    status: Literal[
-        "auth",
-        "error",
-        "none",
-        "detecting",
-        "choose",
-        "auth_failed",
-        "importing",
-        "mapping",
-        "waiting_to_push",
-        "pushing",
-        "complete",
-        "setup",
-        "unknown",
-        "detection_found_multiple",
-        "detection_found_nothing",
-        "detection_needs_auth",
-    ]
-    status_text: NotRequired[Union[str, None]]
-    failed_step: NotRequired[Union[str, None]]
-    error_message: NotRequired[Union[str, None]]
-    import_percent: NotRequired[Union[int, None]]
-    commit_count: NotRequired[Union[int, None]]
-    push_percent: NotRequired[Union[int, None]]
-    has_large_files: NotRequired[bool]
-    large_files_size: NotRequired[int]
-    large_files_count: NotRequired[int]
-    project_choices: NotRequired[list[ImportPropProjectChoicesItemsType]]
-    message: NotRequired[str]
-    authors_count: NotRequired[Union[int, None]]
+    id: int
+    node_id: str
     url: str
-    html_url: str
-    authors_url: str
-    repository_url: str
-    svn_root: NotRequired[str]
+    actor: SimpleUserType
+    event: Literal["labeled"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    label: LabeledIssueEventPropLabelType
 
 
-class ImportTypeForResponse(TypedDict):
-    """Import
+class LabeledIssueEventTypeForResponse(TypedDict):
+    """Labeled Issue Event
 
-    A repository import from an external source.
+    Labeled Issue Event
     """
 
-    vcs: Union[str, None]
-    use_lfs: NotRequired[bool]
-    vcs_url: str
-    svc_root: NotRequired[str]
-    tfvc_project: NotRequired[str]
-    status: Literal[
-        "auth",
-        "error",
-        "none",
-        "detecting",
-        "choose",
-        "auth_failed",
-        "importing",
-        "mapping",
-        "waiting_to_push",
-        "pushing",
-        "complete",
-        "setup",
-        "unknown",
-        "detection_found_multiple",
-        "detection_found_nothing",
-        "detection_needs_auth",
-    ]
-    status_text: NotRequired[Union[str, None]]
-    failed_step: NotRequired[Union[str, None]]
-    error_message: NotRequired[Union[str, None]]
-    import_percent: NotRequired[Union[int, None]]
-    commit_count: NotRequired[Union[int, None]]
-    push_percent: NotRequired[Union[int, None]]
-    has_large_files: NotRequired[bool]
-    large_files_size: NotRequired[int]
-    large_files_count: NotRequired[int]
-    project_choices: NotRequired[list[ImportPropProjectChoicesItemsTypeForResponse]]
-    message: NotRequired[str]
-    authors_count: NotRequired[Union[int, None]]
+    id: int
+    node_id: str
     url: str
-    html_url: str
-    authors_url: str
-    repository_url: str
-    svn_root: NotRequired[str]
+    actor: SimpleUserTypeForResponse
+    event: Literal["labeled"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    label: LabeledIssueEventPropLabelTypeForResponse
 
 
-class ImportPropProjectChoicesItemsType(TypedDict):
-    """ImportPropProjectChoicesItems"""
+class LabeledIssueEventPropLabelType(TypedDict):
+    """LabeledIssueEventPropLabel"""
 
-    vcs: NotRequired[str]
-    tfvc_project: NotRequired[str]
-    human_name: NotRequired[str]
+    name: str
+    color: str
 
 
-class ImportPropProjectChoicesItemsTypeForResponse(TypedDict):
-    """ImportPropProjectChoicesItems"""
+class LabeledIssueEventPropLabelTypeForResponse(TypedDict):
+    """LabeledIssueEventPropLabel"""
 
-    vcs: NotRequired[str]
-    tfvc_project: NotRequired[str]
-    human_name: NotRequired[str]
+    name: str
+    color: str
 
 
 __all__ = (
-    "ImportPropProjectChoicesItemsType",
-    "ImportPropProjectChoicesItemsTypeForResponse",
-    "ImportType",
-    "ImportTypeForResponse",
+    "LabeledIssueEventPropLabelType",
+    "LabeledIssueEventPropLabelTypeForResponse",
+    "LabeledIssueEventType",
+    "LabeledIssueEventTypeForResponse",
 )

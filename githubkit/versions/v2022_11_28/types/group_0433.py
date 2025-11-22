@@ -9,121 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0425 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class UserSearchResultItemType(TypedDict):
-    """User Search Result Item
+class CodespacesUserPublicKeyType(TypedDict):
+    """CodespacesUserPublicKey
 
-    User Search Result Item
+    The public key used for setting user Codespaces' Secrets.
     """
 
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    received_events_url: str
-    type: str
-    score: float
-    following_url: str
-    gists_url: str
-    starred_url: str
-    events_url: str
-    public_repos: NotRequired[int]
-    public_gists: NotRequired[int]
-    followers: NotRequired[int]
-    following: NotRequired[int]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-    name: NotRequired[Union[str, None]]
-    bio: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    location: NotRequired[Union[str, None]]
-    site_admin: bool
-    hireable: NotRequired[Union[bool, None]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-    blog: NotRequired[Union[str, None]]
-    company: NotRequired[Union[str, None]]
-    suspended_at: NotRequired[Union[datetime, None]]
-    user_view_type: NotRequired[str]
+    key_id: str
+    key: str
 
 
-class UserSearchResultItemTypeForResponse(TypedDict):
-    """User Search Result Item
+class CodespacesUserPublicKeyTypeForResponse(TypedDict):
+    """CodespacesUserPublicKey
 
-    User Search Result Item
+    The public key used for setting user Codespaces' Secrets.
     """
 
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    received_events_url: str
-    type: str
-    score: float
-    following_url: str
-    gists_url: str
-    starred_url: str
-    events_url: str
-    public_repos: NotRequired[int]
-    public_gists: NotRequired[int]
-    followers: NotRequired[int]
-    following: NotRequired[int]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    name: NotRequired[Union[str, None]]
-    bio: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    location: NotRequired[Union[str, None]]
-    site_admin: bool
-    hireable: NotRequired[Union[bool, None]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-    blog: NotRequired[Union[str, None]]
-    company: NotRequired[Union[str, None]]
-    suspended_at: NotRequired[Union[str, None]]
-    user_view_type: NotRequired[str]
-
-
-class SearchUsersGetResponse200Type(TypedDict):
-    """SearchUsersGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[UserSearchResultItemType]
-
-
-class SearchUsersGetResponse200TypeForResponse(TypedDict):
-    """SearchUsersGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[UserSearchResultItemTypeForResponse]
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "SearchUsersGetResponse200Type",
-    "SearchUsersGetResponse200TypeForResponse",
-    "UserSearchResultItemType",
-    "UserSearchResultItemTypeForResponse",
+    "CodespacesUserPublicKeyType",
+    "CodespacesUserPublicKeyTypeForResponse",
 )

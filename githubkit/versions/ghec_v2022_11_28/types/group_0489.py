@@ -12,25 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class TopicType(TypedDict):
-    """Topic
+class ReferrerTrafficType(TypedDict):
+    """Referrer Traffic
 
-    A topic aggregates entities that are related to a subject.
+    Referrer Traffic
     """
 
-    names: list[str]
+    referrer: str
+    count: int
+    uniques: int
 
 
-class TopicTypeForResponse(TypedDict):
-    """Topic
+class ReferrerTrafficTypeForResponse(TypedDict):
+    """Referrer Traffic
 
-    A topic aggregates entities that are related to a subject.
+    Referrer Traffic
     """
 
-    names: list[str]
+    referrer: str
+    count: int
+    uniques: int
 
 
 __all__ = (
-    "TopicType",
-    "TopicTypeForResponse",
+    "ReferrerTrafficType",
+    "ReferrerTrafficTypeForResponse",
 )

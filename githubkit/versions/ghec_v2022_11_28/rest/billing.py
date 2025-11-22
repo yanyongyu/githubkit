@@ -28,17 +28,10 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import (
-        ActionsBillingUsage,
         AdvancedSecurityActiveCommitters,
         BillingPremiumRequestUsageReportGhe,
-        BillingPremiumRequestUsageReportOrg,
-        BillingPremiumRequestUsageReportUser,
         BillingUsageReport,
-        BillingUsageReportUser,
         BillingUsageSummaryReportGhe,
-        BillingUsageSummaryReportOrg,
-        BillingUsageSummaryReportUser,
-        CombinedBillingUsage,
         CreateBudget,
         DeleteBudget,
         DeleteCostCenter,
@@ -49,22 +42,13 @@ if TYPE_CHECKING:
         GetAllCostCenters,
         GetBudget,
         GetCostCenter,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        PackagesBillingUsage,
         UpdateBudget,
     )
     from ..types import (
-        ActionsBillingUsageTypeForResponse,
         AdvancedSecurityActiveCommittersTypeForResponse,
         BillingPremiumRequestUsageReportGheTypeForResponse,
-        BillingPremiumRequestUsageReportOrgTypeForResponse,
-        BillingPremiumRequestUsageReportUserTypeForResponse,
         BillingUsageReportTypeForResponse,
-        BillingUsageReportUserTypeForResponse,
         BillingUsageSummaryReportGheTypeForResponse,
-        BillingUsageSummaryReportOrgTypeForResponse,
-        BillingUsageSummaryReportUserTypeForResponse,
-        CombinedBillingUsageTypeForResponse,
         CreateBudgetTypeForResponse,
         DeleteBudgetTypeForResponse,
         DeleteCostCenterTypeForResponse,
@@ -83,10 +67,6 @@ if TYPE_CHECKING:
         GetAllCostCentersTypeForResponse,
         GetBudgetTypeForResponse,
         GetCostCenterTypeForResponse,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
-        PackagesBillingUsageTypeForResponse,
         UpdateBudgetTypeForResponse,
     )
 
@@ -104,80 +84,6 @@ class BillingClient:
         raise RuntimeError(
             "GitHub client has already been collected. "
             "Do not use this client after the client has been collected."
-        )
-
-    def get_github_actions_billing_ghe(
-        self,
-        enterprise: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
-        """billing/get-github-actions-billing-ghe
-
-        GET /enterprises/{enterprise}/settings/billing/actions
-
-        Gets the summary of the free and paid GitHub Actions minutes used.
-
-        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-
-        The authenticated user must be an enterprise admin.
-
-        > [!NOTE]
-        > This endpoint is available to enterprise customers who are using the legacy billing platform.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-actions-billing-for-an-enterprise
-        """
-
-        from ..models import ActionsBillingUsage
-
-        url = f"/enterprises/{enterprise}/settings/billing/actions"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=ActionsBillingUsage,
-        )
-
-    async def async_get_github_actions_billing_ghe(
-        self,
-        enterprise: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
-        """billing/get-github-actions-billing-ghe
-
-        GET /enterprises/{enterprise}/settings/billing/actions
-
-        Gets the summary of the free and paid GitHub Actions minutes used.
-
-        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-
-        The authenticated user must be an enterprise admin.
-
-        > [!NOTE]
-        > This endpoint is available to enterprise customers who are using the legacy billing platform.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-actions-billing-for-an-enterprise
-        """
-
-        from ..models import ActionsBillingUsage
-
-        url = f"/enterprises/{enterprise}/settings/billing/actions"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=ActionsBillingUsage,
         )
 
     def get_github_advanced_security_billing_ghe(
@@ -205,7 +111,7 @@ class BillingClient:
 
         The total number of repositories with committer information is tracked by the `total_count` field.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-advanced-security-active-committers-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#get-github-advanced-security-active-committers-for-an-enterprise
         """
 
         from ..models import AdvancedSecurityActiveCommitters
@@ -254,7 +160,7 @@ class BillingClient:
 
         The total number of repositories with committer information is tracked by the `total_count` field.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-advanced-security-active-committers-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/licensing#get-github-advanced-security-active-committers-for-an-enterprise
         """
 
         from ..models import AdvancedSecurityActiveCommitters
@@ -294,7 +200,7 @@ class BillingClient:
 
         Gets all budgets for an enterprise. The authenticated user must be an enterprise admin or billing manager.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-all-budgets
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#get-all-budgets
         """
 
         from ..models import BasicError, GetAllBudgets
@@ -331,7 +237,7 @@ class BillingClient:
 
         Gets all budgets for an enterprise. The authenticated user must be an enterprise admin or billing manager.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-all-budgets
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#get-all-budgets
         """
 
         from ..models import BasicError, GetAllBudgets
@@ -399,7 +305,7 @@ class BillingClient:
 
         Creates a new budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#create-a-budget
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#create-a-budget
         """
 
         from ..models import (
@@ -488,7 +394,7 @@ class BillingClient:
 
         Creates a new budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#create-a-budget
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#create-a-budget
         """
 
         from ..models import (
@@ -547,7 +453,7 @@ class BillingClient:
 
         Gets a budget by ID. The authenticated user must be an enterprise admin or billing manager.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-a-budget-by-id
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#get-a-budget-by-id
         """
 
         from ..models import (
@@ -592,7 +498,7 @@ class BillingClient:
 
         Gets a budget by ID. The authenticated user must be an enterprise admin or billing manager.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-a-budget-by-id
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#get-a-budget-by-id
         """
 
         from ..models import (
@@ -637,7 +543,7 @@ class BillingClient:
 
         Deletes a budget by ID. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#delete-a-budget
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#delete-a-budget
         """
 
         from ..models import (
@@ -682,7 +588,7 @@ class BillingClient:
 
         Deletes a budget by ID. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#delete-a-budget
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#delete-a-budget
         """
 
         from ..models import (
@@ -764,7 +670,7 @@ class BillingClient:
 
         Updates an existing budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#update-a-budget
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#update-a-budget
         """
 
         from ..models import (
@@ -861,7 +767,7 @@ class BillingClient:
 
         Updates an existing budget for an enterprise. The authenticated user must be an enterprise admin, organization admin, or billing manager of the enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#update-a-budget
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/budgets#update-a-budget
         """
 
         from ..models import (
@@ -918,7 +824,7 @@ class BillingClient:
 
         Gets a list of all the cost centers for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-all-cost-centers-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#get-all-cost-centers-for-an-enterprise
         """
 
         from ..models import (
@@ -964,7 +870,7 @@ class BillingClient:
 
         Gets a list of all the cost centers for an enterprise.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-all-cost-centers-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#get-all-cost-centers-for-an-enterprise
         """
 
         from ..models import (
@@ -1043,7 +949,7 @@ class BillingClient:
 
         Creates a new cost center for an enterprise. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#create-a-new-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#create-a-new-cost-center
         """
 
         from ..models import (
@@ -1123,7 +1029,7 @@ class BillingClient:
 
         Creates a new cost center for an enterprise. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#create-a-new-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#create-a-new-cost-center
         """
 
         from ..models import (
@@ -1170,7 +1076,7 @@ class BillingClient:
 
         Gets a cost center by ID. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-a-cost-center-by-id
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#get-a-cost-center-by-id
         """
 
         from ..models import (
@@ -1213,7 +1119,7 @@ class BillingClient:
 
         Gets a cost center by ID. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-a-cost-center-by-id
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#get-a-cost-center-by-id
         """
 
         from ..models import (
@@ -1256,7 +1162,7 @@ class BillingClient:
 
         Archieves a cost center by ID. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#delete-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#delete-a-cost-center
         """
 
         from ..models import (
@@ -1300,7 +1206,7 @@ class BillingClient:
 
         Archieves a cost center by ID. The authenticated user must be an enterprise admin.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#delete-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#delete-a-cost-center
         """
 
         from ..models import (
@@ -1371,7 +1277,7 @@ class BillingClient:
 
         Updates an existing cost center name.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#update-a-cost-center-name
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#update-a-cost-center-name
         """
 
         from ..models import (
@@ -1457,7 +1363,7 @@ class BillingClient:
 
         Updates an existing cost center name.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#update-a-cost-center-name
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#update-a-cost-center-name
         """
 
         from ..models import (
@@ -1556,7 +1462,7 @@ class BillingClient:
 
         The usage for the resources will be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#add-resources-to-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#add-resources-to-a-cost-center
         """
 
         from ..models import (
@@ -1652,7 +1558,7 @@ class BillingClient:
 
         The usage for the resources will be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#add-resources-to-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#add-resources-to-a-cost-center
         """
 
         from ..models import (
@@ -1748,7 +1654,7 @@ class BillingClient:
 
         The usage for the resources will no longer be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#remove-resources-from-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#remove-resources-from-a-cost-center
         """
 
         from ..models import (
@@ -1843,7 +1749,7 @@ class BillingClient:
 
         The usage for the resources will no longer be charged to the cost center's budget. The authenticated user must be an enterprise admin in order to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#remove-resources-from-a-cost-center
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/cost-centers#remove-resources-from-a-cost-center
         """
 
         from ..models import (
@@ -1884,80 +1790,6 @@ class BillingClient:
             },
         )
 
-    def get_github_packages_billing_ghe(
-        self,
-        enterprise: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
-        """billing/get-github-packages-billing-ghe
-
-        GET /enterprises/{enterprise}/settings/billing/packages
-
-        Gets the free and paid storage used for GitHub Packages in gigabytes.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        The authenticated user must be an enterprise admin.
-
-        > [!NOTE]
-        > This endpoint is available to enterprise customers who are using the legacy billing platform.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-packages-billing-for-an-enterprise
-        """
-
-        from ..models import PackagesBillingUsage
-
-        url = f"/enterprises/{enterprise}/settings/billing/packages"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=PackagesBillingUsage,
-        )
-
-    async def async_get_github_packages_billing_ghe(
-        self,
-        enterprise: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
-        """billing/get-github-packages-billing-ghe
-
-        GET /enterprises/{enterprise}/settings/billing/packages
-
-        Gets the free and paid storage used for GitHub Packages in gigabytes.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        The authenticated user must be an enterprise admin.
-
-        > [!NOTE]
-        > This endpoint is available to enterprise customers who are using the legacy billing platform.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-packages-billing-for-an-enterprise
-        """
-
-        from ..models import PackagesBillingUsage
-
-        url = f"/enterprises/{enterprise}/settings/billing/packages"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=PackagesBillingUsage,
-        )
-
     def get_github_billing_premium_request_usage_report_ghe(
         self,
         enterprise: str,
@@ -1984,7 +1816,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-premium-request-usage-report-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage#get-billing-premium-request-usage-report-for-an-enterprise
         """
 
         from ..models import (
@@ -2050,7 +1882,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-premium-request-usage-report-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage#get-billing-premium-request-usage-report-for-an-enterprise
         """
 
         from ..models import (
@@ -2090,80 +1922,6 @@ class BillingClient:
             },
         )
 
-    def get_shared_storage_billing_ghe(
-        self,
-        enterprise: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
-        """billing/get-shared-storage-billing-ghe
-
-        GET /enterprises/{enterprise}/settings/billing/shared-storage
-
-        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        The authenticated user must be an enterprise admin.
-
-        > [!NOTE]
-        > This endpoint is available to enterprise customers who are using the legacy billing platform.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-shared-storage-billing-for-an-enterprise
-        """
-
-        from ..models import CombinedBillingUsage
-
-        url = f"/enterprises/{enterprise}/settings/billing/shared-storage"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=CombinedBillingUsage,
-        )
-
-    async def async_get_shared_storage_billing_ghe(
-        self,
-        enterprise: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
-        """billing/get-shared-storage-billing-ghe
-
-        GET /enterprises/{enterprise}/settings/billing/shared-storage
-
-        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        The authenticated user must be an enterprise admin.
-
-        > [!NOTE]
-        > This endpoint is available to enterprise customers who are using the legacy billing platform.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-shared-storage-billing-for-an-enterprise
-        """
-
-        from ..models import CombinedBillingUsage
-
-        url = f"/enterprises/{enterprise}/settings/billing/shared-storage"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=CombinedBillingUsage,
-        )
-
     def get_github_billing_usage_report_ghe(
         self,
         enterprise: str,
@@ -2183,7 +1941,7 @@ class BillingClient:
 
         **Note:** This endpoint is only available to enterprises with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform for enterprises](https://docs.github.com/enterprise-cloud@latest//billing/using-the-enhanced-billing-platform-for-enterprises/about-the-enhanced-billing-platform-for-enterprises#how-do-i-know-if-i-can-access-the-enhanced-billing-platform)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-usage-report-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage#get-billing-usage-report-for-an-enterprise
         """
 
         from ..models import (
@@ -2237,7 +1995,7 @@ class BillingClient:
 
         **Note:** This endpoint is only available to enterprises with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform for enterprises](https://docs.github.com/enterprise-cloud@latest//billing/using-the-enhanced-billing-platform-for-enterprises/about-the-enhanced-billing-platform-for-enterprises#how-do-i-know-if-i-can-access-the-enhanced-billing-platform)."
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-usage-report-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage#get-billing-usage-report-for-an-enterprise
         """
 
         from ..models import (
@@ -2300,7 +2058,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-usage-summary-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage#get-billing-usage-summary-for-an-enterprise
         """
 
         from ..models import (
@@ -2367,7 +2125,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-usage-summary-for-an-enterprise
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage#get-billing-usage-summary-for-an-enterprise
         """
 
         from ..models import (
@@ -2404,894 +2162,6 @@ class BillingClient:
                 "500": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
-        )
-
-    def get_all_budgets_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
-        """billing/get-all-budgets-org
-
-        GET /organizations/{org}/settings/billing/budgets
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
-        Gets all budgets for an organization. The authenticated user must be an organization admin or billing manager.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-all-budgets-for-an-organization
-        """
-
-        from ..models import BasicError, GetAllBudgets
-
-        url = f"/organizations/{org}/settings/billing/budgets"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=GetAllBudgets,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-                "500": BasicError,
-            },
-        )
-
-    async def async_get_all_budgets_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
-        """billing/get-all-budgets-org
-
-        GET /organizations/{org}/settings/billing/budgets
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
-        Gets all budgets for an organization. The authenticated user must be an organization admin or billing manager.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-all-budgets-for-an-organization
-        """
-
-        from ..models import BasicError, GetAllBudgets
-
-        url = f"/organizations/{org}/settings/billing/budgets"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=GetAllBudgets,
-            error_models={
-                "404": BasicError,
-                "403": BasicError,
-                "500": BasicError,
-            },
-        )
-
-    def get_budget_org(
-        self,
-        org: str,
-        budget_id: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[GetBudget, GetBudgetTypeForResponse]:
-        """billing/get-budget-org
-
-        GET /organizations/{org}/settings/billing/budgets/{budget_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
-        Gets a budget by ID. The authenticated user must be an organization admin or billing manager.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-a-budget-by-id-for-an-organization
-        """
-
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            GetBudget,
-        )
-
-        url = f"/organizations/{org}/settings/billing/budgets/{budget_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=GetBudget,
-            error_models={
-                "400": BasicError,
-                "404": BasicError,
-                "403": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_get_budget_org(
-        self,
-        org: str,
-        budget_id: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[GetBudget, GetBudgetTypeForResponse]:
-        """billing/get-budget-org
-
-        GET /organizations/{org}/settings/billing/budgets/{budget_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
-        Gets a budget by ID. The authenticated user must be an organization admin or billing manager.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-a-budget-by-id-for-an-organization
-        """
-
-        from ..models import (
-            BasicError,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            GetBudget,
-        )
-
-        url = f"/organizations/{org}/settings/billing/budgets/{budget_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=GetBudget,
-            error_models={
-                "400": BasicError,
-                "404": BasicError,
-                "403": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    def delete_budget_org(
-        self,
-        org: str,
-        budget_id: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[DeleteBudget, DeleteBudgetTypeForResponse]:
-        """billing/delete-budget-org
-
-        DELETE /organizations/{org}/settings/billing/budgets/{budget_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
-        Deletes a budget by ID for an organization. The authenticated user must be an organization admin or billing manager.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#delete-a-budget-for-an-organization
-        """
-
-        from ..models import (
-            BasicError,
-            DeleteBudget,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-        )
-
-        url = f"/organizations/{org}/settings/billing/budgets/{budget_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=DeleteBudget,
-            error_models={
-                "400": BasicError,
-                "404": BasicError,
-                "403": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_delete_budget_org(
-        self,
-        org: str,
-        budget_id: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[DeleteBudget, DeleteBudgetTypeForResponse]:
-        """billing/delete-budget-org
-
-        DELETE /organizations/{org}/settings/billing/budgets/{budget_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
-        Deletes a budget by ID for an organization. The authenticated user must be an organization admin or billing manager.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#delete-a-budget-for-an-organization
-        """
-
-        from ..models import (
-            BasicError,
-            DeleteBudget,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-        )
-
-        url = f"/organizations/{org}/settings/billing/budgets/{budget_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=DeleteBudget,
-            error_models={
-                "400": BasicError,
-                "404": BasicError,
-                "403": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    @overload
-    def update_budget_org(
-        self,
-        org: str,
-        budget_id: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType,
-    ) -> Response[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
-    ]: ...
-
-    @overload
-    def update_budget_org(
-        self,
-        org: str,
-        budget_id: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        budget_amount: Missing[int] = UNSET,
-        prevent_further_usage: Missing[bool] = UNSET,
-        budget_alerting: Missing[
-            OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
-        ] = UNSET,
-        budget_scope: Missing[
-            Literal["enterprise", "organization", "repository", "cost_center"]
-        ] = UNSET,
-        budget_entity_name: Missing[str] = UNSET,
-        budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
-        budget_product_sku: Missing[str] = UNSET,
-    ) -> Response[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
-    ]: ...
-
-    def update_budget_org(
-        self,
-        org: str,
-        budget_id: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
-    ]:
-        """billing/update-budget-org
-
-        PATCH /organizations/{org}/settings/billing/budgets/{budget_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
-        Updates an existing budget for an organization. The authenticated user must be an organization admin or billing manager.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#update-a-budget-for-an-organization
-        """
-
-        from ..models import (
-            BasicError,
-            OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody,
-            OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-            ValidationError,
-        )
-
-        url = f"/organizations/{org}/settings/billing/budgets/{budget_id}"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-            error_models={
-                "400": BasicError,
-                "401": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "422": ValidationError,
-                "500": BasicError,
-            },
-        )
-
-    @overload
-    async def async_update_budget_org(
-        self,
-        org: str,
-        budget_id: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType,
-    ) -> Response[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
-    ]: ...
-
-    @overload
-    async def async_update_budget_org(
-        self,
-        org: str,
-        budget_id: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        budget_amount: Missing[int] = UNSET,
-        prevent_further_usage: Missing[bool] = UNSET,
-        budget_alerting: Missing[
-            OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
-        ] = UNSET,
-        budget_scope: Missing[
-            Literal["enterprise", "organization", "repository", "cost_center"]
-        ] = UNSET,
-        budget_entity_name: Missing[str] = UNSET,
-        budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = UNSET,
-        budget_product_sku: Missing[str] = UNSET,
-    ) -> Response[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
-    ]: ...
-
-    async def async_update_budget_org(
-        self,
-        org: str,
-        budget_id: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
-    ]:
-        """billing/update-budget-org
-
-        PATCH /organizations/{org}/settings/billing/budgets/{budget_id}
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
-        Updates an existing budget for an organization. The authenticated user must be an organization admin or billing manager.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#update-a-budget-for-an-organization
-        """
-
-        from ..models import (
-            BasicError,
-            OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody,
-            OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-            ValidationError,
-        )
-
-        url = f"/organizations/{org}/settings/billing/budgets/{budget_id}"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-            error_models={
-                "400": BasicError,
-                "401": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "422": ValidationError,
-                "500": BasicError,
-            },
-        )
-
-    def get_github_billing_premium_request_usage_report_org(
-        self,
-        org: str,
-        *,
-        year: Missing[int] = UNSET,
-        month: Missing[int] = UNSET,
-        day: Missing[int] = UNSET,
-        user: Missing[str] = UNSET,
-        model: Missing[str] = UNSET,
-        product: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[
-        BillingPremiumRequestUsageReportOrg,
-        BillingPremiumRequestUsageReportOrgTypeForResponse,
-    ]:
-        """billing/get-github-billing-premium-request-usage-report-org
-
-        GET /organizations/{org}/settings/billing/premium_request/usage
-
-        Gets a report of premium request usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
-
-        **Note:** Only data from the past 24 months is accessible via this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-an-organization
-        """
-
-        from ..models import (
-            BasicError,
-            BillingPremiumRequestUsageReportOrg,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-        )
-
-        url = f"/organizations/{org}/settings/billing/premium_request/usage"
-
-        params = {
-            "year": year,
-            "month": month,
-            "day": day,
-            "user": user,
-            "model": model,
-            "product": product,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=BillingPremiumRequestUsageReportOrg,
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_get_github_billing_premium_request_usage_report_org(
-        self,
-        org: str,
-        *,
-        year: Missing[int] = UNSET,
-        month: Missing[int] = UNSET,
-        day: Missing[int] = UNSET,
-        user: Missing[str] = UNSET,
-        model: Missing[str] = UNSET,
-        product: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[
-        BillingPremiumRequestUsageReportOrg,
-        BillingPremiumRequestUsageReportOrgTypeForResponse,
-    ]:
-        """billing/get-github-billing-premium-request-usage-report-org
-
-        GET /organizations/{org}/settings/billing/premium_request/usage
-
-        Gets a report of premium request usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
-
-        **Note:** Only data from the past 24 months is accessible via this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-an-organization
-        """
-
-        from ..models import (
-            BasicError,
-            BillingPremiumRequestUsageReportOrg,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-        )
-
-        url = f"/organizations/{org}/settings/billing/premium_request/usage"
-
-        params = {
-            "year": year,
-            "month": month,
-            "day": day,
-            "user": user,
-            "model": model,
-            "product": product,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=BillingPremiumRequestUsageReportOrg,
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    def get_github_billing_usage_report_org(
-        self,
-        org: str,
-        *,
-        year: Missing[int] = UNSET,
-        month: Missing[int] = UNSET,
-        day: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[BillingUsageReport, BillingUsageReportTypeForResponse]:
-        """billing/get-github-billing-usage-report-org
-
-        GET /organizations/{org}/settings/billing/usage
-
-        Gets a report of the total usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
-
-        **Note:** This endpoint is only available to organizations with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform](https://docs.github.com/enterprise-cloud@latest//billing/using-the-new-billing-platform)."
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-report-for-an-organization
-        """
-
-        from ..models import (
-            BasicError,
-            BillingUsageReport,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-        )
-
-        url = f"/organizations/{org}/settings/billing/usage"
-
-        params = {
-            "year": year,
-            "month": month,
-            "day": day,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=BillingUsageReport,
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_get_github_billing_usage_report_org(
-        self,
-        org: str,
-        *,
-        year: Missing[int] = UNSET,
-        month: Missing[int] = UNSET,
-        day: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[BillingUsageReport, BillingUsageReportTypeForResponse]:
-        """billing/get-github-billing-usage-report-org
-
-        GET /organizations/{org}/settings/billing/usage
-
-        Gets a report of the total usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
-
-        **Note:** This endpoint is only available to organizations with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform](https://docs.github.com/enterprise-cloud@latest//billing/using-the-new-billing-platform)."
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-report-for-an-organization
-        """
-
-        from ..models import (
-            BasicError,
-            BillingUsageReport,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-        )
-
-        url = f"/organizations/{org}/settings/billing/usage"
-
-        params = {
-            "year": year,
-            "month": month,
-            "day": day,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=BillingUsageReport,
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    def get_github_billing_usage_summary_report_org(
-        self,
-        org: str,
-        *,
-        year: Missing[int] = UNSET,
-        month: Missing[int] = UNSET,
-        day: Missing[int] = UNSET,
-        repository: Missing[str] = UNSET,
-        product: Missing[str] = UNSET,
-        sku: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[
-        BillingUsageSummaryReportOrg, BillingUsageSummaryReportOrgTypeForResponse
-    ]:
-        """billing/get-github-billing-usage-summary-report-org
-
-        GET /organizations/{org}/settings/billing/usage/summary
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
-        Gets a summary report of usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
-
-        **Note:** Only data from the past 24 months is accessible via this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-summary-for-an-organization
-        """
-
-        from ..models import (
-            BasicError,
-            BillingUsageSummaryReportOrg,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-        )
-
-        url = f"/organizations/{org}/settings/billing/usage/summary"
-
-        params = {
-            "year": year,
-            "month": month,
-            "day": day,
-            "repository": repository,
-            "product": product,
-            "sku": sku,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=BillingUsageSummaryReportOrg,
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_get_github_billing_usage_summary_report_org(
-        self,
-        org: str,
-        *,
-        year: Missing[int] = UNSET,
-        month: Missing[int] = UNSET,
-        day: Missing[int] = UNSET,
-        repository: Missing[str] = UNSET,
-        product: Missing[str] = UNSET,
-        sku: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[
-        BillingUsageSummaryReportOrg, BillingUsageSummaryReportOrgTypeForResponse
-    ]:
-        """billing/get-github-billing-usage-summary-report-org
-
-        GET /organizations/{org}/settings/billing/usage/summary
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
-        Gets a summary report of usage for an organization. To use this endpoint, you must be an administrator of an organization within an enterprise or an organization account.
-
-        **Note:** Only data from the past 24 months is accessible via this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-summary-for-an-organization
-        """
-
-        from ..models import (
-            BasicError,
-            BillingUsageSummaryReportOrg,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-        )
-
-        url = f"/organizations/{org}/settings/billing/usage/summary"
-
-        params = {
-            "year": year,
-            "month": month,
-            "day": day,
-            "repository": repository,
-            "product": product,
-            "sku": sku,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=BillingUsageSummaryReportOrg,
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    def get_github_actions_billing_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
-        """billing/get-github-actions-billing-org
-
-        GET /orgs/{org}/settings/billing/actions
-
-        Gets the summary of the free and paid GitHub Actions minutes used.
-
-        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-an-organization
-        """
-
-        from ..models import ActionsBillingUsage
-
-        url = f"/orgs/{org}/settings/billing/actions"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=ActionsBillingUsage,
-        )
-
-    async def async_get_github_actions_billing_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
-        """billing/get-github-actions-billing-org
-
-        GET /orgs/{org}/settings/billing/actions
-
-        Gets the summary of the free and paid GitHub Actions minutes used.
-
-        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-an-organization
-        """
-
-        from ..models import ActionsBillingUsage
-
-        url = f"/orgs/{org}/settings/billing/actions"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=ActionsBillingUsage,
         )
 
     def get_github_advanced_security_billing_org(
@@ -3394,696 +2264,4 @@ class BillingClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=AdvancedSecurityActiveCommitters,
-        )
-
-    def get_github_packages_billing_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
-        """billing/get-github-packages-billing-org
-
-        GET /orgs/{org}/settings/billing/packages
-
-        Gets the free and paid storage used for GitHub Packages in gigabytes.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-an-organization
-        """
-
-        from ..models import PackagesBillingUsage
-
-        url = f"/orgs/{org}/settings/billing/packages"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=PackagesBillingUsage,
-        )
-
-    async def async_get_github_packages_billing_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
-        """billing/get-github-packages-billing-org
-
-        GET /orgs/{org}/settings/billing/packages
-
-        Gets the free and paid storage used for GitHub Packages in gigabytes.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-an-organization
-        """
-
-        from ..models import PackagesBillingUsage
-
-        url = f"/orgs/{org}/settings/billing/packages"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=PackagesBillingUsage,
-        )
-
-    def get_shared_storage_billing_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
-        """billing/get-shared-storage-billing-org
-
-        GET /orgs/{org}/settings/billing/shared-storage
-
-        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-an-organization
-        """
-
-        from ..models import CombinedBillingUsage
-
-        url = f"/orgs/{org}/settings/billing/shared-storage"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=CombinedBillingUsage,
-        )
-
-    async def async_get_shared_storage_billing_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
-        """billing/get-shared-storage-billing-org
-
-        GET /orgs/{org}/settings/billing/shared-storage
-
-        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-an-organization
-        """
-
-        from ..models import CombinedBillingUsage
-
-        url = f"/orgs/{org}/settings/billing/shared-storage"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=CombinedBillingUsage,
-        )
-
-    def get_github_actions_billing_user(
-        self,
-        username: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
-        """billing/get-github-actions-billing-user
-
-        GET /users/{username}/settings/billing/actions
-
-        Gets the summary of the free and paid GitHub Actions minutes used.
-
-        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-
-        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-a-user
-        """
-
-        from ..models import ActionsBillingUsage
-
-        url = f"/users/{username}/settings/billing/actions"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=ActionsBillingUsage,
-        )
-
-    async def async_get_github_actions_billing_user(
-        self,
-        username: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
-        """billing/get-github-actions-billing-user
-
-        GET /users/{username}/settings/billing/actions
-
-        Gets the summary of the free and paid GitHub Actions minutes used.
-
-        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-
-        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-actions-billing-for-a-user
-        """
-
-        from ..models import ActionsBillingUsage
-
-        url = f"/users/{username}/settings/billing/actions"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=ActionsBillingUsage,
-        )
-
-    def get_github_packages_billing_user(
-        self,
-        username: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
-        """billing/get-github-packages-billing-user
-
-        GET /users/{username}/settings/billing/packages
-
-        Gets the free and paid storage used for GitHub Packages in gigabytes.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-a-user
-        """
-
-        from ..models import PackagesBillingUsage
-
-        url = f"/users/{username}/settings/billing/packages"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=PackagesBillingUsage,
-        )
-
-    async def async_get_github_packages_billing_user(
-        self,
-        username: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
-        """billing/get-github-packages-billing-user
-
-        GET /users/{username}/settings/billing/packages
-
-        Gets the free and paid storage used for GitHub Packages in gigabytes.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-packages-billing-for-a-user
-        """
-
-        from ..models import PackagesBillingUsage
-
-        url = f"/users/{username}/settings/billing/packages"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=PackagesBillingUsage,
-        )
-
-    def get_github_billing_premium_request_usage_report_user(
-        self,
-        username: str,
-        *,
-        year: Missing[int] = UNSET,
-        month: Missing[int] = UNSET,
-        day: Missing[int] = UNSET,
-        model: Missing[str] = UNSET,
-        product: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[
-        BillingPremiumRequestUsageReportUser,
-        BillingPremiumRequestUsageReportUserTypeForResponse,
-    ]:
-        """billing/get-github-billing-premium-request-usage-report-user
-
-        GET /users/{username}/settings/billing/premium_request/usage
-
-        Gets a report of premium request usage for a user.
-
-        **Note:** Only data from the past 24 months is accessible via this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-a-user
-        """
-
-        from ..models import (
-            BasicError,
-            BillingPremiumRequestUsageReportUser,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-        )
-
-        url = f"/users/{username}/settings/billing/premium_request/usage"
-
-        params = {
-            "year": year,
-            "month": month,
-            "day": day,
-            "model": model,
-            "product": product,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=BillingPremiumRequestUsageReportUser,
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_get_github_billing_premium_request_usage_report_user(
-        self,
-        username: str,
-        *,
-        year: Missing[int] = UNSET,
-        month: Missing[int] = UNSET,
-        day: Missing[int] = UNSET,
-        model: Missing[str] = UNSET,
-        product: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[
-        BillingPremiumRequestUsageReportUser,
-        BillingPremiumRequestUsageReportUserTypeForResponse,
-    ]:
-        """billing/get-github-billing-premium-request-usage-report-user
-
-        GET /users/{username}/settings/billing/premium_request/usage
-
-        Gets a report of premium request usage for a user.
-
-        **Note:** Only data from the past 24 months is accessible via this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-a-user
-        """
-
-        from ..models import (
-            BasicError,
-            BillingPremiumRequestUsageReportUser,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-        )
-
-        url = f"/users/{username}/settings/billing/premium_request/usage"
-
-        params = {
-            "year": year,
-            "month": month,
-            "day": day,
-            "model": model,
-            "product": product,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=BillingPremiumRequestUsageReportUser,
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    def get_shared_storage_billing_user(
-        self,
-        username: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
-        """billing/get-shared-storage-billing-user
-
-        GET /users/{username}/settings/billing/shared-storage
-
-        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-a-user
-        """
-
-        from ..models import CombinedBillingUsage
-
-        url = f"/users/{username}/settings/billing/shared-storage"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=CombinedBillingUsage,
-        )
-
-    async def async_get_shared_storage_billing_user(
-        self,
-        username: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
-        """billing/get-shared-storage-billing-user
-
-        GET /users/{username}/settings/billing/shared-storage
-
-        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-shared-storage-billing-for-a-user
-        """
-
-        from ..models import CombinedBillingUsage
-
-        url = f"/users/{username}/settings/billing/shared-storage"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=CombinedBillingUsage,
-        )
-
-    def get_github_billing_usage_report_user(
-        self,
-        username: str,
-        *,
-        year: Missing[int] = UNSET,
-        month: Missing[int] = UNSET,
-        day: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[BillingUsageReportUser, BillingUsageReportUserTypeForResponse]:
-        """billing/get-github-billing-usage-report-user
-
-        GET /users/{username}/settings/billing/usage
-
-        Gets a report of the total usage for a user.
-
-        **Note:** This endpoint is only available to users with access to the enhanced billing platform.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-report-for-a-user
-        """
-
-        from ..models import (
-            BasicError,
-            BillingUsageReportUser,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-        )
-
-        url = f"/users/{username}/settings/billing/usage"
-
-        params = {
-            "year": year,
-            "month": month,
-            "day": day,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=BillingUsageReportUser,
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_get_github_billing_usage_report_user(
-        self,
-        username: str,
-        *,
-        year: Missing[int] = UNSET,
-        month: Missing[int] = UNSET,
-        day: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[BillingUsageReportUser, BillingUsageReportUserTypeForResponse]:
-        """billing/get-github-billing-usage-report-user
-
-        GET /users/{username}/settings/billing/usage
-
-        Gets a report of the total usage for a user.
-
-        **Note:** This endpoint is only available to users with access to the enhanced billing platform.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-report-for-a-user
-        """
-
-        from ..models import (
-            BasicError,
-            BillingUsageReportUser,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-        )
-
-        url = f"/users/{username}/settings/billing/usage"
-
-        params = {
-            "year": year,
-            "month": month,
-            "day": day,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=BillingUsageReportUser,
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    def get_github_billing_usage_summary_report_user(
-        self,
-        username: str,
-        *,
-        year: Missing[int] = UNSET,
-        month: Missing[int] = UNSET,
-        day: Missing[int] = UNSET,
-        repository: Missing[str] = UNSET,
-        product: Missing[str] = UNSET,
-        sku: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[
-        BillingUsageSummaryReportUser, BillingUsageSummaryReportUserTypeForResponse
-    ]:
-        """billing/get-github-billing-usage-summary-report-user
-
-        GET /users/{username}/settings/billing/usage/summary
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
-        Gets a summary report of usage for a user.
-
-        **Note:** Only data from the past 24 months is accessible via this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-summary-for-a-user
-        """
-
-        from ..models import (
-            BasicError,
-            BillingUsageSummaryReportUser,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-        )
-
-        url = f"/users/{username}/settings/billing/usage/summary"
-
-        params = {
-            "year": year,
-            "month": month,
-            "day": day,
-            "repository": repository,
-            "product": product,
-            "sku": sku,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=BillingUsageSummaryReportUser,
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
-        )
-
-    async def async_get_github_billing_usage_summary_report_user(
-        self,
-        username: str,
-        *,
-        year: Missing[int] = UNSET,
-        month: Missing[int] = UNSET,
-        day: Missing[int] = UNSET,
-        repository: Missing[str] = UNSET,
-        product: Missing[str] = UNSET,
-        sku: Missing[str] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[
-        BillingUsageSummaryReportUser, BillingUsageSummaryReportUserTypeForResponse
-    ]:
-        """billing/get-github-billing-usage-summary-report-user
-
-        GET /users/{username}/settings/billing/usage/summary
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
-        Gets a summary report of usage for a user.
-
-        **Note:** Only data from the past 24 months is accessible via this endpoint.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/enhanced-billing#get-billing-usage-summary-for-a-user
-        """
-
-        from ..models import (
-            BasicError,
-            BillingUsageSummaryReportUser,
-            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-        )
-
-        url = f"/users/{username}/settings/billing/usage/summary"
-
-        params = {
-            "year": year,
-            "month": month,
-            "day": day,
-            "repository": repository,
-            "product": product,
-            "sku": sku,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=BillingUsageSummaryReportUser,
-            error_models={
-                "400": BasicError,
-                "403": BasicError,
-                "404": BasicError,
-                "500": BasicError,
-                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            },
         )

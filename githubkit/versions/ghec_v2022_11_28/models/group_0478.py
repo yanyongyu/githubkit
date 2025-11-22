@@ -9,25 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1(GitHubModel):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
+class Stargazer(GitHubModel):
+    """Stargazer
 
-    pattern_name: Missing[str] = Field(
-        default=UNSET, description="Name of the custom pattern for custom pattern scans"
-    )
-    pattern_scope: Missing[str] = Field(
-        default=UNSET,
-        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
-    )
+    Stargazer
+    """
+
+    starred_at: datetime = Field()
+    user: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1)
+model_rebuild(Stargazer)
 
-__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1",)
+__all__ = ("Stargazer",)

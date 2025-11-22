@@ -10,118 +10,50 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class RepositoryCollaboratorPermissionType(TypedDict):
-    """Repository Collaborator Permission
+class StatusType(TypedDict):
+    """Status
 
-    Repository Collaborator Permission
+    The status of a commit.
     """
 
-    permission: str
-    role_name: str
-    user: Union[None, CollaboratorType]
-
-
-class RepositoryCollaboratorPermissionTypeForResponse(TypedDict):
-    """Repository Collaborator Permission
-
-    Repository Collaborator Permission
-    """
-
-    permission: str
-    role_name: str
-    user: Union[None, CollaboratorTypeForResponse]
-
-
-class CollaboratorType(TypedDict):
-    """Collaborator
-
-    Collaborator
-    """
-
-    login: str
-    id: int
-    email: NotRequired[Union[str, None]]
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
     url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    permissions: NotRequired[CollaboratorPropPermissionsType]
-    role_name: str
-    user_view_type: NotRequired[str]
+    avatar_url: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    description: Union[str, None]
+    target_url: Union[str, None]
+    context: str
+    created_at: str
+    updated_at: str
+    creator: Union[None, SimpleUserType]
 
 
-class CollaboratorTypeForResponse(TypedDict):
-    """Collaborator
+class StatusTypeForResponse(TypedDict):
+    """Status
 
-    Collaborator
+    The status of a commit.
     """
 
-    login: str
-    id: int
-    email: NotRequired[Union[str, None]]
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
     url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    permissions: NotRequired[CollaboratorPropPermissionsTypeForResponse]
-    role_name: str
-    user_view_type: NotRequired[str]
-
-
-class CollaboratorPropPermissionsType(TypedDict):
-    """CollaboratorPropPermissions"""
-
-    pull: bool
-    triage: NotRequired[bool]
-    push: bool
-    maintain: NotRequired[bool]
-    admin: bool
-
-
-class CollaboratorPropPermissionsTypeForResponse(TypedDict):
-    """CollaboratorPropPermissions"""
-
-    pull: bool
-    triage: NotRequired[bool]
-    push: bool
-    maintain: NotRequired[bool]
-    admin: bool
+    avatar_url: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    description: Union[str, None]
+    target_url: Union[str, None]
+    context: str
+    created_at: str
+    updated_at: str
+    creator: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "CollaboratorPropPermissionsType",
-    "CollaboratorPropPermissionsTypeForResponse",
-    "CollaboratorType",
-    "CollaboratorTypeForResponse",
-    "RepositoryCollaboratorPermissionType",
-    "RepositoryCollaboratorPermissionTypeForResponse",
+    "StatusType",
+    "StatusTypeForResponse",
 )

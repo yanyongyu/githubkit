@@ -12,31 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class CustomDeploymentRuleAppType(TypedDict):
-    """Custom deployment protection rule app
+class ShortBlobType(TypedDict):
+    """Short Blob
 
-    A GitHub App that is providing a custom deployment protection rule.
+    Short Blob
     """
 
-    id: int
-    slug: str
-    integration_url: str
-    node_id: str
+    url: str
+    sha: str
 
 
-class CustomDeploymentRuleAppTypeForResponse(TypedDict):
-    """Custom deployment protection rule app
+class ShortBlobTypeForResponse(TypedDict):
+    """Short Blob
 
-    A GitHub App that is providing a custom deployment protection rule.
+    Short Blob
     """
 
-    id: int
-    slug: str
-    integration_url: str
-    node_id: str
+    url: str
+    sha: str
 
 
 __all__ = (
-    "CustomDeploymentRuleAppType",
-    "CustomDeploymentRuleAppTypeForResponse",
+    "ShortBlobType",
+    "ShortBlobTypeForResponse",
 )

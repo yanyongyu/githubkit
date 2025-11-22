@@ -45,6 +45,7 @@ if TYPE_CHECKING:
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType,
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType,
         UsersUsernameProjectsV2ProjectNumberItemsPostBodyType,
+        UserUserIdProjectsV2ProjectNumberDraftsPostBodyType,
     )
 
 
@@ -1124,6 +1125,160 @@ class ProjectsClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationError,
+            },
+        )
+
+    @overload
+    def create_draft_item_for_authenticated_user(
+        self,
+        user_id: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: UserUserIdProjectsV2ProjectNumberDraftsPostBodyType,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
+
+    @overload
+    def create_draft_item_for_authenticated_user(
+        self,
+        user_id: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        title: str,
+        body: Missing[str] = UNSET,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
+
+    def create_draft_item_for_authenticated_user(
+        self,
+        user_id: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[UserUserIdProjectsV2ProjectNumberDraftsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]:
+        """projects/create-draft-item-for-authenticated-user
+
+        POST /user/{user_id}/projectsV2/{project_number}/drafts
+
+        Create draft issue item for the specified user owned project.
+
+        See also: https://docs.github.com/rest/projects/drafts#create-draft-item-for-user-owned-project
+        """
+
+        from ..models import (
+            BasicError,
+            ProjectsV2ItemSimple,
+            UserUserIdProjectsV2ProjectNumberDraftsPostBody,
+        )
+
+        url = f"/user/{user_id}/projectsV2/{project_number}/drafts"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                UserUserIdProjectsV2ProjectNumberDraftsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ProjectsV2ItemSimple,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_draft_item_for_authenticated_user(
+        self,
+        user_id: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: UserUserIdProjectsV2ProjectNumberDraftsPostBodyType,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
+
+    @overload
+    async def async_create_draft_item_for_authenticated_user(
+        self,
+        user_id: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        title: str,
+        body: Missing[str] = UNSET,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
+
+    async def async_create_draft_item_for_authenticated_user(
+        self,
+        user_id: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[UserUserIdProjectsV2ProjectNumberDraftsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]:
+        """projects/create-draft-item-for-authenticated-user
+
+        POST /user/{user_id}/projectsV2/{project_number}/drafts
+
+        Create draft issue item for the specified user owned project.
+
+        See also: https://docs.github.com/rest/projects/drafts#create-draft-item-for-user-owned-project
+        """
+
+        from ..models import (
+            BasicError,
+            ProjectsV2ItemSimple,
+            UserUserIdProjectsV2ProjectNumberDraftsPostBody,
+        )
+
+        url = f"/user/{user_id}/projectsV2/{project_number}/drafts"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                UserUserIdProjectsV2ProjectNumberDraftsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ProjectsV2ItemSimple,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
             },
         )
 

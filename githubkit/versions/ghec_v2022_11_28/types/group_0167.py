@@ -40,75 +40,75 @@ from .group_0128 import (
     RepositoryRuleRequiredDeploymentsType,
     RepositoryRuleRequiredDeploymentsTypeForResponse,
 )
-from .group_0131 import (
+from .group_0130 import (
     RepositoryRulePullRequestType,
     RepositoryRulePullRequestTypeForResponse,
 )
-from .group_0133 import (
+from .group_0132 import (
     RepositoryRuleRequiredStatusChecksType,
     RepositoryRuleRequiredStatusChecksTypeForResponse,
 )
-from .group_0135 import (
+from .group_0134 import (
     RepositoryRuleCommitMessagePatternType,
     RepositoryRuleCommitMessagePatternTypeForResponse,
 )
-from .group_0137 import (
+from .group_0136 import (
     RepositoryRuleCommitAuthorEmailPatternType,
     RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
 )
-from .group_0139 import (
+from .group_0138 import (
     RepositoryRuleCommitterEmailPatternType,
     RepositoryRuleCommitterEmailPatternTypeForResponse,
 )
-from .group_0141 import (
+from .group_0140 import (
     RepositoryRuleBranchNamePatternType,
     RepositoryRuleBranchNamePatternTypeForResponse,
 )
-from .group_0143 import (
+from .group_0142 import (
     RepositoryRuleTagNamePatternType,
     RepositoryRuleTagNamePatternTypeForResponse,
 )
-from .group_0145 import (
+from .group_0144 import (
     RepositoryRuleFilePathRestrictionType,
     RepositoryRuleFilePathRestrictionTypeForResponse,
 )
-from .group_0147 import (
+from .group_0146 import (
     RepositoryRuleMaxFilePathLengthType,
     RepositoryRuleMaxFilePathLengthTypeForResponse,
 )
-from .group_0149 import (
+from .group_0148 import (
     RepositoryRuleFileExtensionRestrictionType,
     RepositoryRuleFileExtensionRestrictionTypeForResponse,
 )
-from .group_0151 import (
+from .group_0150 import (
     RepositoryRuleMaxFileSizeType,
     RepositoryRuleMaxFileSizeTypeForResponse,
 )
-from .group_0154 import (
+from .group_0153 import (
     RepositoryRuleWorkflowsType,
     RepositoryRuleWorkflowsTypeForResponse,
 )
-from .group_0156 import (
+from .group_0155 import (
     RepositoryRuleCodeScanningType,
     RepositoryRuleCodeScanningTypeForResponse,
 )
-from .group_0160 import (
+from .group_0159 import (
     OrgRulesetConditionsOneof0Type,
     OrgRulesetConditionsOneof0TypeForResponse,
 )
-from .group_0161 import (
+from .group_0160 import (
     OrgRulesetConditionsOneof1Type,
     OrgRulesetConditionsOneof1TypeForResponse,
 )
-from .group_0162 import (
+from .group_0161 import (
     OrgRulesetConditionsOneof2Type,
     OrgRulesetConditionsOneof2TypeForResponse,
 )
-from .group_0163 import (
+from .group_0162 import (
     RepositoryRuleMergeQueueType,
     RepositoryRuleMergeQueueTypeForResponse,
 )
-from .group_0165 import (
+from .group_0164 import (
     RepositoryRuleCopilotCodeReviewType,
     RepositoryRuleCopilotCodeReviewTypeForResponse,
 )

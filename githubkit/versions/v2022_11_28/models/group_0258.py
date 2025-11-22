@@ -15,39 +15,31 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0251 import BranchProtection
-from .group_0256 import Commit
-
-
-class BranchWithProtection(GitHubModel):
-    """Branch With Protection
-
-    Branch With Protection
-    """
-
-    name: str = Field()
-    commit: Commit = Field(title="Commit", description="Commit")
-    links: BranchWithProtectionPropLinks = Field(alias="_links")
-    protected: bool = Field()
-    protection: BranchProtection = Field(
-        title="Branch Protection", description="Branch Protection"
-    )
-    protection_url: str = Field()
-    pattern: Missing[str] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
-
-
-class BranchWithProtectionPropLinks(GitHubModel):
-    """BranchWithProtectionPropLinks"""
-
-    html: str = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(BranchWithProtection)
-model_rebuild(BranchWithProtectionPropLinks)
-
-__all__ = (
-    "BranchWithProtection",
-    "BranchWithProtectionPropLinks",
+from .group_0259 import (
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
+    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
 )
+
+
+class ProtectedBranchPropRequiredPullRequestReviews(GitHubModel):
+    """ProtectedBranchPropRequiredPullRequestReviews"""
+
+    url: str = Field()
+    dismiss_stale_reviews: Missing[bool] = Field(default=UNSET)
+    require_code_owner_reviews: Missing[bool] = Field(default=UNSET)
+    required_approving_review_count: Missing[int] = Field(default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+    )
+    dismissal_restrictions: Missing[
+        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
+    ] = Field(default=UNSET)
+
+
+model_rebuild(ProtectedBranchPropRequiredPullRequestReviews)
+
+__all__ = ("ProtectedBranchPropRequiredPullRequestReviews",)

@@ -10,74 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0056 import (
-    MarketplaceListingPlanType,
-    MarketplaceListingPlanTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class UserMarketplacePurchaseType(TypedDict):
-    """User Marketplace Purchase
+class SshSigningKeyType(TypedDict):
+    """SSH Signing Key
 
-    User Marketplace Purchase
+    A public SSH key used to sign Git commits
     """
 
-    billing_cycle: str
-    next_billing_date: Union[datetime, None]
-    unit_count: Union[int, None]
-    on_free_trial: bool
-    free_trial_ends_on: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    account: MarketplaceAccountType
-    plan: MarketplaceListingPlanType
+    key: str
+    id: int
+    title: str
+    created_at: datetime
 
 
-class UserMarketplacePurchaseTypeForResponse(TypedDict):
-    """User Marketplace Purchase
+class SshSigningKeyTypeForResponse(TypedDict):
+    """SSH Signing Key
 
-    User Marketplace Purchase
+    A public SSH key used to sign Git commits
     """
 
-    billing_cycle: str
-    next_billing_date: Union[str, None]
-    unit_count: Union[int, None]
-    on_free_trial: bool
-    free_trial_ends_on: Union[str, None]
-    updated_at: Union[str, None]
-    account: MarketplaceAccountTypeForResponse
-    plan: MarketplaceListingPlanTypeForResponse
-
-
-class MarketplaceAccountType(TypedDict):
-    """Marketplace Account"""
-
-    url: str
+    key: str
     id: int
-    type: str
-    node_id: NotRequired[str]
-    login: str
-    email: NotRequired[Union[str, None]]
-    organization_billing_email: NotRequired[Union[str, None]]
-
-
-class MarketplaceAccountTypeForResponse(TypedDict):
-    """Marketplace Account"""
-
-    url: str
-    id: int
-    type: str
-    node_id: NotRequired[str]
-    login: str
-    email: NotRequired[Union[str, None]]
-    organization_billing_email: NotRequired[Union[str, None]]
+    title: str
+    created_at: str
 
 
 __all__ = (
-    "MarketplaceAccountType",
-    "MarketplaceAccountTypeForResponse",
-    "UserMarketplacePurchaseType",
-    "UserMarketplacePurchaseTypeForResponse",
+    "SshSigningKeyType",
+    "SshSigningKeyTypeForResponse",
 )

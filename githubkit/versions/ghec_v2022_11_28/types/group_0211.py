@@ -9,64 +9,299 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0209 import (
-    MarketplaceListingPlanType,
-    MarketplaceListingPlanTypeForResponse,
-)
-
-
-class MarketplacePurchasePropMarketplacePendingChangeType(TypedDict):
-    """MarketplacePurchasePropMarketplacePendingChange"""
-
-    is_installed: NotRequired[bool]
-    effective_date: NotRequired[str]
-    unit_count: NotRequired[Union[int, None]]
-    id: NotRequired[int]
-    plan: NotRequired[MarketplaceListingPlanType]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0210 import SecurityAndAnalysisType, SecurityAndAnalysisTypeForResponse
 
 
-class MarketplacePurchasePropMarketplacePendingChangeTypeForResponse(TypedDict):
-    """MarketplacePurchasePropMarketplacePendingChange"""
+class MinimalRepositoryType(TypedDict):
+    """Minimal Repository
 
-    is_installed: NotRequired[bool]
-    effective_date: NotRequired[str]
-    unit_count: NotRequired[Union[int, None]]
-    id: NotRequired[int]
-    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
+    Minimal Repository
+    """
+
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: SimpleUserType
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: NotRequired[str]
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: NotRequired[str]
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: NotRequired[str]
+    mirror_url: NotRequired[Union[str, None]]
+    hooks_url: str
+    svn_url: NotRequired[str]
+    homepage: NotRequired[Union[str, None]]
+    language: NotRequired[Union[str, None]]
+    forks_count: NotRequired[int]
+    stargazers_count: NotRequired[int]
+    watchers_count: NotRequired[int]
+    size: NotRequired[int]
+    default_branch: NotRequired[str]
+    open_issues_count: NotRequired[int]
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_pages: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    archived: NotRequired[bool]
+    disabled: NotRequired[bool]
+    visibility: NotRequired[str]
+    pushed_at: NotRequired[Union[datetime, None]]
+    created_at: NotRequired[Union[datetime, None]]
+    updated_at: NotRequired[Union[datetime, None]]
+    permissions: NotRequired[MinimalRepositoryPropPermissionsType]
+    role_name: NotRequired[str]
+    temp_clone_token: NotRequired[Union[str, None]]
+    delete_branch_on_merge: NotRequired[bool]
+    subscribers_count: NotRequired[int]
+    network_count: NotRequired[int]
+    code_of_conduct: NotRequired[CodeOfConductType]
+    license_: NotRequired[Union[MinimalRepositoryPropLicenseType, None]]
+    forks: NotRequired[int]
+    open_issues: NotRequired[int]
+    watchers: NotRequired[int]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
+    custom_properties: NotRequired[MinimalRepositoryPropCustomPropertiesType]
 
 
-class MarketplacePurchasePropMarketplacePurchaseType(TypedDict):
-    """MarketplacePurchasePropMarketplacePurchase"""
+class MinimalRepositoryTypeForResponse(TypedDict):
+    """Minimal Repository
 
-    billing_cycle: NotRequired[str]
-    next_billing_date: NotRequired[Union[str, None]]
-    is_installed: NotRequired[bool]
-    unit_count: NotRequired[Union[int, None]]
-    on_free_trial: NotRequired[bool]
-    free_trial_ends_on: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    plan: NotRequired[MarketplaceListingPlanType]
+    Minimal Repository
+    """
+
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: SimpleUserTypeForResponse
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: NotRequired[str]
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: NotRequired[str]
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: NotRequired[str]
+    mirror_url: NotRequired[Union[str, None]]
+    hooks_url: str
+    svn_url: NotRequired[str]
+    homepage: NotRequired[Union[str, None]]
+    language: NotRequired[Union[str, None]]
+    forks_count: NotRequired[int]
+    stargazers_count: NotRequired[int]
+    watchers_count: NotRequired[int]
+    size: NotRequired[int]
+    default_branch: NotRequired[str]
+    open_issues_count: NotRequired[int]
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_pages: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    archived: NotRequired[bool]
+    disabled: NotRequired[bool]
+    visibility: NotRequired[str]
+    pushed_at: NotRequired[Union[str, None]]
+    created_at: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[str, None]]
+    permissions: NotRequired[MinimalRepositoryPropPermissionsTypeForResponse]
+    role_name: NotRequired[str]
+    temp_clone_token: NotRequired[Union[str, None]]
+    delete_branch_on_merge: NotRequired[bool]
+    subscribers_count: NotRequired[int]
+    network_count: NotRequired[int]
+    code_of_conduct: NotRequired[CodeOfConductTypeForResponse]
+    license_: NotRequired[Union[MinimalRepositoryPropLicenseTypeForResponse, None]]
+    forks: NotRequired[int]
+    open_issues: NotRequired[int]
+    watchers: NotRequired[int]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisTypeForResponse, None]]
+    custom_properties: NotRequired[MinimalRepositoryPropCustomPropertiesTypeForResponse]
 
 
-class MarketplacePurchasePropMarketplacePurchaseTypeForResponse(TypedDict):
-    """MarketplacePurchasePropMarketplacePurchase"""
+class CodeOfConductType(TypedDict):
+    """Code Of Conduct
 
-    billing_cycle: NotRequired[str]
-    next_billing_date: NotRequired[Union[str, None]]
-    is_installed: NotRequired[bool]
-    unit_count: NotRequired[Union[int, None]]
-    on_free_trial: NotRequired[bool]
-    free_trial_ends_on: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
+    Code Of Conduct
+    """
+
+    key: str
+    name: str
+    url: str
+    body: NotRequired[str]
+    html_url: Union[str, None]
+
+
+class CodeOfConductTypeForResponse(TypedDict):
+    """Code Of Conduct
+
+    Code Of Conduct
+    """
+
+    key: str
+    name: str
+    url: str
+    body: NotRequired[str]
+    html_url: Union[str, None]
+
+
+class MinimalRepositoryPropPermissionsType(TypedDict):
+    """MinimalRepositoryPropPermissions"""
+
+    admin: NotRequired[bool]
+    maintain: NotRequired[bool]
+    push: NotRequired[bool]
+    triage: NotRequired[bool]
+    pull: NotRequired[bool]
+
+
+class MinimalRepositoryPropPermissionsTypeForResponse(TypedDict):
+    """MinimalRepositoryPropPermissions"""
+
+    admin: NotRequired[bool]
+    maintain: NotRequired[bool]
+    push: NotRequired[bool]
+    triage: NotRequired[bool]
+    pull: NotRequired[bool]
+
+
+class MinimalRepositoryPropLicenseType(TypedDict):
+    """MinimalRepositoryPropLicense"""
+
+    key: NotRequired[str]
+    name: NotRequired[str]
+    spdx_id: NotRequired[str]
+    url: NotRequired[str]
+    node_id: NotRequired[str]
+
+
+class MinimalRepositoryPropLicenseTypeForResponse(TypedDict):
+    """MinimalRepositoryPropLicense"""
+
+    key: NotRequired[str]
+    name: NotRequired[str]
+    spdx_id: NotRequired[str]
+    url: NotRequired[str]
+    node_id: NotRequired[str]
+
+
+MinimalRepositoryPropCustomPropertiesType: TypeAlias = dict[str, Any]
+"""MinimalRepositoryPropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
+
+
+MinimalRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[str, Any]
+"""MinimalRepositoryPropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
 
 
 __all__ = (
-    "MarketplacePurchasePropMarketplacePendingChangeType",
-    "MarketplacePurchasePropMarketplacePendingChangeTypeForResponse",
-    "MarketplacePurchasePropMarketplacePurchaseType",
-    "MarketplacePurchasePropMarketplacePurchaseTypeForResponse",
+    "CodeOfConductType",
+    "CodeOfConductTypeForResponse",
+    "MinimalRepositoryPropCustomPropertiesType",
+    "MinimalRepositoryPropCustomPropertiesTypeForResponse",
+    "MinimalRepositoryPropLicenseType",
+    "MinimalRepositoryPropLicenseTypeForResponse",
+    "MinimalRepositoryPropPermissionsType",
+    "MinimalRepositoryPropPermissionsTypeForResponse",
+    "MinimalRepositoryType",
+    "MinimalRepositoryTypeForResponse",
 )

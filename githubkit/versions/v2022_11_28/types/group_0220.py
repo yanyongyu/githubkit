@@ -9,79 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from datetime import datetime
+from typing_extensions import TypedDict
 
 
-class TeamProjectType(TypedDict):
-    """Team Project
+class ProjectColumnType(TypedDict):
+    """Project Column
 
-    A team's access to a project.
+    Project columns contain cards of work.
     """
 
-    owner_url: str
     url: str
-    html_url: str
-    columns_url: str
+    project_url: str
+    cards_url: str
     id: int
     node_id: str
     name: str
-    body: Union[str, None]
-    number: int
-    state: str
-    creator: SimpleUserType
-    created_at: str
-    updated_at: str
-    organization_permission: NotRequired[str]
-    private: NotRequired[bool]
-    permissions: TeamProjectPropPermissionsType
+    created_at: datetime
+    updated_at: datetime
 
 
-class TeamProjectTypeForResponse(TypedDict):
-    """Team Project
+class ProjectColumnTypeForResponse(TypedDict):
+    """Project Column
 
-    A team's access to a project.
+    Project columns contain cards of work.
     """
 
-    owner_url: str
     url: str
-    html_url: str
-    columns_url: str
+    project_url: str
+    cards_url: str
     id: int
     node_id: str
     name: str
-    body: Union[str, None]
-    number: int
-    state: str
-    creator: SimpleUserTypeForResponse
     created_at: str
     updated_at: str
-    organization_permission: NotRequired[str]
-    private: NotRequired[bool]
-    permissions: TeamProjectPropPermissionsTypeForResponse
-
-
-class TeamProjectPropPermissionsType(TypedDict):
-    """TeamProjectPropPermissions"""
-
-    read: bool
-    write: bool
-    admin: bool
-
-
-class TeamProjectPropPermissionsTypeForResponse(TypedDict):
-    """TeamProjectPropPermissions"""
-
-    read: bool
-    write: bool
-    admin: bool
 
 
 __all__ = (
-    "TeamProjectPropPermissionsType",
-    "TeamProjectPropPermissionsTypeForResponse",
-    "TeamProjectType",
-    "TeamProjectTypeForResponse",
+    "ProjectColumnType",
+    "ProjectColumnTypeForResponse",
 )

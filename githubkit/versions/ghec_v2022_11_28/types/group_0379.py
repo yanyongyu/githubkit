@@ -9,26 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-MetadataType: TypeAlias = dict[str, Any]
-"""metadata
-
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-MetadataTypeForResponse: TypeAlias = dict[str, Any]
-"""metadata
+class DeploymentStatusType(TypedDict):
+    """Deployment Status
 
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+    The status of a deployment.
+    """
+
+    url: str
+    id: int
+    node_id: str
+    state: Literal[
+        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    ]
+    creator: Union[None, SimpleUserType]
+    description: str
+    environment: NotRequired[str]
+    target_url: str
+    created_at: datetime
+    updated_at: datetime
+    deployment_url: str
+    repository_url: str
+    environment_url: NotRequired[str]
+    log_url: NotRequired[str]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+
+
+class DeploymentStatusTypeForResponse(TypedDict):
+    """Deployment Status
+
+    The status of a deployment.
+    """
+
+    url: str
+    id: int
+    node_id: str
+    state: Literal[
+        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    ]
+    creator: Union[None, SimpleUserTypeForResponse]
+    description: str
+    environment: NotRequired[str]
+    target_url: str
+    created_at: str
+    updated_at: str
+    deployment_url: str
+    repository_url: str
+    environment_url: NotRequired[str]
+    log_url: NotRequired[str]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
 
 
 __all__ = (
-    "MetadataType",
-    "MetadataTypeForResponse",
+    "DeploymentStatusType",
+    "DeploymentStatusTypeForResponse",
 )

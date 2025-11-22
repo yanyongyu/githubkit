@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,46 +18,55 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AdvancedSecurityActiveCommitters(GitHubModel):
-    """AdvancedSecurityActiveCommitters"""
+class GetAllBudgets(GitHubModel):
+    """GetAllBudgets"""
 
-    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    maximum_advanced_security_committers: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
+    budgets: list[Budget] = Field(
+        description="Array of budget objects for the enterprise"
     )
-    purchased_advanced_security_committers: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of GitHub Advanced Security licences purchased",
+
+
+class Budget(GitHubModel):
+    """Budget"""
+
+    id: str = Field(description="The unique identifier for the budget")
+    budget_type: Literal["SkuPricing", "ProductPricing"] = Field(
+        description="The type of pricing for the budget"
     )
-    repositories: list[AdvancedSecurityActiveCommittersRepository] = Field()
+    budget_amount: int = Field(
+        description="The budget amount limit in whole dollars. For license-based products, this represents the number of licenses."
+    )
+    prevent_further_usage: bool = Field(
+        description="The type of limit enforcement for the budget"
+    )
+    budget_scope: str = Field(
+        description="The scope of the budget (enterprise, organization, repository, cost center)"
+    )
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the entity for the budget (enterprise does not require a name).",
+    )
+    budget_product_sku: str = Field(
+        description="A single product or sku to apply the budget to."
+    )
+    budget_alerting: BudgetPropBudgetAlerting = Field()
 
 
-class AdvancedSecurityActiveCommittersRepository(GitHubModel):
-    """AdvancedSecurityActiveCommittersRepository"""
+class BudgetPropBudgetAlerting(GitHubModel):
+    """BudgetPropBudgetAlerting"""
 
-    name: str = Field()
-    advanced_security_committers: int = Field()
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUser
-    ] = Field()
-
-
-class AdvancedSecurityActiveCommittersUser(GitHubModel):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str = Field()
-    last_pushed_date: str = Field()
-    last_pushed_email: str = Field()
+    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
+    alert_recipients: list[str] = Field(
+        description="Array of user login names who will receive alerts"
+    )
 
 
-model_rebuild(AdvancedSecurityActiveCommitters)
-model_rebuild(AdvancedSecurityActiveCommittersRepository)
-model_rebuild(AdvancedSecurityActiveCommittersUser)
+model_rebuild(GetAllBudgets)
+model_rebuild(Budget)
+model_rebuild(BudgetPropBudgetAlerting)
 
 __all__ = (
-    "AdvancedSecurityActiveCommitters",
-    "AdvancedSecurityActiveCommittersRepository",
-    "AdvancedSecurityActiveCommittersUser",
+    "Budget",
+    "BudgetPropBudgetAlerting",
+    "GetAllBudgets",
 )

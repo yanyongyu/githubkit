@@ -9,36 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing_extensions import TypedDict
 
 
-class TagProtectionType(TypedDict):
-    """Tag protection
+class TrafficType(TypedDict):
+    """Traffic"""
 
-    Tag protection
-    """
-
-    id: NotRequired[int]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    enabled: NotRequired[bool]
-    pattern: str
+    timestamp: datetime
+    uniques: int
+    count: int
 
 
-class TagProtectionTypeForResponse(TypedDict):
-    """Tag protection
+class TrafficTypeForResponse(TypedDict):
+    """Traffic"""
 
-    Tag protection
-    """
-
-    id: NotRequired[int]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    enabled: NotRequired[bool]
-    pattern: str
+    timestamp: str
+    uniques: int
+    count: int
 
 
 __all__ = (
-    "TagProtectionType",
-    "TagProtectionTypeForResponse",
+    "TrafficType",
+    "TrafficTypeForResponse",
 )

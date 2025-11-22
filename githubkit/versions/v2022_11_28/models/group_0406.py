@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,21 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SecretScanningPushProtectionBypass(GitHubModel):
-    """SecretScanningPushProtectionBypass"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    reason: Missing[Literal["false_positive", "used_in_tests", "will_fix_later"]] = (
-        Field(default=UNSET, description="The reason for bypassing push protection.")
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
     )
-    expire_at: Missing[Union[datetime, None]] = Field(
+    pattern_scope: Missing[str] = Field(
         default=UNSET,
-        description="The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The token type this bypass is for."
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
     )
 
 
-model_rebuild(SecretScanningPushProtectionBypass)
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1)
 
-__all__ = ("SecretScanningPushProtectionBypass",)
+__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1",)

@@ -9,25 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class PullRequestPropLabelsItems(GitHubModel):
-    """PullRequestPropLabelsItems"""
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    description: Union[str, None] = Field()
-    color: str = Field()
-    default: bool = Field()
+from .group_0003 import SimpleUser
+from .group_0080 import Team
 
 
-model_rebuild(PullRequestPropLabelsItems)
+class PullRequestReviewRequest(GitHubModel):
+    """Pull Request Review Request
 
-__all__ = ("PullRequestPropLabelsItems",)
+    Pull Request Review Request
+    """
+
+    users: list[SimpleUser] = Field()
+    teams: list[Team] = Field()
+
+
+model_rebuild(PullRequestReviewRequest)
+
+__all__ = ("PullRequestReviewRequest",)

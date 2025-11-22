@@ -12,37 +12,40 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0275 import (
-    CodeScanningVariantAnalysisRepositoryType,
-    CodeScanningVariantAnalysisRepositoryTypeForResponse,
-)
+from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+class CodeScanningVariantAnalysisRepoTaskType(TypedDict):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    repository: CodeScanningVariantAnalysisRepositoryType
+    repository: SimpleRepositoryType
     analysis_status: Literal[
         "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
     ]
-    result_count: NotRequired[int]
     artifact_size_in_bytes: NotRequired[int]
+    result_count: NotRequired[int]
     failure_message: NotRequired[str]
+    database_commit_sha: NotRequired[str]
+    source_location_prefix: NotRequired[str]
+    artifact_url: NotRequired[str]
 
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+class CodeScanningVariantAnalysisRepoTaskTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    repository: CodeScanningVariantAnalysisRepositoryTypeForResponse
+    repository: SimpleRepositoryTypeForResponse
     analysis_status: Literal[
         "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
     ]
-    result_count: NotRequired[int]
     artifact_size_in_bytes: NotRequired[int]
+    result_count: NotRequired[int]
     failure_message: NotRequired[str]
+    database_commit_sha: NotRequired[str]
+    source_location_prefix: NotRequired[str]
+    artifact_url: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
-    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
+    "CodeScanningVariantAnalysisRepoTaskType",
+    "CodeScanningVariantAnalysisRepoTaskTypeForResponse",
 )

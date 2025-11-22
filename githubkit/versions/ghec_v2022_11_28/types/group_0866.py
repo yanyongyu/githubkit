@@ -9,136 +9,125 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0867 import (
-    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType,
-    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0529 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0570 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
 
 
-class WebhookRegistryPackagePublishedPropRegistryPackageType(TypedDict):
-    """WebhookRegistryPackagePublishedPropRegistryPackage"""
+class WebhookReleaseEditedType(TypedDict):
+    """release edited event"""
 
-    created_at: Union[str, None]
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType
-    package_type: str
-    package_version: Union[
-        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType, None
+    action: Literal["edited"]
+    changes: WebhookReleaseEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksReleaseType
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
+
+
+class WebhookReleaseEditedTypeForResponse(TypedDict):
+    """release edited event"""
+
+    action: Literal["edited"]
+    changes: WebhookReleaseEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    release: WebhooksReleaseTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+class WebhookReleaseEditedPropChangesType(TypedDict):
+    """WebhookReleaseEditedPropChanges"""
+
+    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyType]
+    name: NotRequired[WebhookReleaseEditedPropChangesPropNameType]
+    tag_name: NotRequired[WebhookReleaseEditedPropChangesPropTagNameType]
+    make_latest: NotRequired[WebhookReleaseEditedPropChangesPropMakeLatestType]
+
+
+class WebhookReleaseEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChanges"""
+
+    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyTypeForResponse]
+    name: NotRequired[WebhookReleaseEditedPropChangesPropNameTypeForResponse]
+    tag_name: NotRequired[WebhookReleaseEditedPropChangesPropTagNameTypeForResponse]
+    make_latest: NotRequired[
+        WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse
     ]
-    registry: Union[
-        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType, None
-    ]
-    updated_at: Union[str, None]
 
 
-class WebhookRegistryPackagePublishedPropRegistryPackageTypeForResponse(TypedDict):
-    """WebhookRegistryPackagePublishedPropRegistryPackage"""
+class WebhookReleaseEditedPropChangesPropBodyType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropBody"""
 
-    created_at: Union[str, None]
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerTypeForResponse
-    package_type: str
-    package_version: Union[
-        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionTypeForResponse,
-        None,
-    ]
-    registry: Union[
-        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryTypeForResponse,
-        None,
-    ]
-    updated_at: Union[str, None]
+    from_: str
 
 
-class WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType(TypedDict):
-    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
+class WebhookReleaseEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropBody"""
 
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: str
-    html_url: str
-    id: int
-    login: str
-    node_id: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
-    user_view_type: NotRequired[str]
+    from_: str
 
 
-class WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerTypeForResponse(
-    TypedDict
-):
-    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
+class WebhookReleaseEditedPropChangesPropNameType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropName"""
 
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: str
-    html_url: str
-    id: int
-    login: str
-    node_id: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
-    user_view_type: NotRequired[str]
+    from_: str
 
 
-class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType(TypedDict):
-    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
+class WebhookReleaseEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropName"""
 
-    about_url: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    vendor: NotRequired[str]
+    from_: str
 
 
-class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryTypeForResponse(
-    TypedDict
-):
-    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
+class WebhookReleaseEditedPropChangesPropTagNameType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropTagName"""
 
-    about_url: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    vendor: NotRequired[str]
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropTagNameTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropTagName"""
+
+    from_: str
+
+
+class WebhookReleaseEditedPropChangesPropMakeLatestType(TypedDict):
+    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+
+    to: bool
+
+
+class WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse(TypedDict):
+    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+
+    to: bool
 
 
 __all__ = (
-    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType",
-    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerTypeForResponse",
-    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType",
-    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryTypeForResponse",
-    "WebhookRegistryPackagePublishedPropRegistryPackageType",
-    "WebhookRegistryPackagePublishedPropRegistryPackageTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropBodyType",
+    "WebhookReleaseEditedPropChangesPropBodyTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropMakeLatestType",
+    "WebhookReleaseEditedPropChangesPropMakeLatestTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropNameType",
+    "WebhookReleaseEditedPropChangesPropNameTypeForResponse",
+    "WebhookReleaseEditedPropChangesPropTagNameType",
+    "WebhookReleaseEditedPropChangesPropTagNameTypeForResponse",
+    "WebhookReleaseEditedPropChangesType",
+    "WebhookReleaseEditedPropChangesTypeForResponse",
+    "WebhookReleaseEditedType",
+    "WebhookReleaseEditedTypeForResponse",
 )

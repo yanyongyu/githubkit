@@ -9,56 +9,118 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class PullRequestPropHeadType(TypedDict):
-    """PullRequestPropHead"""
+class PullRequestReviewType(TypedDict):
+    """Pull Request Review
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
-    sha: str
+    Pull Request Reviews are reviews on pull requests.
+    """
+
+    id: int
+    node_id: str
     user: Union[None, SimpleUserType]
+    body: str
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: PullRequestReviewPropLinksType
+    submitted_at: NotRequired[datetime]
+    commit_id: Union[str, None]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class PullRequestPropHeadTypeForResponse(TypedDict):
-    """PullRequestPropHead"""
+class PullRequestReviewTypeForResponse(TypedDict):
+    """Pull Request Review
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryTypeForResponse]
-    sha: str
+    Pull Request Reviews are reviews on pull requests.
+    """
+
+    id: int
+    node_id: str
     user: Union[None, SimpleUserTypeForResponse]
+    body: str
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: PullRequestReviewPropLinksTypeForResponse
+    submitted_at: NotRequired[str]
+    commit_id: Union[str, None]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class PullRequestPropBaseType(TypedDict):
-    """PullRequestPropBase"""
+class PullRequestReviewPropLinksType(TypedDict):
+    """PullRequestReviewPropLinks"""
 
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
+    html: PullRequestReviewPropLinksPropHtmlType
+    pull_request: PullRequestReviewPropLinksPropPullRequestType
 
 
-class PullRequestPropBaseTypeForResponse(TypedDict):
-    """PullRequestPropBase"""
+class PullRequestReviewPropLinksTypeForResponse(TypedDict):
+    """PullRequestReviewPropLinks"""
 
-    label: str
-    ref: str
-    repo: RepositoryTypeForResponse
-    sha: str
-    user: SimpleUserTypeForResponse
+    html: PullRequestReviewPropLinksPropHtmlTypeForResponse
+    pull_request: PullRequestReviewPropLinksPropPullRequestTypeForResponse
+
+
+class PullRequestReviewPropLinksPropHtmlType(TypedDict):
+    """PullRequestReviewPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewPropLinksPropHtmlTypeForResponse(TypedDict):
+    """PullRequestReviewPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
+    """PullRequestReviewPropLinksPropPullRequest"""
+
+    href: str
+
+
+class PullRequestReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """PullRequestReviewPropLinksPropPullRequest"""
+
+    href: str
 
 
 __all__ = (
-    "PullRequestPropBaseType",
-    "PullRequestPropBaseTypeForResponse",
-    "PullRequestPropHeadType",
-    "PullRequestPropHeadTypeForResponse",
+    "PullRequestReviewPropLinksPropHtmlType",
+    "PullRequestReviewPropLinksPropHtmlTypeForResponse",
+    "PullRequestReviewPropLinksPropPullRequestType",
+    "PullRequestReviewPropLinksPropPullRequestTypeForResponse",
+    "PullRequestReviewPropLinksType",
+    "PullRequestReviewPropLinksTypeForResponse",
+    "PullRequestReviewType",
+    "PullRequestReviewTypeForResponse",
 )

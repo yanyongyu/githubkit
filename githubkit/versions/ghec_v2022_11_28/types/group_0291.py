@@ -9,56 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0290 import RateLimitType, RateLimitTypeForResponse
+from .group_0292 import (
+    RateLimitOverviewPropResourcesType,
+    RateLimitOverviewPropResourcesTypeForResponse,
+)
 
 
-class ProjectCardType(TypedDict):
-    """Project Card
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
 
-    Project cards represent a scope of work.
+    Rate Limit Overview
     """
 
-    url: str
-    id: int
-    node_id: str
-    note: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    archived: NotRequired[bool]
-    column_name: NotRequired[str]
-    project_id: NotRequired[str]
-    column_url: str
-    content_url: NotRequired[str]
-    project_url: str
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
 
 
-class ProjectCardTypeForResponse(TypedDict):
-    """Project Card
+class RateLimitOverviewTypeForResponse(TypedDict):
+    """Rate Limit Overview
 
-    Project cards represent a scope of work.
+    Rate Limit Overview
     """
 
-    url: str
-    id: int
-    node_id: str
-    note: Union[str, None]
-    creator: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    archived: NotRequired[bool]
-    column_name: NotRequired[str]
-    project_id: NotRequired[str]
-    column_url: str
-    content_url: NotRequired[str]
-    project_url: str
+    resources: RateLimitOverviewPropResourcesTypeForResponse
+    rate: RateLimitTypeForResponse
 
 
 __all__ = (
-    "ProjectCardType",
-    "ProjectCardTypeForResponse",
+    "RateLimitOverviewType",
+    "RateLimitOverviewTypeForResponse",
 )

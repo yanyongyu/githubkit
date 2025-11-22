@@ -16,15 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserGpgKeysPostBody(GitHubModel):
-    """UserGpgKeysPostBody"""
+class UserKeysPostBody(GitHubModel):
+    """UserKeysPostBody"""
 
-    name: Missing[str] = Field(
+    title: Missing[str] = Field(
         default=UNSET, description="A descriptive name for the new key."
     )
-    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
+    key: str = Field(
+        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
+        description="The public SSH key to add to your GitHub account.",
+    )
 
 
-model_rebuild(UserGpgKeysPostBody)
+model_rebuild(UserKeysPostBody)
 
-__all__ = ("UserGpgKeysPostBody",)
+__all__ = ("UserKeysPostBody",)

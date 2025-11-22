@@ -11,21 +11,17 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0103 import CustomProperty
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterprisePropertiesSchemaPatchBody(GitHubModel):
-    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
 
-    properties: list[CustomProperty] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The array of custom properties to create or update.",
+    name: str = Field(
+        description="The name of the cost center (max length 255 characters)"
     )
 
 
-model_rebuild(EnterprisesEnterprisePropertiesSchemaPatchBody)
+model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostBody)
 
-__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBody",)
+__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersPostBody",)

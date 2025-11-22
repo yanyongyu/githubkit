@@ -10,50 +10,77 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0214 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0211 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class RepositoryInvitationType(TypedDict):
-    """Repository Invitation
+class CombinedCommitStatusType(TypedDict):
+    """Combined Commit Status
 
-    Repository invitations let you manage who you collaborate with.
+    Combined Commit Status
     """
 
-    id: int
+    state: str
+    statuses: list[SimpleCommitStatusType]
+    sha: str
+    total_count: int
     repository: MinimalRepositoryType
-    invitee: Union[None, SimpleUserType]
-    inviter: Union[None, SimpleUserType]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: datetime
-    expired: NotRequired[bool]
+    commit_url: str
     url: str
-    html_url: str
-    node_id: str
 
 
-class RepositoryInvitationTypeForResponse(TypedDict):
-    """Repository Invitation
+class CombinedCommitStatusTypeForResponse(TypedDict):
+    """Combined Commit Status
 
-    Repository invitations let you manage who you collaborate with.
+    Combined Commit Status
     """
 
-    id: int
+    state: str
+    statuses: list[SimpleCommitStatusTypeForResponse]
+    sha: str
+    total_count: int
     repository: MinimalRepositoryTypeForResponse
-    invitee: Union[None, SimpleUserTypeForResponse]
-    inviter: Union[None, SimpleUserTypeForResponse]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: str
-    expired: NotRequired[bool]
+    commit_url: str
     url: str
-    html_url: str
+
+
+class SimpleCommitStatusType(TypedDict):
+    """Simple Commit Status"""
+
+    description: Union[str, None]
+    id: int
     node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: datetime
+    updated_at: datetime
+
+
+class SimpleCommitStatusTypeForResponse(TypedDict):
+    """Simple Commit Status"""
+
+    description: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "RepositoryInvitationType",
-    "RepositoryInvitationTypeForResponse",
+    "CombinedCommitStatusType",
+    "CombinedCommitStatusTypeForResponse",
+    "SimpleCommitStatusType",
+    "SimpleCommitStatusTypeForResponse",
 )

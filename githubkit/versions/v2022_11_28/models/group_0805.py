@@ -19,17 +19,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0450 import EnterpriseWebhooks
-from .group_0451 import SimpleInstallation
-from .group_0452 import OrganizationSimpleWebhooks
-from .group_0453 import RepositoryWebhooks
+from .group_0448 import EnterpriseWebhooks
+from .group_0449 import SimpleInstallation
+from .group_0450 import OrganizationSimpleWebhooks
+from .group_0451 import RepositoryWebhooks
 
 
-class WebhookRepositoryVulnerabilityAlertDismiss(GitHubModel):
-    """repository_vulnerability_alert dismiss event"""
+class WebhookRepositoryVulnerabilityAlertResolve(GitHubModel):
+    """repository_vulnerability_alert resolve event"""
 
-    action: Literal["dismiss"] = Field()
-    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlert = Field(
+    action: Literal["resolve"] = Field()
+    alert: WebhookRepositoryVulnerabilityAlertResolvePropAlert = Field(
         title="Repository Vulnerability Alert Alert",
         description="The security alert of the vulnerable dependency.",
     )
@@ -55,7 +55,7 @@ class WebhookRepositoryVulnerabilityAlertDismiss(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlert(GitHubModel):
+class WebhookRepositoryVulnerabilityAlertResolvePropAlert(GitHubModel):
     """Repository Vulnerability Alert Alert
 
     The security alert of the vulnerable dependency.
@@ -64,12 +64,11 @@ class WebhookRepositoryVulnerabilityAlertDismissPropAlert(GitHubModel):
     affected_package_name: str = Field()
     affected_range: str = Field()
     created_at: str = Field()
-    dismiss_comment: Missing[Union[str, None]] = Field(default=UNSET)
-    dismiss_reason: str = Field()
-    dismissed_at: str = Field()
-    dismisser: Union[
-        WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser, None
-    ] = Field(title="User")
+    dismiss_reason: Missing[str] = Field(default=UNSET)
+    dismissed_at: Missing[str] = Field(default=UNSET)
+    dismisser: Missing[
+        Union[WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser, None]
+    ] = Field(default=UNSET, title="User")
     external_identifier: str = Field()
     external_reference: Union[str, None] = Field()
     fix_reason: Missing[str] = Field(default=UNSET)
@@ -80,10 +79,10 @@ class WebhookRepositoryVulnerabilityAlertDismissPropAlert(GitHubModel):
     node_id: str = Field()
     number: int = Field()
     severity: str = Field()
-    state: Literal["dismissed"] = Field()
+    state: Literal["fixed", "open"] = Field()
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser(GitHubModel):
+class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -107,15 +106,14 @@ class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser(GitHubMod
     subscriptions_url: Missing[str] = Field(default=UNSET)
     type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertDismiss)
-model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlert)
-model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser)
+model_rebuild(WebhookRepositoryVulnerabilityAlertResolve)
+model_rebuild(WebhookRepositoryVulnerabilityAlertResolvePropAlert)
+model_rebuild(WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser)
 
 __all__ = (
-    "WebhookRepositoryVulnerabilityAlertDismiss",
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlert",
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser",
+    "WebhookRepositoryVulnerabilityAlertResolve",
+    "WebhookRepositoryVulnerabilityAlertResolvePropAlert",
+    "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser",
 )

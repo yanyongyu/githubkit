@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,55 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningDefaultSetup(GitHubModel):
-    """CodeScanningDefaultSetup
+class CodeScanningSarifsStatus(GitHubModel):
+    """CodeScanningSarifsStatus"""
 
-    Configuration for code scanning default setup.
-    """
-
-    state: Missing[Literal["configured", "not-configured"]] = Field(
+    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
         default=UNSET,
-        description="Code scanning default setup has been configured or not.",
+        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
     )
-    languages: Missing[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    runner_type: Missing[Union[None, Literal["standard", "labeled"]]] = Field(
-        default=UNSET, description="Runner type to be used."
-    )
-    runner_label: Missing[Union[str, None]] = Field(
+    analyses_url: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Runner label to be used if the runner type is labeled.",
+        description="The REST API URL for getting the analyses associated with the upload.",
     )
-    query_suite: Missing[Literal["default", "extended"]] = Field(
-        default=UNSET, description="CodeQL query suite to be used."
-    )
-    threat_model: Missing[Literal["remote", "remote_and_local"]] = Field(
+    errors: Missing[Union[list[str], None]] = Field(
         default=UNSET,
-        description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
-    )
-    updated_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET, description="Timestamp of latest configuration update."
-    )
-    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
-        default=UNSET, description="The frequency of the periodic analysis."
+        description="Any errors that ocurred during processing of the delivery.",
     )
 
 
-model_rebuild(CodeScanningDefaultSetup)
+model_rebuild(CodeScanningSarifsStatus)
 
-__all__ = ("CodeScanningDefaultSetup",)
+__all__ = ("CodeScanningSarifsStatus",)

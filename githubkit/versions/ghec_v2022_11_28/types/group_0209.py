@@ -9,53 +9,144 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class MarketplaceListingPlanType(TypedDict):
-    """Marketplace Listing Plan
+class ApiOverviewType(TypedDict):
+    """Api Overview
 
-    Marketplace Listing Plan
+    Api Overview
     """
 
-    url: str
-    accounts_url: str
-    id: int
-    number: int
-    name: str
-    description: str
-    monthly_price_in_cents: int
-    yearly_price_in_cents: int
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    has_free_trial: bool
-    unit_name: Union[str, None]
-    state: str
-    bullets: list[str]
+    verifiable_password_authentication: bool
+    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsType]
+    ssh_keys: NotRequired[list[str]]
+    hooks: NotRequired[list[str]]
+    github_enterprise_importer: NotRequired[list[str]]
+    web: NotRequired[list[str]]
+    api: NotRequired[list[str]]
+    git: NotRequired[list[str]]
+    packages: NotRequired[list[str]]
+    pages: NotRequired[list[str]]
+    importer: NotRequired[list[str]]
+    actions: NotRequired[list[str]]
+    actions_macos: NotRequired[list[str]]
+    codespaces: NotRequired[list[str]]
+    dependabot: NotRequired[list[str]]
+    copilot: NotRequired[list[str]]
+    domains: NotRequired[ApiOverviewPropDomainsType]
 
 
-class MarketplaceListingPlanTypeForResponse(TypedDict):
-    """Marketplace Listing Plan
+class ApiOverviewTypeForResponse(TypedDict):
+    """Api Overview
 
-    Marketplace Listing Plan
+    Api Overview
     """
 
-    url: str
-    accounts_url: str
-    id: int
-    number: int
-    name: str
-    description: str
-    monthly_price_in_cents: int
-    yearly_price_in_cents: int
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    has_free_trial: bool
-    unit_name: Union[str, None]
-    state: str
-    bullets: list[str]
+    verifiable_password_authentication: bool
+    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsTypeForResponse]
+    ssh_keys: NotRequired[list[str]]
+    hooks: NotRequired[list[str]]
+    github_enterprise_importer: NotRequired[list[str]]
+    web: NotRequired[list[str]]
+    api: NotRequired[list[str]]
+    git: NotRequired[list[str]]
+    packages: NotRequired[list[str]]
+    pages: NotRequired[list[str]]
+    importer: NotRequired[list[str]]
+    actions: NotRequired[list[str]]
+    actions_macos: NotRequired[list[str]]
+    codespaces: NotRequired[list[str]]
+    dependabot: NotRequired[list[str]]
+    copilot: NotRequired[list[str]]
+    domains: NotRequired[ApiOverviewPropDomainsTypeForResponse]
+
+
+class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
+    """ApiOverviewPropSshKeyFingerprints"""
+
+    sha256_rsa: NotRequired[str]
+    sha256_dsa: NotRequired[str]
+    sha256_ecdsa: NotRequired[str]
+    sha256_ed25519: NotRequired[str]
+
+
+class ApiOverviewPropSshKeyFingerprintsTypeForResponse(TypedDict):
+    """ApiOverviewPropSshKeyFingerprints"""
+
+    sha256_rsa: NotRequired[str]
+    sha256_dsa: NotRequired[str]
+    sha256_ecdsa: NotRequired[str]
+    sha256_ed25519: NotRequired[str]
+
+
+class ApiOverviewPropDomainsType(TypedDict):
+    """ApiOverviewPropDomains"""
+
+    website: NotRequired[list[str]]
+    codespaces: NotRequired[list[str]]
+    copilot: NotRequired[list[str]]
+    packages: NotRequired[list[str]]
+    actions: NotRequired[list[str]]
+    actions_inbound: NotRequired[ApiOverviewPropDomainsPropActionsInboundType]
+    artifact_attestations: NotRequired[
+        ApiOverviewPropDomainsPropArtifactAttestationsType
+    ]
+
+
+class ApiOverviewPropDomainsTypeForResponse(TypedDict):
+    """ApiOverviewPropDomains"""
+
+    website: NotRequired[list[str]]
+    codespaces: NotRequired[list[str]]
+    copilot: NotRequired[list[str]]
+    packages: NotRequired[list[str]]
+    actions: NotRequired[list[str]]
+    actions_inbound: NotRequired[
+        ApiOverviewPropDomainsPropActionsInboundTypeForResponse
+    ]
+    artifact_attestations: NotRequired[
+        ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse
+    ]
+
+
+class ApiOverviewPropDomainsPropActionsInboundType(TypedDict):
+    """ApiOverviewPropDomainsPropActionsInbound"""
+
+    full_domains: NotRequired[list[str]]
+    wildcard_domains: NotRequired[list[str]]
+
+
+class ApiOverviewPropDomainsPropActionsInboundTypeForResponse(TypedDict):
+    """ApiOverviewPropDomainsPropActionsInbound"""
+
+    full_domains: NotRequired[list[str]]
+    wildcard_domains: NotRequired[list[str]]
+
+
+class ApiOverviewPropDomainsPropArtifactAttestationsType(TypedDict):
+    """ApiOverviewPropDomainsPropArtifactAttestations"""
+
+    trust_domain: NotRequired[str]
+    services: NotRequired[list[str]]
+
+
+class ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse(TypedDict):
+    """ApiOverviewPropDomainsPropArtifactAttestations"""
+
+    trust_domain: NotRequired[str]
+    services: NotRequired[list[str]]
 
 
 __all__ = (
-    "MarketplaceListingPlanType",
-    "MarketplaceListingPlanTypeForResponse",
+    "ApiOverviewPropDomainsPropActionsInboundType",
+    "ApiOverviewPropDomainsPropActionsInboundTypeForResponse",
+    "ApiOverviewPropDomainsPropArtifactAttestationsType",
+    "ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse",
+    "ApiOverviewPropDomainsType",
+    "ApiOverviewPropDomainsTypeForResponse",
+    "ApiOverviewPropSshKeyFingerprintsType",
+    "ApiOverviewPropSshKeyFingerprintsTypeForResponse",
+    "ApiOverviewType",
+    "ApiOverviewTypeForResponse",
 )

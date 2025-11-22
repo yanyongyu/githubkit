@@ -9,46 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ReactionType(TypedDict):
-    """Reaction
+class TeamProjectType(TypedDict):
+    """Team Project
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    A team's access to a project.
     """
 
+    owner_url: str
+    url: str
+    html_url: str
+    columns_url: str
     id: int
     node_id: str
-    user: Union[None, SimpleUserType]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
-    created_at: datetime
-
-
-class ReactionTypeForResponse(TypedDict):
-    """Reaction
-
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
-    """
-
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    name: str
+    body: Union[str, None]
+    number: int
+    state: str
+    creator: SimpleUserType
     created_at: str
+    updated_at: str
+    organization_permission: NotRequired[str]
+    private: NotRequired[bool]
+    permissions: TeamProjectPropPermissionsType
+
+
+class TeamProjectTypeForResponse(TypedDict):
+    """Team Project
+
+    A team's access to a project.
+    """
+
+    owner_url: str
+    url: str
+    html_url: str
+    columns_url: str
+    id: int
+    node_id: str
+    name: str
+    body: Union[str, None]
+    number: int
+    state: str
+    creator: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
+    organization_permission: NotRequired[str]
+    private: NotRequired[bool]
+    permissions: TeamProjectPropPermissionsTypeForResponse
+
+
+class TeamProjectPropPermissionsType(TypedDict):
+    """TeamProjectPropPermissions"""
+
+    read: bool
+    write: bool
+    admin: bool
+
+
+class TeamProjectPropPermissionsTypeForResponse(TypedDict):
+    """TeamProjectPropPermissions"""
+
+    read: bool
+    write: bool
+    admin: bool
 
 
 __all__ = (
-    "ReactionType",
-    "ReactionTypeForResponse",
+    "TeamProjectPropPermissionsType",
+    "TeamProjectPropPermissionsTypeForResponse",
+    "TeamProjectType",
+    "TeamProjectTypeForResponse",
 )

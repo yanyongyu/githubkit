@@ -10,45 +10,55 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ReactionType(TypedDict):
-    """Reaction
+class ProjectCardType(TypedDict):
+    """Project Card
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    Project cards represent a scope of work.
     """
 
+    url: str
     id: int
     node_id: str
-    user: Union[None, SimpleUserType]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    note: Union[str, None]
+    creator: Union[None, SimpleUserType]
     created_at: datetime
+    updated_at: datetime
+    archived: NotRequired[bool]
+    column_name: NotRequired[str]
+    project_id: NotRequired[str]
+    column_url: str
+    content_url: NotRequired[str]
+    project_url: str
 
 
-class ReactionTypeForResponse(TypedDict):
-    """Reaction
+class ProjectCardTypeForResponse(TypedDict):
+    """Project Card
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    Project cards represent a scope of work.
     """
 
+    url: str
     id: int
     node_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    note: Union[str, None]
+    creator: Union[None, SimpleUserTypeForResponse]
     created_at: str
+    updated_at: str
+    archived: NotRequired[bool]
+    column_name: NotRequired[str]
+    project_id: NotRequired[str]
+    column_url: str
+    content_url: NotRequired[str]
+    project_url: str
 
 
 __all__ = (
-    "ReactionType",
-    "ReactionTypeForResponse",
+    "ProjectCardType",
+    "ProjectCardTypeForResponse",
 )

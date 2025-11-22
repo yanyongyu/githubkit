@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,36 +17,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0341 import CodeScanningVariantAnalysisRepository
 
 
-class CodeScanningCodeqlDatabase(GitHubModel):
-    """CodeQL Database
+class CodeScanningVariantAnalysisPropScannedRepositoriesItems(GitHubModel):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    A CodeQL database.
-    """
-
-    id: int = Field(description="The ID of the CodeQL database.")
-    name: str = Field(description="The name of the CodeQL database.")
-    language: str = Field(description="The language of the CodeQL database.")
-    uploader: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    content_type: str = Field(description="The MIME type of the CodeQL database file.")
-    size: int = Field(description="The size of the CodeQL database file in bytes.")
-    created_at: datetime = Field(
-        description="The date and time at which the CodeQL database was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    repository: CodeScanningVariantAnalysisRepository = Field(
+        title="Repository Identifier", description="Repository Identifier"
     )
-    updated_at: datetime = Field(
-        description="The date and time at which the CodeQL database was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ] = Field(
+        description="The new status of the CodeQL variant analysis repository task."
     )
-    url: str = Field(
-        description="The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property."
-    )
-    commit_oid: Missing[Union[str, None]] = Field(
+    result_count: Missing[int] = Field(
         default=UNSET,
-        description="The commit SHA of the repository at the time the CodeQL database was created.",
+        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+    )
+    artifact_size_in_bytes: Missing[int] = Field(
+        default=UNSET,
+        description="The size of the artifact. This is only available for successful analyses.",
+    )
+    failure_message: Missing[str] = Field(
+        default=UNSET,
+        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
     )
 
 
-model_rebuild(CodeScanningCodeqlDatabase)
+model_rebuild(CodeScanningVariantAnalysisPropScannedRepositoriesItems)
 
-__all__ = ("CodeScanningCodeqlDatabase",)
+__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",)

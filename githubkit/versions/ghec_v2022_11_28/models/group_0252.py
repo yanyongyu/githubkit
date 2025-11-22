@@ -9,58 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0044 import OrganizationSimple
 
+class OrganizationCustomOrganizationRoleCreateSchema(GitHubModel):
+    """OrganizationCustomOrganizationRoleCreateSchema"""
 
-class OrgMembership(GitHubModel):
-    """Org Membership
-
-    Org Membership
-    """
-
-    url: str = Field()
-    state: Literal["active", "pending"] = Field(
-        description="The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation."
-    )
-    role: Literal["admin", "member", "billing_manager"] = Field(
-        description="The user's membership type in the organization."
-    )
-    direct_membership: Missing[bool] = Field(
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[str] = Field(
         default=UNSET,
-        description="Whether the user has direct membership in the organization.",
+        description="A short description about the intended usage of this role or what permissions it grants.",
     )
-    enterprise_teams_providing_indirect_membership: Missing[list[str]] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
+    permissions: list[str] = Field(
+        description="A list of additional permissions included in this role."
+    )
+    base_role: Missing[Literal["read", "triage", "write", "maintain", "admin"]] = Field(
         default=UNSET,
-        description="The slugs of the enterprise teams providing the user with indirect membership in the organization.\nA limit of 100 enterprise team slugs is returned.",
+        description="The system role from which this role can inherit permissions.",
     )
-    organization_url: str = Field()
-    organization: OrganizationSimple = Field(
-        title="Organization Simple", description="A GitHub organization."
-    )
-    user: Union[None, SimpleUser] = Field()
-    permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
 
 
-class OrgMembershipPropPermissions(GitHubModel):
-    """OrgMembershipPropPermissions"""
+model_rebuild(OrganizationCustomOrganizationRoleCreateSchema)
 
-    can_create_repository: bool = Field()
-
-
-model_rebuild(OrgMembership)
-model_rebuild(OrgMembershipPropPermissions)
-
-__all__ = (
-    "OrgMembership",
-    "OrgMembershipPropPermissions",
-)
+__all__ = ("OrganizationCustomOrganizationRoleCreateSchema",)

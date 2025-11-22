@@ -9,34 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0019 import LicenseSimple
 
 
-class DeployKey(GitHubModel):
-    """Deploy Key
+class LicenseContent(GitHubModel):
+    """License Content
 
-    An SSH key granting access to a single repository.
+    License Content
     """
 
-    id: int = Field()
-    key: str = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    size: int = Field()
     url: str = Field()
-    title: str = Field()
-    verified: bool = Field()
-    created_at: str = Field()
-    read_only: bool = Field()
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    last_used: Missing[Union[datetime, None]] = Field(default=UNSET)
-    enabled: Missing[bool] = Field(default=UNSET)
+    html_url: Union[str, None] = Field()
+    git_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    type: str = Field()
+    content: str = Field()
+    encoding: str = Field()
+    links: LicenseContentPropLinks = Field(alias="_links")
+    license_: Union[None, LicenseSimple] = Field(alias="license")
 
 
-model_rebuild(DeployKey)
+class LicenseContentPropLinks(GitHubModel):
+    """LicenseContentPropLinks"""
 
-__all__ = ("DeployKey",)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(LicenseContent)
+model_rebuild(LicenseContentPropLinks)
+
+__all__ = (
+    "LicenseContent",
+    "LicenseContentPropLinks",
+)

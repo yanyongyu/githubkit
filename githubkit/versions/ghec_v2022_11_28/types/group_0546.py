@@ -12,33 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class WebhooksWorkflowJobRunType(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class WebhooksRepositoriesAddedItemsType(TypedDict):
+    """WebhooksRepositoriesAddedItems"""
 
-    conclusion: None
-    created_at: str
-    environment: str
-    html_url: str
+    full_name: str
     id: int
-    name: None
-    status: str
-    updated_at: str
+    name: str
+    node_id: str
+    private: bool
 
 
-class WebhooksWorkflowJobRunTypeForResponse(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class WebhooksRepositoriesAddedItemsTypeForResponse(TypedDict):
+    """WebhooksRepositoriesAddedItems"""
 
-    conclusion: None
-    created_at: str
-    environment: str
-    html_url: str
+    full_name: str
     id: int
-    name: None
-    status: str
-    updated_at: str
+    name: str
+    node_id: str
+    private: bool
 
 
 __all__ = (
-    "WebhooksWorkflowJobRunType",
-    "WebhooksWorkflowJobRunTypeForResponse",
+    "WebhooksRepositoriesAddedItemsType",
+    "WebhooksRepositoriesAddedItemsTypeForResponse",
 )

@@ -12,20 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeScanningSarifsReceipt(GitHubModel):
-    """CodeScanningSarifsReceipt"""
+class CodespacesPermissionsCheckForDevcontainer(GitHubModel):
+    """Codespaces Permissions Check
 
-    id: Missing[str] = Field(default=UNSET, description="An identifier for the upload.")
-    url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL for checking the status of the upload.",
+    Permission check result for a given devcontainer config.
+    """
+
+    accepted: bool = Field(
+        description="Whether the user has accepted the permissions defined by the devcontainer config"
     )
 
 
-model_rebuild(CodeScanningSarifsReceipt)
+model_rebuild(CodespacesPermissionsCheckForDevcontainer)
 
-__all__ = ("CodeScanningSarifsReceipt",)
+__all__ = ("CodespacesPermissionsCheckForDevcontainer",)

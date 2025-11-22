@@ -9,52 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class GitTreeType(TypedDict):
+    """Git Tree
 
-    Git references within a repository
+    The hierarchy between files in a Git repository.
     """
 
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectType
+    sha: str
+    url: NotRequired[str]
+    truncated: bool
+    tree: list[GitTreePropTreeItemsType]
 
 
-class GitRefTypeForResponse(TypedDict):
-    """Git Reference
+class GitTreeTypeForResponse(TypedDict):
+    """Git Tree
 
-    Git references within a repository
+    The hierarchy between files in a Git repository.
     """
 
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectTypeForResponse
+    sha: str
+    url: NotRequired[str]
+    truncated: bool
+    tree: list[GitTreePropTreeItemsTypeForResponse]
 
 
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
+class GitTreePropTreeItemsType(TypedDict):
+    """GitTreePropTreeItems"""
 
+    path: str
+    mode: str
     type: str
     sha: str
-    url: str
+    size: NotRequired[int]
+    url: NotRequired[str]
 
 
-class GitRefPropObjectTypeForResponse(TypedDict):
-    """GitRefPropObject"""
+class GitTreePropTreeItemsTypeForResponse(TypedDict):
+    """GitTreePropTreeItems"""
 
+    path: str
+    mode: str
     type: str
     sha: str
-    url: str
+    size: NotRequired[int]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "GitRefPropObjectType",
-    "GitRefPropObjectTypeForResponse",
-    "GitRefType",
-    "GitRefTypeForResponse",
+    "GitTreePropTreeItemsType",
+    "GitTreePropTreeItemsTypeForResponse",
+    "GitTreeType",
+    "GitTreeTypeForResponse",
 )

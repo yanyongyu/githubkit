@@ -9,59 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
 
 
-class TeamProject(GitHubModel):
-    """Team Project
+class ProjectColumn(GitHubModel):
+    """Project Column
 
-    A team's access to a project.
+    Project columns contain cards of work.
     """
 
-    owner_url: str = Field()
     url: str = Field()
-    html_url: str = Field()
-    columns_url: str = Field()
-    id: int = Field()
+    project_url: str = Field()
+    cards_url: str = Field()
+    id: int = Field(description="The unique identifier of the project column")
     node_id: str = Field()
-    name: str = Field()
-    body: Union[str, None] = Field()
-    number: int = Field()
-    state: str = Field()
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: str = Field()
-    updated_at: str = Field()
-    organization_permission: Missing[str] = Field(
-        default=UNSET,
-        description="The organization permission for this project. Only present when owner is an organization.",
-    )
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the project is private or not. Only present when owner is an organization.",
-    )
-    permissions: TeamProjectPropPermissions = Field()
+    name: str = Field(description="Name of the project column")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-class TeamProjectPropPermissions(GitHubModel):
-    """TeamProjectPropPermissions"""
+model_rebuild(ProjectColumn)
 
-    read: bool = Field()
-    write: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(TeamProject)
-model_rebuild(TeamProjectPropPermissions)
-
-__all__ = (
-    "TeamProject",
-    "TeamProjectPropPermissions",
-)
+__all__ = ("ProjectColumn",)

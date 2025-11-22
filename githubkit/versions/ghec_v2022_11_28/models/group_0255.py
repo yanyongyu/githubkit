@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,60 +17,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0079 import TeamSimple
 
 
-class OrganizationRole(GitHubModel):
-    """Organization Role
+class UserRoleAssignment(GitHubModel):
+    """A Role Assignment for a User
 
-    Organization roles
+    The Relationship a User has with a role.
     """
 
-    id: int = Field(description="The unique identifier of the role.")
-    name: str = Field(description="The name of the role.")
-    description: Missing[Union[str, None]] = Field(
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
     )
-    base_role: Missing[
-        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
-    ] = Field(
-        default=UNSET,
-        description="The system role from which this role inherits permissions.",
+    inherited_from: Missing[list[TeamSimple]] = Field(
+        default=UNSET, description="Team the user has gotten the role through"
     )
-    source: Missing[
-        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
-    ] = Field(
-        default=UNSET,
-        description='Source answers the question, "where did this role come from?"',
-    )
-    permissions: list[str] = Field(
-        description="A list of permissions included in this role."
-    )
-    organization: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field(description="The date and time the role was created.")
-    updated_at: datetime = Field(
-        description="The date and time the role was last updated."
-    )
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
-    """OrgsOrgOrganizationRolesGetResponse200"""
+model_rebuild(UserRoleAssignment)
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of organization roles available to the organization.",
-    )
-    roles: Missing[list[OrganizationRole]] = Field(
-        default=UNSET,
-        description="The list of organization roles available to the organization.",
-    )
-
-
-model_rebuild(OrganizationRole)
-model_rebuild(OrgsOrgOrganizationRolesGetResponse200)
-
-__all__ = (
-    "OrganizationRole",
-    "OrgsOrgOrganizationRolesGetResponse200",
-)
+__all__ = ("UserRoleAssignment",)

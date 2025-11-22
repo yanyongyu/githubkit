@@ -112,7 +112,6 @@ if TYPE_CHECKING:
 EventNameType: TypeAlias = Literal[
     "branch_protection_configuration",
     "branch_protection_rule",
-    "exemption_request_push_ruleset",
     "exemption_request_secret_scanning",
     "check_run",
     "check_suite",
@@ -132,6 +131,7 @@ EventNameType: TypeAlias = Literal[
     "discussion_comment",
     "dismissal_request_code_scanning",
     "dismissal_request_secret_scanning",
+    "exemption_request_push_ruleset",
     "fork",
     "github_app_authorization",
     "gollum",
@@ -195,7 +195,6 @@ EventNameType: TypeAlias = Literal[
 VALID_EVENT_NAMES: set[EventNameType] = {
     "branch_protection_configuration",
     "branch_protection_rule",
-    "exemption_request_push_ruleset",
     "exemption_request_secret_scanning",
     "check_run",
     "check_suite",
@@ -215,6 +214,7 @@ VALID_EVENT_NAMES: set[EventNameType] = {
     "discussion_comment",
     "dismissal_request_code_scanning",
     "dismissal_request_secret_scanning",
+    "exemption_request_push_ruleset",
     "fork",
     "github_app_authorization",
     "gollum",
@@ -308,11 +308,6 @@ class WebhookNamespace:
     @overload
     @staticmethod
     def parse(
-        name: Literal["exemption_request_push_ruleset"], payload: Union[str, bytes]
-    ) -> "ExemptionRequestPushRulesetEvent": ...
-    @overload
-    @staticmethod
-    def parse(
         name: Literal["exemption_request_secret_scanning"], payload: Union[str, bytes]
     ) -> "ExemptionRequestSecretScanningEvent": ...
     @overload
@@ -401,6 +396,11 @@ class WebhookNamespace:
     def parse(
         name: Literal["dismissal_request_secret_scanning"], payload: Union[str, bytes]
     ) -> "DismissalRequestSecretScanningEvent": ...
+    @overload
+    @staticmethod
+    def parse(
+        name: Literal["exemption_request_push_ruleset"], payload: Union[str, bytes]
+    ) -> "ExemptionRequestPushRulesetEvent": ...
     @overload
     @staticmethod
     def parse(name: Literal["fork"], payload: Union[str, bytes]) -> "ForkEvent": ...
@@ -726,11 +726,6 @@ class WebhookNamespace:
     @overload
     @staticmethod
     def parse_obj(
-        name: Literal["exemption_request_push_ruleset"], payload: Mapping[str, Any]
-    ) -> "ExemptionRequestPushRulesetEvent": ...
-    @overload
-    @staticmethod
-    def parse_obj(
         name: Literal["exemption_request_secret_scanning"], payload: Mapping[str, Any]
     ) -> "ExemptionRequestSecretScanningEvent": ...
     @overload
@@ -823,6 +818,11 @@ class WebhookNamespace:
     def parse_obj(
         name: Literal["dismissal_request_secret_scanning"], payload: Mapping[str, Any]
     ) -> "DismissalRequestSecretScanningEvent": ...
+    @overload
+    @staticmethod
+    def parse_obj(
+        name: Literal["exemption_request_push_ruleset"], payload: Mapping[str, Any]
+    ) -> "ExemptionRequestPushRulesetEvent": ...
     @overload
     @staticmethod
     def parse_obj(name: Literal["fork"], payload: Mapping[str, Any]) -> "ForkEvent": ...

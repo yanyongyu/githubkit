@@ -9,22 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
+class ProjectsColumnsCardsCardIdPatchBodyType(TypedDict):
+    """ProjectsColumnsCardsCardIdPatchBody"""
 
-    permission: NotRequired[str]
+    note: NotRequired[Union[str, None]]
+    archived: NotRequired[bool]
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
+class ProjectsColumnsCardsCardIdPatchBodyTypeForResponse(TypedDict):
+    """ProjectsColumnsCardsCardIdPatchBody"""
 
-    permission: NotRequired[str]
+    note: NotRequired[Union[str, None]]
+    archived: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",
-    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse",
+    "ProjectsColumnsCardsCardIdPatchBodyType",
+    "ProjectsColumnsCardsCardIdPatchBodyTypeForResponse",
 )

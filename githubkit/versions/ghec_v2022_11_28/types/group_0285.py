@@ -9,69 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0195 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class TeamDiscussionType(TypedDict):
-    """Team Discussion
+class TeamProjectType(TypedDict):
+    """Team Project
 
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
+    A team's access to a project.
     """
 
-    author: Union[None, SimpleUserType]
-    body: str
-    body_html: str
-    body_version: str
-    comments_count: int
-    comments_url: str
-    created_at: datetime
-    last_edited_at: Union[datetime, None]
-    html_url: str
-    node_id: str
-    number: int
-    pinned: bool
-    private: bool
-    team_url: str
-    title: str
-    updated_at: datetime
+    owner_url: str
     url: str
-    reactions: NotRequired[ReactionRollupType]
-
-
-class TeamDiscussionTypeForResponse(TypedDict):
-    """Team Discussion
-
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
-    """
-
-    author: Union[None, SimpleUserTypeForResponse]
-    body: str
-    body_html: str
-    body_version: str
-    comments_count: int
-    comments_url: str
+    html_url: str
+    columns_url: str
+    id: int
+    node_id: str
+    name: str
+    body: Union[str, None]
+    number: int
+    state: str
+    creator: SimpleUserType
     created_at: str
-    last_edited_at: Union[str, None]
-    html_url: str
-    node_id: str
-    number: int
-    pinned: bool
-    private: bool
-    team_url: str
-    title: str
     updated_at: str
+    organization_permission: NotRequired[str]
+    private: NotRequired[bool]
+    permissions: TeamProjectPropPermissionsType
+
+
+class TeamProjectTypeForResponse(TypedDict):
+    """Team Project
+
+    A team's access to a project.
+    """
+
+    owner_url: str
     url: str
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    html_url: str
+    columns_url: str
+    id: int
+    node_id: str
+    name: str
+    body: Union[str, None]
+    number: int
+    state: str
+    creator: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
+    organization_permission: NotRequired[str]
+    private: NotRequired[bool]
+    permissions: TeamProjectPropPermissionsTypeForResponse
+
+
+class TeamProjectPropPermissionsType(TypedDict):
+    """TeamProjectPropPermissions"""
+
+    read: bool
+    write: bool
+    admin: bool
+
+
+class TeamProjectPropPermissionsTypeForResponse(TypedDict):
+    """TeamProjectPropPermissions"""
+
+    read: bool
+    write: bool
+    admin: bool
 
 
 __all__ = (
-    "TeamDiscussionType",
-    "TeamDiscussionTypeForResponse",
+    "TeamProjectPropPermissionsType",
+    "TeamProjectPropPermissionsTypeForResponse",
+    "TeamProjectType",
+    "TeamProjectTypeForResponse",
 )

@@ -9,22 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleMaxFileSizePropParametersType(TypedDict):
-    """RepositoryRuleMaxFileSizePropParameters"""
+class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
+    """RestrictedCommits
 
-    max_file_size: int
+    Restricted commit
+    """
+
+    oid: str
+    reason: NotRequired[str]
 
 
-class RepositoryRuleMaxFileSizePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleMaxFileSizePropParameters"""
+class RepositoryRuleParamsRestrictedCommitsTypeForResponse(TypedDict):
+    """RestrictedCommits
 
-    max_file_size: int
+    Restricted commit
+    """
+
+    oid: str
+    reason: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleMaxFileSizePropParametersType",
-    "RepositoryRuleMaxFileSizePropParametersTypeForResponse",
+    "RepositoryRuleParamsRestrictedCommitsType",
+    "RepositoryRuleParamsRestrictedCommitsTypeForResponse",
 )

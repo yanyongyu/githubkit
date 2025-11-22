@@ -18,43 +18,93 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0323 import GitUser
-from .group_0324 import Verification
+from .group_0505 import SearchResultTextMatchesItems
 
 
-class CommitSearchResultItemPropCommit(GitHubModel):
-    """CommitSearchResultItemPropCommit"""
+class TopicSearchResultItem(GitHubModel):
+    """Topic Search Result Item
 
-    author: CommitSearchResultItemPropCommitPropAuthor = Field()
-    committer: Union[None, GitUser] = Field()
-    comment_count: int = Field()
-    message: str = Field()
-    tree: CommitSearchResultItemPropCommitPropTree = Field()
-    url: str = Field()
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
-
-
-class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+    Topic Search Result Item
+    """
 
     name: str = Field()
-    email: str = Field()
-    date: datetime = Field()
+    display_name: Union[str, None] = Field()
+    short_description: Union[str, None] = Field()
+    description: Union[str, None] = Field()
+    created_by: Union[str, None] = Field()
+    released: Union[str, None] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    featured: bool = Field()
+    curated: bool = Field()
+    score: float = Field()
+    repository_count: Missing[Union[int, None]] = Field(default=UNSET)
+    logo_url: Missing[Union[str, None]] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
+    related: Missing[Union[list[TopicSearchResultItemPropRelatedItems], None]] = Field(
+        default=UNSET
+    )
+    aliases: Missing[Union[list[TopicSearchResultItemPropAliasesItems], None]] = Field(
+        default=UNSET
+    )
 
 
-class CommitSearchResultItemPropCommitPropTree(GitHubModel):
-    """CommitSearchResultItemPropCommitPropTree"""
+class TopicSearchResultItemPropRelatedItems(GitHubModel):
+    """TopicSearchResultItemPropRelatedItems"""
 
-    sha: str = Field()
-    url: str = Field()
+    topic_relation: Missing[TopicSearchResultItemPropRelatedItemsPropTopicRelation] = (
+        Field(default=UNSET)
+    )
 
 
-model_rebuild(CommitSearchResultItemPropCommit)
-model_rebuild(CommitSearchResultItemPropCommitPropAuthor)
-model_rebuild(CommitSearchResultItemPropCommitPropTree)
+class TopicSearchResultItemPropRelatedItemsPropTopicRelation(GitHubModel):
+    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    topic_id: Missing[int] = Field(default=UNSET)
+    relation_type: Missing[str] = Field(default=UNSET)
+
+
+class TopicSearchResultItemPropAliasesItems(GitHubModel):
+    """TopicSearchResultItemPropAliasesItems"""
+
+    topic_relation: Missing[TopicSearchResultItemPropAliasesItemsPropTopicRelation] = (
+        Field(default=UNSET)
+    )
+
+
+class TopicSearchResultItemPropAliasesItemsPropTopicRelation(GitHubModel):
+    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    topic_id: Missing[int] = Field(default=UNSET)
+    relation_type: Missing[str] = Field(default=UNSET)
+
+
+class SearchTopicsGetResponse200(GitHubModel):
+    """SearchTopicsGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[TopicSearchResultItem] = Field()
+
+
+model_rebuild(TopicSearchResultItem)
+model_rebuild(TopicSearchResultItemPropRelatedItems)
+model_rebuild(TopicSearchResultItemPropRelatedItemsPropTopicRelation)
+model_rebuild(TopicSearchResultItemPropAliasesItems)
+model_rebuild(TopicSearchResultItemPropAliasesItemsPropTopicRelation)
+model_rebuild(SearchTopicsGetResponse200)
 
 __all__ = (
-    "CommitSearchResultItemPropCommit",
-    "CommitSearchResultItemPropCommitPropAuthor",
-    "CommitSearchResultItemPropCommitPropTree",
+    "SearchTopicsGetResponse200",
+    "TopicSearchResultItem",
+    "TopicSearchResultItemPropAliasesItems",
+    "TopicSearchResultItemPropAliasesItemsPropTopicRelation",
+    "TopicSearchResultItemPropRelatedItems",
+    "TopicSearchResultItemPropRelatedItemsPropTopicRelation",
 )

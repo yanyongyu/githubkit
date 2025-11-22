@@ -16,17 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
-    """UserCodespacesCodespaceNamePublishPostBody"""
+class UserGpgKeysPostBody(GitHubModel):
+    """UserGpgKeysPostBody"""
 
     name: Missing[str] = Field(
-        default=UNSET, description="A name for the new repository."
+        default=UNSET, description="A descriptive name for the new key."
     )
-    private: Missing[bool] = Field(
-        default=UNSET, description="Whether the new repository should be private."
-    )
+    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
 
 
-model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
+model_rebuild(UserGpgKeysPostBody)
 
-__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)
+__all__ = ("UserGpgKeysPostBody",)

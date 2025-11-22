@@ -9,23 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeScanningAutofixCommitsResponse(GitHubModel):
-    """CodeScanningAutofixCommitsResponse"""
+class CodeScanningAnalysisDeletion(GitHubModel):
+    """Analysis deletion
 
-    target_ref: Missing[str] = Field(
-        default=UNSET,
-        description='The Git reference of target branch for the commit. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
+    Successful deletion of a code scanning analysis
+    """
+
+    next_analysis_url: Union[str, None] = Field(
+        description="Next deletable analysis in chain, without last analysis deletion confirmation"
     )
-    sha: Missing[str] = Field(default=UNSET, description="SHA of commit with autofix.")
+    confirm_delete_url: Union[str, None] = Field(
+        description="Next deletable analysis in chain, with last analysis deletion confirmation"
+    )
 
 
-model_rebuild(CodeScanningAutofixCommitsResponse)
+model_rebuild(CodeScanningAnalysisDeletion)
 
-__all__ = ("CodeScanningAutofixCommitsResponse",)
+__all__ = ("CodeScanningAnalysisDeletion",)

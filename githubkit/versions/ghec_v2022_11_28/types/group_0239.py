@@ -9,46 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ExternalGroupsType(TypedDict):
-    """ExternalGroups
+class ApiInsightsRouteStatsItemsType(TypedDict):
+    """ApiInsightsRouteStatsItems"""
 
-    A list of external groups available to be connected to a team
-    """
-
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
-
-
-class ExternalGroupsTypeForResponse(TypedDict):
-    """ExternalGroups
-
-    A list of external groups available to be connected to a team
-    """
-
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsTypeForResponse]]
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
-class ExternalGroupsPropGroupsItemsType(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
+class ApiInsightsRouteStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsRouteStatsItems"""
 
-    group_id: int
-    group_name: str
-    updated_at: str
-
-
-class ExternalGroupsPropGroupsItemsTypeForResponse(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
-
-    group_id: int
-    group_name: str
-    updated_at: str
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
 __all__ = (
-    "ExternalGroupsPropGroupsItemsType",
-    "ExternalGroupsPropGroupsItemsTypeForResponse",
-    "ExternalGroupsType",
-    "ExternalGroupsTypeForResponse",
+    "ApiInsightsRouteStatsItemsType",
+    "ApiInsightsRouteStatsItemsTypeForResponse",
 )

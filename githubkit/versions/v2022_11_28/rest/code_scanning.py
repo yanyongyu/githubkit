@@ -1877,6 +1877,7 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         language: Literal[
+            "actions",
             "cpp",
             "csharp",
             "go",
@@ -1905,6 +1906,7 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         language: Literal[
+            "actions",
             "cpp",
             "csharp",
             "go",
@@ -1933,6 +1935,7 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         language: Literal[
+            "actions",
             "cpp",
             "csharp",
             "go",
@@ -2057,6 +2060,7 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         language: Literal[
+            "actions",
             "cpp",
             "csharp",
             "go",
@@ -2085,6 +2089,7 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         language: Literal[
+            "actions",
             "cpp",
             "csharp",
             "go",
@@ -2113,6 +2118,7 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         language: Literal[
+            "actions",
             "cpp",
             "csharp",
             "go",

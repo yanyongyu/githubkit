@@ -9,44 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class KeyType(TypedDict):
-    """Key
+class SocialAccountType(TypedDict):
+    """Social account
 
-    Key
+    Social media account
     """
 
-    key: str
-    id: int
+    provider: str
     url: str
-    title: str
-    created_at: datetime
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[datetime, None]]
 
 
-class KeyTypeForResponse(TypedDict):
-    """Key
+class SocialAccountTypeForResponse(TypedDict):
+    """Social account
 
-    Key
+    Social media account
     """
 
-    key: str
-    id: int
+    provider: str
     url: str
-    title: str
-    created_at: str
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "KeyType",
-    "KeyTypeForResponse",
+    "SocialAccountType",
+    "SocialAccountTypeForResponse",
 )

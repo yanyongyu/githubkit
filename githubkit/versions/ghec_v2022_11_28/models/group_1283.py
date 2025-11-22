@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,19 +18,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDependabotSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody(GitHubModel):
+    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+    state: Literal[
+        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
+    ] = Field(
+        description="The state of the status. When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in GitHub."
+    )
+    target_url: Missing[str] = Field(
         default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-public-key) endpoint.",
+        description="The target URL to associate with this status. This URL should contain output to keep the user updated while the task is running or serve as historical information for what happened in the deployment.\n\n> [!NOTE]\n> It's recommended to use the `log_url` parameter, which replaces `target_url`.",
     )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="ID of the key you used to encrypt the secret."
+    log_url: Missing[str] = Field(
+        default=UNSET,
+        description='The full URL of the deployment\'s output. This parameter replaces `target_url`. We will continue to accept `target_url` to support legacy uses, but we recommend replacing `target_url` with `log_url`. Setting `log_url` will automatically set `target_url` to the same value. Default: `""`',
+    )
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description of the status. The maximum description length is 140 characters.",
+    )
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="Name for the target deployment environment, which can be changed when setting a deploy status. For example, `production`, `staging`, or `qa`. If not defined, the environment of the previous status on the deployment will be used, if it exists. Otherwise, the environment of the deployment will be used.",
+    )
+    environment_url: Missing[str] = Field(
+        default=UNSET,
+        description='Sets the URL for accessing your environment. Default: `""`',
+    )
+    auto_inactive: Missing[bool] = Field(
+        default=UNSET,
+        description="Adds a new `inactive` status to all prior non-transient, non-production environment deployments with the same repository and `environment` name as the created status's deployment. An `inactive` status is only added to deployments that had a `success` state. Default: `true`",
     )
 
 
-model_rebuild(ReposOwnerRepoDependabotSecretsSecretNamePutBody)
+model_rebuild(ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody)
 
-__all__ = ("ReposOwnerRepoDependabotSecretsSecretNamePutBody",)
+__all__ = ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody",)

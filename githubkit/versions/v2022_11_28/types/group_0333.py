@@ -9,34 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
-class PorterLargeFileType(TypedDict):
-    """Porter Large File
 
-    Porter Large File
+class LabeledIssueEventType(TypedDict):
+    """Labeled Issue Event
+
+    Labeled Issue Event
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["labeled"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    label: LabeledIssueEventPropLabelType
 
 
-class PorterLargeFileTypeForResponse(TypedDict):
-    """Porter Large File
+class LabeledIssueEventTypeForResponse(TypedDict):
+    """Labeled Issue Event
 
-    Porter Large File
+    Labeled Issue Event
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["labeled"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    label: LabeledIssueEventPropLabelTypeForResponse
+
+
+class LabeledIssueEventPropLabelType(TypedDict):
+    """LabeledIssueEventPropLabel"""
+
+    name: str
+    color: str
+
+
+class LabeledIssueEventPropLabelTypeForResponse(TypedDict):
+    """LabeledIssueEventPropLabel"""
+
+    name: str
+    color: str
 
 
 __all__ = (
-    "PorterLargeFileType",
-    "PorterLargeFileTypeForResponse",
+    "LabeledIssueEventPropLabelType",
+    "LabeledIssueEventPropLabelTypeForResponse",
+    "LabeledIssueEventType",
+    "LabeledIssueEventTypeForResponse",
 )

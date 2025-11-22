@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
@@ -17,18 +17,33 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class GitUser(GitHubModel):
-    """Git User
-
-    Metaproperties for Git author/committer information.
-    """
-
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-    date: Missing[datetime] = Field(default=UNSET)
+from .group_0319 import GitUser
+from .group_0320 import Verification
 
 
-model_rebuild(GitUser)
+class CommitPropCommit(GitHubModel):
+    """CommitPropCommit"""
 
-__all__ = ("GitUser",)
+    url: str = Field()
+    author: Union[None, GitUser] = Field()
+    committer: Union[None, GitUser] = Field()
+    message: str = Field()
+    comment_count: int = Field()
+    tree: CommitPropCommitPropTree = Field()
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+
+
+class CommitPropCommitPropTree(GitHubModel):
+    """CommitPropCommitPropTree"""
+
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(CommitPropCommit)
+model_rebuild(CommitPropCommitPropTree)
+
+__all__ = (
+    "CommitPropCommit",
+    "CommitPropCommitPropTree",
+)

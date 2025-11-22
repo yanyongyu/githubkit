@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,52 +19,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksComment(GitHubModel):
-    """WebhooksComment"""
+class WebhooksMilestone(GitHubModel):
+    """Milestone
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
-    )
-    body: str = Field()
-    child_comment_count: int = Field()
-    created_at: str = Field()
-    discussion_id: int = Field()
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None] = Field()
+    closed_issues: int = Field()
+    created_at: datetime = Field()
+    creator: Union[WebhooksMilestonePropCreator, None] = Field(title="User")
+    description: Union[str, None] = Field()
+    due_on: Union[datetime, None] = Field()
     html_url: str = Field()
     id: int = Field()
+    labels_url: str = Field()
     node_id: str = Field()
-    parent_id: Union[int, None] = Field()
-    reactions: WebhooksCommentPropReactions = Field(title="Reactions")
-    repository_url: str = Field()
-    updated_at: str = Field()
-    user: Union[WebhooksCommentPropUser, None] = Field(title="User")
-
-
-class WebhooksCommentPropReactions(GitHubModel):
-    """Reactions"""
-
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
+    number: int = Field(description="The number of the milestone.")
+    open_issues: int = Field()
+    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
+    title: str = Field(description="The title of the milestone.")
+    updated_at: datetime = Field()
     url: str = Field()
 
 
-class WebhooksCommentPropUser(GitHubModel):
+class WebhooksMilestonePropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -85,17 +65,17 @@ class WebhooksCommentPropUser(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
     url: Missing[str] = Field(default=UNSET)
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksComment)
-model_rebuild(WebhooksCommentPropReactions)
-model_rebuild(WebhooksCommentPropUser)
+model_rebuild(WebhooksMilestone)
+model_rebuild(WebhooksMilestonePropCreator)
 
 __all__ = (
-    "WebhooksComment",
-    "WebhooksCommentPropReactions",
-    "WebhooksCommentPropUser",
+    "WebhooksMilestone",
+    "WebhooksMilestonePropCreator",
 )

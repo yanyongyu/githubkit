@@ -9,54 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse403Type(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
+class ProjectsColumnsColumnIdCardsPostBodyOneof1Type(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[
-        list[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType]
-    ]
+    content_id: int
+    content_type: str
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse403TypeForResponse(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
+class ProjectsColumnsColumnIdCardsPostBodyOneof1TypeForResponse(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[
-        list[
-            ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsTypeForResponse
-        ]
-    ]
-
-
-class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
-
-    code: NotRequired[str]
-    message: NotRequired[str]
-    resource: NotRequired[str]
-    field: NotRequired[str]
-
-
-class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsTypeForResponse(
-    TypedDict
-):
-    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
-
-    code: NotRequired[str]
-    message: NotRequired[str]
-    resource: NotRequired[str]
-    field: NotRequired[str]
+    content_id: int
+    content_type: str
 
 
 __all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType",
-    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsTypeForResponse",
-    "ProjectsColumnsCardsCardIdMovesPostResponse403Type",
-    "ProjectsColumnsCardsCardIdMovesPostResponse403TypeForResponse",
+    "ProjectsColumnsColumnIdCardsPostBodyOneof1Type",
+    "ProjectsColumnsColumnIdCardsPostBodyOneof1TypeForResponse",
 )

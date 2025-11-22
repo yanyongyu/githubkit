@@ -9,49 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
+from .group_0211 import MinimalRepository
 
 
-class DeploymentSimple(GitHubModel):
-    """Deployment
+class CheckSuitePreference(GitHubModel):
+    """Check Suite Preference
 
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    Check suite configuration preferences for a repository.
     """
 
-    url: str = Field()
-    id: int = Field(description="Unique identifier of the deployment")
-    node_id: str = Field()
-    task: str = Field(description="Parameter to specify a task to execute")
-    original_environment: Missing[str] = Field(default=UNSET)
-    environment: str = Field(description="Name for the target deployment environment.")
-    description: Union[str, None] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    statuses_url: str = Field()
-    repository_url: str = Field()
-    transient_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
-    )
-    production_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    preferences: CheckSuitePreferencePropPreferences = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
 
 
-model_rebuild(DeploymentSimple)
+class CheckSuitePreferencePropPreferences(GitHubModel):
+    """CheckSuitePreferencePropPreferences"""
 
-__all__ = ("DeploymentSimple",)
+    auto_trigger_checks: Missing[
+        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems]
+    ] = Field(default=UNSET)
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems(GitHubModel):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int = Field()
+    setting: bool = Field()
+
+
+model_rebuild(CheckSuitePreference)
+model_rebuild(CheckSuitePreferencePropPreferences)
+model_rebuild(CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems)
+
+__all__ = (
+    "CheckSuitePreference",
+    "CheckSuitePreferencePropPreferences",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
+)

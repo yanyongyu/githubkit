@@ -9,53 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0061 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import TypedDict
 
 
-class PackageType(TypedDict):
-    """Package
+class DependabotPublicKeyType(TypedDict):
+    """DependabotPublicKey
 
-    A software package
+    The public key used for setting Dependabot Secrets.
     """
 
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserType]]
-    repository: NotRequired[Union[None, MinimalRepositoryType]]
-    created_at: datetime
-    updated_at: datetime
+    key_id: str
+    key: str
 
 
-class PackageTypeForResponse(TypedDict):
-    """Package
+class DependabotPublicKeyTypeForResponse(TypedDict):
+    """DependabotPublicKey
 
-    A software package
+    The public key used for setting Dependabot Secrets.
     """
 
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    repository: NotRequired[Union[None, MinimalRepositoryTypeForResponse]]
-    created_at: str
-    updated_at: str
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "PackageType",
-    "PackageTypeForResponse",
+    "DependabotPublicKeyType",
+    "DependabotPublicKeyTypeForResponse",
 )

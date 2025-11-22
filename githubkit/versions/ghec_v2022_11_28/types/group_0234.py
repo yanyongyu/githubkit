@@ -9,30 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class DependabotPublicKeyType(TypedDict):
-    """DependabotPublicKey
+class ExternalGroupType(TypedDict):
+    """ExternalGroup
 
-    The public key used for setting Dependabot Secrets.
+    Information about an external group's usage and its members
     """
 
-    key_id: str
-    key: str
+    group_id: int
+    group_name: str
+    updated_at: NotRequired[str]
+    teams: list[ExternalGroupPropTeamsItemsType]
+    members: list[ExternalGroupPropMembersItemsType]
 
 
-class DependabotPublicKeyTypeForResponse(TypedDict):
-    """DependabotPublicKey
+class ExternalGroupTypeForResponse(TypedDict):
+    """ExternalGroup
 
-    The public key used for setting Dependabot Secrets.
+    Information about an external group's usage and its members
     """
 
-    key_id: str
-    key: str
+    group_id: int
+    group_name: str
+    updated_at: NotRequired[str]
+    teams: list[ExternalGroupPropTeamsItemsTypeForResponse]
+    members: list[ExternalGroupPropMembersItemsTypeForResponse]
+
+
+class ExternalGroupPropTeamsItemsType(TypedDict):
+    """ExternalGroupPropTeamsItems"""
+
+    team_id: int
+    team_name: str
+
+
+class ExternalGroupPropTeamsItemsTypeForResponse(TypedDict):
+    """ExternalGroupPropTeamsItems"""
+
+    team_id: int
+    team_name: str
+
+
+class ExternalGroupPropMembersItemsType(TypedDict):
+    """ExternalGroupPropMembersItems"""
+
+    member_id: int
+    member_login: str
+    member_name: str
+    member_email: str
+
+
+class ExternalGroupPropMembersItemsTypeForResponse(TypedDict):
+    """ExternalGroupPropMembersItems"""
+
+    member_id: int
+    member_login: str
+    member_name: str
+    member_email: str
 
 
 __all__ = (
-    "DependabotPublicKeyType",
-    "DependabotPublicKeyTypeForResponse",
+    "ExternalGroupPropMembersItemsType",
+    "ExternalGroupPropMembersItemsTypeForResponse",
+    "ExternalGroupPropTeamsItemsType",
+    "ExternalGroupPropTeamsItemsTypeForResponse",
+    "ExternalGroupType",
+    "ExternalGroupTypeForResponse",
 )

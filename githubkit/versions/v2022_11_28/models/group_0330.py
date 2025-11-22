@@ -14,20 +14,21 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CheckImmutableReleases(GitHubModel):
-    """Check immutable releases
+class PorterAuthor(GitHubModel):
+    """Porter Author
 
-    Check immutable releases
+    Porter Author
     """
 
-    enabled: bool = Field(
-        description="Whether immutable releases are enabled for the repository."
-    )
-    enforced_by_owner: bool = Field(
-        description="Whether immutable releases are enforced by the repository owner."
-    )
+    id: int = Field()
+    remote_id: str = Field()
+    remote_name: str = Field()
+    email: str = Field()
+    name: str = Field()
+    url: str = Field()
+    import_url: str = Field()
 
 
-model_rebuild(CheckImmutableReleases)
+model_rebuild(PorterAuthor)
 
-__all__ = ("CheckImmutableReleases",)
+__all__ = ("PorterAuthor",)

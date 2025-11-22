@@ -9,30 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class Blob(GitHubModel):
-    """Blob
+class GitRef(GitHubModel):
+    """Git Reference
 
-    Blob
+    Git references within a repository
     """
 
-    content: str = Field()
-    encoding: str = Field()
-    url: str = Field()
-    sha: str = Field()
-    size: Union[int, None] = Field()
+    ref: str = Field()
     node_id: str = Field()
-    highlighted_content: Missing[str] = Field(default=UNSET)
+    url: str = Field()
+    object_: GitRefPropObject = Field(alias="object")
 
 
-model_rebuild(Blob)
+class GitRefPropObject(GitHubModel):
+    """GitRefPropObject"""
 
-__all__ = ("Blob",)
+    type: str = Field()
+    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
+    url: str = Field()
+
+
+model_rebuild(GitRef)
+model_rebuild(GitRefPropObject)
+
+__all__ = (
+    "GitRef",
+    "GitRefPropObject",
+)

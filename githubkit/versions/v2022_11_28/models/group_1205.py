@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,84 +17,37 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0145 import RepositoryRulesetBypassActor
-from .group_0146 import RepositoryRulesetConditions
-from .group_0157 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0158 import RepositoryRuleUpdate
-from .group_0160 import RepositoryRuleRequiredLinearHistory
-from .group_0161 import RepositoryRuleMergeQueue
-from .group_0163 import RepositoryRuleRequiredDeployments
-from .group_0166 import RepositoryRulePullRequest
-from .group_0168 import RepositoryRuleRequiredStatusChecks
-from .group_0170 import RepositoryRuleCommitMessagePattern
-from .group_0172 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0174 import RepositoryRuleCommitterEmailPattern
-from .group_0176 import RepositoryRuleBranchNamePattern
-from .group_0178 import RepositoryRuleTagNamePattern
-from .group_0180 import RepositoryRuleFilePathRestriction
-from .group_0182 import RepositoryRuleMaxFilePathLength
-from .group_0184 import RepositoryRuleFileExtensionRestriction
-from .group_0186 import RepositoryRuleMaxFileSize
-from .group_0189 import RepositoryRuleWorkflows
-from .group_0191 import RepositoryRuleCodeScanning
-from .group_0193 import RepositoryRuleCopilotCodeReview
 
+class ReposOwnerRepoReleasesReleaseIdPatchBody(GitHubModel):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
-
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+    tag_name: Missing[str] = Field(default=UNSET, description="The name of the tag.")
+    target_commitish: Missing[str] = Field(
         default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+        description="Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
     )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    name: Missing[str] = Field(default=UNSET, description="The name of the release.")
+    body: Missing[str] = Field(
+        default=UNSET, description="Text describing the contents of the tag."
+    )
+    draft: Missing[bool] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="`true` makes the release a draft, and `false` publishes the release.",
     )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
+    prerelease: Missing[bool] = Field(
         default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
+        description="`true` to identify the release as a prerelease, `false` to identify the release as a full release.",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    make_latest: Missing[Literal["true", "false", "legacy"]] = Field(
+        default=UNSET,
+        description="Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
+    )
+    discussion_category_name: Missing[str] = Field(
+        default=UNSET,
+        description='If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."',
+    )
 
 
-model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
+model_rebuild(ReposOwnerRepoReleasesReleaseIdPatchBody)
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBody",)

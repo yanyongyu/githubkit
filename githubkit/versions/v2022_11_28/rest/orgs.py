@@ -26,7 +26,7 @@ if TYPE_CHECKING:
 
     from githubkit import GitHubCore
     from githubkit.response import Response
-    from githubkit.typing import Missing
+    from githubkit.typing import Missing, UniqueList
     from githubkit.utils import UNSET
 
     from ..models import (
@@ -52,7 +52,10 @@ if TYPE_CHECKING:
         OrgHook,
         OrgMembership,
         OrgRepoCustomPropertyValues,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
         OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
         OrgsOrgAttestationsBulkListPostResponse200,
         OrgsOrgAttestationsRepositoriesGetResponse200Items,
@@ -99,8 +102,15 @@ if TYPE_CHECKING:
         OrgHookTypeForResponse,
         OrgMembershipTypeForResponse,
         OrgRepoCustomPropertyValuesTypeForResponse,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
         OrgsOrgArtifactsMetadataStorageRecordPostBodyType,
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
+        OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse,
         OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse,
         OrgsOrgAttestationsBulkListPostBodyType,
         OrgsOrgAttestationsBulkListPostResponse200TypeForResponse,
@@ -896,6 +906,380 @@ class OrgsClient:
         )
 
     @overload
+    def create_artifact_deployment_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def create_artifact_deployment_record(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        digest: str,
+        version: Missing[str] = UNSET,
+        status: Literal["deployed", "decommissioned"],
+        logical_environment: str,
+        physical_environment: Missing[str] = UNSET,
+        cluster: Missing[str] = UNSET,
+        deployment_name: str,
+        tags: Missing[
+            OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType
+        ] = UNSET,
+        runtime_risks: Missing[
+            UniqueList[
+                Literal[
+                    "critical-resource",
+                    "internet-exposed",
+                    "lateral-movement",
+                    "sensitive-data",
+                ]
+            ]
+        ] = UNSET,
+        github_repository: Missing[str] = UNSET,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
+    ]: ...
+
+    def create_artifact_deployment_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
+    ]:
+        """orgs/create-artifact-deployment-record
+
+        POST /orgs/{org}/artifacts/metadata/deployment-record
+
+        Create or update deployment records for an artifact associated with an organization.
+        This endpoint allows you to record information about a specific artifact, such as its name, digest, environments, cluster, and deployment.
+
+        See also: https://docs.github.com/rest/orgs/artifact-metadata#create-an-artifact-deployment-record
+        """
+
+        from ..models import (
+            OrgsOrgArtifactsMetadataDeploymentRecordPostBody,
+            OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/deployment-record"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgArtifactsMetadataDeploymentRecordPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        )
+
+    @overload
+    async def async_create_artifact_deployment_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_create_artifact_deployment_record(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        digest: str,
+        version: Missing[str] = UNSET,
+        status: Literal["deployed", "decommissioned"],
+        logical_environment: str,
+        physical_environment: Missing[str] = UNSET,
+        cluster: Missing[str] = UNSET,
+        deployment_name: str,
+        tags: Missing[
+            OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType
+        ] = UNSET,
+        runtime_risks: Missing[
+            UniqueList[
+                Literal[
+                    "critical-resource",
+                    "internet-exposed",
+                    "lateral-movement",
+                    "sensitive-data",
+                ]
+            ]
+        ] = UNSET,
+        github_repository: Missing[str] = UNSET,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
+    ]: ...
+
+    async def async_create_artifact_deployment_record(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
+    ]:
+        """orgs/create-artifact-deployment-record
+
+        POST /orgs/{org}/artifacts/metadata/deployment-record
+
+        Create or update deployment records for an artifact associated with an organization.
+        This endpoint allows you to record information about a specific artifact, such as its name, digest, environments, cluster, and deployment.
+
+        See also: https://docs.github.com/rest/orgs/artifact-metadata#create-an-artifact-deployment-record
+        """
+
+        from ..models import (
+            OrgsOrgArtifactsMetadataDeploymentRecordPostBody,
+            OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/deployment-record"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgArtifactsMetadataDeploymentRecordPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+        )
+
+    @overload
+    def set_cluster_deployment_records(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def set_cluster_deployment_records(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        logical_environment: Missing[str] = UNSET,
+        physical_environment: Missing[str] = UNSET,
+        deployments: Missing[
+            list[
+                OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
+    ]: ...
+
+    def set_cluster_deployment_records(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
+    ]:
+        """orgs/set-cluster-deployment-records
+
+        POST /orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}
+
+        Set deployment records for a given cluster.
+
+        See also: https://docs.github.com/rest/orgs/artifact-metadata#set-cluster-deployment-records
+        """
+
+        from ..models import (
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody,
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        )
+
+    @overload
+    async def async_set_cluster_deployment_records(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_set_cluster_deployment_records(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        logical_environment: Missing[str] = UNSET,
+        physical_environment: Missing[str] = UNSET,
+        deployments: Missing[
+            list[
+                OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
+            ]
+        ] = UNSET,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
+    ]: ...
+
+    async def async_set_cluster_deployment_records(
+        self,
+        org: str,
+        cluster: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
+    ]:
+        """orgs/set-cluster-deployment-records
+
+        POST /orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}
+
+        Set deployment records for a given cluster.
+
+        See also: https://docs.github.com/rest/orgs/artifact-metadata#set-cluster-deployment-records
+        """
+
+        from ..models import (
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody,
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+        )
+
+    @overload
     def create_artifact_storage_record(
         self,
         org: str,
@@ -1067,6 +1451,78 @@ class OrgsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+        )
+
+    def list_artifact_deployment_records(
+        self,
+        org: str,
+        subject_digest: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
+        OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse,
+    ]:
+        """orgs/list-artifact-deployment-records
+
+        GET /orgs/{org}/artifacts/{subject_digest}/metadata/deployment-records
+
+        List deployment records for an artifact metadata associated with an organization.
+
+        See also: https://docs.github.com/rest/orgs/artifact-metadata#list-artifact-deployment-records
+        """
+
+        from ..models import (
+            OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/{subject_digest}/metadata/deployment-records"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
+        )
+
+    async def async_list_artifact_deployment_records(
+        self,
+        org: str,
+        subject_digest: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
+        OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse,
+    ]:
+        """orgs/list-artifact-deployment-records
+
+        GET /orgs/{org}/artifacts/{subject_digest}/metadata/deployment-records
+
+        List deployment records for an artifact metadata associated with an organization.
+
+        See also: https://docs.github.com/rest/orgs/artifact-metadata#list-artifact-deployment-records
+        """
+
+        from ..models import (
+            OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
+        )
+
+        url = f"/orgs/{org}/artifacts/{subject_digest}/metadata/deployment-records"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
         )
 
     def list_artifact_storage_records(

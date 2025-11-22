@@ -1124,7 +1124,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-enterprise-usage-metrics-for-a-specific-day
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics-for-a-specific-day
         """
 
         from ..models import BasicError, CopilotUsageMetrics1DayReport
@@ -1173,7 +1173,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-enterprise-usage-metrics-for-a-specific-day
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics-for-a-specific-day
         """
 
         from ..models import BasicError, CopilotUsageMetrics1DayReport
@@ -1221,7 +1221,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-enterprise-usage-metrics
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics
         """
 
         from ..models import BasicError, CopilotUsageMetrics28DayReport
@@ -1264,7 +1264,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-enterprise-usage-metrics
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-enterprise-usage-metrics
         """
 
         from ..models import BasicError, CopilotUsageMetrics28DayReport
@@ -1308,7 +1308,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-users-usage-metrics-for-a-specific-day
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics-for-a-specific-day
         """
 
         from ..models import BasicError, CopilotUsageMetrics1DayReport
@@ -1357,7 +1357,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-users-usage-metrics-for-a-specific-day
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics-for-a-specific-day
         """
 
         from ..models import BasicError, CopilotUsageMetrics1DayReport
@@ -1405,7 +1405,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-users-usage-metrics
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics
         """
 
         from ..models import BasicError, CopilotUsageMetrics28DayReport
@@ -1448,7 +1448,7 @@ class CopilotClient:
 
         Enterprise owners, billing managers, and authorized users with fine-grained "View Enterprise Copilot Metrics" permission can retrieve Copilot metrics reports for the enterprise. OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `read:enterprise` scopes to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-users-usage-metrics
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-users-usage-metrics
         """
 
         from ..models import BasicError, CopilotUsageMetrics28DayReport

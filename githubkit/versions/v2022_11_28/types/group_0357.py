@@ -9,50 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from datetime import datetime
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class TimelineUnassignedIssueEventType(TypedDict):
-    """Timeline Unassigned Issue Event
+class DeployKeyType(TypedDict):
+    """Deploy Key
 
-    Timeline Unassigned Issue Event
+    An SSH key granting access to a single repository.
     """
 
     id: int
-    node_id: str
+    key: str
     url: str
-    actor: SimpleUserType
-    event: Literal["unassigned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
+    title: str
+    verified: bool
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[datetime, None]]
+    enabled: NotRequired[bool]
 
 
-class TimelineUnassignedIssueEventTypeForResponse(TypedDict):
-    """Timeline Unassigned Issue Event
+class DeployKeyTypeForResponse(TypedDict):
+    """Deploy Key
 
-    Timeline Unassigned Issue Event
+    An SSH key granting access to a single repository.
     """
 
     id: int
-    node_id: str
+    key: str
     url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["unassigned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
+    title: str
+    verified: bool
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[str, None]]
+    enabled: NotRequired[bool]
 
 
 __all__ = (
-    "TimelineUnassignedIssueEventType",
-    "TimelineUnassignedIssueEventTypeForResponse",
+    "DeployKeyType",
+    "DeployKeyTypeForResponse",
 )

@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksMilestone(GitHubModel):
+class WebhooksMilestone3(GitHubModel):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -28,7 +28,7 @@ class WebhooksMilestone(GitHubModel):
     closed_at: Union[datetime, None] = Field()
     closed_issues: int = Field()
     created_at: datetime = Field()
-    creator: Union[WebhooksMilestonePropCreator, None] = Field(title="User")
+    creator: Union[WebhooksMilestone3PropCreator, None] = Field(title="User")
     description: Union[str, None] = Field()
     due_on: Union[datetime, None] = Field()
     html_url: str = Field()
@@ -43,7 +43,7 @@ class WebhooksMilestone(GitHubModel):
     url: str = Field()
 
 
-class WebhooksMilestonePropCreator(GitHubModel):
+class WebhooksMilestone3PropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -65,17 +65,15 @@ class WebhooksMilestonePropCreator(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksMilestone)
-model_rebuild(WebhooksMilestonePropCreator)
+model_rebuild(WebhooksMilestone3)
+model_rebuild(WebhooksMilestone3PropCreator)
 
 __all__ = (
-    "WebhooksMilestone",
-    "WebhooksMilestonePropCreator",
+    "WebhooksMilestone3",
+    "WebhooksMilestone3PropCreator",
 )

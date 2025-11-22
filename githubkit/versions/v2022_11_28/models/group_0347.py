@@ -21,28 +21,31 @@ from .group_0003 import SimpleUser
 from .group_0010 import Integration
 
 
-class MovedColumnInProjectIssueEvent(GitHubModel):
-    """Moved Column in Project Issue Event
+class ConvertedNoteToIssueIssueEvent(GitHubModel):
+    """Converted Note to Issue Issue Event
 
-    Moved Column in Project Issue Event
+    Converted Note to Issue Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["moved_columns_in_project"] = Field()
+    event: Literal["converted_note_to_issue"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[MovedColumnInProjectIssueEventPropProjectCard] = Field(
+    performed_via_github_app: Union[Integration, None] = Field(
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    )
+    project_card: Missing[ConvertedNoteToIssueIssueEventPropProjectCard] = Field(
         default=UNSET
     )
 
 
-class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+class ConvertedNoteToIssueIssueEventPropProjectCard(GitHubModel):
+    """ConvertedNoteToIssueIssueEventPropProjectCard"""
 
     id: int = Field()
     url: str = Field()
@@ -52,10 +55,10 @@ class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
     previous_column_name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(MovedColumnInProjectIssueEvent)
-model_rebuild(MovedColumnInProjectIssueEventPropProjectCard)
+model_rebuild(ConvertedNoteToIssueIssueEvent)
+model_rebuild(ConvertedNoteToIssueIssueEventPropProjectCard)
 
 __all__ = (
-    "MovedColumnInProjectIssueEvent",
-    "MovedColumnInProjectIssueEventPropProjectCard",
+    "ConvertedNoteToIssueIssueEvent",
+    "ConvertedNoteToIssueIssueEventPropProjectCard",
 )

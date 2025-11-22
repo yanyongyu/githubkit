@@ -9,41 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GistsPostBody(GitHubModel):
-    """GistsPostBody"""
+class MarkdownPostBody(GitHubModel):
+    """MarkdownPostBody"""
 
-    description: Missing[str] = Field(
-        default=UNSET, description="Description of the gist"
+    text: str = Field(description="The Markdown text to render in HTML.")
+    mode: Missing[Literal["markdown", "gfm"]] = Field(
+        default=UNSET, description="The rendering mode."
     )
-    files: GistsPostBodyPropFiles = Field(
-        description="Names and content for the files that make up the gist"
+    context: Missing[str] = Field(
+        default=UNSET,
+        description="The repository context to use when creating references in `gfm` mode.  For example, setting `context` to `octo-org/octo-repo` will change the text `#42` into an HTML link to issue 42 in the `octo-org/octo-repo` repository.",
     )
-    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
 
 
-class GistsPostBodyPropFiles(ExtraGitHubModel):
-    """GistsPostBodyPropFiles
+model_rebuild(MarkdownPostBody)
 
-    Names and content for the files that make up the gist
-
-    Examples:
-        {'hello.rb': {'content': 'puts "Hello, World!"'}}
-    """
-
-
-model_rebuild(GistsPostBody)
-model_rebuild(GistsPostBodyPropFiles)
-
-__all__ = (
-    "GistsPostBody",
-    "GistsPostBodyPropFiles",
-)
+__all__ = ("MarkdownPostBody",)

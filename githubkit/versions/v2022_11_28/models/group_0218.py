@@ -9,32 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 
 
-class Reaction(GitHubModel):
-    """Reaction
+class TeamProject(GitHubModel):
+    """Team Project
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    A team's access to a project.
     """
 
+    owner_url: str = Field()
+    url: str = Field()
+    html_url: str = Field()
+    columns_url: str = Field()
     id: int = Field()
     node_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(description="The reaction to use")
-    created_at: datetime = Field()
+    name: str = Field()
+    body: Union[str, None] = Field()
+    number: int = Field()
+    state: str = Field()
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: str = Field()
+    updated_at: str = Field()
+    organization_permission: Missing[str] = Field(
+        default=UNSET,
+        description="The organization permission for this project. Only present when owner is an organization.",
+    )
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the project is private or not. Only present when owner is an organization.",
+    )
+    permissions: TeamProjectPropPermissions = Field()
 
 
-model_rebuild(Reaction)
+class TeamProjectPropPermissions(GitHubModel):
+    """TeamProjectPropPermissions"""
 
-__all__ = ("Reaction",)
+    read: bool = Field()
+    write: bool = Field()
+    admin: bool = Field()
+
+
+model_rebuild(TeamProject)
+model_rebuild(TeamProjectPropPermissions)
+
+__all__ = (
+    "TeamProject",
+    "TeamProjectPropPermissions",
+)

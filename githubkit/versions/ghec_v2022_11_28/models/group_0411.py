@@ -19,35 +19,24 @@ from .group_0003 import SimpleUser
 from .group_0010 import Integration
 
 
-class RenamedIssueEvent(GitHubModel):
-    """Renamed Issue Event
+class LockedIssueEvent(GitHubModel):
+    """Locked Issue Event
 
-    Renamed Issue Event
+    Locked Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["renamed"] = Field()
+    event: Literal["locked"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    rename: RenamedIssueEventPropRename = Field()
+    lock_reason: Union[str, None] = Field()
 
 
-class RenamedIssueEventPropRename(GitHubModel):
-    """RenamedIssueEventPropRename"""
+model_rebuild(LockedIssueEvent)
 
-    from_: str = Field(alias="from")
-    to: str = Field()
-
-
-model_rebuild(RenamedIssueEvent)
-model_rebuild(RenamedIssueEventPropRename)
-
-__all__ = (
-    "RenamedIssueEvent",
-    "RenamedIssueEventPropRename",
-)
+__all__ = ("LockedIssueEvent",)

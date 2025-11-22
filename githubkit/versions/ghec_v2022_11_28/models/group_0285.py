@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 
 from pydantic import Field
@@ -19,42 +18,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0195 import ReactionRollup
 
 
-class TeamDiscussion(GitHubModel):
-    """Team Discussion
+class TeamProject(GitHubModel):
+    """Team Project
 
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
+    A team's access to a project.
     """
 
-    author: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The main text of the discussion.")
-    body_html: str = Field()
-    body_version: str = Field(
-        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
-    )
-    comments_count: int = Field()
-    comments_url: str = Field()
-    created_at: datetime = Field()
-    last_edited_at: Union[datetime, None] = Field()
-    html_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The unique sequence number of a team discussion.")
-    pinned: bool = Field(
-        description="Whether or not this discussion should be pinned for easy retrieval."
-    )
-    private: bool = Field(
-        description="Whether or not this discussion should be restricted to team members and organization owners."
-    )
-    team_url: str = Field()
-    title: str = Field(description="The title of the discussion.")
-    updated_at: datetime = Field()
+    owner_url: str = Field()
     url: str = Field()
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    html_url: str = Field()
+    columns_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    body: Union[str, None] = Field()
+    number: int = Field()
+    state: str = Field()
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: str = Field()
+    updated_at: str = Field()
+    organization_permission: Missing[str] = Field(
+        default=UNSET,
+        description="The organization permission for this project. Only present when owner is an organization.",
+    )
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the project is private or not. Only present when owner is an organization.",
+    )
+    permissions: TeamProjectPropPermissions = Field()
 
 
-model_rebuild(TeamDiscussion)
+class TeamProjectPropPermissions(GitHubModel):
+    """TeamProjectPropPermissions"""
 
-__all__ = ("TeamDiscussion",)
+    read: bool = Field()
+    write: bool = Field()
+    admin: bool = Field()
+
+
+model_rebuild(TeamProject)
+model_rebuild(TeamProjectPropPermissions)
+
+__all__ = (
+    "TeamProject",
+    "TeamProjectPropPermissions",
+)

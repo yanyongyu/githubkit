@@ -9,29 +9,131 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ActionsRepositoryPermissionsType(TypedDict):
-    """ActionsRepositoryPermissions"""
-
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0211 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0301 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0302 import SimpleCommitType, SimpleCommitTypeForResponse
 
 
-class ActionsRepositoryPermissionsTypeForResponse(TypedDict):
-    """ActionsRepositoryPermissions"""
+class WorkflowRunType(TypedDict):
+    """Workflow Run
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    An invocation of a workflow
+    """
+
+    id: int
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    check_suite_id: NotRequired[int]
+    check_suite_node_id: NotRequired[str]
+    head_branch: Union[str, None]
+    head_sha: str
+    path: str
+    run_number: int
+    run_attempt: NotRequired[int]
+    referenced_workflows: NotRequired[Union[list[ReferencedWorkflowType], None]]
+    event: str
+    status: Union[str, None]
+    conclusion: Union[str, None]
+    workflow_id: int
+    url: str
+    html_url: str
+    pull_requests: Union[list[PullRequestMinimalType], None]
+    created_at: datetime
+    updated_at: datetime
+    actor: NotRequired[SimpleUserType]
+    triggering_actor: NotRequired[SimpleUserType]
+    run_started_at: NotRequired[datetime]
+    jobs_url: str
+    logs_url: str
+    check_suite_url: str
+    artifacts_url: str
+    cancel_url: str
+    rerun_url: str
+    previous_attempt_url: NotRequired[Union[str, None]]
+    workflow_url: str
+    head_commit: Union[None, SimpleCommitType]
+    repository: MinimalRepositoryType
+    head_repository: MinimalRepositoryType
+    head_repository_id: NotRequired[int]
+    display_title: str
+
+
+class WorkflowRunTypeForResponse(TypedDict):
+    """Workflow Run
+
+    An invocation of a workflow
+    """
+
+    id: int
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    check_suite_id: NotRequired[int]
+    check_suite_node_id: NotRequired[str]
+    head_branch: Union[str, None]
+    head_sha: str
+    path: str
+    run_number: int
+    run_attempt: NotRequired[int]
+    referenced_workflows: NotRequired[
+        Union[list[ReferencedWorkflowTypeForResponse], None]
+    ]
+    event: str
+    status: Union[str, None]
+    conclusion: Union[str, None]
+    workflow_id: int
+    url: str
+    html_url: str
+    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
+    created_at: str
+    updated_at: str
+    actor: NotRequired[SimpleUserTypeForResponse]
+    triggering_actor: NotRequired[SimpleUserTypeForResponse]
+    run_started_at: NotRequired[str]
+    jobs_url: str
+    logs_url: str
+    check_suite_url: str
+    artifacts_url: str
+    cancel_url: str
+    rerun_url: str
+    previous_attempt_url: NotRequired[Union[str, None]]
+    workflow_url: str
+    head_commit: Union[None, SimpleCommitTypeForResponse]
+    repository: MinimalRepositoryTypeForResponse
+    head_repository: MinimalRepositoryTypeForResponse
+    head_repository_id: NotRequired[int]
+    display_title: str
+
+
+class ReferencedWorkflowType(TypedDict):
+    """Referenced workflow
+
+    A workflow referenced/reused by the initial caller workflow
+    """
+
+    path: str
+    sha: str
+    ref: NotRequired[str]
+
+
+class ReferencedWorkflowTypeForResponse(TypedDict):
+    """Referenced workflow
+
+    A workflow referenced/reused by the initial caller workflow
+    """
+
+    path: str
+    sha: str
+    ref: NotRequired[str]
 
 
 __all__ = (
-    "ActionsRepositoryPermissionsType",
-    "ActionsRepositoryPermissionsTypeForResponse",
+    "ReferencedWorkflowType",
+    "ReferencedWorkflowTypeForResponse",
+    "WorkflowRunType",
+    "WorkflowRunTypeForResponse",
 )

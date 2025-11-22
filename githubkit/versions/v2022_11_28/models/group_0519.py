@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0450 import EnterpriseWebhooks
-from .group_0451 import SimpleInstallation
-from .group_0452 import OrganizationSimpleWebhooks
-from .group_0453 import RepositoryWebhooks
-from .group_0520 import WebhookCodeScanningAlertCreatedPropAlert
+from .group_0448 import EnterpriseWebhooks
+from .group_0449 import SimpleInstallation
+from .group_0450 import OrganizationSimpleWebhooks
+from .group_0451 import RepositoryWebhooks
+from .group_0520 import WebhookCodeScanningAlertFixedPropAlert
 
 
-class WebhookCodeScanningAlertCreated(GitHubModel):
-    """code_scanning_alert created event"""
+class WebhookCodeScanningAlertFixed(GitHubModel):
+    """code_scanning_alert fixed event"""
 
-    action: Literal["created"] = Field()
-    alert: WebhookCodeScanningAlertCreatedPropAlert = Field(
+    action: Literal["fixed"] = Field()
+    alert: WebhookCodeScanningAlertFixedPropAlert = Field(
         description="The code scanning alert involved in the event."
     )
     commit_oid: str = Field(
@@ -60,6 +60,6 @@ class WebhookCodeScanningAlertCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCodeScanningAlertCreated)
+model_rebuild(WebhookCodeScanningAlertFixed)
 
-__all__ = ("WebhookCodeScanningAlertCreated",)
+__all__ = ("WebhookCodeScanningAlertFixed",)

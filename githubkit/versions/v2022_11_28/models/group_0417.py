@@ -14,30 +14,15 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Tag(GitHubModel):
-    """Tag
+class Topic(GitHubModel):
+    """Topic
 
-    Tag
+    A topic aggregates entities that are related to a subject.
     """
 
-    name: str = Field()
-    commit: TagPropCommit = Field()
-    zipball_url: str = Field()
-    tarball_url: str = Field()
-    node_id: str = Field()
+    names: list[str] = Field()
 
 
-class TagPropCommit(GitHubModel):
-    """TagPropCommit"""
+model_rebuild(Topic)
 
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(Tag)
-model_rebuild(TagPropCommit)
-
-__all__ = (
-    "Tag",
-    "TagPropCommit",
-)
+__all__ = ("Topic",)

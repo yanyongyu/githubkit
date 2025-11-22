@@ -18,17 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0534 import EnterpriseWebhooks
-from .group_0535 import SimpleInstallation
-from .group_0536 import OrganizationSimpleWebhooks
-from .group_0537 import RepositoryWebhooks
-from .group_0568 import WebhooksProject
+from .group_0527 import EnterpriseWebhooks
+from .group_0528 import SimpleInstallation
+from .group_0529 import OrganizationSimpleWebhooks
+from .group_0530 import RepositoryWebhooks
+from .group_0561 import WebhooksProject
 
 
-class WebhookProjectClosed(GitHubModel):
-    """project closed event"""
+class WebhookProjectEdited(GitHubModel):
+    """project edited event"""
 
-    action: Literal["closed"] = Field()
+    action: Literal["edited"] = Field()
+    changes: Missing[WebhookProjectEditedPropChanges] = Field(
+        default=UNSET,
+        description="The changes to the project if the action was `edited`.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,9 +54,47 @@ class WebhookProjectClosed(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookProjectClosed)
+class WebhookProjectEditedPropChanges(GitHubModel):
+    """WebhookProjectEditedPropChanges
 
-__all__ = ("WebhookProjectClosed",)
+    The changes to the project if the action was `edited`.
+    """
+
+    body: Missing[WebhookProjectEditedPropChangesPropBody] = Field(default=UNSET)
+    name: Missing[WebhookProjectEditedPropChangesPropName] = Field(default=UNSET)
+
+
+class WebhookProjectEditedPropChangesPropBody(GitHubModel):
+    """WebhookProjectEditedPropChangesPropBody"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the body if the action was `edited`.",
+    )
+
+
+class WebhookProjectEditedPropChangesPropName(GitHubModel):
+    """WebhookProjectEditedPropChangesPropName"""
+
+    from_: str = Field(
+        alias="from",
+        description="The changes to the project if the action was `edited`.",
+    )
+
+
+model_rebuild(WebhookProjectEdited)
+model_rebuild(WebhookProjectEditedPropChanges)
+model_rebuild(WebhookProjectEditedPropChangesPropBody)
+model_rebuild(WebhookProjectEditedPropChangesPropName)
+
+__all__ = (
+    "WebhookProjectEdited",
+    "WebhookProjectEditedPropChanges",
+    "WebhookProjectEditedPropChangesPropBody",
+    "WebhookProjectEditedPropChangesPropName",
+)

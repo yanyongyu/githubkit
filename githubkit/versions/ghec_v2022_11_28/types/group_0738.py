@@ -14,26 +14,26 @@ from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0739 import (
-    WebhookIssuesOpenedPropChangesPropOldIssueType,
-    WebhookIssuesOpenedPropChangesPropOldIssueTypeForResponse,
+    WebhookIssuesTransferredPropChangesPropNewIssueType,
+    WebhookIssuesTransferredPropChangesPropNewIssueTypeForResponse,
 )
 
 
-class WebhookIssuesOpenedPropChangesType(TypedDict):
-    """WebhookIssuesOpenedPropChanges"""
+class WebhookIssuesTransferredPropChangesType(TypedDict):
+    """WebhookIssuesTransferredPropChanges"""
 
-    old_issue: Union[WebhookIssuesOpenedPropChangesPropOldIssueType, None]
-    old_repository: WebhookIssuesOpenedPropChangesPropOldRepositoryType
-
-
-class WebhookIssuesOpenedPropChangesTypeForResponse(TypedDict):
-    """WebhookIssuesOpenedPropChanges"""
-
-    old_issue: Union[WebhookIssuesOpenedPropChangesPropOldIssueTypeForResponse, None]
-    old_repository: WebhookIssuesOpenedPropChangesPropOldRepositoryTypeForResponse
+    new_issue: WebhookIssuesTransferredPropChangesPropNewIssueType
+    new_repository: WebhookIssuesTransferredPropChangesPropNewRepositoryType
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryType(TypedDict):
+class WebhookIssuesTransferredPropChangesTypeForResponse(TypedDict):
+    """WebhookIssuesTransferredPropChanges"""
+
+    new_issue: WebhookIssuesTransferredPropChangesPropNewIssueTypeForResponse
+    new_repository: WebhookIssuesTransferredPropChangesPropNewRepositoryTypeForResponse
+
+
+class WebhookIssuesTransferredPropChangesPropNewRepositoryType(TypedDict):
     """Repository
 
     A git repository
@@ -59,7 +59,7 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryType(TypedDict):
     contributors_url: str
     created_at: Union[int, datetime]
     custom_properties: NotRequired[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType
+        WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesType
     ]
     default_branch: str
     delete_branch_on_merge: NotRequired[bool]
@@ -77,12 +77,12 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryType(TypedDict):
     git_refs_url: str
     git_tags_url: str
     git_url: str
-    has_discussions: NotRequired[bool]
     has_downloads: bool
     has_issues: bool
     has_pages: bool
     has_projects: bool
     has_wiki: bool
+    has_discussions: bool
     homepage: Union[str, None]
     hooks_url: str
     html_url: str
@@ -96,7 +96,7 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryType(TypedDict):
     language: Union[str, None]
     languages_url: str
     license_: Union[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType, None
+        WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseType, None
     ]
     master_branch: NotRequired[str]
     merges_url: str
@@ -108,9 +108,11 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryType(TypedDict):
     open_issues: int
     open_issues_count: int
     organization: NotRequired[str]
-    owner: Union[WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType, None]
+    owner: Union[
+        WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerType, None
+    ]
     permissions: NotRequired[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType
+        WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsType
     ]
     private: bool
     public: NotRequired[bool]
@@ -139,7 +141,7 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryType(TypedDict):
     web_commit_signoff_required: NotRequired[bool]
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryTypeForResponse(TypedDict):
+class WebhookIssuesTransferredPropChangesPropNewRepositoryTypeForResponse(TypedDict):
     """Repository
 
     A git repository
@@ -165,7 +167,7 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryTypeForResponse(TypedDict):
     contributors_url: str
     created_at: Union[int, str]
     custom_properties: NotRequired[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesTypeForResponse
+        WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesTypeForResponse
     ]
     default_branch: str
     delete_branch_on_merge: NotRequired[bool]
@@ -183,12 +185,12 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryTypeForResponse(TypedDict):
     git_refs_url: str
     git_tags_url: str
     git_url: str
-    has_discussions: NotRequired[bool]
     has_downloads: bool
     has_issues: bool
     has_pages: bool
     has_projects: bool
     has_wiki: bool
+    has_discussions: bool
     homepage: Union[str, None]
     hooks_url: str
     html_url: str
@@ -202,7 +204,8 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryTypeForResponse(TypedDict):
     language: Union[str, None]
     languages_url: str
     license_: Union[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseTypeForResponse, None
+        WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseTypeForResponse,
+        None,
     ]
     master_branch: NotRequired[str]
     merges_url: str
@@ -215,10 +218,11 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryTypeForResponse(TypedDict):
     open_issues_count: int
     organization: NotRequired[str]
     owner: Union[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerTypeForResponse, None
+        WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerTypeForResponse,
+        None,
     ]
     permissions: NotRequired[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsTypeForResponse
+        WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsTypeForResponse
     ]
     private: bool
     public: NotRequired[bool]
@@ -247,21 +251,10 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryTypeForResponse(TypedDict):
     web_commit_signoff_required: NotRequired[bool]
 
 
-WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType: TypeAlias = (
-    dict[str, Any]
-)
-"""WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties
-
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
-
-
-WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[
+WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesType: TypeAlias = dict[
     str, Any
 ]
-"""WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties
+"""WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomProperties
 
 The custom properties that were defined for the repository. The keys are the
 custom property names, and the values are the corresponding custom property
@@ -269,7 +262,18 @@ values.
 """
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType(TypedDict):
+WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
+
+
+class WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseType(TypedDict):
     """License"""
 
     key: str
@@ -279,7 +283,7 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType(TypedDict):
     url: Union[str, None]
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseTypeForResponse(
+class WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseTypeForResponse(
     TypedDict
 ):
     """License"""
@@ -291,7 +295,7 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseTypeForResponse(
     url: Union[str, None]
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType(TypedDict):
+class WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -318,7 +322,7 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerTypeForResponse(
+class WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -347,8 +351,10 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerTypeForResponse(
     user_view_type: NotRequired[str]
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType(TypedDict):
-    """WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions"""
+class WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsType(
+    TypedDict
+):
+    """WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissions"""
 
     admin: bool
     maintain: NotRequired[bool]
@@ -357,10 +363,10 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType(TypedDi
     triage: NotRequired[bool]
 
 
-class WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsTypeForResponse(
+class WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsTypeForResponse(
     TypedDict
 ):
-    """WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions"""
+    """WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissions"""
 
     admin: bool
     maintain: NotRequired[bool]
@@ -370,16 +376,16 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsTypeForRespo
 
 
 __all__ = (
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesTypeForResponse",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseTypeForResponse",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerTypeForResponse",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsTypeForResponse",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryType",
-    "WebhookIssuesOpenedPropChangesPropOldRepositoryTypeForResponse",
-    "WebhookIssuesOpenedPropChangesType",
-    "WebhookIssuesOpenedPropChangesTypeForResponse",
+    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesType",
+    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesTypeForResponse",
+    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseType",
+    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseTypeForResponse",
+    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerType",
+    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerTypeForResponse",
+    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsType",
+    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsTypeForResponse",
+    "WebhookIssuesTransferredPropChangesPropNewRepositoryType",
+    "WebhookIssuesTransferredPropChangesPropNewRepositoryTypeForResponse",
+    "WebhookIssuesTransferredPropChangesType",
+    "WebhookIssuesTransferredPropChangesTypeForResponse",
 )

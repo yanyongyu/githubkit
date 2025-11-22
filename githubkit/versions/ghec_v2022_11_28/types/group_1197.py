@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ProjectsColumnsColumnIdPatchBodyType(TypedDict):
-    """ProjectsColumnsColumnIdPatchBody"""
+class ProjectsColumnsColumnIdMovesPostBodyType(TypedDict):
+    """ProjectsColumnsColumnIdMovesPostBody"""
 
-    name: str
+    position: str
 
 
-class ProjectsColumnsColumnIdPatchBodyTypeForResponse(TypedDict):
-    """ProjectsColumnsColumnIdPatchBody"""
+class ProjectsColumnsColumnIdMovesPostBodyTypeForResponse(TypedDict):
+    """ProjectsColumnsColumnIdMovesPostBody"""
 
-    name: str
+    position: str
 
 
 __all__ = (
-    "ProjectsColumnsColumnIdPatchBodyType",
-    "ProjectsColumnsColumnIdPatchBodyTypeForResponse",
+    "ProjectsColumnsColumnIdMovesPostBodyType",
+    "ProjectsColumnsColumnIdMovesPostBodyTypeForResponse",
 )

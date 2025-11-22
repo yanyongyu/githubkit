@@ -12,32 +12,39 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class GitRef(GitHubModel):
-    """Git Reference
+class GitTree(GitHubModel):
+    """Git Tree
 
-    Git references within a repository
+    The hierarchy between files in a Git repository.
     """
 
-    ref: str = Field()
-    node_id: str = Field()
-    url: str = Field()
-    object_: GitRefPropObject = Field(alias="object")
+    sha: str = Field()
+    url: Missing[str] = Field(default=UNSET)
+    truncated: bool = Field()
+    tree: list[GitTreePropTreeItems] = Field(
+        description="Objects specifying a tree structure"
+    )
 
 
-class GitRefPropObject(GitHubModel):
-    """GitRefPropObject"""
+class GitTreePropTreeItems(GitHubModel):
+    """GitTreePropTreeItems"""
 
+    path: str = Field()
+    mode: str = Field()
     type: str = Field()
-    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
-    url: str = Field()
+    sha: str = Field()
+    size: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(GitRef)
-model_rebuild(GitRefPropObject)
+model_rebuild(GitTree)
+model_rebuild(GitTreePropTreeItems)
 
 __all__ = (
-    "GitRef",
-    "GitRefPropObject",
+    "GitTree",
+    "GitTreePropTreeItems",
 )

@@ -9,99 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookProjectCardMovedPropProjectCardAllof1Type(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardAllof1"""
-
-    after_id: Union[int, None]
-    archived: NotRequired[bool]
-    column_id: NotRequired[int]
-    column_url: NotRequired[str]
-    created_at: NotRequired[str]
-    creator: NotRequired[
-        Union[WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType, None]
-    ]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    note: NotRequired[Union[str, None]]
-    project_url: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0450 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0481 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
 
 
-class WebhookProjectCardMovedPropProjectCardAllof1TypeForResponse(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardAllof1"""
+class WebhookProjectColumnCreatedType(TypedDict):
+    """project_column created event"""
 
-    after_id: Union[int, None]
-    archived: NotRequired[bool]
-    column_id: NotRequired[int]
-    column_url: NotRequired[str]
-    created_at: NotRequired[str]
-    creator: NotRequired[
-        Union[
-            WebhookProjectCardMovedPropProjectCardAllof1PropCreatorTypeForResponse, None
-        ]
-    ]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    note: NotRequired[Union[str, None]]
-    project_url: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_column: WebhooksProjectColumnType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
+class WebhookProjectColumnCreatedTypeForResponse(TypedDict):
+    """project_column created event"""
 
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhookProjectCardMovedPropProjectCardAllof1PropCreatorTypeForResponse(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
-
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_column: WebhooksProjectColumnTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType",
-    "WebhookProjectCardMovedPropProjectCardAllof1PropCreatorTypeForResponse",
-    "WebhookProjectCardMovedPropProjectCardAllof1Type",
-    "WebhookProjectCardMovedPropProjectCardAllof1TypeForResponse",
+    "WebhookProjectColumnCreatedType",
+    "WebhookProjectColumnCreatedTypeForResponse",
 )

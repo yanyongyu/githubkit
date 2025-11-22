@@ -9,26 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
+class StargazerType(TypedDict):
+    """Stargazer
 
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+    Stargazer
+    """
+
+    starred_at: datetime
+    user: Union[None, SimpleUserType]
 
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse(
-    TypedDict
-):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
+class StargazerTypeForResponse(TypedDict):
+    """Stargazer
 
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+    Stargazer
+    """
+
+    starred_at: str
+    user: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse",
+    "StargazerType",
+    "StargazerTypeForResponse",
 )

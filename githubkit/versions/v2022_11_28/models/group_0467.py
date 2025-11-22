@@ -12,18 +12,29 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class WebhooksRepositoriesAddedItems(GitHubModel):
-    """WebhooksRepositoriesAddedItems"""
+class WebhooksChanges(GitHubModel):
+    """WebhooksChanges
 
-    full_name: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    private: bool = Field(description="Whether the repository is private or public.")
+    The changes to the comment.
+    """
+
+    body: Missing[WebhooksChangesPropBody] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksRepositoriesAddedItems)
+class WebhooksChangesPropBody(GitHubModel):
+    """WebhooksChangesPropBody"""
 
-__all__ = ("WebhooksRepositoriesAddedItems",)
+    from_: str = Field(alias="from", description="The previous version of the body.")
+
+
+model_rebuild(WebhooksChanges)
+model_rebuild(WebhooksChangesPropBody)
+
+__all__ = (
+    "WebhooksChanges",
+    "WebhooksChangesPropBody",
+)

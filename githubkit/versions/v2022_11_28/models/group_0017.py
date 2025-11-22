@@ -36,6 +36,10 @@ class AppPermissions(GitHubModel):
         default=UNSET,
         description="The level of permission to grant the access token for repository creation, deletion, settings, teams, and collaborators creation.",
     )
+    attestations: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to create and retrieve the access token for repository attestations.",
+    )
     checks: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
         description="The level of permission to grant the access token for checks on code.",
@@ -56,6 +60,10 @@ class AppPermissions(GitHubModel):
         default=UNSET,
         description="The level of permission to grant the access token for deployments and deployment statuses.",
     )
+    discussions: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for discussions and related comments and labels.",
+    )
     environments: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
         description="The level of permission to grant the access token for managing repository environments.",
@@ -63,6 +71,10 @@ class AppPermissions(GitHubModel):
     issues: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
         description="The level of permission to grant the access token for issues and related comments, assignees, labels, and milestones.",
+    )
+    merge_queues: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to manage the merge queues for a repository.",
     )
     metadata: Missing[Literal["read", "write"]] = Field(
         default=UNSET,

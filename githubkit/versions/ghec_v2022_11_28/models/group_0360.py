@@ -14,68 +14,29 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class RepositoryCollaboratorPermission(GitHubModel):
-    """Repository Collaborator Permission
+class Status(GitHubModel):
+    """Status
 
-    Repository Collaborator Permission
+    The status of a commit.
     """
 
-    permission: str = Field()
-    role_name: str = Field()
-    user: Union[None, Collaborator] = Field()
-
-
-class Collaborator(GitHubModel):
-    """Collaborator
-
-    Collaborator
-    """
-
-    login: str = Field()
-    id: int = Field()
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
     url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    permissions: Missing[CollaboratorPropPermissions] = Field(default=UNSET)
-    role_name: str = Field()
-    user_view_type: Missing[str] = Field(default=UNSET)
+    avatar_url: Union[str, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    state: str = Field()
+    description: Union[str, None] = Field()
+    target_url: Union[str, None] = Field()
+    context: str = Field()
+    created_at: str = Field()
+    updated_at: str = Field()
+    creator: Union[None, SimpleUser] = Field()
 
 
-class CollaboratorPropPermissions(GitHubModel):
-    """CollaboratorPropPermissions"""
+model_rebuild(Status)
 
-    pull: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    admin: bool = Field()
-
-
-model_rebuild(RepositoryCollaboratorPermission)
-model_rebuild(Collaborator)
-model_rebuild(CollaboratorPropPermissions)
-
-__all__ = (
-    "Collaborator",
-    "CollaboratorPropPermissions",
-    "RepositoryCollaboratorPermission",
-)
+__all__ = ("Status",)

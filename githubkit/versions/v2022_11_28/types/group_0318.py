@@ -9,25 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
-    """Deployment branch and tag policy name pattern"""
+class CustomDeploymentRuleAppType(TypedDict):
+    """Custom deployment protection rule app
 
-    name: str
-    type: NotRequired[Literal["branch", "tag"]]
+    A GitHub App that is providing a custom deployment protection rule.
+    """
+
+    id: int
+    slug: str
+    integration_url: str
+    node_id: str
 
 
-class DeploymentBranchPolicyNamePatternWithTypeTypeForResponse(TypedDict):
-    """Deployment branch and tag policy name pattern"""
+class CustomDeploymentRuleAppTypeForResponse(TypedDict):
+    """Custom deployment protection rule app
 
-    name: str
-    type: NotRequired[Literal["branch", "tag"]]
+    A GitHub App that is providing a custom deployment protection rule.
+    """
+
+    id: int
+    slug: str
+    integration_url: str
+    node_id: str
 
 
 __all__ = (
-    "DeploymentBranchPolicyNamePatternWithTypeType",
-    "DeploymentBranchPolicyNamePatternWithTypeTypeForResponse",
+    "CustomDeploymentRuleAppType",
+    "CustomDeploymentRuleAppTypeForResponse",
 )

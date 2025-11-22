@@ -21,37 +21,41 @@ from .group_0003 import SimpleUser
 from .group_0010 import Integration
 
 
-class ReviewDismissedIssueEvent(GitHubModel):
-    """Review Dismissed Issue Event
+class RemovedFromProjectIssueEvent(GitHubModel):
+    """Removed from Project Issue Event
 
-    Review Dismissed Issue Event
+    Removed from Project Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["review_dismissed"] = Field()
+    event: Literal["removed_from_project"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    dismissed_review: ReviewDismissedIssueEventPropDismissedReview = Field()
+    project_card: Missing[RemovedFromProjectIssueEventPropProjectCard] = Field(
+        default=UNSET
+    )
 
 
-class ReviewDismissedIssueEventPropDismissedReview(GitHubModel):
-    """ReviewDismissedIssueEventPropDismissedReview"""
+class RemovedFromProjectIssueEventPropProjectCard(GitHubModel):
+    """RemovedFromProjectIssueEventPropProjectCard"""
 
-    state: str = Field()
-    review_id: int = Field()
-    dismissal_message: Union[str, None] = Field()
-    dismissal_commit_id: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    url: str = Field()
+    project_id: int = Field()
+    project_url: str = Field()
+    column_name: str = Field()
+    previous_column_name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReviewDismissedIssueEvent)
-model_rebuild(ReviewDismissedIssueEventPropDismissedReview)
+model_rebuild(RemovedFromProjectIssueEvent)
+model_rebuild(RemovedFromProjectIssueEventPropProjectCard)
 
 __all__ = (
-    "ReviewDismissedIssueEvent",
-    "ReviewDismissedIssueEventPropDismissedReview",
+    "RemovedFromProjectIssueEvent",
+    "RemovedFromProjectIssueEventPropProjectCard",
 )

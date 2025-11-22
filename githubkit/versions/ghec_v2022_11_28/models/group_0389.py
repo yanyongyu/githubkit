@@ -9,19 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DeploymentBranchPolicyNamePattern(GitHubModel):
-    """Deployment branch policy name pattern"""
+class Blob(GitHubModel):
+    """Blob
 
-    name: str = Field(
-        description="The name pattern that branches must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
-    )
+    Blob
+    """
+
+    content: str = Field()
+    encoding: str = Field()
+    url: str = Field()
+    sha: str = Field()
+    size: Union[int, None] = Field()
+    node_id: str = Field()
+    highlighted_content: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(DeploymentBranchPolicyNamePattern)
+model_rebuild(Blob)
 
-__all__ = ("DeploymentBranchPolicyNamePattern",)
+__all__ = ("Blob",)

@@ -9,31 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0192 import ReactionRollupType, ReactionRollupTypeForResponse
 
-class ImmutableReleasesOrganizationSettingsType(TypedDict):
-    """Check immutable releases organization settings
 
-    Check immutable releases settings for an organization.
+class TeamDiscussionCommentType(TypedDict):
+    """Team Discussion Comment
+
+    A reply to a discussion within a team.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    author: Union[None, SimpleUserType]
+    body: str
+    body_html: str
+    body_version: str
+    created_at: datetime
+    last_edited_at: Union[datetime, None]
+    discussion_url: str
+    html_url: str
+    node_id: str
+    number: int
+    updated_at: datetime
+    url: str
+    reactions: NotRequired[ReactionRollupType]
 
 
-class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
-    """Check immutable releases organization settings
+class TeamDiscussionCommentTypeForResponse(TypedDict):
+    """Team Discussion Comment
 
-    Check immutable releases settings for an organization.
+    A reply to a discussion within a team.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    author: Union[None, SimpleUserTypeForResponse]
+    body: str
+    body_html: str
+    body_version: str
+    created_at: str
+    last_edited_at: Union[str, None]
+    discussion_url: str
+    html_url: str
+    node_id: str
+    number: int
+    updated_at: str
+    url: str
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "ImmutableReleasesOrganizationSettingsType",
-    "ImmutableReleasesOrganizationSettingsTypeForResponse",
+    "TeamDiscussionCommentType",
+    "TeamDiscussionCommentTypeForResponse",
 )

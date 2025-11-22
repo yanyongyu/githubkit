@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsPublicKeyType(TypedDict):
-    """ActionsPublicKey
+class CodespacesPublicKeyType(TypedDict):
+    """CodespacesPublicKey
 
-    The public key used for setting Actions Secrets.
+    The public key used for setting Codespaces secrets.
     """
 
     key_id: str
@@ -26,10 +26,10 @@ class ActionsPublicKeyType(TypedDict):
     created_at: NotRequired[str]
 
 
-class ActionsPublicKeyTypeForResponse(TypedDict):
-    """ActionsPublicKey
+class CodespacesPublicKeyTypeForResponse(TypedDict):
+    """CodespacesPublicKey
 
-    The public key used for setting Actions Secrets.
+    The public key used for setting Codespaces secrets.
     """
 
     key_id: str
@@ -41,6 +41,6 @@ class ActionsPublicKeyTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "ActionsPublicKeyType",
-    "ActionsPublicKeyTypeForResponse",
+    "CodespacesPublicKeyType",
+    "CodespacesPublicKeyTypeForResponse",
 )

@@ -17,93 +17,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0105 import RepositoryRulesetBypassActor
-from .group_0118 import EnterpriseRulesetConditionsOneof0
-from .group_0119 import EnterpriseRulesetConditionsOneof1
-from .group_0120 import EnterpriseRulesetConditionsOneof2
-from .group_0121 import EnterpriseRulesetConditionsOneof3
-from .group_0122 import EnterpriseRulesetConditionsOneof4
-from .group_0123 import EnterpriseRulesetConditionsOneof5
-from .group_0124 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0125 import RepositoryRuleUpdate
-from .group_0127 import RepositoryRuleRequiredLinearHistory
-from .group_0128 import RepositoryRuleRequiredDeployments
-from .group_0131 import RepositoryRulePullRequest
-from .group_0133 import RepositoryRuleRequiredStatusChecks
-from .group_0135 import RepositoryRuleCommitMessagePattern
-from .group_0137 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0139 import RepositoryRuleCommitterEmailPattern
-from .group_0141 import RepositoryRuleBranchNamePattern
-from .group_0143 import RepositoryRuleTagNamePattern
-from .group_0145 import RepositoryRuleFilePathRestriction
-from .group_0147 import RepositoryRuleMaxFilePathLength
-from .group_0149 import RepositoryRuleFileExtensionRestriction
-from .group_0151 import RepositoryRuleMaxFileSize
-from .group_0154 import RepositoryRuleWorkflows
-from .group_0156 import RepositoryRuleCodeScanning
 
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-class EnterprisesEnterpriseRulesetsPostBody(GitHubModel):
-    """EnterprisesEnterpriseRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
+    id: Missing[str] = Field(
+        default=UNSET, description="Unique identifier for the cost center"
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    name: Missing[str] = Field(default=UNSET, description="Name of the cost center")
+    azure_subscription: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
     )
-    conditions: Missing[
-        Union[
-            EnterpriseRulesetConditionsOneof0,
-            EnterpriseRulesetConditionsOneof1,
-            EnterpriseRulesetConditionsOneof2,
-            EnterpriseRulesetConditionsOneof3,
-            EnterpriseRulesetConditionsOneof4,
-            EnterpriseRulesetConditionsOneof5,
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
+    )
+    resources: Missing[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
         ]
     ] = Field(
-        default=UNSET,
-        title="Enterprise ruleset conditions",
-        description="Conditions for an enterprise ruleset. The conditions object should contain either the `organization_id` or `organization_name` property and the `repository_name` or `repository_property` property. For branch and tag rulesets, the conditions object should also contain the `ref_name` property.",
+        default=UNSET, description="List of resources assigned to this cost center"
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(EnterprisesEnterpriseRulesetsPostBody)
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
 
-__all__ = ("EnterprisesEnterpriseRulesetsPostBody",)
+    type: Missing[str] = Field(
+        default=UNSET, description="Type of resource (User, Org, or Repo)"
+    )
+    name: Missing[str] = Field(default=UNSET, description="Name/login of the resource")
+
+
+model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
+)
+
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems",
+)

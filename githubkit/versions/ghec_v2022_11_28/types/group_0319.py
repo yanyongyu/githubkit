@@ -9,65 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0080 import TeamType, TeamTypeForResponse
 
+class GitUserType(TypedDict):
+    """Git User
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
-
-    users: NotRequired[list[SimpleUserType]]
-    teams: NotRequired[list[TeamType]]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
-    url: NotRequired[str]
-    users_url: NotRequired[str]
-    teams_url: NotRequired[str]
-
-
-class ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
-
-    users: NotRequired[list[SimpleUserTypeForResponse]]
-    teams: NotRequired[list[TeamTypeForResponse]]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
-    url: NotRequired[str]
-    users_url: NotRequired[str]
-    teams_url: NotRequired[str]
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    Metaproperties for Git author/committer information.
     """
 
-    users: NotRequired[list[SimpleUserType]]
-    teams: NotRequired[list[TeamType]]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[datetime]
 
 
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+class GitUserTypeForResponse(TypedDict):
+    """Git User
 
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    Metaproperties for Git author/committer information.
     """
 
-    users: NotRequired[list[SimpleUserTypeForResponse]]
-    teams: NotRequired[list[TeamTypeForResponse]]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[str]
 
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse",
+    "GitUserType",
+    "GitUserTypeForResponse",
 )

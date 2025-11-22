@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,94 +16,47 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksReview(GitHubModel):
-    """WebhooksReview
+class WebhooksChanges8(GitHubModel):
+    """WebhooksChanges8"""
 
-    The review that was affected.
+    tier: WebhooksChanges8PropTier = Field()
+
+
+class WebhooksChanges8PropTier(GitHubModel):
+    """WebhooksChanges8PropTier"""
+
+    from_: WebhooksChanges8PropTierPropFrom = Field(
+        alias="from",
+        title="Sponsorship Tier",
+        description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
+    )
+
+
+class WebhooksChanges8PropTierPropFrom(GitHubModel):
+    """Sponsorship Tier
+
+    The `tier_changed` and `pending_tier_change` will include the original tier
+    before the change or pending change. For more information, see the pending tier
+    change payload.
     """
 
-    links: WebhooksReviewPropLinks = Field(alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
-    )
-    body: Union[str, None] = Field(description="The text of the review.")
-    commit_id: str = Field(description="A commit SHA for the review.")
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the review")
+    created_at: str = Field()
+    description: str = Field()
+    is_custom_ammount: Missing[bool] = Field(default=UNSET)
+    is_custom_amount: Missing[bool] = Field(default=UNSET)
+    is_one_time: bool = Field()
+    monthly_price_in_cents: int = Field()
+    monthly_price_in_dollars: int = Field()
+    name: str = Field()
     node_id: str = Field()
-    pull_request_url: str = Field()
-    state: str = Field()
-    submitted_at: Union[datetime, None] = Field()
-    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    user: Union[WebhooksReviewPropUser, None] = Field(title="User")
 
 
-class WebhooksReviewPropUser(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhooksReviewPropLinks(GitHubModel):
-    """WebhooksReviewPropLinks"""
-
-    html: WebhooksReviewPropLinksPropHtml = Field(title="Link")
-    pull_request: WebhooksReviewPropLinksPropPullRequest = Field(title="Link")
-
-
-class WebhooksReviewPropLinksPropHtml(GitHubModel):
-    """Link"""
-
-    href: str = Field()
-
-
-class WebhooksReviewPropLinksPropPullRequest(GitHubModel):
-    """Link"""
-
-    href: str = Field()
-
-
-model_rebuild(WebhooksReview)
-model_rebuild(WebhooksReviewPropUser)
-model_rebuild(WebhooksReviewPropLinks)
-model_rebuild(WebhooksReviewPropLinksPropHtml)
-model_rebuild(WebhooksReviewPropLinksPropPullRequest)
+model_rebuild(WebhooksChanges8)
+model_rebuild(WebhooksChanges8PropTier)
+model_rebuild(WebhooksChanges8PropTierPropFrom)
 
 __all__ = (
-    "WebhooksReview",
-    "WebhooksReviewPropLinks",
-    "WebhooksReviewPropLinksPropHtml",
-    "WebhooksReviewPropLinksPropPullRequest",
-    "WebhooksReviewPropUser",
+    "WebhooksChanges8",
+    "WebhooksChanges8PropTier",
+    "WebhooksChanges8PropTierPropFrom",
 )

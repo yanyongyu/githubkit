@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,20 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0534 import EnterpriseWebhooks
-from .group_0535 import SimpleInstallation
-from .group_0536 import OrganizationSimpleWebhooks
-from .group_0537 import RepositoryWebhooks
-from .group_0551 import WebhooksLabel
+from .group_0527 import EnterpriseWebhooks
+from .group_0528 import SimpleInstallation
+from .group_0529 import OrganizationSimpleWebhooks
+from .group_0530 import RepositoryWebhooks
+from .group_0540 import WebhooksUser
 
 
-class WebhookLabelEdited(GitHubModel):
-    """label edited event"""
+class WebhookMemberEdited(GitHubModel):
+    """member edited event"""
 
     action: Literal["edited"] = Field()
-    changes: Missing[WebhookLabelEditedPropChanges] = Field(
-        default=UNSET,
-        description="The changes to the label if the action was `edited`.",
+    changes: WebhookMemberEditedPropChanges = Field(
+        description="The changes to the collaborator permissions"
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -43,7 +42,7 @@ class WebhookLabelEdited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: WebhooksLabel = Field(title="Label")
+    member: Union[WebhooksUser, None] = Field(title="User")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -56,56 +55,44 @@ class WebhookLabelEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookLabelEditedPropChanges(GitHubModel):
-    """WebhookLabelEditedPropChanges
+class WebhookMemberEditedPropChanges(GitHubModel):
+    """WebhookMemberEditedPropChanges
 
-    The changes to the label if the action was `edited`.
+    The changes to the collaborator permissions
     """
 
-    color: Missing[WebhookLabelEditedPropChangesPropColor] = Field(default=UNSET)
-    description: Missing[WebhookLabelEditedPropChangesPropDescription] = Field(
+    old_permission: Missing[WebhookMemberEditedPropChangesPropOldPermission] = Field(
         default=UNSET
     )
-    name: Missing[WebhookLabelEditedPropChangesPropName] = Field(default=UNSET)
-
-
-class WebhookLabelEditedPropChangesPropColor(GitHubModel):
-    """WebhookLabelEditedPropChangesPropColor"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the color if the action was `edited`.",
+    permission: Missing[WebhookMemberEditedPropChangesPropPermission] = Field(
+        default=UNSET
     )
 
 
-class WebhookLabelEditedPropChangesPropDescription(GitHubModel):
-    """WebhookLabelEditedPropChangesPropDescription"""
+class WebhookMemberEditedPropChangesPropOldPermission(GitHubModel):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
 
     from_: str = Field(
         alias="from",
-        description="The previous version of the description if the action was `edited`.",
+        description="The previous permissions of the collaborator if the action was edited.",
     )
 
 
-class WebhookLabelEditedPropChangesPropName(GitHubModel):
-    """WebhookLabelEditedPropChangesPropName"""
+class WebhookMemberEditedPropChangesPropPermission(GitHubModel):
+    """WebhookMemberEditedPropChangesPropPermission"""
 
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the name if the action was `edited`.",
-    )
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookLabelEdited)
-model_rebuild(WebhookLabelEditedPropChanges)
-model_rebuild(WebhookLabelEditedPropChangesPropColor)
-model_rebuild(WebhookLabelEditedPropChangesPropDescription)
-model_rebuild(WebhookLabelEditedPropChangesPropName)
+model_rebuild(WebhookMemberEdited)
+model_rebuild(WebhookMemberEditedPropChanges)
+model_rebuild(WebhookMemberEditedPropChangesPropOldPermission)
+model_rebuild(WebhookMemberEditedPropChangesPropPermission)
 
 __all__ = (
-    "WebhookLabelEdited",
-    "WebhookLabelEditedPropChanges",
-    "WebhookLabelEditedPropChangesPropColor",
-    "WebhookLabelEditedPropChangesPropDescription",
-    "WebhookLabelEditedPropChangesPropName",
+    "WebhookMemberEdited",
+    "WebhookMemberEditedPropChanges",
+    "WebhookMemberEditedPropChangesPropOldPermission",
+    "WebhookMemberEditedPropChangesPropPermission",
 )

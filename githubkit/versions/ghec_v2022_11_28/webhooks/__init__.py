@@ -312,10 +312,6 @@ else:
             "BranchProtectionRuleEvent",
             "branch_protection_rule_action_types",
         ),
-        ".exemption_request_push_ruleset": (
-            "ExemptionRequestPushRulesetEvent",
-            "exemption_request_push_ruleset_action_types",
-        ),
         ".exemption_request_secret_scanning": (
             "ExemptionRequestSecretScanningEvent",
             "exemption_request_secret_scanning_action_types",
@@ -361,6 +357,10 @@ else:
         ".dismissal_request_secret_scanning": (
             "DismissalRequestSecretScanningEvent",
             "dismissal_request_secret_scanning_action_types",
+        ),
+        ".exemption_request_push_ruleset": (
+            "ExemptionRequestPushRulesetEvent",
+            "exemption_request_push_ruleset_action_types",
         ),
         ".fork": ("ForkEvent", "fork_action_types"),
         ".github_app_authorization": (

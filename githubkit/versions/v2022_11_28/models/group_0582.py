@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,118 +18,47 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0450 import EnterpriseWebhooks
-from .group_0451 import SimpleInstallation
-from .group_0452 import OrganizationSimpleWebhooks
-from .group_0453 import RepositoryWebhooks
+from .group_0448 import EnterpriseWebhooks
+from .group_0449 import SimpleInstallation
+from .group_0450 import OrganizationSimpleWebhooks
+from .group_0451 import RepositoryWebhooks
+from .group_0583 import WebhookIssueCommentCreatedPropComment
+from .group_0584 import WebhookIssueCommentCreatedPropIssue
 
 
-class WebhookInstallationTargetRenamed(GitHubModel):
-    """WebhookInstallationTargetRenamed"""
+class WebhookIssueCommentCreated(GitHubModel):
+    """issue_comment created event"""
 
-    account: WebhookInstallationTargetRenamedPropAccount = Field()
-    action: Literal["renamed"] = Field()
-    changes: WebhookInstallationTargetRenamedPropChanges = Field()
+    action: Literal["created"] = Field()
+    comment: WebhookIssueCommentCreatedPropComment = Field(
+        title="issue comment",
+        description="The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment) itself.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    installation: SimpleInstallation = Field(
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    issue: WebhookIssueCommentCreatedPropIssue = Field(
+        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) the comment belongs to."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    target_type: str = Field()
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookInstallationTargetRenamedPropAccount(GitHubModel):
-    """WebhookInstallationTargetRenamedPropAccount"""
+model_rebuild(WebhookIssueCommentCreated)
 
-    archived_at: Missing[Union[str, None]] = Field(default=UNSET)
-    avatar_url: str = Field()
-    created_at: Missing[str] = Field(default=UNSET)
-    description: Missing[None] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers: Missing[int] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following: Missing[int] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    has_organization_projects: Missing[bool] = Field(default=UNSET)
-    has_repository_projects: Missing[bool] = Field(default=UNSET)
-    hooks_url: Missing[str] = Field(default=UNSET)
-    html_url: str = Field()
-    id: int = Field()
-    is_verified: Missing[bool] = Field(default=UNSET)
-    issues_url: Missing[str] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    members_url: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    node_id: str = Field()
-    organizations_url: Missing[str] = Field(default=UNSET)
-    public_gists: Missing[int] = Field(default=UNSET)
-    public_members_url: Missing[str] = Field(default=UNSET)
-    public_repos: Missing[int] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    slug: Missing[str] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    website_url: Missing[None] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhookInstallationTargetRenamedPropChanges(GitHubModel):
-    """WebhookInstallationTargetRenamedPropChanges"""
-
-    login: Missing[WebhookInstallationTargetRenamedPropChangesPropLogin] = Field(
-        default=UNSET
-    )
-    slug: Missing[WebhookInstallationTargetRenamedPropChangesPropSlug] = Field(
-        default=UNSET
-    )
-
-
-class WebhookInstallationTargetRenamedPropChangesPropLogin(GitHubModel):
-    """WebhookInstallationTargetRenamedPropChangesPropLogin"""
-
-    from_: str = Field(alias="from")
-
-
-class WebhookInstallationTargetRenamedPropChangesPropSlug(GitHubModel):
-    """WebhookInstallationTargetRenamedPropChangesPropSlug"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookInstallationTargetRenamed)
-model_rebuild(WebhookInstallationTargetRenamedPropAccount)
-model_rebuild(WebhookInstallationTargetRenamedPropChanges)
-model_rebuild(WebhookInstallationTargetRenamedPropChangesPropLogin)
-model_rebuild(WebhookInstallationTargetRenamedPropChangesPropSlug)
-
-__all__ = (
-    "WebhookInstallationTargetRenamed",
-    "WebhookInstallationTargetRenamedPropAccount",
-    "WebhookInstallationTargetRenamedPropChanges",
-    "WebhookInstallationTargetRenamedPropChangesPropLogin",
-    "WebhookInstallationTargetRenamedPropChangesPropSlug",
-)
+__all__ = ("WebhookIssueCommentCreated",)

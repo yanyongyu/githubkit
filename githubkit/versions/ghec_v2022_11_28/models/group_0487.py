@@ -13,31 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0486 import Traffic
 
-class Tag(GitHubModel):
-    """Tag
 
-    Tag
+class CloneTraffic(GitHubModel):
+    """Clone Traffic
+
+    Clone Traffic
     """
 
-    name: str = Field()
-    commit: TagPropCommit = Field()
-    zipball_url: str = Field()
-    tarball_url: str = Field()
-    node_id: str = Field()
+    count: int = Field()
+    uniques: int = Field()
+    clones: list[Traffic] = Field()
 
 
-class TagPropCommit(GitHubModel):
-    """TagPropCommit"""
+model_rebuild(CloneTraffic)
 
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(Tag)
-model_rebuild(TagPropCommit)
-
-__all__ = (
-    "Tag",
-    "TagPropCommit",
-)
+__all__ = ("CloneTraffic",)

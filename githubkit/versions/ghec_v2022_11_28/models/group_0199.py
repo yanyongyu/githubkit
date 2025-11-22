@@ -10,57 +10,56 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Any, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0195 import ReactionRollup
 
 
-class IssueComment(GitHubModel):
-    """Issue Comment
+class BaseGist(GitHubModel):
+    """Base Gist
 
-    Comments provide a way for people to collaborate on an issue.
+    Base Gist
     """
 
-    id: int = Field(description="Unique identifier of the issue comment")
+    url: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
     node_id: str = Field()
-    url: str = Field(description="URL for the issue comment")
-    body: Missing[str] = Field(
-        default=UNSET, description="Contents of the issue comment"
-    )
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
     html_url: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    files: BaseGistPropFiles = Field()
+    public: bool = Field()
     created_at: datetime = Field()
     updated_at: datetime = Field()
-    issue_url: str = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    comments_enabled: Missing[bool] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    comments_url: str = Field()
+    owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
-model_rebuild(IssueComment)
+class BaseGistPropFiles(ExtraGitHubModel):
+    """BaseGistPropFiles"""
 
-__all__ = ("IssueComment",)
+
+model_rebuild(BaseGist)
+model_rebuild(BaseGistPropFiles)
+
+__all__ = (
+    "BaseGist",
+    "BaseGistPropFiles",
+)

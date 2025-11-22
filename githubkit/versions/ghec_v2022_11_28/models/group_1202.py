@@ -9,13 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ProjectsColumnsColumnIdMovesPostResponse201(GitHubModel):
-    """ProjectsColumnsColumnIdMovesPostResponse201"""
+from .group_0293 import Artifact
 
 
-model_rebuild(ProjectsColumnsColumnIdMovesPostResponse201)
+class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsArtifactsGetResponse200"""
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostResponse201",)
+    total_count: int = Field()
+    artifacts: list[Artifact] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsArtifactsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200",)

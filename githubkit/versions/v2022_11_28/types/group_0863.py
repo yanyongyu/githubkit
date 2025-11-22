@@ -9,28 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
+from typing_extensions import TypedDict
 
 
-class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
-    """AppInstallationsInstallationIdAccessTokensPostBody"""
+class ApplicationsClientIdTokenPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenPostBody"""
 
-    repositories: NotRequired[list[str]]
-    repository_ids: NotRequired[list[int]]
-    permissions: NotRequired[AppPermissionsType]
+    access_token: str
 
 
-class AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse(TypedDict):
-    """AppInstallationsInstallationIdAccessTokensPostBody"""
+class ApplicationsClientIdTokenPostBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdTokenPostBody"""
 
-    repositories: NotRequired[list[str]]
-    repository_ids: NotRequired[list[int]]
-    permissions: NotRequired[AppPermissionsTypeForResponse]
+    access_token: str
 
 
 __all__ = (
-    "AppInstallationsInstallationIdAccessTokensPostBodyType",
-    "AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse",
+    "ApplicationsClientIdTokenPostBodyType",
+    "ApplicationsClientIdTokenPostBodyTypeForResponse",
 )

@@ -10,39 +10,47 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class WebhooksProjectColumnType(TypedDict):
-    """Project Column"""
 
-    after_id: NotRequired[Union[int, None]]
-    cards_url: str
+class ProjectsV2ItemType(TypedDict):
+    """Projects v2 Item
+
+    An item belonging to a project
+    """
+
+    id: float
+    node_id: NotRequired[str]
+    project_node_id: NotRequired[str]
+    content_node_id: str
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserType]
     created_at: datetime
-    id: int
-    name: str
-    node_id: str
-    project_url: str
     updated_at: datetime
-    url: str
+    archived_at: Union[datetime, None]
 
 
-class WebhooksProjectColumnTypeForResponse(TypedDict):
-    """Project Column"""
+class ProjectsV2ItemTypeForResponse(TypedDict):
+    """Projects v2 Item
 
-    after_id: NotRequired[Union[int, None]]
-    cards_url: str
+    An item belonging to a project
+    """
+
+    id: float
+    node_id: NotRequired[str]
+    project_node_id: NotRequired[str]
+    content_node_id: str
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserTypeForResponse]
     created_at: str
-    id: int
-    name: str
-    node_id: str
-    project_url: str
     updated_at: str
-    url: str
+    archived_at: Union[str, None]
 
 
 __all__ = (
-    "WebhooksProjectColumnType",
-    "WebhooksProjectColumnTypeForResponse",
+    "ProjectsV2ItemType",
+    "ProjectsV2ItemTypeForResponse",
 )

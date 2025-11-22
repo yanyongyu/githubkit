@@ -9,78 +9,121 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0214 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
+class ContentTreeType(TypedDict):
+    """Content Tree
 
-class CombinedCommitStatusType(TypedDict):
-    """Combined Commit Status
-
-    Combined Commit Status
+    Content Tree
     """
 
-    state: str
-    statuses: list[SimpleCommitStatusType]
+    type: str
+    size: int
+    name: str
+    path: str
     sha: str
-    total_count: int
-    repository: MinimalRepositoryType
-    commit_url: str
+    content: NotRequired[str]
     url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    entries: NotRequired[list[ContentTreePropEntriesItemsType]]
+    encoding: NotRequired[str]
+    links: ContentTreePropLinksType
 
 
-class CombinedCommitStatusTypeForResponse(TypedDict):
-    """Combined Commit Status
+class ContentTreeTypeForResponse(TypedDict):
+    """Content Tree
 
-    Combined Commit Status
+    Content Tree
     """
 
-    state: str
-    statuses: list[SimpleCommitStatusTypeForResponse]
+    type: str
+    size: int
+    name: str
+    path: str
     sha: str
-    total_count: int
-    repository: MinimalRepositoryTypeForResponse
-    commit_url: str
+    content: NotRequired[str]
     url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    entries: NotRequired[list[ContentTreePropEntriesItemsTypeForResponse]]
+    encoding: NotRequired[str]
+    links: ContentTreePropLinksTypeForResponse
 
 
-class SimpleCommitStatusType(TypedDict):
-    """Simple Commit Status"""
+class ContentTreePropLinksType(TypedDict):
+    """ContentTreePropLinks"""
 
-    description: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentTreePropLinksTypeForResponse(TypedDict):
+    """ContentTreePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentTreePropEntriesItemsType(TypedDict):
+    """ContentTreePropEntriesItems"""
+
+    type: str
+    size: int
+    name: str
+    path: str
+    sha: str
     url: str
-    created_at: datetime
-    updated_at: datetime
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentTreePropEntriesItemsPropLinksType
 
 
-class SimpleCommitStatusTypeForResponse(TypedDict):
-    """Simple Commit Status"""
+class ContentTreePropEntriesItemsTypeForResponse(TypedDict):
+    """ContentTreePropEntriesItems"""
 
-    description: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
+    type: str
+    size: int
+    name: str
+    path: str
+    sha: str
     url: str
-    created_at: str
-    updated_at: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentTreePropEntriesItemsPropLinksTypeForResponse
+
+
+class ContentTreePropEntriesItemsPropLinksType(TypedDict):
+    """ContentTreePropEntriesItemsPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentTreePropEntriesItemsPropLinksTypeForResponse(TypedDict):
+    """ContentTreePropEntriesItemsPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "CombinedCommitStatusType",
-    "CombinedCommitStatusTypeForResponse",
-    "SimpleCommitStatusType",
-    "SimpleCommitStatusTypeForResponse",
+    "ContentTreePropEntriesItemsPropLinksType",
+    "ContentTreePropEntriesItemsPropLinksTypeForResponse",
+    "ContentTreePropEntriesItemsType",
+    "ContentTreePropEntriesItemsTypeForResponse",
+    "ContentTreePropLinksType",
+    "ContentTreePropLinksTypeForResponse",
+    "ContentTreeType",
+    "ContentTreeTypeForResponse",
 )

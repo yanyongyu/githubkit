@@ -9,25 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Email(GitHubModel):
-    """Email
+class SocialAccount(GitHubModel):
+    """Social account
 
-    Email
+    Social media account
     """
 
-    email: str = Field()
-    primary: bool = Field()
-    verified: bool = Field()
-    visibility: Union[str, None] = Field()
+    provider: str = Field()
+    url: str = Field()
 
 
-model_rebuild(Email)
+model_rebuild(SocialAccount)
 
-__all__ = ("Email",)
+__all__ = ("SocialAccount",)

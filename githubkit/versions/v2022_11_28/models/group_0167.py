@@ -45,8 +45,50 @@ class RepositoryRulePullRequestPropParameters(GitHubModel):
     required_review_thread_resolution: bool = Field(
         description="All conversations on code must be resolved before a pull request can be merged."
     )
+    required_reviewers: Missing[
+        list[RepositoryRuleParamsRequiredReviewerConfiguration]
+    ] = Field(
+        default=UNSET,
+        description="> [!NOTE]\n> `required_reviewers` is in beta and subject to change.\n\nA collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.",
+    )
+
+
+class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
+    """RequiredReviewerConfiguration
+
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
+    """
+
+    file_patterns: list[str] = Field(
+        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax."
+    )
+    minimum_approvals: int = Field(
+        description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
+    )
+    reviewer: RepositoryRuleParamsReviewer = Field(
+        title="Reviewer", description="A required reviewing team"
+    )
+
+
+class RepositoryRuleParamsReviewer(GitHubModel):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int = Field(
+        description="ID of the reviewer which must review changes to matching files."
+    )
+    type: Literal["Team"] = Field(description="The type of the reviewer")
 
 
 model_rebuild(RepositoryRulePullRequestPropParameters)
+model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
+model_rebuild(RepositoryRuleParamsReviewer)
 
-__all__ = ("RepositoryRulePullRequestPropParameters",)
+__all__ = (
+    "RepositoryRuleParamsRequiredReviewerConfiguration",
+    "RepositoryRuleParamsReviewer",
+    "RepositoryRulePullRequestPropParameters",
+)

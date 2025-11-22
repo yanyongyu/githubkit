@@ -29,24 +29,24 @@ from .group_0124 import (
 from .group_0125 import RepositoryRuleUpdate
 from .group_0127 import RepositoryRuleRequiredLinearHistory
 from .group_0128 import RepositoryRuleRequiredDeployments
-from .group_0131 import RepositoryRulePullRequest
-from .group_0133 import RepositoryRuleRequiredStatusChecks
-from .group_0135 import RepositoryRuleCommitMessagePattern
-from .group_0137 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0139 import RepositoryRuleCommitterEmailPattern
-from .group_0141 import RepositoryRuleBranchNamePattern
-from .group_0143 import RepositoryRuleTagNamePattern
-from .group_0145 import RepositoryRuleFilePathRestriction
-from .group_0147 import RepositoryRuleMaxFilePathLength
-from .group_0149 import RepositoryRuleFileExtensionRestriction
-from .group_0151 import RepositoryRuleMaxFileSize
-from .group_0154 import RepositoryRuleWorkflows
-from .group_0156 import RepositoryRuleCodeScanning
-from .group_0160 import OrgRulesetConditionsOneof0
-from .group_0161 import OrgRulesetConditionsOneof1
-from .group_0162 import OrgRulesetConditionsOneof2
-from .group_0163 import RepositoryRuleMergeQueue
-from .group_0165 import RepositoryRuleCopilotCodeReview
+from .group_0130 import RepositoryRulePullRequest
+from .group_0132 import RepositoryRuleRequiredStatusChecks
+from .group_0134 import RepositoryRuleCommitMessagePattern
+from .group_0136 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0138 import RepositoryRuleCommitterEmailPattern
+from .group_0140 import RepositoryRuleBranchNamePattern
+from .group_0142 import RepositoryRuleTagNamePattern
+from .group_0144 import RepositoryRuleFilePathRestriction
+from .group_0146 import RepositoryRuleMaxFilePathLength
+from .group_0148 import RepositoryRuleFileExtensionRestriction
+from .group_0150 import RepositoryRuleMaxFileSize
+from .group_0153 import RepositoryRuleWorkflows
+from .group_0155 import RepositoryRuleCodeScanning
+from .group_0159 import OrgRulesetConditionsOneof0
+from .group_0160 import OrgRulesetConditionsOneof1
+from .group_0161 import OrgRulesetConditionsOneof2
+from .group_0162 import RepositoryRuleMergeQueue
+from .group_0164 import RepositoryRuleCopilotCodeReview
 
 
 class RepositoryRuleset(GitHubModel):

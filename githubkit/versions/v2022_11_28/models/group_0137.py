@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -19,44 +19,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0045 import Issue
-from .group_0133 import PullRequestSimple
-from .group_0136 import ProjectsV2DraftIssue
 
 
-class ProjectsV2ItemSimple(GitHubModel):
-    """Projects v2 Item
+class ProjectsV2DraftIssue(GitHubModel):
+    """Draft Issue
 
-    An item belonging to a project
+    A draft issue in a project
     """
 
-    id: float = Field(description="The unique identifier of the project item.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project item."
+    id: float = Field(description="The ID of the draft issue")
+    node_id: str = Field(description="The node ID of the draft issue")
+    title: str = Field(description="The title of the draft issue")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The body content of the draft issue"
     )
-    content: Missing[Union[Issue, PullRequestSimple, ProjectsV2DraftIssue]] = Field(
-        default=UNSET, description="The content represented by the item."
-    )
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
-    )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: datetime = Field(description="The time when the item was created.")
-    updated_at: datetime = Field(description="The time when the item was last updated.")
-    archived_at: Union[datetime, None] = Field(
-        description="The time when the item was archived."
-    )
-    project_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the project this item belongs to."
-    )
-    item_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the item in the project."
+    user: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field(description="The time the draft issue was created")
+    updated_at: datetime = Field(
+        description="The time the draft issue was last updated"
     )
 
 
-model_rebuild(ProjectsV2ItemSimple)
+model_rebuild(ProjectsV2DraftIssue)
 
-__all__ = ("ProjectsV2ItemSimple",)
+__all__ = ("ProjectsV2DraftIssue",)

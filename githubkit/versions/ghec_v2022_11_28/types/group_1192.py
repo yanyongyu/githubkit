@@ -9,25 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsColumnsCardsCardIdPatchBodyType(TypedDict):
-    """ProjectsColumnsCardsCardIdPatchBody"""
+class ProjectsColumnsCardsCardIdMovesPostResponse503Type(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
 
-    note: NotRequired[Union[str, None]]
-    archived: NotRequired[bool]
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[
+        list[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType]
+    ]
 
 
-class ProjectsColumnsCardsCardIdPatchBodyTypeForResponse(TypedDict):
-    """ProjectsColumnsCardsCardIdPatchBody"""
+class ProjectsColumnsCardsCardIdMovesPostResponse503TypeForResponse(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
 
-    note: NotRequired[Union[str, None]]
-    archived: NotRequired[bool]
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[
+        list[
+            ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsTypeForResponse
+        ]
+    ]
+
+
+class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
+
+
+class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsColumnsCardsCardIdPatchBodyType",
-    "ProjectsColumnsCardsCardIdPatchBodyTypeForResponse",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsTypeForResponse",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503Type",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503TypeForResponse",
 )

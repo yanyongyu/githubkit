@@ -9,41 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0321 import BranchProtection
+from .group_0003 import SimpleUser
+from .group_0321 import DiffEntry
+from .group_0323 import CommitPropCommit
 
 
-class ShortBranch(GitHubModel):
-    """Short Branch
+class Commit(GitHubModel):
+    """Commit
 
-    Short Branch
+    Commit
     """
 
-    name: str = Field()
-    commit: ShortBranchPropCommit = Field()
-    protected: bool = Field()
-    protection: Missing[BranchProtection] = Field(
-        default=UNSET, title="Branch Protection", description="Branch Protection"
-    )
-    protection_url: Missing[str] = Field(default=UNSET)
+    url: str = Field()
+    sha: str = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    comments_url: str = Field()
+    commit: CommitPropCommit = Field()
+    author: Union[SimpleUser, EmptyObject, None] = Field()
+    committer: Union[SimpleUser, EmptyObject, None] = Field()
+    parents: list[CommitPropParentsItems] = Field()
+    stats: Missing[CommitPropStats] = Field(default=UNSET)
+    files: Missing[list[DiffEntry]] = Field(default=UNSET)
 
 
-class ShortBranchPropCommit(GitHubModel):
-    """ShortBranchPropCommit"""
+class EmptyObject(GitHubModel):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
+class CommitPropParentsItems(GitHubModel):
+    """CommitPropParentsItems"""
 
     sha: str = Field()
     url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ShortBranch)
-model_rebuild(ShortBranchPropCommit)
+class CommitPropStats(GitHubModel):
+    """CommitPropStats"""
+
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+    total: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(Commit)
+model_rebuild(EmptyObject)
+model_rebuild(CommitPropParentsItems)
+model_rebuild(CommitPropStats)
 
 __all__ = (
-    "ShortBranch",
-    "ShortBranchPropCommit",
+    "Commit",
+    "CommitPropParentsItems",
+    "CommitPropStats",
+    "EmptyObject",
 )

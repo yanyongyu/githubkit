@@ -18,10 +18,10 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleDetailedOneof2(GitHubModel):
-    """RepositoryRuleDetailedOneof2"""
+class RepositoryRuleDetailedOneof6(GitHubModel):
+    """RepositoryRuleDetailedOneof6"""
 
-    type: Literal["deletion"] = Field()
+    type: Literal["required_signatures"] = Field()
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -35,6 +35,6 @@ class RepositoryRuleDetailedOneof2(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof2)
+model_rebuild(RepositoryRuleDetailedOneof6)
 
-__all__ = ("RepositoryRuleDetailedOneof2",)
+__all__ = ("RepositoryRuleDetailedOneof6",)

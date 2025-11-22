@@ -9,32 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0492 import MetaType, MetaTypeForResponse
 
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
+class ScimEnterpriseGroupResponseType(TypedDict):
+    """ScimEnterpriseGroupResponse"""
 
-    Referrer Traffic
-    """
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersType]]
+    id: NotRequired[str]
+    meta: NotRequired[MetaType]
 
-    referrer: str
-    count: int
-    uniques: int
+
+class ScimEnterpriseGroupResponseTypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponse"""
+
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersTypeForResponse]]
+    id: NotRequired[str]
+    meta: NotRequired[MetaTypeForResponse]
 
 
-class ReferrerTrafficTypeForResponse(TypedDict):
-    """Referrer Traffic
+class ScimEnterpriseGroupResponseMergedMembersType(TypedDict):
+    """ScimEnterpriseGroupResponseMergedMembers"""
 
-    Referrer Traffic
-    """
+    value: str
+    ref: str
+    display: NotRequired[str]
 
-    referrer: str
-    count: int
-    uniques: int
+
+class ScimEnterpriseGroupResponseMergedMembersTypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponseMergedMembers"""
+
+    value: str
+    ref: str
+    display: NotRequired[str]
+
+
+class ScimEnterpriseGroupListType(TypedDict):
+    """ScimEnterpriseGroupList"""
+
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: list[ScimEnterpriseGroupResponseType]
+    start_index: int
+    items_per_page: int
+
+
+class ScimEnterpriseGroupListTypeForResponse(TypedDict):
+    """ScimEnterpriseGroupList"""
+
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: list[ScimEnterpriseGroupResponseTypeForResponse]
+    start_index: int
+    items_per_page: int
 
 
 __all__ = (
-    "ReferrerTrafficType",
-    "ReferrerTrafficTypeForResponse",
+    "ScimEnterpriseGroupListType",
+    "ScimEnterpriseGroupListTypeForResponse",
+    "ScimEnterpriseGroupResponseMergedMembersType",
+    "ScimEnterpriseGroupResponseMergedMembersTypeForResponse",
+    "ScimEnterpriseGroupResponseType",
+    "ScimEnterpriseGroupResponseTypeForResponse",
 )

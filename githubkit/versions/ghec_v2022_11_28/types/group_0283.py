@@ -9,51 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from datetime import datetime
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class GroupMappingType(TypedDict):
-    """GroupMapping
+class ReactionType(TypedDict):
+    """Reaction
 
-    External Groups to be mapped to a team for membership
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
+    id: int
+    node_id: str
+    user: Union[None, SimpleUserType]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: datetime
 
 
-class GroupMappingTypeForResponse(TypedDict):
-    """GroupMapping
+class ReactionTypeForResponse(TypedDict):
+    """Reaction
 
-    External Groups to be mapped to a team for membership
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    groups: NotRequired[list[GroupMappingPropGroupsItemsTypeForResponse]]
-
-
-class GroupMappingPropGroupsItemsType(TypedDict):
-    """GroupMappingPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-    status: NotRequired[str]
-    synced_at: NotRequired[Union[str, None]]
-
-
-class GroupMappingPropGroupsItemsTypeForResponse(TypedDict):
-    """GroupMappingPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-    status: NotRequired[str]
-    synced_at: NotRequired[Union[str, None]]
+    id: int
+    node_id: str
+    user: Union[None, SimpleUserTypeForResponse]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: str
 
 
 __all__ = (
-    "GroupMappingPropGroupsItemsType",
-    "GroupMappingPropGroupsItemsTypeForResponse",
-    "GroupMappingType",
-    "GroupMappingTypeForResponse",
+    "ReactionType",
+    "ReactionTypeForResponse",
 )

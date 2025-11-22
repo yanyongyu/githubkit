@@ -11,17 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ApplicationsClientIdTokenPatchBody(GitHubModel):
-    """ApplicationsClientIdTokenPatchBody"""
+class CredentialsRevokePostBody(GitHubModel):
+    """CredentialsRevokePostBody"""
 
-    access_token: str = Field(
-        description="The access_token of the OAuth or GitHub application."
+    credentials: list[str] = Field(
+        max_length=1000 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="A list of credentials to be revoked, up to 1000 per request.",
     )
 
 
-model_rebuild(ApplicationsClientIdTokenPatchBody)
+model_rebuild(CredentialsRevokePostBody)
 
-__all__ = ("ApplicationsClientIdTokenPatchBody",)
+__all__ = ("CredentialsRevokePostBody",)

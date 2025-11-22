@@ -9,243 +9,103 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookIssuesClosedPropIssueAllof1Type(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1"""
-
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignee: NotRequired[
-        Union[WebhookIssuesClosedPropIssueAllof1PropAssigneeType, None]
-    ]
-    assignees: NotRequired[
-        list[Union[WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType, None]]
-    ]
-    author_association: NotRequired[str]
-    body: NotRequired[Union[str, None]]
-    closed_at: Union[str, None]
-    comments: NotRequired[int]
-    comments_url: NotRequired[str]
-    created_at: NotRequired[str]
-    events_url: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: NotRequired[
-        list[Union[WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType, None]]
-    ]
-    labels_url: NotRequired[str]
-    locked: NotRequired[bool]
-    milestone: NotRequired[
-        Union[WebhookIssuesClosedPropIssueAllof1PropMilestoneType, None]
-    ]
-    node_id: NotRequired[str]
-    number: NotRequired[int]
-    performed_via_github_app: NotRequired[
-        Union[WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppType, None]
-    ]
-    reactions: NotRequired[WebhookIssuesClosedPropIssueAllof1PropReactionsType]
-    repository_url: NotRequired[str]
-    state: Literal["closed", "open"]
-    timeline_url: NotRequired[str]
-    title: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
-    user: NotRequired[WebhookIssuesClosedPropIssueAllof1PropUserType]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0529 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0544 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0723 import (
+    WebhookIssuesEditedPropIssueType,
+    WebhookIssuesEditedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssuesClosedPropIssueAllof1TypeForResponse(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1"""
+class WebhookIssuesEditedType(TypedDict):
+    """issues edited event"""
 
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignee: NotRequired[
-        Union[WebhookIssuesClosedPropIssueAllof1PropAssigneeTypeForResponse, None]
-    ]
-    assignees: NotRequired[
-        list[
-            Union[
-                WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsTypeForResponse,
-                None,
-            ]
-        ]
-    ]
-    author_association: NotRequired[str]
-    body: NotRequired[Union[str, None]]
-    closed_at: Union[str, None]
-    comments: NotRequired[int]
-    comments_url: NotRequired[str]
-    created_at: NotRequired[str]
-    events_url: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: NotRequired[
-        list[
-            Union[
-                WebhookIssuesClosedPropIssueAllof1PropLabelsItemsTypeForResponse, None
-            ]
-        ]
-    ]
-    labels_url: NotRequired[str]
-    locked: NotRequired[bool]
-    milestone: NotRequired[
-        Union[WebhookIssuesClosedPropIssueAllof1PropMilestoneTypeForResponse, None]
-    ]
-    node_id: NotRequired[str]
-    number: NotRequired[int]
-    performed_via_github_app: NotRequired[
-        Union[
-            WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse,
-            None,
-        ]
-    ]
-    reactions: NotRequired[
-        WebhookIssuesClosedPropIssueAllof1PropReactionsTypeForResponse
-    ]
-    repository_url: NotRequired[str]
-    state: Literal["closed", "open"]
-    timeline_url: NotRequired[str]
-    title: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
-    user: NotRequired[WebhookIssuesClosedPropIssueAllof1PropUserTypeForResponse]
+    action: Literal["edited"]
+    changes: WebhookIssuesEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssuesEditedPropIssueType
+    label: NotRequired[WebhooksLabelType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookIssuesClosedPropIssueAllof1PropAssigneeType(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1PropAssignee"""
+class WebhookIssuesEditedTypeForResponse(TypedDict):
+    """issues edited event"""
+
+    action: Literal["edited"]
+    changes: WebhookIssuesEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhookIssuesEditedPropIssueTypeForResponse
+    label: NotRequired[WebhooksLabelTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
-class WebhookIssuesClosedPropIssueAllof1PropAssigneeTypeForResponse(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1PropAssignee"""
+class WebhookIssuesEditedPropChangesType(TypedDict):
+    """WebhookIssuesEditedPropChanges
+
+    The changes to the issue.
+    """
+
+    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyType]
+    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleType]
 
 
-class WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1PropAssigneesItems"""
+class WebhookIssuesEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookIssuesEditedPropChanges
+
+    The changes to the issue.
+    """
+
+    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyTypeForResponse]
+    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleTypeForResponse]
 
 
-class WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsTypeForResponse(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1PropAssigneesItems"""
+class WebhookIssuesEditedPropChangesPropBodyType(TypedDict):
+    """WebhookIssuesEditedPropChangesPropBody"""
+
+    from_: str
 
 
-class WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1PropLabelsItems"""
+class WebhookIssuesEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookIssuesEditedPropChangesPropBody"""
+
+    from_: str
 
 
-class WebhookIssuesClosedPropIssueAllof1PropLabelsItemsTypeForResponse(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1PropLabelsItems"""
+class WebhookIssuesEditedPropChangesPropTitleType(TypedDict):
+    """WebhookIssuesEditedPropChangesPropTitle"""
+
+    from_: str
 
 
-class WebhookIssuesClosedPropIssueAllof1PropMilestoneType(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1PropMilestone"""
+class WebhookIssuesEditedPropChangesPropTitleTypeForResponse(TypedDict):
+    """WebhookIssuesEditedPropChangesPropTitle"""
 
-
-class WebhookIssuesClosedPropIssueAllof1PropMilestoneTypeForResponse(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1PropMilestone"""
-
-
-class WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppType(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubApp"""
-
-
-class WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse(
-    TypedDict
-):
-    """WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubApp"""
-
-
-class WebhookIssuesClosedPropIssueAllof1PropReactionsType(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1PropReactions"""
-
-    plus_one: NotRequired[int]
-    minus_one: NotRequired[int]
-    confused: NotRequired[int]
-    eyes: NotRequired[int]
-    heart: NotRequired[int]
-    hooray: NotRequired[int]
-    laugh: NotRequired[int]
-    rocket: NotRequired[int]
-    total_count: NotRequired[int]
-    url: NotRequired[str]
-
-
-class WebhookIssuesClosedPropIssueAllof1PropReactionsTypeForResponse(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1PropReactions"""
-
-    plus_one: NotRequired[int]
-    minus_one: NotRequired[int]
-    confused: NotRequired[int]
-    eyes: NotRequired[int]
-    heart: NotRequired[int]
-    hooray: NotRequired[int]
-    laugh: NotRequired[int]
-    rocket: NotRequired[int]
-    total_count: NotRequired[int]
-    url: NotRequired[str]
-
-
-class WebhookIssuesClosedPropIssueAllof1PropUserType(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1PropUser"""
-
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssuesClosedPropIssueAllof1PropUserTypeForResponse(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof1PropUser"""
-
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: str
 
 
 __all__ = (
-    "WebhookIssuesClosedPropIssueAllof1PropAssigneeType",
-    "WebhookIssuesClosedPropIssueAllof1PropAssigneeTypeForResponse",
-    "WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType",
-    "WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsTypeForResponse",
-    "WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType",
-    "WebhookIssuesClosedPropIssueAllof1PropLabelsItemsTypeForResponse",
-    "WebhookIssuesClosedPropIssueAllof1PropMilestoneType",
-    "WebhookIssuesClosedPropIssueAllof1PropMilestoneTypeForResponse",
-    "WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppType",
-    "WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse",
-    "WebhookIssuesClosedPropIssueAllof1PropReactionsType",
-    "WebhookIssuesClosedPropIssueAllof1PropReactionsTypeForResponse",
-    "WebhookIssuesClosedPropIssueAllof1PropUserType",
-    "WebhookIssuesClosedPropIssueAllof1PropUserTypeForResponse",
-    "WebhookIssuesClosedPropIssueAllof1Type",
-    "WebhookIssuesClosedPropIssueAllof1TypeForResponse",
+    "WebhookIssuesEditedPropChangesPropBodyType",
+    "WebhookIssuesEditedPropChangesPropBodyTypeForResponse",
+    "WebhookIssuesEditedPropChangesPropTitleType",
+    "WebhookIssuesEditedPropChangesPropTitleTypeForResponse",
+    "WebhookIssuesEditedPropChangesType",
+    "WebhookIssuesEditedPropChangesTypeForResponse",
+    "WebhookIssuesEditedType",
+    "WebhookIssuesEditedTypeForResponse",
 )

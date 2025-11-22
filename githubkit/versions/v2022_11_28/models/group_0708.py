@@ -19,16 +19,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0450 import EnterpriseWebhooks
-from .group_0451 import SimpleInstallation
-from .group_0452 import OrganizationSimpleWebhooks
-from .group_0453 import RepositoryWebhooks
+from .group_0448 import EnterpriseWebhooks
+from .group_0449 import SimpleInstallation
+from .group_0450 import OrganizationSimpleWebhooks
+from .group_0451 import RepositoryWebhooks
 
 
-class WebhookProjectCardDeleted(GitHubModel):
-    """project_card deleted event"""
+class WebhookProjectCardMoved(GitHubModel):
+    """project_card moved event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["moved"] = Field()
+    changes: Missing[WebhookProjectCardMovedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,33 +45,47 @@ class WebhookProjectCardDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_card: WebhookProjectCardDeletedPropProjectCard = Field(title="Project Card")
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
+    project_card: WebhookProjectCardMovedPropProjectCard = Field()
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectCardDeletedPropProjectCard(GitHubModel):
-    """Project Card"""
+class WebhookProjectCardMovedPropChanges(GitHubModel):
+    """WebhookProjectCardMovedPropChanges"""
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    column_id: WebhookProjectCardMovedPropChangesPropColumnId = Field()
+
+
+class WebhookProjectCardMovedPropChangesPropColumnId(GitHubModel):
+    """WebhookProjectCardMovedPropChangesPropColumnId"""
+
+    from_: int = Field(alias="from")
+
+
+class WebhookProjectCardMovedPropProjectCard(GitHubModel):
+    """WebhookProjectCardMovedPropProjectCard"""
+
+    after_id: Union[Union[int, None], None] = Field()
     archived: bool = Field(description="Whether or not the card is archived")
-    column_id: Union[int, None] = Field()
+    column_id: int = Field()
     column_url: str = Field()
     content_url: Missing[str] = Field(default=UNSET)
     created_at: datetime = Field()
-    creator: Union[WebhookProjectCardDeletedPropProjectCardPropCreator, None] = Field(
-        title="User"
-    )
+    creator: Union[WebhookProjectCardMovedPropProjectCardMergedCreator, None] = Field()
     id: int = Field(description="The project card's ID")
     node_id: str = Field()
-    note: Union[str, None] = Field()
+    note: Union[Union[str, None], None] = Field()
     project_url: str = Field()
     updated_at: datetime = Field()
     url: str = Field()
 
 
-class WebhookProjectCardDeletedPropProjectCardPropCreator(GitHubModel):
-    """User"""
+class WebhookProjectCardMovedPropProjectCardMergedCreator(GitHubModel):
+    """WebhookProjectCardMovedPropProjectCardMergedCreator"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -98,12 +113,16 @@ class WebhookProjectCardDeletedPropProjectCardPropCreator(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectCardDeleted)
-model_rebuild(WebhookProjectCardDeletedPropProjectCard)
-model_rebuild(WebhookProjectCardDeletedPropProjectCardPropCreator)
+model_rebuild(WebhookProjectCardMoved)
+model_rebuild(WebhookProjectCardMovedPropChanges)
+model_rebuild(WebhookProjectCardMovedPropChangesPropColumnId)
+model_rebuild(WebhookProjectCardMovedPropProjectCard)
+model_rebuild(WebhookProjectCardMovedPropProjectCardMergedCreator)
 
 __all__ = (
-    "WebhookProjectCardDeleted",
-    "WebhookProjectCardDeletedPropProjectCard",
-    "WebhookProjectCardDeletedPropProjectCardPropCreator",
+    "WebhookProjectCardMoved",
+    "WebhookProjectCardMovedPropChanges",
+    "WebhookProjectCardMovedPropChangesPropColumnId",
+    "WebhookProjectCardMovedPropProjectCard",
+    "WebhookProjectCardMovedPropProjectCardMergedCreator",
 )

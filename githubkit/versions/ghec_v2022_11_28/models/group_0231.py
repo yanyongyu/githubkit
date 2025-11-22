@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,53 +19,180 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CredentialAuthorization(GitHubModel):
-    """Credential Authorization
+class CodeScanningAlertDismissalRequest(GitHubModel):
+    """Code scanning alert dismissal request
 
-    Credential Authorization
+    Alert dismisal request made by a user asking to dismiss a code scanning alert.
     """
 
-    login: str = Field(description="User login that owns the underlying credential.")
-    credential_id: int = Field(
-        description="Unique identifier for the authorization of the credential. Use this to revoke authorization of the underlying token or key."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the dismissal request."
     )
-    credential_type: str = Field(
-        description="Human-readable description of the credential type."
-    )
-    token_last_eight: Missing[str] = Field(
+    number: Missing[int] = Field(
         default=UNSET,
-        description="Last eight characters of the credential. Only included in responses with credential_type of personal access token.",
+        description="The number uniquely identifying the dismissal request within its repository.",
     )
-    credential_authorized_at: datetime = Field(
-        description="Date when the credential was authorized for use."
+    repository: Missing[CodeScanningAlertDismissalRequestPropRepository] = Field(
+        default=UNSET, description="The repository the dismissal request is for."
     )
-    scopes: Missing[list[str]] = Field(
-        default=UNSET, description="List of oauth scopes the token has been granted."
-    )
-    fingerprint: Missing[str] = Field(
+    organization: Missing[CodeScanningAlertDismissalRequestPropOrganization] = Field(
         default=UNSET,
-        description="Unique string to distinguish the credential. Only included in responses with credential_type of SSH Key.",
+        description="The organization associated with the repository the dismissal request is for.",
     )
-    credential_accessed_at: Union[datetime, None] = Field(
-        description="Date when the credential was last accessed. May be null if it was never accessed"
+    requester: Missing[CodeScanningAlertDismissalRequestPropRequester] = Field(
+        default=UNSET, description="The user who requested the dismissal request."
     )
-    authorized_credential_id: Union[int, None] = Field(
-        description="The ID of the underlying token that was authorized by the user. This will remain unchanged across authorizations of the token."
+    request_type: Missing[str] = Field(
+        default=UNSET, description="The type of request."
     )
-    authorized_credential_title: Missing[Union[str, None]] = Field(
+    data: Missing[Union[list[CodeScanningAlertDismissalRequestPropDataItems], None]] = (
+        Field(
+            default=UNSET, description="Data describing the dismissal request metadata."
+        )
+    )
+    resource_identifier: Missing[str] = Field(
         default=UNSET,
-        description="The title given to the ssh key. This will only be present when the credential is an ssh key.",
+        description="The unique identifier for the request type of the dismissal request.",
     )
-    authorized_credential_note: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The note given to the token. This will only be present when the credential is a token.",
+    status: Missing[Literal["pending", "denied", "approved", "expired"]] = Field(
+        default=UNSET, description="The status of the dismissal request."
     )
-    authorized_credential_expires_at: Missing[Union[datetime, None]] = Field(
+    requester_comment: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The expiry for the token. This will only be present when the credential is a token.",
+        description="The comment the requester provided when creating the dismissal request.",
+    )
+    expires_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time the dismissal request will expire.",
+    )
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time the dismissal request was created.",
+    )
+    responses: Missing[Union[list[DismissalRequestResponse], None]] = Field(
+        default=UNSET, description="The responses to the dismissal request."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the dismissal request in a browser."
     )
 
 
-model_rebuild(CredentialAuthorization)
+class CodeScanningAlertDismissalRequestPropRepository(GitHubModel):
+    """CodeScanningAlertDismissalRequestPropRepository
 
-__all__ = ("CredentialAuthorization",)
+    The repository the dismissal request is for.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the repository the dismissal request is for.",
+    )
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository the dismissal request is for.",
+    )
+    full_name: Missing[str] = Field(
+        default=UNSET,
+        description="The full name of the repository the dismissal request is for.",
+    )
+
+
+class CodeScanningAlertDismissalRequestPropOrganization(GitHubModel):
+    """CodeScanningAlertDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the organization."
+    )
+
+
+class CodeScanningAlertDismissalRequestPropRequester(GitHubModel):
+    """CodeScanningAlertDismissalRequestPropRequester
+
+    The user who requested the dismissal request.
+    """
+
+    actor_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the GitHub user who requested the dismissal request.",
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the GitHub user who requested the dismissal request.",
+    )
+
+
+class CodeScanningAlertDismissalRequestPropDataItems(GitHubModel):
+    """CodeScanningAlertDismissalRequestPropDataItems"""
+
+    reason: Missing[str] = Field(
+        default=UNSET, description="The reason for the dismissal request."
+    )
+    alert_number: Missing[str] = Field(default=UNSET, description="alert number.")
+    pr_review_thread_id: Missing[str] = Field(
+        default=UNSET, description="The ID of the pull request review thread."
+    )
+
+
+class DismissalRequestResponse(GitHubModel):
+    """Dismissal request response
+
+    A response made by a requester to dismiss the request.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the response to the dismissal request."
+    )
+    reviewer: Missing[DismissalRequestResponsePropReviewer] = Field(
+        default=UNSET, description="The user who reviewed the dismissal request."
+    )
+    message: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The response comment of the reviewer."
+    )
+    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
+        default=UNSET,
+        description="The response status to the dismissal request until dismissed.",
+    )
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time the response to the dismissal request was created.",
+    )
+
+
+class DismissalRequestResponsePropReviewer(GitHubModel):
+    """DismissalRequestResponsePropReviewer
+
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the GitHub user who reviewed the dismissal request.",
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the GitHub user who reviewed the dismissal request.",
+    )
+
+
+model_rebuild(CodeScanningAlertDismissalRequest)
+model_rebuild(CodeScanningAlertDismissalRequestPropRepository)
+model_rebuild(CodeScanningAlertDismissalRequestPropOrganization)
+model_rebuild(CodeScanningAlertDismissalRequestPropRequester)
+model_rebuild(CodeScanningAlertDismissalRequestPropDataItems)
+model_rebuild(DismissalRequestResponse)
+model_rebuild(DismissalRequestResponsePropReviewer)
+
+__all__ = (
+    "CodeScanningAlertDismissalRequest",
+    "CodeScanningAlertDismissalRequestPropDataItems",
+    "CodeScanningAlertDismissalRequestPropOrganization",
+    "CodeScanningAlertDismissalRequestPropRepository",
+    "CodeScanningAlertDismissalRequestPropRequester",
+    "DismissalRequestResponse",
+    "DismissalRequestResponsePropReviewer",
+)

@@ -13,69 +13,159 @@ from datetime import datetime
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0323 import GitUserType, GitUserTypeForResponse
-from .group_0324 import VerificationType, VerificationTypeForResponse
+from .group_0505 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class CommitSearchResultItemPropCommitType(TypedDict):
-    """CommitSearchResultItemPropCommit"""
+class TopicSearchResultItemType(TypedDict):
+    """Topic Search Result Item
 
-    author: CommitSearchResultItemPropCommitPropAuthorType
-    committer: Union[None, GitUserType]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeType
-    url: str
-    verification: NotRequired[VerificationType]
-
-
-class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommit"""
-
-    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
-    committer: Union[None, GitUserTypeForResponse]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
-    url: str
-    verification: NotRequired[VerificationTypeForResponse]
-
-
-class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+    Topic Search Result Item
+    """
 
     name: str
-    email: str
-    date: datetime
+    display_name: Union[str, None]
+    short_description: Union[str, None]
+    description: Union[str, None]
+    created_by: Union[str, None]
+    released: Union[str, None]
+    created_at: datetime
+    updated_at: datetime
+    featured: bool
+    curated: bool
+    score: float
+    repository_count: NotRequired[Union[int, None]]
+    logo_url: NotRequired[Union[str, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    related: NotRequired[Union[list[TopicSearchResultItemPropRelatedItemsType], None]]
+    aliases: NotRequired[Union[list[TopicSearchResultItemPropAliasesItemsType], None]]
 
 
-class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+class TopicSearchResultItemTypeForResponse(TypedDict):
+    """Topic Search Result Item
+
+    Topic Search Result Item
+    """
 
     name: str
-    email: str
-    date: str
+    display_name: Union[str, None]
+    short_description: Union[str, None]
+    description: Union[str, None]
+    created_by: Union[str, None]
+    released: Union[str, None]
+    created_at: str
+    updated_at: str
+    featured: bool
+    curated: bool
+    score: float
+    repository_count: NotRequired[Union[int, None]]
+    logo_url: NotRequired[Union[str, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    related: NotRequired[
+        Union[list[TopicSearchResultItemPropRelatedItemsTypeForResponse], None]
+    ]
+    aliases: NotRequired[
+        Union[list[TopicSearchResultItemPropAliasesItemsTypeForResponse], None]
+    ]
 
 
-class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
+class TopicSearchResultItemPropRelatedItemsType(TypedDict):
+    """TopicSearchResultItemPropRelatedItems"""
 
-    sha: str
-    url: str
+    topic_relation: NotRequired[
+        TopicSearchResultItemPropRelatedItemsPropTopicRelationType
+    ]
 
 
-class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
+class TopicSearchResultItemPropRelatedItemsTypeForResponse(TypedDict):
+    """TopicSearchResultItemPropRelatedItems"""
 
-    sha: str
-    url: str
+    topic_relation: NotRequired[
+        TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse
+    ]
+
+
+class TopicSearchResultItemPropRelatedItemsPropTopicRelationType(TypedDict):
+    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    topic_id: NotRequired[int]
+    relation_type: NotRequired[str]
+
+
+class TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse(TypedDict):
+    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    topic_id: NotRequired[int]
+    relation_type: NotRequired[str]
+
+
+class TopicSearchResultItemPropAliasesItemsType(TypedDict):
+    """TopicSearchResultItemPropAliasesItems"""
+
+    topic_relation: NotRequired[
+        TopicSearchResultItemPropAliasesItemsPropTopicRelationType
+    ]
+
+
+class TopicSearchResultItemPropAliasesItemsTypeForResponse(TypedDict):
+    """TopicSearchResultItemPropAliasesItems"""
+
+    topic_relation: NotRequired[
+        TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse
+    ]
+
+
+class TopicSearchResultItemPropAliasesItemsPropTopicRelationType(TypedDict):
+    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    topic_id: NotRequired[int]
+    relation_type: NotRequired[str]
+
+
+class TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse(TypedDict):
+    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    topic_id: NotRequired[int]
+    relation_type: NotRequired[str]
+
+
+class SearchTopicsGetResponse200Type(TypedDict):
+    """SearchTopicsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[TopicSearchResultItemType]
+
+
+class SearchTopicsGetResponse200TypeForResponse(TypedDict):
+    """SearchTopicsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[TopicSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "CommitSearchResultItemPropCommitPropAuthorType",
-    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
-    "CommitSearchResultItemPropCommitPropTreeType",
-    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
-    "CommitSearchResultItemPropCommitType",
-    "CommitSearchResultItemPropCommitTypeForResponse",
+    "SearchTopicsGetResponse200Type",
+    "SearchTopicsGetResponse200TypeForResponse",
+    "TopicSearchResultItemPropAliasesItemsPropTopicRelationType",
+    "TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse",
+    "TopicSearchResultItemPropAliasesItemsType",
+    "TopicSearchResultItemPropAliasesItemsTypeForResponse",
+    "TopicSearchResultItemPropRelatedItemsPropTopicRelationType",
+    "TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse",
+    "TopicSearchResultItemPropRelatedItemsType",
+    "TopicSearchResultItemPropRelatedItemsTypeForResponse",
+    "TopicSearchResultItemType",
+    "TopicSearchResultItemTypeForResponse",
 )

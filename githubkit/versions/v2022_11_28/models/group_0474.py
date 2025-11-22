@@ -14,50 +14,88 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class WebhooksMarketplacePurchase(GitHubModel):
-    """Marketplace Purchase"""
+class WebhooksTeam(GitHubModel):
+    """Team
 
-    account: WebhooksMarketplacePurchasePropAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: Union[str, None] = Field()
-    next_billing_date: Union[str, None] = Field()
-    on_free_trial: bool = Field()
-    plan: WebhooksMarketplacePurchasePropPlan = Field()
-    unit_count: int = Field()
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    deleted: Missing[bool] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the team"
+    )
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field(description="Unique identifier of the team")
+    members_url: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="Name of the team")
+    node_id: Missing[str] = Field(default=UNSET)
+    parent: Missing[Union[WebhooksTeamPropParent, None]] = Field(default=UNSET)
+    permission: Missing[str] = Field(
+        default=UNSET,
+        description="Permission that the team will have for its repositories",
+    )
+    privacy: Missing[Literal["open", "closed", "secret"]] = Field(default=UNSET)
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(default=UNSET)
+    repositories_url: Missing[str] = Field(default=UNSET)
+    slug: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET, description="URL for the team")
+    type: Missing[Literal["enterprise", "organization"]] = Field(
+        default=UNSET, description="The ownership type of the team"
+    )
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
+    )
 
 
-class WebhooksMarketplacePurchasePropAccount(GitHubModel):
-    """WebhooksMarketplacePurchasePropAccount"""
+class WebhooksTeamPropParent(GitHubModel):
+    """WebhooksTeamPropParent"""
 
-    id: int = Field()
-    login: str = Field()
+    description: Union[str, None] = Field(description="Description of the team")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
     node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
+    )
+    privacy: Literal["open", "closed", "secret"] = Field()
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"] = (
+        Field(
+            description="Whether team members will receive notifications when their team is @mentioned"
+        )
+    )
+    repositories_url: str = Field()
+    slug: str = Field()
+    url: str = Field(description="URL for the team")
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
+    )
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
+    )
 
 
-class WebhooksMarketplacePurchasePropPlan(GitHubModel):
-    """WebhooksMarketplacePurchasePropPlan"""
-
-    bullets: list[Union[str, None]] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
-
-
-model_rebuild(WebhooksMarketplacePurchase)
-model_rebuild(WebhooksMarketplacePurchasePropAccount)
-model_rebuild(WebhooksMarketplacePurchasePropPlan)
+model_rebuild(WebhooksTeam)
+model_rebuild(WebhooksTeamPropParent)
 
 __all__ = (
-    "WebhooksMarketplacePurchase",
-    "WebhooksMarketplacePurchasePropAccount",
-    "WebhooksMarketplacePurchasePropPlan",
+    "WebhooksTeam",
+    "WebhooksTeamPropParent",
 )

@@ -9,28 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0306 import SimpleCommit
-
-
-class MergeGroup(GitHubModel):
-    """Merge Group
-
-    A group of pull requests that the merge queue has grouped together to be merged.
-    """
-
-    head_sha: str = Field(description="The SHA of the merge group.")
-    head_ref: str = Field(description="The full ref of the merge group.")
-    base_sha: str = Field(description="The SHA of the merge group's parent commit.")
-    base_ref: str = Field(
-        description="The full ref of the branch the merge group will be merged into."
-    )
-    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(MergeGroup)
+class WebhooksProjectChanges(GitHubModel):
+    """WebhooksProjectChanges"""
 
-__all__ = ("MergeGroup",)
+    archived_at: Missing[WebhooksProjectChangesPropArchivedAt] = Field(default=UNSET)
+
+
+class WebhooksProjectChangesPropArchivedAt(GitHubModel):
+    """WebhooksProjectChangesPropArchivedAt"""
+
+    from_: Missing[Union[datetime, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[datetime, None]] = Field(default=UNSET)
+
+
+model_rebuild(WebhooksProjectChanges)
+model_rebuild(WebhooksProjectChangesPropArchivedAt)
+
+__all__ = (
+    "WebhooksProjectChanges",
+    "WebhooksProjectChangesPropArchivedAt",
+)

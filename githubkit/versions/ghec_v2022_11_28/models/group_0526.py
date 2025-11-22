@@ -9,21 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class SocialAccount(GitHubModel):
-    """Social account
+class KeySimple(GitHubModel):
+    """Key Simple
 
-    Social media account
+    Key Simple
     """
 
-    provider: str = Field()
-    url: str = Field()
+    id: int = Field()
+    key: str = Field()
+    created_at: Missing[datetime] = Field(default=UNSET)
+    last_used: Missing[Union[datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(SocialAccount)
+model_rebuild(KeySimple)
 
-__all__ = ("SocialAccount",)
+__all__ = ("KeySimple",)

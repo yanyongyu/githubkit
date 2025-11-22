@@ -10,51 +10,57 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ContentDirectoryItemsType(TypedDict):
-    """ContentDirectoryItems"""
+class ContentSymlinkType(TypedDict):
+    """Symlink Content
 
-    type: Literal["dir", "file", "submodule", "symlink"]
+    An object describing a symlink
+    """
+
+    type: Literal["symlink"]
+    target: str
     size: int
     name: str
     path: str
-    content: NotRequired[str]
     sha: str
     url: str
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentDirectoryItemsPropLinksType
+    links: ContentSymlinkPropLinksType
 
 
-class ContentDirectoryItemsTypeForResponse(TypedDict):
-    """ContentDirectoryItems"""
+class ContentSymlinkTypeForResponse(TypedDict):
+    """Symlink Content
 
-    type: Literal["dir", "file", "submodule", "symlink"]
+    An object describing a symlink
+    """
+
+    type: Literal["symlink"]
+    target: str
     size: int
     name: str
     path: str
-    content: NotRequired[str]
     sha: str
     url: str
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentDirectoryItemsPropLinksTypeForResponse
+    links: ContentSymlinkPropLinksTypeForResponse
 
 
-class ContentDirectoryItemsPropLinksType(TypedDict):
-    """ContentDirectoryItemsPropLinks"""
+class ContentSymlinkPropLinksType(TypedDict):
+    """ContentSymlinkPropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
     self_: str
 
 
-class ContentDirectoryItemsPropLinksTypeForResponse(TypedDict):
-    """ContentDirectoryItemsPropLinks"""
+class ContentSymlinkPropLinksTypeForResponse(TypedDict):
+    """ContentSymlinkPropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
@@ -62,8 +68,8 @@ class ContentDirectoryItemsPropLinksTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "ContentDirectoryItemsPropLinksType",
-    "ContentDirectoryItemsPropLinksTypeForResponse",
-    "ContentDirectoryItemsType",
-    "ContentDirectoryItemsTypeForResponse",
+    "ContentSymlinkPropLinksType",
+    "ContentSymlinkPropLinksTypeForResponse",
+    "ContentSymlinkType",
+    "ContentSymlinkTypeForResponse",
 )

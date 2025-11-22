@@ -12,94 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class BillingUsageSummaryReportGhe(GitHubModel):
-    """BillingUsageSummaryReportGhe"""
+class ReactionRollup(GitHubModel):
+    """Reaction Rollup"""
 
-    time_period: BillingUsageSummaryReportGhePropTimePeriod = Field(alias="timePeriod")
-    enterprise: str = Field(description="The unique identifier of the enterprise.")
-    organization: Missing[str] = Field(
-        default=UNSET, description="The name of the organization for the usage report."
-    )
-    repository: Missing[str] = Field(
-        default=UNSET, description="The name of the repository for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    sku: Missing[str] = Field(
-        default=UNSET, description="The SKU for the usage report."
-    )
-    cost_center: Missing[BillingUsageSummaryReportGhePropCostCenter] = Field(
-        default=UNSET, alias="costCenter"
-    )
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItems] = Field(
-        alias="usageItems"
-    )
+    url: str = Field()
+    total_count: int = Field()
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    laugh: int = Field()
+    confused: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    eyes: int = Field()
+    rocket: int = Field()
 
 
-class BillingUsageSummaryReportGhePropTimePeriod(GitHubModel):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
+model_rebuild(ReactionRollup)
 
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
-    )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
-    )
-
-
-class BillingUsageSummaryReportGhePropCostCenter(GitHubModel):
-    """BillingUsageSummaryReportGhePropCostCenter"""
-
-    id: str = Field(description="The unique identifier of the cost center.")
-    name: str = Field(description="The name of the cost center.")
-
-
-class BillingUsageSummaryReportGhePropUsageItemsItems(GitHubModel):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
-
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
-    )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
-
-
-model_rebuild(BillingUsageSummaryReportGhe)
-model_rebuild(BillingUsageSummaryReportGhePropTimePeriod)
-model_rebuild(BillingUsageSummaryReportGhePropCostCenter)
-model_rebuild(BillingUsageSummaryReportGhePropUsageItemsItems)
-
-__all__ = (
-    "BillingUsageSummaryReportGhe",
-    "BillingUsageSummaryReportGhePropCostCenter",
-    "BillingUsageSummaryReportGhePropTimePeriod",
-    "BillingUsageSummaryReportGhePropUsageItemsItems",
-)
+__all__ = ("ReactionRollup",)

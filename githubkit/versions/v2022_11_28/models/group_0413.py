@@ -14,17 +14,13 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CommitActivity(GitHubModel):
-    """Commit Activity
+class ParticipationStats(GitHubModel):
+    """Participation Stats"""
 
-    Commit Activity
-    """
-
-    days: list[int] = Field()
-    total: int = Field()
-    week: int = Field()
+    all_: list[int] = Field(alias="all")
+    owner: list[int] = Field()
 
 
-model_rebuild(CommitActivity)
+model_rebuild(ParticipationStats)
 
-__all__ = ("CommitActivity",)
+__all__ = ("ParticipationStats",)

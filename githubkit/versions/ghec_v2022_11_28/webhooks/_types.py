@@ -213,7 +213,6 @@ from .workflow_run import action_types as workflow_run_action_types
 WebhookEvent = Union[
     BranchProtectionConfigurationEvent,
     BranchProtectionRuleEvent,
-    ExemptionRequestPushRulesetEvent,
     ExemptionRequestSecretScanningEvent,
     CheckRunEvent,
     CheckSuiteEvent,
@@ -233,6 +232,7 @@ WebhookEvent = Union[
     DiscussionCommentEvent,
     DismissalRequestCodeScanningEvent,
     DismissalRequestSecretScanningEvent,
+    ExemptionRequestPushRulesetEvent,
     ForkEvent,
     GithubAppAuthorizationEvent,
     GollumEvent,
@@ -297,7 +297,6 @@ WebhookEvent = Union[
 webhook_action_types = {
     "branch_protection_configuration": branch_protection_configuration_action_types,
     "branch_protection_rule": branch_protection_rule_action_types,
-    "exemption_request_push_ruleset": exemption_request_push_ruleset_action_types,
     "exemption_request_secret_scanning": exemption_request_secret_scanning_action_types,
     "check_run": check_run_action_types,
     "check_suite": check_suite_action_types,
@@ -317,6 +316,7 @@ webhook_action_types = {
     "discussion_comment": discussion_comment_action_types,
     "dismissal_request_code_scanning": dismissal_request_code_scanning_action_types,
     "dismissal_request_secret_scanning": dismissal_request_secret_scanning_action_types,
+    "exemption_request_push_ruleset": exemption_request_push_ruleset_action_types,
     "fork": fork_action_types,
     "github_app_authorization": github_app_authorization_action_types,
     "gollum": gollum_action_types,
@@ -381,7 +381,6 @@ webhook_action_types = {
 webhook_event_types = {
     "branch_protection_configuration": BranchProtectionConfigurationEvent,
     "branch_protection_rule": BranchProtectionRuleEvent,
-    "exemption_request_push_ruleset": ExemptionRequestPushRulesetEvent,
     "exemption_request_secret_scanning": ExemptionRequestSecretScanningEvent,
     "check_run": CheckRunEvent,
     "check_suite": CheckSuiteEvent,
@@ -401,6 +400,7 @@ webhook_event_types = {
     "discussion_comment": DiscussionCommentEvent,
     "dismissal_request_code_scanning": DismissalRequestCodeScanningEvent,
     "dismissal_request_secret_scanning": DismissalRequestSecretScanningEvent,
+    "exemption_request_push_ruleset": ExemptionRequestPushRulesetEvent,
     "fork": ForkEvent,
     "github_app_authorization": GithubAppAuthorizationEvent,
     "gollum": GollumEvent,

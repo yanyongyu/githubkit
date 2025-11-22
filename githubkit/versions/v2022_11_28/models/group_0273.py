@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 
 from pydantic import Field
@@ -16,20 +17,22 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningAnalysisDeletion(GitHubModel):
-    """Analysis deletion
+class CodeScanningVariantAnalysisRepository(GitHubModel):
+    """Repository Identifier
 
-    Successful deletion of a code scanning analysis
+    Repository Identifier
     """
 
-    next_analysis_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, without last analysis deletion confirmation"
+    id: int = Field(description="A unique identifier of the repository.")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field(
+        description="The full, globally unique, name of the repository."
     )
-    confirm_delete_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, with last analysis deletion confirmation"
-    )
+    private: bool = Field(description="Whether the repository is private.")
+    stargazers_count: int = Field()
+    updated_at: Union[datetime, None] = Field()
 
 
-model_rebuild(CodeScanningAnalysisDeletion)
+model_rebuild(CodeScanningVariantAnalysisRepository)
 
-__all__ = ("CodeScanningAnalysisDeletion",)
+__all__ = ("CodeScanningVariantAnalysisRepository",)

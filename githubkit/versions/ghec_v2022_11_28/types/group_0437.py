@@ -9,51 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class PagesDeploymentStatusType(TypedDict):
-    """GitHub Pages deployment status"""
+class PullRequestPropHeadType(TypedDict):
+    """PullRequestPropHead"""
 
-    status: NotRequired[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-        ]
-    ]
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
-class PagesDeploymentStatusTypeForResponse(TypedDict):
-    """GitHub Pages deployment status"""
+class PullRequestPropHeadTypeForResponse(TypedDict):
+    """PullRequestPropHead"""
 
-    status: NotRequired[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-        ]
-    ]
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryTypeForResponse]
+    sha: str
+    user: Union[None, SimpleUserTypeForResponse]
+
+
+class PullRequestPropBaseType(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: SimpleUserType
+
+
+class PullRequestPropBaseTypeForResponse(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryTypeForResponse
+    sha: str
+    user: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "PagesDeploymentStatusType",
-    "PagesDeploymentStatusTypeForResponse",
+    "PullRequestPropBaseType",
+    "PullRequestPropBaseTypeForResponse",
+    "PullRequestPropHeadType",
+    "PullRequestPropHeadTypeForResponse",
 )

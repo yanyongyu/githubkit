@@ -28,36 +28,30 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import (
-        ActionsBillingUsage,
         BillingPremiumRequestUsageReportOrg,
         BillingPremiumRequestUsageReportUser,
         BillingUsageReport,
         BillingUsageReportUser,
         BillingUsageSummaryReportOrg,
         BillingUsageSummaryReportUser,
-        CombinedBillingUsage,
         DeleteBudget,
         GetAllBudgets,
         GetBudget,
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200,
-        PackagesBillingUsage,
     )
     from ..types import (
-        ActionsBillingUsageTypeForResponse,
         BillingPremiumRequestUsageReportOrgTypeForResponse,
         BillingPremiumRequestUsageReportUserTypeForResponse,
         BillingUsageReportTypeForResponse,
         BillingUsageReportUserTypeForResponse,
         BillingUsageSummaryReportOrgTypeForResponse,
         BillingUsageSummaryReportUserTypeForResponse,
-        CombinedBillingUsageTypeForResponse,
         DeleteBudgetTypeForResponse,
         GetAllBudgetsTypeForResponse,
         GetBudgetTypeForResponse,
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType,
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType,
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse,
-        PackagesBillingUsageTypeForResponse,
     )
 
 
@@ -92,7 +86,7 @@ class BillingClient:
 
         Gets all budgets for an organization. The authenticated user must be an organization admin or billing manager.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-all-budgets-for-an-organization
+        See also: https://docs.github.com/rest/billing/budgets#get-all-budgets-for-an-organization
         """
 
         from ..models import BasicError, GetAllBudgets
@@ -130,7 +124,7 @@ class BillingClient:
 
         Gets all budgets for an organization. The authenticated user must be an organization admin or billing manager.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-all-budgets-for-an-organization
+        See also: https://docs.github.com/rest/billing/budgets#get-all-budgets-for-an-organization
         """
 
         from ..models import BasicError, GetAllBudgets
@@ -169,7 +163,7 @@ class BillingClient:
 
         Gets a budget by ID. The authenticated user must be an organization admin or billing manager.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-a-budget-by-id-for-an-organization
+        See also: https://docs.github.com/rest/billing/budgets#get-a-budget-by-id-for-an-organization
         """
 
         from ..models import BasicError, EventsGetResponse503, GetBudget
@@ -210,7 +204,7 @@ class BillingClient:
 
         Gets a budget by ID. The authenticated user must be an organization admin or billing manager.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-a-budget-by-id-for-an-organization
+        See also: https://docs.github.com/rest/billing/budgets#get-a-budget-by-id-for-an-organization
         """
 
         from ..models import BasicError, EventsGetResponse503, GetBudget
@@ -251,7 +245,7 @@ class BillingClient:
 
         Deletes a budget by ID for an organization. The authenticated user must be an organization admin or billing manager.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#delete-a-budget-for-an-organization
+        See also: https://docs.github.com/rest/billing/budgets#delete-a-budget-for-an-organization
         """
 
         from ..models import BasicError, DeleteBudget, EventsGetResponse503
@@ -292,7 +286,7 @@ class BillingClient:
 
         Deletes a budget by ID for an organization. The authenticated user must be an organization admin or billing manager.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#delete-a-budget-for-an-organization
+        See also: https://docs.github.com/rest/billing/budgets#delete-a-budget-for-an-organization
         """
 
         from ..models import BasicError, DeleteBudget, EventsGetResponse503
@@ -379,7 +373,7 @@ class BillingClient:
 
         Updates an existing budget for an organization. The authenticated user must be an organization admin or billing manager.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#update-a-budget-for-an-organization
+        See also: https://docs.github.com/rest/billing/budgets#update-a-budget-for-an-organization
         """
 
         from ..models import (
@@ -484,7 +478,7 @@ class BillingClient:
 
         Updates an existing budget for an organization. The authenticated user must be an organization admin or billing manager.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#update-a-budget-for-an-organization
+        See also: https://docs.github.com/rest/billing/budgets#update-a-budget-for-an-organization
         """
 
         from ..models import (
@@ -550,7 +544,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-an-organization
+        See also: https://docs.github.com/rest/billing/usage#get-billing-premium-request-usage-report-for-an-organization
         """
 
         from ..models import (
@@ -612,7 +606,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-an-organization
+        See also: https://docs.github.com/rest/billing/usage#get-billing-premium-request-usage-report-for-an-organization
         """
 
         from ..models import (
@@ -668,7 +662,7 @@ class BillingClient:
 
         **Note:** This endpoint is only available to organizations with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform](https://docs.github.com/billing/using-the-new-billing-platform)."
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-report-for-an-organization
+        See also: https://docs.github.com/rest/billing/usage#get-billing-usage-report-for-an-organization
         """
 
         from ..models import BasicError, BillingUsageReport, EventsGetResponse503
@@ -716,7 +710,7 @@ class BillingClient:
 
         **Note:** This endpoint is only available to organizations with access to the enhanced billing platform. For more information, see "[About the enhanced billing platform](https://docs.github.com/billing/using-the-new-billing-platform)."
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-report-for-an-organization
+        See also: https://docs.github.com/rest/billing/usage#get-billing-usage-report-for-an-organization
         """
 
         from ..models import BasicError, BillingUsageReport, EventsGetResponse503
@@ -772,7 +766,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-summary-for-an-organization
+        See also: https://docs.github.com/rest/billing/usage#get-billing-usage-summary-for-an-organization
         """
 
         from ..models import (
@@ -835,7 +829,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-summary-for-an-organization
+        See also: https://docs.github.com/rest/billing/usage#get-billing-usage-summary-for-an-organization
         """
 
         from ..models import (
@@ -872,346 +866,6 @@ class BillingClient:
             },
         )
 
-    def get_github_actions_billing_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
-        """billing/get-github-actions-billing-org
-
-        GET /orgs/{org}/settings/billing/actions
-
-        Gets the summary of the free and paid GitHub Actions minutes used.
-
-        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
-
-        See also: https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-an-organization
-        """
-
-        from ..models import ActionsBillingUsage
-
-        url = f"/orgs/{org}/settings/billing/actions"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=ActionsBillingUsage,
-        )
-
-    async def async_get_github_actions_billing_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
-        """billing/get-github-actions-billing-org
-
-        GET /orgs/{org}/settings/billing/actions
-
-        Gets the summary of the free and paid GitHub Actions minutes used.
-
-        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
-
-        See also: https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-an-organization
-        """
-
-        from ..models import ActionsBillingUsage
-
-        url = f"/orgs/{org}/settings/billing/actions"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=ActionsBillingUsage,
-        )
-
-    def get_github_packages_billing_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
-        """billing/get-github-packages-billing-org
-
-        GET /orgs/{org}/settings/billing/packages
-
-        Gets the free and paid storage used for GitHub Packages in gigabytes.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
-
-        See also: https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-an-organization
-        """
-
-        from ..models import PackagesBillingUsage
-
-        url = f"/orgs/{org}/settings/billing/packages"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=PackagesBillingUsage,
-        )
-
-    async def async_get_github_packages_billing_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
-        """billing/get-github-packages-billing-org
-
-        GET /orgs/{org}/settings/billing/packages
-
-        Gets the free and paid storage used for GitHub Packages in gigabytes.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
-
-        See also: https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-an-organization
-        """
-
-        from ..models import PackagesBillingUsage
-
-        url = f"/orgs/{org}/settings/billing/packages"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=PackagesBillingUsage,
-        )
-
-    def get_shared_storage_billing_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
-        """billing/get-shared-storage-billing-org
-
-        GET /orgs/{org}/settings/billing/shared-storage
-
-        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
-
-        See also: https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-an-organization
-        """
-
-        from ..models import CombinedBillingUsage
-
-        url = f"/orgs/{org}/settings/billing/shared-storage"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=CombinedBillingUsage,
-        )
-
-    async def async_get_shared_storage_billing_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
-        """billing/get-shared-storage-billing-org
-
-        GET /orgs/{org}/settings/billing/shared-storage
-
-        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
-
-        See also: https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-an-organization
-        """
-
-        from ..models import CombinedBillingUsage
-
-        url = f"/orgs/{org}/settings/billing/shared-storage"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=CombinedBillingUsage,
-        )
-
-    def get_github_actions_billing_user(
-        self,
-        username: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
-        """billing/get-github-actions-billing-user
-
-        GET /users/{username}/settings/billing/actions
-
-        Gets the summary of the free and paid GitHub Actions minutes used.
-
-        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-
-        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
-
-        See also: https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-a-user
-        """
-
-        from ..models import ActionsBillingUsage
-
-        url = f"/users/{username}/settings/billing/actions"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=ActionsBillingUsage,
-        )
-
-    async def async_get_github_actions_billing_user(
-        self,
-        username: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[ActionsBillingUsage, ActionsBillingUsageTypeForResponse]:
-        """billing/get-github-actions-billing-user
-
-        GET /users/{username}/settings/billing/actions
-
-        Gets the summary of the free and paid GitHub Actions minutes used.
-
-        Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-
-        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
-
-        See also: https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-a-user
-        """
-
-        from ..models import ActionsBillingUsage
-
-        url = f"/users/{username}/settings/billing/actions"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=ActionsBillingUsage,
-        )
-
-    def get_github_packages_billing_user(
-        self,
-        username: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
-        """billing/get-github-packages-billing-user
-
-        GET /users/{username}/settings/billing/packages
-
-        Gets the free and paid storage used for GitHub Packages in gigabytes.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
-
-        See also: https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-a-user
-        """
-
-        from ..models import PackagesBillingUsage
-
-        url = f"/users/{username}/settings/billing/packages"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=PackagesBillingUsage,
-        )
-
-    async def async_get_github_packages_billing_user(
-        self,
-        username: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[PackagesBillingUsage, PackagesBillingUsageTypeForResponse]:
-        """billing/get-github-packages-billing-user
-
-        GET /users/{username}/settings/billing/packages
-
-        Gets the free and paid storage used for GitHub Packages in gigabytes.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
-
-        See also: https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-a-user
-        """
-
-        from ..models import PackagesBillingUsage
-
-        url = f"/users/{username}/settings/billing/packages"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=PackagesBillingUsage,
-        )
-
     def get_github_billing_premium_request_usage_report_user(
         self,
         username: str,
@@ -1235,7 +889,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-a-user
+        See also: https://docs.github.com/rest/billing/usage#get-billing-premium-request-usage-report-for-a-user
         """
 
         from ..models import (
@@ -1295,7 +949,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-premium-request-usage-report-for-a-user
+        See also: https://docs.github.com/rest/billing/usage#get-billing-premium-request-usage-report-for-a-user
         """
 
         from ..models import (
@@ -1332,74 +986,6 @@ class BillingClient:
             },
         )
 
-    def get_shared_storage_billing_user(
-        self,
-        username: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
-        """billing/get-shared-storage-billing-user
-
-        GET /users/{username}/settings/billing/shared-storage
-
-        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
-
-        See also: https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-a-user
-        """
-
-        from ..models import CombinedBillingUsage
-
-        url = f"/users/{username}/settings/billing/shared-storage"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=CombinedBillingUsage,
-        )
-
-    async def async_get_shared_storage_billing_user(
-        self,
-        username: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[CombinedBillingUsage, CombinedBillingUsageTypeForResponse]:
-        """billing/get-shared-storage-billing-user
-
-        GET /users/{username}/settings/billing/shared-storage
-
-        Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
-
-        Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-
-        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
-
-        See also: https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-a-user
-        """
-
-        from ..models import CombinedBillingUsage
-
-        url = f"/users/{username}/settings/billing/shared-storage"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=CombinedBillingUsage,
-        )
-
     def get_github_billing_usage_report_user(
         self,
         username: str,
@@ -1418,7 +1004,7 @@ class BillingClient:
 
         **Note:** This endpoint is only available to users with access to the enhanced billing platform.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-report-for-a-user
+        See also: https://docs.github.com/rest/billing/usage#get-billing-usage-report-for-a-user
         """
 
         from ..models import BasicError, BillingUsageReportUser, EventsGetResponse503
@@ -1466,7 +1052,7 @@ class BillingClient:
 
         **Note:** This endpoint is only available to users with access to the enhanced billing platform.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-report-for-a-user
+        See also: https://docs.github.com/rest/billing/usage#get-billing-usage-report-for-a-user
         """
 
         from ..models import BasicError, BillingUsageReportUser, EventsGetResponse503
@@ -1522,7 +1108,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-summary-for-a-user
+        See also: https://docs.github.com/rest/billing/usage#get-billing-usage-summary-for-a-user
         """
 
         from ..models import (
@@ -1586,7 +1172,7 @@ class BillingClient:
 
         **Note:** Only data from the past 24 months is accessible via this endpoint.
 
-        See also: https://docs.github.com/rest/billing/enhanced-billing#get-billing-usage-summary-for-a-user
+        See also: https://docs.github.com/rest/billing/usage#get-billing-usage-summary-for-a-user
         """
 
         from ..models import (

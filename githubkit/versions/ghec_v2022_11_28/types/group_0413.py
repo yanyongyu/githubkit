@@ -14,50 +14,71 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0080 import TeamType, TeamTypeForResponse
 
 
-class ReviewRequestRemovedIssueEventType(TypedDict):
-    """Review Request Removed Issue Event
+class MovedColumnInProjectIssueEventType(TypedDict):
+    """Moved Column in Project Issue Event
 
-    Review Request Removed Issue Event
+    Moved Column in Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["review_request_removed"]
+    event: Literal["moved_columns_in_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    review_requester: SimpleUserType
-    requested_team: NotRequired[TeamType]
-    requested_reviewer: NotRequired[SimpleUserType]
+    project_card: NotRequired[MovedColumnInProjectIssueEventPropProjectCardType]
 
 
-class ReviewRequestRemovedIssueEventTypeForResponse(TypedDict):
-    """Review Request Removed Issue Event
+class MovedColumnInProjectIssueEventTypeForResponse(TypedDict):
+    """Moved Column in Project Issue Event
 
-    Review Request Removed Issue Event
+    Moved Column in Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["review_request_removed"]
+    event: Literal["moved_columns_in_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    review_requester: SimpleUserTypeForResponse
-    requested_team: NotRequired[TeamTypeForResponse]
-    requested_reviewer: NotRequired[SimpleUserTypeForResponse]
+    project_card: NotRequired[
+        MovedColumnInProjectIssueEventPropProjectCardTypeForResponse
+    ]
+
+
+class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
+    """MovedColumnInProjectIssueEventPropProjectCard"""
+
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
+
+
+class MovedColumnInProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
+    """MovedColumnInProjectIssueEventPropProjectCard"""
+
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
 
 
 __all__ = (
-    "ReviewRequestRemovedIssueEventType",
-    "ReviewRequestRemovedIssueEventTypeForResponse",
+    "MovedColumnInProjectIssueEventPropProjectCardType",
+    "MovedColumnInProjectIssueEventPropProjectCardTypeForResponse",
+    "MovedColumnInProjectIssueEventType",
+    "MovedColumnInProjectIssueEventTypeForResponse",
 )

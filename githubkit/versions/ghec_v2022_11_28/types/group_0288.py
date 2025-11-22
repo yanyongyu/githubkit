@@ -9,33 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class TeamMembershipType(TypedDict):
-    """Team Membership
+class ProjectColumnType(TypedDict):
+    """Project Column
 
-    Team Membership
+    Project columns contain cards of work.
     """
 
     url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+    project_url: str
+    cards_url: str
+    id: int
+    node_id: str
+    name: str
+    created_at: datetime
+    updated_at: datetime
 
 
-class TeamMembershipTypeForResponse(TypedDict):
-    """Team Membership
+class ProjectColumnTypeForResponse(TypedDict):
+    """Project Column
 
-    Team Membership
+    Project columns contain cards of work.
     """
 
     url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+    project_url: str
+    cards_url: str
+    id: int
+    node_id: str
+    name: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "TeamMembershipType",
-    "TeamMembershipTypeForResponse",
+    "ProjectColumnType",
+    "ProjectColumnTypeForResponse",
 )

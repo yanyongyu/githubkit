@@ -13,115 +13,298 @@ from datetime import datetime
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0305 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0332 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
-from .group_0541 import SimpleCheckSuiteType, SimpleCheckSuiteTypeForResponse
 
+class DiscussionType(TypedDict):
+    """Discussion
 
-class CheckRunWithSimpleCheckSuiteType(TypedDict):
-    """CheckRun
-
-    A check performed on the code of a given code change
+    A Discussion in a repository.
     """
 
-    app: Union[IntegrationType, None]
-    check_suite: SimpleCheckSuiteType
-    completed_at: Union[datetime, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
+    active_lock_reason: Union[str, None]
+    answer_chosen_at: Union[str, None]
+    answer_chosen_by: Union[DiscussionPropAnswerChosenByType, None]
+    answer_html_url: Union[str, None]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    deployment: NotRequired[DeploymentSimpleType]
-    details_url: str
-    external_id: str
-    head_sha: str
+    body: str
+    category: DiscussionPropCategoryType
+    comments: int
+    created_at: datetime
     html_url: str
     id: int
-    name: str
+    locked: bool
     node_id: str
-    output: CheckRunWithSimpleCheckSuitePropOutputType
-    pull_requests: list[PullRequestMinimalType]
-    started_at: datetime
-    status: Literal["queued", "in_progress", "completed", "pending"]
+    number: int
+    reactions: NotRequired[DiscussionPropReactionsType]
+    repository_url: str
+    state: Literal["open", "closed", "locked", "converting", "transferring"]
+    state_reason: Union[None, Literal["resolved", "outdated", "duplicate", "reopened"]]
+    timeline_url: NotRequired[str]
+    title: str
+    updated_at: datetime
+    user: Union[DiscussionPropUserType, None]
+    labels: NotRequired[list[LabelType]]
+
+
+class DiscussionTypeForResponse(TypedDict):
+    """Discussion
+
+    A Discussion in a repository.
+    """
+
+    active_lock_reason: Union[str, None]
+    answer_chosen_at: Union[str, None]
+    answer_chosen_by: Union[DiscussionPropAnswerChosenByTypeForResponse, None]
+    answer_html_url: Union[str, None]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    category: DiscussionPropCategoryTypeForResponse
+    comments: int
+    created_at: str
+    html_url: str
+    id: int
+    locked: bool
+    node_id: str
+    number: int
+    reactions: NotRequired[DiscussionPropReactionsTypeForResponse]
+    repository_url: str
+    state: Literal["open", "closed", "locked", "converting", "transferring"]
+    state_reason: Union[None, Literal["resolved", "outdated", "duplicate", "reopened"]]
+    timeline_url: NotRequired[str]
+    title: str
+    updated_at: str
+    user: Union[DiscussionPropUserTypeForResponse, None]
+    labels: NotRequired[list[LabelTypeForResponse]]
+
+
+class LabelType(TypedDict):
+    """Label
+
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
+    """
+
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+
+
+class LabelTypeForResponse(TypedDict):
+    """Label
+
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
+    """
+
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+
+
+class DiscussionPropAnswerChosenByType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class DiscussionPropAnswerChosenByTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class DiscussionPropCategoryType(TypedDict):
+    """DiscussionPropCategory"""
+
+    created_at: datetime
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
+    name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
+
+
+class DiscussionPropCategoryTypeForResponse(TypedDict):
+    """DiscussionPropCategory"""
+
+    created_at: str
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
+    name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
+
+
+class DiscussionPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
     url: str
 
 
-class CheckRunWithSimpleCheckSuiteTypeForResponse(TypedDict):
-    """CheckRun
+class DiscussionPropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
 
-    A check performed on the code of a given code change
-    """
-
-    app: Union[IntegrationTypeForResponse, None]
-    check_suite: SimpleCheckSuiteTypeForResponse
-    completed_at: Union[str, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    deployment: NotRequired[DeploymentSimpleTypeForResponse]
-    details_url: str
-    external_id: str
-    head_sha: str
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    output: CheckRunWithSimpleCheckSuitePropOutputTypeForResponse
-    pull_requests: list[PullRequestMinimalTypeForResponse]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed", "pending"]
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
     url: str
 
 
-class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
+class DiscussionPropUserType(TypedDict):
+    """User"""
 
-    annotations_count: int
-    annotations_url: str
-    summary: Union[str, None]
-    text: Union[str, None]
-    title: Union[str, None]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class CheckRunWithSimpleCheckSuitePropOutputTypeForResponse(TypedDict):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
+class DiscussionPropUserTypeForResponse(TypedDict):
+    """User"""
 
-    annotations_count: int
-    annotations_url: str
-    summary: Union[str, None]
-    text: Union[str, None]
-    title: Union[str, None]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "CheckRunWithSimpleCheckSuitePropOutputType",
-    "CheckRunWithSimpleCheckSuitePropOutputTypeForResponse",
-    "CheckRunWithSimpleCheckSuiteType",
-    "CheckRunWithSimpleCheckSuiteTypeForResponse",
+    "DiscussionPropAnswerChosenByType",
+    "DiscussionPropAnswerChosenByTypeForResponse",
+    "DiscussionPropCategoryType",
+    "DiscussionPropCategoryTypeForResponse",
+    "DiscussionPropReactionsType",
+    "DiscussionPropReactionsTypeForResponse",
+    "DiscussionPropUserType",
+    "DiscussionPropUserTypeForResponse",
+    "DiscussionType",
+    "DiscussionTypeForResponse",
+    "LabelType",
+    "LabelTypeForResponse",
 )

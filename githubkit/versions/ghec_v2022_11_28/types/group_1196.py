@@ -12,49 +12,47 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503Type(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
+class ProjectsColumnsColumnIdCardsPostResponse503Type(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostResponse503"""
 
     code: NotRequired[str]
     message: NotRequired[str]
     documentation_url: NotRequired[str]
     errors: NotRequired[
-        list[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType]
+        list[ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType]
     ]
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503TypeForResponse(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
+class ProjectsColumnsColumnIdCardsPostResponse503TypeForResponse(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostResponse503"""
 
     code: NotRequired[str]
     message: NotRequired[str]
     documentation_url: NotRequired[str]
     errors: NotRequired[
-        list[
-            ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsTypeForResponse
-        ]
+        list[ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsTypeForResponse]
     ]
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
+class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"""
 
     code: NotRequired[str]
     message: NotRequired[str]
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsTypeForResponse(
+class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
+    """ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"""
 
     code: NotRequired[str]
     message: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType",
-    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsTypeForResponse",
-    "ProjectsColumnsCardsCardIdMovesPostResponse503Type",
-    "ProjectsColumnsCardsCardIdMovesPostResponse503TypeForResponse",
+    "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType",
+    "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsTypeForResponse",
+    "ProjectsColumnsColumnIdCardsPostResponse503Type",
+    "ProjectsColumnsColumnIdCardsPostResponse503TypeForResponse",
 )

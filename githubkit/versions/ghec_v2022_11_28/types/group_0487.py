@@ -11,50 +11,32 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0486 import TrafficType, TrafficTypeForResponse
 
-class TagType(TypedDict):
-    """Tag
 
-    Tag
+class CloneTrafficType(TypedDict):
+    """Clone Traffic
+
+    Clone Traffic
     """
 
-    name: str
-    commit: TagPropCommitType
-    zipball_url: str
-    tarball_url: str
-    node_id: str
+    count: int
+    uniques: int
+    clones: list[TrafficType]
 
 
-class TagTypeForResponse(TypedDict):
-    """Tag
+class CloneTrafficTypeForResponse(TypedDict):
+    """Clone Traffic
 
-    Tag
+    Clone Traffic
     """
 
-    name: str
-    commit: TagPropCommitTypeForResponse
-    zipball_url: str
-    tarball_url: str
-    node_id: str
-
-
-class TagPropCommitType(TypedDict):
-    """TagPropCommit"""
-
-    sha: str
-    url: str
-
-
-class TagPropCommitTypeForResponse(TypedDict):
-    """TagPropCommit"""
-
-    sha: str
-    url: str
+    count: int
+    uniques: int
+    clones: list[TrafficTypeForResponse]
 
 
 __all__ = (
-    "TagPropCommitType",
-    "TagPropCommitTypeForResponse",
-    "TagType",
-    "TagTypeForResponse",
+    "CloneTrafficType",
+    "CloneTrafficTypeForResponse",
 )

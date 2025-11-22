@@ -12,15 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type(TypedDict):
-    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
+class CredentialsRevokePostBodyType(TypedDict):
+    """CredentialsRevokePostBody"""
+
+    credentials: list[str]
 
 
-class AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse(TypedDict):
-    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
+class CredentialsRevokePostBodyTypeForResponse(TypedDict):
+    """CredentialsRevokePostBody"""
+
+    credentials: list[str]
 
 
 __all__ = (
-    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type",
-    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse",
+    "CredentialsRevokePostBodyType",
+    "CredentialsRevokePostBodyTypeForResponse",
 )

@@ -17,12 +17,6 @@ if TYPE_CHECKING:
         ActionsArtifactAndLogRetentionType as ActionsArtifactAndLogRetentionType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        ActionsBillingUsagePropMinutesUsedBreakdownType as ActionsBillingUsagePropMinutesUsedBreakdownType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ActionsBillingUsageType as ActionsBillingUsageType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         ActionsCacheListPropActionsCachesItemsType as ActionsCacheListPropActionsCachesItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -159,6 +153,12 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         AppPermissionsType as AppPermissionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ArtifactDeploymentRecordPropTagsType as ArtifactDeploymentRecordPropTagsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ArtifactDeploymentRecordType as ArtifactDeploymentRecordType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ArtifactPropWorkflowRunType as ArtifactPropWorkflowRunType,
@@ -513,9 +513,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         CollaboratorType as CollaboratorType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        CombinedBillingUsageType as CombinedBillingUsageType,
     )
     from githubkit.versions.v2022_11_28.types import (
         CombinedCommitStatusType as CombinedCommitStatusType,
@@ -1501,6 +1498,27 @@ if TYPE_CHECKING:
         OrgsOrgActionsVariablesPostBodyType as OrgsOrgActionsVariablesPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType as OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType as OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type as OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrgsOrgArtifactsMetadataStorageRecordPostBodyType as OrgsOrgArtifactsMetadataStorageRecordPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1508,6 +1526,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type as OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type as OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType as OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType,
@@ -1832,9 +1853,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType as OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        PackagesBillingUsageType as PackagesBillingUsageType,
     )
     from githubkit.versions.v2022_11_28.types import PackageType as PackageType
     from githubkit.versions.v2022_11_28.types import (
@@ -2413,6 +2431,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleParamsCodeScanningToolType as RepositoryRuleParamsCodeScanningToolType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleParamsCopilotCodeReviewAnalysisToolType as RepositoryRuleParamsCopilotCodeReviewAnalysisToolType,
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleParamsRequiredReviewerConfigurationType as RepositoryRuleParamsRequiredReviewerConfigurationType,
@@ -3810,6 +3831,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         UsersUsernameProjectsV2ProjectNumberItemsPostBodyType as UsersUsernameProjectsV2ProjectNumberItemsPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        UserUserIdProjectsV2ProjectNumberDraftsPostBodyType as UserUserIdProjectsV2ProjectNumberDraftsPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ValidationErrorPropErrorsItemsType as ValidationErrorPropErrorsItemsType,
@@ -10300,6 +10324,8 @@ else:
             "AuthenticationTokenType",
             "AuthenticationTokenPropPermissionsType",
             "ActionsPublicKeyType",
+            "ArtifactDeploymentRecordType",
+            "ArtifactDeploymentRecordPropTagsType",
             "TeamSimpleType",
             "TeamType",
             "TeamPropPermissionsType",
@@ -10424,10 +10450,10 @@ else:
             "RepositoryRuleMergeQueuePropParametersType",
             "RepositoryRuleRequiredDeploymentsType",
             "RepositoryRuleRequiredDeploymentsPropParametersType",
-            "RepositoryRuleParamsRequiredReviewerConfigurationType",
-            "RepositoryRuleParamsReviewerType",
             "RepositoryRulePullRequestType",
             "RepositoryRulePullRequestPropParametersType",
+            "RepositoryRuleParamsRequiredReviewerConfigurationType",
+            "RepositoryRuleParamsReviewerType",
             "RepositoryRuleRequiredStatusChecksType",
             "RepositoryRuleRequiredStatusChecksPropParametersType",
             "RepositoryRuleParamsStatusCheckConfigurationType",
@@ -10458,6 +10484,7 @@ else:
             "RepositoryRuleParamsCodeScanningToolType",
             "RepositoryRuleCopilotCodeReviewType",
             "RepositoryRuleCopilotCodeReviewPropParametersType",
+            "RepositoryRuleParamsCopilotCodeReviewAnalysisToolType",
             "RepositoryRulesetType",
             "RepositoryRulesetPropLinksType",
             "RepositoryRulesetPropLinksPropSelfType",
@@ -10496,10 +10523,6 @@ else:
             "RepositoryAdvisoryPropCreditsItemsType",
             "RepositoryAdvisoryVulnerabilityType",
             "RepositoryAdvisoryVulnerabilityPropPackageType",
-            "ActionsBillingUsageType",
-            "ActionsBillingUsagePropMinutesUsedBreakdownType",
-            "PackagesBillingUsageType",
-            "CombinedBillingUsageType",
             "ImmutableReleasesOrganizationSettingsType",
             "NetworkSettingsType",
             "TeamFullType",
@@ -13159,9 +13182,17 @@ else:
             "OrgsOrgActionsVariablesNamePatchBodyType",
             "OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",
             "OrgsOrgActionsVariablesNameRepositoriesPutBodyType",
+            "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType",
+            "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType",
+            "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type",
+            "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType",
+            "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType",
+            "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType",
+            "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type",
             "OrgsOrgArtifactsMetadataStorageRecordPostBodyType",
             "OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type",
             "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType",
+            "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type",
             "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type",
             "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType",
             "OrgsOrgAttestationsBulkListPostBodyType",
@@ -13549,6 +13580,7 @@ else:
             "UserSocialAccountsPostBodyType",
             "UserSocialAccountsDeleteBodyType",
             "UserSshSigningKeysPostBodyType",
+            "UserUserIdProjectsV2ProjectNumberDraftsPostBodyType",
             "UsersUsernameAttestationsBulkListPostBodyType",
             "UsersUsernameAttestationsBulkListPostResponse200Type",
             "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",

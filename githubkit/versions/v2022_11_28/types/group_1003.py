@@ -9,26 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0065 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBody"""
+
+    type: Literal["Issue", "PullRequest"]
+    id: int
 
 
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBody"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
-
-
-class OrgsOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: list[str]
-    properties: list[CustomPropertyValueTypeForResponse]
+    type: Literal["Issue", "PullRequest"]
+    id: int
 
 
 __all__ = (
-    "OrgsOrgPropertiesValuesPatchBodyType",
-    "OrgsOrgPropertiesValuesPatchBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyType",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyTypeForResponse",
 )

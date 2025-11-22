@@ -9,52 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
+from .group_0394 import HookResponseType, HookResponseTypeForResponse
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class HookType(TypedDict):
+    """Webhook
 
-    Git references within a repository
+    Webhooks for repositories.
     """
 
-    ref: str
-    node_id: str
+    type: str
+    id: int
+    name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigType
+    updated_at: datetime
+    created_at: datetime
     url: str
-    object_: GitRefPropObjectType
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseType
 
 
-class GitRefTypeForResponse(TypedDict):
-    """Git Reference
+class HookTypeForResponse(TypedDict):
+    """Webhook
 
-    Git references within a repository
+    Webhooks for repositories.
     """
 
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectTypeForResponse
-
-
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
-
     type: str
-    sha: str
+    id: int
+    name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigTypeForResponse
+    updated_at: str
+    created_at: str
     url: str
-
-
-class GitRefPropObjectTypeForResponse(TypedDict):
-    """GitRefPropObject"""
-
-    type: str
-    sha: str
-    url: str
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseTypeForResponse
 
 
 __all__ = (
-    "GitRefPropObjectType",
-    "GitRefPropObjectTypeForResponse",
-    "GitRefType",
-    "GitRefTypeForResponse",
+    "HookType",
+    "HookTypeForResponse",
 )

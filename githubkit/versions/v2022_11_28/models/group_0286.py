@@ -9,43 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0028 import CodeSecurityConfiguration
 
 
-class CodeSecurityConfigurationForRepository(GitHubModel):
-    """CodeSecurityConfigurationForRepository
+class CodespacesPermissionsCheckForDevcontainer(GitHubModel):
+    """Codespaces Permissions Check
 
-    Code security configuration associated with a repository and attachment status
+    Permission check result for a given devcontainer config.
     """
 
-    status: Missing[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The attachment status of the code security configuration on the repository.",
-    )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+    accepted: bool = Field(
+        description="Whether the user has accepted the permissions defined by the devcontainer config"
     )
 
 
-model_rebuild(CodeSecurityConfigurationForRepository)
+model_rebuild(CodespacesPermissionsCheckForDevcontainer)
 
-__all__ = ("CodeSecurityConfigurationForRepository",)
+__all__ = ("CodespacesPermissionsCheckForDevcontainer",)

@@ -9,106 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0379 import MetadataType, MetadataTypeForResponse
-
-
-class SnapshotType(TypedDict):
-    """snapshot
-
-    Create a new snapshot of a repository's dependencies.
-    """
-
-    version: int
-    job: SnapshotPropJobType
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorType
-    metadata: NotRequired[MetadataType]
-    manifests: NotRequired[SnapshotPropManifestsType]
-    scanned: datetime
+from .group_0383 import (
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
+)
 
 
-class SnapshotTypeForResponse(TypedDict):
-    """snapshot
+class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    Create a new snapshot of a repository's dependencies.
-    """
-
-    version: int
-    job: SnapshotPropJobTypeForResponse
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorTypeForResponse
-    metadata: NotRequired[MetadataTypeForResponse]
-    manifests: NotRequired[SnapshotPropManifestsTypeForResponse]
-    scanned: str
+    id: int
+    node_id: str
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
+    ]
 
 
-class SnapshotPropJobType(TypedDict):
-    """SnapshotPropJob"""
+class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropJobTypeForResponse(TypedDict):
-    """SnapshotPropJob"""
-
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropDetectorType(TypedDict):
-    """SnapshotPropDetector
-
-    A description of the detector used.
-    """
-
-    name: str
-    version: str
-    url: str
-
-
-class SnapshotPropDetectorTypeForResponse(TypedDict):
-    """SnapshotPropDetector
-
-    A description of the detector used.
-    """
-
-    name: str
-    version: str
-    url: str
-
-
-SnapshotPropManifestsType: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
-
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
-"""
-
-
-SnapshotPropManifestsTypeForResponse: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
-
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
-"""
+    id: int
+    node_id: str
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "SnapshotPropDetectorType",
-    "SnapshotPropDetectorTypeForResponse",
-    "SnapshotPropJobType",
-    "SnapshotPropJobTypeForResponse",
-    "SnapshotPropManifestsType",
-    "SnapshotPropManifestsTypeForResponse",
-    "SnapshotType",
-    "SnapshotTypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof1Type",
+    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
 )

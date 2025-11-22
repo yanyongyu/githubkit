@@ -17,14 +17,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0126 import RepositoryRuleUpdatePropParameters
+from .group_0129 import RepositoryRuleRequiredDeploymentsPropParameters
 
 
-class RepositoryRuleDetailedOneof1(GitHubModel):
-    """RepositoryRuleDetailedOneof1"""
+class RepositoryRuleDetailedOneof5(GitHubModel):
+    """RepositoryRuleDetailedOneof5"""
 
-    type: Literal["update"] = Field()
-    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
+    type: Literal["required_deployments"] = Field()
+    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
+        default=UNSET
+    )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -38,6 +40,6 @@ class RepositoryRuleDetailedOneof1(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof1)
+model_rebuild(RepositoryRuleDetailedOneof5)
 
-__all__ = ("RepositoryRuleDetailedOneof1",)
+__all__ = ("RepositoryRuleDetailedOneof5",)

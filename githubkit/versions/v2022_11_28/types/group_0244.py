@@ -9,88 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WorkflowUsageType(TypedDict):
-    """Workflow Usage
+class AutolinkType(TypedDict):
+    """Autolink reference
 
-    Workflow Usage
+    An autolink reference.
     """
 
-    billable: WorkflowUsagePropBillableType
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[datetime, None]]
 
 
-class WorkflowUsageTypeForResponse(TypedDict):
-    """Workflow Usage
+class AutolinkTypeForResponse(TypedDict):
+    """Autolink reference
 
-    Workflow Usage
+    An autolink reference.
     """
 
-    billable: WorkflowUsagePropBillableTypeForResponse
-
-
-class WorkflowUsagePropBillableType(TypedDict):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
-
-
-class WorkflowUsagePropBillableTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuTypeForResponse]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosTypeForResponse]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsTypeForResponse]
-
-
-class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropUbuntuTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosType(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsType(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WorkflowUsagePropBillablePropMacosType",
-    "WorkflowUsagePropBillablePropMacosTypeForResponse",
-    "WorkflowUsagePropBillablePropUbuntuType",
-    "WorkflowUsagePropBillablePropUbuntuTypeForResponse",
-    "WorkflowUsagePropBillablePropWindowsType",
-    "WorkflowUsagePropBillablePropWindowsTypeForResponse",
-    "WorkflowUsagePropBillableType",
-    "WorkflowUsagePropBillableTypeForResponse",
-    "WorkflowUsageType",
-    "WorkflowUsageTypeForResponse",
+    "AutolinkType",
+    "AutolinkTypeForResponse",
 )

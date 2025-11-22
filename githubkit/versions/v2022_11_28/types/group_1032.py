@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDeleteResponse403Type(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class ProjectsColumnsColumnIdMovesPostBodyType(TypedDict):
+    """ProjectsColumnsColumnIdMovesPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    position: str
 
 
-class ReposOwnerRepoDeleteResponse403TypeForResponse(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class ProjectsColumnsColumnIdMovesPostBodyTypeForResponse(TypedDict):
+    """ProjectsColumnsColumnIdMovesPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    position: str
 
 
 __all__ = (
-    "ReposOwnerRepoDeleteResponse403Type",
-    "ReposOwnerRepoDeleteResponse403TypeForResponse",
+    "ProjectsColumnsColumnIdMovesPostBodyType",
+    "ProjectsColumnsColumnIdMovesPostBodyTypeForResponse",
 )

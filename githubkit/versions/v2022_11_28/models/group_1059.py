@@ -9,57 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoAttestationsPostBody(GitHubModel):
-    """ReposOwnerRepoAttestationsPostBody"""
+class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
-    bundle: ReposOwnerRepoAttestationsPostBodyPropBundle = Field(
-        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information."
-    )
+    total_count: int = Field()
+    workflows: list[Workflow] = Field()
 
 
-class ReposOwnerRepoAttestationsPostBodyPropBundle(GitHubModel):
-    """ReposOwnerRepoAttestationsPostBodyPropBundle
+class Workflow(GitHubModel):
+    """Workflow
 
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    A GitHub Actions workflow
     """
 
-    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
-    verification_material: Missing[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
-    ] = Field(default=UNSET, alias="verificationMaterial")
-    dsse_envelope: Missing[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
-    ] = Field(default=UNSET, alias="dsseEnvelope")
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    path: str = Field()
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    ] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    url: str = Field()
+    html_url: str = Field()
+    badge_url: str = Field()
+    deleted_at: Missing[datetime] = Field(default=UNSET)
 
 
-class ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial"""
-
-
-class ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope(ExtraGitHubModel):
-    """ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope"""
-
-
-model_rebuild(ReposOwnerRepoAttestationsPostBody)
-model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundle)
-model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial)
-model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope)
+model_rebuild(ReposOwnerRepoActionsWorkflowsGetResponse200)
+model_rebuild(Workflow)
 
 __all__ = (
-    "ReposOwnerRepoAttestationsPostBody",
-    "ReposOwnerRepoAttestationsPostBodyPropBundle",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200",
+    "Workflow",
 )

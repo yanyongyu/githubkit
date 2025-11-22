@@ -18,46 +18,49 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0061 import MinimalRepository
+from .group_0019 import LicenseSimple
+from .group_0144 import CodeOfConductSimple
 
 
-class CombinedCommitStatus(GitHubModel):
-    """Combined Commit Status
+class CommunityProfilePropFiles(GitHubModel):
+    """CommunityProfilePropFiles"""
 
-    Combined Commit Status
+    code_of_conduct: Union[None, CodeOfConductSimple] = Field()
+    code_of_conduct_file: Union[None, CommunityHealthFile] = Field()
+    license_: Union[None, LicenseSimple] = Field(alias="license")
+    contributing: Union[None, CommunityHealthFile] = Field()
+    readme: Union[None, CommunityHealthFile] = Field()
+    issue_template: Union[None, CommunityHealthFile] = Field()
+    pull_request_template: Union[None, CommunityHealthFile] = Field()
+
+
+class CommunityHealthFile(GitHubModel):
+    """Community Health File"""
+
+    url: str = Field()
+    html_url: str = Field()
+
+
+class CommunityProfile(GitHubModel):
+    """Community Profile
+
+    Community Profile
     """
 
-    state: str = Field()
-    statuses: list[SimpleCommitStatus] = Field()
-    sha: str = Field()
-    total_count: int = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    commit_url: str = Field()
-    url: str = Field()
-
-
-class SimpleCommitStatus(GitHubModel):
-    """Simple Commit Status"""
-
+    health_percentage: int = Field()
     description: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: str = Field()
-    context: str = Field()
-    target_url: Union[str, None] = Field()
-    required: Missing[Union[bool, None]] = Field(default=UNSET)
-    avatar_url: Union[str, None] = Field()
-    url: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    documentation: Union[str, None] = Field()
+    files: CommunityProfilePropFiles = Field()
+    updated_at: Union[datetime, None] = Field()
+    content_reports_enabled: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(CombinedCommitStatus)
-model_rebuild(SimpleCommitStatus)
+model_rebuild(CommunityProfilePropFiles)
+model_rebuild(CommunityHealthFile)
+model_rebuild(CommunityProfile)
 
 __all__ = (
-    "CombinedCommitStatus",
-    "SimpleCommitStatus",
+    "CommunityHealthFile",
+    "CommunityProfile",
+    "CommunityProfilePropFiles",
 )

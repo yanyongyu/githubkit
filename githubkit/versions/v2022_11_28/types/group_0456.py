@@ -10,118 +10,40 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0235 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0262 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
-from .group_0455 import SimpleCheckSuiteType, SimpleCheckSuiteTypeForResponse
+from typing_extensions import TypedDict
 
 
-class CheckRunWithSimpleCheckSuiteType(TypedDict):
-    """CheckRun
+class WebhooksWorkflowType(TypedDict):
+    """Workflow"""
 
-    A check performed on the code of a given code change
-    """
-
-    app: Union[IntegrationType, None]
-    check_suite: SimpleCheckSuiteType
-    completed_at: Union[datetime, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    deployment: NotRequired[DeploymentSimpleType]
-    details_url: str
-    external_id: str
-    head_sha: str
+    badge_url: str
+    created_at: datetime
     html_url: str
     id: int
     name: str
     node_id: str
-    output: CheckRunWithSimpleCheckSuitePropOutputType
-    pull_requests: list[PullRequestMinimalType]
-    started_at: datetime
-    status: Literal["queued", "in_progress", "completed", "pending"]
+    path: str
+    state: str
+    updated_at: datetime
     url: str
 
 
-class CheckRunWithSimpleCheckSuiteTypeForResponse(TypedDict):
-    """CheckRun
+class WebhooksWorkflowTypeForResponse(TypedDict):
+    """Workflow"""
 
-    A check performed on the code of a given code change
-    """
-
-    app: Union[IntegrationTypeForResponse, None]
-    check_suite: SimpleCheckSuiteTypeForResponse
-    completed_at: Union[str, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    deployment: NotRequired[DeploymentSimpleTypeForResponse]
-    details_url: str
-    external_id: str
-    head_sha: str
+    badge_url: str
+    created_at: str
     html_url: str
     id: int
     name: str
     node_id: str
-    output: CheckRunWithSimpleCheckSuitePropOutputTypeForResponse
-    pull_requests: list[PullRequestMinimalTypeForResponse]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed", "pending"]
+    path: str
+    state: str
+    updated_at: str
     url: str
-
-
-class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
-
-    annotations_count: int
-    annotations_url: str
-    summary: Union[str, None]
-    text: Union[str, None]
-    title: Union[str, None]
-
-
-class CheckRunWithSimpleCheckSuitePropOutputTypeForResponse(TypedDict):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
-
-    annotations_count: int
-    annotations_url: str
-    summary: Union[str, None]
-    text: Union[str, None]
-    title: Union[str, None]
 
 
 __all__ = (
-    "CheckRunWithSimpleCheckSuitePropOutputType",
-    "CheckRunWithSimpleCheckSuitePropOutputTypeForResponse",
-    "CheckRunWithSimpleCheckSuiteType",
-    "CheckRunWithSimpleCheckSuiteTypeForResponse",
+    "WebhooksWorkflowType",
+    "WebhooksWorkflowTypeForResponse",
 )

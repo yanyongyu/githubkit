@@ -11,16 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ProjectsColumnsColumnIdMovesPostResponse201Type(TypedDict):
-    """ProjectsColumnsColumnIdMovesPostResponse201"""
+from .group_0293 import ArtifactType, ArtifactTypeForResponse
 
 
-class ProjectsColumnsColumnIdMovesPostResponse201TypeForResponse(TypedDict):
-    """ProjectsColumnsColumnIdMovesPostResponse201"""
+class ReposOwnerRepoActionsArtifactsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+
+    total_count: int
+    artifacts: list[ArtifactType]
+
+
+class ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+
+    total_count: int
+    artifacts: list[ArtifactTypeForResponse]
 
 
 __all__ = (
-    "ProjectsColumnsColumnIdMovesPostResponse201Type",
-    "ProjectsColumnsColumnIdMovesPostResponse201TypeForResponse",
+    "ReposOwnerRepoActionsArtifactsGetResponse200Type",
+    "ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse",
 )

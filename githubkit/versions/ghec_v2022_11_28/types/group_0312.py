@@ -10,78 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DeploymentType(TypedDict):
-    """Deployment
+class AutolinkType(TypedDict):
+    """Autolink reference
 
-    A request for a specific ref(branch,sha,tag) to be deployed
+    An autolink reference.
     """
 
-    url: str
     id: int
-    node_id: str
-    sha: str
-    ref: str
-    task: str
-    payload: Union[DeploymentPropPayloadOneof0Type, str]
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[datetime, None]]
 
 
-class DeploymentTypeForResponse(TypedDict):
-    """Deployment
+class AutolinkTypeForResponse(TypedDict):
+    """Autolink reference
 
-    A request for a specific ref(branch,sha,tag) to be deployed
+    An autolink reference.
     """
 
-    url: str
     id: int
-    node_id: str
-    sha: str
-    ref: str
-    task: str
-    payload: Union[DeploymentPropPayloadOneof0TypeForResponse, str]
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
-
-
-DeploymentPropPayloadOneof0Type: TypeAlias = dict[str, Any]
-"""DeploymentPropPayloadOneof0
-"""
-
-
-DeploymentPropPayloadOneof0TypeForResponse: TypeAlias = dict[str, Any]
-"""DeploymentPropPayloadOneof0
-"""
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "DeploymentPropPayloadOneof0Type",
-    "DeploymentPropPayloadOneof0TypeForResponse",
-    "DeploymentType",
-    "DeploymentTypeForResponse",
+    "AutolinkType",
+    "AutolinkTypeForResponse",
 )

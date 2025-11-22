@@ -9,25 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Email(GitHubModel):
-    """Email
+class Key(GitHubModel):
+    """Key
 
-    Email
+    Key
     """
 
-    email: str = Field()
-    primary: bool = Field()
+    key: str = Field()
+    id: int = Field()
+    url: str = Field()
+    title: str = Field()
+    created_at: datetime = Field()
     verified: bool = Field()
-    visibility: Union[str, None] = Field()
+    read_only: bool = Field()
+    last_used: Missing[Union[datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(Email)
+model_rebuild(Key)
 
-__all__ = ("Email",)
+__all__ = ("Key",)

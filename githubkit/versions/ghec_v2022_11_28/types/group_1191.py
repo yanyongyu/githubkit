@@ -12,23 +12,51 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsColumnsCardsCardIdDeleteResponse403Type(TypedDict):
-    """ProjectsColumnsCardsCardIdDeleteResponse403"""
+class ProjectsColumnsCardsCardIdMovesPostResponse403Type(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
 
     message: NotRequired[str]
     documentation_url: NotRequired[str]
-    errors: NotRequired[list[str]]
+    errors: NotRequired[
+        list[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType]
+    ]
 
 
-class ProjectsColumnsCardsCardIdDeleteResponse403TypeForResponse(TypedDict):
-    """ProjectsColumnsCardsCardIdDeleteResponse403"""
+class ProjectsColumnsCardsCardIdMovesPostResponse403TypeForResponse(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
 
     message: NotRequired[str]
     documentation_url: NotRequired[str]
-    errors: NotRequired[list[str]]
+    errors: NotRequired[
+        list[
+            ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsTypeForResponse
+        ]
+    ]
+
+
+class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
+    resource: NotRequired[str]
+    field: NotRequired[str]
+
+
+class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
+    resource: NotRequired[str]
+    field: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsColumnsCardsCardIdDeleteResponse403Type",
-    "ProjectsColumnsCardsCardIdDeleteResponse403TypeForResponse",
+    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType",
+    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsTypeForResponse",
+    "ProjectsColumnsCardsCardIdMovesPostResponse403Type",
+    "ProjectsColumnsCardsCardIdMovesPostResponse403TypeForResponse",
 )

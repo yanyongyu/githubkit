@@ -9,48 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class BranchShortType(TypedDict):
-    """Branch Short
 
-    Branch Short
+class StatusType(TypedDict):
+    """Status
+
+    The status of a commit.
     """
 
-    name: str
-    commit: BranchShortPropCommitType
-    protected: bool
+    url: str
+    avatar_url: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    description: Union[str, None]
+    target_url: Union[str, None]
+    context: str
+    created_at: str
+    updated_at: str
+    creator: Union[None, SimpleUserType]
 
 
-class BranchShortTypeForResponse(TypedDict):
-    """Branch Short
+class StatusTypeForResponse(TypedDict):
+    """Status
 
-    Branch Short
+    The status of a commit.
     """
 
-    name: str
-    commit: BranchShortPropCommitTypeForResponse
-    protected: bool
-
-
-class BranchShortPropCommitType(TypedDict):
-    """BranchShortPropCommit"""
-
-    sha: str
     url: str
-
-
-class BranchShortPropCommitTypeForResponse(TypedDict):
-    """BranchShortPropCommit"""
-
-    sha: str
-    url: str
+    avatar_url: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    description: Union[str, None]
+    target_url: Union[str, None]
+    context: str
+    created_at: str
+    updated_at: str
+    creator: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "BranchShortPropCommitType",
-    "BranchShortPropCommitTypeForResponse",
-    "BranchShortType",
-    "BranchShortTypeForResponse",
+    "StatusType",
+    "StatusTypeForResponse",
 )

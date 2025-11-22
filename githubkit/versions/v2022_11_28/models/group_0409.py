@@ -18,26 +18,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryAdvisoryCreate(GitHubModel):
-    """RepositoryAdvisoryCreate"""
+class RepositoryAdvisoryUpdate(GitHubModel):
+    """RepositoryAdvisoryUpdate"""
 
-    summary: str = Field(
-        max_length=1024, description="A short summary of the advisory."
+    summary: Missing[str] = Field(
+        max_length=1024, default=UNSET, description="A short summary of the advisory."
     )
-    description: str = Field(
+    description: Missing[str] = Field(
         max_length=65535,
+        default=UNSET,
         description="A detailed description of what the advisory impacts.",
     )
     cve_id: Missing[Union[str, None]] = Field(
         default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
     )
-    vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItems] = Field(
-        description="A product affected by the vulnerability detailed in a repository security advisory."
+    vulnerabilities: Missing[list[RepositoryAdvisoryUpdatePropVulnerabilitiesItems]] = (
+        Field(
+            default=UNSET,
+            description="A product affected by the vulnerability detailed in a repository security advisory.",
+        )
     )
     cwe_ids: Missing[Union[list[str], None]] = Field(
         default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
     )
-    credits_: Missing[Union[list[RepositoryAdvisoryCreatePropCreditsItems], None]] = (
+    credits_: Missing[Union[list[RepositoryAdvisoryUpdatePropCreditsItems], None]] = (
         Field(
             default=UNSET,
             alias="credits",
@@ -54,14 +58,21 @@ class RepositoryAdvisoryCreate(GitHubModel):
         default=UNSET,
         description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
     )
-    start_private_fork: Missing[bool] = Field(
+    state: Missing[Literal["published", "closed", "draft"]] = Field(
+        default=UNSET, description="The state of the advisory."
+    )
+    collaborating_users: Missing[Union[list[str], None]] = Field(
         default=UNSET,
-        description="Whether to create a temporary private fork of the repository to collaborate on a fix.",
+        description="A list of usernames who have been granted write access to the advisory.",
+    )
+    collaborating_teams: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="A list of team slugs which have been granted write access to the advisory.",
     )
 
 
-class RepositoryAdvisoryCreatePropCreditsItems(GitHubModel):
-    """RepositoryAdvisoryCreatePropCreditsItems"""
+class RepositoryAdvisoryUpdatePropCreditsItems(GitHubModel):
+    """RepositoryAdvisoryUpdatePropCreditsItems"""
 
     login: str = Field(description="The username of the user credited.")
     type: Literal[
@@ -78,10 +89,10 @@ class RepositoryAdvisoryCreatePropCreditsItems(GitHubModel):
     ] = Field(description="The type of credit the user is receiving.")
 
 
-class RepositoryAdvisoryCreatePropVulnerabilitiesItems(GitHubModel):
-    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItems(GitHubModel):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItems"""
 
-    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage = Field(
+    package: RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage = Field(
         description="The name of the package affected by the vulnerability."
     )
     vulnerable_version_range: Missing[Union[str, None]] = Field(
@@ -97,8 +108,8 @@ class RepositoryAdvisoryCreatePropVulnerabilitiesItems(GitHubModel):
     )
 
 
-class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
-    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage
 
     The name of the package affected by the vulnerability.
     """
@@ -123,14 +134,14 @@ class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
     )
 
 
-model_rebuild(RepositoryAdvisoryCreate)
-model_rebuild(RepositoryAdvisoryCreatePropCreditsItems)
-model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItems)
-model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage)
+model_rebuild(RepositoryAdvisoryUpdate)
+model_rebuild(RepositoryAdvisoryUpdatePropCreditsItems)
+model_rebuild(RepositoryAdvisoryUpdatePropVulnerabilitiesItems)
+model_rebuild(RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage)
 
 __all__ = (
-    "RepositoryAdvisoryCreate",
-    "RepositoryAdvisoryCreatePropCreditsItems",
-    "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
-    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage",
+    "RepositoryAdvisoryUpdate",
+    "RepositoryAdvisoryUpdatePropCreditsItems",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItems",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage",
 )

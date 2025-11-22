@@ -9,80 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0254 import VerificationType, VerificationTypeForResponse
-
-
-class GitTagType(TypedDict):
-    """Git Tag
-
-    Metadata for a Git tag
-    """
-
-    node_id: str
-    tag: str
-    sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class GitTagTypeForResponse(TypedDict):
-    """Git Tag
+class HookResponseType(TypedDict):
+    """Hook Response"""
 
-    Metadata for a Git tag
-    """
-
-    node_id: str
-    tag: str
-    sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerTypeForResponse
-    object_: GitTagPropObjectTypeForResponse
-    verification: NotRequired[VerificationTypeForResponse]
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
+class HookResponseTypeForResponse(TypedDict):
+    """Hook Response"""
 
-    date: str
-    email: str
-    name: str
-
-
-class GitTagPropTaggerTypeForResponse(TypedDict):
-    """GitTagPropTagger"""
-
-    date: str
-    email: str
-    name: str
-
-
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
-
-    sha: str
-    type: str
-    url: str
-
-
-class GitTagPropObjectTypeForResponse(TypedDict):
-    """GitTagPropObject"""
-
-    sha: str
-    type: str
-    url: str
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
 __all__ = (
-    "GitTagPropObjectType",
-    "GitTagPropObjectTypeForResponse",
-    "GitTagPropTaggerType",
-    "GitTagPropTaggerTypeForResponse",
-    "GitTagType",
-    "GitTagTypeForResponse",
+    "HookResponseType",
+    "HookResponseTypeForResponse",
 )

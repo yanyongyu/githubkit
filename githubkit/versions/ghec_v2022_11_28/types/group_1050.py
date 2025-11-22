@@ -9,28 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-
-
-class InstallationRepositoriesGetResponse200Type(TypedDict):
-    """InstallationRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[RepositoryType]
-    repository_selection: NotRequired[str]
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class InstallationRepositoriesGetResponse200TypeForResponse(TypedDict):
-    """InstallationRepositoriesGetResponse200"""
+class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
+    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    total_count: int
-    repositories: list[RepositoryTypeForResponse]
-    repository_selection: NotRequired[str]
+    default_level: Literal["public", "internal"]
+
+
+class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+
+    default_level: Literal["public", "internal"]
 
 
 __all__ = (
-    "InstallationRepositoriesGetResponse200Type",
-    "InstallationRepositoriesGetResponse200TypeForResponse",
+    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
+    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
 )

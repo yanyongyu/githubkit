@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
@@ -17,22 +18,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0192 import ReactionRollup
 
-class ImmutableReleasesOrganizationSettings(GitHubModel):
-    """Check immutable releases organization settings
 
-    Check immutable releases settings for an organization.
+class TeamDiscussionComment(GitHubModel):
+    """Team Discussion Comment
+
+    A reply to a discussion within a team.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls how immutable releases are enforced in the organization."
+    author: Union[None, SimpleUser] = Field()
+    body: str = Field(description="The main text of the comment.")
+    body_html: str = Field()
+    body_version: str = Field(
+        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
     )
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.",
+    created_at: datetime = Field()
+    last_edited_at: Union[datetime, None] = Field()
+    discussion_url: str = Field()
+    html_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(
+        description="The unique sequence number of a team discussion comment."
     )
+    updated_at: datetime = Field()
+    url: str = Field()
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(ImmutableReleasesOrganizationSettings)
+model_rebuild(TeamDiscussionComment)
 
-__all__ = ("ImmutableReleasesOrganizationSettings",)
+__all__ = ("TeamDiscussionComment",)

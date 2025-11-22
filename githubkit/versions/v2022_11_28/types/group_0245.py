@@ -9,60 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class CheckAutomatedSecurityFixesType(TypedDict):
+    """Check Dependabot security updates
 
-class ActivityType(TypedDict):
-    """Activity
-
-    Activity
+    Check Dependabot security updates
     """
 
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: datetime
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserType]
+    enabled: bool
+    paused: bool
 
 
-class ActivityTypeForResponse(TypedDict):
-    """Activity
+class CheckAutomatedSecurityFixesTypeForResponse(TypedDict):
+    """Check Dependabot security updates
 
-    Activity
+    Check Dependabot security updates
     """
 
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: str
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserTypeForResponse]
+    enabled: bool
+    paused: bool
 
 
 __all__ = (
-    "ActivityType",
-    "ActivityTypeForResponse",
+    "CheckAutomatedSecurityFixesType",
+    "CheckAutomatedSecurityFixesTypeForResponse",
 )

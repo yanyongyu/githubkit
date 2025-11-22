@@ -16,19 +16,25 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
 
+class RepositorySubscription(GitHubModel):
+    """Repository Invitation
 
-class Stargazer(GitHubModel):
-    """Stargazer
-
-    Stargazer
+    Repository invitations let you manage who you collaborate with.
     """
 
-    starred_at: datetime = Field()
-    user: Union[None, SimpleUser] = Field()
+    subscribed: bool = Field(
+        description="Determines if notifications should be received from this repository."
+    )
+    ignored: bool = Field(
+        description="Determines if all notifications should be blocked from this repository."
+    )
+    reason: Union[str, None] = Field()
+    created_at: datetime = Field()
+    url: str = Field()
+    repository_url: str = Field()
 
 
-model_rebuild(Stargazer)
+model_rebuild(RepositorySubscription)
 
-__all__ = ("Stargazer",)
+__all__ = ("RepositorySubscription",)

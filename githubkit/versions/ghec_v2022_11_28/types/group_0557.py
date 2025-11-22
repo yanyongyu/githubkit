@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksMilestoneType(TypedDict):
+class WebhooksMilestone3Type(TypedDict):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -23,7 +23,7 @@ class WebhooksMilestoneType(TypedDict):
     closed_at: Union[datetime, None]
     closed_issues: int
     created_at: datetime
-    creator: Union[WebhooksMilestonePropCreatorType, None]
+    creator: Union[WebhooksMilestone3PropCreatorType, None]
     description: Union[str, None]
     due_on: Union[datetime, None]
     html_url: str
@@ -38,7 +38,7 @@ class WebhooksMilestoneType(TypedDict):
     url: str
 
 
-class WebhooksMilestoneTypeForResponse(TypedDict):
+class WebhooksMilestone3TypeForResponse(TypedDict):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -47,7 +47,7 @@ class WebhooksMilestoneTypeForResponse(TypedDict):
     closed_at: Union[str, None]
     closed_issues: int
     created_at: str
-    creator: Union[WebhooksMilestonePropCreatorTypeForResponse, None]
+    creator: Union[WebhooksMilestone3PropCreatorTypeForResponse, None]
     description: Union[str, None]
     due_on: Union[str, None]
     html_url: str
@@ -62,7 +62,7 @@ class WebhooksMilestoneTypeForResponse(TypedDict):
     url: str
 
 
-class WebhooksMilestonePropCreatorType(TypedDict):
+class WebhooksMilestone3PropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -84,12 +84,12 @@ class WebhooksMilestonePropCreatorType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhooksMilestonePropCreatorTypeForResponse(TypedDict):
+class WebhooksMilestone3PropCreatorTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -111,14 +111,14 @@ class WebhooksMilestonePropCreatorTypeForResponse(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksMilestonePropCreatorType",
-    "WebhooksMilestonePropCreatorTypeForResponse",
-    "WebhooksMilestoneType",
-    "WebhooksMilestoneTypeForResponse",
+    "WebhooksMilestone3PropCreatorType",
+    "WebhooksMilestone3PropCreatorTypeForResponse",
+    "WebhooksMilestone3Type",
+    "WebhooksMilestone3TypeForResponse",
 )

@@ -9,33 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
 
-class BranchShort(GitHubModel):
-    """Branch Short
 
-    Branch Short
+class Status(GitHubModel):
+    """Status
+
+    The status of a commit.
     """
 
-    name: str = Field()
-    commit: BranchShortPropCommit = Field()
-    protected: bool = Field()
-
-
-class BranchShortPropCommit(GitHubModel):
-    """BranchShortPropCommit"""
-
-    sha: str = Field()
     url: str = Field()
+    avatar_url: Union[str, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    state: str = Field()
+    description: Union[str, None] = Field()
+    target_url: Union[str, None] = Field()
+    context: str = Field()
+    created_at: str = Field()
+    updated_at: str = Field()
+    creator: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(BranchShort)
-model_rebuild(BranchShortPropCommit)
+model_rebuild(Status)
 
-__all__ = (
-    "BranchShort",
-    "BranchShortPropCommit",
-)
+__all__ = ("Status",)

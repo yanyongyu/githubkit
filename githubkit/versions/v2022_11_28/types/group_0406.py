@@ -9,28 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningPushProtectionBypassType(TypedDict):
-    """SecretScanningPushProtectionBypass"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
-    expire_at: NotRequired[Union[datetime, None]]
-    token_type: NotRequired[str]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
-class SecretScanningPushProtectionBypassTypeForResponse(TypedDict):
-    """SecretScanningPushProtectionBypass"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
-    expire_at: NotRequired[Union[str, None]]
-    token_type: NotRequired[str]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
 __all__ = (
-    "SecretScanningPushProtectionBypassType",
-    "SecretScanningPushProtectionBypassTypeForResponse",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse",
 )
