@@ -3,10 +3,13 @@ import importlib
 from importlib.abc import Loader
 from importlib.machinery import ModuleSpec, PathFinder, SourceFileLoader
 from itertools import chain
+import os
 import re
 import sys
 from types import ModuleType
 from typing import Any, Optional
+
+GITHUBKIT_LAZY_DISABLE_FLAG = "GITHUBKIT_LAZY_DISABLE_FLAG"
 
 LAZY_MODULES = (
     r"^githubkit\.rest$",
@@ -140,6 +143,10 @@ class LazyModuleFinder(PathFinder):
                 module_spec.name, module_spec.origin, module_spec.loader
             )
             return module_spec
+
+
+def is_lazy_disabled() -> bool:
+    return bool(os.getenv(GITHUBKIT_LAZY_DISABLE_FLAG))
 
 
 def apply():

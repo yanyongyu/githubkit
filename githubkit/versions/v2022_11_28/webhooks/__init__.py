@@ -9,7 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
+from githubkit.lazy_module import is_lazy_disabled
+
+if TYPE_CHECKING or is_lazy_disabled():
     from ._namespace import VALID_EVENT_NAMES as VALID_EVENT_NAMES
     from ._namespace import EventNameType as EventNameType
     from ._namespace import WebhookNamespace as WebhookNamespace

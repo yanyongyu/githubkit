@@ -4,7 +4,9 @@
 
 from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
+from githubkit.lazy_module import is_lazy_disabled
+
+if TYPE_CHECKING or is_lazy_disabled():
     {% for name in model_names %}
     from {{ output_module }}.{{ latest_version_module }}.types import {{ name }}Type as {{ name }}Type
     {% endfor %}
