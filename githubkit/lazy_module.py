@@ -1,6 +1,6 @@
 from collections.abc import Sequence
 import importlib
-from importlib.abc import MetaPathFinder
+from importlib.abc import Loader
 from importlib.machinery import ModuleSpec, PathFinder, SourceFileLoader
 from itertools import chain
 import re
@@ -71,9 +71,18 @@ class LazyModule(ModuleType):
 
 
 class LazyModuleLoader(SourceFileLoader):
+    def __init__(
+        self, fullname: str, path: str, origin_loader: Optional[Loader] = None
+    ) -> None:
+        super().__init__(fullname, path)
+
+        self.origin_loader = origin_loader
+
     def create_module(self, spec: ModuleSpec) -> Optional[ModuleType]:
         if self.name in sys.modules:
             return sys.modules[self.name]
+
+        # create a simple empty lazy module
         module = LazyModule(spec.name)
         # pre-initialize the module to avoid infinite recursion
         module.__lazy_vars_validated__ = None
@@ -81,8 +90,13 @@ class LazyModuleLoader(SourceFileLoader):
         return module
 
     def exec_module(self, module: ModuleType) -> None:
-        super().exec_module(module)
+        # execute the module code
+        if self.origin_loader is not None:
+            self.origin_loader.exec_module(module)
+        else:
+            super().exec_module(module)
 
+        # initialize the module's lazy vars structure
         if (
             isinstance(module, LazyModule)
             and getattr(module, "__lazy_vars_validated__", None) is None
@@ -104,19 +118,27 @@ class LazyModuleLoader(SourceFileLoader):
                 )
 
 
-class LazyModuleFinder(MetaPathFinder):
+class LazyModuleFinder(PathFinder):
+    @classmethod
     def find_spec(
-        self,
+        cls,
         fullname: str,
-        path: Optional[Sequence[str]],
+        path: Optional[Sequence[str]] = None,
         target: Optional[ModuleType] = None,
     ) -> Optional[ModuleSpec]:
+        # match if the module should be loaded lazily
         if any(re.match(pattern, fullname) for pattern in LAZY_MODULES):
-            module_spec = PathFinder.find_spec(fullname, path, target)
+            # find the module spec
+            module_spec = super().find_spec(fullname, path, target)
+            # do nothing if spec is not found
             if not module_spec or not module_spec.origin:
                 return
 
-            module_spec.loader = LazyModuleLoader(module_spec.name, module_spec.origin)
+            # wraps the module's loader to change the module into LazyModule
+            # NOTE: module may have custom loader in some environment (e.g. pyinstaller)
+            module_spec.loader = LazyModuleLoader(
+                module_spec.name, module_spec.origin, module_spec.loader
+            )
             return module_spec
 
 
