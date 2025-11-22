@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -25,7 +25,7 @@ class WebhookStatusPropCommitPropCommitPropCommitterAllof0(GitHubModel):
     Metaproperties for Git author/committer information.
     """
 
-    date: Missing[datetime] = Field(default=UNSET)
+    date: Missing[_dt.datetime] = Field(default=UNSET)
     email: Union[str, None] = Field()
     name: str = Field(description="The git author's name.")
     username: Missing[str] = Field(default=UNSET)

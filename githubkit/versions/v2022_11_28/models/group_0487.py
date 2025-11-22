@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -44,7 +44,7 @@ class WebhooksReviewComment(GitHubModel):
     commit_id: str = Field(
         description="The SHA of the commit to which the comment applies."
     )
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     diff_hunk: str = Field(
         description="The diff of the line that the comment refers to."
     )
@@ -96,7 +96,7 @@ class WebhooksReviewComment(GitHubModel):
         default=UNSET,
         description="The level at which the comment is targeted, can be a diff line or a file.",
     )
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the pull request review comment")
     user: Union[WebhooksReviewCommentPropUser, None] = Field(title="User")
 

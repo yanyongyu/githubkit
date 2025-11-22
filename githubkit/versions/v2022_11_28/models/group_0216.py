@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -32,7 +32,7 @@ class Reaction(GitHubModel):
     content: Literal[
         "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ] = Field(description="The reaction to use")
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
 
 
 model_rebuild(Reaction)

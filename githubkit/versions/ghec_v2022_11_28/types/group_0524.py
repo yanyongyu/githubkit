@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing_extensions import TypedDict
 
 from .group_0020 import RepositoryType, RepositoryTypeForResponse
@@ -21,7 +21,7 @@ class StarredRepositoryType(TypedDict):
     Starred Repository
     """
 
-    starred_at: datetime
+    starred_at: _dt.datetime
     repo: RepositoryType
 
 

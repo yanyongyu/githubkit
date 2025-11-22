@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -65,15 +65,15 @@ class WorkflowRun(GitHubModel):
     pull_requests: Union[list[PullRequestMinimal], None] = Field(
         description="Pull requests that are open with a `head_sha` or `head_branch` that matches the workflow run. The returned pull requests do not necessarily indicate pull requests that triggered the run."
     )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     actor: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
     triggering_actor: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
-    run_started_at: Missing[datetime] = Field(
+    run_started_at: Missing[_dt.datetime] = Field(
         default=UNSET, description="The start time of the latest run. Resets on re-run."
     )
     jobs_url: str = Field(description="The URL to the jobs for the workflow run.")

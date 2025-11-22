@@ -292,7 +292,8 @@ class StringSchema(SchemaData):
 
 @dataclass(kw_only=True)
 class DateTimeSchema(SchemaData):
-    _type_string: ClassVar[str] = "datetime"
+    # avoid conflict with field name which will cause pydantic analyze error
+    _type_string: ClassVar[str] = "_dt.datetime"
 
     @override
     def get_response_type_string(self) -> str:
@@ -303,37 +304,38 @@ class DateTimeSchema(SchemaData):
     @override
     def get_model_imports(self) -> set[str]:
         imports = super().get_model_imports()
-        imports.add("from datetime import datetime")
+        imports.add("import datetime as _dt")
         return imports
 
     @override
     def get_type_imports(self) -> set[str]:
         imports = super().get_type_imports()
-        imports.add("from datetime import datetime")
+        imports.add("import datetime as _dt")
         return imports
 
     @override
     def get_param_imports(self) -> set[str]:
         imports = super().get_param_imports()
-        imports.add("from datetime import datetime")
+        imports.add("import datetime as _dt")
         return imports
 
     @override
     def get_using_imports(self) -> set[str]:
         imports = super().get_using_imports()
-        imports.add("from datetime import datetime")
+        imports.add("import datetime as _dt")
         return imports
 
     @override
     def get_response_imports(self) -> set[str]:
         imports = super().get_response_imports()
-        imports.add("from datetime import datetime")
+        imports.add("import datetime as _dt")
         return imports
 
 
 @dataclass(kw_only=True)
 class DateSchema(SchemaData):
-    _type_string: ClassVar[str] = "date"
+    # avoid conflict with field name which will cause pydantic analyze error
+    _type_string: ClassVar[str] = "_dt.date"
 
     @override
     def get_response_type_string(self) -> str:
@@ -344,31 +346,31 @@ class DateSchema(SchemaData):
     @override
     def get_model_imports(self) -> set[str]:
         imports = super().get_model_imports()
-        imports.add("from datetime import date")
+        imports.add("import datetime as _dt")
         return imports
 
     @override
     def get_type_imports(self) -> set[str]:
         imports = super().get_type_imports()
-        imports.add("from datetime import date")
+        imports.add("import datetime as _dt")
         return imports
 
     @override
     def get_param_imports(self) -> set[str]:
         imports = super().get_param_imports()
-        imports.add("from datetime import date")
+        imports.add("import datetime as _dt")
         return imports
 
     @override
     def get_using_imports(self) -> set[str]:
         imports = super().get_using_imports()
-        imports.add("from datetime import date")
+        imports.add("import datetime as _dt")
         return imports
 
     @override
     def get_response_imports(self) -> set[str]:
         imports = super().get_response_imports()
-        imports.add("from datetime import date")
+        imports.add("import datetime as _dt")
         return imports
 
 

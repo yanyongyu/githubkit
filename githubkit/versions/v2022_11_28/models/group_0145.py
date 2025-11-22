@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -108,9 +108,9 @@ class FullRepository(GitHubModel):
         default=UNSET,
         description="The repository visibility: public, private, or internal.",
     )
-    pushed_at: datetime = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    pushed_at: _dt.datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     permissions: Missing[FullRepositoryPropPermissions] = Field(default=UNSET)
     allow_rebase_merge: Missing[bool] = Field(default=UNSET)
     template_repository: Missing[Union[None, Repository]] = Field(default=UNSET)

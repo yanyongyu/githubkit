@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -28,7 +28,7 @@ class DeployKeyType(TypedDict):
     created_at: str
     read_only: bool
     added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[datetime, None]]
+    last_used: NotRequired[Union[_dt.datetime, None]]
     enabled: NotRequired[bool]
 
 

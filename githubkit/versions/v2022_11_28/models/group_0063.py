@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -28,7 +28,7 @@ class ThreadSubscription(GitHubModel):
     subscribed: bool = Field()
     ignored: bool = Field()
     reason: Union[str, None] = Field()
-    created_at: Union[datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
     url: str = Field()
     thread_url: Missing[str] = Field(default=UNSET)
     repository_url: Missing[str] = Field(default=UNSET)

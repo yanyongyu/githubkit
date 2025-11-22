@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
@@ -192,7 +192,7 @@ class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppType(TypedD
     class actors within GitHub.
     """
 
-    created_at: Union[datetime, None]
+    created_at: Union[_dt.datetime, None]
     description: Union[str, None]
     events: NotRequired[list[str]]
     external_url: Union[str, None]
@@ -208,7 +208,7 @@ class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppType(TypedD
         WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissionsType
     ]
     slug: NotRequired[str]
-    updated_at: Union[datetime, None]
+    updated_at: Union[_dt.datetime, None]
 
 
 class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppTypeForResponse(
@@ -410,7 +410,7 @@ class WebhookDeploymentCreatedPropWorkflowRunType(TypedDict):
             "stale",
         ],
     ]
-    created_at: datetime
+    created_at: _dt.datetime
     display_title: str
     event: str
     head_branch: str
@@ -442,14 +442,14 @@ class WebhookDeploymentCreatedPropWorkflowRunType(TypedDict):
     rerun_url: NotRequired[str]
     run_attempt: int
     run_number: int
-    run_started_at: datetime
+    run_started_at: _dt.datetime
     status: Literal[
         "requested", "in_progress", "completed", "queued", "waiting", "pending"
     ]
     triggering_actor: NotRequired[
         Union[WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActorType, None]
     ]
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
     workflow_id: int
     workflow_url: NotRequired[str]

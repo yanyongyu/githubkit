@@ -20,7 +20,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -764,7 +764,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         outdated: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
@@ -807,7 +807,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        since: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
         outdated: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,

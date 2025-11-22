@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -19,12 +19,12 @@ class WebhooksProjectColumnType(TypedDict):
 
     after_id: NotRequired[Union[int, None]]
     cards_url: str
-    created_at: datetime
+    created_at: _dt.datetime
     id: int
     name: str
     node_id: str
     project_url: str
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
 
 

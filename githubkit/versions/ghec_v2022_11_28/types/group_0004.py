@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -39,11 +39,11 @@ class GlobalAdvisoryType(TypedDict):
     source_code_location: Union[str, None]
     identifiers: Union[list[GlobalAdvisoryPropIdentifiersItemsType], None]
     references: Union[list[str], None]
-    published_at: datetime
-    updated_at: datetime
-    github_reviewed_at: Union[datetime, None]
-    nvd_published_at: Union[datetime, None]
-    withdrawn_at: Union[datetime, None]
+    published_at: _dt.datetime
+    updated_at: _dt.datetime
+    github_reviewed_at: Union[_dt.datetime, None]
+    nvd_published_at: Union[_dt.datetime, None]
+    withdrawn_at: Union[_dt.datetime, None]
     vulnerabilities: Union[list[VulnerabilityType], None]
     cvss: Union[GlobalAdvisoryPropCvssType, None]
     cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]

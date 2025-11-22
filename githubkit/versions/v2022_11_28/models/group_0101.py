@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Annotated, Literal, Union
 
 from pydantic import Field
@@ -29,10 +29,10 @@ class CodeScanningOrganizationAlertItems(GitHubModel):
     """CodeScanningOrganizationAlertItems"""
 
     number: int = Field(description="The security alert number.")
-    created_at: datetime = Field(
+    created_at: _dt.datetime = Field(
         description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    updated_at: Missing[datetime] = Field(
+    updated_at: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
@@ -44,12 +44,12 @@ class CodeScanningOrganizationAlertItems(GitHubModel):
     state: Union[None, Literal["open", "dismissed", "fixed"]] = Field(
         description="State of a code scanning alert."
     )
-    fixed_at: Missing[Union[datetime, None]] = Field(
+    fixed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
     dismissed_by: Union[None, SimpleUser] = Field()
-    dismissed_at: Union[datetime, None] = Field(
+    dismissed_at: Union[_dt.datetime, None] = Field(
         description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
     dismissed_reason: Union[

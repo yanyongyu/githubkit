@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -29,8 +29,8 @@ class WebhookSecretScanningScanCompletedType(TypedDict):
     action: Literal["completed"]
     type: Literal["backfill", "custom-pattern-backfill", "pattern-version-backfill"]
     source: Literal["git", "issues", "pull-requests", "discussions", "wiki"]
-    started_at: datetime
-    completed_at: datetime
+    started_at: _dt.datetime
+    completed_at: _dt.datetime
     secret_types: NotRequired[Union[list[str], None]]
     custom_pattern_name: NotRequired[Union[str, None]]
     custom_pattern_scope: NotRequired[

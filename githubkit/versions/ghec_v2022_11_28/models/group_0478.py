@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -25,7 +25,7 @@ class Stargazer(GitHubModel):
     Stargazer
     """
 
-    starred_at: datetime = Field()
+    starred_at: _dt.datetime = Field()
     user: Union[None, SimpleUser] = Field()
 
 

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -22,8 +22,8 @@ class KeySimpleType(TypedDict):
 
     id: int
     key: str
-    created_at: NotRequired[datetime]
-    last_used: NotRequired[Union[datetime, None]]
+    created_at: NotRequired[_dt.datetime]
+    last_used: NotRequired[Union[_dt.datetime, None]]
 
 
 class KeySimpleTypeForResponse(TypedDict):

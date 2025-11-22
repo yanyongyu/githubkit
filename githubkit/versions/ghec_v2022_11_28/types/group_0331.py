@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -55,8 +55,8 @@ class CheckSuiteType(TypedDict):
     pull_requests: Union[list[PullRequestMinimalType], None]
     app: Union[None, IntegrationType, None]
     repository: MinimalRepositoryType
-    created_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
     head_commit: SimpleCommitType
     latest_check_runs_count: int
     check_runs_url: str

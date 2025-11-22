@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -19,7 +19,7 @@ class WebhookIssuesClosedPropIssueAllof0PropPullRequestType(TypedDict):
 
     diff_url: NotRequired[str]
     html_url: NotRequired[str]
-    merged_at: NotRequired[Union[datetime, None]]
+    merged_at: NotRequired[Union[_dt.datetime, None]]
     patch_url: NotRequired[str]
     url: NotRequired[str]
 

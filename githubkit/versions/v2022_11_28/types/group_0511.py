@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -70,7 +70,7 @@ class WebhookCheckSuiteRequestedPropCheckSuiteType(TypedDict):
             "skipped",
         ],
     ]
-    created_at: datetime
+    created_at: _dt.datetime
     head_branch: Union[str, None]
     head_commit: WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitType
     head_sha: str
@@ -83,7 +83,7 @@ class WebhookCheckSuiteRequestedPropCheckSuiteType(TypedDict):
     rerequestable: NotRequired[bool]
     runs_rerequestable: NotRequired[bool]
     status: Union[None, Literal["requested", "in_progress", "completed", "queued"]]
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
 
 
@@ -136,7 +136,7 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropAppType(TypedDict):
     class actors within GitHub.
     """
 
-    created_at: Union[datetime, None]
+    created_at: Union[_dt.datetime, None]
     description: Union[str, None]
     events: NotRequired[list[str]]
     external_url: Union[str, None]
@@ -150,7 +150,7 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropAppType(TypedDict):
         WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissionsType
     ]
     slug: NotRequired[str]
-    updated_at: Union[datetime, None]
+    updated_at: Union[_dt.datetime, None]
 
 
 class WebhookCheckSuiteRequestedPropCheckSuitePropAppTypeForResponse(TypedDict):
@@ -361,7 +361,7 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthorType(Typed
     Metaproperties for Git author/committer information.
     """
 
-    date: NotRequired[datetime]
+    date: NotRequired[_dt.datetime]
     email: Union[str, None]
     name: str
     username: NotRequired[str]
@@ -389,7 +389,7 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitterType(
     Metaproperties for Git author/committer information.
     """
 
-    date: NotRequired[datetime]
+    date: NotRequired[_dt.datetime]
     email: Union[str, None]
     name: str
     username: NotRequired[str]

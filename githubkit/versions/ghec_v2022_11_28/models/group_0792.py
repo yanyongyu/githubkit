@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -35,7 +35,7 @@ class WebhookPingPropHook(GitHubModel):
         description="Only included for GitHub Apps. When you register a new GitHub App, GitHub sends a ping event to the webhook URL you specified during registration. The GitHub App ID sent in this field is required for authenticating an app.",
     )
     config: WebhookPingPropHookPropConfig = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     deliveries_url: Missing[str] = Field(default=UNSET)
     events: list[str] = Field(
         description="Determines what events the hook is triggered for. Default: ['push']."
@@ -48,7 +48,7 @@ class WebhookPingPropHook(GitHubModel):
     ping_url: Missing[str] = Field(default=UNSET)
     test_url: Missing[str] = Field(default=UNSET)
     type: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: Missing[str] = Field(default=UNSET)
 
 

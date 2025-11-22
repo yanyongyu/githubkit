@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -27,8 +27,8 @@ class OrgHookType(TypedDict):
     events: list[str]
     active: bool
     config: OrgHookPropConfigType
-    updated_at: datetime
-    created_at: datetime
+    updated_at: _dt.datetime
+    created_at: _dt.datetime
     type: str
 
 

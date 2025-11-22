@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
@@ -32,7 +32,7 @@ class WebhooksRuleType(TypedDict):
     authorized_actors_only: bool
     authorized_dismissal_actors_only: bool
     create_protected: NotRequired[bool]
-    created_at: datetime
+    created_at: _dt.datetime
     dismiss_stale_reviews_on_push: bool
     id: int
     ignore_approvals_from_contributors: bool
@@ -54,7 +54,7 @@ class WebhooksRuleType(TypedDict):
     required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
     signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
     strict_required_status_checks_policy: bool
-    updated_at: datetime
+    updated_at: _dt.datetime
 
 
 class WebhooksRuleTypeForResponse(TypedDict):

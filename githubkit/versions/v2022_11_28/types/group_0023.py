@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -32,12 +32,12 @@ class AuthorizationType(TypedDict):
     app: AuthorizationPropAppType
     note: Union[str, None]
     note_url: Union[str, None]
-    updated_at: datetime
-    created_at: datetime
+    updated_at: _dt.datetime
+    created_at: _dt.datetime
     fingerprint: Union[str, None]
     user: NotRequired[Union[None, SimpleUserType]]
     installation: NotRequired[Union[None, ScopedInstallationType]]
-    expires_at: Union[datetime, None]
+    expires_at: Union[_dt.datetime, None]
 
 
 class AuthorizationTypeForResponse(TypedDict):

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -27,7 +27,7 @@ class InteractionLimitResponse(GitHubModel):
         description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
     )
     origin: str = Field()
-    expires_at: datetime = Field()
+    expires_at: _dt.datetime = Field()
 
 
 model_rebuild(InteractionLimitResponse)

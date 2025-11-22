@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -79,11 +79,11 @@ class ExemptionRequest(GitHubModel):
             None,
         ]
     ] = Field(default=UNSET, description="Metadata about the exemption request.")
-    expires_at: Missing[datetime] = Field(
+    expires_at: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="The date and time the exemption request will expire.",
     )
-    created_at: Missing[datetime] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="The date and time the exemption request was created.",
     )

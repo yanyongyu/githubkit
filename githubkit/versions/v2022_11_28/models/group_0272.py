@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -33,10 +33,10 @@ class CodeScanningCodeqlDatabase(GitHubModel):
     uploader: SimpleUser = Field(title="Simple User", description="A GitHub user.")
     content_type: str = Field(description="The MIME type of the CodeQL database file.")
     size: int = Field(description="The size of the CodeQL database file in bytes.")
-    created_at: datetime = Field(
+    created_at: _dt.datetime = Field(
         description="The date and time at which the CodeQL database was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    updated_at: datetime = Field(
+    updated_at: _dt.datetime = Field(
         description="The date and time at which the CodeQL database was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
     url: str = Field(

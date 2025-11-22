@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -48,7 +48,7 @@ class TimelineCommittedEventPropAuthor(GitHubModel):
     Identifying information for the git-user
     """
 
-    date: datetime = Field(description="Timestamp of the commit")
+    date: _dt.datetime = Field(description="Timestamp of the commit")
     email: str = Field(description="Git email address of the user")
     name: str = Field(description="Name of the git user")
 
@@ -59,7 +59,7 @@ class TimelineCommittedEventPropCommitter(GitHubModel):
     Identifying information for the git-user
     """
 
-    date: datetime = Field(description="Timestamp of the commit")
+    date: _dt.datetime = Field(description="Timestamp of the commit")
     email: str = Field(description="Git email address of the user")
     name: str = Field(description="Name of the git user")
 

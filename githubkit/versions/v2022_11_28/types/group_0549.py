@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
@@ -79,7 +79,7 @@ class WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse(Typ
 class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType(TypedDict):
     """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
 
-    created_at: datetime
+    created_at: _dt.datetime
     description: str
     emoji: str
     id: int

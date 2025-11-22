@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -78,7 +78,7 @@ class WebhookWorkflowJobWaitingPropWorkflowJob(GitHubModel):
     runner_group_name: Union[str, None] = Field()
     runner_id: Union[int, None] = Field()
     runner_name: Union[str, None] = Field()
-    started_at: datetime = Field()
+    started_at: _dt.datetime = Field()
     head_branch: Union[str, None] = Field(description="The name of the current branch.")
     workflow_name: Union[str, None] = Field(description="The name of the workflow.")
     status: Literal["queued", "in_progress", "completed", "waiting"] = Field()

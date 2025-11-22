@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -29,7 +29,7 @@ class CodespaceExportDetails(GitHubModel):
     state: Missing[Union[str, None]] = Field(
         default=UNSET, description="State of the latest export"
     )
-    completed_at: Missing[Union[datetime, None]] = Field(
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET, description="Completion time of the last export operation"
     )
     branch: Missing[Union[str, None]] = Field(

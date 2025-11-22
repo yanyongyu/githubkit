@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 
 from pydantic import Field
 
@@ -37,8 +37,8 @@ class ActionsCacheListPropActionsCachesItems(GitHubModel):
     ref: Missing[str] = Field(default=UNSET)
     key: Missing[str] = Field(default=UNSET)
     version: Missing[str] = Field(default=UNSET)
-    last_accessed_at: Missing[datetime] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(default=UNSET)
+    last_accessed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
     size_in_bytes: Missing[int] = Field(default=UNSET)
 
 

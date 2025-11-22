@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 
 from pydantic import Field
 
@@ -51,7 +51,9 @@ class Snapshot(GitHubModel):
         default=UNSET,
         description="A collection of package manifests, which are a collection of related dependencies declared in a file or representing a logical group of dependencies.",
     )
-    scanned: datetime = Field(description="The time at which the snapshot was scanned.")
+    scanned: _dt.datetime = Field(
+        description="The time at which the snapshot was scanned."
+    )
 
 
 class SnapshotPropJob(GitHubModel):

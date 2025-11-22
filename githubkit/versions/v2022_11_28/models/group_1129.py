@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 
 from pydantic import Field
 
@@ -53,7 +53,7 @@ class ReposOwnerRepoGitCommitsPostBodyPropAuthor(GitHubModel):
     email: str = Field(
         description="The email of the author (or committer) of the commit"
     )
-    date: Missing[datetime] = Field(
+    date: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
@@ -74,7 +74,7 @@ class ReposOwnerRepoGitCommitsPostBodyPropCommitter(GitHubModel):
         default=UNSET,
         description="The email of the author (or committer) of the commit",
     )
-    date: Missing[datetime] = Field(
+    date: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )

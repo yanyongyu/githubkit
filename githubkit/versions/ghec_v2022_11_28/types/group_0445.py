@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -39,9 +39,9 @@ class ReleaseType(TypedDict):
     draft: bool
     prerelease: bool
     immutable: NotRequired[bool]
-    created_at: datetime
-    published_at: Union[datetime, None]
-    updated_at: NotRequired[Union[datetime, None]]
+    created_at: _dt.datetime
+    published_at: Union[_dt.datetime, None]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
     author: SimpleUserType
     assets: list[ReleaseAssetType]
     body_html: NotRequired[Union[str, None]]

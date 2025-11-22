@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -34,9 +34,9 @@ class CodespaceWithFullRepositoryType(TypedDict):
     machine: Union[None, CodespaceMachineType]
     devcontainer_path: NotRequired[Union[str, None]]
     prebuild: Union[bool, None]
-    created_at: datetime
-    updated_at: datetime
-    last_used_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    last_used_at: _dt.datetime
     state: Literal[
         "Unknown",
         "Created",
@@ -74,7 +74,7 @@ class CodespaceWithFullRepositoryType(TypedDict):
     pending_operation_disabled_reason: NotRequired[Union[str, None]]
     idle_timeout_notice: NotRequired[Union[str, None]]
     retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[datetime, None]]
+    retention_expires_at: NotRequired[Union[_dt.datetime, None]]
 
 
 class CodespaceWithFullRepositoryTypeForResponse(TypedDict):

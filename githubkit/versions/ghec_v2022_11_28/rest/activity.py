@@ -20,7 +20,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -346,8 +346,8 @@ class ActivityClient:
         *,
         all_: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
-        since: Missing[datetime] = UNSET,
-        before: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
+        before: Missing[_dt.datetime] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -396,8 +396,8 @@ class ActivityClient:
         *,
         all_: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
-        since: Missing[datetime] = UNSET,
-        before: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
+        before: Missing[_dt.datetime] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -459,7 +459,7 @@ class ActivityClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        last_read_at: Missing[datetime] = UNSET,
+        last_read_at: Missing[_dt.datetime] = UNSET,
         read: Missing[bool] = UNSET,
     ) -> Response[
         NotificationsPutResponse202, NotificationsPutResponse202TypeForResponse
@@ -534,7 +534,7 @@ class ActivityClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        last_read_at: Missing[datetime] = UNSET,
+        last_read_at: Missing[_dt.datetime] = UNSET,
         read: Missing[bool] = UNSET,
     ) -> Response[
         NotificationsPutResponse202, NotificationsPutResponse202TypeForResponse
@@ -1234,8 +1234,8 @@ class ActivityClient:
         *,
         all_: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
-        since: Missing[datetime] = UNSET,
-        before: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
+        before: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -1281,8 +1281,8 @@ class ActivityClient:
         *,
         all_: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
-        since: Missing[datetime] = UNSET,
-        before: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
+        before: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -1344,7 +1344,7 @@ class ActivityClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        last_read_at: Missing[datetime] = UNSET,
+        last_read_at: Missing[_dt.datetime] = UNSET,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
         ReposOwnerRepoNotificationsPutResponse202TypeForResponse,
@@ -1422,7 +1422,7 @@ class ActivityClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        last_read_at: Missing[datetime] = UNSET,
+        last_read_at: Missing[_dt.datetime] = UNSET,
     ) -> Response[
         ReposOwnerRepoNotificationsPutResponse202,
         ReposOwnerRepoNotificationsPutResponse202TypeForResponse,

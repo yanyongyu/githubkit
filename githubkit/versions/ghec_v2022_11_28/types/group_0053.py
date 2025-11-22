@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -21,7 +21,7 @@ class AnnouncementType(TypedDict):
     """
 
     announcement: Union[str, None]
-    expires_at: NotRequired[Union[datetime, None]]
+    expires_at: NotRequired[Union[_dt.datetime, None]]
     user_dismissible: NotRequired[Union[bool, None]]
 
 

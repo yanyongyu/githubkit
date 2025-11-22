@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -43,8 +43,8 @@ class Migration(GitHubModel):
         description="The repositories included in the migration. Only returned for export migrations."
     )
     url: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     node_id: str = Field()
     archive_url: Missing[str] = Field(default=UNSET)
     exclude: Missing[list[str]] = Field(

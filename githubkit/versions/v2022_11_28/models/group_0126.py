@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -32,9 +32,9 @@ class PackageVersion(GitHubModel):
     html_url: Missing[str] = Field(default=UNSET)
     license_: Missing[str] = Field(default=UNSET, alias="license")
     description: Missing[str] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    deleted_at: Missing[datetime] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    deleted_at: Missing[_dt.datetime] = Field(default=UNSET)
     metadata: Missing[PackageVersionPropMetadata] = Field(
         default=UNSET, title="Package Version Metadata"
     )

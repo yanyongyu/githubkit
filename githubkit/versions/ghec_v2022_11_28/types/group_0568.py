@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -35,7 +35,7 @@ class WebhooksReviewCommentType(TypedDict):
     ]
     body: str
     commit_id: str
-    created_at: datetime
+    created_at: _dt.datetime
     diff_hunk: str
     html_url: str
     id: int
@@ -55,7 +55,7 @@ class WebhooksReviewCommentType(TypedDict):
     start_line: Union[int, None]
     start_side: Union[None, Literal["LEFT", "RIGHT"]]
     subject_type: NotRequired[Literal["line", "file"]]
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
     user: Union[WebhooksReviewCommentPropUserType, None]
 

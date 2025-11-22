@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -52,10 +52,10 @@ class WebhookIssuesTransferredPropChangesPropNewIssueType(TypedDict):
         "OWNER",
     ]
     body: Union[str, None]
-    closed_at: Union[datetime, None]
+    closed_at: Union[_dt.datetime, None]
     comments: int
     comments_url: str
-    created_at: datetime
+    created_at: _dt.datetime
     draft: NotRequired[bool]
     events_url: str
     html_url: str
@@ -89,7 +89,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssueType(TypedDict):
     timeline_url: NotRequired[str]
     title: str
     type: NotRequired[Union[IssueTypeType, None]]
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
     user: Union[WebhookIssuesTransferredPropChangesPropNewIssuePropUserType, None]
 
@@ -320,15 +320,15 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropMilestoneType(TypedDict
     A collection of related issues and pull requests.
     """
 
-    closed_at: Union[datetime, None]
+    closed_at: Union[_dt.datetime, None]
     closed_issues: int
-    created_at: datetime
+    created_at: _dt.datetime
     creator: Union[
         WebhookIssuesTransferredPropChangesPropNewIssuePropMilestonePropCreatorType,
         None,
     ]
     description: Union[str, None]
-    due_on: Union[datetime, None]
+    due_on: Union[_dt.datetime, None]
     html_url: str
     id: int
     labels_url: str
@@ -337,7 +337,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropMilestoneType(TypedDict
     open_issues: int
     state: Literal["open", "closed"]
     title: str
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
 
 
@@ -439,7 +439,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppTy
     class actors within GitHub.
     """
 
-    created_at: Union[datetime, None]
+    created_at: Union[_dt.datetime, None]
     description: Union[str, None]
     events: NotRequired[list[str]]
     external_url: Union[str, None]
@@ -455,7 +455,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppTy
         WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissionsType
     ]
     slug: NotRequired[str]
-    updated_at: Union[datetime, None]
+    updated_at: Union[_dt.datetime, None]
 
 
 class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppTypeForResponse(
@@ -643,7 +643,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequestType(TypedDi
 
     diff_url: NotRequired[str]
     html_url: NotRequired[str]
-    merged_at: NotRequired[Union[datetime, None]]
+    merged_at: NotRequired[Union[_dt.datetime, None]]
     patch_url: NotRequired[str]
     url: NotRequired[str]
 

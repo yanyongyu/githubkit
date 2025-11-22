@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
+import datetime as _dt
 
 from pydantic import Field
 
@@ -25,10 +25,10 @@ class CopilotUsageMetrics28DayReport(GitHubModel):
     download_links: list[str] = Field(
         description="The URLs to download the latest Copilot usage metrics report for the enterprise."
     )
-    report_start_day: date = Field(
+    report_start_day: _dt.date = Field(
         description="The start date of the report period in `YYYY-MM-DD` format."
     )
-    report_end_day: date = Field(
+    report_end_day: _dt.date = Field(
         description="The end date of the report period in `YYYY-MM-DD` format."
     )
 

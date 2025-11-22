@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 
 from pydantic import Field
 
@@ -38,7 +38,7 @@ class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubModel):
         default=UNSET,
         description="The base directory used in the analysis, as it appears in the SARIF file.\nThis property is used to convert file paths from absolute to relative, so that alerts can be mapped to their correct location in the repository.",
     )
-    started_at: Missing[datetime] = Field(
+    started_at: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="The time that the analysis run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )

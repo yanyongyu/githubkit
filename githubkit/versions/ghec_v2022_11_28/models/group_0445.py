@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -52,9 +52,9 @@ class Release(GitHubModel):
     immutable: Missing[bool] = Field(
         default=UNSET, description="Whether or not the release is immutable."
     )
-    created_at: datetime = Field()
-    published_at: Union[datetime, None] = Field()
-    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    published_at: Union[_dt.datetime, None] = Field()
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
     author: SimpleUser = Field(title="Simple User", description="A GitHub user.")
     assets: list[ReleaseAsset] = Field()
     body_html: Missing[Union[str, None]] = Field(default=UNSET)

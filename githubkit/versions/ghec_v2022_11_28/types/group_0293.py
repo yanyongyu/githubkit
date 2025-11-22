@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -27,9 +27,9 @@ class ArtifactType(TypedDict):
     url: str
     archive_download_url: str
     expired: bool
-    created_at: Union[datetime, None]
-    expires_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
+    created_at: Union[_dt.datetime, None]
+    expires_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
     digest: NotRequired[Union[str, None]]
     workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
 

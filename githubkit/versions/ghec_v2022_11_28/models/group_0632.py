@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -131,7 +131,7 @@ class WebhookDeploymentReviewRequestedPropWorkflowRun(GitHubModel):
             "stale",
         ],
     ] = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     event: str = Field()
     head_branch: str = Field()
     head_commit: Missing[
@@ -166,14 +166,14 @@ class WebhookDeploymentReviewRequestedPropWorkflowRun(GitHubModel):
     rerun_url: Missing[str] = Field(default=UNSET)
     run_attempt: int = Field()
     run_number: int = Field()
-    run_started_at: datetime = Field()
+    run_started_at: _dt.datetime = Field()
     status: Literal[
         "requested", "in_progress", "completed", "queued", "waiting", "pending"
     ] = Field()
     triggering_actor: Union[
         WebhookDeploymentReviewRequestedPropWorkflowRunPropTriggeringActor, None
     ] = Field(title="User")
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     workflow_id: int = Field()
     workflow_url: Missing[str] = Field(default=UNSET)

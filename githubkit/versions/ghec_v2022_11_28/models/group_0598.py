@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -82,7 +82,7 @@ class WebhookCheckSuiteRerequestedPropCheckSuite(GitHubModel):
     ] = Field(
         description="The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed."
     )
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     head_branch: Union[str, None] = Field(
         description="The head branch name the changes are on."
     )
@@ -107,7 +107,7 @@ class WebhookCheckSuiteRerequestedPropCheckSuite(GitHubModel):
             description="The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`."
         )
     )
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field(description="URL that points to the check suite API resource.")
 
 
@@ -120,7 +120,7 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropApp(GitHubModel):
     class actors within GitHub.
     """
 
-    created_at: Union[datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
     description: Union[str, None] = Field()
     events: Missing[list[str]] = Field(
         default=UNSET, description="The list of events for the GitHub app"
@@ -142,7 +142,7 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropApp(GitHubModel):
     slug: Missing[str] = Field(
         default=UNSET, description="The slug name of the GitHub app"
     )
-    updated_at: Union[datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
 
 
 class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwner(GitHubModel):
@@ -251,7 +251,7 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthor(GitHubM
     Metaproperties for Git author/committer information.
     """
 
-    date: Missing[datetime] = Field(default=UNSET)
+    date: Missing[_dt.datetime] = Field(default=UNSET)
     email: Union[str, None] = Field()
     name: str = Field(description="The git author's name.")
     username: Missing[str] = Field(default=UNSET)
@@ -265,7 +265,7 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitter(
     Metaproperties for Git author/committer information.
     """
 
-    date: Missing[datetime] = Field(default=UNSET)
+    date: Missing[_dt.datetime] = Field(default=UNSET)
     email: Union[str, None] = Field()
     name: str = Field(description="The git author's name.")
     username: Missing[str] = Field(default=UNSET)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -43,7 +43,7 @@ class SimpleCheckSuiteType(TypedDict):
             ],
         ]
     ]
-    created_at: NotRequired[datetime]
+    created_at: NotRequired[_dt.datetime]
     head_branch: NotRequired[Union[str, None]]
     head_sha: NotRequired[str]
     id: NotRequired[int]
@@ -53,7 +53,7 @@ class SimpleCheckSuiteType(TypedDict):
     status: NotRequired[
         Literal["queued", "in_progress", "completed", "pending", "waiting"]
     ]
-    updated_at: NotRequired[datetime]
+    updated_at: NotRequired[_dt.datetime]
     url: NotRequired[str]
 
 

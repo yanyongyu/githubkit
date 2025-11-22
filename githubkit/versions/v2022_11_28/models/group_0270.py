@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 
 from pydantic import Field
 
@@ -43,7 +43,7 @@ class CodeScanningAnalysis(GitHubModel):
         description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
     )
     error: str = Field()
-    created_at: datetime = Field(
+    created_at: _dt.datetime = Field(
         description="The time that the analysis was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
     results_count: int = Field(

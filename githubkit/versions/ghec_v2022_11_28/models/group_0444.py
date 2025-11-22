@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -38,8 +38,8 @@ class ReleaseAsset(GitHubModel):
     size: int = Field()
     digest: Union[str, None] = Field()
     download_count: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     uploader: Union[None, SimpleUser] = Field()
 
 

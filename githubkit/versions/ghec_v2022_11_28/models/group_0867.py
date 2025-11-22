@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -72,7 +72,7 @@ class WebhookReleasePrereleasedPropRelease(GitHubModel):
         title="User"
     )
     body: Union[str, None] = Field()
-    created_at: Union[datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
     discussion_url: Missing[str] = Field(default=UNSET)
     draft: bool = Field(description="Whether the release is a draft or published")
     html_url: str = Field()
@@ -83,7 +83,7 @@ class WebhookReleasePrereleasedPropRelease(GitHubModel):
     prerelease: Literal[True] = Field(
         description="Whether the release is identified as a prerelease or a full release."
     )
-    published_at: Union[datetime, None] = Field()
+    published_at: Union[_dt.datetime, None] = Field()
     reactions: Missing[WebhookReleasePrereleasedPropReleasePropReactions] = Field(
         default=UNSET, title="Reactions"
     )
@@ -93,7 +93,7 @@ class WebhookReleasePrereleasedPropRelease(GitHubModel):
         description="Specifies the commitish value that determines where the Git tag is created from."
     )
     upload_url: str = Field()
-    updated_at: Union[datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
     url: str = Field()
     zipball_url: Union[str, None] = Field()
 
@@ -106,7 +106,7 @@ class WebhookReleasePrereleasedPropReleasePropAssetsItems(GitHubModel):
 
     browser_download_url: str = Field()
     content_type: str = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     download_count: int = Field()
     id: int = Field()
     label: Union[str, None] = Field()
@@ -115,7 +115,7 @@ class WebhookReleasePrereleasedPropReleasePropAssetsItems(GitHubModel):
     size: int = Field()
     digest: Union[str, None] = Field()
     state: Literal["uploaded"] = Field(description="State of the release asset.")
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     uploader: Missing[
         Union[WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploader, None]
     ] = Field(default=UNSET, title="User")

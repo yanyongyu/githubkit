@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -61,10 +61,10 @@ class WebhookIssueCommentEditedPropIssueAllof0(GitHubModel):
         description="How the author is associated with the repository.",
     )
     body: Union[str, None] = Field(description="Contents of the issue")
-    closed_at: Union[datetime, None] = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
     comments: int = Field()
     comments_url: str = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     draft: Missing[bool] = Field(default=UNSET)
     events_url: str = Field()
     html_url: str = Field()
@@ -111,7 +111,7 @@ class WebhookIssueCommentEditedPropIssueAllof0(GitHubModel):
     type: Missing[Union[IssueType, None]] = Field(
         default=UNSET, title="Issue Type", description="The type of issue."
     )
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the issue")
     user: Union[WebhookIssueCommentEditedPropIssueAllof0PropUser, None] = Field(
         title="User"

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 from typing_extensions import TypedDict
 
@@ -22,7 +22,7 @@ class InteractionLimitResponseType(TypedDict):
 
     limit: Literal["existing_users", "contributors_only", "collaborators_only"]
     origin: str
-    expires_at: datetime
+    expires_at: _dt.datetime
 
 
 class InteractionLimitResponseTypeForResponse(TypedDict):

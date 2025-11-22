@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -36,7 +36,7 @@ class WebhooksAlert(GitHubModel):
     external_identifier: str = Field()
     external_reference: Union[str, None] = Field()
     fix_reason: Missing[str] = Field(default=UNSET)
-    fixed_at: Missing[datetime] = Field(default=UNSET)
+    fixed_at: Missing[_dt.datetime] = Field(default=UNSET)
     fixed_in: Missing[str] = Field(default=UNSET)
     ghsa_id: str = Field()
     id: int = Field()

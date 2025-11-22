@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -31,8 +31,8 @@ class TopicSearchResultItemType(TypedDict):
     description: Union[str, None]
     created_by: Union[str, None]
     released: Union[str, None]
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     featured: bool
     curated: bool
     score: float

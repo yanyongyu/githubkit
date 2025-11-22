@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -24,12 +24,12 @@ class WebhooksProjectColumn(GitHubModel):
 
     after_id: Missing[Union[int, None]] = Field(default=UNSET)
     cards_url: str = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     id: int = Field(description="The unique identifier of the project column")
     name: str = Field(description="Name of the project column")
     node_id: str = Field()
     project_url: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
 
 

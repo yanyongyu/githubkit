@@ -20,7 +20,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import date
+    import datetime as _dt
 
     from githubkit import GitHubCore
     from githubkit.response import Response
@@ -1106,7 +1106,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        day: date,
+        day: _dt.date,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -1155,7 +1155,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        day: date,
+        day: _dt.date,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -1290,7 +1290,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        day: date,
+        day: _dt.date,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -1339,7 +1339,7 @@ class CopilotClient:
         self,
         enterprise: str,
         *,
-        day: date,
+        day: _dt.date,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[

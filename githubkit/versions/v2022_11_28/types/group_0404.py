@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -18,7 +18,7 @@ class SecretScanningPushProtectionBypassType(TypedDict):
     """SecretScanningPushProtectionBypass"""
 
     reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
-    expire_at: NotRequired[Union[datetime, None]]
+    expire_at: NotRequired[Union[_dt.datetime, None]]
     token_type: NotRequired[str]
 
 

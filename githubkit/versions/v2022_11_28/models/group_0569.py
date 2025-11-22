@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -57,7 +57,7 @@ class WebhookForkPropForkeeAllof0(GitHubModel):
     compare_url: str = Field()
     contents_url: str = Field()
     contributors_url: str = Field()
-    created_at: Union[int, datetime] = Field()
+    created_at: Union[int, _dt.datetime] = Field()
     default_branch: str = Field(description="The default branch of the repository.")
     delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,
@@ -120,7 +120,7 @@ class WebhookForkPropForkeeAllof0(GitHubModel):
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
     pulls_url: str = Field()
-    pushed_at: Union[int, datetime, None] = Field()
+    pushed_at: Union[int, _dt.datetime, None] = Field()
     releases_url: str = Field()
     role_name: Missing[Union[str, None]] = Field(default=UNSET)
     size: int = Field()
@@ -136,7 +136,7 @@ class WebhookForkPropForkeeAllof0(GitHubModel):
     teams_url: str = Field()
     topics: list[str] = Field()
     trees_url: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     visibility: Literal["public", "private", "internal"] = Field()
     watchers: int = Field()

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
@@ -27,8 +27,8 @@ class GistCommentType(TypedDict):
     url: str
     body: str
     user: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",

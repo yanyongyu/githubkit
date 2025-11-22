@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -41,7 +41,7 @@ class ReposOwnerRepoCheckRunsPostBodyOneof1(ExtraGitHubModel):
     status: Missing[
         Literal["queued", "in_progress", "waiting", "requested", "pending"]
     ] = Field(default=UNSET)
-    started_at: Missing[datetime] = Field(
+    started_at: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
@@ -60,7 +60,7 @@ class ReposOwnerRepoCheckRunsPostBodyOneof1(ExtraGitHubModel):
         default=UNSET,
         description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.",
     )
-    completed_at: Missing[datetime] = Field(
+    completed_at: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )

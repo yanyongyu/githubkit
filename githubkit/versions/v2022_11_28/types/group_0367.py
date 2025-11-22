@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -60,10 +60,10 @@ class PullRequestType(TypedDict):
     labels: list[PullRequestPropLabelsItemsType]
     milestone: Union[None, MilestoneType]
     active_lock_reason: NotRequired[Union[str, None]]
-    created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
-    merged_at: Union[datetime, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
+    merged_at: Union[_dt.datetime, None]
     merge_commit_sha: Union[str, None]
     assignee: Union[None, SimpleUserType]
     assignees: NotRequired[Union[list[SimpleUserType], None]]

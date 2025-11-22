@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Any, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
@@ -93,9 +93,9 @@ class MinimalRepositoryType(TypedDict):
     archived: NotRequired[bool]
     disabled: NotRequired[bool]
     visibility: NotRequired[str]
-    pushed_at: NotRequired[Union[datetime, None]]
-    created_at: NotRequired[Union[datetime, None]]
-    updated_at: NotRequired[Union[datetime, None]]
+    pushed_at: NotRequired[Union[_dt.datetime, None]]
+    created_at: NotRequired[Union[_dt.datetime, None]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
     permissions: NotRequired[MinimalRepositoryPropPermissionsType]
     role_name: NotRequired[str]
     temp_clone_token: NotRequired[Union[str, None]]

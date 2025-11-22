@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -65,7 +65,7 @@ class ClassroomAssignment(GitHubModel):
     language: str = Field(
         description="The programming language used in the assignment."
     )
-    deadline: Union[datetime, None] = Field(
+    deadline: Union[_dt.datetime, None] = Field(
         description="The time at which the assignment is due."
     )
     starter_code_repository: SimpleClassroomRepository = Field(

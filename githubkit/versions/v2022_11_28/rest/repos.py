@@ -21,7 +21,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -8367,8 +8367,8 @@ class ReposClient:
         path: Missing[str] = UNSET,
         author: Missing[str] = UNSET,
         committer: Missing[str] = UNSET,
-        since: Missing[datetime] = UNSET,
-        until: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
+        until: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -8452,8 +8452,8 @@ class ReposClient:
         path: Missing[str] = UNSET,
         author: Missing[str] = UNSET,
         committer: Missing[str] = UNSET,
-        since: Missing[datetime] = UNSET,
-        until: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
+        until: Missing[_dt.datetime] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
@@ -22256,8 +22256,8 @@ class ReposClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        since: Missing[datetime] = UNSET,
-        before: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
+        before: Missing[_dt.datetime] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[Repository], list[RepositoryTypeForResponse]]:
@@ -22314,8 +22314,8 @@ class ReposClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        since: Missing[datetime] = UNSET,
-        before: Missing[datetime] = UNSET,
+        since: Missing[_dt.datetime] = UNSET,
+        before: Missing[_dt.datetime] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[Repository], list[RepositoryTypeForResponse]]:

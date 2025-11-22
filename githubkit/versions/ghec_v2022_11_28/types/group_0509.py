@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -61,9 +61,9 @@ class IssueSearchResultItemType(TypedDict):
     assignee: Union[None, SimpleUserType]
     milestone: Union[None, MilestoneType]
     comments: int
-    created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
     text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
     pull_request: NotRequired[IssueSearchResultItemPropPullRequestType]
     body: NotRequired[str]
@@ -171,7 +171,7 @@ class IssueSearchResultItemPropLabelsItemsTypeForResponse(TypedDict):
 class IssueSearchResultItemPropPullRequestType(TypedDict):
     """IssueSearchResultItemPropPullRequest"""
 
-    merged_at: NotRequired[Union[datetime, None]]
+    merged_at: NotRequired[Union[_dt.datetime, None]]
     diff_url: Union[str, None]
     html_url: Union[str, None]
     patch_url: Union[str, None]

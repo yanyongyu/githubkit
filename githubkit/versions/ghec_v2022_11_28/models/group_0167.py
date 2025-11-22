@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -116,8 +116,8 @@ class RepositoryRuleset(GitHubModel):
             ]
         ]
     ] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
 
 
 class RepositoryRulesetPropLinks(GitHubModel):

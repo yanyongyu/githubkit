@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import TypedDict
 
@@ -21,7 +21,7 @@ class AnnouncementBannerType(TypedDict):
     """
 
     announcement: Union[str, None]
-    expires_at: Union[datetime, None]
+    expires_at: Union[_dt.datetime, None]
     user_dismissible: Union[bool, None]
 
 

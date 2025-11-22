@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Any, Union
 
 from pydantic import Field
@@ -37,8 +37,8 @@ class BaseGist(GitHubModel):
     html_url: str = Field()
     files: BaseGistPropFiles = Field()
     public: bool = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     description: Union[str, None] = Field()
     comments: int = Field()
     comments_enabled: Missing[bool] = Field(default=UNSET)

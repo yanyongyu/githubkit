@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -39,7 +39,7 @@ class PendingDeployment(GitHubModel):
 
     environment: PendingDeploymentPropEnvironment = Field()
     wait_timer: int = Field(description="The set duration of the wait timer")
-    wait_timer_started_at: Union[datetime, None] = Field(
+    wait_timer_started_at: Union[_dt.datetime, None] = Field(
         description="The time that the wait timer began."
     )
     current_user_can_approve: bool = Field(

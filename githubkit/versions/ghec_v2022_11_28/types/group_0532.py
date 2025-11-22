@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -25,7 +25,7 @@ class ExemptionResponseType(TypedDict):
     reviewer_login: NotRequired[str]
     status: NotRequired[Literal["approved", "rejected", "dismissed"]]
     reviewer_comment: NotRequired[Union[str, None]]
-    created_at: NotRequired[datetime]
+    created_at: NotRequired[_dt.datetime]
 
 
 class ExemptionResponseTypeForResponse(TypedDict):

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -40,7 +40,7 @@ class CodeSearchResultItem(GitHubModel):
     score: float = Field()
     file_size: Missing[int] = Field(default=UNSET)
     language: Missing[Union[str, None]] = Field(default=UNSET)
-    last_modified_at: Missing[datetime] = Field(default=UNSET)
+    last_modified_at: Missing[_dt.datetime] = Field(default=UNSET)
     line_numbers: Missing[list[str]] = Field(default=UNSET)
     text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"

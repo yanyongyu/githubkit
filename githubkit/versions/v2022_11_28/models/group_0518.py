@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Annotated, Literal, Union
 
 from pydantic import Field
@@ -27,7 +27,7 @@ class WebhookCodeScanningAlertCreatedPropAlert(GitHubModel):
     The code scanning alert involved in the event.
     """
 
-    created_at: Union[datetime, None] = Field(
+    created_at: Union[_dt.datetime, None] = Field(
         description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`"
     )
     dismissed_at: None = Field(

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 
 from pydantic import Field
 
@@ -28,7 +28,7 @@ class RulesetVersion(GitHubModel):
     actor: RulesetVersionPropActor = Field(
         description="The actor who updated the ruleset"
     )
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
 model_rebuild(RulesetVersion)

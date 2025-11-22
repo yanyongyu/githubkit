@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -89,12 +89,12 @@ class WebhookPullRequestLockedPropPullRequest(GitHubModel):
     base: WebhookPullRequestLockedPropPullRequestPropBase = Field()
     body: Union[str, None] = Field()
     changed_files: Missing[int] = Field(default=UNSET)
-    closed_at: Union[datetime, None] = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
     comments: Missing[int] = Field(default=UNSET)
     comments_url: str = Field()
     commits: Missing[int] = Field(default=UNSET)
     commits_url: str = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     deletions: Missing[int] = Field(default=UNSET)
     diff_url: str = Field()
     draft: bool = Field(
@@ -114,7 +114,7 @@ class WebhookPullRequestLockedPropPullRequest(GitHubModel):
     mergeable: Missing[Union[bool, None]] = Field(default=UNSET)
     mergeable_state: Missing[str] = Field(default=UNSET)
     merged: Missing[Union[bool, None]] = Field(default=UNSET)
-    merged_at: Union[datetime, None] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
     merged_by: Missing[
         Union[WebhookPullRequestLockedPropPullRequestPropMergedBy, None]
     ] = Field(default=UNSET, title="User")
@@ -148,7 +148,7 @@ class WebhookPullRequestLockedPropPullRequest(GitHubModel):
     )
     statuses_url: str = Field()
     title: str = Field(description="The title of the pull request.")
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     user: Union[WebhookPullRequestLockedPropPullRequestPropUser, None] = Field(
         title="User"
@@ -306,14 +306,14 @@ class WebhookPullRequestLockedPropPullRequestPropMilestone(GitHubModel):
     A collection of related issues and pull requests.
     """
 
-    closed_at: Union[datetime, None] = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
     closed_issues: int = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     creator: Union[
         WebhookPullRequestLockedPropPullRequestPropMilestonePropCreator, None
     ] = Field(title="User")
     description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
     html_url: str = Field()
     id: int = Field()
     labels_url: str = Field()
@@ -322,7 +322,7 @@ class WebhookPullRequestLockedPropPullRequestPropMilestone(GitHubModel):
     open_issues: int = Field()
     state: Literal["open", "closed"] = Field(description="The state of the milestone.")
     title: str = Field(description="The title of the milestone.")
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
 
 
@@ -565,7 +565,7 @@ class WebhookPullRequestLockedPropPullRequestPropBasePropRepo(GitHubModel):
     compare_url: str = Field()
     contents_url: str = Field()
     contributors_url: str = Field()
-    created_at: Union[int, datetime] = Field()
+    created_at: Union[int, _dt.datetime] = Field()
     default_branch: str = Field(description="The default branch of the repository.")
     delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,
@@ -641,7 +641,7 @@ class WebhookPullRequestLockedPropPullRequestPropBasePropRepo(GitHubModel):
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
     pulls_url: str = Field()
-    pushed_at: Union[int, datetime, None] = Field()
+    pushed_at: Union[int, _dt.datetime, None] = Field()
     releases_url: str = Field()
     role_name: Missing[Union[str, None]] = Field(default=UNSET)
     size: int = Field()
@@ -669,7 +669,7 @@ class WebhookPullRequestLockedPropPullRequestPropBasePropRepo(GitHubModel):
     teams_url: str = Field()
     topics: list[str] = Field()
     trees_url: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     use_squash_pr_title_as_default: Missing[bool] = Field(
         default=UNSET,
@@ -783,7 +783,7 @@ class WebhookPullRequestLockedPropPullRequestPropHeadPropRepo(GitHubModel):
     compare_url: str = Field()
     contents_url: str = Field()
     contributors_url: str = Field()
-    created_at: Union[int, datetime] = Field()
+    created_at: Union[int, _dt.datetime] = Field()
     default_branch: str = Field(description="The default branch of the repository.")
     delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,
@@ -859,7 +859,7 @@ class WebhookPullRequestLockedPropPullRequestPropHeadPropRepo(GitHubModel):
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
     pulls_url: str = Field()
-    pushed_at: Union[int, datetime, None] = Field()
+    pushed_at: Union[int, _dt.datetime, None] = Field()
     releases_url: str = Field()
     role_name: Missing[Union[str, None]] = Field(default=UNSET)
     size: int = Field()
@@ -887,7 +887,7 @@ class WebhookPullRequestLockedPropPullRequestPropHeadPropRepo(GitHubModel):
     teams_url: str = Field()
     topics: list[str] = Field()
     trees_url: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     use_squash_pr_title_as_default: Missing[bool] = Field(
         default=UNSET,

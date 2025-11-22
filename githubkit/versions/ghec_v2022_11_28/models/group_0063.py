@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -29,9 +29,9 @@ class GetAuditLogStreamConfig(GitHubModel):
     stream_type: str = Field()
     stream_details: str = Field()
     enabled: bool = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    paused_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    paused_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
 model_rebuild(GetAuditLogStreamConfig)

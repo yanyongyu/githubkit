@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -37,7 +37,7 @@ class CheckRunWithSimpleCheckSuite(GitHubModel):
     check_suite: SimpleCheckSuite = Field(
         description="A suite of checks performed on the code of a given code change"
     )
-    completed_at: Union[datetime, None] = Field()
+    completed_at: Union[_dt.datetime, None] = Field()
     conclusion: Union[
         None,
         Literal[
@@ -68,7 +68,7 @@ class CheckRunWithSimpleCheckSuite(GitHubModel):
     node_id: str = Field()
     output: CheckRunWithSimpleCheckSuitePropOutput = Field()
     pull_requests: list[PullRequestMinimal] = Field()
-    started_at: datetime = Field()
+    started_at: _dt.datetime = Field()
     status: Literal["queued", "in_progress", "completed", "pending"] = Field(
         description="The phase of the lifecycle that the check is currently in."
     )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -38,8 +38,8 @@ class WebhooksReviewType(TypedDict):
     node_id: str
     pull_request_url: str
     state: str
-    submitted_at: Union[datetime, None]
-    updated_at: NotRequired[Union[datetime, None]]
+    submitted_at: Union[_dt.datetime, None]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
     user: Union[WebhooksReviewPropUserType, None]
 
 

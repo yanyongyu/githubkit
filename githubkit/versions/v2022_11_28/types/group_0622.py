@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -57,10 +57,10 @@ class WebhookIssuesClosedPropIssueType(TypedDict):
         "OWNER",
     ]
     body: Union[Union[str, None], None]
-    closed_at: Union[datetime, None]
+    closed_at: Union[_dt.datetime, None]
     comments: int
     comments_url: str
-    created_at: datetime
+    created_at: _dt.datetime
     draft: NotRequired[bool]
     events_url: str
     html_url: str
@@ -85,7 +85,7 @@ class WebhookIssuesClosedPropIssueType(TypedDict):
     timeline_url: NotRequired[str]
     title: str
     type: NotRequired[Union[IssueTypeType, None]]
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
     user: WebhookIssuesClosedPropIssueMergedUserType
 

@@ -20,7 +20,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -189,7 +189,7 @@ class CampaignsClient:
         description: str,
         managers: Missing[list[str]] = UNSET,
         team_managers: Missing[list[str]] = UNSET,
-        ends_at: datetime,
+        ends_at: _dt.datetime,
         contact_link: Missing[Union[str, None]] = UNSET,
         code_scanning_alerts: Union[
             list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None
@@ -209,7 +209,7 @@ class CampaignsClient:
         description: str,
         managers: Missing[list[str]] = UNSET,
         team_managers: Missing[list[str]] = UNSET,
-        ends_at: datetime,
+        ends_at: _dt.datetime,
         contact_link: Missing[Union[str, None]] = UNSET,
         code_scanning_alerts: Missing[
             Union[list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None]
@@ -311,7 +311,7 @@ class CampaignsClient:
         description: str,
         managers: Missing[list[str]] = UNSET,
         team_managers: Missing[list[str]] = UNSET,
-        ends_at: datetime,
+        ends_at: _dt.datetime,
         contact_link: Missing[Union[str, None]] = UNSET,
         code_scanning_alerts: Union[
             list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None
@@ -331,7 +331,7 @@ class CampaignsClient:
         description: str,
         managers: Missing[list[str]] = UNSET,
         team_managers: Missing[list[str]] = UNSET,
-        ends_at: datetime,
+        ends_at: _dt.datetime,
         contact_link: Missing[Union[str, None]] = UNSET,
         code_scanning_alerts: Missing[
             Union[list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None]
@@ -603,7 +603,7 @@ class CampaignsClient:
         description: Missing[str] = UNSET,
         managers: Missing[list[str]] = UNSET,
         team_managers: Missing[list[str]] = UNSET,
-        ends_at: Missing[datetime] = UNSET,
+        ends_at: Missing[_dt.datetime] = UNSET,
         contact_link: Missing[Union[str, None]] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
     ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]: ...
@@ -690,7 +690,7 @@ class CampaignsClient:
         description: Missing[str] = UNSET,
         managers: Missing[list[str]] = UNSET,
         team_managers: Missing[list[str]] = UNSET,
-        ends_at: Missing[datetime] = UNSET,
+        ends_at: Missing[_dt.datetime] = UNSET,
         contact_link: Missing[Union[str, None]] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
     ) -> Response[CampaignSummary, CampaignSummaryTypeForResponse]: ...

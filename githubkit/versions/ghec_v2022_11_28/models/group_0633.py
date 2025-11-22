@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -71,7 +71,7 @@ class WebhookDeploymentStatusCreated(GitHubModel):
 class WebhookDeploymentStatusCreatedPropCheckRun(GitHubModel):
     """WebhookDeploymentStatusCreatedPropCheckRun"""
 
-    completed_at: Union[datetime, None] = Field()
+    completed_at: Union[_dt.datetime, None] = Field()
     conclusion: Union[
         None,
         Literal[
@@ -94,7 +94,7 @@ class WebhookDeploymentStatusCreatedPropCheckRun(GitHubModel):
     id: int = Field(description="The id of the check.")
     name: str = Field(description="The name of the check run.")
     node_id: str = Field()
-    started_at: datetime = Field()
+    started_at: _dt.datetime = Field()
     status: Literal["queued", "in_progress", "completed", "waiting", "pending"] = Field(
         description="The current status of the check run. Can be `queued`, `in_progress`, or `completed`."
     )
@@ -182,7 +182,7 @@ class WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubApp(
     class actors within GitHub.
     """
 
-    created_at: Union[datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
     description: Union[str, None] = Field()
     events: Missing[list[str]] = Field(
         default=UNSET, description="The list of events for the GitHub app"
@@ -202,7 +202,7 @@ class WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubApp(
     slug: Missing[str] = Field(
         default=UNSET, description="The slug name of the GitHub app"
     )
-    updated_at: Union[datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
 
 
 class WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubAppPropOwner(
@@ -361,7 +361,7 @@ class WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubAp
     class actors within GitHub.
     """
 
-    created_at: Union[datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
     description: Union[str, None] = Field()
     events: Missing[list[str]] = Field(
         default=UNSET, description="The list of events for the GitHub app"
@@ -381,7 +381,7 @@ class WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubAp
     slug: Missing[str] = Field(
         default=UNSET, description="The slug name of the GitHub app"
     )
-    updated_at: Union[datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
 
 
 class WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubAppPropOwner(
@@ -487,7 +487,7 @@ class WebhookDeploymentStatusCreatedPropWorkflowRun(GitHubModel):
             "startup_failure",
         ],
     ] = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     display_title: str = Field()
     event: str = Field()
     head_branch: str = Field()
@@ -521,14 +521,14 @@ class WebhookDeploymentStatusCreatedPropWorkflowRun(GitHubModel):
     rerun_url: Missing[str] = Field(default=UNSET)
     run_attempt: int = Field()
     run_number: int = Field()
-    run_started_at: datetime = Field()
+    run_started_at: _dt.datetime = Field()
     status: Literal[
         "requested", "in_progress", "completed", "queued", "waiting", "pending"
     ] = Field()
     triggering_actor: Union[
         WebhookDeploymentStatusCreatedPropWorkflowRunPropTriggeringActor, None
     ] = Field(title="User")
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     workflow_id: int = Field()
     workflow_url: Missing[str] = Field(default=UNSET)

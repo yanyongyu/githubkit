@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -39,7 +39,7 @@ class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
 
     name: str = Field()
     email: str = Field()
-    date: datetime = Field()
+    date: _dt.datetime = Field()
 
 
 class CommitSearchResultItemPropCommitPropTree(GitHubModel):

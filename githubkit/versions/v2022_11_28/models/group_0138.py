@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -44,9 +44,11 @@ class ProjectsV2ItemSimple(GitHubModel):
     creator: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
-    created_at: datetime = Field(description="The time when the item was created.")
-    updated_at: datetime = Field(description="The time when the item was last updated.")
-    archived_at: Union[datetime, None] = Field(
+    created_at: _dt.datetime = Field(description="The time when the item was created.")
+    updated_at: _dt.datetime = Field(
+        description="The time when the item was last updated."
+    )
+    archived_at: Union[_dt.datetime, None] = Field(
         description="The time when the item was archived."
     )
     project_url: Missing[str] = Field(

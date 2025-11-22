@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -72,7 +72,7 @@ class WebhookWorkflowRunInProgressPropWorkflowRunType(TypedDict):
             "timed_out",
         ],
     ]
-    created_at: datetime
+    created_at: _dt.datetime
     event: str
     head_branch: Union[str, None]
     head_commit: WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitType
@@ -103,12 +103,12 @@ class WebhookWorkflowRunInProgressPropWorkflowRunType(TypedDict):
     rerun_url: str
     run_attempt: int
     run_number: int
-    run_started_at: datetime
+    run_started_at: _dt.datetime
     status: Literal["requested", "in_progress", "completed", "queued", "pending"]
     triggering_actor: Union[
         WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActorType, None
     ]
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
     workflow_id: int
     workflow_url: str
@@ -346,7 +346,7 @@ class WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthorType(
     Metaproperties for Git author/committer information.
     """
 
-    date: NotRequired[datetime]
+    date: NotRequired[_dt.datetime]
     email: Union[str, None]
     name: str
     username: NotRequired[str]
@@ -374,7 +374,7 @@ class WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitterType
     Metaproperties for Git author/committer information.
     """
 
-    date: NotRequired[datetime]
+    date: NotRequired[_dt.datetime]
     email: Union[str, None]
     name: str
     username: NotRequired[str]

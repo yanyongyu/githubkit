@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 
 from pydantic import Field
 
@@ -28,8 +28,8 @@ class ProjectColumn(GitHubModel):
     id: int = Field(description="The unique identifier of the project column")
     node_id: str = Field()
     name: str = Field(description="Name of the project column")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
 model_rebuild(ProjectColumn)

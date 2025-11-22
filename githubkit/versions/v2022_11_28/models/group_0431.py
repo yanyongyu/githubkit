@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -49,8 +49,8 @@ class UserSearchResultItem(GitHubModel):
     public_gists: Missing[int] = Field(default=UNSET)
     followers: Missing[int] = Field(default=UNSET)
     following: Missing[int] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
     name: Missing[Union[str, None]] = Field(default=UNSET)
     bio: Missing[Union[str, None]] = Field(default=UNSET)
     email: Missing[Union[str, None]] = Field(default=UNSET)
@@ -62,7 +62,7 @@ class UserSearchResultItem(GitHubModel):
     )
     blog: Missing[Union[str, None]] = Field(default=UNSET)
     company: Missing[Union[str, None]] = Field(default=UNSET)
-    suspended_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    suspended_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
     user_view_type: Missing[str] = Field(default=UNSET)
 
 

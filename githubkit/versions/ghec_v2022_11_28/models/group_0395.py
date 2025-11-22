@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 
 from pydantic import Field
 
@@ -41,8 +41,8 @@ class Hook(GitHubModel):
     config: WebhookConfig = Field(
         title="Webhook Configuration", description="Configuration object of the webhook"
     )
-    updated_at: datetime = Field()
-    created_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
+    created_at: _dt.datetime = Field()
     url: str = Field()
     test_url: str = Field()
     ping_url: str = Field()

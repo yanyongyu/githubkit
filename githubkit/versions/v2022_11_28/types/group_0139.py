@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
@@ -43,8 +43,8 @@ class ProjectsV2FieldType(TypedDict):
     ]
     options: NotRequired[list[ProjectsV2SingleSelectOptionsType]]
     configuration: NotRequired[ProjectsV2FieldPropConfigurationType]
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
 class ProjectsV2FieldTypeForResponse(TypedDict):
@@ -173,7 +173,7 @@ class ProjectsV2IterationSettingsType(TypedDict):
     """
 
     id: str
-    start_date: date
+    start_date: _dt.date
     duration: int
     title: ProjectsV2IterationSettingsPropTitleType
     completed: bool

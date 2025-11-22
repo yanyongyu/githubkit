@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -33,12 +33,12 @@ class ProjectsV2Type(TypedDict):
     title: str
     description: Union[str, None]
     public: bool
-    closed_at: Union[datetime, None]
-    created_at: datetime
-    updated_at: datetime
+    closed_at: Union[_dt.datetime, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     number: int
     short_description: Union[str, None]
-    deleted_at: Union[datetime, None]
+    deleted_at: Union[_dt.datetime, None]
     deleted_by: Union[None, SimpleUserType]
     state: NotRequired[Literal["open", "closed"]]
     latest_status_update: NotRequired[Union[None, ProjectsV2StatusUpdateType]]

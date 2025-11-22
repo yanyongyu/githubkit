@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -26,11 +26,11 @@ class UserMarketplacePurchaseType(TypedDict):
     """
 
     billing_cycle: str
-    next_billing_date: Union[datetime, None]
+    next_billing_date: Union[_dt.datetime, None]
     unit_count: Union[int, None]
     on_free_trial: bool
-    free_trial_ends_on: Union[datetime, None]
-    updated_at: Union[datetime, None]
+    free_trial_ends_on: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
     account: MarketplaceAccountType
     plan: MarketplaceListingPlanType
 

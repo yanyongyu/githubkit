@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -53,10 +53,10 @@ class WebhookIssuesDeletedPropIssue(GitHubModel):
         description="How the author is associated with the repository.",
     )
     body: Union[str, None] = Field(description="Contents of the issue")
-    closed_at: Union[datetime, None] = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
     comments: int = Field()
     comments_url: str = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     draft: Missing[bool] = Field(default=UNSET)
     events_url: str = Field()
     html_url: str = Field()
@@ -100,7 +100,7 @@ class WebhookIssuesDeletedPropIssue(GitHubModel):
     type: Missing[Union[IssueType, None]] = Field(
         default=UNSET, title="Issue Type", description="The type of issue."
     )
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the issue")
     user: Union[WebhookIssuesDeletedPropIssuePropUser, None] = Field(title="User")
 
@@ -179,14 +179,14 @@ class WebhookIssuesDeletedPropIssuePropMilestone(GitHubModel):
     A collection of related issues and pull requests.
     """
 
-    closed_at: Union[datetime, None] = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
     closed_issues: int = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     creator: Union[WebhookIssuesDeletedPropIssuePropMilestonePropCreator, None] = Field(
         title="User"
     )
     description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
     html_url: str = Field()
     id: int = Field()
     labels_url: str = Field()
@@ -195,7 +195,7 @@ class WebhookIssuesDeletedPropIssuePropMilestone(GitHubModel):
     open_issues: int = Field()
     state: Literal["open", "closed"] = Field(description="The state of the milestone.")
     title: str = Field(description="The title of the milestone.")
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
 
 
@@ -235,7 +235,7 @@ class WebhookIssuesDeletedPropIssuePropPerformedViaGithubApp(GitHubModel):
     class actors within GitHub.
     """
 
-    created_at: Union[datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
     description: Union[str, None] = Field()
     events: Missing[list[str]] = Field(
         default=UNSET, description="The list of events for the GitHub app"
@@ -254,7 +254,7 @@ class WebhookIssuesDeletedPropIssuePropPerformedViaGithubApp(GitHubModel):
     slug: Missing[str] = Field(
         default=UNSET, description="The slug name of the GitHub app"
     )
-    updated_at: Union[datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
 
 
 class WebhookIssuesDeletedPropIssuePropPerformedViaGithubAppPropOwner(GitHubModel):
@@ -338,7 +338,7 @@ class WebhookIssuesDeletedPropIssuePropPullRequest(GitHubModel):
 
     diff_url: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
-    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
     patch_url: Missing[str] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
 

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -65,9 +65,9 @@ class Issue(GitHubModel):
     active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
     comments: int = Field()
     pull_request: Missing[IssuePropPullRequest] = Field(default=UNSET)
-    closed_at: Union[datetime, None] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     draft: Missing[bool] = Field(default=UNSET)
     closed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
     body_html: Missing[Union[str, None]] = Field(default=UNSET)
@@ -127,7 +127,7 @@ class IssuePropLabelsItemsOneof1(GitHubModel):
 class IssuePropPullRequest(GitHubModel):
     """IssuePropPullRequest"""
 
-    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
     diff_url: Union[str, None] = Field()
     html_url: Union[str, None] = Field()
     patch_url: Union[str, None] = Field()

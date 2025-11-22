@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -70,7 +70,7 @@ class WebhookWorkflowJobWaitingPropWorkflowJobType(TypedDict):
     runner_group_name: Union[str, None]
     runner_id: Union[int, None]
     runner_name: Union[str, None]
-    started_at: datetime
+    started_at: _dt.datetime
     head_branch: Union[str, None]
     workflow_name: Union[str, None]
     status: Literal["queued", "in_progress", "completed", "waiting"]

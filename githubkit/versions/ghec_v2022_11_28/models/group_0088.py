@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -64,13 +64,13 @@ class DependabotAlertSecurityAdvisory(GitHubModel):
     references: list[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
         description="Links to additional advisory information."
     )
-    published_at: datetime = Field(
+    published_at: _dt.datetime = Field(
         description="The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    updated_at: datetime = Field(
+    updated_at: _dt.datetime = Field(
         description="The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    withdrawn_at: Union[datetime, None] = Field(
+    withdrawn_at: Union[_dt.datetime, None] = Field(
         description="The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
 

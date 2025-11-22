@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -20,7 +20,7 @@ class CopilotUsageMetricsDayType(TypedDict):
     Copilot usage metrics for a given day.
     """
 
-    date: date
+    date: _dt.date
     total_active_users: NotRequired[int]
     total_engaged_users: NotRequired[int]
     copilot_ide_code_completions: NotRequired[

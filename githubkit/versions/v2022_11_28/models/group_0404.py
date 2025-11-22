@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -25,7 +25,7 @@ class SecretScanningPushProtectionBypass(GitHubModel):
     reason: Missing[Literal["false_positive", "used_in_tests", "will_fix_later"]] = (
         Field(default=UNSET, description="The reason for bypassing push protection.")
     )
-    expire_at: Missing[Union[datetime, None]] = Field(
+    expire_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )

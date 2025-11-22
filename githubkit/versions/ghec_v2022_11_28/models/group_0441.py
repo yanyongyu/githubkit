@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -35,7 +35,7 @@ class PullRequestReview(GitHubModel):
     html_url: str = Field()
     pull_request_url: str = Field()
     links: PullRequestReviewPropLinks = Field(alias="_links")
-    submitted_at: Missing[datetime] = Field(default=UNSET)
+    submitted_at: Missing[_dt.datetime] = Field(default=UNSET)
     commit_id: Union[str, None] = Field(
         description="A commit SHA for the review. If the commit object was garbage collected or forcibly deleted, then it no longer exists in Git and this value will be `null`."
     )

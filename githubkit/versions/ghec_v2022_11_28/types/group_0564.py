@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -28,9 +28,9 @@ class ProjectsV2ItemType(TypedDict):
     content_node_id: str
     content_type: Literal["Issue", "PullRequest", "DraftIssue"]
     creator: NotRequired[SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    archived_at: Union[datetime, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    archived_at: Union[_dt.datetime, None]
 
 
 class ProjectsV2ItemTypeForResponse(TypedDict):

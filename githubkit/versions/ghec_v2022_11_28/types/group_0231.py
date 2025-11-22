@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -32,8 +32,8 @@ class CodeScanningAlertDismissalRequestType(TypedDict):
     resource_identifier: NotRequired[str]
     status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
     requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[datetime]
-    created_at: NotRequired[datetime]
+    expires_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
     responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
     url: NotRequired[str]
     html_url: NotRequired[str]
@@ -158,7 +158,7 @@ class DismissalRequestResponseType(TypedDict):
     reviewer: NotRequired[DismissalRequestResponsePropReviewerType]
     message: NotRequired[Union[str, None]]
     status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[datetime]
+    created_at: NotRequired[_dt.datetime]
 
 
 class DismissalRequestResponseTypeForResponse(TypedDict):

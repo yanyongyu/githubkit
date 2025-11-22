@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -80,12 +80,12 @@ class WebhookPullRequestUnassignedPropPullRequestType(TypedDict):
     base: WebhookPullRequestUnassignedPropPullRequestPropBaseType
     body: Union[str, None]
     changed_files: NotRequired[int]
-    closed_at: Union[datetime, None]
+    closed_at: Union[_dt.datetime, None]
     comments: NotRequired[int]
     comments_url: str
     commits: NotRequired[int]
     commits_url: str
-    created_at: datetime
+    created_at: _dt.datetime
     deletions: NotRequired[int]
     diff_url: str
     draft: bool
@@ -100,7 +100,7 @@ class WebhookPullRequestUnassignedPropPullRequestType(TypedDict):
     mergeable: NotRequired[Union[bool, None]]
     mergeable_state: NotRequired[str]
     merged: NotRequired[Union[bool, None]]
-    merged_at: Union[datetime, None]
+    merged_at: Union[_dt.datetime, None]
     merged_by: NotRequired[
         Union[WebhookPullRequestUnassignedPropPullRequestPropMergedByType, None]
     ]
@@ -125,7 +125,7 @@ class WebhookPullRequestUnassignedPropPullRequestType(TypedDict):
     state: Literal["open", "closed"]
     statuses_url: str
     title: str
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
     user: Union[WebhookPullRequestUnassignedPropPullRequestPropUserType, None]
 
@@ -504,14 +504,14 @@ class WebhookPullRequestUnassignedPropPullRequestPropMilestoneType(TypedDict):
     A collection of related issues and pull requests.
     """
 
-    closed_at: Union[datetime, None]
+    closed_at: Union[_dt.datetime, None]
     closed_issues: int
-    created_at: datetime
+    created_at: _dt.datetime
     creator: Union[
         WebhookPullRequestUnassignedPropPullRequestPropMilestonePropCreatorType, None
     ]
     description: Union[str, None]
-    due_on: Union[datetime, None]
+    due_on: Union[_dt.datetime, None]
     html_url: str
     id: int
     labels_url: str
@@ -520,7 +520,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropMilestoneType(TypedDict):
     open_issues: int
     state: Literal["open", "closed"]
     title: str
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
 
 
@@ -977,7 +977,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoType(TypedDict)
     compare_url: str
     contents_url: str
     contributors_url: str
-    created_at: Union[int, datetime]
+    created_at: Union[int, _dt.datetime]
     default_branch: str
     delete_branch_on_merge: NotRequired[bool]
     deployments_url: str
@@ -1036,7 +1036,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoType(TypedDict)
     private: bool
     public: NotRequired[bool]
     pulls_url: str
-    pushed_at: Union[int, datetime, None]
+    pushed_at: Union[int, _dt.datetime, None]
     releases_url: str
     role_name: NotRequired[Union[str, None]]
     size: int
@@ -1056,7 +1056,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoType(TypedDict)
     teams_url: str
     topics: list[str]
     trees_url: str
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
     use_squash_pr_title_as_default: NotRequired[bool]
     visibility: Literal["public", "private", "internal"]
@@ -1335,7 +1335,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoType(TypedDict)
     compare_url: str
     contents_url: str
     contributors_url: str
-    created_at: Union[int, datetime]
+    created_at: Union[int, _dt.datetime]
     default_branch: str
     delete_branch_on_merge: NotRequired[bool]
     deployments_url: str
@@ -1394,7 +1394,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoType(TypedDict)
     private: bool
     public: NotRequired[bool]
     pulls_url: str
-    pushed_at: Union[int, datetime, None]
+    pushed_at: Union[int, _dt.datetime, None]
     releases_url: str
     role_name: NotRequired[Union[str, None]]
     size: int
@@ -1414,7 +1414,7 @@ class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoType(TypedDict)
     teams_url: str
     topics: list[str]
     trees_url: str
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
     use_squash_pr_title_as_default: NotRequired[bool]
     visibility: Literal["public", "private", "internal"]

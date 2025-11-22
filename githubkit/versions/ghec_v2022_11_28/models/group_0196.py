@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -39,8 +39,8 @@ class IssueComment(GitHubModel):
     body_html: Missing[str] = Field(default=UNSET)
     html_url: str = Field()
     user: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     issue_url: str = Field()
     author_association: Literal[
         "COLLABORATOR",

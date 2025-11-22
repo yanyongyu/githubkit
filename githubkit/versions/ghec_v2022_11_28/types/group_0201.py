@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Any, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
@@ -98,8 +98,8 @@ class GistSimplePropForksItemsType(TypedDict):
     id: NotRequired[str]
     url: NotRequired[str]
     user: NotRequired[PublicUserType]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
 class GistSimplePropForksItemsTypeForResponse(TypedDict):
@@ -150,8 +150,8 @@ class PublicUserType(TypedDict):
     public_gists: int
     followers: int
     following: int
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     plan: NotRequired[PublicUserPropPlanType]
     private_gists: NotRequired[int]
     total_private_repos: NotRequired[int]

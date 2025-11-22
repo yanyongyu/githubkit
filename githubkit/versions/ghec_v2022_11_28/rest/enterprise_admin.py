@@ -21,7 +21,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -4438,7 +4438,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         announcement: Union[str, None],
-        expires_at: Missing[Union[datetime, None]] = UNSET,
+        expires_at: Missing[Union[_dt.datetime, None]] = UNSET,
         user_dismissible: Missing[Union[bool, None]] = UNSET,
     ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
 
@@ -4503,7 +4503,7 @@ class EnterpriseAdminClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         announcement: Union[str, None],
-        expires_at: Missing[Union[datetime, None]] = UNSET,
+        expires_at: Missing[Union[_dt.datetime, None]] = UNSET,
         user_dismissible: Missing[Union[bool, None]] = UNSET,
     ) -> Response[AnnouncementBanner, AnnouncementBannerTypeForResponse]: ...
 

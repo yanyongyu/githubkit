@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -120,9 +120,9 @@ class OrganizationFull(GitHubModel):
         default=UNSET,
         description="An optional URL string to display to contributors who are blocked from pushing a secret.",
     )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    archived_at: Union[datetime, None] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    archived_at: Union[_dt.datetime, None] = Field()
     deploy_keys_enabled_for_repositories: Missing[bool] = Field(
         default=UNSET,
         description="Controls whether or not deploy keys may be added and used for repositories in the organization.",

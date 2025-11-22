@@ -20,7 +20,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
-    from datetime import datetime
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -2698,7 +2698,7 @@ class CodeScanningClient:
         ref: str,
         sarif: str,
         checkout_uri: Missing[str] = UNSET,
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         tool_name: Missing[str] = UNSET,
         validate_: Missing[bool] = UNSET,
     ) -> Response[
@@ -2817,7 +2817,7 @@ class CodeScanningClient:
         ref: str,
         sarif: str,
         checkout_uri: Missing[str] = UNSET,
-        started_at: Missing[datetime] = UNSET,
+        started_at: Missing[_dt.datetime] = UNSET,
         tool_name: Missing[str] = UNSET,
         validate_: Missing[bool] = UNSET,
     ) -> Response[

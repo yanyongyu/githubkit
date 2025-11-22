@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -24,15 +24,15 @@ class CampaignSummaryType(TypedDict):
     """
 
     number: int
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     name: NotRequired[str]
     description: str
     managers: list[SimpleUserType]
     team_managers: NotRequired[list[TeamType]]
-    published_at: NotRequired[datetime]
-    ends_at: datetime
-    closed_at: NotRequired[Union[datetime, None]]
+    published_at: NotRequired[_dt.datetime]
+    ends_at: _dt.datetime
+    closed_at: NotRequired[Union[_dt.datetime, None]]
     state: Literal["open", "closed"]
     contact_link: Union[str, None]
     alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]

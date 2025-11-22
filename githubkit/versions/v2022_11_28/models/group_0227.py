@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -51,13 +51,13 @@ class Job(GitHubModel):
             "action_required",
         ],
     ] = Field(description="The outcome of the job.")
-    created_at: datetime = Field(
+    created_at: _dt.datetime = Field(
         description="The time that the job created, in ISO 8601 format."
     )
-    started_at: datetime = Field(
+    started_at: _dt.datetime = Field(
         description="The time that the job started, in ISO 8601 format."
     )
-    completed_at: Union[datetime, None] = Field(
+    completed_at: Union[_dt.datetime, None] = Field(
         description="The time that the job finished, in ISO 8601 format."
     )
     name: str = Field(description="The name of the job.")
@@ -93,10 +93,10 @@ class JobPropStepsItems(GitHubModel):
     conclusion: Union[str, None] = Field(description="The outcome of the job.")
     name: str = Field(description="The name of the job.")
     number: int = Field()
-    started_at: Missing[Union[datetime, None]] = Field(
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET, description="The time that the step started, in ISO 8601 format."
     )
-    completed_at: Missing[Union[datetime, None]] = Field(
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET, description="The time that the job finished, in ISO 8601 format."
     )
 

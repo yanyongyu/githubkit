@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -99,7 +99,7 @@ class WebhookPushPropHeadCommit(GitHubModel):
     removed: Missing[list[str]] = Field(
         default=UNSET, description="An array of files removed in the commit."
     )
-    timestamp: datetime = Field(description="The ISO 8601 timestamp of the commit.")
+    timestamp: _dt.datetime = Field(description="The ISO 8601 timestamp of the commit.")
     tree_id: str = Field()
     url: str = Field(description="URL that points to the commit API resource.")
 
@@ -110,7 +110,7 @@ class WebhookPushPropHeadCommitPropAuthor(GitHubModel):
     Metaproperties for Git author/committer information.
     """
 
-    date: Missing[datetime] = Field(default=UNSET)
+    date: Missing[_dt.datetime] = Field(default=UNSET)
     email: Union[str, None] = Field()
     name: str = Field(description="The git author's name.")
     username: Missing[str] = Field(default=UNSET)
@@ -122,7 +122,7 @@ class WebhookPushPropHeadCommitPropCommitter(GitHubModel):
     Metaproperties for Git author/committer information.
     """
 
-    date: Missing[datetime] = Field(default=UNSET)
+    date: Missing[_dt.datetime] = Field(default=UNSET)
     email: Union[str, None] = Field()
     name: str = Field(description="The git author's name.")
     username: Missing[str] = Field(default=UNSET)
@@ -134,7 +134,7 @@ class WebhookPushPropPusher(GitHubModel):
     Metaproperties for Git author/committer information.
     """
 
-    date: Missing[datetime] = Field(default=UNSET)
+    date: Missing[_dt.datetime] = Field(default=UNSET)
     email: Missing[Union[str, None]] = Field(default=UNSET)
     name: str = Field(description="The git author's name.")
     username: Missing[str] = Field(default=UNSET)
@@ -168,7 +168,7 @@ class WebhookPushPropCommitsItems(GitHubModel):
         default=UNSET,
         description="An array of files removed in the commit. A maximum of 3000 changed files will be reported per commit.",
     )
-    timestamp: datetime = Field(description="The ISO 8601 timestamp of the commit.")
+    timestamp: _dt.datetime = Field(description="The ISO 8601 timestamp of the commit.")
     tree_id: str = Field()
     url: str = Field(description="URL that points to the commit API resource.")
 
@@ -179,7 +179,7 @@ class WebhookPushPropCommitsItemsPropAuthor(GitHubModel):
     Metaproperties for Git author/committer information.
     """
 
-    date: Missing[datetime] = Field(default=UNSET)
+    date: Missing[_dt.datetime] = Field(default=UNSET)
     email: Union[str, None] = Field()
     name: str = Field(description="The git author's name.")
     username: Missing[str] = Field(default=UNSET)
@@ -191,7 +191,7 @@ class WebhookPushPropCommitsItemsPropCommitter(GitHubModel):
     Metaproperties for Git author/committer information.
     """
 
-    date: Missing[datetime] = Field(default=UNSET)
+    date: Missing[_dt.datetime] = Field(default=UNSET)
     email: Union[str, None] = Field()
     name: str = Field(description="The git author's name.")
     username: Missing[str] = Field(default=UNSET)
@@ -233,7 +233,7 @@ class WebhookPushPropRepository(GitHubModel):
     compare_url: str = Field()
     contents_url: str = Field()
     contributors_url: str = Field()
-    created_at: Union[int, datetime] = Field()
+    created_at: Union[int, _dt.datetime] = Field()
     custom_properties: Missing[WebhookPushPropRepositoryPropCustomProperties] = Field(
         default=UNSET,
         description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
@@ -303,7 +303,7 @@ class WebhookPushPropRepository(GitHubModel):
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
     pulls_url: str = Field()
-    pushed_at: Union[int, datetime, None] = Field()
+    pushed_at: Union[int, _dt.datetime, None] = Field()
     releases_url: str = Field()
     role_name: Missing[Union[str, None]] = Field(default=UNSET)
     size: int = Field()
@@ -319,7 +319,7 @@ class WebhookPushPropRepository(GitHubModel):
     teams_url: str = Field()
     topics: list[str] = Field()
     trees_url: str = Field()
-    updated_at: datetime = Field()
+    updated_at: _dt.datetime = Field()
     url: str = Field()
     visibility: Literal["public", "private", "internal"] = Field()
     watchers: int = Field()

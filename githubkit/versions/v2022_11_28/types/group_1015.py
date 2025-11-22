@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -38,7 +38,7 @@ class NetworkConfigurationType(TypedDict):
     name: str
     compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
     network_settings_ids: NotRequired[list[str]]
-    created_on: Union[datetime, None]
+    created_on: Union[_dt.datetime, None]
 
 
 class NetworkConfigurationTypeForResponse(TypedDict):

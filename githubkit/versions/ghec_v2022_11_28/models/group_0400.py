@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -37,7 +37,7 @@ class IssueEvent(GitHubModel):
     event: str = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     issue: Missing[Union[None, Issue]] = Field(default=UNSET)
     label: Missing[IssueEventLabel] = Field(
         default=UNSET, title="Issue Event Label", description="Issue Event Label"

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -30,7 +30,7 @@ class ReposOwnerRepoMilestonesPostBody(GitHubModel):
     description: Missing[str] = Field(
         default=UNSET, description="A description of the milestone."
     )
-    due_on: Missing[datetime] = Field(
+    due_on: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )

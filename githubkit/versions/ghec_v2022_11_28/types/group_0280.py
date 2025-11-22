@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -39,8 +39,8 @@ class TeamFullType(TypedDict):
     parent: NotRequired[Union[None, TeamSimpleType]]
     members_count: int
     repos_count: int
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     organization: TeamOrganizationType
     ldap_dn: NotRequired[str]
     type: Literal["enterprise", "organization"]
@@ -112,7 +112,7 @@ class TeamOrganizationType(TypedDict):
     followers: int
     following: int
     html_url: str
-    created_at: datetime
+    created_at: _dt.datetime
     type: str
     total_private_repos: NotRequired[int]
     owned_private_repos: NotRequired[int]
@@ -133,8 +133,8 @@ class TeamOrganizationType(TypedDict):
     members_can_create_private_pages: NotRequired[bool]
     members_can_fork_private_repositories: NotRequired[Union[bool, None]]
     web_commit_signoff_required: NotRequired[bool]
-    updated_at: datetime
-    archived_at: Union[datetime, None]
+    updated_at: _dt.datetime
+    archived_at: Union[_dt.datetime, None]
 
 
 class TeamOrganizationTypeForResponse(TypedDict):

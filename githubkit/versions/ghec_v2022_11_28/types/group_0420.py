@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -31,8 +31,8 @@ class TimelineReviewedEventType(TypedDict):
     html_url: str
     pull_request_url: str
     links: TimelineReviewedEventPropLinksType
-    submitted_at: NotRequired[datetime]
-    updated_at: NotRequired[Union[datetime, None]]
+    submitted_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
     commit_id: str
     body_html: NotRequired[Union[str, None]]
     body_text: NotRequired[Union[str, None]]

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -30,7 +30,7 @@ class CodeScanningVariantAnalysisRepository(GitHubModel):
     )
     private: bool = Field(description="Whether the repository is private.")
     stargazers_count: int = Field()
-    updated_at: Union[datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
 
 
 model_rebuild(CodeScanningVariantAnalysisRepository)

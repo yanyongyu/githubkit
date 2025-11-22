@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -32,7 +32,7 @@ class IssueEventType(TypedDict):
     event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
-    created_at: datetime
+    created_at: _dt.datetime
     issue: NotRequired[Union[None, IssueType]]
     label: NotRequired[IssueEventLabelType]
     assignee: NotRequired[Union[None, SimpleUserType]]

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -48,7 +48,7 @@ class RuleSuitesItems(GitHubModel):
         default=UNSET,
         description="The name of the repository without the `.git` extension.",
     )
-    pushed_at: Missing[datetime] = Field(default=UNSET)
+    pushed_at: Missing[_dt.datetime] = Field(default=UNSET)
     result: Missing[Literal["pass", "fail", "bypass"]] = Field(
         default=UNSET,
         description="The result of the rule evaluations for rules with the `active` enforcement status.",

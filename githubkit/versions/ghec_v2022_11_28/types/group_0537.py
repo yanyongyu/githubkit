@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing_extensions import TypedDict
 
 
@@ -17,14 +17,14 @@ class WebhooksWorkflowType(TypedDict):
     """Workflow"""
 
     badge_url: str
-    created_at: datetime
+    created_at: _dt.datetime
     html_url: str
     id: int
     name: str
     node_id: str
     path: str
     state: str
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
 
 

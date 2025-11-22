@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -28,8 +28,8 @@ class CodeScanningCodeqlDatabaseType(TypedDict):
     uploader: SimpleUserType
     content_type: str
     size: int
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     url: str
     commit_oid: NotRequired[Union[str, None]]
 

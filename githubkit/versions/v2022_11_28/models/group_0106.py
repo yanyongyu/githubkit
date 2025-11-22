@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -36,11 +36,11 @@ class CopilotSeatDetails(GitHubModel):
         default=UNSET,
         description="The team through which the assignee is granted access to GitHub Copilot, if applicable.",
     )
-    pending_cancellation_date: Missing[Union[date, None]] = Field(
+    pending_cancellation_date: Missing[Union[_dt.date, None]] = Field(
         default=UNSET,
         description="The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
     )
-    last_activity_at: Missing[Union[datetime, None]] = Field(
+    last_activity_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
     )
@@ -48,14 +48,14 @@ class CopilotSeatDetails(GitHubModel):
         default=UNSET,
         description="Last editor that was used by the user for a GitHub Copilot completion.",
     )
-    last_authenticated_at: Missing[Union[datetime, None]] = Field(
+    last_authenticated_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="Timestamp of the last time the user authenticated with GitHub Copilot, in ISO 8601 format.",
     )
-    created_at: datetime = Field(
+    created_at: _dt.datetime = Field(
         description="Timestamp of when the assignee was last granted access to GitHub Copilot, in ISO 8601 format."
     )
-    updated_at: Missing[datetime] = Field(
+    updated_at: Missing[_dt.datetime] = Field(
         default=UNSET,
         description="**Closing down notice:** This field is no longer relevant and is closing down. Use the `created_at` field to determine when the assignee was last granted access to GitHub Copilot. Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
     )
@@ -88,8 +88,8 @@ class EnterpriseTeam(GitHubModel):
     )
     html_url: str = Field()
     members_url: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
 class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):

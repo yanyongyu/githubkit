@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 
 from pydantic import Field
 
@@ -25,7 +25,7 @@ class SshSigningKey(GitHubModel):
     key: str = Field()
     id: int = Field()
     title: str = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
 
 
 model_rebuild(SshSigningKey)

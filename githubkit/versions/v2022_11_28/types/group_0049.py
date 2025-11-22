@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Any, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
@@ -32,8 +32,8 @@ class BaseGistType(TypedDict):
     html_url: str
     files: BaseGistPropFilesType
     public: bool
-    created_at: datetime
-    updated_at: datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     description: Union[str, None]
     comments: int
     comments_enabled: NotRequired[bool]

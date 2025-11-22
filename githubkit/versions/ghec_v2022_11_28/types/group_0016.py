@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -27,7 +27,7 @@ class IntegrationInstallationRequestType(TypedDict):
     node_id: NotRequired[str]
     account: Union[SimpleUserType, EnterpriseType]
     requester: SimpleUserType
-    created_at: datetime
+    created_at: _dt.datetime
 
 
 class IntegrationInstallationRequestTypeForResponse(TypedDict):

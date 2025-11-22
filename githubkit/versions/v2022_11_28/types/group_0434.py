@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -22,7 +22,7 @@ class CodespaceExportDetailsType(TypedDict):
     """
 
     state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[datetime, None]]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
     branch: NotRequired[Union[str, None]]
     sha: NotRequired[Union[str, None]]
     id: NotRequired[str]

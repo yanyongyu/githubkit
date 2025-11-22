@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -46,8 +46,8 @@ class DeploymentStatus(GitHubModel):
         default="",
         description="Closing down notice: the URL to associate with this status.",
     )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     deployment_url: str = Field()
     repository_url: str = Field()
     environment_url: Missing[str] = Field(

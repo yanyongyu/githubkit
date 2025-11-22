@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -48,8 +48,8 @@ class TeamFull(GitHubModel):
     parent: Missing[Union[None, TeamSimple]] = Field(default=UNSET)
     members_count: int = Field()
     repos_count: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     organization: TeamOrganization = Field(
         title="Team Organization", description="Team Organization"
     )
@@ -102,7 +102,7 @@ class TeamOrganization(GitHubModel):
     followers: int = Field()
     following: int = Field()
     html_url: str = Field()
-    created_at: datetime = Field()
+    created_at: _dt.datetime = Field()
     type: str = Field()
     total_private_repos: Missing[int] = Field(default=UNSET)
     owned_private_repos: Missing[int] = Field(default=UNSET)
@@ -125,8 +125,8 @@ class TeamOrganization(GitHubModel):
         default=UNSET
     )
     web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
-    updated_at: datetime = Field()
-    archived_at: Union[datetime, None] = Field()
+    updated_at: _dt.datetime = Field()
+    archived_at: Union[_dt.datetime, None] = Field()
 
 
 class TeamOrganizationPropPlan(GitHubModel):

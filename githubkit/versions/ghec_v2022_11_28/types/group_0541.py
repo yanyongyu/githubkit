@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -29,7 +29,7 @@ class WebhooksAnswerType(TypedDict):
     ]
     body: str
     child_comment_count: int
-    created_at: datetime
+    created_at: _dt.datetime
     discussion_id: int
     html_url: str
     id: int
@@ -37,7 +37,7 @@ class WebhooksAnswerType(TypedDict):
     parent_id: Union[int, None]
     reactions: NotRequired[WebhooksAnswerPropReactionsType]
     repository_url: str
-    updated_at: datetime
+    updated_at: _dt.datetime
     user: Union[WebhooksAnswerPropUserType, None]
 
 

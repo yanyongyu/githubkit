@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -46,8 +46,8 @@ class CheckRunType(TypedDict):
             "action_required",
         ],
     ]
-    started_at: Union[datetime, None]
-    completed_at: Union[datetime, None]
+    started_at: Union[_dt.datetime, None]
+    completed_at: Union[_dt.datetime, None]
     output: CheckRunPropOutputType
     name: str
     check_suite: Union[CheckRunPropCheckSuiteType, None]

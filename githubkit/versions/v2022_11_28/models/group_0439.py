@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -28,11 +28,11 @@ class UserMarketplacePurchase(GitHubModel):
     """
 
     billing_cycle: str = Field()
-    next_billing_date: Union[datetime, None] = Field()
+    next_billing_date: Union[_dt.datetime, None] = Field()
     unit_count: Union[int, None] = Field()
     on_free_trial: bool = Field()
-    free_trial_ends_on: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
+    free_trial_ends_on: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
     account: MarketplaceAccount = Field(title="Marketplace Account")
     plan: MarketplaceListingPlan = Field(
         title="Marketplace Listing Plan", description="Marketplace Listing Plan"

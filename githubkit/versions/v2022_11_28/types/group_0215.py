@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -27,13 +27,13 @@ class TeamDiscussionCommentType(TypedDict):
     body: str
     body_html: str
     body_version: str
-    created_at: datetime
-    last_edited_at: Union[datetime, None]
+    created_at: _dt.datetime
+    last_edited_at: Union[_dt.datetime, None]
     discussion_url: str
     html_url: str
     node_id: str
     number: int
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
     reactions: NotRequired[ReactionRollupType]
 

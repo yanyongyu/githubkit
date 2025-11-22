@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -33,7 +33,7 @@ class Page(GitHubModel):
     protected_domain_state: Missing[
         Union[None, Literal["pending", "verified", "unverified"]]
     ] = Field(default=UNSET, description="The state if the domain is verified")
-    pending_domain_unverified_at: Missing[Union[datetime, None]] = Field(
+    pending_domain_unverified_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The timestamp when a pending domain becomes unverified.",
     )
@@ -86,7 +86,7 @@ class PagesHttpsCertificate(GitHubModel):
     domains: list[str] = Field(
         description="Array of the domain set and its alternate name (if it is configured)"
     )
-    expires_at: Missing[date] = Field(default=UNSET)
+    expires_at: Missing[_dt.date] = Field(default=UNSET)
 
 
 model_rebuild(Page)

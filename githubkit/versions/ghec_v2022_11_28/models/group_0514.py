@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -57,8 +57,8 @@ class PrivateUser(GitHubModel):
     public_gists: int = Field()
     followers: int = Field()
     following: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     private_gists: int = Field()
     total_private_repos: int = Field()
     owned_private_repos: int = Field()

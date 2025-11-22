@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -36,8 +36,8 @@ class TimelineReviewedEvent(GitHubModel):
     html_url: str = Field()
     pull_request_url: str = Field()
     links: TimelineReviewedEventPropLinks = Field(alias="_links")
-    submitted_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    submitted_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
     commit_id: str = Field(description="A commit SHA for the review.")
     body_html: Missing[Union[str, None]] = Field(default=UNSET)
     body_text: Missing[Union[str, None]] = Field(default=UNSET)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 from typing_extensions import TypedDict
 
@@ -23,7 +23,7 @@ class SimpleCommitType(TypedDict):
     id: str
     tree_id: str
     message: str
-    timestamp: datetime
+    timestamp: _dt.datetime
     author: Union[SimpleCommitPropAuthorType, None]
     committer: Union[SimpleCommitPropCommitterType, None]
 

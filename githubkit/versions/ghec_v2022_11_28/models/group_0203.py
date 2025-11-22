@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -31,7 +31,7 @@ class GistCommit(GitHubModel):
     version: str = Field()
     user: Union[None, SimpleUser] = Field()
     change_status: GistCommitPropChangeStatus = Field()
-    committed_at: datetime = Field()
+    committed_at: _dt.datetime = Field()
 
 
 class GistCommitPropChangeStatus(GitHubModel):

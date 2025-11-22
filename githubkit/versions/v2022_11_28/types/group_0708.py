@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
@@ -81,13 +81,13 @@ class WebhookProjectCardMovedPropProjectCardType(TypedDict):
     column_id: int
     column_url: str
     content_url: NotRequired[str]
-    created_at: datetime
+    created_at: _dt.datetime
     creator: Union[WebhookProjectCardMovedPropProjectCardMergedCreatorType, None]
     id: int
     node_id: str
     note: Union[Union[str, None], None]
     project_url: str
-    updated_at: datetime
+    updated_at: _dt.datetime
     url: str
 
 
