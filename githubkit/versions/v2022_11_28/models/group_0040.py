@@ -9,42 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0036 import DependabotAlertPackage
 
 
-class Milestone(GitHubModel):
-    """Milestone
+class DependabotAlertWithRepositoryPropDependency(GitHubModel):
+    """DependabotAlertWithRepositoryPropDependency
 
-    A collection of related issues and pull requests.
+    Details for the vulnerable dependency.
     """
 
-    url: str = Field()
-    html_url: str = Field()
-    labels_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    state: Literal["open", "closed"] = Field(
-        default="open", description="The state of the milestone."
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
     )
-    title: str = Field(description="The title of the milestone.")
-    description: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    open_issues: int = Field()
-    closed_issues: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    closed_at: Union[_dt.datetime, None] = Field()
-    due_on: Union[_dt.datetime, None] = Field()
+    manifest_path: Missing[str] = Field(
+        default=UNSET,
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
+    )
+    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
+    )
+    relationship: Missing[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    ] = Field(
+        default=UNSET,
+        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+    )
 
 
-model_rebuild(Milestone)
+model_rebuild(DependabotAlertWithRepositoryPropDependency)
 
-__all__ = ("Milestone",)
+__all__ = ("DependabotAlertWithRepositoryPropDependency",)

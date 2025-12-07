@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0492 import (
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0497 import (
     SecretScanningAlertWebhookType,
     SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertValidatedType(TypedDict):
-    """secret_scanning_alert validated event"""
+class WebhookSecretScanningAlertCreatedType(TypedDict):
+    """secret_scanning_alert created event"""
 
-    action: Literal["validated"]
+    action: Literal["created"]
     alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -38,10 +38,10 @@ class WebhookSecretScanningAlertValidatedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertValidatedTypeForResponse(TypedDict):
-    """secret_scanning_alert validated event"""
+class WebhookSecretScanningAlertCreatedTypeForResponse(TypedDict):
+    """secret_scanning_alert created event"""
 
-    action: Literal["validated"]
+    action: Literal["created"]
     alert: SecretScanningAlertWebhookTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookSecretScanningAlertValidatedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSecretScanningAlertValidatedType",
-    "WebhookSecretScanningAlertValidatedTypeForResponse",
+    "WebhookSecretScanningAlertCreatedType",
+    "WebhookSecretScanningAlertCreatedTypeForResponse",
 )

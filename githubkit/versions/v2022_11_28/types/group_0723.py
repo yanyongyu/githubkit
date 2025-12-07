@@ -9,141 +9,97 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0131 import ProjectsV2Type, ProjectsV2TypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0485 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookProjectsV2ProjectEditedType(TypedDict):
-    """Projects v2 Project Edited Event"""
+class WebhookProjectEditedType(TypedDict):
+    """project edited event"""
 
     action: Literal["edited"]
-    changes: WebhookProjectsV2ProjectEditedPropChangesType
+    changes: NotRequired[WebhookProjectEditedPropChangesType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
-    sender: SimpleUserType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project: WebhooksProjectType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectsV2ProjectEditedTypeForResponse(TypedDict):
-    """Projects v2 Project Edited Event"""
+class WebhookProjectEditedTypeForResponse(TypedDict):
+    """project edited event"""
 
     action: Literal["edited"]
-    changes: WebhookProjectsV2ProjectEditedPropChangesTypeForResponse
+    changes: NotRequired[WebhookProjectEditedPropChangesTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2: ProjectsV2TypeForResponse
-    sender: SimpleUserTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project: WebhooksProjectTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
-class WebhookProjectsV2ProjectEditedPropChangesType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChanges"""
+class WebhookProjectEditedPropChangesType(TypedDict):
+    """WebhookProjectEditedPropChanges
 
-    description: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType
-    ]
-    public: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropPublicType]
-    short_description: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType
-    ]
-    title: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropTitleType]
+    The changes to the project if the action was `edited`.
+    """
+
+    body: NotRequired[WebhookProjectEditedPropChangesPropBodyType]
+    name: NotRequired[WebhookProjectEditedPropChangesPropNameType]
 
 
-class WebhookProjectsV2ProjectEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChanges"""
+class WebhookProjectEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectEditedPropChanges
 
-    description: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropDescriptionTypeForResponse
-    ]
-    public: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropPublicTypeForResponse
-    ]
-    short_description: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionTypeForResponse
-    ]
-    title: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropTitleTypeForResponse
-    ]
+    The changes to the project if the action was `edited`.
+    """
+
+    body: NotRequired[WebhookProjectEditedPropChangesPropBodyTypeForResponse]
+    name: NotRequired[WebhookProjectEditedPropChangesPropNameTypeForResponse]
 
 
-class WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
+class WebhookProjectEditedPropChangesPropBodyType(TypedDict):
+    """WebhookProjectEditedPropChangesPropBody"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropDescriptionTypeForResponse(
-    TypedDict
-):
-    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    from_: str
 
 
-class WebhookProjectsV2ProjectEditedPropChangesPropPublicType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
+class WebhookProjectEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookProjectEditedPropChangesPropBody"""
 
-    from_: NotRequired[bool]
-    to: NotRequired[bool]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropPublicTypeForResponse(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
-
-    from_: NotRequired[bool]
-    to: NotRequired[bool]
+    from_: str
 
 
-class WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
+class WebhookProjectEditedPropChangesPropNameType(TypedDict):
+    """WebhookProjectEditedPropChangesPropName"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionTypeForResponse(
-    TypedDict
-):
-    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    from_: str
 
 
-class WebhookProjectsV2ProjectEditedPropChangesPropTitleType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
+class WebhookProjectEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookProjectEditedPropChangesPropName"""
 
-    from_: NotRequired[str]
-    to: NotRequired[str]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropTitleTypeForResponse(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
-
-    from_: NotRequired[str]
-    to: NotRequired[str]
+    from_: str
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropDescriptionTypeForResponse",
-    "WebhookProjectsV2ProjectEditedPropChangesPropPublicType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropPublicTypeForResponse",
-    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionTypeForResponse",
-    "WebhookProjectsV2ProjectEditedPropChangesPropTitleType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropTitleTypeForResponse",
-    "WebhookProjectsV2ProjectEditedPropChangesType",
-    "WebhookProjectsV2ProjectEditedPropChangesTypeForResponse",
-    "WebhookProjectsV2ProjectEditedType",
-    "WebhookProjectsV2ProjectEditedTypeForResponse",
+    "WebhookProjectEditedPropChangesPropBodyType",
+    "WebhookProjectEditedPropChangesPropBodyTypeForResponse",
+    "WebhookProjectEditedPropChangesPropNameType",
+    "WebhookProjectEditedPropChangesPropNameTypeForResponse",
+    "WebhookProjectEditedPropChangesType",
+    "WebhookProjectEditedPropChangesTypeForResponse",
+    "WebhookProjectEditedType",
+    "WebhookProjectEditedTypeForResponse",
 )

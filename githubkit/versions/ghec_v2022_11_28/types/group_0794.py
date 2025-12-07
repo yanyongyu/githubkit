@@ -13,71 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0560 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
+from .group_0563 import (
+    PersonalAccessTokenRequestType,
+    PersonalAccessTokenRequestTypeForResponse,
+)
 
 
-class WebhookProjectCardConvertedType(TypedDict):
-    """project_card converted event"""
+class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
+    """personal_access_token_request denied event"""
 
-    action: Literal["converted"]
-    changes: WebhookProjectCardConvertedPropChangesType
+    action: Literal["denied"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    organization: OrganizationSimpleWebhooksType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhooksProjectCardType
-    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
+    installation: SimpleInstallationType
 
 
-class WebhookProjectCardConvertedTypeForResponse(TypedDict):
-    """project_card converted event"""
+class WebhookPersonalAccessTokenRequestDeniedTypeForResponse(TypedDict):
+    """personal_access_token_request denied event"""
 
-    action: Literal["converted"]
-    changes: WebhookProjectCardConvertedPropChangesTypeForResponse
+    action: Literal["denied"]
+    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_card: WebhooksProjectCardTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
-
-
-class WebhookProjectCardConvertedPropChangesType(TypedDict):
-    """WebhookProjectCardConvertedPropChanges"""
-
-    note: WebhookProjectCardConvertedPropChangesPropNoteType
-
-
-class WebhookProjectCardConvertedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectCardConvertedPropChanges"""
-
-    note: WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse
-
-
-class WebhookProjectCardConvertedPropChangesPropNoteType(TypedDict):
-    """WebhookProjectCardConvertedPropChangesPropNote"""
-
-    from_: str
-
-
-class WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse(TypedDict):
-    """WebhookProjectCardConvertedPropChangesPropNote"""
-
-    from_: str
+    installation: SimpleInstallationTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectCardConvertedPropChangesPropNoteType",
-    "WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse",
-    "WebhookProjectCardConvertedPropChangesType",
-    "WebhookProjectCardConvertedPropChangesTypeForResponse",
-    "WebhookProjectCardConvertedType",
-    "WebhookProjectCardConvertedTypeForResponse",
+    "WebhookPersonalAccessTokenRequestDeniedType",
+    "WebhookPersonalAccessTokenRequestDeniedTypeForResponse",
 )

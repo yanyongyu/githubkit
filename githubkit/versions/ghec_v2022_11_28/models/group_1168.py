@@ -9,19 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesPutBody(GitHubModel):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints."
+    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems] = (
+        Field(description="A list of field updates to apply.")
     )
 
 
-model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesPutBody)
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBody",)
+    id: int = Field(description="The ID of the project field to update.")
+    value: Union[str, float, None] = Field(
+        description="The new value for the field:\n- For text, number, and date fields, provide the new value directly.\n- For single select and iteration fields, provide the ID of the option or iteration.\n- To clear the field, set this to null."
+    )
+
+
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems)
+
+__all__ = (
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
+)

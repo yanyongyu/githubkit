@@ -13,69 +13,23 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPrivateRegistriesSecretNamePatchBodyType(TypedDict):
-    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
+class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    registry_type: NotRequired[
-        Literal[
-            "maven_repository",
-            "nuget_feed",
-            "goproxy_server",
-            "npm_registry",
-            "rubygems_server",
-            "cargo_registry",
-            "composer_repository",
-            "docker_registry",
-            "git_source",
-            "helm_registry",
-            "hex_organization",
-            "hex_repository",
-            "pub_repository",
-            "python_index",
-            "terraform_registry",
-        ]
-    ]
-    url: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    pat_request_ids: NotRequired[list[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
 
 
-class OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
+class OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    registry_type: NotRequired[
-        Literal[
-            "maven_repository",
-            "nuget_feed",
-            "goproxy_server",
-            "npm_registry",
-            "rubygems_server",
-            "cargo_registry",
-            "composer_repository",
-            "docker_registry",
-            "git_source",
-            "helm_registry",
-            "hex_organization",
-            "hex_repository",
-            "pub_repository",
-            "python_index",
-            "terraform_registry",
-        ]
-    ]
-    url: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    pat_request_ids: NotRequired[list[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgPrivateRegistriesSecretNamePatchBodyType",
-    "OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse",
+    "OrgsOrgPersonalAccessTokenRequestsPostBodyType",
+    "OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse",
 )

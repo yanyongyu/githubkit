@@ -13,27 +13,27 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0553 import (
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0557 import (
     WebhooksMarketplacePurchaseType,
     WebhooksMarketplacePurchaseTypeForResponse,
 )
-from .group_0554 import (
+from .group_0558 import (
     WebhooksPreviousMarketplacePurchaseType,
     WebhooksPreviousMarketplacePurchaseTypeForResponse,
 )
 
 
-class WebhookMarketplacePurchasePurchasedType(TypedDict):
-    """marketplace_purchase purchased event"""
+class WebhookMarketplacePurchaseCancelledType(TypedDict):
+    """marketplace_purchase cancelled event"""
 
-    action: Literal["purchased"]
+    action: Literal["cancelled"]
     effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -44,10 +44,10 @@ class WebhookMarketplacePurchasePurchasedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookMarketplacePurchasePurchasedTypeForResponse(TypedDict):
-    """marketplace_purchase purchased event"""
+class WebhookMarketplacePurchaseCancelledTypeForResponse(TypedDict):
+    """marketplace_purchase cancelled event"""
 
-    action: Literal["purchased"]
+    action: Literal["cancelled"]
     effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -61,6 +61,6 @@ class WebhookMarketplacePurchasePurchasedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookMarketplacePurchasePurchasedType",
-    "WebhookMarketplacePurchasePurchasedTypeForResponse",
+    "WebhookMarketplacePurchaseCancelledType",
+    "WebhookMarketplacePurchaseCancelledTypeForResponse",
 )

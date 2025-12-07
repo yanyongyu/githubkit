@@ -12,17 +12,14 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBody(GitHubModel):
-    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
+class ReposOwnerRepoIssuesCommentsCommentIdPatchBody(GitHubModel):
+    """ReposOwnerRepoIssuesCommentsCommentIdPatchBody"""
 
-    email: Missing[str] = Field(default=UNSET, description="The new Git author email.")
-    name: Missing[str] = Field(default=UNSET, description="The new Git author name.")
+    body: str = Field(description="The contents of the comment.")
 
 
-model_rebuild(ReposOwnerRepoImportAuthorsAuthorIdPatchBody)
+model_rebuild(ReposOwnerRepoIssuesCommentsCommentIdPatchBody)
 
-__all__ = ("ReposOwnerRepoImportAuthorsAuthorIdPatchBody",)
+__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdPatchBody",)

@@ -13,93 +13,71 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0561 import WebhooksProjectType, WebhooksProjectTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0566 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
 
 
-class WebhookProjectEditedType(TypedDict):
-    """project edited event"""
+class WebhookProjectColumnEditedType(TypedDict):
+    """project_column edited event"""
 
     action: Literal["edited"]
-    changes: NotRequired[WebhookProjectEditedPropChangesType]
+    changes: WebhookProjectColumnEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
+    project_column: WebhooksProjectColumnType
     repository: NotRequired[RepositoryWebhooksType]
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectEditedTypeForResponse(TypedDict):
-    """project edited event"""
+class WebhookProjectColumnEditedTypeForResponse(TypedDict):
+    """project_column edited event"""
 
     action: Literal["edited"]
-    changes: NotRequired[WebhookProjectEditedPropChangesTypeForResponse]
+    changes: WebhookProjectColumnEditedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project: WebhooksProjectTypeForResponse
+    project_column: WebhooksProjectColumnTypeForResponse
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
-class WebhookProjectEditedPropChangesType(TypedDict):
-    """WebhookProjectEditedPropChanges
+class WebhookProjectColumnEditedPropChangesType(TypedDict):
+    """WebhookProjectColumnEditedPropChanges"""
 
-    The changes to the project if the action was `edited`.
-    """
-
-    body: NotRequired[WebhookProjectEditedPropChangesPropBodyType]
-    name: NotRequired[WebhookProjectEditedPropChangesPropNameType]
+    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
 
 
-class WebhookProjectEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectEditedPropChanges
+class WebhookProjectColumnEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectColumnEditedPropChanges"""
 
-    The changes to the project if the action was `edited`.
-    """
-
-    body: NotRequired[WebhookProjectEditedPropChangesPropBodyTypeForResponse]
-    name: NotRequired[WebhookProjectEditedPropChangesPropNameTypeForResponse]
+    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameTypeForResponse]
 
 
-class WebhookProjectEditedPropChangesPropBodyType(TypedDict):
-    """WebhookProjectEditedPropChangesPropBody"""
+class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
+    """WebhookProjectColumnEditedPropChangesPropName"""
 
     from_: str
 
 
-class WebhookProjectEditedPropChangesPropBodyTypeForResponse(TypedDict):
-    """WebhookProjectEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookProjectEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookProjectEditedPropChangesPropNameTypeForResponse(TypedDict):
-    """WebhookProjectEditedPropChangesPropName"""
+class WebhookProjectColumnEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookProjectColumnEditedPropChangesPropName"""
 
     from_: str
 
 
 __all__ = (
-    "WebhookProjectEditedPropChangesPropBodyType",
-    "WebhookProjectEditedPropChangesPropBodyTypeForResponse",
-    "WebhookProjectEditedPropChangesPropNameType",
-    "WebhookProjectEditedPropChangesPropNameTypeForResponse",
-    "WebhookProjectEditedPropChangesType",
-    "WebhookProjectEditedPropChangesTypeForResponse",
-    "WebhookProjectEditedType",
-    "WebhookProjectEditedTypeForResponse",
+    "WebhookProjectColumnEditedPropChangesPropNameType",
+    "WebhookProjectColumnEditedPropChangesPropNameTypeForResponse",
+    "WebhookProjectColumnEditedPropChangesType",
+    "WebhookProjectColumnEditedPropChangesTypeForResponse",
+    "WebhookProjectColumnEditedType",
+    "WebhookProjectColumnEditedTypeForResponse",
 )

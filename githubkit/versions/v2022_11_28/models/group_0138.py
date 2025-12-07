@@ -19,46 +19,90 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0045 import Issue
-from .group_0134 import PullRequestSimple
-from .group_0137 import ProjectsV2DraftIssue
+from .group_0042 import Milestone
+from .group_0100 import Team
+from .group_0137 import AutoMerge
+from .group_0139 import PullRequestSimplePropBase, PullRequestSimplePropHead
+from .group_0140 import PullRequestSimplePropLinks
 
 
-class ProjectsV2ItemSimple(GitHubModel):
-    """Projects v2 Item
+class PullRequestSimple(GitHubModel):
+    """Pull Request Simple
 
-    An item belonging to a project
+    Pull Request Simple
     """
 
-    id: float = Field(description="The unique identifier of the project item.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project item."
+    url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    issue_url: str = Field()
+    commits_url: str = Field()
+    review_comments_url: str = Field()
+    review_comment_url: str = Field()
+    comments_url: str = Field()
+    statuses_url: str = Field()
+    number: int = Field()
+    state: str = Field()
+    locked: bool = Field()
+    title: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    body: Union[str, None] = Field()
+    labels: list[PullRequestSimplePropLabelsItems] = Field()
+    milestone: Union[None, Milestone] = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    merge_commit_sha: Union[str, None] = Field()
+    assignee: Union[None, SimpleUser] = Field()
+    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    requested_reviewers: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    requested_teams: Missing[Union[list[Team], None]] = Field(default=UNSET)
+    head: PullRequestSimplePropHead = Field()
+    base: PullRequestSimplePropBase = Field()
+    links: PullRequestSimplePropLinks = Field(alias="_links")
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
     )
-    content: Missing[Union[Issue, PullRequestSimple, ProjectsV2DraftIssue]] = Field(
-        default=UNSET, description="The content represented by the item."
+    auto_merge: Union[AutoMerge, None] = Field(
+        title="Auto merge", description="The status of auto merging a pull request."
     )
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
-    )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: _dt.datetime = Field(description="The time when the item was created.")
-    updated_at: _dt.datetime = Field(
-        description="The time when the item was last updated."
-    )
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="The time when the item was archived."
-    )
-    project_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the project this item belongs to."
-    )
-    item_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the item in the project."
+    draft: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether or not the pull request is a draft.",
     )
 
 
-model_rebuild(ProjectsV2ItemSimple)
+class PullRequestSimplePropLabelsItems(GitHubModel):
+    """PullRequestSimplePropLabelsItems"""
 
-__all__ = ("ProjectsV2ItemSimple",)
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    name: str = Field()
+    description: Union[str, None] = Field()
+    color: str = Field()
+    default: bool = Field()
+
+
+model_rebuild(PullRequestSimple)
+model_rebuild(PullRequestSimplePropLabelsItems)
+
+__all__ = (
+    "PullRequestSimple",
+    "PullRequestSimplePropLabelsItems",
+)

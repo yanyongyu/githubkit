@@ -14,22 +14,18 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
 
     Examples:
-        {'contexts': ['contexts']}
+        {'apps': ['my-app']}
     """
 
-    contexts: list[str] = Field(description="The name of the status checks")
+    apps: list[str] = Field(
+        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
+    )
 
 
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
-)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody)
 
-__all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0",
-)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody",)

@@ -9,31 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0076 import (
-    ActionsHostedRunnerCuratedImageType,
-    ActionsHostedRunnerCuratedImageTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageType]
+    message: NotRequired[str]
+    budget: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType
+    ]
 
 
-class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse(
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
+    message: NotRequired[str]
+    budget: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse
+    ]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
+
+    id: NotRequired[str]
+    budget_amount: NotRequired[float]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType
+    ]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
+
+    id: NotRequired[str]
+    budget_amount: NotRequired[float]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse
+    ]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
+    etAlerting
+    """
+
+    will_alert: bool
+    alert_recipients: list[str]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
+    etAlerting
+    """
+
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse",
 )

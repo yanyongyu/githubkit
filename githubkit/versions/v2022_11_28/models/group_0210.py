@@ -9,200 +9,141 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Annotated, Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0001 import CvssSeverities
-from .group_0003 import SimpleUser
-from .group_0096 import Team
-from .group_0209 import RepositoryAdvisoryCredit
 
 
-class RepositoryAdvisory(GitHubModel):
-    """RepositoryAdvisory
+class SecretScanningLocationCommit(GitHubModel):
+    """SecretScanningLocationCommit
 
-    A repository security advisory.
+    Represents a 'commit' secret scanning location type. This location type shows
+    that a secret was detected inside a commit to a repository.
     """
 
-    ghsa_id: str = Field(description="The GitHub Security Advisory ID.")
-    cve_id: Union[str, None] = Field(
-        description="The Common Vulnerabilities and Exposures (CVE) ID."
+    path: str = Field(description="The file path in the repository")
+    start_line: float = Field(
+        description="Line number at which the secret starts in the file"
     )
-    url: str = Field(description="The API URL for the advisory.")
-    html_url: str = Field(description="The URL for the advisory.")
-    summary: str = Field(
-        max_length=1024, description="A short summary of the advisory."
+    end_line: float = Field(
+        description="Line number at which the secret ends in the file"
     )
-    description: Union[Annotated[str, Field(max_length=65535)], None] = Field(
-        description="A detailed description of what the advisory entails."
+    start_column: float = Field(
+        description="The column at which the secret starts within the start line when the file is interpreted as 8BIT ASCII"
     )
-    severity: Union[None, Literal["critical", "high", "medium", "low"]] = Field(
-        description="The severity of the advisory."
+    end_column: float = Field(
+        description="The column at which the secret ends within the end line when the file is interpreted as 8BIT ASCII"
     )
-    author: None = Field(description="The author of the advisory.")
-    publisher: None = Field(description="The publisher of the advisory.")
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItems] = Field()
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"] = Field(
-        description="The state of the advisory."
-    )
-    created_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was created, in ISO 8601 format."
-    )
-    updated_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was last updated, in ISO 8601 format."
-    )
-    published_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was published, in ISO 8601 format."
-    )
-    closed_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was closed, in ISO 8601 format."
-    )
-    withdrawn_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was withdrawn, in ISO 8601 format."
-    )
-    submission: Union[RepositoryAdvisoryPropSubmission, None] = Field()
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerability], None] = Field()
-    cvss: Union[RepositoryAdvisoryPropCvss, None] = Field()
-    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    cwes: Union[list[RepositoryAdvisoryPropCwesItems], None] = Field()
-    cwe_ids: Union[list[str], None] = Field(description="A list of only the CWE IDs.")
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItems], None] = Field(
-        alias="credits"
-    )
-    credits_detailed: Union[list[RepositoryAdvisoryCredit], None] = Field()
-    collaborating_users: Union[list[SimpleUser], None] = Field(
-        description="A list of users that collaborate on the advisory."
-    )
-    collaborating_teams: Union[list[Team], None] = Field(
-        description="A list of teams that collaborate on the advisory."
-    )
-    private_fork: None = Field(
-        description="A temporary private fork of the advisory's repository for collaborating on a fix."
+    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
+    blob_url: str = Field(description="The API URL to get the associated blob resource")
+    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
+    commit_url: str = Field(
+        description="The API URL to get the associated commit resource"
     )
 
 
-class RepositoryAdvisoryPropIdentifiersItems(GitHubModel):
-    """RepositoryAdvisoryPropIdentifiersItems"""
+class SecretScanningLocationWikiCommit(GitHubModel):
+    """SecretScanningLocationWikiCommit
 
-    type: Literal["CVE", "GHSA"] = Field(description="The type of identifier.")
-    value: str = Field(description="The identifier value.")
-
-
-class RepositoryAdvisoryPropSubmission(GitHubModel):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool = Field(
-        description="Whether a private vulnerability report was accepted by the repository's administrators."
-    )
-
-
-class RepositoryAdvisoryPropCvss(GitHubModel):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None] = Field(description="The CVSS vector.")
-    score: Union[Annotated[float, Field(le=10.0)], None] = Field(
-        description="The CVSS score."
-    )
-
-
-class RepositoryAdvisoryPropCwesItems(GitHubModel):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str = Field(description="The Common Weakness Enumeration (CWE) identifier.")
-    name: str = Field(description="The name of the CWE.")
-
-
-class RepositoryAdvisoryPropCreditsItems(GitHubModel):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: Missing[str] = Field(
-        default=UNSET, description="The username of the user credited."
-    )
-    type: Missing[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
-        ]
-    ] = Field(default=UNSET, description="The type of credit the user is receiving.")
-
-
-class RepositoryAdvisoryVulnerability(GitHubModel):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
+    Represents a 'wiki_commit' secret scanning location type. This location type
+    shows that a secret was detected inside a commit to a repository wiki.
     """
 
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackage, None] = Field(
-        description="The name of the package affected by the vulnerability."
+    path: str = Field(description="The file path of the wiki page")
+    start_line: float = Field(
+        description="Line number at which the secret starts in the file"
     )
-    vulnerable_version_range: Union[str, None] = Field(
-        description="The range of the package versions affected by the vulnerability."
+    end_line: float = Field(
+        description="Line number at which the secret ends in the file"
     )
-    patched_versions: Union[str, None] = Field(
-        description="The package version(s) that resolve the vulnerability."
+    start_column: float = Field(
+        description="The column at which the secret starts within the start line when the file is interpreted as 8-bit ASCII."
     )
-    vulnerable_functions: Union[list[str], None] = Field(
-        description="The functions in the package that are affected."
+    end_column: float = Field(
+        description="The column at which the secret ends within the end line when the file is interpreted as 8-bit ASCII."
+    )
+    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
+    page_url: str = Field(description="The GitHub URL to get the associated wiki page")
+    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
+    commit_url: str = Field(
+        description="The GitHub URL to get the associated wiki commit"
     )
 
 
-class RepositoryAdvisoryVulnerabilityPropPackage(GitHubModel):
-    """RepositoryAdvisoryVulnerabilityPropPackage
+class SecretScanningLocationIssueBody(GitHubModel):
+    """SecretScanningLocationIssueBody
 
-    The name of the package affected by the vulnerability.
+    Represents an 'issue_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of an issue.
     """
 
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ] = Field(description="The package's language or package management ecosystem.")
-    name: Union[str, None] = Field(
-        description="The unique package name within its ecosystem."
+    issue_body_url: str = Field(
+        description="The API URL to get the issue where the secret was detected."
     )
 
 
-model_rebuild(RepositoryAdvisory)
-model_rebuild(RepositoryAdvisoryPropIdentifiersItems)
-model_rebuild(RepositoryAdvisoryPropSubmission)
-model_rebuild(RepositoryAdvisoryPropCvss)
-model_rebuild(RepositoryAdvisoryPropCwesItems)
-model_rebuild(RepositoryAdvisoryPropCreditsItems)
-model_rebuild(RepositoryAdvisoryVulnerability)
-model_rebuild(RepositoryAdvisoryVulnerabilityPropPackage)
+class SecretScanningLocationDiscussionTitle(GitHubModel):
+    """SecretScanningLocationDiscussionTitle
+
+    Represents a 'discussion_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a discussion.
+    """
+
+    discussion_title_url: str = Field(
+        description="The URL to the discussion where the secret was detected."
+    )
+
+
+class SecretScanningLocationDiscussionComment(GitHubModel):
+    """SecretScanningLocationDiscussionComment
+
+    Represents a 'discussion_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a discussion.
+    """
+
+    discussion_comment_url: str = Field(
+        description="The API URL to get the discussion comment where the secret was detected."
+    )
+
+
+class SecretScanningLocationPullRequestBody(GitHubModel):
+    """SecretScanningLocationPullRequestBody
+
+    Represents a 'pull_request_body' secret scanning location type. This location
+    type shows that a secret was detected in the body of a pull request.
+    """
+
+    pull_request_body_url: str = Field(
+        description="The API URL to get the pull request where the secret was detected."
+    )
+
+
+class SecretScanningLocationPullRequestReview(GitHubModel):
+    """SecretScanningLocationPullRequestReview
+
+    Represents a 'pull_request_review' secret scanning location type. This location
+    type shows that a secret was detected in a review on a pull request.
+    """
+
+    pull_request_review_url: str = Field(
+        description="The API URL to get the pull request review where the secret was detected."
+    )
+
+
+model_rebuild(SecretScanningLocationCommit)
+model_rebuild(SecretScanningLocationWikiCommit)
+model_rebuild(SecretScanningLocationIssueBody)
+model_rebuild(SecretScanningLocationDiscussionTitle)
+model_rebuild(SecretScanningLocationDiscussionComment)
+model_rebuild(SecretScanningLocationPullRequestBody)
+model_rebuild(SecretScanningLocationPullRequestReview)
 
 __all__ = (
-    "RepositoryAdvisory",
-    "RepositoryAdvisoryPropCreditsItems",
-    "RepositoryAdvisoryPropCvss",
-    "RepositoryAdvisoryPropCwesItems",
-    "RepositoryAdvisoryPropIdentifiersItems",
-    "RepositoryAdvisoryPropSubmission",
-    "RepositoryAdvisoryVulnerability",
-    "RepositoryAdvisoryVulnerabilityPropPackage",
+    "SecretScanningLocationCommit",
+    "SecretScanningLocationDiscussionComment",
+    "SecretScanningLocationDiscussionTitle",
+    "SecretScanningLocationIssueBody",
+    "SecretScanningLocationPullRequestBody",
+    "SecretScanningLocationPullRequestReview",
+    "SecretScanningLocationWikiCommit",
 )

@@ -9,24 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class RulesetVersionWithStateAllof1PropStateType(TypedDict):
-    """RulesetVersionWithStateAllof1PropState
+class RuleSuitesItemsType(TypedDict):
+    """RuleSuitesItems"""
 
-    The state of the ruleset version
-    """
+    id: NotRequired[int]
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[_dt.datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
 
 
-class RulesetVersionWithStateAllof1PropStateTypeForResponse(TypedDict):
-    """RulesetVersionWithStateAllof1PropState
+class RuleSuitesItemsTypeForResponse(TypedDict):
+    """RuleSuitesItems"""
 
-    The state of the ruleset version
-    """
+    id: NotRequired[int]
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[str]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
 
 
 __all__ = (
-    "RulesetVersionWithStateAllof1PropStateType",
-    "RulesetVersionWithStateAllof1PropStateTypeForResponse",
+    "RuleSuitesItemsType",
+    "RuleSuitesItemsTypeForResponse",
 )

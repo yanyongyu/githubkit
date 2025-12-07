@@ -11,31 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0035 import (
-    ActionsHostedRunnerCuratedImageType,
-    ActionsHostedRunnerCuratedImageTypeForResponse,
-)
+
+class CredentialsRevokePostBodyType(TypedDict):
+    """CredentialsRevokePostBody"""
+
+    credentials: list[str]
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200"""
+class CredentialsRevokePostBodyTypeForResponse(TypedDict):
+    """CredentialsRevokePostBody"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageType]
-
-
-class EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200"""
-
-    total_count: int
-    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
+    credentials: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
-    "EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse",
+    "CredentialsRevokePostBodyType",
+    "CredentialsRevokePostBodyTypeForResponse",
 )

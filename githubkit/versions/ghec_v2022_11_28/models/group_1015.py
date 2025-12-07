@@ -13,19 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0098 import OrganizationCustomProperty
 
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
 
-class EnterprisesEnterpriseOrgPropertiesSchemaPatchBody(GitHubModel):
-    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
-
-    properties: list[OrganizationCustomProperty] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
+    selected_usernames: list[str] = Field(
         min_length=1 if PYDANTIC_V2 else None,
-        description="The array of organization custom properties to create or update.",
+        description="The usernames of the enterprise members for which to revoke access to GitHub Copilot.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseOrgPropertiesSchemaPatchBody)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody)
 
-__all__ = ("EnterprisesEnterpriseOrgPropertiesSchemaPatchBody",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody",)

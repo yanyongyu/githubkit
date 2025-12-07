@@ -9,51 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0195 import IssueType, IssueTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0701 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssueDependenciesBlockedByAddedType(TypedDict):
-    """blocked by issue added event"""
+class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
+    """App
 
-    action: Literal["blocked_by_added"]
-    blocked_issue_id: float
-    blocked_issue: IssueType
-    blocking_issue_id: float
-    blocking_issue: IssueType
-    blocking_issue_repo: RepositoryType
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
 
 
-class WebhookIssueDependenciesBlockedByAddedTypeForResponse(TypedDict):
-    """blocked by issue added event"""
+class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """App
 
-    action: Literal["blocked_by_added"]
-    blocked_issue_id: float
-    blocked_issue: IssueTypeForResponse
-    blocking_issue_id: float
-    blocking_issue: IssueTypeForResponse
-    blocking_issue_repo: RepositoryTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookIssueDependenciesBlockedByAddedType",
-    "WebhookIssueDependenciesBlockedByAddedTypeForResponse",
+    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppType",
+    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse",
 )

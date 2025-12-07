@@ -9,22 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsColumnsColumnIdMovesPostBodyType(TypedDict):
-    """ProjectsColumnsColumnIdMovesPostBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
 
-    position: str
+    title: NotRequired[str]
+    body: NotRequired[str]
 
 
-class ProjectsColumnsColumnIdMovesPostBodyTypeForResponse(TypedDict):
-    """ProjectsColumnsColumnIdMovesPostBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
 
-    position: str
+    title: NotRequired[str]
+    body: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsColumnsColumnIdMovesPostBodyType",
-    "ProjectsColumnsColumnIdMovesPostBodyTypeForResponse",
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType",
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyTypeForResponse",
 )

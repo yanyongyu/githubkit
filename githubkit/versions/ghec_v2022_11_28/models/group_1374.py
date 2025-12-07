@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,26 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoReleasesGenerateNotesPostBody(GitHubModel):
-    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    tag_name: str = Field(
-        description="The tag name for the release. This can be an existing tag or a new one."
+    state: Literal["open", "resolved"] = Field(
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
     )
-    target_commitish: Missing[str] = Field(
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ] = Field(
         default=UNSET,
-        description="Specifies the commitish value that will be the target for the release's tag. Required if the supplied tag_name does not reference an existing tag. Ignored if the tag_name already exists.",
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
     )
-    previous_tag_name: Missing[str] = Field(
+    resolution_comment: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The name of the previous tag to use as the starting point for the release notes. Use to manually specify the range for the set of changes considered as part this release.",
+        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
     )
-    configuration_file_path: Missing[str] = Field(
+    assignee: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Specifies a path to a file in the repository containing configuration settings used for generating the release notes. If unspecified, the configuration file located in the repository at '.github/release.yml' or '.github/release.yaml' will be used. If that is not present, the default configuration will be used.",
+        description="The username of the user to assign to the alert. Set to `null` to unassign the alert.",
     )
 
 
-model_rebuild(ReposOwnerRepoReleasesGenerateNotesPostBody)
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoReleasesGenerateNotesPostBody",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0",)

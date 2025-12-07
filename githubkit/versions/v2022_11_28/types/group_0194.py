@@ -12,21 +12,27 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
+class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
+    """RestrictedCommits
 
-    review_draft_pull_requests: NotRequired[bool]
-    review_on_push: NotRequired[bool]
+    Restricted commit
+    """
+
+    oid: str
+    reason: NotRequired[str]
 
 
-class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
+class RepositoryRuleParamsRestrictedCommitsTypeForResponse(TypedDict):
+    """RestrictedCommits
 
-    review_draft_pull_requests: NotRequired[bool]
-    review_on_push: NotRequired[bool]
+    Restricted commit
+    """
+
+    oid: str
+    reason: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleCopilotCodeReviewPropParametersType",
-    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
+    "RepositoryRuleParamsRestrictedCommitsType",
+    "RepositoryRuleParamsRestrictedCommitsTypeForResponse",
 )

@@ -9,115 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0550 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookMilestoneEditedType(TypedDict):
-    """milestone edited event"""
+class WebhookMetaDeletedType(TypedDict):
+    """meta deleted event"""
 
-    action: Literal["edited"]
-    changes: WebhookMilestoneEditedPropChangesType
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    hook: WebhookMetaDeletedPropHookType
+    hook_id: int
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestoneType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookMilestoneEditedTypeForResponse(TypedDict):
-    """milestone edited event"""
+class WebhookMetaDeletedTypeForResponse(TypedDict):
+    """meta deleted event"""
 
-    action: Literal["edited"]
-    changes: WebhookMilestoneEditedPropChangesTypeForResponse
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    hook: WebhookMetaDeletedPropHookTypeForResponse
+    hook_id: int
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    milestone: WebhooksMilestoneTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
-class WebhookMilestoneEditedPropChangesType(TypedDict):
-    """WebhookMilestoneEditedPropChanges
+class WebhookMetaDeletedPropHookType(TypedDict):
+    """WebhookMetaDeletedPropHook
 
-    The changes to the milestone if the action was `edited`.
+    The deleted webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
     """
 
-    description: NotRequired[WebhookMilestoneEditedPropChangesPropDescriptionType]
-    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnType]
-    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleType]
+    active: bool
+    config: WebhookMetaDeletedPropHookPropConfigType
+    created_at: str
+    events: list[str]
+    id: int
+    name: str
+    type: str
+    updated_at: str
 
 
-class WebhookMilestoneEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChanges
+class WebhookMetaDeletedPropHookTypeForResponse(TypedDict):
+    """WebhookMetaDeletedPropHook
 
-    The changes to the milestone if the action was `edited`.
+    The deleted webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
     """
 
-    description: NotRequired[
-        WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse
-    ]
-    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse]
-    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleTypeForResponse]
+    active: bool
+    config: WebhookMetaDeletedPropHookPropConfigTypeForResponse
+    created_at: str
+    events: list[str]
+    id: int
+    name: str
+    type: str
+    updated_at: str
 
 
-class WebhookMilestoneEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDescription"""
+class WebhookMetaDeletedPropHookPropConfigType(TypedDict):
+    """WebhookMetaDeletedPropHookPropConfig"""
 
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDescription"""
-
-    from_: str
+    content_type: Literal["json", "form"]
+    insecure_ssl: str
+    secret: NotRequired[str]
+    url: str
 
 
-class WebhookMilestoneEditedPropChangesPropDueOnType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDueOn"""
+class WebhookMetaDeletedPropHookPropConfigTypeForResponse(TypedDict):
+    """WebhookMetaDeletedPropHookPropConfig"""
 
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDueOn"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropTitleType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropTitle"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropTitleTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropTitle"""
-
-    from_: str
+    content_type: Literal["json", "form"]
+    insecure_ssl: str
+    secret: NotRequired[str]
+    url: str
 
 
 __all__ = (
-    "WebhookMilestoneEditedPropChangesPropDescriptionType",
-    "WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse",
-    "WebhookMilestoneEditedPropChangesPropDueOnType",
-    "WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse",
-    "WebhookMilestoneEditedPropChangesPropTitleType",
-    "WebhookMilestoneEditedPropChangesPropTitleTypeForResponse",
-    "WebhookMilestoneEditedPropChangesType",
-    "WebhookMilestoneEditedPropChangesTypeForResponse",
-    "WebhookMilestoneEditedType",
-    "WebhookMilestoneEditedTypeForResponse",
+    "WebhookMetaDeletedPropHookPropConfigType",
+    "WebhookMetaDeletedPropHookPropConfigTypeForResponse",
+    "WebhookMetaDeletedPropHookType",
+    "WebhookMetaDeletedPropHookTypeForResponse",
+    "WebhookMetaDeletedType",
+    "WebhookMetaDeletedTypeForResponse",
 )

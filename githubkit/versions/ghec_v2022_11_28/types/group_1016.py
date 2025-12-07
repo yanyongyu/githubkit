@@ -11,24 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0101 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
+
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
-class EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
 
-    organization_logins: list[str]
-    properties: list[CustomPropertyValueType]
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
 
-
-class EnterprisesEnterpriseOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
-
-    organization_logins: list[str]
-    properties: list[CustomPropertyValueTypeForResponse]
+    seats_cancelled: int
 
 
 __all__ = (
-    "EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType",
-    "EnterprisesEnterpriseOrgPropertiesValuesPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
 )

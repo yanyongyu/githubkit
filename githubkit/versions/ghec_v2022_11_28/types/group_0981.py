@@ -9,30 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    name: NotRequired[str]
+    visibility: NotRequired[Literal["selected", "all"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
 
 
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyTypeForResponse(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    name: NotRequired[str]
+    visibility: NotRequired[Literal["selected", "all"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType",
-    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse",
 )

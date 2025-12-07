@@ -9,62 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0036 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
 
-class MilestoneType(TypedDict):
-    """Milestone
+class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
+    """DependabotAlertWithRepositoryPropDependency
 
-    A collection of related issues and pull requests.
+    Details for the vulnerable dependency.
     """
 
-    url: str
-    html_url: str
-    labels_url: str
-    id: int
-    node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    open_issues: int
-    closed_issues: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    due_on: Union[_dt.datetime, None]
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    ]
 
 
-class MilestoneTypeForResponse(TypedDict):
-    """Milestone
+class DependabotAlertWithRepositoryPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertWithRepositoryPropDependency
 
-    A collection of related issues and pull requests.
+    Details for the vulnerable dependency.
     """
 
-    url: str
-    html_url: str
-    labels_url: str
-    id: int
-    node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserTypeForResponse]
-    open_issues: int
-    closed_issues: int
-    created_at: str
-    updated_at: str
-    closed_at: Union[str, None]
-    due_on: Union[str, None]
+    package: NotRequired[DependabotAlertPackageTypeForResponse]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    ]
 
 
 __all__ = (
-    "MilestoneType",
-    "MilestoneTypeForResponse",
+    "DependabotAlertWithRepositoryPropDependencyType",
+    "DependabotAlertWithRepositoryPropDependencyTypeForResponse",
 )

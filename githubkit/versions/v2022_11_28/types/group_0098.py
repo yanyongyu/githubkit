@@ -9,43 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from githubkit.typing import UniqueList
 
 
-class CodeScanningAlertRuleSummaryType(TypedDict):
-    """CodeScanningAlertRuleSummary"""
+class ArtifactDeploymentRecordType(TypedDict):
+    """Artifact Deployment Record
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
-    security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
+    Artifact Metadata Deployment Record
+    """
+
+    id: NotRequired[int]
+    digest: NotRequired[str]
+    logical_environment: NotRequired[str]
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: NotRequired[str]
+    tags: NotRequired[ArtifactDeploymentRecordPropTagsType]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
     ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    attestation_id: NotRequired[Union[int, None]]
 
 
-class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
-    """CodeScanningAlertRuleSummary"""
+class ArtifactDeploymentRecordTypeForResponse(TypedDict):
+    """Artifact Deployment Record
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
-    security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
+    Artifact Metadata Deployment Record
+    """
+
+    id: NotRequired[int]
+    digest: NotRequired[str]
+    logical_environment: NotRequired[str]
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: NotRequired[str]
+    tags: NotRequired[ArtifactDeploymentRecordPropTagsTypeForResponse]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
     ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    attestation_id: NotRequired[Union[int, None]]
+
+
+ArtifactDeploymentRecordPropTagsType: TypeAlias = dict[str, Any]
+"""ArtifactDeploymentRecordPropTags
+"""
+
+
+ArtifactDeploymentRecordPropTagsTypeForResponse: TypeAlias = dict[str, Any]
+"""ArtifactDeploymentRecordPropTags
+"""
 
 
 __all__ = (
-    "CodeScanningAlertRuleSummaryType",
-    "CodeScanningAlertRuleSummaryTypeForResponse",
+    "ArtifactDeploymentRecordPropTagsType",
+    "ArtifactDeploymentRecordPropTagsTypeForResponse",
+    "ArtifactDeploymentRecordType",
+    "ArtifactDeploymentRecordTypeForResponse",
 )

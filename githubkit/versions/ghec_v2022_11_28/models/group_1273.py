@@ -9,29 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
-    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
-    body: str = Field(description="The contents of the comment.")
-    path: Missing[str] = Field(
-        default=UNSET, description="Relative path of the file to comment on."
-    )
-    position: Missing[int] = Field(
-        default=UNSET, description="Line index in the diff to comment on."
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="**Closing down notice**. Use **position** parameter instead. Line number in the file to comment on.",
-    )
+    total_count: int = Field()
+    secrets: list[DependabotSecret] = Field()
 
 
-model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
+class DependabotSecret(GitHubModel):
+    """Dependabot Secret
 
-__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)
+    Set secrets for Dependabot.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+
+
+model_rebuild(ReposOwnerRepoDependabotSecretsGetResponse200)
+model_rebuild(DependabotSecret)
+
+__all__ = (
+    "DependabotSecret",
+    "ReposOwnerRepoDependabotSecretsGetResponse200",
+)

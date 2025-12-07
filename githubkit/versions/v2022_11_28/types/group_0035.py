@@ -9,66 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0034 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
+from .group_0034 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class DependabotAlertSecurityVulnerabilityType(TypedDict):
-    """DependabotAlertSecurityVulnerability
+class CodeSecurityConfigurationRepositoriesType(TypedDict):
+    """CodeSecurityConfigurationRepositories
 
-    Details pertaining to one vulnerable version range for the advisory.
+    Repositories associated with a code security configuration and attachment status
     """
 
-    package: DependabotAlertPackageType
-    severity: Literal["low", "medium", "high", "critical"]
-    vulnerable_version_range: str
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
     ]
+    repository: NotRequired[SimpleRepositoryType]
 
 
-class DependabotAlertSecurityVulnerabilityTypeForResponse(TypedDict):
-    """DependabotAlertSecurityVulnerability
+class CodeSecurityConfigurationRepositoriesTypeForResponse(TypedDict):
+    """CodeSecurityConfigurationRepositories
 
-    Details pertaining to one vulnerable version range for the advisory.
+    Repositories associated with a code security configuration and attachment status
     """
 
-    package: DependabotAlertPackageTypeForResponse
-    severity: Literal["low", "medium", "high", "critical"]
-    vulnerable_version_range: str
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse, None
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
     ]
-
-
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
-
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str
-
-
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse(
-    TypedDict
-):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
-
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str
+    repository: NotRequired[SimpleRepositoryTypeForResponse]
 
 
 __all__ = (
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse",
-    "DependabotAlertSecurityVulnerabilityType",
-    "DependabotAlertSecurityVulnerabilityTypeForResponse",
+    "CodeSecurityConfigurationRepositoriesType",
+    "CodeSecurityConfigurationRepositoriesTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0191 import IssueType
-from .group_0527 import EnterpriseWebhooks
-from .group_0528 import SimpleInstallation
-from .group_0529 import OrganizationSimpleWebhooks
-from .group_0530 import RepositoryWebhooks
-from .group_0549 import WebhooksIssue
+from .group_0531 import EnterpriseWebhooks
+from .group_0532 import SimpleInstallation
+from .group_0533 import OrganizationSimpleWebhooks
+from .group_0534 import RepositoryWebhooks
+from .group_0548 import WebhooksLabel
+from .group_0553 import WebhooksIssue
 
 
-class WebhookIssuesUntyped(GitHubModel):
-    """issues untyped event"""
+class WebhookIssuesUnlabeled(GitHubModel):
+    """issues unlabeled event"""
 
-    action: Literal["untyped"] = Field()
+    action: Literal["unlabeled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,9 +44,7 @@ class WebhookIssuesUntyped(GitHubModel):
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
     )
-    type: Union[IssueType, None] = Field(
-        title="Issue Type", description="The type of issue."
-    )
+    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -59,6 +57,6 @@ class WebhookIssuesUntyped(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesUntyped)
+model_rebuild(WebhookIssuesUnlabeled)
 
-__all__ = ("WebhookIssuesUntyped",)
+__all__ = ("WebhookIssuesUnlabeled",)

@@ -12,29 +12,31 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
-
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyTypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
 
     Examples:
-        {'apps': ['my-app']}
+        {'teams': ['my-team']}
     """
 
-    apps: list[str]
+    teams: list[str]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
+
+    Examples:
+        {'teams': ['my-team']}
+    """
+
+    teams: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0TypeForResponse",
 )

@@ -9,35 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType(
-    TypedDict
-):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPos
-    tBody
-    """
+class OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPos
-    tBody
-    """
+class OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType",
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyTypeForResponse",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyTypeForResponse",
 )

@@ -9,35 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0197 import IssueType, IssueTypeForResponse
+from .group_0268 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
+from .group_0271 import ProjectsV2DraftIssueType, ProjectsV2DraftIssueTypeForResponse
 
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
+class ProjectsV2ItemSimpleType(TypedDict):
+    """Projects v2 Item
 
-    Code of Conduct Simple
+    An item belonging to a project
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    id: float
+    node_id: NotRequired[str]
+    content: NotRequired[
+        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
+    ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    archived_at: Union[_dt.datetime, None]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
 
 
-class CodeOfConductSimpleTypeForResponse(TypedDict):
-    """Code Of Conduct Simple
+class ProjectsV2ItemSimpleTypeForResponse(TypedDict):
+    """Projects v2 Item
 
-    Code of Conduct Simple
+    An item belonging to a project
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    id: float
+    node_id: NotRequired[str]
+    content: NotRequired[
+        Union[
+            IssueTypeForResponse,
+            PullRequestSimpleTypeForResponse,
+            ProjectsV2DraftIssueTypeForResponse,
+        ]
+    ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    archived_at: Union[str, None]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
 
 
 __all__ = (
-    "CodeOfConductSimpleType",
-    "CodeOfConductSimpleTypeForResponse",
+    "ProjectsV2ItemSimpleType",
+    "ProjectsV2ItemSimpleTypeForResponse",
 )

@@ -9,44 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoIssuesIssueNumberLockPutBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
 
-    labels: NotRequired[
-        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
-    ]
+    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
 
-    labels: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
-
-    name: str
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
-
-    name: str
+    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLockPutBodyType",
+    "ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse",
 )

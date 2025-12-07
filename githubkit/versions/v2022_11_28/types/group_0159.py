@@ -9,36 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0160 import (
-    RepositoryRuleUpdatePropParametersType,
-    RepositoryRuleUpdatePropParametersTypeForResponse,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
 )
 
 
-class RepositoryRuleUpdateType(TypedDict):
-    """update
+class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
+    """Repository ruleset conditions for repository properties
 
-    Only allow users with bypass permission to update matching refs.
+    Parameters for a repository property condition
     """
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
 
 
-class RepositoryRuleUpdateTypeForResponse(TypedDict):
-    """update
+class RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for repository properties
 
-    Only allow users with bypass permission to update matching refs.
+    Parameters for a repository property condition
     """
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
 
 
 __all__ = (
-    "RepositoryRuleUpdateType",
-    "RepositoryRuleUpdateTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse",
 )

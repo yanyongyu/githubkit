@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -17,47 +18,37 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0020 import Repository
-from .group_0195 import Issue
-from .group_0528 import SimpleInstallation
-from .group_0529 import OrganizationSimpleWebhooks
-from .group_0530 import RepositoryWebhooks
+from .group_0701 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
+)
 
 
-class WebhookIssueDependenciesBlockingRemoved(GitHubModel):
-    """blocking issue removed event"""
+class WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp(GitHubModel):
+    """WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp"""
 
-    action: Literal["blocking_removed"] = Field()
-    blocked_issue_id: float = Field(description="The ID of the blocked issue.")
-    blocked_issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    created_at: Union[_dt.datetime, None] = Field()
+    description: Union[str, None] = Field()
+    events: Missing[list[str]] = Field(
+        default=UNSET, description="The list of events for the GitHub app"
     )
-    blocked_issue_repo: Repository = Field(
-        title="Repository", description="A repository on GitHub."
+    external_url: Union[str, None] = Field()
+    html_url: str = Field()
+    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
+    name: str = Field(description="The name of the GitHub app")
+    node_id: str = Field()
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
+    ] = Field(title="User")
+    permissions: Missing[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
     )
-    blocking_issue_id: float = Field(description="The ID of the blocking issue.")
-    blocking_issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    updated_at: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(WebhookIssueDependenciesBlockingRemoved)
+model_rebuild(WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp)
 
-__all__ = ("WebhookIssueDependenciesBlockingRemoved",)
+__all__ = ("WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp",)

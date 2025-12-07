@@ -9,24 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType(TypedDict):
-    """EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId"""
-
-    organization_ids: NotRequired[list[int]]
-
-
-class EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse(
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
     TypedDict
 ):
-    """EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId"""
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-    organization_ids: NotRequired[list[int]]
+    include: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+    exclude: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+
+
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+
+    include: NotRequired[
+        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
+    ]
+    exclude: NotRequired[
+        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
+    ]
+
+
+class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a repository property
+    """
+
+    name: str
+    property_values: list[str]
+    source: NotRequired[Literal["custom", "system"]]
+
+
+class RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a repository property
+    """
+
+    name: str
+    property_values: list[str]
+    source: NotRequired[Literal["custom", "system"]]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType",
-    "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryPropertySpecType",
+    "RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse",
 )

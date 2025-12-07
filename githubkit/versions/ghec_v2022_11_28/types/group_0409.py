@@ -10,54 +10,63 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0080 import TeamType, TeamTypeForResponse
 
 
-class ReviewRequestRemovedIssueEventType(TypedDict):
-    """Review Request Removed Issue Event
+class MilestonedIssueEventType(TypedDict):
+    """Milestoned Issue Event
 
-    Review Request Removed Issue Event
+    Milestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["review_request_removed"]
+    event: Literal["milestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    review_requester: SimpleUserType
-    requested_team: NotRequired[TeamType]
-    requested_reviewer: NotRequired[SimpleUserType]
+    milestone: MilestonedIssueEventPropMilestoneType
 
 
-class ReviewRequestRemovedIssueEventTypeForResponse(TypedDict):
-    """Review Request Removed Issue Event
+class MilestonedIssueEventTypeForResponse(TypedDict):
+    """Milestoned Issue Event
 
-    Review Request Removed Issue Event
+    Milestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["review_request_removed"]
+    event: Literal["milestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    review_requester: SimpleUserTypeForResponse
-    requested_team: NotRequired[TeamTypeForResponse]
-    requested_reviewer: NotRequired[SimpleUserTypeForResponse]
+    milestone: MilestonedIssueEventPropMilestoneTypeForResponse
+
+
+class MilestonedIssueEventPropMilestoneType(TypedDict):
+    """MilestonedIssueEventPropMilestone"""
+
+    title: str
+
+
+class MilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
+    """MilestonedIssueEventPropMilestone"""
+
+    title: str
 
 
 __all__ = (
-    "ReviewRequestRemovedIssueEventType",
-    "ReviewRequestRemovedIssueEventTypeForResponse",
+    "MilestonedIssueEventPropMilestoneType",
+    "MilestonedIssueEventPropMilestoneTypeForResponse",
+    "MilestonedIssueEventType",
+    "MilestonedIssueEventTypeForResponse",
 )

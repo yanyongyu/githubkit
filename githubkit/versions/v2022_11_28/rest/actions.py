@@ -30,6 +30,12 @@ if TYPE_CHECKING:
     from ..models import (
         ActionsArtifactAndLogRetentionResponse,
         ActionsCacheList,
+        ActionsCacheRetentionLimitForEnterprise,
+        ActionsCacheRetentionLimitForOrganization,
+        ActionsCacheRetentionLimitForRepository,
+        ActionsCacheStorageLimitForEnterprise,
+        ActionsCacheStorageLimitForOrganization,
+        ActionsCacheStorageLimitForRepository,
         ActionsCacheUsageByRepository,
         ActionsCacheUsageOrgEnterprise,
         ActionsForkPrContributorApproval,
@@ -105,6 +111,18 @@ if TYPE_CHECKING:
         ActionsArtifactAndLogRetentionResponseTypeForResponse,
         ActionsArtifactAndLogRetentionType,
         ActionsCacheListTypeForResponse,
+        ActionsCacheRetentionLimitForEnterpriseType,
+        ActionsCacheRetentionLimitForEnterpriseTypeForResponse,
+        ActionsCacheRetentionLimitForOrganizationType,
+        ActionsCacheRetentionLimitForOrganizationTypeForResponse,
+        ActionsCacheRetentionLimitForRepositoryType,
+        ActionsCacheRetentionLimitForRepositoryTypeForResponse,
+        ActionsCacheStorageLimitForEnterpriseType,
+        ActionsCacheStorageLimitForEnterpriseTypeForResponse,
+        ActionsCacheStorageLimitForOrganizationType,
+        ActionsCacheStorageLimitForOrganizationTypeForResponse,
+        ActionsCacheStorageLimitForRepositoryType,
+        ActionsCacheStorageLimitForRepositoryTypeForResponse,
         ActionsCacheUsageByRepositoryTypeForResponse,
         ActionsCacheUsageOrgEnterpriseTypeForResponse,
         ActionsForkPrContributorApprovalType,
@@ -234,6 +252,886 @@ class ActionsClient:
         raise RuntimeError(
             "GitHub client has already been collected. "
             "Do not use this client after the client has been collected."
+        )
+
+    def get_actions_cache_retention_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsCacheRetentionLimitForEnterprise,
+        ActionsCacheRetentionLimitForEnterpriseTypeForResponse,
+    ]:
+        """actions/get-actions-cache-retention-limit-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/cache/retention-limit
+
+        Gets GitHub Actions cache retention limit for an enterprise. All organizations and repositories under this
+        enterprise may not set a higher cache retention limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-retention-limit-for-an-enterprise
+        """
+
+        from ..models import ActionsCacheRetentionLimitForEnterprise, BasicError
+
+        url = f"/enterprises/{enterprise}/actions/cache/retention-limit"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsCacheRetentionLimitForEnterprise,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_actions_cache_retention_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsCacheRetentionLimitForEnterprise,
+        ActionsCacheRetentionLimitForEnterpriseTypeForResponse,
+    ]:
+        """actions/get-actions-cache-retention-limit-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/cache/retention-limit
+
+        Gets GitHub Actions cache retention limit for an enterprise. All organizations and repositories under this
+        enterprise may not set a higher cache retention limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-retention-limit-for-an-enterprise
+        """
+
+        from ..models import ActionsCacheRetentionLimitForEnterprise, BasicError
+
+        url = f"/enterprises/{enterprise}/actions/cache/retention-limit"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsCacheRetentionLimitForEnterprise,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_actions_cache_retention_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsCacheRetentionLimitForEnterpriseType,
+    ) -> Response: ...
+
+    @overload
+    def set_actions_cache_retention_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        max_cache_retention_days: Missing[int] = UNSET,
+    ) -> Response: ...
+
+    def set_actions_cache_retention_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsCacheRetentionLimitForEnterpriseType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-actions-cache-retention-limit-for-enterprise
+
+        PUT /enterprises/{enterprise}/actions/cache/retention-limit
+
+        Sets GitHub Actions cache retention limit for an enterprise. All organizations and repositories under this
+        enterprise may not set a higher cache retention limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-retention-limit-for-an-enterprise
+        """
+
+        from ..models import ActionsCacheRetentionLimitForEnterprise, BasicError
+
+        url = f"/enterprises/{enterprise}/actions/cache/retention-limit"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsCacheRetentionLimitForEnterprise, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_actions_cache_retention_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsCacheRetentionLimitForEnterpriseType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_actions_cache_retention_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        max_cache_retention_days: Missing[int] = UNSET,
+    ) -> Response: ...
+
+    async def async_set_actions_cache_retention_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsCacheRetentionLimitForEnterpriseType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-actions-cache-retention-limit-for-enterprise
+
+        PUT /enterprises/{enterprise}/actions/cache/retention-limit
+
+        Sets GitHub Actions cache retention limit for an enterprise. All organizations and repositories under this
+        enterprise may not set a higher cache retention limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-retention-limit-for-an-enterprise
+        """
+
+        from ..models import ActionsCacheRetentionLimitForEnterprise, BasicError
+
+        url = f"/enterprises/{enterprise}/actions/cache/retention-limit"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsCacheRetentionLimitForEnterprise, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def get_actions_cache_storage_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsCacheStorageLimitForEnterprise,
+        ActionsCacheStorageLimitForEnterpriseTypeForResponse,
+    ]:
+        """actions/get-actions-cache-storage-limit-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/cache/storage-limit
+
+        Gets GitHub Actions cache storage limit for an enterprise. All organizations and repositories under this
+        enterprise may not set a higher cache storage limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-storage-limit-for-an-enterprise
+        """
+
+        from ..models import ActionsCacheStorageLimitForEnterprise, BasicError
+
+        url = f"/enterprises/{enterprise}/actions/cache/storage-limit"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsCacheStorageLimitForEnterprise,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_actions_cache_storage_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsCacheStorageLimitForEnterprise,
+        ActionsCacheStorageLimitForEnterpriseTypeForResponse,
+    ]:
+        """actions/get-actions-cache-storage-limit-for-enterprise
+
+        GET /enterprises/{enterprise}/actions/cache/storage-limit
+
+        Gets GitHub Actions cache storage limit for an enterprise. All organizations and repositories under this
+        enterprise may not set a higher cache storage limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-storage-limit-for-an-enterprise
+        """
+
+        from ..models import ActionsCacheStorageLimitForEnterprise, BasicError
+
+        url = f"/enterprises/{enterprise}/actions/cache/storage-limit"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsCacheStorageLimitForEnterprise,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_actions_cache_storage_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsCacheStorageLimitForEnterpriseType,
+    ) -> Response: ...
+
+    @overload
+    def set_actions_cache_storage_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        max_cache_size_gb: Missing[int] = UNSET,
+    ) -> Response: ...
+
+    def set_actions_cache_storage_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsCacheStorageLimitForEnterpriseType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-actions-cache-storage-limit-for-enterprise
+
+        PUT /enterprises/{enterprise}/actions/cache/storage-limit
+
+        Sets GitHub Actions cache storage limit for an enterprise. All organizations and repositories under this
+        enterprise may not set a higher cache storage limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-storage-limit-for-an-enterprise
+        """
+
+        from ..models import ActionsCacheStorageLimitForEnterprise, BasicError
+
+        url = f"/enterprises/{enterprise}/actions/cache/storage-limit"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsCacheStorageLimitForEnterprise, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_actions_cache_storage_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsCacheStorageLimitForEnterpriseType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_actions_cache_storage_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        max_cache_size_gb: Missing[int] = UNSET,
+    ) -> Response: ...
+
+    async def async_set_actions_cache_storage_limit_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsCacheStorageLimitForEnterpriseType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-actions-cache-storage-limit-for-enterprise
+
+        PUT /enterprises/{enterprise}/actions/cache/storage-limit
+
+        Sets GitHub Actions cache storage limit for an enterprise. All organizations and repositories under this
+        enterprise may not set a higher cache storage limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-storage-limit-for-an-enterprise
+        """
+
+        from ..models import ActionsCacheStorageLimitForEnterprise, BasicError
+
+        url = f"/enterprises/{enterprise}/actions/cache/storage-limit"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsCacheStorageLimitForEnterprise, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def get_actions_cache_retention_limit_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsCacheRetentionLimitForOrganization,
+        ActionsCacheRetentionLimitForOrganizationTypeForResponse,
+    ]:
+        """actions/get-actions-cache-retention-limit-for-organization
+
+        GET /organizations/{org}/actions/cache/retention-limit
+
+        Gets GitHub Actions cache retention limit for an organization. All repositories under this
+        organization may not set a higher cache retention limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-retention-limit-for-an-organization
+        """
+
+        from ..models import ActionsCacheRetentionLimitForOrganization, BasicError
+
+        url = f"/organizations/{org}/actions/cache/retention-limit"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsCacheRetentionLimitForOrganization,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_actions_cache_retention_limit_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsCacheRetentionLimitForOrganization,
+        ActionsCacheRetentionLimitForOrganizationTypeForResponse,
+    ]:
+        """actions/get-actions-cache-retention-limit-for-organization
+
+        GET /organizations/{org}/actions/cache/retention-limit
+
+        Gets GitHub Actions cache retention limit for an organization. All repositories under this
+        organization may not set a higher cache retention limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-retention-limit-for-an-organization
+        """
+
+        from ..models import ActionsCacheRetentionLimitForOrganization, BasicError
+
+        url = f"/organizations/{org}/actions/cache/retention-limit"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsCacheRetentionLimitForOrganization,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_actions_cache_retention_limit_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsCacheRetentionLimitForOrganizationType,
+    ) -> Response: ...
+
+    @overload
+    def set_actions_cache_retention_limit_for_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        max_cache_retention_days: Missing[int] = UNSET,
+    ) -> Response: ...
+
+    def set_actions_cache_retention_limit_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsCacheRetentionLimitForOrganizationType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-actions-cache-retention-limit-for-organization
+
+        PUT /organizations/{org}/actions/cache/retention-limit
+
+        Sets GitHub Actions cache retention limit for an organization. All repositories under this
+        organization may not set a higher cache retention limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-retention-limit-for-an-organization
+        """
+
+        from ..models import ActionsCacheRetentionLimitForOrganization, BasicError
+
+        url = f"/organizations/{org}/actions/cache/retention-limit"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsCacheRetentionLimitForOrganization, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_actions_cache_retention_limit_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsCacheRetentionLimitForOrganizationType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_actions_cache_retention_limit_for_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        max_cache_retention_days: Missing[int] = UNSET,
+    ) -> Response: ...
+
+    async def async_set_actions_cache_retention_limit_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsCacheRetentionLimitForOrganizationType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-actions-cache-retention-limit-for-organization
+
+        PUT /organizations/{org}/actions/cache/retention-limit
+
+        Sets GitHub Actions cache retention limit for an organization. All repositories under this
+        organization may not set a higher cache retention limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-retention-limit-for-an-organization
+        """
+
+        from ..models import ActionsCacheRetentionLimitForOrganization, BasicError
+
+        url = f"/organizations/{org}/actions/cache/retention-limit"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsCacheRetentionLimitForOrganization, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def get_actions_cache_storage_limit_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsCacheStorageLimitForOrganization,
+        ActionsCacheStorageLimitForOrganizationTypeForResponse,
+    ]:
+        """actions/get-actions-cache-storage-limit-for-organization
+
+        GET /organizations/{org}/actions/cache/storage-limit
+
+        Gets GitHub Actions cache storage limit for an organization. All repositories under this
+        organization may not set a higher cache storage limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-storage-limit-for-an-organization
+        """
+
+        from ..models import ActionsCacheStorageLimitForOrganization, BasicError
+
+        url = f"/organizations/{org}/actions/cache/storage-limit"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsCacheStorageLimitForOrganization,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_actions_cache_storage_limit_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsCacheStorageLimitForOrganization,
+        ActionsCacheStorageLimitForOrganizationTypeForResponse,
+    ]:
+        """actions/get-actions-cache-storage-limit-for-organization
+
+        GET /organizations/{org}/actions/cache/storage-limit
+
+        Gets GitHub Actions cache storage limit for an organization. All repositories under this
+        organization may not set a higher cache storage limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-storage-limit-for-an-organization
+        """
+
+        from ..models import ActionsCacheStorageLimitForOrganization, BasicError
+
+        url = f"/organizations/{org}/actions/cache/storage-limit"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsCacheStorageLimitForOrganization,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_actions_cache_storage_limit_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsCacheStorageLimitForOrganizationType,
+    ) -> Response: ...
+
+    @overload
+    def set_actions_cache_storage_limit_for_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        max_cache_size_gb: Missing[int] = UNSET,
+    ) -> Response: ...
+
+    def set_actions_cache_storage_limit_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsCacheStorageLimitForOrganizationType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-actions-cache-storage-limit-for-organization
+
+        PUT /organizations/{org}/actions/cache/storage-limit
+
+        Sets GitHub Actions cache storage limit for an organization. All organizations and repositories under this
+        organization may not set a higher cache storage limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-storage-limit-for-an-organization
+        """
+
+        from ..models import ActionsCacheStorageLimitForOrganization, BasicError
+
+        url = f"/organizations/{org}/actions/cache/storage-limit"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsCacheStorageLimitForOrganization, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_actions_cache_storage_limit_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsCacheStorageLimitForOrganizationType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_actions_cache_storage_limit_for_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        max_cache_size_gb: Missing[int] = UNSET,
+    ) -> Response: ...
+
+    async def async_set_actions_cache_storage_limit_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsCacheStorageLimitForOrganizationType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-actions-cache-storage-limit-for-organization
+
+        PUT /organizations/{org}/actions/cache/storage-limit
+
+        Sets GitHub Actions cache storage limit for an organization. All organizations and repositories under this
+        organization may not set a higher cache storage limit.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:organization` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-storage-limit-for-an-organization
+        """
+
+        from ..models import ActionsCacheStorageLimitForOrganization, BasicError
+
+        url = f"/organizations/{org}/actions/cache/storage-limit"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsCacheStorageLimitForOrganization, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
     def get_actions_cache_usage_for_org(
@@ -8517,6 +9415,462 @@ class ActionsClient:
             stream=stream,
             error_models={
                 "410": BasicError,
+            },
+        )
+
+    def get_actions_cache_retention_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsCacheRetentionLimitForRepository,
+        ActionsCacheRetentionLimitForRepositoryTypeForResponse,
+    ]:
+        """actions/get-actions-cache-retention-limit-for-repository
+
+        GET /repos/{owner}/{repo}/actions/cache/retention-limit
+
+        Gets GitHub Actions cache retention limit for a repository. This determines how long caches will be retained for, if
+        not manually removed or evicted due to size constraints.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-retention-limit-for-a-repository
+        """
+
+        from ..models import ActionsCacheRetentionLimitForRepository, BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/cache/retention-limit"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsCacheRetentionLimitForRepository,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_actions_cache_retention_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsCacheRetentionLimitForRepository,
+        ActionsCacheRetentionLimitForRepositoryTypeForResponse,
+    ]:
+        """actions/get-actions-cache-retention-limit-for-repository
+
+        GET /repos/{owner}/{repo}/actions/cache/retention-limit
+
+        Gets GitHub Actions cache retention limit for a repository. This determines how long caches will be retained for, if
+        not manually removed or evicted due to size constraints.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-retention-limit-for-a-repository
+        """
+
+        from ..models import ActionsCacheRetentionLimitForRepository, BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/cache/retention-limit"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsCacheRetentionLimitForRepository,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_actions_cache_retention_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsCacheRetentionLimitForRepositoryType,
+    ) -> Response: ...
+
+    @overload
+    def set_actions_cache_retention_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        max_cache_retention_days: Missing[int] = UNSET,
+    ) -> Response: ...
+
+    def set_actions_cache_retention_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsCacheRetentionLimitForRepositoryType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-actions-cache-retention-limit-for-repository
+
+        PUT /repos/{owner}/{repo}/actions/cache/retention-limit
+
+        Sets GitHub Actions cache retention limit for a repository. This determines how long caches will be retained for, if
+        not manually removed or evicted due to size constraints.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-retention-limit-for-a-repository
+        """
+
+        from ..models import ActionsCacheRetentionLimitForRepository, BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/cache/retention-limit"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsCacheRetentionLimitForRepository, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_actions_cache_retention_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsCacheRetentionLimitForRepositoryType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_actions_cache_retention_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        max_cache_retention_days: Missing[int] = UNSET,
+    ) -> Response: ...
+
+    async def async_set_actions_cache_retention_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsCacheRetentionLimitForRepositoryType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-actions-cache-retention-limit-for-repository
+
+        PUT /repos/{owner}/{repo}/actions/cache/retention-limit
+
+        Sets GitHub Actions cache retention limit for a repository. This determines how long caches will be retained for, if
+        not manually removed or evicted due to size constraints.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-retention-limit-for-a-repository
+        """
+
+        from ..models import ActionsCacheRetentionLimitForRepository, BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/cache/retention-limit"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsCacheRetentionLimitForRepository, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def get_actions_cache_storage_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsCacheStorageLimitForRepository,
+        ActionsCacheStorageLimitForRepositoryTypeForResponse,
+    ]:
+        """actions/get-actions-cache-storage-limit-for-repository
+
+        GET /repos/{owner}/{repo}/actions/cache/storage-limit
+
+        Gets GitHub Actions cache storage limit for a repository. This determines the maximum size of caches that can be
+        stored before eviction occurs.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-storage-limit-for-a-repository
+        """
+
+        from ..models import ActionsCacheStorageLimitForRepository, BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/cache/storage-limit"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsCacheStorageLimitForRepository,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_actions_cache_storage_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ActionsCacheStorageLimitForRepository,
+        ActionsCacheStorageLimitForRepositoryTypeForResponse,
+    ]:
+        """actions/get-actions-cache-storage-limit-for-repository
+
+        GET /repos/{owner}/{repo}/actions/cache/storage-limit
+
+        Gets GitHub Actions cache storage limit for a repository. This determines the maximum size of caches that can be
+        stored before eviction occurs.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-storage-limit-for-a-repository
+        """
+
+        from ..models import ActionsCacheStorageLimitForRepository, BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/cache/storage-limit"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsCacheStorageLimitForRepository,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_actions_cache_storage_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsCacheStorageLimitForRepositoryType,
+    ) -> Response: ...
+
+    @overload
+    def set_actions_cache_storage_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        max_cache_size_gb: Missing[int] = UNSET,
+    ) -> Response: ...
+
+    def set_actions_cache_storage_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsCacheStorageLimitForRepositoryType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-actions-cache-storage-limit-for-repository
+
+        PUT /repos/{owner}/{repo}/actions/cache/storage-limit
+
+        Sets GitHub Actions cache storage limit for a repository. This determines the maximum size of caches that can be
+        stored before eviction occurs.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-storage-limit-for-a-repository
+        """
+
+        from ..models import ActionsCacheStorageLimitForRepository, BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/cache/storage-limit"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsCacheStorageLimitForRepository, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_actions_cache_storage_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ActionsCacheStorageLimitForRepositoryType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_actions_cache_storage_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        max_cache_size_gb: Missing[int] = UNSET,
+    ) -> Response: ...
+
+    async def async_set_actions_cache_storage_limit_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[ActionsCacheStorageLimitForRepositoryType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """actions/set-actions-cache-storage-limit-for-repository
+
+        PUT /repos/{owner}/{repo}/actions/cache/storage-limit
+
+        Sets GitHub Actions cache storage limit for a repository. This determines the maximum size of caches that can be
+        stored before eviction occurs.
+
+        OAuth tokens and personal access tokens (classic) need the `admin:repository` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-storage-limit-for-a-repository
+        """
+
+        from ..models import ActionsCacheStorageLimitForRepository, BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/cache/storage-limit"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ActionsCacheStorageLimitForRepository, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
             },
         )
 

@@ -9,41 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0251 import GitUser
-from .group_0252 import Verification
+from .group_0254 import BranchProtection
 
 
-class CommitPropCommit(GitHubModel):
-    """CommitPropCommit"""
+class ShortBranch(GitHubModel):
+    """Short Branch
 
-    url: str = Field()
-    author: Union[None, GitUser] = Field()
-    committer: Union[None, GitUser] = Field()
-    message: str = Field()
-    comment_count: int = Field()
-    tree: CommitPropCommitPropTree = Field()
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+    Short Branch
+    """
+
+    name: str = Field()
+    commit: ShortBranchPropCommit = Field()
+    protected: bool = Field()
+    protection: Missing[BranchProtection] = Field(
+        default=UNSET, title="Branch Protection", description="Branch Protection"
+    )
+    protection_url: Missing[str] = Field(default=UNSET)
 
 
-class CommitPropCommitPropTree(GitHubModel):
-    """CommitPropCommitPropTree"""
+class ShortBranchPropCommit(GitHubModel):
+    """ShortBranchPropCommit"""
 
     sha: str = Field()
     url: str = Field()
 
 
-model_rebuild(CommitPropCommit)
-model_rebuild(CommitPropCommitPropTree)
+model_rebuild(ShortBranch)
+model_rebuild(ShortBranchPropCommit)
 
 __all__ = (
-    "CommitPropCommit",
-    "CommitPropCommitPropTree",
+    "ShortBranch",
+    "ShortBranchPropCommit",
 )

@@ -11,40 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0496 import WebhooksTeam1Type, WebhooksTeam1TypeForResponse
+
+class WebhookStatusPropCommitPropCommitPropAuthorAllof1Type(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
+
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
-class WebhookTeamAddType(TypedDict):
-    """team_add event"""
+class WebhookStatusPropCommitPropCommitPropAuthorAllof1TypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
 
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-    team: WebhooksTeam1Type
-
-
-class WebhookTeamAddTypeForResponse(TypedDict):
-    """team_add event"""
-
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-    team: WebhooksTeam1TypeForResponse
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "WebhookTeamAddType",
-    "WebhookTeamAddTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropAuthorAllof1Type",
+    "WebhookStatusPropCommitPropCommitPropAuthorAllof1TypeForResponse",
 )

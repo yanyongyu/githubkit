@@ -9,42 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class GetAuditLogStreamConfigType(TypedDict):
-    """Get an audit log streaming configuration
+class AmazonS3OidcConfigType(TypedDict):
+    """AmazonS3OIDCConfig
 
-    Get an audit log streaming configuration for an enterprise.
+    Amazon S3 OIDC Config for audit log streaming configuration.
     """
 
-    id: int
-    stream_type: str
-    stream_details: str
-    enabled: bool
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    paused_at: NotRequired[Union[_dt.datetime, None]]
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["oidc"]
+    arn_role: str
 
 
-class GetAuditLogStreamConfigTypeForResponse(TypedDict):
-    """Get an audit log streaming configuration
+class AmazonS3OidcConfigTypeForResponse(TypedDict):
+    """AmazonS3OIDCConfig
 
-    Get an audit log streaming configuration for an enterprise.
+    Amazon S3 OIDC Config for audit log streaming configuration.
     """
 
-    id: int
-    stream_type: str
-    stream_details: str
-    enabled: bool
-    created_at: str
-    updated_at: str
-    paused_at: NotRequired[Union[str, None]]
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["oidc"]
+    arn_role: str
+
+
+class SplunkConfigType(TypedDict):
+    """SplunkConfig
+
+    Splunk Config for Audit Log Stream Configuration
+    """
+
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    ssl_verify: bool
+
+
+class SplunkConfigTypeForResponse(TypedDict):
+    """SplunkConfig
+
+    Splunk Config for Audit Log Stream Configuration
+    """
+
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    ssl_verify: bool
 
 
 __all__ = (
-    "GetAuditLogStreamConfigType",
-    "GetAuditLogStreamConfigTypeForResponse",
+    "AmazonS3OidcConfigType",
+    "AmazonS3OidcConfigTypeForResponse",
+    "SplunkConfigType",
+    "SplunkConfigTypeForResponse",
 )

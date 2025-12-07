@@ -9,45 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0477 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0464 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookOrganizationMemberRemovedType(TypedDict):
-    """organization member_removed event"""
+class WebhookOrgBlockBlockedType(TypedDict):
+    """org_block blocked event"""
 
-    action: Literal["member_removed"]
+    action: Literal["blocked"]
+    blocked_user: Union[WebhooksUserType, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    membership: WebhooksMembershipType
     organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookOrganizationMemberRemovedTypeForResponse(TypedDict):
-    """organization member_removed event"""
+class WebhookOrgBlockBlockedTypeForResponse(TypedDict):
+    """org_block blocked event"""
 
-    action: Literal["member_removed"]
+    action: Literal["blocked"]
+    blocked_user: Union[WebhooksUserTypeForResponse, None]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    membership: WebhooksMembershipTypeForResponse
     organization: OrganizationSimpleWebhooksTypeForResponse
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookOrganizationMemberRemovedType",
-    "WebhookOrganizationMemberRemovedTypeForResponse",
+    "WebhookOrgBlockBlockedType",
+    "WebhookOrgBlockBlockedTypeForResponse",
 )

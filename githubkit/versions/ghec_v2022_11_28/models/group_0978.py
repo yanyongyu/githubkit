@@ -13,22 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0049 import Runner
+
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
+
+    disable_self_hosted_runners_for_all_orgs: bool = Field(
+        description="When true, repository-level runners will be disabled across all organizations in the enterprise"
+    )
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200(
-    GitHubModel
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
+model_rebuild(EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody)
 
-    total_count: float = Field()
-    runners: list[Runner] = Field()
-
-
-model_rebuild(
-    EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200
-)
-
-__all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200",
-)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody",)

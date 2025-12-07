@@ -49,7 +49,6 @@ if TYPE_CHECKING:
     from .packages import PackagesClient
     from .private_registries import PrivateRegistriesClient
     from .projects import ProjectsClient
-    from .projects_classic import ProjectsClassicClient
     from .pulls import PullsClient
     from .rate_limit import RateLimitClient
     from .reactions import ReactionsClient
@@ -303,12 +302,6 @@ class RestNamespace:
         from .reactions import ReactionsClient
 
         return ReactionsClient(self._github)
-
-    @cached_property
-    def projects_classic(self) -> "ProjectsClassicClient":
-        from .projects_classic import ProjectsClassicClient
-
-        return ProjectsClassicClient(self._github)
 
     @cached_property
     def rate_limit(self) -> "RateLimitClient":

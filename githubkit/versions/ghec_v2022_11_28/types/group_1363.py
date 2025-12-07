@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-    reviewers: list[str]
-    team_reviewers: NotRequired[list[str]]
+    message: str
+    event: NotRequired[Literal["DISMISS"]]
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0TypeForResponse(
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-    reviewers: list[str]
-    team_reviewers: NotRequired[list[str]]
+    message: str
+    event: NotRequired[Literal["DISMISS"]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type",
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse",
 )

@@ -10,68 +10,95 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0192 import ReactionRollupType, ReactionRollupTypeForResponse
 
+class RuleSuiteType(TypedDict):
+    """Rule Suite
 
-class TeamDiscussionType(TypedDict):
-    """Team Discussion
-
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
+    Response
     """
 
-    author: Union[None, SimpleUserType]
-    body: str
-    body_html: str
-    body_version: str
-    comments_count: int
-    comments_url: str
-    created_at: _dt.datetime
-    last_edited_at: Union[_dt.datetime, None]
-    html_url: str
-    node_id: str
-    number: int
-    pinned: bool
-    private: bool
-    team_url: str
-    title: str
-    updated_at: _dt.datetime
-    url: str
-    reactions: NotRequired[ReactionRollupType]
+    id: NotRequired[int]
+    actor_id: NotRequired[Union[int, None]]
+    actor_name: NotRequired[Union[str, None]]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[_dt.datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
+    rule_evaluations: NotRequired[list[RuleSuitePropRuleEvaluationsItemsType]]
 
 
-class TeamDiscussionTypeForResponse(TypedDict):
-    """Team Discussion
+class RuleSuiteTypeForResponse(TypedDict):
+    """Rule Suite
 
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
+    Response
     """
 
-    author: Union[None, SimpleUserTypeForResponse]
-    body: str
-    body_html: str
-    body_version: str
-    comments_count: int
-    comments_url: str
-    created_at: str
-    last_edited_at: Union[str, None]
-    html_url: str
-    node_id: str
-    number: int
-    pinned: bool
-    private: bool
-    team_url: str
-    title: str
-    updated_at: str
-    url: str
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    id: NotRequired[int]
+    actor_id: NotRequired[Union[int, None]]
+    actor_name: NotRequired[Union[str, None]]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[str]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
+    rule_evaluations: NotRequired[
+        list[RuleSuitePropRuleEvaluationsItemsTypeForResponse]
+    ]
+
+
+class RuleSuitePropRuleEvaluationsItemsType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
+
+    rule_source: NotRequired[RuleSuitePropRuleEvaluationsItemsPropRuleSourceType]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    details: NotRequired[Union[str, None]]
+
+
+class RuleSuitePropRuleEvaluationsItemsTypeForResponse(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
+
+    rule_source: NotRequired[
+        RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse
+    ]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    details: NotRequired[Union[str, None]]
+
+
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+
+    type: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
+
+
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+
+    type: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "TeamDiscussionType",
-    "TeamDiscussionTypeForResponse",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse",
+    "RuleSuitePropRuleEvaluationsItemsType",
+    "RuleSuitePropRuleEvaluationsItemsTypeForResponse",
+    "RuleSuiteType",
+    "RuleSuiteTypeForResponse",
 )

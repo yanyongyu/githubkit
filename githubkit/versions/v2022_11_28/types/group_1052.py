@@ -9,22 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0240 import WorkflowRunType, WorkflowRunTypeForResponse
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
+class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsGetResponse200"""
 
-    enable_debug_logging: NotRequired[bool]
+    total_count: int
+    workflow_runs: list[WorkflowRunType]
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
+class ReposOwnerRepoActionsRunsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunsGetResponse200"""
 
-    enable_debug_logging: NotRequired[bool]
+    total_count: int
+    workflow_runs: list[WorkflowRunTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsRunIdRerunPostBodyType",
-    "ReposOwnerRepoActionsRunsRunIdRerunPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsRunsGetResponse200Type",
+    "ReposOwnerRepoActionsRunsGetResponse200TypeForResponse",
 )

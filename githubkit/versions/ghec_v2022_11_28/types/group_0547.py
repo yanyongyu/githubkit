@@ -9,19 +9,12 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
-
-class WebhooksIssueCommentType(TypedDict):
-    """issue comment
-
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
-    """
+class WebhooksCommentType(TypedDict):
+    """WebhooksComment"""
 
     author_association: Literal[
         "COLLABORATOR",
@@ -34,49 +27,47 @@ class WebhooksIssueCommentType(TypedDict):
         "OWNER",
     ]
     body: str
-    created_at: _dt.datetime
-    html_url: str
-    id: int
-    issue_url: str
-    node_id: str
-    performed_via_github_app: Union[IntegrationType, None]
-    reactions: WebhooksIssueCommentPropReactionsType
-    updated_at: _dt.datetime
-    url: str
-    user: Union[WebhooksIssueCommentPropUserType, None]
-
-
-class WebhooksIssueCommentTypeForResponse(TypedDict):
-    """issue comment
-
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
-    """
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
+    child_comment_count: int
     created_at: str
+    discussion_id: int
     html_url: str
     id: int
-    issue_url: str
     node_id: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    reactions: WebhooksIssueCommentPropReactionsTypeForResponse
+    parent_id: Union[int, None]
+    reactions: WebhooksCommentPropReactionsType
+    repository_url: str
     updated_at: str
-    url: str
-    user: Union[WebhooksIssueCommentPropUserTypeForResponse, None]
+    user: Union[WebhooksCommentPropUserType, None]
 
 
-class WebhooksIssueCommentPropReactionsType(TypedDict):
+class WebhooksCommentTypeForResponse(TypedDict):
+    """WebhooksComment"""
+
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    child_comment_count: int
+    created_at: str
+    discussion_id: int
+    html_url: str
+    id: int
+    node_id: str
+    parent_id: Union[int, None]
+    reactions: WebhooksCommentPropReactionsTypeForResponse
+    repository_url: str
+    updated_at: str
+    user: Union[WebhooksCommentPropUserTypeForResponse, None]
+
+
+class WebhooksCommentPropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -91,7 +82,7 @@ class WebhooksIssueCommentPropReactionsType(TypedDict):
     url: str
 
 
-class WebhooksIssueCommentPropReactionsTypeForResponse(TypedDict):
+class WebhooksCommentPropReactionsTypeForResponse(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -106,7 +97,7 @@ class WebhooksIssueCommentPropReactionsTypeForResponse(TypedDict):
     url: str
 
 
-class WebhooksIssueCommentPropUserType(TypedDict):
+class WebhooksCommentPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -128,12 +119,12 @@ class WebhooksIssueCommentPropUserType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhooksIssueCommentPropUserTypeForResponse(TypedDict):
+class WebhooksCommentPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -155,16 +146,16 @@ class WebhooksIssueCommentPropUserTypeForResponse(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksIssueCommentPropReactionsType",
-    "WebhooksIssueCommentPropReactionsTypeForResponse",
-    "WebhooksIssueCommentPropUserType",
-    "WebhooksIssueCommentPropUserTypeForResponse",
-    "WebhooksIssueCommentType",
-    "WebhooksIssueCommentTypeForResponse",
+    "WebhooksCommentPropReactionsType",
+    "WebhooksCommentPropReactionsTypeForResponse",
+    "WebhooksCommentPropUserType",
+    "WebhooksCommentPropUserTypeForResponse",
+    "WebhooksCommentType",
+    "WebhooksCommentTypeForResponse",
 )

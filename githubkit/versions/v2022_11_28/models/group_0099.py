@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,23 +18,47 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningAnalysisTool(GitHubModel):
-    """CodeScanningAnalysisTool"""
+class TeamSimple(GitHubModel):
+    """Team Simple
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the tool used to generate the code scanning analysis.",
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int = Field(description="Unique identifier of the team")
+    node_id: str = Field()
+    url: str = Field(description="URL for the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
+    description: Union[str, None] = Field(description="Description of the team")
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
     )
-    version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the tool used to generate the code scanning analysis.",
+    privacy: Missing[str] = Field(
+        default=UNSET, description="The level of privacy this team should have"
     )
-    guid: Missing[Union[str, None]] = Field(
+    notification_setting: Missing[str] = Field(
+        default=UNSET, description="The notification setting the team has set"
+    )
+    html_url: str = Field()
+    repositories_url: str = Field()
+    slug: str = Field()
+    ldap_dn: Missing[str] = Field(
         default=UNSET,
-        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
+        description="Distinguished Name (DN) that team maps to within LDAP environment",
+    )
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
+    )
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
     )
 
 
-model_rebuild(CodeScanningAnalysisTool)
+model_rebuild(TeamSimple)
 
-__all__ = ("CodeScanningAnalysisTool",)
+__all__ = ("TeamSimple",)

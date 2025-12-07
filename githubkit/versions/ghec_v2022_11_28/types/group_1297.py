@@ -9,26 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoForksPostBodyType(TypedDict):
-    """ReposOwnerRepoForksPostBody"""
+class ReposOwnerRepoGitTagsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    organization: NotRequired[str]
-    name: NotRequired[str]
-    default_branch_only: NotRequired[bool]
+    tag: str
+    message: str
+    object_: str
+    type: Literal["commit", "tree", "blob"]
+    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerType]
 
 
-class ReposOwnerRepoForksPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoForksPostBody"""
+class ReposOwnerRepoGitTagsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    organization: NotRequired[str]
-    name: NotRequired[str]
-    default_branch_only: NotRequired[bool]
+    tag: str
+    message: str
+    object_: str
+    type: Literal["commit", "tree", "blob"]
+    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse]
+
+
+class ReposOwnerRepoGitTagsPostBodyPropTaggerType(TypedDict):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
+
+    An object with information about the individual creating the tag.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[_dt.datetime]
+
+
+class ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
+
+    An object with information about the individual creating the tag.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoForksPostBodyType",
-    "ReposOwnerRepoForksPostBodyTypeForResponse",
+    "ReposOwnerRepoGitTagsPostBodyPropTaggerType",
+    "ReposOwnerRepoGitTagsPostBodyPropTaggerTypeForResponse",
+    "ReposOwnerRepoGitTagsPostBodyType",
+    "ReposOwnerRepoGitTagsPostBodyTypeForResponse",
 )

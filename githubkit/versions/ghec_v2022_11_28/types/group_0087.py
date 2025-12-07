@@ -9,66 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 from typing_extensions import TypedDict
 
-from .group_0086 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
 
+class CopilotUsageMetrics28DayReportType(TypedDict):
+    """Copilot Metrics 28 Day Report
 
-class DependabotAlertSecurityVulnerabilityType(TypedDict):
-    """DependabotAlertSecurityVulnerability
-
-    Details pertaining to one vulnerable version range for the advisory.
+    Links to download the latest Copilot usage metrics report for an enterprise.
     """
 
-    package: DependabotAlertPackageType
-    severity: Literal["low", "medium", "high", "critical"]
-    vulnerable_version_range: str
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
-    ]
+    download_links: list[str]
+    report_start_day: _dt.date
+    report_end_day: _dt.date
 
 
-class DependabotAlertSecurityVulnerabilityTypeForResponse(TypedDict):
-    """DependabotAlertSecurityVulnerability
+class CopilotUsageMetrics28DayReportTypeForResponse(TypedDict):
+    """Copilot Metrics 28 Day Report
 
-    Details pertaining to one vulnerable version range for the advisory.
+    Links to download the latest Copilot usage metrics report for an enterprise.
     """
 
-    package: DependabotAlertPackageTypeForResponse
-    severity: Literal["low", "medium", "high", "critical"]
-    vulnerable_version_range: str
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse, None
-    ]
-
-
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
-
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str
-
-
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse(
-    TypedDict
-):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
-
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str
+    download_links: list[str]
+    report_start_day: str
+    report_end_day: str
 
 
 __all__ = (
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse",
-    "DependabotAlertSecurityVulnerabilityType",
-    "DependabotAlertSecurityVulnerabilityTypeForResponse",
+    "CopilotUsageMetrics28DayReportType",
+    "CopilotUsageMetrics28DayReportTypeForResponse",
 )

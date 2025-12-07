@@ -9,43 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0148 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0150 import (
+from .group_0156 import (
     RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
     RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
 )
 
 
-class OrgRulesetConditionsOneof0Type(TypedDict):
-    """repository_name_and_ref_name
+class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
+    """Repository ruleset conditions for repository names
 
-    Conditions to target repositories by name and refs by name
+    Parameters for a repository name condition
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
     repository_name: (
         RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
     )
 
 
-class OrgRulesetConditionsOneof0TypeForResponse(TypedDict):
-    """repository_name_and_ref_name
+class RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for repository names
 
-    Conditions to target repositories by name and refs by name
+    Parameters for a repository name condition
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
     repository_name: (
         RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
     )
 
 
 __all__ = (
-    "OrgRulesetConditionsOneof0Type",
-    "OrgRulesetConditionsOneof0TypeForResponse",
+    "RepositoryRulesetConditionsRepositoryNameTargetType",
+    "RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse",
 )

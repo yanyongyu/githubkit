@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0033 import ActionsHostedRunnerCustomImage
+
+class ApplicationsClientIdTokenPatchBody(GitHubModel):
+    """ApplicationsClientIdTokenPatchBody"""
+
+    access_token: str = Field(
+        description="The access_token of the OAuth or GitHub application."
+    )
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
+model_rebuild(ApplicationsClientIdTokenPatchBody)
 
-    total_count: int = Field()
-    images: list[ActionsHostedRunnerCustomImage] = Field()
-
-
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200)
-
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200",)
+__all__ = ("ApplicationsClientIdTokenPatchBody",)

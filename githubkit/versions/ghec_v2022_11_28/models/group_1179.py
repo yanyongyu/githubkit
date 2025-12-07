@@ -9,23 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody"""
-
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the team discussion."
-    )
+from .group_0097 import NetworkConfiguration
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody)
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody",)
+    total_count: int = Field()
+    network_configurations: list[NetworkConfiguration] = Field()
+
+
+model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
+
+__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200",)

@@ -11,22 +11,27 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgAttestationsBulkListPostBodyType(TypedDict):
-    """OrgsOrgAttestationsBulkListPostBody"""
-
-    subject_digests: list[str]
-    predicate_type: NotRequired[str]
+from .group_0098 import (
+    ArtifactDeploymentRecordType,
+    ArtifactDeploymentRecordTypeForResponse,
+)
 
 
-class OrgsOrgAttestationsBulkListPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgAttestationsBulkListPostBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
 
-    subject_digests: list[str]
-    predicate_type: NotRequired[str]
+    total_count: NotRequired[int]
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+
+    total_count: NotRequired[int]
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgAttestationsBulkListPostBodyType",
-    "OrgsOrgAttestationsBulkListPostBodyTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse",
 )

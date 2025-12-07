@@ -9,36 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class TagProtectionType(TypedDict):
-    """Tag protection
+class CommitActivityType(TypedDict):
+    """Commit Activity
 
-    Tag protection
+    Commit Activity
     """
 
-    id: NotRequired[int]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    enabled: NotRequired[bool]
-    pattern: str
+    days: list[int]
+    total: int
+    week: int
 
 
-class TagProtectionTypeForResponse(TypedDict):
-    """Tag protection
+class CommitActivityTypeForResponse(TypedDict):
+    """Commit Activity
 
-    Tag protection
+    Commit Activity
     """
 
-    id: NotRequired[int]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    enabled: NotRequired[bool]
-    pattern: str
+    days: list[int]
+    total: int
+    week: int
 
 
 __all__ = (
-    "TagProtectionType",
-    "TagProtectionTypeForResponse",
+    "CommitActivityType",
+    "CommitActivityTypeForResponse",
 )

@@ -11,22 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class UserCodespacesCodespaceNamePublishPostBodyType(TypedDict):
-    """UserCodespacesCodespaceNamePublishPostBody"""
-
-    name: NotRequired[str]
-    private: NotRequired[bool]
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class UserCodespacesCodespaceNamePublishPostBodyTypeForResponse(TypedDict):
-    """UserCodespacesCodespaceNamePublishPostBody"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
-    name: NotRequired[str]
-    private: NotRequired[bool]
+    total_count: int
+    repository_selection: NotRequired[str]
+    repositories: list[RepositoryType]
+
+
+class UserInstallationsInstallationIdRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+
+    total_count: int
+    repository_selection: NotRequired[str]
+    repositories: list[RepositoryTypeForResponse]
 
 
 __all__ = (
-    "UserCodespacesCodespaceNamePublishPostBodyType",
-    "UserCodespacesCodespaceNamePublishPostBodyTypeForResponse",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200Type",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200TypeForResponse",
 )

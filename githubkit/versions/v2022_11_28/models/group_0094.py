@@ -9,58 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing, UniqueList
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0093 import RunnerLabel
 
-class ArtifactDeploymentRecord(GitHubModel):
-    """Artifact Deployment Record
 
-    Artifact Metadata Deployment Record
+class Runner(GitHubModel):
+    """Self hosted runners
+
+    A self hosted runner
     """
 
-    id: Missing[int] = Field(default=UNSET)
-    digest: Missing[str] = Field(default=UNSET)
-    logical_environment: Missing[str] = Field(default=UNSET)
-    physical_environment: Missing[str] = Field(default=UNSET)
-    cluster: Missing[str] = Field(default=UNSET)
-    deployment_name: Missing[str] = Field(default=UNSET)
-    tags: Missing[ArtifactDeploymentRecordPropTags] = Field(default=UNSET)
-    runtime_risks: Missing[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ] = Field(
-        max_length=4 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="A list of runtime risks associated with the deployment.",
+    id: int = Field(description="The ID of the runner.")
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the runner group."
     )
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    attestation_id: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The ID of the provenance attestation associated with the deployment record.",
-    )
+    name: str = Field(description="The name of the runner.")
+    os: str = Field(description="The Operating System of the runner.")
+    status: str = Field(description="The status of the runner.")
+    busy: bool = Field()
+    labels: list[RunnerLabel] = Field()
+    ephemeral: Missing[bool] = Field(default=UNSET)
 
 
-class ArtifactDeploymentRecordPropTags(ExtraGitHubModel):
-    """ArtifactDeploymentRecordPropTags"""
+model_rebuild(Runner)
 
-
-model_rebuild(ArtifactDeploymentRecord)
-model_rebuild(ArtifactDeploymentRecordPropTags)
-
-__all__ = (
-    "ArtifactDeploymentRecord",
-    "ArtifactDeploymentRecordPropTags",
-)
+__all__ = ("Runner",)

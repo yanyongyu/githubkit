@@ -9,26 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType(
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody"""
+
+    name: str
+    value: str
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody"""
 
-    integration_id: NotRequired[int]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
-
-    integration_id: NotRequired[int]
+    name: str
+    value: str
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyTypeForResponse",
 )

@@ -15,17 +15,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0390 import CustomDeploymentRuleApp
 
-class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200(
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200(
     GitHubModel
 ):
-    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
 
-    dismissal_review_id: Missing[int] = Field(
-        default=UNSET, description="ID of the dismissal review."
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of custom deployment protection rule integrations available for this environment.",
     )
+    available_custom_deployment_protection_rule_integrations: Missing[
+        list[CustomDeploymentRuleApp]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
+)
 
-__all__ = ("ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200",)
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
+)

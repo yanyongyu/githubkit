@@ -10,37 +10,78 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0100 import TeamType, TeamTypeForResponse
 
-class AutolinkType(TypedDict):
-    """Autolink reference
 
-    An autolink reference.
+class PendingDeploymentPropReviewersItemsType(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+
+
+class PendingDeploymentPropReviewersItemsTypeForResponse(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
+
+
+class PendingDeploymentType(TypedDict):
+    """Pending Deployment
+
+    Details of a deployment that is waiting for protection rules to pass
     """
 
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
-    updated_at: NotRequired[Union[_dt.datetime, None]]
+    environment: PendingDeploymentPropEnvironmentType
+    wait_timer: int
+    wait_timer_started_at: Union[_dt.datetime, None]
+    current_user_can_approve: bool
+    reviewers: list[PendingDeploymentPropReviewersItemsType]
 
 
-class AutolinkTypeForResponse(TypedDict):
-    """Autolink reference
+class PendingDeploymentTypeForResponse(TypedDict):
+    """Pending Deployment
 
-    An autolink reference.
+    Details of a deployment that is waiting for protection rules to pass
     """
 
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
-    updated_at: NotRequired[Union[str, None]]
+    environment: PendingDeploymentPropEnvironmentTypeForResponse
+    wait_timer: int
+    wait_timer_started_at: Union[str, None]
+    current_user_can_approve: bool
+    reviewers: list[PendingDeploymentPropReviewersItemsTypeForResponse]
+
+
+class PendingDeploymentPropEnvironmentType(TypedDict):
+    """PendingDeploymentPropEnvironment"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class PendingDeploymentPropEnvironmentTypeForResponse(TypedDict):
+    """PendingDeploymentPropEnvironment"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "AutolinkType",
-    "AutolinkTypeForResponse",
+    "PendingDeploymentPropEnvironmentType",
+    "PendingDeploymentPropEnvironmentTypeForResponse",
+    "PendingDeploymentPropReviewersItemsType",
+    "PendingDeploymentPropReviewersItemsTypeForResponse",
+    "PendingDeploymentType",
+    "PendingDeploymentTypeForResponse",
 )

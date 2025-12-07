@@ -9,75 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0479 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
+from .group_0331 import HookResponseType, HookResponseTypeForResponse
 
 
-class WebhookProjectCardEditedType(TypedDict):
-    """project_card edited event"""
+class WebhookPingPropHookType(TypedDict):
+    """Webhook
 
-    action: Literal["edited"]
-    changes: WebhookProjectCardEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhooksProjectCardType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    The webhook that is being pinged
+    """
 
-
-class WebhookProjectCardEditedTypeForResponse(TypedDict):
-    """project_card edited event"""
-
-    action: Literal["edited"]
-    changes: WebhookProjectCardEditedPropChangesTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_card: WebhooksProjectCardTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    active: bool
+    app_id: NotRequired[int]
+    config: WebhookPingPropHookPropConfigType
+    created_at: _dt.datetime
+    deliveries_url: NotRequired[str]
+    events: list[str]
+    id: int
+    last_response: NotRequired[HookResponseType]
+    name: Literal["web"]
+    ping_url: NotRequired[str]
+    test_url: NotRequired[str]
+    type: str
+    updated_at: _dt.datetime
+    url: NotRequired[str]
 
 
-class WebhookProjectCardEditedPropChangesType(TypedDict):
-    """WebhookProjectCardEditedPropChanges"""
+class WebhookPingPropHookTypeForResponse(TypedDict):
+    """Webhook
 
-    note: WebhookProjectCardEditedPropChangesPropNoteType
+    The webhook that is being pinged
+    """
+
+    active: bool
+    app_id: NotRequired[int]
+    config: WebhookPingPropHookPropConfigTypeForResponse
+    created_at: str
+    deliveries_url: NotRequired[str]
+    events: list[str]
+    id: int
+    last_response: NotRequired[HookResponseTypeForResponse]
+    name: Literal["web"]
+    ping_url: NotRequired[str]
+    test_url: NotRequired[str]
+    type: str
+    updated_at: str
+    url: NotRequired[str]
 
 
-class WebhookProjectCardEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectCardEditedPropChanges"""
+class WebhookPingPropHookPropConfigType(TypedDict):
+    """WebhookPingPropHookPropConfig"""
 
-    note: WebhookProjectCardEditedPropChangesPropNoteTypeForResponse
-
-
-class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
-    """WebhookProjectCardEditedPropChangesPropNote"""
-
-    from_: Union[str, None]
+    content_type: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    secret: NotRequired[str]
+    url: NotRequired[str]
 
 
-class WebhookProjectCardEditedPropChangesPropNoteTypeForResponse(TypedDict):
-    """WebhookProjectCardEditedPropChangesPropNote"""
+class WebhookPingPropHookPropConfigTypeForResponse(TypedDict):
+    """WebhookPingPropHookPropConfig"""
 
-    from_: Union[str, None]
+    content_type: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    secret: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectCardEditedPropChangesPropNoteType",
-    "WebhookProjectCardEditedPropChangesPropNoteTypeForResponse",
-    "WebhookProjectCardEditedPropChangesType",
-    "WebhookProjectCardEditedPropChangesTypeForResponse",
-    "WebhookProjectCardEditedType",
-    "WebhookProjectCardEditedTypeForResponse",
+    "WebhookPingPropHookPropConfigType",
+    "WebhookPingPropHookPropConfigTypeForResponse",
+    "WebhookPingPropHookType",
+    "WebhookPingPropHookTypeForResponse",
 )

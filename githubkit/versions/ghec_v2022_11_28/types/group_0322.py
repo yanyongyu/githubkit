@@ -9,105 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0321 import DiffEntryType, DiffEntryTypeForResponse
-from .group_0323 import CommitPropCommitType, CommitPropCommitTypeForResponse
+from .group_0321 import BranchProtectionType, BranchProtectionTypeForResponse
 
 
-class CommitType(TypedDict):
-    """Commit
+class ShortBranchType(TypedDict):
+    """Short Branch
 
-    Commit
+    Short Branch
     """
 
-    url: str
-    sha: str
-    node_id: str
-    html_url: str
-    comments_url: str
-    commit: CommitPropCommitType
-    author: Union[SimpleUserType, EmptyObjectType, None]
-    committer: Union[SimpleUserType, EmptyObjectType, None]
-    parents: list[CommitPropParentsItemsType]
-    stats: NotRequired[CommitPropStatsType]
-    files: NotRequired[list[DiffEntryType]]
+    name: str
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
 
 
-class CommitTypeForResponse(TypedDict):
-    """Commit
+class ShortBranchTypeForResponse(TypedDict):
+    """Short Branch
 
-    Commit
+    Short Branch
     """
 
-    url: str
-    sha: str
-    node_id: str
-    html_url: str
-    comments_url: str
-    commit: CommitPropCommitTypeForResponse
-    author: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
-    committer: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
-    parents: list[CommitPropParentsItemsTypeForResponse]
-    stats: NotRequired[CommitPropStatsTypeForResponse]
-    files: NotRequired[list[DiffEntryTypeForResponse]]
+    name: str
+    commit: ShortBranchPropCommitTypeForResponse
+    protected: bool
+    protection: NotRequired[BranchProtectionTypeForResponse]
+    protection_url: NotRequired[str]
 
 
-class EmptyObjectType(TypedDict):
-    """Empty Object
-
-    An object without any properties.
-    """
-
-
-class EmptyObjectTypeForResponse(TypedDict):
-    """Empty Object
-
-    An object without any properties.
-    """
-
-
-class CommitPropParentsItemsType(TypedDict):
-    """CommitPropParentsItems"""
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
 
     sha: str
     url: str
-    html_url: NotRequired[str]
 
 
-class CommitPropParentsItemsTypeForResponse(TypedDict):
-    """CommitPropParentsItems"""
+class ShortBranchPropCommitTypeForResponse(TypedDict):
+    """ShortBranchPropCommit"""
 
     sha: str
     url: str
-    html_url: NotRequired[str]
-
-
-class CommitPropStatsType(TypedDict):
-    """CommitPropStats"""
-
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-    total: NotRequired[int]
-
-
-class CommitPropStatsTypeForResponse(TypedDict):
-    """CommitPropStats"""
-
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-    total: NotRequired[int]
 
 
 __all__ = (
-    "CommitPropParentsItemsType",
-    "CommitPropParentsItemsTypeForResponse",
-    "CommitPropStatsType",
-    "CommitPropStatsTypeForResponse",
-    "CommitType",
-    "CommitTypeForResponse",
-    "EmptyObjectType",
-    "EmptyObjectTypeForResponse",
+    "ShortBranchPropCommitType",
+    "ShortBranchPropCommitTypeForResponse",
+    "ShortBranchType",
+    "ShortBranchTypeForResponse",
 )

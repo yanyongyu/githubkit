@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,44 +18,153 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0066 import BypassResponse
 
-class CodeScanningAlertRuleSummary(GitHubModel):
-    """CodeScanningAlertRuleSummary"""
 
-    id: Missing[Union[str, None]] = Field(
+class PushRuleBypassRequest(GitHubModel):
+    """Push rule bypass request
+
+    A bypass request made by a user asking to be exempted from a push rule in this
+    repository.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the bypass request."
+    )
+    number: Missing[int] = Field(
         default=UNSET,
-        description="A unique identifier for the rule used to detect the alert.",
+        description="The number uniquely identifying the bypass request within its repository.",
     )
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the rule used to detect the alert."
+    repository: Missing[PushRuleBypassRequestPropRepository] = Field(
+        default=UNSET, description="The repository the bypass request is for."
     )
-    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
-        default=UNSET, description="The severity of the alert."
-    )
-    security_severity_level: Missing[
-        Union[None, Literal["low", "medium", "high", "critical"]]
-    ] = Field(default=UNSET, description="The security severity of the alert.")
-    description: Missing[str] = Field(
+    organization: Missing[PushRuleBypassRequestPropOrganization] = Field(
         default=UNSET,
-        description="A short description of the rule used to detect the alert.",
+        description="The organization associated with the repository the bypass request is for.",
     )
-    full_description: Missing[str] = Field(
-        default=UNSET, description="A description of the rule used to detect the alert."
+    requester: Missing[PushRuleBypassRequestPropRequester] = Field(
+        default=UNSET, description="The user who requested the bypass."
     )
-    tags: Missing[Union[list[str], None]] = Field(
-        default=UNSET, description="A set of tags applicable for the rule."
+    request_type: Missing[str] = Field(
+        default=UNSET, description="The type of request."
     )
-    help_: Missing[Union[str, None]] = Field(
+    data: Missing[Union[list[PushRuleBypassRequestPropDataItems], None]] = Field(
         default=UNSET,
-        alias="help",
-        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
+        description="Data describing the push rules that are being requested to be bypassed.",
     )
-    help_uri: Missing[Union[str, None]] = Field(
+    resource_identifier: Missing[str] = Field(
         default=UNSET,
-        description="A link to the documentation for the rule used to detect the alert.",
+        description="The unique identifier for the request type of the bypass request. For example, a commit SHA.",
+    )
+    status: Missing[
+        Literal[
+            "pending",
+            "denied",
+            "approved",
+            "cancelled",
+            "completed",
+            "expired",
+            "deleted",
+            "open",
+        ]
+    ] = Field(default=UNSET, description="The status of the bypass request.")
+    requester_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment the requester provided when creating the bypass request.",
+    )
+    expires_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The date and time the bypass request will expire."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The date and time the bypass request was created."
+    )
+    responses: Missing[Union[list[BypassResponse], None]] = Field(
+        default=UNSET, description="The responses to the bypass request."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the bypass request in a browser."
     )
 
 
-model_rebuild(CodeScanningAlertRuleSummary)
+class PushRuleBypassRequestPropRepository(GitHubModel):
+    """PushRuleBypassRequestPropRepository
 
-__all__ = ("CodeScanningAlertRuleSummary",)
+    The repository the bypass request is for.
+    """
+
+    id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the repository the bypass request is for."
+    )
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The name of the repository the bypass request is for.",
+    )
+    full_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The full name of the repository the bypass request is for.",
+    )
+
+
+class PushRuleBypassRequestPropOrganization(GitHubModel):
+    """PushRuleBypassRequestPropOrganization
+
+    The organization associated with the repository the bypass request is for.
+    """
+
+    id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the organization."
+    )
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the organization."
+    )
+
+
+class PushRuleBypassRequestPropRequester(GitHubModel):
+    """PushRuleBypassRequestPropRequester
+
+    The user who requested the bypass.
+    """
+
+    actor_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the GitHub user who requested the bypass."
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the GitHub user who requested the bypass.",
+    )
+
+
+class PushRuleBypassRequestPropDataItems(GitHubModel):
+    """PushRuleBypassRequestPropDataItems"""
+
+    ruleset_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the ruleset for the rules that were violated.",
+    )
+    ruleset_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the ruleset for the rules that were violated.",
+    )
+    total_violations: Missing[int] = Field(
+        default=UNSET,
+        description="The number of rule violations generated from the push associated with this request.",
+    )
+    rule_type: Missing[str] = Field(
+        default=UNSET, description="The type of rule that was violated."
+    )
+
+
+model_rebuild(PushRuleBypassRequest)
+model_rebuild(PushRuleBypassRequestPropRepository)
+model_rebuild(PushRuleBypassRequestPropOrganization)
+model_rebuild(PushRuleBypassRequestPropRequester)
+model_rebuild(PushRuleBypassRequestPropDataItems)
+
+__all__ = (
+    "PushRuleBypassRequest",
+    "PushRuleBypassRequestPropDataItems",
+    "PushRuleBypassRequestPropOrganization",
+    "PushRuleBypassRequestPropRepository",
+    "PushRuleBypassRequestPropRequester",
+)

@@ -9,77 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0067 import (
-    CodeScanningAlertRuleSummaryType,
-    CodeScanningAlertRuleSummaryTypeForResponse,
-)
-from .group_0068 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
-)
-from .group_0069 import (
-    CodeScanningAlertInstanceType,
-    CodeScanningAlertInstanceTypeForResponse,
-)
-from .group_0070 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
+class CodeScanningAlertInstanceType(TypedDict):
+    """CodeScanningAlertInstance"""
 
-class CodeScanningOrganizationAlertItemsType(TypedDict):
-    """CodeScanningOrganizationAlertItems"""
-
-    number: int
-    created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[None, Literal["open", "dismissed", "fixed"]]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
-    repository: SimpleRepositoryType
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
-    assignees: NotRequired[list[SimpleUserType]]
 
 
-class CodeScanningOrganizationAlertItemsTypeForResponse(TypedDict):
-    """CodeScanningOrganizationAlertItems"""
+class CodeScanningAlertInstanceTypeForResponse(TypedDict):
+    """CodeScanningAlertInstance"""
 
-    number: int
-    created_at: str
-    updated_at: NotRequired[str]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[str, None]]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
-    dismissed_at: Union[str, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[None, Literal["open", "dismissed", "fixed"]]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageTypeForResponse]
+    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryTypeForResponse
-    tool: CodeScanningAnalysisToolTypeForResponse
-    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
-    repository: SimpleRepositoryTypeForResponse
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+
+
+class CodeScanningAlertLocationType(TypedDict):
+    """CodeScanningAlertLocation
+
+    Describe a region within a file for the alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+class CodeScanningAlertLocationTypeForResponse(TypedDict):
+    """CodeScanningAlertLocation
+
+    Describe a region within a file for the alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+class CodeScanningAlertInstancePropMessageType(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
+
+    text: NotRequired[str]
+
+
+class CodeScanningAlertInstancePropMessageTypeForResponse(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
+
+    text: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningOrganizationAlertItemsType",
-    "CodeScanningOrganizationAlertItemsTypeForResponse",
+    "CodeScanningAlertInstancePropMessageType",
+    "CodeScanningAlertInstancePropMessageTypeForResponse",
+    "CodeScanningAlertInstanceType",
+    "CodeScanningAlertInstanceTypeForResponse",
+    "CodeScanningAlertLocationType",
+    "CodeScanningAlertLocationTypeForResponse",
 )

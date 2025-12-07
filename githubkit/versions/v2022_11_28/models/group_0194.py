@@ -16,19 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
+class RepositoryRuleParamsRestrictedCommits(GitHubModel):
+    """RestrictedCommits
 
-    review_draft_pull_requests: Missing[bool] = Field(
-        default=UNSET,
-        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
-    )
-    review_on_push: Missing[bool] = Field(
-        default=UNSET,
-        description="Copilot automatically reviews each new push to the pull request.",
-    )
+    Restricted commit
+    """
+
+    oid: str = Field(description="Full or abbreviated commit hash to reject")
+    reason: Missing[str] = Field(default=UNSET, description="Reason for restriction")
 
 
-model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
+model_rebuild(RepositoryRuleParamsRestrictedCommits)
 
-__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)
+__all__ = ("RepositoryRuleParamsRestrictedCommits",)

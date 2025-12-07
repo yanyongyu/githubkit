@@ -13,36 +13,32 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0169 import (
-    RepositoryRuleRequiredStatusChecksPropParametersType,
-    RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse,
+    RepositoryRuleMergeQueuePropParametersType,
+    RepositoryRuleMergeQueuePropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleRequiredStatusChecksType(TypedDict):
-    """required_status_checks
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-class RepositoryRuleRequiredStatusChecksTypeForResponse(TypedDict):
-    """required_status_checks
+class RepositoryRuleMergeQueueTypeForResponse(TypedDict):
+    """merge_queue
 
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse
-    ]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleRequiredStatusChecksType",
-    "RepositoryRuleRequiredStatusChecksTypeForResponse",
+    "RepositoryRuleMergeQueueType",
+    "RepositoryRuleMergeQueueTypeForResponse",
 )

@@ -9,52 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0390 import (
+    CustomDeploymentRuleAppType,
+    CustomDeploymentRuleAppTypeForResponse,
+)
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class DeploymentProtectionRuleType(TypedDict):
+    """Deployment protection rule
 
-    Git references within a repository
+    Deployment protection rule
     """
 
-    ref: str
+    id: int
     node_id: str
-    url: str
-    object_: GitRefPropObjectType
+    enabled: bool
+    app: CustomDeploymentRuleAppType
 
 
-class GitRefTypeForResponse(TypedDict):
-    """Git Reference
+class DeploymentProtectionRuleTypeForResponse(TypedDict):
+    """Deployment protection rule
 
-    Git references within a repository
+    Deployment protection rule
     """
 
-    ref: str
+    id: int
     node_id: str
-    url: str
-    object_: GitRefPropObjectTypeForResponse
+    enabled: bool
+    app: CustomDeploymentRuleAppTypeForResponse
 
 
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    type: str
-    sha: str
-    url: str
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
 
 
-class GitRefPropObjectTypeForResponse(TypedDict):
-    """GitRefPropObject"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    type: str
-    sha: str
-    url: str
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[
+        list[DeploymentProtectionRuleTypeForResponse]
+    ]
 
 
 __all__ = (
-    "GitRefPropObjectType",
-    "GitRefPropObjectTypeForResponse",
-    "GitRefType",
-    "GitRefTypeForResponse",
+    "DeploymentProtectionRuleType",
+    "DeploymentProtectionRuleTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse",
 )

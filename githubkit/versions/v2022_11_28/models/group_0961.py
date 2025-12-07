@@ -9,33 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Annotated, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0028 import CodeSecurityConfiguration
+from .group_0959 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200(
-    GitHubModel
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
+class OrgsOrgCampaignsPostBodyOneof1(GitHubModel):
+    """OrgsOrgCampaignsPostBodyOneof1"""
 
-    default_for_new_repos: Missing[
-        Literal["all", "none", "private_and_internal", "public"]
+    name: str = Field(
+        min_length=1, max_length=50, description="The name of the campaign"
+    )
+    description: str = Field(
+        min_length=1, max_length=255, description="A description for the campaign"
+    )
+    managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
+    )
+    team_managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The slugs of the teams to set as the campaign managers.",
+    )
+    ends_at: _dt.datetime = Field(
+        description="The end date and time of the campaign. The date must be in the future."
+    )
+    contact_link: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contact link of the campaign. Must be a URI."
+    )
+    code_scanning_alerts: Missing[
+        Union[
+            Annotated[
+                list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems],
+                Field(min_length=1 if PYDANTIC_V2 else None),
+            ],
+            None,
+        ]
     ] = Field(
         default=UNSET,
-        description="Specifies which types of repository this security configuration is applied to by default.",
+        description="The code scanning alerts to include in this campaign",
     )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+    generate_issues: Missing[bool] = Field(
+        default=UNSET,
+        description="If true, will automatically generate issues for the campaign. The default is false.",
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200)
+model_rebuild(OrgsOrgCampaignsPostBodyOneof1)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",)
+__all__ = ("OrgsOrgCampaignsPostBodyOneof1",)

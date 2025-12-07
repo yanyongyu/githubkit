@@ -9,29 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleCommitMessagePatternPropParametersType(TypedDict):
-    """RepositoryRuleCommitMessagePatternPropParameters"""
+class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+    required_deployment_environments: list[str]
 
 
-class RepositoryRuleCommitMessagePatternPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCommitMessagePatternPropParameters"""
+class RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+    required_deployment_environments: list[str]
 
 
 __all__ = (
-    "RepositoryRuleCommitMessagePatternPropParametersType",
-    "RepositoryRuleCommitMessagePatternPropParametersTypeForResponse",
+    "RepositoryRuleRequiredDeploymentsPropParametersType",
+    "RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse",
 )

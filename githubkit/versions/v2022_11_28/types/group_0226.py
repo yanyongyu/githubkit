@@ -9,57 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0225 import RateLimitType, RateLimitTypeForResponse
+from .group_0227 import (
+    RateLimitOverviewPropResourcesType,
+    RateLimitOverviewPropResourcesTypeForResponse,
+)
 
 
-class ActionsCacheListType(TypedDict):
-    """Repository actions caches
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
 
-    Repository actions caches
+    Rate Limit Overview
     """
 
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
 
 
-class ActionsCacheListTypeForResponse(TypedDict):
-    """Repository actions caches
+class RateLimitOverviewTypeForResponse(TypedDict):
+    """Rate Limit Overview
 
-    Repository actions caches
+    Rate Limit Overview
     """
 
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsTypeForResponse]
-
-
-class ActionsCacheListPropActionsCachesItemsType(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    size_in_bytes: NotRequired[int]
-
-
-class ActionsCacheListPropActionsCachesItemsTypeForResponse(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[str]
-    created_at: NotRequired[str]
-    size_in_bytes: NotRequired[int]
+    resources: RateLimitOverviewPropResourcesTypeForResponse
+    rate: RateLimitTypeForResponse
 
 
 __all__ = (
-    "ActionsCacheListPropActionsCachesItemsType",
-    "ActionsCacheListPropActionsCachesItemsTypeForResponse",
-    "ActionsCacheListType",
-    "ActionsCacheListTypeForResponse",
+    "RateLimitOverviewType",
+    "RateLimitOverviewTypeForResponse",
 )

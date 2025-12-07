@@ -14,16 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody
 
     Examples:
-        {'teams': ['justice-league']}
+        {'users': ['mona']}
     """
 
-    teams: list[str] = Field(description="The slug values for teams")
+    users: list[str] = Field(description="The username for users")
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody",)

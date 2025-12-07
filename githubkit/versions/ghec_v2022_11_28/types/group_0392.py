@@ -9,80 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0320 import VerificationType, VerificationTypeForResponse
+from typing_extensions import TypedDict
 
 
-class GitTagType(TypedDict):
-    """Git Tag
+class ShortBlobType(TypedDict):
+    """Short Blob
 
-    Metadata for a Git tag
+    Short Blob
     """
 
-    node_id: str
-    tag: str
-    sha: str
     url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
+    sha: str
 
 
-class GitTagTypeForResponse(TypedDict):
-    """Git Tag
+class ShortBlobTypeForResponse(TypedDict):
+    """Short Blob
 
-    Metadata for a Git tag
+    Short Blob
     """
 
-    node_id: str
-    tag: str
-    sha: str
     url: str
-    message: str
-    tagger: GitTagPropTaggerTypeForResponse
-    object_: GitTagPropObjectTypeForResponse
-    verification: NotRequired[VerificationTypeForResponse]
-
-
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
-
-    date: str
-    email: str
-    name: str
-
-
-class GitTagPropTaggerTypeForResponse(TypedDict):
-    """GitTagPropTagger"""
-
-    date: str
-    email: str
-    name: str
-
-
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
-
     sha: str
-    type: str
-    url: str
-
-
-class GitTagPropObjectTypeForResponse(TypedDict):
-    """GitTagPropObject"""
-
-    sha: str
-    type: str
-    url: str
 
 
 __all__ = (
-    "GitTagPropObjectType",
-    "GitTagPropObjectTypeForResponse",
-    "GitTagPropTaggerType",
-    "GitTagPropTaggerTypeForResponse",
-    "GitTagType",
-    "GitTagTypeForResponse",
+    "ShortBlobType",
+    "ShortBlobTypeForResponse",
 )

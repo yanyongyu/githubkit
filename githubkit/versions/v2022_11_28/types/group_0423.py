@@ -9,49 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class SearchResultTextMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItems"""
+class TrafficType(TypedDict):
+    """Traffic"""
 
-    object_url: NotRequired[str]
-    object_type: NotRequired[Union[str, None]]
-    property_: NotRequired[str]
-    fragment: NotRequired[str]
-    matches: NotRequired[list[SearchResultTextMatchesItemsPropMatchesItemsType]]
+    timestamp: _dt.datetime
+    uniques: int
+    count: int
 
 
-class SearchResultTextMatchesItemsTypeForResponse(TypedDict):
-    """SearchResultTextMatchesItems"""
+class TrafficTypeForResponse(TypedDict):
+    """Traffic"""
 
-    object_url: NotRequired[str]
-    object_type: NotRequired[Union[str, None]]
-    property_: NotRequired[str]
-    fragment: NotRequired[str]
-    matches: NotRequired[
-        list[SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse]
-    ]
-
-
-class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
-
-    text: NotRequired[str]
-    indices: NotRequired[list[int]]
-
-
-class SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse(TypedDict):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
-
-    text: NotRequired[str]
-    indices: NotRequired[list[int]]
+    timestamp: str
+    uniques: int
+    count: int
 
 
 __all__ = (
-    "SearchResultTextMatchesItemsPropMatchesItemsType",
-    "SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse",
-    "SearchResultTextMatchesItemsType",
-    "SearchResultTextMatchesItemsTypeForResponse",
+    "TrafficType",
+    "TrafficTypeForResponse",
 )

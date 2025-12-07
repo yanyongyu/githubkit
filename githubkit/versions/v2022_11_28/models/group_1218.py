@@ -16,17 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamsTeamIdDiscussionsPostBody(GitHubModel):
-    """TeamsTeamIdDiscussionsPostBody"""
+class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
+    """ReposOwnerRepoSubscriptionPutBody"""
 
-    title: str = Field(description="The discussion post's title.")
-    body: str = Field(description="The discussion post's body text.")
-    private: Missing[bool] = Field(
+    subscribed: Missing[bool] = Field(
         default=UNSET,
-        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
+        description="Determines if notifications should be received from this repository.",
+    )
+    ignored: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if all notifications should be blocked from this repository.",
     )
 
 
-model_rebuild(TeamsTeamIdDiscussionsPostBody)
+model_rebuild(ReposOwnerRepoSubscriptionPutBody)
 
-__all__ = ("TeamsTeamIdDiscussionsPostBody",)
+__all__ = ("ReposOwnerRepoSubscriptionPutBody",)

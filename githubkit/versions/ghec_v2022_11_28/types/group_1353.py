@@ -9,36 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPostBody"""
+class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
 
-    title: NotRequired[str]
-    head: str
-    head_repo: NotRequired[str]
-    base: str
-    body: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
-    draft: NotRequired[bool]
-    issue: NotRequired[int]
+    body: str
+    commit_id: str
+    path: str
+    position: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    line: NotRequired[int]
+    start_line: NotRequired[int]
+    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
+    in_reply_to: NotRequired[int]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
-class ReposOwnerRepoPullsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPostBody"""
+class ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
 
-    title: NotRequired[str]
-    head: str
-    head_repo: NotRequired[str]
-    base: str
-    body: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
-    draft: NotRequired[bool]
-    issue: NotRequired[int]
+    body: str
+    commit_id: str
+    path: str
+    position: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    line: NotRequired[int]
+    start_line: NotRequired[int]
+    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
+    in_reply_to: NotRequired[int]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPostBodyType",
-    "ReposOwnerRepoPullsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberCommentsPostBodyType",
+    "ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse",
 )

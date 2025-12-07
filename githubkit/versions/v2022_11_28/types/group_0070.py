@@ -9,56 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageReportType(TypedDict):
-    """BillingUsageReport"""
+class GetAllBudgetsType(TypedDict):
+    """GetAllBudgets"""
 
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
-
-
-class BillingUsageReportTypeForResponse(TypedDict):
-    """BillingUsageReport"""
-
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsTypeForResponse]]
+    budgets: list[BudgetType]
+    has_next_page: NotRequired[bool]
 
 
-class BillingUsageReportPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
+class GetAllBudgetsTypeForResponse(TypedDict):
+    """GetAllBudgets"""
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
+    budgets: list[BudgetTypeForResponse]
+    has_next_page: NotRequired[bool]
 
 
-class BillingUsageReportPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
+class BudgetType(TypedDict):
+    """Budget"""
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: str
+    budget_entity_name: NotRequired[str]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingType
+
+
+class BudgetTypeForResponse(TypedDict):
+    """Budget"""
+
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: str
+    budget_entity_name: NotRequired[str]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
+
+
+class BudgetPropBudgetAlertingType(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
+
+
+class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "BillingUsageReportPropUsageItemsItemsType",
-    "BillingUsageReportPropUsageItemsItemsTypeForResponse",
-    "BillingUsageReportType",
-    "BillingUsageReportTypeForResponse",
+    "BudgetPropBudgetAlertingType",
+    "BudgetPropBudgetAlertingTypeForResponse",
+    "BudgetType",
+    "BudgetTypeForResponse",
+    "GetAllBudgetsType",
+    "GetAllBudgetsTypeForResponse",
 )

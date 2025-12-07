@@ -9,27 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType(TypedDict):
-    """TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody"""
+class UserPatchBodyType(TypedDict):
+    """UserPatchBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    blog: NotRequired[str]
+    twitter_username: NotRequired[Union[str, None]]
+    company: NotRequired[str]
+    location: NotRequired[str]
+    hireable: NotRequired[bool]
+    bio: NotRequired[str]
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody"""
+class UserPatchBodyTypeForResponse(TypedDict):
+    """UserPatchBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    blog: NotRequired[str]
+    twitter_username: NotRequired[Union[str, None]]
+    company: NotRequired[str]
+    location: NotRequired[str]
+    hireable: NotRequired[bool]
+    bio: NotRequired[str]
 
 
 __all__ = (
-    "TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType",
-    "TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyTypeForResponse",
+    "UserPatchBodyType",
+    "UserPatchBodyTypeForResponse",
 )

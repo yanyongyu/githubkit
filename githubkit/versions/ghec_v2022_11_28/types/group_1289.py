@@ -9,55 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0302 import ActionsVariableType, ActionsVariableTypeForResponse
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
-
-    total_count: int
-    branch_policies: list[DeploymentBranchPolicyType]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
     total_count: int
-    branch_policies: list[DeploymentBranchPolicyTypeForResponse]
+    variables: list[ActionsVariableType]
 
 
-class DeploymentBranchPolicyType(TypedDict):
-    """Deployment branch policy
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-    Details of a deployment branch or tag policy.
-    """
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
-
-
-class DeploymentBranchPolicyTypeForResponse(TypedDict):
-    """Deployment branch policy
-
-    Details of a deployment branch or tag policy.
-    """
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
+    total_count: int
+    variables: list[ActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "DeploymentBranchPolicyType",
-    "DeploymentBranchPolicyTypeForResponse",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse",
 )

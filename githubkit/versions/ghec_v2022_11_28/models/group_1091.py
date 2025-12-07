@@ -9,24 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0221 import ArtifactDeploymentRecord
+
+class OrgsOrgActionsVariablesGetResponse200(GitHubModel):
+    """OrgsOrgActionsVariablesGetResponse200"""
+
+    total_count: int = Field()
+    variables: list[OrganizationActionsVariable] = Field()
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200(GitHubModel):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+class OrganizationActionsVariable(GitHubModel):
+    """Actions Variable for an Organization
 
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of deployment records created"
+    Organization variable for GitHub Actions.
+    """
+
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a variable"
+    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200)
+model_rebuild(OrgsOrgActionsVariablesGetResponse200)
+model_rebuild(OrganizationActionsVariable)
 
-__all__ = ("OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200",)
+__all__ = (
+    "OrganizationActionsVariable",
+    "OrgsOrgActionsVariablesGetResponse200",
+)

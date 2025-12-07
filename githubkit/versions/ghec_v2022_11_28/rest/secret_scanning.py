@@ -56,6 +56,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType,
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse,
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
+        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
         SecretScanningAlertTypeForResponse,
         SecretScanningBypassRequestTypeForResponse,
@@ -227,6 +228,7 @@ class SecretScanningClient:
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
+        assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
@@ -264,6 +266,7 @@ class SecretScanningClient:
             "state": state,
             "secret_type": secret_type,
             "resolution": resolution,
+            "assignee": assignee,
             "sort": sort,
             "direction": direction,
             "per_page": per_page,
@@ -297,6 +300,7 @@ class SecretScanningClient:
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
+        assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
@@ -334,6 +338,7 @@ class SecretScanningClient:
             "state": state,
             "secret_type": secret_type,
             "resolution": resolution,
+            "assignee": assignee,
             "sort": sort,
             "direction": direction,
             "per_page": per_page,
@@ -909,6 +914,7 @@ class SecretScanningClient:
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
+        assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         page: Missing[int] = UNSET,
@@ -950,6 +956,7 @@ class SecretScanningClient:
             "state": state,
             "secret_type": secret_type,
             "resolution": resolution,
+            "assignee": assignee,
             "sort": sort,
             "direction": direction,
             "page": page,
@@ -984,6 +991,7 @@ class SecretScanningClient:
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
+        assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         page: Missing[int] = UNSET,
@@ -1025,6 +1033,7 @@ class SecretScanningClient:
             "state": state,
             "secret_type": secret_type,
             "resolution": resolution,
+            "assignee": assignee,
             "sort": sort,
             "direction": direction,
             "page": page,
@@ -2238,6 +2247,7 @@ class SecretScanningClient:
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
+        assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         page: Missing[int] = UNSET,
@@ -2275,6 +2285,7 @@ class SecretScanningClient:
             "state": state,
             "secret_type": secret_type,
             "resolution": resolution,
+            "assignee": assignee,
             "sort": sort,
             "direction": direction,
             "page": page,
@@ -2309,6 +2320,7 @@ class SecretScanningClient:
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
+        assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         page: Missing[int] = UNSET,
@@ -2346,6 +2358,7 @@ class SecretScanningClient:
             "state": state,
             "secret_type": secret_type,
             "resolution": resolution,
+            "assignee": assignee,
             "sort": sort,
             "direction": direction,
             "page": page,
@@ -2477,7 +2490,10 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
+        data: Union[
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+        ],
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     @overload
@@ -2497,6 +2513,27 @@ class SecretScanningClient:
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
+        assignee: Missing[Union[str, None]] = UNSET,
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+
+    @overload
+    def update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        state: Missing[Literal["open", "resolved"]] = UNSET,
+        resolution: Missing[
+            Union[
+                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+            ]
+        ] = UNSET,
+        resolution_comment: Missing[Union[str, None]] = UNSET,
+        assignee: Union[str, None],
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     def update_alert(
@@ -2508,7 +2545,10 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[
-            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type
+            Union[
+                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
+                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+            ]
         ] = UNSET,
         **kwargs,
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
@@ -2518,6 +2558,8 @@ class SecretScanningClient:
 
         Updates the status of a secret scanning alert in an eligible repository.
 
+        You can also use this endpoint to assign or unassign an alert to a user who has write access to the repository.
+
         The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
@@ -2525,9 +2567,12 @@ class SecretScanningClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert
         """
 
+        from typing import Union
+
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
             SecretScanningAlert,
         )
 
@@ -2542,7 +2587,11 @@ class SecretScanningClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0, json
+                Union[
+                    ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
+                    ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
+                ],
+                json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2567,7 +2616,10 @@ class SecretScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
+        data: Union[
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+        ],
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     @overload
@@ -2587,6 +2639,27 @@ class SecretScanningClient:
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
+        assignee: Missing[Union[str, None]] = UNSET,
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+
+    @overload
+    async def async_update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        state: Missing[Literal["open", "resolved"]] = UNSET,
+        resolution: Missing[
+            Union[
+                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+            ]
+        ] = UNSET,
+        resolution_comment: Missing[Union[str, None]] = UNSET,
+        assignee: Union[str, None],
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
     async def async_update_alert(
@@ -2598,7 +2671,10 @@ class SecretScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[
-            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type
+            Union[
+                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
+                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+            ]
         ] = UNSET,
         **kwargs,
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]:
@@ -2608,6 +2684,8 @@ class SecretScanningClient:
 
         Updates the status of a secret scanning alert in an eligible repository.
 
+        You can also use this endpoint to assign or unassign an alert to a user who has write access to the repository.
+
         The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
@@ -2615,9 +2693,12 @@ class SecretScanningClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert
         """
 
+        from typing import Union
+
         from ..models import (
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
             SecretScanningAlert,
         )
 
@@ -2632,7 +2713,11 @@ class SecretScanningClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0, json
+                Union[
+                    ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
+                    ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
+                ],
+                json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

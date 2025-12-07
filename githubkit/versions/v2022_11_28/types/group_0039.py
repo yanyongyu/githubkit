@@ -9,51 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0034 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0037 import (
+    DependabotAlertSecurityVulnerabilityType,
+    DependabotAlertSecurityVulnerabilityTypeForResponse,
+)
+from .group_0038 import (
+    DependabotAlertSecurityAdvisoryType,
+    DependabotAlertSecurityAdvisoryTypeForResponse,
+)
+from .group_0040 import (
+    DependabotAlertWithRepositoryPropDependencyType,
+    DependabotAlertWithRepositoryPropDependencyTypeForResponse,
+)
 
 
-class OrganizationSimpleType(TypedDict):
-    """Organization Simple
+class DependabotAlertWithRepositoryType(TypedDict):
+    """DependabotAlertWithRepository
 
-    A GitHub organization.
+    A Dependabot alert.
     """
 
-    login: str
-    id: int
-    node_id: str
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertWithRepositoryPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
     url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
+    html_url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[_dt.datetime, None]
+    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
+    repository: SimpleRepositoryType
 
 
-class OrganizationSimpleTypeForResponse(TypedDict):
-    """Organization Simple
+class DependabotAlertWithRepositoryTypeForResponse(TypedDict):
+    """DependabotAlertWithRepository
 
-    A GitHub organization.
+    A Dependabot alert.
     """
 
-    login: str
-    id: int
-    node_id: str
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertWithRepositoryPropDependencyTypeForResponse
+    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
+    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
     url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
+    html_url: str
+    created_at: str
+    updated_at: str
+    dismissed_at: Union[str, None]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[str, None]
+    auto_dismissed_at: NotRequired[Union[str, None]]
+    repository: SimpleRepositoryTypeForResponse
 
 
 __all__ = (
-    "OrganizationSimpleType",
-    "OrganizationSimpleTypeForResponse",
+    "DependabotAlertWithRepositoryType",
+    "DependabotAlertWithRepositoryTypeForResponse",
 )

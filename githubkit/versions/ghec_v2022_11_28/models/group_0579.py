@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,39 +17,129 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0527 import EnterpriseWebhooks
-from .group_0528 import SimpleInstallation
-from .group_0529 import OrganizationSimpleWebhooks
-from .group_0530 import RepositoryWebhooks
 
+class WebhooksSponsorship(GitHubModel):
+    """WebhooksSponsorship"""
 
-class WebhookBranchProtectionConfigurationEnabled(GitHubModel):
-    """branch protection configuration enabled event"""
-
-    action: Literal["enabled"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    created_at: str = Field()
+    maintainer: Missing[WebhooksSponsorshipPropMaintainer] = Field(default=UNSET)
+    node_id: str = Field()
+    privacy_level: str = Field()
+    sponsor: Union[WebhooksSponsorshipPropSponsor, None] = Field(title="User")
+    sponsorable: Union[WebhooksSponsorshipPropSponsorable, None] = Field(title="User")
+    tier: WebhooksSponsorshipPropTier = Field(
+        title="Sponsorship Tier",
+        description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookBranchProtectionConfigurationEnabled)
+class WebhooksSponsorshipPropMaintainer(GitHubModel):
+    """WebhooksSponsorshipPropMaintainer"""
 
-__all__ = ("WebhookBranchProtectionConfigurationEnabled",)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhooksSponsorshipPropSponsor(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhooksSponsorshipPropSponsorable(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhooksSponsorshipPropTier(GitHubModel):
+    """Sponsorship Tier
+
+    The `tier_changed` and `pending_tier_change` will include the original tier
+    before the change or pending change. For more information, see the pending tier
+    change payload.
+    """
+
+    created_at: str = Field()
+    description: str = Field()
+    is_custom_ammount: Missing[bool] = Field(default=UNSET)
+    is_custom_amount: Missing[bool] = Field(default=UNSET)
+    is_one_time: bool = Field()
+    monthly_price_in_cents: int = Field()
+    monthly_price_in_dollars: int = Field()
+    name: str = Field()
+    node_id: str = Field()
+
+
+model_rebuild(WebhooksSponsorship)
+model_rebuild(WebhooksSponsorshipPropMaintainer)
+model_rebuild(WebhooksSponsorshipPropSponsor)
+model_rebuild(WebhooksSponsorshipPropSponsorable)
+model_rebuild(WebhooksSponsorshipPropTier)
+
+__all__ = (
+    "WebhooksSponsorship",
+    "WebhooksSponsorshipPropMaintainer",
+    "WebhooksSponsorshipPropSponsor",
+    "WebhooksSponsorshipPropSponsorable",
+    "WebhooksSponsorshipPropTier",
+)

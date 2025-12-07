@@ -13,44 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0493 import (
-    WebhooksSecurityAdvisoryType,
-    WebhooksSecurityAdvisoryTypeForResponse,
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0497 import (
+    SecretScanningAlertWebhookType,
+    SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecurityAdvisoryUpdatedType(TypedDict):
-    """security_advisory updated event"""
+class WebhookSecretScanningAlertPubliclyLeakedType(TypedDict):
+    """secret_scanning_alert publicly leaked event"""
 
-    action: Literal["updated"]
+    action: Literal["publicly_leaked"]
+    alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    security_advisory: WebhooksSecurityAdvisoryType
+    repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecurityAdvisoryUpdatedTypeForResponse(TypedDict):
-    """security_advisory updated event"""
+class WebhookSecretScanningAlertPubliclyLeakedTypeForResponse(TypedDict):
+    """secret_scanning_alert publicly leaked event"""
 
-    action: Literal["updated"]
+    action: Literal["publicly_leaked"]
+    alert: SecretScanningAlertWebhookTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    security_advisory: WebhooksSecurityAdvisoryTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecurityAdvisoryUpdatedType",
-    "WebhookSecurityAdvisoryUpdatedTypeForResponse",
+    "WebhookSecretScanningAlertPubliclyLeakedType",
+    "WebhookSecretScanningAlertPubliclyLeakedTypeForResponse",
 )

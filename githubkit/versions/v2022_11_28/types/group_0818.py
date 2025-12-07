@@ -9,45 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0145 import FullRepositoryType, FullRepositoryTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0819 import (
-    WebhookSecurityAndAnalysisPropChangesType,
-    WebhookSecurityAndAnalysisPropChangesTypeForResponse,
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0497 import (
+    SecretScanningAlertWebhookType,
+    SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecurityAndAnalysisType(TypedDict):
-    """security_and_analysis event"""
+class WebhookSecretScanningAlertUnassignedType(TypedDict):
+    """secret_scanning_alert unassigned event"""
 
-    changes: WebhookSecurityAndAnalysisPropChangesType
+    action: Literal["unassigned"]
+    alert: SecretScanningAlertWebhookType
+    assignee: NotRequired[SimpleUserType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: FullRepositoryType
+    repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecurityAndAnalysisTypeForResponse(TypedDict):
-    """security_and_analysis event"""
+class WebhookSecretScanningAlertUnassignedTypeForResponse(TypedDict):
+    """secret_scanning_alert unassigned event"""
 
-    changes: WebhookSecurityAndAnalysisPropChangesTypeForResponse
+    action: Literal["unassigned"]
+    alert: SecretScanningAlertWebhookTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: FullRepositoryTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecurityAndAnalysisType",
-    "WebhookSecurityAndAnalysisTypeForResponse",
+    "WebhookSecretScanningAlertUnassignedType",
+    "WebhookSecretScanningAlertUnassignedTypeForResponse",
 )

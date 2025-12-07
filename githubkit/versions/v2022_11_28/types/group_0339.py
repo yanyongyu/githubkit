@@ -16,59 +16,59 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class RenamedIssueEventType(TypedDict):
-    """Renamed Issue Event
+class UnlabeledIssueEventType(TypedDict):
+    """Unlabeled Issue Event
 
-    Renamed Issue Event
+    Unlabeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["renamed"]
+    event: Literal["unlabeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    rename: RenamedIssueEventPropRenameType
+    label: UnlabeledIssueEventPropLabelType
 
 
-class RenamedIssueEventTypeForResponse(TypedDict):
-    """Renamed Issue Event
+class UnlabeledIssueEventTypeForResponse(TypedDict):
+    """Unlabeled Issue Event
 
-    Renamed Issue Event
+    Unlabeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["renamed"]
+    event: Literal["unlabeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    rename: RenamedIssueEventPropRenameTypeForResponse
+    label: UnlabeledIssueEventPropLabelTypeForResponse
 
 
-class RenamedIssueEventPropRenameType(TypedDict):
-    """RenamedIssueEventPropRename"""
+class UnlabeledIssueEventPropLabelType(TypedDict):
+    """UnlabeledIssueEventPropLabel"""
 
-    from_: str
-    to: str
+    name: str
+    color: str
 
 
-class RenamedIssueEventPropRenameTypeForResponse(TypedDict):
-    """RenamedIssueEventPropRename"""
+class UnlabeledIssueEventPropLabelTypeForResponse(TypedDict):
+    """UnlabeledIssueEventPropLabel"""
 
-    from_: str
-    to: str
+    name: str
+    color: str
 
 
 __all__ = (
-    "RenamedIssueEventPropRenameType",
-    "RenamedIssueEventPropRenameTypeForResponse",
-    "RenamedIssueEventType",
-    "RenamedIssueEventTypeForResponse",
+    "UnlabeledIssueEventPropLabelType",
+    "UnlabeledIssueEventPropLabelTypeForResponse",
+    "UnlabeledIssueEventType",
+    "UnlabeledIssueEventTypeForResponse",
 )

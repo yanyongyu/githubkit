@@ -9,31 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0062 import (
+    AmazonS3AccessKeysConfigType,
+    AmazonS3AccessKeysConfigTypeForResponse,
+    AzureBlobConfigType,
+    AzureBlobConfigTypeForResponse,
+    AzureHubConfigType,
+    AzureHubConfigTypeForResponse,
+    DatadogConfigType,
+    DatadogConfigTypeForResponse,
+    HecConfigType,
+    HecConfigTypeForResponse,
+)
+from .group_0063 import (
+    AmazonS3OidcConfigType,
+    AmazonS3OidcConfigTypeForResponse,
+    SplunkConfigType,
+    SplunkConfigTypeForResponse,
+)
+from .group_0064 import GoogleCloudConfigType, GoogleCloudConfigTypeForResponse
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
+    enabled: bool
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ]
+    vendor_specific: Union[
+        AzureBlobConfigType,
+        AzureHubConfigType,
+        AmazonS3OidcConfigType,
+        AmazonS3AccessKeysConfigType,
+        SplunkConfigType,
+        HecConfigType,
+        GoogleCloudConfigType,
+        DatadogConfigType,
     ]
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
+    enabled: bool
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ]
+    vendor_specific: Union[
+        AzureBlobConfigTypeForResponse,
+        AzureHubConfigTypeForResponse,
+        AmazonS3OidcConfigTypeForResponse,
+        AmazonS3AccessKeysConfigTypeForResponse,
+        SplunkConfigTypeForResponse,
+        HecConfigTypeForResponse,
+        GoogleCloudConfigTypeForResponse,
+        DatadogConfigTypeForResponse,
     ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse",
 )

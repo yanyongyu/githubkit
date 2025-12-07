@@ -9,34 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
+
+class AppHookConfigPatchBodyType(TypedDict):
+    """AppHookConfigPatchBody"""
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
-    """ApplicationsClientIdTokenScopedPostBody"""
+class AppHookConfigPatchBodyTypeForResponse(TypedDict):
+    """AppHookConfigPatchBody"""
 
-    access_token: str
-    target: NotRequired[str]
-    target_id: NotRequired[int]
-    repositories: NotRequired[list[str]]
-    repository_ids: NotRequired[list[int]]
-    permissions: NotRequired[AppPermissionsType]
-
-
-class ApplicationsClientIdTokenScopedPostBodyTypeForResponse(TypedDict):
-    """ApplicationsClientIdTokenScopedPostBody"""
-
-    access_token: str
-    target: NotRequired[str]
-    target_id: NotRequired[int]
-    repositories: NotRequired[list[str]]
-    repository_ids: NotRequired[list[int]]
-    permissions: NotRequired[AppPermissionsTypeForResponse]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "ApplicationsClientIdTokenScopedPostBodyType",
-    "ApplicationsClientIdTokenScopedPostBodyTypeForResponse",
+    "AppHookConfigPatchBodyType",
+    "AppHookConfigPatchBodyTypeForResponse",
 )

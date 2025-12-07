@@ -9,65 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0096 import TeamType, TeamTypeForResponse
 
+class WorkflowUsageType(TypedDict):
+    """Workflow Usage
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
-
-    users: NotRequired[list[SimpleUserType]]
-    teams: NotRequired[list[TeamType]]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
-    url: NotRequired[str]
-    users_url: NotRequired[str]
-    teams_url: NotRequired[str]
-
-
-class ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
-
-    users: NotRequired[list[SimpleUserTypeForResponse]]
-    teams: NotRequired[list[TeamTypeForResponse]]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
-    url: NotRequired[str]
-    users_url: NotRequired[str]
-    teams_url: NotRequired[str]
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    Workflow Usage
     """
 
-    users: NotRequired[list[SimpleUserType]]
-    teams: NotRequired[list[TeamType]]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    billable: WorkflowUsagePropBillableType
 
 
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+class WorkflowUsageTypeForResponse(TypedDict):
+    """Workflow Usage
 
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    Workflow Usage
     """
 
-    users: NotRequired[list[SimpleUserTypeForResponse]]
-    teams: NotRequired[list[TeamTypeForResponse]]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    billable: WorkflowUsagePropBillableTypeForResponse
+
+
+class WorkflowUsagePropBillableType(TypedDict):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
+
+
+class WorkflowUsagePropBillableTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuTypeForResponse]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosTypeForResponse]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsTypeForResponse]
+
+
+class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropUbuntuTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropMacosType(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropMacosTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropWindowsType(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropWindowsTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: NotRequired[int]
 
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse",
+    "WorkflowUsagePropBillablePropMacosType",
+    "WorkflowUsagePropBillablePropMacosTypeForResponse",
+    "WorkflowUsagePropBillablePropUbuntuType",
+    "WorkflowUsagePropBillablePropUbuntuTypeForResponse",
+    "WorkflowUsagePropBillablePropWindowsType",
+    "WorkflowUsagePropBillablePropWindowsTypeForResponse",
+    "WorkflowUsagePropBillableType",
+    "WorkflowUsagePropBillableTypeForResponse",
+    "WorkflowUsageType",
+    "WorkflowUsageTypeForResponse",
 )

@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,37 +16,90 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class IssueType(GitHubModel):
-    """Issue Type
+class BillingUsageSummaryReportGhe(GitHubModel):
+    """BillingUsageSummaryReportGhe"""
 
-    The type of issue.
-    """
-
-    id: int = Field(description="The unique identifier of the issue type.")
-    node_id: str = Field(description="The node identifier of the issue type.")
-    name: str = Field(description="The name of the issue type.")
-    description: Union[str, None] = Field(
-        description="The description of the issue type."
+    time_period: BillingUsageSummaryReportGhePropTimePeriod = Field(alias="timePeriod")
+    enterprise: str = Field(description="The unique identifier of the enterprise.")
+    organization: Missing[str] = Field(
+        default=UNSET, description="The name of the organization for the usage report."
     )
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="The color of the issue type.")
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The time the issue type created."
+    repository: Missing[str] = Field(
+        default=UNSET, description="The name of the repository for the usage report."
     )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The time the issue type last updated."
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
     )
-    is_enabled: Missing[bool] = Field(
-        default=UNSET, description="The enabled state of the issue type."
+    sku: Missing[str] = Field(
+        default=UNSET, description="The SKU for the usage report."
+    )
+    cost_center: Missing[BillingUsageSummaryReportGhePropCostCenter] = Field(
+        default=UNSET, alias="costCenter"
+    )
+    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItems] = Field(
+        alias="usageItems"
     )
 
 
-model_rebuild(IssueType)
+class BillingUsageSummaryReportGhePropTimePeriod(GitHubModel):
+    """BillingUsageSummaryReportGhePropTimePeriod"""
 
-__all__ = ("IssueType",)
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
+    )
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
+    )
+
+
+class BillingUsageSummaryReportGhePropCostCenter(GitHubModel):
+    """BillingUsageSummaryReportGhePropCostCenter"""
+
+    id: str = Field(description="The unique identifier of the cost center.")
+    name: str = Field(description="The name of the cost center.")
+
+
+class BillingUsageSummaryReportGhePropUsageItemsItems(GitHubModel):
+    """BillingUsageSummaryReportGhePropUsageItemsItems"""
+
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+
+
+model_rebuild(BillingUsageSummaryReportGhe)
+model_rebuild(BillingUsageSummaryReportGhePropTimePeriod)
+model_rebuild(BillingUsageSummaryReportGhePropCostCenter)
+model_rebuild(BillingUsageSummaryReportGhePropUsageItemsItems)
+
+__all__ = (
+    "BillingUsageSummaryReportGhe",
+    "BillingUsageSummaryReportGhePropCostCenter",
+    "BillingUsageSummaryReportGhePropTimePeriod",
+    "BillingUsageSummaryReportGhePropUsageItemsItems",
+)

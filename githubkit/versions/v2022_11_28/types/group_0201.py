@@ -9,38 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0200 import (
-    RulesetVersionPropActorType,
-    RulesetVersionPropActorTypeForResponse,
-)
-from .group_0203 import (
-    RulesetVersionWithStateAllof1PropStateType,
-    RulesetVersionWithStateAllof1PropStateTypeForResponse,
-)
+
+class RepositoryRuleParamsCopilotCodeReviewAnalysisToolType(TypedDict):
+    """CopilotCodeReviewAnalysisTool
+
+    A tool that must provide code review results for this rule to pass.
+    """
+
+    name: Literal["CodeQL", "ESLint", "PMD"]
 
 
-class RulesetVersionWithStateType(TypedDict):
-    """RulesetVersionWithState"""
+class RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse(TypedDict):
+    """CopilotCodeReviewAnalysisTool
 
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: _dt.datetime
-    state: RulesetVersionWithStateAllof1PropStateType
+    A tool that must provide code review results for this rule to pass.
+    """
 
-
-class RulesetVersionWithStateTypeForResponse(TypedDict):
-    """RulesetVersionWithState"""
-
-    version_id: int
-    actor: RulesetVersionPropActorTypeForResponse
-    updated_at: str
-    state: RulesetVersionWithStateAllof1PropStateTypeForResponse
+    name: Literal["CodeQL", "ESLint", "PMD"]
 
 
 __all__ = (
-    "RulesetVersionWithStateType",
-    "RulesetVersionWithStateTypeForResponse",
+    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolType",
+    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse",
 )

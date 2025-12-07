@@ -12,14 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    body: str = Field(description="The discussion comment's body text.")
+    pattern_config_version: Missing[str] = Field(
+        default=UNSET, description="The updated pattern configuration version."
+    )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody)
+model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody",)
+__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)

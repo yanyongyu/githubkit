@@ -11,24 +11,31 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0033 import (
+    ActionsHostedRunnerMachineSpecType,
+    ActionsHostedRunnerMachineSpecTypeForResponse,
+)
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type(
+
+class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
+    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
 
-    disable_self_hosted_runners_for_all_orgs: bool
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecType]
 
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
+    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
 
-    disable_self_hosted_runners_for_all_orgs: bool
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type",
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
 )

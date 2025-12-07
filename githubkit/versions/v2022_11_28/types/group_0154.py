@@ -9,57 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+class RepositoryRulesetConditionsPropRefNameType(TypedDict):
+    """RepositoryRulesetConditionsPropRefName"""
 
-    include: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
-    exclude: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+class RepositoryRulesetConditionsPropRefNameTypeForResponse(TypedDict):
+    """RepositoryRulesetConditionsPropRefName"""
 
-    include: NotRequired[
-        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
-    ]
-    exclude: NotRequired[
-        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
-    ]
-
-
-class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
-    """Repository ruleset property targeting definition
-
-    Parameters for a targeting a repository property
-    """
-
-    name: str
-    property_values: list[str]
-    source: NotRequired[Literal["custom", "system"]]
-
-
-class RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse(TypedDict):
-    """Repository ruleset property targeting definition
-
-    Parameters for a targeting a repository property
-    """
-
-    name: str
-    property_values: list[str]
-    source: NotRequired[Literal["custom", "system"]]
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertySpecType",
-    "RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse",
+    "RepositoryRulesetConditionsPropRefNameType",
+    "RepositoryRulesetConditionsPropRefNameTypeForResponse",
 )

@@ -12,102 +12,147 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0459 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0474 import WebhooksTeamType, WebhooksTeamTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0478 import (
+    WebhooksPreviousMarketplacePurchaseType,
+    WebhooksPreviousMarketplacePurchaseTypeForResponse,
+)
 
 
-class WebhookMembershipAddedType(TypedDict):
-    """membership added event"""
+class WebhookMarketplacePurchasePendingChangeCancelledType(TypedDict):
+    """marketplace_purchase pending_change_cancelled event"""
 
-    action: Literal["added"]
+    action: Literal["pending_change_cancelled"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
-    organization: OrganizationSimpleWebhooksType
+    marketplace_purchase: (
+        WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType
+    )
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
     repository: NotRequired[RepositoryWebhooksType]
-    scope: Literal["team"]
-    sender: Union[WebhookMembershipAddedPropSenderType, None]
-    team: WebhooksTeamType
+    sender: SimpleUserType
 
 
-class WebhookMembershipAddedTypeForResponse(TypedDict):
-    """membership added event"""
+class WebhookMarketplacePurchasePendingChangeCancelledTypeForResponse(TypedDict):
+    """marketplace_purchase pending_change_cancelled event"""
 
-    action: Literal["added"]
+    action: Literal["pending_change_cancelled"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    member: Union[WebhooksUserTypeForResponse, None]
-    organization: OrganizationSimpleWebhooksTypeForResponse
+    marketplace_purchase: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    previous_marketplace_purchase: NotRequired[
+        WebhooksPreviousMarketplacePurchaseTypeForResponse
+    ]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    scope: Literal["team"]
-    sender: Union[WebhookMembershipAddedPropSenderTypeForResponse, None]
-    team: WebhooksTeamTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
-class WebhookMembershipAddedPropSenderType(TypedDict):
-    """User"""
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType(
+    TypedDict
+):
+    """Marketplace Purchase"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
+    account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType
+    billing_cycle: str
+    free_trial_ends_on: None
+    next_billing_date: Union[str, None]
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType
+    unit_count: int
+
+
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseTypeForResponse(
+    TypedDict
+):
+    """Marketplace Purchase"""
+
+    account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountTypeForResponse
+    billing_cycle: str
+    free_trial_ends_on: None
+    next_billing_date: Union[str, None]
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanTypeForResponse
+    unit_count: int
+
+
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccou
+    nt
+    """
+
     id: int
     login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class WebhookMembershipAddedPropSenderTypeForResponse(TypedDict):
-    """User"""
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountTypeForResponse(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccou
+    nt
+    """
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
     id: int
     login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
+
+
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan"""
+
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
+
+
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanTypeForResponse(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan"""
+
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhookMembershipAddedPropSenderType",
-    "WebhookMembershipAddedPropSenderTypeForResponse",
-    "WebhookMembershipAddedType",
-    "WebhookMembershipAddedTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangeCancelledType",
+    "WebhookMarketplacePurchasePendingChangeCancelledTypeForResponse",
 )

@@ -9,56 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class BillingUsageReportUserType(TypedDict):
-    """BillingUsageReportUser"""
+class SshSigningKeyType(TypedDict):
+    """SSH Signing Key
 
-    usage_items: NotRequired[list[BillingUsageReportUserPropUsageItemsItemsType]]
+    A public SSH key used to sign Git commits
+    """
 
-
-class BillingUsageReportUserTypeForResponse(TypedDict):
-    """BillingUsageReportUser"""
-
-    usage_items: NotRequired[
-        list[BillingUsageReportUserPropUsageItemsItemsTypeForResponse]
-    ]
+    key: str
+    id: int
+    title: str
+    created_at: _dt.datetime
 
 
-class BillingUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportUserPropUsageItemsItems"""
+class SshSigningKeyTypeForResponse(TypedDict):
+    """SSH Signing Key
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    repository_name: NotRequired[str]
+    A public SSH key used to sign Git commits
+    """
 
-
-class BillingUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageReportUserPropUsageItemsItems"""
-
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    repository_name: NotRequired[str]
+    key: str
+    id: int
+    title: str
+    created_at: str
 
 
 __all__ = (
-    "BillingUsageReportUserPropUsageItemsItemsType",
-    "BillingUsageReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingUsageReportUserType",
-    "BillingUsageReportUserTypeForResponse",
+    "SshSigningKeyType",
+    "SshSigningKeyTypeForResponse",
 )

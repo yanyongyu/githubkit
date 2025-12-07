@@ -13,75 +13,73 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0564 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+from .group_0568 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookProjectsV2ItemReorderedType(TypedDict):
-    """Projects v2 Item Reordered Event"""
+class WebhookProjectsV2ItemConvertedType(TypedDict):
+    """Projects v2 Item Converted Event"""
 
-    action: Literal["reordered"]
-    changes: WebhookProjectsV2ItemReorderedPropChangesType
+    action: Literal["converted"]
+    changes: WebhookProjectsV2ItemConvertedPropChangesType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ItemReorderedTypeForResponse(TypedDict):
-    """Projects v2 Item Reordered Event"""
+class WebhookProjectsV2ItemConvertedTypeForResponse(TypedDict):
+    """Projects v2 Item Converted Event"""
 
-    action: Literal["reordered"]
-    changes: WebhookProjectsV2ItemReorderedPropChangesTypeForResponse
+    action: Literal["converted"]
+    changes: WebhookProjectsV2ItemConvertedPropChangesTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
     projects_v2_item: ProjectsV2ItemTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectsV2ItemReorderedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
+class WebhookProjectsV2ItemConvertedPropChangesType(TypedDict):
+    """WebhookProjectsV2ItemConvertedPropChanges"""
 
-    previous_projects_v2_item_node_id: NotRequired[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType
+    content_type: NotRequired[
+        WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType
     ]
 
 
-class WebhookProjectsV2ItemReorderedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
+class WebhookProjectsV2ItemConvertedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectsV2ItemConvertedPropChanges"""
 
-    previous_projects_v2_item_node_id: NotRequired[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse
+    content_type: NotRequired[
+        WebhookProjectsV2ItemConvertedPropChangesPropContentTypeTypeForResponse
     ]
 
 
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType(
-    TypedDict
-):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
+class WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType(TypedDict):
+    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
 
     from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    to: NotRequired[str]
 
 
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse(
+class WebhookProjectsV2ItemConvertedPropChangesPropContentTypeTypeForResponse(
     TypedDict
 ):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
+    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
 
     from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    to: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType",
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse",
-    "WebhookProjectsV2ItemReorderedPropChangesType",
-    "WebhookProjectsV2ItemReorderedPropChangesTypeForResponse",
-    "WebhookProjectsV2ItemReorderedType",
-    "WebhookProjectsV2ItemReorderedTypeForResponse",
+    "WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType",
+    "WebhookProjectsV2ItemConvertedPropChangesPropContentTypeTypeForResponse",
+    "WebhookProjectsV2ItemConvertedPropChangesType",
+    "WebhookProjectsV2ItemConvertedPropChangesTypeForResponse",
+    "WebhookProjectsV2ItemConvertedType",
+    "WebhookProjectsV2ItemConvertedTypeForResponse",
 )

@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+class OrgsOrgAttestationsRepositoriesGetResponse200ItemsType(TypedDict):
+    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
 
-    selected_repository_ids: NotRequired[list[int]]
+    id: NotRequired[int]
+    name: NotRequired[str]
 
 
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+class OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
 
-    selected_repository_ids: NotRequired[list[int]]
+    id: NotRequired[int]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",
-    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse",
+    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsType",
+    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse",
 )

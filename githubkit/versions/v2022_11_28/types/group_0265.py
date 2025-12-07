@@ -10,73 +10,59 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0098 import (
-    CodeScanningAlertRuleSummaryType,
-    CodeScanningAlertRuleSummaryTypeForResponse,
-)
-from .group_0099 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
-)
-from .group_0100 import (
-    CodeScanningAlertInstanceType,
-    CodeScanningAlertInstanceTypeForResponse,
-)
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class CodeScanningAlertItemsType(TypedDict):
-    """CodeScanningAlertItems"""
+class DeploymentSimpleType(TypedDict):
+    """Deployment
 
-    number: int
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
+    """
+
+    url: str
+    id: int
+    node_id: str
+    task: str
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
     created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
+    updated_at: _dt.datetime
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+
+
+class DeploymentSimpleTypeForResponse(TypedDict):
+    """Deployment
+
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
+    """
+
     url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
-    assignees: NotRequired[list[SimpleUserType]]
-
-
-class CodeScanningAlertItemsTypeForResponse(TypedDict):
-    """CodeScanningAlertItems"""
-
-    number: int
+    id: int
+    node_id: str
+    task: str
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
     created_at: str
-    updated_at: NotRequired[str]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[str, None]]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
-    dismissed_at: Union[str, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryTypeForResponse
-    tool: CodeScanningAnalysisToolTypeForResponse
-    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    updated_at: str
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
 
 
 __all__ = (
-    "CodeScanningAlertItemsType",
-    "CodeScanningAlertItemsTypeForResponse",
+    "DeploymentSimpleType",
+    "DeploymentSimpleTypeForResponse",
 )

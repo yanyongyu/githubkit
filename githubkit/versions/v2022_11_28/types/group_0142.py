@@ -9,43 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0047 import IssueType, IssueTypeForResponse
+from .group_0138 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
+from .group_0141 import ProjectsV2DraftIssueType, ProjectsV2DraftIssueTypeForResponse
 
-class CustomPropertySetPayloadType(TypedDict):
-    """Custom Property Set Payload
 
-    Custom property set payload
+class ProjectsV2ItemSimpleType(TypedDict):
+    """Projects v2 Item
+
+    An item belonging to a project
     """
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    id: float
+    node_id: NotRequired[str]
+    content: NotRequired[
+        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
     ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    archived_at: Union[_dt.datetime, None]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
 
 
-class CustomPropertySetPayloadTypeForResponse(TypedDict):
-    """Custom Property Set Payload
+class ProjectsV2ItemSimpleTypeForResponse(TypedDict):
+    """Projects v2 Item
 
-    Custom property set payload
+    An item belonging to a project
     """
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    id: float
+    node_id: NotRequired[str]
+    content: NotRequired[
+        Union[
+            IssueTypeForResponse,
+            PullRequestSimpleTypeForResponse,
+            ProjectsV2DraftIssueTypeForResponse,
+        ]
     ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    archived_at: Union[str, None]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
 
 
 __all__ = (
-    "CustomPropertySetPayloadType",
-    "CustomPropertySetPayloadTypeForResponse",
+    "ProjectsV2ItemSimpleType",
+    "ProjectsV2ItemSimpleTypeForResponse",
 )

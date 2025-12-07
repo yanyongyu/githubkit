@@ -11,20 +11,27 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0037 import (
+    ActionsHostedRunnerCuratedImageType,
+    ActionsHostedRunnerCuratedImageTypeForResponse,
+)
 
-class OrgsOrgActionsPermissionsRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
 
-    selected_repository_ids: list[int]
+class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
+
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageType]
 
 
-class OrgsOrgActionsPermissionsRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
+class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
 
-    selected_repository_ids: list[int]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsRepositoriesPutBodyType",
-    "OrgsOrgActionsPermissionsRepositoriesPutBodyTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse",
 )

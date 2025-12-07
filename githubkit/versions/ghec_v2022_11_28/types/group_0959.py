@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0032 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
+
+class ApplicationsClientIdTokenPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenPostBody"""
+
+    access_token: str
 
 
-class EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersGetResponse200"""
+class ApplicationsClientIdTokenPostBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdTokenPostBody"""
 
-    total_count: int
-    runners: list[ActionsHostedRunnerType]
-
-
-class EnterprisesEnterpriseActionsHostedRunnersGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersGetResponse200"""
-
-    total_count: int
-    runners: list[ActionsHostedRunnerTypeForResponse]
+    access_token: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type",
-    "EnterprisesEnterpriseActionsHostedRunnersGetResponse200TypeForResponse",
+    "ApplicationsClientIdTokenPostBodyType",
+    "ApplicationsClientIdTokenPostBodyTypeForResponse",
 )

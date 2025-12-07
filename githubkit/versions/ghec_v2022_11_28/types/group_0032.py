@@ -9,109 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0031 import (
-    ActionsHostedRunnerMachineSpecType,
-    ActionsHostedRunnerMachineSpecTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class ActionsHostedRunnerType(TypedDict):
-    """GitHub-hosted hosted runner
+class ActionsCacheUsageOrgEnterpriseType(TypedDict):
+    """ActionsCacheUsageOrgEnterprise"""
 
-    A Github-hosted hosted runner.
-    """
-
-    id: int
-    name: str
-    runner_group_id: NotRequired[int]
-    image_details: Union[None, ActionsHostedRunnerPoolImageType]
-    machine_size_details: ActionsHostedRunnerMachineSpecType
-    status: Literal["Ready", "Provisioning", "Shutdown", "Deleting", "Stuck"]
-    platform: str
-    maximum_runners: NotRequired[int]
-    public_ip_enabled: bool
-    public_ips: NotRequired[list[PublicIpType]]
-    last_active_on: NotRequired[Union[_dt.datetime, None]]
-    image_gen: NotRequired[bool]
+    total_active_caches_count: int
+    total_active_caches_size_in_bytes: int
 
 
-class ActionsHostedRunnerTypeForResponse(TypedDict):
-    """GitHub-hosted hosted runner
+class ActionsCacheUsageOrgEnterpriseTypeForResponse(TypedDict):
+    """ActionsCacheUsageOrgEnterprise"""
 
-    A Github-hosted hosted runner.
-    """
-
-    id: int
-    name: str
-    runner_group_id: NotRequired[int]
-    image_details: Union[None, ActionsHostedRunnerPoolImageTypeForResponse]
-    machine_size_details: ActionsHostedRunnerMachineSpecTypeForResponse
-    status: Literal["Ready", "Provisioning", "Shutdown", "Deleting", "Stuck"]
-    platform: str
-    maximum_runners: NotRequired[int]
-    public_ip_enabled: bool
-    public_ips: NotRequired[list[PublicIpTypeForResponse]]
-    last_active_on: NotRequired[Union[str, None]]
-    image_gen: NotRequired[bool]
-
-
-class ActionsHostedRunnerPoolImageType(TypedDict):
-    """GitHub-hosted runner image details.
-
-    Provides details of a hosted runner image
-    """
-
-    id: str
-    size_gb: int
-    display_name: str
-    source: Literal["github", "partner", "custom"]
-    version: NotRequired[str]
-
-
-class ActionsHostedRunnerPoolImageTypeForResponse(TypedDict):
-    """GitHub-hosted runner image details.
-
-    Provides details of a hosted runner image
-    """
-
-    id: str
-    size_gb: int
-    display_name: str
-    source: Literal["github", "partner", "custom"]
-    version: NotRequired[str]
-
-
-class PublicIpType(TypedDict):
-    """Public IP for a GitHub-hosted larger runners.
-
-    Provides details of Public IP for a GitHub-hosted larger runners
-    """
-
-    enabled: NotRequired[bool]
-    prefix: NotRequired[str]
-    length: NotRequired[int]
-
-
-class PublicIpTypeForResponse(TypedDict):
-    """Public IP for a GitHub-hosted larger runners.
-
-    Provides details of Public IP for a GitHub-hosted larger runners
-    """
-
-    enabled: NotRequired[bool]
-    prefix: NotRequired[str]
-    length: NotRequired[int]
+    total_active_caches_count: int
+    total_active_caches_size_in_bytes: int
 
 
 __all__ = (
-    "ActionsHostedRunnerPoolImageType",
-    "ActionsHostedRunnerPoolImageTypeForResponse",
-    "ActionsHostedRunnerType",
-    "ActionsHostedRunnerTypeForResponse",
-    "PublicIpType",
-    "PublicIpTypeForResponse",
+    "ActionsCacheUsageOrgEnterpriseType",
+    "ActionsCacheUsageOrgEnterpriseTypeForResponse",
 )

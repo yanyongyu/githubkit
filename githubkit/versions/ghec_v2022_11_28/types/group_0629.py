@@ -13,47 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0308 import DeploymentType, DeploymentTypeForResponse
-from .group_0435 import PullRequestType, PullRequestTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0375 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
-    """deployment protection rule requested event"""
+class WebhookDependabotAlertReopenedType(TypedDict):
+    """Dependabot alert reopened event"""
 
-    action: Literal["requested"]
-    environment: NotRequired[str]
-    event: NotRequired[str]
-    deployment_callback_url: NotRequired[str]
-    deployment: NotRequired[DeploymentType]
-    pull_requests: NotRequired[list[PullRequestType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    action: Literal["reopened"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
-    sender: NotRequired[SimpleUserType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookDeploymentProtectionRuleRequestedTypeForResponse(TypedDict):
-    """deployment protection rule requested event"""
+class WebhookDependabotAlertReopenedTypeForResponse(TypedDict):
+    """Dependabot alert reopened event"""
 
-    action: Literal["requested"]
-    environment: NotRequired[str]
-    event: NotRequired[str]
-    deployment_callback_url: NotRequired[str]
-    deployment: NotRequired[DeploymentTypeForResponse]
-    pull_requests: NotRequired[list[PullRequestTypeForResponse]]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    action: Literal["reopened"]
+    alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDeploymentProtectionRuleRequestedType",
-    "WebhookDeploymentProtectionRuleRequestedTypeForResponse",
+    "WebhookDependabotAlertReopenedType",
+    "WebhookDependabotAlertReopenedTypeForResponse",
 )

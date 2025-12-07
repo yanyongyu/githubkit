@@ -11,26 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0211 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+
+class UserEmailsPostBodyOneof0Type(TypedDict):
+    """UserEmailsPostBodyOneof0
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str]
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class UserEmailsPostBodyOneof0TypeForResponse(TypedDict):
+    """UserEmailsPostBodyOneof0
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
 
-
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    emails: list[str]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "UserEmailsPostBodyOneof0Type",
+    "UserEmailsPostBodyOneof0TypeForResponse",
 )

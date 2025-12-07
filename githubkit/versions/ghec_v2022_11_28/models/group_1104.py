@@ -12,17 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems(GitHubModel):
-    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+class OrgsOrgAttestationsBulkListPostBody(GitHubModel):
+    """OrgsOrgAttestationsBulkListPostBody"""
 
-    repository_id: int = Field(description="The repository id")
-    alert_numbers: list[int] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="The alert numbers"
+    subject_digests: list[str] = Field(
+        max_length=1024 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of subject digests to fetch attestations for.",
+    )
+    predicate_type: Missing[str] = Field(
+        default=UNSET,
+        description="Optional filter for fetching attestations with a given predicate type.\nThis option accepts `provenance`, `sbom`, `release`, or freeform text\nfor custom predicate types.",
     )
 
 
-model_rebuild(OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems)
+model_rebuild(OrgsOrgAttestationsBulkListPostBody)
 
-__all__ = ("OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems",)
+__all__ = ("OrgsOrgAttestationsBulkListPostBody",)

@@ -13,111 +13,40 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0469 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0480 import MergeGroupType, MergeGroupTypeForResponse
 
 
-class WebhookMilestoneEditedType(TypedDict):
-    """milestone edited event"""
+class WebhookMergeGroupDestroyedType(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["edited"]
-    changes: WebhookMilestoneEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestoneType
+    merge_group: MergeGroupType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookMilestoneEditedTypeForResponse(TypedDict):
-    """milestone edited event"""
+class WebhookMergeGroupDestroyedTypeForResponse(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["edited"]
-    changes: WebhookMilestoneEditedPropChangesTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    milestone: WebhooksMilestoneTypeForResponse
+    merge_group: MergeGroupTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookMilestoneEditedPropChangesType(TypedDict):
-    """WebhookMilestoneEditedPropChanges
-
-    The changes to the milestone if the action was `edited`.
-    """
-
-    description: NotRequired[WebhookMilestoneEditedPropChangesPropDescriptionType]
-    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnType]
-    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleType]
-
-
-class WebhookMilestoneEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChanges
-
-    The changes to the milestone if the action was `edited`.
-    """
-
-    description: NotRequired[
-        WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse
-    ]
-    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse]
-    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleTypeForResponse]
-
-
-class WebhookMilestoneEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDescription"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDescription"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropDueOnType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDueOn"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDueOn"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropTitleType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropTitle"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropTitleTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropTitle"""
-
-    from_: str
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookMilestoneEditedPropChangesPropDescriptionType",
-    "WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse",
-    "WebhookMilestoneEditedPropChangesPropDueOnType",
-    "WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse",
-    "WebhookMilestoneEditedPropChangesPropTitleType",
-    "WebhookMilestoneEditedPropChangesPropTitleTypeForResponse",
-    "WebhookMilestoneEditedPropChangesType",
-    "WebhookMilestoneEditedPropChangesTypeForResponse",
-    "WebhookMilestoneEditedType",
-    "WebhookMilestoneEditedTypeForResponse",
+    "WebhookMergeGroupDestroyedType",
+    "WebhookMergeGroupDestroyedTypeForResponse",
 )

@@ -9,272 +9,194 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0096 import TeamType, TeamTypeForResponse
-from .group_0209 import (
-    RepositoryAdvisoryCreditType,
-    RepositoryAdvisoryCreditTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryAdvisoryType(TypedDict):
-    """RepositoryAdvisory
+class SecretScanningLocationCommitType(TypedDict):
+    """SecretScanningLocationCommit
 
-    A repository security advisory.
+    Represents a 'commit' secret scanning location type. This location type shows
+    that a secret was detected inside a commit to a repository.
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
-    url: str
-    html_url: str
-    summary: str
-    description: Union[str, None]
-    severity: Union[None, Literal["critical", "high", "medium", "low"]]
-    author: None
-    publisher: None
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsType]
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
-    created_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    published_at: Union[_dt.datetime, None]
-    closed_at: Union[_dt.datetime, None]
-    withdrawn_at: Union[_dt.datetime, None]
-    submission: Union[RepositoryAdvisoryPropSubmissionType, None]
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityType], None]
-    cvss: Union[RepositoryAdvisoryPropCvssType, None]
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: Union[list[RepositoryAdvisoryPropCwesItemsType], None]
-    cwe_ids: Union[list[str], None]
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsType], None]
-    credits_detailed: Union[list[RepositoryAdvisoryCreditType], None]
-    collaborating_users: Union[list[SimpleUserType], None]
-    collaborating_teams: Union[list[TeamType], None]
-    private_fork: None
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
+    blob_sha: str
+    blob_url: str
+    commit_sha: str
+    commit_url: str
 
 
-class RepositoryAdvisoryTypeForResponse(TypedDict):
-    """RepositoryAdvisory
+class SecretScanningLocationCommitTypeForResponse(TypedDict):
+    """SecretScanningLocationCommit
 
-    A repository security advisory.
+    Represents a 'commit' secret scanning location type. This location type shows
+    that a secret was detected inside a commit to a repository.
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
-    url: str
-    html_url: str
-    summary: str
-    description: Union[str, None]
-    severity: Union[None, Literal["critical", "high", "medium", "low"]]
-    author: None
-    publisher: None
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsTypeForResponse]
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
-    created_at: Union[str, None]
-    updated_at: Union[str, None]
-    published_at: Union[str, None]
-    closed_at: Union[str, None]
-    withdrawn_at: Union[str, None]
-    submission: Union[RepositoryAdvisoryPropSubmissionTypeForResponse, None]
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityTypeForResponse], None]
-    cvss: Union[RepositoryAdvisoryPropCvssTypeForResponse, None]
-    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
-    cwes: Union[list[RepositoryAdvisoryPropCwesItemsTypeForResponse], None]
-    cwe_ids: Union[list[str], None]
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsTypeForResponse], None]
-    credits_detailed: Union[list[RepositoryAdvisoryCreditTypeForResponse], None]
-    collaborating_users: Union[list[SimpleUserTypeForResponse], None]
-    collaborating_teams: Union[list[TeamTypeForResponse], None]
-    private_fork: None
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
+    blob_sha: str
+    blob_url: str
+    commit_sha: str
+    commit_url: str
 
 
-class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
-    """RepositoryAdvisoryPropIdentifiersItems"""
+class SecretScanningLocationWikiCommitType(TypedDict):
+    """SecretScanningLocationWikiCommit
 
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class RepositoryAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class RepositoryAdvisoryPropSubmissionType(TypedDict):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool
-
-
-class RepositoryAdvisoryPropSubmissionTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool
-
-
-class RepositoryAdvisoryPropCvssType(TypedDict):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None]
-    score: Union[float, None]
-
-
-class RepositoryAdvisoryPropCvssTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None]
-    score: Union[float, None]
-
-
-class RepositoryAdvisoryPropCwesItemsType(TypedDict):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class RepositoryAdvisoryPropCwesItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class RepositoryAdvisoryPropCreditsItemsType(TypedDict):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: NotRequired[str]
-    type: NotRequired[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
-        ]
-    ]
-
-
-class RepositoryAdvisoryPropCreditsItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: NotRequired[str]
-    type: NotRequired[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
-        ]
-    ]
-
-
-class RepositoryAdvisoryVulnerabilityType(TypedDict):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
+    Represents a 'wiki_commit' secret scanning location type. This location type
+    shows that a secret was detected inside a commit to a repository wiki.
     """
 
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackageType, None]
-    vulnerable_version_range: Union[str, None]
-    patched_versions: Union[str, None]
-    vulnerable_functions: Union[list[str], None]
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
+    blob_sha: str
+    page_url: str
+    commit_sha: str
+    commit_url: str
 
 
-class RepositoryAdvisoryVulnerabilityTypeForResponse(TypedDict):
-    """RepositoryAdvisoryVulnerability
+class SecretScanningLocationWikiCommitTypeForResponse(TypedDict):
+    """SecretScanningLocationWikiCommit
 
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
+    Represents a 'wiki_commit' secret scanning location type. This location type
+    shows that a secret was detected inside a commit to a repository wiki.
     """
 
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse, None]
-    vulnerable_version_range: Union[str, None]
-    patched_versions: Union[str, None]
-    vulnerable_functions: Union[list[str], None]
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
+    blob_sha: str
+    page_url: str
+    commit_sha: str
+    commit_url: str
 
 
-class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
-    """RepositoryAdvisoryVulnerabilityPropPackage
+class SecretScanningLocationIssueBodyType(TypedDict):
+    """SecretScanningLocationIssueBody
 
-    The name of the package affected by the vulnerability.
+    Represents an 'issue_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of an issue.
     """
 
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ]
-    name: Union[str, None]
+    issue_body_url: str
 
 
-class RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse(TypedDict):
-    """RepositoryAdvisoryVulnerabilityPropPackage
+class SecretScanningLocationIssueBodyTypeForResponse(TypedDict):
+    """SecretScanningLocationIssueBody
 
-    The name of the package affected by the vulnerability.
+    Represents an 'issue_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of an issue.
     """
 
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ]
-    name: Union[str, None]
+    issue_body_url: str
+
+
+class SecretScanningLocationDiscussionTitleType(TypedDict):
+    """SecretScanningLocationDiscussionTitle
+
+    Represents a 'discussion_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a discussion.
+    """
+
+    discussion_title_url: str
+
+
+class SecretScanningLocationDiscussionTitleTypeForResponse(TypedDict):
+    """SecretScanningLocationDiscussionTitle
+
+    Represents a 'discussion_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a discussion.
+    """
+
+    discussion_title_url: str
+
+
+class SecretScanningLocationDiscussionCommentType(TypedDict):
+    """SecretScanningLocationDiscussionComment
+
+    Represents a 'discussion_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a discussion.
+    """
+
+    discussion_comment_url: str
+
+
+class SecretScanningLocationDiscussionCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationDiscussionComment
+
+    Represents a 'discussion_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a discussion.
+    """
+
+    discussion_comment_url: str
+
+
+class SecretScanningLocationPullRequestBodyType(TypedDict):
+    """SecretScanningLocationPullRequestBody
+
+    Represents a 'pull_request_body' secret scanning location type. This location
+    type shows that a secret was detected in the body of a pull request.
+    """
+
+    pull_request_body_url: str
+
+
+class SecretScanningLocationPullRequestBodyTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestBody
+
+    Represents a 'pull_request_body' secret scanning location type. This location
+    type shows that a secret was detected in the body of a pull request.
+    """
+
+    pull_request_body_url: str
+
+
+class SecretScanningLocationPullRequestReviewType(TypedDict):
+    """SecretScanningLocationPullRequestReview
+
+    Represents a 'pull_request_review' secret scanning location type. This location
+    type shows that a secret was detected in a review on a pull request.
+    """
+
+    pull_request_review_url: str
+
+
+class SecretScanningLocationPullRequestReviewTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestReview
+
+    Represents a 'pull_request_review' secret scanning location type. This location
+    type shows that a secret was detected in a review on a pull request.
+    """
+
+    pull_request_review_url: str
 
 
 __all__ = (
-    "RepositoryAdvisoryPropCreditsItemsType",
-    "RepositoryAdvisoryPropCreditsItemsTypeForResponse",
-    "RepositoryAdvisoryPropCvssType",
-    "RepositoryAdvisoryPropCvssTypeForResponse",
-    "RepositoryAdvisoryPropCwesItemsType",
-    "RepositoryAdvisoryPropCwesItemsTypeForResponse",
-    "RepositoryAdvisoryPropIdentifiersItemsType",
-    "RepositoryAdvisoryPropIdentifiersItemsTypeForResponse",
-    "RepositoryAdvisoryPropSubmissionType",
-    "RepositoryAdvisoryPropSubmissionTypeForResponse",
-    "RepositoryAdvisoryType",
-    "RepositoryAdvisoryTypeForResponse",
-    "RepositoryAdvisoryVulnerabilityPropPackageType",
-    "RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse",
-    "RepositoryAdvisoryVulnerabilityType",
-    "RepositoryAdvisoryVulnerabilityTypeForResponse",
+    "SecretScanningLocationCommitType",
+    "SecretScanningLocationCommitTypeForResponse",
+    "SecretScanningLocationDiscussionCommentType",
+    "SecretScanningLocationDiscussionCommentTypeForResponse",
+    "SecretScanningLocationDiscussionTitleType",
+    "SecretScanningLocationDiscussionTitleTypeForResponse",
+    "SecretScanningLocationIssueBodyType",
+    "SecretScanningLocationIssueBodyTypeForResponse",
+    "SecretScanningLocationPullRequestBodyType",
+    "SecretScanningLocationPullRequestBodyTypeForResponse",
+    "SecretScanningLocationPullRequestReviewType",
+    "SecretScanningLocationPullRequestReviewTypeForResponse",
+    "SecretScanningLocationWikiCommitType",
+    "SecretScanningLocationWikiCommitTypeForResponse",
 )

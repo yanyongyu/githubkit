@@ -9,57 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0044 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
-from .group_0080 import TeamType, TeamTypeForResponse
-from .group_0081 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
+from .group_0081 import TeamSimpleType, TeamSimpleTypeForResponse
 
 
-class CopilotSeatDetailsType(TypedDict):
-    """Copilot Business Seat Detail
+class TeamType(TypedDict):
+    """Team
 
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    assignee: NotRequired[Union[None, SimpleUserType]]
-    organization: NotRequired[Union[None, OrganizationSimpleType]]
-    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
-    pending_cancellation_date: NotRequired[Union[_dt.date, None]]
-    last_activity_at: NotRequired[Union[_dt.datetime, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    last_authenticated_at: NotRequired[Union[_dt.datetime, None]]
-    created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    parent: Union[None, TeamSimpleType]
 
 
-class CopilotSeatDetailsTypeForResponse(TypedDict):
-    """Copilot Business Seat Detail
+class TeamTypeForResponse(TypedDict):
+    """Team
 
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    assignee: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    organization: NotRequired[Union[None, OrganizationSimpleTypeForResponse]]
-    assigning_team: NotRequired[
-        Union[TeamTypeForResponse, EnterpriseTeamTypeForResponse, None]
-    ]
-    pending_cancellation_date: NotRequired[Union[str, None]]
-    last_activity_at: NotRequired[Union[str, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    last_authenticated_at: NotRequired[Union[str, None]]
-    created_at: str
-    updated_at: NotRequired[str]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsTypeForResponse]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    parent: Union[None, TeamSimpleTypeForResponse]
+
+
+class TeamPropPermissionsType(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+class TeamPropPermissionsTypeForResponse(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
 __all__ = (
-    "CopilotSeatDetailsType",
-    "CopilotSeatDetailsTypeForResponse",
+    "TeamPropPermissionsType",
+    "TeamPropPermissionsTypeForResponse",
+    "TeamType",
+    "TeamTypeForResponse",
 )

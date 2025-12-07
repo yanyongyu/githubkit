@@ -16,21 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OidcCustomSubRepo(GitHubModel):
-    """Actions OIDC subject customization for a repository
+class ActionsCacheRetentionLimitForRepository(GitHubModel):
+    """Actions cache retention limit for a repository
 
-    Actions OIDC subject customization for a repository
+    GitHub Actions cache retention policy for a repository.
     """
 
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
-    )
-    include_claim_keys: Missing[list[str]] = Field(
+    max_cache_retention_days: Missing[int] = Field(
         default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+        description="The maximum number of days to keep caches in this repository.",
     )
 
 
-model_rebuild(OidcCustomSubRepo)
+model_rebuild(ActionsCacheRetentionLimitForRepository)
 
-__all__ = ("OidcCustomSubRepo",)
+__all__ = ("ActionsCacheRetentionLimitForRepository",)

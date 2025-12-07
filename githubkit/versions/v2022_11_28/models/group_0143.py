@@ -9,27 +9,149 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0065 import CustomPropertyValue
 
+class ProjectsV2Field(GitHubModel):
+    """Projects v2 Field
 
-class OrgRepoCustomPropertyValues(GitHubModel):
-    """Organization Repository Custom Property Values
-
-    List of custom property values for a repository
+    A field inside a projects v2 project
     """
 
-    repository_id: int = Field()
-    repository_name: str = Field()
-    repository_full_name: str = Field()
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values"
+    id: int = Field(description="The unique identifier of the field.")
+    node_id: Missing[str] = Field(
+        default=UNSET, description="The node ID of the field."
+    )
+    project_url: str = Field(
+        description="The API URL of the project that contains the field."
+    )
+    name: str = Field(description="The name of the field.")
+    data_type: Literal[
+        "assignees",
+        "linked_pull_requests",
+        "reviewers",
+        "labels",
+        "milestone",
+        "repository",
+        "title",
+        "text",
+        "single_select",
+        "number",
+        "date",
+        "iteration",
+        "issue_type",
+        "parent_issue",
+        "sub_issues_progress",
+    ] = Field(description="The field's data type.")
+    options: Missing[list[ProjectsV2SingleSelectOptions]] = Field(
+        default=UNSET, description="The options available for single select fields."
+    )
+    configuration: Missing[ProjectsV2FieldPropConfiguration] = Field(
+        default=UNSET, description="Configuration for iteration fields."
+    )
+    created_at: _dt.datetime = Field(description="The time when the field was created.")
+    updated_at: _dt.datetime = Field(
+        description="The time when the field was last updated."
     )
 
 
-model_rebuild(OrgRepoCustomPropertyValues)
+class ProjectsV2SingleSelectOptions(GitHubModel):
+    """Projects v2 Single Select Option
 
-__all__ = ("OrgRepoCustomPropertyValues",)
+    An option for a single select field
+    """
+
+    id: str = Field(description="The unique identifier of the option.")
+    name: ProjectsV2SingleSelectOptionsPropName = Field(
+        description="The display name of the option, in raw text and HTML formats."
+    )
+    description: ProjectsV2SingleSelectOptionsPropDescription = Field(
+        description="The description of the option, in raw text and HTML formats."
+    )
+    color: str = Field(description="The color associated with the option.")
+
+
+class ProjectsV2SingleSelectOptionsPropName(GitHubModel):
+    """ProjectsV2SingleSelectOptionsPropName
+
+    The display name of the option, in raw text and HTML formats.
+    """
+
+    raw: str = Field()
+    html: str = Field()
+
+
+class ProjectsV2SingleSelectOptionsPropDescription(GitHubModel):
+    """ProjectsV2SingleSelectOptionsPropDescription
+
+    The description of the option, in raw text and HTML formats.
+    """
+
+    raw: str = Field()
+    html: str = Field()
+
+
+class ProjectsV2FieldPropConfiguration(GitHubModel):
+    """ProjectsV2FieldPropConfiguration
+
+    Configuration for iteration fields.
+    """
+
+    start_day: Missing[int] = Field(
+        default=UNSET, description="The day of the week when the iteration starts."
+    )
+    duration: Missing[int] = Field(
+        default=UNSET, description="The duration of the iteration in days."
+    )
+    iterations: Missing[list[ProjectsV2IterationSettings]] = Field(default=UNSET)
+
+
+class ProjectsV2IterationSettings(GitHubModel):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str = Field(description="The unique identifier of the iteration setting.")
+    start_date: _dt.date = Field(description="The start date of the iteration.")
+    duration: int = Field(description="The duration of the iteration in days.")
+    title: ProjectsV2IterationSettingsPropTitle = Field(
+        description="The iteration title, in raw text and HTML formats."
+    )
+    completed: bool = Field(description="Whether the iteration has been completed.")
+
+
+class ProjectsV2IterationSettingsPropTitle(GitHubModel):
+    """ProjectsV2IterationSettingsPropTitle
+
+    The iteration title, in raw text and HTML formats.
+    """
+
+    raw: str = Field()
+    html: str = Field()
+
+
+model_rebuild(ProjectsV2Field)
+model_rebuild(ProjectsV2SingleSelectOptions)
+model_rebuild(ProjectsV2SingleSelectOptionsPropName)
+model_rebuild(ProjectsV2SingleSelectOptionsPropDescription)
+model_rebuild(ProjectsV2FieldPropConfiguration)
+model_rebuild(ProjectsV2IterationSettings)
+model_rebuild(ProjectsV2IterationSettingsPropTitle)
+
+__all__ = (
+    "ProjectsV2Field",
+    "ProjectsV2FieldPropConfiguration",
+    "ProjectsV2IterationSettings",
+    "ProjectsV2IterationSettingsPropTitle",
+    "ProjectsV2SingleSelectOptions",
+    "ProjectsV2SingleSelectOptionsPropDescription",
+    "ProjectsV2SingleSelectOptionsPropName",
+)

@@ -11,27 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0031 import (
-    ActionsHostedRunnerMachineSpecType,
-    ActionsHostedRunnerMachineSpecTypeForResponse,
-)
+from .group_0034 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
 
 
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersGetResponse200"""
 
     total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecType]
+    runners: list[ActionsHostedRunnerType]
 
 
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersGetResponse200"""
 
     total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
+    runners: list[ActionsHostedRunnerTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
+    "OrgsOrgActionsHostedRunnersGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse",
 )

@@ -9,69 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0042 import ReactionRollupType, ReactionRollupTypeForResponse
 
+class SecretScanningPatternConfigurationType(TypedDict):
+    """Secret scanning pattern configuration
 
-class TeamDiscussionType(TypedDict):
-    """Team Discussion
-
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
+    A collection of secret scanning patterns and their settings related to push
+    protection.
     """
 
-    author: Union[None, SimpleUserType]
-    body: str
-    body_html: str
-    body_version: str
-    comments_count: int
-    comments_url: str
-    created_at: _dt.datetime
-    last_edited_at: Union[_dt.datetime, None]
-    html_url: str
-    node_id: str
-    number: int
-    pinned: bool
-    private: bool
-    team_url: str
-    title: str
-    updated_at: _dt.datetime
-    url: str
-    reactions: NotRequired[ReactionRollupType]
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
+    custom_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
 
 
-class TeamDiscussionTypeForResponse(TypedDict):
-    """Team Discussion
+class SecretScanningPatternConfigurationTypeForResponse(TypedDict):
+    """Secret scanning pattern configuration
 
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
+    A collection of secret scanning patterns and their settings related to push
+    protection.
     """
 
-    author: Union[None, SimpleUserTypeForResponse]
-    body: str
-    body_html: str
-    body_version: str
-    comments_count: int
-    comments_url: str
-    created_at: str
-    last_edited_at: Union[str, None]
-    html_url: str
-    node_id: str
-    number: int
-    pinned: bool
-    private: bool
-    team_url: str
-    title: str
-    updated_at: str
-    url: str
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_overrides: NotRequired[
+        list[SecretScanningPatternOverrideTypeForResponse]
+    ]
+    custom_pattern_overrides: NotRequired[
+        list[SecretScanningPatternOverrideTypeForResponse]
+    ]
+
+
+class SecretScanningPatternOverrideType(TypedDict):
+    """SecretScanningPatternOverride"""
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    slug: NotRequired[str]
+    display_name: NotRequired[str]
+    alert_total: NotRequired[int]
+    alert_total_percentage: NotRequired[int]
+    false_positives: NotRequired[int]
+    false_positive_rate: NotRequired[int]
+    bypass_rate: NotRequired[int]
+    default_setting: NotRequired[Literal["disabled", "enabled"]]
+    enterprise_setting: NotRequired[
+        Union[None, Literal["not-set", "disabled", "enabled"]]
+    ]
+    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+
+
+class SecretScanningPatternOverrideTypeForResponse(TypedDict):
+    """SecretScanningPatternOverride"""
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    slug: NotRequired[str]
+    display_name: NotRequired[str]
+    alert_total: NotRequired[int]
+    alert_total_percentage: NotRequired[int]
+    false_positives: NotRequired[int]
+    false_positive_rate: NotRequired[int]
+    bypass_rate: NotRequired[int]
+    default_setting: NotRequired[Literal["disabled", "enabled"]]
+    enterprise_setting: NotRequired[
+        Union[None, Literal["not-set", "disabled", "enabled"]]
+    ]
+    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
 
 
 __all__ = (
-    "TeamDiscussionType",
-    "TeamDiscussionTypeForResponse",
+    "SecretScanningPatternConfigurationType",
+    "SecretScanningPatternConfigurationTypeForResponse",
+    "SecretScanningPatternOverrideType",
+    "SecretScanningPatternOverrideTypeForResponse",
 )

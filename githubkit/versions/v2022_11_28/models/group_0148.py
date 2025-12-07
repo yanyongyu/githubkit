@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,19 +18,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRulesetConditionsPropRefName(GitHubModel):
-    """RepositoryRulesetConditionsPropRefName"""
+class CustomPropertySetPayload(GitHubModel):
+    """Custom Property Set Payload
 
-    include: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches.",
+    Custom property set payload
+    """
+
+    value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
+        Field(description="The type of the value for the property")
     )
-    exclude: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.",
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
     )
+    default_value: Missing[Union[str, list[str], None]] = Field(
+        default=UNSET, description="Default value of the property"
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
+    )
+    allowed_values: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+    )
+    values_editable_by: Missing[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
-model_rebuild(RepositoryRulesetConditionsPropRefName)
+model_rebuild(CustomPropertySetPayload)
 
-__all__ = ("RepositoryRulesetConditionsPropRefName",)
+__all__ = ("CustomPropertySetPayload",)

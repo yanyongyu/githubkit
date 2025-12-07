@@ -9,52 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0034 import DependabotAlertPackage
+from .group_0034 import SimpleRepository
 
 
-class DependabotAlertSecurityVulnerability(GitHubModel):
-    """DependabotAlertSecurityVulnerability
+class CodeSecurityConfigurationRepositories(GitHubModel):
+    """CodeSecurityConfigurationRepositories
 
-    Details pertaining to one vulnerable version range for the advisory.
+    Repositories associated with a code security configuration and attachment status
     """
 
-    package: DependabotAlertPackage = Field(
-        description="Details for the vulnerable package."
-    )
-    severity: Literal["low", "medium", "high", "critical"] = Field(
-        description="The severity of the vulnerability."
-    )
-    vulnerable_version_range: str = Field(
-        description="Conditions that identify vulnerable versions of this vulnerability's package."
-    )
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion, None
+    status: Missing[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
     ] = Field(
-        description="Details pertaining to the package version that patches this vulnerability."
+        default=UNSET,
+        description="The attachment status of the code security configuration on the repository.",
+    )
+    repository: Missing[SimpleRepository] = Field(
+        default=UNSET, title="Simple Repository", description="A GitHub repository."
     )
 
 
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion(GitHubModel):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+model_rebuild(CodeSecurityConfigurationRepositories)
 
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str = Field(
-        description="The package version that patches this vulnerability."
-    )
-
-
-model_rebuild(DependabotAlertSecurityVulnerability)
-model_rebuild(DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion)
-
-__all__ = (
-    "DependabotAlertSecurityVulnerability",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
-)
+__all__ = ("CodeSecurityConfigurationRepositories",)

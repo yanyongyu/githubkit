@@ -9,56 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
+    ]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
+    ]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
     TypedDict
 ):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
-
-
-class ActionsHostedRunnerCustomImageVersionType(TypedDict):
-    """GitHub-hosted runner custom image version details.
-
-    Provides details of a hosted runner custom image version
-    """
-
-    version: str
-    state: str
-    size_gb: int
-    created_on: str
-    state_details: str
-
-
-class ActionsHostedRunnerCustomImageVersionTypeForResponse(TypedDict):
-    """GitHub-hosted runner custom image version details.
-
-    Provides details of a hosted runner custom image version
-    """
-
-    version: str
-    state: str
-    size_gb: int
-    created_on: str
-    state_details: str
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "ActionsHostedRunnerCustomImageVersionType",
-    "ActionsHostedRunnerCustomImageVersionTypeForResponse",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
 )

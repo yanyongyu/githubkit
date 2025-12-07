@@ -9,67 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetAllBudgetsType(TypedDict):
-    """GetAllBudgets"""
+class ActionsCacheRetentionLimitForOrganizationType(TypedDict):
+    """Actions cache retention limit for an organization
 
-    budgets: list[BudgetType]
+    GitHub Actions cache retention policy for an organization.
+    """
 
-
-class GetAllBudgetsTypeForResponse(TypedDict):
-    """GetAllBudgets"""
-
-    budgets: list[BudgetTypeForResponse]
+    max_cache_retention_days: NotRequired[int]
 
 
-class BudgetType(TypedDict):
-    """Budget"""
+class ActionsCacheRetentionLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache retention limit for an organization
 
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: str
-    budget_entity_name: NotRequired[str]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingType
+    GitHub Actions cache retention policy for an organization.
+    """
 
-
-class BudgetTypeForResponse(TypedDict):
-    """Budget"""
-
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: str
-    budget_entity_name: NotRequired[str]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
-
-
-class BudgetPropBudgetAlertingType(TypedDict):
-    """BudgetPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
-
-
-class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """BudgetPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "BudgetPropBudgetAlertingType",
-    "BudgetPropBudgetAlertingTypeForResponse",
-    "BudgetType",
-    "BudgetTypeForResponse",
-    "GetAllBudgetsType",
-    "GetAllBudgetsTypeForResponse",
+    "ActionsCacheRetentionLimitForOrganizationType",
+    "ActionsCacheRetentionLimitForOrganizationTypeForResponse",
 )

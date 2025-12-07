@@ -9,64 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0206 import (
-    MarketplaceListingPlanType,
-    MarketplaceListingPlanTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class MarketplacePurchasePropMarketplacePendingChangeType(TypedDict):
-    """MarketplacePurchasePropMarketplacePendingChange"""
+class MarketplaceListingPlanType(TypedDict):
+    """Marketplace Listing Plan
 
-    is_installed: NotRequired[bool]
-    effective_date: NotRequired[str]
-    unit_count: NotRequired[Union[int, None]]
-    id: NotRequired[int]
-    plan: NotRequired[MarketplaceListingPlanType]
+    Marketplace Listing Plan
+    """
 
-
-class MarketplacePurchasePropMarketplacePendingChangeTypeForResponse(TypedDict):
-    """MarketplacePurchasePropMarketplacePendingChange"""
-
-    is_installed: NotRequired[bool]
-    effective_date: NotRequired[str]
-    unit_count: NotRequired[Union[int, None]]
-    id: NotRequired[int]
-    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
-
-
-class MarketplacePurchasePropMarketplacePurchaseType(TypedDict):
-    """MarketplacePurchasePropMarketplacePurchase"""
-
-    billing_cycle: NotRequired[str]
-    next_billing_date: NotRequired[Union[str, None]]
-    is_installed: NotRequired[bool]
-    unit_count: NotRequired[Union[int, None]]
-    on_free_trial: NotRequired[bool]
-    free_trial_ends_on: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    plan: NotRequired[MarketplaceListingPlanType]
+    url: str
+    accounts_url: str
+    id: int
+    number: int
+    name: str
+    description: str
+    monthly_price_in_cents: int
+    yearly_price_in_cents: int
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    has_free_trial: bool
+    unit_name: Union[str, None]
+    state: str
+    bullets: list[str]
 
 
-class MarketplacePurchasePropMarketplacePurchaseTypeForResponse(TypedDict):
-    """MarketplacePurchasePropMarketplacePurchase"""
+class MarketplaceListingPlanTypeForResponse(TypedDict):
+    """Marketplace Listing Plan
 
-    billing_cycle: NotRequired[str]
-    next_billing_date: NotRequired[Union[str, None]]
-    is_installed: NotRequired[bool]
-    unit_count: NotRequired[Union[int, None]]
-    on_free_trial: NotRequired[bool]
-    free_trial_ends_on: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
+    Marketplace Listing Plan
+    """
+
+    url: str
+    accounts_url: str
+    id: int
+    number: int
+    name: str
+    description: str
+    monthly_price_in_cents: int
+    yearly_price_in_cents: int
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    has_free_trial: bool
+    unit_name: Union[str, None]
+    state: str
+    bullets: list[str]
 
 
 __all__ = (
-    "MarketplacePurchasePropMarketplacePendingChangeType",
-    "MarketplacePurchasePropMarketplacePendingChangeTypeForResponse",
-    "MarketplacePurchasePropMarketplacePurchaseType",
-    "MarketplacePurchasePropMarketplacePurchaseTypeForResponse",
+    "MarketplaceListingPlanType",
+    "MarketplaceListingPlanTypeForResponse",
 )

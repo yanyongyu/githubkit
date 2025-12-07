@@ -16,57 +16,59 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class DemilestonedIssueEventType(TypedDict):
-    """Demilestoned Issue Event
+class LabeledIssueEventType(TypedDict):
+    """Labeled Issue Event
 
-    Demilestoned Issue Event
+    Labeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["demilestoned"]
+    event: Literal["labeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: DemilestonedIssueEventPropMilestoneType
+    label: LabeledIssueEventPropLabelType
 
 
-class DemilestonedIssueEventTypeForResponse(TypedDict):
-    """Demilestoned Issue Event
+class LabeledIssueEventTypeForResponse(TypedDict):
+    """Labeled Issue Event
 
-    Demilestoned Issue Event
+    Labeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["demilestoned"]
+    event: Literal["labeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    milestone: DemilestonedIssueEventPropMilestoneTypeForResponse
+    label: LabeledIssueEventPropLabelTypeForResponse
 
 
-class DemilestonedIssueEventPropMilestoneType(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
+class LabeledIssueEventPropLabelType(TypedDict):
+    """LabeledIssueEventPropLabel"""
 
-    title: str
+    name: str
+    color: str
 
 
-class DemilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
+class LabeledIssueEventPropLabelTypeForResponse(TypedDict):
+    """LabeledIssueEventPropLabel"""
 
-    title: str
+    name: str
+    color: str
 
 
 __all__ = (
-    "DemilestonedIssueEventPropMilestoneType",
-    "DemilestonedIssueEventPropMilestoneTypeForResponse",
-    "DemilestonedIssueEventType",
-    "DemilestonedIssueEventTypeForResponse",
+    "LabeledIssueEventPropLabelType",
+    "LabeledIssueEventPropLabelTypeForResponse",
+    "LabeledIssueEventType",
+    "LabeledIssueEventTypeForResponse",
 )

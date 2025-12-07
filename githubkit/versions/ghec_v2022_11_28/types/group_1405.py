@@ -9,57 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0227 import CodespaceMachineType, CodespaceMachineTypeForResponse
 
 
-class UserCodespacesPostBodyOneof1Type(TypedDict):
-    """UserCodespacesPostBodyOneof1"""
+class UserCodespacesCodespaceNameMachinesGetResponse200Type(TypedDict):
+    """UserCodespacesCodespaceNameMachinesGetResponse200"""
 
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequestType
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
+    total_count: int
+    machines: list[CodespaceMachineType]
 
 
-class UserCodespacesPostBodyOneof1TypeForResponse(TypedDict):
-    """UserCodespacesPostBodyOneof1"""
+class UserCodespacesCodespaceNameMachinesGetResponse200TypeForResponse(TypedDict):
+    """UserCodespacesCodespaceNameMachinesGetResponse200"""
 
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-
-
-class UserCodespacesPostBodyOneof1PropPullRequestType(TypedDict):
-    """UserCodespacesPostBodyOneof1PropPullRequest
-
-    Pull request number for this codespace
-    """
-
-    pull_request_number: int
-    repository_id: int
-
-
-class UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse(TypedDict):
-    """UserCodespacesPostBodyOneof1PropPullRequest
-
-    Pull request number for this codespace
-    """
-
-    pull_request_number: int
-    repository_id: int
+    total_count: int
+    machines: list[CodespaceMachineTypeForResponse]
 
 
 __all__ = (
-    "UserCodespacesPostBodyOneof1PropPullRequestType",
-    "UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse",
-    "UserCodespacesPostBodyOneof1Type",
-    "UserCodespacesPostBodyOneof1TypeForResponse",
+    "UserCodespacesCodespaceNameMachinesGetResponse200Type",
+    "UserCodespacesCodespaceNameMachinesGetResponse200TypeForResponse",
 )

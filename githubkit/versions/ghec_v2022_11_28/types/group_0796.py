@@ -13,137 +13,74 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0398 import HookResponseType, HookResponseTypeForResponse
 
 
-class WebhookProjectCardDeletedType(TypedDict):
-    """project_card deleted event"""
+class WebhookPingPropHookType(TypedDict):
+    """Webhook
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhookProjectCardDeletedPropProjectCardType
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
-    sender: SimpleUserType
+    The webhook that is being pinged
+    """
 
-
-class WebhookProjectCardDeletedTypeForResponse(TypedDict):
-    """project_card deleted event"""
-
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_card: WebhookProjectCardDeletedPropProjectCardTypeForResponse
-    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookProjectCardDeletedPropProjectCardType(TypedDict):
-    """Project Card"""
-
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: Union[int, None]
-    column_url: str
-    content_url: NotRequired[str]
+    active: bool
+    app_id: NotRequired[int]
+    config: WebhookPingPropHookPropConfigType
     created_at: _dt.datetime
-    creator: Union[WebhookProjectCardDeletedPropProjectCardPropCreatorType, None]
+    deliveries_url: NotRequired[str]
+    events: list[str]
     id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
+    last_response: NotRequired[HookResponseType]
+    name: Literal["web"]
+    ping_url: NotRequired[str]
+    test_url: NotRequired[str]
+    type: str
     updated_at: _dt.datetime
-    url: str
+    url: NotRequired[str]
 
 
-class WebhookProjectCardDeletedPropProjectCardTypeForResponse(TypedDict):
-    """Project Card"""
+class WebhookPingPropHookTypeForResponse(TypedDict):
+    """Webhook
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: Union[int, None]
-    column_url: str
-    content_url: NotRequired[str]
+    The webhook that is being pinged
+    """
+
+    active: bool
+    app_id: NotRequired[int]
+    config: WebhookPingPropHookPropConfigTypeForResponse
     created_at: str
-    creator: Union[
-        WebhookProjectCardDeletedPropProjectCardPropCreatorTypeForResponse, None
-    ]
+    deliveries_url: NotRequired[str]
+    events: list[str]
     id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
+    last_response: NotRequired[HookResponseTypeForResponse]
+    name: Literal["web"]
+    ping_url: NotRequired[str]
+    test_url: NotRequired[str]
+    type: str
     updated_at: str
-    url: str
-
-
-class WebhookProjectCardDeletedPropProjectCardPropCreatorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
-class WebhookProjectCardDeletedPropProjectCardPropCreatorTypeForResponse(TypedDict):
-    """User"""
+class WebhookPingPropHookPropConfigType(TypedDict):
+    """WebhookPingPropHookPropConfig"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    content_type: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    secret: NotRequired[str]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
+
+
+class WebhookPingPropHookPropConfigTypeForResponse(TypedDict):
+    """WebhookPingPropHookPropConfig"""
+
+    content_type: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    secret: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectCardDeletedPropProjectCardPropCreatorType",
-    "WebhookProjectCardDeletedPropProjectCardPropCreatorTypeForResponse",
-    "WebhookProjectCardDeletedPropProjectCardType",
-    "WebhookProjectCardDeletedPropProjectCardTypeForResponse",
-    "WebhookProjectCardDeletedType",
-    "WebhookProjectCardDeletedTypeForResponse",
+    "WebhookPingPropHookPropConfigType",
+    "WebhookPingPropHookPropConfigTypeForResponse",
+    "WebhookPingPropHookType",
+    "WebhookPingPropHookTypeForResponse",
 )

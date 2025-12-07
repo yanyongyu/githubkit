@@ -14,14 +14,12 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody"""
 
-    usernames: list[str] = Field(
-        description="The GitHub user handles to add to the team."
-    )
+    name: str = Field(description="The new name for the cost center")
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody)
+model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody",)
+__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody",)

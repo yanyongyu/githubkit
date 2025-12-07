@@ -9,63 +9,103 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
-from .group_0009 import (
-    IntegrationPropPermissionsType,
-    IntegrationPropPermissionsTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
-    """AppManifestsCodeConversionsPostResponse201"""
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type(TypedDict):
+    """Workflow Job
 
-    id: int
-    slug: NotRequired[str]
-    node_id: str
-    client_id: str
-    owner: Union[SimpleUserType, EnterpriseType]
-    name: str
-    description: Union[str, None]
-    external_url: str
-    html_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    permissions: IntegrationPropPermissionsType
-    events: list[str]
-    installations_count: NotRequired[int]
-    client_secret: str
-    webhook_secret: Union[str, None]
-    pem: str
+    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
+    and `started_at` are the same as those in a [`check_run`](#check_run) object.
+    """
 
-
-class AppManifestsCodeConversionsPostResponse201TypeForResponse(TypedDict):
-    """AppManifestsCodeConversionsPostResponse201"""
-
-    id: int
-    slug: NotRequired[str]
-    node_id: str
-    client_id: str
-    owner: Union[SimpleUserTypeForResponse, EnterpriseTypeForResponse]
-    name: str
-    description: Union[str, None]
-    external_url: str
-    html_url: str
+    check_run_url: str
+    completed_at: Union[str, None]
+    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]]
     created_at: str
-    updated_at: str
-    permissions: IntegrationPropPermissionsTypeForResponse
-    events: list[str]
-    installations_count: NotRequired[int]
-    client_secret: str
-    webhook_secret: Union[str, None]
-    pem: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed"]
+    head_branch: Union[str, None]
+    workflow_name: Union[str, None]
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType]
+    url: str
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof0TypeForResponse(TypedDict):
+    """Workflow Job
+
+    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
+    and `started_at` are the same as those in a [`check_run`](#check_run) object.
+    """
+
+    check_run_url: str
+    completed_at: Union[str, None]
+    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]]
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed"]
+    head_branch: Union[str, None]
+    workflow_name: Union[str, None]
+    steps: list[
+        WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsTypeForResponse
+    ]
+    url: str
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType(TypedDict):
+    """Workflow Step"""
+
+    completed_at: Union[str, None]
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "queued", "pending"]
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsTypeForResponse(
+    TypedDict
+):
+    """Workflow Step"""
+
+    completed_at: Union[str, None]
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "queued", "pending"]
 
 
 __all__ = (
-    "AppManifestsCodeConversionsPostResponse201Type",
-    "AppManifestsCodeConversionsPostResponse201TypeForResponse",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsTypeForResponse",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0TypeForResponse",
 )

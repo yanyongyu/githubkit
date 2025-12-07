@@ -36,6 +36,10 @@ class AppPermissions(GitHubModel):
         default=UNSET,
         description="The level of permission to grant the access token for repository creation, deletion, settings, teams, and collaborators creation.",
     )
+    artifact_metadata: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token to create and retrieve build artifact metadata records.",
+    )
     attestations: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
         description="The level of permission to create and retrieve the access token for repository attestations.",

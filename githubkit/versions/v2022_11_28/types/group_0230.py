@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsVariableType(TypedDict):
-    """Actions Variable"""
+class ActionsCacheStorageLimitForRepositoryType(TypedDict):
+    """Actions cache storage limit for a repository
 
-    name: str
-    value: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    GitHub Actions cache storage policy for a repository.
+    """
+
+    max_cache_size_gb: NotRequired[int]
 
 
-class ActionsVariableTypeForResponse(TypedDict):
-    """Actions Variable"""
+class ActionsCacheStorageLimitForRepositoryTypeForResponse(TypedDict):
+    """Actions cache storage limit for a repository
 
-    name: str
-    value: str
-    created_at: str
-    updated_at: str
+    GitHub Actions cache storage policy for a repository.
+    """
+
+    max_cache_size_gb: NotRequired[int]
 
 
 __all__ = (
-    "ActionsVariableType",
-    "ActionsVariableTypeForResponse",
+    "ActionsCacheStorageLimitForRepositoryType",
+    "ActionsCacheStorageLimitForRepositoryTypeForResponse",
 )

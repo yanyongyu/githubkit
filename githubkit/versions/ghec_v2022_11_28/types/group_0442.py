@@ -9,111 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0192 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0443 import (
-    ReviewCommentPropLinksType,
-    ReviewCommentPropLinksTypeForResponse,
-)
+from .group_0266 import LinkType, LinkTypeForResponse
 
 
-class ReviewCommentType(TypedDict):
-    """Legacy Review Comment
+class PullRequestPropLinksType(TypedDict):
+    """PullRequestPropLinks"""
 
-    Legacy Review Comment
-    """
-
-    url: str
-    pull_request_review_id: Union[int, None]
-    id: int
-    node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[None, SimpleUserType]
-    body: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    html_url: str
-    pull_request_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    links: ReviewCommentPropLinksType
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
+    comments: LinkType
+    commits: LinkType
+    statuses: LinkType
+    html: LinkType
+    issue: LinkType
+    review_comments: LinkType
+    review_comment: LinkType
+    self_: LinkType
 
 
-class ReviewCommentTypeForResponse(TypedDict):
-    """Legacy Review Comment
+class PullRequestPropLinksTypeForResponse(TypedDict):
+    """PullRequestPropLinks"""
 
-    Legacy Review Comment
-    """
-
-    url: str
-    pull_request_review_id: Union[int, None]
-    id: int
-    node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[None, SimpleUserTypeForResponse]
-    body: str
-    created_at: str
-    updated_at: str
-    html_url: str
-    pull_request_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    links: ReviewCommentPropLinksTypeForResponse
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
+    comments: LinkTypeForResponse
+    commits: LinkTypeForResponse
+    statuses: LinkTypeForResponse
+    html: LinkTypeForResponse
+    issue: LinkTypeForResponse
+    review_comments: LinkTypeForResponse
+    review_comment: LinkTypeForResponse
+    self_: LinkTypeForResponse
 
 
 __all__ = (
-    "ReviewCommentType",
-    "ReviewCommentTypeForResponse",
+    "PullRequestPropLinksType",
+    "PullRequestPropLinksTypeForResponse",
 )

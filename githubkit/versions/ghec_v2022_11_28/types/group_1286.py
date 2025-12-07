@@ -11,24 +11,39 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0390 import (
+    CustomDeploymentRuleAppType,
+    CustomDeploymentRuleAppTypeForResponse,
+)
 
-class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type(
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
     TypedDict
 ):
-    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
 
-    dismissal_review_id: NotRequired[int]
+    total_count: NotRequired[int]
+    available_custom_deployment_protection_rule_integrations: NotRequired[
+        list[CustomDeploymentRuleAppType]
+    ]
 
 
-class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse(
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
 
-    dismissal_review_id: NotRequired[int]
+    total_count: NotRequired[int]
+    available_custom_deployment_protection_rule_integrations: NotRequired[
+        list[CustomDeploymentRuleAppTypeForResponse]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type",
-    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse",
 )

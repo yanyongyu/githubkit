@@ -9,24 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0101 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
-
-
-class OrganizationsOrgOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
-
-    properties: list[CustomPropertyValueType]
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
 
-    properties: list[CustomPropertyValueTypeForResponse]
+    last_read_at: NotRequired[_dt.datetime]
+    read: NotRequired[bool]
+
+
+class NotificationsPutBodyTypeForResponse(TypedDict):
+    """NotificationsPutBody"""
+
+    last_read_at: NotRequired[str]
+    read: NotRequired[bool]
 
 
 __all__ = (
-    "OrganizationsOrgOrgPropertiesValuesPatchBodyType",
-    "OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse",
+    "NotificationsPutBodyType",
+    "NotificationsPutBodyTypeForResponse",
 )

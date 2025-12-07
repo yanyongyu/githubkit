@@ -13,38 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0047 import IssueType, IssueTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookWatchStartedType(TypedDict):
-    """watch started event"""
+class WebhookSubIssuesSubIssueRemovedType(TypedDict):
+    """sub-issue removed event"""
 
-    action: Literal["started"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["sub_issue_removed"]
+    sub_issue_id: float
+    sub_issue: IssueType
+    sub_issue_repo: RepositoryType
+    parent_issue_id: float
+    parent_issue: IssueType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookWatchStartedTypeForResponse(TypedDict):
-    """watch started event"""
+class WebhookSubIssuesSubIssueRemovedTypeForResponse(TypedDict):
+    """sub-issue removed event"""
 
-    action: Literal["started"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["sub_issue_removed"]
+    sub_issue_id: float
+    sub_issue: IssueTypeForResponse
+    sub_issue_repo: RepositoryTypeForResponse
+    parent_issue_id: float
+    parent_issue: IssueTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookWatchStartedType",
-    "WebhookWatchStartedTypeForResponse",
+    "WebhookSubIssuesSubIssueRemovedType",
+    "WebhookSubIssuesSubIssueRemovedTypeForResponse",
 )

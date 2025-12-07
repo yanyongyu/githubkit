@@ -13,92 +13,166 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+
+class WebhooksReviewType(TypedDict):
+    """WebhooksReview
+
+    The review that was affected.
+    """
+
+    links: WebhooksReviewPropLinksType
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    commit_id: str
+    html_url: str
+    id: int
+    node_id: str
+    pull_request_url: str
+    state: str
+    submitted_at: Union[_dt.datetime, None]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    user: Union[WebhooksReviewPropUserType, None]
 
 
-class SecretScanningAlertWebhookType(TypedDict):
-    """SecretScanningAlertWebhook"""
+class WebhooksReviewTypeForResponse(TypedDict):
+    """WebhooksReview
 
-    number: NotRequired[int]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[Union[None, _dt.datetime]]
-    url: NotRequired[str]
+    The review that was affected.
+    """
+
+    links: WebhooksReviewPropLinksTypeForResponse
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    commit_id: str
+    html_url: str
+    id: int
+    node_id: str
+    pull_request_url: str
+    state: str
+    submitted_at: Union[str, None]
+    updated_at: NotRequired[Union[str, None]]
+    user: Union[WebhooksReviewPropUserTypeForResponse, None]
+
+
+class WebhooksReviewPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    locations_url: NotRequired[str]
-    resolution: NotRequired[
-        Union[
-            None,
-            Literal[
-                "false_positive",
-                "wont_fix",
-                "revoked",
-                "used_in_tests",
-                "pattern_deleted",
-                "pattern_edited",
-            ],
-        ]
-    ]
-    resolved_at: NotRequired[Union[_dt.datetime, None]]
-    resolved_by: NotRequired[Union[None, SimpleUserType]]
-    resolution_comment: NotRequired[Union[str, None]]
-    secret_type: NotRequired[str]
-    secret_type_display_name: NotRequired[str]
-    validity: NotRequired[Literal["active", "inactive", "unknown"]]
-    push_protection_bypassed: NotRequired[Union[bool, None]]
-    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
-    push_protection_bypassed_at: NotRequired[Union[_dt.datetime, None]]
-    push_protection_bypass_request_reviewer: NotRequired[Union[None, SimpleUserType]]
-    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
-    publicly_leaked: NotRequired[Union[bool, None]]
-    multi_repo: NotRequired[Union[bool, None]]
-    assigned_to: NotRequired[Union[None, SimpleUserType]]
-
-
-class SecretScanningAlertWebhookTypeForResponse(TypedDict):
-    """SecretScanningAlertWebhook"""
-
-    number: NotRequired[int]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[Union[None, str]]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksReviewPropUserTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    locations_url: NotRequired[str]
-    resolution: NotRequired[
-        Union[
-            None,
-            Literal[
-                "false_positive",
-                "wont_fix",
-                "revoked",
-                "used_in_tests",
-                "pattern_deleted",
-                "pattern_edited",
-            ],
-        ]
-    ]
-    resolved_at: NotRequired[Union[str, None]]
-    resolved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    resolution_comment: NotRequired[Union[str, None]]
-    secret_type: NotRequired[str]
-    secret_type_display_name: NotRequired[str]
-    validity: NotRequired[Literal["active", "inactive", "unknown"]]
-    push_protection_bypassed: NotRequired[Union[bool, None]]
-    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    push_protection_bypassed_at: NotRequired[Union[str, None]]
-    push_protection_bypass_request_reviewer: NotRequired[
-        Union[None, SimpleUserTypeForResponse]
-    ]
-    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
-    publicly_leaked: NotRequired[Union[bool, None]]
-    multi_repo: NotRequired[Union[bool, None]]
-    assigned_to: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksReviewPropLinksType(TypedDict):
+    """WebhooksReviewPropLinks"""
+
+    html: WebhooksReviewPropLinksPropHtmlType
+    pull_request: WebhooksReviewPropLinksPropPullRequestType
+
+
+class WebhooksReviewPropLinksTypeForResponse(TypedDict):
+    """WebhooksReviewPropLinks"""
+
+    html: WebhooksReviewPropLinksPropHtmlTypeForResponse
+    pull_request: WebhooksReviewPropLinksPropPullRequestTypeForResponse
+
+
+class WebhooksReviewPropLinksPropHtmlType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhooksReviewPropLinksPropHtmlTypeForResponse(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhooksReviewPropLinksPropPullRequestType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhooksReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """Link"""
+
+    href: str
 
 
 __all__ = (
-    "SecretScanningAlertWebhookType",
-    "SecretScanningAlertWebhookTypeForResponse",
+    "WebhooksReviewPropLinksPropHtmlType",
+    "WebhooksReviewPropLinksPropHtmlTypeForResponse",
+    "WebhooksReviewPropLinksPropPullRequestType",
+    "WebhooksReviewPropLinksPropPullRequestTypeForResponse",
+    "WebhooksReviewPropLinksType",
+    "WebhooksReviewPropLinksTypeForResponse",
+    "WebhooksReviewPropUserType",
+    "WebhooksReviewPropUserTypeForResponse",
+    "WebhooksReviewType",
+    "WebhooksReviewTypeForResponse",
 )

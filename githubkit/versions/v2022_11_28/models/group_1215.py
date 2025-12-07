@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,21 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoTransferPostBody(GitHubModel):
-    """ReposOwnerRepoTransferPostBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    new_owner: str = Field(
-        description="The username or organization name the repository will be transferred to."
-    )
-    new_name: Missing[str] = Field(
-        default=UNSET, description="The new name to be given to the repository."
-    )
-    team_ids: Missing[list[int]] = Field(
+    state: Missing[Literal["open", "resolved"]] = Field(
         default=UNSET,
-        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+    )
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
+    )
+    assignee: Union[str, None] = Field(
+        description="The username of the user to assign to the alert. Set to `null` to unassign the alert."
     )
 
 
-model_rebuild(ReposOwnerRepoTransferPostBody)
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoTransferPostBody",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1",)

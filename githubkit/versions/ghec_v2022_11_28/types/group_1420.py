@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserKeysPostBodyType(TypedDict):
-    """UserKeysPostBody"""
+class UserSshSigningKeysPostBodyType(TypedDict):
+    """UserSshSigningKeysPostBody"""
 
     title: NotRequired[str]
     key: str
 
 
-class UserKeysPostBodyTypeForResponse(TypedDict):
-    """UserKeysPostBody"""
+class UserSshSigningKeysPostBodyTypeForResponse(TypedDict):
+    """UserSshSigningKeysPostBody"""
 
     title: NotRequired[str]
     key: str
 
 
 __all__ = (
-    "UserKeysPostBodyType",
-    "UserKeysPostBodyTypeForResponse",
+    "UserSshSigningKeysPostBodyType",
+    "UserSshSigningKeysPostBodyTypeForResponse",
 )

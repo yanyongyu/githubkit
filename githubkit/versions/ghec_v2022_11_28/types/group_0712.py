@@ -9,14 +9,152 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0193 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0195 import (
+    IssueDependenciesSummaryType,
+    IssueDependenciesSummaryTypeForResponse,
+    SubIssuesSummaryType,
+    SubIssuesSummaryTypeForResponse,
+)
+from .group_0196 import IssueFieldValueType, IssueFieldValueTypeForResponse
+from .group_0718 import (
+    WebhookIssuesClosedPropIssueAllof0PropPullRequestType,
+    WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse,
+)
+from .group_0720 import (
+    WebhookIssuesClosedPropIssueMergedMilestoneType,
+    WebhookIssuesClosedPropIssueMergedMilestoneTypeForResponse,
+)
+from .group_0721 import (
+    WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType,
+    WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppTypeForResponse,
+)
 
-class WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType(
-    TypedDict
-):
-    """User"""
+
+class WebhookIssuesClosedPropIssueType(TypedDict):
+    """WebhookIssuesClosedPropIssue
+
+    The [issue](https://docs.github.com/enterprise-
+    cloud@latest//rest/issues/issues#get-an-issue) itself.
+    """
+
+    active_lock_reason: Union[
+        Literal["resolved", "off-topic", "too heated", "spam"], None
+    ]
+    assignee: NotRequired[Union[WebhookIssuesClosedPropIssueMergedAssigneeType, None]]
+    assignees: list[WebhookIssuesClosedPropIssueMergedAssigneesType]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[Union[str, None], None]
+    closed_at: Union[_dt.datetime, None]
+    comments: int
+    comments_url: str
+    created_at: _dt.datetime
+    draft: NotRequired[bool]
+    events_url: str
+    html_url: str
+    id: int
+    labels: NotRequired[list[WebhookIssuesClosedPropIssueMergedLabelsType]]
+    labels_url: str
+    locked: NotRequired[bool]
+    milestone: Union[WebhookIssuesClosedPropIssueMergedMilestoneType, None]
+    node_id: str
+    number: int
+    performed_via_github_app: NotRequired[
+        Union[WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType, None]
+    ]
+    pull_request: NotRequired[WebhookIssuesClosedPropIssueAllof0PropPullRequestType]
+    reactions: WebhookIssuesClosedPropIssueMergedReactionsType
+    repository_url: str
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
+    issue_field_values: NotRequired[list[IssueFieldValueType]]
+    state: Literal["open", "closed"]
+    state_reason: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    title: str
+    type: NotRequired[Union[IssueTypeType, None]]
+    updated_at: _dt.datetime
+    url: str
+    user: WebhookIssuesClosedPropIssueMergedUserType
+
+
+class WebhookIssuesClosedPropIssueTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssue
+
+    The [issue](https://docs.github.com/enterprise-
+    cloud@latest//rest/issues/issues#get-an-issue) itself.
+    """
+
+    active_lock_reason: Union[
+        Literal["resolved", "off-topic", "too heated", "spam"], None
+    ]
+    assignee: NotRequired[
+        Union[WebhookIssuesClosedPropIssueMergedAssigneeTypeForResponse, None]
+    ]
+    assignees: list[WebhookIssuesClosedPropIssueMergedAssigneesTypeForResponse]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[Union[str, None], None]
+    closed_at: Union[str, None]
+    comments: int
+    comments_url: str
+    created_at: str
+    draft: NotRequired[bool]
+    events_url: str
+    html_url: str
+    id: int
+    labels: NotRequired[list[WebhookIssuesClosedPropIssueMergedLabelsTypeForResponse]]
+    labels_url: str
+    locked: NotRequired[bool]
+    milestone: Union[WebhookIssuesClosedPropIssueMergedMilestoneTypeForResponse, None]
+    node_id: str
+    number: int
+    performed_via_github_app: NotRequired[
+        Union[
+            WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppTypeForResponse, None
+        ]
+    ]
+    pull_request: NotRequired[
+        WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse
+    ]
+    reactions: WebhookIssuesClosedPropIssueMergedReactionsTypeForResponse
+    repository_url: str
+    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
+    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
+    state: Literal["open", "closed"]
+    state_reason: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    title: str
+    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
+    updated_at: str
+    url: str
+    user: WebhookIssuesClosedPropIssueMergedUserTypeForResponse
+
+
+class WebhookIssuesClosedPropIssueMergedAssigneeType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedAssignee"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -37,15 +175,13 @@ class WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType(
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse(
-    TypedDict
-):
-    """User"""
+class WebhookIssuesClosedPropIssueMergedAssigneeTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedAssignee"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -66,104 +202,184 @@ class WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeFo
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType(
-    TypedDict
-):
-    """WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+class WebhookIssuesClosedPropIssueMergedAssigneesType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedAssignees"""
 
-    The set of permissions for the GitHub app
-    """
-
-    actions: NotRequired[Literal["read", "write"]]
-    administration: NotRequired[Literal["read", "write"]]
-    checks: NotRequired[Literal["read", "write"]]
-    content_references: NotRequired[Literal["read", "write"]]
-    contents: NotRequired[Literal["read", "write"]]
-    deployments: NotRequired[Literal["read", "write"]]
-    discussions: NotRequired[Literal["read", "write"]]
-    emails: NotRequired[Literal["read", "write"]]
-    environments: NotRequired[Literal["read", "write"]]
-    issues: NotRequired[Literal["read", "write"]]
-    keys: NotRequired[Literal["read", "write"]]
-    members: NotRequired[Literal["read", "write"]]
-    metadata: NotRequired[Literal["read", "write"]]
-    organization_administration: NotRequired[Literal["read", "write"]]
-    organization_hooks: NotRequired[Literal["read", "write"]]
-    organization_packages: NotRequired[Literal["read", "write"]]
-    organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write", "admin"]]
-    organization_secrets: NotRequired[Literal["read", "write"]]
-    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
-    organization_user_blocking: NotRequired[Literal["read", "write"]]
-    packages: NotRequired[Literal["read", "write"]]
-    pages: NotRequired[Literal["read", "write"]]
-    pull_requests: NotRequired[Literal["read", "write"]]
-    repository_hooks: NotRequired[Literal["read", "write"]]
-    repository_projects: NotRequired[Literal["read", "write"]]
-    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
-    secrets: NotRequired[Literal["read", "write"]]
-    security_events: NotRequired[Literal["read", "write"]]
-    security_scanning_alert: NotRequired[Literal["read", "write"]]
-    single_file: NotRequired[Literal["read", "write"]]
-    statuses: NotRequired[Literal["read", "write"]]
-    team_discussions: NotRequired[Literal["read", "write"]]
-    vulnerability_alerts: NotRequired[Literal["read", "write"]]
-    workflows: NotRequired[Literal["read", "write"]]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse(
-    TypedDict
-):
-    """WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+class WebhookIssuesClosedPropIssueMergedAssigneesTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedAssignees"""
 
-    The set of permissions for the GitHub app
-    """
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
-    actions: NotRequired[Literal["read", "write"]]
-    administration: NotRequired[Literal["read", "write"]]
-    checks: NotRequired[Literal["read", "write"]]
-    content_references: NotRequired[Literal["read", "write"]]
-    contents: NotRequired[Literal["read", "write"]]
-    deployments: NotRequired[Literal["read", "write"]]
-    discussions: NotRequired[Literal["read", "write"]]
-    emails: NotRequired[Literal["read", "write"]]
-    environments: NotRequired[Literal["read", "write"]]
-    issues: NotRequired[Literal["read", "write"]]
-    keys: NotRequired[Literal["read", "write"]]
-    members: NotRequired[Literal["read", "write"]]
-    metadata: NotRequired[Literal["read", "write"]]
-    organization_administration: NotRequired[Literal["read", "write"]]
-    organization_hooks: NotRequired[Literal["read", "write"]]
-    organization_packages: NotRequired[Literal["read", "write"]]
-    organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write", "admin"]]
-    organization_secrets: NotRequired[Literal["read", "write"]]
-    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
-    organization_user_blocking: NotRequired[Literal["read", "write"]]
-    packages: NotRequired[Literal["read", "write"]]
-    pages: NotRequired[Literal["read", "write"]]
-    pull_requests: NotRequired[Literal["read", "write"]]
-    repository_hooks: NotRequired[Literal["read", "write"]]
-    repository_projects: NotRequired[Literal["read", "write"]]
-    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
-    secrets: NotRequired[Literal["read", "write"]]
-    security_events: NotRequired[Literal["read", "write"]]
-    security_scanning_alert: NotRequired[Literal["read", "write"]]
-    single_file: NotRequired[Literal["read", "write"]]
-    statuses: NotRequired[Literal["read", "write"]]
-    team_discussions: NotRequired[Literal["read", "write"]]
-    vulnerability_alerts: NotRequired[Literal["read", "write"]]
-    workflows: NotRequired[Literal["read", "write"]]
+
+class WebhookIssuesClosedPropIssueMergedLabelsType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedLabels"""
+
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
+
+
+class WebhookIssuesClosedPropIssueMergedLabelsTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedLabels"""
+
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
+
+
+class WebhookIssuesClosedPropIssueMergedReactionsType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedReactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookIssuesClosedPropIssueMergedReactionsTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedReactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookIssuesClosedPropIssueMergedUserType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedUser"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookIssuesClosedPropIssueMergedUserTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedUser"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType",
-    "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse",
-    "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType",
-    "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse",
+    "WebhookIssuesClosedPropIssueMergedAssigneeType",
+    "WebhookIssuesClosedPropIssueMergedAssigneeTypeForResponse",
+    "WebhookIssuesClosedPropIssueMergedAssigneesType",
+    "WebhookIssuesClosedPropIssueMergedAssigneesTypeForResponse",
+    "WebhookIssuesClosedPropIssueMergedLabelsType",
+    "WebhookIssuesClosedPropIssueMergedLabelsTypeForResponse",
+    "WebhookIssuesClosedPropIssueMergedReactionsType",
+    "WebhookIssuesClosedPropIssueMergedReactionsTypeForResponse",
+    "WebhookIssuesClosedPropIssueMergedUserType",
+    "WebhookIssuesClosedPropIssueMergedUserTypeForResponse",
+    "WebhookIssuesClosedPropIssueType",
+    "WebhookIssuesClosedPropIssueTypeForResponse",
 )

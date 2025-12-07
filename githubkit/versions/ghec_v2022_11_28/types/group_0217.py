@@ -9,28 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OidcCustomSubType(TypedDict):
-    """Actions OIDC Subject customization
+class ActionsCacheRetentionLimitForOrganizationType(TypedDict):
+    """Actions cache retention limit for an organization
 
-    Actions OIDC Subject customization
+    GitHub Actions cache retention policy for an organization.
     """
 
-    include_claim_keys: list[str]
+    max_cache_retention_days: NotRequired[int]
 
 
-class OidcCustomSubTypeForResponse(TypedDict):
-    """Actions OIDC Subject customization
+class ActionsCacheRetentionLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache retention limit for an organization
 
-    Actions OIDC Subject customization
+    GitHub Actions cache retention policy for an organization.
     """
 
-    include_claim_keys: list[str]
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "OidcCustomSubType",
-    "OidcCustomSubTypeForResponse",
+    "ActionsCacheRetentionLimitForOrganizationType",
+    "ActionsCacheRetentionLimitForOrganizationTypeForResponse",
 )

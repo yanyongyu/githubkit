@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,45 +18,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitTreesPostBody(GitHubModel):
-    """ReposOwnerRepoGitTreesPostBody"""
+class ReposOwnerRepoImportPatchBody(GitHubModel):
+    """ReposOwnerRepoImportPatchBody"""
 
-    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItems] = Field(
-        description="Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure."
-    )
-    base_tree: Missing[str] = Field(
+    vcs_username: Missing[str] = Field(
         default=UNSET,
-        description="The SHA1 of an existing Git tree object which will be used as the base for the new tree. If provided, a new Git tree object will be created from entries in the Git tree object pointed to by `base_tree` and entries defined in the `tree` parameter. Entries defined in the `tree` parameter will overwrite items from `base_tree` with the same `path`. If you're creating new changes on a branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current latest commit on the branch you're working on.\nIf not provided, GitHub will create a new Git tree object from only the entries defined in the `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a part of the parent commit's tree and were not defined in the `tree` parameter will be listed as deleted by the new commit.",
+        description="The username to provide to the originating repository.",
     )
-
-
-class ReposOwnerRepoGitTreesPostBodyPropTreeItems(GitHubModel):
-    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
-
-    path: Missing[str] = Field(
-        default=UNSET, description="The file referenced in the tree."
-    )
-    mode: Missing[Literal["100644", "100755", "040000", "160000", "120000"]] = Field(
+    vcs_password: Missing[str] = Field(
         default=UNSET,
-        description="The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.",
+        description="The password to provide to the originating repository.",
     )
-    type: Missing[Literal["blob", "tree", "commit"]] = Field(
-        default=UNSET, description="Either `blob`, `tree`, or `commit`."
-    )
-    sha: Missing[Union[str, None]] = Field(
+    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
         default=UNSET,
-        description="The SHA1 checksum ID of the object in the tree. Also called `tree.sha`. If the value is `null` then the file will be deleted.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
+        description="The type of version control system you are migrating from.",
     )
-    content: Missing[str] = Field(
+    tfvc_project: Missing[str] = Field(
         default=UNSET,
-        description="The content you want this file to have. GitHub will write this blob out and use that SHA for this entry. Use either this, or `tree.sha`.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
+        description="For a tfvc import, the name of the project that is being imported.",
     )
 
 
-model_rebuild(ReposOwnerRepoGitTreesPostBody)
-model_rebuild(ReposOwnerRepoGitTreesPostBodyPropTreeItems)
+model_rebuild(ReposOwnerRepoImportPatchBody)
 
-__all__ = (
-    "ReposOwnerRepoGitTreesPostBody",
-    "ReposOwnerRepoGitTreesPostBodyPropTreeItems",
-)
+__all__ = ("ReposOwnerRepoImportPatchBody",)

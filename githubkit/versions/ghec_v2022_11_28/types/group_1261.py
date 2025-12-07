@@ -9,55 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0227 import CodespaceMachineType, CodespaceMachineTypeForResponse
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type(TypedDict):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
+class ReposOwnerRepoCodespacesMachinesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack: str
-    repositories: NotRequired[list[str]]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: list[str]
+    total_count: int
+    machines: list[CodespaceMachineType]
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
+class ReposOwnerRepoCodespacesMachinesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack: str
-    repositories: NotRequired[list[str]]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: list[str]
+    total_count: int
+    machines: list[CodespaceMachineTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type",
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse",
+    "ReposOwnerRepoCodespacesMachinesGetResponse200Type",
+    "ReposOwnerRepoCodespacesMachinesGetResponse200TypeForResponse",
 )

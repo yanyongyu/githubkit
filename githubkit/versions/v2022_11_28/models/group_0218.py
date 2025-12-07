@@ -9,59 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class NetworkSettings(GitHubModel):
+    """Hosted compute network settings resource
 
-class TeamProject(GitHubModel):
-    """Team Project
-
-    A team's access to a project.
+    A hosted compute network settings resource.
     """
 
-    owner_url: str = Field()
-    url: str = Field()
-    html_url: str = Field()
-    columns_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    body: Union[str, None] = Field()
-    number: int = Field()
-    state: str = Field()
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: str = Field()
-    updated_at: str = Field()
-    organization_permission: Missing[str] = Field(
-        default=UNSET,
-        description="The organization permission for this project. Only present when owner is an organization.",
+    id: str = Field(
+        description="The unique identifier of the network settings resource."
     )
-    private: Missing[bool] = Field(
+    network_configuration_id: Missing[str] = Field(
         default=UNSET,
-        description="Whether the project is private or not. Only present when owner is an organization.",
+        description="The identifier of the network configuration that is using this settings resource.",
     )
-    permissions: TeamProjectPropPermissions = Field()
+    name: str = Field(description="The name of the network settings resource.")
+    subnet_id: str = Field(
+        description="The subnet this network settings resource is configured for."
+    )
+    region: str = Field(
+        description="The location of the subnet this network settings resource is configured for."
+    )
 
 
-class TeamProjectPropPermissions(GitHubModel):
-    """TeamProjectPropPermissions"""
+model_rebuild(NetworkSettings)
 
-    read: bool = Field()
-    write: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(TeamProject)
-model_rebuild(TeamProjectPropPermissions)
-
-__all__ = (
-    "TeamProject",
-    "TeamProjectPropPermissions",
-)
+__all__ = ("NetworkSettings",)

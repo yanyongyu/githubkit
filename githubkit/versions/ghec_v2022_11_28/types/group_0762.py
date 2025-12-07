@@ -12,99 +12,102 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0544 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0559 import WebhooksTeamType, WebhooksTeamTypeForResponse
 
 
-class WebhookMetaDeletedType(TypedDict):
-    """meta deleted event"""
+class WebhookMembershipAddedType(TypedDict):
+    """membership added event"""
 
-    action: Literal["deleted"]
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    hook: WebhookMetaDeletedPropHookType
-    hook_id: int
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
-    sender: NotRequired[SimpleUserType]
+    member: Union[WebhooksUserType, None]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    scope: Literal["team"]
+    sender: Union[WebhookMembershipAddedPropSenderType, None]
+    team: WebhooksTeamType
 
 
-class WebhookMetaDeletedTypeForResponse(TypedDict):
-    """meta deleted event"""
+class WebhookMembershipAddedTypeForResponse(TypedDict):
+    """membership added event"""
 
-    action: Literal["deleted"]
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    hook: WebhookMetaDeletedPropHookTypeForResponse
-    hook_id: int
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    member: Union[WebhooksUserTypeForResponse, None]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    scope: Literal["team"]
+    sender: Union[WebhookMembershipAddedPropSenderTypeForResponse, None]
+    team: WebhooksTeamTypeForResponse
 
 
-class WebhookMetaDeletedPropHookType(TypedDict):
-    """WebhookMetaDeletedPropHook
+class WebhookMembershipAddedPropSenderType(TypedDict):
+    """User"""
 
-    The deleted webhook. This will contain different keys based on the type of
-    webhook it is: repository, organization, business, app, or GitHub Marketplace.
-    """
-
-    active: bool
-    config: WebhookMetaDeletedPropHookPropConfigType
-    created_at: str
-    events: list[str]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: int
-    name: str
-    type: str
-    updated_at: str
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookMetaDeletedPropHookTypeForResponse(TypedDict):
-    """WebhookMetaDeletedPropHook
+class WebhookMembershipAddedPropSenderTypeForResponse(TypedDict):
+    """User"""
 
-    The deleted webhook. This will contain different keys based on the type of
-    webhook it is: repository, organization, business, app, or GitHub Marketplace.
-    """
-
-    active: bool
-    config: WebhookMetaDeletedPropHookPropConfigTypeForResponse
-    created_at: str
-    events: list[str]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: int
-    name: str
-    type: str
-    updated_at: str
-
-
-class WebhookMetaDeletedPropHookPropConfigType(TypedDict):
-    """WebhookMetaDeletedPropHookPropConfig"""
-
-    content_type: Literal["json", "form"]
-    insecure_ssl: str
-    secret: NotRequired[str]
-    url: str
-
-
-class WebhookMetaDeletedPropHookPropConfigTypeForResponse(TypedDict):
-    """WebhookMetaDeletedPropHookPropConfig"""
-
-    content_type: Literal["json", "form"]
-    insecure_ssl: str
-    secret: NotRequired[str]
-    url: str
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookMetaDeletedPropHookPropConfigType",
-    "WebhookMetaDeletedPropHookPropConfigTypeForResponse",
-    "WebhookMetaDeletedPropHookType",
-    "WebhookMetaDeletedPropHookTypeForResponse",
-    "WebhookMetaDeletedType",
-    "WebhookMetaDeletedTypeForResponse",
+    "WebhookMembershipAddedPropSenderType",
+    "WebhookMembershipAddedPropSenderTypeForResponse",
+    "WebhookMembershipAddedType",
+    "WebhookMembershipAddedTypeForResponse",
 )

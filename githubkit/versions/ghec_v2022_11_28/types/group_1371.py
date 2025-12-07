@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    message: NotRequired[str]
-    url: NotRequired[str]
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    message: NotRequired[str]
-    url: NotRequired[str]
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",
-    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse",
+    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",
+    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse",
 )

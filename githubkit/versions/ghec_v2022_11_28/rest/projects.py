@@ -35,13 +35,22 @@ if TYPE_CHECKING:
     )
     from ..types import (
         OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType,
+        OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
+        OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type,
+        OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type,
+        OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type,
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType,
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType,
         OrgsOrgProjectsV2ProjectNumberItemsPostBodyType,
+        ProjectsV2FieldIterationConfigurationType,
+        ProjectsV2FieldSingleSelectOptionType,
         ProjectsV2FieldTypeForResponse,
         ProjectsV2ItemSimpleTypeForResponse,
         ProjectsV2ItemWithContentTypeForResponse,
         ProjectsV2TypeForResponse,
+        UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
+        UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type,
+        UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type,
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType,
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType,
         UsersUsernameProjectsV2ProjectNumberItemsPostBodyType,
@@ -467,6 +476,290 @@ class ProjectsClient:
             error_models={
                 "403": BasicError,
                 "401": BasicError,
+            },
+        )
+
+    @overload
+    def add_field_for_org(
+        self,
+        project_number: int,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Union[
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type,
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type,
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type,
+        ],
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    @overload
+    def add_field_for_org(
+        self,
+        project_number: int,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_field_id: int,
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    @overload
+    def add_field_for_org(
+        self,
+        project_number: int,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        data_type: Literal["text", "number", "date"],
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    @overload
+    def add_field_for_org(
+        self,
+        project_number: int,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        data_type: Literal["single_select"],
+        single_select_options: list[ProjectsV2FieldSingleSelectOptionType],
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    @overload
+    def add_field_for_org(
+        self,
+        project_number: int,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        data_type: Literal["iteration"],
+        iteration_configuration: ProjectsV2FieldIterationConfigurationType,
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    def add_field_for_org(
+        self,
+        project_number: int,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            Union[
+                OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
+                OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type,
+                OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type,
+                OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type,
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]:
+        """projects/add-field-for-org
+
+        POST /orgs/{org}/projectsV2/{project_number}/fields
+
+        Add a field to an organization-owned project.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#add-a-field-to-an-organization-owned-project
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0,
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1,
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2,
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3,
+            ProjectsV2Field,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/projectsV2/{project_number}/fields"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Union[
+                    OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0,
+                    OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1,
+                    OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2,
+                    OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3,
+                ],
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ProjectsV2Field,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_add_field_for_org(
+        self,
+        project_number: int,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Union[
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type,
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type,
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type,
+        ],
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    @overload
+    async def async_add_field_for_org(
+        self,
+        project_number: int,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        issue_field_id: int,
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    @overload
+    async def async_add_field_for_org(
+        self,
+        project_number: int,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        data_type: Literal["text", "number", "date"],
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    @overload
+    async def async_add_field_for_org(
+        self,
+        project_number: int,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        data_type: Literal["single_select"],
+        single_select_options: list[ProjectsV2FieldSingleSelectOptionType],
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    @overload
+    async def async_add_field_for_org(
+        self,
+        project_number: int,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        data_type: Literal["iteration"],
+        iteration_configuration: ProjectsV2FieldIterationConfigurationType,
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    async def async_add_field_for_org(
+        self,
+        project_number: int,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            Union[
+                OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
+                OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type,
+                OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type,
+                OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type,
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]:
+        """projects/add-field-for-org
+
+        POST /orgs/{org}/projectsV2/{project_number}/fields
+
+        Add a field to an organization-owned project.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#add-a-field-to-an-organization-owned-project
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0,
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1,
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2,
+            OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3,
+            ProjectsV2Field,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/projectsV2/{project_number}/fields"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Union[
+                    OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0,
+                    OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1,
+                    OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2,
+                    OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3,
+                ],
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ProjectsV2Field,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+                "422": ValidationError,
             },
         )
 
@@ -1531,6 +1824,258 @@ class ProjectsClient:
             error_models={
                 "403": BasicError,
                 "401": BasicError,
+            },
+        )
+
+    @overload
+    def add_field_for_user(
+        self,
+        username: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Union[
+            UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
+            UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type,
+            UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type,
+        ],
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    @overload
+    def add_field_for_user(
+        self,
+        username: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        data_type: Literal["text", "number", "date"],
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    @overload
+    def add_field_for_user(
+        self,
+        username: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        data_type: Literal["single_select"],
+        single_select_options: list[ProjectsV2FieldSingleSelectOptionType],
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    @overload
+    def add_field_for_user(
+        self,
+        username: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        data_type: Literal["iteration"],
+        iteration_configuration: ProjectsV2FieldIterationConfigurationType,
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    def add_field_for_user(
+        self,
+        username: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            Union[
+                UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
+                UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type,
+                UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type,
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]:
+        """projects/add-field-for-user
+
+        POST /users/{username}/projectsV2/{project_number}/fields
+
+        Add a field to a specified user owned project.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#add-field-to-user-owned-project
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            ProjectsV2Field,
+            UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0,
+            UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1,
+            UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2,
+            ValidationError,
+        )
+
+        url = f"/users/{username}/projectsV2/{project_number}/fields"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Union[
+                    UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0,
+                    UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1,
+                    UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2,
+                ],
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ProjectsV2Field,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_add_field_for_user(
+        self,
+        username: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Union[
+            UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
+            UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type,
+            UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type,
+        ],
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    @overload
+    async def async_add_field_for_user(
+        self,
+        username: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        data_type: Literal["text", "number", "date"],
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    @overload
+    async def async_add_field_for_user(
+        self,
+        username: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        data_type: Literal["single_select"],
+        single_select_options: list[ProjectsV2FieldSingleSelectOptionType],
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    @overload
+    async def async_add_field_for_user(
+        self,
+        username: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        data_type: Literal["iteration"],
+        iteration_configuration: ProjectsV2FieldIterationConfigurationType,
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]: ...
+
+    async def async_add_field_for_user(
+        self,
+        username: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            Union[
+                UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
+                UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type,
+                UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type,
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[ProjectsV2Field, ProjectsV2FieldTypeForResponse]:
+        """projects/add-field-for-user
+
+        POST /users/{username}/projectsV2/{project_number}/fields
+
+        Add a field to a specified user owned project.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/fields#add-field-to-user-owned-project
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            ProjectsV2Field,
+            UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0,
+            UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1,
+            UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2,
+            ValidationError,
+        )
+
+        url = f"/users/{username}/projectsV2/{project_number}/fields"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Union[
+                    UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0,
+                    UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1,
+                    UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2,
+                ],
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ProjectsV2Field,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+                "422": ValidationError,
             },
         )
 

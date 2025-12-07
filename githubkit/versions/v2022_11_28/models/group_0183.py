@@ -9,21 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleMaxFilePathLengthPropParameters(GitHubModel):
-    """RepositoryRuleMaxFilePathLengthPropParameters"""
+class RepositoryRuleBranchNamePatternPropParameters(GitHubModel):
+    """RepositoryRuleBranchNamePatternPropParameters"""
 
-    max_file_path_length: int = Field(
-        le=32767.0,
-        ge=1.0,
-        description="The maximum amount of characters allowed in file paths.",
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleMaxFilePathLengthPropParameters)
+model_rebuild(RepositoryRuleBranchNamePatternPropParameters)
 
-__all__ = ("RepositoryRuleMaxFilePathLengthPropParameters",)
+__all__ = ("RepositoryRuleBranchNamePatternPropParameters",)

@@ -9,39 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0098 import (
-    OrganizationCustomPropertyType,
-    OrganizationCustomPropertyTypeForResponse,
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0544 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookOrganizationCustomPropertyUpdatedType(TypedDict):
-    """organization custom property updated event"""
+class WebhookOrgBlockBlockedType(TypedDict):
+    """org_block blocked event"""
 
-    action: Literal["updated"]
-    definition: OrganizationCustomPropertyType
-    enterprise: EnterpriseWebhooksType
+    action: Literal["blocked"]
+    blocked_user: Union[WebhooksUserType, None]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    sender: NotRequired[SimpleUserType]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookOrganizationCustomPropertyUpdatedTypeForResponse(TypedDict):
-    """organization custom property updated event"""
+class WebhookOrgBlockBlockedTypeForResponse(TypedDict):
+    """org_block blocked event"""
 
-    action: Literal["updated"]
-    definition: OrganizationCustomPropertyTypeForResponse
-    enterprise: EnterpriseWebhooksTypeForResponse
+    action: Literal["blocked"]
+    blocked_user: Union[WebhooksUserTypeForResponse, None]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookOrganizationCustomPropertyUpdatedType",
-    "WebhookOrganizationCustomPropertyUpdatedTypeForResponse",
+    "WebhookOrgBlockBlockedType",
+    "WebhookOrgBlockBlockedTypeForResponse",
 )

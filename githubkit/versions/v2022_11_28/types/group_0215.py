@@ -9,57 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0042 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class TeamDiscussionCommentType(TypedDict):
-    """Team Discussion Comment
+class RepositoryAdvisoryCreditType(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    A reply to a discussion within a team.
+    A credit given to a user for a repository security advisory.
     """
 
-    author: Union[None, SimpleUserType]
-    body: str
-    body_html: str
-    body_version: str
-    created_at: _dt.datetime
-    last_edited_at: Union[_dt.datetime, None]
-    discussion_url: str
-    html_url: str
-    node_id: str
-    number: int
-    updated_at: _dt.datetime
-    url: str
-    reactions: NotRequired[ReactionRollupType]
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+    state: Literal["accepted", "declined", "pending"]
 
 
-class TeamDiscussionCommentTypeForResponse(TypedDict):
-    """Team Discussion Comment
+class RepositoryAdvisoryCreditTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    A reply to a discussion within a team.
+    A credit given to a user for a repository security advisory.
     """
 
-    author: Union[None, SimpleUserTypeForResponse]
-    body: str
-    body_html: str
-    body_version: str
-    created_at: str
-    last_edited_at: Union[str, None]
-    discussion_url: str
-    html_url: str
-    node_id: str
-    number: int
-    updated_at: str
-    url: str
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    user: SimpleUserTypeForResponse
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+    state: Literal["accepted", "declined", "pending"]
 
 
 __all__ = (
-    "TeamDiscussionCommentType",
-    "TeamDiscussionCommentTypeForResponse",
+    "RepositoryAdvisoryCreditType",
+    "RepositoryAdvisoryCreditTypeForResponse",
 )

@@ -15,22 +15,24 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0148 import RepositoryRulesetConditionsPropRefName
-from .group_0152 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName(GitHubModel):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-class OrgRulesetConditionsOneof1(GitHubModel):
-    """repository_id_and_ref_name
-
-    Conditions to target repositories by id and refs by name
-    """
-
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
-        Field()
+    include: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.",
+    )
+    exclude: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.",
+    )
+    protected: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether renaming of target repositories is prevented.",
     )
 
 
-model_rebuild(OrgRulesetConditionsOneof1)
+model_rebuild(RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName)
 
-__all__ = ("OrgRulesetConditionsOneof1",)
+__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",)

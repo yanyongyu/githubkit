@@ -9,33 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0448 import EnterpriseWebhooks
-from .group_0449 import SimpleInstallation
-from .group_0450 import OrganizationSimpleWebhooks
-from .group_0451 import RepositoryWebhooks
+from .group_0453 import EnterpriseWebhooks
+from .group_0454 import SimpleInstallation
+from .group_0455 import OrganizationSimpleWebhooks
+from .group_0456 import RepositoryWebhooks
 
 
-class WebhookRepositoryRenamed(GitHubModel):
-    """repository renamed event"""
+class WebhookRepositoryDispatchSample(GitHubModel):
+    """repository_dispatch event"""
 
-    action: Literal["renamed"] = Field()
-    changes: WebhookRepositoryRenamedPropChanges = Field()
+    action: str = Field(
+        description="The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body."
+    )
+    branch: str = Field()
+    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayload, None] = (
+        Field(
+            description="The `client_payload` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body."
+        )
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
+    installation: SimpleInstallation = Field(
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
@@ -51,32 +57,18 @@ class WebhookRepositoryRenamed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookRepositoryRenamedPropChanges(GitHubModel):
-    """WebhookRepositoryRenamedPropChanges"""
+class WebhookRepositoryDispatchSamplePropClientPayload(ExtraGitHubModel):
+    """WebhookRepositoryDispatchSamplePropClientPayload
 
-    repository: WebhookRepositoryRenamedPropChangesPropRepository = Field()
-
-
-class WebhookRepositoryRenamedPropChangesPropRepository(GitHubModel):
-    """WebhookRepositoryRenamedPropChangesPropRepository"""
-
-    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropName = Field()
+    The `client_payload` that was specified in the `POST
+    /repos/{owner}/{repo}/dispatches` request body.
+    """
 
 
-class WebhookRepositoryRenamedPropChangesPropRepositoryPropName(GitHubModel):
-    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookRepositoryRenamed)
-model_rebuild(WebhookRepositoryRenamedPropChanges)
-model_rebuild(WebhookRepositoryRenamedPropChangesPropRepository)
-model_rebuild(WebhookRepositoryRenamedPropChangesPropRepositoryPropName)
+model_rebuild(WebhookRepositoryDispatchSample)
+model_rebuild(WebhookRepositoryDispatchSamplePropClientPayload)
 
 __all__ = (
-    "WebhookRepositoryRenamed",
-    "WebhookRepositoryRenamedPropChanges",
-    "WebhookRepositoryRenamedPropChangesPropRepository",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryPropName",
+    "WebhookRepositoryDispatchSample",
+    "WebhookRepositoryDispatchSamplePropClientPayload",
 )

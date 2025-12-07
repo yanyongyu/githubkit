@@ -9,82 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
+
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class BillingUsageSummaryReportUserType(TypedDict):
-    """BillingUsageSummaryReportUser"""
+class StarredRepositoryType(TypedDict):
+    """Starred Repository
 
-    time_period: BillingUsageSummaryReportUserPropTimePeriodType
-    user: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsType]
+    Starred Repository
+    """
 
-
-class BillingUsageSummaryReportUserTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportUser"""
-
-    time_period: BillingUsageSummaryReportUserPropTimePeriodTypeForResponse
-    user: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse]
+    starred_at: _dt.datetime
+    repo: RepositoryType
 
 
-class BillingUsageSummaryReportUserPropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportUserPropTimePeriod"""
+class StarredRepositoryTypeForResponse(TypedDict):
+    """Starred Repository
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    Starred Repository
+    """
 
-
-class BillingUsageSummaryReportUserPropTimePeriodTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportUserPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingUsageSummaryReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportUserPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportUserPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    starred_at: str
+    repo: RepositoryTypeForResponse
 
 
 __all__ = (
-    "BillingUsageSummaryReportUserPropTimePeriodType",
-    "BillingUsageSummaryReportUserPropTimePeriodTypeForResponse",
-    "BillingUsageSummaryReportUserPropUsageItemsItemsType",
-    "BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingUsageSummaryReportUserType",
-    "BillingUsageSummaryReportUserTypeForResponse",
+    "StarredRepositoryType",
+    "StarredRepositoryTypeForResponse",
 )

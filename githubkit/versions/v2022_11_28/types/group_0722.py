@@ -9,39 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0131 import ProjectsV2Type, ProjectsV2TypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0485 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookProjectsV2ProjectDeletedType(TypedDict):
-    """Projects v2 Project Deleted Event"""
+class WebhookProjectDeletedType(TypedDict):
+    """project deleted event"""
 
     action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
-    sender: SimpleUserType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project: WebhooksProjectType
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectsV2ProjectDeletedTypeForResponse(TypedDict):
-    """Projects v2 Project Deleted Event"""
+class WebhookProjectDeletedTypeForResponse(TypedDict):
+    """project deleted event"""
 
     action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2: ProjectsV2TypeForResponse
-    sender: SimpleUserTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project: WebhooksProjectTypeForResponse
+    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectDeletedType",
-    "WebhookProjectsV2ProjectDeletedTypeForResponse",
+    "WebhookProjectDeletedType",
+    "WebhookProjectDeletedTypeForResponse",
 )

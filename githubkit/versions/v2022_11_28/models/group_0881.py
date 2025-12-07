@@ -13,37 +13,34 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GistsPostBody(GitHubModel):
-    """GistsPostBody"""
+class EnterprisesEnterpriseTeamsPostBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsPostBody"""
 
-    description: Missing[str] = Field(
-        default=UNSET, description="Description of the gist"
+    name: str = Field(description="The name of the team.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A description of the team."
     )
-    files: GistsPostBodyPropFiles = Field(
-        description="Names and content for the files that make up the gist"
+    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
+        default=UNSET,
+        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be set.\n",
     )
-    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
+    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
+        Field(
+            default=UNSET,
+            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments) endpoint.\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
+        )
+    )
+    group_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The ID of the IdP group to assign team membership with. You can get this value from the [REST API endpoints for SCIM](https://docs.github.com/rest/scim#list-provisioned-scim-groups-for-an-enterprise).",
+    )
 
 
-class GistsPostBodyPropFiles(ExtraGitHubModel):
-    """GistsPostBodyPropFiles
+model_rebuild(EnterprisesEnterpriseTeamsPostBody)
 
-    Names and content for the files that make up the gist
-
-    Examples:
-        {'hello.rb': {'content': 'puts "Hello, World!"'}}
-    """
-
-
-model_rebuild(GistsPostBody)
-model_rebuild(GistsPostBodyPropFiles)
-
-__all__ = (
-    "GistsPostBody",
-    "GistsPostBodyPropFiles",
-)
+__all__ = ("EnterprisesEnterpriseTeamsPostBody",)

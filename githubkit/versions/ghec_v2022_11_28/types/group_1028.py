@@ -9,73 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type(
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_alerting: (
+        EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType
+    )
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
+    budget_entity_name: NotRequired[str]
+    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_product_sku: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
+    budget_entity_name: NotRequired[str]
+    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_product_sku: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00
-    """
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
 
-    message: NotRequired[str]
-    reassigned_resources: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType
-            ],
-            None,
-        ]
-    ]
+    will_alert: bool
+    alert_recipients: list[str]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse(
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00
-    """
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
 
-    message: NotRequired[str]
-    reassigned_resources: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse
-            ],
-            None,
-        ]
-    ]
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00PropReassignedResourcesItems
-    """
-
-    resource_type: NotRequired[str]
-    name: NotRequired[str]
-    previous_cost_center: NotRequired[str]
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00PropReassignedResourcesItems
-    """
-
-    resource_type: NotRequired[str]
-    name: NotRequired[str]
-    previous_cost_center: NotRequired[str]
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse",
 )

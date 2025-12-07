@@ -9,48 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
-
-
-class NetworkConfiguration(GitHubModel):
-    """Hosted compute network configuration
-
-    A hosted compute network configuration.
-    """
-
-    id: str = Field(description="The unique identifier of the network configuration.")
-    name: str = Field(description="The name of the network configuration.")
-    compute_service: Missing[Literal["none", "actions", "codespaces"]] = Field(
-        default=UNSET,
-        description="The hosted compute service the network configuration supports.",
-    )
-    network_settings_ids: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The unique identifier of each network settings in the configuration.",
-    )
-    created_on: Union[_dt.datetime, None] = Field(
-        description="The time at which the network configuration was created, in ISO 8601 format."
+    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems] = (
+        Field(description="A list of field updates to apply.")
     )
 
 
-model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
-model_rebuild(NetworkConfiguration)
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+
+    id: int = Field(description="The ID of the project field to update.")
+    value: Union[str, float, None] = Field(
+        description="The new value for the field:\n- For text, number, and date fields, provide the new value directly.\n- For single select and iteration fields, provide the ID of the option or iteration.\n- To clear the field, set this to null."
+    )
+
+
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems)
 
 __all__ = (
-    "NetworkConfiguration",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
 )

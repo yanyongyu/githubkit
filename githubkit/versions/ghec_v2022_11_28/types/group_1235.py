@@ -12,31 +12,31 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
 
     Examples:
-        {'contexts': ['contexts']}
+        {'teams': ['justice-league']}
     """
 
-    contexts: list[str]
+    teams: list[str]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0TypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
 
     Examples:
-        {'contexts': ['contexts']}
+        {'teams': ['justice-league']}
     """
 
-    contexts: list[str]
+    teams: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0TypeForResponse",
 )

@@ -9,28 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0329 import CheckRunType, CheckRunTypeForResponse
-
-
-class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
-
-    total_count: int
-    check_runs: list[CheckRunType]
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
+class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    total_count: int
-    check_runs: list[CheckRunTypeForResponse]
+    commit_sha: str
+    ref: str
+    sarif: str
+    checkout_uri: NotRequired[str]
+    started_at: NotRequired[_dt.datetime]
+    tool_name: NotRequired[str]
+    validate_: NotRequired[bool]
+
+
+class ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+
+    commit_sha: str
+    ref: str
+    sarif: str
+    checkout_uri: NotRequired[str]
+    started_at: NotRequired[str]
+    tool_name: NotRequired[str]
+    validate_: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",
-    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse",
+    "ReposOwnerRepoCodeScanningSarifsPostBodyType",
+    "ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse",
 )

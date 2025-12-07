@@ -11,28 +11,68 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0213 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-class CodeScanningAutofixCommitsType(TypedDict):
-    """CodeScanningAutofixCommits
 
-    Commit an autofix for a code scanning alert
+class CheckSuitePreferenceType(TypedDict):
+    """Check Suite Preference
+
+    Check suite configuration preferences for a repository.
     """
 
-    target_ref: NotRequired[str]
-    message: NotRequired[str]
+    preferences: CheckSuitePreferencePropPreferencesType
+    repository: MinimalRepositoryType
 
 
-class CodeScanningAutofixCommitsTypeForResponse(TypedDict):
-    """CodeScanningAutofixCommits
+class CheckSuitePreferenceTypeForResponse(TypedDict):
+    """Check Suite Preference
 
-    Commit an autofix for a code scanning alert
+    Check suite configuration preferences for a repository.
     """
 
-    target_ref: NotRequired[str]
-    message: NotRequired[str]
+    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
+    repository: MinimalRepositoryTypeForResponse
+
+
+class CheckSuitePreferencePropPreferencesType(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
+        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    ]
+
+
+class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
+        list[
+            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
+        ]
+    ]
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
+    TypedDict
+):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
 
 
 __all__ = (
-    "CodeScanningAutofixCommitsType",
-    "CodeScanningAutofixCommitsTypeForResponse",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
+    "CheckSuitePreferencePropPreferencesType",
+    "CheckSuitePreferencePropPreferencesTypeForResponse",
+    "CheckSuitePreferenceType",
+    "CheckSuitePreferenceTypeForResponse",
 )

@@ -13,38 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0494 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
 
 
-class WebhookRepositoryCreatedType(TypedDict):
-    """repository created event"""
+class WebhookReleaseReleasedType(TypedDict):
+    """release released event"""
 
-    action: Literal["created"]
+    action: Literal["released"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksReleaseType
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookRepositoryCreatedTypeForResponse(TypedDict):
-    """repository created event"""
+class WebhookReleaseReleasedTypeForResponse(TypedDict):
+    """release released event"""
 
-    action: Literal["created"]
+    action: Literal["released"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    release: WebhooksReleaseTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookRepositoryCreatedType",
-    "WebhookRepositoryCreatedTypeForResponse",
+    "WebhookReleaseReleasedType",
+    "WebhookReleaseReleasedTypeForResponse",
 )

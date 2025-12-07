@@ -9,75 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0477 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0464 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookOrganizationRenamedType(TypedDict):
-    """organization renamed event"""
+class WebhookOrgBlockUnblockedType(TypedDict):
+    """org_block unblocked event"""
 
-    action: Literal["renamed"]
-    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
+    action: Literal["unblocked"]
+    blocked_user: Union[WebhooksUserType, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    membership: NotRequired[WebhooksMembershipType]
     organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookOrganizationRenamedTypeForResponse(TypedDict):
-    """organization renamed event"""
+class WebhookOrgBlockUnblockedTypeForResponse(TypedDict):
+    """org_block unblocked event"""
 
-    action: Literal["renamed"]
-    changes: NotRequired[WebhookOrganizationRenamedPropChangesTypeForResponse]
+    action: Literal["unblocked"]
+    blocked_user: Union[WebhooksUserTypeForResponse, None]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    membership: NotRequired[WebhooksMembershipTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookOrganizationRenamedPropChangesType(TypedDict):
-    """WebhookOrganizationRenamedPropChanges"""
-
-    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
-
-
-class WebhookOrganizationRenamedPropChangesTypeForResponse(TypedDict):
-    """WebhookOrganizationRenamedPropChanges"""
-
-    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse]
-
-
-class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
-
-    from_: NotRequired[str]
-
-
-class WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse(TypedDict):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
-
-    from_: NotRequired[str]
-
-
 __all__ = (
-    "WebhookOrganizationRenamedPropChangesPropLoginType",
-    "WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse",
-    "WebhookOrganizationRenamedPropChangesType",
-    "WebhookOrganizationRenamedPropChangesTypeForResponse",
-    "WebhookOrganizationRenamedType",
-    "WebhookOrganizationRenamedTypeForResponse",
+    "WebhookOrgBlockUnblockedType",
+    "WebhookOrgBlockUnblockedTypeForResponse",
 )

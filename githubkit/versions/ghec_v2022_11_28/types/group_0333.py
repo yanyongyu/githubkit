@@ -13,70 +13,124 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0067 import (
-    CodeScanningAlertRuleSummaryType,
-    CodeScanningAlertRuleSummaryTypeForResponse,
-)
-from .group_0068 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
-)
-from .group_0069 import (
-    CodeScanningAlertInstanceType,
-    CodeScanningAlertInstanceTypeForResponse,
-)
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0305 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0332 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
 
 
-class CodeScanningAlertItemsType(TypedDict):
-    """CodeScanningAlertItems"""
+class CheckRunType(TypedDict):
+    """CheckRun
 
-    number: int
-    created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
+    A check performed on the code of a given code change
+    """
+
+    id: int
+    head_sha: str
+    node_id: str
+    external_id: Union[str, None]
     url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+    html_url: Union[str, None]
+    details_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
-    assignees: NotRequired[list[SimpleUserType]]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    started_at: Union[_dt.datetime, None]
+    completed_at: Union[_dt.datetime, None]
+    output: CheckRunPropOutputType
+    name: str
+    check_suite: Union[CheckRunPropCheckSuiteType, None]
+    app: Union[None, IntegrationType, None]
+    pull_requests: list[PullRequestMinimalType]
+    deployment: NotRequired[DeploymentSimpleType]
 
 
-class CodeScanningAlertItemsTypeForResponse(TypedDict):
-    """CodeScanningAlertItems"""
+class CheckRunTypeForResponse(TypedDict):
+    """CheckRun
 
-    number: int
-    created_at: str
-    updated_at: NotRequired[str]
+    A check performed on the code of a given code change
+    """
+
+    id: int
+    head_sha: str
+    node_id: str
+    external_id: Union[str, None]
     url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[str, None]]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
-    dismissed_at: Union[str, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+    html_url: Union[str, None]
+    details_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryTypeForResponse
-    tool: CodeScanningAnalysisToolTypeForResponse
-    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    started_at: Union[str, None]
+    completed_at: Union[str, None]
+    output: CheckRunPropOutputTypeForResponse
+    name: str
+    check_suite: Union[CheckRunPropCheckSuiteTypeForResponse, None]
+    app: Union[None, IntegrationTypeForResponse, None]
+    pull_requests: list[PullRequestMinimalTypeForResponse]
+    deployment: NotRequired[DeploymentSimpleTypeForResponse]
+
+
+class CheckRunPropOutputType(TypedDict):
+    """CheckRunPropOutput"""
+
+    title: Union[str, None]
+    summary: Union[str, None]
+    text: Union[str, None]
+    annotations_count: int
+    annotations_url: str
+
+
+class CheckRunPropOutputTypeForResponse(TypedDict):
+    """CheckRunPropOutput"""
+
+    title: Union[str, None]
+    summary: Union[str, None]
+    text: Union[str, None]
+    annotations_count: int
+    annotations_url: str
+
+
+class CheckRunPropCheckSuiteType(TypedDict):
+    """CheckRunPropCheckSuite"""
+
+    id: int
+
+
+class CheckRunPropCheckSuiteTypeForResponse(TypedDict):
+    """CheckRunPropCheckSuite"""
+
+    id: int
 
 
 __all__ = (
-    "CodeScanningAlertItemsType",
-    "CodeScanningAlertItemsTypeForResponse",
+    "CheckRunPropCheckSuiteType",
+    "CheckRunPropCheckSuiteTypeForResponse",
+    "CheckRunPropOutputType",
+    "CheckRunPropOutputTypeForResponse",
+    "CheckRunType",
+    "CheckRunTypeForResponse",
 )

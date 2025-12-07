@@ -9,26 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0090 import RunnerType, RunnerTypeForResponse
-
-
-class OrgsOrgActionsRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnersGetResponse200"""
-
-    total_count: int
-    runners: list[RunnerType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnersGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersGetResponse200"""
+class OrgsOrgActionsRunnerGroupsPostBodyType(TypedDict):
+    """OrgsOrgActionsRunnerGroupsPostBody"""
 
-    total_count: int
-    runners: list[RunnerTypeForResponse]
+    name: str
+    visibility: NotRequired[Literal["selected", "all", "private"]]
+    selected_repository_ids: NotRequired[list[int]]
+    runners: NotRequired[list[int]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[str]
+
+
+class OrgsOrgActionsRunnerGroupsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnerGroupsPostBody"""
+
+    name: str
+    visibility: NotRequired[Literal["selected", "all", "private"]]
+    selected_repository_ids: NotRequired[list[int]]
+    runners: NotRequired[list[int]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersGetResponse200Type",
-    "OrgsOrgActionsRunnersGetResponse200TypeForResponse",
+    "OrgsOrgActionsRunnerGroupsPostBodyType",
+    "OrgsOrgActionsRunnerGroupsPostBodyTypeForResponse",
 )

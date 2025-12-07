@@ -11,20 +11,29 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
 
-    assignees: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._",
-    )
+    labels: Missing[
+        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems]
+    ] = Field(min_length=1 if PYDANTIC_V2 else None, default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBody)
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",)
+    name: str = Field()
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
+)

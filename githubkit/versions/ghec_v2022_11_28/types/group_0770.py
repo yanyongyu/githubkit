@@ -13,32 +13,111 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0098 import (
-    OrganizationCustomPropertyType,
-    OrganizationCustomPropertyTypeForResponse,
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0554 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
 
 
-class WebhookOrganizationCustomPropertyCreatedType(TypedDict):
-    """organization custom property created event"""
+class WebhookMilestoneEditedType(TypedDict):
+    """milestone edited event"""
 
-    action: Literal["created"]
-    definition: OrganizationCustomPropertyType
-    enterprise: EnterpriseWebhooksType
-    sender: NotRequired[SimpleUserType]
+    action: Literal["edited"]
+    changes: WebhookMilestoneEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    milestone: WebhooksMilestoneType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookOrganizationCustomPropertyCreatedTypeForResponse(TypedDict):
-    """organization custom property created event"""
+class WebhookMilestoneEditedTypeForResponse(TypedDict):
+    """milestone edited event"""
 
-    action: Literal["created"]
-    definition: OrganizationCustomPropertyTypeForResponse
-    enterprise: EnterpriseWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    action: Literal["edited"]
+    changes: WebhookMilestoneEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    milestone: WebhooksMilestoneTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookMilestoneEditedPropChangesType(TypedDict):
+    """WebhookMilestoneEditedPropChanges
+
+    The changes to the milestone if the action was `edited`.
+    """
+
+    description: NotRequired[WebhookMilestoneEditedPropChangesPropDescriptionType]
+    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnType]
+    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleType]
+
+
+class WebhookMilestoneEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookMilestoneEditedPropChanges
+
+    The changes to the milestone if the action was `edited`.
+    """
+
+    description: NotRequired[
+        WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse
+    ]
+    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse]
+    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleTypeForResponse]
+
+
+class WebhookMilestoneEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropDescription"""
+
+    from_: str
+
+
+class WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropDescription"""
+
+    from_: str
+
+
+class WebhookMilestoneEditedPropChangesPropDueOnType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropDueOn"""
+
+    from_: str
+
+
+class WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropDueOn"""
+
+    from_: str
+
+
+class WebhookMilestoneEditedPropChangesPropTitleType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropTitle"""
+
+    from_: str
+
+
+class WebhookMilestoneEditedPropChangesPropTitleTypeForResponse(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropTitle"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookOrganizationCustomPropertyCreatedType",
-    "WebhookOrganizationCustomPropertyCreatedTypeForResponse",
+    "WebhookMilestoneEditedPropChangesPropDescriptionType",
+    "WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse",
+    "WebhookMilestoneEditedPropChangesPropDueOnType",
+    "WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse",
+    "WebhookMilestoneEditedPropChangesPropTitleType",
+    "WebhookMilestoneEditedPropChangesPropTitleTypeForResponse",
+    "WebhookMilestoneEditedPropChangesType",
+    "WebhookMilestoneEditedPropChangesTypeForResponse",
+    "WebhookMilestoneEditedType",
+    "WebhookMilestoneEditedTypeForResponse",
 )

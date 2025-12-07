@@ -9,68 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0216 import RepositoryAdvisoryType, RepositoryAdvisoryTypeForResponse
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryDispatchSampleType(TypedDict):
-    """repository_dispatch event"""
+class WebhookRepositoryAdvisoryPublishedType(TypedDict):
+    """Repository advisory published event"""
 
-    action: str
-    branch: str
-    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayloadType, None]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: SimpleInstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    repository_advisory: RepositoryAdvisoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookRepositoryDispatchSampleTypeForResponse(TypedDict):
-    """repository_dispatch event"""
+class WebhookRepositoryAdvisoryPublishedTypeForResponse(TypedDict):
+    """Repository advisory published event"""
 
-    action: str
-    branch: str
-    client_payload: Union[
-        WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse, None
-    ]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: SimpleInstallationTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-WebhookRepositoryDispatchSamplePropClientPayloadType: TypeAlias = dict[str, Any]
-"""WebhookRepositoryDispatchSamplePropClientPayload
-
-The `client_payload` that was specified in the `POST
-/repos/{owner}/{repo}/dispatches` request body.
-"""
-
-
-WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""WebhookRepositoryDispatchSamplePropClientPayload
-
-The `client_payload` that was specified in the `POST
-/repos/{owner}/{repo}/dispatches` request body.
-"""
+    repository_advisory: RepositoryAdvisoryTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookRepositoryDispatchSamplePropClientPayloadType",
-    "WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse",
-    "WebhookRepositoryDispatchSampleType",
-    "WebhookRepositoryDispatchSampleTypeForResponse",
+    "WebhookRepositoryAdvisoryPublishedType",
+    "WebhookRepositoryAdvisoryPublishedTypeForResponse",
 )

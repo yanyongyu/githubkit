@@ -9,56 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0321 import DiffEntryType, DiffEntryTypeForResponse
-from .group_0322 import CommitType, CommitTypeForResponse
+from typing_extensions import TypedDict
 
 
-class CommitComparisonType(TypedDict):
-    """Commit Comparison
+class BranchShortType(TypedDict):
+    """Branch Short
 
-    Commit Comparison
+    Branch Short
     """
 
-    url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitType
-    merge_base_commit: CommitType
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitType]
-    files: NotRequired[list[DiffEntryType]]
+    name: str
+    commit: BranchShortPropCommitType
+    protected: bool
 
 
-class CommitComparisonTypeForResponse(TypedDict):
-    """Commit Comparison
+class BranchShortTypeForResponse(TypedDict):
+    """Branch Short
 
-    Commit Comparison
+    Branch Short
     """
 
+    name: str
+    commit: BranchShortPropCommitTypeForResponse
+    protected: bool
+
+
+class BranchShortPropCommitType(TypedDict):
+    """BranchShortPropCommit"""
+
+    sha: str
     url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitTypeForResponse
-    merge_base_commit: CommitTypeForResponse
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitTypeForResponse]
-    files: NotRequired[list[DiffEntryTypeForResponse]]
+
+
+class BranchShortPropCommitTypeForResponse(TypedDict):
+    """BranchShortPropCommit"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "CommitComparisonType",
-    "CommitComparisonTypeForResponse",
+    "BranchShortPropCommitType",
+    "BranchShortPropCommitTypeForResponse",
+    "BranchShortType",
+    "BranchShortTypeForResponse",
 )

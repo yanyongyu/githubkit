@@ -9,75 +9,106 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0481 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
+
+class WebhookProjectCardMovedPropProjectCardAllof0Type(TypedDict):
+    """Project Card"""
+
+    after_id: NotRequired[Union[int, None]]
+    archived: bool
+    column_id: int
+    column_url: str
+    content_url: NotRequired[str]
+    created_at: _dt.datetime
+    creator: Union[WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType, None]
+    id: int
+    node_id: str
+    note: Union[str, None]
+    project_url: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhookProjectColumnEditedType(TypedDict):
-    """project_column edited event"""
+class WebhookProjectCardMovedPropProjectCardAllof0TypeForResponse(TypedDict):
+    """Project Card"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectColumnEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
-
-
-class WebhookProjectColumnEditedTypeForResponse(TypedDict):
-    """project_column edited event"""
-
-    action: Literal["edited"]
-    changes: WebhookProjectColumnEditedPropChangesTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_column: WebhooksProjectColumnTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    after_id: NotRequired[Union[int, None]]
+    archived: bool
+    column_id: int
+    column_url: str
+    content_url: NotRequired[str]
+    created_at: str
+    creator: Union[
+        WebhookProjectCardMovedPropProjectCardAllof0PropCreatorTypeForResponse, None
+    ]
+    id: int
+    node_id: str
+    note: Union[str, None]
+    project_url: str
+    updated_at: str
+    url: str
 
 
-class WebhookProjectColumnEditedPropChangesType(TypedDict):
-    """WebhookProjectColumnEditedPropChanges"""
+class WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType(TypedDict):
+    """User"""
 
-    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookProjectColumnEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectColumnEditedPropChanges"""
+class WebhookProjectCardMovedPropProjectCardAllof0PropCreatorTypeForResponse(TypedDict):
+    """User"""
 
-    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameTypeForResponse]
-
-
-class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookProjectColumnEditedPropChangesPropNameTypeForResponse(TypedDict):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectColumnEditedPropChangesPropNameType",
-    "WebhookProjectColumnEditedPropChangesPropNameTypeForResponse",
-    "WebhookProjectColumnEditedPropChangesType",
-    "WebhookProjectColumnEditedPropChangesTypeForResponse",
-    "WebhookProjectColumnEditedType",
-    "WebhookProjectColumnEditedTypeForResponse",
+    "WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType",
+    "WebhookProjectCardMovedPropProjectCardAllof0PropCreatorTypeForResponse",
+    "WebhookProjectCardMovedPropProjectCardAllof0Type",
+    "WebhookProjectCardMovedPropProjectCardAllof0TypeForResponse",
 )

@@ -18,133 +18,144 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0095 import TeamSimple
+from .group_0003 import SimpleUser
+from .group_0034 import SimpleRepository
+from .group_0210 import (
+    SecretScanningLocationCommit,
+    SecretScanningLocationDiscussionComment,
+    SecretScanningLocationDiscussionTitle,
+    SecretScanningLocationIssueBody,
+    SecretScanningLocationPullRequestBody,
+    SecretScanningLocationPullRequestReview,
+    SecretScanningLocationWikiCommit,
+)
+from .group_0211 import (
+    SecretScanningLocationIssueComment,
+    SecretScanningLocationIssueTitle,
+    SecretScanningLocationPullRequestReviewComment,
+    SecretScanningLocationPullRequestTitle,
+)
+from .group_0212 import (
+    SecretScanningLocationDiscussionBody,
+    SecretScanningLocationPullRequestComment,
+)
 
 
-class TeamFull(GitHubModel):
-    """Full Team
+class OrganizationSecretScanningAlert(GitHubModel):
+    """OrganizationSecretScanningAlert"""
 
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    id: int = Field(description="Unique identifier of the team")
-    node_id: str = Field()
-    url: str = Field(description="URL for the team")
-    html_url: str = Field()
-    name: str = Field(description="Name of the team")
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[Literal["closed", "secret"]] = Field(
-        default=UNSET, description="The level of privacy this team should have"
+    number: Missing[int] = Field(
+        default=UNSET, description="The security alert number."
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(default=UNSET, description="The notification setting the team has set")
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
-    )
-    members_url: str = Field()
-    repositories_url: str = Field()
-    parent: Missing[Union[None, TeamSimple]] = Field(default=UNSET)
-    members_count: int = Field()
-    repos_count: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    organization: TeamOrganization = Field(
-        title="Team Organization", description="Team Organization"
-    )
-    ldap_dn: Missing[str] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The [distinguished name](https://www.ldap.com/ldap-dns-and-rdns) (DN) of the LDAP entry to map to a team.",
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
+    updated_at: Missing[Union[None, _dt.datetime]] = Field(default=UNSET)
+    url: Missing[str] = Field(
+        default=UNSET, description="The REST API URL of the alert resource."
     )
-    organization_id: Missing[int] = Field(
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The GitHub URL of the alert resource."
+    )
+    locations_url: Missing[str] = Field(
         default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
+        description="The REST API URL of the code locations for this alert.",
     )
-    enterprise_id: Missing[int] = Field(
+    state: Missing[Literal["open", "resolved"]] = Field(
         default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
     )
-
-
-class TeamOrganization(GitHubModel):
-    """Team Organization
-
-    Team Organization
-    """
-
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    company: Missing[Union[str, None]] = Field(default=UNSET)
-    blog: Missing[Union[str, None]] = Field(default=UNSET)
-    location: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
-    is_verified: Missing[bool] = Field(default=UNSET)
-    has_organization_projects: bool = Field()
-    has_repository_projects: bool = Field()
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
-    html_url: str = Field()
-    created_at: _dt.datetime = Field()
-    type: str = Field()
-    total_private_repos: Missing[int] = Field(default=UNSET)
-    owned_private_repos: Missing[int] = Field(default=UNSET)
-    private_gists: Missing[Union[int, None]] = Field(default=UNSET)
-    disk_usage: Missing[Union[int, None]] = Field(default=UNSET)
-    collaborators: Missing[Union[int, None]] = Field(default=UNSET)
-    billing_email: Missing[Union[str, None]] = Field(default=UNSET)
-    plan: Missing[TeamOrganizationPropPlan] = Field(default=UNSET)
-    default_repository_permission: Missing[Union[str, None]] = Field(default=UNSET)
-    members_can_create_repositories: Missing[Union[bool, None]] = Field(default=UNSET)
-    two_factor_requirement_enabled: Missing[Union[bool, None]] = Field(default=UNSET)
-    members_allowed_repository_creation_type: Missing[str] = Field(default=UNSET)
-    members_can_create_public_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_private_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_internal_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_pages: Missing[bool] = Field(default=UNSET)
-    members_can_create_public_pages: Missing[bool] = Field(default=UNSET)
-    members_can_create_private_pages: Missing[bool] = Field(default=UNSET)
-    members_can_fork_private_repositories: Missing[Union[bool, None]] = Field(
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolved_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that secret scanning detected."
+    )
+    secret_type_display_name: Missing[str] = Field(
+        default=UNSET,
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
+    )
+    secret: Missing[str] = Field(
+        default=UNSET, description="The secret that was detected."
+    )
+    repository: Missing[SimpleRepository] = Field(
+        default=UNSET, title="Simple Repository", description="A GitHub repository."
+    )
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether push protection was bypassed for the detected secret.",
+    )
+    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    push_protection_bypassed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    push_protection_bypass_request_reviewer: Missing[Union[None, SimpleUser]] = Field(
         default=UNSET
     )
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
-    updated_at: _dt.datetime = Field()
-    archived_at: Union[_dt.datetime, None] = Field()
+    push_protection_bypass_request_reviewer_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when reviewing a push protection bypass.",
+    )
+    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when requesting a push protection bypass.",
+    )
+    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The URL to a push protection bypass request."
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment that was optionally added when this alert was closed",
+    )
+    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
+        default=UNSET, description="The token status as of the latest validity check."
+    )
+    publicly_leaked: Missing[Union[bool, None]] = Field(
+        default=UNSET, description="Whether the secret was publicly leaked."
+    )
+    multi_repo: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether the detected secret was found in multiple repositories in the same organization or enterprise.",
+    )
+    is_base64_encoded: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="A boolean value representing whether or not alert is base64 encoded",
+    )
+    first_location_detected: Missing[
+        Union[
+            None,
+            SecretScanningLocationCommit,
+            SecretScanningLocationWikiCommit,
+            SecretScanningLocationIssueTitle,
+            SecretScanningLocationIssueBody,
+            SecretScanningLocationIssueComment,
+            SecretScanningLocationDiscussionTitle,
+            SecretScanningLocationDiscussionBody,
+            SecretScanningLocationDiscussionComment,
+            SecretScanningLocationPullRequestTitle,
+            SecretScanningLocationPullRequestBody,
+            SecretScanningLocationPullRequestComment,
+            SecretScanningLocationPullRequestReview,
+            SecretScanningLocationPullRequestReviewComment,
+        ]
+    ] = Field(default=UNSET)
+    has_more_locations: Missing[bool] = Field(
+        default=UNSET,
+        description="A boolean value representing whether or not the token in the alert was detected in more than one location.",
+    )
+    assigned_to: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
 
 
-class TeamOrganizationPropPlan(GitHubModel):
-    """TeamOrganizationPropPlan"""
+model_rebuild(OrganizationSecretScanningAlert)
 
-    name: str = Field()
-    space: int = Field()
-    private_repos: int = Field()
-    filled_seats: Missing[int] = Field(default=UNSET)
-    seats: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(TeamFull)
-model_rebuild(TeamOrganization)
-model_rebuild(TeamOrganizationPropPlan)
-
-__all__ = (
-    "TeamFull",
-    "TeamOrganization",
-    "TeamOrganizationPropPlan",
-)
+__all__ = ("OrganizationSecretScanningAlert",)

@@ -9,50 +9,89 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
+class RepositoryRulePullRequestPropParametersType(TypedDict):
+    """RepositoryRulePullRequestPropParameters"""
 
-    do_not_enforce_on_create: NotRequired[bool]
-    required_status_checks: list[RepositoryRuleParamsStatusCheckConfigurationType]
-    strict_required_status_checks_policy: bool
-
-
-class RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
-
-    do_not_enforce_on_create: NotRequired[bool]
-    required_status_checks: list[
-        RepositoryRuleParamsStatusCheckConfigurationTypeForResponse
+    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
+    automatic_copilot_code_review_enabled: NotRequired[bool]
+    dismiss_stale_reviews_on_push: bool
+    require_code_owner_review: bool
+    require_last_push_approval: bool
+    required_approving_review_count: int
+    required_review_thread_resolution: bool
+    required_reviewers: NotRequired[
+        list[RepositoryRuleParamsRequiredReviewerConfigurationType]
     ]
-    strict_required_status_checks_policy: bool
 
 
-class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
-    """StatusCheckConfiguration
+class RepositoryRulePullRequestPropParametersTypeForResponse(TypedDict):
+    """RepositoryRulePullRequestPropParameters"""
 
-    Required status check
+    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
+    automatic_copilot_code_review_enabled: NotRequired[bool]
+    dismiss_stale_reviews_on_push: bool
+    require_code_owner_review: bool
+    require_last_push_approval: bool
+    required_approving_review_count: int
+    required_review_thread_resolution: bool
+    required_reviewers: NotRequired[
+        list[RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse]
+    ]
+
+
+class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
+    """RequiredReviewerConfiguration
+
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
     """
 
-    context: str
-    integration_id: NotRequired[int]
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer: RepositoryRuleParamsReviewerType
 
 
-class RepositoryRuleParamsStatusCheckConfigurationTypeForResponse(TypedDict):
-    """StatusCheckConfiguration
+class RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse(TypedDict):
+    """RequiredReviewerConfiguration
 
-    Required status check
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
     """
 
-    context: str
-    integration_id: NotRequired[int]
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer: RepositoryRuleParamsReviewerTypeForResponse
+
+
+class RepositoryRuleParamsReviewerType(TypedDict):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int
+    type: Literal["Team"]
+
+
+class RepositoryRuleParamsReviewerTypeForResponse(TypedDict):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int
+    type: Literal["Team"]
 
 
 __all__ = (
-    "RepositoryRuleParamsStatusCheckConfigurationType",
-    "RepositoryRuleParamsStatusCheckConfigurationTypeForResponse",
-    "RepositoryRuleRequiredStatusChecksPropParametersType",
-    "RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse",
+    "RepositoryRuleParamsRequiredReviewerConfigurationType",
+    "RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse",
+    "RepositoryRuleParamsReviewerType",
+    "RepositoryRuleParamsReviewerTypeForResponse",
+    "RepositoryRulePullRequestPropParametersType",
+    "RepositoryRulePullRequestPropParametersTypeForResponse",
 )

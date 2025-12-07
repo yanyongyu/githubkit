@@ -12,45 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
 
-    groups: NotRequired[
-        list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
-    ]
-
-
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
-
-    groups: NotRequired[
-        list[
-            OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse
-        ]
-    ]
+    title: NotRequired[str]
+    body: NotRequired[str]
 
 
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-
-
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse(
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
 
-    group_id: str
-    group_name: str
-    group_description: str
+    title: NotRequired[str]
+    body: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyTypeForResponse",
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType",
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyTypeForResponse",
 )

@@ -13,41 +13,50 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0551 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0735 import (
+    WebhookIssuesOpenedPropChangesType,
+    WebhookIssuesOpenedPropChangesTypeForResponse,
+)
+from .group_0737 import (
+    WebhookIssuesOpenedPropIssueType,
+    WebhookIssuesOpenedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssuesPinnedType(TypedDict):
-    """issues pinned event"""
+class WebhookIssuesOpenedType(TypedDict):
+    """issues opened event"""
 
-    action: Literal["pinned"]
+    action: Literal["opened"]
+    changes: NotRequired[WebhookIssuesOpenedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssue2Type
+    issue: WebhookIssuesOpenedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesPinnedTypeForResponse(TypedDict):
-    """issues pinned event"""
+class WebhookIssuesOpenedTypeForResponse(TypedDict):
+    """issues opened event"""
 
-    action: Literal["pinned"]
+    action: Literal["opened"]
+    changes: NotRequired[WebhookIssuesOpenedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssue2TypeForResponse
+    issue: WebhookIssuesOpenedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesPinnedType",
-    "WebhookIssuesPinnedTypeForResponse",
+    "WebhookIssuesOpenedType",
+    "WebhookIssuesOpenedTypeForResponse",
 )

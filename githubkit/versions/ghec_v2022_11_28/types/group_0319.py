@@ -9,33 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0082 import TeamType, TeamTypeForResponse
 
-class GitUserType(TypedDict):
-    """Git User
 
-    Metaproperties for Git author/committer information.
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+
+    users: NotRequired[list[SimpleUserType]]
+    teams: NotRequired[list[TeamType]]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+
+    users: NotRequired[list[SimpleUserTypeForResponse]]
+    teams: NotRequired[list[TeamTypeForResponse]]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[_dt.datetime]
+    users: NotRequired[list[SimpleUserType]]
+    teams: NotRequired[list[TeamType]]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
 
 
-class GitUserTypeForResponse(TypedDict):
-    """Git User
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
 
-    Metaproperties for Git author/committer information.
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[str]
+    users: NotRequired[list[SimpleUserTypeForResponse]]
+    teams: NotRequired[list[TeamTypeForResponse]]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
 
 
 __all__ = (
-    "GitUserType",
-    "GitUserTypeForResponse",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse",
 )

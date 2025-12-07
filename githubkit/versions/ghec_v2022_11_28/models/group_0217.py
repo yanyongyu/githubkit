@@ -12,19 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OidcCustomSub(GitHubModel):
-    """Actions OIDC Subject customization
+class ActionsCacheRetentionLimitForOrganization(GitHubModel):
+    """Actions cache retention limit for an organization
 
-    Actions OIDC Subject customization
+    GitHub Actions cache retention policy for an organization.
     """
 
-    include_claim_keys: list[str] = Field(
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
+    max_cache_retention_days: Missing[int] = Field(
+        default=UNSET,
+        description="For repositories in this organization, the maximum duration, in days, for which caches in a repository may be retained.",
     )
 
 
-model_rebuild(OidcCustomSub)
+model_rebuild(ActionsCacheRetentionLimitForOrganization)
 
-__all__ = ("OidcCustomSub",)
+__all__ = ("ActionsCacheRetentionLimitForOrganization",)

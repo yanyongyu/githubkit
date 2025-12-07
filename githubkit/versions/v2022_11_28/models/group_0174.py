@@ -17,21 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0175 import RepositoryRuleCommitterEmailPatternPropParameters
+from .group_0175 import RepositoryRuleRequiredStatusChecksPropParameters
 
 
-class RepositoryRuleCommitterEmailPattern(GitHubModel):
-    """committer_email_pattern
+class RepositoryRuleRequiredStatusChecks(GitHubModel):
+    """required_status_checks
 
-    Parameters to be used for the committer_email_pattern rule
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
     """
 
-    type: Literal["committer_email_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitterEmailPatternPropParameters] = Field(
+    type: Literal["required_status_checks"] = Field()
+    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
         default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleCommitterEmailPattern)
+model_rebuild(RepositoryRuleRequiredStatusChecks)
 
-__all__ = ("RepositoryRuleCommitterEmailPattern",)
+__all__ = ("RepositoryRuleRequiredStatusChecks",)

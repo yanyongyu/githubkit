@@ -9,24 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+EmojisGetResponse200Type: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
-
-    usernames: list[str]
-
-
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
-
-    usernames: list[str]
+EmojisGetResponse200TypeForResponse: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType",
-    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyTypeForResponse",
+    "EmojisGetResponse200Type",
+    "EmojisGetResponse200TypeForResponse",
 )

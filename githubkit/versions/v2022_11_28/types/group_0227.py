@@ -9,124 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class JobType(TypedDict):
-    """Job
-
-    Information of a job execution in a workflow run
-    """
-
-    id: int
-    run_id: int
-    run_url: str
-    run_attempt: NotRequired[int]
-    node_id: str
-    head_sha: str
-    url: str
-    html_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    created_at: _dt.datetime
-    started_at: _dt.datetime
-    completed_at: Union[_dt.datetime, None]
-    name: str
-    steps: NotRequired[list[JobPropStepsItemsType]]
-    check_run_url: str
-    labels: list[str]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    workflow_name: Union[str, None]
-    head_branch: Union[str, None]
+from .group_0225 import RateLimitType, RateLimitTypeForResponse
 
 
-class JobTypeForResponse(TypedDict):
-    """Job
+class RateLimitOverviewPropResourcesType(TypedDict):
+    """RateLimitOverviewPropResources"""
 
-    Information of a job execution in a workflow run
-    """
-
-    id: int
-    run_id: int
-    run_url: str
-    run_attempt: NotRequired[int]
-    node_id: str
-    head_sha: str
-    url: str
-    html_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    created_at: str
-    started_at: str
-    completed_at: Union[str, None]
-    name: str
-    steps: NotRequired[list[JobPropStepsItemsTypeForResponse]]
-    check_run_url: str
-    labels: list[str]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    workflow_name: Union[str, None]
-    head_branch: Union[str, None]
+    core: RateLimitType
+    graphql: NotRequired[RateLimitType]
+    search: RateLimitType
+    code_search: NotRequired[RateLimitType]
+    source_import: NotRequired[RateLimitType]
+    integration_manifest: NotRequired[RateLimitType]
+    code_scanning_upload: NotRequired[RateLimitType]
+    actions_runner_registration: NotRequired[RateLimitType]
+    scim: NotRequired[RateLimitType]
+    dependency_snapshots: NotRequired[RateLimitType]
+    dependency_sbom: NotRequired[RateLimitType]
+    code_scanning_autofix: NotRequired[RateLimitType]
 
 
-class JobPropStepsItemsType(TypedDict):
-    """JobPropStepsItems"""
+class RateLimitOverviewPropResourcesTypeForResponse(TypedDict):
+    """RateLimitOverviewPropResources"""
 
-    status: Literal["queued", "in_progress", "completed"]
-    conclusion: Union[str, None]
-    name: str
-    number: int
-    started_at: NotRequired[Union[_dt.datetime, None]]
-    completed_at: NotRequired[Union[_dt.datetime, None]]
-
-
-class JobPropStepsItemsTypeForResponse(TypedDict):
-    """JobPropStepsItems"""
-
-    status: Literal["queued", "in_progress", "completed"]
-    conclusion: Union[str, None]
-    name: str
-    number: int
-    started_at: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[str, None]]
+    core: RateLimitTypeForResponse
+    graphql: NotRequired[RateLimitTypeForResponse]
+    search: RateLimitTypeForResponse
+    code_search: NotRequired[RateLimitTypeForResponse]
+    source_import: NotRequired[RateLimitTypeForResponse]
+    integration_manifest: NotRequired[RateLimitTypeForResponse]
+    code_scanning_upload: NotRequired[RateLimitTypeForResponse]
+    actions_runner_registration: NotRequired[RateLimitTypeForResponse]
+    scim: NotRequired[RateLimitTypeForResponse]
+    dependency_snapshots: NotRequired[RateLimitTypeForResponse]
+    dependency_sbom: NotRequired[RateLimitTypeForResponse]
+    code_scanning_autofix: NotRequired[RateLimitTypeForResponse]
 
 
 __all__ = (
-    "JobPropStepsItemsType",
-    "JobPropStepsItemsTypeForResponse",
-    "JobType",
-    "JobTypeForResponse",
+    "RateLimitOverviewPropResourcesType",
+    "RateLimitOverviewPropResourcesTypeForResponse",
 )

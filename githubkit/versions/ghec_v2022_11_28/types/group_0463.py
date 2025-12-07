@@ -12,28 +12,28 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0145 import (
-    RepositoryRuleFilePathRestrictionPropParametersType,
-    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
+from .group_0139 import (
+    RepositoryRuleCommitAuthorEmailPatternPropParametersType,
+    RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof15Type(TypedDict):
-    """RepositoryRuleDetailedOneof15"""
+class RepositoryRuleDetailedOneof11Type(TypedDict):
+    """RepositoryRuleDetailedOneof11"""
 
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof15TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof15"""
+class RepositoryRuleDetailedOneof11TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof11"""
 
-    type: Literal["file_path_restriction"]
+    type: Literal["commit_author_email_pattern"]
     parameters: NotRequired[
-        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
+        RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse
     ]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
@@ -41,6 +41,6 @@ class RepositoryRuleDetailedOneof15TypeForResponse(TypedDict):
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof15Type",
-    "RepositoryRuleDetailedOneof15TypeForResponse",
+    "RepositoryRuleDetailedOneof11Type",
+    "RepositoryRuleDetailedOneof11TypeForResponse",
 )

@@ -13,46 +13,48 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0527 import (
+    WebhookCodeScanningAlertReopenedPropAlertType,
+    WebhookCodeScanningAlertReopenedPropAlertTypeForResponse,
+)
 
 
-class WebhookCreateType(TypedDict):
-    """create event"""
+class WebhookCodeScanningAlertReopenedType(TypedDict):
+    """code_scanning_alert reopened event"""
 
-    description: Union[str, None]
+    action: Literal["reopened"]
+    alert: WebhookCodeScanningAlertReopenedPropAlertType
+    commit_oid: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    master_branch: str
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pusher_type: str
-    ref: str
-    ref_type: Literal["tag", "branch"]
+    ref: Union[str, None]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookCreateTypeForResponse(TypedDict):
-    """create event"""
+class WebhookCodeScanningAlertReopenedTypeForResponse(TypedDict):
+    """code_scanning_alert reopened event"""
 
-    description: Union[str, None]
+    action: Literal["reopened"]
+    alert: WebhookCodeScanningAlertReopenedPropAlertTypeForResponse
+    commit_oid: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    master_branch: str
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pusher_type: str
-    ref: str
-    ref_type: Literal["tag", "branch"]
+    ref: Union[str, None]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCreateType",
-    "WebhookCreateTypeForResponse",
+    "WebhookCodeScanningAlertReopenedType",
+    "WebhookCodeScanningAlertReopenedTypeForResponse",
 )

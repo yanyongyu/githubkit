@@ -9,48 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0654 import WebhookForkPropForkeeType, WebhookForkPropForkeeTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0545 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
+from .group_0546 import DiscussionType, DiscussionTypeForResponse
 
 
-class WebhookForkType(TypedDict):
-    """fork event
+class WebhookDiscussionUnansweredType(TypedDict):
+    """discussion unanswered event"""
 
-    A user forks a repository.
-    """
-
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    forkee: WebhookForkPropForkeeType
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["unanswered"]
+    discussion: DiscussionType
+    old_answer: WebhooksAnswerType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookForkTypeForResponse(TypedDict):
-    """fork event
+class WebhookDiscussionUnansweredTypeForResponse(TypedDict):
+    """discussion unanswered event"""
 
-    A user forks a repository.
-    """
-
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    forkee: WebhookForkPropForkeeTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    action: Literal["unanswered"]
+    discussion: DiscussionTypeForResponse
+    old_answer: WebhooksAnswerTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookForkType",
-    "WebhookForkTypeForResponse",
+    "WebhookDiscussionUnansweredType",
+    "WebhookDiscussionUnansweredTypeForResponse",
 )

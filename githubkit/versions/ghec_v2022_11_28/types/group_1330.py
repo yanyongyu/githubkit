@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
+class ReposOwnerRepoMergeUpstreamPostBodyType(TypedDict):
+    """ReposOwnerRepoMergeUpstreamPostBody"""
 
-    sub_issue_id: int
-    replace_parent: NotRequired[bool]
+    branch: str
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
+class ReposOwnerRepoMergeUpstreamPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoMergeUpstreamPostBody"""
 
-    sub_issue_id: int
-    replace_parent: NotRequired[bool]
+    branch: str
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyTypeForResponse",
+    "ReposOwnerRepoMergeUpstreamPostBodyType",
+    "ReposOwnerRepoMergeUpstreamPostBodyTypeForResponse",
 )

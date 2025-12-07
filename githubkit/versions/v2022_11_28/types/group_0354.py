@@ -9,50 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0355 import (
+    TimelineCrossReferencedEventPropSourceType,
+    TimelineCrossReferencedEventPropSourceTypeForResponse,
+)
 
 
-class TimelineAssignedIssueEventType(TypedDict):
-    """Timeline Assigned Issue Event
+class TimelineCrossReferencedEventType(TypedDict):
+    """Timeline Cross Referenced Event
 
-    Timeline Assigned Issue Event
+    Timeline Cross Referenced Event
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["assigned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    source: TimelineCrossReferencedEventPropSourceType
 
 
-class TimelineAssignedIssueEventTypeForResponse(TypedDict):
-    """Timeline Assigned Issue Event
+class TimelineCrossReferencedEventTypeForResponse(TypedDict):
+    """Timeline Cross Referenced Event
 
-    Timeline Assigned Issue Event
+    Timeline Cross Referenced Event
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["assigned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserTypeForResponse]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
+    updated_at: str
+    source: TimelineCrossReferencedEventPropSourceTypeForResponse
 
 
 __all__ = (
-    "TimelineAssignedIssueEventType",
-    "TimelineAssignedIssueEventTypeForResponse",
+    "TimelineCrossReferencedEventType",
+    "TimelineCrossReferencedEventTypeForResponse",
 )

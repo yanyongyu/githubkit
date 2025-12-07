@@ -18,15 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0448 import EnterpriseWebhooks
-from .group_0449 import SimpleInstallation
-from .group_0450 import OrganizationSimpleWebhooks
-from .group_0451 import RepositoryWebhooks
+from .group_0147 import CustomProperty
+from .group_0453 import EnterpriseWebhooks
+from .group_0454 import SimpleInstallation
+from .group_0455 import OrganizationSimpleWebhooks
 
 
-class WebhookDelete(GitHubModel):
-    """delete event"""
+class WebhookCustomPropertyCreated(GitHubModel):
+    """custom property created event"""
 
+    action: Literal["created"] = Field()
+    definition: CustomProperty = Field(
+        title="Organization Custom Property",
+        description="Custom property defined on an organization",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -42,22 +47,11 @@ class WebhookDelete(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pusher_type: str = Field(
-        description="The pusher type for the event. Can be either `user` or a deploy key."
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    ref: str = Field(
-        description="The [`git ref`](https://docs.github.com/rest/git/refs#get-a-reference) resource."
-    )
-    ref_type: Literal["tag", "branch"] = Field(
-        description="The type of Git ref object deleted in the repository."
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDelete)
+model_rebuild(WebhookCustomPropertyCreated)
 
-__all__ = ("WebhookDelete",)
+__all__ = ("WebhookCustomPropertyCreated",)

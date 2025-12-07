@@ -9,43 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0110 import (
-    RepositoryRulesetConditionsType,
-    RepositoryRulesetConditionsTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0169 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0887 import (
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType,
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsTypeForResponse,
-)
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
+class WebhookRepositoryRulesetCreatedType(TypedDict):
+    """repository ruleset created event"""
 
-    added: NotRequired[list[RepositoryRulesetConditionsType]]
-    deleted: NotRequired[list[RepositoryRulesetConditionsType]]
-    updated: NotRequired[
-        list[
-            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
-        ]
-    ]
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
+    sender: SimpleUserType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
+class WebhookRepositoryRulesetCreatedTypeForResponse(TypedDict):
+    """repository ruleset created event"""
 
-    added: NotRequired[list[RepositoryRulesetConditionsTypeForResponse]]
-    deleted: NotRequired[list[RepositoryRulesetConditionsTypeForResponse]]
-    updated: NotRequired[
-        list[
-            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsTypeForResponse
-        ]
-    ]
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository_ruleset: RepositoryRulesetTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse",
+    "WebhookRepositoryRulesetCreatedType",
+    "WebhookRepositoryRulesetCreatedTypeForResponse",
 )

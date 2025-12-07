@@ -12,19 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsPostBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
 
-    permission: NotRequired[str]
+    title: str
+    body: str
+    private: NotRequired[bool]
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
 
-    permission: NotRequired[str]
+    title: str
+    body: str
+    private: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",
-    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse",
+    "OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",
+    "OrgsOrgTeamsTeamSlugDiscussionsPostBodyTypeForResponse",
 )

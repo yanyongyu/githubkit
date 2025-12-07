@@ -9,36 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookStatusPropCommitPropCommitPropAuthorAllof0Type(TypedDict):
-    """Committer
-
-    Metaproperties for Git author/committer information.
-    """
-
-    date: NotRequired[_dt.datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0499 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
 
-class WebhookStatusPropCommitPropCommitPropAuthorAllof0TypeForResponse(TypedDict):
-    """Committer
+class WebhookSponsorshipEditedType(TypedDict):
+    """sponsorship edited event"""
 
-    Metaproperties for Git author/committer information.
-    """
+    action: Literal["edited"]
+    changes: WebhookSponsorshipEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
-    date: NotRequired[str]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+
+class WebhookSponsorshipEditedTypeForResponse(TypedDict):
+    """sponsorship edited event"""
+
+    action: Literal["edited"]
+    changes: WebhookSponsorshipEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
+
+
+class WebhookSponsorshipEditedPropChangesType(TypedDict):
+    """WebhookSponsorshipEditedPropChanges"""
+
+    privacy_level: NotRequired[WebhookSponsorshipEditedPropChangesPropPrivacyLevelType]
+
+
+class WebhookSponsorshipEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookSponsorshipEditedPropChanges"""
+
+    privacy_level: NotRequired[
+        WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse
+    ]
+
+
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevelType(TypedDict):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+
+    from_: str
+
+
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse(TypedDict):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookStatusPropCommitPropCommitPropAuthorAllof0Type",
-    "WebhookStatusPropCommitPropCommitPropAuthorAllof0TypeForResponse",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelType",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse",
+    "WebhookSponsorshipEditedPropChangesType",
+    "WebhookSponsorshipEditedPropChangesTypeForResponse",
+    "WebhookSponsorshipEditedType",
+    "WebhookSponsorshipEditedTypeForResponse",
 )

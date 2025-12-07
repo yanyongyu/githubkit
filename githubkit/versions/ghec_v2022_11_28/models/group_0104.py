@@ -9,42 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0103 import CustomPropertyValue
 
 
-class CustomPropertySetPayload(GitHubModel):
-    """Custom Property Set Payload
+class CustomPropertiesForOrgsGetEnterprisePropertyValues(GitHubModel):
+    """Enterprise Organization Custom Property Values
 
-    Custom property set payload
+    List of custom property values for an organization
     """
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
-        Field(description="The type of the value for the property")
+    organization_id: int = Field()
+    organization_login: str = Field()
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values"
     )
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
-    )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
-    )
-    allowed_values: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
-    )
-    values_editable_by: Missing[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
-model_rebuild(CustomPropertySetPayload)
+model_rebuild(CustomPropertiesForOrgsGetEnterprisePropertyValues)
 
-__all__ = ("CustomPropertySetPayload",)
+__all__ = ("CustomPropertiesForOrgsGetEnterprisePropertyValues",)

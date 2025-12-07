@@ -13,24 +13,24 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0606 import (
-    WebhookCodeScanningAlertFixedPropAlertType,
-    WebhookCodeScanningAlertFixedPropAlertTypeForResponse,
+    WebhookCodeScanningAlertClosedByUserPropAlertType,
+    WebhookCodeScanningAlertClosedByUserPropAlertTypeForResponse,
 )
 
 
-class WebhookCodeScanningAlertFixedType(TypedDict):
-    """code_scanning_alert fixed event"""
+class WebhookCodeScanningAlertClosedByUserType(TypedDict):
+    """code_scanning_alert closed_by_user event"""
 
-    action: Literal["fixed"]
-    alert: WebhookCodeScanningAlertFixedPropAlertType
+    action: Literal["closed_by_user"]
+    alert: WebhookCodeScanningAlertClosedByUserPropAlertType
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -40,11 +40,11 @@ class WebhookCodeScanningAlertFixedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertFixedTypeForResponse(TypedDict):
-    """code_scanning_alert fixed event"""
+class WebhookCodeScanningAlertClosedByUserTypeForResponse(TypedDict):
+    """code_scanning_alert closed_by_user event"""
 
-    action: Literal["fixed"]
-    alert: WebhookCodeScanningAlertFixedPropAlertTypeForResponse
+    action: Literal["closed_by_user"]
+    alert: WebhookCodeScanningAlertClosedByUserPropAlertTypeForResponse
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -55,6 +55,6 @@ class WebhookCodeScanningAlertFixedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookCodeScanningAlertFixedType",
-    "WebhookCodeScanningAlertFixedTypeForResponse",
+    "WebhookCodeScanningAlertClosedByUserType",
+    "WebhookCodeScanningAlertClosedByUserTypeForResponse",
 )

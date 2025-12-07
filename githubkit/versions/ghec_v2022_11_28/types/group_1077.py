@@ -9,26 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0049 import RunnerType, RunnerTypeForResponse
-
-
-class OrgsOrgActionsRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnersGetResponse200"""
-
-    total_count: int
-    runners: list[RunnerType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnersGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersGetResponse200"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    total_count: int
-    runners: list[RunnerTypeForResponse]
+    name: str
+    visibility: NotRequired[Literal["selected", "all", "private"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
+
+
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+
+    name: str
+    visibility: NotRequired[Literal["selected", "all", "private"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersGetResponse200Type",
-    "OrgsOrgActionsRunnersGetResponse200TypeForResponse",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse",
 )

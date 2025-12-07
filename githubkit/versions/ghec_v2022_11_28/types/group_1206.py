@@ -11,26 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0298 import ActionsVariableType, ActionsVariableTypeForResponse
+
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
+
+    labels: list[str]
 
 
-class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
 
-    total_count: int
-    variables: list[ActionsVariableType]
-
-
-class ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[ActionsVariableTypeForResponse]
+    labels: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",
-    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType",
+    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyTypeForResponse",
 )

@@ -9,31 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
+    e200
+    """
 
-    name: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
+    message: NotRequired[str]
 
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
+    e200
+    """
 
-    name: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",
-    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse",
 )

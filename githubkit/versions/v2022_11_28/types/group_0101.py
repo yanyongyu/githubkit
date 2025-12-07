@@ -14,72 +14,70 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0098 import (
-    CodeScanningAlertRuleSummaryType,
-    CodeScanningAlertRuleSummaryTypeForResponse,
-)
-from .group_0099 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
-)
-from .group_0100 import (
-    CodeScanningAlertInstanceType,
-    CodeScanningAlertInstanceTypeForResponse,
-)
+from .group_0100 import TeamType, TeamTypeForResponse
 
 
-class CodeScanningOrganizationAlertItemsType(TypedDict):
-    """CodeScanningOrganizationAlertItems"""
+class CampaignSummaryType(TypedDict):
+    """Campaign summary
+
+    The campaign metadata and alert stats.
+    """
 
     number: int
     created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
-    repository: SimpleRepositoryType
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
-    assignees: NotRequired[list[SimpleUserType]]
+    updated_at: _dt.datetime
+    name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserType]
+    team_managers: NotRequired[list[TeamType]]
+    published_at: NotRequired[_dt.datetime]
+    ends_at: _dt.datetime
+    closed_at: NotRequired[Union[_dt.datetime, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
 
 
-class CodeScanningOrganizationAlertItemsTypeForResponse(TypedDict):
-    """CodeScanningOrganizationAlertItems"""
+class CampaignSummaryTypeForResponse(TypedDict):
+    """Campaign summary
+
+    The campaign metadata and alert stats.
+    """
 
     number: int
     created_at: str
-    updated_at: NotRequired[str]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[str, None]]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
-    dismissed_at: Union[str, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryTypeForResponse
-    tool: CodeScanningAnalysisToolTypeForResponse
-    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
-    repository: SimpleRepositoryTypeForResponse
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    updated_at: str
+    name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserTypeForResponse]
+    team_managers: NotRequired[list[TeamTypeForResponse]]
+    published_at: NotRequired[str]
+    ends_at: str
+    closed_at: NotRequired[Union[str, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsTypeForResponse]
+
+
+class CampaignSummaryPropAlertStatsType(TypedDict):
+    """CampaignSummaryPropAlertStats"""
+
+    open_count: int
+    closed_count: int
+    in_progress_count: int
+
+
+class CampaignSummaryPropAlertStatsTypeForResponse(TypedDict):
+    """CampaignSummaryPropAlertStats"""
+
+    open_count: int
+    closed_count: int
+    in_progress_count: int
 
 
 __all__ = (
-    "CodeScanningOrganizationAlertItemsType",
-    "CodeScanningOrganizationAlertItemsTypeForResponse",
+    "CampaignSummaryPropAlertStatsType",
+    "CampaignSummaryPropAlertStatsTypeForResponse",
+    "CampaignSummaryType",
+    "CampaignSummaryTypeForResponse",
 )

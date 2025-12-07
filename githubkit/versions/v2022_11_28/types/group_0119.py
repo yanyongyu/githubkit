@@ -9,43 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCreateIssueTypeType(TypedDict):
-    """OrganizationCreateIssueType"""
+class ApiInsightsTimeStatsItemsType(TypedDict):
+    """ApiInsightsTimeStatsItems"""
 
-    name: str
-    is_enabled: bool
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
+    timestamp: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
 
 
-class OrganizationCreateIssueTypeTypeForResponse(TypedDict):
-    """OrganizationCreateIssueType"""
+class ApiInsightsTimeStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsTimeStatsItems"""
 
-    name: str
-    is_enabled: bool
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
+    timestamp: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
 
 
 __all__ = (
-    "OrganizationCreateIssueTypeType",
-    "OrganizationCreateIssueTypeTypeForResponse",
+    "ApiInsightsTimeStatsItemsType",
+    "ApiInsightsTimeStatsItemsTypeForResponse",
 )

@@ -9,99 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0211 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0319 import GitUserType, GitUserTypeForResponse
-from .group_0505 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
-from .group_0508 import (
-    CommitSearchResultItemPropCommitType,
-    CommitSearchResultItemPropCommitTypeForResponse,
-)
+from .group_0502 import UserRoleItemsType, UserRoleItemsTypeForResponse
 
 
-class CommitSearchResultItemType(TypedDict):
-    """Commit Search Result Item
+class UserType(TypedDict):
+    """User"""
 
-    Commit Search Result Item
-    """
-
-    url: str
-    sha: str
-    html_url: str
-    comments_url: str
-    commit: CommitSearchResultItemPropCommitType
-    author: Union[None, SimpleUserType]
-    committer: Union[None, GitUserType]
-    parents: list[CommitSearchResultItemPropParentsItemsType]
-    repository: MinimalRepositoryType
-    score: float
-    node_id: str
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: str
+    active: bool
+    user_name: str
+    name: NotRequired[UserNameType]
+    display_name: str
+    emails: list[UserEmailsItemsType]
+    roles: NotRequired[list[UserRoleItemsType]]
 
 
-class CommitSearchResultItemTypeForResponse(TypedDict):
-    """Commit Search Result Item
+class UserTypeForResponse(TypedDict):
+    """User"""
 
-    Commit Search Result Item
-    """
-
-    url: str
-    sha: str
-    html_url: str
-    comments_url: str
-    commit: CommitSearchResultItemPropCommitTypeForResponse
-    author: Union[None, SimpleUserTypeForResponse]
-    committer: Union[None, GitUserTypeForResponse]
-    parents: list[CommitSearchResultItemPropParentsItemsTypeForResponse]
-    repository: MinimalRepositoryTypeForResponse
-    score: float
-    node_id: str
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: str
+    active: bool
+    user_name: str
+    name: NotRequired[UserNameTypeForResponse]
+    display_name: str
+    emails: list[UserEmailsItemsTypeForResponse]
+    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
 
 
-class CommitSearchResultItemPropParentsItemsType(TypedDict):
-    """CommitSearchResultItemPropParentsItems"""
+class UserNameType(TypedDict):
+    """UserName"""
 
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class CommitSearchResultItemPropParentsItemsTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
+    formatted: NotRequired[str]
+    family_name: str
+    given_name: str
+    middle_name: NotRequired[str]
 
 
-class SearchCommitsGetResponse200Type(TypedDict):
-    """SearchCommitsGetResponse200"""
+class UserNameTypeForResponse(TypedDict):
+    """UserName"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[CommitSearchResultItemType]
+    formatted: NotRequired[str]
+    family_name: str
+    given_name: str
+    middle_name: NotRequired[str]
 
 
-class SearchCommitsGetResponse200TypeForResponse(TypedDict):
-    """SearchCommitsGetResponse200"""
+class UserEmailsItemsType(TypedDict):
+    """UserEmailsItems"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[CommitSearchResultItemTypeForResponse]
+    value: str
+    type: str
+    primary: bool
+
+
+class UserEmailsItemsTypeForResponse(TypedDict):
+    """UserEmailsItems"""
+
+    value: str
+    type: str
+    primary: bool
 
 
 __all__ = (
-    "CommitSearchResultItemPropParentsItemsType",
-    "CommitSearchResultItemPropParentsItemsTypeForResponse",
-    "CommitSearchResultItemType",
-    "CommitSearchResultItemTypeForResponse",
-    "SearchCommitsGetResponse200Type",
-    "SearchCommitsGetResponse200TypeForResponse",
+    "UserEmailsItemsType",
+    "UserEmailsItemsTypeForResponse",
+    "UserNameType",
+    "UserNameTypeForResponse",
+    "UserType",
+    "UserTypeForResponse",
 )

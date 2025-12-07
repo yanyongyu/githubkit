@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0103 import CodespaceType, CodespaceTypeForResponse
+
+class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
+
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
 
-    total_count: int
-    codespaces: list[CodespaceType]
-
-
-class OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgMembersUsernameCodespacesGetResponse200Type",
-    "OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse",
+    "OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType",
+    "OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyTypeForResponse",
 )

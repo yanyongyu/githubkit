@@ -25,6 +25,7 @@ class AppPermissionsType(TypedDict):
 
     actions: NotRequired[Literal["read", "write"]]
     administration: NotRequired[Literal["read", "write"]]
+    artifact_metadata: NotRequired[Literal["read", "write"]]
     attestations: NotRequired[Literal["read", "write"]]
     checks: NotRequired[Literal["read", "write"]]
     codespaces: NotRequired[Literal["read", "write"]]
@@ -92,6 +93,7 @@ class AppPermissionsTypeForResponse(TypedDict):
 
     actions: NotRequired[Literal["read", "write"]]
     administration: NotRequired[Literal["read", "write"]]
+    artifact_metadata: NotRequired[Literal["read", "write"]]
     attestations: NotRequired[Literal["read", "write"]]
     checks: NotRequired[Literal["read", "write"]]
     codespaces: NotRequired[Literal["read", "write"]]

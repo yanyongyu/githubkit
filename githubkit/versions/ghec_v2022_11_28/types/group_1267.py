@@ -9,45 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200"""
+class ReposOwnerRepoCommentsCommentIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
 
-    billable_owner: NotRequired[SimpleUserType]
-    defaults: NotRequired[ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType]
-
-
-class ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200"""
-
-    billable_owner: NotRequired[SimpleUserTypeForResponse]
-    defaults: NotRequired[
-        ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ]
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+class ReposOwnerRepoCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
 
-    location: str
-    devcontainer_path: Union[str, None]
-
-
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
-
-    location: str
-    devcontainer_path: Union[str, None]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
-    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse",
-    "ReposOwnerRepoCodespacesNewGetResponse200Type",
-    "ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse",
+    "ReposOwnerRepoCommentsCommentIdReactionsPostBodyType",
+    "ReposOwnerRepoCommentsCommentIdReactionsPostBodyTypeForResponse",
 )

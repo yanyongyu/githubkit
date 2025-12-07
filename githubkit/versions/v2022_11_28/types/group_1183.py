@@ -9,36 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoPullsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPostBody"""
-
-    title: NotRequired[str]
-    head: str
-    head_repo: NotRequired[str]
-    base: str
-    body: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
-    draft: NotRequired[bool]
-    issue: NotRequired[int]
+from .group_1182 import (
+    ReposOwnerRepoPagesPostBodyPropSourceType,
+    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
+)
 
 
-class ReposOwnerRepoPullsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPostBody"""
+class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
 
-    title: NotRequired[str]
-    head: str
-    head_repo: NotRequired[str]
-    base: str
-    body: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
-    draft: NotRequired[bool]
-    issue: NotRequired[int]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: ReposOwnerRepoPagesPostBodyPropSourceType
+
+
+class ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
+
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPostBodyType",
-    "ReposOwnerRepoPullsPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesPostBodyAnyof0Type",
+    "ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse",
 )

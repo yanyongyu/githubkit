@@ -9,22 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+class OrgsOrgArtifactsMetadataStorageRecordPostBodyType(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
 
-    attestation_ids: list[int]
+    name: str
+    digest: str
+    version: NotRequired[str]
+    artifact_url: NotRequired[str]
+    path: NotRequired[str]
+    registry_url: str
+    repository: NotRequired[str]
+    status: NotRequired[Literal["active", "eol", "deleted"]]
+    github_repository: NotRequired[str]
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+class OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
 
-    attestation_ids: list[int]
+    name: str
+    digest: str
+    version: NotRequired[str]
+    artifact_url: NotRequired[str]
+    path: NotRequired[str]
+    registry_url: str
+    repository: NotRequired[str]
+    status: NotRequired[Literal["active", "eol", "deleted"]]
+    github_repository: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse",
+    "OrgsOrgArtifactsMetadataStorageRecordPostBodyType",
+    "OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse",
 )

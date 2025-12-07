@@ -9,21 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserMembershipsOrgsOrgPatchBody(GitHubModel):
-    """UserMembershipsOrgsOrgPatchBody"""
+class UserUserIdProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
+    """UserUserIdProjectsV2ProjectNumberDraftsPostBody"""
 
-    state: Literal["active"] = Field(
-        description='The state that the membership should be in. Only `"active"` will be accepted.'
+    title: str = Field(
+        description="The title of the draft issue item to create in the project."
+    )
+    body: Missing[str] = Field(
+        default=UNSET,
+        description="The body content of the draft issue item to create in the project.",
     )
 
 
-model_rebuild(UserMembershipsOrgsOrgPatchBody)
+model_rebuild(UserUserIdProjectsV2ProjectNumberDraftsPostBody)
 
-__all__ = ("UserMembershipsOrgsOrgPatchBody",)
+__all__ = ("UserUserIdProjectsV2ProjectNumberDraftsPostBody",)

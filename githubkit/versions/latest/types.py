@@ -25,6 +25,24 @@ if TYPE_CHECKING or is_lazy_disabled():
         ActionsCacheListType as ActionsCacheListType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ActionsCacheRetentionLimitForEnterpriseType as ActionsCacheRetentionLimitForEnterpriseType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsCacheRetentionLimitForOrganizationType as ActionsCacheRetentionLimitForOrganizationType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsCacheRetentionLimitForRepositoryType as ActionsCacheRetentionLimitForRepositoryType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsCacheStorageLimitForEnterpriseType as ActionsCacheStorageLimitForEnterpriseType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsCacheStorageLimitForOrganizationType as ActionsCacheStorageLimitForOrganizationType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ActionsCacheStorageLimitForRepositoryType as ActionsCacheStorageLimitForRepositoryType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ActionsCacheUsageByRepositoryType as ActionsCacheUsageByRepositoryType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1761,6 +1779,18 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType as OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType as OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1846,12 +1876,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgTeamsTeamSlugPatchBodyType as OrgsOrgTeamsTeamSlugPatchBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType as OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type as OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType as OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType,
@@ -1972,28 +1996,19 @@ if TYPE_CHECKING or is_lazy_disabled():
         PrivateVulnerabilityReportCreateType as PrivateVulnerabilityReportCreateType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        ProjectCollaboratorPermissionType as ProjectCollaboratorPermissionType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectColumnType as ProjectColumnType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsColumnIdMovesPostBodyType as ProjectsColumnsColumnIdMovesPostBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsColumnIdMovesPostResponse201Type as ProjectsColumnsColumnIdMovesPostResponse201Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsColumnsColumnIdPatchBodyType as ProjectsColumnsColumnIdPatchBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ProjectsProjectIdCollaboratorsUsernamePutBodyType as ProjectsProjectIdCollaboratorsUsernamePutBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         ProjectsV2DraftIssueType as ProjectsV2DraftIssueType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2FieldIterationConfigurationPropIterationsItemsType as ProjectsV2FieldIterationConfigurationPropIterationsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2FieldIterationConfigurationType as ProjectsV2FieldIterationConfigurationType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ProjectsV2FieldPropConfigurationType as ProjectsV2FieldPropConfigurationType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2FieldSingleSelectOptionType as ProjectsV2FieldSingleSelectOptionType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ProjectsV2FieldType as ProjectsV2FieldType,
@@ -2808,7 +2823,7 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyType as ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType as ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
+        ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type as ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
@@ -3258,6 +3273,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType as ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3568,10 +3586,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         TeamOrganizationType as TeamOrganizationType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        TeamProjectPropPermissionsType as TeamProjectPropPermissionsType,
-    )
-    from githubkit.versions.v2022_11_28.types import TeamProjectType as TeamProjectType
-    from githubkit.versions.v2022_11_28.types import (
         TeamPropPermissionsType as TeamPropPermissionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3610,12 +3624,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         TeamsTeamIdPatchBodyType as TeamsTeamIdPatchBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        TeamsTeamIdProjectsProjectIdPutBodyType as TeamsTeamIdProjectsProjectIdPutBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        TeamsTeamIdProjectsProjectIdPutResponse403Type as TeamsTeamIdProjectsProjectIdPutResponse403Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         TeamsTeamIdReposOwnerRepoPutBodyType as TeamsTeamIdReposOwnerRepoPutBodyType,
@@ -3824,6 +3832,15 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         UsersUsernameAttestationsSubjectDigestGetResponse200Type as UsersUsernameAttestationsSubjectDigestGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType as UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType,
@@ -9221,6 +9238,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhooksDeployKeyType as WebhooksDeployKeyType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        WebhookSecretScanningAlertAssignedType as WebhookSecretScanningAlertAssignedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookSecretScanningAlertCreatedType as WebhookSecretScanningAlertCreatedType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -9237,6 +9257,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookSecretScanningAlertResolvedType as WebhookSecretScanningAlertResolvedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookSecretScanningAlertUnassignedType as WebhookSecretScanningAlertUnassignedType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookSecretScanningAlertValidatedType as WebhookSecretScanningAlertValidatedType,
@@ -10201,6 +10224,8 @@ else:
             "SimpleClassroomAssignmentType",
             "SimpleClassroomType",
             "ClassroomAssignmentGradeType",
+            "ActionsCacheRetentionLimitForEnterpriseType",
+            "ActionsCacheStorageLimitForEnterpriseType",
             "CodeSecurityConfigurationType",
             "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
             "CodeSecurityConfigurationPropCodeScanningOptionsType",
@@ -10283,6 +10308,8 @@ else:
             "ThreadType",
             "ThreadPropSubjectType",
             "ThreadSubscriptionType",
+            "ActionsCacheRetentionLimitForOrganizationType",
+            "ActionsCacheStorageLimitForOrganizationType",
             "DependabotRepositoryAccessDetailsType",
             "CustomPropertyValueType",
             "GetAllBudgetsType",
@@ -10418,6 +10445,9 @@ else:
             "ProjectsV2FieldPropConfigurationType",
             "ProjectsV2IterationSettingsType",
             "ProjectsV2IterationSettingsPropTitleType",
+            "ProjectsV2FieldSingleSelectOptionType",
+            "ProjectsV2FieldIterationConfigurationType",
+            "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
             "ProjectsV2ItemWithContentType",
             "ProjectsV2ItemWithContentPropContentType",
             "ProjectsV2ItemWithContentPropFieldsItemsType",
@@ -10534,17 +10564,15 @@ else:
             "TeamDiscussionCommentType",
             "ReactionType",
             "TeamMembershipType",
-            "TeamProjectType",
-            "TeamProjectPropPermissionsType",
             "TeamRepositoryType",
             "TeamRepositoryPropPermissionsType",
-            "ProjectColumnType",
-            "ProjectCollaboratorPermissionType",
             "RateLimitType",
             "RateLimitOverviewType",
             "RateLimitOverviewPropResourcesType",
             "ArtifactType",
             "ArtifactPropWorkflowRunType",
+            "ActionsCacheRetentionLimitForRepositoryType",
+            "ActionsCacheStorageLimitForRepositoryType",
             "ActionsCacheListType",
             "ActionsCacheListPropActionsCachesItemsType",
             "JobType",
@@ -12923,12 +12951,14 @@ else:
             "WebhookRepositoryVulnerabilityAlertResolveType",
             "WebhookRepositoryVulnerabilityAlertResolvePropAlertType",
             "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType",
+            "WebhookSecretScanningAlertAssignedType",
             "WebhookSecretScanningAlertCreatedType",
             "WebhookSecretScanningAlertLocationCreatedType",
             "WebhookSecretScanningAlertLocationCreatedFormEncodedType",
             "WebhookSecretScanningAlertPubliclyLeakedType",
             "WebhookSecretScanningAlertReopenedType",
             "WebhookSecretScanningAlertResolvedType",
+            "WebhookSecretScanningAlertUnassignedType",
             "WebhookSecretScanningAlertValidatedType",
             "WebhookSecretScanningScanCompletedType",
             "WebhookSecurityAdvisoryPublishedType",
@@ -13271,6 +13301,10 @@ else:
             "OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",
             "OrgsOrgPrivateRegistriesSecretNamePatchBodyType",
             "OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType",
+            "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
+            "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
+            "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type",
+            "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type",
             "OrgsOrgProjectsV2ProjectNumberItemsPostBodyType",
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType",
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
@@ -13300,14 +13334,8 @@ else:
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType",
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType",
             "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",
-            "OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType",
-            "OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type",
             "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",
             "OrgsOrgSecurityProductEnablementPostBodyType",
-            "ProjectsColumnsColumnIdPatchBodyType",
-            "ProjectsColumnsColumnIdMovesPostBodyType",
-            "ProjectsColumnsColumnIdMovesPostResponse201Type",
-            "ProjectsProjectIdCollaboratorsUsernamePutBodyType",
             "ReposOwnerRepoDeleteResponse403Type",
             "ReposOwnerRepoPatchBodyType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType",
@@ -13396,7 +13424,7 @@ else:
             "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
             "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
             "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",
-            "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType",
+            "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type",
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type",
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type",
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type",
@@ -13537,6 +13565,7 @@ else:
             "ReposOwnerRepoRulesetsPostBodyType",
             "ReposOwnerRepoRulesetsRulesetIdPutBodyType",
             "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type",
+            "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type",
             "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
             "ReposOwnerRepoStatusesShaPostBodyType",
             "ReposOwnerRepoSubscriptionPutBodyType",
@@ -13552,8 +13581,6 @@ else:
             "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType",
             "TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType",
             "TeamsTeamIdMembershipsUsernamePutBodyType",
-            "TeamsTeamIdProjectsProjectIdPutBodyType",
-            "TeamsTeamIdProjectsProjectIdPutResponse403Type",
             "TeamsTeamIdReposOwnerRepoPutBodyType",
             "UserPatchBodyType",
             "UserCodespacesGetResponse200Type",
@@ -13594,6 +13621,9 @@ else:
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
+            "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
+            "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
+            "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type",
             "UsersUsernameProjectsV2ProjectNumberItemsPostBodyType",
             "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType",
             "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",

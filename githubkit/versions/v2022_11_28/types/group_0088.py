@@ -9,25 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsSetDefaultWorkflowPermissionsType(TypedDict):
-    """ActionsSetDefaultWorkflowPermissions"""
+class ActionsForkPrWorkflowsPrivateReposRequestType(TypedDict):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
 
-    default_workflow_permissions: NotRequired[Literal["read", "write"]]
-    can_approve_pull_request_reviews: NotRequired[bool]
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: NotRequired[bool]
+    send_secrets_and_variables: NotRequired[bool]
+    require_approval_for_fork_pr_workflows: NotRequired[bool]
 
 
-class ActionsSetDefaultWorkflowPermissionsTypeForResponse(TypedDict):
-    """ActionsSetDefaultWorkflowPermissions"""
+class ActionsForkPrWorkflowsPrivateReposRequestTypeForResponse(TypedDict):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
 
-    default_workflow_permissions: NotRequired[Literal["read", "write"]]
-    can_approve_pull_request_reviews: NotRequired[bool]
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: NotRequired[bool]
+    send_secrets_and_variables: NotRequired[bool]
+    require_approval_for_fork_pr_workflows: NotRequired[bool]
 
 
 __all__ = (
-    "ActionsSetDefaultWorkflowPermissionsType",
-    "ActionsSetDefaultWorkflowPermissionsTypeForResponse",
+    "ActionsForkPrWorkflowsPrivateReposRequestType",
+    "ActionsForkPrWorkflowsPrivateReposRequestTypeForResponse",
 )

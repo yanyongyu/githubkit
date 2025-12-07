@@ -9,28 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0061 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+
+class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
+
+    enabled_repositories: Literal["all", "selected", "none"]
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
 
-    total_count: float
-    repositories: list[MinimalRepositoryType]
-
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
-
-    total_count: float
-    repositories: list[MinimalRepositoryTypeForResponse]
+    enabled_repositories: Literal["all", "selected", "none"]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
 )

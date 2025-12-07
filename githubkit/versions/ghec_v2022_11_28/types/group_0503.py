@@ -9,77 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0498 import UserRoleItemsType, UserRoleItemsTypeForResponse
+from .group_0501 import (
+    UserEmailsResponseItemsType,
+    UserEmailsResponseItemsTypeForResponse,
+    UserNameResponseType,
+    UserNameResponseTypeForResponse,
+)
+from .group_0502 import UserRoleItemsType, UserRoleItemsTypeForResponse
 
 
-class UserType(TypedDict):
-    """User"""
+class UserResponseType(TypedDict):
+    """UserResponse"""
 
     schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: str
+    external_id: NotRequired[Union[str, None]]
     active: bool
-    user_name: str
-    name: NotRequired[UserNameType]
-    display_name: str
-    emails: list[UserEmailsItemsType]
+    user_name: NotRequired[str]
+    name: NotRequired[UserNameResponseType]
+    display_name: NotRequired[Union[str, None]]
+    emails: list[UserEmailsResponseItemsType]
     roles: NotRequired[list[UserRoleItemsType]]
 
 
-class UserTypeForResponse(TypedDict):
-    """User"""
+class UserResponseTypeForResponse(TypedDict):
+    """UserResponse"""
 
     schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: str
+    external_id: NotRequired[Union[str, None]]
     active: bool
-    user_name: str
-    name: NotRequired[UserNameTypeForResponse]
-    display_name: str
-    emails: list[UserEmailsItemsTypeForResponse]
+    user_name: NotRequired[str]
+    name: NotRequired[UserNameResponseTypeForResponse]
+    display_name: NotRequired[Union[str, None]]
+    emails: list[UserEmailsResponseItemsTypeForResponse]
     roles: NotRequired[list[UserRoleItemsTypeForResponse]]
 
 
-class UserNameType(TypedDict):
-    """UserName"""
-
-    formatted: NotRequired[str]
-    family_name: str
-    given_name: str
-    middle_name: NotRequired[str]
-
-
-class UserNameTypeForResponse(TypedDict):
-    """UserName"""
-
-    formatted: NotRequired[str]
-    family_name: str
-    given_name: str
-    middle_name: NotRequired[str]
-
-
-class UserEmailsItemsType(TypedDict):
-    """UserEmailsItems"""
-
-    value: str
-    type: str
-    primary: bool
-
-
-class UserEmailsItemsTypeForResponse(TypedDict):
-    """UserEmailsItems"""
-
-    value: str
-    type: str
-    primary: bool
-
-
 __all__ = (
-    "UserEmailsItemsType",
-    "UserEmailsItemsTypeForResponse",
-    "UserNameType",
-    "UserNameTypeForResponse",
-    "UserType",
-    "UserTypeForResponse",
+    "UserResponseType",
+    "UserResponseTypeForResponse",
 )

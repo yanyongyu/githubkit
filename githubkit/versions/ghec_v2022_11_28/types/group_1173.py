@@ -12,34 +12,186 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0107 import (
+    RepositoryRulesetBypassActorType,
+    RepositoryRulesetBypassActorTypeForResponse,
+)
+from .group_0126 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleCreationTypeForResponse,
+    RepositoryRuleDeletionType,
+    RepositoryRuleDeletionTypeForResponse,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleNonFastForwardTypeForResponse,
+    RepositoryRuleRequiredSignaturesType,
+    RepositoryRuleRequiredSignaturesTypeForResponse,
+)
+from .group_0127 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
+from .group_0129 import (
+    RepositoryRuleRequiredLinearHistoryType,
+    RepositoryRuleRequiredLinearHistoryTypeForResponse,
+)
+from .group_0130 import (
+    RepositoryRuleRequiredDeploymentsType,
+    RepositoryRuleRequiredDeploymentsTypeForResponse,
+)
+from .group_0132 import (
+    RepositoryRulePullRequestType,
+    RepositoryRulePullRequestTypeForResponse,
+)
+from .group_0134 import (
+    RepositoryRuleRequiredStatusChecksType,
+    RepositoryRuleRequiredStatusChecksTypeForResponse,
+)
+from .group_0136 import (
+    RepositoryRuleCommitMessagePatternType,
+    RepositoryRuleCommitMessagePatternTypeForResponse,
+)
+from .group_0138 import (
+    RepositoryRuleCommitAuthorEmailPatternType,
+    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+)
+from .group_0140 import (
+    RepositoryRuleCommitterEmailPatternType,
+    RepositoryRuleCommitterEmailPatternTypeForResponse,
+)
+from .group_0142 import (
+    RepositoryRuleBranchNamePatternType,
+    RepositoryRuleBranchNamePatternTypeForResponse,
+)
+from .group_0144 import (
+    RepositoryRuleTagNamePatternType,
+    RepositoryRuleTagNamePatternTypeForResponse,
+)
+from .group_0146 import (
+    RepositoryRuleFilePathRestrictionType,
+    RepositoryRuleFilePathRestrictionTypeForResponse,
+)
+from .group_0148 import (
+    RepositoryRuleMaxFilePathLengthType,
+    RepositoryRuleMaxFilePathLengthTypeForResponse,
+)
+from .group_0150 import (
+    RepositoryRuleFileExtensionRestrictionType,
+    RepositoryRuleFileExtensionRestrictionTypeForResponse,
+)
+from .group_0152 import (
+    RepositoryRuleMaxFileSizeType,
+    RepositoryRuleMaxFileSizeTypeForResponse,
+)
+from .group_0155 import (
+    RepositoryRuleWorkflowsType,
+    RepositoryRuleWorkflowsTypeForResponse,
+)
+from .group_0157 import (
+    RepositoryRuleCodeScanningType,
+    RepositoryRuleCodeScanningTypeForResponse,
+)
+from .group_0159 import (
+    RepositoryRuleCopilotCodeReviewType,
+    RepositoryRuleCopilotCodeReviewTypeForResponse,
+)
+from .group_0163 import (
+    OrgRulesetConditionsOneof0Type,
+    OrgRulesetConditionsOneof0TypeForResponse,
+)
+from .group_0164 import (
+    OrgRulesetConditionsOneof1Type,
+    OrgRulesetConditionsOneof1TypeForResponse,
+)
+from .group_0165 import (
+    OrgRulesetConditionsOneof2Type,
+    OrgRulesetConditionsOneof2TypeForResponse,
+)
 
-class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
+
+class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
+    """OrgsOrgRulesetsRulesetIdPutBody"""
 
     name: NotRequired[str]
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[
+        Union[
+            OrgRulesetConditionsOneof0Type,
+            OrgRulesetConditionsOneof1Type,
+            OrgRulesetConditionsOneof2Type,
+        ]
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
+            ]
+        ]
+    ]
 
 
-class OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
+class OrgsOrgRulesetsRulesetIdPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgRulesetsRulesetIdPutBody"""
 
     name: NotRequired[str]
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
+    conditions: NotRequired[
+        Union[
+            OrgRulesetConditionsOneof0TypeForResponse,
+            OrgRulesetConditionsOneof1TypeForResponse,
+            OrgRulesetConditionsOneof2TypeForResponse,
+        ]
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationTypeForResponse,
+                RepositoryRuleUpdateTypeForResponse,
+                RepositoryRuleDeletionTypeForResponse,
+                RepositoryRuleRequiredLinearHistoryTypeForResponse,
+                RepositoryRuleRequiredDeploymentsTypeForResponse,
+                RepositoryRuleRequiredSignaturesTypeForResponse,
+                RepositoryRulePullRequestTypeForResponse,
+                RepositoryRuleRequiredStatusChecksTypeForResponse,
+                RepositoryRuleNonFastForwardTypeForResponse,
+                RepositoryRuleCommitMessagePatternTypeForResponse,
+                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+                RepositoryRuleCommitterEmailPatternTypeForResponse,
+                RepositoryRuleBranchNamePatternTypeForResponse,
+                RepositoryRuleTagNamePatternTypeForResponse,
+                RepositoryRuleFilePathRestrictionTypeForResponse,
+                RepositoryRuleMaxFilePathLengthTypeForResponse,
+                RepositoryRuleFileExtensionRestrictionTypeForResponse,
+                RepositoryRuleMaxFileSizeTypeForResponse,
+                RepositoryRuleWorkflowsTypeForResponse,
+                RepositoryRuleCodeScanningTypeForResponse,
+                RepositoryRuleCopilotCodeReviewTypeForResponse,
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugPatchBodyType",
-    "OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse",
+    "OrgsOrgRulesetsRulesetIdPutBodyType",
+    "OrgsOrgRulesetsRulesetIdPutBodyTypeForResponse",
 )

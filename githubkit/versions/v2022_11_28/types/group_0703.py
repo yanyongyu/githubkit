@@ -9,28 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0483 import (
+    PersonalAccessTokenRequestType,
+    PersonalAccessTokenRequestTypeForResponse,
+)
 
 
-class WebhookPingFormEncodedType(TypedDict):
-    """WebhookPingFormEncoded
+class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
+    """personal_access_token_request cancelled event"""
 
-    The webhooks ping payload encoded with URL encoding.
-    """
+    action: Literal["cancelled"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    organization: OrganizationSimpleWebhooksType
+    sender: SimpleUserType
+    installation: SimpleInstallationType
 
-    payload: str
 
+class WebhookPersonalAccessTokenRequestCancelledTypeForResponse(TypedDict):
+    """personal_access_token_request cancelled event"""
 
-class WebhookPingFormEncodedTypeForResponse(TypedDict):
-    """WebhookPingFormEncoded
-
-    The webhooks ping payload encoded with URL encoding.
-    """
-
-    payload: str
+    action: Literal["cancelled"]
+    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    installation: SimpleInstallationTypeForResponse
 
 
 __all__ = (
-    "WebhookPingFormEncodedType",
-    "WebhookPingFormEncodedTypeForResponse",
+    "WebhookPersonalAccessTokenRequestCancelledType",
+    "WebhookPersonalAccessTokenRequestCancelledTypeForResponse",
 )

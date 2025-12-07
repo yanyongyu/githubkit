@@ -10,83 +10,138 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0197 import IssueType, IssueTypeForResponse
+from .group_0198 import IssueCommentType, IssueCommentTypeForResponse
 
 
-class BaseGistType(TypedDict):
-    """Base Gist
+class EventPropPayloadType(TypedDict):
+    """EventPropPayload"""
 
-    Base Gist
+    action: NotRequired[str]
+    issue: NotRequired[IssueType]
+    comment: NotRequired[IssueCommentType]
+    pages: NotRequired[list[EventPropPayloadPropPagesItemsType]]
+
+
+class EventPropPayloadTypeForResponse(TypedDict):
+    """EventPropPayload"""
+
+    action: NotRequired[str]
+    issue: NotRequired[IssueTypeForResponse]
+    comment: NotRequired[IssueCommentTypeForResponse]
+    pages: NotRequired[list[EventPropPayloadPropPagesItemsTypeForResponse]]
+
+
+class EventPropPayloadPropPagesItemsType(TypedDict):
+    """EventPropPayloadPropPagesItems"""
+
+    page_name: NotRequired[str]
+    title: NotRequired[str]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class EventPropPayloadPropPagesItemsTypeForResponse(TypedDict):
+    """EventPropPayloadPropPagesItems"""
+
+    page_name: NotRequired[str]
+    title: NotRequired[str]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class EventType(TypedDict):
+    """Event
+
+    Event
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
     id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: BaseGistPropFilesType
+    type: Union[str, None]
+    actor: ActorType
+    repo: EventPropRepoType
+    org: NotRequired[ActorType]
+    payload: EventPropPayloadType
     public: bool
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserType]
-    comments_url: str
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    created_at: Union[_dt.datetime, None]
 
 
-class BaseGistTypeForResponse(TypedDict):
-    """Base Gist
+class EventTypeForResponse(TypedDict):
+    """Event
 
-    Base Gist
+    Event
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
     id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: BaseGistPropFilesTypeForResponse
+    type: Union[str, None]
+    actor: ActorTypeForResponse
+    repo: EventPropRepoTypeForResponse
+    org: NotRequired[ActorTypeForResponse]
+    payload: EventPropPayloadTypeForResponse
     public: bool
-    created_at: str
-    updated_at: str
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserTypeForResponse]
-    comments_url: str
-    owner: NotRequired[SimpleUserTypeForResponse]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    created_at: Union[str, None]
 
 
-BaseGistPropFilesType: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
-"""
+class ActorType(TypedDict):
+    """Actor
+
+    Actor
+    """
+
+    id: int
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
+    url: str
+    avatar_url: str
 
 
-BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
-"""
+class ActorTypeForResponse(TypedDict):
+    """Actor
+
+    Actor
+    """
+
+    id: int
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
+    url: str
+    avatar_url: str
+
+
+class EventPropRepoType(TypedDict):
+    """EventPropRepo"""
+
+    id: int
+    name: str
+    url: str
+
+
+class EventPropRepoTypeForResponse(TypedDict):
+    """EventPropRepo"""
+
+    id: int
+    name: str
+    url: str
 
 
 __all__ = (
-    "BaseGistPropFilesType",
-    "BaseGistPropFilesTypeForResponse",
-    "BaseGistType",
-    "BaseGistTypeForResponse",
+    "ActorType",
+    "ActorTypeForResponse",
+    "EventPropPayloadPropPagesItemsType",
+    "EventPropPayloadPropPagesItemsTypeForResponse",
+    "EventPropPayloadType",
+    "EventPropPayloadTypeForResponse",
+    "EventPropRepoType",
+    "EventPropRepoTypeForResponse",
+    "EventType",
+    "EventTypeForResponse",
 )

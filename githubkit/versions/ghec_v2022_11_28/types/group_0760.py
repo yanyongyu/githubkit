@@ -9,42 +9,101 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0556 import MergeGroupType, MergeGroupTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0544 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookMergeGroupChecksRequestedType(TypedDict):
-    """WebhookMergeGroupChecksRequested"""
+class WebhookMemberEditedType(TypedDict):
+    """member edited event"""
 
-    action: Literal["checks_requested"]
+    action: Literal["edited"]
+    changes: WebhookMemberEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    merge_group: MergeGroupType
+    member: Union[WebhooksUserType, None]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookMergeGroupChecksRequestedTypeForResponse(TypedDict):
-    """WebhookMergeGroupChecksRequested"""
+class WebhookMemberEditedTypeForResponse(TypedDict):
+    """member edited event"""
 
-    action: Literal["checks_requested"]
+    action: Literal["edited"]
+    changes: WebhookMemberEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    merge_group: MergeGroupTypeForResponse
+    member: Union[WebhooksUserTypeForResponse, None]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookMemberEditedPropChangesType(TypedDict):
+    """WebhookMemberEditedPropChanges
+
+    The changes to the collaborator permissions
+    """
+
+    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
+    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
+
+
+class WebhookMemberEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChanges
+
+    The changes to the collaborator permissions
+    """
+
+    old_permission: NotRequired[
+        WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse
+    ]
+    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionTypeForResponse]
+
+
+class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
+
+    from_: str
+
+
+class WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
+
+    from_: str
+
+
+class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookMemberEditedPropChangesPropPermissionTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhookMergeGroupChecksRequestedType",
-    "WebhookMergeGroupChecksRequestedTypeForResponse",
+    "WebhookMemberEditedPropChangesPropOldPermissionType",
+    "WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse",
+    "WebhookMemberEditedPropChangesPropPermissionType",
+    "WebhookMemberEditedPropChangesPropPermissionTypeForResponse",
+    "WebhookMemberEditedPropChangesType",
+    "WebhookMemberEditedPropChangesTypeForResponse",
+    "WebhookMemberEditedType",
+    "WebhookMemberEditedTypeForResponse",
 )

@@ -9,24 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoNotificationsPutResponse202Type(TypedDict):
-    """ReposOwnerRepoNotificationsPutResponse202"""
-
-    message: NotRequired[str]
-    url: NotRequired[str]
+from .group_1336 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
-class ReposOwnerRepoNotificationsPutResponse202TypeForResponse(TypedDict):
-    """ReposOwnerRepoNotificationsPutResponse202"""
+class ReposOwnerRepoPagesPutBodyAnyof3Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof3"""
 
-    message: NotRequired[str]
-    url: NotRequired[str]
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
+    public: bool
+
+
+class ReposOwnerRepoPagesPutBodyAnyof3TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof3"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
+    ]
+    public: bool
 
 
 __all__ = (
-    "ReposOwnerRepoNotificationsPutResponse202Type",
-    "ReposOwnerRepoNotificationsPutResponse202TypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof3Type",
+    "ReposOwnerRepoPagesPutBodyAnyof3TypeForResponse",
 )

@@ -9,31 +9,98 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ImmutableReleasesOrganizationSettingsType(TypedDict):
-    """Check immutable releases organization settings
+class SecretScanningLocationIssueTitleType(TypedDict):
+    """SecretScanningLocationIssueTitle
 
-    Check immutable releases settings for an organization.
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    issue_title_url: str
 
 
-class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
-    """Check immutable releases organization settings
+class SecretScanningLocationIssueTitleTypeForResponse(TypedDict):
+    """SecretScanningLocationIssueTitle
 
-    Check immutable releases settings for an organization.
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    issue_title_url: str
+
+
+class SecretScanningLocationIssueCommentType(TypedDict):
+    """SecretScanningLocationIssueComment
+
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str
+
+
+class SecretScanningLocationIssueCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationIssueComment
+
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str
+
+
+class SecretScanningLocationPullRequestTitleType(TypedDict):
+    """SecretScanningLocationPullRequestTitle
+
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str
+
+
+class SecretScanningLocationPullRequestTitleTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestTitle
+
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str
+
+
+class SecretScanningLocationPullRequestReviewCommentType(TypedDict):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str
+
+
+class SecretScanningLocationPullRequestReviewCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str
 
 
 __all__ = (
-    "ImmutableReleasesOrganizationSettingsType",
-    "ImmutableReleasesOrganizationSettingsTypeForResponse",
+    "SecretScanningLocationIssueCommentType",
+    "SecretScanningLocationIssueCommentTypeForResponse",
+    "SecretScanningLocationIssueTitleType",
+    "SecretScanningLocationIssueTitleTypeForResponse",
+    "SecretScanningLocationPullRequestReviewCommentType",
+    "SecretScanningLocationPullRequestReviewCommentTypeForResponse",
+    "SecretScanningLocationPullRequestTitleType",
+    "SecretScanningLocationPullRequestTitleTypeForResponse",
 )

@@ -9,77 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1249 import (
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse,
-    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
-    ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse,
-)
 
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyType(TypedDict):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-class ReposOwnerRepoCheckRunsPostBodyOneof1Type(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
-
-    name: str
-    head_sha: str
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    status: NotRequired[
-        Literal["queued", "in_progress", "waiting", "requested", "pending"]
-    ]
-    started_at: NotRequired[_dt.datetime]
-    conclusion: NotRequired[
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "success",
-            "skipped",
-            "stale",
-            "timed_out",
+    auto_trigger_checks: NotRequired[
+        list[
+            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
         ]
     ]
-    completed_at: NotRequired[_dt.datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
-    actions: NotRequired[list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
 
 
-class ReposOwnerRepoCheckRunsPostBodyOneof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-    name: str
-    head_sha: str
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    status: NotRequired[
-        Literal["queued", "in_progress", "waiting", "requested", "pending"]
-    ]
-    started_at: NotRequired[str]
-    conclusion: NotRequired[
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "success",
-            "skipped",
-            "stale",
-            "timed_out",
+    auto_trigger_checks: NotRequired[
+        list[
+            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse
         ]
     ]
-    completed_at: NotRequired[str]
-    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse]
-    actions: NotRequired[
-        list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse]
-    ]
+
+
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
+
+
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
 
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsPostBodyOneof1Type",
-    "ReposOwnerRepoCheckRunsPostBodyOneof1TypeForResponse",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse",
 )

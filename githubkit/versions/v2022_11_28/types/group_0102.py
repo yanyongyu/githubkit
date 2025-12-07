@@ -10,40 +10,42 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodespaceMachineType(TypedDict):
-    """Codespace machine
+class CodeScanningAlertRuleSummaryType(TypedDict):
+    """CodeScanningAlertRuleSummary"""
 
-    A description of the machine powering a codespace.
-    """
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    security_severity_level: NotRequired[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
-    name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
 
+class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
+    """CodeScanningAlertRuleSummary"""
 
-class CodespaceMachineTypeForResponse(TypedDict):
-    """Codespace machine
-
-    A description of the machine powering a codespace.
-    """
-
-    name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    security_severity_level: NotRequired[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodespaceMachineType",
-    "CodespaceMachineTypeForResponse",
+    "CodeScanningAlertRuleSummaryType",
+    "CodeScanningAlertRuleSummaryTypeForResponse",
 )

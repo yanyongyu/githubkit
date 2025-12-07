@@ -9,162 +9,261 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0126 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleCreationTypeForResponse,
+    RepositoryRuleDeletionType,
+    RepositoryRuleDeletionTypeForResponse,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleNonFastForwardTypeForResponse,
+    RepositoryRuleRequiredSignaturesType,
+    RepositoryRuleRequiredSignaturesTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0127 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
+from .group_0129 import (
+    RepositoryRuleRequiredLinearHistoryType,
+    RepositoryRuleRequiredLinearHistoryTypeForResponse,
+)
+from .group_0130 import (
+    RepositoryRuleRequiredDeploymentsType,
+    RepositoryRuleRequiredDeploymentsTypeForResponse,
+)
+from .group_0132 import (
+    RepositoryRulePullRequestType,
+    RepositoryRulePullRequestTypeForResponse,
+)
+from .group_0134 import (
+    RepositoryRuleRequiredStatusChecksType,
+    RepositoryRuleRequiredStatusChecksTypeForResponse,
+)
+from .group_0136 import (
+    RepositoryRuleCommitMessagePatternType,
+    RepositoryRuleCommitMessagePatternTypeForResponse,
+)
+from .group_0138 import (
+    RepositoryRuleCommitAuthorEmailPatternType,
+    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+)
+from .group_0140 import (
+    RepositoryRuleCommitterEmailPatternType,
+    RepositoryRuleCommitterEmailPatternTypeForResponse,
+)
+from .group_0142 import (
+    RepositoryRuleBranchNamePatternType,
+    RepositoryRuleBranchNamePatternTypeForResponse,
+)
+from .group_0144 import (
+    RepositoryRuleTagNamePatternType,
+    RepositoryRuleTagNamePatternTypeForResponse,
+)
+from .group_0146 import (
+    RepositoryRuleFilePathRestrictionType,
+    RepositoryRuleFilePathRestrictionTypeForResponse,
+)
+from .group_0148 import (
+    RepositoryRuleMaxFilePathLengthType,
+    RepositoryRuleMaxFilePathLengthTypeForResponse,
+)
+from .group_0150 import (
+    RepositoryRuleFileExtensionRestrictionType,
+    RepositoryRuleFileExtensionRestrictionTypeForResponse,
+)
+from .group_0152 import (
+    RepositoryRuleMaxFileSizeType,
+    RepositoryRuleMaxFileSizeTypeForResponse,
+)
+from .group_0155 import (
+    RepositoryRuleWorkflowsType,
+    RepositoryRuleWorkflowsTypeForResponse,
+)
+from .group_0157 import (
+    RepositoryRuleCodeScanningType,
+    RepositoryRuleCodeScanningTypeForResponse,
+)
+from .group_0159 import (
+    RepositoryRuleCopilotCodeReviewType,
+    RepositoryRuleCopilotCodeReviewTypeForResponse,
+)
+from .group_0166 import (
+    RepositoryRuleMergeQueueType,
+    RepositoryRuleMergeQueueTypeForResponse,
+)
 
 
-class WebhookRepositoryVulnerabilityAlertDismissType(TypedDict):
-    """repository_vulnerability_alert dismiss event"""
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems"""
 
-    action: Literal["dismiss"]
-    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookRepositoryVulnerabilityAlertDismissTypeForResponse(TypedDict):
-    """repository_vulnerability_alert dismiss event"""
-
-    action: Literal["dismiss"]
-    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlertTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertType(TypedDict):
-    """Repository Vulnerability Alert Alert
-
-    The security alert of the vulnerable dependency.
-    """
-
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_comment: NotRequired[Union[str, None]]
-    dismiss_reason: str
-    dismissed_at: str
-    dismisser: Union[
-        WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserType, None
+    rule: NotRequired[
+        Union[
+            RepositoryRuleCreationType,
+            RepositoryRuleUpdateType,
+            RepositoryRuleDeletionType,
+            RepositoryRuleRequiredLinearHistoryType,
+            RepositoryRuleMergeQueueType,
+            RepositoryRuleRequiredDeploymentsType,
+            RepositoryRuleRequiredSignaturesType,
+            RepositoryRulePullRequestType,
+            RepositoryRuleRequiredStatusChecksType,
+            RepositoryRuleNonFastForwardType,
+            RepositoryRuleCommitMessagePatternType,
+            RepositoryRuleCommitAuthorEmailPatternType,
+            RepositoryRuleCommitterEmailPatternType,
+            RepositoryRuleBranchNamePatternType,
+            RepositoryRuleTagNamePatternType,
+            RepositoryRuleFilePathRestrictionType,
+            RepositoryRuleMaxFilePathLengthType,
+            RepositoryRuleFileExtensionRestrictionType,
+            RepositoryRuleMaxFileSizeType,
+            RepositoryRuleWorkflowsType,
+            RepositoryRuleCodeScanningType,
+            RepositoryRuleCopilotCodeReviewType,
+        ]
     ]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[_dt.datetime]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["dismissed"]
-
-
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertTypeForResponse(TypedDict):
-    """Repository Vulnerability Alert Alert
-
-    The security alert of the vulnerable dependency.
-    """
-
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_comment: NotRequired[Union[str, None]]
-    dismiss_reason: str
-    dismissed_at: str
-    dismisser: Union[
-        WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserTypeForResponse,
-        None,
+    changes: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType
     ]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[str]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["dismissed"]
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserTypeForResponse(
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsTypeForResponse(
     TypedDict
 ):
-    """User"""
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    rule: NotRequired[
+        Union[
+            RepositoryRuleCreationTypeForResponse,
+            RepositoryRuleUpdateTypeForResponse,
+            RepositoryRuleDeletionTypeForResponse,
+            RepositoryRuleRequiredLinearHistoryTypeForResponse,
+            RepositoryRuleMergeQueueTypeForResponse,
+            RepositoryRuleRequiredDeploymentsTypeForResponse,
+            RepositoryRuleRequiredSignaturesTypeForResponse,
+            RepositoryRulePullRequestTypeForResponse,
+            RepositoryRuleRequiredStatusChecksTypeForResponse,
+            RepositoryRuleNonFastForwardTypeForResponse,
+            RepositoryRuleCommitMessagePatternTypeForResponse,
+            RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+            RepositoryRuleCommitterEmailPatternTypeForResponse,
+            RepositoryRuleBranchNamePatternTypeForResponse,
+            RepositoryRuleTagNamePatternTypeForResponse,
+            RepositoryRuleFilePathRestrictionTypeForResponse,
+            RepositoryRuleMaxFilePathLengthTypeForResponse,
+            RepositoryRuleFileExtensionRestrictionTypeForResponse,
+            RepositoryRuleMaxFileSizeTypeForResponse,
+            RepositoryRuleWorkflowsTypeForResponse,
+            RepositoryRuleCodeScanningTypeForResponse,
+            RepositoryRuleCopilotCodeReviewTypeForResponse,
+        ]
+    ]
+    changes: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesTypeForResponse
+    ]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges"""
+
+    configuration: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType
+    ]
+    rule_type: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType
+    ]
+    pattern: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType
+    ]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesTypeForResponse(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges"""
+
+    configuration: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationTypeForResponse
+    ]
+    rule_type: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeTypeForResponse
+    ]
+    pattern: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternTypeForResponse
+    ]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pConfiguration
+    """
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationTypeForResponse(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pConfiguration
+    """
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pRuleType
+    """
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeTypeForResponse(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pRuleType
+    """
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pPattern
+    """
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternTypeForResponse(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pPattern
+    """
+
+    from_: NotRequired[str]
 
 
 __all__ = (
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserType",
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserTypeForResponse",
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertType",
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertTypeForResponse",
-    "WebhookRepositoryVulnerabilityAlertDismissType",
-    "WebhookRepositoryVulnerabilityAlertDismissTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsTypeForResponse",
 )

@@ -9,52 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0086 import DependabotAlertPackage
 
+class CopilotUsageMetrics28DayReport(GitHubModel):
+    """Copilot Metrics 28 Day Report
 
-class DependabotAlertSecurityVulnerability(GitHubModel):
-    """DependabotAlertSecurityVulnerability
-
-    Details pertaining to one vulnerable version range for the advisory.
+    Links to download the latest Copilot usage metrics report for an enterprise.
     """
 
-    package: DependabotAlertPackage = Field(
-        description="Details for the vulnerable package."
+    download_links: list[str] = Field(
+        description="The URLs to download the latest Copilot usage metrics report for the enterprise."
     )
-    severity: Literal["low", "medium", "high", "critical"] = Field(
-        description="The severity of the vulnerability."
+    report_start_day: _dt.date = Field(
+        description="The start date of the report period in `YYYY-MM-DD` format."
     )
-    vulnerable_version_range: str = Field(
-        description="Conditions that identify vulnerable versions of this vulnerability's package."
-    )
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion, None
-    ] = Field(
-        description="Details pertaining to the package version that patches this vulnerability."
+    report_end_day: _dt.date = Field(
+        description="The end date of the report period in `YYYY-MM-DD` format."
     )
 
 
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion(GitHubModel):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+model_rebuild(CopilotUsageMetrics28DayReport)
 
-    Details pertaining to the package version that patches this vulnerability.
-    """
-
-    identifier: str = Field(
-        description="The package version that patches this vulnerability."
-    )
-
-
-model_rebuild(DependabotAlertSecurityVulnerability)
-model_rebuild(DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion)
-
-__all__ = (
-    "DependabotAlertSecurityVulnerability",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
-)
+__all__ = ("CopilotUsageMetrics28DayReport",)

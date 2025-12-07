@@ -9,50 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0151 import FullRepositoryType, FullRepositoryTypeForResponse
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0494 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
-from .group_0495 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
+from .group_0826 import (
+    WebhookSecurityAndAnalysisPropChangesType,
+    WebhookSecurityAndAnalysisPropChangesTypeForResponse,
+)
 
 
-class WebhookSponsorshipPendingTierChangeType(TypedDict):
-    """sponsorship pending_tier_change event"""
+class WebhookSecurityAndAnalysisType(TypedDict):
+    """security_and_analysis event"""
 
-    action: Literal["pending_tier_change"]
-    changes: WebhooksChanges8Type
-    effective_date: NotRequired[str]
+    changes: WebhookSecurityAndAnalysisPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    repository: FullRepositoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookSponsorshipPendingTierChangeTypeForResponse(TypedDict):
-    """sponsorship pending_tier_change event"""
+class WebhookSecurityAndAnalysisTypeForResponse(TypedDict):
+    """security_and_analysis event"""
 
-    action: Literal["pending_tier_change"]
-    changes: WebhooksChanges8TypeForResponse
-    effective_date: NotRequired[str]
+    changes: WebhookSecurityAndAnalysisPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
+    repository: FullRepositoryTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSponsorshipPendingTierChangeType",
-    "WebhookSponsorshipPendingTierChangeTypeForResponse",
+    "WebhookSecurityAndAnalysisType",
+    "WebhookSecurityAndAnalysisTypeForResponse",
 )

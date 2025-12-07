@@ -13,41 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0544 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0748 import (
+    WebhookIssuesUnlockedPropIssueType,
+    WebhookIssuesUnlockedPropIssueTypeForResponse,
+)
 
 
-class WebhookLabelCreatedType(TypedDict):
-    """label created event"""
+class WebhookIssuesUnlockedType(TypedDict):
+    """issues unlocked event"""
 
-    action: Literal["created"]
+    action: Literal["unlocked"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelType
+    issue: WebhookIssuesUnlockedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookLabelCreatedTypeForResponse(TypedDict):
-    """label created event"""
+class WebhookIssuesUnlockedTypeForResponse(TypedDict):
+    """issues unlocked event"""
 
-    action: Literal["created"]
+    action: Literal["unlocked"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: WebhooksLabelTypeForResponse
+    issue: WebhookIssuesUnlockedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookLabelCreatedType",
-    "WebhookLabelCreatedTypeForResponse",
+    "WebhookIssuesUnlockedType",
+    "WebhookIssuesUnlockedTypeForResponse",
 )

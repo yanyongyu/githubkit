@@ -9,61 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoDeploymentsPostBody"""
+class ReposOwnerRepoContentsPathDeleteBody(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBody"""
 
-    ref: str = Field(
-        description="The ref to deploy. This can be a branch, tag, or SHA."
-    )
-    task: Missing[str] = Field(
+    message: str = Field(description="The commit message.")
+    sha: str = Field(description="The blob SHA of the file being deleted.")
+    branch: Missing[str] = Field(
         default=UNSET,
-        description="Specifies a task to execute (e.g., `deploy` or `deploy:migrations`).",
+        description="The branch name. Default: the repository’s default branch",
     )
-    auto_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Attempts to automatically merge the default branch into the requested ref, if it's behind the default branch.",
+    committer: Missing[ReposOwnerRepoContentsPathDeleteBodyPropCommitter] = Field(
+        default=UNSET, description="object containing information about the committer."
     )
-    required_contexts: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The [status](https://docs.github.com/rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.",
-    )
-    payload: Missing[Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0, str]] = (
-        Field(default=UNSET)
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="Name for the target deployment environment (e.g., `production`, `staging`, `qa`).",
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the deployment."
-    )
-    transient_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`",
-    )
-    production_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.",
+    author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthor] = Field(
+        default=UNSET, description="object containing information about the author."
     )
 
 
-class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0(ExtraGitHubModel):
-    """ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0"""
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitter(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+
+    object containing information about the committer.
+    """
+
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the author (or committer) of the commit"
+    )
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="The email of the author (or committer) of the commit",
+    )
 
 
-model_rebuild(ReposOwnerRepoDeploymentsPostBody)
-model_rebuild(ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0)
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthor(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+
+    object containing information about the author.
+    """
+
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the author (or committer) of the commit"
+    )
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="The email of the author (or committer) of the commit",
+    )
+
+
+model_rebuild(ReposOwnerRepoContentsPathDeleteBody)
+model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropCommitter)
+model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropAuthor)
 
 __all__ = (
-    "ReposOwnerRepoDeploymentsPostBody",
-    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0",
+    "ReposOwnerRepoContentsPathDeleteBody",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
 )

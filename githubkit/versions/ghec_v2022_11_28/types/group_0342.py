@@ -9,29 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0341 import (
-    CodeScanningVariantAnalysisRepositoryType,
-    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+from .group_0070 import (
+    CodeScanningAnalysisToolType,
+    CodeScanningAnalysisToolTypeForResponse,
 )
 
 
-class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+class CodeScanningAnalysisType(TypedDict):
+    """CodeScanningAnalysis"""
 
-    repository_count: int
-    repositories: list[CodeScanningVariantAnalysisRepositoryType]
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: _dt.datetime
+    results_count: int
+    rules_count: int
+    id: int
+    url: str
+    sarif_id: str
+    tool: CodeScanningAnalysisToolType
+    deletable: bool
+    warning: str
 
 
-class CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+class CodeScanningAnalysisTypeForResponse(TypedDict):
+    """CodeScanningAnalysis"""
 
-    repository_count: int
-    repositories: list[CodeScanningVariantAnalysisRepositoryTypeForResponse]
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: str
+    results_count: int
+    rules_count: int
+    id: int
+    url: str
+    sarif_id: str
+    tool: CodeScanningAnalysisToolTypeForResponse
+    deletable: bool
+    warning: str
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisSkippedRepoGroupType",
-    "CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse",
+    "CodeScanningAnalysisType",
+    "CodeScanningAnalysisTypeForResponse",
 )

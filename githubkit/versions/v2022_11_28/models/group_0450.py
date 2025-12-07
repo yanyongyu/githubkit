@@ -9,36 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrganizationSimpleWebhooks(GitHubModel):
-    """Organization Simple
+class BillingPremiumRequestUsageReportUser(GitHubModel):
+    """BillingPremiumRequestUsageReportUser"""
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
-    """
-
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
+    time_period: BillingPremiumRequestUsageReportUserPropTimePeriod = Field(
+        alias="timePeriod"
+    )
+    user: str = Field(description="The unique identifier of the user.")
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
+    )
+    model: Missing[str] = Field(
+        default=UNSET, description="The model for the usage report."
+    )
+    usage_items: list[BillingPremiumRequestUsageReportUserPropUsageItemsItems] = Field(
+        alias="usageItems"
+    )
 
 
-model_rebuild(OrganizationSimpleWebhooks)
+class BillingPremiumRequestUsageReportUserPropTimePeriod(GitHubModel):
+    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
 
-__all__ = ("OrganizationSimpleWebhooks",)
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
+    )
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
+    )
+
+
+class BillingPremiumRequestUsageReportUserPropUsageItemsItems(GitHubModel):
+    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
+
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    model: str = Field(description="Model name.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+
+
+model_rebuild(BillingPremiumRequestUsageReportUser)
+model_rebuild(BillingPremiumRequestUsageReportUserPropTimePeriod)
+model_rebuild(BillingPremiumRequestUsageReportUserPropUsageItemsItems)
+
+__all__ = (
+    "BillingPremiumRequestUsageReportUser",
+    "BillingPremiumRequestUsageReportUserPropTimePeriod",
+    "BillingPremiumRequestUsageReportUserPropUsageItemsItems",
+)

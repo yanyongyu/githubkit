@@ -9,26 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0018 import InstallationType, InstallationTypeForResponse
-
-
-class OrgsOrgInstallationsGetResponse200Type(TypedDict):
-    """OrgsOrgInstallationsGetResponse200"""
-
-    total_count: int
-    installations: list[InstallationType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgInstallationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgInstallationsGetResponse200"""
+class OrgsOrgDependabotSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    total_count: int
-    installations: list[InstallationTypeForResponse]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
+
+
+class OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
+
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
 
 
 __all__ = (
-    "OrgsOrgInstallationsGetResponse200Type",
-    "OrgsOrgInstallationsGetResponse200TypeForResponse",
+    "OrgsOrgDependabotSecretsSecretNamePutBodyType",
+    "OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse",
 )

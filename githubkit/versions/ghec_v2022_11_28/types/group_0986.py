@@ -9,28 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0048 import RunnerLabelType, RunnerLabelTypeForResponse
-
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
-
-    total_count: int
-    labels: list[RunnerLabelType]
+from .group_0051 import RunnerType, RunnerTypeForResponse
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
+class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-    total_count: int
-    labels: list[RunnerLabelTypeForResponse]
+    total_count: NotRequired[float]
+    runners: NotRequired[list[RunnerType]]
+
+
+class EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
+
+    total_count: NotRequired[float]
+    runners: NotRequired[list[RunnerTypeForResponse]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse",
 )

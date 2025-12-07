@@ -9,42 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0072 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
+
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+
+    errors: NotRequired[list[str]]
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
-    e200
-    """
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
-
-
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
-    e200
-    """
-
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    errors: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse",
 )

@@ -14,20 +14,30 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CheckImmutableReleases(GitHubModel):
-    """Check immutable releases
+class GitRef(GitHubModel):
+    """Git Reference
 
-    Check immutable releases
+    Git references within a repository
     """
 
-    enabled: bool = Field(
-        description="Whether immutable releases are enabled for the repository."
-    )
-    enforced_by_owner: bool = Field(
-        description="Whether immutable releases are enforced by the repository owner."
-    )
+    ref: str = Field()
+    node_id: str = Field()
+    url: str = Field()
+    object_: GitRefPropObject = Field(alias="object")
 
 
-model_rebuild(CheckImmutableReleases)
+class GitRefPropObject(GitHubModel):
+    """GitRefPropObject"""
 
-__all__ = ("CheckImmutableReleases",)
+    type: str = Field()
+    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
+    url: str = Field()
+
+
+model_rebuild(GitRef)
+model_rebuild(GitRefPropObject)
+
+__all__ = (
+    "GitRef",
+    "GitRefPropObject",
+)

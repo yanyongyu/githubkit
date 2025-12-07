@@ -12,21 +12,99 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReviewCustomGatesCommentRequiredType(TypedDict):
-    """ReviewCustomGatesCommentRequired"""
+class PullRequestMinimalType(TypedDict):
+    """Pull Request Minimal"""
 
-    environment_name: str
-    comment: str
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadType
+    base: PullRequestMinimalPropBaseType
 
 
-class ReviewCustomGatesCommentRequiredTypeForResponse(TypedDict):
-    """ReviewCustomGatesCommentRequired"""
+class PullRequestMinimalTypeForResponse(TypedDict):
+    """Pull Request Minimal"""
 
-    environment_name: str
-    comment: str
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadTypeForResponse
+    base: PullRequestMinimalPropBaseTypeForResponse
+
+
+class PullRequestMinimalPropHeadType(TypedDict):
+    """PullRequestMinimalPropHead"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropHeadPropRepoType
+
+
+class PullRequestMinimalPropHeadTypeForResponse(TypedDict):
+    """PullRequestMinimalPropHead"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropHeadPropRepoTypeForResponse
+
+
+class PullRequestMinimalPropHeadPropRepoType(TypedDict):
+    """PullRequestMinimalPropHeadPropRepo"""
+
+    id: int
+    url: str
+    name: str
+
+
+class PullRequestMinimalPropHeadPropRepoTypeForResponse(TypedDict):
+    """PullRequestMinimalPropHeadPropRepo"""
+
+    id: int
+    url: str
+    name: str
+
+
+class PullRequestMinimalPropBaseType(TypedDict):
+    """PullRequestMinimalPropBase"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropBasePropRepoType
+
+
+class PullRequestMinimalPropBaseTypeForResponse(TypedDict):
+    """PullRequestMinimalPropBase"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropBasePropRepoTypeForResponse
+
+
+class PullRequestMinimalPropBasePropRepoType(TypedDict):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int
+    url: str
+    name: str
+
+
+class PullRequestMinimalPropBasePropRepoTypeForResponse(TypedDict):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int
+    url: str
+    name: str
 
 
 __all__ = (
-    "ReviewCustomGatesCommentRequiredType",
-    "ReviewCustomGatesCommentRequiredTypeForResponse",
+    "PullRequestMinimalPropBasePropRepoType",
+    "PullRequestMinimalPropBasePropRepoTypeForResponse",
+    "PullRequestMinimalPropBaseType",
+    "PullRequestMinimalPropBaseTypeForResponse",
+    "PullRequestMinimalPropHeadPropRepoType",
+    "PullRequestMinimalPropHeadPropRepoTypeForResponse",
+    "PullRequestMinimalPropHeadType",
+    "PullRequestMinimalPropHeadTypeForResponse",
+    "PullRequestMinimalType",
+    "PullRequestMinimalTypeForResponse",
 )

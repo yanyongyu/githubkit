@@ -9,31 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsForkPrContributorApprovalType(TypedDict):
-    """ActionsForkPrContributorApproval"""
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    approval_policy: Literal[
-        "first_time_contributors_new_to_github",
-        "first_time_contributors",
-        "all_external_contributors",
-    ]
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
 
 
-class ActionsForkPrContributorApprovalTypeForResponse(TypedDict):
-    """ActionsForkPrContributorApproval"""
+class OidcCustomSubTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    approval_policy: Literal[
-        "first_time_contributors_new_to_github",
-        "first_time_contributors",
-        "all_external_contributors",
-    ]
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
 
 
 __all__ = (
-    "ActionsForkPrContributorApprovalType",
-    "ActionsForkPrContributorApprovalTypeForResponse",
+    "OidcCustomSubType",
+    "OidcCustomSubTypeForResponse",
 )

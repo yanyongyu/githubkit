@@ -9,21 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503(GitHubModel):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    PatchBody
+    """
 
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    repository_selection: Literal["all", "selected"] = Field(
+        description="One of either 'all' or 'selected'"
+    )
+    repositories: Missing[list[str]] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The repository names to add to the installation. Only required when repository_selection is 'selected'",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCodeScanningAlertsGetResponse503)
+model_rebuild(
+    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody
+)
 
-__all__ = ("EnterprisesEnterpriseCodeScanningAlertsGetResponse503",)
+__all__ = (
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody",
+)

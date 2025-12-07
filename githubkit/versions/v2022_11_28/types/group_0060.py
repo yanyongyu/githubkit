@@ -9,171 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class SecurityAndAnalysisType(TypedDict):
-    """SecurityAndAnalysis"""
-
-    advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
-    code_security: NotRequired[SecurityAndAnalysisPropCodeSecurityType]
-    dependabot_security_updates: NotRequired[
-        SecurityAndAnalysisPropDependabotSecurityUpdatesType
-    ]
-    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
-    secret_scanning_push_protection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningPushProtectionType
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        SecurityAndAnalysisPropSecretScanningNonProviderPatternsType
-    ]
-    secret_scanning_ai_detection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningAiDetectionType
-    ]
+from .group_0058 import (
+    MarketplaceListingPlanType,
+    MarketplaceListingPlanTypeForResponse,
+)
 
 
-class SecurityAndAnalysisTypeForResponse(TypedDict):
-    """SecurityAndAnalysis"""
+class MarketplacePurchasePropMarketplacePendingChangeType(TypedDict):
+    """MarketplacePurchasePropMarketplacePendingChange"""
 
-    advanced_security: NotRequired[
-        SecurityAndAnalysisPropAdvancedSecurityTypeForResponse
-    ]
-    code_security: NotRequired[SecurityAndAnalysisPropCodeSecurityTypeForResponse]
-    dependabot_security_updates: NotRequired[
-        SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse
-    ]
-    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningTypeForResponse]
-    secret_scanning_push_protection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse
-    ]
-    secret_scanning_ai_detection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse
-    ]
+    is_installed: NotRequired[bool]
+    effective_date: NotRequired[str]
+    unit_count: NotRequired[Union[int, None]]
+    id: NotRequired[int]
+    plan: NotRequired[MarketplaceListingPlanType]
 
 
-class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
-    """SecurityAndAnalysisPropAdvancedSecurity
+class MarketplacePurchasePropMarketplacePendingChangeTypeForResponse(TypedDict):
+    """MarketplacePurchasePropMarketplacePendingChange"""
 
-    Enable or disable GitHub Advanced Security for the repository.
-
-    For standalone Code Scanning or Secret Protection products, this parameter
-    cannot be used.
-    """
-
-    status: NotRequired[Literal["enabled", "disabled"]]
+    is_installed: NotRequired[bool]
+    effective_date: NotRequired[str]
+    unit_count: NotRequired[Union[int, None]]
+    id: NotRequired[int]
+    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
 
 
-class SecurityAndAnalysisPropAdvancedSecurityTypeForResponse(TypedDict):
-    """SecurityAndAnalysisPropAdvancedSecurity
+class MarketplacePurchasePropMarketplacePurchaseType(TypedDict):
+    """MarketplacePurchasePropMarketplacePurchase"""
 
-    Enable or disable GitHub Advanced Security for the repository.
-
-    For standalone Code Scanning or Secret Protection products, this parameter
-    cannot be used.
-    """
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropCodeSecurityType(TypedDict):
-    """SecurityAndAnalysisPropCodeSecurity"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
+    billing_cycle: NotRequired[str]
+    next_billing_date: NotRequired[Union[str, None]]
+    is_installed: NotRequired[bool]
+    unit_count: NotRequired[Union[int, None]]
+    on_free_trial: NotRequired[bool]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    plan: NotRequired[MarketplaceListingPlanType]
 
 
-class SecurityAndAnalysisPropCodeSecurityTypeForResponse(TypedDict):
-    """SecurityAndAnalysisPropCodeSecurity"""
+class MarketplacePurchasePropMarketplacePurchaseTypeForResponse(TypedDict):
+    """MarketplacePurchasePropMarketplacePurchase"""
 
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropDependabotSecurityUpdatesType(TypedDict):
-    """SecurityAndAnalysisPropDependabotSecurityUpdates
-
-    Enable or disable Dependabot security updates for the repository.
-    """
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse(TypedDict):
-    """SecurityAndAnalysisPropDependabotSecurityUpdates
-
-    Enable or disable Dependabot security updates for the repository.
-    """
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanning"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningTypeForResponse(TypedDict):
-    """SecurityAndAnalysisPropSecretScanning"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtectionType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningNonProviderPatternsType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse(
-    TypedDict
-):
-    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningAiDetectionType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningAiDetection"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningAiDetection"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
+    billing_cycle: NotRequired[str]
+    next_billing_date: NotRequired[Union[str, None]]
+    is_installed: NotRequired[bool]
+    unit_count: NotRequired[Union[int, None]]
+    on_free_trial: NotRequired[bool]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
 
 
 __all__ = (
-    "SecurityAndAnalysisPropAdvancedSecurityType",
-    "SecurityAndAnalysisPropAdvancedSecurityTypeForResponse",
-    "SecurityAndAnalysisPropCodeSecurityType",
-    "SecurityAndAnalysisPropCodeSecurityTypeForResponse",
-    "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
-    "SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse",
-    "SecurityAndAnalysisPropSecretScanningAiDetectionType",
-    "SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse",
-    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
-    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse",
-    "SecurityAndAnalysisPropSecretScanningPushProtectionType",
-    "SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse",
-    "SecurityAndAnalysisPropSecretScanningType",
-    "SecurityAndAnalysisPropSecretScanningTypeForResponse",
-    "SecurityAndAnalysisType",
-    "SecurityAndAnalysisTypeForResponse",
+    "MarketplacePurchasePropMarketplacePendingChangeType",
+    "MarketplacePurchasePropMarketplacePendingChangeTypeForResponse",
+    "MarketplacePurchasePropMarketplacePurchaseType",
+    "MarketplacePurchasePropMarketplacePurchaseTypeForResponse",
 )

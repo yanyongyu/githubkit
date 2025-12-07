@@ -9,19 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
+class OrgsOrgCodespacesAccessPutBody(GitHubModel):
+    """OrgsOrgCodespacesAccessPutBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints."
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
+    ] = Field(
+        description="Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization."
+    )
+    selected_usernames: Missing[list[str]] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.",
     )
 
 
-model_rebuild(OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody)
+model_rebuild(OrgsOrgCodespacesAccessPutBody)
 
-__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",)
+__all__ = ("OrgsOrgCodespacesAccessPutBody",)

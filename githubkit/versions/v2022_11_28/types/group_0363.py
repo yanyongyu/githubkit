@@ -9,30 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+LanguageType: TypeAlias = dict[str, Any]
+"""Language
+
+Language
+"""
 
 
-class PageBuildStatusType(TypedDict):
-    """Page Build Status
+LanguageTypeForResponse: TypeAlias = dict[str, Any]
+"""Language
 
-    Page Build Status
-    """
-
-    url: str
-    status: str
-
-
-class PageBuildStatusTypeForResponse(TypedDict):
-    """Page Build Status
-
-    Page Build Status
-    """
-
-    url: str
-    status: str
+Language
+"""
 
 
 __all__ = (
-    "PageBuildStatusType",
-    "PageBuildStatusTypeForResponse",
+    "LanguageType",
+    "LanguageTypeForResponse",
 )

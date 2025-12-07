@@ -9,24 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsArtifactAndLogRetentionResponseType(TypedDict):
-    """ActionsArtifactAndLogRetentionResponse"""
+class ActionsHostedRunnerCuratedImageType(TypedDict):
+    """GitHub-hosted runner image details.
 
-    days: int
-    maximum_allowed_days: int
+    Provides details of a hosted runner image
+    """
+
+    id: str
+    platform: str
+    size_gb: int
+    display_name: str
+    source: Literal["github", "partner", "custom"]
 
 
-class ActionsArtifactAndLogRetentionResponseTypeForResponse(TypedDict):
-    """ActionsArtifactAndLogRetentionResponse"""
+class ActionsHostedRunnerCuratedImageTypeForResponse(TypedDict):
+    """GitHub-hosted runner image details.
 
-    days: int
-    maximum_allowed_days: int
+    Provides details of a hosted runner image
+    """
+
+    id: str
+    platform: str
+    size_gb: int
+    display_name: str
+    source: Literal["github", "partner", "custom"]
 
 
 __all__ = (
-    "ActionsArtifactAndLogRetentionResponseType",
-    "ActionsArtifactAndLogRetentionResponseTypeForResponse",
+    "ActionsHostedRunnerCuratedImageType",
+    "ActionsHostedRunnerCuratedImageTypeForResponse",
 )

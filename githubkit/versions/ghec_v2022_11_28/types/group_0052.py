@@ -9,34 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class AnnouncementBannerType(TypedDict):
-    """Announcement Banner
+class RunnerApplicationType(TypedDict):
+    """Runner Application
 
-    Announcement at either the repository, organization, or enterprise level
+    Runner Application
     """
 
-    announcement: Union[str, None]
-    expires_at: Union[_dt.datetime, None]
-    user_dismissible: Union[bool, None]
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
-class AnnouncementBannerTypeForResponse(TypedDict):
-    """Announcement Banner
+class RunnerApplicationTypeForResponse(TypedDict):
+    """Runner Application
 
-    Announcement at either the repository, organization, or enterprise level
+    Runner Application
     """
 
-    announcement: Union[str, None]
-    expires_at: Union[str, None]
-    user_dismissible: Union[bool, None]
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
 __all__ = (
-    "AnnouncementBannerType",
-    "AnnouncementBannerTypeForResponse",
+    "RunnerApplicationType",
+    "RunnerApplicationTypeForResponse",
 )

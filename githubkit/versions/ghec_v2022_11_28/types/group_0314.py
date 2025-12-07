@@ -11,53 +11,86 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0315 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse,
-)
 
+class WorkflowUsageType(TypedDict):
+    """Workflow Usage
 
-class ProtectedBranchPullRequestReviewType(TypedDict):
-    """Protected Branch Pull Request Review
-
-    Protected Branch Pull Request Review
+    Workflow Usage
     """
 
-    url: NotRequired[str]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
-    ]
-    dismiss_stale_reviews: bool
-    require_code_owner_reviews: bool
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    billable: WorkflowUsagePropBillableType
 
 
-class ProtectedBranchPullRequestReviewTypeForResponse(TypedDict):
-    """Protected Branch Pull Request Review
+class WorkflowUsageTypeForResponse(TypedDict):
+    """Workflow Usage
 
-    Protected Branch Pull Request Review
+    Workflow Usage
     """
 
-    url: NotRequired[str]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse
-    ]
-    dismiss_stale_reviews: bool
-    require_code_owner_reviews: bool
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    billable: WorkflowUsagePropBillableTypeForResponse
+
+
+class WorkflowUsagePropBillableType(TypedDict):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
+
+
+class WorkflowUsagePropBillableTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuTypeForResponse]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosTypeForResponse]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsTypeForResponse]
+
+
+class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropUbuntuTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropMacosType(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropMacosTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropWindowsType(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropWindowsTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: NotRequired[int]
 
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewType",
-    "ProtectedBranchPullRequestReviewTypeForResponse",
+    "WorkflowUsagePropBillablePropMacosType",
+    "WorkflowUsagePropBillablePropMacosTypeForResponse",
+    "WorkflowUsagePropBillablePropUbuntuType",
+    "WorkflowUsagePropBillablePropUbuntuTypeForResponse",
+    "WorkflowUsagePropBillablePropWindowsType",
+    "WorkflowUsagePropBillablePropWindowsTypeForResponse",
+    "WorkflowUsagePropBillableType",
+    "WorkflowUsagePropBillableTypeForResponse",
+    "WorkflowUsageType",
+    "WorkflowUsageTypeForResponse",
 )

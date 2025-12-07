@@ -18,16 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0448 import EnterpriseWebhooks
-from .group_0449 import SimpleInstallation
-from .group_0450 import OrganizationSimpleWebhooks
+from .group_0453 import EnterpriseWebhooks
+from .group_0454 import SimpleInstallation
+from .group_0455 import OrganizationSimpleWebhooks
+from .group_0456 import RepositoryWebhooks
+from .group_0529 import WebhookCodeScanningAlertReopenedByUserPropAlert
 
 
-class WebhookCustomPropertyDeleted(GitHubModel):
-    """custom property deleted event"""
+class WebhookCodeScanningAlertReopenedByUser(GitHubModel):
+    """code_scanning_alert reopened_by_user event"""
 
-    action: Literal["deleted"] = Field()
-    definition: WebhookCustomPropertyDeletedPropDefinition = Field()
+    action: Literal["reopened_by_user"] = Field()
+    alert: WebhookCodeScanningAlertReopenedByUserPropAlert = Field(
+        description="The code scanning alert involved in the event."
+    )
+    commit_oid: str = Field(
+        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,21 +50,16 @@ class WebhookCustomPropertyDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    ref: str = Field(
+        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
     )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookCustomPropertyDeletedPropDefinition(GitHubModel):
-    """WebhookCustomPropertyDeletedPropDefinition"""
+model_rebuild(WebhookCodeScanningAlertReopenedByUser)
 
-    property_name: str = Field(description="The name of the property that was deleted.")
-
-
-model_rebuild(WebhookCustomPropertyDeleted)
-model_rebuild(WebhookCustomPropertyDeletedPropDefinition)
-
-__all__ = (
-    "WebhookCustomPropertyDeleted",
-    "WebhookCustomPropertyDeletedPropDefinition",
-)
+__all__ = ("WebhookCodeScanningAlertReopenedByUser",)

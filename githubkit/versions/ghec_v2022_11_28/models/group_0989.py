@@ -11,26 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0050 import RunnerLabel
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    AddPatchBody
-    """
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
 
-    repositories: list[str] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
-        description="The repository names to add to the installation.",
-    )
+    total_count: int = Field()
+    labels: list[RunnerLabel] = Field()
 
 
-model_rebuild(
-    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody
-)
+model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200)
 
-__all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody",
-)
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200",)

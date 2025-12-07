@@ -11,40 +11,26 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
+class ReposOwnerRepoAutolinksPostBody(GitHubModel):
+    """ReposOwnerRepoAutolinksPostBody"""
 
-    ref: str = Field(
-        description="The git reference for the workflow. The reference can be a branch or tag name."
+    key_prefix: str = Field(
+        description="This prefix appended by certain characters will generate a link any time it is found in an issue, pull request, or commit."
     )
-    inputs: Missing[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
-    ] = Field(
+    url_template: str = Field(
+        description="The URL must contain `<num>` for the reference number. `<num>` matches different characters depending on the value of `is_alphanumeric`."
+    )
+    is_alphanumeric: Missing[bool] = Field(
         default=UNSET,
-        description="Input keys and values configured in the workflow file. The maximum number of properties is 10. Any default properties configured in the workflow file will be used when `inputs` are omitted.",
+        description="Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters.",
     )
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+model_rebuild(ReposOwnerRepoAutolinksPostBody)
 
-    Input keys and values configured in the workflow file. The maximum number of
-    properties is 10. Any default properties configured in the workflow file will be
-    used when `inputs` are omitted.
-    """
-
-
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody)
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs)
-
-__all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
-)
+__all__ = ("ReposOwnerRepoAutolinksPostBody",)

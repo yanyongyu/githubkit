@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,71 +16,75 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksRule(GitHubModel):
-    """branch protection rule
+class BillingUsageSummaryReportUser(GitHubModel):
+    """BillingUsageSummaryReportUser"""
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/github/administering-a-repository/defining-
-    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
-    protection-settings) applied to branches that match the name. Binary settings
-    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
-    `everyone`. Actor and build lists are arrays of strings.
-    """
-
-    admin_enforced: bool = Field()
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
+    time_period: BillingUsageSummaryReportUserPropTimePeriod = Field(alias="timePeriod")
+    user: str = Field(description="The unique identifier of the user.")
+    repository: Missing[str] = Field(
+        default=UNSET, description="The name of the repository for the usage report."
     )
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
     )
-    authorized_actor_names: list[str] = Field()
-    authorized_actors_only: bool = Field()
-    authorized_dismissal_actors_only: bool = Field()
-    create_protected: Missing[bool] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    dismiss_stale_reviews_on_push: bool = Field()
-    id: int = Field()
-    ignore_approvals_from_contributors: bool = Field()
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
-        description="The enforcement level of the branch lock setting. `off` means the branch is not locked, `non_admins` means the branch is read-only for non_admins, and `everyone` means the branch is read-only for everyone."
+    sku: Missing[str] = Field(
+        default=UNSET, description="The SKU for the usage report."
     )
-    lock_allows_fork_sync: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow users to pull changes from upstream when the branch is locked. This setting is only applicable for forks.",
+    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItems] = Field(
+        alias="usageItems"
     )
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"] = Field()
-    name: str = Field()
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    repository_id: int = Field()
-    require_code_owner_review: bool = Field()
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it",
-    )
-    required_approving_review_count: int = Field()
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    required_status_checks: list[str] = Field()
-    required_status_checks_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    signature_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    strict_required_status_checks_policy: bool = Field()
-    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(WebhooksRule)
+class BillingUsageSummaryReportUserPropTimePeriod(GitHubModel):
+    """BillingUsageSummaryReportUserPropTimePeriod"""
 
-__all__ = ("WebhooksRule",)
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
+    )
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
+    )
+
+
+class BillingUsageSummaryReportUserPropUsageItemsItems(GitHubModel):
+    """BillingUsageSummaryReportUserPropUsageItemsItems"""
+
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+
+
+model_rebuild(BillingUsageSummaryReportUser)
+model_rebuild(BillingUsageSummaryReportUserPropTimePeriod)
+model_rebuild(BillingUsageSummaryReportUserPropUsageItemsItems)
+
+__all__ = (
+    "BillingUsageSummaryReportUser",
+    "BillingUsageSummaryReportUserPropTimePeriod",
+    "BillingUsageSummaryReportUserPropUsageItemsItems",
+)

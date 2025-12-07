@@ -9,31 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyValueType(TypedDict):
-    """Custom Property Value
+class ThreadSubscriptionType(TypedDict):
+    """Thread Subscription
 
-    Custom property name and associated value
+    Thread Subscription
     """
 
-    property_name: str
-    value: Union[str, list[str], None]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[_dt.datetime, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
-class CustomPropertyValueTypeForResponse(TypedDict):
-    """Custom Property Value
+class ThreadSubscriptionTypeForResponse(TypedDict):
+    """Thread Subscription
 
-    Custom property name and associated value
+    Thread Subscription
     """
 
-    property_name: str
-    value: Union[str, list[str], None]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[str, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
 __all__ = (
-    "CustomPropertyValueType",
-    "CustomPropertyValueTypeForResponse",
+    "ThreadSubscriptionType",
+    "ThreadSubscriptionTypeForResponse",
 )

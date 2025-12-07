@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0375 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0536 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDeployKeyCreatedType(TypedDict):
-    """deploy_key created event"""
+class WebhookDependabotAlertDismissedType(TypedDict):
+    """Dependabot alert dismissed event"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["dismissed"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
-    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDeployKeyCreatedTypeForResponse(TypedDict):
-    """deploy_key created event"""
+class WebhookDependabotAlertDismissedTypeForResponse(TypedDict):
+    """Dependabot alert dismissed event"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["dismissed"]
+    alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    key: WebhooksDeployKeyTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDeployKeyCreatedType",
-    "WebhookDeployKeyCreatedTypeForResponse",
+    "WebhookDependabotAlertDismissedType",
+    "WebhookDependabotAlertDismissedTypeForResponse",
 )

@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody"""
 
-    query_suite: NotRequired[Literal["default", "extended"]]
+    body: str
 
 
-class OrgsOrgSecurityProductEnablementPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody"""
 
-    query_suite: NotRequired[Literal["default", "extended"]]
+    body: str
 
 
 __all__ = (
-    "OrgsOrgSecurityProductEnablementPostBodyType",
-    "OrgsOrgSecurityProductEnablementPostBodyTypeForResponse",
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType",
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyTypeForResponse",
 )

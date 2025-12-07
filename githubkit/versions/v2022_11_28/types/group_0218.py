@@ -9,79 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class NetworkSettingsType(TypedDict):
+    """Hosted compute network settings resource
 
-class TeamProjectType(TypedDict):
-    """Team Project
-
-    A team's access to a project.
+    A hosted compute network settings resource.
     """
 
-    owner_url: str
-    url: str
-    html_url: str
-    columns_url: str
-    id: int
-    node_id: str
+    id: str
+    network_configuration_id: NotRequired[str]
     name: str
-    body: Union[str, None]
-    number: int
-    state: str
-    creator: SimpleUserType
-    created_at: str
-    updated_at: str
-    organization_permission: NotRequired[str]
-    private: NotRequired[bool]
-    permissions: TeamProjectPropPermissionsType
+    subnet_id: str
+    region: str
 
 
-class TeamProjectTypeForResponse(TypedDict):
-    """Team Project
+class NetworkSettingsTypeForResponse(TypedDict):
+    """Hosted compute network settings resource
 
-    A team's access to a project.
+    A hosted compute network settings resource.
     """
 
-    owner_url: str
-    url: str
-    html_url: str
-    columns_url: str
-    id: int
-    node_id: str
+    id: str
+    network_configuration_id: NotRequired[str]
     name: str
-    body: Union[str, None]
-    number: int
-    state: str
-    creator: SimpleUserTypeForResponse
-    created_at: str
-    updated_at: str
-    organization_permission: NotRequired[str]
-    private: NotRequired[bool]
-    permissions: TeamProjectPropPermissionsTypeForResponse
-
-
-class TeamProjectPropPermissionsType(TypedDict):
-    """TeamProjectPropPermissions"""
-
-    read: bool
-    write: bool
-    admin: bool
-
-
-class TeamProjectPropPermissionsTypeForResponse(TypedDict):
-    """TeamProjectPropPermissions"""
-
-    read: bool
-    write: bool
-    admin: bool
+    subnet_id: str
+    region: str
 
 
 __all__ = (
-    "TeamProjectPropPermissionsType",
-    "TeamProjectPropPermissionsTypeForResponse",
-    "TeamProjectType",
-    "TeamProjectTypeForResponse",
+    "NetworkSettingsType",
+    "NetworkSettingsTypeForResponse",
 )

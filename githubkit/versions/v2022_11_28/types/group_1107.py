@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0261 import CheckRunType, CheckRunTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+class ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
 
-    total_count: int
-    check_runs: list[CheckRunType]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
 
 
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+class ReposOwnerRepoCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
 
-    total_count: int
-    check_runs: list[CheckRunTypeForResponse]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",
-    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse",
+    "ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType",
+    "ReposOwnerRepoCodespacesSecretsSecretNamePutBodyTypeForResponse",
 )

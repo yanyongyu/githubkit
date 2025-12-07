@@ -12,31 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
+class ReposOwnerRepoBranchesBranchRenamePostBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchRenamePostBody"""
 
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
+    new_name: str
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
+class ReposOwnerRepoBranchesBranchRenamePostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoBranchesBranchRenamePostBody"""
 
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
+    new_name: str
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoBranchesBranchRenamePostBodyType",
+    "ReposOwnerRepoBranchesBranchRenamePostBodyTypeForResponse",
 )

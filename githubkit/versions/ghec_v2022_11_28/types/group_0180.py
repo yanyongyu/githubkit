@@ -9,75 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CreateBudgetType(TypedDict):
-    """CreateBudget"""
+class AdvancedSecurityActiveCommittersType(TypedDict):
+    """AdvancedSecurityActiveCommitters"""
 
-    message: str
-    budget: CreateBudgetPropBudgetType
-
-
-class CreateBudgetTypeForResponse(TypedDict):
-    """CreateBudget"""
-
-    message: str
-    budget: CreateBudgetPropBudgetTypeForResponse
+    total_advanced_security_committers: NotRequired[int]
+    total_count: NotRequired[int]
+    maximum_advanced_security_committers: NotRequired[int]
+    purchased_advanced_security_committers: NotRequired[int]
+    repositories: list[AdvancedSecurityActiveCommittersRepositoryType]
 
 
-class CreateBudgetPropBudgetType(TypedDict):
-    """CreateBudgetPropBudget"""
+class AdvancedSecurityActiveCommittersTypeForResponse(TypedDict):
+    """AdvancedSecurityActiveCommitters"""
 
-    id: NotRequired[str]
-    budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_amount: NotRequired[float]
-    prevent_further_usage: NotRequired[bool]
-    budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_alerting: NotRequired[CreateBudgetPropBudgetPropBudgetAlertingType]
+    total_advanced_security_committers: NotRequired[int]
+    total_count: NotRequired[int]
+    maximum_advanced_security_committers: NotRequired[int]
+    purchased_advanced_security_committers: NotRequired[int]
+    repositories: list[AdvancedSecurityActiveCommittersRepositoryTypeForResponse]
 
 
-class CreateBudgetPropBudgetTypeForResponse(TypedDict):
-    """CreateBudgetPropBudget"""
+class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
+    """AdvancedSecurityActiveCommittersRepository"""
 
-    id: NotRequired[str]
-    budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_amount: NotRequired[float]
-    prevent_further_usage: NotRequired[bool]
-    budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_alerting: NotRequired[
-        CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse
+    name: str
+    advanced_security_committers: int
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUserType
     ]
 
 
-class CreateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
-    """CreateBudgetPropBudgetPropBudgetAlerting"""
+class AdvancedSecurityActiveCommittersRepositoryTypeForResponse(TypedDict):
+    """AdvancedSecurityActiveCommittersRepository"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    name: str
+    advanced_security_committers: int
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUserTypeForResponse
+    ]
 
 
-class CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """CreateBudgetPropBudgetPropBudgetAlerting"""
+class AdvancedSecurityActiveCommittersUserType(TypedDict):
+    """AdvancedSecurityActiveCommittersUser"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    user_login: str
+    last_pushed_date: str
+    last_pushed_email: str
+
+
+class AdvancedSecurityActiveCommittersUserTypeForResponse(TypedDict):
+    """AdvancedSecurityActiveCommittersUser"""
+
+    user_login: str
+    last_pushed_date: str
+    last_pushed_email: str
 
 
 __all__ = (
-    "CreateBudgetPropBudgetPropBudgetAlertingType",
-    "CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
-    "CreateBudgetPropBudgetType",
-    "CreateBudgetPropBudgetTypeForResponse",
-    "CreateBudgetType",
-    "CreateBudgetTypeForResponse",
+    "AdvancedSecurityActiveCommittersRepositoryType",
+    "AdvancedSecurityActiveCommittersRepositoryTypeForResponse",
+    "AdvancedSecurityActiveCommittersType",
+    "AdvancedSecurityActiveCommittersTypeForResponse",
+    "AdvancedSecurityActiveCommittersUserType",
+    "AdvancedSecurityActiveCommittersUserTypeForResponse",
 )

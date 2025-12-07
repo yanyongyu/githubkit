@@ -13,44 +13,50 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0650 import (
-    WebhookIssuesReopenedPropIssueType,
-    WebhookIssuesReopenedPropIssueTypeForResponse,
+    WebhookIssuesOpenedPropChangesType,
+    WebhookIssuesOpenedPropChangesTypeForResponse,
+)
+from .group_0652 import (
+    WebhookIssuesOpenedPropIssueType,
+    WebhookIssuesOpenedPropIssueTypeForResponse,
 )
 
 
-class WebhookIssuesReopenedType(TypedDict):
-    """issues reopened event"""
+class WebhookIssuesOpenedType(TypedDict):
+    """issues opened event"""
 
-    action: Literal["reopened"]
+    action: Literal["opened"]
+    changes: NotRequired[WebhookIssuesOpenedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesReopenedPropIssueType
+    issue: WebhookIssuesOpenedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesReopenedTypeForResponse(TypedDict):
-    """issues reopened event"""
+class WebhookIssuesOpenedTypeForResponse(TypedDict):
+    """issues opened event"""
 
-    action: Literal["reopened"]
+    action: Literal["opened"]
+    changes: NotRequired[WebhookIssuesOpenedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesReopenedPropIssueTypeForResponse
+    issue: WebhookIssuesOpenedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesReopenedType",
-    "WebhookIssuesReopenedTypeForResponse",
+    "WebhookIssuesOpenedType",
+    "WebhookIssuesOpenedTypeForResponse",
 )

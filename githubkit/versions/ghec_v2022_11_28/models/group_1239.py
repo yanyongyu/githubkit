@@ -14,18 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
 
     Examples:
-        {'apps': ['my-app']}
+        {'users': ['mona']}
     """
 
-    apps: list[str] = Field(
-        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
-    )
+    users: list[str] = Field(description="The username for users")
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody",)

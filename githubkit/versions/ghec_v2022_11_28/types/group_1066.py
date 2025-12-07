@@ -9,23 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
+from .group_0033 import (
+    ActionsHostedRunnerMachineSpecType,
+    ActionsHostedRunnerMachineSpecTypeForResponse,
+)
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecType]
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",
-    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
+    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
 )

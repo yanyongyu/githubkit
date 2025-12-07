@@ -10,88 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRulePullRequestPropParametersType(TypedDict):
-    """RepositoryRulePullRequestPropParameters"""
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
 
-    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
-    automatic_copilot_code_review_enabled: NotRequired[bool]
-    dismiss_stale_reviews_on_push: bool
-    require_code_owner_review: bool
-    require_last_push_approval: bool
-    required_approving_review_count: int
-    required_review_thread_resolution: bool
-    required_reviewers: NotRequired[
-        list[RepositoryRuleParamsRequiredReviewerConfigurationType]
-    ]
-
-
-class RepositoryRulePullRequestPropParametersTypeForResponse(TypedDict):
-    """RepositoryRulePullRequestPropParameters"""
-
-    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
-    automatic_copilot_code_review_enabled: NotRequired[bool]
-    dismiss_stale_reviews_on_push: bool
-    require_code_owner_review: bool
-    require_last_push_approval: bool
-    required_approving_review_count: int
-    required_review_thread_resolution: bool
-    required_reviewers: NotRequired[
-        list[RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse]
-    ]
-
-
-class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
-    """RequiredReviewerConfiguration
-
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    file_patterns: list[str]
-    minimum_approvals: int
-    reviewer: RepositoryRuleParamsReviewerType
+    type: Literal["required_linear_history"]
 
 
-class RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse(TypedDict):
-    """RequiredReviewerConfiguration
+class RepositoryRuleRequiredLinearHistoryTypeForResponse(TypedDict):
+    """required_linear_history
 
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    file_patterns: list[str]
-    minimum_approvals: int
-    reviewer: RepositoryRuleParamsReviewerTypeForResponse
-
-
-class RepositoryRuleParamsReviewerType(TypedDict):
-    """Reviewer
-
-    A required reviewing team
-    """
-
-    id: int
-    type: Literal["Team"]
-
-
-class RepositoryRuleParamsReviewerTypeForResponse(TypedDict):
-    """Reviewer
-
-    A required reviewing team
-    """
-
-    id: int
-    type: Literal["Team"]
+    type: Literal["required_linear_history"]
 
 
 __all__ = (
-    "RepositoryRuleParamsRequiredReviewerConfigurationType",
-    "RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse",
-    "RepositoryRuleParamsReviewerType",
-    "RepositoryRuleParamsReviewerTypeForResponse",
-    "RepositoryRulePullRequestPropParametersType",
-    "RepositoryRulePullRequestPropParametersTypeForResponse",
+    "RepositoryRuleRequiredLinearHistoryType",
+    "RepositoryRuleRequiredLinearHistoryTypeForResponse",
 )

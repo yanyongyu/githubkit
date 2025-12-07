@@ -12,30 +12,34 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 from .group_0117 import (
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
 )
 
 
-class EnterpriseRulesetConditionsOrganizationPropertyTargetType(TypedDict):
-    """Repository ruleset conditions for organization properties
+class EnterpriseRulesetConditionsOrganizationIdTargetType(TypedDict):
+    """Repository ruleset conditions for organization IDs
 
-    Parameters for a organization property condition
+    Parameters for an organization ID condition
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
+    )
 
 
-class EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for organization properties
+class EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for organization IDs
 
-    Parameters for a organization property condition
+    Parameters for an organization ID condition
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
+    )
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationPropertyTargetType",
-    "EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationIdTargetType",
+    "EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse",
 )

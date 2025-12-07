@@ -9,29 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DeleteCostCenterType(TypedDict):
-    """DeleteCostCenter"""
+class GetAllCostCentersType(TypedDict):
+    """GetAllCostCenters"""
 
-    message: str
+    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
+
+
+class GetAllCostCentersTypeForResponse(TypedDict):
+    """GetAllCostCenters"""
+
+    cost_centers: NotRequired[
+        list[GetAllCostCentersPropCostCentersItemsTypeForResponse]
+    ]
+
+
+class GetAllCostCentersPropCostCentersItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
+
     id: str
     name: str
-    cost_center_state: Literal["CostCenterArchived"]
+    state: NotRequired[Literal["active", "deleted"]]
+    azure_subscription: NotRequired[Union[str, None]]
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
 
 
-class DeleteCostCenterTypeForResponse(TypedDict):
-    """DeleteCostCenter"""
+class GetAllCostCentersPropCostCentersItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
 
-    message: str
     id: str
     name: str
-    cost_center_state: Literal["CostCenterArchived"]
+    state: NotRequired[Literal["active", "deleted"]]
+    azure_subscription: NotRequired[Union[str, None]]
+    resources: list[
+        GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse
+    ]
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
 
 
 __all__ = (
-    "DeleteCostCenterType",
-    "DeleteCostCenterTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsType",
+    "GetAllCostCentersPropCostCentersItemsTypeForResponse",
+    "GetAllCostCentersType",
+    "GetAllCostCentersTypeForResponse",
 )

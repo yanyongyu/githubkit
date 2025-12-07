@@ -13,38 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryImportType(TypedDict):
-    """repository_import event"""
+class WebhookRepositoryArchivedType(TypedDict):
+    """repository archived event"""
 
+    action: Literal["archived"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
-    status: Literal["success", "cancelled", "failure"]
 
 
-class WebhookRepositoryImportTypeForResponse(TypedDict):
-    """repository_import event"""
+class WebhookRepositoryArchivedTypeForResponse(TypedDict):
+    """repository archived event"""
 
+    action: Literal["archived"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    status: Literal["success", "cancelled", "failure"]
 
 
 __all__ = (
-    "WebhookRepositoryImportType",
-    "WebhookRepositoryImportTypeForResponse",
+    "WebhookRepositoryArchivedType",
+    "WebhookRepositoryArchivedTypeForResponse",
 )

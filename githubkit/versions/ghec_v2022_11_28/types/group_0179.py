@@ -9,67 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetAllBudgetsType(TypedDict):
-    """GetAllBudgets"""
+class SecretScanningPatternConfigurationType(TypedDict):
+    """Secret scanning pattern configuration
 
-    budgets: list[BudgetType]
+    A collection of secret scanning patterns and their settings related to push
+    protection.
+    """
 
-
-class GetAllBudgetsTypeForResponse(TypedDict):
-    """GetAllBudgets"""
-
-    budgets: list[BudgetTypeForResponse]
-
-
-class BudgetType(TypedDict):
-    """Budget"""
-
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: str
-    budget_entity_name: NotRequired[str]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingType
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
+    custom_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
 
 
-class BudgetTypeForResponse(TypedDict):
-    """Budget"""
+class SecretScanningPatternConfigurationTypeForResponse(TypedDict):
+    """Secret scanning pattern configuration
 
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: str
-    budget_entity_name: NotRequired[str]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
+    A collection of secret scanning patterns and their settings related to push
+    protection.
+    """
 
-
-class BudgetPropBudgetAlertingType(TypedDict):
-    """BudgetPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_overrides: NotRequired[
+        list[SecretScanningPatternOverrideTypeForResponse]
+    ]
+    custom_pattern_overrides: NotRequired[
+        list[SecretScanningPatternOverrideTypeForResponse]
+    ]
 
 
-class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """BudgetPropBudgetAlerting"""
+class SecretScanningPatternOverrideType(TypedDict):
+    """SecretScanningPatternOverride"""
 
-    will_alert: bool
-    alert_recipients: list[str]
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    slug: NotRequired[str]
+    display_name: NotRequired[str]
+    alert_total: NotRequired[int]
+    alert_total_percentage: NotRequired[int]
+    false_positives: NotRequired[int]
+    false_positive_rate: NotRequired[int]
+    bypass_rate: NotRequired[int]
+    default_setting: NotRequired[Literal["disabled", "enabled"]]
+    enterprise_setting: NotRequired[
+        Union[None, Literal["not-set", "disabled", "enabled"]]
+    ]
+    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+
+
+class SecretScanningPatternOverrideTypeForResponse(TypedDict):
+    """SecretScanningPatternOverride"""
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    slug: NotRequired[str]
+    display_name: NotRequired[str]
+    alert_total: NotRequired[int]
+    alert_total_percentage: NotRequired[int]
+    false_positives: NotRequired[int]
+    false_positive_rate: NotRequired[int]
+    bypass_rate: NotRequired[int]
+    default_setting: NotRequired[Literal["disabled", "enabled"]]
+    enterprise_setting: NotRequired[
+        Union[None, Literal["not-set", "disabled", "enabled"]]
+    ]
+    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
 
 
 __all__ = (
-    "BudgetPropBudgetAlertingType",
-    "BudgetPropBudgetAlertingTypeForResponse",
-    "BudgetType",
-    "BudgetTypeForResponse",
-    "GetAllBudgetsType",
-    "GetAllBudgetsTypeForResponse",
+    "SecretScanningPatternConfigurationType",
+    "SecretScanningPatternConfigurationTypeForResponse",
+    "SecretScanningPatternOverrideType",
+    "SecretScanningPatternOverrideTypeForResponse",
 )

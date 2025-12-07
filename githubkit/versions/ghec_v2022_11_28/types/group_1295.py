@@ -12,23 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody"""
+class ReposOwnerRepoGitRefsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    name: str
-    value: str
+    ref: str
+    sha: str
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody"""
+class ReposOwnerRepoGitRefsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    name: str
-    value: str
+    ref: str
+    sha: str
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyTypeForResponse",
+    "ReposOwnerRepoGitRefsPostBodyType",
+    "ReposOwnerRepoGitRefsPostBodyTypeForResponse",
 )

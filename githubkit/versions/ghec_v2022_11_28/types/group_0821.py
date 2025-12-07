@@ -13,35 +13,35 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0261 import ProjectsV2Type, ProjectsV2TypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0568 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookProjectsV2ProjectReopenedType(TypedDict):
-    """Projects v2 Project Reopened Event"""
+class WebhookProjectsV2ItemDeletedType(TypedDict):
+    """Projects v2 Item Deleted Event"""
 
-    action: Literal["reopened"]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ProjectReopenedTypeForResponse(TypedDict):
-    """Projects v2 Project Reopened Event"""
+class WebhookProjectsV2ItemDeletedTypeForResponse(TypedDict):
+    """Projects v2 Item Deleted Event"""
 
-    action: Literal["reopened"]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2: ProjectsV2TypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectReopenedType",
-    "WebhookProjectsV2ProjectReopenedTypeForResponse",
+    "WebhookProjectsV2ItemDeletedType",
+    "WebhookProjectsV2ItemDeletedTypeForResponse",
 )

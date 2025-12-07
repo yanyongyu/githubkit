@@ -14,20 +14,28 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PullRequestPropLabelsItems(GitHubModel):
-    """PullRequestPropLabelsItems"""
+class PageDeployment(GitHubModel):
+    """GitHub Pages
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    description: Union[str, None] = Field()
-    color: str = Field()
-    default: bool = Field()
+    The GitHub Pages deployment status.
+    """
+
+    id: Union[int, str] = Field(
+        description="The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit."
+    )
+    status_url: str = Field(
+        description="The URI to monitor GitHub Pages deployment status."
+    )
+    page_url: str = Field(description="The URI to the deployed GitHub Pages.")
+    preview_url: Missing[str] = Field(
+        default=UNSET, description="The URI to the deployed GitHub Pages preview."
+    )
 
 
-model_rebuild(PullRequestPropLabelsItems)
+model_rebuild(PageDeployment)
 
-__all__ = ("PullRequestPropLabelsItems",)
+__all__ = ("PageDeployment",)

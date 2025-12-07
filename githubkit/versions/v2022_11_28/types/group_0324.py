@@ -11,78 +11,67 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0252 import VerificationType, VerificationTypeForResponse
+from .group_0323 import (
+    CustomDeploymentRuleAppType,
+    CustomDeploymentRuleAppTypeForResponse,
+)
 
 
-class GitTagType(TypedDict):
-    """Git Tag
+class DeploymentProtectionRuleType(TypedDict):
+    """Deployment protection rule
 
-    Metadata for a Git tag
+    Deployment protection rule
     """
 
+    id: int
     node_id: str
-    tag: str
-    sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
+    enabled: bool
+    app: CustomDeploymentRuleAppType
 
 
-class GitTagTypeForResponse(TypedDict):
-    """Git Tag
+class DeploymentProtectionRuleTypeForResponse(TypedDict):
+    """Deployment protection rule
 
-    Metadata for a Git tag
+    Deployment protection rule
     """
 
+    id: int
     node_id: str
-    tag: str
-    sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerTypeForResponse
-    object_: GitTagPropObjectTypeForResponse
-    verification: NotRequired[VerificationTypeForResponse]
+    enabled: bool
+    app: CustomDeploymentRuleAppTypeForResponse
 
 
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    date: str
-    email: str
-    name: str
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
 
-
-class GitTagPropTaggerTypeForResponse(TypedDict):
-    """GitTagPropTagger"""
-
-    date: str
-    email: str
-    name: str
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
 
 
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    sha: str
-    type: str
-    url: str
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
 
-
-class GitTagPropObjectTypeForResponse(TypedDict):
-    """GitTagPropObject"""
-
-    sha: str
-    type: str
-    url: str
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[
+        list[DeploymentProtectionRuleTypeForResponse]
+    ]
 
 
 __all__ = (
-    "GitTagPropObjectType",
-    "GitTagPropObjectTypeForResponse",
-    "GitTagPropTaggerType",
-    "GitTagPropTaggerTypeForResponse",
-    "GitTagType",
-    "GitTagTypeForResponse",
+    "DeploymentProtectionRuleType",
+    "DeploymentProtectionRuleTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse",
 )

@@ -9,77 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0034 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0102 import (
+    CodeScanningAlertRuleSummaryType,
+    CodeScanningAlertRuleSummaryTypeForResponse,
+)
+from .group_0103 import (
+    CodeScanningAnalysisToolType,
+    CodeScanningAnalysisToolTypeForResponse,
+)
+from .group_0104 import (
+    CodeScanningAlertInstanceType,
+    CodeScanningAlertInstanceTypeForResponse,
+)
 
-class CopilotOrganizationDetailsType(TypedDict):
-    """Copilot Organization Details
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
-    """
+class CodeScanningOrganizationAlertItemsType(TypedDict):
+    """CodeScanningOrganizationAlertItems"""
 
-    seat_breakdown: CopilotOrganizationSeatBreakdownType
-    public_code_suggestions: Literal["allow", "block", "unconfigured"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
+    number: int
+    created_at: _dt.datetime
+    updated_at: NotRequired[_dt.datetime]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[_dt.datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
     ]
-    plan_type: NotRequired[Literal["business", "enterprise"]]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
+    repository: SimpleRepositoryType
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
+    assignees: NotRequired[list[SimpleUserType]]
 
 
-class CopilotOrganizationDetailsTypeForResponse(TypedDict):
-    """Copilot Organization Details
+class CodeScanningOrganizationAlertItemsTypeForResponse(TypedDict):
+    """CodeScanningOrganizationAlertItems"""
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
-    """
-
-    seat_breakdown: CopilotOrganizationSeatBreakdownTypeForResponse
-    public_code_suggestions: Literal["allow", "block", "unconfigured"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
+    number: int
+    created_at: str
+    updated_at: NotRequired[str]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[str, None]]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_at: Union[str, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
     ]
-    plan_type: NotRequired[Literal["business", "enterprise"]]
-
-
-class CopilotOrganizationSeatBreakdownType(TypedDict):
-    """Copilot Seat Breakdown
-
-    The breakdown of Copilot Business seats for the organization.
-    """
-
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
-
-
-class CopilotOrganizationSeatBreakdownTypeForResponse(TypedDict):
-    """Copilot Seat Breakdown
-
-    The breakdown of Copilot Business seats for the organization.
-    """
-
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryTypeForResponse
+    tool: CodeScanningAnalysisToolTypeForResponse
+    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
+    repository: SimpleRepositoryTypeForResponse
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
 
 
 __all__ = (
-    "CopilotOrganizationDetailsType",
-    "CopilotOrganizationDetailsTypeForResponse",
-    "CopilotOrganizationSeatBreakdownType",
-    "CopilotOrganizationSeatBreakdownTypeForResponse",
+    "CodeScanningOrganizationAlertItemsType",
+    "CodeScanningOrganizationAlertItemsTypeForResponse",
 )

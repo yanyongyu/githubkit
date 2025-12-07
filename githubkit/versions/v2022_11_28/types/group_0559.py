@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0461 import DiscussionType, DiscussionTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0466 import DiscussionType, DiscussionTypeForResponse
 
 
-class WebhookDiscussionPinnedType(TypedDict):
-    """discussion pinned event"""
+class WebhookDiscussionCreatedType(TypedDict):
+    """discussion created event"""
 
-    action: Literal["pinned"]
+    action: Literal["created"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -35,10 +35,10 @@ class WebhookDiscussionPinnedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionPinnedTypeForResponse(TypedDict):
-    """discussion pinned event"""
+class WebhookDiscussionCreatedTypeForResponse(TypedDict):
+    """discussion created event"""
 
-    action: Literal["pinned"]
+    action: Literal["created"]
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDiscussionPinnedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionPinnedType",
-    "WebhookDiscussionPinnedTypeForResponse",
+    "WebhookDiscussionCreatedType",
+    "WebhookDiscussionCreatedTypeForResponse",
 )

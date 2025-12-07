@@ -15,47 +15,52 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0252 import Verification
+from .group_0323 import CustomDeploymentRuleApp
 
 
-class GitTag(GitHubModel):
-    """Git Tag
+class DeploymentProtectionRule(GitHubModel):
+    """Deployment protection rule
 
-    Metadata for a Git tag
+    Deployment protection rule
     """
 
-    node_id: str = Field()
-    tag: str = Field(description="Name of the tag")
-    sha: str = Field()
-    url: str = Field(description="URL for the tag")
-    message: str = Field(description="Message describing the purpose of the tag")
-    tagger: GitTagPropTagger = Field()
-    object_: GitTagPropObject = Field(alias="object")
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+    id: int = Field(
+        description="The unique identifier for the deployment protection rule."
+    )
+    node_id: str = Field(description="The node ID for the deployment protection rule.")
+    enabled: bool = Field(
+        description="Whether the deployment protection rule is enabled for the environment."
+    )
+    app: CustomDeploymentRuleApp = Field(
+        title="Custom deployment protection rule app",
+        description="A GitHub App that is providing a custom deployment protection rule.",
+    )
 
 
-class GitTagPropTagger(GitHubModel):
-    """GitTagPropTagger"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    date: str = Field()
-    email: str = Field()
-    name: str = Field()
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of enabled custom deployment protection rules for this environment",
+    )
+    custom_deployment_protection_rules: Missing[list[DeploymentProtectionRule]] = Field(
+        default=UNSET
+    )
 
 
-class GitTagPropObject(GitHubModel):
-    """GitTagPropObject"""
-
-    sha: str = Field()
-    type: str = Field()
-    url: str = Field()
-
-
-model_rebuild(GitTag)
-model_rebuild(GitTagPropTagger)
-model_rebuild(GitTagPropObject)
+model_rebuild(DeploymentProtectionRule)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+)
 
 __all__ = (
-    "GitTag",
-    "GitTagPropObject",
-    "GitTagPropTagger",
+    "DeploymentProtectionRule",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200",
 )

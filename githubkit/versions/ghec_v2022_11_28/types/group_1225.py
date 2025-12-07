@@ -9,55 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
+class ReposOwnerRepoAutolinksPostBodyType(TypedDict):
+    """ReposOwnerRepoAutolinksPostBody"""
 
-    ref: str
-    inputs: NotRequired[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
-    ]
-
-
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
-
-    ref: str
-    inputs: NotRequired[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse
-    ]
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: NotRequired[bool]
 
 
-ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType: TypeAlias = (
-    dict[str, Any]
-)
-"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+class ReposOwnerRepoAutolinksPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoAutolinksPostBody"""
 
-Input keys and values configured in the workflow file. The maximum number of
-properties is 10. Any default properties configured in the workflow file will be
-used when `inputs` are omitted.
-"""
-
-
-ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
-
-Input keys and values configured in the workflow file. The maximum number of
-properties is 10. Any default properties configured in the workflow file will be
-used when `inputs` are omitted.
-"""
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse",
+    "ReposOwnerRepoAutolinksPostBodyType",
+    "ReposOwnerRepoAutolinksPostBodyTypeForResponse",
 )

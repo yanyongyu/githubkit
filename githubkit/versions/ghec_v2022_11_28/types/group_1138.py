@@ -9,29 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgHooksHookIdConfigPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgDependabotSecretsGetResponse200"""
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    total_count: int
+    secrets: list[OrganizationDependabotSecretType]
 
 
-class OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgDependabotSecretsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgDependabotSecretsGetResponse200"""
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    total_count: int
+    secrets: list[OrganizationDependabotSecretTypeForResponse]
+
+
+class OrganizationDependabotSecretType(TypedDict):
+    """Dependabot Secret for an Organization
+
+    Secrets for GitHub Dependabot for an organization.
+    """
+
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
+
+
+class OrganizationDependabotSecretTypeForResponse(TypedDict):
+    """Dependabot Secret for an Organization
+
+    Secrets for GitHub Dependabot for an organization.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgHooksHookIdConfigPatchBodyType",
-    "OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse",
+    "OrganizationDependabotSecretType",
+    "OrganizationDependabotSecretTypeForResponse",
+    "OrgsOrgDependabotSecretsGetResponse200Type",
+    "OrgsOrgDependabotSecretsGetResponse200TypeForResponse",
 )

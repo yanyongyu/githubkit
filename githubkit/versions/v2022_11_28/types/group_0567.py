@@ -9,48 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0568 import WebhookForkPropForkeeType, WebhookForkPropForkeeTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0466 import DiscussionType, DiscussionTypeForResponse
 
 
-class WebhookForkType(TypedDict):
-    """fork event
+class WebhookDiscussionTransferredPropChangesType(TypedDict):
+    """WebhookDiscussionTransferredPropChanges"""
 
-    A user forks a repository.
-    """
-
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    forkee: WebhookForkPropForkeeType
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    new_discussion: DiscussionType
+    new_repository: RepositoryWebhooksType
 
 
-class WebhookForkTypeForResponse(TypedDict):
-    """fork event
+class WebhookDiscussionTransferredPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionTransferredPropChanges"""
 
-    A user forks a repository.
-    """
-
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    forkee: WebhookForkPropForkeeTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    new_discussion: DiscussionTypeForResponse
+    new_repository: RepositoryWebhooksTypeForResponse
 
 
 __all__ = (
-    "WebhookForkType",
-    "WebhookForkTypeForResponse",
+    "WebhookDiscussionTransferredPropChangesType",
+    "WebhookDiscussionTransferredPropChangesTypeForResponse",
 )

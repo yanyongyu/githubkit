@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType(TypedDict):
-    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
+class ReposOwnerRepoTagsProtectionPostBodyType(TypedDict):
+    """ReposOwnerRepoTagsProtectionPostBody"""
 
-    title: NotRequired[str]
-    body: NotRequired[str]
+    pattern: str
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
+class ReposOwnerRepoTagsProtectionPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoTagsProtectionPostBody"""
 
-    title: NotRequired[str]
-    body: NotRequired[str]
+    pattern: str
 
 
 __all__ = (
-    "TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType",
-    "TeamsTeamIdDiscussionsDiscussionNumberPatchBodyTypeForResponse",
+    "ReposOwnerRepoTagsProtectionPostBodyType",
+    "ReposOwnerRepoTagsProtectionPostBodyTypeForResponse",
 )

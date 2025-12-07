@@ -14,37 +14,23 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0193 import RepositoryRuleMaxFileSizePropParameters
 
 
-class RepositoryRuleCodeScanningPropParameters(GitHubModel):
-    """RepositoryRuleCodeScanningPropParameters"""
+class RepositoryRuleMaxFileSize(GitHubModel):
+    """max_file_size
 
-    code_scanning_tools: list[RepositoryRuleParamsCodeScanningTool] = Field(
-        description="Tools that must provide code scanning results for this rule to pass."
-    )
-
-
-class RepositoryRuleParamsCodeScanningTool(GitHubModel):
-    """CodeScanningTool
-
-    A tool that must provide code scanning results for this rule to pass.
+    Prevent commits with individual files that exceed the specified limit from being
+    pushed to the commit graph.
     """
 
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"] = Field(
-        description='The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
-    )
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
-    ] = Field(
-        description='The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
-    )
-    tool: str = Field(description="The name of a code scanning tool")
+    type: Literal["max_file_size"] = Field()
+    parameters: Missing[RepositoryRuleMaxFileSizePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleCodeScanningPropParameters)
-model_rebuild(RepositoryRuleParamsCodeScanningTool)
+model_rebuild(RepositoryRuleMaxFileSize)
 
-__all__ = (
-    "RepositoryRuleCodeScanningPropParameters",
-    "RepositoryRuleParamsCodeScanningTool",
-)
+__all__ = ("RepositoryRuleMaxFileSize",)

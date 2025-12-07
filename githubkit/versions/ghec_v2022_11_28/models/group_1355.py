@@ -14,18 +14,28 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoPullsPullNumberMergePutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the pull request review comment."
+    commit_title: Missing[str] = Field(
+        default=UNSET, description="Title for the automatic commit message."
+    )
+    commit_message: Missing[str] = Field(
+        default=UNSET, description="Extra detail to append to automatic commit message."
+    )
+    sha: Missing[str] = Field(
+        default=UNSET,
+        description="SHA that pull request head must match to allow merge.",
+    )
+    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
+        default=UNSET, description="The merge method to use."
     )
 
 
-model_rebuild(ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberMergePutBody)
 
-__all__ = ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergePutBody",)

@@ -9,73 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0251 import GitUserType, GitUserTypeForResponse
-from .group_0252 import VerificationType, VerificationTypeForResponse
+from typing_extensions import TypedDict
 
 
-class CommitSearchResultItemPropCommitType(TypedDict):
-    """CommitSearchResultItemPropCommit"""
+class ReferrerTrafficType(TypedDict):
+    """Referrer Traffic
 
-    author: CommitSearchResultItemPropCommitPropAuthorType
-    committer: Union[None, GitUserType]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeType
-    url: str
-    verification: NotRequired[VerificationType]
+    Referrer Traffic
+    """
 
-
-class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommit"""
-
-    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
-    committer: Union[None, GitUserTypeForResponse]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
-    url: str
-    verification: NotRequired[VerificationTypeForResponse]
+    referrer: str
+    count: int
+    uniques: int
 
 
-class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+class ReferrerTrafficTypeForResponse(TypedDict):
+    """Referrer Traffic
 
-    name: str
-    email: str
-    date: _dt.datetime
+    Referrer Traffic
+    """
 
-
-class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
-
-    name: str
-    email: str
-    date: str
-
-
-class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
-
-    sha: str
-    url: str
-
-
-class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
-
-    sha: str
-    url: str
+    referrer: str
+    count: int
+    uniques: int
 
 
 __all__ = (
-    "CommitSearchResultItemPropCommitPropAuthorType",
-    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
-    "CommitSearchResultItemPropCommitPropTreeType",
-    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
-    "CommitSearchResultItemPropCommitType",
-    "CommitSearchResultItemPropCommitTypeForResponse",
+    "ReferrerTrafficType",
+    "ReferrerTrafficTypeForResponse",
 )

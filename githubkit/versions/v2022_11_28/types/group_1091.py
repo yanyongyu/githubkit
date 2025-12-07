@@ -9,33 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_1090 import (
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse,
+)
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody"""
 
-    state: Literal["open", "dismissed"]
-    dismissed_reason: NotRequired[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
+
+    name: NotRequired[str]
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    started_at: NotRequired[_dt.datetime]
+    status: NotRequired[Literal["completed"]]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    create_request: NotRequired[bool]
-
-
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody"""
-
-    state: Literal["open", "dismissed"]
-    dismissed_reason: NotRequired[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    completed_at: NotRequired[_dt.datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
+    actions: NotRequired[
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    create_request: NotRequired[bool]
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
+
+    name: NotRequired[str]
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    started_at: NotRequired[str]
+    status: NotRequired[Literal["completed"]]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
+    ]
+    completed_at: NotRequired[str]
+    output: NotRequired[
+        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse
+    ]
+    actions: NotRequired[
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType",
-    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyTypeForResponse",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0TypeForResponse",
 )

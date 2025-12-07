@@ -9,70 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0380 import (
-    DeploymentBranchPolicySettingsType,
-    DeploymentBranchPolicySettingsTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
 
-    wait_timer: NotRequired[int]
-    prevent_self_review: NotRequired[bool]
-    reviewers: NotRequired[
-        Union[
-            list[
-                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
-            ],
-            None,
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
+    encrypted_value: str
+    key_id: str
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
-
-    wait_timer: NotRequired[int]
-    prevent_self_review: NotRequired[bool]
-    reviewers: NotRequired[
-        Union[
-            list[
-                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse
-            ],
-            None,
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
-    ]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
-
-    type: NotRequired[Literal["User", "Team"]]
-    id: NotRequired[int]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse(
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
 
-    type: NotRequired[Literal["User", "Team"]]
-    id: NotRequired[int]
+    encrypted_value: str
+    key_id: str
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyTypeForResponse",
 )

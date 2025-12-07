@@ -17,22 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0185 import RepositoryRuleFileExtensionRestrictionPropParameters
+from .group_0185 import RepositoryRuleTagNamePatternPropParameters
 
 
-class RepositoryRuleFileExtensionRestriction(GitHubModel):
-    """file_extension_restriction
+class RepositoryRuleTagNamePattern(GitHubModel):
+    """tag_name_pattern
 
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    type: Literal["file_extension_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFileExtensionRestrictionPropParameters] = Field(
+    type: Literal["tag_name_pattern"] = Field()
+    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
         default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleFileExtensionRestriction)
+model_rebuild(RepositoryRuleTagNamePattern)
 
-__all__ = ("RepositoryRuleFileExtensionRestriction",)
+__all__ = ("RepositoryRuleTagNamePattern",)

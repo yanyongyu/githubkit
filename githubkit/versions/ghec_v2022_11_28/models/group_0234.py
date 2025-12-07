@@ -12,51 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ExternalGroup(GitHubModel):
-    """ExternalGroup
+class DependabotPublicKey(GitHubModel):
+    """DependabotPublicKey
 
-    Information about an external group's usage and its members
+    The public key used for setting Dependabot Secrets.
     """
 
-    group_id: int = Field(description="The internal ID of the group")
-    group_name: str = Field(description="The display name for the group")
-    updated_at: Missing[str] = Field(
-        default=UNSET, description="The date when the group was last updated_at"
-    )
-    teams: list[ExternalGroupPropTeamsItems] = Field(
-        description="An array of teams linked to this group"
-    )
-    members: list[ExternalGroupPropMembersItems] = Field(
-        description="An array of external members linked to this group"
-    )
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
 
 
-class ExternalGroupPropTeamsItems(GitHubModel):
-    """ExternalGroupPropTeamsItems"""
+model_rebuild(DependabotPublicKey)
 
-    team_id: int = Field(description="The id for a team")
-    team_name: str = Field(description="The name of the team")
-
-
-class ExternalGroupPropMembersItems(GitHubModel):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int = Field(description="The internal user ID of the identity")
-    member_login: str = Field(description="The handle/login for the user")
-    member_name: str = Field(description="The user display name/profile name")
-    member_email: str = Field(description="An email attached to a user")
-
-
-model_rebuild(ExternalGroup)
-model_rebuild(ExternalGroupPropTeamsItems)
-model_rebuild(ExternalGroupPropMembersItems)
-
-__all__ = (
-    "ExternalGroup",
-    "ExternalGroupPropMembersItems",
-    "ExternalGroupPropTeamsItems",
-)
+__all__ = ("DependabotPublicKey",)

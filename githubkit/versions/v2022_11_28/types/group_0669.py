@@ -9,115 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0459 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0477 import (
+    WebhooksMarketplacePurchaseType,
+    WebhooksMarketplacePurchaseTypeForResponse,
+)
+from .group_0478 import (
+    WebhooksPreviousMarketplacePurchaseType,
+    WebhooksPreviousMarketplacePurchaseTypeForResponse,
+)
 
 
-class WebhookMemberAddedType(TypedDict):
-    """member added event"""
+class WebhookMarketplacePurchaseCancelledType(TypedDict):
+    """marketplace_purchase cancelled event"""
 
-    action: Literal["added"]
-    changes: NotRequired[WebhookMemberAddedPropChangesType]
+    action: Literal["cancelled"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
+    marketplace_purchase: WebhooksMarketplacePurchaseType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookMemberAddedTypeForResponse(TypedDict):
-    """member added event"""
+class WebhookMarketplacePurchaseCancelledTypeForResponse(TypedDict):
+    """marketplace_purchase cancelled event"""
 
-    action: Literal["added"]
-    changes: NotRequired[WebhookMemberAddedPropChangesTypeForResponse]
+    action: Literal["cancelled"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    member: Union[WebhooksUserTypeForResponse, None]
+    marketplace_purchase: WebhooksMarketplacePurchaseTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    previous_marketplace_purchase: NotRequired[
+        WebhooksPreviousMarketplacePurchaseTypeForResponse
+    ]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookMemberAddedPropChangesType(TypedDict):
-    """WebhookMemberAddedPropChanges"""
-
-    permission: NotRequired[WebhookMemberAddedPropChangesPropPermissionType]
-    role_name: NotRequired[WebhookMemberAddedPropChangesPropRoleNameType]
-
-
-class WebhookMemberAddedPropChangesTypeForResponse(TypedDict):
-    """WebhookMemberAddedPropChanges"""
-
-    permission: NotRequired[WebhookMemberAddedPropChangesPropPermissionTypeForResponse]
-    role_name: NotRequired[WebhookMemberAddedPropChangesPropRoleNameTypeForResponse]
-
-
-class WebhookMemberAddedPropChangesPropPermissionType(TypedDict):
-    """WebhookMemberAddedPropChangesPropPermission
-
-    This field is included for legacy purposes; use the `role_name` field instead.
-    The `maintain`
-    role is mapped to `write` and the `triage` role is mapped to `read`. To
-    determine the role
-    assigned to the collaborator, use the `role_name` field instead, which will
-    provide the full
-    role name, including custom roles.
-    """
-
-    to: Literal["write", "admin", "read"]
-
-
-class WebhookMemberAddedPropChangesPropPermissionTypeForResponse(TypedDict):
-    """WebhookMemberAddedPropChangesPropPermission
-
-    This field is included for legacy purposes; use the `role_name` field instead.
-    The `maintain`
-    role is mapped to `write` and the `triage` role is mapped to `read`. To
-    determine the role
-    assigned to the collaborator, use the `role_name` field instead, which will
-    provide the full
-    role name, including custom roles.
-    """
-
-    to: Literal["write", "admin", "read"]
-
-
-class WebhookMemberAddedPropChangesPropRoleNameType(TypedDict):
-    """WebhookMemberAddedPropChangesPropRoleName
-
-    The role assigned to the collaborator.
-    """
-
-    to: str
-
-
-class WebhookMemberAddedPropChangesPropRoleNameTypeForResponse(TypedDict):
-    """WebhookMemberAddedPropChangesPropRoleName
-
-    The role assigned to the collaborator.
-    """
-
-    to: str
-
-
 __all__ = (
-    "WebhookMemberAddedPropChangesPropPermissionType",
-    "WebhookMemberAddedPropChangesPropPermissionTypeForResponse",
-    "WebhookMemberAddedPropChangesPropRoleNameType",
-    "WebhookMemberAddedPropChangesPropRoleNameTypeForResponse",
-    "WebhookMemberAddedPropChangesType",
-    "WebhookMemberAddedPropChangesTypeForResponse",
-    "WebhookMemberAddedType",
-    "WebhookMemberAddedTypeForResponse",
+    "WebhookMarketplacePurchaseCancelledType",
+    "WebhookMarketplacePurchaseCancelledTypeForResponse",
 )

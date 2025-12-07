@@ -9,54 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0018 import InstallationType, InstallationTypeForResponse
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0669 import (
-    WebhookIssueCommentCreatedPropCommentType,
-    WebhookIssueCommentCreatedPropCommentTypeForResponse,
-)
-from .group_0670 import (
-    WebhookIssueCommentCreatedPropIssueType,
-    WebhookIssueCommentCreatedPropIssueTypeForResponse,
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0544 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0550 import (
+    WebhooksRepositoriesAddedItemsType,
+    WebhooksRepositoriesAddedItemsTypeForResponse,
 )
 
 
-class WebhookIssueCommentCreatedType(TypedDict):
-    """issue_comment created event"""
+class WebhookInstallationRepositoriesRemovedType(TypedDict):
+    """installation_repositories removed event"""
 
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentType
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentCreatedPropIssueType
+    installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repositories_added: list[WebhooksRepositoriesAddedItemsType]
+    repositories_removed: list[
+        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType
+    ]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhooksUserType, None]
     sender: SimpleUserType
 
 
-class WebhookIssueCommentCreatedTypeForResponse(TypedDict):
-    """issue_comment created event"""
+class WebhookInstallationRepositoriesRemovedTypeForResponse(TypedDict):
+    """installation_repositories removed event"""
 
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentTypeForResponse
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssueCommentCreatedPropIssueTypeForResponse
+    installation: InstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    repositories_added: list[WebhooksRepositoriesAddedItemsTypeForResponse]
+    repositories_removed: list[
+        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse
+    ]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhooksUserTypeForResponse, None]
     sender: SimpleUserTypeForResponse
 
 
+class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType(TypedDict):
+    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+
+    full_name: str
+    id: int
+    name: str
+    node_id: str
+    private: bool
+
+
+class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+
+    full_name: str
+    id: int
+    name: str
+    node_id: str
+    private: bool
+
+
 __all__ = (
-    "WebhookIssueCommentCreatedType",
-    "WebhookIssueCommentCreatedTypeForResponse",
+    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType",
+    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse",
+    "WebhookInstallationRepositoriesRemovedType",
+    "WebhookInstallationRepositoriesRemovedTypeForResponse",
 )

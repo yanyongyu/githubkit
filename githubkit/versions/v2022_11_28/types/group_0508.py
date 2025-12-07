@@ -9,48 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0454 import (
-    CheckRunWithSimpleCheckSuiteType,
-    CheckRunWithSimpleCheckSuiteTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class WebhookCheckRunRerequestedType(TypedDict):
-    """Check Run Re-Requested Event"""
+class WebhookCheckRunCompletedFormEncodedType(TypedDict):
+    """Check Run Completed Event
 
-    action: Literal["rerequested"]
-    check_run: CheckRunWithSimpleCheckSuiteType
-    installation: NotRequired[SimpleInstallationType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    The check_run.completed webhook encoded with URL encoding
+    """
+
+    payload: str
 
 
-class WebhookCheckRunRerequestedTypeForResponse(TypedDict):
-    """Check Run Re-Requested Event"""
+class WebhookCheckRunCompletedFormEncodedTypeForResponse(TypedDict):
+    """Check Run Completed Event
 
-    action: Literal["rerequested"]
-    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    The check_run.completed webhook encoded with URL encoding
+    """
+
+    payload: str
 
 
 __all__ = (
-    "WebhookCheckRunRerequestedType",
-    "WebhookCheckRunRerequestedTypeForResponse",
+    "WebhookCheckRunCompletedFormEncodedType",
+    "WebhookCheckRunCompletedFormEncodedTypeForResponse",
 )

@@ -9,131 +9,98 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksApproverType(TypedDict):
-    """WebhooksApprover"""
+class WebhooksRuleType(TypedDict):
+    """branch protection rule
 
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/github/administering-a-repository/defining-
+    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
+    protection-settings) applied to branches that match the name. Binary settings
+    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
+    `everyone`. Actor and build lists are arrays of strings.
+    """
 
-
-class WebhooksApproverTypeForResponse(TypedDict):
-    """WebhooksApprover"""
-
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksReviewersItemsType(TypedDict):
-    """WebhooksReviewersItems"""
-
-    reviewer: NotRequired[Union[WebhooksReviewersItemsPropReviewerType, None]]
-    type: NotRequired[Literal["User"]]
-
-
-class WebhooksReviewersItemsTypeForResponse(TypedDict):
-    """WebhooksReviewersItems"""
-
-    reviewer: NotRequired[
-        Union[WebhooksReviewersItemsPropReviewerTypeForResponse, None]
+    admin_enforced: bool
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
+    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
+    authorized_actor_names: list[str]
+    authorized_actors_only: bool
+    authorized_dismissal_actors_only: bool
+    create_protected: NotRequired[bool]
+    created_at: _dt.datetime
+    dismiss_stale_reviews_on_push: bool
+    id: int
+    ignore_approvals_from_contributors: bool
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
     ]
-    type: NotRequired[Literal["User"]]
+    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
+    lock_allows_fork_sync: NotRequired[bool]
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
+    name: str
+    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
+    repository_id: int
+    require_code_owner_review: bool
+    require_last_push_approval: NotRequired[bool]
+    required_approving_review_count: int
+    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
+    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
+    required_status_checks: list[str]
+    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
+    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
+    strict_required_status_checks_policy: bool
+    updated_at: _dt.datetime
 
 
-class WebhooksReviewersItemsPropReviewerType(TypedDict):
-    """User"""
+class WebhooksRuleTypeForResponse(TypedDict):
+    """branch protection rule
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/github/administering-a-repository/defining-
+    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
+    protection-settings) applied to branches that match the name. Binary settings
+    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
+    `everyone`. Actor and build lists are arrays of strings.
+    """
+
+    admin_enforced: bool
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
+    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
+    authorized_actor_names: list[str]
+    authorized_actors_only: bool
+    authorized_dismissal_actors_only: bool
+    create_protected: NotRequired[bool]
+    created_at: str
+    dismiss_stale_reviews_on_push: bool
     id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhooksReviewersItemsPropReviewerTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    ignore_approvals_from_contributors: bool
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ]
+    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
+    lock_allows_fork_sync: NotRequired[bool]
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
+    name: str
+    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
+    repository_id: int
+    require_code_owner_review: bool
+    require_last_push_approval: NotRequired[bool]
+    required_approving_review_count: int
+    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
+    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
+    required_status_checks: list[str]
+    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
+    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
+    strict_required_status_checks_policy: bool
+    updated_at: str
 
 
 __all__ = (
-    "WebhooksApproverType",
-    "WebhooksApproverTypeForResponse",
-    "WebhooksReviewersItemsPropReviewerType",
-    "WebhooksReviewersItemsPropReviewerTypeForResponse",
-    "WebhooksReviewersItemsType",
-    "WebhooksReviewersItemsTypeForResponse",
+    "WebhooksRuleType",
+    "WebhooksRuleTypeForResponse",
 )

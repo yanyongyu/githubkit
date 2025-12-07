@@ -10,98 +10,55 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0276 import (
-    CodeScanningVariantAnalysisPropScannedRepositoriesItemsType,
-    CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse,
-)
-from .group_0277 import (
-    CodeScanningVariantAnalysisPropSkippedRepositoriesType,
-    CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse,
+from .group_0103 import (
+    CodeScanningAnalysisToolType,
+    CodeScanningAnalysisToolTypeForResponse,
 )
 
 
-class CodeScanningVariantAnalysisType(TypedDict):
-    """Variant Analysis
+class CodeScanningAnalysisType(TypedDict):
+    """CodeScanningAnalysis"""
 
-    A run of a CodeQL query against one or more repositories.
-    """
-
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: _dt.datetime
+    results_count: int
+    rules_count: int
     id: int
-    controller_repo: SimpleRepositoryType
-    actor: SimpleUserType
-    query_language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack_url: str
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    completed_at: NotRequired[Union[_dt.datetime, None]]
-    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
-    actions_workflow_run_id: NotRequired[int]
-    failure_reason: NotRequired[
-        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
-    ]
-    scanned_repositories: NotRequired[
-        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsType]
-    ]
-    skipped_repositories: NotRequired[
-        CodeScanningVariantAnalysisPropSkippedRepositoriesType
-    ]
+    url: str
+    sarif_id: str
+    tool: CodeScanningAnalysisToolType
+    deletable: bool
+    warning: str
 
 
-class CodeScanningVariantAnalysisTypeForResponse(TypedDict):
-    """Variant Analysis
+class CodeScanningAnalysisTypeForResponse(TypedDict):
+    """CodeScanningAnalysis"""
 
-    A run of a CodeQL query against one or more repositories.
-    """
-
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: str
+    results_count: int
+    rules_count: int
     id: int
-    controller_repo: SimpleRepositoryTypeForResponse
-    actor: SimpleUserTypeForResponse
-    query_language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack_url: str
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    completed_at: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
-    actions_workflow_run_id: NotRequired[int]
-    failure_reason: NotRequired[
-        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
-    ]
-    scanned_repositories: NotRequired[
-        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse]
-    ]
-    skipped_repositories: NotRequired[
-        CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse
-    ]
+    url: str
+    sarif_id: str
+    tool: CodeScanningAnalysisToolTypeForResponse
+    deletable: bool
+    warning: str
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisType",
-    "CodeScanningVariantAnalysisTypeForResponse",
+    "CodeScanningAnalysisType",
+    "CodeScanningAnalysisTypeForResponse",
 )

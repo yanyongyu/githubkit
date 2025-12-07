@@ -9,24 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0034 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class DeleteBudgetType(TypedDict):
-    """DeleteBudget"""
+class DependabotRepositoryAccessDetailsType(TypedDict):
+    """Dependabot Repository Access Details
 
-    message: str
-    id: str
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
+
+    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
+    accessible_repositories: NotRequired[list[Union[None, SimpleRepositoryType]]]
 
 
-class DeleteBudgetTypeForResponse(TypedDict):
-    """DeleteBudget"""
+class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
+    """Dependabot Repository Access Details
 
-    message: str
-    id: str
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
+
+    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
+    accessible_repositories: NotRequired[
+        list[Union[None, SimpleRepositoryTypeForResponse]]
+    ]
 
 
 __all__ = (
-    "DeleteBudgetType",
-    "DeleteBudgetTypeForResponse",
+    "DependabotRepositoryAccessDetailsType",
+    "DependabotRepositoryAccessDetailsTypeForResponse",
 )

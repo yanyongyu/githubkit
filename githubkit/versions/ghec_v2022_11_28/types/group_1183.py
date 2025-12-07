@@ -9,24 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type(TypedDict):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403"""
+class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403TypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403"""
+class OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type",
-    "OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403TypeForResponse",
+    "OrgsOrgTeamsTeamSlugPatchBodyType",
+    "OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse",
 )

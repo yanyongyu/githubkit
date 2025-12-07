@@ -12,23 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    title: NotRequired[str]
-    body: NotRequired[str]
+    pattern_config_version: NotRequired[str]
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyTypeForResponse(
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    title: NotRequired[str]
-    body: NotRequired[str]
+    pattern_config_version: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType",
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyTypeForResponse",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
 )

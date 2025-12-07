@@ -11,30 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrganizationsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBody
-
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class OrganizationsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBody
+class InstallationRepositoriesGetResponse200Type(TypedDict):
+    """InstallationRepositoriesGetResponse200"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
+    total_count: int
+    repositories: list[RepositoryType]
+    repository_selection: NotRequired[str]
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+
+class InstallationRepositoriesGetResponse200TypeForResponse(TypedDict):
+    """InstallationRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[RepositoryTypeForResponse]
+    repository_selection: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationsOrgDependabotRepositoryAccessPatchBodyType",
-    "OrganizationsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "InstallationRepositoriesGetResponse200Type",
+    "InstallationRepositoriesGetResponse200TypeForResponse",
 )

@@ -9,48 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0827 import (
+    WebhookSecurityAndAnalysisPropChangesPropFromType,
+    WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0494 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
-from .group_0495 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
 
 
-class WebhookSponsorshipTierChangedType(TypedDict):
-    """sponsorship tier_changed event"""
+class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
+    """WebhookSecurityAndAnalysisPropChanges"""
 
-    action: Literal["tier_changed"]
-    changes: WebhooksChanges8Type
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
 
 
-class WebhookSponsorshipTierChangedTypeForResponse(TypedDict):
-    """sponsorship tier_changed event"""
+class WebhookSecurityAndAnalysisPropChangesTypeForResponse(TypedDict):
+    """WebhookSecurityAndAnalysisPropChanges"""
 
-    action: Literal["tier_changed"]
-    changes: WebhooksChanges8TypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
+    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse]
 
 
 __all__ = (
-    "WebhookSponsorshipTierChangedType",
-    "WebhookSponsorshipTierChangedTypeForResponse",
+    "WebhookSecurityAndAnalysisPropChangesType",
+    "WebhookSecurityAndAnalysisPropChangesTypeForResponse",
 )

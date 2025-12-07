@@ -10,138 +10,195 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0195 import IssueType, IssueTypeForResponse
-from .group_0196 import IssueCommentType, IssueCommentTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0192 import MilestoneType, MilestoneTypeForResponse
+from .group_0193 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0194 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0195 import (
+    IssueDependenciesSummaryType,
+    IssueDependenciesSummaryTypeForResponse,
+    SubIssuesSummaryType,
+    SubIssuesSummaryTypeForResponse,
+)
+from .group_0196 import IssueFieldValueType, IssueFieldValueTypeForResponse
 
 
-class EventPropPayloadType(TypedDict):
-    """EventPropPayload"""
+class IssueType(TypedDict):
+    """Issue
 
-    action: NotRequired[str]
-    issue: NotRequired[IssueType]
-    comment: NotRequired[IssueCommentType]
-    pages: NotRequired[list[EventPropPayloadPropPagesItemsType]]
-
-
-class EventPropPayloadTypeForResponse(TypedDict):
-    """EventPropPayload"""
-
-    action: NotRequired[str]
-    issue: NotRequired[IssueTypeForResponse]
-    comment: NotRequired[IssueCommentTypeForResponse]
-    pages: NotRequired[list[EventPropPayloadPropPagesItemsTypeForResponse]]
-
-
-class EventPropPayloadPropPagesItemsType(TypedDict):
-    """EventPropPayloadPropPagesItems"""
-
-    page_name: NotRequired[str]
-    title: NotRequired[str]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class EventPropPayloadPropPagesItemsTypeForResponse(TypedDict):
-    """EventPropPayloadPropPagesItems"""
-
-    page_name: NotRequired[str]
-    title: NotRequired[str]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class EventType(TypedDict):
-    """Event
-
-    Event
-    """
-
-    id: str
-    type: Union[str, None]
-    actor: ActorType
-    repo: EventPropRepoType
-    org: NotRequired[ActorType]
-    payload: EventPropPayloadType
-    public: bool
-    created_at: Union[_dt.datetime, None]
-
-
-class EventTypeForResponse(TypedDict):
-    """Event
-
-    Event
-    """
-
-    id: str
-    type: Union[str, None]
-    actor: ActorTypeForResponse
-    repo: EventPropRepoTypeForResponse
-    org: NotRequired[ActorTypeForResponse]
-    payload: EventPropPayloadTypeForResponse
-    public: bool
-    created_at: Union[str, None]
-
-
-class ActorType(TypedDict):
-    """Actor
-
-    Actor
+    Issues are a great way to keep track of tasks, enhancements, and bugs for your
+    projects.
     """
 
     id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
+    node_id: str
     url: str
-    avatar_url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
+    number: int
+    state: str
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
+    ]
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[None, SimpleUserType]
+    labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    milestone: Union[None, MilestoneType]
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    comments: int
+    pull_request: NotRequired[IssuePropPullRequestType]
+    closed_at: Union[_dt.datetime, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    draft: NotRequired[bool]
+    closed_by: NotRequired[Union[None, SimpleUserType]]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeType, None]]
+    repository: NotRequired[RepositoryType]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    reactions: NotRequired[ReactionRollupType]
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
+    parent_issue_url: NotRequired[Union[str, None]]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
+    issue_field_values: NotRequired[list[IssueFieldValueType]]
 
 
-class ActorTypeForResponse(TypedDict):
-    """Actor
+class IssueTypeForResponse(TypedDict):
+    """Issue
 
-    Actor
+    Issues are a great way to keep track of tasks, enhancements, and bugs for your
+    projects.
     """
 
     id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
+    node_id: str
     url: str
-    avatar_url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
+    number: int
+    state: str
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
+    ]
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[None, SimpleUserTypeForResponse]
+    labels: list[Union[str, IssuePropLabelsItemsOneof1TypeForResponse]]
+    assignee: Union[None, SimpleUserTypeForResponse]
+    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
+    milestone: Union[None, MilestoneTypeForResponse]
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    comments: int
+    pull_request: NotRequired[IssuePropPullRequestTypeForResponse]
+    closed_at: Union[str, None]
+    created_at: str
+    updated_at: str
+    draft: NotRequired[bool]
+    closed_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
+    repository: NotRequired[RepositoryTypeForResponse]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
+    parent_issue_url: NotRequired[Union[str, None]]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
+    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
 
 
-class EventPropRepoType(TypedDict):
-    """EventPropRepo"""
+class IssuePropLabelsItemsOneof1Type(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
 
-    id: int
-    name: str
-    url: str
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
 
 
-class EventPropRepoTypeForResponse(TypedDict):
-    """EventPropRepo"""
+class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
 
-    id: int
-    name: str
-    url: str
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+
+
+class IssuePropPullRequestType(TypedDict):
+    """IssuePropPullRequest"""
+
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+class IssuePropPullRequestTypeForResponse(TypedDict):
+    """IssuePropPullRequest"""
+
+    merged_at: NotRequired[Union[str, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
 
 
 __all__ = (
-    "ActorType",
-    "ActorTypeForResponse",
-    "EventPropPayloadPropPagesItemsType",
-    "EventPropPayloadPropPagesItemsTypeForResponse",
-    "EventPropPayloadType",
-    "EventPropPayloadTypeForResponse",
-    "EventPropRepoType",
-    "EventPropRepoTypeForResponse",
-    "EventType",
-    "EventTypeForResponse",
+    "IssuePropLabelsItemsOneof1Type",
+    "IssuePropLabelsItemsOneof1TypeForResponse",
+    "IssuePropPullRequestType",
+    "IssuePropPullRequestTypeForResponse",
+    "IssueType",
+    "IssueTypeForResponse",
 )

@@ -9,36 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class NetworkSettingsType(TypedDict):
-    """Hosted compute network settings resource
+class SecretScanningLocationDiscussionBodyType(TypedDict):
+    """SecretScanningLocationDiscussionBody
 
-    A hosted compute network settings resource.
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
     """
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    discussion_body_url: str
 
 
-class NetworkSettingsTypeForResponse(TypedDict):
-    """Hosted compute network settings resource
+class SecretScanningLocationDiscussionBodyTypeForResponse(TypedDict):
+    """SecretScanningLocationDiscussionBody
 
-    A hosted compute network settings resource.
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
     """
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    discussion_body_url: str
+
+
+class SecretScanningLocationPullRequestCommentType(TypedDict):
+    """SecretScanningLocationPullRequestComment
+
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str
+
+
+class SecretScanningLocationPullRequestCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestComment
+
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str
 
 
 __all__ = (
-    "NetworkSettingsType",
-    "NetworkSettingsTypeForResponse",
+    "SecretScanningLocationDiscussionBodyType",
+    "SecretScanningLocationDiscussionBodyTypeForResponse",
+    "SecretScanningLocationPullRequestCommentType",
+    "SecretScanningLocationPullRequestCommentTypeForResponse",
 )

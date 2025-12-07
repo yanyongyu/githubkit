@@ -9,135 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type(TypedDict):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
 
-    attestations: NotRequired[
-        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType]
-    ]
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
-
-    attestations: NotRequired[
+    total_count: NotRequired[int]
+    storage_records: NotRequired[
         list[
-            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
+            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType
         ]
     ]
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
 
-    bundle: NotRequired[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType
+    total_count: NotRequired[int]
+    storage_records: NotRequired[
+        list[
+            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse
+        ]
     ]
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType(
     TypedDict
 ):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    bundle: NotRequired[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse
-    ]
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType(
-    TypedDict
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
-
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
+    rdsItems
     """
 
-    media_type: NotRequired[str]
-    verification_material: NotRequired[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType
-    ]
-    dsse_envelope: NotRequired[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType
-    ]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    digest: NotRequired[str]
+    artifact_url: NotRequired[str]
+    registry_url: NotRequired[str]
+    repository: NotRequired[str]
+    status: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse(
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
-
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
+    rdsItems
     """
 
-    media_type: NotRequired[str]
-    verification_material: NotRequired[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse
-    ]
-    dsse_envelope: NotRequired[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse
-    ]
-
-
-OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-pVerificationMaterial
-"""
-
-
-OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-pVerificationMaterial
-"""
-
-
-OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-pDsseEnvelope
-"""
-
-
-OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-pDsseEnvelope
-"""
+    id: NotRequired[int]
+    name: NotRequired[str]
+    digest: NotRequired[str]
+    artifact_url: NotRequired[str]
+    registry_url: NotRequired[str]
+    repository: NotRequired[str]
+    status: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200Type",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse",
 )

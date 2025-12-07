@@ -9,22 +9,207 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0107 import (
+    RepositoryRulesetBypassActorType,
+    RepositoryRulesetBypassActorTypeForResponse,
+)
+from .group_0120 import (
+    EnterpriseRulesetConditionsOneof0Type,
+    EnterpriseRulesetConditionsOneof0TypeForResponse,
+)
+from .group_0121 import (
+    EnterpriseRulesetConditionsOneof1Type,
+    EnterpriseRulesetConditionsOneof1TypeForResponse,
+)
+from .group_0122 import (
+    EnterpriseRulesetConditionsOneof2Type,
+    EnterpriseRulesetConditionsOneof2TypeForResponse,
+)
+from .group_0123 import (
+    EnterpriseRulesetConditionsOneof3Type,
+    EnterpriseRulesetConditionsOneof3TypeForResponse,
+)
+from .group_0124 import (
+    EnterpriseRulesetConditionsOneof4Type,
+    EnterpriseRulesetConditionsOneof4TypeForResponse,
+)
+from .group_0125 import (
+    EnterpriseRulesetConditionsOneof5Type,
+    EnterpriseRulesetConditionsOneof5TypeForResponse,
+)
+from .group_0126 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleCreationTypeForResponse,
+    RepositoryRuleDeletionType,
+    RepositoryRuleDeletionTypeForResponse,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleNonFastForwardTypeForResponse,
+    RepositoryRuleRequiredSignaturesType,
+    RepositoryRuleRequiredSignaturesTypeForResponse,
+)
+from .group_0127 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
+from .group_0129 import (
+    RepositoryRuleRequiredLinearHistoryType,
+    RepositoryRuleRequiredLinearHistoryTypeForResponse,
+)
+from .group_0130 import (
+    RepositoryRuleRequiredDeploymentsType,
+    RepositoryRuleRequiredDeploymentsTypeForResponse,
+)
+from .group_0132 import (
+    RepositoryRulePullRequestType,
+    RepositoryRulePullRequestTypeForResponse,
+)
+from .group_0134 import (
+    RepositoryRuleRequiredStatusChecksType,
+    RepositoryRuleRequiredStatusChecksTypeForResponse,
+)
+from .group_0136 import (
+    RepositoryRuleCommitMessagePatternType,
+    RepositoryRuleCommitMessagePatternTypeForResponse,
+)
+from .group_0138 import (
+    RepositoryRuleCommitAuthorEmailPatternType,
+    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+)
+from .group_0140 import (
+    RepositoryRuleCommitterEmailPatternType,
+    RepositoryRuleCommitterEmailPatternTypeForResponse,
+)
+from .group_0142 import (
+    RepositoryRuleBranchNamePatternType,
+    RepositoryRuleBranchNamePatternTypeForResponse,
+)
+from .group_0144 import (
+    RepositoryRuleTagNamePatternType,
+    RepositoryRuleTagNamePatternTypeForResponse,
+)
+from .group_0146 import (
+    RepositoryRuleFilePathRestrictionType,
+    RepositoryRuleFilePathRestrictionTypeForResponse,
+)
+from .group_0148 import (
+    RepositoryRuleMaxFilePathLengthType,
+    RepositoryRuleMaxFilePathLengthTypeForResponse,
+)
+from .group_0150 import (
+    RepositoryRuleFileExtensionRestrictionType,
+    RepositoryRuleFileExtensionRestrictionTypeForResponse,
+)
+from .group_0152 import (
+    RepositoryRuleMaxFileSizeType,
+    RepositoryRuleMaxFileSizeTypeForResponse,
+)
+from .group_0155 import (
+    RepositoryRuleWorkflowsType,
+    RepositoryRuleWorkflowsTypeForResponse,
+)
+from .group_0157 import (
+    RepositoryRuleCodeScanningType,
+    RepositoryRuleCodeScanningTypeForResponse,
+)
+from .group_0159 import (
+    RepositoryRuleCopilotCodeReviewType,
+    RepositoryRuleCopilotCodeReviewTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
+class EnterprisesEnterpriseRulesetsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseRulesetsPostBody"""
 
     name: str
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[
+        Union[
+            EnterpriseRulesetConditionsOneof0Type,
+            EnterpriseRulesetConditionsOneof1Type,
+            EnterpriseRulesetConditionsOneof2Type,
+            EnterpriseRulesetConditionsOneof3Type,
+            EnterpriseRulesetConditionsOneof4Type,
+            EnterpriseRulesetConditionsOneof5Type,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
+            ]
+        ]
+    ]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
+class EnterprisesEnterpriseRulesetsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseRulesetsPostBody"""
 
     name: str
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
+    conditions: NotRequired[
+        Union[
+            EnterpriseRulesetConditionsOneof0TypeForResponse,
+            EnterpriseRulesetConditionsOneof1TypeForResponse,
+            EnterpriseRulesetConditionsOneof2TypeForResponse,
+            EnterpriseRulesetConditionsOneof3TypeForResponse,
+            EnterpriseRulesetConditionsOneof4TypeForResponse,
+            EnterpriseRulesetConditionsOneof5TypeForResponse,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationTypeForResponse,
+                RepositoryRuleUpdateTypeForResponse,
+                RepositoryRuleDeletionTypeForResponse,
+                RepositoryRuleRequiredLinearHistoryTypeForResponse,
+                RepositoryRuleRequiredDeploymentsTypeForResponse,
+                RepositoryRuleRequiredSignaturesTypeForResponse,
+                RepositoryRulePullRequestTypeForResponse,
+                RepositoryRuleRequiredStatusChecksTypeForResponse,
+                RepositoryRuleNonFastForwardTypeForResponse,
+                RepositoryRuleCommitMessagePatternTypeForResponse,
+                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+                RepositoryRuleCommitterEmailPatternTypeForResponse,
+                RepositoryRuleBranchNamePatternTypeForResponse,
+                RepositoryRuleTagNamePatternTypeForResponse,
+                RepositoryRuleFilePathRestrictionTypeForResponse,
+                RepositoryRuleMaxFilePathLengthTypeForResponse,
+                RepositoryRuleFileExtensionRestrictionTypeForResponse,
+                RepositoryRuleMaxFileSizeTypeForResponse,
+                RepositoryRuleWorkflowsTypeForResponse,
+                RepositoryRuleCodeScanningTypeForResponse,
+                RepositoryRuleCopilotCodeReviewTypeForResponse,
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse",
+    "EnterprisesEnterpriseRulesetsPostBodyType",
+    "EnterprisesEnterpriseRulesetsPostBodyTypeForResponse",
 )

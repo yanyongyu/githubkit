@@ -9,67 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0325 import DiffEntryType, DiffEntryTypeForResponse
+from .group_0326 import CommitType, CommitTypeForResponse
 
 
-class ContentSymlinkType(TypedDict):
-    """Symlink Content
+class CommitComparisonType(TypedDict):
+    """Commit Comparison
 
-    An object describing a symlink
+    Commit Comparison
     """
 
-    type: Literal["symlink"]
-    target: str
-    size: int
-    name: str
-    path: str
-    sha: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSymlinkPropLinksType
+    html_url: str
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitType
+    merge_base_commit: CommitType
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: list[CommitType]
+    files: NotRequired[list[DiffEntryType]]
 
 
-class ContentSymlinkTypeForResponse(TypedDict):
-    """Symlink Content
+class CommitComparisonTypeForResponse(TypedDict):
+    """Commit Comparison
 
-    An object describing a symlink
+    Commit Comparison
     """
 
-    type: Literal["symlink"]
-    target: str
-    size: int
-    name: str
-    path: str
-    sha: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSymlinkPropLinksTypeForResponse
-
-
-class ContentSymlinkPropLinksType(TypedDict):
-    """ContentSymlinkPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentSymlinkPropLinksTypeForResponse(TypedDict):
-    """ContentSymlinkPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    html_url: str
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitTypeForResponse
+    merge_base_commit: CommitTypeForResponse
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: list[CommitTypeForResponse]
+    files: NotRequired[list[DiffEntryTypeForResponse]]
 
 
 __all__ = (
-    "ContentSymlinkPropLinksType",
-    "ContentSymlinkPropLinksTypeForResponse",
-    "ContentSymlinkType",
-    "ContentSymlinkTypeForResponse",
+    "CommitComparisonType",
+    "CommitComparisonTypeForResponse",
 )

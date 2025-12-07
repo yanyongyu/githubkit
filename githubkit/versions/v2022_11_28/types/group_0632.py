@@ -9,48 +9,76 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0633 import (
-    WebhookIssuesDeletedPropIssueType,
-    WebhookIssuesDeletedPropIssueTypeForResponse,
+from .group_0631 import (
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
 )
 
 
-class WebhookIssuesDeletedType(TypedDict):
-    """issues deleted event"""
+class WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
+    """App
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesDeletedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType, None
+    ]
+    permissions: NotRequired[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
 
 
-class WebhookIssuesDeletedTypeForResponse(TypedDict):
-    """issues deleted event"""
+class WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """App
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesDeletedPropIssueTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookIssuesDeletedType",
-    "WebhookIssuesDeletedTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppType",
+    "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse",
 )

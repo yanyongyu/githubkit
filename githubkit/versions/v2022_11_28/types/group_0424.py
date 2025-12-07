@@ -9,78 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0061 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0423 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
+from .group_0423 import TrafficType, TrafficTypeForResponse
 
 
-class CodeSearchResultItemType(TypedDict):
-    """Code Search Result Item
+class CloneTrafficType(TypedDict):
+    """Clone Traffic
 
-    Code Search Result Item
+    Clone Traffic
     """
 
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryType
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[_dt.datetime]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    count: int
+    uniques: int
+    clones: list[TrafficType]
 
 
-class CodeSearchResultItemTypeForResponse(TypedDict):
-    """Code Search Result Item
+class CloneTrafficTypeForResponse(TypedDict):
+    """Clone Traffic
 
-    Code Search Result Item
+    Clone Traffic
     """
 
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryTypeForResponse
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[str]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-
-
-class SearchCodeGetResponse200Type(TypedDict):
-    """SearchCodeGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemType]
-
-
-class SearchCodeGetResponse200TypeForResponse(TypedDict):
-    """SearchCodeGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemTypeForResponse]
+    count: int
+    uniques: int
+    clones: list[TrafficTypeForResponse]
 
 
 __all__ = (
-    "CodeSearchResultItemType",
-    "CodeSearchResultItemTypeForResponse",
-    "SearchCodeGetResponse200Type",
-    "SearchCodeGetResponse200TypeForResponse",
+    "CloneTrafficType",
+    "CloneTrafficTypeForResponse",
 )

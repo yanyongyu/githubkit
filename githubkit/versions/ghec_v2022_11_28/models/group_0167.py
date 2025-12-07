@@ -9,148 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0105 import RepositoryRulesetBypassActor
-from .group_0110 import RepositoryRulesetConditions
-from .group_0124 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0125 import RepositoryRuleUpdate
-from .group_0127 import RepositoryRuleRequiredLinearHistory
-from .group_0128 import RepositoryRuleRequiredDeployments
-from .group_0130 import RepositoryRulePullRequest
-from .group_0132 import RepositoryRuleRequiredStatusChecks
-from .group_0134 import RepositoryRuleCommitMessagePattern
-from .group_0136 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0138 import RepositoryRuleCommitterEmailPattern
-from .group_0140 import RepositoryRuleBranchNamePattern
-from .group_0142 import RepositoryRuleTagNamePattern
-from .group_0144 import RepositoryRuleFilePathRestriction
-from .group_0146 import RepositoryRuleMaxFilePathLength
-from .group_0148 import RepositoryRuleFileExtensionRestriction
-from .group_0150 import RepositoryRuleMaxFileSize
-from .group_0153 import RepositoryRuleWorkflows
-from .group_0155 import RepositoryRuleCodeScanning
-from .group_0159 import OrgRulesetConditionsOneof0
-from .group_0160 import OrgRulesetConditionsOneof1
-from .group_0161 import OrgRulesetConditionsOneof2
-from .group_0162 import RepositoryRuleMergeQueue
-from .group_0164 import RepositoryRuleCopilotCodeReview
 
 
-class RepositoryRuleset(GitHubModel):
-    """Repository ruleset
+class RepositoryRuleMergeQueuePropParameters(GitHubModel):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    A set of rules to apply when specified conditions are met.
-    """
-
-    id: int = Field(description="The ID of the ruleset")
-    name: str = Field(description="The name of the ruleset")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
+    check_response_timeout_minutes: int = Field(
+        le=360.0,
+        ge=1.0,
+        description="Maximum time for a required status check to report a conclusion. After this much time has elapsed, checks that have not reported a conclusion will be assumed to have failed",
     )
-    source_type: Missing[Literal["Repository", "Organization", "Enterprise"]] = Field(
-        default=UNSET, description="The type of the source of the ruleset"
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"] = Field(
+        description="When set to ALLGREEN, the merge commit created by merge queue for each PR in the group must pass all required checks to merge. When set to HEADGREEN, only the commit at the head of the merge group, i.e. the commit containing changes from all of the PRs in the group, must pass its required checks to merge."
     )
-    source: str = Field(description="The name of the source")
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    max_entries_to_build: int = Field(
+        le=100.0,
+        description="Limit the number of queued pull requests requesting checks and workflow runs at the same time.",
     )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+    max_entries_to_merge: int = Field(
+        le=100.0,
+        description="The maximum number of PRs that will be merged together in a group.",
     )
-    current_user_can_bypass: Missing[
-        Literal["always", "pull_requests_only", "never", "exempt"]
-    ] = Field(
-        default=UNSET,
-        description="The bypass type of the user making the API request for this ruleset. This field is only returned when\nquerying the repository-level endpoint.",
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"] = Field(
+        description="Method to use when merging changes from queued pull requests."
     )
-    node_id: Missing[str] = Field(default=UNSET)
-    links: Missing[RepositoryRulesetPropLinks] = Field(default=UNSET, alias="_links")
-    conditions: Missing[
-        Union[
-            RepositoryRulesetConditions,
-            OrgRulesetConditionsOneof0,
-            OrgRulesetConditionsOneof1,
-            OrgRulesetConditionsOneof2,
-            None,
-        ]
-    ] = Field(default=UNSET)
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET)
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
-
-
-class RepositoryRulesetPropLinks(GitHubModel):
-    """RepositoryRulesetPropLinks"""
-
-    self_: Missing[RepositoryRulesetPropLinksPropSelf] = Field(
-        default=UNSET, alias="self"
+    min_entries_to_merge: int = Field(
+        le=100.0,
+        description="The minimum number of PRs that will be merged together in a group.",
     )
-    html: Missing[Union[RepositoryRulesetPropLinksPropHtml, None]] = Field(
-        default=UNSET
+    min_entries_to_merge_wait_minutes: int = Field(
+        le=360.0,
+        description="The time merge queue should wait after the first PR is added to the queue for the minimum group size to be met. After this time has elapsed, the minimum group size will be ignored and a smaller group will be merged.",
     )
 
 
-class RepositoryRulesetPropLinksPropSelf(GitHubModel):
-    """RepositoryRulesetPropLinksPropSelf"""
+model_rebuild(RepositoryRuleMergeQueuePropParameters)
 
-    href: Missing[str] = Field(default=UNSET, description="The URL of the ruleset")
-
-
-class RepositoryRulesetPropLinksPropHtml(GitHubModel):
-    """RepositoryRulesetPropLinksPropHtml"""
-
-    href: Missing[str] = Field(default=UNSET, description="The html URL of the ruleset")
-
-
-model_rebuild(RepositoryRuleset)
-model_rebuild(RepositoryRulesetPropLinks)
-model_rebuild(RepositoryRulesetPropLinksPropSelf)
-model_rebuild(RepositoryRulesetPropLinksPropHtml)
-
-__all__ = (
-    "RepositoryRuleset",
-    "RepositoryRulesetPropLinks",
-    "RepositoryRulesetPropLinksPropHtml",
-    "RepositoryRulesetPropLinksPropSelf",
-)
+__all__ = ("RepositoryRuleMergeQueuePropParameters",)

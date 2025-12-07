@@ -13,20 +13,28 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
+class OrgsOrgSettingsNetworkConfigurationsPostBody(GitHubModel):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
 
-    permission: Missing[Literal["read", "write", "admin"]] = Field(
+    name: str = Field(
+        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
+    )
+    compute_service: Missing[Literal["none", "actions"]] = Field(
         default=UNSET,
-        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method).\"",
+        description="The hosted compute service to use for the network configuration.",
+    )
+    network_settings_ids: list[str] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The identifier of the network settings to use for the network configuration. Exactly one network settings must be specified.",
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody)
+model_rebuild(OrgsOrgSettingsNetworkConfigurationsPostBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody",)
+__all__ = ("OrgsOrgSettingsNetworkConfigurationsPostBody",)

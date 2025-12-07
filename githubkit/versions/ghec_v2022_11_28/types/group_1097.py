@@ -11,70 +11,27 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type(TypedDict):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
-
-    total_count: NotRequired[int]
-    storage_records: NotRequired[
-        list[
-            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType
-        ]
-    ]
+from .group_0225 import (
+    ArtifactDeploymentRecordType,
+    ArtifactDeploymentRecordTypeForResponse,
+)
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
 
     total_count: NotRequired[int]
-    storage_records: NotRequired[
-        list[
-            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse
-        ]
-    ]
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
-    rdsItems
-    """
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[str]
-    registry_url: NotRequired[str]
-    repository: NotRequired[str]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-
-
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
-    rdsItems
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[str]
-    registry_url: NotRequired[str]
-    repository: NotRequired[str]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    total_count: NotRequired[int]
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType",
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse",
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type",
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse",
 )

@@ -13,41 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0463 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0663 import (
+    WebhookIssuesUnlockedPropIssueType,
+    WebhookIssuesUnlockedPropIssueTypeForResponse,
+)
 
 
-class WebhookLabelDeletedType(TypedDict):
-    """label deleted event"""
+class WebhookIssuesUnlockedType(TypedDict):
+    """issues unlocked event"""
 
-    action: Literal["deleted"]
+    action: Literal["unlocked"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelType
+    issue: WebhookIssuesUnlockedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookLabelDeletedTypeForResponse(TypedDict):
-    """label deleted event"""
+class WebhookIssuesUnlockedTypeForResponse(TypedDict):
+    """issues unlocked event"""
 
-    action: Literal["deleted"]
+    action: Literal["unlocked"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: WebhooksLabelTypeForResponse
+    issue: WebhookIssuesUnlockedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookLabelDeletedType",
-    "WebhookLabelDeletedTypeForResponse",
+    "WebhookIssuesUnlockedType",
+    "WebhookIssuesUnlockedTypeForResponse",
 )

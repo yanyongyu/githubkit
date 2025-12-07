@@ -9,60 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0096 import Team
 
+class WorkflowUsage(GitHubModel):
+    """Workflow Usage
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
-
-    users: Missing[list[SimpleUser]] = Field(
-        default=UNSET, description="The list of users with review dismissal access."
-    )
-    teams: Missing[list[Team]] = Field(
-        default=UNSET, description="The list of teams with review dismissal access."
-    )
-    apps: Missing[list[Union[Integration, None]]] = Field(
-        default=UNSET, description="The list of apps with review dismissal access."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    users_url: Missing[str] = Field(default=UNSET)
-    teams_url: Missing[str] = Field(default=UNSET)
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    Workflow Usage
     """
 
-    users: Missing[list[SimpleUser]] = Field(
-        default=UNSET,
-        description="The list of users allowed to bypass pull request requirements.",
+    billable: WorkflowUsagePropBillable = Field()
+
+
+class WorkflowUsagePropBillable(GitHubModel):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: Missing[WorkflowUsagePropBillablePropUbuntu] = Field(
+        default=UNSET, alias="UBUNTU"
     )
-    teams: Missing[list[Team]] = Field(
-        default=UNSET,
-        description="The list of teams allowed to bypass pull request requirements.",
+    macos: Missing[WorkflowUsagePropBillablePropMacos] = Field(
+        default=UNSET, alias="MACOS"
     )
-    apps: Missing[list[Union[Integration, None]]] = Field(
-        default=UNSET,
-        description="The list of apps allowed to bypass pull request requirements.",
+    windows: Missing[WorkflowUsagePropBillablePropWindows] = Field(
+        default=UNSET, alias="WINDOWS"
     )
 
 
-model_rebuild(ProtectedBranchPullRequestReviewPropDismissalRestrictions)
-model_rebuild(ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances)
+class WorkflowUsagePropBillablePropUbuntu(GitHubModel):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowUsagePropBillablePropMacos(GitHubModel):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowUsagePropBillablePropWindows(GitHubModel):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(WorkflowUsage)
+model_rebuild(WorkflowUsagePropBillable)
+model_rebuild(WorkflowUsagePropBillablePropUbuntu)
+model_rebuild(WorkflowUsagePropBillablePropMacos)
+model_rebuild(WorkflowUsagePropBillablePropWindows)
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
+    "WorkflowUsage",
+    "WorkflowUsagePropBillable",
+    "WorkflowUsagePropBillablePropMacos",
+    "WorkflowUsagePropBillablePropUbuntu",
+    "WorkflowUsagePropBillablePropWindows",
 )

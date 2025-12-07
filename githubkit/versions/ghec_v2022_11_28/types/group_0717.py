@@ -13,7 +13,7 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0712 import (
+from .group_0716 import (
     WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
     WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
     WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
@@ -21,8 +21,14 @@ from .group_0712 import (
 )
 
 
-class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
 
     created_at: Union[_dt.datetime, None]
     description: Union[str, None]
@@ -42,8 +48,16 @@ class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType(TypedDict):
     updated_at: Union[_dt.datetime, None]
 
 
-class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppTypeForResponse(TypedDict):
-    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
 
     created_at: Union[str, None]
     description: Union[str, None]
@@ -65,6 +79,6 @@ class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppTypeForResponse(Typ
 
 
 __all__ = (
-    "WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType",
-    "WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppType",
+    "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse",
 )

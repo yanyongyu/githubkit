@@ -9,25 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryVulnerabilityAlertResolveType(TypedDict):
-    """repository_vulnerability_alert resolve event"""
+class WebhookRepositoryTransferredType(TypedDict):
+    """repository transferred event"""
 
-    action: Literal["resolve"]
-    alert: WebhookRepositoryVulnerabilityAlertResolvePropAlertType
+    action: Literal["transferred"]
+    changes: WebhookRepositoryTransferredPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,11 +34,11 @@ class WebhookRepositoryVulnerabilityAlertResolveType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookRepositoryVulnerabilityAlertResolveTypeForResponse(TypedDict):
-    """repository_vulnerability_alert resolve event"""
+class WebhookRepositoryTransferredTypeForResponse(TypedDict):
+    """repository transferred event"""
 
-    action: Literal["resolve"]
-    alert: WebhookRepositoryVulnerabilityAlertResolvePropAlertTypeForResponse
+    action: Literal["transferred"]
+    changes: WebhookRepositoryTransferredPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -47,66 +46,100 @@ class WebhookRepositoryVulnerabilityAlertResolveTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlertType(TypedDict):
-    """Repository Vulnerability Alert Alert
+class WebhookRepositoryTransferredPropChangesType(TypedDict):
+    """WebhookRepositoryTransferredPropChanges"""
 
-    The security alert of the vulnerable dependency.
-    """
+    owner: WebhookRepositoryTransferredPropChangesPropOwnerType
 
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[
+
+class WebhookRepositoryTransferredPropChangesTypeForResponse(TypedDict):
+    """WebhookRepositoryTransferredPropChanges"""
+
+    owner: WebhookRepositoryTransferredPropChangesPropOwnerTypeForResponse
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerType(TypedDict):
+    """WebhookRepositoryTransferredPropChangesPropOwner"""
+
+    from_: WebhookRepositoryTransferredPropChangesPropOwnerPropFromType
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerTypeForResponse(TypedDict):
+    """WebhookRepositoryTransferredPropChangesPropOwner"""
+
+    from_: WebhookRepositoryTransferredPropChangesPropOwnerPropFromTypeForResponse
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromType(TypedDict):
+    """WebhookRepositoryTransferredPropChangesPropOwnerPropFrom"""
+
+    organization: NotRequired[
+        WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType
+    ]
+    user: NotRequired[
         Union[
-            WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType, None
+            WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType, None
         ]
     ]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[_dt.datetime]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["fixed", "open"]
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlertTypeForResponse(TypedDict):
-    """Repository Vulnerability Alert Alert
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromTypeForResponse(
+    TypedDict
+):
+    """WebhookRepositoryTransferredPropChangesPropOwnerPropFrom"""
 
-    The security alert of the vulnerable dependency.
-    """
-
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[
+    organization: NotRequired[
+        WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationTypeForResponse
+    ]
+    user: NotRequired[
         Union[
-            WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserTypeForResponse,
+            WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserTypeForResponse,
             None,
         ]
     ]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[str]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType(
+    TypedDict
+):
+    """Organization"""
+
+    avatar_url: str
+    description: Union[str, None]
+    events_url: str
+    hooks_url: str
+    html_url: NotRequired[str]
     id: int
+    issues_url: str
+    login: str
+    members_url: str
     node_id: str
-    number: int
-    severity: str
-    state: Literal["fixed", "open"]
+    public_members_url: str
+    repos_url: str
+    url: str
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType(TypedDict):
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationTypeForResponse(
+    TypedDict
+):
+    """Organization"""
+
+    avatar_url: str
+    description: Union[str, None]
+    events_url: str
+    hooks_url: str
+    html_url: NotRequired[str]
+    id: int
+    issues_url: str
+    login: str
+    members_url: str
+    node_id: str
+    public_members_url: str
+    repos_url: str
+    url: str
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -130,9 +163,10 @@ class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType(Typed
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserTypeForResponse(
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -158,13 +192,20 @@ class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserTypeForRes
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType",
-    "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserTypeForResponse",
-    "WebhookRepositoryVulnerabilityAlertResolvePropAlertType",
-    "WebhookRepositoryVulnerabilityAlertResolvePropAlertTypeForResponse",
-    "WebhookRepositoryVulnerabilityAlertResolveType",
-    "WebhookRepositoryVulnerabilityAlertResolveTypeForResponse",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationTypeForResponse",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserTypeForResponse",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromType",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromTypeForResponse",
+    "WebhookRepositoryTransferredPropChangesPropOwnerType",
+    "WebhookRepositoryTransferredPropChangesPropOwnerTypeForResponse",
+    "WebhookRepositoryTransferredPropChangesType",
+    "WebhookRepositoryTransferredPropChangesTypeForResponse",
+    "WebhookRepositoryTransferredType",
+    "WebhookRepositoryTransferredTypeForResponse",
 )

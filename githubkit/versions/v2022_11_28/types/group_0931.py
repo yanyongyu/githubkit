@@ -11,26 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0061 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0094 import RunnerType, RunnerTypeForResponse
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    runner: RunnerType
+    encoded_jit_config: str
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    runner: RunnerTypeForResponse
+    encoded_jit_config: str
 
 
 __all__ = (
-    "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type",
-    "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
 )

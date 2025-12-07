@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,24 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PageDeployment(GitHubModel):
-    """GitHub Pages
+class MergedUpstream(GitHubModel):
+    """Merged upstream
 
-    The GitHub Pages deployment status.
+    Results of a successful merge upstream request
     """
 
-    id: Union[int, str] = Field(
-        description="The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit."
-    )
-    status_url: str = Field(
-        description="The URI to monitor GitHub Pages deployment status."
-    )
-    page_url: str = Field(description="The URI to the deployed GitHub Pages.")
-    preview_url: Missing[str] = Field(
-        default=UNSET, description="The URI to the deployed GitHub Pages preview."
-    )
+    message: Missing[str] = Field(default=UNSET)
+    merge_type: Missing[Literal["merge", "fast-forward", "none"]] = Field(default=UNSET)
+    base_branch: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(PageDeployment)
+model_rebuild(MergedUpstream)
 
-__all__ = ("PageDeployment",)
+__all__ = ("MergedUpstream",)

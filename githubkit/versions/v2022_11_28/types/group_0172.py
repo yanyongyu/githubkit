@@ -13,34 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0173 import (
-    RepositoryRuleCommitAuthorEmailPatternPropParametersType,
-    RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse,
+    RepositoryRulePullRequestPropParametersType,
+    RepositoryRulePullRequestPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
-    """commit_author_email_pattern
+class RepositoryRulePullRequestType(TypedDict):
+    """pull_request
 
-    Parameters to be used for the commit_author_email_pattern rule
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
 
 
-class RepositoryRuleCommitAuthorEmailPatternTypeForResponse(TypedDict):
-    """commit_author_email_pattern
+class RepositoryRulePullRequestTypeForResponse(TypedDict):
+    """pull_request
 
-    Parameters to be used for the commit_author_email_pattern rule
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse
-    ]
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleCommitAuthorEmailPatternType",
-    "RepositoryRuleCommitAuthorEmailPatternTypeForResponse",
+    "RepositoryRulePullRequestType",
+    "RepositoryRulePullRequestTypeForResponse",
 )

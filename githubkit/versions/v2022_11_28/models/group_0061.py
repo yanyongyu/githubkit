@@ -9,179 +9,89 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0060 import SecurityAndAnalysis
 
+class ApiOverview(GitHubModel):
+    """Api Overview
 
-class MinimalRepository(GitHubModel):
-    """Minimal Repository
-
-    Minimal Repository
+    Api Overview
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    full_name: str = Field()
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    private: bool = Field()
-    html_url: str = Field()
-    description: Union[str, None] = Field()
-    fork: bool = Field()
-    url: str = Field()
-    archive_url: str = Field()
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    deployments_url: str = Field()
-    downloads_url: str = Field()
-    events_url: str = Field()
-    forks_url: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    git_url: Missing[str] = Field(default=UNSET)
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    languages_url: str = Field()
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    notifications_url: str = Field()
-    pulls_url: str = Field()
-    releases_url: str = Field()
-    ssh_url: Missing[str] = Field(default=UNSET)
-    stargazers_url: str = Field()
-    statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    trees_url: str = Field()
-    clone_url: Missing[str] = Field(default=UNSET)
-    mirror_url: Missing[Union[str, None]] = Field(default=UNSET)
-    hooks_url: str = Field()
-    svn_url: Missing[str] = Field(default=UNSET)
-    homepage: Missing[Union[str, None]] = Field(default=UNSET)
-    language: Missing[Union[str, None]] = Field(default=UNSET)
-    forks_count: Missing[int] = Field(default=UNSET)
-    stargazers_count: Missing[int] = Field(default=UNSET)
-    watchers_count: Missing[int] = Field(default=UNSET)
-    size: Missing[int] = Field(
-        default=UNSET,
-        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0.",
-    )
-    default_branch: Missing[str] = Field(default=UNSET)
-    open_issues_count: Missing[int] = Field(default=UNSET)
-    is_template: Missing[bool] = Field(default=UNSET)
-    topics: Missing[list[str]] = Field(default=UNSET)
-    has_issues: Missing[bool] = Field(default=UNSET)
-    has_projects: Missing[bool] = Field(default=UNSET)
-    has_wiki: Missing[bool] = Field(default=UNSET)
-    has_pages: Missing[bool] = Field(default=UNSET)
-    has_downloads: Missing[bool] = Field(default=UNSET)
-    has_discussions: Missing[bool] = Field(default=UNSET)
-    archived: Missing[bool] = Field(default=UNSET)
-    disabled: Missing[bool] = Field(default=UNSET)
-    visibility: Missing[str] = Field(default=UNSET)
-    pushed_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    created_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    permissions: Missing[MinimalRepositoryPropPermissions] = Field(default=UNSET)
-    role_name: Missing[str] = Field(default=UNSET)
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
-    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
-    subscribers_count: Missing[int] = Field(default=UNSET)
-    network_count: Missing[int] = Field(default=UNSET)
-    code_of_conduct: Missing[CodeOfConduct] = Field(
-        default=UNSET, title="Code Of Conduct", description="Code Of Conduct"
-    )
-    license_: Missing[Union[MinimalRepositoryPropLicense, None]] = Field(
-        default=UNSET, alias="license"
-    )
-    forks: Missing[int] = Field(default=UNSET)
-    open_issues: Missing[int] = Field(default=UNSET)
-    watchers: Missing[int] = Field(default=UNSET)
-    allow_forking: Missing[bool] = Field(default=UNSET)
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
-    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
+    verifiable_password_authentication: bool = Field()
+    ssh_key_fingerprints: Missing[ApiOverviewPropSshKeyFingerprints] = Field(
         default=UNSET
     )
-    custom_properties: Missing[MinimalRepositoryPropCustomProperties] = Field(
-        default=UNSET,
-        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
+    ssh_keys: Missing[list[str]] = Field(default=UNSET)
+    hooks: Missing[list[str]] = Field(default=UNSET)
+    github_enterprise_importer: Missing[list[str]] = Field(default=UNSET)
+    web: Missing[list[str]] = Field(default=UNSET)
+    api: Missing[list[str]] = Field(default=UNSET)
+    git: Missing[list[str]] = Field(default=UNSET)
+    packages: Missing[list[str]] = Field(default=UNSET)
+    pages: Missing[list[str]] = Field(default=UNSET)
+    importer: Missing[list[str]] = Field(default=UNSET)
+    actions: Missing[list[str]] = Field(default=UNSET)
+    actions_macos: Missing[list[str]] = Field(default=UNSET)
+    codespaces: Missing[list[str]] = Field(default=UNSET)
+    dependabot: Missing[list[str]] = Field(default=UNSET)
+    copilot: Missing[list[str]] = Field(default=UNSET)
+    domains: Missing[ApiOverviewPropDomains] = Field(default=UNSET)
+
+
+class ApiOverviewPropSshKeyFingerprints(GitHubModel):
+    """ApiOverviewPropSshKeyFingerprints"""
+
+    sha256_rsa: Missing[str] = Field(default=UNSET, alias="SHA256_RSA")
+    sha256_dsa: Missing[str] = Field(default=UNSET, alias="SHA256_DSA")
+    sha256_ecdsa: Missing[str] = Field(default=UNSET, alias="SHA256_ECDSA")
+    sha256_ed25519: Missing[str] = Field(default=UNSET, alias="SHA256_ED25519")
+
+
+class ApiOverviewPropDomains(GitHubModel):
+    """ApiOverviewPropDomains"""
+
+    website: Missing[list[str]] = Field(default=UNSET)
+    codespaces: Missing[list[str]] = Field(default=UNSET)
+    copilot: Missing[list[str]] = Field(default=UNSET)
+    packages: Missing[list[str]] = Field(default=UNSET)
+    actions: Missing[list[str]] = Field(default=UNSET)
+    actions_inbound: Missing[ApiOverviewPropDomainsPropActionsInbound] = Field(
+        default=UNSET
+    )
+    artifact_attestations: Missing[ApiOverviewPropDomainsPropArtifactAttestations] = (
+        Field(default=UNSET)
     )
 
 
-class CodeOfConduct(GitHubModel):
-    """Code Of Conduct
+class ApiOverviewPropDomainsPropActionsInbound(GitHubModel):
+    """ApiOverviewPropDomainsPropActionsInbound"""
 
-    Code Of Conduct
-    """
-
-    key: str = Field()
-    name: str = Field()
-    url: str = Field()
-    body: Missing[str] = Field(default=UNSET)
-    html_url: Union[str, None] = Field()
+    full_domains: Missing[list[str]] = Field(default=UNSET)
+    wildcard_domains: Missing[list[str]] = Field(default=UNSET)
 
 
-class MinimalRepositoryPropPermissions(GitHubModel):
-    """MinimalRepositoryPropPermissions"""
+class ApiOverviewPropDomainsPropArtifactAttestations(GitHubModel):
+    """ApiOverviewPropDomainsPropArtifactAttestations"""
 
-    admin: Missing[bool] = Field(default=UNSET)
-    maintain: Missing[bool] = Field(default=UNSET)
-    push: Missing[bool] = Field(default=UNSET)
-    triage: Missing[bool] = Field(default=UNSET)
-    pull: Missing[bool] = Field(default=UNSET)
+    trust_domain: Missing[str] = Field(default=UNSET)
+    services: Missing[list[str]] = Field(default=UNSET)
 
 
-class MinimalRepositoryPropLicense(GitHubModel):
-    """MinimalRepositoryPropLicense"""
-
-    key: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    spdx_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-
-
-class MinimalRepositoryPropCustomProperties(ExtraGitHubModel):
-    """MinimalRepositoryPropCustomProperties
-
-    The custom properties that were defined for the repository. The keys are the
-    custom property names, and the values are the corresponding custom property
-    values.
-    """
-
-
-model_rebuild(MinimalRepository)
-model_rebuild(CodeOfConduct)
-model_rebuild(MinimalRepositoryPropPermissions)
-model_rebuild(MinimalRepositoryPropLicense)
-model_rebuild(MinimalRepositoryPropCustomProperties)
+model_rebuild(ApiOverview)
+model_rebuild(ApiOverviewPropSshKeyFingerprints)
+model_rebuild(ApiOverviewPropDomains)
+model_rebuild(ApiOverviewPropDomainsPropActionsInbound)
+model_rebuild(ApiOverviewPropDomainsPropArtifactAttestations)
 
 __all__ = (
-    "CodeOfConduct",
-    "MinimalRepository",
-    "MinimalRepositoryPropCustomProperties",
-    "MinimalRepositoryPropLicense",
-    "MinimalRepositoryPropPermissions",
+    "ApiOverview",
+    "ApiOverviewPropDomains",
+    "ApiOverviewPropDomainsPropActionsInbound",
+    "ApiOverviewPropDomainsPropArtifactAttestations",
+    "ApiOverviewPropSshKeyFingerprints",
 )

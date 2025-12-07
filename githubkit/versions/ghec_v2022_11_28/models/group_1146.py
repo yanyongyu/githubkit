@@ -12,10 +12,10 @@ from __future__ import annotations
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+class OrgsOrgInteractionLimitsGetResponse200Anyof1(GitHubModel):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutResponse202)
+model_rebuild(OrgsOrgInteractionLimitsGetResponse200Anyof1)
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202",)
+__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1",)

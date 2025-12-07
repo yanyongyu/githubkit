@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,16 +19,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from .group_0003 import SimpleUser
 
 
-class ProjectCollaboratorPermission(GitHubModel):
-    """Project Collaborator Permission
+class Reaction(GitHubModel):
+    """Reaction
 
-    Project Collaborator Permission
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    permission: str = Field()
+    id: int = Field()
+    node_id: str = Field()
     user: Union[None, SimpleUser] = Field()
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(description="The reaction to use")
+    created_at: _dt.datetime = Field()
 
 
-model_rebuild(ProjectCollaboratorPermission)
+model_rebuild(Reaction)
 
-__all__ = ("ProjectCollaboratorPermission",)
+__all__ = ("Reaction",)

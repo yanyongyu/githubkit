@@ -9,24 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
 
 
-class ReposOwnerRepoGitRefsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitRefsPostBody"""
+class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    ref: str
-    sha: str
+    config: NotRequired[WebhookConfigType]
+    events: NotRequired[list[str]]
+    add_events: NotRequired[list[str]]
+    remove_events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
-class ReposOwnerRepoGitRefsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitRefsPostBody"""
+class ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    ref: str
-    sha: str
+    config: NotRequired[WebhookConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    add_events: NotRequired[list[str]]
+    remove_events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoGitRefsPostBodyType",
-    "ReposOwnerRepoGitRefsPostBodyTypeForResponse",
+    "ReposOwnerRepoHooksHookIdPatchBodyType",
+    "ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse",
 )

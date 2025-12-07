@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Annotated, Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
+class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
 
-    title: str = Field(
-        description="The title of the draft issue item to create in the project."
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the request."
     )
-    body: Missing[str] = Field(
+    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
         default=UNSET,
-        description="The body content of the draft issue item to create in the project.",
+        description="Reason for approving or denying the request. Max 1024 characters.",
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberDraftsPostBody)
+model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberDraftsPostBody",)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)

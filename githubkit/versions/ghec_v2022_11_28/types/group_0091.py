@@ -13,58 +13,81 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0072 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0089 import (
+    DependabotAlertSecurityVulnerabilityType,
+    DependabotAlertSecurityVulnerabilityTypeForResponse,
+)
+from .group_0090 import (
+    DependabotAlertSecurityAdvisoryType,
+    DependabotAlertSecurityAdvisoryTypeForResponse,
+)
+from .group_0092 import (
+    DependabotAlertWithRepositoryPropDependencyType,
+    DependabotAlertWithRepositoryPropDependencyTypeForResponse,
+)
 
 
-class EnterpriseRoleType(TypedDict):
-    """Enterprise Role
+class DependabotAlertWithRepositoryType(TypedDict):
+    """DependabotAlertWithRepository
 
-    Enterprise custom roles
+    A Dependabot alert.
     """
 
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    source: NotRequired[Union[None, Literal["Enterprise", "Predefined"]]]
-    permissions: list[str]
-    enterprise: Union[None, EnterpriseType]
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertWithRepositoryPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
     created_at: _dt.datetime
     updated_at: _dt.datetime
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[_dt.datetime, None]
+    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
+    repository: SimpleRepositoryType
 
 
-class EnterpriseRoleTypeForResponse(TypedDict):
-    """Enterprise Role
+class DependabotAlertWithRepositoryTypeForResponse(TypedDict):
+    """DependabotAlertWithRepository
 
-    Enterprise custom roles
+    A Dependabot alert.
     """
 
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    source: NotRequired[Union[None, Literal["Enterprise", "Predefined"]]]
-    permissions: list[str]
-    enterprise: Union[None, EnterpriseTypeForResponse]
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertWithRepositoryPropDependencyTypeForResponse
+    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
+    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
+    url: str
+    html_url: str
     created_at: str
     updated_at: str
-
-
-class EnterprisesEnterpriseEnterpriseRolesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    roles: NotRequired[list[EnterpriseRoleType]]
-
-
-class EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    roles: NotRequired[list[EnterpriseRoleTypeForResponse]]
+    dismissed_at: Union[str, None]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[str, None]
+    auto_dismissed_at: NotRequired[Union[str, None]]
+    repository: SimpleRepositoryTypeForResponse
 
 
 __all__ = (
-    "EnterpriseRoleType",
-    "EnterpriseRoleTypeForResponse",
-    "EnterprisesEnterpriseEnterpriseRolesGetResponse200Type",
-    "EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse",
+    "DependabotAlertWithRepositoryType",
+    "DependabotAlertWithRepositoryTypeForResponse",
 )

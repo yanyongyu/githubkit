@@ -9,103 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0192 import ReactionRollupType, ReactionRollupTypeForResponse
 
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-class CommitCommentType(TypedDict):
-    """Commit Comment
-
-    Commit Comment
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    html_url: str
-    url: str
-    id: int
-    node_id: str
-    body: str
-    path: Union[str, None]
-    position: Union[int, None]
-    line: Union[int, None]
-    commit_id: str
-    user: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    reactions: NotRequired[ReactionRollupType]
+    errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
-class CommitCommentTypeForResponse(TypedDict):
-    """Commit Comment
+class CodeownersErrorsTypeForResponse(TypedDict):
+    """CODEOWNERS errors
 
-    Commit Comment
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    html_url: str
-    url: str
-    id: int
-    node_id: str
-    body: str
-    path: Union[str, None]
-    position: Union[int, None]
-    line: Union[int, None]
-    commit_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
 
 
-class TimelineCommitCommentedEventType(TypedDict):
-    """Timeline Commit Commented Event
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
 
-    Timeline Commit Commented Event
-    """
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
-    event: NotRequired[Literal["commit_commented"]]
-    node_id: NotRequired[str]
-    commit_id: NotRequired[str]
-    comments: NotRequired[list[CommitCommentType]]
 
+class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
 
-class TimelineCommitCommentedEventTypeForResponse(TypedDict):
-    """Timeline Commit Commented Event
-
-    Timeline Commit Commented Event
-    """
-
-    event: NotRequired[Literal["commit_commented"]]
-    node_id: NotRequired[str]
-    commit_id: NotRequired[str]
-    comments: NotRequired[list[CommitCommentTypeForResponse]]
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
 __all__ = (
-    "CommitCommentType",
-    "CommitCommentTypeForResponse",
-    "TimelineCommitCommentedEventType",
-    "TimelineCommitCommentedEventTypeForResponse",
+    "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsPropErrorsItemsTypeForResponse",
+    "CodeownersErrorsType",
+    "CodeownersErrorsTypeForResponse",
 )

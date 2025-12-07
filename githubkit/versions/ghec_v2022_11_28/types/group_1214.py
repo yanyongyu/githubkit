@@ -11,28 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0295 import JobType, JobTypeForResponse
+from .group_0301 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
+class ReposOwnerRepoActionsSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsSecretsGetResponse200"""
 
     total_count: int
-    jobs: list[JobType]
+    secrets: list[ActionsSecretType]
 
 
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
+class ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsSecretsGetResponse200"""
 
     total_count: int
-    jobs: list[JobTypeForResponse]
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type",
-    "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsSecretsGetResponse200Type",
+    "ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse",
 )

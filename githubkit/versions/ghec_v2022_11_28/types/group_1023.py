@@ -9,65 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0105 import CustomPropertyType, CustomPropertyTypeForResponse
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
+class EnterprisesEnterprisePropertiesSchemaPatchBodyType(TypedDict):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
-    ]
-    budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
+    properties: list[CustomPropertyType]
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
+class EnterprisesEnterprisePropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
-    ]
-    budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    properties: list[CustomPropertyTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
+    "EnterprisesEnterprisePropertiesSchemaPatchBodyType",
+    "EnterprisesEnterprisePropertiesSchemaPatchBodyTypeForResponse",
 )

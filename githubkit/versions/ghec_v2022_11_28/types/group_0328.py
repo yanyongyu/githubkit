@@ -9,60 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0321 import BranchProtectionType, BranchProtectionTypeForResponse
+from .group_0326 import CommitType, CommitTypeForResponse
 
 
-class DeploymentSimpleType(TypedDict):
-    """Deployment
+class BranchWithProtectionType(TypedDict):
+    """Branch With Protection
 
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    Branch With Protection
     """
 
-    url: str
-    id: int
-    node_id: str
-    task: str
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    name: str
+    commit: CommitType
+    links: BranchWithProtectionPropLinksType
+    protected: bool
+    protection: BranchProtectionType
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
 
 
-class DeploymentSimpleTypeForResponse(TypedDict):
-    """Deployment
+class BranchWithProtectionTypeForResponse(TypedDict):
+    """Branch With Protection
 
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    Branch With Protection
     """
 
-    url: str
-    id: int
-    node_id: str
-    task: str
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    created_at: str
-    updated_at: str
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    name: str
+    commit: CommitTypeForResponse
+    links: BranchWithProtectionPropLinksTypeForResponse
+    protected: bool
+    protection: BranchProtectionTypeForResponse
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
+
+
+class BranchWithProtectionPropLinksType(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
+
+
+class BranchWithProtectionPropLinksTypeForResponse(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
 
 
 __all__ = (
-    "DeploymentSimpleType",
-    "DeploymentSimpleTypeForResponse",
+    "BranchWithProtectionPropLinksType",
+    "BranchWithProtectionPropLinksTypeForResponse",
+    "BranchWithProtectionType",
+    "BranchWithProtectionTypeForResponse",
 )

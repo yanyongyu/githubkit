@@ -9,48 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0492 import MetaType, MetaTypeForResponse
-
-
-class ScimEnterpriseGroupResponseAllof1Type(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1"""
-
-    id: NotRequired[str]
-    members: NotRequired[list[ScimEnterpriseGroupResponseAllof1PropMembersItemsType]]
-    meta: NotRequired[MetaType]
+from .group_0490 import TrafficType, TrafficTypeForResponse
 
 
-class ScimEnterpriseGroupResponseAllof1TypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1"""
+class ViewTrafficType(TypedDict):
+    """View Traffic
 
-    id: NotRequired[str]
-    members: NotRequired[
-        list[ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse]
-    ]
-    meta: NotRequired[MetaTypeForResponse]
+    View Traffic
+    """
 
-
-class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
-
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    count: int
+    uniques: int
+    views: list[TrafficType]
 
 
-class ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+class ViewTrafficTypeForResponse(TypedDict):
+    """View Traffic
 
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    View Traffic
+    """
+
+    count: int
+    uniques: int
+    views: list[TrafficTypeForResponse]
 
 
 __all__ = (
-    "ScimEnterpriseGroupResponseAllof1PropMembersItemsType",
-    "ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse",
-    "ScimEnterpriseGroupResponseAllof1Type",
-    "ScimEnterpriseGroupResponseAllof1TypeForResponse",
+    "ViewTrafficType",
+    "ViewTrafficTypeForResponse",
 )

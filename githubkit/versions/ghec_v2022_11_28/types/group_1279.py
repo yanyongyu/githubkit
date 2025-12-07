@@ -9,24 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDependabotSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
+class ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    status: Literal["approve", "deny"]
+    message: str
 
 
-class ReposOwnerRepoDependabotSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
+class ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    status: Literal["approve", "deny"]
+    message: str
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotSecretsSecretNamePutBodyType",
-    "ReposOwnerRepoDependabotSecretsSecretNamePutBodyTypeForResponse",
+    "ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyType",
+    "ReposOwnerRepoDismissalRequestsCodeScanningAlertNumberPatchBodyTypeForResponse",
 )

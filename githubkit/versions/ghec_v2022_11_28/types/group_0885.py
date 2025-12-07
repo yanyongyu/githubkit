@@ -9,75 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0886 import (
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsType,
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0888 import (
-    WebhookRepositoryRulesetEditedPropChangesPropRulesType,
-    WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse,
-)
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryRulesetEditedPropChangesType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChanges"""
+class WebhookRepositoryRenamedType(TypedDict):
+    """repository renamed event"""
 
-    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameType]
-    enforcement: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropEnforcementType
-    ]
-    conditions: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropConditionsType]
-    rules: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropRulesType]
-
-
-class WebhookRepositoryRulesetEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChanges"""
-
-    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse]
-    enforcement: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse
-    ]
-    conditions: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse
-    ]
-    rules: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse
-    ]
+    action: Literal["renamed"]
+    changes: WebhookRepositoryRenamedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropNameType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+class WebhookRepositoryRenamedTypeForResponse(TypedDict):
+    """repository renamed event"""
 
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropName"""
-
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropEnforcementType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
-
-    from_: NotRequired[str]
+    action: Literal["renamed"]
+    changes: WebhookRepositoryRenamedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse(
+class WebhookRepositoryRenamedPropChangesType(TypedDict):
+    """WebhookRepositoryRenamedPropChanges"""
+
+    repository: WebhookRepositoryRenamedPropChangesPropRepositoryType
+
+
+class WebhookRepositoryRenamedPropChangesTypeForResponse(TypedDict):
+    """WebhookRepositoryRenamedPropChanges"""
+
+    repository: WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryType(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepository"""
+
+    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepository"""
+
+    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType(TypedDict):
+    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
+
+    from_: str
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse(
     TypedDict
 ):
-    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
 
-    from_: NotRequired[str]
+    from_: str
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementType",
-    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse",
-    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
-    "WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse",
-    "WebhookRepositoryRulesetEditedPropChangesType",
-    "WebhookRepositoryRulesetEditedPropChangesTypeForResponse",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryType",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse",
+    "WebhookRepositoryRenamedPropChangesType",
+    "WebhookRepositoryRenamedPropChangesTypeForResponse",
+    "WebhookRepositoryRenamedType",
+    "WebhookRepositoryRenamedTypeForResponse",
 )

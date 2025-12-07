@@ -11,24 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0090 import RunnerType, RunnerTypeForResponse
+from .group_0079 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
 
-    runner: RunnerType
-    encoded_jit_config: str
+    total_count: float
+    runners: list[ActionsHostedRunnerType]
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
 
-    runner: RunnerTypeForResponse
-    encoded_jit_config: str
+    total_count: float
+    runners: list[ActionsHostedRunnerTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",
-    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse",
 )

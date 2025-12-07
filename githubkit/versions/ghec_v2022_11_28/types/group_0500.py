@@ -9,80 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0492 import MetaType, MetaTypeForResponse
-from .group_0497 import (
-    UserEmailsResponseItemsType,
-    UserEmailsResponseItemsTypeForResponse,
-    UserNameResponseType,
-    UserNameResponseTypeForResponse,
-)
-from .group_0498 import UserRoleItemsType, UserRoleItemsTypeForResponse
-from .group_0502 import (
-    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
-    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
-)
+
+class PatchSchemaType(TypedDict):
+    """PatchSchema"""
+
+    operations: list[PatchSchemaPropOperationsItemsType]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
 
 
-class ScimEnterpriseUserResponseType(TypedDict):
-    """ScimEnterpriseUserResponse"""
+class PatchSchemaTypeForResponse(TypedDict):
+    """PatchSchema"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseType]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
-    id: str
-    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
-    meta: MetaType
+    operations: list[PatchSchemaPropOperationsItemsTypeForResponse]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
 
 
-class ScimEnterpriseUserResponseTypeForResponse(TypedDict):
-    """ScimEnterpriseUserResponse"""
+class PatchSchemaPropOperationsItemsType(TypedDict):
+    """PatchSchemaPropOperationsItems"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseTypeForResponse]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsTypeForResponse]
-    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
-    id: str
-    groups: NotRequired[
-        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
-    ]
-    meta: MetaTypeForResponse
+    op: Literal["add", "replace", "remove"]
+    path: NotRequired[str]
+    value: NotRequired[str]
 
 
-class ScimEnterpriseUserListType(TypedDict):
-    """ScimEnterpriseUserList"""
+class PatchSchemaPropOperationsItemsTypeForResponse(TypedDict):
+    """PatchSchemaPropOperationsItems"""
 
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: list[ScimEnterpriseUserResponseType]
-    start_index: int
-    items_per_page: int
-
-
-class ScimEnterpriseUserListTypeForResponse(TypedDict):
-    """ScimEnterpriseUserList"""
-
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: list[ScimEnterpriseUserResponseTypeForResponse]
-    start_index: int
-    items_per_page: int
+    op: Literal["add", "replace", "remove"]
+    path: NotRequired[str]
+    value: NotRequired[str]
 
 
 __all__ = (
-    "ScimEnterpriseUserListType",
-    "ScimEnterpriseUserListTypeForResponse",
-    "ScimEnterpriseUserResponseType",
-    "ScimEnterpriseUserResponseTypeForResponse",
+    "PatchSchemaPropOperationsItemsType",
+    "PatchSchemaPropOperationsItemsTypeForResponse",
+    "PatchSchemaType",
+    "PatchSchemaTypeForResponse",
 )

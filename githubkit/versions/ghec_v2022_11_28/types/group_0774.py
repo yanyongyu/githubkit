@@ -13,41 +13,32 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0100 import (
+    OrganizationCustomPropertyType,
+    OrganizationCustomPropertyTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0558 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
 
 
-class WebhookOrganizationDeletedType(TypedDict):
-    """organization deleted event"""
+class WebhookOrganizationCustomPropertyCreatedType(TypedDict):
+    """organization custom property created event"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    membership: NotRequired[WebhooksMembershipType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    action: Literal["created"]
+    definition: OrganizationCustomPropertyType
+    enterprise: EnterpriseWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookOrganizationDeletedTypeForResponse(TypedDict):
-    """organization deleted event"""
+class WebhookOrganizationCustomPropertyCreatedTypeForResponse(TypedDict):
+    """organization custom property created event"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    membership: NotRequired[WebhooksMembershipTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    action: Literal["created"]
+    definition: OrganizationCustomPropertyTypeForResponse
+    enterprise: EnterpriseWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookOrganizationDeletedType",
-    "WebhookOrganizationDeletedTypeForResponse",
+    "WebhookOrganizationCustomPropertyCreatedType",
+    "WebhookOrganizationCustomPropertyCreatedTypeForResponse",
 )

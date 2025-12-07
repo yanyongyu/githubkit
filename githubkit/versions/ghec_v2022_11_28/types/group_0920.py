@@ -9,36 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookStatusPropCommitPropCommitPropAuthorAllof0Type(TypedDict):
-    """Committer
-
-    Metaproperties for Git author/committer information.
-    """
-
-    date: NotRequired[_dt.datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0579 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
 
-class WebhookStatusPropCommitPropCommitPropAuthorAllof0TypeForResponse(TypedDict):
-    """Committer
+class WebhookSponsorshipPendingCancellationType(TypedDict):
+    """sponsorship pending_cancellation event"""
 
-    Metaproperties for Git author/committer information.
-    """
+    action: Literal["pending_cancellation"]
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
-    date: NotRequired[str]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+
+class WebhookSponsorshipPendingCancellationTypeForResponse(TypedDict):
+    """sponsorship pending_cancellation event"""
+
+    action: Literal["pending_cancellation"]
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "WebhookStatusPropCommitPropCommitPropAuthorAllof0Type",
-    "WebhookStatusPropCommitPropCommitPropAuthorAllof0TypeForResponse",
+    "WebhookSponsorshipPendingCancellationType",
+    "WebhookSponsorshipPendingCancellationTypeForResponse",
 )

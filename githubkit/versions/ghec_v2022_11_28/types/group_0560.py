@@ -9,104 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0306 import SimpleCommitType, SimpleCommitTypeForResponse
 
 
-class WebhooksProjectCardType(TypedDict):
-    """Project Card"""
+class MergeGroupType(TypedDict):
+    """Merge Group
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: _dt.datetime
-    creator: Union[WebhooksProjectCardPropCreatorType, None]
-    id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: _dt.datetime
-    url: str
+    A group of pull requests that the merge queue has grouped together to be merged.
+    """
+
+    head_sha: str
+    head_ref: str
+    base_sha: str
+    base_ref: str
+    head_commit: SimpleCommitType
 
 
-class WebhooksProjectCardTypeForResponse(TypedDict):
-    """Project Card"""
+class MergeGroupTypeForResponse(TypedDict):
+    """Merge Group
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: str
-    creator: Union[WebhooksProjectCardPropCreatorTypeForResponse, None]
-    id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: str
-    url: str
+    A group of pull requests that the merge queue has grouped together to be merged.
+    """
 
-
-class WebhooksProjectCardPropCreatorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksProjectCardPropCreatorTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    head_sha: str
+    head_ref: str
+    base_sha: str
+    base_ref: str
+    head_commit: SimpleCommitTypeForResponse
 
 
 __all__ = (
-    "WebhooksProjectCardPropCreatorType",
-    "WebhooksProjectCardPropCreatorTypeForResponse",
-    "WebhooksProjectCardType",
-    "WebhooksProjectCardTypeForResponse",
+    "MergeGroupType",
+    "MergeGroupTypeForResponse",
 )

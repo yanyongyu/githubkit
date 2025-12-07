@@ -9,24 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody"""
-
-    organization_slugs: list[str]
-
-
-class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyTypeForResponse(
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody"""
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00
+    """
 
-    organization_slugs: list[str]
+    message: NotRequired[str]
+    reassigned_resources: NotRequired[
+        Union[
+            list[
+                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType
+            ],
+            None,
+        ]
+    ]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00
+    """
+
+    message: NotRequired[str]
+    reassigned_resources: NotRequired[
+        Union[
+            list[
+                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse
+            ],
+            None,
+        ]
+    ]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00PropReassignedResourcesItems
+    """
+
+    resource_type: NotRequired[str]
+    name: NotRequired[str]
+    previous_cost_center: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00PropReassignedResourcesItems
+    """
+
+    resource_type: NotRequired[str]
+    name: NotRequired[str]
+    previous_cost_center: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType",
-    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse",
 )

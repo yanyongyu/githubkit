@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0482 import (
-    WebhooksProjectChangesType,
-    WebhooksProjectChangesTypeForResponse,
-)
-from .group_0483 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0485 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookProjectsV2ItemArchivedType(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookProjectReopenedType(TypedDict):
+    """project reopened event"""
 
-    action: Literal["archived"]
-    changes: WebhooksProjectChangesType
+    action: Literal["reopened"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project: WebhooksProjectType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ItemArchivedTypeForResponse(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookProjectReopenedTypeForResponse(TypedDict):
+    """project reopened event"""
 
-    action: Literal["archived"]
-    changes: WebhooksProjectChangesTypeForResponse
+    action: Literal["reopened"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_item: ProjectsV2ItemTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project: WebhooksProjectTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectsV2ItemArchivedType",
-    "WebhookProjectsV2ItemArchivedTypeForResponse",
+    "WebhookProjectReopenedType",
+    "WebhookProjectReopenedTypeForResponse",
 )

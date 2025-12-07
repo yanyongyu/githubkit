@@ -9,134 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0695 import (
-    WebhookPackageUpdatedPropPackagePropPackageVersionType,
-    WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse,
-)
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class WebhookPackageUpdatedPropPackageType(TypedDict):
-    """WebhookPackageUpdatedPropPackage
+class WebhookRubygemsMetadataType(TypedDict):
+    """Ruby Gems metadata"""
 
-    Information about the package.
-    """
-
-    created_at: str
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerType, None]
-    package_type: str
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionType
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryType, None]
-    updated_at: str
-
-
-class WebhookPackageUpdatedPropPackageTypeForResponse(TypedDict):
-    """WebhookPackageUpdatedPropPackage
-
-    Information about the package.
-    """
-
-    created_at: str
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse, None]
-    package_type: str
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse, None]
-    updated_at: str
-
-
-class WebhookPackageUpdatedPropPackagePropOwnerType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
     name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    description: NotRequired[str]
+    readme: NotRequired[str]
+    homepage: NotRequired[str]
+    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
+    platform: NotRequired[str]
+    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
+    repo: NotRequired[str]
+    dependencies: NotRequired[list[WebhookRubygemsMetadataPropDependenciesItemsType]]
+    commit_oid: NotRequired[str]
 
 
-class WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse(TypedDict):
-    """User"""
+class WebhookRubygemsMetadataTypeForResponse(TypedDict):
+    """Ruby Gems metadata"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
     name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    description: NotRequired[str]
+    readme: NotRequired[str]
+    homepage: NotRequired[str]
+    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoTypeForResponse]
+    platform: NotRequired[str]
+    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataTypeForResponse]
+    repo: NotRequired[str]
+    dependencies: NotRequired[
+        list[WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse]
+    ]
+    commit_oid: NotRequired[str]
 
 
-class WebhookPackageUpdatedPropPackagePropRegistryType(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
+class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
+    """WebhookRubygemsMetadataPropVersionInfo"""
 
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
+    version: NotRequired[str]
 
 
-class WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
+class WebhookRubygemsMetadataPropVersionInfoTypeForResponse(TypedDict):
+    """WebhookRubygemsMetadataPropVersionInfo"""
 
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
+    version: NotRequired[str]
+
+
+WebhookRubygemsMetadataPropMetadataType: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropMetadata
+"""
+
+
+WebhookRubygemsMetadataPropMetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropMetadata
+"""
+
+
+WebhookRubygemsMetadataPropDependenciesItemsType: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropDependenciesItems
+"""
+
+
+WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropDependenciesItems
+"""
 
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackagePropOwnerType",
-    "WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse",
-    "WebhookPackageUpdatedPropPackagePropRegistryType",
-    "WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse",
-    "WebhookPackageUpdatedPropPackageType",
-    "WebhookPackageUpdatedPropPackageTypeForResponse",
+    "WebhookRubygemsMetadataPropDependenciesItemsType",
+    "WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse",
+    "WebhookRubygemsMetadataPropMetadataType",
+    "WebhookRubygemsMetadataPropMetadataTypeForResponse",
+    "WebhookRubygemsMetadataPropVersionInfoType",
+    "WebhookRubygemsMetadataPropVersionInfoTypeForResponse",
+    "WebhookRubygemsMetadataType",
+    "WebhookRubygemsMetadataTypeForResponse",
 )

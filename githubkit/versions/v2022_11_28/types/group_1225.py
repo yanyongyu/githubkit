@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdProjectsProjectIdPutBodyType(TypedDict):
-    """TeamsTeamIdProjectsProjectIdPutBody"""
+class TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType(TypedDict):
+    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    title: NotRequired[str]
+    body: NotRequired[str]
 
 
-class TeamsTeamIdProjectsProjectIdPutBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdProjectsProjectIdPutBody"""
+class TeamsTeamIdDiscussionsDiscussionNumberPatchBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    title: NotRequired[str]
+    body: NotRequired[str]
 
 
 __all__ = (
-    "TeamsTeamIdProjectsProjectIdPutBodyType",
-    "TeamsTeamIdProjectsProjectIdPutBodyTypeForResponse",
+    "TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType",
+    "TeamsTeamIdDiscussionsDiscussionNumberPatchBodyTypeForResponse",
 )

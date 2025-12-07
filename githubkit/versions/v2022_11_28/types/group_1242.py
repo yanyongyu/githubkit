@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserGpgKeysPostBodyType(TypedDict):
-    """UserGpgKeysPostBody"""
+class UserCodespacesCodespaceNamePublishPostBodyType(TypedDict):
+    """UserCodespacesCodespaceNamePublishPostBody"""
 
     name: NotRequired[str]
-    armored_public_key: str
+    private: NotRequired[bool]
 
 
-class UserGpgKeysPostBodyTypeForResponse(TypedDict):
-    """UserGpgKeysPostBody"""
+class UserCodespacesCodespaceNamePublishPostBodyTypeForResponse(TypedDict):
+    """UserCodespacesCodespaceNamePublishPostBody"""
 
     name: NotRequired[str]
-    armored_public_key: str
+    private: NotRequired[bool]
 
 
 __all__ = (
-    "UserGpgKeysPostBodyType",
-    "UserGpgKeysPostBodyTypeForResponse",
+    "UserCodespacesCodespaceNamePublishPostBodyType",
+    "UserCodespacesCodespaceNamePublishPostBodyTypeForResponse",
 )

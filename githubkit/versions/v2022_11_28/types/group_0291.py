@@ -9,78 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0061 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import TypedDict
 
 
-class CombinedCommitStatusType(TypedDict):
-    """Combined Commit Status
+class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
+    """Codespaces Permissions Check
 
-    Combined Commit Status
+    Permission check result for a given devcontainer config.
     """
 
-    state: str
-    statuses: list[SimpleCommitStatusType]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryType
-    commit_url: str
-    url: str
+    accepted: bool
 
 
-class CombinedCommitStatusTypeForResponse(TypedDict):
-    """Combined Commit Status
+class CodespacesPermissionsCheckForDevcontainerTypeForResponse(TypedDict):
+    """Codespaces Permissions Check
 
-    Combined Commit Status
+    Permission check result for a given devcontainer config.
     """
 
-    state: str
-    statuses: list[SimpleCommitStatusTypeForResponse]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryTypeForResponse
-    commit_url: str
-    url: str
-
-
-class SimpleCommitStatusType(TypedDict):
-    """Simple Commit Status"""
-
-    description: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
-    url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class SimpleCommitStatusTypeForResponse(TypedDict):
-    """Simple Commit Status"""
-
-    description: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
-    url: str
-    created_at: str
-    updated_at: str
+    accepted: bool
 
 
 __all__ = (
-    "CombinedCommitStatusType",
-    "CombinedCommitStatusTypeForResponse",
-    "SimpleCommitStatusType",
-    "SimpleCommitStatusTypeForResponse",
+    "CodespacesPermissionsCheckForDevcontainerType",
+    "CodespacesPermissionsCheckForDevcontainerTypeForResponse",
 )

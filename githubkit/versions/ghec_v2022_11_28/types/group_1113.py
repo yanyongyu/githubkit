@@ -9,38 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0072 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
+
+class OrgsOrgCampaignsCampaignNumberPatchBodyType(TypedDict):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: NotRequired[_dt.datetime]
+    contact_link: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
-    TypedDict
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
+class OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
-
-
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
-
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: NotRequired[str]
+    contact_link: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse",
+    "OrgsOrgCampaignsCampaignNumberPatchBodyType",
+    "OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse",
 )

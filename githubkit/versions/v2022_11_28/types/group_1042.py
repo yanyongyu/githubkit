@@ -9,27 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0228 import ArtifactType, ArtifactTypeForResponse
 
 
-class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class ReposOwnerRepoActionsArtifactsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsArtifactsGetResponse200"""
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    total_count: int
+    artifacts: list[ArtifactType]
 
 
-class ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsArtifactsGetResponse200"""
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    total_count: int
+    artifacts: list[ArtifactTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsPermissionsPutBodyType",
-    "ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse",
+    "ReposOwnerRepoActionsArtifactsGetResponse200Type",
+    "ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse",
 )

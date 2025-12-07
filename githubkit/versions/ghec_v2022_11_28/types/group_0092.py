@@ -12,74 +12,41 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0081 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
+from .group_0088 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
 
-class EnterpriseUserRoleAssignmentType(TypedDict):
-    """An Enterprise Role Assignment for a User
+class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
+    """DependabotAlertWithRepositoryPropDependency
 
-    The Relationship a User has with a role in an enterprise context.
+    Details for the vulnerable dependency.
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[EnterpriseTeamType]]
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    ]
 
 
-class EnterpriseUserRoleAssignmentTypeForResponse(TypedDict):
-    """An Enterprise Role Assignment for a User
+class DependabotAlertWithRepositoryPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertWithRepositoryPropDependency
 
-    The Relationship a User has with a role in an enterprise context.
+    Details for the vulnerable dependency.
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[EnterpriseTeamTypeForResponse]]
+    package: NotRequired[DependabotAlertPackageTypeForResponse]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    ]
 
 
 __all__ = (
-    "EnterpriseUserRoleAssignmentType",
-    "EnterpriseUserRoleAssignmentTypeForResponse",
+    "DependabotAlertWithRepositoryPropDependencyType",
+    "DependabotAlertWithRepositoryPropDependencyTypeForResponse",
 )

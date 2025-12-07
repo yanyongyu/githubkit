@@ -9,58 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0501 import WebhooksTeam1Type, WebhooksTeam1TypeForResponse
 
 
-class WebhookWorkflowDispatchType(TypedDict):
-    """workflow_dispatch event"""
+class WebhookTeamAddType(TypedDict):
+    """team_add event"""
 
     enterprise: NotRequired[EnterpriseWebhooksType]
-    inputs: Union[WebhookWorkflowDispatchPropInputsType, None]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
-    workflow: str
+    team: WebhooksTeam1Type
 
 
-class WebhookWorkflowDispatchTypeForResponse(TypedDict):
-    """workflow_dispatch event"""
+class WebhookTeamAddTypeForResponse(TypedDict):
+    """team_add event"""
 
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    inputs: Union[WebhookWorkflowDispatchPropInputsTypeForResponse, None]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: str
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    workflow: str
-
-
-WebhookWorkflowDispatchPropInputsType: TypeAlias = dict[str, Any]
-"""WebhookWorkflowDispatchPropInputs
-"""
-
-
-WebhookWorkflowDispatchPropInputsTypeForResponse: TypeAlias = dict[str, Any]
-"""WebhookWorkflowDispatchPropInputs
-"""
+    team: WebhooksTeam1TypeForResponse
 
 
 __all__ = (
-    "WebhookWorkflowDispatchPropInputsType",
-    "WebhookWorkflowDispatchPropInputsTypeForResponse",
-    "WebhookWorkflowDispatchType",
-    "WebhookWorkflowDispatchTypeForResponse",
+    "WebhookTeamAddType",
+    "WebhookTeamAddTypeForResponse",
 )

@@ -9,21 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CredentialsRevokePostBody(GitHubModel):
-    """CredentialsRevokePostBody"""
-
-    credentials: list[str] = Field(
-        max_length=1000 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="A list of credentials to be revoked, up to 1000 per request.",
-    )
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202(GitHubModel):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-model_rebuild(CredentialsRevokePostBody)
+model_rebuild(AppHookDeliveriesDeliveryIdAttemptsPostResponse202)
 
-__all__ = ("CredentialsRevokePostBody",)
+__all__ = ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202",)

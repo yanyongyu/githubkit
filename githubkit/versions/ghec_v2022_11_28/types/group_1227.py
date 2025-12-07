@@ -9,93 +9,110 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAttestationsPostBodyType(TypedDict):
-    """ReposOwnerRepoAttestationsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
 
-    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType
+    dismissal_restrictions: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
+    ]
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    bypass_pull_request_allowances: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
+    ]
 
 
-class ReposOwnerRepoAttestationsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoAttestationsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
 
-    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse
+    dismissal_restrictions: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse
+    ]
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    bypass_pull_request_allowances: NotRequired[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse
+    ]
 
 
-class ReposOwnerRepoAttestationsPostBodyPropBundleType(TypedDict):
-    """ReposOwnerRepoAttestationsPostBodyPropBundle
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
+    missalRestrictions
 
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
+    empty `dismissal_restrictions` object to disable. User and team
+    `dismissal_restrictions` are only available for organization-owned repositories.
+    Omit this parameter for personal repositories.
     """
 
-    media_type: NotRequired[str]
-    verification_material: NotRequired[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType
-    ]
-    dsse_envelope: NotRequired[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType
-    ]
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
 
 
-class ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse(TypedDict):
-    """ReposOwnerRepoAttestationsPostBodyPropBundle
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
+    missalRestrictions
 
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
+    empty `dismissal_restrictions` object to disable. User and team
+    `dismissal_restrictions` are only available for organization-owned repositories.
+    Omit this parameter for personal repositories.
     """
 
-    media_type: NotRequired[str]
-    verification_material: NotRequired[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse
-    ]
-    dsse_envelope: NotRequired[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse
-    ]
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
 
 
-ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType: TypeAlias = (
-    dict[str, Any]
-)
-"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
-"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
+    assPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
 
 
-ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
-"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
+    assPullRequestAllowances
 
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
 
-ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
-"""
-
-
-ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
-"""
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse",
-    "ReposOwnerRepoAttestationsPostBodyPropBundleType",
-    "ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse",
-    "ReposOwnerRepoAttestationsPostBodyType",
-    "ReposOwnerRepoAttestationsPostBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyTypeForResponse",
 )

@@ -9,36 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0222 import RateLimitType, RateLimitTypeForResponse
-from .group_0224 import (
-    RateLimitOverviewPropResourcesType,
-    RateLimitOverviewPropResourcesTypeForResponse,
-)
 
+class TeamMembershipType(TypedDict):
+    """Team Membership
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
-
-    Rate Limit Overview
+    Team Membership
     """
 
-    resources: RateLimitOverviewPropResourcesType
-    rate: RateLimitType
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
-class RateLimitOverviewTypeForResponse(TypedDict):
-    """Rate Limit Overview
+class TeamMembershipTypeForResponse(TypedDict):
+    """Team Membership
 
-    Rate Limit Overview
+    Team Membership
     """
 
-    resources: RateLimitOverviewPropResourcesTypeForResponse
-    rate: RateLimitTypeForResponse
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
 __all__ = (
-    "RateLimitOverviewType",
-    "RateLimitOverviewTypeForResponse",
+    "TeamMembershipType",
+    "TeamMembershipTypeForResponse",
 )

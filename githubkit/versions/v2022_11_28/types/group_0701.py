@@ -9,40 +9,150 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0702 import WebhookPingPropHookType, WebhookPingPropHookTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookPingType(TypedDict):
-    """WebhookPing"""
+class WebhookPageBuildType(TypedDict):
+    """page_build event"""
 
-    hook: NotRequired[WebhookPingPropHookType]
-    hook_id: NotRequired[int]
+    build: WebhookPageBuildPropBuildType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    id: int
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
-    zen: NotRequired[str]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookPingTypeForResponse(TypedDict):
-    """WebhookPing"""
+class WebhookPageBuildTypeForResponse(TypedDict):
+    """page_build event"""
 
-    hook: NotRequired[WebhookPingPropHookTypeForResponse]
-    hook_id: NotRequired[int]
+    build: WebhookPageBuildPropBuildTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    id: int
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
-    zen: NotRequired[str]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookPageBuildPropBuildType(TypedDict):
+    """WebhookPageBuildPropBuild
+
+    The [List GitHub Pages builds](https://docs.github.com/rest/pages/pages#list-
+    github-pages-builds) itself.
+    """
+
+    commit: Union[str, None]
+    created_at: str
+    duration: int
+    error: WebhookPageBuildPropBuildPropErrorType
+    pusher: Union[WebhookPageBuildPropBuildPropPusherType, None]
+    status: str
+    updated_at: str
+    url: str
+
+
+class WebhookPageBuildPropBuildTypeForResponse(TypedDict):
+    """WebhookPageBuildPropBuild
+
+    The [List GitHub Pages builds](https://docs.github.com/rest/pages/pages#list-
+    github-pages-builds) itself.
+    """
+
+    commit: Union[str, None]
+    created_at: str
+    duration: int
+    error: WebhookPageBuildPropBuildPropErrorTypeForResponse
+    pusher: Union[WebhookPageBuildPropBuildPropPusherTypeForResponse, None]
+    status: str
+    updated_at: str
+    url: str
+
+
+class WebhookPageBuildPropBuildPropErrorType(TypedDict):
+    """WebhookPageBuildPropBuildPropError"""
+
+    message: Union[str, None]
+
+
+class WebhookPageBuildPropBuildPropErrorTypeForResponse(TypedDict):
+    """WebhookPageBuildPropBuildPropError"""
+
+    message: Union[str, None]
+
+
+class WebhookPageBuildPropBuildPropPusherType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPageBuildPropBuildPropPusherTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookPingType",
-    "WebhookPingTypeForResponse",
+    "WebhookPageBuildPropBuildPropErrorType",
+    "WebhookPageBuildPropBuildPropErrorTypeForResponse",
+    "WebhookPageBuildPropBuildPropPusherType",
+    "WebhookPageBuildPropBuildPropPusherTypeForResponse",
+    "WebhookPageBuildPropBuildType",
+    "WebhookPageBuildPropBuildTypeForResponse",
+    "WebhookPageBuildType",
+    "WebhookPageBuildTypeForResponse",
 )

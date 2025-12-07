@@ -9,54 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0251 import GitUserType, GitUserTypeForResponse
-from .group_0252 import VerificationType, VerificationTypeForResponse
+from .group_0254 import BranchProtectionType, BranchProtectionTypeForResponse
 
 
-class CommitPropCommitType(TypedDict):
-    """CommitPropCommit"""
+class ShortBranchType(TypedDict):
+    """Short Branch
 
-    url: str
-    author: Union[None, GitUserType]
-    committer: Union[None, GitUserType]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeType
-    verification: NotRequired[VerificationType]
+    Short Branch
+    """
 
-
-class CommitPropCommitTypeForResponse(TypedDict):
-    """CommitPropCommit"""
-
-    url: str
-    author: Union[None, GitUserTypeForResponse]
-    committer: Union[None, GitUserTypeForResponse]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeTypeForResponse
-    verification: NotRequired[VerificationTypeForResponse]
+    name: str
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
 
 
-class CommitPropCommitPropTreeType(TypedDict):
-    """CommitPropCommitPropTree"""
+class ShortBranchTypeForResponse(TypedDict):
+    """Short Branch
+
+    Short Branch
+    """
+
+    name: str
+    commit: ShortBranchPropCommitTypeForResponse
+    protected: bool
+    protection: NotRequired[BranchProtectionTypeForResponse]
+    protection_url: NotRequired[str]
+
+
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
 
     sha: str
     url: str
 
 
-class CommitPropCommitPropTreeTypeForResponse(TypedDict):
-    """CommitPropCommitPropTree"""
+class ShortBranchPropCommitTypeForResponse(TypedDict):
+    """ShortBranchPropCommit"""
 
     sha: str
     url: str
 
 
 __all__ = (
-    "CommitPropCommitPropTreeType",
-    "CommitPropCommitPropTreeTypeForResponse",
-    "CommitPropCommitType",
-    "CommitPropCommitTypeForResponse",
+    "ShortBranchPropCommitType",
+    "ShortBranchPropCommitTypeForResponse",
+    "ShortBranchType",
+    "ShortBranchTypeForResponse",
 )

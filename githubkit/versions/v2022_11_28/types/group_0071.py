@@ -9,82 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageSummaryReportOrgType(TypedDict):
-    """BillingUsageSummaryReportOrg"""
+class GetBudgetType(TypedDict):
+    """GetBudget"""
 
-    time_period: BillingUsageSummaryReportOrgPropTimePeriodType
-    organization: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsType]
-
-
-class BillingUsageSummaryReportOrgTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportOrg"""
-
-    time_period: BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse
-    organization: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse]
+    id: str
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
+    budget_entity_name: str
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_product_sku: str
+    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_alerting: GetBudgetPropBudgetAlertingType
 
 
-class BillingUsageSummaryReportOrgPropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportOrgPropTimePeriod"""
+class GetBudgetTypeForResponse(TypedDict):
+    """GetBudget"""
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportOrgPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    id: str
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
+    budget_entity_name: str
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_product_sku: str
+    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
 
 
-class BillingUsageSummaryReportOrgPropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
+class GetBudgetPropBudgetAlertingType(TypedDict):
+    """GetBudgetPropBudgetAlerting"""
 
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
-class BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
+class GetBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """GetBudgetPropBudgetAlerting"""
 
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "BillingUsageSummaryReportOrgPropTimePeriodType",
-    "BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse",
-    "BillingUsageSummaryReportOrgPropUsageItemsItemsType",
-    "BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse",
-    "BillingUsageSummaryReportOrgType",
-    "BillingUsageSummaryReportOrgTypeForResponse",
+    "GetBudgetPropBudgetAlertingType",
+    "GetBudgetPropBudgetAlertingTypeForResponse",
+    "GetBudgetType",
+    "GetBudgetTypeForResponse",
 )

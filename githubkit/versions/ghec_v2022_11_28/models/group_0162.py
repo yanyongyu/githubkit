@@ -9,27 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0163 import RepositoryRuleMergeQueuePropParameters
+
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId(GitHubModel):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
+
+    repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass.",
+    )
 
 
-class RepositoryRuleMergeQueue(GitHubModel):
-    """merge_queue
+model_rebuild(RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId)
 
-    Merges must be performed via a merge queue.
-    """
-
-    type: Literal["merge_queue"] = Field()
-    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
-
-
-model_rebuild(RepositoryRuleMergeQueue)
-
-__all__ = ("RepositoryRuleMergeQueue",)
+__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId",)

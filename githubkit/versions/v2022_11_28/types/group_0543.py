@@ -13,47 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0240 import DeploymentType, DeploymentTypeForResponse
-from .group_0367 import PullRequestType, PullRequestTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0308 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
-    """deployment protection rule requested event"""
+class WebhookDependabotAlertReintroducedType(TypedDict):
+    """Dependabot alert reintroduced event"""
 
-    action: Literal["requested"]
-    environment: NotRequired[str]
-    event: NotRequired[str]
-    deployment_callback_url: NotRequired[str]
-    deployment: NotRequired[DeploymentType]
-    pull_requests: NotRequired[list[PullRequestType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    action: Literal["reintroduced"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
-    sender: NotRequired[SimpleUserType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookDeploymentProtectionRuleRequestedTypeForResponse(TypedDict):
-    """deployment protection rule requested event"""
+class WebhookDependabotAlertReintroducedTypeForResponse(TypedDict):
+    """Dependabot alert reintroduced event"""
 
-    action: Literal["requested"]
-    environment: NotRequired[str]
-    event: NotRequired[str]
-    deployment_callback_url: NotRequired[str]
-    deployment: NotRequired[DeploymentTypeForResponse]
-    pull_requests: NotRequired[list[PullRequestTypeForResponse]]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    action: Literal["reintroduced"]
+    alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDeploymentProtectionRuleRequestedType",
-    "WebhookDeploymentProtectionRuleRequestedTypeForResponse",
+    "WebhookDependabotAlertReintroducedType",
+    "WebhookDependabotAlertReintroducedTypeForResponse",
 )

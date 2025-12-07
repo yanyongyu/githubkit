@@ -12,41 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    labels: NotRequired[
-        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
-    ]
+    assignees: NotRequired[list[str]]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    labels: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
-
-    name: str
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
-
-    name: str
+    assignees: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyTypeForResponse",
 )

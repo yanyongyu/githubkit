@@ -13,41 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0371 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0105 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertAutoReopenedType(TypedDict):
-    """Dependabot alert auto-reopened event"""
+class WebhookCustomPropertyUpdatedType(TypedDict):
+    """custom property updated event"""
 
-    action: Literal["auto_reopened"]
-    alert: DependabotAlertType
+    action: Literal["updated"]
+    definition: CustomPropertyType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDependabotAlertAutoReopenedTypeForResponse(TypedDict):
-    """Dependabot alert auto-reopened event"""
+class WebhookCustomPropertyUpdatedTypeForResponse(TypedDict):
+    """custom property updated event"""
 
-    action: Literal["auto_reopened"]
-    alert: DependabotAlertTypeForResponse
+    action: Literal["updated"]
+    definition: CustomPropertyTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookDependabotAlertAutoReopenedType",
-    "WebhookDependabotAlertAutoReopenedTypeForResponse",
+    "WebhookCustomPropertyUpdatedType",
+    "WebhookCustomPropertyUpdatedTypeForResponse",
 )

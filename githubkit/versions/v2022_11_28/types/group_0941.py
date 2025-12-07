@@ -9,33 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0094 import (
-    ArtifactDeploymentRecordType,
-    ArtifactDeploymentRecordTypeForResponse,
-)
+
+class OrgsOrgActionsVariablesPostBodyType(TypedDict):
+    """OrgsOrgActionsVariablesPostBody"""
+
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
+class OrgsOrgActionsVariablesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsVariablesPostBody"""
 
-    total_count: NotRequired[int]
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
-
-    total_count: NotRequired[int]
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse",
+    "OrgsOrgActionsVariablesPostBodyType",
+    "OrgsOrgActionsVariablesPostBodyTypeForResponse",
 )

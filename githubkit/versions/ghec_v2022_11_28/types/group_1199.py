@@ -9,23 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsProjectIdCollaboratorsUsernamePutBodyType(TypedDict):
-    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
 
 
-class ProjectsProjectIdCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
-    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
 
 
 __all__ = (
-    "ProjectsProjectIdCollaboratorsUsernamePutBodyType",
-    "ProjectsProjectIdCollaboratorsUsernamePutBodyTypeForResponse",
+    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
+    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse",
 )

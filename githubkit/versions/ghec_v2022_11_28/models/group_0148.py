@@ -17,22 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0149 import RepositoryRuleFileExtensionRestrictionPropParameters
+from .group_0149 import RepositoryRuleMaxFilePathLengthPropParameters
 
 
-class RepositoryRuleFileExtensionRestriction(GitHubModel):
-    """file_extension_restriction
+class RepositoryRuleMaxFilePathLength(GitHubModel):
+    """max_file_path_length
 
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
     """
 
-    type: Literal["file_extension_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFileExtensionRestrictionPropParameters] = Field(
+    type: Literal["max_file_path_length"] = Field()
+    parameters: Missing[RepositoryRuleMaxFilePathLengthPropParameters] = Field(
         default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleFileExtensionRestriction)
+model_rebuild(RepositoryRuleMaxFilePathLength)
 
-__all__ = ("RepositoryRuleFileExtensionRestriction",)
+__all__ = ("RepositoryRuleMaxFilePathLength",)

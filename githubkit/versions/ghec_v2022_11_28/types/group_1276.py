@@ -9,76 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class ReposOwnerRepoContentsPathDeleteBodyType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBody"""
+class ReposOwnerRepoDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoDeploymentsPostBody"""
 
-    message: str
-    sha: str
-    branch: NotRequired[str]
-    committer: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropCommitterType]
-    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBody"""
-
-    message: str
-    sha: str
-    branch: NotRequired[str]
-    committer: NotRequired[
-        ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse
+    ref: str
+    task: NotRequired[str]
+    auto_merge: NotRequired[bool]
+    required_contexts: NotRequired[list[str]]
+    payload: NotRequired[
+        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
     ]
-    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse]
+    environment: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+class ReposOwnerRepoDeploymentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoDeploymentsPostBody"""
 
-    object containing information about the committer.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
-
-    object containing information about the committer.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
+    ref: str
+    task: NotRequired[str]
+    auto_merge: NotRequired[bool]
+    required_contexts: NotRequired[list[str]]
+    payload: NotRequired[
+        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse, str]
+    ]
+    environment: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
-
-    object containing information about the author.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
+ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type: TypeAlias = dict[str, Any]
+"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
+"""
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
-
-    object containing information about the author.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
+ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse",
-    "ReposOwnerRepoContentsPathDeleteBodyType",
-    "ReposOwnerRepoContentsPathDeleteBodyTypeForResponse",
+    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type",
+    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse",
+    "ReposOwnerRepoDeploymentsPostBodyType",
+    "ReposOwnerRepoDeploymentsPostBodyTypeForResponse",
 )

@@ -13,45 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0561 import WebhooksMilestone3Type, WebhooksMilestone3TypeForResponse
 
 
-class WebhookOrganizationCustomPropertyDeletedType(TypedDict):
-    """organization custom property deleted event"""
+class WebhookMilestoneOpenedType(TypedDict):
+    """milestone opened event"""
 
-    action: Literal["deleted"]
-    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionType
-    enterprise: EnterpriseWebhooksType
+    action: Literal["opened"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    sender: NotRequired[SimpleUserType]
+    milestone: WebhooksMilestone3Type
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookOrganizationCustomPropertyDeletedTypeForResponse(TypedDict):
-    """organization custom property deleted event"""
+class WebhookMilestoneOpenedTypeForResponse(TypedDict):
+    """milestone opened event"""
 
-    action: Literal["deleted"]
-    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse
-    enterprise: EnterpriseWebhooksTypeForResponse
+    action: Literal["opened"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
-
-
-class WebhookOrganizationCustomPropertyDeletedPropDefinitionType(TypedDict):
-    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
-
-    property_name: str
-
-
-class WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse(TypedDict):
-    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
-
-    property_name: str
+    milestone: WebhooksMilestone3TypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookOrganizationCustomPropertyDeletedPropDefinitionType",
-    "WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse",
-    "WebhookOrganizationCustomPropertyDeletedType",
-    "WebhookOrganizationCustomPropertyDeletedTypeForResponse",
+    "WebhookMilestoneOpenedType",
+    "WebhookMilestoneOpenedTypeForResponse",
 )

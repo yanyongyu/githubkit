@@ -9,23 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody"""
+class OrgsOrgSettingsImmutableReleasesRepositoriesPutBody(GitHubModel):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion."
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints."
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody)
+model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesPutBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody",)
+__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBody",)

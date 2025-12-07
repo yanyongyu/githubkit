@@ -9,77 +9,119 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Literal
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-
-class OrgsOrgAttestationsBulkListPostResponse200Type(TypedDict):
-    """OrgsOrgAttestationsBulkListPostResponse200"""
-
-    attestations_subject_digests: NotRequired[
-        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
-    ]
-    page_info: NotRequired[OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType]
+from githubkit.typing import UniqueList
 
 
-class OrgsOrgAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsBulkListPostResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
 
-    attestations_subject_digests: NotRequired[
-        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
-    ]
-    page_info: NotRequired[
-        OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
+    logical_environment: NotRequired[str]
+    physical_environment: NotRequired[str]
+    deployments: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
+        ]
     ]
 
 
-OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
+
+    logical_environment: NotRequired[str]
+    physical_environment: NotRequired[str]
+    deployments: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    ms
+    """
+
+    name: NotRequired[str]
+    digest: NotRequired[str]
+    version: NotRequired[str]
+    status: NotRequired[Literal["deployed", "decommissioned"]]
+    deployment_name: NotRequired[str]
+    github_repository: NotRequired[str]
+    tags: NotRequired[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType
+    ]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    ms
+    """
+
+    name: NotRequired[str]
+    digest: NotRequired[str]
+    version: NotRequired[str]
+    status: NotRequired[Literal["deployed", "decommissioned"]]
+    deployment_name: NotRequired[str]
+    github_repository: NotRequired[str]
+    tags: NotRequired[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse
+    ]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+
+
+OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType: TypeAlias = dict[
     str, Any
 ]
-"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+msPropTags
 
-Mapping of subject digest to bundles.
+Key-value pairs to tag the deployment record.
 """
 
 
-OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
+OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse: TypeAlias = dict[
     str, Any
 ]
-"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+msPropTags
 
-Mapping of subject digest to bundles.
+Key-value pairs to tag the deployment record.
 """
-
-
-class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
-    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
-
-    Information about the current page.
-    """
-
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
-
-
-class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(TypedDict):
-    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
-
-    Information about the current page.
-    """
-
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
-    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
-    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType",
-    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
-    "OrgsOrgAttestationsBulkListPostResponse200Type",
-    "OrgsOrgAttestationsBulkListPostResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse",
 )

@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    body: str
+    pattern_config_version: NotRequired[str]
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyTypeForResponse(
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody"""
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    body: str
+    pattern_config_version: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType",
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyTypeForResponse",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
 )

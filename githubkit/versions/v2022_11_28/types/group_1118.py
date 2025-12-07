@@ -9,70 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0312 import (
-    DeploymentBranchPolicySettingsType,
-    DeploymentBranchPolicySettingsTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
+class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type(TypedDict):
+    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
 
-    wait_timer: NotRequired[int]
-    prevent_self_review: NotRequired[bool]
-    reviewers: NotRequired[
-        Union[
-            list[
-                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
-            ],
-            None,
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
+    id: int
+    created_at: str
+    result: str
+    message: str
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
+class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse(TypedDict):
+    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
 
-    wait_timer: NotRequired[int]
-    prevent_self_review: NotRequired[bool]
-    reviewers: NotRequired[
-        Union[
-            list[
-                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse
-            ],
-            None,
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
-    ]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
-
-    type: NotRequired[Literal["User", "Team"]]
-    id: NotRequired[int]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
-
-    type: NotRequired[Literal["User", "Team"]]
-    id: NotRequired[int]
+    id: int
+    created_at: str
+    result: str
+    message: str
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse",
+    "ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type",
+    "ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse",
 )

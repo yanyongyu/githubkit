@@ -9,24 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoPullsPullNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    enabled: bool
+    title: NotRequired[str]
+    body: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    enabled: bool
+    title: NotRequired[str]
+    body: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",
-    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberPatchBodyType",
+    "ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse",
 )

@@ -12,18 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
 
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str] = Field(description="The username for users")
+    bypass_review_id: Missing[int] = Field(
+        default=UNSET, description="ID of the bypass review."
+    )
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody)
+model_rebuild(
+    ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200
+)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody",)
+__all__ = (
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200",
+)

@@ -9,38 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class NetworkConfigurationType(TypedDict):
-    """Hosted compute network configuration
-
-    A hosted compute network configuration.
-    """
-
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    created_on: Union[_dt.datetime, None]
+from .group_0083 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
 
 
-class NetworkConfigurationTypeForResponse(TypedDict):
-    """Hosted compute network configuration
+class EnterpriseUserRoleAssignmentAllof1Type(TypedDict):
+    """EnterpriseUserRoleAssignmentAllof1"""
 
-    A hosted compute network configuration.
-    """
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[EnterpriseTeamType]]
 
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    created_on: Union[str, None]
+
+class EnterpriseUserRoleAssignmentAllof1TypeForResponse(TypedDict):
+    """EnterpriseUserRoleAssignmentAllof1"""
+
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[EnterpriseTeamTypeForResponse]]
 
 
 __all__ = (
-    "NetworkConfigurationType",
-    "NetworkConfigurationTypeForResponse",
+    "EnterpriseUserRoleAssignmentAllof1Type",
+    "EnterpriseUserRoleAssignmentAllof1TypeForResponse",
 )

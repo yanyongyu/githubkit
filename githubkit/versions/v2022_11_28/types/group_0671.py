@@ -13,41 +13,146 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0459 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0477 import (
+    WebhooksMarketplacePurchaseType,
+    WebhooksMarketplacePurchaseTypeForResponse,
+)
 
 
-class WebhookMemberRemovedType(TypedDict):
-    """member removed event"""
+class WebhookMarketplacePurchasePendingChangeType(TypedDict):
+    """marketplace_purchase pending_change event"""
 
-    action: Literal["removed"]
+    action: Literal["pending_change"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
+    marketplace_purchase: WebhooksMarketplacePurchaseType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    previous_marketplace_purchase: NotRequired[
+        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType
+    ]
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookMemberRemovedTypeForResponse(TypedDict):
-    """member removed event"""
+class WebhookMarketplacePurchasePendingChangeTypeForResponse(TypedDict):
+    """marketplace_purchase pending_change event"""
 
-    action: Literal["removed"]
+    action: Literal["pending_change"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    member: Union[WebhooksUserTypeForResponse, None]
+    marketplace_purchase: WebhooksMarketplacePurchaseTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    previous_marketplace_purchase: NotRequired[
+        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseTypeForResponse
+    ]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType(
+    TypedDict
+):
+    """Marketplace Purchase"""
+
+    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType
+    unit_count: int
+
+
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseTypeForResponse(
+    TypedDict
+):
+    """Marketplace Purchase"""
+
+    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountTypeForResponse
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanTypeForResponse
+    unit_count: int
+
+
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccoun
+    t
+    """
+
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
+
+
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountTypeForResponse(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccoun
+    t
+    """
+
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
+
+
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan"""
+
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
+
+
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanTypeForResponse(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan"""
+
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
+
+
 __all__ = (
-    "WebhookMemberRemovedType",
-    "WebhookMemberRemovedTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangeType",
+    "WebhookMarketplacePurchasePendingChangeTypeForResponse",
 )

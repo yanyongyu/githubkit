@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0103 import CodespaceType, CodespaceTypeForResponse
+
+class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType(TypedDict):
+    """TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody"""
+
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-class UserCodespacesGetResponse200Type(TypedDict):
-    """UserCodespacesGetResponse200"""
+class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody"""
 
-    total_count: int
-    codespaces: list[CodespaceType]
-
-
-class UserCodespacesGetResponse200TypeForResponse(TypedDict):
-    """UserCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
 __all__ = (
-    "UserCodespacesGetResponse200Type",
-    "UserCodespacesGetResponse200TypeForResponse",
+    "TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType",
+    "TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyTypeForResponse",
 )

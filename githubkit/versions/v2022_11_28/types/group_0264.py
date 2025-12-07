@@ -9,70 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0061 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0100 import TeamType, TeamTypeForResponse
 
 
-class CheckSuitePreferenceType(TypedDict):
-    """Check Suite Preference
-
-    Check suite configuration preferences for a repository.
-    """
-
-    preferences: CheckSuitePreferencePropPreferencesType
-    repository: MinimalRepositoryType
-
-
-class CheckSuitePreferenceTypeForResponse(TypedDict):
-    """Check Suite Preference
-
-    Check suite configuration preferences for a repository.
-    """
-
-    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
-    repository: MinimalRepositoryTypeForResponse
-
-
-class CheckSuitePreferencePropPreferencesType(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
-    ]
-
-
-class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
-        list[
-            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
-        ]
-    ]
-
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
-
-    app_id: int
-    setting: bool
-
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
     TypedDict
 ):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-    app_id: int
-    setting: bool
+    url: str
+    users_url: str
+    teams_url: str
+    users: list[SimpleUserType]
+    teams: list[TeamType]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
+
+
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+
+    url: str
+    users_url: str
+    teams_url: str
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+
+
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+
+    users: list[SimpleUserType]
+    teams: list[TeamType]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
+
+
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
 
 
 __all__ = (
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
-    "CheckSuitePreferencePropPreferencesType",
-    "CheckSuitePreferencePropPreferencesTypeForResponse",
-    "CheckSuitePreferenceType",
-    "CheckSuitePreferenceTypeForResponse",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse",
 )

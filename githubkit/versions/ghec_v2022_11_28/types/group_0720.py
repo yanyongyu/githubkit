@@ -9,51 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0550 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
-from .group_0721 import (
-    WebhookIssuesDemilestonedPropIssueType,
-    WebhookIssuesDemilestonedPropIssueTypeForResponse,
+from .group_0714 import (
+    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
 )
 
 
-class WebhookIssuesDemilestonedType(TypedDict):
-    """issues demilestoned event"""
+class WebhookIssuesClosedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedMilestone"""
 
-    action: Literal["demilestoned"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesDemilestonedPropIssueType
-    milestone: NotRequired[WebhooksMilestoneType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhookIssuesDemilestonedTypeForResponse(TypedDict):
-    """issues demilestoned event"""
+class WebhookIssuesClosedPropIssueMergedMilestoneTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedMilestone"""
 
-    action: Literal["demilestoned"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesDemilestonedPropIssueTypeForResponse
-    milestone: NotRequired[WebhooksMilestoneTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse, None
+    ]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookIssuesDemilestonedType",
-    "WebhookIssuesDemilestonedTypeForResponse",
+    "WebhookIssuesClosedPropIssueMergedMilestoneType",
+    "WebhookIssuesClosedPropIssueMergedMilestoneTypeForResponse",
 )

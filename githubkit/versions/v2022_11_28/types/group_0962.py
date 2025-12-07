@@ -9,26 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0103 import CodespaceType, CodespaceTypeForResponse
-
-
-class OrgsOrgCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceType]
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodespacesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCodespacesGetResponse200"""
+class OrgsOrgCampaignsCampaignNumberPatchBodyType(TypedDict):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
 
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: NotRequired[_dt.datetime]
+    contact_link: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
+
+
+class OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: NotRequired[str]
+    contact_link: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
 
 
 __all__ = (
-    "OrgsOrgCodespacesGetResponse200Type",
-    "OrgsOrgCodespacesGetResponse200TypeForResponse",
+    "OrgsOrgCampaignsCampaignNumberPatchBodyType",
+    "OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse",
 )

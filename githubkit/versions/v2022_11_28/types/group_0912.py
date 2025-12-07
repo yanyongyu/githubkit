@@ -9,30 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-
-
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type(
-    TypedDict
-):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
-
-    total_count: NotRequired[int]
-    repositories: NotRequired[list[RepositoryType]]
+from .group_0078 import (
+    ActionsHostedRunnerMachineSpecType,
+    ActionsHostedRunnerMachineSpecTypeForResponse,
+)
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
 
-    total_count: NotRequired[int]
-    repositories: NotRequired[list[RepositoryTypeForResponse]]
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecType]
+
+
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",
-    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
 )

@@ -13,36 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0183 import (
-    RepositoryRuleMaxFilePathLengthPropParametersType,
-    RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
+    RepositoryRuleBranchNamePatternPropParametersType,
+    RepositoryRuleBranchNamePatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleMaxFilePathLengthType(TypedDict):
-    """max_file_path_length
+class RepositoryRuleBranchNamePatternType(TypedDict):
+    """branch_name_pattern
 
-    Prevent commits that include file paths that exceed the specified character
-    limit from being pushed to the commit graph.
+    Parameters to be used for the branch_name_pattern rule
     """
 
-    type: Literal["max_file_path_length"]
-    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
 
 
-class RepositoryRuleMaxFilePathLengthTypeForResponse(TypedDict):
-    """max_file_path_length
+class RepositoryRuleBranchNamePatternTypeForResponse(TypedDict):
+    """branch_name_pattern
 
-    Prevent commits that include file paths that exceed the specified character
-    limit from being pushed to the commit graph.
+    Parameters to be used for the branch_name_pattern rule
     """
 
-    type: Literal["max_file_path_length"]
+    type: Literal["branch_name_pattern"]
     parameters: NotRequired[
-        RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse
+        RepositoryRuleBranchNamePatternPropParametersTypeForResponse
     ]
 
 
 __all__ = (
-    "RepositoryRuleMaxFilePathLengthType",
-    "RepositoryRuleMaxFilePathLengthTypeForResponse",
+    "RepositoryRuleBranchNamePatternType",
+    "RepositoryRuleBranchNamePatternTypeForResponse",
 )

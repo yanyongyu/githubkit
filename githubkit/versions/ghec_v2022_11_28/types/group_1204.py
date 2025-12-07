@@ -12,27 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
 
-    Actions OIDC subject customization for a repository
-    """
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
 
+class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
-    """Actions OIDC subject customization for a repository
-
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse",
+    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",
+    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
 )

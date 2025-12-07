@@ -9,98 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
+from .group_0206 import (
+    RulesetVersionPropActorType,
+    RulesetVersionPropActorTypeForResponse,
+)
 
-class SecretScanningLocationIssueTitleType(TypedDict):
-    """SecretScanningLocationIssueTitle
 
-    Represents an 'issue_title' secret scanning location type. This location type
-    shows that a secret was detected in the title of an issue.
+class RulesetVersionType(TypedDict):
+    """Ruleset version
+
+    The historical version of a ruleset
     """
 
-    issue_title_url: str
+    version_id: int
+    actor: RulesetVersionPropActorType
+    updated_at: _dt.datetime
 
 
-class SecretScanningLocationIssueTitleTypeForResponse(TypedDict):
-    """SecretScanningLocationIssueTitle
+class RulesetVersionTypeForResponse(TypedDict):
+    """Ruleset version
 
-    Represents an 'issue_title' secret scanning location type. This location type
-    shows that a secret was detected in the title of an issue.
+    The historical version of a ruleset
     """
 
-    issue_title_url: str
-
-
-class SecretScanningLocationIssueCommentType(TypedDict):
-    """SecretScanningLocationIssueComment
-
-    Represents an 'issue_comment' secret scanning location type. This location type
-    shows that a secret was detected in a comment on an issue.
-    """
-
-    issue_comment_url: str
-
-
-class SecretScanningLocationIssueCommentTypeForResponse(TypedDict):
-    """SecretScanningLocationIssueComment
-
-    Represents an 'issue_comment' secret scanning location type. This location type
-    shows that a secret was detected in a comment on an issue.
-    """
-
-    issue_comment_url: str
-
-
-class SecretScanningLocationPullRequestTitleType(TypedDict):
-    """SecretScanningLocationPullRequestTitle
-
-    Represents a 'pull_request_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a pull request.
-    """
-
-    pull_request_title_url: str
-
-
-class SecretScanningLocationPullRequestTitleTypeForResponse(TypedDict):
-    """SecretScanningLocationPullRequestTitle
-
-    Represents a 'pull_request_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a pull request.
-    """
-
-    pull_request_title_url: str
-
-
-class SecretScanningLocationPullRequestReviewCommentType(TypedDict):
-    """SecretScanningLocationPullRequestReviewComment
-
-    Represents a 'pull_request_review_comment' secret scanning location type. This
-    location type shows that a secret was detected in a review comment on a pull
-    request.
-    """
-
-    pull_request_review_comment_url: str
-
-
-class SecretScanningLocationPullRequestReviewCommentTypeForResponse(TypedDict):
-    """SecretScanningLocationPullRequestReviewComment
-
-    Represents a 'pull_request_review_comment' secret scanning location type. This
-    location type shows that a secret was detected in a review comment on a pull
-    request.
-    """
-
-    pull_request_review_comment_url: str
+    version_id: int
+    actor: RulesetVersionPropActorTypeForResponse
+    updated_at: str
 
 
 __all__ = (
-    "SecretScanningLocationIssueCommentType",
-    "SecretScanningLocationIssueCommentTypeForResponse",
-    "SecretScanningLocationIssueTitleType",
-    "SecretScanningLocationIssueTitleTypeForResponse",
-    "SecretScanningLocationPullRequestReviewCommentType",
-    "SecretScanningLocationPullRequestReviewCommentTypeForResponse",
-    "SecretScanningLocationPullRequestTitleType",
-    "SecretScanningLocationPullRequestTitleTypeForResponse",
+    "RulesetVersionType",
+    "RulesetVersionTypeForResponse",
 )

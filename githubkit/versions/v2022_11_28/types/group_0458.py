@@ -9,36 +9,94 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0063 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0238 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
 
 
-class WebhooksWorkflowJobRunType(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class SimpleCheckSuiteType(TypedDict):
+    """SimpleCheckSuite
 
-    conclusion: None
-    created_at: str
-    environment: str
-    html_url: str
-    id: int
-    name: None
-    status: str
-    updated_at: str
+    A suite of checks performed on the code of a given code change
+    """
+
+    after: NotRequired[Union[str, None]]
+    app: NotRequired[Union[IntegrationType, None]]
+    before: NotRequired[Union[str, None]]
+    conclusion: NotRequired[
+        Union[
+            None,
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+        ]
+    ]
+    created_at: NotRequired[_dt.datetime]
+    head_branch: NotRequired[Union[str, None]]
+    head_sha: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    pull_requests: NotRequired[list[PullRequestMinimalType]]
+    repository: NotRequired[MinimalRepositoryType]
+    status: NotRequired[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ]
+    updated_at: NotRequired[_dt.datetime]
+    url: NotRequired[str]
 
 
-class WebhooksWorkflowJobRunTypeForResponse(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class SimpleCheckSuiteTypeForResponse(TypedDict):
+    """SimpleCheckSuite
 
-    conclusion: None
-    created_at: str
-    environment: str
-    html_url: str
-    id: int
-    name: None
-    status: str
-    updated_at: str
+    A suite of checks performed on the code of a given code change
+    """
+
+    after: NotRequired[Union[str, None]]
+    app: NotRequired[Union[IntegrationTypeForResponse, None]]
+    before: NotRequired[Union[str, None]]
+    conclusion: NotRequired[
+        Union[
+            None,
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+        ]
+    ]
+    created_at: NotRequired[str]
+    head_branch: NotRequired[Union[str, None]]
+    head_sha: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    pull_requests: NotRequired[list[PullRequestMinimalTypeForResponse]]
+    repository: NotRequired[MinimalRepositoryTypeForResponse]
+    status: NotRequired[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksWorkflowJobRunType",
-    "WebhooksWorkflowJobRunTypeForResponse",
+    "SimpleCheckSuiteType",
+    "SimpleCheckSuiteTypeForResponse",
 )

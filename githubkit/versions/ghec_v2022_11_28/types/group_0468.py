@@ -12,33 +12,35 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0156 import (
-    RepositoryRuleCodeScanningPropParametersType,
-    RepositoryRuleCodeScanningPropParametersTypeForResponse,
+from .group_0149 import (
+    RepositoryRuleMaxFilePathLengthPropParametersType,
+    RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof20Type(TypedDict):
-    """RepositoryRuleDetailedOneof20"""
+class RepositoryRuleDetailedOneof16Type(TypedDict):
+    """RepositoryRuleDetailedOneof16"""
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof20TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof20"""
+class RepositoryRuleDetailedOneof16TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof16"""
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[
+        RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse
+    ]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof20Type",
-    "RepositoryRuleDetailedOneof20TypeForResponse",
+    "RepositoryRuleDetailedOneof16Type",
+    "RepositoryRuleDetailedOneof16TypeForResponse",
 )

@@ -9,119 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from githubkit.typing import UniqueList
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
-
-    logical_environment: NotRequired[str]
-    physical_environment: NotRequired[str]
-    deployments: NotRequired[
-        list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
-        ]
-    ]
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
+class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
 
-    logical_environment: NotRequired[str]
-    physical_environment: NotRequired[str]
-    deployments: NotRequired[
-        list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse
-        ]
-    ]
+    total_count: int
+    variables: list[OrganizationActionsVariableType]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-    ms
+class OrgsOrgActionsVariablesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[OrganizationActionsVariableTypeForResponse]
+
+
+class OrganizationActionsVariableType(TypedDict):
+    """Actions Variable for an Organization
+
+    Organization variable for GitHub Actions.
     """
 
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    version: NotRequired[str]
-    status: NotRequired[Literal["deployed", "decommissioned"]]
-    deployment_name: NotRequired[str]
-    github_repository: NotRequired[str]
-    tags: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType
-    ]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
+    name: str
+    value: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-    ms
+class OrganizationActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable for an Organization
+
+    Organization variable for GitHub Actions.
     """
 
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    version: NotRequired[str]
-    status: NotRequired[Literal["deployed", "decommissioned"]]
-    deployment_name: NotRequired[str]
-    github_repository: NotRequired[str]
-    tags: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse
-    ]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-
-
-OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-msPropTags
-
-Key-value pairs to tag the deployment record.
-"""
-
-
-OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-msPropTags
-
-Key-value pairs to tag the deployment record.
-"""
+    name: str
+    value: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse",
+    "OrganizationActionsVariableType",
+    "OrganizationActionsVariableTypeForResponse",
+    "OrgsOrgActionsVariablesGetResponse200Type",
+    "OrgsOrgActionsVariablesGetResponse200TypeForResponse",
 )

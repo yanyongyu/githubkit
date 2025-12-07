@@ -9,106 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from .group_0307 import MetadataType, MetadataTypeForResponse
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class SnapshotType(TypedDict):
-    """snapshot
+class DependencyGraphDiffItemsType(TypedDict):
+    """DependencyGraphDiffItems"""
 
-    Create a new snapshot of a repository's dependencies.
-    """
-
-    version: int
-    job: SnapshotPropJobType
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorType
-    metadata: NotRequired[MetadataType]
-    manifests: NotRequired[SnapshotPropManifestsType]
-    scanned: _dt.datetime
-
-
-class SnapshotTypeForResponse(TypedDict):
-    """snapshot
-
-    Create a new snapshot of a repository's dependencies.
-    """
-
-    version: int
-    job: SnapshotPropJobTypeForResponse
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorTypeForResponse
-    metadata: NotRequired[MetadataTypeForResponse]
-    manifests: NotRequired[SnapshotPropManifestsTypeForResponse]
-    scanned: str
-
-
-class SnapshotPropJobType(TypedDict):
-    """SnapshotPropJob"""
-
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropJobTypeForResponse(TypedDict):
-    """SnapshotPropJob"""
-
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropDetectorType(TypedDict):
-    """SnapshotPropDetector
-
-    A description of the detector used.
-    """
-
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
     name: str
     version: str
-    url: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
+    scope: Literal["unknown", "runtime", "development"]
 
 
-class SnapshotPropDetectorTypeForResponse(TypedDict):
-    """SnapshotPropDetector
+class DependencyGraphDiffItemsTypeForResponse(TypedDict):
+    """DependencyGraphDiffItems"""
 
-    A description of the detector used.
-    """
-
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
     name: str
     version: str
-    url: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: list[
+        DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse
+    ]
+    scope: Literal["unknown", "runtime", "development"]
 
 
-SnapshotPropManifestsType: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
-"""
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
 
 
-SnapshotPropManifestsTypeForResponse: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
-"""
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
 
 
 __all__ = (
-    "SnapshotPropDetectorType",
-    "SnapshotPropDetectorTypeForResponse",
-    "SnapshotPropJobType",
-    "SnapshotPropJobTypeForResponse",
-    "SnapshotPropManifestsType",
-    "SnapshotPropManifestsTypeForResponse",
-    "SnapshotType",
-    "SnapshotTypeForResponse",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse",
+    "DependencyGraphDiffItemsType",
+    "DependencyGraphDiffItemsTypeForResponse",
 )

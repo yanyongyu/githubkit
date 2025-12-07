@@ -9,33 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0111 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
 )
 
 
-class RepositoryRulesetConditionsType(TypedDict):
-    """Repository ruleset conditions for ref names
+class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
+    """Repository ruleset conditions for repository names
 
-    Parameters for a repository ruleset ref name condition
+    Parameters for a repository name condition
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
 
 
-class RepositoryRulesetConditionsTypeForResponse(TypedDict):
-    """Repository ruleset conditions for ref names
+class RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for repository names
 
-    Parameters for a repository ruleset ref name condition
+    Parameters for a repository name condition
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
 
 
 __all__ = (
-    "RepositoryRulesetConditionsType",
-    "RepositoryRulesetConditionsTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryNameTargetType",
+    "RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse",
 )

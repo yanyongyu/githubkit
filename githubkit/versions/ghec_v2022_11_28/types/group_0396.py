@@ -9,30 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0324 import VerificationType, VerificationTypeForResponse
 
 
-class CheckImmutableReleasesType(TypedDict):
-    """Check immutable releases
+class GitTagType(TypedDict):
+    """Git Tag
 
-    Check immutable releases
+    Metadata for a Git tag
     """
 
-    enabled: bool
-    enforced_by_owner: bool
+    node_id: str
+    tag: str
+    sha: str
+    url: str
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-class CheckImmutableReleasesTypeForResponse(TypedDict):
-    """Check immutable releases
+class GitTagTypeForResponse(TypedDict):
+    """Git Tag
 
-    Check immutable releases
+    Metadata for a Git tag
     """
 
-    enabled: bool
-    enforced_by_owner: bool
+    node_id: str
+    tag: str
+    sha: str
+    url: str
+    message: str
+    tagger: GitTagPropTaggerTypeForResponse
+    object_: GitTagPropObjectTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
+
+
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropTaggerTypeForResponse(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
+
+
+class GitTagPropObjectTypeForResponse(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
 
 
 __all__ = (
-    "CheckImmutableReleasesType",
-    "CheckImmutableReleasesTypeForResponse",
+    "GitTagPropObjectType",
+    "GitTagPropObjectTypeForResponse",
+    "GitTagPropTaggerType",
+    "GitTagPropTaggerTypeForResponse",
+    "GitTagType",
+    "GitTagTypeForResponse",
 )

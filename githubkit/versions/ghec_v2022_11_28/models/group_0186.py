@@ -9,27 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DeleteCostCenter(GitHubModel):
-    """DeleteCostCenter"""
+class GetAllCostCenters(GitHubModel):
+    """GetAllCostCenters"""
 
-    message: str = Field(
-        description="A message indicating the result of the deletion operation"
-    )
-    id: str = Field(description="The unique identifier of the deleted cost center")
-    name: str = Field(description="The name of the deleted cost center")
-    cost_center_state: Literal["CostCenterArchived"] = Field(
-        alias="costCenterState",
-        description="The state of the cost center after deletion",
+    cost_centers: Missing[list[GetAllCostCentersPropCostCentersItems]] = Field(
+        default=UNSET, alias="costCenters"
     )
 
 
-model_rebuild(DeleteCostCenter)
+class GetAllCostCentersPropCostCentersItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItems"""
 
-__all__ = ("DeleteCostCenter",)
+    id: str = Field(description="ID of the cost center.")
+    name: str = Field(description="Name of the cost center.")
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
+    )
+    azure_subscription: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+    )
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str = Field(description="Type of the resource.")
+    name: str = Field(description="Name of the resource.")
+
+
+model_rebuild(GetAllCostCenters)
+model_rebuild(GetAllCostCentersPropCostCentersItems)
+model_rebuild(GetAllCostCentersPropCostCentersItemsPropResourcesItems)
+
+__all__ = (
+    "GetAllCostCenters",
+    "GetAllCostCentersPropCostCentersItems",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItems",
+)

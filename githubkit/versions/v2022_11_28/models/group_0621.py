@@ -18,32 +18,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0448 import EnterpriseWebhooks
-from .group_0449 import SimpleInstallation
-from .group_0450 import OrganizationSimpleWebhooks
-from .group_0451 import RepositoryWebhooks
-from .group_0622 import WebhookIssuesClosedPropIssue
+from .group_0020 import Repository
+from .group_0047 import Issue
+from .group_0454 import SimpleInstallation
+from .group_0455 import OrganizationSimpleWebhooks
+from .group_0456 import RepositoryWebhooks
 
 
-class WebhookIssuesClosed(GitHubModel):
-    """issues closed event"""
+class WebhookIssueDependenciesBlockedByAdded(GitHubModel):
+    """blocked by issue added event"""
 
-    action: Literal["closed"] = Field(description="The action that was performed.")
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
+    action: Literal["blocked_by_added"] = Field()
+    blocked_issue_id: float = Field(description="The ID of the blocked issue.")
+    blocked_issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    blocking_issue_id: float = Field(description="The ID of the blocking issue.")
+    blocking_issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    blocking_issue_repo: Repository = Field(
+        title="Repository", description="A repository on GitHub."
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesClosedPropIssue = Field(
-        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself."
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
@@ -54,6 +58,6 @@ class WebhookIssuesClosed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesClosed)
+model_rebuild(WebhookIssueDependenciesBlockedByAdded)
 
-__all__ = ("WebhookIssuesClosed",)
+__all__ = ("WebhookIssueDependenciesBlockedByAdded",)

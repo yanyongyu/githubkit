@@ -16,17 +16,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBody"""
+class OrgsOrgPersonalAccessTokensPatIdPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
-    )
-    id: int = Field(
-        description="The numeric ID of the issue or pull request to add to the project."
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token."
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBody)
+model_rebuild(OrgsOrgPersonalAccessTokensPatIdPostBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBody",)
+__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBody",)

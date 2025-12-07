@@ -12,18 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ProjectsColumnsCardsCardIdDeleteResponse403(GitHubModel):
-    """ProjectsColumnsCardsCardIdDeleteResponse403"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody(
+    GitHubModel
+):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[list[str]] = Field(default=UNSET)
+    body: str = Field(description="The discussion comment's body text.")
 
 
-model_rebuild(ProjectsColumnsCardsCardIdDeleteResponse403)
+model_rebuild(
+    OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody
+)
 
-__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403",)
+__all__ = (
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody",
+)

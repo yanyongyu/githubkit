@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    issue_id: int
 
 
-class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    issue_id: int
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType",
-    "ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyTypeForResponse",
 )

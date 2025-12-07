@@ -9,20 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsArtifactAndLogRetentionResponse(GitHubModel):
-    """ActionsArtifactAndLogRetentionResponse"""
+class ActionsHostedRunnerCuratedImage(GitHubModel):
+    """GitHub-hosted runner image details.
 
-    days: int = Field(description="The number of days artifacts and logs are retained")
-    maximum_allowed_days: int = Field(
-        description="The maximum number of days that can be configured"
+    Provides details of a hosted runner image
+    """
+
+    id: str = Field(
+        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
+    )
+    platform: str = Field(description="The operating system of the image.")
+    size_gb: int = Field(description="Image size in GB.")
+    display_name: str = Field(description="Display name for this image.")
+    source: Literal["github", "partner", "custom"] = Field(
+        description="The image provider."
     )
 
 
-model_rebuild(ActionsArtifactAndLogRetentionResponse)
+model_rebuild(ActionsHostedRunnerCuratedImage)
 
-__all__ = ("ActionsArtifactAndLogRetentionResponse",)
+__all__ = ("ActionsHostedRunnerCuratedImage",)

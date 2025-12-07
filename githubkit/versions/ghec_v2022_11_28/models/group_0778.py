@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0527 import EnterpriseWebhooks
-from .group_0528 import SimpleInstallation
-from .group_0529 import OrganizationSimpleWebhooks
-from .group_0530 import RepositoryWebhooks
-from .group_0558 import WebhooksMembership
+from .group_0531 import EnterpriseWebhooks
+from .group_0532 import SimpleInstallation
+from .group_0533 import OrganizationSimpleWebhooks
+from .group_0534 import RepositoryWebhooks
+from .group_0562 import WebhooksMembership
 
 
-class WebhookOrganizationRenamed(GitHubModel):
-    """organization renamed event"""
+class WebhookOrganizationDeleted(GitHubModel):
+    """organization deleted event"""
 
-    action: Literal["renamed"] = Field()
-    changes: Missing[WebhookOrganizationRenamedPropChanges] = Field(default=UNSET)
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -57,26 +56,6 @@ class WebhookOrganizationRenamed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookOrganizationRenamedPropChanges(GitHubModel):
-    """WebhookOrganizationRenamedPropChanges"""
+model_rebuild(WebhookOrganizationDeleted)
 
-    login: Missing[WebhookOrganizationRenamedPropChangesPropLogin] = Field(
-        default=UNSET
-    )
-
-
-class WebhookOrganizationRenamedPropChangesPropLogin(GitHubModel):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-model_rebuild(WebhookOrganizationRenamed)
-model_rebuild(WebhookOrganizationRenamedPropChanges)
-model_rebuild(WebhookOrganizationRenamedPropChangesPropLogin)
-
-__all__ = (
-    "WebhookOrganizationRenamed",
-    "WebhookOrganizationRenamedPropChanges",
-    "WebhookOrganizationRenamedPropChangesPropLogin",
-)
+__all__ = ("WebhookOrganizationDeleted",)

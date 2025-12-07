@@ -9,39 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsEnterprisePermissions(GitHubModel):
-    """ActionsEnterprisePermissions"""
+class ActionsHostedRunnerLimits(GitHubModel):
+    """ActionsHostedRunnerLimits"""
 
-    enabled_organizations: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions."
-    )
-    selected_organizations_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the selected organizations that are allowed to run GitHub Actions, when `enabled_organizations` is set to `selected`.",
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    selected_actions_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
-    )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
+    public_ips: ActionsHostedRunnerLimitsPropPublicIps = Field(
+        title="Static public IP Limits for GitHub-hosted Hosted Runners.",
+        description="Provides details of static public IP limits for GitHub-hosted Hosted Runners",
     )
 
 
-model_rebuild(ActionsEnterprisePermissions)
+class ActionsHostedRunnerLimitsPropPublicIps(GitHubModel):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
 
-__all__ = ("ActionsEnterprisePermissions",)
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    """
+
+    maximum: int = Field(
+        description="The maximum number of static public IP addresses that can be used for Hosted Runners."
+    )
+    current_usage: int = Field(
+        description="The current number of static public IP addresses in use by Hosted Runners."
+    )
+
+
+model_rebuild(ActionsHostedRunnerLimits)
+model_rebuild(ActionsHostedRunnerLimitsPropPublicIps)
+
+__all__ = (
+    "ActionsHostedRunnerLimits",
+    "ActionsHostedRunnerLimitsPropPublicIps",
+)

@@ -9,43 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0070 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-
-
-class CodeScanningVariantAnalysisRepoTaskType(TypedDict):
-    """CodeScanningVariantAnalysisRepoTask"""
-
-    repository: SimpleRepositoryType
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ]
-    artifact_size_in_bytes: NotRequired[int]
-    result_count: NotRequired[int]
-    failure_message: NotRequired[str]
-    database_commit_sha: NotRequired[str]
-    source_location_prefix: NotRequired[str]
-    artifact_url: NotRequired[str]
+from .group_0345 import (
+    CodeScanningVariantAnalysisRepositoryType,
+    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+)
 
 
-class CodeScanningVariantAnalysisRepoTaskTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisRepoTask"""
+class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    repository: SimpleRepositoryTypeForResponse
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ]
-    artifact_size_in_bytes: NotRequired[int]
-    result_count: NotRequired[int]
-    failure_message: NotRequired[str]
-    database_commit_sha: NotRequired[str]
-    source_location_prefix: NotRequired[str]
-    artifact_url: NotRequired[str]
+    repository_count: int
+    repositories: list[CodeScanningVariantAnalysisRepositoryType]
+
+
+class CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+
+    repository_count: int
+    repositories: list[CodeScanningVariantAnalysisRepositoryTypeForResponse]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisRepoTaskType",
-    "CodeScanningVariantAnalysisRepoTaskTypeForResponse",
+    "CodeScanningVariantAnalysisSkippedRepoGroupType",
+    "CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse",
 )

@@ -14,22 +14,22 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0545 import (
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0549 import (
     WebhooksRepositoriesItemsType,
     WebhooksRepositoriesItemsTypeForResponse,
 )
 
 
-class WebhookInstallationSuspendType(TypedDict):
-    """installation suspend event"""
+class WebhookInstallationDeletedType(TypedDict):
+    """installation deleted event"""
 
-    action: Literal["suspend"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -39,10 +39,10 @@ class WebhookInstallationSuspendType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookInstallationSuspendTypeForResponse(TypedDict):
-    """installation suspend event"""
+class WebhookInstallationDeletedTypeForResponse(TypedDict):
+    """installation deleted event"""
 
-    action: Literal["suspend"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: InstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -53,6 +53,6 @@ class WebhookInstallationSuspendTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookInstallationSuspendType",
-    "WebhookInstallationSuspendTypeForResponse",
+    "WebhookInstallationDeletedType",
+    "WebhookInstallationDeletedTypeForResponse",
 )

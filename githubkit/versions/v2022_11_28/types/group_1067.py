@@ -9,110 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
+class ReposOwnerRepoAttestationsPostBodyType(TypedDict):
+    """ReposOwnerRepoAttestationsPostBody"""
 
-    dismissal_restrictions: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
+    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType
+
+
+class ReposOwnerRepoAttestationsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsPostBody"""
+
+    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse
+
+
+class ReposOwnerRepoAttestationsPostBodyPropBundleType(TypedDict):
+    """ReposOwnerRepoAttestationsPostBodyPropBundle
+
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    """
+
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType
     ]
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    bypass_pull_request_allowances: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
-    ]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
-
-    dismissal_restrictions: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse
-    ]
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    bypass_pull_request_allowances: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse
+    dsse_envelope: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType
     ]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
-    missalRestrictions
+class ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsPostBodyPropBundle
 
-    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
-    empty `dismissal_restrictions` object to disable. User and team
-    `dismissal_restrictions` are only available for organization-owned repositories.
-    Omit this parameter for personal repositories.
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    users: NotRequired[list[str]]
-    teams: NotRequired[list[str]]
-    apps: NotRequired[list[str]]
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse
+    ]
+    dsse_envelope: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse
+    ]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
-    missalRestrictions
-
-    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
-    empty `dismissal_restrictions` object to disable. User and team
-    `dismissal_restrictions` are only available for organization-owned repositories.
-    Omit this parameter for personal repositories.
-    """
-
-    users: NotRequired[list[str]]
-    teams: NotRequired[list[str]]
-    apps: NotRequired[list[str]]
+ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType: TypeAlias = (
+    dict[str, Any]
+)
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
+"""
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
-    assPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
-    """
-
-    users: NotRequired[list[str]]
-    teams: NotRequired[list[str]]
-    apps: NotRequired[list[str]]
+ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
+"""
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
-    assPullRequestAllowances
+ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
+"""
 
-    Allow specific users, teams, or apps to bypass pull request requirements.
-    """
 
-    users: NotRequired[list[str]]
-    teams: NotRequired[list[str]]
-    apps: NotRequired[list[str]]
+ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyTypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyPropBundleType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyType",
+    "ReposOwnerRepoAttestationsPostBodyTypeForResponse",
 )

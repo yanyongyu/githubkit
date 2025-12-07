@@ -16,43 +16,59 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class LockedIssueEventType(TypedDict):
-    """Locked Issue Event
+class RenamedIssueEventType(TypedDict):
+    """Renamed Issue Event
 
-    Locked Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["locked"]
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    lock_reason: Union[str, None]
+    rename: RenamedIssueEventPropRenameType
 
 
-class LockedIssueEventTypeForResponse(TypedDict):
-    """Locked Issue Event
+class RenamedIssueEventTypeForResponse(TypedDict):
+    """Renamed Issue Event
 
-    Locked Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["locked"]
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    lock_reason: Union[str, None]
+    rename: RenamedIssueEventPropRenameTypeForResponse
+
+
+class RenamedIssueEventPropRenameType(TypedDict):
+    """RenamedIssueEventPropRename"""
+
+    from_: str
+    to: str
+
+
+class RenamedIssueEventPropRenameTypeForResponse(TypedDict):
+    """RenamedIssueEventPropRename"""
+
+    from_: str
+    to: str
 
 
 __all__ = (
-    "LockedIssueEventType",
-    "LockedIssueEventTypeForResponse",
+    "RenamedIssueEventPropRenameType",
+    "RenamedIssueEventPropRenameTypeForResponse",
+    "RenamedIssueEventType",
+    "RenamedIssueEventTypeForResponse",
 )

@@ -9,33 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0044 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class ProjectCollaboratorPermissionType(TypedDict):
-    """Project Collaborator Permission
+class TeamDiscussionCommentType(TypedDict):
+    """Team Discussion Comment
 
-    Project Collaborator Permission
+    A reply to a discussion within a team.
     """
 
-    permission: str
-    user: Union[None, SimpleUserType]
+    author: Union[None, SimpleUserType]
+    body: str
+    body_html: str
+    body_version: str
+    created_at: _dt.datetime
+    last_edited_at: Union[_dt.datetime, None]
+    discussion_url: str
+    html_url: str
+    node_id: str
+    number: int
+    updated_at: _dt.datetime
+    url: str
+    reactions: NotRequired[ReactionRollupType]
 
 
-class ProjectCollaboratorPermissionTypeForResponse(TypedDict):
-    """Project Collaborator Permission
+class TeamDiscussionCommentTypeForResponse(TypedDict):
+    """Team Discussion Comment
 
-    Project Collaborator Permission
+    A reply to a discussion within a team.
     """
 
-    permission: str
-    user: Union[None, SimpleUserTypeForResponse]
+    author: Union[None, SimpleUserTypeForResponse]
+    body: str
+    body_html: str
+    body_version: str
+    created_at: str
+    last_edited_at: Union[str, None]
+    discussion_url: str
+    html_url: str
+    node_id: str
+    number: int
+    updated_at: str
+    url: str
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "ProjectCollaboratorPermissionType",
-    "ProjectCollaboratorPermissionTypeForResponse",
+    "TeamDiscussionCommentType",
+    "TeamDiscussionCommentTypeForResponse",
 )

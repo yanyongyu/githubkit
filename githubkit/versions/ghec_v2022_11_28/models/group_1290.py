@@ -12,25 +12,15 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody"""
 
-    integration_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the custom app that will be enabled on the environment.",
-    )
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody
-)
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody)
 
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
-)
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody",)

@@ -12,65 +12,46 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0423 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
+
+class SearchResultTextMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItems"""
+
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[list[SearchResultTextMatchesItemsPropMatchesItemsType]]
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class SearchResultTextMatchesItemsTypeForResponse(TypedDict):
+    """SearchResultTextMatchesItems"""
 
-    Label Search Result Item
-    """
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[
+        list[SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse]
+    ]
 
 
-class LabelSearchResultItemTypeForResponse(TypedDict):
-    """Label Search Result Item
+class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-    Label Search Result Item
-    """
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    text: NotRequired[str]
+    indices: NotRequired[list[int]]
 
 
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
+class SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemType]
-
-
-class SearchLabelsGetResponse200TypeForResponse(TypedDict):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemTypeForResponse]
+    text: NotRequired[str]
+    indices: NotRequired[list[int]]
 
 
 __all__ = (
-    "LabelSearchResultItemType",
-    "LabelSearchResultItemTypeForResponse",
-    "SearchLabelsGetResponse200Type",
-    "SearchLabelsGetResponse200TypeForResponse",
+    "SearchResultTextMatchesItemsPropMatchesItemsType",
+    "SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse",
+    "SearchResultTextMatchesItemsType",
+    "SearchResultTextMatchesItemsTypeForResponse",
 )

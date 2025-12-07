@@ -9,40 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0129 import (
-    RepositoryRuleRequiredDeploymentsPropParametersType,
-    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleRequiredDeploymentsType(TypedDict):
-    """required_deployments
+class RepositoryRuleUpdatePropParametersType(TypedDict):
+    """RepositoryRuleUpdatePropParameters"""
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
-    """
-
-    type: Literal["required_deployments"]
-    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
+    update_allows_fetch_and_merge: bool
 
 
-class RepositoryRuleRequiredDeploymentsTypeForResponse(TypedDict):
-    """required_deployments
+class RepositoryRuleUpdatePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleUpdatePropParameters"""
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
-    """
-
-    type: Literal["required_deployments"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
-    ]
+    update_allows_fetch_and_merge: bool
 
 
 __all__ = (
-    "RepositoryRuleRequiredDeploymentsType",
-    "RepositoryRuleRequiredDeploymentsTypeForResponse",
+    "RepositoryRuleUpdatePropParametersType",
+    "RepositoryRuleUpdatePropParametersTypeForResponse",
 )

@@ -12,17 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0095 import NetworkConfiguration
-
-
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
-
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(EnterprisesEnterpriseNetworkConfigurationsGetResponse200)
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsGetResponse200",)
+    message: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(
+    EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202
+)
+
+__all__ = (
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202",
+)

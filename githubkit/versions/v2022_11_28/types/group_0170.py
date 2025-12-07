@@ -13,34 +13,36 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0171 import (
-    RepositoryRuleCommitMessagePatternPropParametersType,
-    RepositoryRuleCommitMessagePatternPropParametersTypeForResponse,
+    RepositoryRuleRequiredDeploymentsPropParametersType,
+    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleCommitMessagePatternType(TypedDict):
-    """commit_message_pattern
+class RepositoryRuleRequiredDeploymentsType(TypedDict):
+    """required_deployments
 
-    Parameters to be used for the commit_message_pattern rule
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
 
 
-class RepositoryRuleCommitMessagePatternTypeForResponse(TypedDict):
-    """commit_message_pattern
+class RepositoryRuleRequiredDeploymentsTypeForResponse(TypedDict):
+    """required_deployments
 
-    Parameters to be used for the commit_message_pattern rule
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["commit_message_pattern"]
+    type: Literal["required_deployments"]
     parameters: NotRequired[
-        RepositoryRuleCommitMessagePatternPropParametersTypeForResponse
+        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
     ]
 
 
 __all__ = (
-    "RepositoryRuleCommitMessagePatternType",
-    "RepositoryRuleCommitMessagePatternTypeForResponse",
+    "RepositoryRuleRequiredDeploymentsType",
+    "RepositoryRuleRequiredDeploymentsTypeForResponse",
 )

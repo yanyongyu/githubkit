@@ -9,22 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_1182 import (
+    ReposOwnerRepoPagesPostBodyPropSourceType,
+    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
+)
 
 
-class ReposOwnerRepoPullsCommentsCommentIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
+class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
 
-    body: str
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
 
 
-class ReposOwnerRepoPullsCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
+class ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
 
-    body: str
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsCommentsCommentIdPatchBodyType",
-    "ReposOwnerRepoPullsCommentsCommentIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoPagesPostBodyAnyof1Type",
+    "ReposOwnerRepoPagesPostBodyAnyof1TypeForResponse",
 )

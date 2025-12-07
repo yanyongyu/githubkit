@@ -13,19 +13,23 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoImportLfsPatchBodyType(TypedDict):
-    """ReposOwnerRepoImportLfsPatchBody"""
+class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
 
-    use_lfs: Literal["opt_in", "opt_out"]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-class ReposOwnerRepoImportLfsPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoImportLfsPatchBody"""
+class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
 
-    use_lfs: Literal["opt_in", "opt_out"]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoImportLfsPatchBodyType",
-    "ReposOwnerRepoImportLfsPatchBodyTypeForResponse",
+    "ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType",
+    "ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyTypeForResponse",
 )

@@ -10,55 +10,73 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0099 import (
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0102 import (
+    CodeScanningAlertRuleSummaryType,
+    CodeScanningAlertRuleSummaryTypeForResponse,
+)
+from .group_0103 import (
     CodeScanningAnalysisToolType,
     CodeScanningAnalysisToolTypeForResponse,
 )
+from .group_0104 import (
+    CodeScanningAlertInstanceType,
+    CodeScanningAlertInstanceTypeForResponse,
+)
 
 
-class CodeScanningAnalysisType(TypedDict):
-    """CodeScanningAnalysis"""
+class CodeScanningAlertItemsType(TypedDict):
+    """CodeScanningAlertItems"""
 
-    ref: str
-    commit_sha: str
-    analysis_key: str
-    environment: str
-    category: NotRequired[str]
-    error: str
+    number: int
     created_at: _dt.datetime
-    results_count: int
-    rules_count: int
-    id: int
+    updated_at: NotRequired[_dt.datetime]
     url: str
-    sarif_id: str
+    html_url: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[_dt.datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryType
     tool: CodeScanningAnalysisToolType
-    deletable: bool
-    warning: str
+    most_recent_instance: CodeScanningAlertInstanceType
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
+    assignees: NotRequired[list[SimpleUserType]]
 
 
-class CodeScanningAnalysisTypeForResponse(TypedDict):
-    """CodeScanningAnalysis"""
+class CodeScanningAlertItemsTypeForResponse(TypedDict):
+    """CodeScanningAlertItems"""
 
-    ref: str
-    commit_sha: str
-    analysis_key: str
-    environment: str
-    category: NotRequired[str]
-    error: str
+    number: int
     created_at: str
-    results_count: int
-    rules_count: int
-    id: int
+    updated_at: NotRequired[str]
     url: str
-    sarif_id: str
+    html_url: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[str, None]]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_at: Union[str, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryTypeForResponse
     tool: CodeScanningAnalysisToolTypeForResponse
-    deletable: bool
-    warning: str
+    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
 
 
 __all__ = (
-    "CodeScanningAnalysisType",
-    "CodeScanningAnalysisTypeForResponse",
+    "CodeScanningAlertItemsType",
+    "CodeScanningAlertItemsTypeForResponse",
 )

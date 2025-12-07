@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,22 +19,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoLabelsPostBody(GitHubModel):
-    """ReposOwnerRepoLabelsPostBody"""
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-    name: str = Field(
-        description='The name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."'
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the milestone."
     )
-    color: Missing[str] = Field(
+    state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET,
-        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
+        description="The state of the milestone. Either `open` or `closed`.",
     )
     description: Missing[str] = Field(
+        default=UNSET, description="A description of the milestone."
+    )
+    due_on: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="A short description of the label. Must be 100 characters or fewer.",
+        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-model_rebuild(ReposOwnerRepoLabelsPostBody)
+model_rebuild(ReposOwnerRepoMilestonesMilestoneNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoLabelsPostBody",)
+__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",)

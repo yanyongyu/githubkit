@@ -9,28 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
-    """Codespaces Permissions Check
+class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    Permission check result for a given devcontainer config.
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    accepted: bool
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
-class CodespacesPermissionsCheckForDevcontainerTypeForResponse(TypedDict):
-    """Codespaces Permissions Check
+class CodeScanningDefaultSetupUpdateResponseTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    Permission check result for a given devcontainer config.
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    accepted: bool
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
 __all__ = (
-    "CodespacesPermissionsCheckForDevcontainerType",
-    "CodespacesPermissionsCheckForDevcontainerTypeForResponse",
+    "CodeScanningDefaultSetupUpdateResponseType",
+    "CodeScanningDefaultSetupUpdateResponseTypeForResponse",
 )

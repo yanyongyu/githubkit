@@ -10,28 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0196 import (
+    RepositoryRuleWorkflowsPropParametersType,
+    RepositoryRuleWorkflowsPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleParamsCopilotCodeReviewAnalysisToolType(TypedDict):
-    """CopilotCodeReviewAnalysisTool
+class RepositoryRuleWorkflowsType(TypedDict):
+    """workflows
 
-    A tool that must provide code review results for this rule to pass.
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    name: Literal["CodeQL", "ESLint", "PMD"]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
 
 
-class RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse(TypedDict):
-    """CopilotCodeReviewAnalysisTool
+class RepositoryRuleWorkflowsTypeForResponse(TypedDict):
+    """workflows
 
-    A tool that must provide code review results for this rule to pass.
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    name: Literal["CodeQL", "ESLint", "PMD"]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolType",
-    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse",
+    "RepositoryRuleWorkflowsType",
+    "RepositoryRuleWorkflowsTypeForResponse",
 )

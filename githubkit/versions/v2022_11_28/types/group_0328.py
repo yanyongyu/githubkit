@@ -12,27 +12,49 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class CheckImmutableReleasesType(TypedDict):
-    """Check immutable releases
+class GitRefType(TypedDict):
+    """Git Reference
 
-    Check immutable releases
+    Git references within a repository
     """
 
-    enabled: bool
-    enforced_by_owner: bool
+    ref: str
+    node_id: str
+    url: str
+    object_: GitRefPropObjectType
 
 
-class CheckImmutableReleasesTypeForResponse(TypedDict):
-    """Check immutable releases
+class GitRefTypeForResponse(TypedDict):
+    """Git Reference
 
-    Check immutable releases
+    Git references within a repository
     """
 
-    enabled: bool
-    enforced_by_owner: bool
+    ref: str
+    node_id: str
+    url: str
+    object_: GitRefPropObjectTypeForResponse
+
+
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
+
+    type: str
+    sha: str
+    url: str
+
+
+class GitRefPropObjectTypeForResponse(TypedDict):
+    """GitRefPropObject"""
+
+    type: str
+    sha: str
+    url: str
 
 
 __all__ = (
-    "CheckImmutableReleasesType",
-    "CheckImmutableReleasesTypeForResponse",
+    "GitRefPropObjectType",
+    "GitRefPropObjectTypeForResponse",
+    "GitRefType",
+    "GitRefTypeForResponse",
 )

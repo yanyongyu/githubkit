@@ -9,28 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0299 import JobType, JobTypeForResponse
 
 
-class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    total_count: int
+    jobs: list[JobType]
 
 
-class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    total_count: int
+    jobs: list[JobTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",
-    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type",
+    "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200TypeForResponse",
 )

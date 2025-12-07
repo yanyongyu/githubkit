@@ -9,72 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class OrganizationCreateIssueTypeType(TypedDict):
+    """OrganizationCreateIssueType"""
 
-class OrganizationRoleType(TypedDict):
-    """Organization Role
-
-    Organization roles
-    """
-
-    id: int
     name: str
+    is_enabled: bool
     description: NotRequired[Union[str, None]]
-    base_role: NotRequired[
-        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
     ]
-    source: NotRequired[
-        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
-    ]
-    permissions: list[str]
-    organization: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
 
 
-class OrganizationRoleTypeForResponse(TypedDict):
-    """Organization Role
+class OrganizationCreateIssueTypeTypeForResponse(TypedDict):
+    """OrganizationCreateIssueType"""
 
-    Organization roles
-    """
-
-    id: int
     name: str
+    is_enabled: bool
     description: NotRequired[Union[str, None]]
-    base_role: NotRequired[
-        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
     ]
-    source: NotRequired[
-        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
-    ]
-    permissions: list[str]
-    organization: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-
-
-class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
-    """OrgsOrgOrganizationRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    roles: NotRequired[list[OrganizationRoleType]]
-
-
-class OrgsOrgOrganizationRolesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgOrganizationRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    roles: NotRequired[list[OrganizationRoleTypeForResponse]]
 
 
 __all__ = (
-    "OrganizationRoleType",
-    "OrganizationRoleTypeForResponse",
-    "OrgsOrgOrganizationRolesGetResponse200Type",
-    "OrgsOrgOrganizationRolesGetResponse200TypeForResponse",
+    "OrganizationCreateIssueTypeType",
+    "OrganizationCreateIssueTypeTypeForResponse",
 )

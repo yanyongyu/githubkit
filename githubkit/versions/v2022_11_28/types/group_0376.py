@@ -9,58 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class PullRequestMergeResultType(TypedDict):
+    """Pull Request Merge Result
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
-
-    Data related to a release.
+    Pull Request Merge Result
     """
 
-    url: str
-    browser_download_url: str
-    id: int
-    node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    uploader: Union[None, SimpleUserType]
+    sha: str
+    merged: bool
+    message: str
 
 
-class ReleaseAssetTypeForResponse(TypedDict):
-    """Release Asset
+class PullRequestMergeResultTypeForResponse(TypedDict):
+    """Pull Request Merge Result
 
-    Data related to a release.
+    Pull Request Merge Result
     """
 
-    url: str
-    browser_download_url: str
-    id: int
-    node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: str
-    updated_at: str
-    uploader: Union[None, SimpleUserTypeForResponse]
+    sha: str
+    merged: bool
+    message: str
 
 
 __all__ = (
-    "ReleaseAssetType",
-    "ReleaseAssetTypeForResponse",
+    "PullRequestMergeResultType",
+    "PullRequestMergeResultTypeForResponse",
 )

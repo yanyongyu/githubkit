@@ -9,29 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0094 import (
-    ArtifactDeploymentRecordType,
-    ArtifactDeploymentRecordTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
 
-    total_count: NotRequired[int]
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
 
-    total_count: NotRequired[int]
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse",
+    "OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType",
+    "OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyTypeForResponse",
 )

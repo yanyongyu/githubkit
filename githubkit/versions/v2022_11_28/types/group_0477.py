@@ -10,98 +10,86 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class WebhooksMembershipType(TypedDict):
-    """Membership
+class WebhooksMarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase"""
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
-    """
-
-    organization_url: str
-    role: str
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    state: str
-    url: str
-    user: Union[WebhooksMembershipPropUserType, None]
+    account: WebhooksMarketplacePurchasePropAccountType
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: Union[str, None]
+    on_free_trial: bool
+    plan: WebhooksMarketplacePurchasePropPlanType
+    unit_count: int
 
 
-class WebhooksMembershipTypeForResponse(TypedDict):
-    """Membership
+class WebhooksMarketplacePurchaseTypeForResponse(TypedDict):
+    """Marketplace Purchase"""
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
-    """
-
-    organization_url: str
-    role: str
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    state: str
-    url: str
-    user: Union[WebhooksMembershipPropUserTypeForResponse, None]
+    account: WebhooksMarketplacePurchasePropAccountTypeForResponse
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: Union[str, None]
+    on_free_trial: bool
+    plan: WebhooksMarketplacePurchasePropPlanTypeForResponse
+    unit_count: int
 
 
-class WebhooksMembershipPropUserType(TypedDict):
-    """User"""
+class WebhooksMarketplacePurchasePropAccountType(TypedDict):
+    """WebhooksMarketplacePurchasePropAccount"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
     id: int
     login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class WebhooksMembershipPropUserTypeForResponse(TypedDict):
-    """User"""
+class WebhooksMarketplacePurchasePropAccountTypeForResponse(TypedDict):
+    """WebhooksMarketplacePurchasePropAccount"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
     id: int
     login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
+
+
+class WebhooksMarketplacePurchasePropPlanType(TypedDict):
+    """WebhooksMarketplacePurchasePropPlan"""
+
+    bullets: list[Union[str, None]]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
+
+
+class WebhooksMarketplacePurchasePropPlanTypeForResponse(TypedDict):
+    """WebhooksMarketplacePurchasePropPlan"""
+
+    bullets: list[Union[str, None]]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhooksMembershipPropUserType",
-    "WebhooksMembershipPropUserTypeForResponse",
-    "WebhooksMembershipType",
-    "WebhooksMembershipTypeForResponse",
+    "WebhooksMarketplacePurchasePropAccountType",
+    "WebhooksMarketplacePurchasePropAccountTypeForResponse",
+    "WebhooksMarketplacePurchasePropPlanType",
+    "WebhooksMarketplacePurchasePropPlanTypeForResponse",
+    "WebhooksMarketplacePurchaseType",
+    "WebhooksMarketplacePurchaseTypeForResponse",
 )

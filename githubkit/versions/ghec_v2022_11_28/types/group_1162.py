@@ -9,183 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0105 import (
-    RepositoryRulesetBypassActorType,
-    RepositoryRulesetBypassActorTypeForResponse,
-)
-from .group_0124 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleCreationTypeForResponse,
-    RepositoryRuleDeletionType,
-    RepositoryRuleDeletionTypeForResponse,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleNonFastForwardTypeForResponse,
-    RepositoryRuleRequiredSignaturesType,
-    RepositoryRuleRequiredSignaturesTypeForResponse,
-)
-from .group_0125 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
-from .group_0127 import (
-    RepositoryRuleRequiredLinearHistoryType,
-    RepositoryRuleRequiredLinearHistoryTypeForResponse,
-)
-from .group_0128 import (
-    RepositoryRuleRequiredDeploymentsType,
-    RepositoryRuleRequiredDeploymentsTypeForResponse,
-)
-from .group_0130 import (
-    RepositoryRulePullRequestType,
-    RepositoryRulePullRequestTypeForResponse,
-)
-from .group_0132 import (
-    RepositoryRuleRequiredStatusChecksType,
-    RepositoryRuleRequiredStatusChecksTypeForResponse,
-)
-from .group_0134 import (
-    RepositoryRuleCommitMessagePatternType,
-    RepositoryRuleCommitMessagePatternTypeForResponse,
-)
-from .group_0136 import (
-    RepositoryRuleCommitAuthorEmailPatternType,
-    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-)
-from .group_0138 import (
-    RepositoryRuleCommitterEmailPatternType,
-    RepositoryRuleCommitterEmailPatternTypeForResponse,
-)
-from .group_0140 import (
-    RepositoryRuleBranchNamePatternType,
-    RepositoryRuleBranchNamePatternTypeForResponse,
-)
-from .group_0142 import (
-    RepositoryRuleTagNamePatternType,
-    RepositoryRuleTagNamePatternTypeForResponse,
-)
-from .group_0144 import (
-    RepositoryRuleFilePathRestrictionType,
-    RepositoryRuleFilePathRestrictionTypeForResponse,
-)
-from .group_0146 import (
-    RepositoryRuleMaxFilePathLengthType,
-    RepositoryRuleMaxFilePathLengthTypeForResponse,
-)
-from .group_0148 import (
-    RepositoryRuleFileExtensionRestrictionType,
-    RepositoryRuleFileExtensionRestrictionTypeForResponse,
-)
-from .group_0150 import (
-    RepositoryRuleMaxFileSizeType,
-    RepositoryRuleMaxFileSizeTypeForResponse,
-)
-from .group_0153 import (
-    RepositoryRuleWorkflowsType,
-    RepositoryRuleWorkflowsTypeForResponse,
-)
-from .group_0155 import (
-    RepositoryRuleCodeScanningType,
-    RepositoryRuleCodeScanningTypeForResponse,
-)
-from .group_0159 import (
-    OrgRulesetConditionsOneof0Type,
-    OrgRulesetConditionsOneof0TypeForResponse,
-)
-from .group_0160 import (
-    OrgRulesetConditionsOneof1Type,
-    OrgRulesetConditionsOneof1TypeForResponse,
-)
-from .group_0161 import (
-    OrgRulesetConditionsOneof2Type,
-    OrgRulesetConditionsOneof2TypeForResponse,
-)
+
+class OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
+
+    title: str
+    body: NotRequired[str]
 
 
-class OrgsOrgRulesetsPostBodyType(TypedDict):
-    """OrgsOrgRulesetsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberDraftsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
 
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[
-        Union[
-            OrgRulesetConditionsOneof0Type,
-            OrgRulesetConditionsOneof1Type,
-            OrgRulesetConditionsOneof2Type,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-
-
-class OrgsOrgRulesetsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgRulesetsPostBody"""
-
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
-    conditions: NotRequired[
-        Union[
-            OrgRulesetConditionsOneof0TypeForResponse,
-            OrgRulesetConditionsOneof1TypeForResponse,
-            OrgRulesetConditionsOneof2TypeForResponse,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationTypeForResponse,
-                RepositoryRuleUpdateTypeForResponse,
-                RepositoryRuleDeletionTypeForResponse,
-                RepositoryRuleRequiredLinearHistoryTypeForResponse,
-                RepositoryRuleRequiredDeploymentsTypeForResponse,
-                RepositoryRuleRequiredSignaturesTypeForResponse,
-                RepositoryRulePullRequestTypeForResponse,
-                RepositoryRuleRequiredStatusChecksTypeForResponse,
-                RepositoryRuleNonFastForwardTypeForResponse,
-                RepositoryRuleCommitMessagePatternTypeForResponse,
-                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-                RepositoryRuleCommitterEmailPatternTypeForResponse,
-                RepositoryRuleBranchNamePatternTypeForResponse,
-                RepositoryRuleTagNamePatternTypeForResponse,
-                RepositoryRuleFilePathRestrictionTypeForResponse,
-                RepositoryRuleMaxFilePathLengthTypeForResponse,
-                RepositoryRuleFileExtensionRestrictionTypeForResponse,
-                RepositoryRuleMaxFileSizeTypeForResponse,
-                RepositoryRuleWorkflowsTypeForResponse,
-                RepositoryRuleCodeScanningTypeForResponse,
-            ]
-        ]
-    ]
+    title: str
+    body: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgRulesetsPostBodyType",
-    "OrgsOrgRulesetsPostBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType",
+    "OrgsOrgProjectsV2ProjectNumberDraftsPostBodyTypeForResponse",
 )

@@ -9,37 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    tag_name: NotRequired[str]
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
-    discussion_category_name: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: Union[str, None]
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    tag_name: NotRequired[str]
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
-    discussion_category_name: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: Union[str, None]
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesReleaseIdPatchBodyType",
-    "ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
 )

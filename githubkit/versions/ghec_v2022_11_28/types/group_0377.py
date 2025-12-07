@@ -9,61 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from .group_0375 import MetadataType, MetadataTypeForResponse
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class ManifestType(TypedDict):
-    """Manifest"""
+class DependencyGraphDiffItemsType(TypedDict):
+    """DependencyGraphDiffItems"""
 
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
     name: str
-    file: NotRequired[ManifestPropFileType]
-    metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
+    version: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
+    scope: Literal["unknown", "runtime", "development"]
 
 
-class ManifestTypeForResponse(TypedDict):
-    """Manifest"""
+class DependencyGraphDiffItemsTypeForResponse(TypedDict):
+    """DependencyGraphDiffItems"""
 
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
     name: str
-    file: NotRequired[ManifestPropFileTypeForResponse]
-    metadata: NotRequired[MetadataTypeForResponse]
-    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
+    version: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: list[
+        DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse
+    ]
+    scope: Literal["unknown", "runtime", "development"]
 
 
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
-    source_location: NotRequired[str]
-
-
-class ManifestPropFileTypeForResponse(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
 
 
-ManifestPropResolvedType: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
-A collection of resolved package dependencies.
-"""
-
-
-ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
-
-A collection of resolved package dependencies.
-"""
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
 
 
 __all__ = (
-    "ManifestPropFileType",
-    "ManifestPropFileTypeForResponse",
-    "ManifestPropResolvedType",
-    "ManifestPropResolvedTypeForResponse",
-    "ManifestType",
-    "ManifestTypeForResponse",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse",
+    "DependencyGraphDiffItemsType",
+    "DependencyGraphDiffItemsTypeForResponse",
 )

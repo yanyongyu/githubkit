@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType(TypedDict):
-    """TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody"""
+class ReposOwnerRepoTopicsPutBodyType(TypedDict):
+    """ReposOwnerRepoTopicsPutBody"""
 
-    body: str
+    names: list[str]
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody"""
+class ReposOwnerRepoTopicsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoTopicsPutBody"""
 
-    body: str
+    names: list[str]
 
 
 __all__ = (
-    "TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType",
-    "TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyTypeForResponse",
+    "ReposOwnerRepoTopicsPutBodyType",
+    "ReposOwnerRepoTopicsPutBodyTypeForResponse",
 )

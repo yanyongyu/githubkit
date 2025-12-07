@@ -14,51 +14,64 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0194 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class ProjectCardType(TypedDict):
-    """Project Card
+class TeamDiscussionType(TypedDict):
+    """Team Discussion
 
-    Project cards represent a scope of work.
+    A team discussion is a persistent record of a free-form conversation within a
+    team.
     """
 
-    url: str
-    id: int
-    node_id: str
-    note: Union[str, None]
-    creator: Union[None, SimpleUserType]
+    author: Union[None, SimpleUserType]
+    body: str
+    body_html: str
+    body_version: str
+    comments_count: int
+    comments_url: str
     created_at: _dt.datetime
+    last_edited_at: Union[_dt.datetime, None]
+    html_url: str
+    node_id: str
+    number: int
+    pinned: bool
+    private: bool
+    team_url: str
+    title: str
     updated_at: _dt.datetime
-    archived: NotRequired[bool]
-    column_name: NotRequired[str]
-    project_id: NotRequired[str]
-    column_url: str
-    content_url: NotRequired[str]
-    project_url: str
+    url: str
+    reactions: NotRequired[ReactionRollupType]
 
 
-class ProjectCardTypeForResponse(TypedDict):
-    """Project Card
+class TeamDiscussionTypeForResponse(TypedDict):
+    """Team Discussion
 
-    Project cards represent a scope of work.
+    A team discussion is a persistent record of a free-form conversation within a
+    team.
     """
 
-    url: str
-    id: int
-    node_id: str
-    note: Union[str, None]
-    creator: Union[None, SimpleUserTypeForResponse]
+    author: Union[None, SimpleUserTypeForResponse]
+    body: str
+    body_html: str
+    body_version: str
+    comments_count: int
+    comments_url: str
     created_at: str
+    last_edited_at: Union[str, None]
+    html_url: str
+    node_id: str
+    number: int
+    pinned: bool
+    private: bool
+    team_url: str
+    title: str
     updated_at: str
-    archived: NotRequired[bool]
-    column_name: NotRequired[str]
-    project_id: NotRequired[str]
-    column_url: str
-    content_url: NotRequired[str]
-    project_url: str
+    url: str
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "ProjectCardType",
-    "ProjectCardTypeForResponse",
+    "TeamDiscussionType",
+    "TeamDiscussionTypeForResponse",
 )

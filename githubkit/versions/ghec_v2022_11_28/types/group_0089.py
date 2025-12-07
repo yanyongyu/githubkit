@@ -9,85 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0070 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0087 import (
-    DependabotAlertSecurityVulnerabilityType,
-    DependabotAlertSecurityVulnerabilityTypeForResponse,
-)
 from .group_0088 import (
-    DependabotAlertSecurityAdvisoryType,
-    DependabotAlertSecurityAdvisoryTypeForResponse,
-)
-from .group_0090 import (
-    DependabotAlertWithRepositoryPropDependencyType,
-    DependabotAlertWithRepositoryPropDependencyTypeForResponse,
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
 )
 
 
-class DependabotAlertWithRepositoryType(TypedDict):
-    """DependabotAlertWithRepository
+class DependabotAlertSecurityVulnerabilityType(TypedDict):
+    """DependabotAlertSecurityVulnerability
 
-    A Dependabot alert.
+    Details pertaining to one vulnerable version range for the advisory.
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
-    url: str
-    html_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
+    package: DependabotAlertPackageType
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
     ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[_dt.datetime, None]
-    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
-    repository: SimpleRepositoryType
 
 
-class DependabotAlertWithRepositoryTypeForResponse(TypedDict):
-    """DependabotAlertWithRepository
+class DependabotAlertSecurityVulnerabilityTypeForResponse(TypedDict):
+    """DependabotAlertSecurityVulnerability
 
-    A Dependabot alert.
+    Details pertaining to one vulnerable version range for the advisory.
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyTypeForResponse
-    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
-    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
-    url: str
-    html_url: str
-    created_at: str
-    updated_at: str
-    dismissed_at: Union[str, None]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
+    package: DependabotAlertPackageTypeForResponse
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse, None
     ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[str, None]
-    auto_dismissed_at: NotRequired[Union[str, None]]
-    repository: SimpleRepositoryTypeForResponse
+
+
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str
+
+
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse(
+    TypedDict
+):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str
 
 
 __all__ = (
-    "DependabotAlertWithRepositoryType",
-    "DependabotAlertWithRepositoryTypeForResponse",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse",
+    "DependabotAlertSecurityVulnerabilityType",
+    "DependabotAlertSecurityVulnerabilityTypeForResponse",
 )

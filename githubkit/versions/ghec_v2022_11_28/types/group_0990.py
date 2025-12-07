@@ -12,27 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType(
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
+
+    labels: list[str]
+
+
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    RemovePatchBody
-    """
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
 
-    repositories: list[str]
-
-
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    RemovePatchBody
-    """
-
-    repositories: list[str]
+    labels: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType",
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyTypeForResponse",
 )

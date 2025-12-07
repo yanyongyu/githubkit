@@ -9,201 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0105 import (
-    RepositoryRulesetBypassActorType,
-    RepositoryRulesetBypassActorTypeForResponse,
-)
-from .group_0118 import (
-    EnterpriseRulesetConditionsOneof0Type,
-    EnterpriseRulesetConditionsOneof0TypeForResponse,
-)
-from .group_0119 import (
-    EnterpriseRulesetConditionsOneof1Type,
-    EnterpriseRulesetConditionsOneof1TypeForResponse,
-)
-from .group_0120 import (
-    EnterpriseRulesetConditionsOneof2Type,
-    EnterpriseRulesetConditionsOneof2TypeForResponse,
-)
-from .group_0121 import (
-    EnterpriseRulesetConditionsOneof3Type,
-    EnterpriseRulesetConditionsOneof3TypeForResponse,
-)
-from .group_0122 import (
-    EnterpriseRulesetConditionsOneof4Type,
-    EnterpriseRulesetConditionsOneof4TypeForResponse,
-)
-from .group_0123 import (
-    EnterpriseRulesetConditionsOneof5Type,
-    EnterpriseRulesetConditionsOneof5TypeForResponse,
-)
-from .group_0124 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleCreationTypeForResponse,
-    RepositoryRuleDeletionType,
-    RepositoryRuleDeletionTypeForResponse,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleNonFastForwardTypeForResponse,
-    RepositoryRuleRequiredSignaturesType,
-    RepositoryRuleRequiredSignaturesTypeForResponse,
-)
-from .group_0125 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
-from .group_0127 import (
-    RepositoryRuleRequiredLinearHistoryType,
-    RepositoryRuleRequiredLinearHistoryTypeForResponse,
-)
-from .group_0128 import (
-    RepositoryRuleRequiredDeploymentsType,
-    RepositoryRuleRequiredDeploymentsTypeForResponse,
-)
-from .group_0130 import (
-    RepositoryRulePullRequestType,
-    RepositoryRulePullRequestTypeForResponse,
-)
-from .group_0132 import (
-    RepositoryRuleRequiredStatusChecksType,
-    RepositoryRuleRequiredStatusChecksTypeForResponse,
-)
-from .group_0134 import (
-    RepositoryRuleCommitMessagePatternType,
-    RepositoryRuleCommitMessagePatternTypeForResponse,
-)
-from .group_0136 import (
-    RepositoryRuleCommitAuthorEmailPatternType,
-    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-)
-from .group_0138 import (
-    RepositoryRuleCommitterEmailPatternType,
-    RepositoryRuleCommitterEmailPatternTypeForResponse,
-)
-from .group_0140 import (
-    RepositoryRuleBranchNamePatternType,
-    RepositoryRuleBranchNamePatternTypeForResponse,
-)
-from .group_0142 import (
-    RepositoryRuleTagNamePatternType,
-    RepositoryRuleTagNamePatternTypeForResponse,
-)
-from .group_0144 import (
-    RepositoryRuleFilePathRestrictionType,
-    RepositoryRuleFilePathRestrictionTypeForResponse,
-)
-from .group_0146 import (
-    RepositoryRuleMaxFilePathLengthType,
-    RepositoryRuleMaxFilePathLengthTypeForResponse,
-)
-from .group_0148 import (
-    RepositoryRuleFileExtensionRestrictionType,
-    RepositoryRuleFileExtensionRestrictionTypeForResponse,
-)
-from .group_0150 import (
-    RepositoryRuleMaxFileSizeType,
-    RepositoryRuleMaxFileSizeTypeForResponse,
-)
-from .group_0153 import (
-    RepositoryRuleWorkflowsType,
-    RepositoryRuleWorkflowsTypeForResponse,
-)
-from .group_0155 import (
-    RepositoryRuleCodeScanningType,
-    RepositoryRuleCodeScanningTypeForResponse,
-)
+from .group_0097 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
 
 
-class EnterprisesEnterpriseRulesetsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseRulesetsPostBody"""
+class EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
 
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[
-        Union[
-            EnterpriseRulesetConditionsOneof0Type,
-            EnterpriseRulesetConditionsOneof1Type,
-            EnterpriseRulesetConditionsOneof2Type,
-            EnterpriseRulesetConditionsOneof3Type,
-            EnterpriseRulesetConditionsOneof4Type,
-            EnterpriseRulesetConditionsOneof5Type,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
+    total_count: int
+    network_configurations: list[NetworkConfigurationType]
 
 
-class EnterprisesEnterpriseRulesetsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseRulesetsPostBody"""
+class EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
 
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
-    conditions: NotRequired[
-        Union[
-            EnterpriseRulesetConditionsOneof0TypeForResponse,
-            EnterpriseRulesetConditionsOneof1TypeForResponse,
-            EnterpriseRulesetConditionsOneof2TypeForResponse,
-            EnterpriseRulesetConditionsOneof3TypeForResponse,
-            EnterpriseRulesetConditionsOneof4TypeForResponse,
-            EnterpriseRulesetConditionsOneof5TypeForResponse,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationTypeForResponse,
-                RepositoryRuleUpdateTypeForResponse,
-                RepositoryRuleDeletionTypeForResponse,
-                RepositoryRuleRequiredLinearHistoryTypeForResponse,
-                RepositoryRuleRequiredDeploymentsTypeForResponse,
-                RepositoryRuleRequiredSignaturesTypeForResponse,
-                RepositoryRulePullRequestTypeForResponse,
-                RepositoryRuleRequiredStatusChecksTypeForResponse,
-                RepositoryRuleNonFastForwardTypeForResponse,
-                RepositoryRuleCommitMessagePatternTypeForResponse,
-                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-                RepositoryRuleCommitterEmailPatternTypeForResponse,
-                RepositoryRuleBranchNamePatternTypeForResponse,
-                RepositoryRuleTagNamePatternTypeForResponse,
-                RepositoryRuleFilePathRestrictionTypeForResponse,
-                RepositoryRuleMaxFilePathLengthTypeForResponse,
-                RepositoryRuleFileExtensionRestrictionTypeForResponse,
-                RepositoryRuleMaxFileSizeTypeForResponse,
-                RepositoryRuleWorkflowsTypeForResponse,
-                RepositoryRuleCodeScanningTypeForResponse,
-            ]
-        ]
-    ]
+    total_count: int
+    network_configurations: list[NetworkConfigurationTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseRulesetsPostBodyType",
-    "EnterprisesEnterpriseRulesetsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type",
+    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse",
 )

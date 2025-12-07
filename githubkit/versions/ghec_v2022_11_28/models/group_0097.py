@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,37 +19,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CustomPropertyBase(GitHubModel):
-    """CustomPropertyBase"""
+class NetworkConfiguration(GitHubModel):
+    """Hosted compute network configuration
 
-    property_name: Missing[str] = Field(
-        default=UNSET, description="The name of the property"
-    )
-    url: Missing[str] = Field(
+    A hosted compute network configuration.
+    """
+
+    id: str = Field(description="The unique identifier of the network configuration.")
+    name: str = Field(description="The name of the network configuration.")
+    compute_service: Missing[Literal["none", "actions", "codespaces"]] = Field(
         default=UNSET,
-        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
+        description="The hosted compute service the network configuration supports.",
     )
-    source_type: Missing[Literal["organization", "enterprise"]] = Field(
-        default=UNSET, description="The source type of the property"
-    )
-    value_type: Missing[
-        Literal["string", "single_select", "multi_select", "true_false"]
-    ] = Field(default=UNSET, description="The type of the value for the property")
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
-    )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
-    )
-    allowed_values: Missing[Union[list[str], None]] = Field(
+    network_settings_ids: Missing[list[str]] = Field(
         default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+        description="The unique identifier of each network settings in the configuration.",
+    )
+    created_on: Union[_dt.datetime, None] = Field(
+        description="The time at which the network configuration was created, in ISO 8601 format."
     )
 
 
-model_rebuild(CustomPropertyBase)
+model_rebuild(NetworkConfiguration)
 
-__all__ = ("CustomPropertyBase",)
+__all__ = ("NetworkConfiguration",)

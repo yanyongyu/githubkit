@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0084 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
 
-    selected_usernames: list[str]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
 
-    selected_usernames: list[str]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType",
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",
+    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse",
 )

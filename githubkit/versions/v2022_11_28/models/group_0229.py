@@ -9,24 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsSecret(GitHubModel):
-    """Actions Secret
+class ActionsCacheRetentionLimitForRepository(GitHubModel):
+    """Actions cache retention limit for a repository
 
-    Set secrets for GitHub Actions.
+    GitHub Actions cache retention policy for a repository.
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    max_cache_retention_days: Missing[int] = Field(
+        default=UNSET,
+        description="The maximum number of days to keep caches in this repository.",
+    )
 
 
-model_rebuild(ActionsSecret)
+model_rebuild(ActionsCacheRetentionLimitForRepository)
 
-__all__ = ("ActionsSecret",)
+__all__ = ("ActionsCacheRetentionLimitForRepository",)

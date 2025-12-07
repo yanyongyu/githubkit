@@ -13,34 +13,36 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0175 import (
-    RepositoryRuleCommitterEmailPatternPropParametersType,
-    RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse,
+    RepositoryRuleRequiredStatusChecksPropParametersType,
+    RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleCommitterEmailPatternType(TypedDict):
-    """committer_email_pattern
+class RepositoryRuleRequiredStatusChecksType(TypedDict):
+    """required_status_checks
 
-    Parameters to be used for the committer_email_pattern rule
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
     """
 
-    type: Literal["committer_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
 
 
-class RepositoryRuleCommitterEmailPatternTypeForResponse(TypedDict):
-    """committer_email_pattern
+class RepositoryRuleRequiredStatusChecksTypeForResponse(TypedDict):
+    """required_status_checks
 
-    Parameters to be used for the committer_email_pattern rule
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
     """
 
-    type: Literal["committer_email_pattern"]
+    type: Literal["required_status_checks"]
     parameters: NotRequired[
-        RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse
+        RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse
     ]
 
 
 __all__ = (
-    "RepositoryRuleCommitterEmailPatternType",
-    "RepositoryRuleCommitterEmailPatternTypeForResponse",
+    "RepositoryRuleRequiredStatusChecksType",
+    "RepositoryRuleRequiredStatusChecksTypeForResponse",
 )

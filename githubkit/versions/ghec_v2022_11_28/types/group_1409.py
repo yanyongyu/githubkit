@@ -12,19 +12,37 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class UserEmailsDeleteBodyOneof0Type(TypedDict):
+    """UserEmailsDeleteBodyOneof0
 
-    selected_repository_ids: list[int]
+    Deletes one or more email addresses from your GitHub account. Must contain at
+    least one email address. **Note:** Alternatively, you can pass a single email
+    address or an `array` of emails addresses directly, but we recommend that you
+    pass an object using the `emails` key.
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str]
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class UserEmailsDeleteBodyOneof0TypeForResponse(TypedDict):
+    """UserEmailsDeleteBodyOneof0
 
-    selected_repository_ids: list[int]
+    Deletes one or more email addresses from your GitHub account. Must contain at
+    least one email address. **Note:** Alternatively, you can pass a single email
+    address or an `array` of emails addresses directly, but we recommend that you
+    pass an object using the `emails` key.
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesPutBodyType",
-    "UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse",
+    "UserEmailsDeleteBodyOneof0Type",
+    "UserEmailsDeleteBodyOneof0TypeForResponse",
 )

@@ -11,35 +11,34 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0150 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
-)
+from .group_0069 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
-    """Repository ruleset conditions for repository names
+class OrgRepoCustomPropertyValuesType(TypedDict):
+    """Organization Repository Custom Property Values
 
-    Parameters for a repository name condition
+    List of custom property values for a repository
     """
 
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueType]
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for repository names
+class OrgRepoCustomPropertyValuesTypeForResponse(TypedDict):
+    """Organization Repository Custom Property Values
 
-    Parameters for a repository name condition
+    List of custom property values for a repository
     """
 
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryNameTargetType",
-    "RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse",
+    "OrgRepoCustomPropertyValuesType",
+    "OrgRepoCustomPropertyValuesTypeForResponse",
 )

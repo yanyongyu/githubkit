@@ -13,40 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0579 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
 
-class WebhookStarDeletedType(TypedDict):
-    """star deleted event"""
+class WebhookSponsorshipCreatedType(TypedDict):
+    """sponsorship created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
-    starred_at: None
+    sponsorship: WebhooksSponsorshipType
 
 
-class WebhookStarDeletedTypeForResponse(TypedDict):
-    """star deleted event"""
+class WebhookSponsorshipCreatedTypeForResponse(TypedDict):
+    """sponsorship created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
-    starred_at: None
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "WebhookStarDeletedType",
-    "WebhookStarDeletedTypeForResponse",
+    "WebhookSponsorshipCreatedType",
+    "WebhookSponsorshipCreatedTypeForResponse",
 )

@@ -9,77 +9,221 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0575 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
 
 
-class WebhookSponsorshipEditedType(TypedDict):
-    """sponsorship edited event"""
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
 
-    action: Literal["edited"]
-    changes: WebhookSponsorshipEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    The details of the security advisory, including summary, description, and
+    severity.
+    """
 
-
-class WebhookSponsorshipEditedTypeForResponse(TypedDict):
-    """sponsorship edited event"""
-
-    action: Literal["edited"]
-    changes: WebhookSponsorshipEditedPropChangesTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
-
-
-class WebhookSponsorshipEditedPropChangesType(TypedDict):
-    """WebhookSponsorshipEditedPropChanges"""
-
-    privacy_level: NotRequired[WebhookSponsorshipEditedPropChangesPropPrivacyLevelType]
-
-
-class WebhookSponsorshipEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookSponsorshipEditedPropChanges"""
-
-    privacy_level: NotRequired[
-        WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse
+    cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    cwes: list[WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType]
+    description: str
+    ghsa_id: str
+    identifiers: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType
     ]
+    published_at: str
+    references: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType
+    ]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType
+    ]
+    withdrawn_at: str
 
 
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevelType(TypedDict):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
 
-    from_: str
+    The details of the security advisory, including summary, description, and
+    severity.
+    """
+
+    cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse
+    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
+    cwes: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse
+    ]
+    description: str
+    ghsa_id: str
+    identifiers: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse
+    ]
+    published_at: str
+    references: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse
+    ]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse
+    ]
+    withdrawn_at: str
 
 
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse(TypedDict):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss"""
 
-    from_: str
+    score: float
+    vector_string: Union[str, None]
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss"""
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
+
+    url: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
+
+    url: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
+        None,
+    ]
+    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
+    severity: str
+    vulnerable_version_range: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse,
+        None,
+    ]
+    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse
+    severity: str
+    vulnerable_version_range: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    FirstPatchedVersion
+    """
+
+    identifier: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    FirstPatchedVersion
+    """
+
+    identifier: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    Package
+    """
+
+    ecosystem: str
+    name: str
+
+
+class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    Package
+    """
+
+    ecosystem: str
+    name: str
 
 
 __all__ = (
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelType",
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse",
-    "WebhookSponsorshipEditedPropChangesType",
-    "WebhookSponsorshipEditedPropChangesTypeForResponse",
-    "WebhookSponsorshipEditedType",
-    "WebhookSponsorshipEditedTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType",
+    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse",
 )

@@ -9,68 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0079 import TeamSimple
 
 
-class TeamRoleAssignment(GitHubModel):
-    """A Role Assignment for a Team
+class OrganizationFineGrainedPermission(GitHubModel):
+    """Organization Fine-Grained Permission
 
-    The Relationship a Team has with a role.
+    A fine-grained permission that protects organization resources.
     """
 
-    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
-        default=UNSET,
-        description="Determines if the team has a direct, indirect, or mixed relationship to a role",
-    )
-    id: int = Field()
-    node_id: str = Field()
     name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamRoleAssignmentPropPermissions] = Field(default=UNSET)
-    url: str = Field()
-    html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    parent: Union[None, TeamSimple] = Field()
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
-    )
-    organization_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
-    )
+    description: str = Field()
 
 
-class TeamRoleAssignmentPropPermissions(GitHubModel):
-    """TeamRoleAssignmentPropPermissions"""
+model_rebuild(OrganizationFineGrainedPermission)
 
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(TeamRoleAssignment)
-model_rebuild(TeamRoleAssignmentPropPermissions)
-
-__all__ = (
-    "TeamRoleAssignment",
-    "TeamRoleAssignmentPropPermissions",
-)
+__all__ = ("OrganizationFineGrainedPermission",)

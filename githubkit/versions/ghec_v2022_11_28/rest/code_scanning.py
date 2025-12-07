@@ -65,7 +65,7 @@ if TYPE_CHECKING:
         CodeScanningVariantAnalysisRepoTaskTypeForResponse,
         CodeScanningVariantAnalysisTypeForResponse,
         EmptyObjectTypeForResponse,
-        ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
+        ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type,
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
@@ -748,7 +748,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
+        data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type,
     ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]: ...
 
     @overload
@@ -777,7 +777,9 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
+        data: Missing[
+            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type
+        ] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]:
         """code-scanning/update-alert
@@ -794,7 +796,7 @@ class CodeScanningClient:
             BasicError,
             CodeScanningAlert,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody,
+            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
@@ -808,7 +810,7 @@ class CodeScanningClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody, json
+                ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0, json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -836,7 +838,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
+        data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type,
     ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]: ...
 
     @overload
@@ -865,7 +867,9 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
+        data: Missing[
+            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type
+        ] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]:
         """code-scanning/update-alert
@@ -882,7 +886,7 @@ class CodeScanningClient:
             BasicError,
             CodeScanningAlert,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
-            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody,
+            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
@@ -896,7 +900,7 @@ class CodeScanningClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody, json
+                ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0, json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

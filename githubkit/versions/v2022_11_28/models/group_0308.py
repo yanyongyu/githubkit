@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -17,36 +18,61 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0307 import Metadata
+from .group_0003 import SimpleUser
+from .group_0037 import DependabotAlertSecurityVulnerability
+from .group_0038 import DependabotAlertSecurityAdvisory
+from .group_0309 import DependabotAlertPropDependency
 
 
-class Dependency(GitHubModel):
-    """Dependency"""
+class DependabotAlert(GitHubModel):
+    """DependabotAlert
 
-    package_url: Missing[str] = Field(
-        pattern="^pkg",
-        default=UNSET,
-        description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
+    A Dependabot alert.
+    """
+
+    number: int = Field(description="The security alert number.")
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
+        description="The state of the Dependabot alert."
     )
-    metadata: Missing[Metadata] = Field(
-        default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
+    dependency: DependabotAlertPropDependency = Field(
+        description="Details for the vulnerable dependency."
     )
-    relationship: Missing[Literal["direct", "indirect"]] = Field(
-        default=UNSET,
-        description="A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
+    security_advisory: DependabotAlertSecurityAdvisory = Field(
+        description="Details for the GitHub Security Advisory."
     )
-    scope: Missing[Literal["runtime", "development"]] = Field(
-        default=UNSET,
-        description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
+    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
+        description="Details pertaining to one vulnerable version range for the advisory."
     )
-    dependencies: Missing[list[str]] = Field(
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    created_at: _dt.datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ] = Field(description="The reason that the alert was dismissed.")
+    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
+        description="An optional comment associated with the alert's dismissal."
+    )
+    fixed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    auto_dismissed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="Array of package-url (PURLs) of direct child dependencies.",
+        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-model_rebuild(Dependency)
+model_rebuild(DependabotAlert)
 
-__all__ = ("Dependency",)
+__all__ = ("DependabotAlert",)

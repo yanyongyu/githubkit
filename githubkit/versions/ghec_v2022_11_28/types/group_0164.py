@@ -9,40 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0165 import (
-    RepositoryRuleCopilotCodeReviewPropParametersType,
-    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
+from .group_0113 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
+from .group_0162 import (
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
 )
 
 
-class RepositoryRuleCopilotCodeReviewType(TypedDict):
-    """copilot_code_review
+class OrgRulesetConditionsOneof1Type(TypedDict):
+    """repository_id_and_ref_name
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review.
+    Conditions to target repositories by id and refs by name
     """
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
 
 
-class RepositoryRuleCopilotCodeReviewTypeForResponse(TypedDict):
-    """copilot_code_review
+class OrgRulesetConditionsOneof1TypeForResponse(TypedDict):
+    """repository_id_and_ref_name
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review.
+    Conditions to target repositories by id and refs by name
     """
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[
-        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
-    ]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_id: (
+        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
+    )
 
 
 __all__ = (
-    "RepositoryRuleCopilotCodeReviewType",
-    "RepositoryRuleCopilotCodeReviewTypeForResponse",
+    "OrgRulesetConditionsOneof1Type",
+    "OrgRulesetConditionsOneof1TypeForResponse",
 )

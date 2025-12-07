@@ -9,50 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
+class RepositoryRuleMergeQueuePropParametersType(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    do_not_enforce_on_create: NotRequired[bool]
-    required_status_checks: list[RepositoryRuleParamsStatusCheckConfigurationType]
-    strict_required_status_checks_policy: bool
-
-
-class RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
-
-    do_not_enforce_on_create: NotRequired[bool]
-    required_status_checks: list[
-        RepositoryRuleParamsStatusCheckConfigurationTypeForResponse
-    ]
-    strict_required_status_checks_policy: bool
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
 
 
-class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
-    """StatusCheckConfiguration
+class RepositoryRuleMergeQueuePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    Required status check
-    """
-
-    context: str
-    integration_id: NotRequired[int]
-
-
-class RepositoryRuleParamsStatusCheckConfigurationTypeForResponse(TypedDict):
-    """StatusCheckConfiguration
-
-    Required status check
-    """
-
-    context: str
-    integration_id: NotRequired[int]
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
 
 
 __all__ = (
-    "RepositoryRuleParamsStatusCheckConfigurationType",
-    "RepositoryRuleParamsStatusCheckConfigurationTypeForResponse",
-    "RepositoryRuleRequiredStatusChecksPropParametersType",
-    "RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse",
+    "RepositoryRuleMergeQueuePropParametersType",
+    "RepositoryRuleMergeQueuePropParametersTypeForResponse",
 )

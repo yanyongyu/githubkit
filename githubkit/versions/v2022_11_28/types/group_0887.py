@@ -11,26 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+
+class EventsGetResponse503Type(TypedDict):
+    """EventsGetResponse503"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class InstallationRepositoriesGetResponse200Type(TypedDict):
-    """InstallationRepositoriesGetResponse200"""
+class EventsGetResponse503TypeForResponse(TypedDict):
+    """EventsGetResponse503"""
 
-    total_count: int
-    repositories: list[RepositoryType]
-    repository_selection: NotRequired[str]
-
-
-class InstallationRepositoriesGetResponse200TypeForResponse(TypedDict):
-    """InstallationRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[RepositoryTypeForResponse]
-    repository_selection: NotRequired[str]
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "InstallationRepositoriesGetResponse200Type",
-    "InstallationRepositoriesGetResponse200TypeForResponse",
+    "EventsGetResponse503Type",
+    "EventsGetResponse503TypeForResponse",
 )

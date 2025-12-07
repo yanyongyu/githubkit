@@ -14,28 +14,29 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0194 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class TimelineReviewedEventType(TypedDict):
-    """Timeline Reviewed Event
+class TimelineCommentEventType(TypedDict):
+    """Timeline Comment Event
 
-    Timeline Reviewed Event
+    Timeline Comment Event
     """
 
-    event: Literal["reviewed"]
+    event: Literal["commented"]
+    actor: SimpleUserType
     id: int
     node_id: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
     user: SimpleUserType
-    body: Union[str, None]
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: TimelineReviewedEventPropLinksType
-    submitted_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    commit_id: str
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    issue_url: str
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -46,28 +47,29 @@ class TimelineReviewedEventType(TypedDict):
         "NONE",
         "OWNER",
     ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class TimelineReviewedEventTypeForResponse(TypedDict):
-    """Timeline Reviewed Event
+class TimelineCommentEventTypeForResponse(TypedDict):
+    """Timeline Comment Event
 
-    Timeline Reviewed Event
+    Timeline Comment Event
     """
 
-    event: Literal["reviewed"]
+    event: Literal["commented"]
+    actor: SimpleUserTypeForResponse
     id: int
     node_id: str
-    user: SimpleUserTypeForResponse
-    body: Union[str, None]
-    state: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
     html_url: str
-    pull_request_url: str
-    links: TimelineReviewedEventPropLinksTypeForResponse
-    submitted_at: NotRequired[str]
-    updated_at: NotRequired[Union[str, None]]
-    commit_id: str
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
+    user: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
+    issue_url: str
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -78,53 +80,11 @@ class TimelineReviewedEventTypeForResponse(TypedDict):
         "NONE",
         "OWNER",
     ]
-
-
-class TimelineReviewedEventPropLinksType(TypedDict):
-    """TimelineReviewedEventPropLinks"""
-
-    html: TimelineReviewedEventPropLinksPropHtmlType
-    pull_request: TimelineReviewedEventPropLinksPropPullRequestType
-
-
-class TimelineReviewedEventPropLinksTypeForResponse(TypedDict):
-    """TimelineReviewedEventPropLinks"""
-
-    html: TimelineReviewedEventPropLinksPropHtmlTypeForResponse
-    pull_request: TimelineReviewedEventPropLinksPropPullRequestTypeForResponse
-
-
-class TimelineReviewedEventPropLinksPropHtmlType(TypedDict):
-    """TimelineReviewedEventPropLinksPropHtml"""
-
-    href: str
-
-
-class TimelineReviewedEventPropLinksPropHtmlTypeForResponse(TypedDict):
-    """TimelineReviewedEventPropLinksPropHtml"""
-
-    href: str
-
-
-class TimelineReviewedEventPropLinksPropPullRequestType(TypedDict):
-    """TimelineReviewedEventPropLinksPropPullRequest"""
-
-    href: str
-
-
-class TimelineReviewedEventPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """TimelineReviewedEventPropLinksPropPullRequest"""
-
-    href: str
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "TimelineReviewedEventPropLinksPropHtmlType",
-    "TimelineReviewedEventPropLinksPropHtmlTypeForResponse",
-    "TimelineReviewedEventPropLinksPropPullRequestType",
-    "TimelineReviewedEventPropLinksPropPullRequestTypeForResponse",
-    "TimelineReviewedEventPropLinksType",
-    "TimelineReviewedEventPropLinksTypeForResponse",
-    "TimelineReviewedEventType",
-    "TimelineReviewedEventTypeForResponse",
+    "TimelineCommentEventType",
+    "TimelineCommentEventTypeForResponse",
 )

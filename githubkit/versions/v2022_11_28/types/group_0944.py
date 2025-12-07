@@ -9,33 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0094 import (
-    ArtifactDeploymentRecordType,
-    ArtifactDeploymentRecordTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
+class OrgsOrgActionsVariablesNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
 
-    total_count: NotRequired[int]
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
+class OrgsOrgActionsVariablesNameRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
 
-    total_count: NotRequired[int]
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type",
-    "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse",
+    "OrgsOrgActionsVariablesNameRepositoriesPutBodyType",
+    "OrgsOrgActionsVariablesNameRepositoriesPutBodyTypeForResponse",
 )

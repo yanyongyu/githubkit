@@ -9,37 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0034 import (
-    ActionsHostedRunnerCustomImageVersionType,
-    ActionsHostedRunnerCustomImageVersionTypeForResponse,
-)
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGe
-    tResponse200
-    """
+class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsType]
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGe
-    tResponse200
-    """
+class ApplicationsClientIdTokenScopedPostBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
-    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
+    "ApplicationsClientIdTokenScopedPostBodyType",
+    "ApplicationsClientIdTokenScopedPostBodyTypeForResponse",
 )

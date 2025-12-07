@@ -9,26 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type(TypedDict):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    PatchBody
+    """
 
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    repository_selection: Literal["all", "selected"]
+    repositories: NotRequired[list[str]]
 
 
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    PatchBody
+    """
 
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    repository_selection: Literal["all", "selected"]
+    repositories: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type",
-    "EnterprisesEnterpriseCodeScanningAlertsGetResponse503TypeForResponse",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyTypeForResponse",
 )

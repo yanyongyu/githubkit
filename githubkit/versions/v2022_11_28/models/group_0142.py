@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,34 +18,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0047 import Issue
+from .group_0138 import PullRequestSimple
+from .group_0141 import ProjectsV2DraftIssue
 
-class CustomPropertySetPayload(GitHubModel):
-    """Custom Property Set Payload
 
-    Custom property set payload
+class ProjectsV2ItemSimple(GitHubModel):
+    """Projects v2 Item
+
+    An item belonging to a project
     """
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
-        Field(description="The type of the value for the property")
+    id: float = Field(description="The unique identifier of the project item.")
+    node_id: Missing[str] = Field(
+        default=UNSET, description="The node ID of the project item."
     )
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
+    content: Missing[Union[Issue, PullRequestSimple, ProjectsV2DraftIssue]] = Field(
+        default=UNSET, description="The content represented by the item."
     )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
+        title="Projects v2 Item Content Type",
+        description="The type of content tracked in a project item",
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
+    creator: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    allowed_values: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+    created_at: _dt.datetime = Field(description="The time when the item was created.")
+    updated_at: _dt.datetime = Field(
+        description="The time when the item was last updated."
     )
-    values_editable_by: Missing[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ] = Field(default=UNSET, description="Who can edit the values of the property")
+    archived_at: Union[_dt.datetime, None] = Field(
+        description="The time when the item was archived."
+    )
+    project_url: Missing[str] = Field(
+        default=UNSET, description="The URL of the project this item belongs to."
+    )
+    item_url: Missing[str] = Field(
+        default=UNSET, description="The URL of the item in the project."
+    )
 
 
-model_rebuild(CustomPropertySetPayload)
+model_rebuild(ProjectsV2ItemSimple)
 
-__all__ = ("CustomPropertySetPayload",)
+__all__ = ("ProjectsV2ItemSimple",)

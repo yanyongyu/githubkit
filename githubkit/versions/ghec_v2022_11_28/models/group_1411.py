@@ -13,16 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0223 import CodespaceMachine
+from .group_0018 import Installation
 
 
-class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubModel):
-    """UserCodespacesCodespaceNameMachinesGetResponse200"""
+class UserInstallationsGetResponse200(GitHubModel):
+    """UserInstallationsGetResponse200"""
 
     total_count: int = Field()
-    machines: list[CodespaceMachine] = Field()
+    installations: list[Installation] = Field()
 
 
-model_rebuild(UserCodespacesCodespaceNameMachinesGetResponse200)
+model_rebuild(UserInstallationsGetResponse200)
 
-__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200",)
+__all__ = ("UserInstallationsGetResponse200",)

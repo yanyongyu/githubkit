@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,17 +19,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoKeysPostBody(GitHubModel):
-    """ReposOwnerRepoKeysPostBody"""
+class ReposOwnerRepoMilestonesPostBody(GitHubModel):
+    """ReposOwnerRepoMilestonesPostBody"""
 
-    title: Missing[str] = Field(default=UNSET, description="A name for the key.")
-    key: str = Field(description="The contents of the key.")
-    read_only: Missing[bool] = Field(
+    title: str = Field(description="The title of the milestone.")
+    state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET,
-        description='If `true`, the key will only be able to read repository contents. Otherwise, the key will be able to read and write.  \n  \nDeploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. For more information, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest//articles/repository-permission-levels-for-an-organization/)" and "[Permission levels for a user account repository](https://docs.github.com/enterprise-cloud@latest//articles/permission-levels-for-a-user-account-repository/)."',
+        description="The state of the milestone. Either `open` or `closed`.",
+    )
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the milestone."
+    )
+    due_on: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-model_rebuild(ReposOwnerRepoKeysPostBody)
+model_rebuild(ReposOwnerRepoMilestonesPostBody)
 
-__all__ = ("ReposOwnerRepoKeysPostBody",)
+__all__ = ("ReposOwnerRepoMilestonesPostBody",)

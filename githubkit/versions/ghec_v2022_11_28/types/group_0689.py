@@ -13,14 +13,17 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0684 import (
+from .group_0688 import (
     WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType,
     WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
 )
 
 
-class WebhookIssueCommentDeletedPropIssueMergedMilestoneType(TypedDict):
-    """WebhookIssueCommentDeletedPropIssueMergedMilestone"""
+class WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneType(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
 
     closed_at: Union[_dt.datetime, None]
     closed_issues: int
@@ -42,8 +45,11 @@ class WebhookIssueCommentDeletedPropIssueMergedMilestoneType(TypedDict):
     url: str
 
 
-class WebhookIssueCommentDeletedPropIssueMergedMilestoneTypeForResponse(TypedDict):
-    """WebhookIssueCommentDeletedPropIssueMergedMilestone"""
+class WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
 
     closed_at: Union[str, None]
     closed_issues: int
@@ -67,6 +73,6 @@ class WebhookIssueCommentDeletedPropIssueMergedMilestoneTypeForResponse(TypedDic
 
 
 __all__ = (
-    "WebhookIssueCommentDeletedPropIssueMergedMilestoneType",
-    "WebhookIssueCommentDeletedPropIssueMergedMilestoneTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneTypeForResponse",
 )

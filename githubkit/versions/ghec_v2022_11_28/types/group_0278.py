@@ -9,31 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ImmutableReleasesOrganizationSettingsType(TypedDict):
-    """Check immutable releases organization settings
+class CodeOfConductSimpleType(TypedDict):
+    """Code Of Conduct Simple
 
-    Check immutable releases settings for an organization.
+    Code of Conduct Simple
     """
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
-class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
-    """Check immutable releases organization settings
+class CodeOfConductSimpleTypeForResponse(TypedDict):
+    """Code Of Conduct Simple
 
-    Check immutable releases settings for an organization.
+    Code of Conduct Simple
     """
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
 __all__ = (
-    "ImmutableReleasesOrganizationSettingsType",
-    "ImmutableReleasesOrganizationSettingsTypeForResponse",
+    "CodeOfConductSimpleType",
+    "CodeOfConductSimpleTypeForResponse",
 )

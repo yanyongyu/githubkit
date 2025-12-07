@@ -9,50 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyType(TypedDict):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type(TypedDict):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
 
-    auto_trigger_checks: NotRequired[
-        list[
-            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
-        ]
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
     ]
+    query_pack: str
+    repositories: NotRequired[list[str]]
+    repository_lists: NotRequired[list[str]]
+    repository_owners: list[str]
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
-
-    auto_trigger_checks: NotRequired[
-        list[
-            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType(
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
 
-    app_id: int
-    setting: bool
-
-
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
-
-    app_id: int
-    setting: bool
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack: str
+    repositories: NotRequired[list[str]]
+    repository_lists: NotRequired[list[str]]
+    repository_owners: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse",
 )

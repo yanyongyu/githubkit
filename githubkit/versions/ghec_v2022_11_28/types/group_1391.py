@@ -9,26 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class TeamsTeamIdDiscussionsPostBodyType(TypedDict):
-    """TeamsTeamIdDiscussionsPostBody"""
+class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType(
+    TypedDict
+):
+    """TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody"""
 
-    title: str
-    body: str
-    private: NotRequired[bool]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-class TeamsTeamIdDiscussionsPostBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdDiscussionsPostBody"""
+class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyTypeForResponse(
+    TypedDict
+):
+    """TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody"""
 
-    title: str
-    body: str
-    private: NotRequired[bool]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
 __all__ = (
-    "TeamsTeamIdDiscussionsPostBodyType",
-    "TeamsTeamIdDiscussionsPostBodyTypeForResponse",
+    "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType",
+    "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyTypeForResponse",
 )

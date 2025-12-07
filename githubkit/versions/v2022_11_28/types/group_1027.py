@@ -13,19 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
+class OrgsOrgSettingsNetworkConfigurationsPostBodyType(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
+class OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType",
-    "OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyTypeForResponse",
+    "OrgsOrgSettingsNetworkConfigurationsPostBodyType",
+    "OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse",
 )

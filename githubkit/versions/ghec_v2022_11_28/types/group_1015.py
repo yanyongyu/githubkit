@@ -11,25 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0098 import (
-    OrganizationCustomPropertyType,
-    OrganizationCustomPropertyTypeForResponse,
-)
+
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
+
+    selected_usernames: list[str]
 
 
-class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
 
-    properties: list[OrganizationCustomPropertyType]
-
-
-class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
-
-    properties: list[OrganizationCustomPropertyTypeForResponse]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType",
-    "EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
 )

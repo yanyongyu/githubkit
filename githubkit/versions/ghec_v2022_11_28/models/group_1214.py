@@ -13,18 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0295 import Job
+from .group_0301 import ActionsSecret
 
 
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
+class ReposOwnerRepoActionsSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsSecretsGetResponse200"""
 
     total_count: int = Field()
-    jobs: list[Job] = Field()
+    secrets: list[ActionsSecret] = Field()
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200)
+model_rebuild(ReposOwnerRepoActionsSecretsGetResponse200)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200",)
+__all__ = ("ReposOwnerRepoActionsSecretsGetResponse200",)

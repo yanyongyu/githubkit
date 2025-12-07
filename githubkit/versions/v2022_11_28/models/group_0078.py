@@ -14,17 +14,22 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OidcCustomSub(GitHubModel):
-    """Actions OIDC Subject customization
+class ActionsHostedRunnerMachineSpec(GitHubModel):
+    """Github-owned VM details.
 
-    Actions OIDC Subject customization
+    Provides details of a particular machine spec.
     """
 
-    include_claim_keys: list[str] = Field(
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
+    id: str = Field(
+        description="The ID used for the `size` parameter when creating a new runner."
+    )
+    cpu_cores: int = Field(description="The number of cores.")
+    memory_gb: int = Field(description="The available RAM for the machine spec.")
+    storage_gb: int = Field(
+        description="The available SSD storage for the machine spec."
     )
 
 
-model_rebuild(OidcCustomSub)
+model_rebuild(ActionsHostedRunnerMachineSpec)
 
-__all__ = ("OidcCustomSub",)
+__all__ = ("ActionsHostedRunnerMachineSpec",)

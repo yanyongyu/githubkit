@@ -9,77 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0079 import TeamSimpleType, TeamSimpleTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class UserRoleAssignmentType(TypedDict):
-    """A Role Assignment for a User
+class OrganizationRoleType(TypedDict):
+    """Organization Role
 
-    The Relationship a User has with a role.
+    Organization roles
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[TeamSimpleType]]
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
     id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    ]
+    source: NotRequired[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+    ]
+    permissions: list[str]
+    organization: Union[None, SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class UserRoleAssignmentTypeForResponse(TypedDict):
-    """A Role Assignment for a User
+class OrganizationRoleTypeForResponse(TypedDict):
+    """Organization Role
 
-    The Relationship a User has with a role.
+    Organization roles
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[TeamSimpleTypeForResponse]]
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
     id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    ]
+    source: NotRequired[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+    ]
+    permissions: list[str]
+    organization: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+
+
+class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleType]]
+
+
+class OrgsOrgOrganizationRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleTypeForResponse]]
 
 
 __all__ = (
-    "UserRoleAssignmentType",
-    "UserRoleAssignmentTypeForResponse",
+    "OrganizationRoleType",
+    "OrganizationRoleTypeForResponse",
+    "OrgsOrgOrganizationRolesGetResponse200Type",
+    "OrgsOrgOrganizationRolesGetResponse200TypeForResponse",
 )

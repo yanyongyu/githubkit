@@ -9,49 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType(TypedDict):
+    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
 
-    total_count: int
-    secrets: list[DependabotSecretType]
-
-
-class ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[DependabotSecretTypeForResponse]
-
-
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
-
-    Set secrets for Dependabot.
-    """
-
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    state: Literal[
+        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
+    ]
+    target_url: NotRequired[str]
+    log_url: NotRequired[str]
+    description: NotRequired[str]
+    environment: NotRequired[str]
+    environment_url: NotRequired[str]
+    auto_inactive: NotRequired[bool]
 
 
-class DependabotSecretTypeForResponse(TypedDict):
-    """Dependabot Secret
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
 
-    Set secrets for Dependabot.
-    """
-
-    name: str
-    created_at: str
-    updated_at: str
+    state: Literal[
+        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
+    ]
+    target_url: NotRequired[str]
+    log_url: NotRequired[str]
+    description: NotRequired[str]
+    environment: NotRequired[str]
+    environment_url: NotRequired[str]
+    auto_inactive: NotRequired[bool]
 
 
 __all__ = (
-    "DependabotSecretType",
-    "DependabotSecretTypeForResponse",
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
-    "ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType",
+    "ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyTypeForResponse",
 )

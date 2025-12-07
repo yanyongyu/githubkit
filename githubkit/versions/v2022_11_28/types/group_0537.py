@@ -13,41 +13,42 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0303 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertFixedType(TypedDict):
-    """Dependabot alert fixed event"""
+class WebhookDeleteType(TypedDict):
+    """delete event"""
 
-    action: Literal["fixed"]
-    alert: DependabotAlertType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    pusher_type: str
+    ref: str
+    ref_type: Literal["tag", "branch"]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertFixedTypeForResponse(TypedDict):
-    """Dependabot alert fixed event"""
+class WebhookDeleteTypeForResponse(TypedDict):
+    """delete event"""
 
-    action: Literal["fixed"]
-    alert: DependabotAlertTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    pusher_type: str
+    ref: str
+    ref_type: Literal["tag", "branch"]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDependabotAlertFixedType",
-    "WebhookDependabotAlertFixedTypeForResponse",
+    "WebhookDeleteType",
+    "WebhookDeleteTypeForResponse",
 )

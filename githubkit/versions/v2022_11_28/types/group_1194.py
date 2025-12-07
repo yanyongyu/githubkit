@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
+class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
 
-    reviewers: NotRequired[list[str]]
-    team_reviewers: list[str]
+    body: str
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1TypeForResponse(
+class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
+    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
 
-    reviewers: NotRequired[list[str]]
-    team_reviewers: list[str]
+    body: str
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type",
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType",
+    "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyTypeForResponse",
 )

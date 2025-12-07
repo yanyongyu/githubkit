@@ -9,75 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0560 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
+from typing_extensions import TypedDict
 
 
-class WebhookProjectCardEditedType(TypedDict):
-    """project_card edited event"""
+class WebhookPingFormEncodedType(TypedDict):
+    """WebhookPingFormEncoded
 
-    action: Literal["edited"]
-    changes: WebhookProjectCardEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhooksProjectCardType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    The webhooks ping payload encoded with URL encoding.
+    """
+
+    payload: str
 
 
-class WebhookProjectCardEditedTypeForResponse(TypedDict):
-    """project_card edited event"""
+class WebhookPingFormEncodedTypeForResponse(TypedDict):
+    """WebhookPingFormEncoded
 
-    action: Literal["edited"]
-    changes: WebhookProjectCardEditedPropChangesTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_card: WebhooksProjectCardTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    The webhooks ping payload encoded with URL encoding.
+    """
 
-
-class WebhookProjectCardEditedPropChangesType(TypedDict):
-    """WebhookProjectCardEditedPropChanges"""
-
-    note: WebhookProjectCardEditedPropChangesPropNoteType
-
-
-class WebhookProjectCardEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectCardEditedPropChanges"""
-
-    note: WebhookProjectCardEditedPropChangesPropNoteTypeForResponse
-
-
-class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
-    """WebhookProjectCardEditedPropChangesPropNote"""
-
-    from_: Union[str, None]
-
-
-class WebhookProjectCardEditedPropChangesPropNoteTypeForResponse(TypedDict):
-    """WebhookProjectCardEditedPropChangesPropNote"""
-
-    from_: Union[str, None]
+    payload: str
 
 
 __all__ = (
-    "WebhookProjectCardEditedPropChangesPropNoteType",
-    "WebhookProjectCardEditedPropChangesPropNoteTypeForResponse",
-    "WebhookProjectCardEditedPropChangesType",
-    "WebhookProjectCardEditedPropChangesTypeForResponse",
-    "WebhookProjectCardEditedType",
-    "WebhookProjectCardEditedTypeForResponse",
+    "WebhookPingFormEncodedType",
+    "WebhookPingFormEncodedTypeForResponse",
 )

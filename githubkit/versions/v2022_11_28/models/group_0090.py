@@ -9,33 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0089 import RunnerLabel
 
+class SelfHostedRunnersSettings(GitHubModel):
+    """SelfHostedRunnersSettings"""
 
-class Runner(GitHubModel):
-    """Self hosted runners
-
-    A self hosted runner
-    """
-
-    id: int = Field(description="The ID of the runner.")
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the runner group."
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
     )
-    name: str = Field(description="The name of the runner.")
-    os: str = Field(description="The Operating System of the runner.")
-    status: str = Field(description="The status of the runner.")
-    busy: bool = Field()
-    labels: list[RunnerLabel] = Field()
-    ephemeral: Missing[bool] = Field(default=UNSET)
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
+    )
 
 
-model_rebuild(Runner)
+model_rebuild(SelfHostedRunnersSettings)
 
-__all__ = ("Runner",)
+__all__ = ("SelfHostedRunnersSettings",)

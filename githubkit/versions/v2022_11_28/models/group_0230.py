@@ -9,26 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsVariable(GitHubModel):
-    """Actions Variable"""
+class ActionsCacheStorageLimitForRepository(GitHubModel):
+    """Actions cache storage limit for a repository
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    created_at: _dt.datetime = Field(
-        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    GitHub Actions cache storage policy for a repository.
+    """
+
+    max_cache_size_gb: Missing[int] = Field(
+        default=UNSET,
+        description="The maximum total cache size for this repository, in gigabytes.",
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
 
 
-model_rebuild(ActionsVariable)
+model_rebuild(ActionsCacheStorageLimitForRepository)
 
-__all__ = ("ActionsVariable",)
+__all__ = ("ActionsCacheStorageLimitForRepository",)

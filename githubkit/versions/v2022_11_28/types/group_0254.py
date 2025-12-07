@@ -12,102 +12,275 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0253 import DiffEntryType, DiffEntryTypeForResponse
-from .group_0255 import CommitPropCommitType, CommitPropCommitTypeForResponse
+from .group_0251 import (
+    ProtectedBranchPullRequestReviewType,
+    ProtectedBranchPullRequestReviewTypeForResponse,
+)
+from .group_0253 import (
+    BranchRestrictionPolicyType,
+    BranchRestrictionPolicyTypeForResponse,
+)
 
 
-class CommitType(TypedDict):
-    """Commit
+class BranchProtectionType(TypedDict):
+    """Branch Protection
 
-    Commit
+    Branch Protection
+    """
+
+    url: NotRequired[str]
+    enabled: NotRequired[bool]
+    required_status_checks: NotRequired[ProtectedBranchRequiredStatusCheckType]
+    enforce_admins: NotRequired[ProtectedBranchAdminEnforcedType]
+    required_pull_request_reviews: NotRequired[ProtectedBranchPullRequestReviewType]
+    restrictions: NotRequired[BranchRestrictionPolicyType]
+    required_linear_history: NotRequired[BranchProtectionPropRequiredLinearHistoryType]
+    allow_force_pushes: NotRequired[BranchProtectionPropAllowForcePushesType]
+    allow_deletions: NotRequired[BranchProtectionPropAllowDeletionsType]
+    block_creations: NotRequired[BranchProtectionPropBlockCreationsType]
+    required_conversation_resolution: NotRequired[
+        BranchProtectionPropRequiredConversationResolutionType
+    ]
+    name: NotRequired[str]
+    protection_url: NotRequired[str]
+    required_signatures: NotRequired[BranchProtectionPropRequiredSignaturesType]
+    lock_branch: NotRequired[BranchProtectionPropLockBranchType]
+    allow_fork_syncing: NotRequired[BranchProtectionPropAllowForkSyncingType]
+
+
+class BranchProtectionTypeForResponse(TypedDict):
+    """Branch Protection
+
+    Branch Protection
+    """
+
+    url: NotRequired[str]
+    enabled: NotRequired[bool]
+    required_status_checks: NotRequired[
+        ProtectedBranchRequiredStatusCheckTypeForResponse
+    ]
+    enforce_admins: NotRequired[ProtectedBranchAdminEnforcedTypeForResponse]
+    required_pull_request_reviews: NotRequired[
+        ProtectedBranchPullRequestReviewTypeForResponse
+    ]
+    restrictions: NotRequired[BranchRestrictionPolicyTypeForResponse]
+    required_linear_history: NotRequired[
+        BranchProtectionPropRequiredLinearHistoryTypeForResponse
+    ]
+    allow_force_pushes: NotRequired[BranchProtectionPropAllowForcePushesTypeForResponse]
+    allow_deletions: NotRequired[BranchProtectionPropAllowDeletionsTypeForResponse]
+    block_creations: NotRequired[BranchProtectionPropBlockCreationsTypeForResponse]
+    required_conversation_resolution: NotRequired[
+        BranchProtectionPropRequiredConversationResolutionTypeForResponse
+    ]
+    name: NotRequired[str]
+    protection_url: NotRequired[str]
+    required_signatures: NotRequired[
+        BranchProtectionPropRequiredSignaturesTypeForResponse
+    ]
+    lock_branch: NotRequired[BranchProtectionPropLockBranchTypeForResponse]
+    allow_fork_syncing: NotRequired[BranchProtectionPropAllowForkSyncingTypeForResponse]
+
+
+class ProtectedBranchAdminEnforcedType(TypedDict):
+    """Protected Branch Admin Enforced
+
+    Protected Branch Admin Enforced
     """
 
     url: str
-    sha: str
-    node_id: str
-    html_url: str
-    comments_url: str
-    commit: CommitPropCommitType
-    author: Union[SimpleUserType, EmptyObjectType, None]
-    committer: Union[SimpleUserType, EmptyObjectType, None]
-    parents: list[CommitPropParentsItemsType]
-    stats: NotRequired[CommitPropStatsType]
-    files: NotRequired[list[DiffEntryType]]
+    enabled: bool
 
 
-class CommitTypeForResponse(TypedDict):
-    """Commit
+class ProtectedBranchAdminEnforcedTypeForResponse(TypedDict):
+    """Protected Branch Admin Enforced
 
-    Commit
+    Protected Branch Admin Enforced
     """
 
     url: str
-    sha: str
-    node_id: str
-    html_url: str
-    comments_url: str
-    commit: CommitPropCommitTypeForResponse
-    author: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
-    committer: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
-    parents: list[CommitPropParentsItemsTypeForResponse]
-    stats: NotRequired[CommitPropStatsTypeForResponse]
-    files: NotRequired[list[DiffEntryTypeForResponse]]
+    enabled: bool
 
 
-class EmptyObjectType(TypedDict):
-    """Empty Object
+class BranchProtectionPropRequiredLinearHistoryType(TypedDict):
+    """BranchProtectionPropRequiredLinearHistory"""
 
-    An object without any properties.
+    enabled: NotRequired[bool]
+
+
+class BranchProtectionPropRequiredLinearHistoryTypeForResponse(TypedDict):
+    """BranchProtectionPropRequiredLinearHistory"""
+
+    enabled: NotRequired[bool]
+
+
+class BranchProtectionPropAllowForcePushesType(TypedDict):
+    """BranchProtectionPropAllowForcePushes"""
+
+    enabled: NotRequired[bool]
+
+
+class BranchProtectionPropAllowForcePushesTypeForResponse(TypedDict):
+    """BranchProtectionPropAllowForcePushes"""
+
+    enabled: NotRequired[bool]
+
+
+class BranchProtectionPropAllowDeletionsType(TypedDict):
+    """BranchProtectionPropAllowDeletions"""
+
+    enabled: NotRequired[bool]
+
+
+class BranchProtectionPropAllowDeletionsTypeForResponse(TypedDict):
+    """BranchProtectionPropAllowDeletions"""
+
+    enabled: NotRequired[bool]
+
+
+class BranchProtectionPropBlockCreationsType(TypedDict):
+    """BranchProtectionPropBlockCreations"""
+
+    enabled: NotRequired[bool]
+
+
+class BranchProtectionPropBlockCreationsTypeForResponse(TypedDict):
+    """BranchProtectionPropBlockCreations"""
+
+    enabled: NotRequired[bool]
+
+
+class BranchProtectionPropRequiredConversationResolutionType(TypedDict):
+    """BranchProtectionPropRequiredConversationResolution"""
+
+    enabled: NotRequired[bool]
+
+
+class BranchProtectionPropRequiredConversationResolutionTypeForResponse(TypedDict):
+    """BranchProtectionPropRequiredConversationResolution"""
+
+    enabled: NotRequired[bool]
+
+
+class BranchProtectionPropRequiredSignaturesType(TypedDict):
+    """BranchProtectionPropRequiredSignatures"""
+
+    url: str
+    enabled: bool
+
+
+class BranchProtectionPropRequiredSignaturesTypeForResponse(TypedDict):
+    """BranchProtectionPropRequiredSignatures"""
+
+    url: str
+    enabled: bool
+
+
+class BranchProtectionPropLockBranchType(TypedDict):
+    """BranchProtectionPropLockBranch
+
+    Whether to set the branch as read-only. If this is true, users will not be able
+    to push to the branch.
     """
 
+    enabled: NotRequired[bool]
 
-class EmptyObjectTypeForResponse(TypedDict):
-    """Empty Object
 
-    An object without any properties.
+class BranchProtectionPropLockBranchTypeForResponse(TypedDict):
+    """BranchProtectionPropLockBranch
+
+    Whether to set the branch as read-only. If this is true, users will not be able
+    to push to the branch.
     """
 
-
-class CommitPropParentsItemsType(TypedDict):
-    """CommitPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: NotRequired[str]
+    enabled: NotRequired[bool]
 
 
-class CommitPropParentsItemsTypeForResponse(TypedDict):
-    """CommitPropParentsItems"""
+class BranchProtectionPropAllowForkSyncingType(TypedDict):
+    """BranchProtectionPropAllowForkSyncing
 
-    sha: str
-    url: str
-    html_url: NotRequired[str]
+    Whether users can pull changes from upstream when the branch is locked. Set to
+    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+    """
 
-
-class CommitPropStatsType(TypedDict):
-    """CommitPropStats"""
-
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-    total: NotRequired[int]
+    enabled: NotRequired[bool]
 
 
-class CommitPropStatsTypeForResponse(TypedDict):
-    """CommitPropStats"""
+class BranchProtectionPropAllowForkSyncingTypeForResponse(TypedDict):
+    """BranchProtectionPropAllowForkSyncing
 
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-    total: NotRequired[int]
+    Whether users can pull changes from upstream when the branch is locked. Set to
+    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchRequiredStatusCheckType(TypedDict):
+    """Protected Branch Required Status Check
+
+    Protected Branch Required Status Check
+    """
+
+    url: NotRequired[str]
+    enforcement_level: NotRequired[str]
+    contexts: list[str]
+    checks: list[ProtectedBranchRequiredStatusCheckPropChecksItemsType]
+    contexts_url: NotRequired[str]
+    strict: NotRequired[bool]
+
+
+class ProtectedBranchRequiredStatusCheckTypeForResponse(TypedDict):
+    """Protected Branch Required Status Check
+
+    Protected Branch Required Status Check
+    """
+
+    url: NotRequired[str]
+    enforcement_level: NotRequired[str]
+    contexts: list[str]
+    checks: list[ProtectedBranchRequiredStatusCheckPropChecksItemsTypeForResponse]
+    contexts_url: NotRequired[str]
+    strict: NotRequired[bool]
+
+
+class ProtectedBranchRequiredStatusCheckPropChecksItemsType(TypedDict):
+    """ProtectedBranchRequiredStatusCheckPropChecksItems"""
+
+    context: str
+    app_id: Union[int, None]
+
+
+class ProtectedBranchRequiredStatusCheckPropChecksItemsTypeForResponse(TypedDict):
+    """ProtectedBranchRequiredStatusCheckPropChecksItems"""
+
+    context: str
+    app_id: Union[int, None]
 
 
 __all__ = (
-    "CommitPropParentsItemsType",
-    "CommitPropParentsItemsTypeForResponse",
-    "CommitPropStatsType",
-    "CommitPropStatsTypeForResponse",
-    "CommitType",
-    "CommitTypeForResponse",
-    "EmptyObjectType",
-    "EmptyObjectTypeForResponse",
+    "BranchProtectionPropAllowDeletionsType",
+    "BranchProtectionPropAllowDeletionsTypeForResponse",
+    "BranchProtectionPropAllowForcePushesType",
+    "BranchProtectionPropAllowForcePushesTypeForResponse",
+    "BranchProtectionPropAllowForkSyncingType",
+    "BranchProtectionPropAllowForkSyncingTypeForResponse",
+    "BranchProtectionPropBlockCreationsType",
+    "BranchProtectionPropBlockCreationsTypeForResponse",
+    "BranchProtectionPropLockBranchType",
+    "BranchProtectionPropLockBranchTypeForResponse",
+    "BranchProtectionPropRequiredConversationResolutionType",
+    "BranchProtectionPropRequiredConversationResolutionTypeForResponse",
+    "BranchProtectionPropRequiredLinearHistoryType",
+    "BranchProtectionPropRequiredLinearHistoryTypeForResponse",
+    "BranchProtectionPropRequiredSignaturesType",
+    "BranchProtectionPropRequiredSignaturesTypeForResponse",
+    "BranchProtectionType",
+    "BranchProtectionTypeForResponse",
+    "ProtectedBranchAdminEnforcedType",
+    "ProtectedBranchAdminEnforcedTypeForResponse",
+    "ProtectedBranchRequiredStatusCheckPropChecksItemsType",
+    "ProtectedBranchRequiredStatusCheckPropChecksItemsTypeForResponse",
+    "ProtectedBranchRequiredStatusCheckType",
+    "ProtectedBranchRequiredStatusCheckTypeForResponse",
 )

@@ -9,54 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0018 import InstallationType, InstallationTypeForResponse
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0583 import (
-    WebhookIssueCommentCreatedPropCommentType,
-    WebhookIssueCommentCreatedPropCommentTypeForResponse,
-)
-from .group_0584 import (
-    WebhookIssueCommentCreatedPropIssueType,
-    WebhookIssueCommentCreatedPropIssueTypeForResponse,
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0464 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0470 import (
+    WebhooksRepositoriesAddedItemsType,
+    WebhooksRepositoriesAddedItemsTypeForResponse,
 )
 
 
-class WebhookIssueCommentCreatedType(TypedDict):
-    """issue_comment created event"""
+class WebhookInstallationRepositoriesAddedType(TypedDict):
+    """installation_repositories added event"""
 
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentType
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentCreatedPropIssueType
+    installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repositories_added: list[WebhooksRepositoriesAddedItemsType]
+    repositories_removed: list[
+        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType
+    ]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhooksUserType, None]
     sender: SimpleUserType
 
 
-class WebhookIssueCommentCreatedTypeForResponse(TypedDict):
-    """issue_comment created event"""
+class WebhookInstallationRepositoriesAddedTypeForResponse(TypedDict):
+    """installation_repositories added event"""
 
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentTypeForResponse
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssueCommentCreatedPropIssueTypeForResponse
+    installation: InstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    repositories_added: list[WebhooksRepositoriesAddedItemsTypeForResponse]
+    repositories_removed: list[
+        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse
+    ]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhooksUserTypeForResponse, None]
     sender: SimpleUserTypeForResponse
 
 
+class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType(TypedDict):
+    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
+
+    full_name: NotRequired[str]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    private: NotRequired[bool]
+
+
+class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
+
+    full_name: NotRequired[str]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    private: NotRequired[bool]
+
+
 __all__ = (
-    "WebhookIssueCommentCreatedType",
-    "WebhookIssueCommentCreatedTypeForResponse",
+    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType",
+    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse",
+    "WebhookInstallationRepositoriesAddedType",
+    "WebhookInstallationRepositoriesAddedTypeForResponse",
 )

@@ -9,21 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
-    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
-
-    default_level: Literal["public", "internal"] = Field(
-        description="The default repository access level for Dependabot updates."
-    )
+class GistsGistIdStarGetResponse404(GitHubModel):
+    """GistsGistIdStarGetResponse404"""
 
 
-model_rebuild(OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody)
+model_rebuild(GistsGistIdStarGetResponse404)
 
-__all__ = ("OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody",)
+__all__ = ("GistsGistIdStarGetResponse404",)

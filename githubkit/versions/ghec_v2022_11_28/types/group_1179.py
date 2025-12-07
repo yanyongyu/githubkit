@@ -9,29 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody"""
-
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+from .group_0097 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody"""
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    total_count: int
+    network_configurations: list[NetworkConfigurationType]
+
+
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+
+    total_count: int
+    network_configurations: list[NetworkConfigurationTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType",
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyTypeForResponse",
+    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
+    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
 )

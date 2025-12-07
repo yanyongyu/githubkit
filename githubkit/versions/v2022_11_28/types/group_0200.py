@@ -12,27 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class RulesetVersionPropActorType(TypedDict):
-    """RulesetVersionPropActor
+class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    The actor who updated the ruleset
-    """
-
-    id: NotRequired[int]
-    type: NotRequired[str]
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
-class RulesetVersionPropActorTypeForResponse(TypedDict):
-    """RulesetVersionPropActor
+class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    The actor who updated the ruleset
-    """
-
-    id: NotRequired[int]
-    type: NotRequired[str]
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
 __all__ = (
-    "RulesetVersionPropActorType",
-    "RulesetVersionPropActorTypeForResponse",
+    "RepositoryRuleCopilotCodeReviewPropParametersType",
+    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
 )

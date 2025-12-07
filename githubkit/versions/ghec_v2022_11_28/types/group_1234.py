@@ -12,31 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
 
     Examples:
-        {'contexts': ['contexts']}
+        {'apps': ['my-app']}
     """
 
-    contexts: list[str]
+    apps: list[str]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0TypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
 
     Examples:
-        {'contexts': ['contexts']}
+        {'apps': ['my-app']}
     """
 
-    contexts: list[str]
+    apps: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0TypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyTypeForResponse",
 )

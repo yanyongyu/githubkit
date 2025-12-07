@@ -9,36 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0163 import (
-    RepositoryRuleMergeQueuePropParametersType,
-    RepositoryRuleMergeQueuePropParametersTypeForResponse,
+from .group_0154 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
+from .group_0158 import (
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
 )
 
 
-class RepositoryRuleMergeQueueType(TypedDict):
-    """merge_queue
+class OrgRulesetConditionsOneof1Type(TypedDict):
+    """repository_id_and_ref_name
 
-    Merges must be performed via a merge queue.
+    Conditions to target repositories by id and refs by name
     """
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
 
 
-class RepositoryRuleMergeQueueTypeForResponse(TypedDict):
-    """merge_queue
+class OrgRulesetConditionsOneof1TypeForResponse(TypedDict):
+    """repository_id_and_ref_name
 
-    Merges must be performed via a merge queue.
+    Conditions to target repositories by id and refs by name
     """
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_id: (
+        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
+    )
 
 
 __all__ = (
-    "RepositoryRuleMergeQueueType",
-    "RepositoryRuleMergeQueueTypeForResponse",
+    "OrgRulesetConditionsOneof1Type",
+    "OrgRulesetConditionsOneof1TypeForResponse",
 )

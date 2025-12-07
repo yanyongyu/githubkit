@@ -9,30 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0189 import (
+    RepositoryRuleMaxFilePathLengthPropParametersType,
+    RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
+)
 
-class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
-    """RestrictedCommits
 
-    Restricted commit
+class RepositoryRuleMaxFilePathLengthType(TypedDict):
+    """max_file_path_length
+
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
     """
 
-    oid: str
-    reason: NotRequired[str]
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
 
 
-class RepositoryRuleParamsRestrictedCommitsTypeForResponse(TypedDict):
-    """RestrictedCommits
+class RepositoryRuleMaxFilePathLengthTypeForResponse(TypedDict):
+    """max_file_path_length
 
-    Restricted commit
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
     """
 
-    oid: str
-    reason: NotRequired[str]
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[
+        RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleParamsRestrictedCommitsType",
-    "RepositoryRuleParamsRestrictedCommitsTypeForResponse",
+    "RepositoryRuleMaxFilePathLengthType",
+    "RepositoryRuleMaxFilePathLengthTypeForResponse",
 )

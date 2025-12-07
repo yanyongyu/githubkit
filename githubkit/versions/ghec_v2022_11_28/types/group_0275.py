@@ -10,95 +10,56 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RuleSuiteType(TypedDict):
-    """Rule Suite
+class ProjectsV2FieldIterationConfigurationType(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
 
-    Response
+    The configuration for iteration fields.
     """
 
-    id: NotRequired[int]
-    actor_id: NotRequired[Union[int, None]]
-    actor_name: NotRequired[Union[str, None]]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
-    ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[_dt.datetime]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
-    rule_evaluations: NotRequired[list[RuleSuitePropRuleEvaluationsItemsType]]
-
-
-class RuleSuiteTypeForResponse(TypedDict):
-    """Rule Suite
-
-    Response
-    """
-
-    id: NotRequired[int]
-    actor_id: NotRequired[Union[int, None]]
-    actor_name: NotRequired[Union[str, None]]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
-    ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[str]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
-    rule_evaluations: NotRequired[
-        list[RuleSuitePropRuleEvaluationsItemsTypeForResponse]
+    start_date: NotRequired[_dt.date]
+    duration: NotRequired[int]
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsType]
     ]
 
 
-class RuleSuitePropRuleEvaluationsItemsType(TypedDict):
-    """RuleSuitePropRuleEvaluationsItems"""
+class ProjectsV2FieldIterationConfigurationTypeForResponse(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
 
-    rule_source: NotRequired[RuleSuitePropRuleEvaluationsItemsPropRuleSourceType]
-    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
-    result: NotRequired[Literal["pass", "fail"]]
-    rule_type: NotRequired[str]
-    details: NotRequired[Union[str, None]]
+    The configuration for iteration fields.
+    """
 
-
-class RuleSuitePropRuleEvaluationsItemsTypeForResponse(TypedDict):
-    """RuleSuitePropRuleEvaluationsItems"""
-
-    rule_source: NotRequired[
-        RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse
+    start_date: NotRequired[str]
+    duration: NotRequired[int]
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse]
     ]
-    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
-    result: NotRequired[Literal["pass", "fail"]]
-    rule_type: NotRequired[str]
-    details: NotRequired[Union[str, None]]
 
 
-class RuleSuitePropRuleEvaluationsItemsPropRuleSourceType(TypedDict):
-    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsType(TypedDict):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
 
-    type: NotRequired[str]
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
+    title: NotRequired[str]
+    start_date: NotRequired[_dt.date]
+    duration: NotRequired[int]
 
 
-class RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse(TypedDict):
-    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse(
+    TypedDict
+):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
 
-    type: NotRequired[str]
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
+    title: NotRequired[str]
+    start_date: NotRequired[str]
+    duration: NotRequired[int]
 
 
 __all__ = (
-    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
-    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse",
-    "RuleSuitePropRuleEvaluationsItemsType",
-    "RuleSuitePropRuleEvaluationsItemsTypeForResponse",
-    "RuleSuiteType",
-    "RuleSuiteTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationType",
+    "ProjectsV2FieldIterationConfigurationTypeForResponse",
 )

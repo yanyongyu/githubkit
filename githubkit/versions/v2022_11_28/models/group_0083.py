@@ -9,28 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsForkPrWorkflowsPrivateRepos(GitHubModel):
-    """ActionsForkPrWorkflowsPrivateRepos"""
+class ActionsOrganizationPermissions(GitHubModel):
+    """ActionsOrganizationPermissions"""
 
-    run_workflows_from_fork_pull_requests: bool = Field(
-        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
+    enabled_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
     )
-    send_write_tokens_to_workflows: bool = Field(
-        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request."
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions, when `enabled_repositories` is set to `selected`.",
     )
-    send_secrets_and_variables: bool = Field(
-        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks."
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+        default=UNSET,
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
     )
-    require_approval_for_fork_pr_workflows: bool = Field(
-        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run."
+    selected_actions_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
+    )
+    sha_pinning_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether actions must be pinned to a full-length commit SHA.",
     )
 
 
-model_rebuild(ActionsForkPrWorkflowsPrivateRepos)
+model_rebuild(ActionsOrganizationPermissions)
 
-__all__ = ("ActionsForkPrWorkflowsPrivateRepos",)
+__all__ = ("ActionsOrganizationPermissions",)

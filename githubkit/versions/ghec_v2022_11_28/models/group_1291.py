@@ -15,29 +15,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0386 import CustomDeploymentRuleApp
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
+    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
-    """
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody)
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of custom deployment protection rule integrations available for this environment.",
-    )
-    available_custom_deployment_protection_rule_integrations: Missing[
-        list[CustomDeploymentRuleApp]
-    ] = Field(default=UNSET)
-
-
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
-)
-
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
-)
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody",)

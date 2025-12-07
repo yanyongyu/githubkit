@@ -12,35 +12,33 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0137 import (
-    RepositoryRuleCommitAuthorEmailPatternPropParametersType,
-    RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse,
+from .group_0133 import (
+    RepositoryRulePullRequestPropParametersType,
+    RepositoryRulePullRequestPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof11Type(TypedDict):
-    """RepositoryRuleDetailedOneof11"""
+class RepositoryRuleDetailedOneof7Type(TypedDict):
+    """RepositoryRuleDetailedOneof7"""
 
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof11TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof11"""
+class RepositoryRuleDetailedOneof7TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof7"""
 
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse
-    ]
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersTypeForResponse]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof11Type",
-    "RepositoryRuleDetailedOneof11TypeForResponse",
+    "RepositoryRuleDetailedOneof7Type",
+    "RepositoryRuleDetailedOneof7TypeForResponse",
 )

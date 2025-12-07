@@ -9,24 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0103 import CustomPropertyType, CustomPropertyTypeForResponse
-
-
-class EnterprisesEnterprisePropertiesSchemaPatchBodyType(TypedDict):
-    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
-
-    properties: list[CustomPropertyType]
+from .group_0084 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
 
-class EnterprisesEnterprisePropertiesSchemaPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
 
-    properties: list[CustomPropertyTypeForResponse]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
+
+
+class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
 
 
 __all__ = (
-    "EnterprisesEnterprisePropertiesSchemaPatchBodyType",
-    "EnterprisesEnterprisePropertiesSchemaPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type",
+    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse",
 )

@@ -9,47 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class IssueType(GitHubModel):
-    """Issue Type
+class OrganizationSimple(GitHubModel):
+    """Organization Simple
 
-    The type of issue.
+    A GitHub organization.
     """
 
-    id: int = Field(description="The unique identifier of the issue type.")
-    node_id: str = Field(description="The node identifier of the issue type.")
-    name: str = Field(description="The name of the issue type.")
-    description: Union[str, None] = Field(
-        description="The description of the issue type."
-    )
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="The color of the issue type.")
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The time the issue type created."
-    )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The time the issue type last updated."
-    )
-    is_enabled: Missing[bool] = Field(
-        default=UNSET, description="The enabled state of the issue type."
-    )
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    issues_url: str = Field()
+    members_url: str = Field()
+    public_members_url: str = Field()
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
 
 
-model_rebuild(IssueType)
+model_rebuild(OrganizationSimple)
 
-__all__ = ("IssueType",)
+__all__ = ("OrganizationSimple",)

@@ -13,16 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ProjectsColumnsColumnIdMovesPostBody(GitHubModel):
-    """ProjectsColumnsColumnIdMovesPostBody"""
-
-    position: str = Field(
-        pattern="^(?:first|last|after:\\d+)$",
-        description="The position of the column in a project. Can be one of: `first`, `last`, or `after:<column_id>` to place after the specified column.",
-    )
+from .group_0295 import Artifact
 
 
-model_rebuild(ProjectsColumnsColumnIdMovesPostBody)
+class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsArtifactsGetResponse200"""
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostBody",)
+    total_count: int = Field()
+    artifacts: list[Artifact] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsArtifactsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200",)

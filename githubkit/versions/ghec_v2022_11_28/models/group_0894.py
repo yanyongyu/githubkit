@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,21 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0527 import EnterpriseWebhooks
-from .group_0528 import SimpleInstallation
-from .group_0529 import OrganizationSimpleWebhooks
-from .group_0530 import RepositoryWebhooks
-from .group_0572 import WebhooksAlert
+from .group_0531 import EnterpriseWebhooks
+from .group_0532 import SimpleInstallation
+from .group_0533 import OrganizationSimpleWebhooks
+from .group_0534 import RepositoryWebhooks
 
 
-class WebhookRepositoryVulnerabilityAlertReopen(GitHubModel):
-    """repository_vulnerability_alert reopen event"""
+class WebhookRepositoryTransferred(GitHubModel):
+    """repository transferred event"""
 
-    action: Literal["reopen"] = Field()
-    alert: WebhooksAlert = Field(
-        title="Repository Vulnerability Alert Alert",
-        description="The security alert of the vulnerable dependency.",
-    )
+    action: Literal["transferred"] = Field()
+    changes: WebhookRepositoryTransferredPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,6 +51,90 @@ class WebhookRepositoryVulnerabilityAlertReopen(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertReopen)
+class WebhookRepositoryTransferredPropChanges(GitHubModel):
+    """WebhookRepositoryTransferredPropChanges"""
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopen",)
+    owner: WebhookRepositoryTransferredPropChangesPropOwner = Field()
+
+
+class WebhookRepositoryTransferredPropChangesPropOwner(GitHubModel):
+    """WebhookRepositoryTransferredPropChangesPropOwner"""
+
+    from_: WebhookRepositoryTransferredPropChangesPropOwnerPropFrom = Field(
+        alias="from"
+    )
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFrom(GitHubModel):
+    """WebhookRepositoryTransferredPropChangesPropOwnerPropFrom"""
+
+    organization: Missing[
+        WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization
+    ] = Field(default=UNSET, title="Organization")
+    user: Missing[
+        Union[WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser, None]
+    ] = Field(default=UNSET, title="User")
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization(
+    GitHubModel
+):
+    """Organization"""
+
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    issues_url: str = Field()
+    login: str = Field()
+    members_url: str = Field()
+    node_id: str = Field()
+    public_members_url: str = Field()
+    repos_url: str = Field()
+    url: str = Field()
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookRepositoryTransferred)
+model_rebuild(WebhookRepositoryTransferredPropChanges)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwner)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFrom)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser)
+
+__all__ = (
+    "WebhookRepositoryTransferred",
+    "WebhookRepositoryTransferredPropChanges",
+    "WebhookRepositoryTransferredPropChangesPropOwner",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFrom",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser",
+)

@@ -9,29 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
-
-    environment_ids: list[int]
-    state: Literal["approved", "rejected"]
-    comment: str
+from .group_0302 import ActionsVariableType, ActionsVariableTypeForResponse
 
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+class ReposOwnerRepoActionsVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsVariablesGetResponse200"""
 
-    environment_ids: list[int]
-    state: Literal["approved", "rejected"]
-    comment: str
+    total_count: int
+    variables: list[ActionsVariableType]
+
+
+class ReposOwnerRepoActionsVariablesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[ActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType",
-    "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsVariablesGetResponse200Type",
+    "ReposOwnerRepoActionsVariablesGetResponse200TypeForResponse",
 )

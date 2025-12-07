@@ -9,35 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
+class ProjectsV2FieldSingleSelectOptionType(TypedDict):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    Code of Conduct Simple
-    """
-
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    name: NotRequired[str]
+    color: NotRequired[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ]
+    description: NotRequired[str]
 
 
-class CodeOfConductSimpleTypeForResponse(TypedDict):
-    """Code Of Conduct Simple
+class ProjectsV2FieldSingleSelectOptionTypeForResponse(TypedDict):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    Code of Conduct Simple
-    """
-
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    name: NotRequired[str]
+    color: NotRequired[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ]
+    description: NotRequired[str]
 
 
 __all__ = (
-    "CodeOfConductSimpleType",
-    "CodeOfConductSimpleTypeForResponse",
+    "ProjectsV2FieldSingleSelectOptionType",
+    "ProjectsV2FieldSingleSelectOptionTypeForResponse",
 )

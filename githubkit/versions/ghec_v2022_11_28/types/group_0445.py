@@ -10,81 +10,117 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0192 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0444 import ReleaseAssetType, ReleaseAssetTypeForResponse
 
 
-class ReleaseType(TypedDict):
-    """Release
+class PullRequestReviewType(TypedDict):
+    """Pull Request Review
 
-    A release.
+    Pull Request Reviews are reviews on pull requests.
     """
 
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
     id: int
     node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: _dt.datetime
-    published_at: Union[_dt.datetime, None]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    author: SimpleUserType
-    assets: list[ReleaseAssetType]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
+    user: Union[None, SimpleUserType]
+    body: str
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: PullRequestReviewPropLinksType
+    submitted_at: NotRequired[_dt.datetime]
+    commit_id: Union[str, None]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class ReleaseTypeForResponse(TypedDict):
-    """Release
+class PullRequestReviewTypeForResponse(TypedDict):
+    """Pull Request Review
 
-    A release.
+    Pull Request Reviews are reviews on pull requests.
     """
 
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
     id: int
     node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: str
-    published_at: Union[str, None]
-    updated_at: NotRequired[Union[str, None]]
-    author: SimpleUserTypeForResponse
-    assets: list[ReleaseAssetTypeForResponse]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    user: Union[None, SimpleUserTypeForResponse]
+    body: str
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: PullRequestReviewPropLinksTypeForResponse
+    submitted_at: NotRequired[str]
+    commit_id: Union[str, None]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+
+
+class PullRequestReviewPropLinksType(TypedDict):
+    """PullRequestReviewPropLinks"""
+
+    html: PullRequestReviewPropLinksPropHtmlType
+    pull_request: PullRequestReviewPropLinksPropPullRequestType
+
+
+class PullRequestReviewPropLinksTypeForResponse(TypedDict):
+    """PullRequestReviewPropLinks"""
+
+    html: PullRequestReviewPropLinksPropHtmlTypeForResponse
+    pull_request: PullRequestReviewPropLinksPropPullRequestTypeForResponse
+
+
+class PullRequestReviewPropLinksPropHtmlType(TypedDict):
+    """PullRequestReviewPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewPropLinksPropHtmlTypeForResponse(TypedDict):
+    """PullRequestReviewPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
+    """PullRequestReviewPropLinksPropPullRequest"""
+
+    href: str
+
+
+class PullRequestReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """PullRequestReviewPropLinksPropPullRequest"""
+
+    href: str
 
 
 __all__ = (
-    "ReleaseType",
-    "ReleaseTypeForResponse",
+    "PullRequestReviewPropLinksPropHtmlType",
+    "PullRequestReviewPropLinksPropHtmlTypeForResponse",
+    "PullRequestReviewPropLinksPropPullRequestType",
+    "PullRequestReviewPropLinksPropPullRequestTypeForResponse",
+    "PullRequestReviewPropLinksType",
+    "PullRequestReviewPropLinksTypeForResponse",
+    "PullRequestReviewType",
+    "PullRequestReviewTypeForResponse",
 )

@@ -9,58 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class IssueTypeType(TypedDict):
-    """Issue Type
+class OrganizationSimpleType(TypedDict):
+    """Organization Simple
 
-    The type of issue.
+    A GitHub organization.
     """
 
+    login: str
     id: int
     node_id: str
-    name: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
     description: Union[str, None]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    is_enabled: NotRequired[bool]
 
 
-class IssueTypeTypeForResponse(TypedDict):
-    """Issue Type
+class OrganizationSimpleTypeForResponse(TypedDict):
+    """Organization Simple
 
-    The type of issue.
+    A GitHub organization.
     """
 
+    login: str
     id: int
     node_id: str
-    name: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
     description: Union[str, None]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    is_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "IssueTypeType",
-    "IssueTypeTypeForResponse",
+    "OrganizationSimpleType",
+    "OrganizationSimpleTypeForResponse",
 )

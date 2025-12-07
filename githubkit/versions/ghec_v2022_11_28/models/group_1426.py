@@ -11,23 +11,88 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserSshSigningKeysPostBody(GitHubModel):
-    """UserSshSigningKeysPostBody"""
+class UsersUsernameAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
+    attestations: Missing[
+        list[UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
+
+
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems(
+    GitHubModel
+):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    bundle: Missing[
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
+    ] = Field(
+        default=UNSET,
+        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information.",
     )
-    key: str = Field(
-        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ",
-        description='The public SSH key to add to your GitHub account. For more information, see "[Checking for existing SSH keys](https://docs.github.com/enterprise-cloud@latest//authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)."',
-    )
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
+    initiator: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(UserSshSigningKeysPostBody)
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle(
+    GitHubModel
+):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
+    dle
 
-__all__ = ("UserSshSigningKeysPostBody",)
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    """
+
+    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
+    verification_material: Missing[
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
+    ] = Field(default=UNSET, alias="verificationMaterial")
+    dsse_envelope: Missing[
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
+    ] = Field(default=UNSET, alias="dsseEnvelope")
+
+
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial(
+    ExtraGitHubModel
+):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
+    dlePropVerificationMaterial
+    """
+
+
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope(
+    ExtraGitHubModel
+):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
+    dlePropDsseEnvelope
+    """
+
+
+model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200)
+model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+model_rebuild(
+    UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
+)
+model_rebuild(
+    UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
+)
+model_rebuild(
+    UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
+)
+
+__all__ = (
+    "UsersUsernameAttestationsSubjectDigestGetResponse200",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
+)

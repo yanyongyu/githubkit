@@ -9,31 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0035 import (
+    ActionsHostedRunnerCustomImageType,
+    ActionsHostedRunnerCustomImageTypeForResponse,
+)
 
 
-class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
-    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    image_version: NotRequired[Union[str, None]]
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageType]
 
 
-class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    image_version: NotRequired[Union[str, None]]
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",
-    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
 )

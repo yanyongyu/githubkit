@@ -9,48 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0616 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0459 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0468 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookIssuesAssignedType(TypedDict):
-    """issues assigned event"""
+class WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppType(TypedDict):
+    """WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp"""
 
-    action: Literal["assigned"]
-    assignee: NotRequired[Union[WebhooksUserType, None]]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
 
 
-class WebhookIssuesAssignedTypeForResponse(TypedDict):
-    """issues assigned event"""
+class WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp"""
 
-    action: Literal["assigned"]
-    assignee: NotRequired[Union[WebhooksUserTypeForResponse, None]]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssueTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookIssuesAssignedType",
-    "WebhookIssuesAssignedTypeForResponse",
+    "WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppType",
+    "WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppTypeForResponse",
 )

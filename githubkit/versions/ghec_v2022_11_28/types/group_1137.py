@@ -9,55 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
-
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-    name: NotRequired[str]
+from .group_0216 import (
+    OrganizationCustomRepositoryRoleType,
+    OrganizationCustomRepositoryRoleTypeForResponse,
+)
 
 
-class OrgsOrgHooksHookIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
+class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
 
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-    name: NotRequired[str]
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+class OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
 
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-
-
-class OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
-    "OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse",
-    "OrgsOrgHooksHookIdPatchBodyType",
-    "OrgsOrgHooksHookIdPatchBodyTypeForResponse",
+    "OrgsOrgCustomRepositoryRolesGetResponse200Type",
+    "OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse",
 )

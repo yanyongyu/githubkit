@@ -13,19 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody(
-    GitHubModel
-):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
-
-    body: str = Field(description="The discussion comment's body text.")
+from .group_0213 import MinimalRepository
 
 
-model_rebuild(
-    OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody
-)
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
 
-__all__ = (
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody",
-)
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
+
+
+model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200)
+
+__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200",)

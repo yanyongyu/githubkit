@@ -9,29 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0154 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
+from .group_0156 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+)
 
 
-class RepositoryRuleRequiredLinearHistoryType(TypedDict):
-    """required_linear_history
+class OrgRulesetConditionsOneof0Type(TypedDict):
+    """repository_name_and_ref_name
 
-    Prevent merge commits from being pushed to matching refs.
+    Conditions to target repositories by name and refs by name
     """
 
-    type: Literal["required_linear_history"]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
 
 
-class RepositoryRuleRequiredLinearHistoryTypeForResponse(TypedDict):
-    """required_linear_history
+class OrgRulesetConditionsOneof0TypeForResponse(TypedDict):
+    """repository_name_and_ref_name
 
-    Prevent merge commits from being pushed to matching refs.
+    Conditions to target repositories by name and refs by name
     """
 
-    type: Literal["required_linear_history"]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
 
 
 __all__ = (
-    "RepositoryRuleRequiredLinearHistoryType",
-    "RepositoryRuleRequiredLinearHistoryTypeForResponse",
+    "OrgRulesetConditionsOneof0Type",
+    "OrgRulesetConditionsOneof0TypeForResponse",
 )

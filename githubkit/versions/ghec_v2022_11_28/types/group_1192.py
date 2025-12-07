@@ -12,49 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503Type(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
+class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[
-        list[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType]
-    ]
+    permission: NotRequired[str]
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503TypeForResponse(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
+class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[
-        list[
-            ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsTypeForResponse
-        ]
-    ]
-
-
-class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
-
-    code: NotRequired[str]
-    message: NotRequired[str]
-
-
-class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsTypeForResponse(
-    TypedDict
-):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
-
-    code: NotRequired[str]
-    message: NotRequired[str]
+    permission: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType",
-    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsTypeForResponse",
-    "ProjectsColumnsCardsCardIdMovesPostResponse503Type",
-    "ProjectsColumnsCardsCardIdMovesPostResponse503TypeForResponse",
+    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",
+    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse",
 )

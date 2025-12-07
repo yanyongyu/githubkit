@@ -9,27 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class NotificationsPutBody(GitHubModel):
-    """NotificationsPutBody"""
+class GistsGistIdPatchBody(GitHubModel):
+    """GistsGistIdPatchBody"""
 
-    last_read_at: Missing[_dt.datetime] = Field(
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the gist."
+    )
+    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
         default=UNSET,
-        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
-    )
-    read: Missing[bool] = Field(
-        default=UNSET, description="Whether the notification has been read."
+        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
     )
 
 
-model_rebuild(NotificationsPutBody)
+class GistsGistIdPatchBodyPropFiles(ExtraGitHubModel):
+    """GistsGistIdPatchBodyPropFiles
 
-__all__ = ("NotificationsPutBody",)
+    The gist files to be updated, renamed, or deleted. Each `key` must match the
+    current filename
+    (including extension) of the targeted gist file. For example: `hello.py`.
+
+    To delete a file, set the whole file to null. For example: `hello.py : null`.
+    The file will also be
+    deleted if the specified object does not contain at least one of `content` or
+    `filename`.
+
+    Examples:
+        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+    """
+
+
+model_rebuild(GistsGistIdPatchBody)
+model_rebuild(GistsGistIdPatchBodyPropFiles)
+
+__all__ = (
+    "GistsGistIdPatchBody",
+    "GistsGistIdPatchBodyPropFiles",
+)

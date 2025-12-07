@@ -9,38 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsPublicKeyType(TypedDict):
-    """ActionsPublicKey
+class RunnerLabelType(TypedDict):
+    """Self hosted runner label
 
-    The public key used for setting Actions Secrets.
+    A label for a self hosted runner
     """
 
-    key_id: str
-    key: str
     id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
 
 
-class ActionsPublicKeyTypeForResponse(TypedDict):
-    """ActionsPublicKey
+class RunnerLabelTypeForResponse(TypedDict):
+    """Self hosted runner label
 
-    The public key used for setting Actions Secrets.
+    A label for a self hosted runner
     """
 
-    key_id: str
-    key: str
     id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
 
 
 __all__ = (
-    "ActionsPublicKeyType",
-    "ActionsPublicKeyTypeForResponse",
+    "RunnerLabelType",
+    "RunnerLabelTypeForResponse",
 )

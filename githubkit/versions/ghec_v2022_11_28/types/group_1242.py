@@ -9,34 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type(
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody"""
 
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
+    status: Literal["approve", "reject"]
+    message: str
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0TypeForResponse(
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody"""
 
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: list[str]
+    status: Literal["approve", "reject"]
+    message: str
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0TypeForResponse",
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType",
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyTypeForResponse",
 )

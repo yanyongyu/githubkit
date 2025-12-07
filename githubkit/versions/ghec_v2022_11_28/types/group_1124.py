@@ -9,28 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
+class OrgsOrgCodespacesSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
 
-    The total number of seats created for members of the specified team(s).
+    total_count: int
+    secrets: list[CodespacesOrgSecretType]
+
+
+class OrgsOrgCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[CodespacesOrgSecretTypeForResponse]
+
+
+class CodespacesOrgSecretType(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
     """
 
-    seats_created: int
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
+class CodespacesOrgSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
 
-    The total number of seats created for members of the specified team(s).
+    Secrets for a GitHub Codespace.
     """
 
-    seats_created: int
+    name: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
-    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse",
+    "CodespacesOrgSecretType",
+    "CodespacesOrgSecretTypeForResponse",
+    "OrgsOrgCodespacesSecretsGetResponse200Type",
+    "OrgsOrgCodespacesSecretsGetResponse200TypeForResponse",
 )

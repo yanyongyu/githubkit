@@ -14,12 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GistsGistIdCommentsPostBody(GitHubModel):
-    """GistsGistIdCommentsPostBody"""
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody"""
 
-    body: str = Field(max_length=65535, description="The comment text.")
+    organization_slugs: list[str] = Field(
+        description="Organization slug to assign the team to."
+    )
 
 
-model_rebuild(GistsGistIdCommentsPostBody)
+model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody)
 
-__all__ = ("GistsGistIdCommentsPostBody",)
+__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody",)

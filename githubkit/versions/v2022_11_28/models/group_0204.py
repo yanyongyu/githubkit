@@ -9,141 +9,100 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class SecretScanningLocationCommit(GitHubModel):
-    """SecretScanningLocationCommit
+class RuleSuite(GitHubModel):
+    """Rule Suite
 
-    Represents a 'commit' secret scanning location type. This location type shows
-    that a secret was detected inside a commit to a repository.
+    Response
     """
 
-    path: str = Field(description="The file path in the repository")
-    start_line: float = Field(
-        description="Line number at which the secret starts in the file"
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the rule insight."
     )
-    end_line: float = Field(
-        description="Line number at which the secret ends in the file"
+    actor_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The number that identifies the user."
     )
-    start_column: float = Field(
-        description="The column at which the secret starts within the start line when the file is interpreted as 8BIT ASCII"
+    actor_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
     )
-    end_column: float = Field(
-        description="The column at which the secret ends within the end line when the file is interpreted as 8BIT ASCII"
+    before_sha: Missing[str] = Field(
+        default=UNSET, description="The previous commit SHA of the ref."
     )
-    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
-    blob_url: str = Field(description="The API URL to get the associated blob resource")
-    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
-    commit_url: str = Field(
-        description="The API URL to get the associated commit resource"
+    after_sha: Missing[str] = Field(
+        default=UNSET, description="The new commit SHA of the ref."
     )
-
-
-class SecretScanningLocationWikiCommit(GitHubModel):
-    """SecretScanningLocationWikiCommit
-
-    Represents a 'wiki_commit' secret scanning location type. This location type
-    shows that a secret was detected inside a commit to a repository wiki.
-    """
-
-    path: str = Field(description="The file path of the wiki page")
-    start_line: float = Field(
-        description="Line number at which the secret starts in the file"
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref name that the evaluation ran on."
     )
-    end_line: float = Field(
-        description="Line number at which the secret ends in the file"
+    repository_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the repository associated with the rule evaluation.",
     )
-    start_column: float = Field(
-        description="The column at which the secret starts within the start line when the file is interpreted as 8-bit ASCII."
+    repository_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository without the `.git` extension.",
     )
-    end_column: float = Field(
-        description="The column at which the secret ends within the end line when the file is interpreted as 8-bit ASCII."
+    pushed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` enforcement status.",
     )
-    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
-    page_url: str = Field(description="The GitHub URL to get the associated wiki page")
-    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
-    commit_url: str = Field(
-        description="The GitHub URL to get the associated wiki commit"
+    evaluation_result: Missing[Union[None, Literal["pass", "fail", "bypass"]]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run.",
+    )
+    rule_evaluations: Missing[list[RuleSuitePropRuleEvaluationsItems]] = Field(
+        default=UNSET, description="Details on the evaluated rules."
     )
 
 
-class SecretScanningLocationIssueBody(GitHubModel):
-    """SecretScanningLocationIssueBody
+class RuleSuitePropRuleEvaluationsItems(GitHubModel):
+    """RuleSuitePropRuleEvaluationsItems"""
 
-    Represents an 'issue_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of an issue.
-    """
-
-    issue_body_url: str = Field(
-        description="The API URL to get the issue where the secret was detected."
+    rule_source: Missing[RuleSuitePropRuleEvaluationsItemsPropRuleSource] = Field(
+        default=UNSET
+    )
+    enforcement: Missing[Literal["active", "evaluate", "deleted ruleset"]] = Field(
+        default=UNSET, description="The enforcement level of this rule source."
+    )
+    result: Missing[Literal["pass", "fail"]] = Field(
+        default=UNSET,
+        description="The result of the evaluation of the individual rule.",
+    )
+    rule_type: Missing[str] = Field(default=UNSET, description="The type of rule.")
+    details: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The detailed failure message for the rule. Null if the rule passed.",
     )
 
 
-class SecretScanningLocationDiscussionTitle(GitHubModel):
-    """SecretScanningLocationDiscussionTitle
+class RuleSuitePropRuleEvaluationsItemsPropRuleSource(GitHubModel):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
 
-    Represents a 'discussion_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a discussion.
-    """
-
-    discussion_title_url: str = Field(
-        description="The URL to the discussion where the secret was detected."
+    type: Missing[str] = Field(default=UNSET, description="The type of rule source.")
+    id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the rule source."
+    )
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the rule source."
     )
 
 
-class SecretScanningLocationDiscussionComment(GitHubModel):
-    """SecretScanningLocationDiscussionComment
-
-    Represents a 'discussion_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a discussion.
-    """
-
-    discussion_comment_url: str = Field(
-        description="The API URL to get the discussion comment where the secret was detected."
-    )
-
-
-class SecretScanningLocationPullRequestBody(GitHubModel):
-    """SecretScanningLocationPullRequestBody
-
-    Represents a 'pull_request_body' secret scanning location type. This location
-    type shows that a secret was detected in the body of a pull request.
-    """
-
-    pull_request_body_url: str = Field(
-        description="The API URL to get the pull request where the secret was detected."
-    )
-
-
-class SecretScanningLocationPullRequestReview(GitHubModel):
-    """SecretScanningLocationPullRequestReview
-
-    Represents a 'pull_request_review' secret scanning location type. This location
-    type shows that a secret was detected in a review on a pull request.
-    """
-
-    pull_request_review_url: str = Field(
-        description="The API URL to get the pull request review where the secret was detected."
-    )
-
-
-model_rebuild(SecretScanningLocationCommit)
-model_rebuild(SecretScanningLocationWikiCommit)
-model_rebuild(SecretScanningLocationIssueBody)
-model_rebuild(SecretScanningLocationDiscussionTitle)
-model_rebuild(SecretScanningLocationDiscussionComment)
-model_rebuild(SecretScanningLocationPullRequestBody)
-model_rebuild(SecretScanningLocationPullRequestReview)
+model_rebuild(RuleSuite)
+model_rebuild(RuleSuitePropRuleEvaluationsItems)
+model_rebuild(RuleSuitePropRuleEvaluationsItemsPropRuleSource)
 
 __all__ = (
-    "SecretScanningLocationCommit",
-    "SecretScanningLocationDiscussionComment",
-    "SecretScanningLocationDiscussionTitle",
-    "SecretScanningLocationIssueBody",
-    "SecretScanningLocationPullRequestBody",
-    "SecretScanningLocationPullRequestReview",
-    "SecretScanningLocationWikiCommit",
+    "RuleSuite",
+    "RuleSuitePropRuleEvaluationsItems",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
 )

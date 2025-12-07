@@ -9,27 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0062 import (
+    AmazonS3AccessKeysConfigType,
+    AmazonS3AccessKeysConfigTypeForResponse,
+    AzureBlobConfigType,
+    AzureBlobConfigTypeForResponse,
+    AzureHubConfigType,
+    AzureHubConfigTypeForResponse,
+    DatadogConfigType,
+    DatadogConfigTypeForResponse,
+    HecConfigType,
+    HecConfigTypeForResponse,
+)
+from .group_0063 import (
+    AmazonS3OidcConfigType,
+    AmazonS3OidcConfigTypeForResponse,
+    SplunkConfigType,
+    SplunkConfigTypeForResponse,
+)
+from .group_0064 import GoogleCloudConfigType, GoogleCloudConfigTypeForResponse
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    scope: Literal["all", "all_without_configurations"]
+class EnterprisesEnterpriseAuditLogStreamsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+
+    enabled: bool
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ]
+    vendor_specific: Union[
+        AzureBlobConfigType,
+        AzureHubConfigType,
+        AmazonS3OidcConfigType,
+        AmazonS3AccessKeysConfigType,
+        SplunkConfigType,
+        HecConfigType,
+        GoogleCloudConfigType,
+        DatadogConfigType,
+    ]
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+class EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
 
-    scope: Literal["all", "all_without_configurations"]
+    enabled: bool
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ]
+    vendor_specific: Union[
+        AzureBlobConfigTypeForResponse,
+        AzureHubConfigTypeForResponse,
+        AmazonS3OidcConfigTypeForResponse,
+        AmazonS3AccessKeysConfigTypeForResponse,
+        SplunkConfigTypeForResponse,
+        HecConfigTypeForResponse,
+        GoogleCloudConfigTypeForResponse,
+        DatadogConfigTypeForResponse,
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
+    "EnterprisesEnterpriseAuditLogStreamsPostBodyType",
+    "EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse",
 )

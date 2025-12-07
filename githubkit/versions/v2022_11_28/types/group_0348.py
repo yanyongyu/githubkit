@@ -9,82 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0042 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class TimelineCommentEventType(TypedDict):
-    """Timeline Comment Event
+class LockedIssueEventType(TypedDict):
+    """Locked Issue Event
 
-    Timeline Comment Event
+    Locked Issue Event
     """
 
-    event: Literal["commented"]
+    id: int
+    node_id: str
+    url: str
     actor: SimpleUserType
-    id: int
-    node_id: str
-    url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: SimpleUserType
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    issue_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
+    event: Literal["locked"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    lock_reason: Union[str, None]
 
 
-class TimelineCommentEventTypeForResponse(TypedDict):
-    """Timeline Comment Event
+class LockedIssueEventTypeForResponse(TypedDict):
+    """Locked Issue Event
 
-    Timeline Comment Event
+    Locked Issue Event
     """
 
-    event: Literal["commented"]
-    actor: SimpleUserTypeForResponse
     id: int
     node_id: str
     url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: SimpleUserTypeForResponse
+    actor: SimpleUserTypeForResponse
+    event: Literal["locked"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    updated_at: str
-    issue_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    lock_reason: Union[str, None]
 
 
 __all__ = (
-    "TimelineCommentEventType",
-    "TimelineCommentEventTypeForResponse",
+    "LockedIssueEventType",
+    "LockedIssueEventTypeForResponse",
 )

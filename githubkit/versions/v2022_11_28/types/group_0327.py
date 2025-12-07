@@ -10,55 +10,151 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
-from .group_0326 import HookResponseType, HookResponseTypeForResponse
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class HookType(TypedDict):
-    """Webhook
+class GitCommitType(TypedDict):
+    """Git Commit
 
-    Webhooks for repositories.
+    Low-level Git commit operations within a repository
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: _dt.datetime
-    created_at: _dt.datetime
+    sha: str
+    node_id: str
     url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    author: GitCommitPropAuthorType
+    committer: GitCommitPropCommitterType
+    message: str
+    tree: GitCommitPropTreeType
+    parents: list[GitCommitPropParentsItemsType]
+    verification: GitCommitPropVerificationType
+    html_url: str
 
 
-class HookTypeForResponse(TypedDict):
-    """Webhook
+class GitCommitTypeForResponse(TypedDict):
+    """Git Commit
 
-    Webhooks for repositories.
+    Low-level Git commit operations within a repository
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigTypeForResponse
-    updated_at: str
-    created_at: str
+    sha: str
+    node_id: str
     url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseTypeForResponse
+    author: GitCommitPropAuthorTypeForResponse
+    committer: GitCommitPropCommitterTypeForResponse
+    message: str
+    tree: GitCommitPropTreeTypeForResponse
+    parents: list[GitCommitPropParentsItemsTypeForResponse]
+    verification: GitCommitPropVerificationTypeForResponse
+    html_url: str
+
+
+class GitCommitPropAuthorType(TypedDict):
+    """GitCommitPropAuthor
+
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime
+    email: str
+    name: str
+
+
+class GitCommitPropAuthorTypeForResponse(TypedDict):
+    """GitCommitPropAuthor
+
+    Identifying information for the git-user
+    """
+
+    date: str
+    email: str
+    name: str
+
+
+class GitCommitPropCommitterType(TypedDict):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime
+    email: str
+    name: str
+
+
+class GitCommitPropCommitterTypeForResponse(TypedDict):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: str
+    email: str
+    name: str
+
+
+class GitCommitPropTreeType(TypedDict):
+    """GitCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class GitCommitPropTreeTypeForResponse(TypedDict):
+    """GitCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class GitCommitPropParentsItemsType(TypedDict):
+    """GitCommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class GitCommitPropParentsItemsTypeForResponse(TypedDict):
+    """GitCommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class GitCommitPropVerificationType(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
+
+
+class GitCommitPropVerificationTypeForResponse(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
 
 
 __all__ = (
-    "HookType",
-    "HookTypeForResponse",
+    "GitCommitPropAuthorType",
+    "GitCommitPropAuthorTypeForResponse",
+    "GitCommitPropCommitterType",
+    "GitCommitPropCommitterTypeForResponse",
+    "GitCommitPropParentsItemsType",
+    "GitCommitPropParentsItemsTypeForResponse",
+    "GitCommitPropTreeType",
+    "GitCommitPropTreeTypeForResponse",
+    "GitCommitPropVerificationType",
+    "GitCommitPropVerificationTypeForResponse",
+    "GitCommitType",
+    "GitCommitTypeForResponse",
 )

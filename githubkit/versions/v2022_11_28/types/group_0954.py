@@ -9,50 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0952 import (
-    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
-    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse,
-)
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class OrgsOrgCampaignsPostBodyOneof1Type(TypedDict):
-    """OrgsOrgCampaignsPostBodyOneof1"""
+class OrgsOrgAttestationsBulkListPostResponse200Type(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    name: str
-    description: str
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: _dt.datetime
-    contact_link: NotRequired[Union[str, None]]
-    code_scanning_alerts: NotRequired[
-        Union[list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None]
+    attestations_subject_digests: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
     ]
-    generate_issues: NotRequired[bool]
+    page_info: NotRequired[OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType]
 
 
-class OrgsOrgCampaignsPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgCampaignsPostBodyOneof1"""
+class OrgsOrgAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    name: str
-    description: str
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: str
-    contact_link: NotRequired[Union[str, None]]
-    code_scanning_alerts: NotRequired[
-        Union[
-            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse],
-            None,
-        ]
+    attestations_subject_digests: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
     ]
-    generate_issues: NotRequired[bool]
+    page_info: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
+    ]
+
+
+OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
+
+
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCampaignsPostBodyOneof1Type",
-    "OrgsOrgCampaignsPostBodyOneof1TypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200Type",
+    "OrgsOrgAttestationsBulkListPostResponse200TypeForResponse",
 )

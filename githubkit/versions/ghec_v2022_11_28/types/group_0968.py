@@ -9,27 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0036 import (
+    ActionsHostedRunnerCustomImageVersionType,
+    ActionsHostedRunnerCustomImageVersionTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseActionsPermissionsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGe
+    tResponse200
+    """
 
-    enabled_organizations: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    total_count: int
+    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
 
 
-class EnterprisesEnterpriseActionsPermissionsPutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGe
+    tResponse200
+    """
 
-    enabled_organizations: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    total_count: int
+    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsPutBodyType",
-    "EnterprisesEnterpriseActionsPermissionsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
 )

@@ -188,6 +188,12 @@ class BillingClient:
         self,
         enterprise: str,
         *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page_size: Missing[int] = UNSET,
+        scope: Missing[
+            Literal["enterprise", "organization", "repository", "cost-center"]
+        ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
@@ -207,11 +213,19 @@ class BillingClient:
 
         url = f"/enterprises/{enterprise}/settings/billing/budgets"
 
+        params = {
+            "page": page,
+            "per_page": per_page,
+            "page_size": page_size,
+            "scope": scope,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GetAllBudgets,
@@ -225,6 +239,12 @@ class BillingClient:
         self,
         enterprise: str,
         *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page_size: Missing[int] = UNSET,
+        scope: Missing[
+            Literal["enterprise", "organization", "repository", "cost-center"]
+        ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
@@ -244,11 +264,19 @@ class BillingClient:
 
         url = f"/enterprises/{enterprise}/settings/billing/budgets"
 
+        params = {
+            "page": page,
+            "per_page": per_page,
+            "page_size": page_size,
+            "scope": scope,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GetAllBudgets,

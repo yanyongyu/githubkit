@@ -9,35 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ApiInsightsSubjectStatsItemsType(TypedDict):
-    """ApiInsightsSubjectStatsItems"""
-
-    subject_type: NotRequired[str]
-    subject_name: NotRequired[str]
-    subject_id: NotRequired[int]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0063 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class ApiInsightsSubjectStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsSubjectStatsItems"""
+class PackageType(TypedDict):
+    """Package
 
-    subject_type: NotRequired[str]
-    subject_name: NotRequired[str]
-    subject_id: NotRequired[int]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    A software package
+    """
+
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserType]]
+    repository: NotRequired[Union[None, MinimalRepositoryType]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+
+
+class PackageTypeForResponse(TypedDict):
+    """Package
+
+    A software package
+    """
+
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    repository: NotRequired[Union[None, MinimalRepositoryTypeForResponse]]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ApiInsightsSubjectStatsItemsType",
-    "ApiInsightsSubjectStatsItemsTypeForResponse",
+    "PackageType",
+    "PackageTypeForResponse",
 )

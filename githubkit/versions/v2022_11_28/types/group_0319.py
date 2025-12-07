@@ -11,67 +11,37 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0318 import (
-    CustomDeploymentRuleAppType,
-    CustomDeploymentRuleAppTypeForResponse,
+from .group_0320 import (
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
 )
 
 
-class DeploymentProtectionRuleType(TypedDict):
-    """Deployment protection rule
-
-    Deployment protection rule
-    """
+class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
     id: int
     node_id: str
-    enabled: bool
-    app: CustomDeploymentRuleAppType
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
+    ]
 
 
-class DeploymentProtectionRuleTypeForResponse(TypedDict):
-    """Deployment protection rule
-
-    Deployment protection rule
-    """
+class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
     id: int
     node_id: str
-    enabled: bool
-    app: CustomDeploymentRuleAppTypeForResponse
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
-
-    Examples:
-        {'$ref': '#/components/examples/deployment-protection-rules'}
-    """
-
-    total_count: NotRequired[int]
-    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
-
-    Examples:
-        {'$ref': '#/components/examples/deployment-protection-rules'}
-    """
-
-    total_count: NotRequired[int]
-    custom_deployment_protection_rules: NotRequired[
-        list[DeploymentProtectionRuleTypeForResponse]
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
     ]
 
 
 __all__ = (
-    "DeploymentProtectionRuleType",
-    "DeploymentProtectionRuleTypeForResponse",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof1Type",
+    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
 )

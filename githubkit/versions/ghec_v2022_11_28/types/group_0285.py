@@ -12,76 +12,48 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class GroupMappingType(TypedDict):
+    """GroupMapping
 
-class TeamProjectType(TypedDict):
-    """Team Project
-
-    A team's access to a project.
+    External Groups to be mapped to a team for membership
     """
 
-    owner_url: str
-    url: str
-    html_url: str
-    columns_url: str
-    id: int
-    node_id: str
-    name: str
-    body: Union[str, None]
-    number: int
-    state: str
-    creator: SimpleUserType
-    created_at: str
-    updated_at: str
-    organization_permission: NotRequired[str]
-    private: NotRequired[bool]
-    permissions: TeamProjectPropPermissionsType
+    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
 
 
-class TeamProjectTypeForResponse(TypedDict):
-    """Team Project
+class GroupMappingTypeForResponse(TypedDict):
+    """GroupMapping
 
-    A team's access to a project.
+    External Groups to be mapped to a team for membership
     """
 
-    owner_url: str
-    url: str
-    html_url: str
-    columns_url: str
-    id: int
-    node_id: str
-    name: str
-    body: Union[str, None]
-    number: int
-    state: str
-    creator: SimpleUserTypeForResponse
-    created_at: str
-    updated_at: str
-    organization_permission: NotRequired[str]
-    private: NotRequired[bool]
-    permissions: TeamProjectPropPermissionsTypeForResponse
+    groups: NotRequired[list[GroupMappingPropGroupsItemsTypeForResponse]]
 
 
-class TeamProjectPropPermissionsType(TypedDict):
-    """TeamProjectPropPermissions"""
+class GroupMappingPropGroupsItemsType(TypedDict):
+    """GroupMappingPropGroupsItems"""
 
-    read: bool
-    write: bool
-    admin: bool
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
 
 
-class TeamProjectPropPermissionsTypeForResponse(TypedDict):
-    """TeamProjectPropPermissions"""
+class GroupMappingPropGroupsItemsTypeForResponse(TypedDict):
+    """GroupMappingPropGroupsItems"""
 
-    read: bool
-    write: bool
-    admin: bool
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "TeamProjectPropPermissionsType",
-    "TeamProjectPropPermissionsTypeForResponse",
-    "TeamProjectType",
-    "TeamProjectTypeForResponse",
+    "GroupMappingPropGroupsItemsType",
+    "GroupMappingPropGroupsItemsTypeForResponse",
+    "GroupMappingType",
+    "GroupMappingTypeForResponse",
 )

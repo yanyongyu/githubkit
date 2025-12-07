@@ -9,40 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0017 import AppPermissions
 
+class InstallableOrganization(GitHubModel):
+    """Installable Organization
 
-class EnterpriseOrganizationInstallation(GitHubModel):
-    """Enterprise Organization Installation
-
-    A GitHub App Installation on an enterprise-owned organization
+    A GitHub organization on which a GitHub App can be installed.
     """
 
-    id: int = Field(description="The ID of the installation.")
-    app_slug: Missing[str] = Field(default=UNSET)
-    client_id: str = Field()
-    repository_selection: Literal["all", "selected"] = Field(
-        description="Describe whether all repositories have been selected or there's a selection involved"
-    )
-    repositories_url: str = Field()
-    permissions: AppPermissions = Field(
-        title="App Permissions",
-        description="The permissions granted to the user access token.",
-    )
-    events: Missing[list[str]] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    id: int = Field()
+    login: str = Field()
+    accessible_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(EnterpriseOrganizationInstallation)
+model_rebuild(InstallableOrganization)
 
-__all__ = ("EnterpriseOrganizationInstallation",)
+__all__ = ("InstallableOrganization",)

@@ -9,29 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0214 import (
-    OrganizationCustomRepositoryRoleType,
-    OrganizationCustomRepositoryRoleTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
+class GistsGistIdStarGetResponse404Type(TypedDict):
+    """GistsGistIdStarGetResponse404"""
 
 
-class OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse(TypedDict):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
+class GistsGistIdStarGetResponse404TypeForResponse(TypedDict):
+    """GistsGistIdStarGetResponse404"""
 
 
 __all__ = (
-    "OrganizationsOrganizationIdCustomRolesGetResponse200Type",
-    "OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse",
+    "GistsGistIdStarGetResponse404Type",
+    "GistsGistIdStarGetResponse404TypeForResponse",
 )

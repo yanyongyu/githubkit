@@ -9,26 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class EventsGetResponse503Type(TypedDict):
-    """EventsGetResponse503"""
-
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+from .group_0030 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
+)
 
 
-class EventsGetResponse503TypeForResponse(TypedDict):
-    """EventsGetResponse503"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
+    e200
+    """
 
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
+
+
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
+    e200
+    """
+
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
 
 
 __all__ = (
-    "EventsGetResponse503Type",
-    "EventsGetResponse503TypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse",
 )

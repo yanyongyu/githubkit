@@ -9,26 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0224 import CodespaceType, CodespaceTypeForResponse
-
-
-class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceType]
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+class OrgsOrgHooksPostBodyType(TypedDict):
+    """OrgsOrgHooksPostBody"""
 
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    name: str
+    config: OrgsOrgHooksPostBodyPropConfigType
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class OrgsOrgHooksPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgHooksPostBody"""
+
+    name: str
+    config: OrgsOrgHooksPostBodyPropConfigTypeForResponse
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class OrgsOrgHooksPostBodyPropConfigType(TypedDict):
+    """OrgsOrgHooksPostBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    username: NotRequired[str]
+    password: NotRequired[str]
+
+
+class OrgsOrgHooksPostBodyPropConfigTypeForResponse(TypedDict):
+    """OrgsOrgHooksPostBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    username: NotRequired[str]
+    password: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgMembersUsernameCodespacesGetResponse200Type",
-    "OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse",
+    "OrgsOrgHooksPostBodyPropConfigType",
+    "OrgsOrgHooksPostBodyPropConfigTypeForResponse",
+    "OrgsOrgHooksPostBodyType",
+    "OrgsOrgHooksPostBodyTypeForResponse",
 )

@@ -17,72 +17,56 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class CodeScanningAlertInstance(GitHubModel):
-    """CodeScanningAlertInstance"""
-
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
-    )
-    analysis_key: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
-    )
-    category: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
-    )
-    state: Missing[Union[None, Literal["open", "dismissed", "fixed"]]] = Field(
-        default=UNSET, description="State of a code scanning alert."
-    )
-    commit_sha: Missing[str] = Field(default=UNSET)
-    message: Missing[CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
-    location: Missing[CodeScanningAlertLocation] = Field(
-        default=UNSET, description="Describe a region within a file for the alert."
-    )
-    html_url: Missing[str] = Field(default=UNSET)
-    classifications: Missing[
-        list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
-    )
+from .group_0099 import TeamSimple
 
 
-class CodeScanningAlertLocation(GitHubModel):
-    """CodeScanningAlertLocation
+class Team(GitHubModel):
+    """Team
 
-    Describe a region within a file for the alert.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    path: Missing[str] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-    end_line: Missing[int] = Field(default=UNSET)
-    start_column: Missing[int] = Field(default=UNSET)
-    end_column: Missing[int] = Field(default=UNSET)
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    members_url: str = Field()
+    repositories_url: str = Field()
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
+    )
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
+    )
+    parent: Union[None, TeamSimple] = Field()
 
 
-class CodeScanningAlertInstancePropMessage(GitHubModel):
-    """CodeScanningAlertInstancePropMessage"""
+class TeamPropPermissions(GitHubModel):
+    """TeamPropPermissions"""
 
-    text: Missing[str] = Field(default=UNSET)
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
 
 
-model_rebuild(CodeScanningAlertInstance)
-model_rebuild(CodeScanningAlertLocation)
-model_rebuild(CodeScanningAlertInstancePropMessage)
+model_rebuild(Team)
+model_rebuild(TeamPropPermissions)
 
 __all__ = (
-    "CodeScanningAlertInstance",
-    "CodeScanningAlertInstancePropMessage",
-    "CodeScanningAlertLocation",
+    "Team",
+    "TeamPropPermissions",
 )

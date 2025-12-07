@@ -12,25 +12,31 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OidcCustomSubType(TypedDict):
-    """Actions OIDC Subject customization
+class ActionsHostedRunnerMachineSpecType(TypedDict):
+    """Github-owned VM details.
 
-    Actions OIDC Subject customization
+    Provides details of a particular machine spec.
     """
 
-    include_claim_keys: list[str]
+    id: str
+    cpu_cores: int
+    memory_gb: int
+    storage_gb: int
 
 
-class OidcCustomSubTypeForResponse(TypedDict):
-    """Actions OIDC Subject customization
+class ActionsHostedRunnerMachineSpecTypeForResponse(TypedDict):
+    """Github-owned VM details.
 
-    Actions OIDC Subject customization
+    Provides details of a particular machine spec.
     """
 
-    include_claim_keys: list[str]
+    id: str
+    cpu_cores: int
+    memory_gb: int
+    storage_gb: int
 
 
 __all__ = (
-    "OidcCustomSubType",
-    "OidcCustomSubTypeForResponse",
+    "ActionsHostedRunnerMachineSpecType",
+    "ActionsHostedRunnerMachineSpecTypeForResponse",
 )

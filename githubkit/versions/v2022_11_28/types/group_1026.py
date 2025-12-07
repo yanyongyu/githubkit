@@ -9,23 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    total_count: int
+    network_configurations: list[NetworkConfigurationType]
 
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    total_count: int
+    network_configurations: list[NetworkConfigurationTypeForResponse]
+
+
+class NetworkConfigurationType(TypedDict):
+    """Hosted compute network configuration
+
+    A hosted compute network configuration.
+    """
+
+    id: str
+    name: str
+    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
+    network_settings_ids: NotRequired[list[str]]
+    created_on: Union[_dt.datetime, None]
+
+
+class NetworkConfigurationTypeForResponse(TypedDict):
+    """Hosted compute network configuration
+
+    A hosted compute network configuration.
+    """
+
+    id: str
+    name: str
+    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
+    network_settings_ids: NotRequired[list[str]]
+    created_on: Union[str, None]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",
-    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse",
+    "NetworkConfigurationType",
+    "NetworkConfigurationTypeForResponse",
+    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
+    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
 )

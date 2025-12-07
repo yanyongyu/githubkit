@@ -9,66 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgPrivateRegistriesSecretNamePatchBody(GitHubModel):
-    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
+class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    registry_type: Missing[
-        Literal[
-            "maven_repository",
-            "nuget_feed",
-            "goproxy_server",
-            "npm_registry",
-            "rubygems_server",
-            "cargo_registry",
-            "composer_repository",
-            "docker_registry",
-            "git_source",
-            "helm_registry",
-            "hex_organization",
-            "hex_repository",
-            "pub_repository",
-            "python_index",
-            "terraform_registry",
-        ]
-    ] = Field(default=UNSET, description="The registry type.")
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL of the private registry."
-    )
-    username: Missing[Union[str, None]] = Field(
+    pat_request_ids: Missing[list[int]] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The username to use when authenticating with the private registry. This field should be omitted if the private registry does not require a username for authentication.",
+        description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
     )
-    replaces_base: Missing[bool] = Field(
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the requests."
+    )
+    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
         default=UNSET,
-        description="Whether this private registry should replace the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When set to `true`, Dependabot will only use this registry and will not fall back to the public registry. When set to `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
-    )
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        default=UNSET,
-        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get private registries public key for an organization](https://docs.github.com/rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization) endpoint.",
-    )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="The ID of the key you used to encrypt the secret."
-    )
-    visibility: Missing[Literal["all", "private", "selected"]] = Field(
-        default=UNSET,
-        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry.",
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository IDs that can access the organization private registry. You can only provide a list of repository IDs when `visibility` is set to `selected`. This field should be omitted if `visibility` is set to `all` or `private`.",
+        description="Reason for approving or denying the requests. Max 1024 characters.",
     )
 
 
-model_rebuild(OrgsOrgPrivateRegistriesSecretNamePatchBody)
+model_rebuild(OrgsOrgPersonalAccessTokenRequestsPostBody)
 
-__all__ = ("OrgsOrgPrivateRegistriesSecretNamePatchBody",)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBody",)

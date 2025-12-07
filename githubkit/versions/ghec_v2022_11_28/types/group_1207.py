@@ -9,27 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0307 import WorkflowRunType, WorkflowRunTypeForResponse
 
 
-class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsGetResponse200"""
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    total_count: int
+    workflow_runs: list[WorkflowRunType]
 
 
-class ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class ReposOwnerRepoActionsRunsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunsGetResponse200"""
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    total_count: int
+    workflow_runs: list[WorkflowRunTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsPermissionsPutBodyType",
-    "ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse",
+    "ReposOwnerRepoActionsRunsGetResponse200Type",
+    "ReposOwnerRepoActionsRunsGetResponse200TypeForResponse",
 )

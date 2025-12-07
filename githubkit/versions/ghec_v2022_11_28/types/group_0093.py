@@ -9,27 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0081 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
+from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
 
 
-class EnterpriseUserRoleAssignmentAllof1Type(TypedDict):
-    """EnterpriseUserRoleAssignmentAllof1"""
+class EnterpriseRoleType(TypedDict):
+    """Enterprise Role
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[EnterpriseTeamType]]
+    Enterprise custom roles
+    """
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    source: NotRequired[Union[None, Literal["Enterprise", "Predefined"]]]
+    permissions: list[str]
+    enterprise: Union[None, EnterpriseType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class EnterpriseUserRoleAssignmentAllof1TypeForResponse(TypedDict):
-    """EnterpriseUserRoleAssignmentAllof1"""
+class EnterpriseRoleTypeForResponse(TypedDict):
+    """Enterprise Role
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[EnterpriseTeamTypeForResponse]]
+    Enterprise custom roles
+    """
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    source: NotRequired[Union[None, Literal["Enterprise", "Predefined"]]]
+    permissions: list[str]
+    enterprise: Union[None, EnterpriseTypeForResponse]
+    created_at: str
+    updated_at: str
+
+
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[EnterpriseRoleType]]
+
+
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[EnterpriseRoleTypeForResponse]]
 
 
 __all__ = (
-    "EnterpriseUserRoleAssignmentAllof1Type",
-    "EnterpriseUserRoleAssignmentAllof1TypeForResponse",
+    "EnterpriseRoleType",
+    "EnterpriseRoleTypeForResponse",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200Type",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse",
 )

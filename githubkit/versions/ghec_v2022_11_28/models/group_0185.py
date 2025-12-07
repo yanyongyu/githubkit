@@ -9,41 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class GetCostCenter(GitHubModel):
-    """GetCostCenter"""
+class DeleteBudget(GitHubModel):
+    """DeleteBudget"""
 
-    id: str = Field(description="ID of the cost center.")
-    name: str = Field(description="Name of the cost center.")
-    azure_subscription: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+    message: str = Field(
+        description="A message indicating the result of the deletion operation"
     )
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
-    )
-    resources: list[GetCostCenterPropResourcesItems] = Field()
+    id: str = Field(description="The ID of the deleted budget")
 
 
-class GetCostCenterPropResourcesItems(GitHubModel):
-    """GetCostCenterPropResourcesItems"""
+model_rebuild(DeleteBudget)
 
-    type: str = Field(description="Type of the resource.")
-    name: str = Field(description="Name of the resource.")
-
-
-model_rebuild(GetCostCenter)
-model_rebuild(GetCostCenterPropResourcesItems)
-
-__all__ = (
-    "GetCostCenter",
-    "GetCostCenterPropResourcesItems",
-)
+__all__ = ("DeleteBudget",)

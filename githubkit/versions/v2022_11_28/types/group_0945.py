@@ -9,72 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from githubkit.typing import UniqueList
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type(TypedDict):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
 
-    total_count: NotRequired[int]
-    storage_records: NotRequired[
-        list[
-            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType
+    name: str
+    digest: str
+    version: NotRequired[str]
+    status: Literal["deployed", "decommissioned"]
+    logical_environment: str
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: str
+    tags: NotRequired[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
         ]
     ]
+    github_repository: NotRequired[str]
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
 
-    total_count: NotRequired[int]
-    storage_records: NotRequired[
-        list[
-            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse
+    name: str
+    digest: str
+    version: NotRequired[str]
+    status: Literal["deployed", "decommissioned"]
+    logical_environment: str
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: str
+    tags: NotRequired[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse
+    ]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
         ]
     ]
+    github_repository: NotRequired[str]
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
-    rdsItems
-    """
+OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType: TypeAlias = dict[str, Any]
+"""OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[str]
-    registry_url: NotRequired[str]
-    repository: NotRequired[str]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+The tags associated with the deployment.
+"""
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
-    rdsItems
-    """
+OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse: TypeAlias = (
+    dict[str, Any]
+)
+"""OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[str]
-    registry_url: NotRequired[str]
-    repository: NotRequired[str]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+The tags associated with the deployment.
+"""
 
 
 __all__ = (
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType",
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse",
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type",
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyTypeForResponse",
 )

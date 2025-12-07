@@ -9,26 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoMergesPostBodyType(TypedDict):
-    """ReposOwnerRepoMergesPostBody"""
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    base: str
-    head: str
-    commit_message: NotRequired[str]
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str
+    path: Literal["/", "/docs"]
 
 
-class ReposOwnerRepoMergesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoMergesPostBody"""
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    base: str
-    head: str
-    commit_message: NotRequired[str]
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str
+    path: Literal["/", "/docs"]
 
 
 __all__ = (
-    "ReposOwnerRepoMergesPostBodyType",
-    "ReposOwnerRepoMergesPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse",
 )

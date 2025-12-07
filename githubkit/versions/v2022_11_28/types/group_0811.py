@@ -13,24 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0492 import (
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0497 import (
     SecretScanningAlertWebhookType,
     SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertResolvedType(TypedDict):
-    """secret_scanning_alert resolved event"""
+class WebhookSecretScanningAlertAssignedType(TypedDict):
+    """secret_scanning_alert assigned event"""
 
-    action: Literal["resolved"]
+    action: Literal["assigned"]
     alert: SecretScanningAlertWebhookType
+    assignee: NotRequired[SimpleUserType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -38,11 +39,12 @@ class WebhookSecretScanningAlertResolvedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertResolvedTypeForResponse(TypedDict):
-    """secret_scanning_alert resolved event"""
+class WebhookSecretScanningAlertAssignedTypeForResponse(TypedDict):
+    """secret_scanning_alert assigned event"""
 
-    action: Literal["resolved"]
+    action: Literal["assigned"]
     alert: SecretScanningAlertWebhookTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -51,6 +53,6 @@ class WebhookSecretScanningAlertResolvedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSecretScanningAlertResolvedType",
-    "WebhookSecretScanningAlertResolvedTypeForResponse",
+    "WebhookSecretScanningAlertAssignedType",
+    "WebhookSecretScanningAlertAssignedTypeForResponse",
 )

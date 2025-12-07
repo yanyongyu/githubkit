@@ -11,28 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0049 import RunnerType, RunnerTypeForResponse
+
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
+
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
 
-    total_count: float
-    runners: list[RunnerType]
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
-
-    total_count: float
-    runners: list[RunnerTypeForResponse]
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
 )

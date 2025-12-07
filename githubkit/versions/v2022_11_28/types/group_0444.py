@@ -13,32 +13,71 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0058 import (
+    MarketplaceListingPlanType,
+    MarketplaceListingPlanTypeForResponse,
+)
 
-class KeySimpleType(TypedDict):
-    """Key Simple
 
-    Key Simple
+class UserMarketplacePurchaseType(TypedDict):
+    """User Marketplace Purchase
+
+    User Marketplace Purchase
     """
 
-    id: int
-    key: str
-    created_at: NotRequired[_dt.datetime]
-    last_used: NotRequired[Union[_dt.datetime, None]]
+    billing_cycle: str
+    next_billing_date: Union[_dt.datetime, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    account: MarketplaceAccountType
+    plan: MarketplaceListingPlanType
 
 
-class KeySimpleTypeForResponse(TypedDict):
-    """Key Simple
+class UserMarketplacePurchaseTypeForResponse(TypedDict):
+    """User Marketplace Purchase
 
-    Key Simple
+    User Marketplace Purchase
     """
 
+    billing_cycle: str
+    next_billing_date: Union[str, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[str, None]
+    updated_at: Union[str, None]
+    account: MarketplaceAccountTypeForResponse
+    plan: MarketplaceListingPlanTypeForResponse
+
+
+class MarketplaceAccountType(TypedDict):
+    """Marketplace Account"""
+
+    url: str
     id: int
-    key: str
-    created_at: NotRequired[str]
-    last_used: NotRequired[Union[str, None]]
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
+
+
+class MarketplaceAccountTypeForResponse(TypedDict):
+    """Marketplace Account"""
+
+    url: str
+    id: int
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "KeySimpleType",
-    "KeySimpleTypeForResponse",
+    "MarketplaceAccountType",
+    "MarketplaceAccountTypeForResponse",
+    "UserMarketplacePurchaseType",
+    "UserMarketplacePurchaseTypeForResponse",
 )

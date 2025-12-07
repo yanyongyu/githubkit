@@ -9,22 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodespacesAccessSelectedUsersPostBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-    selected_usernames: list[str]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgCodespacesAccessSelectedUsersPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-    selected_usernames: list[str]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgCodespacesAccessSelectedUsersPostBodyType",
-    "OrgsOrgCodespacesAccessSelectedUsersPostBodyTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",
+    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse",
 )

@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0301 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoDeleteResponse403Type(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    total_count: int
+    secrets: list[ActionsSecretType]
 
 
-class ReposOwnerRepoDeleteResponse403TypeForResponse(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoDeleteResponse403Type",
-    "ReposOwnerRepoDeleteResponse403TypeForResponse",
+    "ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",
+    "ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse",
 )

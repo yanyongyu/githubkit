@@ -12,29 +12,31 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody
-
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyTypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
 
     Examples:
-        {'users': ['mona']}
+        {'teams': ['justice-league']}
     """
 
-    users: list[str]
+    teams: list[str]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
+
+    Examples:
+        {'teams': ['justice-league']}
+    """
+
+    teams: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0TypeForResponse",
 )

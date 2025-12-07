@@ -18,29 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0020 import Repository
-from .group_0195 import Issue
-from .group_0528 import SimpleInstallation
-from .group_0529 import OrganizationSimpleWebhooks
-from .group_0530 import RepositoryWebhooks
+from .group_0531 import EnterpriseWebhooks
+from .group_0532 import SimpleInstallation
+from .group_0533 import OrganizationSimpleWebhooks
+from .group_0534 import RepositoryWebhooks
 
 
-class WebhookSubIssuesParentIssueAdded(GitHubModel):
-    """parent issue added event"""
+class WebhookStarDeleted(GitHubModel):
+    """star deleted event"""
 
-    action: Literal["parent_issue_added"] = Field()
-    parent_issue_id: float = Field(description="The ID of the parent issue.")
-    parent_issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    parent_issue_repo: Repository = Field(
-        title="Repository", description="A repository on GitHub."
-    )
-    sub_issue_id: float = Field(description="The ID of the sub-issue.")
-    sub_issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    action: Literal["deleted"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -52,16 +43,16 @@ class WebhookSubIssuesParentIssueAdded(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    starred_at: None = Field(
+        description="The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action."
     )
 
 
-model_rebuild(WebhookSubIssuesParentIssueAdded)
+model_rebuild(WebhookStarDeleted)
 
-__all__ = ("WebhookSubIssuesParentIssueAdded",)
+__all__ = ("WebhookStarDeleted",)

@@ -13,42 +13,51 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDeleteType(TypedDict):
-    """delete event"""
+class WebhookCustomPropertyDeletedType(TypedDict):
+    """custom property deleted event"""
 
+    action: Literal["deleted"]
+    definition: WebhookCustomPropertyDeletedPropDefinitionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pusher_type: str
-    ref: str
-    ref_type: Literal["tag", "branch"]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDeleteTypeForResponse(TypedDict):
-    """delete event"""
+class WebhookCustomPropertyDeletedTypeForResponse(TypedDict):
+    """custom property deleted event"""
 
+    action: Literal["deleted"]
+    definition: WebhookCustomPropertyDeletedPropDefinitionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pusher_type: str
-    ref: str
-    ref_type: Literal["tag", "branch"]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+class WebhookCustomPropertyDeletedPropDefinitionType(TypedDict):
+    """WebhookCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
+
+
+class WebhookCustomPropertyDeletedPropDefinitionTypeForResponse(TypedDict):
+    """WebhookCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
 
 
 __all__ = (
-    "WebhookDeleteType",
-    "WebhookDeleteTypeForResponse",
+    "WebhookCustomPropertyDeletedPropDefinitionType",
+    "WebhookCustomPropertyDeletedPropDefinitionTypeForResponse",
+    "WebhookCustomPropertyDeletedType",
+    "WebhookCustomPropertyDeletedTypeForResponse",
 )

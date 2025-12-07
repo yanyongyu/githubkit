@@ -9,54 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0319 import GitUserType, GitUserTypeForResponse
-from .group_0320 import VerificationType, VerificationTypeForResponse
+
+class GitUserType(TypedDict):
+    """Git User
+
+    Metaproperties for Git author/committer information.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[_dt.datetime]
 
 
-class CommitPropCommitType(TypedDict):
-    """CommitPropCommit"""
+class GitUserTypeForResponse(TypedDict):
+    """Git User
 
-    url: str
-    author: Union[None, GitUserType]
-    committer: Union[None, GitUserType]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeType
-    verification: NotRequired[VerificationType]
+    Metaproperties for Git author/committer information.
+    """
 
-
-class CommitPropCommitTypeForResponse(TypedDict):
-    """CommitPropCommit"""
-
-    url: str
-    author: Union[None, GitUserTypeForResponse]
-    committer: Union[None, GitUserTypeForResponse]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeTypeForResponse
-    verification: NotRequired[VerificationTypeForResponse]
-
-
-class CommitPropCommitPropTreeType(TypedDict):
-    """CommitPropCommitPropTree"""
-
-    sha: str
-    url: str
-
-
-class CommitPropCommitPropTreeTypeForResponse(TypedDict):
-    """CommitPropCommitPropTree"""
-
-    sha: str
-    url: str
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[str]
 
 
 __all__ = (
-    "CommitPropCommitPropTreeType",
-    "CommitPropCommitPropTreeTypeForResponse",
-    "CommitPropCommitType",
-    "CommitPropCommitTypeForResponse",
+    "GitUserType",
+    "GitUserTypeForResponse",
 )

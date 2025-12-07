@@ -13,41 +13,40 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0103 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0558 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
 
 
-class WebhookOrganizationMemberRemovedType(TypedDict):
-    """organization member_removed event"""
+class WebhookOrganizationCustomPropertyValuesUpdatedType(TypedDict):
+    """Custom property values updated event"""
 
-    action: Literal["member_removed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["updated"]
+    enterprise: EnterpriseWebhooksType
     installation: NotRequired[SimpleInstallationType]
-    membership: WebhooksMembershipType
     organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
+    new_property_values: list[CustomPropertyValueType]
+    old_property_values: list[CustomPropertyValueType]
 
 
-class WebhookOrganizationMemberRemovedTypeForResponse(TypedDict):
-    """organization member_removed event"""
+class WebhookOrganizationCustomPropertyValuesUpdatedTypeForResponse(TypedDict):
+    """Custom property values updated event"""
 
-    action: Literal["member_removed"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["updated"]
+    enterprise: EnterpriseWebhooksTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    membership: WebhooksMembershipTypeForResponse
     organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+    new_property_values: list[CustomPropertyValueTypeForResponse]
+    old_property_values: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "WebhookOrganizationMemberRemovedType",
-    "WebhookOrganizationMemberRemovedTypeForResponse",
+    "WebhookOrganizationCustomPropertyValuesUpdatedType",
+    "WebhookOrganizationCustomPropertyValuesUpdatedTypeForResponse",
 )

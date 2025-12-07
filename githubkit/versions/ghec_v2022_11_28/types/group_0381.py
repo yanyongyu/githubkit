@@ -9,129 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0380 import (
-    DeploymentBranchPolicySettingsType,
-    DeploymentBranchPolicySettingsTypeForResponse,
-)
-from .group_0382 import (
-    EnvironmentPropProtectionRulesItemsAnyof1Type,
-    EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
-)
+from .group_0379 import MetadataType, MetadataTypeForResponse
 
 
-class EnvironmentType(TypedDict):
-    """Environment
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    Details of a deployment environment
-    """
-
-    id: int
-    node_id: str
     name: str
-    url: str
-    html_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    protection_rules: NotRequired[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0Type,
-                EnvironmentPropProtectionRulesItemsAnyof1Type,
-                EnvironmentPropProtectionRulesItemsAnyof2Type,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
 
 
-class EnvironmentTypeForResponse(TypedDict):
-    """Environment
+class ManifestTypeForResponse(TypedDict):
+    """Manifest"""
 
-    Details of a deployment environment
-    """
-
-    id: int
-    node_id: str
     name: str
-    url: str
-    html_url: str
-    created_at: str
-    updated_at: str
-    protection_rules: NotRequired[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse,
-                EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
-                EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
-    ]
+    file: NotRequired[ManifestPropFileTypeForResponse]
+    metadata: NotRequired[MetadataTypeForResponse]
+    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
 
-    id: int
-    node_id: str
-    type: str
-    wait_timer: NotRequired[int]
+    source_location: NotRequired[str]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
+class ManifestPropFileTypeForResponse(TypedDict):
+    """ManifestPropFile"""
 
-    id: int
-    node_id: str
-    type: str
-    wait_timer: NotRequired[int]
+    source_location: NotRequired[str]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
+ManifestPropResolvedType: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
 
-    id: int
-    node_id: str
-    type: str
-
-
-class EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
-
-    id: int
-    node_id: str
-    type: str
+A collection of resolved package dependencies.
+"""
 
 
-class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
+ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
 
-    total_count: NotRequired[int]
-    environments: NotRequired[list[EnvironmentType]]
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: NotRequired[int]
-    environments: NotRequired[list[EnvironmentTypeForResponse]]
+A collection of resolved package dependencies.
+"""
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof0Type",
-    "EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse",
-    "EnvironmentPropProtectionRulesItemsAnyof2Type",
-    "EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse",
-    "EnvironmentType",
-    "EnvironmentTypeForResponse",
-    "ReposOwnerRepoEnvironmentsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse",
+    "ManifestPropFileType",
+    "ManifestPropFileTypeForResponse",
+    "ManifestPropResolvedType",
+    "ManifestPropResolvedTypeForResponse",
+    "ManifestType",
+    "ManifestTypeForResponse",
 )

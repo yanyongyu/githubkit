@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,68 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200(GitHubModel):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
+class NotificationsPutBody(GitHubModel):
+    """NotificationsPutBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    budget: Missing[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget
-    ] = Field(default=UNSET)
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget(
-    GitHubModel
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
-
-    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
-    budget_amount: Missing[float] = Field(
+    last_read_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
+        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
     )
-    prevent_further_usage: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded",
-    )
-    budget_alerting: Missing[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting
-    ] = Field(default=UNSET)
-    budget_scope: Missing[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ] = Field(default=UNSET, description="The scope of the budget")
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
-    )
-    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
-        default=UNSET, description="The type of pricing for the budget"
-    )
-    budget_product_sku: Missing[str] = Field(
-        default=UNSET,
-        description="A single product or SKU that will be covered in the budget",
+    read: Missing[bool] = Field(
+        default=UNSET, description="Whether the notification has been read."
     )
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting(
-    GitHubModel
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
-    etAlerting
-    """
+model_rebuild(NotificationsPutBody)
 
-    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
-    alert_recipients: list[str] = Field(
-        description="Array of user login names who will receive alerts"
-    )
-
-
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200)
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget)
-model_rebuild(
-    OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting
-)
-
-__all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting",
-)
+__all__ = ("NotificationsPutBody",)

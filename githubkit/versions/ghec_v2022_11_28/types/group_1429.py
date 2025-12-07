@@ -9,81 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
+
+from .group_0275 import (
+    ProjectsV2FieldIterationConfigurationType,
+    ProjectsV2FieldIterationConfigurationTypeForResponse,
+)
 
 
-class UsersUsernameAttestationsBulkListPostResponse200Type(TypedDict):
-    """UsersUsernameAttestationsBulkListPostResponse200"""
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type(TypedDict):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
-    attestations_subject_digests: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
-    ]
-    page_info: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType
-    ]
+    name: str
+    data_type: Literal["iteration"]
+    iteration_configuration: ProjectsV2FieldIterationConfigurationType
 
 
-class UsersUsernameAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsBulkListPostResponse200"""
-
-    attestations_subject_digests: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
-    ]
-    page_info: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
-    ]
-
-
-UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
-
-Mapping of subject digest to bundles.
-"""
-
-
-UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
-
-Mapping of subject digest to bundles.
-"""
-
-
-class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
-    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
-
-    Information about the current page.
-    """
-
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
-
-
-class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse(
     TypedDict
 ):
-    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
-    Information about the current page.
-    """
-
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
+    name: str
+    data_type: Literal["iteration"]
+    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
 
 
 __all__ = (
-    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
-    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
-    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType",
-    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
-    "UsersUsernameAttestationsBulkListPostResponse200Type",
-    "UsersUsernameAttestationsBulkListPostResponse200TypeForResponse",
+    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type",
+    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse",
 )

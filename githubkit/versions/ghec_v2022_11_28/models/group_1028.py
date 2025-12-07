@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,50 +18,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200(
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+
+    budget_amount: int = Field(
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
+    )
+    prevent_further_usage: bool = Field(
+        description="Whether to prevent additional spending once the budget is exceeded"
+    )
+    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting = Field()
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"] = (
+        Field(description="The scope of the budget")
+    )
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
+    )
+    budget_type: Literal["ProductPricing", "SkuPricing"] = Field(
+        description="The type of pricing for the budget"
+    )
+    budget_product_sku: Missing[str] = Field(
+        default=UNSET,
+        description="A single product or SKU that will be covered in the budget",
+    )
+
+
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00
-    """
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
 
-    message: Missing[str] = Field(default=UNSET)
-    reassigned_resources: Missing[
-        Union[
-            list[
-                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems
-            ],
-            None,
-        ]
-    ] = Field(default=UNSET)
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00PropReassignedResourcesItems
-    """
-
-    resource_type: Missing[str] = Field(
-        default=UNSET, description="The type of resource that was reassigned."
-    )
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the resource that was reassigned."
-    )
-    previous_cost_center: Missing[str] = Field(
-        default=UNSET, description="The previous cost center of the resource."
+    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
+    alert_recipients: list[str] = Field(
+        description="Array of user login names who will receive alerts"
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200
-)
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems
-)
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBody)
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting)
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBody",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting",
 )

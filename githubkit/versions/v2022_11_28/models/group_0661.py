@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0448 import EnterpriseWebhooks
-from .group_0449 import SimpleInstallation
-from .group_0450 import OrganizationSimpleWebhooks
-from .group_0451 import RepositoryWebhooks
-from .group_0463 import WebhooksLabel
+from .group_0453 import EnterpriseWebhooks
+from .group_0454 import SimpleInstallation
+from .group_0455 import OrganizationSimpleWebhooks
+from .group_0456 import RepositoryWebhooks
+from .group_0468 import WebhooksLabel
+from .group_0473 import WebhooksIssue
 
 
-class WebhookLabelCreated(GitHubModel):
-    """label created event"""
+class WebhookIssuesUnlabeled(GitHubModel):
+    """issues unlabeled event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["unlabeled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +40,11 @@ class WebhookLabelCreated(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: WebhooksLabel = Field(title="Label")
+    issue: WebhooksIssue = Field(
+        title="Issue",
+        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
+    )
+    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -49,11 +54,9 @@ class WebhookLabelCreated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookLabelCreated)
+model_rebuild(WebhookIssuesUnlabeled)
 
-__all__ = ("WebhookLabelCreated",)
+__all__ = ("WebhookIssuesUnlabeled",)

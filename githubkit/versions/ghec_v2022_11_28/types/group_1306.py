@@ -9,29 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoHooksHookIdConfigPatchBodyType(TypedDict):
-    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
-
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
-class ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
-
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
 __all__ = (
-    "ReposOwnerRepoHooksHookIdConfigPatchBodyType",
-    "ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse",
+    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type",
+    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse",
 )

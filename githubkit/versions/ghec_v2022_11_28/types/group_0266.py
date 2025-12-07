@@ -11,36 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0262 import LinkType, LinkTypeForResponse
+
+class LinkType(TypedDict):
+    """Link
+
+    Hypermedia Link
+    """
+
+    href: str
 
 
-class PullRequestSimplePropLinksType(TypedDict):
-    """PullRequestSimplePropLinks"""
+class LinkTypeForResponse(TypedDict):
+    """Link
 
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+    Hypermedia Link
+    """
 
-
-class PullRequestSimplePropLinksTypeForResponse(TypedDict):
-    """PullRequestSimplePropLinks"""
-
-    comments: LinkTypeForResponse
-    commits: LinkTypeForResponse
-    statuses: LinkTypeForResponse
-    html: LinkTypeForResponse
-    issue: LinkTypeForResponse
-    review_comments: LinkTypeForResponse
-    review_comment: LinkTypeForResponse
-    self_: LinkTypeForResponse
+    href: str
 
 
 __all__ = (
-    "PullRequestSimplePropLinksType",
-    "PullRequestSimplePropLinksTypeForResponse",
+    "LinkType",
+    "LinkTypeForResponse",
 )

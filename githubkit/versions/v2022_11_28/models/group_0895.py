@@ -18,52 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class MarkdownPostBody(GitHubModel):
+    """MarkdownPostBody"""
 
-    budget_amount: Missing[int] = Field(
+    text: str = Field(description="The Markdown text to render in HTML.")
+    mode: Missing[Literal["markdown", "gfm"]] = Field(
+        default=UNSET, description="The rendering mode."
+    )
+    context: Missing[str] = Field(
         default=UNSET,
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
-    )
-    prevent_further_usage: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded",
-    )
-    budget_alerting: Missing[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
-    ] = Field(default=UNSET)
-    budget_scope: Missing[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ] = Field(default=UNSET, description="The scope of the budget")
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
-    )
-    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
-        default=UNSET, description="The type of pricing for the budget"
-    )
-    budget_product_sku: Missing[str] = Field(
-        default=UNSET,
-        description="A single product or SKU that will be covered in the budget",
+        description="The repository context to use when creating references in `gfm` mode.  For example, setting `context` to `octo-org/octo-repo` will change the text `#42` into an HTML link to issue 42 in the `octo-org/octo-repo` repository.",
     )
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
-    GitHubModel
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+model_rebuild(MarkdownPostBody)
 
-    will_alert: Missing[bool] = Field(
-        default=UNSET, description="Whether alerts are enabled for this budget"
-    )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET, description="Array of user login names who will receive alerts"
-    )
-
-
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody)
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting)
-
-__all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
-)
+__all__ = ("MarkdownPostBody",)

@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoGitRefsRefPatchBodyType(TypedDict):
-    """ReposOwnerRepoGitRefsRefPatchBody"""
+class ReposOwnerRepoHooksHookIdConfigPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    sha: str
-    force: NotRequired[bool]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitRefsRefPatchBody"""
+class ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    sha: str
-    force: NotRequired[bool]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "ReposOwnerRepoGitRefsRefPatchBodyType",
-    "ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse",
+    "ReposOwnerRepoHooksHookIdConfigPatchBodyType",
+    "ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse",
 )

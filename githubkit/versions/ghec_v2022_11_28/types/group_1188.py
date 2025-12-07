@@ -9,25 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ProjectsColumnsCardsCardIdPatchBodyType(TypedDict):
-    """ProjectsColumnsCardsCardIdPatchBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType(
+    TypedDict
+):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPos
+    tBody
+    """
 
-    note: NotRequired[Union[str, None]]
-    archived: NotRequired[bool]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-class ProjectsColumnsCardsCardIdPatchBodyTypeForResponse(TypedDict):
-    """ProjectsColumnsCardsCardIdPatchBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPos
+    tBody
+    """
 
-    note: NotRequired[Union[str, None]]
-    archived: NotRequired[bool]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
 __all__ = (
-    "ProjectsColumnsCardsCardIdPatchBodyType",
-    "ProjectsColumnsCardsCardIdPatchBodyTypeForResponse",
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType",
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyTypeForResponse",
 )

@@ -17,14 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0181 import RepositoryRuleFilePathRestrictionPropParameters
+from .group_0177 import RepositoryRuleCommitMessagePatternPropParameters
 
 
-class RepositoryRuleDetailedOneof15(GitHubModel):
-    """RepositoryRuleDetailedOneof15"""
+class RepositoryRuleDetailedOneof10(GitHubModel):
+    """RepositoryRuleDetailedOneof10"""
 
-    type: Literal["file_path_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFilePathRestrictionPropParameters] = Field(
+    type: Literal["commit_message_pattern"] = Field()
+    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
         default=UNSET
     )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
@@ -40,6 +40,6 @@ class RepositoryRuleDetailedOneof15(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof15)
+model_rebuild(RepositoryRuleDetailedOneof10)
 
-__all__ = ("RepositoryRuleDetailedOneof15",)
+__all__ = ("RepositoryRuleDetailedOneof10",)

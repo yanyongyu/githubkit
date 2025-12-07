@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,60 +19,61 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0032 import SimpleRepository
-from .group_0098 import CodeScanningAlertRuleSummary
-from .group_0099 import CodeScanningAnalysisTool
-from .group_0100 import CodeScanningAlertInstance
+from .group_0100 import Team
 
 
-class CodeScanningOrganizationAlertItems(GitHubModel):
-    """CodeScanningOrganizationAlertItems"""
+class CampaignSummary(GitHubModel):
+    """Campaign summary
 
-    number: int = Field(description="The security alert number.")
+    The campaign metadata and alert stats.
+    """
+
+    number: int = Field(description="The number of the newly created campaign")
     created_at: _dt.datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+        description="The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    updated_at: Missing[_dt.datetime] = Field(
+    updated_at: _dt.datetime = Field(
+        description="The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    name: Missing[str] = Field(default=UNSET, description="The campaign name")
+    description: str = Field(description="The campaign description")
+    managers: list[SimpleUser] = Field(description="The campaign managers")
+    team_managers: Missing[list[Team]] = Field(
+        default=UNSET, description="The campaign team managers"
+    )
+    published_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
     )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    instances_url: str = Field(
-        description="The REST API URL for fetching the list of instances for an alert."
+    ends_at: _dt.datetime = Field(
+        description="The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    state: Union[None, Literal["open", "dismissed", "fixed"]] = Field(
-        description="State of a code scanning alert."
-    )
-    fixed_at: Missing[Union[_dt.datetime, None]] = Field(
+    closed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.",
     )
-    dismissed_by: Union[None, SimpleUser] = Field()
-    dismissed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    state: Literal["open", "closed"] = Field(
+        title="Campaign state",
+        description="Indicates whether a campaign is open or closed",
     )
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ] = Field(
-        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
+    contact_link: Union[str, None] = Field(
+        description="The contact link of the campaign."
     )
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
-        Field(
-            default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
-        )
-    )
-    rule: CodeScanningAlertRuleSummary = Field()
-    tool: CodeScanningAnalysisTool = Field()
-    most_recent_instance: CodeScanningAlertInstance = Field()
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
-    )
-    dismissal_approved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    alert_stats: Missing[CampaignSummaryPropAlertStats] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningOrganizationAlertItems)
+class CampaignSummaryPropAlertStats(GitHubModel):
+    """CampaignSummaryPropAlertStats"""
 
-__all__ = ("CodeScanningOrganizationAlertItems",)
+    open_count: int = Field(description="The number of open alerts")
+    closed_count: int = Field(description="The number of closed alerts")
+    in_progress_count: int = Field(description="The number of in-progress alerts")
+
+
+model_rebuild(CampaignSummary)
+model_rebuild(CampaignSummaryPropAlertStats)
+
+__all__ = (
+    "CampaignSummary",
+    "CampaignSummaryPropAlertStats",
+)

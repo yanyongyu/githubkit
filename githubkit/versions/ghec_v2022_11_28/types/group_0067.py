@@ -9,43 +9,174 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0066 import BypassResponseType, BypassResponseTypeForResponse
 
-class CodeScanningAlertRuleSummaryType(TypedDict):
-    """CodeScanningAlertRuleSummary"""
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
-    security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
+class PushRuleBypassRequestType(TypedDict):
+    """Push rule bypass request
+
+    A bypass request made by a user asking to be exempted from a push rule in this
+    repository.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[PushRuleBypassRequestPropRepositoryType]
+    organization: NotRequired[PushRuleBypassRequestPropOrganizationType]
+    requester: NotRequired[PushRuleBypassRequestPropRequesterType]
+    request_type: NotRequired[str]
+    data: NotRequired[Union[list[PushRuleBypassRequestPropDataItemsType], None]]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[
+        Literal[
+            "pending",
+            "denied",
+            "approved",
+            "cancelled",
+            "completed",
+            "expired",
+            "deleted",
+            "open",
+        ]
     ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
+    responses: NotRequired[Union[list[BypassResponseType], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
-    """CodeScanningAlertRuleSummary"""
+class PushRuleBypassRequestTypeForResponse(TypedDict):
+    """Push rule bypass request
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
-    security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
+    A bypass request made by a user asking to be exempted from a push rule in this
+    repository.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[PushRuleBypassRequestPropRepositoryTypeForResponse]
+    organization: NotRequired[PushRuleBypassRequestPropOrganizationTypeForResponse]
+    requester: NotRequired[PushRuleBypassRequestPropRequesterTypeForResponse]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[PushRuleBypassRequestPropDataItemsTypeForResponse], None]
     ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[
+        Literal[
+            "pending",
+            "denied",
+            "approved",
+            "cancelled",
+            "completed",
+            "expired",
+            "deleted",
+            "open",
+        ]
+    ]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[str]
+    created_at: NotRequired[str]
+    responses: NotRequired[Union[list[BypassResponseTypeForResponse], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class PushRuleBypassRequestPropRepositoryType(TypedDict):
+    """PushRuleBypassRequestPropRepository
+
+    The repository the bypass request is for.
+    """
+
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
+    full_name: NotRequired[Union[str, None]]
+
+
+class PushRuleBypassRequestPropRepositoryTypeForResponse(TypedDict):
+    """PushRuleBypassRequestPropRepository
+
+    The repository the bypass request is for.
+    """
+
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
+    full_name: NotRequired[Union[str, None]]
+
+
+class PushRuleBypassRequestPropOrganizationType(TypedDict):
+    """PushRuleBypassRequestPropOrganization
+
+    The organization associated with the repository the bypass request is for.
+    """
+
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
+
+
+class PushRuleBypassRequestPropOrganizationTypeForResponse(TypedDict):
+    """PushRuleBypassRequestPropOrganization
+
+    The organization associated with the repository the bypass request is for.
+    """
+
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
+
+
+class PushRuleBypassRequestPropRequesterType(TypedDict):
+    """PushRuleBypassRequestPropRequester
+
+    The user who requested the bypass.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class PushRuleBypassRequestPropRequesterTypeForResponse(TypedDict):
+    """PushRuleBypassRequestPropRequester
+
+    The user who requested the bypass.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class PushRuleBypassRequestPropDataItemsType(TypedDict):
+    """PushRuleBypassRequestPropDataItems"""
+
+    ruleset_id: NotRequired[int]
+    ruleset_name: NotRequired[str]
+    total_violations: NotRequired[int]
+    rule_type: NotRequired[str]
+
+
+class PushRuleBypassRequestPropDataItemsTypeForResponse(TypedDict):
+    """PushRuleBypassRequestPropDataItems"""
+
+    ruleset_id: NotRequired[int]
+    ruleset_name: NotRequired[str]
+    total_violations: NotRequired[int]
+    rule_type: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningAlertRuleSummaryType",
-    "CodeScanningAlertRuleSummaryTypeForResponse",
+    "PushRuleBypassRequestPropDataItemsType",
+    "PushRuleBypassRequestPropDataItemsTypeForResponse",
+    "PushRuleBypassRequestPropOrganizationType",
+    "PushRuleBypassRequestPropOrganizationTypeForResponse",
+    "PushRuleBypassRequestPropRepositoryType",
+    "PushRuleBypassRequestPropRepositoryTypeForResponse",
+    "PushRuleBypassRequestPropRequesterType",
+    "PushRuleBypassRequestPropRequesterTypeForResponse",
+    "PushRuleBypassRequestType",
+    "PushRuleBypassRequestTypeForResponse",
 )

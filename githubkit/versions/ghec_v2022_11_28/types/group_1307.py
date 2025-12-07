@@ -13,27 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoImportPutBodyType(TypedDict):
-    """ReposOwnerRepoImportPutBody"""
+class ReposOwnerRepoInvitationsInvitationIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
-    vcs_url: str
-    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    tfvc_project: NotRequired[str]
+    permissions: NotRequired[Literal["read", "write", "maintain", "triage", "admin"]]
 
 
-class ReposOwnerRepoImportPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoImportPutBody"""
+class ReposOwnerRepoInvitationsInvitationIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
-    vcs_url: str
-    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    tfvc_project: NotRequired[str]
+    permissions: NotRequired[Literal["read", "write", "maintain", "triage", "admin"]]
 
 
 __all__ = (
-    "ReposOwnerRepoImportPutBodyType",
-    "ReposOwnerRepoImportPutBodyTypeForResponse",
+    "ReposOwnerRepoInvitationsInvitationIdPatchBodyType",
+    "ReposOwnerRepoInvitationsInvitationIdPatchBodyTypeForResponse",
 )

@@ -13,36 +13,30 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class RepositorySubscriptionType(TypedDict):
-    """Repository Invitation
 
-    Repository invitations let you manage who you collaborate with.
+class StargazerType(TypedDict):
+    """Stargazer
+
+    Stargazer
     """
 
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: _dt.datetime
-    url: str
-    repository_url: str
+    starred_at: _dt.datetime
+    user: Union[None, SimpleUserType]
 
 
-class RepositorySubscriptionTypeForResponse(TypedDict):
-    """Repository Invitation
+class StargazerTypeForResponse(TypedDict):
+    """Stargazer
 
-    Repository invitations let you manage who you collaborate with.
+    Stargazer
     """
 
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: str
-    url: str
-    repository_url: str
+    starred_at: str
+    user: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "RepositorySubscriptionType",
-    "RepositorySubscriptionTypeForResponse",
+    "StargazerType",
+    "StargazerTypeForResponse",
 )

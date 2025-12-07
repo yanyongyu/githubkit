@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,42 +18,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetAllCostCenters(GitHubModel):
-    """GetAllCostCenters"""
+class UpdateBudget(GitHubModel):
+    """UpdateBudget"""
 
-    cost_centers: Missing[list[GetAllCostCentersPropCostCentersItems]] = Field(
-        default=UNSET, alias="costCenters"
+    message: str = Field(
+        description="A message indicating the result of the update operation"
     )
+    budget: UpdateBudgetPropBudget = Field()
 
 
-class GetAllCostCentersPropCostCentersItems(GitHubModel):
-    """GetAllCostCentersPropCostCentersItems"""
+class UpdateBudgetPropBudget(GitHubModel):
+    """UpdateBudgetPropBudget"""
 
-    id: str = Field(description="ID of the cost center.")
-    name: str = Field(description="Name of the cost center.")
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
+    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
+    budget_scope: Missing[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ] = Field(default=UNSET, description="The type of scope for the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
     )
-    azure_subscription: Missing[Union[str, None]] = Field(
+    budget_amount: Missing[float] = Field(
+        default=UNSET, description="The budget amount in dollars"
+    )
+    prevent_further_usage: Missing[bool] = Field(
         default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+        description="Whether to prevent additional spending once the budget is exceeded",
     )
-    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
+    budget_product_sku: Missing[str] = Field(
+        default=UNSET, description="A single product or sku to apply the budget to."
+    )
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
+        default=UNSET, description="The type of pricing for the budget"
+    )
+    budget_alerting: Missing[UpdateBudgetPropBudgetPropBudgetAlerting] = Field(
+        default=UNSET
+    )
 
 
-class GetAllCostCentersPropCostCentersItemsPropResourcesItems(GitHubModel):
-    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+class UpdateBudgetPropBudgetPropBudgetAlerting(GitHubModel):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
 
-    type: str = Field(description="Type of the resource.")
-    name: str = Field(description="Name of the resource.")
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
+    )
 
 
-model_rebuild(GetAllCostCenters)
-model_rebuild(GetAllCostCentersPropCostCentersItems)
-model_rebuild(GetAllCostCentersPropCostCentersItemsPropResourcesItems)
+model_rebuild(UpdateBudget)
+model_rebuild(UpdateBudgetPropBudget)
+model_rebuild(UpdateBudgetPropBudgetPropBudgetAlerting)
 
 __all__ = (
-    "GetAllCostCenters",
-    "GetAllCostCentersPropCostCentersItems",
-    "GetAllCostCentersPropCostCentersItemsPropResourcesItems",
+    "UpdateBudget",
+    "UpdateBudgetPropBudget",
+    "UpdateBudgetPropBudgetPropBudgetAlerting",
 )

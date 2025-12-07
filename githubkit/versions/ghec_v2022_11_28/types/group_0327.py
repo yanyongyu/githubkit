@@ -12,60 +12,51 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0080 import TeamType, TeamTypeForResponse
+from .group_0323 import GitUserType, GitUserTypeForResponse
+from .group_0324 import VerificationType, VerificationTypeForResponse
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class CommitPropCommitType(TypedDict):
+    """CommitPropCommit"""
 
     url: str
-    users_url: str
-    teams_url: str
-    users: list[SimpleUserType]
-    teams: list[TeamType]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    author: Union[None, GitUserType]
+    committer: Union[None, GitUserType]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeType
+    verification: NotRequired[VerificationType]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class CommitPropCommitTypeForResponse(TypedDict):
+    """CommitPropCommit"""
 
     url: str
-    users_url: str
-    teams_url: str
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    author: Union[None, GitUserTypeForResponse]
+    committer: Union[None, GitUserTypeForResponse]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+class CommitPropCommitPropTreeType(TypedDict):
+    """CommitPropCommitPropTree"""
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    sha: str
+    url: str
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+class CommitPropCommitPropTreeTypeForResponse(TypedDict):
+    """CommitPropCommitPropTree"""
 
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    sha: str
+    url: str
 
 
 __all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse",
+    "CommitPropCommitPropTreeType",
+    "CommitPropCommitPropTreeTypeForResponse",
+    "CommitPropCommitType",
+    "CommitPropCommitTypeForResponse",
 )

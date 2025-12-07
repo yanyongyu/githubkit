@@ -9,13 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsColumnIdMovesPostResponse201(GitHubModel):
-    """ProjectsColumnsColumnIdMovesPostResponse201"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody"""
+
+    body: str = Field(description="The discussion comment's body text.")
 
 
-model_rebuild(ProjectsColumnsColumnIdMovesPostResponse201)
+model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody)
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostResponse201",)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody",)

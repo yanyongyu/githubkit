@@ -9,75 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1252 import (
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse,
-)
 
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
-
-    name: NotRequired[str]
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    started_at: NotRequired[_dt.datetime]
-    status: NotRequired[Literal["queued", "in_progress"]]
-    conclusion: NotRequired[
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "success",
-            "skipped",
-            "stale",
-            "timed_out",
-        ]
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
     ]
-    completed_at: NotRequired[_dt.datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
-    actions: NotRequired[
-        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
-    ]
+    query_pack: str
+    repositories: list[str]
+    repository_lists: NotRequired[list[str]]
+    repository_owners: NotRequired[list[str]]
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
 
-    name: NotRequired[str]
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    started_at: NotRequired[str]
-    status: NotRequired[Literal["queued", "in_progress"]]
-    conclusion: NotRequired[
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "success",
-            "skipped",
-            "stale",
-            "timed_out",
-        ]
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
     ]
-    completed_at: NotRequired[str]
-    output: NotRequired[
-        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse
-    ]
-    actions: NotRequired[
-        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse]
-    ]
+    query_pack: str
+    repositories: list[str]
+    repository_lists: NotRequired[list[str]]
+    repository_owners: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0TypeForResponse",
 )

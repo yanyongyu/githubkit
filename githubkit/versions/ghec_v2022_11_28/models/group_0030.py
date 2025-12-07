@@ -12,19 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsCacheUsageOrgEnterprise(GitHubModel):
-    """ActionsCacheUsageOrgEnterprise"""
+class ActionsCacheRetentionLimitForEnterprise(GitHubModel):
+    """Actions cache retention limit for an enterprise
 
-    total_active_caches_count: int = Field(
-        description="The count of active caches across all repositories of an enterprise or an organization."
+    GitHub Actions cache retention policy for an enterprise.
+    """
+
+    max_cache_retention_days: Missing[int] = Field(
+        default=UNSET,
+        description="For repositories & organizations in an enterprise, the maximum duration, in days, for which caches in a repository may be retained.",
     )
-    total_active_caches_size_in_bytes: int = Field(
-        description="The total size in bytes of all active cache items across all repositories of an enterprise or an organization."
-    )
 
 
-model_rebuild(ActionsCacheUsageOrgEnterprise)
+model_rebuild(ActionsCacheRetentionLimitForEnterprise)
 
-__all__ = ("ActionsCacheUsageOrgEnterprise",)
+__all__ = ("ActionsCacheRetentionLimitForEnterprise",)

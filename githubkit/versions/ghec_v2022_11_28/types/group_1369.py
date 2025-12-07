@@ -9,27 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
+class ReposOwnerRepoReleasesGenerateNotesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
-    body: NotRequired[str]
-    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
+    tag_name: str
+    target_commitish: NotRequired[str]
+    previous_tag_name: NotRequired[str]
+    configuration_file_path: NotRequired[str]
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
+class ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
-    body: NotRequired[str]
-    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
+    tag_name: str
+    target_commitish: NotRequired[str]
+    previous_tag_name: NotRequired[str]
+    configuration_file_path: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType",
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse",
+    "ReposOwnerRepoReleasesGenerateNotesPostBodyType",
+    "ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse",
 )

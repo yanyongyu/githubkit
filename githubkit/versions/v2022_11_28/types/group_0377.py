@@ -9,82 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0042 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0376 import ReleaseAssetType, ReleaseAssetTypeForResponse
+from .group_0100 import TeamType, TeamTypeForResponse
 
 
-class ReleaseType(TypedDict):
-    """Release
+class PullRequestReviewRequestType(TypedDict):
+    """Pull Request Review Request
 
-    A release.
+    Pull Request Review Request
     """
 
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
-    id: int
-    node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: _dt.datetime
-    published_at: Union[_dt.datetime, None]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    author: SimpleUserType
-    assets: list[ReleaseAssetType]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
+    users: list[SimpleUserType]
+    teams: list[TeamType]
 
 
-class ReleaseTypeForResponse(TypedDict):
-    """Release
+class PullRequestReviewRequestTypeForResponse(TypedDict):
+    """Pull Request Review Request
 
-    A release.
+    Pull Request Review Request
     """
 
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
-    id: int
-    node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: str
-    published_at: Union[str, None]
-    updated_at: NotRequired[Union[str, None]]
-    author: SimpleUserTypeForResponse
-    assets: list[ReleaseAssetTypeForResponse]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
 
 
 __all__ = (
-    "ReleaseType",
-    "ReleaseTypeForResponse",
+    "PullRequestReviewRequestType",
+    "PullRequestReviewRequestTypeForResponse",
 )

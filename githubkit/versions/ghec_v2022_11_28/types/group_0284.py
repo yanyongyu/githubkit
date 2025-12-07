@@ -10,32 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class TeamMembershipType(TypedDict):
-    """Team Membership
+class ImmutableReleasesOrganizationSettingsType(TypedDict):
+    """Check immutable releases organization settings
 
-    Team Membership
+    Check immutable releases settings for an organization.
     """
 
-    url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class TeamMembershipTypeForResponse(TypedDict):
-    """Team Membership
+class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
+    """Check immutable releases organization settings
 
-    Team Membership
+    Check immutable releases settings for an organization.
     """
 
-    url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "TeamMembershipType",
-    "TeamMembershipTypeForResponse",
+    "ImmutableReleasesOrganizationSettingsType",
+    "ImmutableReleasesOrganizationSettingsTypeForResponse",
 )

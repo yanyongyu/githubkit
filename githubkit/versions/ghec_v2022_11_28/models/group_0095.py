@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,28 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0083 import EnterpriseTeam
 
-class NetworkConfiguration(GitHubModel):
-    """Hosted compute network configuration
 
-    A hosted compute network configuration.
-    """
+class EnterpriseUserRoleAssignmentAllof1(GitHubModel):
+    """EnterpriseUserRoleAssignmentAllof1"""
 
-    id: str = Field(description="The unique identifier of the network configuration.")
-    name: str = Field(description="The name of the network configuration.")
-    compute_service: Missing[Literal["none", "actions", "codespaces"]] = Field(
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
         default=UNSET,
-        description="The hosted compute service the network configuration supports.",
+        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
     )
-    network_settings_ids: Missing[list[str]] = Field(
+    inherited_from: Missing[list[EnterpriseTeam]] = Field(
         default=UNSET,
-        description="The unique identifier of each network settings in the configuration.",
-    )
-    created_on: Union[_dt.datetime, None] = Field(
-        description="The time at which the network configuration was created, in ISO 8601 format."
+        description="Enterprise Team the user has gotten the role through",
     )
 
 
-model_rebuild(NetworkConfiguration)
+model_rebuild(EnterpriseUserRoleAssignmentAllof1)
 
-__all__ = ("NetworkConfiguration",)
+__all__ = ("EnterpriseUserRoleAssignmentAllof1",)

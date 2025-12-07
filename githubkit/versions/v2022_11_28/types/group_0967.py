@@ -13,25 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodespacesSecretsSecretNamePutBodyType(TypedDict):
-    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
 
 
-class OrgsOrgCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
 
 
 __all__ = (
-    "OrgsOrgCodespacesSecretsSecretNamePutBodyType",
-    "OrgsOrgCodespacesSecretsSecretNamePutBodyTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse",
 )

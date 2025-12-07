@@ -14,32 +14,22 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsHostedRunnerCustomImage(GitHubModel):
-    """GitHub-hosted runner custom image details
+class ActionsHostedRunnerMachineSpec(GitHubModel):
+    """Github-owned VM details.
 
-    Provides details of a custom runner image
+    Provides details of a particular machine spec.
     """
 
-    id: int = Field(
-        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
+    id: str = Field(
+        description="The ID used for the `size` parameter when creating a new runner."
     )
-    platform: str = Field(description="The operating system of the image.")
-    total_versions_size: int = Field(
-        description="Total size of all the image versions in GB."
-    )
-    name: str = Field(description="Display name for this image.")
-    source: str = Field(description="The image provider.")
-    versions_count: int = Field(
-        description="The number of image versions associated with the image."
-    )
-    latest_version: str = Field(
-        description="The latest image version associated with the image."
-    )
-    state: str = Field(
-        description="The number of image versions associated with the image."
+    cpu_cores: int = Field(description="The number of cores.")
+    memory_gb: int = Field(description="The available RAM for the machine spec.")
+    storage_gb: int = Field(
+        description="The available SSD storage for the machine spec."
     )
 
 
-model_rebuild(ActionsHostedRunnerCustomImage)
+model_rebuild(ActionsHostedRunnerMachineSpec)
 
-__all__ = ("ActionsHostedRunnerCustomImage",)
+__all__ = ("ActionsHostedRunnerMachineSpec",)

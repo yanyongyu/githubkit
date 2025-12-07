@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0090 import Runner
+
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
+
+    selected_repository_ids: list[int] = Field(
+        description="IDs of repositories that can use repository-level self-hosted runners"
+    )
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
+model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody)
 
-    total_count: float = Field()
-    runners: list[Runner] = Field()
-
-
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200)
-
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200",)
+__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody",)

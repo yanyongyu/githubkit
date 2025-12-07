@@ -9,20 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0224 import Codespace
 
-
-class ReposOwnerRepoCodespacesGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesGetResponse200"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
     total_count: int = Field()
-    codespaces: list[Codespace] = Field()
+    secrets: list[RepoCodespacesSecret] = Field()
 
 
-model_rebuild(ReposOwnerRepoCodespacesGetResponse200)
+class RepoCodespacesSecret(GitHubModel):
+    """Codespaces Secret
 
-__all__ = ("ReposOwnerRepoCodespacesGetResponse200",)
+    Set repository secrets for GitHub Codespaces.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+
+
+model_rebuild(ReposOwnerRepoCodespacesSecretsGetResponse200)
+model_rebuild(RepoCodespacesSecret)
+
+__all__ = (
+    "RepoCodespacesSecret",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200",
+)

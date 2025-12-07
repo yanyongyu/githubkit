@@ -9,265 +9,121 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CodeSecurityConfigurationType(TypedDict):
-    """CodeSecurityConfiguration
+class SimpleRepositoryType(TypedDict):
+    """Simple Repository
 
-    A code security configuration
+    A GitHub repository.
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    target_type: NotRequired[Literal["global", "organization", "enterprise"]]
-    description: NotRequired[str]
-    advanced_security: NotRequired[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
-    ]
-    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph_autosubmit_action: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    dependency_graph_autosubmit_action_options: NotRequired[
-        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType
-    ]
-    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_options: NotRequired[
-        Union[CodeSecurityConfigurationPropCodeScanningOptionsType, None]
-    ]
-    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup_options: NotRequired[
-        Union[CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType, None]
-    ]
-    code_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning_push_protection: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_bypass: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_bypass_options: NotRequired[
-        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_generic_secrets: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    private_vulnerability_reporting: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: SimpleUserType
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    hooks_url: str
 
 
-class CodeSecurityConfigurationTypeForResponse(TypedDict):
-    """CodeSecurityConfiguration
+class SimpleRepositoryTypeForResponse(TypedDict):
+    """Simple Repository
 
-    A code security configuration
+    A GitHub repository.
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    target_type: NotRequired[Literal["global", "organization", "enterprise"]]
-    description: NotRequired[str]
-    advanced_security: NotRequired[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
-    ]
-    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph_autosubmit_action: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    dependency_graph_autosubmit_action_options: NotRequired[
-        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsTypeForResponse
-    ]
-    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_options: NotRequired[
-        Union[CodeSecurityConfigurationPropCodeScanningOptionsTypeForResponse, None]
-    ]
-    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup_options: NotRequired[
-        Union[
-            CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsTypeForResponse,
-            None,
-        ]
-    ]
-    code_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning_push_protection: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_bypass: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_bypass_options: NotRequired[
-        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsTypeForResponse
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_generic_secrets: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    private_vulnerability_reporting: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-
-
-class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
-
-    Feature options for Automatic dependency submission
-    """
-
-    labeled_runners: NotRequired[bool]
-
-
-class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsTypeForResponse(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
-
-    Feature options for Automatic dependency submission
-    """
-
-    labeled_runners: NotRequired[bool]
-
-
-class CodeSecurityConfigurationPropCodeScanningOptionsType(TypedDict):
-    """CodeSecurityConfigurationPropCodeScanningOptions
-
-    Feature options for code scanning
-    """
-
-    allow_advanced: NotRequired[Union[bool, None]]
-
-
-class CodeSecurityConfigurationPropCodeScanningOptionsTypeForResponse(TypedDict):
-    """CodeSecurityConfigurationPropCodeScanningOptions
-
-    Feature options for code scanning
-    """
-
-    allow_advanced: NotRequired[Union[bool, None]]
-
-
-class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType(TypedDict):
-    """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
-
-    Feature options for code scanning default setup
-    """
-
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled", "not_set"]]]
-    runner_label: NotRequired[Union[str, None]]
-
-
-class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsTypeForResponse(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
-
-    Feature options for code scanning default setup
-    """
-
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled", "not_set"]]]
-    runner_label: NotRequired[Union[str, None]]
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType(TypedDict):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
-
-    Feature options for secret scanning delegated bypass
-    """
-
-    reviewers: NotRequired[
-        list[
-            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType
-        ]
-    ]
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsTypeForResponse(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
-
-    Feature options for secret scanning delegated bypass
-    """
-
-    reviewers: NotRequired[
-        list[
-            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse
-        ]
-    ]
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
-    ems
-    """
-
-    reviewer_id: int
-    reviewer_type: Literal["TEAM", "ROLE"]
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
-    ems
-    """
-
-    reviewer_id: int
-    reviewer_type: Literal["TEAM", "ROLE"]
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: SimpleUserTypeForResponse
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    hooks_url: str
 
 
 __all__ = (
-    "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType",
-    "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsTypeForResponse",
-    "CodeSecurityConfigurationPropCodeScanningOptionsType",
-    "CodeSecurityConfigurationPropCodeScanningOptionsTypeForResponse",
-    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
-    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsTypeForResponse",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsTypeForResponse",
-    "CodeSecurityConfigurationType",
-    "CodeSecurityConfigurationTypeForResponse",
+    "SimpleRepositoryType",
+    "SimpleRepositoryTypeForResponse",
 )

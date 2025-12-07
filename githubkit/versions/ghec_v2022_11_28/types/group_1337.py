@@ -9,30 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoMilestonesPostBodyType(TypedDict):
-    """ReposOwnerRepoMilestonesPostBody"""
-
-    title: str
-    state: NotRequired[Literal["open", "closed"]]
-    description: NotRequired[str]
-    due_on: NotRequired[_dt.datetime]
+from .group_1336 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
-class ReposOwnerRepoMilestonesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoMilestonesPostBody"""
+class ReposOwnerRepoPagesPutBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
 
-    title: str
-    state: NotRequired[Literal["open", "closed"]]
-    description: NotRequired[str]
-    due_on: NotRequired[str]
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
+    public: NotRequired[bool]
+
+
+class ReposOwnerRepoPagesPutBodyAnyof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
+    ]
+    public: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoMilestonesPostBodyType",
-    "ReposOwnerRepoMilestonesPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof0Type",
+    "ReposOwnerRepoPagesPutBodyAnyof0TypeForResponse",
 )

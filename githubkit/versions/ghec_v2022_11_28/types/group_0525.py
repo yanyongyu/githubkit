@@ -9,44 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0208 import (
+    MarketplaceListingPlanType,
+    MarketplaceListingPlanTypeForResponse,
+)
 
 
-class HovercardType(TypedDict):
-    """Hovercard
+class UserMarketplacePurchaseType(TypedDict):
+    """User Marketplace Purchase
 
-    Hovercard
+    User Marketplace Purchase
     """
 
-    contexts: list[HovercardPropContextsItemsType]
+    billing_cycle: str
+    next_billing_date: Union[_dt.datetime, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    account: MarketplaceAccountType
+    plan: MarketplaceListingPlanType
 
 
-class HovercardTypeForResponse(TypedDict):
-    """Hovercard
+class UserMarketplacePurchaseTypeForResponse(TypedDict):
+    """User Marketplace Purchase
 
-    Hovercard
+    User Marketplace Purchase
     """
 
-    contexts: list[HovercardPropContextsItemsTypeForResponse]
+    billing_cycle: str
+    next_billing_date: Union[str, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[str, None]
+    updated_at: Union[str, None]
+    account: MarketplaceAccountTypeForResponse
+    plan: MarketplaceListingPlanTypeForResponse
 
 
-class HovercardPropContextsItemsType(TypedDict):
-    """HovercardPropContextsItems"""
+class MarketplaceAccountType(TypedDict):
+    """Marketplace Account"""
 
-    message: str
-    octicon: str
+    url: str
+    id: int
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
 
 
-class HovercardPropContextsItemsTypeForResponse(TypedDict):
-    """HovercardPropContextsItems"""
+class MarketplaceAccountTypeForResponse(TypedDict):
+    """Marketplace Account"""
 
-    message: str
-    octicon: str
+    url: str
+    id: int
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "HovercardPropContextsItemsType",
-    "HovercardPropContextsItemsTypeForResponse",
-    "HovercardType",
-    "HovercardTypeForResponse",
+    "MarketplaceAccountType",
+    "MarketplaceAccountTypeForResponse",
+    "UserMarketplacePurchaseType",
+    "UserMarketplacePurchaseTypeForResponse",
 )

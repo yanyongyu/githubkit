@@ -10,24 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class MarkdownPostBodyType(TypedDict):
+    """MarkdownPostBody"""
 
-    default_level: Literal["public", "internal"]
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
 
 
-class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class MarkdownPostBodyTypeForResponse(TypedDict):
+    """MarkdownPostBody"""
 
-    default_level: Literal["public", "internal"]
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
-    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
+    "MarkdownPostBodyType",
+    "MarkdownPostBodyTypeForResponse",
 )

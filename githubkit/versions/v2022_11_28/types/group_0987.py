@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0063 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgInvitationsPostBodyType(TypedDict):
-    """OrgsOrgInvitationsPostBody"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
 
-    invitee_id: NotRequired[int]
-    email: NotRequired[str]
-    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
-    team_ids: NotRequired[list[int]]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
 
-class OrgsOrgInvitationsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgInvitationsPostBody"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
 
-    invitee_id: NotRequired[int]
-    email: NotRequired[str]
-    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
-    team_ids: NotRequired[list[int]]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgInvitationsPostBodyType",
-    "OrgsOrgInvitationsPostBodyTypeForResponse",
+    "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",
+    "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
 )

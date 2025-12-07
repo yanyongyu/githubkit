@@ -9,102 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0044 import ReactionRollupType, ReactionRollupTypeForResponse
 
-class FeedType(TypedDict):
-    """Feed
 
-    Feed
+class IssueCommentType(TypedDict):
+    """Issue Comment
+
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    timeline_url: str
-    user_url: str
-    current_user_public_url: NotRequired[str]
-    current_user_url: NotRequired[str]
-    current_user_actor_url: NotRequired[str]
-    current_user_organization_url: NotRequired[str]
-    current_user_organization_urls: NotRequired[list[str]]
-    security_advisories_url: NotRequired[str]
-    repository_discussions_url: NotRequired[str]
-    repository_discussions_category_url: NotRequired[str]
-    links: FeedPropLinksType
+    id: int
+    node_id: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: Union[None, SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class FeedTypeForResponse(TypedDict):
-    """Feed
+class IssueCommentTypeForResponse(TypedDict):
+    """Issue Comment
 
-    Feed
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    timeline_url: str
-    user_url: str
-    current_user_public_url: NotRequired[str]
-    current_user_url: NotRequired[str]
-    current_user_actor_url: NotRequired[str]
-    current_user_organization_url: NotRequired[str]
-    current_user_organization_urls: NotRequired[list[str]]
-    security_advisories_url: NotRequired[str]
-    repository_discussions_url: NotRequired[str]
-    repository_discussions_category_url: NotRequired[str]
-    links: FeedPropLinksTypeForResponse
-
-
-class FeedPropLinksType(TypedDict):
-    """FeedPropLinks"""
-
-    timeline: LinkWithTypeType
-    user: LinkWithTypeType
-    security_advisories: NotRequired[LinkWithTypeType]
-    current_user: NotRequired[LinkWithTypeType]
-    current_user_public: NotRequired[LinkWithTypeType]
-    current_user_actor: NotRequired[LinkWithTypeType]
-    current_user_organization: NotRequired[LinkWithTypeType]
-    current_user_organizations: NotRequired[list[LinkWithTypeType]]
-    repository_discussions: NotRequired[LinkWithTypeType]
-    repository_discussions_category: NotRequired[LinkWithTypeType]
-
-
-class FeedPropLinksTypeForResponse(TypedDict):
-    """FeedPropLinks"""
-
-    timeline: LinkWithTypeTypeForResponse
-    user: LinkWithTypeTypeForResponse
-    security_advisories: NotRequired[LinkWithTypeTypeForResponse]
-    current_user: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_public: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_actor: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_organization: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_organizations: NotRequired[list[LinkWithTypeTypeForResponse]]
-    repository_discussions: NotRequired[LinkWithTypeTypeForResponse]
-    repository_discussions_category: NotRequired[LinkWithTypeTypeForResponse]
-
-
-class LinkWithTypeType(TypedDict):
-    """Link With Type
-
-    Hypermedia Link with Type
-    """
-
-    href: str
-    type: str
-
-
-class LinkWithTypeTypeForResponse(TypedDict):
-    """Link With Type
-
-    Hypermedia Link with Type
-    """
-
-    href: str
-    type: str
+    id: int
+    node_id: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "FeedPropLinksType",
-    "FeedPropLinksTypeForResponse",
-    "FeedType",
-    "FeedTypeForResponse",
-    "LinkWithTypeType",
-    "LinkWithTypeTypeForResponse",
+    "IssueCommentType",
+    "IssueCommentTypeForResponse",
 )

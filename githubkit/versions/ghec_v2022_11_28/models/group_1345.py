@@ -9,43 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1341 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
+class ReposOwnerRepoPagesDeploymentsPostBody(GitHubModel):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-class ReposOwnerRepoPagesPutBodyAnyof3(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof3"""
+    The object used to create GitHub Pages deployment
+    """
 
-    cname: Missing[Union[str, None]] = Field(
+    artifact_id: Missing[float] = Field(
         default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/enterprise-cloud@latest//pages/configuring-a-custom-domain-for-your-github-pages-site)."',
+        description="The ID of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
     )
-    https_enforced: Missing[bool] = Field(
+    artifact_url: Missing[str] = Field(
         default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
+        description="The URL of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
     )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+    environment: Missing[str] = Field(
         default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+        description="The target environment for this GitHub Pages deployment.",
     )
-    source: Missing[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-        ]
-    ] = Field(default=UNSET)
-    public: bool = Field(
-        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility."
+    pages_build_version: str = Field(
+        default="GITHUB_SHA",
+        description="A unique string that represents the version of the build for this deployment.",
+    )
+    oidc_token: str = Field(
+        description="The OIDC token issued by GitHub Actions certifying the origin of the deployment."
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof3)
+model_rebuild(ReposOwnerRepoPagesDeploymentsPostBody)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof3",)
+__all__ = ("ReposOwnerRepoPagesDeploymentsPostBody",)

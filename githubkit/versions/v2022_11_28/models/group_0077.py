@@ -14,33 +14,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsHostedRunnerLimits(GitHubModel):
-    """ActionsHostedRunnerLimits"""
+class ActionsCacheUsageOrgEnterprise(GitHubModel):
+    """ActionsCacheUsageOrgEnterprise"""
 
-    public_ips: ActionsHostedRunnerLimitsPropPublicIps = Field(
-        title="Static public IP Limits for GitHub-hosted Hosted Runners.",
-        description="Provides details of static public IP limits for GitHub-hosted Hosted Runners",
+    total_active_caches_count: int = Field(
+        description="The count of active caches across all repositories of an enterprise or an organization."
+    )
+    total_active_caches_size_in_bytes: int = Field(
+        description="The total size in bytes of all active cache items across all repositories of an enterprise or an organization."
     )
 
 
-class ActionsHostedRunnerLimitsPropPublicIps(GitHubModel):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
+model_rebuild(ActionsCacheUsageOrgEnterprise)
 
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
-    """
-
-    maximum: int = Field(
-        description="The maximum number of static public IP addresses that can be used for Hosted Runners."
-    )
-    current_usage: int = Field(
-        description="The current number of static public IP addresses in use by Hosted Runners."
-    )
-
-
-model_rebuild(ActionsHostedRunnerLimits)
-model_rebuild(ActionsHostedRunnerLimitsPropPublicIps)
-
-__all__ = (
-    "ActionsHostedRunnerLimits",
-    "ActionsHostedRunnerLimitsPropPublicIps",
-)
+__all__ = ("ActionsCacheUsageOrgEnterprise",)

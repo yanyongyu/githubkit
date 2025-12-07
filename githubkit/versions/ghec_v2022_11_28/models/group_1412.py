@@ -15,18 +15,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
-    """UserCodespacesCodespaceNamePublishPostBody"""
-
-    name: Missing[str] = Field(
-        default=UNSET, description="A name for the new repository."
-    )
-    private: Missing[bool] = Field(
-        default=UNSET, description="Whether the new repository should be private."
-    )
+from .group_0020 import Repository
 
 
-model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
+class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
-__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)
+    total_count: int = Field()
+    repository_selection: Missing[str] = Field(default=UNSET)
+    repositories: list[Repository] = Field()
+
+
+model_rebuild(UserInstallationsInstallationIdRepositoriesGetResponse200)
+
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200",)

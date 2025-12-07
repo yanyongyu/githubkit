@@ -13,34 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0177 import (
-    RepositoryRuleBranchNamePatternPropParametersType,
-    RepositoryRuleBranchNamePatternPropParametersTypeForResponse,
+    RepositoryRuleCommitMessagePatternPropParametersType,
+    RepositoryRuleCommitMessagePatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleBranchNamePatternType(TypedDict):
-    """branch_name_pattern
+class RepositoryRuleCommitMessagePatternType(TypedDict):
+    """commit_message_pattern
 
-    Parameters to be used for the branch_name_pattern rule
+    Parameters to be used for the commit_message_pattern rule
     """
 
-    type: Literal["branch_name_pattern"]
-    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
+    type: Literal["commit_message_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
 
 
-class RepositoryRuleBranchNamePatternTypeForResponse(TypedDict):
-    """branch_name_pattern
+class RepositoryRuleCommitMessagePatternTypeForResponse(TypedDict):
+    """commit_message_pattern
 
-    Parameters to be used for the branch_name_pattern rule
+    Parameters to be used for the commit_message_pattern rule
     """
 
-    type: Literal["branch_name_pattern"]
+    type: Literal["commit_message_pattern"]
     parameters: NotRequired[
-        RepositoryRuleBranchNamePatternPropParametersTypeForResponse
+        RepositoryRuleCommitMessagePatternPropParametersTypeForResponse
     ]
 
 
 __all__ = (
-    "RepositoryRuleBranchNamePatternType",
-    "RepositoryRuleBranchNamePatternTypeForResponse",
+    "RepositoryRuleCommitMessagePatternType",
+    "RepositoryRuleCommitMessagePatternTypeForResponse",
 )

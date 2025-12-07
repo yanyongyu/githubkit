@@ -12,14 +12,63 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCommentsCommentIdPatchBody(GitHubModel):
-    """ReposOwnerRepoCommentsCommentIdPatchBody"""
+class ReposOwnerRepoContentsPathDeleteBody(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBody"""
 
-    body: str = Field(description="The contents of the comment")
+    message: str = Field(description="The commit message.")
+    sha: str = Field(description="The blob SHA of the file being deleted.")
+    branch: Missing[str] = Field(
+        default=UNSET,
+        description="The branch name. Default: the repository’s default branch",
+    )
+    committer: Missing[ReposOwnerRepoContentsPathDeleteBodyPropCommitter] = Field(
+        default=UNSET, description="object containing information about the committer."
+    )
+    author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthor] = Field(
+        default=UNSET, description="object containing information about the author."
+    )
 
 
-model_rebuild(ReposOwnerRepoCommentsCommentIdPatchBody)
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitter(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
 
-__all__ = ("ReposOwnerRepoCommentsCommentIdPatchBody",)
+    object containing information about the committer.
+    """
+
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the author (or committer) of the commit"
+    )
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="The email of the author (or committer) of the commit",
+    )
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthor(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+
+    object containing information about the author.
+    """
+
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the author (or committer) of the commit"
+    )
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="The email of the author (or committer) of the commit",
+    )
+
+
+model_rebuild(ReposOwnerRepoContentsPathDeleteBody)
+model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropCommitter)
+model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropAuthor)
+
+__all__ = (
+    "ReposOwnerRepoContentsPathDeleteBody",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
+)

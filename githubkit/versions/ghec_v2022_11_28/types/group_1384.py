@@ -9,22 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoTopicsPutBodyType(TypedDict):
-    """ReposOwnerRepoTopicsPutBody"""
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
 
-    names: list[str]
+    schemas: NotRequired[list[str]]
+    display_name: NotRequired[str]
+    external_id: NotRequired[str]
+    groups: NotRequired[list[str]]
+    active: NotRequired[bool]
+    user_name: str
+    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType
+    emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType]
 
 
-class ReposOwnerRepoTopicsPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoTopicsPutBody"""
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
 
-    names: list[str]
+    schemas: NotRequired[list[str]]
+    display_name: NotRequired[str]
+    external_id: NotRequired[str]
+    groups: NotRequired[list[str]]
+    active: NotRequired[bool]
+    user_name: str
+    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse
+    emails: list[
+        ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse
+    ]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
+
+    type: NotRequired[str]
+    value: str
+    primary: NotRequired[bool]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
+
+    type: NotRequired[str]
+    value: str
+    primary: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoTopicsPutBodyType",
-    "ReposOwnerRepoTopicsPutBodyTypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyTypeForResponse",
 )

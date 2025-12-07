@@ -11,24 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0213 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType(
+
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
 
-    body: str
-
-
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
-
-    body: str
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType",
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyTypeForResponse",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse",
 )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,49 +18,60 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0019 import LicenseSimple
-from .group_0272 import CodeOfConductSimple
+from .group_0003 import SimpleUser
+from .group_0194 import ReactionRollup
 
 
-class CommunityProfilePropFiles(GitHubModel):
-    """CommunityProfilePropFiles"""
+class CommitComment(GitHubModel):
+    """Commit Comment
 
-    code_of_conduct: Union[None, CodeOfConductSimple] = Field()
-    code_of_conduct_file: Union[None, CommunityHealthFile] = Field()
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    contributing: Union[None, CommunityHealthFile] = Field()
-    readme: Union[None, CommunityHealthFile] = Field()
-    issue_template: Union[None, CommunityHealthFile] = Field()
-    pull_request_template: Union[None, CommunityHealthFile] = Field()
-
-
-class CommunityHealthFile(GitHubModel):
-    """Community Health File"""
-
-    url: str = Field()
-    html_url: str = Field()
-
-
-class CommunityProfile(GitHubModel):
-    """Community Profile
-
-    Community Profile
+    Commit Comment
     """
 
-    health_percentage: int = Field()
-    description: Union[str, None] = Field()
-    documentation: Union[str, None] = Field()
-    files: CommunityProfilePropFiles = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    content_reports_enabled: Missing[bool] = Field(default=UNSET)
+    html_url: str = Field()
+    url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    body: str = Field()
+    path: Union[str, None] = Field()
+    position: Union[int, None] = Field()
+    line: Union[int, None] = Field()
+    commit_id: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(CommunityProfilePropFiles)
-model_rebuild(CommunityHealthFile)
-model_rebuild(CommunityProfile)
+class TimelineCommitCommentedEvent(GitHubModel):
+    """Timeline Commit Commented Event
+
+    Timeline Commit Commented Event
+    """
+
+    event: Missing[Literal["commit_commented"]] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    commit_id: Missing[str] = Field(default=UNSET)
+    comments: Missing[list[CommitComment]] = Field(default=UNSET)
+
+
+model_rebuild(CommitComment)
+model_rebuild(TimelineCommitCommentedEvent)
 
 __all__ = (
-    "CommunityHealthFile",
-    "CommunityProfile",
-    "CommunityProfilePropFiles",
+    "CommitComment",
+    "TimelineCommitCommentedEvent",
 )

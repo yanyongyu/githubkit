@@ -9,28 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0563 import (
+    PersonalAccessTokenRequestType,
+    PersonalAccessTokenRequestTypeForResponse,
+)
 
 
-class WebhookPingFormEncodedType(TypedDict):
-    """WebhookPingFormEncoded
+class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
+    """personal_access_token_request created event"""
 
-    The webhooks ping payload encoded with URL encoding.
-    """
+    action: Literal["created"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    organization: OrganizationSimpleWebhooksType
+    sender: SimpleUserType
+    installation: NotRequired[SimpleInstallationType]
 
-    payload: str
 
+class WebhookPersonalAccessTokenRequestCreatedTypeForResponse(TypedDict):
+    """personal_access_token_request created event"""
 
-class WebhookPingFormEncodedTypeForResponse(TypedDict):
-    """WebhookPingFormEncoded
-
-    The webhooks ping payload encoded with URL encoding.
-    """
-
-    payload: str
+    action: Literal["created"]
+    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
 
 
 __all__ = (
-    "WebhookPingFormEncodedType",
-    "WebhookPingFormEncodedTypeForResponse",
+    "WebhookPersonalAccessTokenRequestCreatedType",
+    "WebhookPersonalAccessTokenRequestCreatedTypeForResponse",
 )

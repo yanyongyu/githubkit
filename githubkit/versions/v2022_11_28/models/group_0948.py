@@ -11,19 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0098 import ArtifactDeploymentRecord
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof0(GitHubModel):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests associated with the artifact attestations to delete.",
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of deployment records created"
     )
+    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgAttestationsDeleteRequestPostBodyOneof0)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200)
 
-__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof0",)
+__all__ = ("OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200",)

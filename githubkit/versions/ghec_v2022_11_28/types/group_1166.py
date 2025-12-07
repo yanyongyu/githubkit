@@ -10,24 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0275 import (
+    ProjectsV2FieldIterationConfigurationType,
+    ProjectsV2FieldIterationConfigurationTypeForResponse,
+)
 
 
-class OrgsOrgSettingsImmutableReleasesPutBodyType(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    name: str
+    data_type: Literal["iteration"]
+    iteration_configuration: ProjectsV2FieldIterationConfigurationType
 
 
-class OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    name: str
+    data_type: Literal["iteration"]
+    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
 
 
 __all__ = (
-    "OrgsOrgSettingsImmutableReleasesPutBodyType",
-    "OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse",
 )

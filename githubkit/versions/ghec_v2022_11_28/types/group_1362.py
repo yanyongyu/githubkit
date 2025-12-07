@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    body: str
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    body: str
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergePutResponse409Type",
-    "ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyTypeForResponse",
 )

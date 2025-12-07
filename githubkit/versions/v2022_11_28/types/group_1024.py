@@ -9,35 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
+from .group_0063 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType(
+
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPos
-    tBody
-    """
+    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
-
-
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPos
-    tBody
-    """
-
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType",
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyTypeForResponse",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type",
+    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse",
 )

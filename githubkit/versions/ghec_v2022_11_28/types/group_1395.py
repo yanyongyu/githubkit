@@ -9,31 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType(
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyType(TypedDict):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
+
+    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
+    synced_at: NotRequired[str]
+
+
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
+
+    groups: list[
+        TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse
+    ]
+    synced_at: NotRequired[str]
+
+
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    id: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
+
+
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse(
     TypedDict
 ):
-    """TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody"""
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
-
-
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyTypeForResponse(
-    TypedDict
-):
-    """TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody"""
-
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    group_id: str
+    group_name: str
+    group_description: str
+    id: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
 
 
 __all__ = (
-    "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType",
-    "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyTypeForResponse",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyType",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyTypeForResponse",
 )

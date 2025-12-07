@@ -9,37 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0063 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class DependabotRepositoryAccessDetailsType(TypedDict):
-    """Dependabot Repository Access Details
+class ThreadType(TypedDict):
+    """Thread
 
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Thread
     """
 
-    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
-    accessible_repositories: NotRequired[list[Union[None, SimpleRepositoryType]]]
+    id: str
+    repository: MinimalRepositoryType
+    subject: ThreadPropSubjectType
+    reason: str
+    unread: bool
+    updated_at: str
+    last_read_at: Union[str, None]
+    url: str
+    subscription_url: str
 
 
-class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
-    """Dependabot Repository Access Details
+class ThreadTypeForResponse(TypedDict):
+    """Thread
 
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Thread
     """
 
-    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
-    accessible_repositories: NotRequired[
-        list[Union[None, SimpleRepositoryTypeForResponse]]
-    ]
+    id: str
+    repository: MinimalRepositoryTypeForResponse
+    subject: ThreadPropSubjectTypeForResponse
+    reason: str
+    unread: bool
+    updated_at: str
+    last_read_at: Union[str, None]
+    url: str
+    subscription_url: str
+
+
+class ThreadPropSubjectType(TypedDict):
+    """ThreadPropSubject"""
+
+    title: str
+    url: str
+    latest_comment_url: str
+    type: str
+
+
+class ThreadPropSubjectTypeForResponse(TypedDict):
+    """ThreadPropSubject"""
+
+    title: str
+    url: str
+    latest_comment_url: str
+    type: str
 
 
 __all__ = (
-    "DependabotRepositoryAccessDetailsType",
-    "DependabotRepositoryAccessDetailsTypeForResponse",
+    "ThreadPropSubjectType",
+    "ThreadPropSubjectTypeForResponse",
+    "ThreadType",
+    "ThreadTypeForResponse",
 )

@@ -12,29 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UserSocialAccountsPostBodyType(TypedDict):
-    """UserSocialAccountsPostBody
+class UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
+    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str]
+    subject_digests: list[str]
 
 
-class UserSocialAccountsPostBodyTypeForResponse(TypedDict):
-    """UserSocialAccountsPostBody
+class UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse(TypedDict):
+    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str]
+    subject_digests: list[str]
 
 
 __all__ = (
-    "UserSocialAccountsPostBodyType",
-    "UserSocialAccountsPostBodyTypeForResponse",
+    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type",
+    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse",
 )

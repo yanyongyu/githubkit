@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,17 +18,69 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsPostBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchBody(GitHubModel):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
 
-    title: str = Field(description="The discussion post's title.")
-    body: str = Field(description="The discussion post's body text.")
-    private: Missing[bool] = Field(
+    pattern_config_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    )
+    provider_pattern_settings: Missing[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for provider patterns.")
+    custom_pattern_settings: Missing[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for custom patterns.")
+
+
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems(
+    GitHubModel
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
+    ems
+    """
+
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    push_protection_setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsPostBody)
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems(
+    GitHubModel
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
+    s
+    """
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBody",)
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    )
+    push_protection_setting: Missing[Literal["disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
+    )
+
+
+model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchBody)
+model_rebuild(
+    OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+)
+model_rebuild(
+    OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+)
+
+__all__ = (
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBody",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
+)

@@ -11,22 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
-
-    labels: list[str]
+from .group_0051 import RunnerType, RunnerTypeForResponse
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyTypeForResponse(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
-    labels: list[str]
+    total_count: float
+    runners: list[RunnerType]
+
+
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
+
+    total_count: float
+    runners: list[RunnerTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse",
 )

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,75 +18,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingUsageSummaryReportOrg(GitHubModel):
-    """BillingUsageSummaryReportOrg"""
+class GetBudget(GitHubModel):
+    """GetBudget"""
 
-    time_period: BillingUsageSummaryReportOrgPropTimePeriod = Field(alias="timePeriod")
-    organization: str = Field(description="The unique identifier of the organization.")
-    repository: Missing[str] = Field(
-        default=UNSET, description="The name of the repository for the usage report."
+    id: str = Field(description="ID of the budget.")
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"] = (
+        Field(description="The type of scope for the budget")
     )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
+    budget_entity_name: str = Field(
+        description="The name of the entity to apply the budget to"
     )
-    sku: Missing[str] = Field(
-        default=UNSET, description="The SKU for the usage report."
+    budget_amount: int = Field(
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
     )
-    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItems] = Field(
-        alias="usageItems"
+    prevent_further_usage: bool = Field(
+        description="Whether to prevent additional spending once the budget is exceeded"
     )
-
-
-class BillingUsageSummaryReportOrgPropTimePeriod(GitHubModel):
-    """BillingUsageSummaryReportOrgPropTimePeriod"""
-
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
+    budget_product_sku: str = Field(
+        description="A single product or sku to apply the budget to."
     )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
+    budget_type: Literal["ProductPricing", "SkuPricing"] = Field(
+        description="The type of pricing for the budget"
     )
+    budget_alerting: GetBudgetPropBudgetAlerting = Field()
 
 
-class BillingUsageSummaryReportOrgPropUsageItemsItems(GitHubModel):
-    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
+class GetBudgetPropBudgetAlerting(GitHubModel):
+    """GetBudgetPropBudgetAlerting"""
 
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
     )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
     )
 
 
-model_rebuild(BillingUsageSummaryReportOrg)
-model_rebuild(BillingUsageSummaryReportOrgPropTimePeriod)
-model_rebuild(BillingUsageSummaryReportOrgPropUsageItemsItems)
+model_rebuild(GetBudget)
+model_rebuild(GetBudgetPropBudgetAlerting)
 
 __all__ = (
-    "BillingUsageSummaryReportOrg",
-    "BillingUsageSummaryReportOrgPropTimePeriod",
-    "BillingUsageSummaryReportOrgPropUsageItemsItems",
+    "GetBudget",
+    "GetBudgetPropBudgetAlerting",
 )

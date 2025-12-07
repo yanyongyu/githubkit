@@ -9,47 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0279 import FullRepositoryType, FullRepositoryTypeForResponse
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0575 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0915 import (
+    WebhookSecurityAndAnalysisPropChangesType,
+    WebhookSecurityAndAnalysisPropChangesTypeForResponse,
+)
 
 
-class WebhookSponsorshipPendingCancellationType(TypedDict):
-    """sponsorship pending_cancellation event"""
+class WebhookSecurityAndAnalysisType(TypedDict):
+    """security_and_analysis event"""
 
-    action: Literal["pending_cancellation"]
-    effective_date: NotRequired[str]
+    changes: WebhookSecurityAndAnalysisPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    repository: FullRepositoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookSponsorshipPendingCancellationTypeForResponse(TypedDict):
-    """sponsorship pending_cancellation event"""
+class WebhookSecurityAndAnalysisTypeForResponse(TypedDict):
+    """security_and_analysis event"""
 
-    action: Literal["pending_cancellation"]
-    effective_date: NotRequired[str]
+    changes: WebhookSecurityAndAnalysisPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
+    repository: FullRepositoryTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSponsorshipPendingCancellationType",
-    "WebhookSponsorshipPendingCancellationTypeForResponse",
+    "WebhookSecurityAndAnalysisType",
+    "WebhookSecurityAndAnalysisTypeForResponse",
 )

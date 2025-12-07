@@ -9,39 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgMigrationsPostBodyType(TypedDict):
-    """OrgsOrgMigrationsPostBody"""
+class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
+    """OrgsOrgHooksHookIdPatchBody"""
 
-    repositories: list[str]
-    lock_repositories: NotRequired[bool]
-    exclude_metadata: NotRequired[bool]
-    exclude_git_data: NotRequired[bool]
-    exclude_attachments: NotRequired[bool]
-    exclude_releases: NotRequired[bool]
-    exclude_owner_projects: NotRequired[bool]
-    org_metadata_only: NotRequired[bool]
-    exclude: NotRequired[list[Literal["repositories"]]]
+    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+    name: NotRequired[str]
 
 
-class OrgsOrgMigrationsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgMigrationsPostBody"""
+class OrgsOrgHooksHookIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgHooksHookIdPatchBody"""
 
-    repositories: list[str]
-    lock_repositories: NotRequired[bool]
-    exclude_metadata: NotRequired[bool]
-    exclude_git_data: NotRequired[bool]
-    exclude_attachments: NotRequired[bool]
-    exclude_releases: NotRequired[bool]
-    exclude_owner_projects: NotRequired[bool]
-    org_metadata_only: NotRequired[bool]
-    exclude: NotRequired[list[Literal["repositories"]]]
+    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+    name: NotRequired[str]
+
+
+class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
+    """OrgsOrgHooksHookIdPatchBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+
+
+class OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse(TypedDict):
+    """OrgsOrgHooksHookIdPatchBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "OrgsOrgMigrationsPostBodyType",
-    "OrgsOrgMigrationsPostBodyTypeForResponse",
+    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
+    "OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse",
+    "OrgsOrgHooksHookIdPatchBodyType",
+    "OrgsOrgHooksHookIdPatchBodyTypeForResponse",
 )

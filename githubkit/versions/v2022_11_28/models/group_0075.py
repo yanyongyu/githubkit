@@ -9,102 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0074 import ActionsHostedRunnerMachineSpec
 
+class BillingUsageSummaryReportOrg(GitHubModel):
+    """BillingUsageSummaryReportOrg"""
 
-class ActionsHostedRunner(GitHubModel):
-    """GitHub-hosted hosted runner
-
-    A Github-hosted hosted runner.
-    """
-
-    id: int = Field(description="The unique identifier of the hosted runner.")
-    name: str = Field(description="The name of the hosted runner.")
-    runner_group_id: Missing[int] = Field(
-        default=UNSET,
-        description="The unique identifier of the group that the hosted runner belongs to.",
+    time_period: BillingUsageSummaryReportOrgPropTimePeriod = Field(alias="timePeriod")
+    organization: str = Field(description="The unique identifier of the organization.")
+    repository: Missing[str] = Field(
+        default=UNSET, description="The name of the repository for the usage report."
     )
-    image_details: Union[None, ActionsHostedRunnerPoolImage] = Field()
-    machine_size_details: ActionsHostedRunnerMachineSpec = Field(
-        title="Github-owned VM details.",
-        description="Provides details of a particular machine spec.",
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
     )
-    status: Literal["Ready", "Provisioning", "Shutdown", "Deleting", "Stuck"] = Field(
-        description="The status of the runner."
+    sku: Missing[str] = Field(
+        default=UNSET, description="The SKU for the usage report."
     )
-    platform: str = Field(description="The operating system of the image.")
-    maximum_runners: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum amount of hosted runners. Runners will not scale automatically above this number. Use this setting to limit your cost.",
-    )
-    public_ip_enabled: bool = Field(
-        description="Whether public IP is enabled for the hosted runners."
-    )
-    public_ips: Missing[list[PublicIp]] = Field(
-        default=UNSET,
-        description="The public IP ranges when public IP is enabled for the hosted runners.",
-    )
-    last_active_on: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time at which the runner was last used, in ISO 8601 format.",
-    )
-    image_gen: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether custom image generation is enabled for the hosted runners.",
+    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItems] = Field(
+        alias="usageItems"
     )
 
 
-class ActionsHostedRunnerPoolImage(GitHubModel):
-    """GitHub-hosted runner image details.
+class BillingUsageSummaryReportOrgPropTimePeriod(GitHubModel):
+    """BillingUsageSummaryReportOrgPropTimePeriod"""
 
-    Provides details of a hosted runner image
-    """
-
-    id: str = Field(
-        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
     )
-    size_gb: int = Field(description="Image size in GB.")
-    display_name: str = Field(description="Display name for this image.")
-    source: Literal["github", "partner", "custom"] = Field(
-        description="The image provider."
-    )
-    version: Missing[str] = Field(
-        default=UNSET, description="The image version of the hosted runner pool."
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
     )
 
 
-class PublicIp(GitHubModel):
-    """Public IP for a GitHub-hosted larger runners.
+class BillingUsageSummaryReportOrgPropUsageItemsItems(GitHubModel):
+    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
 
-    Provides details of Public IP for a GitHub-hosted larger runners
-    """
-
-    enabled: Missing[bool] = Field(
-        default=UNSET, description="Whether public IP is enabled."
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
     )
-    prefix: Missing[str] = Field(
-        default=UNSET, description="The prefix for the public IP."
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
     )
-    length: Missing[int] = Field(
-        default=UNSET, description="The length of the IP prefix."
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
     )
 
 
-model_rebuild(ActionsHostedRunner)
-model_rebuild(ActionsHostedRunnerPoolImage)
-model_rebuild(PublicIp)
+model_rebuild(BillingUsageSummaryReportOrg)
+model_rebuild(BillingUsageSummaryReportOrgPropTimePeriod)
+model_rebuild(BillingUsageSummaryReportOrgPropUsageItemsItems)
 
 __all__ = (
-    "ActionsHostedRunner",
-    "ActionsHostedRunnerPoolImage",
-    "PublicIp",
+    "BillingUsageSummaryReportOrg",
+    "BillingUsageSummaryReportOrgPropTimePeriod",
+    "BillingUsageSummaryReportOrgPropUsageItemsItems",
 )

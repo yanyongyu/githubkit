@@ -11,31 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0034 import (
-    ActionsHostedRunnerCustomImageVersionType,
-    ActionsHostedRunnerCustomImageVersionTypeForResponse,
-)
+from .group_0103 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
-    TypedDict
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+class OrganizationsOrgOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
 
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
+    properties: list[CustomPropertyValueType]
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+class OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
 
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
+    "OrganizationsOrgOrgPropertiesValuesPatchBodyType",
+    "OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse",
 )

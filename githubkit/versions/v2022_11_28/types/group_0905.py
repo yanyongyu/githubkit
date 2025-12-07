@@ -11,27 +11,46 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0074 import (
-    ActionsHostedRunnerMachineSpecType,
-    ActionsHostedRunnerMachineSpecTypeForResponse,
-)
 
-
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
     total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecType]
+    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
 
 
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
     total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
+    repository_cache_usages: list[ActionsCacheUsageByRepositoryTypeForResponse]
+
+
+class ActionsCacheUsageByRepositoryType(TypedDict):
+    """Actions Cache Usage by repository
+
+    GitHub Actions Cache Usage by repository.
+    """
+
+    full_name: str
+    active_caches_size_in_bytes: int
+    active_caches_count: int
+
+
+class ActionsCacheUsageByRepositoryTypeForResponse(TypedDict):
+    """Actions Cache Usage by repository
+
+    GitHub Actions Cache Usage by repository.
+    """
+
+    full_name: str
+    active_caches_size_in_bytes: int
+    active_caches_count: int
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
+    "ActionsCacheUsageByRepositoryType",
+    "ActionsCacheUsageByRepositoryTypeForResponse",
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse",
 )

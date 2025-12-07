@@ -9,35 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
-    """ReposOwnerRepoCodeScanningSarifsPostBody"""
-
-    commit_sha: str
-    ref: str
-    sarif: str
-    checkout_uri: NotRequired[str]
-    started_at: NotRequired[_dt.datetime]
-    tool_name: NotRequired[str]
-    validate_: NotRequired[bool]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+class ReposOwnerRepoCodespacesNewGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
 
-    commit_sha: str
-    ref: str
-    sarif: str
-    checkout_uri: NotRequired[str]
-    started_at: NotRequired[str]
-    tool_name: NotRequired[str]
-    validate_: NotRequired[bool]
+    billable_owner: NotRequired[SimpleUserType]
+    defaults: NotRequired[ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType]
+
+
+class ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
+
+    billable_owner: NotRequired[SimpleUserTypeForResponse]
+    defaults: NotRequired[
+        ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse
+    ]
+
+
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+
+    location: str
+    devcontainer_path: Union[str, None]
+
+
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+
+    location: str
+    devcontainer_path: Union[str, None]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningSarifsPostBodyType",
-    "ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse",
+    "ReposOwnerRepoCodespacesNewGetResponse200Type",
+    "ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse",
 )

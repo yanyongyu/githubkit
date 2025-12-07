@@ -9,89 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleCreationType(TypedDict):
-    """creation
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType(TypedDict):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
 
-    Only allow users with bypass permission to create matching refs.
-    """
-
-    type: Literal["creation"]
+    repository_ids: NotRequired[list[int]]
 
 
-class RepositoryRuleCreationTypeForResponse(TypedDict):
-    """creation
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
 
-    Only allow users with bypass permission to create matching refs.
-    """
-
-    type: Literal["creation"]
-
-
-class RepositoryRuleDeletionType(TypedDict):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"]
-
-
-class RepositoryRuleDeletionTypeForResponse(TypedDict):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"]
-
-
-class RepositoryRuleRequiredSignaturesType(TypedDict):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"]
-
-
-class RepositoryRuleRequiredSignaturesTypeForResponse(TypedDict):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"]
-
-
-class RepositoryRuleNonFastForwardType(TypedDict):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"]
-
-
-class RepositoryRuleNonFastForwardTypeForResponse(TypedDict):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"]
+    repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "RepositoryRuleCreationType",
-    "RepositoryRuleCreationTypeForResponse",
-    "RepositoryRuleDeletionType",
-    "RepositoryRuleDeletionTypeForResponse",
-    "RepositoryRuleNonFastForwardType",
-    "RepositoryRuleNonFastForwardTypeForResponse",
-    "RepositoryRuleRequiredSignaturesType",
-    "RepositoryRuleRequiredSignaturesTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",
+    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse",
 )

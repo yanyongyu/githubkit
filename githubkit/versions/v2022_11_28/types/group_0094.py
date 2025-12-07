@@ -9,81 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from githubkit.typing import UniqueList
+from .group_0093 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
-class ArtifactDeploymentRecordType(TypedDict):
-    """Artifact Deployment Record
+class RunnerType(TypedDict):
+    """Self hosted runners
 
-    Artifact Metadata Deployment Record
+    A self hosted runner
     """
 
-    id: NotRequired[int]
-    digest: NotRequired[str]
-    logical_environment: NotRequired[str]
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: NotRequired[str]
-    tags: NotRequired[ArtifactDeploymentRecordPropTagsType]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    attestation_id: NotRequired[Union[int, None]]
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelType]
+    ephemeral: NotRequired[bool]
 
 
-class ArtifactDeploymentRecordTypeForResponse(TypedDict):
-    """Artifact Deployment Record
+class RunnerTypeForResponse(TypedDict):
+    """Self hosted runners
 
-    Artifact Metadata Deployment Record
+    A self hosted runner
     """
 
-    id: NotRequired[int]
-    digest: NotRequired[str]
-    logical_environment: NotRequired[str]
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: NotRequired[str]
-    tags: NotRequired[ArtifactDeploymentRecordPropTagsTypeForResponse]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    attestation_id: NotRequired[Union[int, None]]
-
-
-ArtifactDeploymentRecordPropTagsType: TypeAlias = dict[str, Any]
-"""ArtifactDeploymentRecordPropTags
-"""
-
-
-ArtifactDeploymentRecordPropTagsTypeForResponse: TypeAlias = dict[str, Any]
-"""ArtifactDeploymentRecordPropTags
-"""
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelTypeForResponse]
+    ephemeral: NotRequired[bool]
 
 
 __all__ = (
-    "ArtifactDeploymentRecordPropTagsType",
-    "ArtifactDeploymentRecordPropTagsTypeForResponse",
-    "ArtifactDeploymentRecordType",
-    "ArtifactDeploymentRecordTypeForResponse",
+    "RunnerType",
+    "RunnerTypeForResponse",
 )

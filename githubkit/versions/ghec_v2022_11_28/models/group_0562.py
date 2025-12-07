@@ -9,30 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksProjectColumn(GitHubModel):
-    """Project Column"""
+class WebhooksMembership(GitHubModel):
+    """Membership
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    cards_url: str = Field()
-    created_at: _dt.datetime = Field()
-    id: int = Field(description="The unique identifier of the project column")
-    name: str = Field(description="Name of the project column")
-    node_id: str = Field()
-    project_url: str = Field()
-    updated_at: _dt.datetime = Field()
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
+    """
+
+    organization_url: str = Field()
+    role: str = Field()
+    direct_membership: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the user has direct membership in the organization.",
+    )
+    enterprise_teams_providing_indirect_membership: Missing[list[str]] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The slugs of the enterprise teams providing the user with indirect membership in the organization.\nA limit of 100 enterprise team slugs is returned.",
+    )
+    state: str = Field()
     url: str = Field()
+    user: Union[WebhooksMembershipPropUser, None] = Field(title="User")
 
 
-model_rebuild(WebhooksProjectColumn)
+class WebhooksMembershipPropUser(GitHubModel):
+    """User"""
 
-__all__ = ("WebhooksProjectColumn",)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhooksMembership)
+model_rebuild(WebhooksMembershipPropUser)
+
+__all__ = (
+    "WebhooksMembership",
+    "WebhooksMembershipPropUser",
+)

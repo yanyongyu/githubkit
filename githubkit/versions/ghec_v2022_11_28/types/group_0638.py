@@ -13,22 +13,22 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0542 import DiscussionType, DiscussionTypeForResponse
-from .group_0543 import WebhooksCommentType, WebhooksCommentTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0545 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
+from .group_0546 import DiscussionType, DiscussionTypeForResponse
 
 
-class WebhookDiscussionCommentDeletedType(TypedDict):
-    """discussion_comment deleted event"""
+class WebhookDiscussionAnsweredType(TypedDict):
+    """discussion answered event"""
 
-    action: Literal["deleted"]
-    comment: WebhooksCommentType
+    action: Literal["answered"]
+    answer: WebhooksAnswerType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -37,11 +37,11 @@ class WebhookDiscussionCommentDeletedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionCommentDeletedTypeForResponse(TypedDict):
-    """discussion_comment deleted event"""
+class WebhookDiscussionAnsweredTypeForResponse(TypedDict):
+    """discussion answered event"""
 
-    action: Literal["deleted"]
-    comment: WebhooksCommentTypeForResponse
+    action: Literal["answered"]
+    answer: WebhooksAnswerTypeForResponse
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookDiscussionCommentDeletedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionCommentDeletedType",
-    "WebhookDiscussionCommentDeletedTypeForResponse",
+    "WebhookDiscussionAnsweredType",
+    "WebhookDiscussionAnsweredTypeForResponse",
 )

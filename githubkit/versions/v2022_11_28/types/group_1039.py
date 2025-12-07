@@ -9,30 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
+    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
+    query_suite: NotRequired[Literal["default", "extended"]]
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgSecurityProductEnablementPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
+    query_suite: NotRequired[Literal["default", "extended"]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse",
+    "OrgsOrgSecurityProductEnablementPostBodyType",
+    "OrgsOrgSecurityProductEnablementPostBodyTypeForResponse",
 )

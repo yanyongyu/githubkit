@@ -14,19 +14,23 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0196 import RepositoryRuleWorkflowsPropParameters
 
 
-class RepositoryRuleParamsCopilotCodeReviewAnalysisTool(GitHubModel):
-    """CopilotCodeReviewAnalysisTool
+class RepositoryRuleWorkflows(GitHubModel):
+    """workflows
 
-    A tool that must provide code review results for this rule to pass.
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    name: Literal["CodeQL", "ESLint", "PMD"] = Field(
-        description="The name of a code review analysis tool"
-    )
+    type: Literal["workflows"] = Field()
+    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleParamsCopilotCodeReviewAnalysisTool)
+model_rebuild(RepositoryRuleWorkflows)
 
-__all__ = ("RepositoryRuleParamsCopilotCodeReviewAnalysisTool",)
+__all__ = ("RepositoryRuleWorkflows",)

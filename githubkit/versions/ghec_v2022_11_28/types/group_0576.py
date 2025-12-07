@@ -9,76 +9,116 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksChanges8Type(TypedDict):
-    """WebhooksChanges8"""
+class WebhooksAlertType(TypedDict):
+    """Repository Vulnerability Alert Alert
 
-    tier: WebhooksChanges8PropTierType
-
-
-class WebhooksChanges8TypeForResponse(TypedDict):
-    """WebhooksChanges8"""
-
-    tier: WebhooksChanges8PropTierTypeForResponse
-
-
-class WebhooksChanges8PropTierType(TypedDict):
-    """WebhooksChanges8PropTier"""
-
-    from_: WebhooksChanges8PropTierPropFromType
-
-
-class WebhooksChanges8PropTierTypeForResponse(TypedDict):
-    """WebhooksChanges8PropTier"""
-
-    from_: WebhooksChanges8PropTierPropFromTypeForResponse
-
-
-class WebhooksChanges8PropTierPropFromType(TypedDict):
-    """Sponsorship Tier
-
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
+    The security alert of the vulnerable dependency.
     """
 
+    affected_package_name: str
+    affected_range: str
     created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
-    name: str
+    dismiss_reason: NotRequired[str]
+    dismissed_at: NotRequired[str]
+    dismisser: NotRequired[Union[WebhooksAlertPropDismisserType, None]]
+    external_identifier: str
+    external_reference: Union[str, None]
+    fix_reason: NotRequired[str]
+    fixed_at: NotRequired[_dt.datetime]
+    fixed_in: NotRequired[str]
+    ghsa_id: str
+    id: int
     node_id: str
+    number: int
+    severity: str
+    state: Literal["open"]
 
 
-class WebhooksChanges8PropTierPropFromTypeForResponse(TypedDict):
-    """Sponsorship Tier
+class WebhooksAlertTypeForResponse(TypedDict):
+    """Repository Vulnerability Alert Alert
 
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
+    The security alert of the vulnerable dependency.
     """
 
+    affected_package_name: str
+    affected_range: str
     created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
-    name: str
+    dismiss_reason: NotRequired[str]
+    dismissed_at: NotRequired[str]
+    dismisser: NotRequired[Union[WebhooksAlertPropDismisserTypeForResponse, None]]
+    external_identifier: str
+    external_reference: Union[str, None]
+    fix_reason: NotRequired[str]
+    fixed_at: NotRequired[str]
+    fixed_in: NotRequired[str]
+    ghsa_id: str
+    id: int
     node_id: str
+    number: int
+    severity: str
+    state: Literal["open"]
+
+
+class WebhooksAlertPropDismisserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhooksAlertPropDismisserTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksChanges8PropTierPropFromType",
-    "WebhooksChanges8PropTierPropFromTypeForResponse",
-    "WebhooksChanges8PropTierType",
-    "WebhooksChanges8PropTierTypeForResponse",
-    "WebhooksChanges8Type",
-    "WebhooksChanges8TypeForResponse",
+    "WebhooksAlertPropDismisserType",
+    "WebhooksAlertPropDismisserTypeForResponse",
+    "WebhooksAlertType",
+    "WebhooksAlertTypeForResponse",
 )

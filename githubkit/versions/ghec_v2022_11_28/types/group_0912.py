@@ -13,41 +13,46 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0575 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0913 import (
+    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType,
+    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse,
+)
 
 
-class WebhookSponsorshipCreatedType(TypedDict):
-    """sponsorship created event"""
+class WebhookSecurityAdvisoryWithdrawnType(TypedDict):
+    """security_advisory withdrawn event"""
 
-    action: Literal["created"]
+    action: Literal["withdrawn"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookSponsorshipCreatedTypeForResponse(TypedDict):
-    """sponsorship created event"""
+class WebhookSecurityAdvisoryWithdrawnTypeForResponse(TypedDict):
+    """security_advisory withdrawn event"""
 
-    action: Literal["created"]
+    action: Literal["withdrawn"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
+    security_advisory: (
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse
+    )
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSponsorshipCreatedType",
-    "WebhookSponsorshipCreatedTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnType",
+    "WebhookSecurityAdvisoryWithdrawnTypeForResponse",
 )

@@ -9,28 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0061 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0145 import (
+    ProjectsV2FieldIterationConfigurationType,
+    ProjectsV2FieldIterationConfigurationTypeForResponse,
+)
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    name: str
+    data_type: Literal["iteration"]
+    iteration_configuration: ProjectsV2FieldIterationConfigurationType
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    name: str
+    data_type: Literal["iteration"]
+    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
 
 
 __all__ = (
-    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200Type",
-    "OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse",
 )

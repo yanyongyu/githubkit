@@ -13,36 +13,32 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0185 import (
-    RepositoryRuleFileExtensionRestrictionPropParametersType,
-    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
+    RepositoryRuleTagNamePatternPropParametersType,
+    RepositoryRuleTagNamePatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleFileExtensionRestrictionType(TypedDict):
-    """file_extension_restriction
+class RepositoryRuleTagNamePatternType(TypedDict):
+    """tag_name_pattern
 
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
 
 
-class RepositoryRuleFileExtensionRestrictionTypeForResponse(TypedDict):
-    """file_extension_restriction
+class RepositoryRuleTagNamePatternTypeForResponse(TypedDict):
+    """tag_name_pattern
 
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[
-        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
-    ]
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleFileExtensionRestrictionType",
-    "RepositoryRuleFileExtensionRestrictionTypeForResponse",
+    "RepositoryRuleTagNamePatternType",
+    "RepositoryRuleTagNamePatternTypeForResponse",
 )

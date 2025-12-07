@@ -13,23 +13,22 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0461 import DiscussionType, DiscussionTypeForResponse
-from .group_0462 import WebhooksCommentType, WebhooksCommentTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0465 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
+from .group_0466 import DiscussionType, DiscussionTypeForResponse
 
 
-class WebhookDiscussionCommentEditedType(TypedDict):
-    """discussion_comment edited event"""
+class WebhookDiscussionAnsweredType(TypedDict):
+    """discussion answered event"""
 
-    action: Literal["edited"]
-    changes: WebhookDiscussionCommentEditedPropChangesType
-    comment: WebhooksCommentType
+    action: Literal["answered"]
+    answer: WebhooksAnswerType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -38,12 +37,11 @@ class WebhookDiscussionCommentEditedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionCommentEditedTypeForResponse(TypedDict):
-    """discussion_comment edited event"""
+class WebhookDiscussionAnsweredTypeForResponse(TypedDict):
+    """discussion answered event"""
 
-    action: Literal["edited"]
-    changes: WebhookDiscussionCommentEditedPropChangesTypeForResponse
-    comment: WebhooksCommentTypeForResponse
+    action: Literal["answered"]
+    answer: WebhooksAnswerTypeForResponse
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -52,35 +50,7 @@ class WebhookDiscussionCommentEditedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
-class WebhookDiscussionCommentEditedPropChangesType(TypedDict):
-    """WebhookDiscussionCommentEditedPropChanges"""
-
-    body: WebhookDiscussionCommentEditedPropChangesPropBodyType
-
-
-class WebhookDiscussionCommentEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookDiscussionCommentEditedPropChanges"""
-
-    body: WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse
-
-
-class WebhookDiscussionCommentEditedPropChangesPropBodyType(TypedDict):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse(TypedDict):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookDiscussionCommentEditedPropChangesPropBodyType",
-    "WebhookDiscussionCommentEditedPropChangesPropBodyTypeForResponse",
-    "WebhookDiscussionCommentEditedPropChangesType",
-    "WebhookDiscussionCommentEditedPropChangesTypeForResponse",
-    "WebhookDiscussionCommentEditedType",
-    "WebhookDiscussionCommentEditedTypeForResponse",
+    "WebhookDiscussionAnsweredType",
+    "WebhookDiscussionAnsweredTypeForResponse",
 )

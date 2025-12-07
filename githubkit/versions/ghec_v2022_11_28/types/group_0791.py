@@ -9,40 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0792 import WebhookPingPropHookType, WebhookPingPropHookTypeForResponse
+from .group_0563 import (
+    PersonalAccessTokenRequestType,
+    PersonalAccessTokenRequestTypeForResponse,
+)
 
 
-class WebhookPingType(TypedDict):
-    """WebhookPing"""
+class WebhookPersonalAccessTokenRequestApprovedType(TypedDict):
+    """personal_access_token_request approved event"""
 
-    hook: NotRequired[WebhookPingPropHookType]
-    hook_id: NotRequired[int]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
-    zen: NotRequired[str]
+    action: Literal["approved"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    organization: OrganizationSimpleWebhooksType
+    sender: SimpleUserType
+    installation: SimpleInstallationType
 
 
-class WebhookPingTypeForResponse(TypedDict):
-    """WebhookPing"""
+class WebhookPersonalAccessTokenRequestApprovedTypeForResponse(TypedDict):
+    """personal_access_token_request approved event"""
 
-    hook: NotRequired[WebhookPingPropHookTypeForResponse]
-    hook_id: NotRequired[int]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
-    zen: NotRequired[str]
+    action: Literal["approved"]
+    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    installation: SimpleInstallationTypeForResponse
 
 
 __all__ = (
-    "WebhookPingType",
-    "WebhookPingTypeForResponse",
+    "WebhookPersonalAccessTokenRequestApprovedType",
+    "WebhookPersonalAccessTokenRequestApprovedTypeForResponse",
 )

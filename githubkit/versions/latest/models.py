@@ -25,6 +25,24 @@ if TYPE_CHECKING or is_lazy_disabled():
         ActionsCacheListPropActionsCachesItems as ActionsCacheListPropActionsCachesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ActionsCacheRetentionLimitForEnterprise as ActionsCacheRetentionLimitForEnterprise,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ActionsCacheRetentionLimitForOrganization as ActionsCacheRetentionLimitForOrganization,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ActionsCacheRetentionLimitForRepository as ActionsCacheRetentionLimitForRepository,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ActionsCacheStorageLimitForEnterprise as ActionsCacheStorageLimitForEnterprise,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ActionsCacheStorageLimitForOrganization as ActionsCacheStorageLimitForOrganization,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ActionsCacheStorageLimitForRepository as ActionsCacheStorageLimitForRepository,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ActionsCacheUsageByRepository as ActionsCacheUsageByRepository,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1683,6 +1701,18 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgProjectsV2ProjectNumberDraftsPostBody as OrgsOrgProjectsV2ProjectNumberDraftsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0 as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1 as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2 as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3 as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody as OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1768,12 +1798,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgTeamsTeamSlugPatchBody as OrgsOrgTeamsTeamSlugPatchBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody as OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403 as OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody as OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody,
@@ -1881,29 +1905,22 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import (
         PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage as PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage,
     )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectCollaboratorPermission as ProjectCollaboratorPermission,
-    )
-    from githubkit.versions.v2022_11_28.models import ProjectColumn as ProjectColumn
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsColumnIdMovesPostBody as ProjectsColumnsColumnIdMovesPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsColumnIdMovesPostResponse201 as ProjectsColumnsColumnIdMovesPostResponse201,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsColumnsColumnIdPatchBody as ProjectsColumnsColumnIdPatchBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ProjectsProjectIdCollaboratorsUsernamePutBody as ProjectsProjectIdCollaboratorsUsernamePutBody,
-    )
     from githubkit.versions.v2022_11_28.models import ProjectsV2 as ProjectsV2
     from githubkit.versions.v2022_11_28.models import (
         ProjectsV2DraftIssue as ProjectsV2DraftIssue,
     )
     from githubkit.versions.v2022_11_28.models import ProjectsV2Field as ProjectsV2Field
     from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2FieldIterationConfiguration as ProjectsV2FieldIterationConfiguration,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2FieldIterationConfigurationPropIterationsItems as ProjectsV2FieldIterationConfigurationPropIterationsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ProjectsV2FieldPropConfiguration as ProjectsV2FieldPropConfiguration,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2FieldSingleSelectOption as ProjectsV2FieldSingleSelectOption,
     )
     from githubkit.versions.v2022_11_28.models import ProjectsV2Item as ProjectsV2Item
     from githubkit.versions.v2022_11_28.models import (
@@ -2704,7 +2721,7 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems as ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody as ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody,
+        ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0 as ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0 as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0,
@@ -3154,6 +3171,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0 as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1 as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody as ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3436,10 +3456,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import (
         TeamOrganizationPropPlan as TeamOrganizationPropPlan,
     )
-    from githubkit.versions.v2022_11_28.models import TeamProject as TeamProject
-    from githubkit.versions.v2022_11_28.models import (
-        TeamProjectPropPermissions as TeamProjectPropPermissions,
-    )
     from githubkit.versions.v2022_11_28.models import (
         TeamPropPermissions as TeamPropPermissions,
     )
@@ -3477,12 +3493,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import (
         TeamsTeamIdPatchBody as TeamsTeamIdPatchBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        TeamsTeamIdProjectsProjectIdPutBody as TeamsTeamIdProjectsProjectIdPutBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        TeamsTeamIdProjectsProjectIdPutResponse403 as TeamsTeamIdProjectsProjectIdPutResponse403,
     )
     from githubkit.versions.v2022_11_28.models import (
         TeamsTeamIdReposOwnerRepoPutBody as TeamsTeamIdReposOwnerRepoPutBody,
@@ -3688,6 +3698,15 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0 as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1 as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2 as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2,
     )
     from githubkit.versions.v2022_11_28.models import (
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody as UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody,
@@ -9061,6 +9080,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhooksDeployKey as WebhooksDeployKey,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookSecretScanningAlertAssigned as WebhookSecretScanningAlertAssigned,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookSecretScanningAlertCreated as WebhookSecretScanningAlertCreated,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9077,6 +9099,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookSecretScanningAlertResolved as WebhookSecretScanningAlertResolved,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookSecretScanningAlertUnassigned as WebhookSecretScanningAlertUnassigned,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookSecretScanningAlertValidated as WebhookSecretScanningAlertValidated,
@@ -10015,6 +10040,8 @@ else:
             "SimpleClassroomAssignment",
             "SimpleClassroom",
             "ClassroomAssignmentGrade",
+            "ActionsCacheRetentionLimitForEnterprise",
+            "ActionsCacheStorageLimitForEnterprise",
             "CodeSecurityConfiguration",
             "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
             "CodeSecurityConfigurationPropCodeScanningOptions",
@@ -10097,6 +10124,8 @@ else:
             "Thread",
             "ThreadPropSubject",
             "ThreadSubscription",
+            "ActionsCacheRetentionLimitForOrganization",
+            "ActionsCacheStorageLimitForOrganization",
             "DependabotRepositoryAccessDetails",
             "CustomPropertyValue",
             "GetAllBudgets",
@@ -10232,6 +10261,9 @@ else:
             "ProjectsV2FieldPropConfiguration",
             "ProjectsV2IterationSettings",
             "ProjectsV2IterationSettingsPropTitle",
+            "ProjectsV2FieldSingleSelectOption",
+            "ProjectsV2FieldIterationConfiguration",
+            "ProjectsV2FieldIterationConfigurationPropIterationsItems",
             "ProjectsV2ItemWithContent",
             "ProjectsV2ItemWithContentPropContent",
             "ProjectsV2ItemWithContentPropFieldsItems",
@@ -10348,17 +10380,15 @@ else:
             "TeamDiscussionComment",
             "Reaction",
             "TeamMembership",
-            "TeamProject",
-            "TeamProjectPropPermissions",
             "TeamRepository",
             "TeamRepositoryPropPermissions",
-            "ProjectColumn",
-            "ProjectCollaboratorPermission",
             "RateLimit",
             "RateLimitOverview",
             "RateLimitOverviewPropResources",
             "Artifact",
             "ArtifactPropWorkflowRun",
+            "ActionsCacheRetentionLimitForRepository",
+            "ActionsCacheStorageLimitForRepository",
             "ActionsCacheList",
             "ActionsCacheListPropActionsCachesItems",
             "Job",
@@ -12737,12 +12767,14 @@ else:
             "WebhookRepositoryVulnerabilityAlertResolve",
             "WebhookRepositoryVulnerabilityAlertResolvePropAlert",
             "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser",
+            "WebhookSecretScanningAlertAssigned",
             "WebhookSecretScanningAlertCreated",
             "WebhookSecretScanningAlertLocationCreated",
             "WebhookSecretScanningAlertLocationCreatedFormEncoded",
             "WebhookSecretScanningAlertPubliclyLeaked",
             "WebhookSecretScanningAlertReopened",
             "WebhookSecretScanningAlertResolved",
+            "WebhookSecretScanningAlertUnassigned",
             "WebhookSecretScanningAlertValidated",
             "WebhookSecretScanningScanCompleted",
             "WebhookSecurityAdvisoryPublished",
@@ -13085,6 +13117,10 @@ else:
             "OrgsOrgPrivateRegistriesPublicKeyGetResponse200",
             "OrgsOrgPrivateRegistriesSecretNamePatchBody",
             "OrgsOrgProjectsV2ProjectNumberDraftsPostBody",
+            "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0",
+            "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1",
+            "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2",
+            "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3",
             "OrgsOrgProjectsV2ProjectNumberItemsPostBody",
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody",
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
@@ -13114,14 +13150,8 @@ else:
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody",
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody",
             "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",
-            "OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody",
-            "OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403",
             "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",
             "OrgsOrgSecurityProductEnablementPostBody",
-            "ProjectsColumnsColumnIdPatchBody",
-            "ProjectsColumnsColumnIdMovesPostBody",
-            "ProjectsColumnsColumnIdMovesPostResponse201",
-            "ProjectsProjectIdCollaboratorsUsernamePutBody",
             "ReposOwnerRepoDeleteResponse403",
             "ReposOwnerRepoPatchBody",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysis",
@@ -13210,7 +13240,7 @@ else:
             "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
             "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
             "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200",
-            "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody",
+            "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0",
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0",
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1",
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2",
@@ -13351,6 +13381,7 @@ else:
             "ReposOwnerRepoRulesetsPostBody",
             "ReposOwnerRepoRulesetsRulesetIdPutBody",
             "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0",
+            "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1",
             "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",
             "ReposOwnerRepoStatusesShaPostBody",
             "ReposOwnerRepoSubscriptionPutBody",
@@ -13366,8 +13397,6 @@ else:
             "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody",
             "TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody",
             "TeamsTeamIdMembershipsUsernamePutBody",
-            "TeamsTeamIdProjectsProjectIdPutBody",
-            "TeamsTeamIdProjectsProjectIdPutResponse403",
             "TeamsTeamIdReposOwnerRepoPutBody",
             "UserPatchBody",
             "UserCodespacesGetResponse200",
@@ -13408,6 +13437,9 @@ else:
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
+            "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0",
+            "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1",
+            "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",
             "UsersUsernameProjectsV2ProjectNumberItemsPostBody",
             "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody",
             "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",

@@ -10,32 +10,56 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0046 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
+from .group_0082 import TeamType, TeamTypeForResponse
+from .group_0083 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
 
 
-class CopilotUsageMetrics1DayReportType(TypedDict):
-    """Copilot Metrics 1 Day Report
+class CopilotSeatDetailsType(TypedDict):
+    """Copilot Business Seat Detail
 
-    Links to download the Copilot usage metrics report for an enterprise for a
-    specific day.
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
     """
 
-    download_links: list[str]
-    report_day: _dt.date
+    assignee: NotRequired[Union[None, SimpleUserType]]
+    organization: NotRequired[Union[None, OrganizationSimpleType]]
+    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
+    pending_cancellation_date: NotRequired[Union[_dt.date, None]]
+    last_activity_at: NotRequired[Union[_dt.datetime, None]]
+    last_activity_editor: NotRequired[Union[str, None]]
+    last_authenticated_at: NotRequired[Union[_dt.datetime, None]]
+    created_at: _dt.datetime
+    updated_at: NotRequired[_dt.datetime]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
-class CopilotUsageMetrics1DayReportTypeForResponse(TypedDict):
-    """Copilot Metrics 1 Day Report
+class CopilotSeatDetailsTypeForResponse(TypedDict):
+    """Copilot Business Seat Detail
 
-    Links to download the Copilot usage metrics report for an enterprise for a
-    specific day.
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
     """
 
-    download_links: list[str]
-    report_day: str
+    assignee: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    organization: NotRequired[Union[None, OrganizationSimpleTypeForResponse]]
+    assigning_team: NotRequired[
+        Union[TeamTypeForResponse, EnterpriseTeamTypeForResponse, None]
+    ]
+    pending_cancellation_date: NotRequired[Union[str, None]]
+    last_activity_at: NotRequired[Union[str, None]]
+    last_activity_editor: NotRequired[Union[str, None]]
+    last_authenticated_at: NotRequired[Union[str, None]]
+    created_at: str
+    updated_at: NotRequired[str]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
 __all__ = (
-    "CopilotUsageMetrics1DayReportType",
-    "CopilotUsageMetrics1DayReportTypeForResponse",
+    "CopilotSeatDetailsType",
+    "CopilotSeatDetailsTypeForResponse",
 )

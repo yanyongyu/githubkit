@@ -16,15 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsPostBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
 
-    permission: Missing[str] = Field(
+    title: str = Field(description="The discussion post's title.")
+    body: str = Field(description="The discussion post's body text.")
+    private: Missing[bool] = Field(
         default=UNSET,
-        description="The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
+        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody)
+model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsPostBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBody",)

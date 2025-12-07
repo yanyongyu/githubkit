@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType(
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
 
-    selected_organization_ids: list[int]
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyTypeForResponse(
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
 
-    selected_organization_ids: list[int]
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse",
 )

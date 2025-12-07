@@ -13,59 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class MarkdownPostBodyType(TypedDict):
+    """MarkdownPostBody"""
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
-    ]
-    budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class MarkdownPostBodyTypeForResponse(TypedDict):
+    """MarkdownPostBody"""
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
-    ]
-    budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
+    "MarkdownPostBodyType",
+    "MarkdownPostBodyTypeForResponse",
 )

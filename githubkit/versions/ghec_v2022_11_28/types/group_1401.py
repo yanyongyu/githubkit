@@ -9,52 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyType(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
+class UserCodespacesSecretsSecretNamePutBodyType(TypedDict):
+    """UserCodespacesSecretsSecretNamePutBody"""
 
-    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
-    synced_at: NotRequired[str]
-
-
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
-
-    groups: list[
-        TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse
-    ]
-    synced_at: NotRequired[str]
+    encrypted_value: NotRequired[str]
+    key_id: str
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+class UserCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """UserCodespacesSecretsSecretNamePutBody"""
 
-    group_id: str
-    group_name: str
-    group_description: str
-    id: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[str]
-
-
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse(
-    TypedDict
-):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-    id: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[str]
+    encrypted_value: NotRequired[str]
+    key_id: str
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
 
 
 __all__ = (
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyType",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyTypeForResponse",
+    "UserCodespacesSecretsSecretNamePutBodyType",
+    "UserCodespacesSecretsSecretNamePutBodyTypeForResponse",
 )

@@ -15,38 +15,97 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0587 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator,
-)
+from .group_0010 import Integration
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropMilestone(GitHubModel):
-    """Milestone
+class WebhookIssueCommentCreatedPropComment(GitHubModel):
+    """issue comment
 
-    A collection of related issues and pull requests.
+    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
+    itself.
     """
 
-    closed_at: Union[_dt.datetime, None] = Field()
-    closed_issues: int = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+    )
+    body: str = Field(description="Contents of the issue comment")
     created_at: _dt.datetime = Field()
-    creator: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator, None
-    ] = Field(title="User")
-    description: Union[str, None] = Field()
-    due_on: Union[_dt.datetime, None] = Field()
     html_url: str = Field()
-    id: int = Field()
-    labels_url: str = Field()
+    id: int = Field(description="Unique identifier of the issue comment")
+    issue_url: str = Field()
     node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    reactions: WebhookIssueCommentCreatedPropCommentPropReactions = Field(
+        title="Reactions"
+    )
     updated_at: _dt.datetime = Field()
+    url: str = Field(description="URL for the issue comment")
+    user: Union[WebhookIssueCommentCreatedPropCommentPropUser, None] = Field(
+        title="User"
+    )
+
+
+class WebhookIssueCommentCreatedPropCommentPropReactions(GitHubModel):
+    """Reactions"""
+
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
     url: str = Field()
 
 
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropMilestone)
+class WebhookIssueCommentCreatedPropCommentPropUser(GitHubModel):
+    """User"""
 
-__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropMilestone",)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookIssueCommentCreatedPropComment)
+model_rebuild(WebhookIssueCommentCreatedPropCommentPropReactions)
+model_rebuild(WebhookIssueCommentCreatedPropCommentPropUser)
+
+__all__ = (
+    "WebhookIssueCommentCreatedPropComment",
+    "WebhookIssueCommentCreatedPropCommentPropReactions",
+    "WebhookIssueCommentCreatedPropCommentPropUser",
+)

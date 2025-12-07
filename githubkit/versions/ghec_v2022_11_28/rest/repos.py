@@ -433,6 +433,7 @@ class ReposClient:
                     RepositoryRuleMaxFileSizeType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,
@@ -543,6 +544,7 @@ class ReposClient:
                     RepositoryRuleMaxFileSizeType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,
@@ -731,6 +733,7 @@ class ReposClient:
                     RepositoryRuleMaxFileSizeType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,
@@ -846,6 +849,7 @@ class ReposClient:
                     RepositoryRuleMaxFileSizeType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,
@@ -1418,6 +1422,7 @@ class ReposClient:
                     RepositoryRuleMaxFileSizeType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,
@@ -1521,6 +1526,7 @@ class ReposClient:
                     RepositoryRuleMaxFileSizeType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,
@@ -1880,6 +1886,7 @@ class ReposClient:
                     RepositoryRuleMaxFileSizeType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,
@@ -1990,6 +1997,7 @@ class ReposClient:
                     RepositoryRuleMaxFileSizeType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCopilotCodeReviewType,
                 ]
             ]
         ] = UNSET,

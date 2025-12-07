@@ -9,35 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0158 import (
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
+    RepositoryRuleCodeScanningPropParametersType,
+    RepositoryRuleCodeScanningPropParametersTypeForResponse,
 )
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetType(TypedDict):
-    """Repository ruleset conditions for repository IDs
+class RepositoryRuleCodeScanningType(TypedDict):
+    """code_scanning
 
-    Parameters for a repository ID condition
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for repository IDs
+class RepositoryRuleCodeScanningTypeForResponse(TypedDict):
+    """code_scanning
 
-    Parameters for a repository ID condition
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    repository_id: (
-        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
-    )
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryIdTargetType",
-    "RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse",
+    "RepositoryRuleCodeScanningType",
+    "RepositoryRuleCodeScanningTypeForResponse",
 )

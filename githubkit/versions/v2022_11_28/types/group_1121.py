@@ -9,41 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0318 import (
-    CustomDeploymentRuleAppType,
-    CustomDeploymentRuleAppTypeForResponse,
-)
 
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType(TypedDict):
+    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
-    """
-
-    total_count: NotRequired[int]
-    available_custom_deployment_protection_rule_integrations: NotRequired[
-        list[CustomDeploymentRuleAppType]
+    state: Literal[
+        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
     ]
+    target_url: NotRequired[str]
+    log_url: NotRequired[str]
+    description: NotRequired[str]
+    environment: NotRequired[str]
+    environment_url: NotRequired[str]
+    auto_inactive: NotRequired[bool]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
-    """
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
 
-    total_count: NotRequired[int]
-    available_custom_deployment_protection_rule_integrations: NotRequired[
-        list[CustomDeploymentRuleAppTypeForResponse]
+    state: Literal[
+        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
     ]
+    target_url: NotRequired[str]
+    log_url: NotRequired[str]
+    description: NotRequired[str]
+    environment: NotRequired[str]
+    environment_url: NotRequired[str]
+    auto_inactive: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse",
+    "ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType",
+    "ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyTypeForResponse",
 )

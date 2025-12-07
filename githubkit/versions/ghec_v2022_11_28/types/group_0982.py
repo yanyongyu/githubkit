@@ -11,28 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0049 import RunnerType, RunnerTypeForResponse
+from .group_0046 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
 
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
 
-    runner: RunnerType
-    encoded_jit_config: str
+    total_count: float
+    organizations: list[OrganizationSimpleType]
 
 
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
 
-    runner: RunnerTypeForResponse
-    encoded_jit_config: str
+    total_count: float
+    organizations: list[OrganizationSimpleTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type",
-    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200TypeForResponse",
 )

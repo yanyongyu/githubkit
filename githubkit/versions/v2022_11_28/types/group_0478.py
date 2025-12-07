@@ -9,329 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class PersonalAccessTokenRequestType(TypedDict):
-    """Personal Access Token Request
+class WebhooksPreviousMarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase"""
 
-    Details of a Personal Access Token Request.
-    """
-
-    id: int
-    owner: SimpleUserType
-    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedType
-    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgradedType
-    permissions_result: PersonalAccessTokenRequestPropPermissionsResultType
-    repository_selection: Literal["none", "all", "subset"]
-    repository_count: Union[int, None]
-    repositories: Union[list[PersonalAccessTokenRequestPropRepositoriesItemsType], None]
-    created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    account: WebhooksPreviousMarketplacePurchasePropAccountType
+    billing_cycle: str
+    free_trial_ends_on: None
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhooksPreviousMarketplacePurchasePropPlanType
+    unit_count: int
 
 
-class PersonalAccessTokenRequestTypeForResponse(TypedDict):
-    """Personal Access Token Request
+class WebhooksPreviousMarketplacePurchaseTypeForResponse(TypedDict):
+    """Marketplace Purchase"""
 
-    Details of a Personal Access Token Request.
-    """
+    account: WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse
+    billing_cycle: str
+    free_trial_ends_on: None
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse
+    unit_count: int
+
+
+class WebhooksPreviousMarketplacePurchasePropAccountType(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropAccount"""
 
     id: int
-    owner: SimpleUserTypeForResponse
-    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse
-    permissions_upgraded: (
-        PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse
-    )
-    permissions_result: PersonalAccessTokenRequestPropPermissionsResultTypeForResponse
-    repository_selection: Literal["none", "all", "subset"]
-    repository_count: Union[int, None]
-    repositories: Union[
-        list[PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse], None
-    ]
-    created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
-
-
-class PersonalAccessTokenRequestPropRepositoriesItemsType(TypedDict):
-    """PersonalAccessTokenRequestPropRepositoriesItems"""
-
-    full_name: str
-    id: int
-    name: str
+    login: str
     node_id: str
-    private: bool
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse(TypedDict):
-    """PersonalAccessTokenRequestPropRepositoriesItems"""
+class WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropAccount"""
 
-    full_name: str
     id: int
-    name: str
+    login: str
     node_id: str
-    private: bool
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class PersonalAccessTokenRequestPropPermissionsAddedType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAdded
+class WebhooksPreviousMarketplacePurchasePropPlanType(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropPlan"""
 
-    New requested permissions, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsAddedPropOtherType]
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAdded
-
-    New requested permissions, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse
-    ]
-    other: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse
-    ]
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
-PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
-"""
+class WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropPlan"""
 
-
-PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropRepository
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropRepository
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsAddedPropOtherType: TypeAlias = dict[str, Any]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropOther
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse: TypeAlias = (
-    dict[str, Any]
-)
-"""PersonalAccessTokenRequestPropPermissionsAddedPropOther
-"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgraded
-
-    Requested permissions that elevate access for a previously approved request for
-    access, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType]
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgraded
-
-    Requested permissions that elevate access for a previously approved request for
-    access, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse
-    ]
-    other: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse
-    ]
-
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse: TypeAlias = (
-    dict[str, Any]
-)
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
-"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResultType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResult
-
-    Permissions requested, categorized by type of permission. This field
-    incorporates `permissions_added` and `permissions_upgraded`.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsResultPropOtherType]
-
-
-class PersonalAccessTokenRequestPropPermissionsResultTypeForResponse(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResult
-
-    Permissions requested, categorized by type of permission. This field
-    incorporates `permissions_added` and `permissions_upgraded`.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse
-    ]
-    other: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse
-    ]
-
-
-PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsResultPropOrganization
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsResultPropOrganization
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsResultPropRepository
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsResultPropRepository
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsResultPropOtherType: TypeAlias = dict[str, Any]
-"""PersonalAccessTokenRequestPropPermissionsResultPropOther
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse: TypeAlias = (
-    dict[str, Any]
-)
-"""PersonalAccessTokenRequestPropPermissionsResultPropOther
-"""
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsAddedType",
-    "PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsResultType",
-    "PersonalAccessTokenRequestPropPermissionsResultTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse",
-    "PersonalAccessTokenRequestPropRepositoriesItemsType",
-    "PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse",
-    "PersonalAccessTokenRequestType",
-    "PersonalAccessTokenRequestTypeForResponse",
+    "WebhooksPreviousMarketplacePurchasePropAccountType",
+    "WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse",
+    "WebhooksPreviousMarketplacePurchasePropPlanType",
+    "WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse",
+    "WebhooksPreviousMarketplacePurchaseType",
+    "WebhooksPreviousMarketplacePurchaseTypeForResponse",
 )

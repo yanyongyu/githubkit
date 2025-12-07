@@ -13,198 +13,48 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0612 import (
+    WebhookCodeScanningAlertReopenedPropAlertType,
+    WebhookCodeScanningAlertReopenedPropAlertTypeForResponse,
+)
 
 
-class WebhookCommitCommentCreatedType(TypedDict):
-    """commit_comment created event"""
+class WebhookCodeScanningAlertReopenedType(TypedDict):
+    """code_scanning_alert reopened event"""
 
-    action: Literal["created"]
-    comment: WebhookCommitCommentCreatedPropCommentType
+    action: Literal["reopened"]
+    alert: WebhookCodeScanningAlertReopenedPropAlertType
+    commit_oid: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    ref: Union[str, None]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookCommitCommentCreatedTypeForResponse(TypedDict):
-    """commit_comment created event"""
+class WebhookCodeScanningAlertReopenedTypeForResponse(TypedDict):
+    """code_scanning_alert reopened event"""
 
-    action: Literal["created"]
-    comment: WebhookCommitCommentCreatedPropCommentTypeForResponse
+    action: Literal["reopened"]
+    alert: WebhookCodeScanningAlertReopenedPropAlertTypeForResponse
+    commit_oid: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    ref: Union[str, None]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookCommitCommentCreatedPropCommentType(TypedDict):
-    """WebhookCommitCommentCreatedPropComment
-
-    The [commit
-    comment](${externalDocsUpapp/api/description/components/schemas/webhooks/issue-
-    comment-created.yamlrl}/rest/commits/comments#get-a-commit-comment) resource.
-    """
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    commit_id: str
-    created_at: str
-    html_url: str
-    id: int
-    line: Union[int, None]
-    node_id: str
-    path: Union[str, None]
-    position: Union[int, None]
-    reactions: NotRequired[WebhookCommitCommentCreatedPropCommentPropReactionsType]
-    updated_at: str
-    url: str
-    user: Union[WebhookCommitCommentCreatedPropCommentPropUserType, None]
-
-
-class WebhookCommitCommentCreatedPropCommentTypeForResponse(TypedDict):
-    """WebhookCommitCommentCreatedPropComment
-
-    The [commit
-    comment](${externalDocsUpapp/api/description/components/schemas/webhooks/issue-
-    comment-created.yamlrl}/rest/commits/comments#get-a-commit-comment) resource.
-    """
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    commit_id: str
-    created_at: str
-    html_url: str
-    id: int
-    line: Union[int, None]
-    node_id: str
-    path: Union[str, None]
-    position: Union[int, None]
-    reactions: NotRequired[
-        WebhookCommitCommentCreatedPropCommentPropReactionsTypeForResponse
-    ]
-    updated_at: str
-    url: str
-    user: Union[WebhookCommitCommentCreatedPropCommentPropUserTypeForResponse, None]
-
-
-class WebhookCommitCommentCreatedPropCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookCommitCommentCreatedPropCommentPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookCommitCommentCreatedPropCommentPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookCommitCommentCreatedPropCommentPropUserTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
 __all__ = (
-    "WebhookCommitCommentCreatedPropCommentPropReactionsType",
-    "WebhookCommitCommentCreatedPropCommentPropReactionsTypeForResponse",
-    "WebhookCommitCommentCreatedPropCommentPropUserType",
-    "WebhookCommitCommentCreatedPropCommentPropUserTypeForResponse",
-    "WebhookCommitCommentCreatedPropCommentType",
-    "WebhookCommitCommentCreatedPropCommentTypeForResponse",
-    "WebhookCommitCommentCreatedType",
-    "WebhookCommitCommentCreatedTypeForResponse",
+    "WebhookCodeScanningAlertReopenedType",
+    "WebhookCodeScanningAlertReopenedTypeForResponse",
 )

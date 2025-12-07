@@ -18,32 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamsTeamIdPatchBody(GitHubModel):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoStatusesShaPostBody(GitHubModel):
+    """ReposOwnerRepoStatusesShaPostBody"""
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the team."
+    state: Literal["error", "failure", "pending", "success"] = Field(
+        description="The state of the status."
     )
-    privacy: Missing[Literal["secret", "closed"]] = Field(
+    target_url: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
+        description="The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.  \nFor example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:  \n`http://ci.example.com/user/repo/build/sha`",
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A short description of the status."
+    )
+    context: Missing[str] = Field(
         default=UNSET,
-        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
-    )
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
-        default=UNSET,
-        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
-    )
-    parent_team_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of a team to set as the parent team."
+        description="A string label to differentiate this status from the status of other systems. This field is case-insensitive.",
     )
 
 
-model_rebuild(TeamsTeamIdPatchBody)
+model_rebuild(ReposOwnerRepoStatusesShaPostBody)
 
-__all__ = ("TeamsTeamIdPatchBody",)
+__all__ = ("ReposOwnerRepoStatusesShaPostBody",)

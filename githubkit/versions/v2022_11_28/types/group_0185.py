@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleFileExtensionRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+class RepositoryRuleTagNamePatternPropParametersType(TypedDict):
+    """RepositoryRuleTagNamePatternPropParameters"""
 
-    restricted_file_extensions: list[str]
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
-class RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+class RepositoryRuleTagNamePatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleTagNamePatternPropParameters"""
 
-    restricted_file_extensions: list[str]
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
 __all__ = (
-    "RepositoryRuleFileExtensionRestrictionPropParametersType",
-    "RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse",
+    "RepositoryRuleTagNamePatternPropParametersType",
+    "RepositoryRuleTagNamePatternPropParametersTypeForResponse",
 )

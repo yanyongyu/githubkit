@@ -9,51 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0529 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0540 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0545 import (
-    WebhooksRepositoriesItemsType,
-    WebhooksRepositoriesItemsTypeForResponse,
-)
+
+class WebhookForkPropForkeeAllof0PropPermissionsType(TypedDict):
+    """WebhookForkPropForkeeAllof0PropPermissions"""
+
+    admin: bool
+    maintain: NotRequired[bool]
+    pull: bool
+    push: bool
+    triage: NotRequired[bool]
 
 
-class WebhookInstallationCreatedType(TypedDict):
-    """installation created event"""
+class WebhookForkPropForkeeAllof0PropPermissionsTypeForResponse(TypedDict):
+    """WebhookForkPropForkeeAllof0PropPermissions"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[Union[WebhooksUserType, None]]
-    sender: SimpleUserType
-
-
-class WebhookInstallationCreatedTypeForResponse(TypedDict):
-    """installation created event"""
-
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: InstallationTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    requester: NotRequired[Union[WebhooksUserTypeForResponse, None]]
-    sender: SimpleUserTypeForResponse
+    admin: bool
+    maintain: NotRequired[bool]
+    pull: bool
+    push: bool
+    triage: NotRequired[bool]
 
 
 __all__ = (
-    "WebhookInstallationCreatedType",
-    "WebhookInstallationCreatedTypeForResponse",
+    "WebhookForkPropForkeeAllof0PropPermissionsType",
+    "WebhookForkPropForkeeAllof0PropPermissionsTypeForResponse",
 )

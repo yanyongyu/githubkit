@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody"""
+class ReposOwnerRepoActionsVariablesNamePatchBodyType(TypedDict):
+    """ReposOwnerRepoActionsVariablesNamePatchBody"""
 
-    enable_debug_logging: NotRequired[bool]
+    name: NotRequired[str]
+    value: NotRequired[str]
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody"""
+class ReposOwnerRepoActionsVariablesNamePatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsVariablesNamePatchBody"""
 
-    enable_debug_logging: NotRequired[bool]
+    name: NotRequired[str]
+    value: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType",
-    "ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsVariablesNamePatchBodyType",
+    "ReposOwnerRepoActionsVariablesNamePatchBodyTypeForResponse",
 )

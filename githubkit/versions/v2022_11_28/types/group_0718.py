@@ -9,97 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0480 import WebhooksProjectType, WebhooksProjectTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0486 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
 
 
-class WebhookProjectEditedType(TypedDict):
-    """project edited event"""
+class WebhookProjectColumnDeletedType(TypedDict):
+    """project_column deleted event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookProjectEditedPropChangesType]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
-    repository: NotRequired[RepositoryWebhooksType]
+    project_column: WebhooksProjectColumnType
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectEditedTypeForResponse(TypedDict):
-    """project edited event"""
+class WebhookProjectColumnDeletedTypeForResponse(TypedDict):
+    """project_column deleted event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookProjectEditedPropChangesTypeForResponse]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project: WebhooksProjectTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    project_column: WebhooksProjectColumnTypeForResponse
+    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
-class WebhookProjectEditedPropChangesType(TypedDict):
-    """WebhookProjectEditedPropChanges
-
-    The changes to the project if the action was `edited`.
-    """
-
-    body: NotRequired[WebhookProjectEditedPropChangesPropBodyType]
-    name: NotRequired[WebhookProjectEditedPropChangesPropNameType]
-
-
-class WebhookProjectEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectEditedPropChanges
-
-    The changes to the project if the action was `edited`.
-    """
-
-    body: NotRequired[WebhookProjectEditedPropChangesPropBodyTypeForResponse]
-    name: NotRequired[WebhookProjectEditedPropChangesPropNameTypeForResponse]
-
-
-class WebhookProjectEditedPropChangesPropBodyType(TypedDict):
-    """WebhookProjectEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookProjectEditedPropChangesPropBodyTypeForResponse(TypedDict):
-    """WebhookProjectEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookProjectEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookProjectEditedPropChangesPropNameTypeForResponse(TypedDict):
-    """WebhookProjectEditedPropChangesPropName"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookProjectEditedPropChangesPropBodyType",
-    "WebhookProjectEditedPropChangesPropBodyTypeForResponse",
-    "WebhookProjectEditedPropChangesPropNameType",
-    "WebhookProjectEditedPropChangesPropNameTypeForResponse",
-    "WebhookProjectEditedPropChangesType",
-    "WebhookProjectEditedPropChangesTypeForResponse",
-    "WebhookProjectEditedType",
-    "WebhookProjectEditedTypeForResponse",
+    "WebhookProjectColumnDeletedType",
+    "WebhookProjectColumnDeletedTypeForResponse",
 )

@@ -9,34 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0418 import TrafficType, TrafficTypeForResponse
 
+class RepositorySubscriptionType(TypedDict):
+    """Repository Invitation
 
-class CloneTrafficType(TypedDict):
-    """Clone Traffic
-
-    Clone Traffic
+    Repository invitations let you manage who you collaborate with.
     """
 
-    count: int
-    uniques: int
-    clones: list[TrafficType]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: _dt.datetime
+    url: str
+    repository_url: str
 
 
-class CloneTrafficTypeForResponse(TypedDict):
-    """Clone Traffic
+class RepositorySubscriptionTypeForResponse(TypedDict):
+    """Repository Invitation
 
-    Clone Traffic
+    Repository invitations let you manage who you collaborate with.
     """
 
-    count: int
-    uniques: int
-    clones: list[TrafficTypeForResponse]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: str
+    url: str
+    repository_url: str
 
 
 __all__ = (
-    "CloneTrafficType",
-    "CloneTrafficTypeForResponse",
+    "RepositorySubscriptionType",
+    "RepositorySubscriptionTypeForResponse",
 )

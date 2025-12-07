@@ -9,29 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0093 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
-class OrgsOrgActionsVariablesNamePatchBodyType(TypedDict):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    labels: list[RunnerLabelType]
 
 
-class OrgsOrgActionsVariablesNamePatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    labels: list[RunnerLabelTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesNamePatchBodyType",
-    "OrgsOrgActionsVariablesNamePatchBodyTypeForResponse",
+    "OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type",
+    "OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse",
 )

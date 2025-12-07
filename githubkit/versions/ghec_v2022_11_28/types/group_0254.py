@@ -9,87 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0079 import TeamSimpleType, TeamSimpleTypeForResponse
+from typing_extensions import TypedDict
 
 
-class TeamRoleAssignmentType(TypedDict):
-    """A Role Assignment for a Team
+class OrganizationFineGrainedPermissionType(TypedDict):
+    """Organization Fine-Grained Permission
 
-    The Relationship a Team has with a role.
+    A fine-grained permission that protects organization resources.
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    id: int
-    node_id: str
     name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    description: str
 
 
-class TeamRoleAssignmentTypeForResponse(TypedDict):
-    """A Role Assignment for a Team
+class OrganizationFineGrainedPermissionTypeForResponse(TypedDict):
+    """Organization Fine-Grained Permission
 
-    The Relationship a Team has with a role.
+    A fine-grained permission that protects organization resources.
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    id: int
-    node_id: str
     name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsTypeForResponse]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleTypeForResponse]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-
-
-class TeamRoleAssignmentPropPermissionsType(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
-
-
-class TeamRoleAssignmentPropPermissionsTypeForResponse(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    description: str
 
 
 __all__ = (
-    "TeamRoleAssignmentPropPermissionsType",
-    "TeamRoleAssignmentPropPermissionsTypeForResponse",
-    "TeamRoleAssignmentType",
-    "TeamRoleAssignmentTypeForResponse",
+    "OrganizationFineGrainedPermissionType",
+    "OrganizationFineGrainedPermissionTypeForResponse",
 )

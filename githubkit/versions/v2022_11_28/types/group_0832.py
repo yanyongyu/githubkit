@@ -9,36 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0499 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0500 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof0Type(TypedDict):
-    """Committer
 
-    Metaproperties for Git author/committer information.
-    """
+class WebhookSponsorshipPendingTierChangeType(TypedDict):
+    """sponsorship pending_tier_change event"""
 
-    date: NotRequired[_dt.datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+    action: Literal["pending_tier_change"]
+    changes: WebhooksChanges8Type
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof0TypeForResponse(TypedDict):
-    """Committer
+class WebhookSponsorshipPendingTierChangeTypeForResponse(TypedDict):
+    """sponsorship pending_tier_change event"""
 
-    Metaproperties for Git author/committer information.
-    """
-
-    date: NotRequired[str]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+    action: Literal["pending_tier_change"]
+    changes: WebhooksChanges8TypeForResponse
+    effective_date: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "WebhookStatusPropCommitPropCommitPropCommitterAllof0Type",
-    "WebhookStatusPropCommitPropCommitPropCommitterAllof0TypeForResponse",
+    "WebhookSponsorshipPendingTierChangeType",
+    "WebhookSponsorshipPendingTierChangeTypeForResponse",
 )

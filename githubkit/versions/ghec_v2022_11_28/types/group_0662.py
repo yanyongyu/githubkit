@@ -10,49 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0529 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0545 import (
-    WebhooksRepositoriesItemsType,
-    WebhooksRepositoriesItemsTypeForResponse,
-)
 
 
-class WebhookInstallationNewPermissionsAcceptedType(TypedDict):
-    """installation new_permissions_accepted event"""
+class WebhookGithubAppAuthorizationRevokedType(TypedDict):
+    """github_app_authorization revoked event"""
 
-    action: Literal["new_permissions_accepted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    action: Literal["revoked"]
     sender: SimpleUserType
 
 
-class WebhookInstallationNewPermissionsAcceptedTypeForResponse(TypedDict):
-    """installation new_permissions_accepted event"""
+class WebhookGithubAppAuthorizationRevokedTypeForResponse(TypedDict):
+    """github_app_authorization revoked event"""
 
-    action: Literal["new_permissions_accepted"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: InstallationTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    requester: NotRequired[None]
+    action: Literal["revoked"]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookInstallationNewPermissionsAcceptedType",
-    "WebhookInstallationNewPermissionsAcceptedTypeForResponse",
+    "WebhookGithubAppAuthorizationRevokedType",
+    "WebhookGithubAppAuthorizationRevokedTypeForResponse",
 )

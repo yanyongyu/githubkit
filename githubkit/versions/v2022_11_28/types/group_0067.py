@@ -9,53 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetBudgetType(TypedDict):
-    """GetBudget"""
+class ActionsCacheStorageLimitForOrganizationType(TypedDict):
+    """Actions cache storage limit for an organization
 
-    id: str
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
-    budget_entity_name: str
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingType
+    GitHub Actions cache storage policy for an organization.
+    """
+
+    max_cache_size_gb: NotRequired[int]
 
 
-class GetBudgetTypeForResponse(TypedDict):
-    """GetBudget"""
+class ActionsCacheStorageLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache storage limit for an organization
 
-    id: str
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
-    budget_entity_name: str
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
+    GitHub Actions cache storage policy for an organization.
+    """
 
-
-class GetBudgetPropBudgetAlertingType(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
-
-
-class GetBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    max_cache_size_gb: NotRequired[int]
 
 
 __all__ = (
-    "GetBudgetPropBudgetAlertingType",
-    "GetBudgetPropBudgetAlertingTypeForResponse",
-    "GetBudgetType",
-    "GetBudgetTypeForResponse",
+    "ActionsCacheStorageLimitForOrganizationType",
+    "ActionsCacheStorageLimitForOrganizationTypeForResponse",
 )

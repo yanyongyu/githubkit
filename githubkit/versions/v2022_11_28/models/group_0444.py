@@ -18,19 +18,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0058 import MarketplaceListingPlan
 
-class KeySimple(GitHubModel):
-    """Key Simple
 
-    Key Simple
+class UserMarketplacePurchase(GitHubModel):
+    """User Marketplace Purchase
+
+    User Marketplace Purchase
     """
 
+    billing_cycle: str = Field()
+    next_billing_date: Union[_dt.datetime, None] = Field()
+    unit_count: Union[int, None] = Field()
+    on_free_trial: bool = Field()
+    free_trial_ends_on: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    account: MarketplaceAccount = Field(title="Marketplace Account")
+    plan: MarketplaceListingPlan = Field(
+        title="Marketplace Listing Plan", description="Marketplace Listing Plan"
+    )
+
+
+class MarketplaceAccount(GitHubModel):
+    """Marketplace Account"""
+
+    url: str = Field()
     id: int = Field()
-    key: str = Field()
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    type: str = Field()
+    node_id: Missing[str] = Field(default=UNSET)
+    login: str = Field()
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(KeySimple)
+model_rebuild(UserMarketplacePurchase)
+model_rebuild(MarketplaceAccount)
 
-__all__ = ("KeySimple",)
+__all__ = (
+    "MarketplaceAccount",
+    "UserMarketplacePurchase",
+)

@@ -9,57 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-
-class ActionsCacheListType(TypedDict):
-    """Repository actions caches
-
-    Repository actions caches
-    """
-
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
+from .group_0292 import RateLimitType, RateLimitTypeForResponse
 
 
-class ActionsCacheListTypeForResponse(TypedDict):
-    """Repository actions caches
+class RateLimitOverviewPropResourcesType(TypedDict):
+    """RateLimitOverviewPropResources"""
 
-    Repository actions caches
-    """
-
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsTypeForResponse]
-
-
-class ActionsCacheListPropActionsCachesItemsType(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    size_in_bytes: NotRequired[int]
+    core: RateLimitType
+    graphql: NotRequired[RateLimitType]
+    search: RateLimitType
+    code_search: NotRequired[RateLimitType]
+    source_import: NotRequired[RateLimitType]
+    integration_manifest: NotRequired[RateLimitType]
+    code_scanning_upload: NotRequired[RateLimitType]
+    actions_runner_registration: NotRequired[RateLimitType]
+    scim: NotRequired[RateLimitType]
+    dependency_snapshots: NotRequired[RateLimitType]
+    dependency_sbom: NotRequired[RateLimitType]
+    code_scanning_autofix: NotRequired[RateLimitType]
 
 
-class ActionsCacheListPropActionsCachesItemsTypeForResponse(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
+class RateLimitOverviewPropResourcesTypeForResponse(TypedDict):
+    """RateLimitOverviewPropResources"""
 
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[str]
-    created_at: NotRequired[str]
-    size_in_bytes: NotRequired[int]
+    core: RateLimitTypeForResponse
+    graphql: NotRequired[RateLimitTypeForResponse]
+    search: RateLimitTypeForResponse
+    code_search: NotRequired[RateLimitTypeForResponse]
+    source_import: NotRequired[RateLimitTypeForResponse]
+    integration_manifest: NotRequired[RateLimitTypeForResponse]
+    code_scanning_upload: NotRequired[RateLimitTypeForResponse]
+    actions_runner_registration: NotRequired[RateLimitTypeForResponse]
+    scim: NotRequired[RateLimitTypeForResponse]
+    dependency_snapshots: NotRequired[RateLimitTypeForResponse]
+    dependency_sbom: NotRequired[RateLimitTypeForResponse]
+    code_scanning_autofix: NotRequired[RateLimitTypeForResponse]
 
 
 __all__ = (
-    "ActionsCacheListPropActionsCachesItemsType",
-    "ActionsCacheListPropActionsCachesItemsTypeForResponse",
-    "ActionsCacheListType",
-    "ActionsCacheListTypeForResponse",
+    "RateLimitOverviewPropResourcesType",
+    "RateLimitOverviewPropResourcesTypeForResponse",
 )

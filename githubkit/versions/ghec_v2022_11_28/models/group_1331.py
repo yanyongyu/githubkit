@@ -16,20 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+class ReposOwnerRepoMergesPostBody(GitHubModel):
+    """ReposOwnerRepoMergesPostBody"""
 
-    sub_issue_id: int = Field(description="The id of the sub-issue to reprioritize")
-    after_id: Missing[int] = Field(
-        default=UNSET,
-        description="The id of the sub-issue to be prioritized after (either positional argument after OR before should be specified).",
+    base: str = Field(
+        description="The name of the base branch that the head will be merged into."
     )
-    before_id: Missing[int] = Field(
+    head: str = Field(
+        description="The head to merge. This can be a branch name or a commit SHA1."
+    )
+    commit_message: Missing[str] = Field(
         default=UNSET,
-        description="The id of the sub-issue to be prioritized before (either positional argument after OR before should be specified).",
+        description="Commit message to use for the merge commit. If omitted, a default message will be used.",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody)
+model_rebuild(ReposOwnerRepoMergesPostBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody",)
+__all__ = ("ReposOwnerRepoMergesPostBody",)

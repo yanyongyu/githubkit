@@ -9,34 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0074 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
-
-    The total number of seats set to "pending cancellation" for the members of the
-    specified enterprise team(s).
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
+    e200
     """
 
-    seats_cancelled: int
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
-
-    The total number of seats set to "pending cancellation" for the members of the
-    specified enterprise team(s).
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
+    e200
     """
 
-    seats_cancelled: int
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type",
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse",
 )

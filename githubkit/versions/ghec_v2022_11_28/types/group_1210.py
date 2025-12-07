@@ -11,20 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
-
-    labels: list[str]
+from .group_0299 import JobType, JobTypeForResponse
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
 
-    labels: list[str]
+    total_count: int
+    jobs: list[JobType]
+
+
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
+
+    total_count: int
+    jobs: list[JobTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType",
-    "ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyTypeForResponse",
+    "ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",
+    "ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse",
 )

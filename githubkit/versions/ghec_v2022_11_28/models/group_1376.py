@@ -16,14 +16,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"] = Field(
-        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the release."
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"] = Field(
+        description="The reason for bypassing push protection."
+    )
+    placeholder_id: str = Field(
+        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes."
     )
 
 
-model_rebuild(ReposOwnerRepoReleasesReleaseIdReactionsPostBody)
+model_rebuild(ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody)
 
-__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",)
+__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",)

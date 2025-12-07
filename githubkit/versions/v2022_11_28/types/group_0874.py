@@ -9,31 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseTeamsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class CredentialsRevokePostBodyType(TypedDict):
+    """CredentialsRevokePostBody"""
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
+    credentials: list[str]
 
 
-class EnterprisesEnterpriseTeamsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class CredentialsRevokePostBodyTypeForResponse(TypedDict):
+    """CredentialsRevokePostBody"""
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
+    credentials: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsPostBodyType",
-    "EnterprisesEnterpriseTeamsPostBodyTypeForResponse",
+    "CredentialsRevokePostBodyType",
+    "CredentialsRevokePostBodyTypeForResponse",
 )

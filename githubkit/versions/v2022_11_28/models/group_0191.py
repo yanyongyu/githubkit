@@ -9,29 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0192 import RepositoryRuleCodeScanningPropParameters
 
 
-class RepositoryRuleCodeScanning(GitHubModel):
-    """code_scanning
+class RepositoryRuleFileExtensionRestrictionPropParameters(GitHubModel):
+    """RepositoryRuleFileExtensionRestrictionPropParameters"""
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
-    """
-
-    type: Literal["code_scanning"] = Field()
-    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
+    restricted_file_extensions: list[str] = Field(
+        description="The file extensions that are restricted from being pushed to the commit graph."
+    )
 
 
-model_rebuild(RepositoryRuleCodeScanning)
+model_rebuild(RepositoryRuleFileExtensionRestrictionPropParameters)
 
-__all__ = ("RepositoryRuleCodeScanning",)
+__all__ = ("RepositoryRuleFileExtensionRestrictionPropParameters",)

@@ -9,28 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0082 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
-
-
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+    The total number of seats set to "pending cancellation" for the members of the
+    specified enterprise team(s).
+    """
+
+    seats_cancelled: int
+
+
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
+
+    The total number of seats set to "pending cancellation" for the members of the
+    specified enterprise team(s).
+    """
+
+    seats_cancelled: int
 
 
 __all__ = (
-    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type",
-    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse",
 )

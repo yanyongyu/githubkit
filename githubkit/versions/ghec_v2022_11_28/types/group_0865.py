@@ -13,41 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0570 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0866 import (
+    WebhookRegistryPackageUpdatedPropRegistryPackageType,
+    WebhookRegistryPackageUpdatedPropRegistryPackageTypeForResponse,
+)
 
 
-class WebhookReleaseDeletedType(TypedDict):
-    """release deleted event"""
+class WebhookRegistryPackageUpdatedType(TypedDict):
+    """WebhookRegistryPackageUpdated"""
 
-    action: Literal["deleted"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksReleaseType
-    repository: RepositoryWebhooksType
+    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackageType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookReleaseDeletedTypeForResponse(TypedDict):
-    """release deleted event"""
+class WebhookRegistryPackageUpdatedTypeForResponse(TypedDict):
+    """WebhookRegistryPackageUpdated"""
 
-    action: Literal["deleted"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    release: WebhooksReleaseTypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
+    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackageTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookReleaseDeletedType",
-    "WebhookReleaseDeletedTypeForResponse",
+    "WebhookRegistryPackageUpdatedType",
+    "WebhookRegistryPackageUpdatedTypeForResponse",
 )

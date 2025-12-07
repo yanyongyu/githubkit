@@ -9,194 +9,96 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningLocationCommitType(TypedDict):
-    """SecretScanningLocationCommit
+class RuleSuiteType(TypedDict):
+    """Rule Suite
 
-    Represents a 'commit' secret scanning location type. This location type shows
-    that a secret was detected inside a commit to a repository.
+    Response
     """
 
-    path: str
-    start_line: float
-    end_line: float
-    start_column: float
-    end_column: float
-    blob_sha: str
-    blob_url: str
-    commit_sha: str
-    commit_url: str
+    id: NotRequired[int]
+    actor_id: NotRequired[Union[int, None]]
+    actor_name: NotRequired[Union[str, None]]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[_dt.datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
+    rule_evaluations: NotRequired[list[RuleSuitePropRuleEvaluationsItemsType]]
 
 
-class SecretScanningLocationCommitTypeForResponse(TypedDict):
-    """SecretScanningLocationCommit
+class RuleSuiteTypeForResponse(TypedDict):
+    """Rule Suite
 
-    Represents a 'commit' secret scanning location type. This location type shows
-    that a secret was detected inside a commit to a repository.
+    Response
     """
 
-    path: str
-    start_line: float
-    end_line: float
-    start_column: float
-    end_column: float
-    blob_sha: str
-    blob_url: str
-    commit_sha: str
-    commit_url: str
+    id: NotRequired[int]
+    actor_id: NotRequired[Union[int, None]]
+    actor_name: NotRequired[Union[str, None]]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[str]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
+    rule_evaluations: NotRequired[
+        list[RuleSuitePropRuleEvaluationsItemsTypeForResponse]
+    ]
 
 
-class SecretScanningLocationWikiCommitType(TypedDict):
-    """SecretScanningLocationWikiCommit
+class RuleSuitePropRuleEvaluationsItemsType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
 
-    Represents a 'wiki_commit' secret scanning location type. This location type
-    shows that a secret was detected inside a commit to a repository wiki.
-    """
-
-    path: str
-    start_line: float
-    end_line: float
-    start_column: float
-    end_column: float
-    blob_sha: str
-    page_url: str
-    commit_sha: str
-    commit_url: str
+    rule_source: NotRequired[RuleSuitePropRuleEvaluationsItemsPropRuleSourceType]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    details: NotRequired[Union[str, None]]
 
 
-class SecretScanningLocationWikiCommitTypeForResponse(TypedDict):
-    """SecretScanningLocationWikiCommit
+class RuleSuitePropRuleEvaluationsItemsTypeForResponse(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
 
-    Represents a 'wiki_commit' secret scanning location type. This location type
-    shows that a secret was detected inside a commit to a repository wiki.
-    """
-
-    path: str
-    start_line: float
-    end_line: float
-    start_column: float
-    end_column: float
-    blob_sha: str
-    page_url: str
-    commit_sha: str
-    commit_url: str
+    rule_source: NotRequired[
+        RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse
+    ]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    details: NotRequired[Union[str, None]]
 
 
-class SecretScanningLocationIssueBodyType(TypedDict):
-    """SecretScanningLocationIssueBody
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
 
-    Represents an 'issue_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of an issue.
-    """
-
-    issue_body_url: str
+    type: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
 
 
-class SecretScanningLocationIssueBodyTypeForResponse(TypedDict):
-    """SecretScanningLocationIssueBody
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
 
-    Represents an 'issue_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of an issue.
-    """
-
-    issue_body_url: str
-
-
-class SecretScanningLocationDiscussionTitleType(TypedDict):
-    """SecretScanningLocationDiscussionTitle
-
-    Represents a 'discussion_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a discussion.
-    """
-
-    discussion_title_url: str
-
-
-class SecretScanningLocationDiscussionTitleTypeForResponse(TypedDict):
-    """SecretScanningLocationDiscussionTitle
-
-    Represents a 'discussion_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a discussion.
-    """
-
-    discussion_title_url: str
-
-
-class SecretScanningLocationDiscussionCommentType(TypedDict):
-    """SecretScanningLocationDiscussionComment
-
-    Represents a 'discussion_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a discussion.
-    """
-
-    discussion_comment_url: str
-
-
-class SecretScanningLocationDiscussionCommentTypeForResponse(TypedDict):
-    """SecretScanningLocationDiscussionComment
-
-    Represents a 'discussion_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a discussion.
-    """
-
-    discussion_comment_url: str
-
-
-class SecretScanningLocationPullRequestBodyType(TypedDict):
-    """SecretScanningLocationPullRequestBody
-
-    Represents a 'pull_request_body' secret scanning location type. This location
-    type shows that a secret was detected in the body of a pull request.
-    """
-
-    pull_request_body_url: str
-
-
-class SecretScanningLocationPullRequestBodyTypeForResponse(TypedDict):
-    """SecretScanningLocationPullRequestBody
-
-    Represents a 'pull_request_body' secret scanning location type. This location
-    type shows that a secret was detected in the body of a pull request.
-    """
-
-    pull_request_body_url: str
-
-
-class SecretScanningLocationPullRequestReviewType(TypedDict):
-    """SecretScanningLocationPullRequestReview
-
-    Represents a 'pull_request_review' secret scanning location type. This location
-    type shows that a secret was detected in a review on a pull request.
-    """
-
-    pull_request_review_url: str
-
-
-class SecretScanningLocationPullRequestReviewTypeForResponse(TypedDict):
-    """SecretScanningLocationPullRequestReview
-
-    Represents a 'pull_request_review' secret scanning location type. This location
-    type shows that a secret was detected in a review on a pull request.
-    """
-
-    pull_request_review_url: str
+    type: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "SecretScanningLocationCommitType",
-    "SecretScanningLocationCommitTypeForResponse",
-    "SecretScanningLocationDiscussionCommentType",
-    "SecretScanningLocationDiscussionCommentTypeForResponse",
-    "SecretScanningLocationDiscussionTitleType",
-    "SecretScanningLocationDiscussionTitleTypeForResponse",
-    "SecretScanningLocationIssueBodyType",
-    "SecretScanningLocationIssueBodyTypeForResponse",
-    "SecretScanningLocationPullRequestBodyType",
-    "SecretScanningLocationPullRequestBodyTypeForResponse",
-    "SecretScanningLocationPullRequestReviewType",
-    "SecretScanningLocationPullRequestReviewTypeForResponse",
-    "SecretScanningLocationWikiCommitType",
-    "SecretScanningLocationWikiCommitTypeForResponse",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse",
+    "RuleSuitePropRuleEvaluationsItemsType",
+    "RuleSuitePropRuleEvaluationsItemsTypeForResponse",
+    "RuleSuiteType",
+    "RuleSuiteTypeForResponse",
 )

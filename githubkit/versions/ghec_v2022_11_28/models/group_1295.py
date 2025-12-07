@@ -14,13 +14,15 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody"""
+class ReposOwnerRepoGitRefsPostBody(GitHubModel):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
+    ref: str = Field(
+        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    )
+    sha: str = Field(description="The SHA1 value for this reference.")
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody)
+model_rebuild(ReposOwnerRepoGitRefsPostBody)
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody",)
+__all__ = ("ReposOwnerRepoGitRefsPostBody",)

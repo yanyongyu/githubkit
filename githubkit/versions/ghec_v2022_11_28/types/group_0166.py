@@ -10,28 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0167 import (
+    RepositoryRuleMergeQueuePropParametersType,
+    RepositoryRuleMergeQueuePropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleParamsCopilotCodeReviewAnalysisToolType(TypedDict):
-    """CopilotCodeReviewAnalysisTool
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    A tool that must provide code review results for this rule to pass.
+    Merges must be performed via a merge queue.
     """
 
-    name: Literal["CodeQL", "ESLint", "PMD"]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-class RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse(TypedDict):
-    """CopilotCodeReviewAnalysisTool
+class RepositoryRuleMergeQueueTypeForResponse(TypedDict):
+    """merge_queue
 
-    A tool that must provide code review results for this rule to pass.
+    Merges must be performed via a merge queue.
     """
 
-    name: Literal["CodeQL", "ESLint", "PMD"]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolType",
-    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse",
+    "RepositoryRuleMergeQueueType",
+    "RepositoryRuleMergeQueueTypeForResponse",
 )

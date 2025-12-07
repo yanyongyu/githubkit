@@ -9,81 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0482 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
 
 
-class WebhookRubygemsMetadataType(TypedDict):
-    """Ruby Gems metadata"""
+class WebhookOrganizationDeletedType(TypedDict):
+    """organization deleted event"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    readme: NotRequired[str]
-    homepage: NotRequired[str]
-    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
-    platform: NotRequired[str]
-    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
-    repo: NotRequired[str]
-    dependencies: NotRequired[list[WebhookRubygemsMetadataPropDependenciesItemsType]]
-    commit_oid: NotRequired[str]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    membership: NotRequired[WebhooksMembershipType]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookRubygemsMetadataTypeForResponse(TypedDict):
-    """Ruby Gems metadata"""
+class WebhookOrganizationDeletedTypeForResponse(TypedDict):
+    """organization deleted event"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    readme: NotRequired[str]
-    homepage: NotRequired[str]
-    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoTypeForResponse]
-    platform: NotRequired[str]
-    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataTypeForResponse]
-    repo: NotRequired[str]
-    dependencies: NotRequired[
-        list[WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse]
-    ]
-    commit_oid: NotRequired[str]
-
-
-class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
-    """WebhookRubygemsMetadataPropVersionInfo"""
-
-    version: NotRequired[str]
-
-
-class WebhookRubygemsMetadataPropVersionInfoTypeForResponse(TypedDict):
-    """WebhookRubygemsMetadataPropVersionInfo"""
-
-    version: NotRequired[str]
-
-
-WebhookRubygemsMetadataPropMetadataType: TypeAlias = dict[str, Any]
-"""WebhookRubygemsMetadataPropMetadata
-"""
-
-
-WebhookRubygemsMetadataPropMetadataTypeForResponse: TypeAlias = dict[str, Any]
-"""WebhookRubygemsMetadataPropMetadata
-"""
-
-
-WebhookRubygemsMetadataPropDependenciesItemsType: TypeAlias = dict[str, Any]
-"""WebhookRubygemsMetadataPropDependenciesItems
-"""
-
-
-WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse: TypeAlias = dict[str, Any]
-"""WebhookRubygemsMetadataPropDependenciesItems
-"""
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    membership: NotRequired[WebhooksMembershipTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRubygemsMetadataPropDependenciesItemsType",
-    "WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse",
-    "WebhookRubygemsMetadataPropMetadataType",
-    "WebhookRubygemsMetadataPropMetadataTypeForResponse",
-    "WebhookRubygemsMetadataPropVersionInfoType",
-    "WebhookRubygemsMetadataPropVersionInfoTypeForResponse",
-    "WebhookRubygemsMetadataType",
-    "WebhookRubygemsMetadataTypeForResponse",
+    "WebhookOrganizationDeletedType",
+    "WebhookOrganizationDeletedTypeForResponse",
 )

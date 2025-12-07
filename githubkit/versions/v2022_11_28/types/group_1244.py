@@ -9,30 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from typing_extensions import TypedDict
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+class UserEmailsPostBodyOneof0Type(TypedDict):
+    """UserEmailsPostBodyOneof0
 
-    total_count: int
-    repository_selection: NotRequired[str]
-    repositories: list[RepositoryType]
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str]
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+class UserEmailsPostBodyOneof0TypeForResponse(TypedDict):
+    """UserEmailsPostBodyOneof0
 
-    total_count: int
-    repository_selection: NotRequired[str]
-    repositories: list[RepositoryTypeForResponse]
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str]
 
 
 __all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200Type",
-    "UserInstallationsInstallationIdRepositoriesGetResponse200TypeForResponse",
+    "UserEmailsPostBodyOneof0Type",
+    "UserEmailsPostBodyOneof0TypeForResponse",
 )

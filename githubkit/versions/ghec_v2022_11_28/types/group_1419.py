@@ -12,15 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class UserSocialAccountsDeleteBodyType(TypedDict):
+    """UserSocialAccountsDeleteBody
+
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str]
 
 
-class UserInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class UserSocialAccountsDeleteBodyTypeForResponse(TypedDict):
+    """UserSocialAccountsDeleteBody
+
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str]
 
 
 __all__ = (
-    "UserInteractionLimitsGetResponse200Anyof1Type",
-    "UserInteractionLimitsGetResponse200Anyof1TypeForResponse",
+    "UserSocialAccountsDeleteBodyType",
+    "UserSocialAccountsDeleteBodyTypeForResponse",
 )

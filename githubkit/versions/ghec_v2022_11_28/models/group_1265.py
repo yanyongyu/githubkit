@@ -16,29 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
+class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
+    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-    total_count: int = Field()
-    devcontainers: list[
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems
-    ] = Field()
-
-
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems(
-    GitHubModel
-):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
-
-    path: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    display_name: Missing[str] = Field(default=UNSET)
+    permission: Missing[str] = Field(
+        default=UNSET,
+        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
+    )
 
 
-model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200)
-model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems)
+model_rebuild(ReposOwnerRepoCollaboratorsUsernamePutBody)
 
-__all__ = (
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems",
-)
+__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBody",)

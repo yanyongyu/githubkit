@@ -9,27 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class MarkdownPostBodyType(TypedDict):
-    """MarkdownPostBody"""
+class GistsPostBodyType(TypedDict):
+    """GistsPostBody"""
 
-    text: str
-    mode: NotRequired[Literal["markdown", "gfm"]]
-    context: NotRequired[str]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesType
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-class MarkdownPostBodyTypeForResponse(TypedDict):
-    """MarkdownPostBody"""
+class GistsPostBodyTypeForResponse(TypedDict):
+    """GistsPostBody"""
 
-    text: str
-    mode: NotRequired[Literal["markdown", "gfm"]]
-    context: NotRequired[str]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesTypeForResponse
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
+
+
+GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
+
+Names and content for the files that make up the gist
+
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
+
+
+GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
+
+Names and content for the files that make up the gist
+
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
 
 
 __all__ = (
-    "MarkdownPostBodyType",
-    "MarkdownPostBodyTypeForResponse",
+    "GistsPostBodyPropFilesType",
+    "GistsPostBodyPropFilesTypeForResponse",
+    "GistsPostBodyType",
+    "GistsPostBodyTypeForResponse",
 )

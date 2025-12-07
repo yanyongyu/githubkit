@@ -14,31 +14,47 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodespaceMachine(GitHubModel):
-    """Codespace machine
+class CodeScanningAlertRuleSummary(GitHubModel):
+    """CodeScanningAlertRuleSummary"""
 
-    A description of the machine powering a codespace.
-    """
-
-    name: str = Field(description="The name of the machine.")
-    display_name: str = Field(
-        description="The display name of the machine includes cores, memory, and storage."
+    id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A unique identifier for the rule used to detect the alert.",
     )
-    operating_system: str = Field(description="The operating system of the machine.")
-    storage_in_bytes: int = Field(
-        description="How much storage is available to the codespace."
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the rule used to detect the alert."
     )
-    memory_in_bytes: int = Field(
-        description="How much memory is available to the codespace."
+    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
+        default=UNSET, description="The severity of the alert."
     )
-    cpus: int = Field(description="How many cores are available to the codespace.")
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]] = Field(
-        description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
+    security_severity_level: Missing[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ] = Field(default=UNSET, description="The security severity of the alert.")
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description of the rule used to detect the alert.",
+    )
+    full_description: Missing[str] = Field(
+        default=UNSET, description="A description of the rule used to detect the alert."
+    )
+    tags: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A set of tags applicable for the rule."
+    )
+    help_: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="help",
+        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
+    )
+    help_uri: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A link to the documentation for the rule used to detect the alert.",
     )
 
 
-model_rebuild(CodespaceMachine)
+model_rebuild(CodeScanningAlertRuleSummary)
 
-__all__ = ("CodespaceMachine",)
+__all__ = ("CodeScanningAlertRuleSummary",)

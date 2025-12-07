@@ -13,44 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0047 import IssueType, IssueTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0622 import (
-    WebhookIssuesClosedPropIssueType,
-    WebhookIssuesClosedPropIssueTypeForResponse,
-)
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssuesClosedType(TypedDict):
-    """issues closed event"""
+class WebhookIssueDependenciesBlockedByAddedType(TypedDict):
+    """blocked by issue added event"""
 
-    action: Literal["closed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["blocked_by_added"]
+    blocked_issue_id: float
+    blocked_issue: IssueType
+    blocking_issue_id: float
+    blocking_issue: IssueType
+    blocking_issue_repo: RepositoryType
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesClosedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    organization: OrganizationSimpleWebhooksType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesClosedTypeForResponse(TypedDict):
-    """issues closed event"""
+class WebhookIssueDependenciesBlockedByAddedTypeForResponse(TypedDict):
+    """blocked by issue added event"""
 
-    action: Literal["closed"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["blocked_by_added"]
+    blocked_issue_id: float
+    blocked_issue: IssueTypeForResponse
+    blocking_issue_id: float
+    blocking_issue: IssueTypeForResponse
+    blocking_issue_repo: RepositoryTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesClosedPropIssueTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesClosedType",
-    "WebhookIssuesClosedTypeForResponse",
+    "WebhookIssueDependenciesBlockedByAddedType",
+    "WebhookIssueDependenciesBlockedByAddedTypeForResponse",
 )

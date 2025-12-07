@@ -12,35 +12,35 @@ from __future__ import annotations
 import datetime as _dt
 from typing_extensions import TypedDict
 
-from .group_0169 import (
+from .group_0171 import (
     RulesetVersionPropActorType,
     RulesetVersionPropActorTypeForResponse,
 )
-from .group_0172 import (
-    RulesetVersionWithStateAllof1PropStateType,
-    RulesetVersionWithStateAllof1PropStateTypeForResponse,
-)
 
 
-class RulesetVersionWithStateType(TypedDict):
-    """RulesetVersionWithState"""
+class RulesetVersionType(TypedDict):
+    """Ruleset version
+
+    The historical version of a ruleset
+    """
 
     version_id: int
     actor: RulesetVersionPropActorType
     updated_at: _dt.datetime
-    state: RulesetVersionWithStateAllof1PropStateType
 
 
-class RulesetVersionWithStateTypeForResponse(TypedDict):
-    """RulesetVersionWithState"""
+class RulesetVersionTypeForResponse(TypedDict):
+    """Ruleset version
+
+    The historical version of a ruleset
+    """
 
     version_id: int
     actor: RulesetVersionPropActorTypeForResponse
     updated_at: str
-    state: RulesetVersionWithStateAllof1PropStateTypeForResponse
 
 
 __all__ = (
-    "RulesetVersionWithStateType",
-    "RulesetVersionWithStateTypeForResponse",
+    "RulesetVersionType",
+    "RulesetVersionTypeForResponse",
 )

@@ -14,12 +14,18 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchRenamePostBody(GitHubModel):
-    """ReposOwnerRepoBranchesBranchRenamePostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
 
-    new_name: str = Field(description="The new name of the branch.")
+    Examples:
+        {'teams': ['my-team']}
+    """
+
+    teams: list[str] = Field(description="The slug values for teams")
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchRenamePostBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0)
 
-__all__ = ("ReposOwnerRepoBranchesBranchRenamePostBody",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0",)

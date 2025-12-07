@@ -9,44 +9,101 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0475 import MergeGroupType, MergeGroupTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0464 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookMergeGroupDestroyedType(TypedDict):
-    """WebhookMergeGroupDestroyed"""
+class WebhookMemberEditedType(TypedDict):
+    """member edited event"""
 
-    action: Literal["destroyed"]
-    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
+    action: Literal["edited"]
+    changes: WebhookMemberEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    merge_group: MergeGroupType
+    member: Union[WebhooksUserType, None]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookMergeGroupDestroyedTypeForResponse(TypedDict):
-    """WebhookMergeGroupDestroyed"""
+class WebhookMemberEditedTypeForResponse(TypedDict):
+    """member edited event"""
 
-    action: Literal["destroyed"]
-    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
+    action: Literal["edited"]
+    changes: WebhookMemberEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    merge_group: MergeGroupTypeForResponse
+    member: Union[WebhooksUserTypeForResponse, None]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookMemberEditedPropChangesType(TypedDict):
+    """WebhookMemberEditedPropChanges
+
+    The changes to the collaborator permissions
+    """
+
+    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
+    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
+
+
+class WebhookMemberEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChanges
+
+    The changes to the collaborator permissions
+    """
+
+    old_permission: NotRequired[
+        WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse
+    ]
+    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionTypeForResponse]
+
+
+class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
+
+    from_: str
+
+
+class WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
+
+    from_: str
+
+
+class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookMemberEditedPropChangesPropPermissionTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhookMergeGroupDestroyedType",
-    "WebhookMergeGroupDestroyedTypeForResponse",
+    "WebhookMemberEditedPropChangesPropOldPermissionType",
+    "WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse",
+    "WebhookMemberEditedPropChangesPropPermissionType",
+    "WebhookMemberEditedPropChangesPropPermissionTypeForResponse",
+    "WebhookMemberEditedPropChangesType",
+    "WebhookMemberEditedPropChangesTypeForResponse",
+    "WebhookMemberEditedType",
+    "WebhookMemberEditedTypeForResponse",
 )

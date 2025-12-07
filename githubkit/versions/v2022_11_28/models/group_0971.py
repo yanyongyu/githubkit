@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostResponse201(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
+class OrgsOrgCodespacesAccessSelectedUsersPostBody(GitHubModel):
+    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
 
-    The total number of seats created for members of the specified team(s).
-    """
+    selected_usernames: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The usernames of the organization members whose codespaces be billed to the organization.",
+    )
 
-    seats_created: int = Field()
 
+model_rebuild(OrgsOrgCodespacesAccessSelectedUsersPostBody)
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostResponse201)
-
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",)
+__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBody",)

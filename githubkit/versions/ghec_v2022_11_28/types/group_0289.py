@@ -9,33 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ProjectCollaboratorPermissionType(TypedDict):
-    """Project Collaborator Permission
+class ReactionType(TypedDict):
+    """Reaction
 
-    Project Collaborator Permission
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    permission: str
+    id: int
+    node_id: str
     user: Union[None, SimpleUserType]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: _dt.datetime
 
 
-class ProjectCollaboratorPermissionTypeForResponse(TypedDict):
-    """Project Collaborator Permission
+class ReactionTypeForResponse(TypedDict):
+    """Reaction
 
-    Project Collaborator Permission
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    permission: str
+    id: int
+    node_id: str
     user: Union[None, SimpleUserTypeForResponse]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: str
 
 
 __all__ = (
-    "ProjectCollaboratorPermissionType",
-    "ProjectCollaboratorPermissionTypeForResponse",
+    "ReactionType",
+    "ReactionTypeForResponse",
 )

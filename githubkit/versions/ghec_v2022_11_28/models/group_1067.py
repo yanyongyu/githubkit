@@ -12,19 +12,15 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0020 import Repository
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+class OrgsOrgActionsHostedRunnersPlatformsGetResponse200(GitHubModel):
+    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
 
-    total_count: Missing[int] = Field(default=UNSET)
-    repositories: Missing[list[Repository]] = Field(default=UNSET)
+    total_count: int = Field()
+    platforms: list[str] = Field()
 
 
-model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200)
+model_rebuild(OrgsOrgActionsHostedRunnersPlatformsGetResponse200)
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgActionsHostedRunnersPlatformsGetResponse200",)

@@ -13,46 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0817 import (
-    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType,
-    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse,
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0497 import (
+    SecretScanningAlertWebhookType,
+    SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecurityAdvisoryWithdrawnType(TypedDict):
-    """security_advisory withdrawn event"""
+class WebhookSecretScanningAlertReopenedType(TypedDict):
+    """secret_scanning_alert reopened event"""
 
-    action: Literal["withdrawn"]
+    action: Literal["reopened"]
+    alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
+    repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecurityAdvisoryWithdrawnTypeForResponse(TypedDict):
-    """security_advisory withdrawn event"""
+class WebhookSecretScanningAlertReopenedTypeForResponse(TypedDict):
+    """secret_scanning_alert reopened event"""
 
-    action: Literal["withdrawn"]
+    action: Literal["reopened"]
+    alert: SecretScanningAlertWebhookTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    security_advisory: (
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse
-    )
+    repository: RepositoryWebhooksTypeForResponse
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecurityAdvisoryWithdrawnType",
-    "WebhookSecurityAdvisoryWithdrawnTypeForResponse",
+    "WebhookSecretScanningAlertReopenedType",
+    "WebhookSecretScanningAlertReopenedTypeForResponse",
 )

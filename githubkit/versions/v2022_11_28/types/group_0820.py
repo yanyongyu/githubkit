@@ -9,25 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0060 import SecurityAndAnalysisType, SecurityAndAnalysisTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSecurityAndAnalysisPropChangesPropFromType(TypedDict):
-    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
+class WebhookSecretScanningScanCompletedType(TypedDict):
+    """secret_scanning_scan completed event"""
 
-    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
+    action: Literal["completed"]
+    type: Literal["backfill", "custom-pattern-backfill", "pattern-version-backfill"]
+    source: Literal["git", "issues", "pull-requests", "discussions", "wiki"]
+    started_at: _dt.datetime
+    completed_at: _dt.datetime
+    secret_types: NotRequired[Union[list[str], None]]
+    custom_pattern_name: NotRequired[Union[str, None]]
+    custom_pattern_scope: NotRequired[
+        Union[None, Literal["repository", "organization", "enterprise"]]
+    ]
+    repository: NotRequired[RepositoryWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse(TypedDict):
-    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
+class WebhookSecretScanningScanCompletedTypeForResponse(TypedDict):
+    """secret_scanning_scan completed event"""
 
-    security_and_analysis: NotRequired[Union[SecurityAndAnalysisTypeForResponse, None]]
+    action: Literal["completed"]
+    type: Literal["backfill", "custom-pattern-backfill", "pattern-version-backfill"]
+    source: Literal["git", "issues", "pull-requests", "discussions", "wiki"]
+    started_at: str
+    completed_at: str
+    secret_types: NotRequired[Union[list[str], None]]
+    custom_pattern_name: NotRequired[Union[str, None]]
+    custom_pattern_scope: NotRequired[
+        Union[None, Literal["repository", "organization", "enterprise"]]
+    ]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecurityAndAnalysisPropChangesPropFromType",
-    "WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse",
+    "WebhookSecretScanningScanCompletedType",
+    "WebhookSecretScanningScanCompletedTypeForResponse",
 )

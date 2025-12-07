@@ -12,16 +12,31 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
 
-    organization_slugs: list[str] = Field(
-        description="Organization slug to unassign the team from."
+    users: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The usernames of the users to remove from the cost center.",
+    )
+    organizations: Missing[list[str]] = Field(
+        default=UNSET, description="The organizations to remove from the cost center."
+    )
+    repositories: Missing[list[str]] = Field(
+        default=UNSET, description="The repositories to remove from the cost center."
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody
+)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody",)
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody",
+)

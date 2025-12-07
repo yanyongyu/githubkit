@@ -14,12 +14,12 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesCommentsCommentIdPatchBody(GitHubModel):
-    """ReposOwnerRepoIssuesCommentsCommentIdPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberCommentsPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
 
     body: str = Field(description="The contents of the comment.")
 
 
-model_rebuild(ReposOwnerRepoIssuesCommentsCommentIdPatchBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberCommentsPostBody)
 
-__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdPatchBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberCommentsPostBody",)

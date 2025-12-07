@@ -12,28 +12,28 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0165 import (
-    RepositoryRuleCopilotCodeReviewPropParametersType,
-    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
+from .group_0151 import (
+    RepositoryRuleFileExtensionRestrictionPropParametersType,
+    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof21Type(TypedDict):
-    """RepositoryRuleDetailedOneof21"""
+class RepositoryRuleDetailedOneof17Type(TypedDict):
+    """RepositoryRuleDetailedOneof17"""
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof21TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof21"""
+class RepositoryRuleDetailedOneof17TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof17"""
 
-    type: Literal["copilot_code_review"]
+    type: Literal["file_extension_restriction"]
     parameters: NotRequired[
-        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
+        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
     ]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
@@ -41,6 +41,6 @@ class RepositoryRuleDetailedOneof21TypeForResponse(TypedDict):
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof21Type",
-    "RepositoryRuleDetailedOneof21TypeForResponse",
+    "RepositoryRuleDetailedOneof17Type",
+    "RepositoryRuleDetailedOneof17TypeForResponse",
 )

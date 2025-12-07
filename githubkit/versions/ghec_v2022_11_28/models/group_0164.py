@@ -9,30 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0165 import RepositoryRuleCopilotCodeReviewPropParameters
+from .group_0113 import RepositoryRulesetConditionsPropRefName
+from .group_0162 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
 
-class RepositoryRuleCopilotCodeReview(GitHubModel):
-    """copilot_code_review
+class OrgRulesetConditionsOneof1(GitHubModel):
+    """repository_id_and_ref_name
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review.
+    Conditions to target repositories by id and refs by name
     """
 
-    type: Literal["copilot_code_review"] = Field()
-    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
-        default=UNSET
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field()
     )
 
 
-model_rebuild(RepositoryRuleCopilotCodeReview)
+model_rebuild(OrgRulesetConditionsOneof1)
 
-__all__ = ("RepositoryRuleCopilotCodeReview",)
+__all__ = ("OrgRulesetConditionsOneof1",)

@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
-    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
 
-    key_id: str
-    key: str
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422TypeForResponse(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
 
-    key_id: str
-    key: str
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",
-    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse",
+    "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",
+    "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422TypeForResponse",
 )

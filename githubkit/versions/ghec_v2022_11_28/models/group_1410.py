@@ -16,21 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesCodespaceNamePatchBody(GitHubModel):
-    """UserCodespacesCodespaceNamePatchBody"""
+class UserGpgKeysPostBody(GitHubModel):
+    """UserGpgKeysPostBody"""
 
-    machine: Missing[str] = Field(
-        default=UNSET, description="A valid machine to transition this codespace to."
+    name: Missing[str] = Field(
+        default=UNSET, description="A descriptive name for the new key."
     )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    recent_folders: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.",
-    )
+    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
 
 
-model_rebuild(UserCodespacesCodespaceNamePatchBody)
+model_rebuild(UserGpgKeysPostBody)
 
-__all__ = ("UserCodespacesCodespaceNamePatchBody",)
+__all__ = ("UserGpgKeysPostBody",)

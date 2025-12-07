@@ -11,26 +11,31 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0044 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
+from .group_0037 import (
+    ActionsHostedRunnerCuratedImageType,
+    ActionsHostedRunnerCuratedImageTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
-
-    total_count: float
-    organizations: list[OrganizationSimpleType]
-
-
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+    """EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
-    total_count: float
-    organizations: list[OrganizationSimpleTypeForResponse]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageType]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200"""
+
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type",
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse",
 )

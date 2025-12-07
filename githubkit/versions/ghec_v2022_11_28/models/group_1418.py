@@ -12,20 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0020 import Repository
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+class UserSocialAccountsPostBody(GitHubModel):
+    """UserSocialAccountsPostBody
 
-    total_count: int = Field()
-    repository_selection: Missing[str] = Field(default=UNSET)
-    repositories: list[Repository] = Field()
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str] = Field(
+        description="Full URLs for the social media profiles to add."
+    )
 
 
-model_rebuild(UserInstallationsInstallationIdRepositoriesGetResponse200)
+model_rebuild(UserSocialAccountsPostBody)
 
-__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200",)
+__all__ = ("UserSocialAccountsPostBody",)

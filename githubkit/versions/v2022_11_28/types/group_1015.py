@@ -9,54 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
-
-
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
-
-    total_count: int
-    network_configurations: list[NetworkConfigurationTypeForResponse]
+    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType]
 
 
-class NetworkConfigurationType(TypedDict):
-    """Hosted compute network configuration
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    A hosted compute network configuration.
-    """
-
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    created_on: Union[_dt.datetime, None]
+    fields: list[
+        OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
+    ]
 
 
-class NetworkConfigurationTypeForResponse(TypedDict):
-    """Hosted compute network configuration
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
 
-    A hosted compute network configuration.
-    """
+    id: int
+    value: Union[str, float, None]
 
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    created_on: Union[str, None]
+
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+
+    id: int
+    value: Union[str, float, None]
 
 
 __all__ = (
-    "NetworkConfigurationType",
-    "NetworkConfigurationTypeForResponse",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
 )

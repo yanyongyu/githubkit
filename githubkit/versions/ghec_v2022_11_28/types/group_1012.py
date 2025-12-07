@@ -9,28 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0095 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
-
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
-
-
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationTypeForResponse]
+    message: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
+
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type",
-    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202TypeForResponse",
 )

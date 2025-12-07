@@ -14,23 +14,18 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0(
     GitHubModel
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
 
     Examples:
-        {'contexts': ['contexts']}
+        {'teams': ['my-team']}
     """
 
-    contexts: list[str] = Field(description="The name of the status checks")
+    teams: list[str] = Field(description="The slug values for teams")
 
 
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0
-)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0)
 
-__all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0",
-)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0",)

@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningOptionsType(TypedDict):
-    """CodeScanningOptions
+class ActionsCacheStorageLimitForEnterpriseType(TypedDict):
+    """Actions cache storage limit for an enterprise
 
-    Security Configuration feature options for code scanning
+    GitHub Actions cache storage policy for an enterprise.
     """
 
-    allow_advanced: NotRequired[Union[bool, None]]
+    max_cache_size_gb: NotRequired[int]
 
 
-class CodeScanningOptionsTypeForResponse(TypedDict):
-    """CodeScanningOptions
+class ActionsCacheStorageLimitForEnterpriseTypeForResponse(TypedDict):
+    """Actions cache storage limit for an enterprise
 
-    Security Configuration feature options for code scanning
+    GitHub Actions cache storage policy for an enterprise.
     """
 
-    allow_advanced: NotRequired[Union[bool, None]]
+    max_cache_size_gb: NotRequired[int]
 
 
 __all__ = (
-    "CodeScanningOptionsType",
-    "CodeScanningOptionsTypeForResponse",
+    "ActionsCacheStorageLimitForEnterpriseType",
+    "ActionsCacheStorageLimitForEnterpriseTypeForResponse",
 )

@@ -9,45 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0540 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0554 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
 
 
-class WebhookOrgBlockUnblockedType(TypedDict):
-    """org_block unblocked event"""
+class WebhookMilestoneDeletedType(TypedDict):
+    """milestone deleted event"""
 
-    action: Literal["unblocked"]
-    blocked_user: Union[WebhooksUserType, None]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
+    milestone: WebhooksMilestoneType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookOrgBlockUnblockedTypeForResponse(TypedDict):
-    """org_block unblocked event"""
+class WebhookMilestoneDeletedTypeForResponse(TypedDict):
+    """milestone deleted event"""
 
-    action: Literal["unblocked"]
-    blocked_user: Union[WebhooksUserTypeForResponse, None]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    milestone: WebhooksMilestoneTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookOrgBlockUnblockedType",
-    "WebhookOrgBlockUnblockedTypeForResponse",
+    "WebhookMilestoneDeletedType",
+    "WebhookMilestoneDeletedTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -17,56 +17,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0079 import TeamSimple
 
+class GetConsumedLicenses(GitHubModel):
+    """Enterprise Consumed Licenses
 
-class Team(GitHubModel):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
+    A breakdown of the licenses consumed by an enterprise.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
-    url: str = Field()
-    html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
+    total_seats_consumed: Missing[int] = Field(default=UNSET)
+    total_seats_purchased: Missing[int] = Field(default=UNSET)
+    users: Missing[list[GetConsumedLicensesPropUsersItems]] = Field(default=UNSET)
+
+
+class GetConsumedLicensesPropUsersItems(GitHubModel):
+    """GetConsumedLicensesPropUsersItems"""
+
+    github_com_login: Missing[str] = Field(default=UNSET)
+    github_com_name: Missing[Union[str, None]] = Field(default=UNSET)
+    enterprise_server_user_ids: Missing[list[str]] = Field(default=UNSET)
+    github_com_user: Missing[bool] = Field(default=UNSET)
+    enterprise_server_user: Missing[Union[bool, None]] = Field(default=UNSET)
+    visual_studio_subscription_user: Missing[bool] = Field(default=UNSET)
+    license_type: Missing[str] = Field(default=UNSET)
+    github_com_profile: Missing[Union[str, None]] = Field(default=UNSET)
+    github_com_member_roles: Missing[list[str]] = Field(default=UNSET)
+    github_com_enterprise_roles: Missing[list[str]] = Field(
+        default=UNSET, description="All enterprise roles for a user."
     )
-    organization_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
-    )
-    parent: Union[None, TeamSimple] = Field()
+    github_com_verified_domain_emails: Missing[list[str]] = Field(default=UNSET)
+    github_com_saml_name_id: Missing[Union[str, None]] = Field(default=UNSET)
+    github_com_orgs_with_pending_invites: Missing[list[str]] = Field(default=UNSET)
+    github_com_two_factor_auth: Missing[Union[bool, None]] = Field(default=UNSET)
+    enterprise_server_emails: Missing[list[str]] = Field(default=UNSET)
+    visual_studio_license_status: Missing[Union[str, None]] = Field(default=UNSET)
+    visual_studio_subscription_email: Missing[Union[str, None]] = Field(default=UNSET)
+    total_user_accounts: Missing[int] = Field(default=UNSET)
 
 
-class TeamPropPermissions(GitHubModel):
-    """TeamPropPermissions"""
-
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(Team)
-model_rebuild(TeamPropPermissions)
+model_rebuild(GetConsumedLicenses)
+model_rebuild(GetConsumedLicensesPropUsersItems)
 
 __all__ = (
-    "Team",
-    "TeamPropPermissions",
+    "GetConsumedLicenses",
+    "GetConsumedLicensesPropUsersItems",
 )

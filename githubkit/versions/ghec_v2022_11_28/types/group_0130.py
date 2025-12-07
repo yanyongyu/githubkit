@@ -13,34 +13,36 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0131 import (
-    RepositoryRulePullRequestPropParametersType,
-    RepositoryRulePullRequestPropParametersTypeForResponse,
+    RepositoryRuleRequiredDeploymentsPropParametersType,
+    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
 )
 
 
-class RepositoryRulePullRequestType(TypedDict):
-    """pull_request
+class RepositoryRuleRequiredDeploymentsType(TypedDict):
+    """required_deployments
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
 
 
-class RepositoryRulePullRequestTypeForResponse(TypedDict):
-    """pull_request
+class RepositoryRuleRequiredDeploymentsTypeForResponse(TypedDict):
+    """required_deployments
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersTypeForResponse]
+    type: Literal["required_deployments"]
+    parameters: NotRequired[
+        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRulePullRequestType",
-    "RepositoryRulePullRequestTypeForResponse",
+    "RepositoryRuleRequiredDeploymentsType",
+    "RepositoryRuleRequiredDeploymentsTypeForResponse",
 )

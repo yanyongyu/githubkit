@@ -13,44 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0245 import DeploymentType, DeploymentTypeForResponse
+from .group_0372 import PullRequestType, PullRequestTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0460 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
-from .group_0461 import DiscussionType, DiscussionTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionAnsweredType(TypedDict):
-    """discussion answered event"""
+class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
+    """deployment protection rule requested event"""
 
-    action: Literal["answered"]
-    answer: WebhooksAnswerType
-    discussion: DiscussionType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[DeploymentType]
+    pull_requests: NotRequired[list[PullRequestType]]
+    repository: NotRequired[RepositoryWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    installation: NotRequired[SimpleInstallationType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDiscussionAnsweredTypeForResponse(TypedDict):
-    """discussion answered event"""
+class WebhookDeploymentProtectionRuleRequestedTypeForResponse(TypedDict):
+    """deployment protection rule requested event"""
 
-    action: Literal["answered"]
-    answer: WebhooksAnswerTypeForResponse
-    discussion: DiscussionTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[DeploymentTypeForResponse]
+    pull_requests: NotRequired[list[PullRequestTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookDiscussionAnsweredType",
-    "WebhookDiscussionAnsweredTypeForResponse",
+    "WebhookDeploymentProtectionRuleRequestedType",
+    "WebhookDeploymentProtectionRuleRequestedTypeForResponse",
 )

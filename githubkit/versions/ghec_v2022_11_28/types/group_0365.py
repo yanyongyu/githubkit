@@ -9,73 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0278 import CodeOfConductSimpleType, CodeOfConductSimpleTypeForResponse
 
-class ContentFileType(TypedDict):
-    """Content File
 
-    Content File
+class CommunityProfilePropFilesType(TypedDict):
+    """CommunityProfilePropFiles"""
+
+    code_of_conduct: Union[None, CodeOfConductSimpleType]
+    code_of_conduct_file: Union[None, CommunityHealthFileType]
+    license_: Union[None, LicenseSimpleType]
+    contributing: Union[None, CommunityHealthFileType]
+    readme: Union[None, CommunityHealthFileType]
+    issue_template: Union[None, CommunityHealthFileType]
+    pull_request_template: Union[None, CommunityHealthFileType]
+
+
+class CommunityProfilePropFilesTypeForResponse(TypedDict):
+    """CommunityProfilePropFiles"""
+
+    code_of_conduct: Union[None, CodeOfConductSimpleTypeForResponse]
+    code_of_conduct_file: Union[None, CommunityHealthFileTypeForResponse]
+    license_: Union[None, LicenseSimpleTypeForResponse]
+    contributing: Union[None, CommunityHealthFileTypeForResponse]
+    readme: Union[None, CommunityHealthFileTypeForResponse]
+    issue_template: Union[None, CommunityHealthFileTypeForResponse]
+    pull_request_template: Union[None, CommunityHealthFileTypeForResponse]
+
+
+class CommunityHealthFileType(TypedDict):
+    """Community Health File"""
+
+    url: str
+    html_url: str
+
+
+class CommunityHealthFileTypeForResponse(TypedDict):
+    """Community Health File"""
+
+    url: str
+    html_url: str
+
+
+class CommunityProfileType(TypedDict):
+    """Community Profile
+
+    Community Profile
     """
 
-    type: Literal["file"]
-    encoding: str
-    size: int
-    name: str
-    path: str
-    content: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentFilePropLinksType
-    target: NotRequired[str]
-    submodule_git_url: NotRequired[str]
+    health_percentage: int
+    description: Union[str, None]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesType
+    updated_at: Union[_dt.datetime, None]
+    content_reports_enabled: NotRequired[bool]
 
 
-class ContentFileTypeForResponse(TypedDict):
-    """Content File
+class CommunityProfileTypeForResponse(TypedDict):
+    """Community Profile
 
-    Content File
+    Community Profile
     """
 
-    type: Literal["file"]
-    encoding: str
-    size: int
-    name: str
-    path: str
-    content: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentFilePropLinksTypeForResponse
-    target: NotRequired[str]
-    submodule_git_url: NotRequired[str]
-
-
-class ContentFilePropLinksType(TypedDict):
-    """ContentFilePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentFilePropLinksTypeForResponse(TypedDict):
-    """ContentFilePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    health_percentage: int
+    description: Union[str, None]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesTypeForResponse
+    updated_at: Union[str, None]
+    content_reports_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "ContentFilePropLinksType",
-    "ContentFilePropLinksTypeForResponse",
-    "ContentFileType",
-    "ContentFileTypeForResponse",
+    "CommunityHealthFileType",
+    "CommunityHealthFileTypeForResponse",
+    "CommunityProfilePropFilesType",
+    "CommunityProfilePropFilesTypeForResponse",
+    "CommunityProfileType",
+    "CommunityProfileTypeForResponse",
 )

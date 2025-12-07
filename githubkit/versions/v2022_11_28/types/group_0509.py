@@ -9,28 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0459 import (
+    CheckRunWithSimpleCheckSuiteType,
+    CheckRunWithSimpleCheckSuiteTypeForResponse,
+)
 
 
-class WebhookCheckRunRerequestedFormEncodedType(TypedDict):
-    """Check Run Re-Requested Event
+class WebhookCheckRunCreatedType(TypedDict):
+    """Check Run Created Event"""
 
-    The check_run.rerequested webhook encoded with URL encoding
-    """
+    action: Literal["created"]
+    check_run: CheckRunWithSimpleCheckSuiteType
+    installation: NotRequired[SimpleInstallationType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
-    payload: str
 
+class WebhookCheckRunCreatedTypeForResponse(TypedDict):
+    """Check Run Created Event"""
 
-class WebhookCheckRunRerequestedFormEncodedTypeForResponse(TypedDict):
-    """Check Run Re-Requested Event
-
-    The check_run.rerequested webhook encoded with URL encoding
-    """
-
-    payload: str
+    action: Literal["created"]
+    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCheckRunRerequestedFormEncodedType",
-    "WebhookCheckRunRerequestedFormEncodedTypeForResponse",
+    "WebhookCheckRunCreatedType",
+    "WebhookCheckRunCreatedTypeForResponse",
 )

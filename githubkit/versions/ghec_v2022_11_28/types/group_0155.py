@@ -13,36 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0156 import (
-    RepositoryRuleCodeScanningPropParametersType,
-    RepositoryRuleCodeScanningPropParametersTypeForResponse,
+    RepositoryRuleWorkflowsPropParametersType,
+    RepositoryRuleWorkflowsPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleCodeScanningType(TypedDict):
-    """code_scanning
+class RepositoryRuleWorkflowsType(TypedDict):
+    """workflows
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
 
 
-class RepositoryRuleCodeScanningTypeForResponse(TypedDict):
-    """code_scanning
+class RepositoryRuleWorkflowsTypeForResponse(TypedDict):
+    """workflows
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleCodeScanningType",
-    "RepositoryRuleCodeScanningTypeForResponse",
+    "RepositoryRuleWorkflowsType",
+    "RepositoryRuleWorkflowsTypeForResponse",
 )

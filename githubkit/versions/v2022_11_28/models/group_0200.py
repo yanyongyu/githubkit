@@ -16,16 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RulesetVersionPropActor(GitHubModel):
-    """RulesetVersionPropActor
+class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    The actor who updated the ruleset
-    """
+    review_draft_pull_requests: Missing[bool] = Field(
+        default=UNSET,
+        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
+    )
+    review_on_push: Missing[bool] = Field(
+        default=UNSET,
+        description="Copilot automatically reviews each new push to the pull request.",
+    )
 
-    id: Missing[int] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
 
+model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
 
-model_rebuild(RulesetVersionPropActor)
-
-__all__ = ("RulesetVersionPropActor",)
+__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)

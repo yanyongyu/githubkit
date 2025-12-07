@@ -9,124 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0448 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0449 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0450 import (
+from .group_0216 import RepositoryAdvisoryType, RepositoryAdvisoryTypeForResponse
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0451 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryEditedType(TypedDict):
-    """repository edited event"""
+class WebhookRepositoryAdvisoryReportedType(TypedDict):
+    """Repository advisory reported event"""
 
-    action: Literal["edited"]
-    changes: WebhookRepositoryEditedPropChangesType
+    action: Literal["reported"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    repository_advisory: RepositoryAdvisoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookRepositoryEditedTypeForResponse(TypedDict):
-    """repository edited event"""
+class WebhookRepositoryAdvisoryReportedTypeForResponse(TypedDict):
+    """Repository advisory reported event"""
 
-    action: Literal["edited"]
-    changes: WebhookRepositoryEditedPropChangesTypeForResponse
+    action: Literal["reported"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookRepositoryEditedPropChangesType(TypedDict):
-    """WebhookRepositoryEditedPropChanges"""
-
-    default_branch: NotRequired[WebhookRepositoryEditedPropChangesPropDefaultBranchType]
-    description: NotRequired[WebhookRepositoryEditedPropChangesPropDescriptionType]
-    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageType]
-    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsType]
-
-
-class WebhookRepositoryEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChanges"""
-
-    default_branch: NotRequired[
-        WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse
-    ]
-    description: NotRequired[
-        WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse
-    ]
-    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse]
-    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse]
-
-
-class WebhookRepositoryEditedPropChangesPropDefaultBranchType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
-
-    from_: str
-
-
-class WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
-
-    from_: str
-
-
-class WebhookRepositoryEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
-
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
-
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropHomepageType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
-
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
-
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropTopicsType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
-
-    from_: NotRequired[Union[list[str], None]]
-
-
-class WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
-
-    from_: NotRequired[Union[list[str], None]]
+    repository_advisory: RepositoryAdvisoryTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookRepositoryEditedPropChangesPropDefaultBranchType",
-    "WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropDescriptionType",
-    "WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropHomepageType",
-    "WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropTopicsType",
-    "WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse",
-    "WebhookRepositoryEditedPropChangesType",
-    "WebhookRepositoryEditedPropChangesTypeForResponse",
-    "WebhookRepositoryEditedType",
-    "WebhookRepositoryEditedTypeForResponse",
+    "WebhookRepositoryAdvisoryReportedType",
+    "WebhookRepositoryAdvisoryReportedTypeForResponse",
 )

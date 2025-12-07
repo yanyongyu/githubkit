@@ -13,51 +13,39 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
+class ReposOwnerRepoCodespacesPostBodyType(TypedDict):
+    """ReposOwnerRepoCodespacesPostBody"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack: str
-    repositories: list[str]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: NotRequired[list[str]]
+    ref: NotRequired[str]
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
+class ReposOwnerRepoCodespacesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesPostBody"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack: str
-    repositories: list[str]
-    repository_lists: NotRequired[list[str]]
-    repository_owners: NotRequired[list[str]]
+    ref: NotRequired[str]
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type",
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoCodespacesPostBodyType",
+    "ReposOwnerRepoCodespacesPostBodyTypeForResponse",
 )

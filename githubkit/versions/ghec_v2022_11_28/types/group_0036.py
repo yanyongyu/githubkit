@@ -12,41 +12,33 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ActionsHostedRunnerLimitsType(TypedDict):
-    """ActionsHostedRunnerLimits"""
+class ActionsHostedRunnerCustomImageVersionType(TypedDict):
+    """GitHub-hosted runner custom image version details.
 
-    public_ips: ActionsHostedRunnerLimitsPropPublicIpsType
-
-
-class ActionsHostedRunnerLimitsTypeForResponse(TypedDict):
-    """ActionsHostedRunnerLimits"""
-
-    public_ips: ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse
-
-
-class ActionsHostedRunnerLimitsPropPublicIpsType(TypedDict):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
-
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    Provides details of a hosted runner custom image version
     """
 
-    maximum: int
-    current_usage: int
+    version: str
+    state: str
+    size_gb: int
+    created_on: str
+    state_details: str
 
 
-class ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse(TypedDict):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
+class ActionsHostedRunnerCustomImageVersionTypeForResponse(TypedDict):
+    """GitHub-hosted runner custom image version details.
 
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    Provides details of a hosted runner custom image version
     """
 
-    maximum: int
-    current_usage: int
+    version: str
+    state: str
+    size_gb: int
+    created_on: str
+    state_details: str
 
 
 __all__ = (
-    "ActionsHostedRunnerLimitsPropPublicIpsType",
-    "ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse",
-    "ActionsHostedRunnerLimitsType",
-    "ActionsHostedRunnerLimitsTypeForResponse",
+    "ActionsHostedRunnerCustomImageVersionType",
+    "ActionsHostedRunnerCustomImageVersionTypeForResponse",
 )

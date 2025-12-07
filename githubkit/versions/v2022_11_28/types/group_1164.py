@@ -9,26 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoLabelsNamePatchBodyType(TypedDict):
-    """ReposOwnerRepoLabelsNamePatchBody"""
+class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
 
-    new_name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[str]
+    sub_issue_id: int
 
 
-class ReposOwnerRepoLabelsNamePatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoLabelsNamePatchBody"""
+class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
 
-    new_name: NotRequired[str]
-    color: NotRequired[str]
-    description: NotRequired[str]
+    sub_issue_id: int
 
 
 __all__ = (
-    "ReposOwnerRepoLabelsNamePatchBodyType",
-    "ReposOwnerRepoLabelsNamePatchBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType",
+    "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyTypeForResponse",
 )

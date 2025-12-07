@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,26 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCustomRepositoryRoleUpdateSchema(GitHubModel):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
+class CodespacesPublicKey(GitHubModel):
+    """CodespacesPublicKey
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
-    )
-    base_role: Missing[Literal["read", "triage", "write", "maintain"]] = Field(
-        default=UNSET,
-        description="The system role from which this role inherits permissions.",
-    )
-    permissions: Missing[list[str]] = Field(
-        default=UNSET,
-        description="A list of additional permissions included in this role.",
-    )
+    The public key used for setting Codespaces secrets.
+    """
+
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationCustomRepositoryRoleUpdateSchema)
+model_rebuild(CodespacesPublicKey)
 
-__all__ = ("OrganizationCustomRepositoryRoleUpdateSchema",)
+__all__ = ("CodespacesPublicKey",)

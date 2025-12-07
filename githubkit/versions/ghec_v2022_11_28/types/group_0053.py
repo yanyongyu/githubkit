@@ -10,33 +10,59 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
-class AnnouncementType(TypedDict):
-    """Enterprise Announcement
 
-    Enterprise global announcement
+class AuthenticationTokenType(TypedDict):
+    """Authentication Token
+
+    Authentication Token
     """
 
-    announcement: Union[str, None]
-    expires_at: NotRequired[Union[_dt.datetime, None]]
-    user_dismissible: NotRequired[Union[bool, None]]
+    token: str
+    expires_at: _dt.datetime
+    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
+    repositories: NotRequired[list[RepositoryType]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
 
 
-class AnnouncementTypeForResponse(TypedDict):
-    """Enterprise Announcement
+class AuthenticationTokenTypeForResponse(TypedDict):
+    """Authentication Token
 
-    Enterprise global announcement
+    Authentication Token
     """
 
-    announcement: Union[str, None]
-    expires_at: NotRequired[Union[str, None]]
-    user_dismissible: NotRequired[Union[bool, None]]
+    token: str
+    expires_at: str
+    permissions: NotRequired[AuthenticationTokenPropPermissionsTypeForResponse]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
+
+
+class AuthenticationTokenPropPermissionsType(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+class AuthenticationTokenPropPermissionsTypeForResponse(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
 
 
 __all__ = (
-    "AnnouncementType",
-    "AnnouncementTypeForResponse",
+    "AuthenticationTokenPropPermissionsType",
+    "AuthenticationTokenPropPermissionsTypeForResponse",
+    "AuthenticationTokenType",
+    "AuthenticationTokenTypeForResponse",
 )

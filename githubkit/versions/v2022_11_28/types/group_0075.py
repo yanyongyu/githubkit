@@ -9,109 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0074 import (
-    ActionsHostedRunnerMachineSpecType,
-    ActionsHostedRunnerMachineSpecTypeForResponse,
-)
+
+class BillingUsageSummaryReportOrgType(TypedDict):
+    """BillingUsageSummaryReportOrg"""
+
+    time_period: BillingUsageSummaryReportOrgPropTimePeriodType
+    organization: str
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsType]
 
 
-class ActionsHostedRunnerType(TypedDict):
-    """GitHub-hosted hosted runner
+class BillingUsageSummaryReportOrgTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportOrg"""
 
-    A Github-hosted hosted runner.
-    """
-
-    id: int
-    name: str
-    runner_group_id: NotRequired[int]
-    image_details: Union[None, ActionsHostedRunnerPoolImageType]
-    machine_size_details: ActionsHostedRunnerMachineSpecType
-    status: Literal["Ready", "Provisioning", "Shutdown", "Deleting", "Stuck"]
-    platform: str
-    maximum_runners: NotRequired[int]
-    public_ip_enabled: bool
-    public_ips: NotRequired[list[PublicIpType]]
-    last_active_on: NotRequired[Union[_dt.datetime, None]]
-    image_gen: NotRequired[bool]
+    time_period: BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse
+    organization: str
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse]
 
 
-class ActionsHostedRunnerTypeForResponse(TypedDict):
-    """GitHub-hosted hosted runner
+class BillingUsageSummaryReportOrgPropTimePeriodType(TypedDict):
+    """BillingUsageSummaryReportOrgPropTimePeriod"""
 
-    A Github-hosted hosted runner.
-    """
-
-    id: int
-    name: str
-    runner_group_id: NotRequired[int]
-    image_details: Union[None, ActionsHostedRunnerPoolImageTypeForResponse]
-    machine_size_details: ActionsHostedRunnerMachineSpecTypeForResponse
-    status: Literal["Ready", "Provisioning", "Shutdown", "Deleting", "Stuck"]
-    platform: str
-    maximum_runners: NotRequired[int]
-    public_ip_enabled: bool
-    public_ips: NotRequired[list[PublicIpTypeForResponse]]
-    last_active_on: NotRequired[Union[str, None]]
-    image_gen: NotRequired[bool]
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class ActionsHostedRunnerPoolImageType(TypedDict):
-    """GitHub-hosted runner image details.
+class BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportOrgPropTimePeriod"""
 
-    Provides details of a hosted runner image
-    """
-
-    id: str
-    size_gb: int
-    display_name: str
-    source: Literal["github", "partner", "custom"]
-    version: NotRequired[str]
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class ActionsHostedRunnerPoolImageTypeForResponse(TypedDict):
-    """GitHub-hosted runner image details.
+class BillingUsageSummaryReportOrgPropUsageItemsItemsType(TypedDict):
+    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
 
-    Provides details of a hosted runner image
-    """
-
-    id: str
-    size_gb: int
-    display_name: str
-    source: Literal["github", "partner", "custom"]
-    version: NotRequired[str]
-
-
-class PublicIpType(TypedDict):
-    """Public IP for a GitHub-hosted larger runners.
-
-    Provides details of Public IP for a GitHub-hosted larger runners
-    """
-
-    enabled: NotRequired[bool]
-    prefix: NotRequired[str]
-    length: NotRequired[int]
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
-class PublicIpTypeForResponse(TypedDict):
-    """Public IP for a GitHub-hosted larger runners.
+class BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
 
-    Provides details of Public IP for a GitHub-hosted larger runners
-    """
-
-    enabled: NotRequired[bool]
-    prefix: NotRequired[str]
-    length: NotRequired[int]
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "ActionsHostedRunnerPoolImageType",
-    "ActionsHostedRunnerPoolImageTypeForResponse",
-    "ActionsHostedRunnerType",
-    "ActionsHostedRunnerTypeForResponse",
-    "PublicIpType",
-    "PublicIpTypeForResponse",
+    "BillingUsageSummaryReportOrgPropTimePeriodType",
+    "BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse",
+    "BillingUsageSummaryReportOrgPropUsageItemsItemsType",
+    "BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse",
+    "BillingUsageSummaryReportOrgType",
+    "BillingUsageSummaryReportOrgTypeForResponse",
 )

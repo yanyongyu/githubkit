@@ -9,120 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class PrivateVulnerabilityReportCreateType(TypedDict):
-    """PrivateVulnerabilityReportCreate"""
+class SecretScanningPushProtectionBypassType(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-    summary: str
-    description: str
-    vulnerabilities: NotRequired[
-        Union[list[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None]
-    ]
-    cwe_ids: NotRequired[Union[list[str], None]]
-    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
-    cvss_vector_string: NotRequired[Union[str, None]]
-    start_private_fork: NotRequired[bool]
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[_dt.datetime, None]]
+    token_type: NotRequired[str]
 
 
-class PrivateVulnerabilityReportCreateTypeForResponse(TypedDict):
-    """PrivateVulnerabilityReportCreate"""
+class SecretScanningPushProtectionBypassTypeForResponse(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-    summary: str
-    description: str
-    vulnerabilities: NotRequired[
-        Union[
-            list[
-                PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse
-            ],
-            None,
-        ]
-    ]
-    cwe_ids: NotRequired[Union[list[str], None]]
-    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
-    cvss_vector_string: NotRequired[Union[str, None]]
-    start_private_fork: NotRequired[bool]
-
-
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType(TypedDict):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
-
-    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType
-    vulnerable_version_range: NotRequired[Union[str, None]]
-    patched_versions: NotRequired[Union[str, None]]
-    vulnerable_functions: NotRequired[Union[list[str], None]]
-
-
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse(
-    TypedDict
-):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
-
-    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse
-    vulnerable_version_range: NotRequired[Union[str, None]]
-    patched_versions: NotRequired[Union[str, None]]
-    vulnerable_functions: NotRequired[Union[list[str], None]]
-
-
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType(
-    TypedDict
-):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ]
-    name: NotRequired[Union[str, None]]
-
-
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse(
-    TypedDict
-):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ]
-    name: NotRequired[Union[str, None]]
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[str, None]]
+    token_type: NotRequired[str]
 
 
 __all__ = (
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse",
-    "PrivateVulnerabilityReportCreateType",
-    "PrivateVulnerabilityReportCreateTypeForResponse",
+    "SecretScanningPushProtectionBypassType",
+    "SecretScanningPushProtectionBypassTypeForResponse",
 )

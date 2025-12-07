@@ -9,27 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0820 import (
-    WebhookSecurityAndAnalysisPropChangesPropFromType,
-    WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0455 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0497 import (
+    SecretScanningAlertWebhookType,
+    SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
-    """WebhookSecurityAndAnalysisPropChanges"""
+class WebhookSecretScanningAlertValidatedType(TypedDict):
+    """secret_scanning_alert validated event"""
 
-    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
+    action: Literal["validated"]
+    alert: SecretScanningAlertWebhookType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecurityAndAnalysisPropChangesTypeForResponse(TypedDict):
-    """WebhookSecurityAndAnalysisPropChanges"""
+class WebhookSecretScanningAlertValidatedTypeForResponse(TypedDict):
+    """secret_scanning_alert validated event"""
 
-    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse]
+    action: Literal["validated"]
+    alert: SecretScanningAlertWebhookTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecurityAndAnalysisPropChangesType",
-    "WebhookSecurityAndAnalysisPropChangesTypeForResponse",
+    "WebhookSecretScanningAlertValidatedType",
+    "WebhookSecretScanningAlertValidatedTypeForResponse",
 )

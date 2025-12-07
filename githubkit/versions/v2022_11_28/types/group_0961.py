@@ -9,38 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0028 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
+from .group_0959 import (
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse,
 )
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
-    TypedDict
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
+class OrgsOrgCampaignsPostBodyOneof1Type(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof1"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
+    name: str
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: _dt.datetime
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: NotRequired[
+        Union[list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None]
     ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    generate_issues: NotRequired[bool]
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
+class OrgsOrgCampaignsPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof1"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
+    name: str
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: str
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: NotRequired[
+        Union[
+            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse],
+            None,
+        ]
     ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    generate_issues: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse",
+    "OrgsOrgCampaignsPostBodyOneof1Type",
+    "OrgsOrgCampaignsPostBodyOneof1TypeForResponse",
 )

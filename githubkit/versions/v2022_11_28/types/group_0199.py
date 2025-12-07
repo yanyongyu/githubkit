@@ -9,38 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0200 import (
-    RulesetVersionPropActorType,
-    RulesetVersionPropActorTypeForResponse,
+    RepositoryRuleCopilotCodeReviewPropParametersType,
+    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
 )
 
 
-class RulesetVersionType(TypedDict):
-    """Ruleset version
+class RepositoryRuleCopilotCodeReviewType(TypedDict):
+    """copilot_code_review
 
-    The historical version of a ruleset
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
     """
 
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: _dt.datetime
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
 
 
-class RulesetVersionTypeForResponse(TypedDict):
-    """Ruleset version
+class RepositoryRuleCopilotCodeReviewTypeForResponse(TypedDict):
+    """copilot_code_review
 
-    The historical version of a ruleset
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
     """
 
-    version_id: int
-    actor: RulesetVersionPropActorTypeForResponse
-    updated_at: str
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[
+        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RulesetVersionType",
-    "RulesetVersionTypeForResponse",
+    "RepositoryRuleCopilotCodeReviewType",
+    "RepositoryRuleCopilotCodeReviewTypeForResponse",
 )

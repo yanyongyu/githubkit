@@ -9,27 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0274 import ProjectsV2FieldSingleSelectOption
 
 
-class UsersUsernameAttestationsBulkListPostBody(GitHubModel):
-    """UsersUsernameAttestationsBulkListPostBody"""
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1(GitHubModel):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests to fetch attestations for.",
-    )
-    predicate_type: Missing[str] = Field(
-        default=UNSET,
-        description="Optional filter for fetching attestations with a given predicate type.\nThis option accepts `provenance`, `sbom`, `release`, or freeform text\nfor custom predicate types.",
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["single_select"] = Field(description="The field's data type.")
+    single_select_options: list[ProjectsV2FieldSingleSelectOption] = Field(
+        description="The options available for single select fields. At least one option must be provided when creating a single select field."
     )
 
 
-model_rebuild(UsersUsernameAttestationsBulkListPostBody)
+model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1)
 
-__all__ = ("UsersUsernameAttestationsBulkListPostBody",)
+__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1",)

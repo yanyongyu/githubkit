@@ -9,41 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
 
-    body: str
-    commit_id: str
-    path: str
-    position: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    line: NotRequired[int]
-    start_line: NotRequired[int]
-    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
-    in_reply_to: NotRequired[int]
-    subject_type: NotRequired[Literal["line", "file"]]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
-class ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
 
-    body: str
-    commit_id: str
-    path: str
-    position: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    line: NotRequired[int]
-    start_line: NotRequired[int]
-    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
-    in_reply_to: NotRequired[int]
-    subject_type: NotRequired[Literal["line", "file"]]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberCommentsPostBodyType",
-    "ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0TypeForResponse",
 )

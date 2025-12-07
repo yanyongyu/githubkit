@@ -9,51 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200(GitHubModel):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of storage records for this digest and organization",
+    name: str = Field(min_length=1, description="The name of the artifact.")
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The hex encoded digest of the artifact.",
     )
-    storage_records: Missing[
-        list[
-            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems
+    version: Missing[str] = Field(
+        min_length=1, max_length=100, default=UNSET, description="The artifact version."
+    )
+    status: Literal["deployed", "decommissioned"] = Field(
+        description="The status of the artifact. Can be either deployed or decommissioned."
+    )
+    logical_environment: str = Field(description="The stage of the deployment.")
+    physical_environment: Missing[str] = Field(
+        default=UNSET, description="The physical region of the deployment."
+    )
+    cluster: Missing[str] = Field(default=UNSET, description="The deployment cluster.")
+    deployment_name: str = Field(description="The name of the deployment.")
+    tags: Missing[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags] = Field(
+        default=UNSET, description="The tags associated with the deployment."
+    )
+    runtime_risks: Missing[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
         ]
-    ] = Field(default=UNSET)
+    ] = Field(
+        max_length=4 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="A list of runtime risks associated with the deployment.",
+    )
+    github_repository: Missing[str] = Field(
+        min_length=1,
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
+        default=UNSET,
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+    )
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems(
-    GitHubModel
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
-    rdsItems
+class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags(ExtraGitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
+
+    The tags associated with the deployment.
     """
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    digest: Missing[str] = Field(default=UNSET)
-    artifact_url: Missing[str] = Field(default=UNSET)
-    registry_url: Missing[str] = Field(default=UNSET)
-    repository: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
 
-
-model_rebuild(OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200)
-model_rebuild(
-    OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems
-)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostBody)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags)
 
 __all__ = (
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200",
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBody",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags",
 )

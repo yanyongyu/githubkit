@@ -11,26 +11,30 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0262 import LinkType, LinkTypeForResponse
+
+class PullRequestMergeResultType(TypedDict):
+    """Pull Request Merge Result
+
+    Pull Request Merge Result
+    """
+
+    sha: str
+    merged: bool
+    message: str
 
 
-class ReviewCommentPropLinksType(TypedDict):
-    """ReviewCommentPropLinks"""
+class PullRequestMergeResultTypeForResponse(TypedDict):
+    """Pull Request Merge Result
 
-    self_: LinkType
-    html: LinkType
-    pull_request: LinkType
+    Pull Request Merge Result
+    """
 
-
-class ReviewCommentPropLinksTypeForResponse(TypedDict):
-    """ReviewCommentPropLinks"""
-
-    self_: LinkTypeForResponse
-    html: LinkTypeForResponse
-    pull_request: LinkTypeForResponse
+    sha: str
+    merged: bool
+    message: str
 
 
 __all__ = (
-    "ReviewCommentPropLinksType",
-    "ReviewCommentPropLinksTypeForResponse",
+    "PullRequestMergeResultType",
+    "PullRequestMergeResultTypeForResponse",
 )

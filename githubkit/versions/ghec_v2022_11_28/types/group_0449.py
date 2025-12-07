@@ -9,36 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0126 import (
-    RepositoryRuleUpdatePropParametersType,
-    RepositoryRuleUpdatePropParametersTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0194 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0448 import ReleaseAssetType, ReleaseAssetTypeForResponse
 
 
-class RepositoryRuleDetailedOneof1Type(TypedDict):
-    """RepositoryRuleDetailedOneof1"""
+class ReleaseType(TypedDict):
+    """Release
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    A release.
+    """
+
+    url: str
+    html_url: str
+    assets_url: str
+    upload_url: str
+    tarball_url: Union[str, None]
+    zipball_url: Union[str, None]
+    id: int
+    node_id: str
+    tag_name: str
+    target_commitish: str
+    name: Union[str, None]
+    body: NotRequired[Union[str, None]]
+    draft: bool
+    prerelease: bool
+    immutable: NotRequired[bool]
+    created_at: _dt.datetime
+    published_at: Union[_dt.datetime, None]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    author: SimpleUserType
+    assets: list[ReleaseAssetType]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    mentions_count: NotRequired[int]
+    discussion_url: NotRequired[str]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class RepositoryRuleDetailedOneof1TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof1"""
+class ReleaseTypeForResponse(TypedDict):
+    """Release
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    A release.
+    """
+
+    url: str
+    html_url: str
+    assets_url: str
+    upload_url: str
+    tarball_url: Union[str, None]
+    zipball_url: Union[str, None]
+    id: int
+    node_id: str
+    tag_name: str
+    target_commitish: str
+    name: Union[str, None]
+    body: NotRequired[Union[str, None]]
+    draft: bool
+    prerelease: bool
+    immutable: NotRequired[bool]
+    created_at: str
+    published_at: Union[str, None]
+    updated_at: NotRequired[Union[str, None]]
+    author: SimpleUserTypeForResponse
+    assets: list[ReleaseAssetTypeForResponse]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    mentions_count: NotRequired[int]
+    discussion_url: NotRequired[str]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof1Type",
-    "RepositoryRuleDetailedOneof1TypeForResponse",
+    "ReleaseType",
+    "ReleaseTypeForResponse",
 )

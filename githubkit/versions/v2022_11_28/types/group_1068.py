@@ -12,59 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
+class ReposOwnerRepoAttestationsPostResponse201Type(TypedDict):
+    """ReposOwnerRepoAttestationsPostResponse201"""
 
-    strict: NotRequired[bool]
-    contexts: NotRequired[list[str]]
-    checks: NotRequired[
-        list[
-            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
-        ]
-    ]
+    id: NotRequired[int]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
+class ReposOwnerRepoAttestationsPostResponse201TypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsPostResponse201"""
 
-    strict: NotRequired[bool]
-    contexts: NotRequired[list[str]]
-    checks: NotRequired[
-        list[
-            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
-    ms
-    """
-
-    context: str
-    app_id: NotRequired[int]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
-    ms
-    """
-
-    context: str
-    app_id: NotRequired[int]
+    id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyTypeForResponse",
+    "ReposOwnerRepoAttestationsPostResponse201Type",
+    "ReposOwnerRepoAttestationsPostResponse201TypeForResponse",
 )

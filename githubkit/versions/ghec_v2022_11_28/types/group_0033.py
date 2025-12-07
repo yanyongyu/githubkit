@@ -12,39 +12,31 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ActionsHostedRunnerCustomImageType(TypedDict):
-    """GitHub-hosted runner custom image details
+class ActionsHostedRunnerMachineSpecType(TypedDict):
+    """Github-owned VM details.
 
-    Provides details of a custom runner image
+    Provides details of a particular machine spec.
     """
 
-    id: int
-    platform: str
-    total_versions_size: int
-    name: str
-    source: str
-    versions_count: int
-    latest_version: str
-    state: str
+    id: str
+    cpu_cores: int
+    memory_gb: int
+    storage_gb: int
 
 
-class ActionsHostedRunnerCustomImageTypeForResponse(TypedDict):
-    """GitHub-hosted runner custom image details
+class ActionsHostedRunnerMachineSpecTypeForResponse(TypedDict):
+    """Github-owned VM details.
 
-    Provides details of a custom runner image
+    Provides details of a particular machine spec.
     """
 
-    id: int
-    platform: str
-    total_versions_size: int
-    name: str
-    source: str
-    versions_count: int
-    latest_version: str
-    state: str
+    id: str
+    cpu_cores: int
+    memory_gb: int
+    storage_gb: int
 
 
 __all__ = (
-    "ActionsHostedRunnerCustomImageType",
-    "ActionsHostedRunnerCustomImageTypeForResponse",
+    "ActionsHostedRunnerMachineSpecType",
+    "ActionsHostedRunnerMachineSpecTypeForResponse",
 )

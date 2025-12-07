@@ -11,21 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0100 import OrganizationCustomProperty
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
+class EnterprisesEnterpriseOrgPropertiesSchemaPatchBody(GitHubModel):
+    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
 
-    pattern_config_version: Missing[str] = Field(
-        default=UNSET, description="The updated pattern configuration version."
+    properties: list[OrganizationCustomProperty] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The array of organization custom properties to create or update.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200)
+model_rebuild(EnterprisesEnterpriseOrgPropertiesSchemaPatchBody)
 
-__all__ = ("EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200",)
+__all__ = ("EnterprisesEnterpriseOrgPropertiesSchemaPatchBody",)

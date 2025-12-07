@@ -9,70 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0234 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
-
-    total_count: int
-    workflows: list[WorkflowType]
-
-
-class ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
+class ReposOwnerRepoActionsSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsSecretsGetResponse200"""
 
     total_count: int
-    workflows: list[WorkflowTypeForResponse]
+    secrets: list[ActionsSecretType]
 
 
-class WorkflowType(TypedDict):
-    """Workflow
+class ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsSecretsGetResponse200"""
 
-    A GitHub Actions workflow
-    """
-
-    id: int
-    node_id: str
-    name: str
-    path: str
-    state: Literal[
-        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
-    ]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    url: str
-    html_url: str
-    badge_url: str
-    deleted_at: NotRequired[_dt.datetime]
-
-
-class WorkflowTypeForResponse(TypedDict):
-    """Workflow
-
-    A GitHub Actions workflow
-    """
-
-    id: int
-    node_id: str
-    name: str
-    path: str
-    state: Literal[
-        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
-    ]
-    created_at: str
-    updated_at: str
-    url: str
-    html_url: str
-    badge_url: str
-    deleted_at: NotRequired[str]
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
-    "ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse",
-    "WorkflowType",
-    "WorkflowTypeForResponse",
+    "ReposOwnerRepoActionsSecretsGetResponse200Type",
+    "ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse",
 )

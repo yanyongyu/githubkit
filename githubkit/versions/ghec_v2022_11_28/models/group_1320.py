@@ -11,17 +11,29 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2"""
 
-    issue_id: int = Field(
-        description="The id of the issue that blocks the current issue"
-    )
+    labels: Missing[
+        list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems]
+    ] = Field(min_length=1 if PYDANTIC_V2 else None, default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody)
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems"""
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody",)
+    name: str = Field()
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems",
+)

@@ -9,95 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
-
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
-        ]
-    ]
-    custom_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
-        ]
-    ]
-
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyTypeForResponse(
+class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
+    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse
-        ]
-    ]
-    custom_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse
-        ]
-    ]
+    name: NotRequired[str]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: NotRequired[list[str]]
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
+class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
-    ternSettingsItems
-    """
+    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
-    ternSettingsItems
-    """
-
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
-    rnSettingsItems
-    """
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
-
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
-    rnSettingsItems
-    """
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
+    name: NotRequired[str]
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
+    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
 )

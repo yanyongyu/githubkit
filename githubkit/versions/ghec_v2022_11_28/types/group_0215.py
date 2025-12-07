@@ -9,37 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0070 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
+class ThreadSubscriptionType(TypedDict):
+    """Thread Subscription
 
-class DependabotRepositoryAccessDetailsType(TypedDict):
-    """Dependabot Repository Access Details
-
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Thread Subscription
     """
 
-    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
-    accessible_repositories: NotRequired[list[Union[None, SimpleRepositoryType]]]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[_dt.datetime, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
-class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
-    """Dependabot Repository Access Details
+class ThreadSubscriptionTypeForResponse(TypedDict):
+    """Thread Subscription
 
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Thread Subscription
     """
 
-    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
-    accessible_repositories: NotRequired[
-        list[Union[None, SimpleRepositoryTypeForResponse]]
-    ]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[str, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
 __all__ = (
-    "DependabotRepositoryAccessDetailsType",
-    "DependabotRepositoryAccessDetailsTypeForResponse",
+    "ThreadSubscriptionType",
+    "ThreadSubscriptionTypeForResponse",
 )

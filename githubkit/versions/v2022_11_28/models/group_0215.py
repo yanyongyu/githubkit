@@ -9,44 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0042 import ReactionRollup
 
 
-class TeamDiscussionComment(GitHubModel):
-    """Team Discussion Comment
+class RepositoryAdvisoryCredit(GitHubModel):
+    """RepositoryAdvisoryCredit
 
-    A reply to a discussion within a team.
+    A credit given to a user for a repository security advisory.
     """
 
-    author: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The main text of the comment.")
-    body_html: str = Field()
-    body_version: str = Field(
-        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
+    state: Literal["accepted", "declined", "pending"] = Field(
+        description="The state of the user's acceptance of the credit."
     )
-    created_at: _dt.datetime = Field()
-    last_edited_at: Union[_dt.datetime, None] = Field()
-    discussion_url: str = Field()
-    html_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(
-        description="The unique sequence number of a team discussion comment."
-    )
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(TeamDiscussionComment)
+model_rebuild(RepositoryAdvisoryCredit)
 
-__all__ = ("TeamDiscussionComment",)
+__all__ = ("RepositoryAdvisoryCredit",)

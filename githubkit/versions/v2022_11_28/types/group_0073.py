@@ -9,24 +9,86 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheUsageOrgEnterpriseType(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class BillingPremiumRequestUsageReportOrgType(TypedDict):
+    """BillingPremiumRequestUsageReportOrg"""
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriodType
+    organization: str
+    user: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType]
 
 
-class ActionsCacheUsageOrgEnterpriseTypeForResponse(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class BillingPremiumRequestUsageReportOrgTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportOrg"""
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse
+    organization: str
+    user: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[
+        BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse
+    ]
+
+
+class BillingPremiumRequestUsageReportOrgPropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "ActionsCacheUsageOrgEnterpriseType",
-    "ActionsCacheUsageOrgEnterpriseTypeForResponse",
+    "BillingPremiumRequestUsageReportOrgPropTimePeriodType",
+    "BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse",
+    "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse",
+    "BillingPremiumRequestUsageReportOrgType",
+    "BillingPremiumRequestUsageReportOrgTypeForResponse",
 )

@@ -16,13 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
+class ReposOwnerRepoGitRefsRefPatchBody(GitHubModel):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
-    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
+    sha: str = Field(description="The SHA1 value to set this reference to")
+    force: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to `false` will make sure you're not overwriting work.",
+    )
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody)
+model_rebuild(ReposOwnerRepoGitRefsRefPatchBody)
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody",)
+__all__ = ("ReposOwnerRepoGitRefsRefPatchBody",)

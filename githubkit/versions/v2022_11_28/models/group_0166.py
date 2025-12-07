@@ -9,28 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0167 import RepositoryRulePullRequestPropParameters
 
 
-class RepositoryRulePullRequest(GitHubModel):
-    """pull_request
+class RepositoryRuleUpdatePropParameters(GitHubModel):
+    """RepositoryRuleUpdatePropParameters"""
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
-    """
-
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
+    update_allows_fetch_and_merge: bool = Field(
+        description="Branch can pull changes from its upstream repository"
+    )
 
 
-model_rebuild(RepositoryRulePullRequest)
+model_rebuild(RepositoryRuleUpdatePropParameters)
 
-__all__ = ("RepositoryRulePullRequest",)
+__all__ = ("RepositoryRuleUpdatePropParameters",)

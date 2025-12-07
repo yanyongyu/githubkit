@@ -9,40 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0061 import MinimalRepository
 
+class CopilotOrganizationDetails(ExtraGitHubModel):
+    """Copilot Organization Details
 
-class Package(GitHubModel):
-    """Package
-
-    A software package
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    id: int = Field(description="Unique identifier of the package.")
-    name: str = Field(description="The name of the package.")
-    package_type: Literal[
-        "npm", "maven", "rubygems", "docker", "nuget", "container"
-    ] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    version_count: int = Field(description="The number of versions of the package.")
-    visibility: Literal["private", "public"] = Field()
-    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    repository: Missing[Union[None, MinimalRepository]] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    seat_breakdown: CopilotOrganizationSeatBreakdown = Field(
+        title="Copilot Seat Breakdown",
+        description="The breakdown of Copilot Business seats for the organization.",
+    )
+    public_code_suggestions: Literal["allow", "block", "unconfigured"] = Field(
+        description="The organization policy for allowing or blocking suggestions matching public code (duplication detection filter)."
+    )
+    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing Copilot Chat in the IDE.",
+    )
+    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing Copilot features on GitHub.com.",
+    )
+    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing Copilot in the CLI.",
+    )
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ] = Field(description="The mode of assigning new seats.")
+    plan_type: Missing[Literal["business", "enterprise"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
+    )
 
 
-model_rebuild(Package)
+class CopilotOrganizationSeatBreakdown(GitHubModel):
+    """Copilot Seat Breakdown
 
-__all__ = ("Package",)
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of seats being billed for the organization as of the current billing cycle.",
+    )
+    added_this_cycle: Missing[int] = Field(
+        default=UNSET, description="Seats added during the current billing cycle."
+    )
+    pending_cancellation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
+    )
+    pending_invitation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of users who have been invited to receive a Copilot seat through this organization.",
+    )
+    active_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have used Copilot during the current billing cycle.",
+    )
+    inactive_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have not used Copilot during the current billing cycle.",
+    )
+
+
+model_rebuild(CopilotOrganizationDetails)
+model_rebuild(CopilotOrganizationSeatBreakdown)
+
+__all__ = (
+    "CopilotOrganizationDetails",
+    "CopilotOrganizationSeatBreakdown",
+)

@@ -10,285 +10,221 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0210 import SecurityAndAnalysisType, SecurityAndAnalysisTypeForResponse
-from .group_0272 import CodeOfConductSimpleType, CodeOfConductSimpleTypeForResponse
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class FullRepositoryType(TypedDict):
-    """Full Repository
+class ProjectsV2FieldType(TypedDict):
+    """Projects v2 Field
 
-    Full Repository
+    A field inside a projects v2 project
     """
 
     id: int
-    node_id: str
+    node_id: NotRequired[str]
+    project_url: str
     name: str
-    full_name: str
-    owner: SimpleUserType
-    private: bool
-    html_url: str
-    description: Union[str, None]
-    fork: bool
-    url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
-    events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    ssh_url: str
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    clone_url: str
-    mirror_url: Union[str, None]
-    hooks_url: str
-    svn_url: str
-    homepage: Union[str, None]
-    language: Union[str, None]
-    forks_count: int
-    stargazers_count: int
-    watchers_count: int
-    size: int
-    default_branch: str
-    open_issues_count: int
-    is_template: NotRequired[bool]
-    topics: NotRequired[list[str]]
-    has_issues: bool
-    has_projects: bool
-    has_wiki: bool
-    has_pages: bool
-    has_downloads: NotRequired[bool]
-    has_discussions: bool
-    archived: bool
-    disabled: bool
-    visibility: NotRequired[str]
-    pushed_at: _dt.datetime
+    data_type: Literal[
+        "assignees",
+        "linked_pull_requests",
+        "reviewers",
+        "labels",
+        "milestone",
+        "repository",
+        "title",
+        "text",
+        "single_select",
+        "number",
+        "date",
+        "iteration",
+        "issue_type",
+        "parent_issue",
+        "sub_issues_progress",
+    ]
+    options: NotRequired[list[ProjectsV2SingleSelectOptionsType]]
+    configuration: NotRequired[ProjectsV2FieldPropConfigurationType]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    permissions: NotRequired[FullRepositoryPropPermissionsType]
-    allow_rebase_merge: NotRequired[bool]
-    template_repository: NotRequired[Union[None, RepositoryType]]
-    temp_clone_token: NotRequired[Union[str, None]]
-    allow_squash_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    use_squash_pr_title_as_default: NotRequired[bool]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    allow_forking: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    subscribers_count: int
-    network_count: int
-    license_: Union[None, LicenseSimpleType]
-    organization: NotRequired[Union[None, SimpleUserType]]
-    parent: NotRequired[RepositoryType]
-    source: NotRequired[RepositoryType]
-    forks: int
-    master_branch: NotRequired[str]
-    open_issues: int
-    watchers: int
-    anonymous_access_enabled: NotRequired[bool]
-    code_of_conduct: NotRequired[CodeOfConductSimpleType]
-    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
-    custom_properties: NotRequired[FullRepositoryPropCustomPropertiesType]
 
 
-class FullRepositoryTypeForResponse(TypedDict):
-    """Full Repository
+class ProjectsV2FieldTypeForResponse(TypedDict):
+    """Projects v2 Field
 
-    Full Repository
+    A field inside a projects v2 project
     """
 
     id: int
-    node_id: str
+    node_id: NotRequired[str]
+    project_url: str
     name: str
-    full_name: str
-    owner: SimpleUserTypeForResponse
-    private: bool
-    html_url: str
-    description: Union[str, None]
-    fork: bool
-    url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
-    events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    ssh_url: str
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    clone_url: str
-    mirror_url: Union[str, None]
-    hooks_url: str
-    svn_url: str
-    homepage: Union[str, None]
-    language: Union[str, None]
-    forks_count: int
-    stargazers_count: int
-    watchers_count: int
-    size: int
-    default_branch: str
-    open_issues_count: int
-    is_template: NotRequired[bool]
-    topics: NotRequired[list[str]]
-    has_issues: bool
-    has_projects: bool
-    has_wiki: bool
-    has_pages: bool
-    has_downloads: NotRequired[bool]
-    has_discussions: bool
-    archived: bool
-    disabled: bool
-    visibility: NotRequired[str]
-    pushed_at: str
+    data_type: Literal[
+        "assignees",
+        "linked_pull_requests",
+        "reviewers",
+        "labels",
+        "milestone",
+        "repository",
+        "title",
+        "text",
+        "single_select",
+        "number",
+        "date",
+        "iteration",
+        "issue_type",
+        "parent_issue",
+        "sub_issues_progress",
+    ]
+    options: NotRequired[list[ProjectsV2SingleSelectOptionsTypeForResponse]]
+    configuration: NotRequired[ProjectsV2FieldPropConfigurationTypeForResponse]
     created_at: str
     updated_at: str
-    permissions: NotRequired[FullRepositoryPropPermissionsTypeForResponse]
-    allow_rebase_merge: NotRequired[bool]
-    template_repository: NotRequired[Union[None, RepositoryTypeForResponse]]
-    temp_clone_token: NotRequired[Union[str, None]]
-    allow_squash_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    use_squash_pr_title_as_default: NotRequired[bool]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    allow_forking: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    subscribers_count: int
-    network_count: int
-    license_: Union[None, LicenseSimpleTypeForResponse]
-    organization: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    parent: NotRequired[RepositoryTypeForResponse]
-    source: NotRequired[RepositoryTypeForResponse]
-    forks: int
-    master_branch: NotRequired[str]
-    open_issues: int
-    watchers: int
-    anonymous_access_enabled: NotRequired[bool]
-    code_of_conduct: NotRequired[CodeOfConductSimpleTypeForResponse]
-    security_and_analysis: NotRequired[Union[SecurityAndAnalysisTypeForResponse, None]]
-    custom_properties: NotRequired[FullRepositoryPropCustomPropertiesTypeForResponse]
 
 
-class FullRepositoryPropPermissionsType(TypedDict):
-    """FullRepositoryPropPermissions"""
+class ProjectsV2SingleSelectOptionsType(TypedDict):
+    """Projects v2 Single Select Option
 
-    admin: bool
-    maintain: NotRequired[bool]
-    push: bool
-    triage: NotRequired[bool]
-    pull: bool
+    An option for a single select field
+    """
 
-
-class FullRepositoryPropPermissionsTypeForResponse(TypedDict):
-    """FullRepositoryPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    push: bool
-    triage: NotRequired[bool]
-    pull: bool
+    id: str
+    name: ProjectsV2SingleSelectOptionsPropNameType
+    description: ProjectsV2SingleSelectOptionsPropDescriptionType
+    color: str
 
 
-FullRepositoryPropCustomPropertiesType: TypeAlias = dict[str, Any]
-"""FullRepositoryPropCustomProperties
+class ProjectsV2SingleSelectOptionsTypeForResponse(TypedDict):
+    """Projects v2 Single Select Option
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
+    An option for a single select field
+    """
+
+    id: str
+    name: ProjectsV2SingleSelectOptionsPropNameTypeForResponse
+    description: ProjectsV2SingleSelectOptionsPropDescriptionTypeForResponse
+    color: str
 
 
-FullRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[str, Any]
-"""FullRepositoryPropCustomProperties
+class ProjectsV2SingleSelectOptionsPropNameType(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropName
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
+    The display name of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2SingleSelectOptionsPropNameTypeForResponse(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropName
+
+    The display name of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2SingleSelectOptionsPropDescriptionType(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropDescription
+
+    The description of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2SingleSelectOptionsPropDescriptionTypeForResponse(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropDescription
+
+    The description of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2FieldPropConfigurationType(TypedDict):
+    """ProjectsV2FieldPropConfiguration
+
+    Configuration for iteration fields.
+    """
+
+    start_day: NotRequired[int]
+    duration: NotRequired[int]
+    iterations: NotRequired[list[ProjectsV2IterationSettingsType]]
+
+
+class ProjectsV2FieldPropConfigurationTypeForResponse(TypedDict):
+    """ProjectsV2FieldPropConfiguration
+
+    Configuration for iteration fields.
+    """
+
+    start_day: NotRequired[int]
+    duration: NotRequired[int]
+    iterations: NotRequired[list[ProjectsV2IterationSettingsTypeForResponse]]
+
+
+class ProjectsV2IterationSettingsType(TypedDict):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str
+    start_date: _dt.date
+    duration: int
+    title: ProjectsV2IterationSettingsPropTitleType
+    completed: bool
+
+
+class ProjectsV2IterationSettingsTypeForResponse(TypedDict):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str
+    start_date: str
+    duration: int
+    title: ProjectsV2IterationSettingsPropTitleTypeForResponse
+    completed: bool
+
+
+class ProjectsV2IterationSettingsPropTitleType(TypedDict):
+    """ProjectsV2IterationSettingsPropTitle
+
+    The iteration title, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2IterationSettingsPropTitleTypeForResponse(TypedDict):
+    """ProjectsV2IterationSettingsPropTitle
+
+    The iteration title, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
 
 
 __all__ = (
-    "FullRepositoryPropCustomPropertiesType",
-    "FullRepositoryPropCustomPropertiesTypeForResponse",
-    "FullRepositoryPropPermissionsType",
-    "FullRepositoryPropPermissionsTypeForResponse",
-    "FullRepositoryType",
-    "FullRepositoryTypeForResponse",
+    "ProjectsV2FieldPropConfigurationType",
+    "ProjectsV2FieldPropConfigurationTypeForResponse",
+    "ProjectsV2FieldType",
+    "ProjectsV2FieldTypeForResponse",
+    "ProjectsV2IterationSettingsPropTitleType",
+    "ProjectsV2IterationSettingsPropTitleTypeForResponse",
+    "ProjectsV2IterationSettingsType",
+    "ProjectsV2IterationSettingsTypeForResponse",
+    "ProjectsV2SingleSelectOptionsPropDescriptionType",
+    "ProjectsV2SingleSelectOptionsPropDescriptionTypeForResponse",
+    "ProjectsV2SingleSelectOptionsPropNameType",
+    "ProjectsV2SingleSelectOptionsPropNameTypeForResponse",
+    "ProjectsV2SingleSelectOptionsType",
+    "ProjectsV2SingleSelectOptionsTypeForResponse",
 )

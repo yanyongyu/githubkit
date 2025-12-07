@@ -9,48 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0549 import WebhooksIssueType, WebhooksIssueTypeForResponse
-from .group_0552 import WebhooksUserMannequinType, WebhooksUserMannequinTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0555 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
+from .group_0742 import (
+    WebhookIssuesTransferredPropChangesType,
+    WebhookIssuesTransferredPropChangesTypeForResponse,
+)
 
 
-class WebhookIssuesUnassignedType(TypedDict):
-    """issues unassigned event"""
+class WebhookIssuesTransferredType(TypedDict):
+    """issues transferred event"""
 
-    action: Literal["unassigned"]
-    assignee: NotRequired[Union[WebhooksUserMannequinType, None]]
+    action: Literal["transferred"]
+    changes: WebhookIssuesTransferredPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
+    issue: WebhooksIssue2Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesUnassignedTypeForResponse(TypedDict):
-    """issues unassigned event"""
+class WebhookIssuesTransferredTypeForResponse(TypedDict):
+    """issues transferred event"""
 
-    action: Literal["unassigned"]
-    assignee: NotRequired[Union[WebhooksUserMannequinTypeForResponse, None]]
+    action: Literal["transferred"]
+    changes: WebhookIssuesTransferredPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssueTypeForResponse
+    issue: WebhooksIssue2TypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesUnassignedType",
-    "WebhookIssuesUnassignedTypeForResponse",
+    "WebhookIssuesTransferredType",
+    "WebhookIssuesTransferredTypeForResponse",
 )

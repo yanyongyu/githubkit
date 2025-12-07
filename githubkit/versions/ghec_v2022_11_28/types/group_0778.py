@@ -13,21 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0527 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0528 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0529 import (
+from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0533 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0530 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0558 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
+from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0562 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
 
 
-class WebhookOrganizationRenamedType(TypedDict):
-    """organization renamed event"""
+class WebhookOrganizationDeletedType(TypedDict):
+    """organization deleted event"""
 
-    action: Literal["renamed"]
-    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     membership: NotRequired[WebhooksMembershipType]
@@ -36,11 +35,10 @@ class WebhookOrganizationRenamedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookOrganizationRenamedTypeForResponse(TypedDict):
-    """organization renamed event"""
+class WebhookOrganizationDeletedTypeForResponse(TypedDict):
+    """organization deleted event"""
 
-    action: Literal["renamed"]
-    changes: NotRequired[WebhookOrganizationRenamedPropChangesTypeForResponse]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     membership: NotRequired[WebhooksMembershipTypeForResponse]
@@ -49,35 +47,7 @@ class WebhookOrganizationRenamedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
-class WebhookOrganizationRenamedPropChangesType(TypedDict):
-    """WebhookOrganizationRenamedPropChanges"""
-
-    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
-
-
-class WebhookOrganizationRenamedPropChangesTypeForResponse(TypedDict):
-    """WebhookOrganizationRenamedPropChanges"""
-
-    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse]
-
-
-class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
-
-    from_: NotRequired[str]
-
-
-class WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse(TypedDict):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
-
-    from_: NotRequired[str]
-
-
 __all__ = (
-    "WebhookOrganizationRenamedPropChangesPropLoginType",
-    "WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse",
-    "WebhookOrganizationRenamedPropChangesType",
-    "WebhookOrganizationRenamedPropChangesTypeForResponse",
-    "WebhookOrganizationRenamedType",
-    "WebhookOrganizationRenamedTypeForResponse",
+    "WebhookOrganizationDeletedType",
+    "WebhookOrganizationDeletedTypeForResponse",
 )

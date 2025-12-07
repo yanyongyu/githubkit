@@ -12,14 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
 
-    body: str = Field(description="The text of the review comment.")
+    reviewers: Missing[list[str]] = Field(
+        default=UNSET, description="An array of user `login`s that will be requested."
+    )
+    team_reviewers: list[str] = Field(
+        description="An array of team `slug`s that will be requested."
+    )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",)

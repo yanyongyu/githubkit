@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,35 +17,23 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0070 import SimpleRepository
 
+class CodeScanningDefaultSetupOptions(GitHubModel):
+    """CodeScanningDefaultSetupOptions
 
-class CodeSecurityConfigurationRepositories(GitHubModel):
-    """CodeSecurityConfigurationRepositories
-
-    Repositories associated with a code security configuration and attachment status
+    Feature options for code scanning default setup
     """
 
-    status: Missing[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ] = Field(
+    runner_type: Missing[Literal["standard", "labeled", "not_set"]] = Field(
         default=UNSET,
-        description="The attachment status of the code security configuration on the repository.",
+        description="Whether to use labeled runners or standard GitHub runners.",
     )
-    repository: Missing[SimpleRepository] = Field(
-        default=UNSET, title="Simple Repository", description="A GitHub repository."
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
     )
 
 
-model_rebuild(CodeSecurityConfigurationRepositories)
+model_rebuild(CodeScanningDefaultSetupOptions)
 
-__all__ = ("CodeSecurityConfigurationRepositories",)
+__all__ = ("CodeScanningDefaultSetupOptions",)

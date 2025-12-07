@@ -12,17 +12,38 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0011 import WebhookConfig
 
 
-class ReposOwnerRepoGitRefsPostBody(GitHubModel):
-    """ReposOwnerRepoGitRefsPostBody"""
+class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    ref: str = Field(
-        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    config: Missing[WebhookConfig] = Field(
+        default=UNSET,
+        title="Webhook Configuration",
+        description="Configuration object of the webhook",
     )
-    sha: str = Field(description="The SHA1 value for this reference.")
+    events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
+    )
+    add_events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines a list of events to be added to the list of events that the Hook triggers for.",
+    )
+    remove_events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
+    )
+    active: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+    )
 
 
-model_rebuild(ReposOwnerRepoGitRefsPostBody)
+model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
 
-__all__ = ("ReposOwnerRepoGitRefsPostBody",)
+__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)

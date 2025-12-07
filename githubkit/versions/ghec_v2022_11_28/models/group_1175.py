@@ -16,17 +16,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The discussion post's title."
-    )
-    body: Missing[str] = Field(
-        default=UNSET, description="The discussion post's body text."
+    pattern_config_version: Missing[str] = Field(
+        default=UNSET, description="The updated pattern configuration version."
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody)
+model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody",)
+__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)

@@ -13,48 +13,54 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
 
-class CodeScanningAlertRuleSummary(GitHubModel):
-    """CodeScanningAlertRuleSummary"""
+class ArtifactDeploymentRecord(GitHubModel):
+    """Artifact Deployment Record
 
-    id: Missing[Union[str, None]] = Field(
+    Artifact Metadata Deployment Record
+    """
+
+    id: Missing[int] = Field(default=UNSET)
+    digest: Missing[str] = Field(default=UNSET)
+    logical_environment: Missing[str] = Field(default=UNSET)
+    physical_environment: Missing[str] = Field(default=UNSET)
+    cluster: Missing[str] = Field(default=UNSET)
+    deployment_name: Missing[str] = Field(default=UNSET)
+    tags: Missing[ArtifactDeploymentRecordPropTags] = Field(default=UNSET)
+    runtime_risks: Missing[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ] = Field(
+        max_length=4 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="A unique identifier for the rule used to detect the alert.",
+        description="A list of runtime risks associated with the deployment.",
     )
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the rule used to detect the alert."
-    )
-    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
-        default=UNSET, description="The severity of the alert."
-    )
-    security_severity_level: Missing[
-        Union[None, Literal["low", "medium", "high", "critical"]]
-    ] = Field(default=UNSET, description="The security severity of the alert.")
-    description: Missing[str] = Field(
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    attestation_id: Missing[Union[int, None]] = Field(
         default=UNSET,
-        description="A short description of the rule used to detect the alert.",
-    )
-    full_description: Missing[str] = Field(
-        default=UNSET, description="A description of the rule used to detect the alert."
-    )
-    tags: Missing[Union[list[str], None]] = Field(
-        default=UNSET, description="A set of tags applicable for the rule."
-    )
-    help_: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="help",
-        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
-    )
-    help_uri: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A link to the documentation for the rule used to detect the alert.",
+        description="The ID of the provenance attestation associated with the deployment record.",
     )
 
 
-model_rebuild(CodeScanningAlertRuleSummary)
+class ArtifactDeploymentRecordPropTags(ExtraGitHubModel):
+    """ArtifactDeploymentRecordPropTags"""
 
-__all__ = ("CodeScanningAlertRuleSummary",)
+
+model_rebuild(ArtifactDeploymentRecord)
+model_rebuild(ArtifactDeploymentRecordPropTags)
+
+__all__ = (
+    "ArtifactDeploymentRecord",
+    "ArtifactDeploymentRecordPropTags",
+)
